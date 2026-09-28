@@ -55,5 +55,6 @@ records and logged; the record history is kept.
 
 ## Licence and citation
 
-Code: MIT (`LICENSE`). Data, configuration, logs and checklists: CC BY 4.0 (`LICENSE-CONTENT.md`). Cite the archived
-release by its DOI (see `CITATION.cff`).
+Code: MIT (`LICENSE`). Data, configuration, logs and checklists: CC BY 4.0 (`LICENSE-CONTENT.md`).
+
+Archived at Zenodo: https://doi.org/10.5281/zenodo.23008250 (the first release, which the synthesis refers to); every version: https://doi.org/10.5281/zenodo.23008249. Citation metadata is in `CITATION.cff`.
