@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-3",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Luo M, He Z, Cui H, Chen Y-PP, Ward P, ADNI. 'Class activation attention transfer neural networks for MCI conversion prediction', Computers in Biology and Medicine 156 (2023) 106700. It proposes source-task attention transfer (CAAT) for 3-year pMCI vs sMCI prediction from baseline MRI and benchmarks it head-to-head. This matches the review's 'source-task attention' example."
+ },
+ "cited_result": "Head-to-head benchmark of source-task attention transfer on pMCI vs sMCI (3-year conversion), 593 ADNI subjects, 5-fold CV. CAAT ensemble: ACC 74.61%, AUC 0.780. Comparators: baseline 3D CNN 70.84% / 0.758; best traditional transfer-learning ensemble (6-Conv TL) 73.37% / 0.782.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the comparative discrimination (ranking) of machine-learning classifiers predicting later conversion to AD, which falls under prediction-model performance.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "The ADNI cohort data are appropriate. The paper defers to Wen et al.'s splits and does not state the follow-up requirement, or how reverters and people lost before 36 months were handled. The near-balanced 298/295 sample implies some restriction that is not described.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "The dataset consists of 298 sMCI and 295 pMCI participants retrieved from datasets ANDI1 and ADNI2. Each subject had one structural T1 weighted MRI scan taken at the baseline.",
+     "page": "6"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched for minimum follow-up, handling of reverters to CN and exclusions; the paper states only 'In our paper we have adopted the same ADNI 1 and ADNI 2 dataset splits used in Wen et al.\u2019s review paper [11].'",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The single predictor is a baseline T1 MRI, processed by the same automated pipeline for everyone and available when the model would be used.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "First, N4ITK was used for intensity non-uniformity correction by the ANTS N4 BiasField Correction pipeline. ... Then, we first perform linear (affine) registration using the FLIRT function from the FSL software package to align the image to the template MNI125.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "We propose a novel method called Class Activation Attention Transfer (CAAT) to solve the pMCI versus sMCI problem using only baseline MRI images.",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Specifically, our goal is to take a single MRI image of a patient diagnosed with MCI at a given time and accurately predict whether they will be diagnosed with AD within 3 years.",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "low",
+   "rationale": "The outcome is a standard ADNI clinical diagnosis of dementia within a fixed 36-month window, and it is distinct from the image predictor. Blinding is not reported, but an automated image predictor is unlikely to be influenced by it.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "However, if a subject was diagnosed with Dementia within the following 36 months, he/she was grouped into pMCI; and if the patient\u2019s diagnosis remained as MCI, we categorized him/her as sMCI.",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "the subjects used were categorized into two groups: progressive MCI (pMCI) and stable MCI (sMCI), based on the diagnosis of their follow-up visits within 36 months.",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "Experimental results on the ADNI dataset show that CAAT achieves accuracy of 74.61 for classifying between pMCI and sMCI using only whole 3D images of the brain and no other ancillary information.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "based on the diagnosis of their follow-up visits within 36 months",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for whether ADNI diagnosticians were blind to the MRI; not reported.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "predict which patients with mild cognitive impairment (MCI) will progress to AD within 3 years",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The authors state that the same 5-fold CV was used both to tune and to select models, and that this may bias the evaluation optimistically. The source-model early-stopping point was chosen by its usefulness on the target task. The source-task training sets contain ADNI1/ADNI2 MCI images, and the paper does not say whether target-fold subjects were excluded. Calibration was not assessed, there was no external validation, and no significance test supports the small margins between models.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably yes",
+     "quote": "The dataset consists of 298 sMCI and 295 pMCI participants",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Finally, all nonlinearly registered images were cropped to an identical size of 169 \ud835\udc65208 \ud835\udc65179 with 1 mm3 isotropic voxels for computational efficiency.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "Our dataset consists of 593 MRI images, consisting of 298 sMCIs and 295 pMCIs images. We performed 5 fold cross validation using the same data splits as that used in [11]",
+     "page": "6"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for failed preprocessing, excluded scans or missing images; none reported.",
+     "page": "3, 6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "It learns the discriminative brain areas created from a source task via the output of class activation maps (CAMs) [10] without using prior expert knowledge to determine the ROIs.",
+     "page": "2"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Yes",
+     "quote": "Each subject had one structural T1 weighted MRI scan taken at the baseline.",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "we used the following four evaluation metrics for the model performance include sensitivity (SEN), specificity (SPC), F1 score (F1) and accuracy (ACC).",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models. This may lead to an optimistically biased evaluation of the model performance.",
+     "page": "9"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported analysis?",
+     "answer": "No information",
+     "quote": "Searched for a final fitted model; only cross-validated averages over five folds are reported.",
+     "page": "6-8"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "Each subject had one structural T1 weighted MRI scan taken at the baseline.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Are preprocessing, pretraining and tuning done within training data only (no leakage)?",
+     "answer": "No information",
+     "quote": "The second and third tasks were high versus low CDR-SB and ADAS11 cognitive score classification using 1243 training images of which 382, 460, 401 were classified as MCI, CN and AD respectively and 310 testing images comprising 93 MCI, 109 CN and 108 AD.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "No",
+     "quote": "We found if we trained the model to its highest validation accuracy of 92%, the resultant CAM was not as helpful when used as the attention map in the target task of pMCI versus sMCI classification.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes (classes nearly balanced)",
+     "quote": "sMCI(298) pMCI(295)",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal (5-fold CV, with the same folds used for tuning); no external validation",
+     "quote": "We found the above training parameters gave best performance at the end of model tuning.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "ADNI1/ADNI2 research volunteers with an undescribed follow-up restriction."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Baseline T1 MRI only."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Dementia diagnosis within 36 months matches the conversion question."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 4 is high risk: tuning and model selection used the evaluation folds (the authors concede optimistic bias), the source-task stopping point was chosen by target-task performance, and it is not reported whether the source tasks were kept separate from the target subjects. The margins between methods are 1 to 4 accuracy points, reported without inferential testing.",
+ "confidence": "high",
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 20
+ }
+}

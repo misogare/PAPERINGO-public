@@ -1,0 +1,212 @@
+{
+ "paper_id": "P-2",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Chai J, Wu R, Li A, et al. 'Classification of mild cognitive impairment based on handwriting dynamics and qEEG', Computers in Biology and Medicine 152 (2023) 106418, available online 12 December 2022. It uses the consumer MUSE EEG headband with tablet handwriting in 40 MCI and 39 healthy controls. The review's 'Chai et al. 2022' refers to this article (online 2022, volume year 2023)."
+ },
+ "cited_result": "MCI versus healthy-control classification from MUSE consumer EEG headband features combined with tablet handwriting features. The review cites the study for the consumer headband modality without a number, so the principal reported result is appraised: dual fusion (feature-level fusion plus accuracy-weighted decision voting) with an RBF-SVM, accuracy 96.3% (abstract; Table 4 gives 96.73%). Related results are EEG-only RBF-SVM 86.1% and feature-fusion RBF-SVM 93.7% (Table 3).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the diagnostic classification performance of a multivariable machine-learning model (MCI against controls), so PROBAST with PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "This is a two-group volunteer (diagnostic case-control) sample, not a consecutive or representative sample of people in whom MCI would be suspected. All participants were required to have an MMSE of 24 or more, and controls a MoCA above 26, which removes the diagnostically difficult middle of the spectrum.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No",
+     "quote": "In this study, a total of 79 right-handed participants volunteered to participate in the experiment, including 40 MCI subjects (17 males/23 females) and 39 healthy subjects (21 males/18 females)",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "all participants had an MMSE score of 24 or more | subjects who scored above 26 on the Moca test were included in the healthy group according to the Moca criteria [52,53].",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "Acquisition was standardised (same tablet, pen and MUSE protocol) and available at the time of use. However, participants were assigned to groups before testing, and EEG cleaning included a manual artefact-removal step with no reported blinding to group.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "The handwriting task was then completed using an electronic pen (apple pencile) and a tablet (iPad 2020), and acquired handwriting characteristics and recorded EEG data during handwriting.",
+     "page": "4"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "Searched for: blinding of EEG pre-processing and feature extraction to group. The report states that groups were assigned first, 'then patients were chosen and split them into MCI or HC based on the MoCA scale assessment.', and that cleaning was partly manual: 'the remaining signal was then manually examined to remove large artifacts that would not be automatically removed'",
+     "page": "3; 4"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "hence we used the low-cost MUSE headband (version 2) to acquire EEG signals in this study.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "MCI and control status were assigned from MoCA and MMSE screening scores under a vaguely named assessment, with no recognised clinical MCI criteria (functional assessment, clinician diagnosis) and no stated MCI cut-off. The outcome was determined before and independently of the predictors, in the same session.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "then patients were chosen and split them into MCI or HC based on the MoCA scale assessment. | Subjects were marked according to the score of MoCA and MMSE.",
+     "page": "3; 6"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "All participants were classified according to the Alzheimer\u2019s Disease Association Neurological Assessment",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "the tasks designed for this experiment integrated the assessment of motor control ability and visuospatial function.",
+     "page": "4"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Subjects were marked according to the score of MoCA and MMSE.",
+     "page": "6"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Yes",
+     "quote": "firstly a face-to- face routine examination was carried out to exclude ineligible | then patients were chosen and split them into MCI or HC based on the MoCA scale assessment.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "After a short break after consent, subjects wore the MUSE to record resting EEG in a closed-eye state for 1 min.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There were 40 MCI cases for 68 candidate features. Frequency-band selection used cross-validation over all the data, and recursive feature elimination and grid search were then run before a separate, non-nested 10-fold cross-validation reported performance. Decision-fusion weights were derived from the same classification accuracies. Missing values were mean-imputed. Only accuracy, F-measure and kappa were reported (no AUC or calibration), there was no held-out or external validation, and the authors concede overfitting may be present.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Seventy-nine volunteers (39 healthy elderly controls and 40 patients with mild cognitive impairment) were recruited for this study | Sixty-eight features were extracted from the EEG and handwriting parameters of each test.",
+     "page": "1"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "including Support Vector Machines(SVM), Random Forest (RF), and XGboost",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "using 10-fold cross-validation to measure the performance of the classifier. | RBF SVM 0.861 0.857 0.721 0.835 0.831 0.671 0.937 0.935 0.873",
+     "page": "8"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "filling in missing values using the mean values",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Recursive feature elimination techniques are used to select the most appropriate subset of features among those extracted in the theta band.",
+     "page": "7"
+    },
+    {
+     "question": "4.6 (AI) Was the split between training and test data at the participant level?",
+     "answer": "No information",
+     "quote": "Searched for: the unit of the cross-validation folds (participant or task record) when four task-level classifiers per participant are fused. The report says only 'using 10-fold cross-validation to measure the performance of the classifier.'",
+     "page": "8"
+    },
+    {
+     "question": "4.6 (AI) Were feature selection and tuning confined to the training folds (no leakage)?",
+     "answer": "No",
+     "quote": "In this algorithm, a 10-fold cross-validation scheme was used, whereby all the data were divided into 10-folds, with 9 folds used to train the model and another fold to test the model, and the iterations were repeated 1000 times to calculate the average accuracy of all folds and select an optimal EEG band for feature extraction. | using grid search algorithms for the subset of features selected for each band combination.",
+     "page": "7; 6"
+    },
+    {
+     "question": "4.6 (AI) Was the test set held out from all tuning?",
+     "answer": "No",
+     "quote": "Different test features have different effects on disease diagnosis, corresponding to different classification accuracies, so different weights are used to reflect this difference. | final classification results were obtained by decision fusion according to equation (6).",
+     "page": "6; 8"
+    },
+    {
+     "question": "4.6 (AI) Was class imbalance handled appropriately?",
+     "answer": "Yes (classes balanced)",
+     "quote": "Seventy-nine volunteers (39 healthy elderly controls and 40 patients with mild cognitive impairment) were recruited for this study",
+     "page": "1"
+    },
+    {
+     "question": "4.6 (AI) Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal cross-validation only (not nested), no external validation",
+     "quote": "our work is still somewhat limited based on the small size of the handwritten and collected datasets.",
+     "page": "8"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "used to assess classification performance were accuracy (Acc), f-measure (Fm) and kappa statistic (K).",
+     "page": "8"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "may not exclude the presence of overfitting factors.",
+     "page": "8"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported analysis?",
+     "answer": "No information",
+     "quote": "Searched for: the final model specification and decision weights. None is reported, and the headline figure differs between text and table: 'which the weighted voting classification model with the RBF-SVM as the base classifier could achieve the highest accuracy of 96.3%' against 'SVM 90.69% 93.12% 92.75% 90.00% 93.67% 96.73%'",
+     "page": "9; 8"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "The participants domain is high because this is a two-group volunteer case-control sample with extreme-group entry criteria. The outcome domain is high because MCI was assigned from screening-test scores rather than clinical criteria. The analysis domain is high: there were 40 events for 68 candidate features, band and feature selection and grid search were not nested within the evaluation folds, fusion weights came from the same accuracies, no held-out or external test set was used, and no AUC or calibration was reported. The predictors domain is unclear. The 96.3% accuracy is likely optimistic.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Volunteer two-group sample with MMSE of 24 or more and controls above MoCA 26; not a primary-care screening population."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Consumer MUSE headband and tablet, which match the intended low-cost screening use."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "MCI defined by MoCA/MMSE scores, not by clinical diagnostic criteria."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 21,
+  "matched": 16
+ }
+}

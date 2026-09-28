@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-307",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Zhang X, Liao Y, Zhang D, Liu W, Wang Z, Jin Y, Chen S, Wei J. 'Explainable machine learning models for identifying mild cognitive impairment in older patients with chronic pain', BMC Nursing (2025) 24:72, doi:10.1186/s12912-025-02723-8. It is a single-centre cross-sectional study of 612 patients (169 with MCI) that develops nine machine-learning classifiers, one of them XGBoost. The first author, year and model family fit the citation 'Zhang et al. 2025b'. The cited sentence gives no numbers from this study that could be checked."
+ },
+ "cited_result": "The cited sentence names no specific figure. I therefore appraised the study's principal result: how well the XGBoost classifier identified concurrent MCI on the 30% hold-out test set (AUC 0.925, 95% CI 0.863 to 0.995; accuracy 0.883). XGBoost was chosen as the best of nine models, and SHAP was used to rank its predictors.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination of a multivariable machine-learning classifier for a diagnostic target (MCI present at the time of assessment), so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "A cross-sectional design is appropriate for a diagnostic model, and the eligibility criteria are reasonable. However, this was a single-clinic convenience sample. 23 questionnaires were then excluded for logic errors or patterned ('regular') answers, and the report does not say whether those exclusions related to cognitive status. The sampling could have produced a case-mix with well-separated groups: mean age was 77.6 in the MCI group against 68.7 in the non-MCI group (Table 1, page 5).",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (for a diagnostic model, a cross-sectional sample of the intended-use population)?",
+     "answer": "Yes",
+     "quote": "This cross-sectional study collected data through face-to-face interviews with older patients with chronic pain, including general data, pain level, depression, sleep quality, and MCI.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "Exclusion criteria: (1) suffering from malignant tumors; (2) severe neurological, hematological, or immune diseases; (3) severe dysfunction of major organs such as heart, kidney, or liver; (4) being diagnosed with dementia.",
+     "page": "2-3"
+    },
+    {
+     "question": "AI (data source): was the sample drawn so that it represents the intended-use population (consecutive or random rather than convenience), with post-enrolment exclusions unrelated to the outcome?",
+     "answer": "Probably no",
+     "quote": "recruited from the Pain Department of a tertiary general hospital in Nanchang, China, between October 2023 and July 2024 using convenience sampling ... we conducted a rigorous questionnaire review and excluded those invalid questionnaires with logic error, and regular answers.",
+     "page": "2; 4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "Standardised instruments and trained interviewers were used. However, the same interview collected both the predictors and the outcome instruments, and the report does not say whether assessors were blinded. Interviewers also completed the questionnaires (including the self-reported GDS-15 and PSQI) for participants who could not complete them alone. That is a mode of assessment which may relate to cognitive status.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Data were collected through face-to-face interviews using standardized instructions in the hospital classroom or ward. ... For those unable to complete the questionnaire independently, interviewers provided explanations and completed the questionnaire on their behalf.",
+     "page": "3-4"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "I searched for blinding of the interviewers who recorded the VAS, GDS-15, PSQI and questionnaire items to the MoCA/MMSE results or to the neurologist's diagnosis, and found none reported. Predictors and outcome instruments were collected in the same face-to-face interview.",
+     "page": "3-4"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "However, the use of non-invasive variables enhances the model's applicability in community and primary care settings.",
+     "page": "12"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "MCI was defined by standard criteria (Petersen/IWG, MoCA < 26, ADL, MMSE-based dementia exclusion) and confirmed by a neurologist. The report does not say whether the outcome was determined without knowledge of the predictors. Education, one of the predictors, also enters the education-specific MMSE thresholds used to exclude dementia.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "Patients meeting all 5 of the above criteria were diagnosed with MCI. A senior neurologist confirmed the final diagnosis.",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "The outcome of this study was the occurrence of MCI, which was diagnosed according to Petersen's Criteria and the International Working Group on MCI",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "Illiterate individuals scored < 17, individuals scored < 20 for primary school culture, individuals scored < 22 for secondary school culture, and individuals scored < 23 for university culture suggesting the presence of dementia.",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Patients meeting all 5 of the above criteria were diagnosed with MCI.",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "I searched for any statement that the MoCA/MMSE/ADL assessors or the confirming neurologist were unaware of the pain, depression, sleep and demographic data, and found none.",
+     "page": "3-4"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "This cross-sectional study collected data through face-to-face interviews with older patients with chronic pain, including general data, pain level, depression, sleep quality, and MCI.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are several serious problems. (a) Events per candidate variable are below 10 in the training set: about 115 to 118 MCI cases against 16 candidate variables, and the authors' EPV calculation confuses total sample size with events. (b) The Table 2 test-set metrics fit only a 1:1 class ratio in the evaluated data, not the natural 27.6% prevalence. For LR, precision 0.814 = 0.882/(0.882 + 0.201), and XGBoost behaves the same way. This suggests the evaluation data were resampled, so precision and calibration do not reflect real prevalence. (c) The report contradicts itself on whether the metrics come from the test set or from 10-fold cross-validation. The best of nine models was chosen on the same test set, the data set used for hyperparameter tuning is not stated, and there is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "Sample size was calculated based on the principle that event per variable (EPV) \u2265 10 [17]. 16 variables were expected to be included in this study, considering a loss to follow-up rate of 10%-20%, so the minimum sample size for modeling was 178.",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "The Min-Max Normalization method was used to normalize data to the range of 0\u20131.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "A total of 635 questionnaires were distributed, and 612 were valid, with an effective recovery rate of 96.4%.",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Since no missing data were identified in the study, the dataset was randomly divided into a training set (70%) and a testing set (30%).",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "To screen key variables, we combined LASSO regression and SVM-RFE.",
+     "page": "6"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. clustering, censoring) accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "This cross-sectional study collected data through face-to-face interviews with older patients with chronic pain",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately, including calibration?",
+     "answer": "Probably no",
+     "quote": "XGBoost 0.883 0.882 0.885 0.884 0.882 0.885 0.925(0.863\u20130.995) ... LR* 0.840 0.814 0.882 0.847 0.799 0.882 0.895(0.829\u20130.966) ... Figure 2D presents the calibration curve, highlighting XGBoost's lowest Brier score",
+     "page": "7"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "Hyperparameters were tuned using grid search to optimize performance. ... To minimize random errors, all metrics were calculated using 10-fold cross validation. ... Table 2 shows the performance of each model on the testing set, among which the XGBoost model performed best",
+     "page": "4; 7"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "I searched for final hyperparameter values, the fitted XGBoost specification or any model equation, and found none reported. Only SHAP importance plots are given.",
+     "page": "4-12"
+    },
+    {
+     "question": "AI: Was the train/test split at the participant level (no data from one person on both sides)?",
+     "answer": "Probably yes",
+     "quote": "We divided 428 samples (70%) into the training set, and 184 (30%) samples into the testing set.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection and resampling done within the training data only (no leakage)?",
+     "answer": "Probably no",
+     "quote": "After using SMOTETomek comprehensive sampling technique, both MCI and non-MCI sample sizes in the training set reached 313, achieving a balance of data.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Was the test set held out from all hyperparameter tuning and model selection?",
+     "answer": "No information",
+     "quote": "Hyperparameters were tuned using grid search to optimize performance.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was class imbalance handled without distorting the evaluation?",
+     "answer": "Probably no",
+     "quote": "Given the small number of MCI-positive samples in our study, SMOTETomek comprehensive sampling was used to balance the data.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal split-sample only; no external validation",
+     "quote": "Therefore, we recommend that future studies conduct collaborative, multicenter research across diverse populations with different cultural and ethnic backgrounds to validate the model.",
+     "page": "12"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 4 (analysis) is high risk. There are too few events per candidate variable. The reported test metrics are arithmetically consistent only with a class-balanced evaluation set, which suggests resampling reached the evaluation data and makes precision and calibration unreliable. The report is inconsistent about test-set versus cross-validated metrics. The best of nine models was selected on the test set, and a small single-centre model had no external validation. Domains 1 to 3 are unclear. Under PROBAST, any high domain makes the overall rating high.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The sample is older adults with chronic pain from one Chinese hospital pain department: 'The study population consisted exclusively of Chinese older adults, which may limit the cultural generalizability of the model' (page 12). They are not a general MCI-risk population."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "Several predictors (VAS pain level, number of pain sites, pain duration) are defined only within a chronic-pain population."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "The target is MCI present at the time of assessment (MoCA < 26 plus criteria), not future conversion. It is applicable to a question about detecting MCI, not about predicting later MCI."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 7
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-70",
+ "document_check": {
+  "matches": true,
+  "note": "Alvi et al., Knowledge-Based Systems 248 (2022) 108815, 'A deep learning based framework for diagnosis of mild cognitive impairment'. Public EEG dataset of 27 subjects (11 MCI, 16 normal), 8,100 six-second segments, GRU accuracy 95.51 +/- 3.11 % under 5-fold cross-validation (Table 2). Matches the cited study and numbers."
+ },
+ "cited_result": "GRU classifier distinguishing MCI from healthy-control EEG: accuracy 95.51 +/- 3.11 % under 5-fold cross-validation over 8,100 segments from 27 participants (Table 2).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the accuracy of a deep-learning diagnostic classifier, a prediction-model performance question covered by PROBAST with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "A convenience public dataset of 11 MCI and 16 normal participants with separately defined groups (case-control-type sampling), recruitment not described, and exclusion of people with serious medical or psychiatric illness.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Probably no",
+     "quote": "This MCI study has exercised a publicly available EEG dataset of 27 subjects from the Sina and Nour Hospital, Isfahan, Iran [31, 36]. 16 normal and 11 MCI subjects were part of this EEG data collection.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "None of these 27 subjects had head trauma, dementia, and a history of major psychiatric disorders, serious medical disease, and substance misuse.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Every participant had the same standardised resting EEG protocol. Features were learned automatically from the signals, which are available at the time of intended use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "For each of the subject, recording lasted for 30 min and signals were digitized using 32 channel EEG device with a sampling frequency of 256 Hz",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "For feature extraction, no separate method is used, and for classification, four different machine learning (ML) models are tested with the processed EEG dataset.",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "All subjects were instructed to close their eyes, feel relaxed and conscious to avoid drowsiness during the EEG recordings.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "Petersen's criteria are named, but the reference standard is described only as an MMSE 'neuropsychiatric interview'. The stated MMSE range for MCI (21 to 26) conflicts with Table 1 (27.6 +/- 0.9). Blinding and timing are not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "interview also known as Mini-mental state examination (MMSE) was performed for each of the subject following the Petersen\u2019s criteria.",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "was performed for each of the subject following the Petersen\u2019s criteria.",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "interview also known as Mini-mental state examination (MMSE) was performed for each of the subject following the Petersen\u2019s criteria. (EEG is not described as part of the diagnosis.)",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "was performed for each of the subject following the Petersen\u2019s criteria.",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the clinical classification to EEG; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the timing of the EEG relative to the diagnostic assessment; not reported.",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are only 11 participants with MCI. The 300 segments per participant were split at segment level (70/20/10 and 5-fold CV) with no subject-wise separation, so segments from one person appear on both sides. Architectures and hyperparameters were chosen through repeated experiments for the best result, there is no calibration, and the reported metrics are internally inconsistent.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "16 normal and 11 MCI subjects were part of this EEG data collection.",
+     "page": "2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Not applicable",
+     "quote": "Preprocessed EEG data from the previous down-sampling step is used as input to the classifiers.",
+     "page": "5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "27 subjects (16 HCs and 11 MCIs) participated in this study.",
+     "page": "8"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing or rejected recordings or segments; not mentioned.",
+     "page": "3-6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "For feature extraction, no separate method is used",
+     "page": "5"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "No",
+     "quote": "After segmenting 27 subjects, we now have 8,100 temporal subjects.",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "These four models have been examined with eight standard evaluation matrices.",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "No",
+     "quote": "For all the four classifiers, training, testing, and validation set remain constant which are 70%, 20%, and 10% respectively.",
+     "page": "5"
+    },
+    {
+     "question": "4.9 Do predictors and weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "GRU has achieved highest accuracy of 96.91%, sensitivity of 97.95%, and specificity of 96.16%. (Differs from Table 2; no final model released.)",
+     "page": "8"
+    },
+    {
+     "question": "AI: Was the train/test split at participant level?",
+     "answer": "Probably no",
+     "quote": "giving us 300 temporal segments out of each subject recording.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and hyperparameter tuning confined to training folds?",
+     "answer": "Probably no",
+     "quote": "Different values for the number of neighbors have been tried out and it has provided the best result when the number of neighbors is 10.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably no",
+     "quote": "their different configurations to achieve the best possible result.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "No information",
+     "quote": "Searched for class weighting or resampling for the 11 vs 16 imbalance; not reported.",
+     "page": "5-6"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (segment-level cross-validation)",
+     "quote": "To validate the performance, 5-fold cross validation scheme has been measured for each of these classifiers.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Only 27 people from a single hospital dataset, with comorbidity excluded."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Uses resting-state 19-channel EEG."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The MCI reference standard is poorly described and internally inconsistent."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Participants (domain 1) and analysis (domain 4) are high. The dataset is a tiny case-control-type public sample with 11 MCI participants. Cross-validation over 8,100 segments from 27 people without a subject-wise split almost certainly leaks participant identity into the test folds. Tuning relied on repeated experiments, and there is no calibration or external validation. Outcome (domain 3) is unclear.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 19
+ }
+}

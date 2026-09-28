@@ -1,0 +1,128 @@
+{
+ "paper_id": "P-481",
+ "document_check": {
+  "matches": true,
+  "note": "Richter et al. 2023, NeuroImage: Clinical 40:103508, 'Fine-grained age-matching improves atrophy-based detection of mild cognitive impairment more than amyloid-negative reference subjects'. VBM Z-statistic atrophy counts with age-specific CN reference groups; ADNI development sample plus an independent in-house validation sample (19 CN, 19 MCI); maximum AUC 1.0 (ADNI) and 0.985 (validation) as cited."
+ },
+ "cited_result": "Discrimination of MCI from CN by the number of subthreshold (atrophic) voxels computed against age-specific (10-year bracket) CN reference groups: maximum AUC 1.0 in the ADNI sample and 0.985 in the independent validation sample (medial temporal lobe, unsmoothed, Z = -3.5); the review cites this as an externally validated discrimination of at least 0.97.",
+ "tool": "QUADAS-2",
+ "tool_reason": "The cited result is the accuracy (ROC AUC) of a single imaging index, a voxel-count atrophy measure in one region, against clinical CN/MCI classification, not a multivariable model.",
+ "domains": [
+  {
+   "domain": "1. Patient selection",
+   "judgment": "High",
+   "rationale": "Both samples enrol predefined diagnostic groups (case-control sampling; validation 19 versus 19), recruitment method is not described, and cases likely to be difficult (infarcts, confluent white-matter lesions, depression) were excluded.",
+   "signalling": [
+    {
+     "question": "Was a consecutive or random sample of patients enrolled?",
+     "answer": "No information",
+     "quote": "Searched for 'consecutive', 'random' and any recruitment description; ADNI: \"For each participant, the T1 scan performed closest to an amyloid-PET scan was selected\"; validation: \"Findings were validated on an independent sample of CN and MCI participants acquired in our center as part of a study approved by the ethics committee\"",
+     "page": "2"
+    },
+    {
+     "question": "Was a case-control design avoided?",
+     "answer": "No",
+     "quote": "In short, CN was defined by an MMSE greater than 23 points, a Clinical Dementia Rating of 0, and neuropsychological performance within normal ranges. ... This data set consisted of 19 CN individuals and 19 MCI patients.",
+     "page": "2"
+    },
+    {
+     "question": "Did the study avoid inappropriate exclusions?",
+     "answer": "Probably no",
+     "quote": "Participants with cerebral infarcts or significant depressive symptoms, indicated by a GDS score greater than 5, were not included in the analysis. Furthermore, seven CN participants and two MCI patients were excluded because of confluent white matter lesions corresponding to Fazekas grade 3",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Index test",
+   "judgment": "High",
+   "rationale": "In ADNI the CN reference groups were built from the same CN participants who were then classified (circularity acknowledged by the authors as possibly inflating accuracy). Smoothing, Z-threshold, ROI and extent cut-off were chosen by ROC optimisation, cut-offs were re-derived in the validation sample (98.5 versus 1111.5 voxels for total GM), and the 0.985 validation AUC is the best of several ROI configurations in that sample.",
+   "signalling": [
+    {
+     "question": "Were the index test results interpreted without knowledge of the results of the reference standard?",
+     "answer": "No (ADNI); Probably yes (validation sample, referenced to ADNI CN)",
+     "quote": "The main limitation of this study lies in the fact that the CN sample used to generate the reference groups was also used in subsequent classification analyses. This procedure is common in the literature [Hirata et al., 2005; Matsuda et al., 2012] but may have inflated the classification accuracy within the ADNI sample.",
+     "page": "9"
+    },
+    {
+     "question": "If a threshold was used, was it pre-specified?",
+     "answer": "No",
+     "quote": "ROC analyses were performed to determine the parameters that distinguish CN and MCI with the highest accuracy. Specifically, we examined the effect of smoothing (unsmoothed, Gaussian kernels of 2 mm, 4 mm, and 8 mm FWHM), Z-threshold, amyloid stats, and region of interest. ... Consequently, extent thresholds would presently have to be specifically defined for different samples or centers.",
+     "page": "3-4, 10"
+    }
+   ]
+  },
+  {
+   "domain": "3. Reference standard",
+   "judgment": "Low",
+   "rationale": "Standard clinical-neuropsychological criteria for CN and MCI, derived from neuropsychological data independent of the VBM index.",
+   "signalling": [
+    {
+     "question": "Is the reference standard likely to correctly classify the target condition?",
+     "answer": "Probably yes",
+     "quote": "MCI was defined as an MMSE greater than 23 points, a CDR of 0.5, a subjective memory concern reported by the patient, caregiver, or treating clinician, a memory loss objectified using the education-adjusted delayed-recall performance on the Wechsler Memory Scale Logical Memory II, and preserved activities of daily living.",
+     "page": "2"
+    },
+    {
+     "question": "Were the reference standard results interpreted without knowledge of the results of the index test?",
+     "answer": "Probably yes",
+     "quote": "classified as CN or MCI based on the neuropsychological assessment with the shortest delay from the MRI scan.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Flow and timing",
+   "judgment": "High",
+   "rationale": "Participants at the age extremes could not receive the age-specific index and the number omitted is not reported; exclusion depends on age, which is linked to atrophy. Further exclusions followed segmentation failures, and the MRI-to-diagnosis interval is not reported.",
+   "signalling": [
+    {
+     "question": "Was there an appropriate interval between index test and reference standard?",
+     "answer": "No information",
+     "quote": "Searched for the MRI-to-neuropsychology interval; only \"the neuropsychological assessment with the shortest delay from the MRI scan\" and \"The average time between PET and MRI measurements was 28.31 \u00b1 28.46 days\" are reported.",
+     "page": "2"
+    },
+    {
+     "question": "Did all patients receive the same reference standard?",
+     "answer": "Yes",
+     "quote": "MCI was defined as an MMSE greater than 23 points, a subjective memory concern reported by the patient, caregiver, or treating clinician, memory loss objectified using the age-adjusted delayed-recall performance on the Wechsler Memory Scale Logical Memory II, and preserved activities of daily living (validation sample; ADNI definitions applied uniformly within ADNI)",
+     "page": "2"
+    },
+    {
+     "question": "Were all patients included in the analysis?",
+     "answer": "No",
+     "quote": "For the two age-specific approaches, Z-statistics could not be computed for all participants due to the normal age distribution with the consequence of having<20 CN to compute mean and standard deviation images at the lower and upper extremes of the age range. ... GM maps of three CN and one MCI participant had to be excluded from further analyses because of tissue classification errors.",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (QUADAS-2: high in patient selection, index test, and flow and timing; low in reference standard)",
+ "overall_category": "high",
+ "overall_rationale": "Case-control sampling with exclusion of difficult cases, circular use of the CN reference sample in ADNI (the authors' own stated main limitation), data-driven choice of parameters, ROI and cut-offs, and unreported omission of age-extreme participants each can inflate the AUC. The validation sample (n = 38) avoids the circularity but not the case-control spectrum or the post hoc ROI and cut-off selection.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Patient selection",
+   "concern": "high",
+   "rationale": "ADNI research volunteers with very mild MCI (mean MMSE 28.4) and a small validation MCI group that was almost entirely amyloid-positive amnestic, with controls not biomarker-assessed and exclusion of vascular and depressive comorbidity."
+  },
+  {
+   "domain": "Index test",
+   "concern": "high",
+   "rationale": "Needs an age-bracketed normative CN sample, cannot be applied at age extremes, and needs sample- or centre-specific extent cut-offs."
+  },
+  {
+   "domain": "Reference standard",
+   "concern": "low",
+   "rationale": "Conventional clinical MCI criteria matching the review's target condition."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 3
+ }
+}

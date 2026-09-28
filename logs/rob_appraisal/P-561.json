@@ -1,0 +1,139 @@
+{
+ "paper_id": "P-561",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Zhang A, Wengler K, Zhu X, Horga G, Goldberg TE, Lee S (ADNI), 'Altered Hierarchical Gradients of Intrinsic Neural Timescales in Mild Cognitive Impairment and Alzheimer's Disease', J Neurosci 2024;44(25):e2024232024. It is a baseline rs-fMRI comparison of INT across CN, stable MCI, Converter and AD groups in ADNI (904 analysed). The compensatory reading the review cites is on p. 11."
+ },
+ "cited_result": "Longer intrinsic neural timescales (INT) at baseline in AD and Converter groups than in CN and stable MCI groups: larger intercepts in lower-hierarchy cortex, and longer INT in temporal and subcortical ROIs. The authors read this as 'a compensatory response to ongoing neurodegenerative changes' (p. 11).",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result compares a biomarker level (baseline INT) between diagnostic groups at one time point and is not a prediction model or a causal exposure effect, so the JBI analytical cross-sectional checklist applies.",
+ "domains": [
+  {
+   "domain": "Item 1: Were the criteria for inclusion in the sample clearly defined?",
+   "judgment": "Yes",
+   "rationale": "Group definitions (baseline and end-visit status) and three explicit exclusion criteria are stated.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Yes",
+     "quote": "group if the subject was CN/MCI at the baseline and demented at end visit; and (4) AD group if the subject was demented at the baseline. ... We excluded the participants (1) whose rs-fMRI contained >30% frames \ufb02agged as motion outlier (27 subjects were excluded), (2) without diagnosis information (12 were excluded), or (3) who had corrupted MRI images (two were excluded).",
+     "page": "p. 2; p. 3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 2: Were the study subjects and the setting described in detail?",
+   "judgment": "Yes",
+   "rationale": "Age and sex are given by group, and the multi-site ADNI setting and ethnicity limitation are reported. Education is not tabulated in the main text.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "Table 1. Age (in years) and sex distribution by the baseline and end-visit clinical diagnosis group of the ADNI subjects ... The ADNI data were collected from 58 sites. ... Moreover, the sample is largely Caucasian and may or may not generalize to other ethnic groups.",
+     "page": "p. 2; p. 3; p. 11"
+    }
+   ]
+  },
+  {
+   "domain": "Item 3: Was the exposure measured in a valid and reliable way?",
+   "judgment": "Unclear",
+   "rationale": "Here the exposure is diagnostic-group membership. Converter and stable-MCI status depend on a variable follow-up (up to 10 years or dropout), and the authors say stable MCI may include later converters, so misclassification is possible and not quantified.",
+   "signalling": [
+    {
+     "question": "Was group membership (the exposure) determined validly and reliably?",
+     "answer": "Unclear",
+     "quote": "subjects in the stable MCI groups may potentially convert to AD after leaving the study, especially if the follow-up interval is too short",
+     "page": "p. 11"
+    }
+   ]
+  },
+  {
+   "domain": "Item 4: Were objective, standard criteria used for measurement of the condition?",
+   "judgment": "Unclear",
+   "rationale": "Diagnoses are taken from ADNI, but the document does not state the diagnostic criteria (for example MMSE or CDR cut-offs, or NINCDS-ADRDA). It only cites the ADNI cohort description.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used to classify CN, MCI and AD?",
+     "answer": "Unclear",
+     "quote": "ADNI has recruited individuals that are CN, have MCI, or have dementia or AD. (Searched for stated diagnostic criteria for CN/MCI/AD such as MMSE, CDR or clinical criteria: none given in the document.)",
+     "page": "p. 2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 5: Were confounding factors identified?",
+   "judgment": "Yes",
+   "rationale": "Age, sex, head motion (MFD), cortical thickness and site are named, and APOE4 and hippocampal volume are considered in sensitivity analyses.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "We also considered age, sex, MFD, and CT as covariates (\ufb01xed e\ufb00ects) ... (4) including APOE4 positivity ... as a covariate; (5) including total hippocampal volume as a covariate",
+     "page": "p. 3; p. 5"
+    }
+   ]
+  },
+  {
+   "domain": "Item 6: Were strategies to deal with confounding factors stated?",
+   "judgment": "Yes",
+   "rationale": "The authors used covariate adjustment in the LME and ANOVA models, ComBat site harmonisation, and seven sensitivity analyses that gave consistent findings.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Yes",
+     "quote": "To remove undesired artifacts from scanner and site di\ufb00erences, we applied the ComBat harmonization method (Fortin et al., 2017) to the INT and CT values. ... the basic \ufb01ndings of INT by HL under various settings of sensitivity anal- yses are consistent with the main results in Figure 2",
+     "page": "p. 3; p. 5"
+    }
+   ]
+  },
+  {
+   "domain": "Item 7: Were the outcomes measured in a valid and reliable way?",
+   "judgment": "Yes",
+   "rationale": "INT was derived from the same rs-fMRI preprocessing for everyone (motion outlier handling, nuisance regression, a defined ACF-based estimator), and the authors cite evidence of test-retest reliability.",
+   "signalling": [
+    {
+     "question": "Was INT measured validly and reliably, and in the same way for all participants?",
+     "answer": "Yes",
+     "quote": "Contaminated volumes were then detected and classi\ufb01ed as outliers by the criteria FD > 0.5 mm or RMSD > 0.3% ... INT was then estimated as the area under the curve of the ACF during the initial positive period",
+     "page": "p. 3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 8: Was appropriate statistical analysis used?",
+   "judgment": "Yes",
+   "rationale": "Linear mixed-effects models with subject-level random effects were used. ROI screening was FDR-corrected and post hoc contrasts were Tukey-adjusted, but pairwise tests were not further corrected across the 34 ROIs. That is a minor concern and does not make the analysis inappropriate.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "Yes",
+     "quote": "We applied the linear mixed-e\ufb00ect (LME) model to predict the INT value in our ADNI sample using HL in the cerebral cortex, assuming di\ufb00erent intercepts and slopes by diagnosis group. ... \ufb01rst, ANOVA analysis was applied to select the ROIs that have group di\ufb00erences in INT using F tests at a signi\ufb01cance level a = 0.05 with FDR correction ... not controlled for the 34 ROI comparisons",
+     "page": "p. 3; p. 5"
+    }
+   ]
+  }
+ ],
+ "overall": "Some concerns (JBI analytical cross-sectional; items 3 and 4 Unclear, items 1, 2 and 5 to 8 Yes)",
+ "overall_category": "some_concerns",
+ "overall_rationale": "Confounders, confounder strategy, INT measurement and the analysis all meet the checklist, so none of the high-risk triggers applies. The rating stays at some concerns because the diagnostic criteria are not described in the document and group membership (stable MCI vs Converter) depends on variable follow-up, which the authors acknowledge could misclassify later converters.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "The sample is ADNI research volunteers, largely Caucasian and scanned at 3 T, which fits an MCI biomarker synthesis."
+  },
+  {
+   "domain": "Outcome/measure",
+   "concern": "some concerns",
+   "rationale": "INT is a research rs-fMRI metric, and the 'compensatory' label is the authors' interpretation, not a measured quantity."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 6
+ }
+}

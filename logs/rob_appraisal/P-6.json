@@ -1,0 +1,212 @@
+{
+ "paper_id": "P-6",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Pourramezan Fard A, Mahoor MH, Alsuhaibani M, Dodge HH (2024) 'Linguistic-based Mild Cognitive Impairment detection using Informative Loss', Computers in Biology and Medicine 176:108606. It is a transformer NLP classifier of MCI versus normal cognition built on I-CONECT conversation transcripts, which matches the review's 'conversational NLP (Pourramezan Fard et al. 2024, P-6)'."
+ },
+ "cited_result": "Subject-level discrimination of MCI versus normal cognition (NC) by the Sentence Embedding plus Sentence Cross Attention transformer framework trained with InfoLoss on I-CONECT interview transcripts: mean AUC 84.75% (accuracy 85.16%) over 5-fold cross-validation in 68 participants (34 MCI, 34 NC). The review cites the study as conversational NLP evidence without quoting a number; this headline result is the principal one appraised.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is how well a machine-learning classifier discriminates MCI from NC, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "The data come from a registered randomised trial, which is an acceptable source. The paper reports only the age and recruitment sites and gives no eligibility criteria or participant flow, so it cannot be judged whether inclusions and exclusions were appropriate.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Yes",
+     "quote": "We utilize the data provided by the Internet-Based Conversational Engagement Clinical Trial (I-CONECT) project [16,17] (Clinicaltrials.gov #: NCT02871921).",
+     "page": "1"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched for eligibility, inclusion or exclusion criteria and participant flow. The paper gives only 'individuals aged 75 and above, selected from Portland, Oregon, or Detroit, Michigan in the USA.' and '34 were identified with MCI, while 34 were diagnosed with NC conditions.' No criteria are reported, and there is no account of how 68 analysed participants relate to the 187 randomised.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are transcripts produced by one refined ASR model for every interview and embedded by a pre-trained sentence transformer. This is automated, identical for all participants and cannot be influenced by the diagnosis.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "we utilized the transcripts from the refined ASR for all interviews to ensure consistency. Thus, all our transcripts are generated from the same model for training and testing.",
+     "page": "7"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "The remaining of the study videos are transcribed using Automated Speech Recognition (ASR).",
+     "page": "6"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "During six months, the participants engaged in 30-min conversations four times with standardized interviewers per week.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The MCI and NC labels are taken from the trial, but the paper does not say how, when or by whom MCI was diagnosed, which criteria were used, or whether assessors were blinded. None of the outcome signalling questions can be answered.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched for diagnostic criteria (Petersen/NIA-AA, MoCA, MMSE, CDR, consensus diagnosis, neuropsychological battery). Only: 'The participants are distinguished by their cognitive conditions of MCI or NC.'",
+     "page": "6"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for a named MCI definition or criteria; none reported.",
+     "page": "1-13"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether conversational or language data contributed to the MCI classification; not described.",
+     "page": "1-13"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for a description of the diagnostic procedure; none reported.",
+     "page": "1-13"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnosticians or the timing of diagnosis relative to the recorded conversations; not reported.",
+     "page": "1-13"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for when MCI status was assessed relative to the six months of conversations; not reported.",
+     "page": "1-13"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are only 34 participants per class for a transformer classifier, tested on folds of 13 or 14. Hyperparameters (gamma, size of the fully connected layer) were chosen by comparing AUC on the same subject-level test folds, with no separate validation set. The headline 84.75% is the first and highest of five repeated fold configurations, whose mean is 79.94%. The per-fold 'AUC' values equal the mean of the two class recalls, i.e. balanced accuracy from hard labels. Calibration was not assessed and there is no external validation. The split is at participant level and the classes are balanced, which counts in the study's favour but does not offset these problems.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Since the number of available subjects in the I-CONECT dataset is 68, we assess the performance of our framework using the K-fold validation technique.",
+     "page": "7"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "We concatenate the speech duration regarding each transcript as the first element of the sentence embedding, thereby, the output vector size is 769.",
+     "page": "7"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "We define 5 folds, and thereby, for each fold, we allocate 20% of the subjects randomly as the test set, and the remaining subjects for the training set. (Table 2 test totals 13+14+14+14+13 = 68)",
+     "page": "7"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data, padding or exclusion of participants or transcripts with too few sentences. The input is 'a sequence of \ud835\udefe= 200 number of sentential representation vectors' (p. 4), yet 'the average number of sentences for each subject in the MCI group is about 22.68' (p. 7), and the paper does not explain how shorter records were handled.",
+     "page": "4, 7"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Each input to the SE module is a sentence from a video transcript, and the output is a 768-dimensional representation vector.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data (clustering of many sequences within a participant) accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "Consequently, we calculate the average probability scores across all sequences, as shown in Eq. (7), for each subject to set the ultimate associated class label.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "No",
+     "quote": "We also report the Area Under the Receiver Operating Characteristic Curve (AUC), which quantifies the framework\u2019s ability to distinguish between the two classes across different thresholds. [Table 3: 'AUC (%) 76.19 92.85 85.71 85.71 83.33 84.75 5.97'; Table 4 recalls MCI '66.66 85.71 85.71 71.42 100', NC '85.71 100 85.71 100 66.66'.] Each fold AUC equals the mean of the two class recalls, and no calibration is reported.",
+     "page": "7, 8"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "Hence, we set \ud835\udefe= 200 for the evaluation of our framework in Section 4 as the best overall results are achieved accordingly. [Table 8: 'AUC (%) 84.75 74.99 78.33 79.99 81.66 79.94 1.93'; 'the overall AUC of all 25 experiments is 79.94%']",
+     "page": "10, 9"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Not applicable",
+     "quote": "The MLP consists of two Dense layers, with sizes of 384, and 2, respectively (deep network, no reported coefficients).",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level (no person on both sides)?",
+     "answer": "Yes",
+     "quote": "for each fold, we allocate 20% of the subjects randomly as the test set, and the remaining subjects for the training set.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection, augmentation and hyperparameter tuning done within training folds only, and is the test set held out from all tuning?",
+     "answer": "No",
+     "quote": "by assigning 3 different values, which are 10, 100, and 200, to \ud835\udefe and evaluate the framework\u2019s performance in terms of the AUC. [followed by] Fig. 10 presents a comparison of per-fold AUC values for the subject-based evaluation of the framework.",
+     "page": "10"
+    },
+    {
+     "question": "AI: Was class imbalance present and handled?",
+     "answer": "Yes (balanced by design)",
+     "quote": "To ensure fair evaluation, we designed the test set to be balanced in most folds.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (cross-validation within one dataset)",
+     "quote": "Since I-CONECT does not have a designated training and test set, the previously proposed methods and research have designed their own training and test set.",
+     "page": "9"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "Adults aged 75 and over from one US trial at two sites, only those in the video-chat arm; eligibility not reported."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "Prediction averages over all sequences from months of semi-structured trial conversations, which may not be available in a screening setting."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The MCI definition is not reported, so it is not known whether it matches the review's target condition."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "PROBAST overall is high because Domain 4 (analysis) is high. The sample is very small, tuning was done on the test folds, the headline is the best of five repeated configurations (mean 79.94% against the 84.75% reported), 'AUC' is computed from hard labels, calibration is missing, and there is no external validation. Domains 1 and 3 are unclear because eligibility and the MCI diagnostic procedure are not reported.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 16,
+  "matched": 12
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-1006",
+ "document_check": {
+  "matches": true,
+  "note": "Opwonya J, Ku B, Lee KH, Kim JI, Kim JU. Eye movement changes as an indicator of mild cognitive impairment. Front Neurosci 2023;17:1171417. 594 participants (428 CN, 166 MCI); combined demographics + MMSE + eye-movement model AUROC 0.840 (extreme gradient boosting), as cited."
+ },
+ "cited_result": "Discrimination of the model combining demographics, MMSE and eye-movement metrics for MCI versus cognitively normal: AUROC 0.840 (extreme gradient boosting, test data from an 80/20 split), against 0.767 for demographics plus MMSE (logistic regression).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUROC) of a multivariable machine-learning diagnostic classifier for MCI, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1 Participants",
+   "judgment": "High",
+   "rationale": "MCI patients and age-matched controls were defined separately at a dementia research centre (case-control-type sampling, not a consecutive sample of the intended screening population). Exclusions for MRI vascular lesions and calibration failure narrow the spectrum, and the reported exclusion counts do not reconcile.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used, e.g. cohort, RCT or nested case-control study data?",
+     "answer": "Probably no",
+     "quote": "We divided the participants into MCI patient and age-matched CN control groups. MCI patients and CN controls were recruited at the Gwangju Alzheimer\u2019s Disease and Related Dementia (GARD) center (Gwangju City, South Korea)",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "Exclusion criteria for the study were as follows: the presence of focal brain lesions on MRI, including lacunes and white matter hyperintensity lesions of grade 2 or more (Fazekas et al., 1987; Kim et al., 2008); less than 3 years of education; and medical conditions that could interfere with the study design",
+     "page": "2-3"
+    },
+    {
+     "question": "1.2 (counts) Are exclusions fully accounted for?",
+     "answer": "Probably no",
+     "quote": "A total of 85 participants were excluded based on these criteria. Specifically, we excluded 25 individuals diagnosed with AD dementia, 60 participants with visual impairments, and those who failed calibration and the preliminary trials that were conducted to familiarize participants with the task requirements before the actual trial.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2 Predictors",
+   "judgment": "Low",
+   "rationale": "Eye-movement metrics come from one device and a standardised pipeline with fixed, automated definitions. Demographics and MMSE are available at the intended time of use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "We recorded SEM data on the Tobii Pro spectrum system (Tobii Pro AB, Danderyd, Sweden), sampled at 300 Hz, and processed with Tobii Pro Lab version 1.118.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Anticipatory errors were defined as the first saccade that occurred less than 80 ms following target stimulus onset, while omission errors were defined as the absence of eye movement within 500 ms of target presentation.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Demographic features (particularly age, sex, and years of education) can be obtained noninvasively and are predictive of dementia in previous studies (Calvin et al., 2019).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3 Outcome",
+   "judgment": "High",
+   "rationale": "MCI was defined by standard criteria, but the MMSE predictor was part of the SNSB-II battery used to classify MCI. The outcome was therefore not determined independently of a predictor in the cited combined model (incorporation). No timing information is given.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Yes",
+     "quote": "We examined all the participants through detailed clinical consultations, incorporating a neuropsychological battery and the Clinical Dementia Rating (CDR) scale.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "those with a CDR score of 0.5 and evidence of cognitive decline in one or more domains were considered MCI (Albert et al., 2011). MCI patients had a Seoul Neuropsychological Screening Battery-Second Edition (SNSB-II) z score of less than \u22121.5 in at least one of the domains.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably no",
+     "quote": "In our study, all participants were assessed using the Korean version of the MMSE, which was included in the SNSB-II (Park, 1989).",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "We examined all the participants through detailed clinical consultations, incorporating a neuropsychological battery and the Clinical Dementia Rating (CDR) scale.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably no",
+     "quote": "In our study, all participants were assessed using the Korean version of the MMSE, which was included in the SNSB-II (Park, 1989).",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the timing of the eye-tracking session relative to the clinical consultation; only the enrolment window is given: \"In total, 679 individuals participated in the study between October 2019 and December 2020.\"",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4 Analysis",
+   "judgment": "High",
+   "rationale": "There are about 133 MCI cases in training against about 37 candidate predictors, and about 33 in the test set (derived from the 80/20 split, not reported). Performance comes from a single random split, the best of four algorithms is reported, there are no confidence intervals and no calibration, missing data are not reported, and there is no external validation. SMOTE and hyperparameter tuning were done inside cross-validation, but centring and scaling appear to have been applied to whole datasets.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "A total of 594 participants were included in the final analysis, including 428 CN controls and 166 MCI patients",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "We preprocessed all six datasets by mapping categorical features to binary variables, centering and scaling the continuous features, and removing features present in only one sample or all but one sample.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "we excluded 25 individuals diagnosed with AD dementia, 60 participants with visual impairments, and those who failed calibration and the preliminary trials",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for 'missing', 'imputation' and any statement on incomplete eye-tracking or test data; none found.",
+     "page": "whole text"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "We studied the relationship between cognitive status and six feature sets",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. class imbalance) accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "Given that the data were imbalanced, we applied the synthetic minority oversampling technique (SMOTE) during cross-validation",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "we performed receiver operating characteristic (ROC) curve analyses to calculate the AUROC and the deviance across all train/test splits.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "We selected the optimal model based on the highest AUROC and lowest binomial deviance in each combination of learning algorithms and six feature sets. Subsequently, we evaluated the predictive performance of this model on the test set.",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for a presented final model (coefficients or hyperparameters); only permutation importance of the top five features is shown (Figure 3).",
+     "page": "8"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Probably yes",
+     "quote": "We randomly split the data into 80/20 train/test splits, and the train/test splits were identical across models generated with different feature sets for a valid comparison.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Were preprocessing, augmentation and hyperparameter tuning done within training folds only?",
+     "answer": "Partly (SMOTE and tuning yes; centring and scaling applied to 'all six datasets')",
+     "quote": "Hyperparameters were selected via cross-validation on the training set to maximize the average area under the receiver operating characteristics curve (AUROC) across cross-validation folds.",
+     "page": "3-4"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning and model selection?",
+     "answer": "Probably no",
+     "quote": "Values in bold in each column represent the highest performance.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal (random split) only",
+     "quote": "Specifically, we developed and validated prediction models with the ability to identify individuals with MCI using an ET paradigm comprising PS/AS and Go/No-go tasks",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Participants came from a dementia research centre with case-control-type group definition, MRI vascular-lesion exclusions and exclusion of visually impaired people. The intended use is population and primary-care screening (\"screen healthy individuals in primary care facilities\", p. 2)."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Eye tracking, demographics and MMSE match the intended use."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "MCI is defined by standard Albert 2011 criteria with CDR and SNSB-II."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST)",
+ "overall_category": "high",
+ "overall_rationale": "Three of four domains are high. Participants: case-control-type sampling and spectrum-narrowing exclusions. Outcome: the MMSE is part of the battery that defined MCI, for a model containing the MMSE. Analysis: few events per candidate predictor, a single split with about 33 test cases, best-of-four algorithm reporting without CIs, no calibration and no external validation.",
+ "confidence": "high",
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 18
+ }
+}

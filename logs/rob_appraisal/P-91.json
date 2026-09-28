@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-91",
+ "document_check": {
+  "matches": true,
+  "note": "Yu Z, Pang H, Yu H, Wu Z, Ding Z, Fan G. Segmental disturbance of white matter microstructure in predicting mild cognitive impairment in idiopathic Parkinson's disease: an individualized study based on automated fiber quantification tractography. Parkinsonism and Related Disorders 2023;115:105802. Automated fibre quantification (AFQ) of DTI tract segments in IPD-MCI, IPD-NCI and healthy controls, with an SVM classifier (validation AUC 0.80). This matches Yu et al. 2023 (P-91): association-fibre segments in Parkinson's MCI and MCI prediction in Parkinson's disease."
+ },
+ "cited_result": "Principal cited result: an SVM (RBF kernel) classifier that separates IPD-MCI from IPD-NCI using segmental (pointwise) AFQ diffusion features. In the validation split it gave AUC 0.80, balanced accuracy 0.79, sensitivity 0.78 and specificity 0.75 (training AUC 0.82). The review also cites the group-level finding that pointwise tract-segment profiles detected more abnormalities than whole-tract means. The classifier is appraised because the review cites it as evidence that MCI prediction is feasible in Parkinson's disease.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUC, balanced accuracy) of a machine-learning classifier for PD-MCI, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1 Participants",
+   "judgment": "low",
+   "rationale": "The data come from a cross-sectional clinical sample of IPD patients recruited at one hospital, and MCI and NCI status was assigned within that same sample. This is an appropriate source for a diagnostic model. The exclusion criteria were pre-specified. Excluding diabetes, vascular disease and cirrhosis narrows the case mix, which is mainly an applicability concern.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cross-sectional sample for a diagnostic model rather than separately sampled cases and controls)?",
+     "answer": "Probably yes",
+     "quote": "A total of 100 participants, 70 patients diagnosed with IPD (IPD-MCI: 30; IPD-NCI:40) and 30 healthy controls (HC), were recruited from the First Hospital of China Medical University from January 2019 and September 2020.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "Exclusion criteria were: (I) a history of neurological or psychiatric diseases, including brain tumors, brain trauma, stroke, dementia, schizophrenia, and epilepsy; (II) a history of drug or alcohol dependence; (III) a history of diabetes, vascular disease or cirrhosis; (IV) head motion artifacts interfering experimental data acquisition or measurement.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2 Predictors",
+   "judgment": "low",
+   "rationale": "All participants were scanned on the same scanner with the same protocol, and the diffusion features were extracted by an automated AFQ pipeline. The features would be available at the time of intended use. The data-driven choice of features using outcome labels is judged under Analysis.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All participants were examined on a Magnetom Verio 3.0 T MRI scanner (Siemens Medical Solutions, Erlangen, Germany) with a 32-channel head coil.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "The preprocessed DTI and T1WI data were then fed into the AFQ software [16].",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Furthermore, we developed an MCI early MRI prediction model based on the disrupted WM fiber tract values and determined the most relevant predictor for MCI.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3 Outcome",
+   "judgment": "unclear",
+   "rationale": "PD-MCI was defined by MDS Task Force criteria, but the paper describes both level I and level II criteria, and the limitations state that only MoCA was used. It is not reported which 'clinical characteristics' entered the SVM, so possible overlap between predictors and outcome (for example cognitive scores) cannot be excluded. The interval between MRI and cognitive testing is not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "PD-MCI was determined according to the MDS Task Force level 1 criteria, which included MoCA scores of less than 26 or at least two neuropsychological test scores that were two standard deviations below the mean of the healthy control group",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "According to the neuropsychological test, the IPD-MCI group was determined by the level II criteria proposed by Movement Disorders Society (MDS) Task Force [19].",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched Methods 2.4, Results 4.5 and the Fig. 4 legend for the list of clinical characteristics entered into the SVM (in particular whether MoCA or cognitive-domain scores were included). The text says only that DTI features 'with the clinical characteristics were fed into support vector machine (SVM) model' (p. 2-3) and does not list them.",
+     "page": "2-3, 7"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "IPD patients who did not meet the PD-MCI diagnostic criteria were regarded as IPD-NCI group.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "The Mini-Mental State Examination (MMSE) and Montreal Cognitive Assessment (MoCA) were utilized to evaluate the overall cognitive status of the patients.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched Methods 2.1 to 2.3 for the timing of MRI relative to neuropsychological assessment; none reported.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4 Analysis",
+   "judgment": "high",
+   "rationale": "There were only 30 participants with the outcome in total, about 9 of them in a validation split of about 21 patients. Features were chosen by group significance tests (MCI vs NCI) run on the whole sample before the train/validation split, which leaks outcome information into the validation set. Calibration was not assessed and there was no external validation. The reported balanced accuracies do not match the reported sensitivities and specificities.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "The IPD group was separated into training (70%) and validation (30%) dataset with stratified random sampling.",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "those DTI measures with statistical difference between PD-MCI and PD-NCI were extracted as features and then with the clinical characteristics were fed into support vector machine (SVM) model",
+     "page": "2"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Forty IPD with normal cognition (IPD-NCI), thirty IPD-MCI, and thirty healthy controls were included.",
+     "page": "1"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched Methods 2.3, 2.4 and 3 for missing data, failed tractography or imputation; none reported (the paper notes only that four tracts were excluded for all participants).",
+     "page": "2-3, 8"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "To evaluate the potential clinical biomarkers of diffusion scalars, those DTI measures with statistical difference between PD-MCI and PD-NCI were extracted as features",
+     "page": "2"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks, clustering) accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "Firstly, the present study was a cross-sectional study with relatively small sample size, which warrants a longitudinal and larger sample study to verify the results.",
+     "page": "7"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "Probably no",
+     "quote": "The established model was then tested on the validation dataset and the diagnostic efficiency was assessed based on area under receiving operator curve (AUC), balanced accuracy (BA), sensitivity, and specificity.",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "In the training dataset, the SVM model with radial basis function (RBF) kernel was trained using 10-fold cross validation and the hyperparameters for the SVM model (C, gamma) were identified using grid search strategy.",
+     "page": "3"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched Results 4.5 and Fig. 4 for the final feature set and model specification. Only the hyperparameters are reported ('C = 3.175, Gamma = 0.007'). The reported 'training dataset: balanced accuracy = 0.85; AUC = 0.82; sensitivity = 0.75; specificity = 0.77' is internally inconsistent: sensitivity and specificity average 0.76.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the training/test split at the participant level (no person's data on both sides)?",
+     "answer": "Probably yes",
+     "quote": "The IPD group was separated into training (70%) and validation (30%) dataset with stratified random sampling.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Were preprocessing and feature selection done within the training data only (no leakage)?",
+     "answer": "No",
+     "quote": "For the pointwise comparisons, permutation tests with 5000 times were conducted with age, gender, and educate as covariates to compare the FA and MD values at 100 locations of 16 fiber tracts by \"Randomize\" program.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably yes",
+     "quote": "The established model was then tested on the validation dataset",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was class imbalance considered and handled?",
+     "answer": "Probably yes",
+     "quote": "The IPD group was separated into training (70%) and validation (30%) dataset with stratified random sampling.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (single random split); no external validation",
+     "quote": "The AUCs in the training and validation dataset were 0.82 and 0.80, respectively.",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "Tertiary-hospital IPD patients with diabetes, vascular disease and cirrhosis excluded, so the case mix is narrower than the general IPD population in which the model would be used."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "3 T DTI with an automated AFQ pipeline, as the review describes."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "PD-MCI is described as both MDS level I and level II, while the limitations say only MoCA was used."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST)",
+ "overall_category": "high",
+ "overall_rationale": "The Analysis domain is high risk: there are very few outcome events (30 MCI, about 9 in validation), features were chosen by univariable group tests on the full sample before the split (leakage), calibration was not assessed, and there was no external validation. Under PROBAST any high domain makes the overall rating high.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 21,
+  "matched": 16
+ }
+}

@@ -1,0 +1,191 @@
+{
+ "paper_id": "P-265",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Lopez-Cuevas R, Baquero-Toledo M, Cuevas-Jimenez A et al., 'Prognostic value of cerebrospinal fluid biomarkers in mild cognitive impairment due to Alzheimer disease', Neurologia 2023;38:262-269, doi:10.1016/j.nrleng.2020.07.024. A retrospective single-centre study of 110 patients with MCI and abnormal CSF profiles, 50 of whom progressed to dementia. The reported HR of 2.22 and the 7.60% risk increase per 10% t-tau increase match the cited context."
+ },
+ "cited_result": "Baseline CSF total tau (log-transformed) as an independent prognostic factor for progression from MCI to dementia in patients with abnormal CSF profiles: adjusted HR 2.22 (95% CI 1.28 to 3.84; P = .004), which the paper describes as a 7.60% higher risk of progression per 10% increase in t-tau.",
+ "tool": "QUIPS",
+ "tool_reason": "The cited result is the association of one prognostic factor (baseline CSF t-tau) with a later outcome (progression to dementia) from a Cox model. It is not the performance of a multivariable prediction model, so QUIPS applies.",
+ "domains": [
+  {
+   "domain": "1. Study participation",
+   "judgment": "Moderate",
+   "rationale": "The source population, time window and eligibility criteria are described, and baseline characteristics are reported. However, the sample was drawn retrospectively from patients who were offered and underwent lumbar puncture. For patients over 65, that offer depended on the physician's judgement of life expectancy and quality of life, which may be related to prognosis. Patients with incomplete records were excluded, and the numbers at each exclusion step are not given in the text.",
+   "signalling": [
+    {
+     "question": "Is the source population and sampling frame adequately described?",
+     "answer": "Yes",
+     "quote": "We conducted a retrospective review of patients assessed at the cognitive disorders unit of a tertiary-level hospital, whose diagnostic evaluation included a lumbar puncture for determination of CSF biomarkers of AD. We analysed data from the period August 2013\u2014October 2017; a single laboratory method was used during this period.",
+     "page": "2"
+    },
+    {
+     "question": "Is the recruitment (selection into the study) unrelated to the prognostic factor and outcome?",
+     "answer": "Probably no",
+     "quote": "At our centre, CSF analysis is offered almost systematically to presenile patients: among patients older than 65 years, it is proposed to those with syndromic diagnosis of MCI or mild dementia and with sufficient life expectancy and quality of life in the opinion of the attending physician.",
+     "page": "2 to 4"
+    },
+    {
+     "question": "Are inclusion and exclusion criteria adequately described, and is participation among eligible patients adequate?",
+     "answer": "Probably yes",
+     "quote": "We selected all patients meeting the NIA-AA criteria3 for MCI at the baseline consultation, scoring 3 on the GDS, and presenting biomarker alterations. [...] or with incomplete clinical records. [...] After reviewing clinical records from 588 patients, we identified 110 meeting all of the inclusion criteria and none of the exclusion criteria.",
+     "page": "4"
+    },
+    {
+     "question": "Are the baseline characteristics of the study sample described?",
+     "answer": "Yes",
+     "quote": "Table 1 Clinical and demographic characteristics of the sample, grouped according to disease progression (progression vs no progression).",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study attrition",
+   "judgment": "Moderate",
+   "rationale": "Follow-up intervals and mean durations are reported, but the paper gives no count of patients lost to follow-up, no minimum follow-up and no comparison of completers with non-completers. Patients with incomplete clinical records were excluded rather than analysed, which may have removed those lost to follow-up.",
+   "signalling": [
+    {
+     "question": "Is the proportion of the baseline sample available for analysis, and the follow-up, adequately reported?",
+     "answer": "Probably no",
+     "quote": "Follow-up consultations were held every 6\u201412 months. [...] Mean follow-up time from baseline to the last follow-up consultation in the no progression group was 2.5 (1.3) years.",
+     "page": "4"
+    },
+    {
+     "question": "Were participants with incomplete follow-up analysed rather than excluded?",
+     "answer": "Probably no",
+     "quote": "or with incomplete clinical records.",
+     "page": "4"
+    },
+    {
+     "question": "Are reasons for loss to follow-up and the characteristics of those lost reported?",
+     "answer": "No information",
+     "quote": "Searched for 'lost to follow-up', 'drop', 'withdraw', attrition counts, and comparison of included and excluded patients; none reported in the text (Figure 1 flow diagram numbers are not in the extracted text).",
+     "page": "not reported"
+    }
+   ]
+  },
+  {
+   "domain": "3. Prognostic factor measurement",
+   "judgment": "Low",
+   "rationale": "CSF t-tau was measured with a standardised collection and storage protocol, one commercial immunoassay and one laboratory method across the whole period, within 6 months of first assessment. It was analysed as a continuous, log-transformed variable.",
+   "signalling": [
+    {
+     "question": "Is the prognostic factor clearly defined and measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "The collection, transportation, and analysis of CSF samples is a standardised process at our centre. [...] A-42, p-tau, and t-tau concentrations were determined using a commercially available immunoassay kit (Fujirebio INNOTEST\u00ae).",
+     "page": "4"
+    },
+    {
+     "question": "Is the method and setting of measurement the same for all participants?",
+     "answer": "Yes",
+     "quote": "As a further inclusion criterion, CSF samples had to have been collected within 6 months after the first assessment at our unit.",
+     "page": "4"
+    },
+    {
+     "question": "Is the continuous prognostic factor handled appropriately?",
+     "answer": "Yes",
+     "quote": "We applied a logarithmic transformation to A-42 and t-tau values to minimise the influence of outliers.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Outcome measurement",
+   "judgment": "High",
+   "rationale": "The definition of progression is clear (NIA-AA dementia criteria plus GDS of 4 or more). However, the diagnosis rested on clinical judgement using individualised tests that varied between patients, and it was made by neurologists who knew each patient's CSF biomarker results. Knowing the t-tau value could have influenced the timing or likelihood of a dementia diagnosis. The authors acknowledge both problems.",
+   "signalling": [
+    {
+     "question": "Is there a clear definition of the outcome?",
+     "answer": "Yes",
+     "quote": "the progression group (patients who, during follow-up, presented sufficiently pronounced clinical worsening to interfere in basic or instrumental activities of daily living, according to the informant; met the NIA-AA criteria for dementia; and scored \u2265 4 on the GDS).",
+     "page": "4"
+    },
+    {
+     "question": "Is the method of outcome measurement valid, reliable and the same for all participants?",
+     "answer": "Probably no",
+     "quote": "The study's main limitation is the lack of a single tool or test to define progression from MCI to dementia, which was based on clinical judgement and individualised neuropsychological and functional tests.",
+     "page": "6 to 7"
+    },
+    {
+     "question": "Was the outcome assessed without knowledge of the prognostic factor?",
+     "answer": "No",
+     "quote": "CSF biomarker results were known to neurologists at the time of the follow-up visits.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "5. Study confounding",
+   "judgment": "Moderate",
+   "rationale": "The model adjusted for age, hypertension, diabetes and education (and, according to the results text, sex). It did not adjust for baseline cognitive severity, even though baseline MMSE differed between progressors and non-progressors. APOE status was not reported. Residual confounding by disease stage at baseline is therefore plausible.",
+   "signalling": [
+    {
+     "question": "Were important potential confounders measured?",
+     "answer": "Probably no",
+     "quote": "At the baseline consultation, mean MMSE score was significantly higher in the no progression group than in the progression group (25.0 [3.1] vs 22.7 [2.0]; P = .001).",
+     "page": "4"
+    },
+    {
+     "question": "Were important confounders accounted for in the analysis?",
+     "answer": "Probably no",
+     "quote": "We evaluated the association between risk of progression to dementia and A-42 and t-tau variables with a Cox proportional hazards regression model, including the variables hypertension, diabetes, age, and years of education as potential confounding factors.",
+     "page": "4"
+    },
+    {
+     "question": "Was APOE genotype or another marker of disease stage considered?",
+     "answer": "No information",
+     "quote": "Searched for 'APOE', 'apolipoprotein' and adjustment for baseline MMSE or GDS in the Cox model; not found.",
+     "page": "not reported"
+    }
+   ]
+  },
+  {
+   "domain": "6. Statistical analysis and reporting",
+   "judgment": "Moderate",
+   "rationale": "A Cox model with the proportional-hazards assumption checked suits the design, and 50 events for about five or six covariates is acceptable. However, reporting is incomplete. Only the t-tau hazard ratio is given. The abstract says p-tau was associated with progression, but no p-tau Cox estimate is shown, and the amyloid result is stated as 'independent' without an estimate. The adjustment set also differs between the methods (no sex) and the results (sex included).",
+   "signalling": [
+    {
+     "question": "Is the statistical model appropriate for the design?",
+     "answer": "Yes",
+     "quote": "The assumptions of the model were verified using Schoenfeld residuals and log plots (\u2014log).",
+     "page": "4"
+    },
+    {
+     "question": "Is there sufficient presentation of data and no selective reporting of results?",
+     "answer": "Probably no",
+     "quote": "In the Cox regression model, the risk of progression to dementia was independent of A-42 values. [...] Among patients with mild cognitive impairment due to AD and abnormal cerebrospinal fluid biomarker profiles, progressively higher concentrations of total or phosphorylated tau were associated with increased risk of progression to dementia.",
+     "page": "4; 1"
+    },
+    {
+     "question": "Is the model-building strategy clearly and consistently reported?",
+     "answer": "Probably no",
+     "quote": "after adjusting for age, sex, history of hypertension or diabetes, and level of education, a 10% increment in t-tau values was associated with a 7.60% increase in the risk of progression to dementia (HR = 2.22; 95% CI, 1.28\u20143.84; P = .004)",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (QUIPS: outcome measurement high; study participation, attrition, confounding and statistical analysis moderate; prognostic factor measurement low)",
+ "overall_category": "high",
+ "overall_rationale": "By the brief's rule, one high domain or three or more moderate domains makes the overall rating high, and this study has both. The outcome was a clinical-judgement diagnosis made by neurologists who knew the CSF results. Selection into the study depended on a physician's offer of lumbar puncture. Attrition is unreported, baseline cognitive severity was not adjusted for, and the reporting is incomplete. The t-tau measurement itself is at low risk.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "Patients in a Spanish tertiary memory unit with MCI and abnormal CSF profiles. This matches the review's description of a cohort in which all patients had abnormal CSF profiles."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "Progression was a clinical diagnosis of dementia over about 1.4 to 3 years, made without a single standard instrument. This may not match conversion outcomes defined by protocol in other studies."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 17,
+  "matched": 10
+ }
+}

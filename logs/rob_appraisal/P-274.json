@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-274",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Arvidsson, Strandberg, Palmqvist, Stomrud, Cullen, Janelidze, Tideman, Heyden, Astrom, Hansson, Mattsson-Carlgren (2024) 'Comparing a pre-defined versus deep learning approach for extracting brain atrophy patterns to predict cognitive decline due to Alzheimer's disease in patients with mild cognitive symptoms', Alzheimer's Research & Therapy 16:61. The cited MMSE-decline finding is stated on p7."
+ },
+ "cited_result": "Principal: comparison of four prediction models for four-year MMSE decline (R2): every model except the deep-learning model performed significantly worse on the ADNI external set (n=108) than on the BioFINDER-1 test folds (BioFINDER test R2: clinical 0.138, hippocampal 0.157, FreeSurfer 0.175, DL 0.079). Also cited: whole-image DL against clinical and hippocampal-volume models (progression AUC 0.840 vs 0.850 and 0.862).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is a comparison of the predictive performance (R2, AUC) of multivariable regression, random-forest and deep-learning prognostic models, so PROBAST with PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "BioFINDER-1 is a consecutively recruited memory-clinic cohort (appropriate source), but the analysis set was restricted to people with at least four years of follow-up, and the ADNI external set further to those who were MCI or AD dementia after four years (excluding reverters and other outcomes). Such restriction selects survivors and a cleaner outcome contrast.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Yes",
+     "quote": "Briefly, the consecutively recruited participants in BioFINDER-1 are aged between 60 and 80 years, perform \u2265 24 points on the MMSE, and have been referred to any of the participating memory clinics due to cognitive complaints.",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "Only patients with available baseline MRI scans and longitudinal cognitive follow-up of at least four years from baseline were included here. [...] All participants included had MCI at baseline, at least four-year longitudinal cognitive follow-up from baseline and either MCI or AD dementia after four years.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Predictor sets are pre-specified baseline variables collected for all individuals, the same variables were used in ADNI, and they are routinely available at the time of intended use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Demographic information (age, sex, education), APOE \u03b54 carriership status (negative/positive) and baseline cognition (MMSE score and Alzheimer\u2019s Disease Assessment Scale [ADAS] delayed word recall) were collected for all individuals.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "The main goal of the present study was to perform an unbiased comparison between models utilizing different baseline information for prediction of future cognitive decline in SCD/MCI patients.",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "The first model [\u201cClinical data model\u201d] utilized readily available demographics information (age, sex, and education), MMSE score, ADAS delayed word recall [33] and APOE status.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The MMSE slope is a standard, objectively measured outcome with an appropriate four-year horizon, but baseline MMSE is both a predictor and a data point in each person's slope, and the authors acknowledge that the outcomes are determined by, and biased towards, the cognitive predictors. No information on masking of outcome assessment.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "Four-year cognitive decline was measured by fitting linear regression models for each individual separately using all available follow-up data within four years from baseline, then extracting the estimated regression slope.",
+     "page": "4"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "The primary continuous outcome was four-year cognitive decline as measured by the change from baseline in the MMSE score.",
+     "page": "4"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No",
+     "quote": "Finally, the evaluation is limited by the gold standard, which is determined by the cognition variables and thus is biased towards those. Thus, it is not surprising that these variables have high correlation with the outcomes we use.",
+     "page": "12"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "All participants included had MCI at baseline, at least four-year longitudinal cognitive follow-up from baseline",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for masking of MMSE administration or outcome raters to baseline data: none reported (for the binary outcome, diagnosis was 'recorded at each visit by a senior neuropsychologist and experienced memory disorder specialist').",
+     "page": "3-4"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "Two different predictions were done \u2013 progression from SCD/MCI to AD dementia within four years (binary outcome) and four-years Mini Mental State Examination (MMSE) slope (continuous outcome).",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Strengths: nested double cross-validation, test folds untouched until models were finalised, class-weighted loss, and a separate external cohort. Weaknesses: the external set is small (108, 23 events); missing data handling not reported; MRI rescaling used the whole image set; no calibration for the binary models (only a predicted-vs-observed scatter for MMSE slope); and the significance tests behind 'significantly worse' treat non-independent cross-validation fold results as independent samples in a Mann-Whitney U-test, which overstates significance.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "As external validation, 108 participants from the ADNI cohort with MCI at baseline were included, whereof 85 participants remained with MCI for at least four years and the remaining 23 participants progressed to AD dementia.",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "For all of the models the features were standardized by removing the mean and scaling to unit variance.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "Only patients with available baseline MRI scans and longitudinal cognitive follow-up of at least four years from baseline were included here.",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for 'missing', 'imputation' and exclusions for incomplete predictors: none reported.",
+     "page": "3-6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Several a priori measurements are related to change in cognition, wherefor we investigated several different types of data and models",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "To determine statistically significant differences in performance on the test sets for the different models, the results from the 10 folds were used in a Mann-Whitney U-test",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "Probably no",
+     "quote": "The performance metric of interest for the binary outcome of four-year progression to AD dementia was area under the receiver operating characteristics curve (AUC) and Matthews correlation coefficient (MCC). For the continuous outcome of four-year cognitive decline, the performance metric of interest was R2.",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Yes",
+     "quote": "Once model parameters were determined from this internal cross validation procedure, performance was finally evaluated on the previously unseen test set and reported as the mean for the ten folds.",
+     "page": "6"
+    },
+    {
+     "question": "PROBAST+AI: Was the train/test split at participant level?",
+     "answer": "Probably yes",
+     "quote": "A five-fold division into development set (80%, used for training and validation) and test set (20%) was used.",
+     "page": "3"
+    },
+    {
+     "question": "PROBAST+AI: Were preprocessing and tuning done within training folds only?",
+     "answer": "Probably no",
+     "quote": "The MRI images were rescaled to have voxel values in range [-1, 1], by dividing by 0.5 times the largest voxel value in the entire MRI set and subtracting 1.",
+     "page": "5"
+    },
+    {
+     "question": "PROBAST+AI: Was the test set held out from all tuning?",
+     "answer": "Yes",
+     "quote": "The test sets were only used for evaluation after all models were finalized, thus not in any way influencing the development of the algorithm or model selection.",
+     "page": "11"
+    },
+    {
+     "question": "PROBAST+AI: Was class imbalance handled?",
+     "answer": "Probably yes",
+     "quote": "discrimination for four-year progression to AD with sigmoid activation and class weighted categorical cross-entropy loss L1",
+     "page": "4"
+    },
+    {
+     "question": "PROBAST+AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated (nested cross-validation) and externally validated",
+     "quote": "External evaluation on ADNI data was performed after all models had been finalized.",
+     "page": "6"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for reported coefficients or final model equations: none reported (Supplementary Tables not in the source text).",
+     "page": "4-7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "BioFINDER analyses pool SCD and MCI ('for this study the SCD and MCI groups were analyzed together', p3; 41% MCI in non-AD group), so the development results are not specific to MCI; ADNI external set is MCI only."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Routine clinical variables and structural MRI."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Four-year MMSE slope and AD dementia progression (CSF-supported) fit the review question."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1, 3 and 4 are high: restriction to four-year completers (and to MCI-or-AD outcomes in ADNI), a baseline cognitive predictor embedded in the MMSE-slope outcome that the authors concede biases the evaluation, and between-cohort significance tests that treat correlated fold results as independent, with no calibration and a small external set. The design is otherwise stronger than typical (consecutive recruitment, nested validation, external cohort).",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 10
+ }
+}

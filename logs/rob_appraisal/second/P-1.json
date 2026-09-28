@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-1",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Velazquez M, Lee Y. 'Multimodal ensemble model for Alzheimer\u2019s disease conversion prediction from Early Mild Cognitive Impairment subjects', Computers in Biology and Medicine 151 (2022) 106201. It reports a random forest plus CNN ensemble on ADNI EMCI patients with 98.81% accuracy for EMCI-to-AD conversion prediction, which is the number the review cites."
+ },
+ "cited_result": "Accuracy of the weighted random forest (clinical features) plus NASNet CNN (DTI) ensemble for EMCI-to-AD conversion prediction: 98.81% (Table 5 iteration 1; Table 6 AUC .992), ADNI, 383 EMCI patients.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (accuracy) of a multivariable machine-learning classifier predicting later conversion to AD, so it is a prognostic prediction-model performance result.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "ADNI is an appropriate longitudinal data source. Selection required more than a year of follow-up. Only 90 of the 383 patients had DTI, and the paper does not describe the subset on which the combined ensemble (both modalities) was evaluated.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "All data used for this paper were obtained from the Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI) database and included patients from their ADNI-1, ADNI-2, and ADNI-GO studies",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "The selection criteria for our work focused specifically on the EMCI subset with patients that had follow-up exams for more than a year. ... These were then grouped into 90 unique EMCI patients, where 16 would convert to AD (EMCI_C) and 74 would not (EMCI_NC).",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "high",
+   "rationale": "The clinical model uses all 1,806 exam visits, not a baseline visit, and nothing restricts them to visits before conversion. Visits from converters may therefore have been measured at or after the outcome, and such values would not be available when the model is meant to be used (at the EMCI stage). DTI was acquired on scanners of differing field strength.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "In addition, these different ADNI studies (ADNI1, ADNIGO, etc.) also leveraged scanners with varying field strengths, which could have affected our results.",
+     "page": "10"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the neuropsychological and imaging assessments to later diagnosis, and for any restriction of visits to before conversion; none reported.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably no",
+     "quote": "For the clinical feature model, 1806 exam visits were used pre-augmentation. 1608 belonged to the EMCI_NC class, while 198 were from the EMCI_C conversion class.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "Conversion is taken from the CDR variable at each patient's last exam. Only more than one year of follow-up is required, and there is no fixed prediction horizon: the Methods say 5 to 7 years and the Conclusion says within five years. Patients labelled non-converters after short follow-up may be converters who were not yet observed. How the final diagnosis was made, and whether it was made blind to the predictors, is not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "This distinction was provided by the Clinical Dementia Rating ADNI variable of the patient\u2019s last exam diagnosis.",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "EMCI patients represent the stage typically 5\u20137 years before a potential AD diagnosis.",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for how the last-exam diagnosis was made; the predictors include 'neuropsychological scale scores (FAQ, MMSE, ADAS13, ADAS11)' (p. 3), but the document does not say whether these informed the diagnosis.",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "The selection criteria for our work focused specifically on the EMCI subset with patients that had follow-up exams for more than a year.",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the diagnosing clinicians to the clinical and DTI predictors; none reported.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably no",
+     "quote": "An ensemble model for EMCI to AD conversion probability within five years is proposed.",
+     "page": "11"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The CNN had only 16 converters. The CNN split was made at the image level. Oversampling and augmentation were applied before the train/test split: Table 4 gives balanced 402/402 test records and 144,000/666,000 augmented test images. Feature reduction drew on permutation importance computed on the held-out test set. The ensemble weight was chosen as the highest-accuracy grid-search run, and that same accuracy is the reported result, after dozens of tune-and-repeat cycles. Calibration was not assessed and there was no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "These were then grouped into 90 unique EMCI patients, where 16 would convert to AD (EMCI_C) and 74 would not (EMCI_NC). In total, our study consisted of 383 EMCI patients (shown in Fig. 2), 49 of these within the EMCI_C class and 335 within the EMCI_NC class.",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Random Forest, our first classifier, uses a method that constructs a multitude of decision trees which then outputs the majority vote as the prediction.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for the size and composition of the set on which the 98.81% ensemble accuracy was computed; the paper gives '75% (288 patients) to 25% (95 patients)' for the clinical model and a 10% image test set for the CNN, but does not state the ensemble evaluation set.",
+     "page": "3, 6"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data handling in the analysis; the only mention concerns the demonstration app: 'The application also accounts for blanks by substituting the empty field with that feature\u2019s mean average.'",
+     "page": "8"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably no",
+     "quote": "Initially, starting with over 90 features, we could eliminate many variables with a combination of SHAP analysis and Gini importance until an ideal fit had been obtained.",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. multiple records per person) accounted for appropriately?",
+     "answer": "No",
+     "quote": "For CNN training, 10% of our images are reserved for testing, 10% for validation, and the remaining 80% for training.",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "Individual polygon area metrics: Classification accuracy (CA), sensitivity (SE), specificity (SP), Jacard Index (JI), F-score (F), area under curve (AUC). ... Ensemble .988 1 .986 .929 .963 .992",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "As the model spent significant time being fine-tuned, the experiment was repeated several dozen times per model. After each repeat, performance metrics were assessed to see how to tune the model further.",
+     "page": "6-7"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported analysis?",
+     "answer": "Yes",
+     "quote": "Once the grid search has been completed, the weights of the highest accuracy run (0.55 CNN, 0.45 RF) are captured and used for the final ensemble model.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level (no data from one person on both sides)?",
+     "answer": "No",
+     "quote": "For the DTI model, 405 DTI images were gathered ... These were then grouped into 90 unique EMCI patients ... For CNN training, 10% of our images are reserved for testing, 10% for validation, and the remaining 80% for training.",
+     "page": "3, 6"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection, augmentation and tuning done within training data only?",
+     "answer": "No",
+     "quote": "we implement different augmentation methods for our ensemble to have better representation in our training/test data. ... Record# after Over- sampling/ Augmentation 1608 1608 576,000 images 2,664,000 images Training Data 1206 1206 432,000 images 1,998,000 images Testing Data 402 402 144,000 images 666,000 images",
+     "page": "4, 6"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning and selection?",
+     "answer": "No",
+     "quote": "Permutation rankings can reduce high cardinality bias as the features are permuted against a held-out test set. ... The combination of these ranking systems aided us in reducing the original feature map to the final model.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Was class imbalance handled appropriately?",
+     "answer": "Probably no",
+     "quote": "We perform random over-sampling for our Random Forest classifier to make our two classes equivalent in size.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal only (split-sample, with tuning on the test data); no external validation",
+     "quote": "A limitation of our study is that all patients were derived from the ADNI data set.",
+     "page": "10"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "ADNI EMCI research volunteers with more than a year of follow-up; only the DTI subset (90 patients) can supply both modalities."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Standard ADNI clinical variables and DTI ADC scans."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "Conversion from last-exam CDR with a variable, unstated horizon does not match a defined-horizon conversion question."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 2, 3 and 4 are high risk. The predictors come from all visits rather than baseline. The outcome horizon is not fixed. The CNN split is image-level, and oversampled or augmented records appear in the test data. The test set was used for feature reduction, and the reported 98.81% is the maximum of a grid search after repeated tuning. There is no calibration and no external validation. The 98.81% figure is very likely optimistic.",
+ "confidence": "high",
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 17
+ }
+}

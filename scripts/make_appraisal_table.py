@@ -21,6 +21,7 @@ import argparse
 import collections
 import csv
 import io
+import json
 import re
 import sys
 from pathlib import Path
@@ -89,6 +90,34 @@ def discrimination(row):
             if v is not None:
                 vals.append(v)
     return max(vals) if vals else None
+
+
+ROB_DIR = ROOT / "logs" / "rob_appraisal"
+
+
+def rob_fields(pid):
+    """Risk-of-bias judgments merged from logs/rob_appraisal (added 2026-09-28). The appraisal was made by model readers
+    under the operator's delegation, from the source documents; the final judgment is the adjudicated one where the
+    blinded second reading disagreed, otherwise the primary reading. Blank when a study has not been appraised."""
+    def load(p):
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+    prim, sec, adj = load(ROB_DIR / f"{pid}.json"), load(ROB_DIR / "second" / f"{pid}.json"), load(ROB_DIR / "adjudicated" / f"{pid}.json")
+    fin = adj or prim
+    if not fin:
+        return {k: "" for k in ("rob_tool", "rob_domains", "rob_overall", "rob_overall_category", "rob_second_reading",
+                                "rob_adjudicated", "rob_confidence", "appraiser", "appraisal_date", "review_status")}
+    return {
+        "rob_tool": fin.get("tool", ""),
+        "rob_domains": "; ".join(f"{d.get('domain', '')}: {d.get('judgment', '')}" for d in fin.get("domains", [])),
+        "rob_overall": fin.get("overall", ""),
+        "rob_overall_category": fin.get("overall_category", ""),
+        "rob_second_reading": (sec or {}).get("overall_category", ""),
+        "rob_adjudicated": "yes" if adj else "",
+        "rob_confidence": fin.get("confidence", ""),
+        "appraiser": "model readers under the operator's delegation",
+        "appraisal_date": "2026-09-28",
+        "review_status": fin.get("review_status", "pending operator review"),
+    }
 
 
 def instrument(design):
@@ -160,8 +189,7 @@ def main():
             "sample_n": (r.get("Sample_N_Approx") or "not reported").strip()[:40],
             "adni_dependent": (r.get("ADNI_Dependent") or "not reported").strip(),
             "performance_suspect_set": "yes" if suspect(r) else "no",
-            "rob_domain_1": "", "rob_domain_2": "", "rob_domain_3": "", "rob_domain_4": "",
-            "rob_overall": "", "appraiser": "", "appraisal_date": "",
+            **rob_fields(pid),
         })
 
     byi = collections.Counter(p["instrument_if_appraised"] for p in per)

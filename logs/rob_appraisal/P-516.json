@@ -1,0 +1,148 @@
+{
+ "paper_id": "P-516",
+ "document_check": {
+  "matches": true,
+  "note": "Guo, Zhang, Xue, Qiao and Shen 2021, Frontiers in Neuroscience 15:696639, 'Brain Function Network: Higher Order vs. More Discrimination'. Compares higher-order (PCn) with ordinary (PC1) Pearson-correlation functional networks for MCI vs HC classification on ADNI rs-fMRI; results shown only in Figures 6 to 9."
+ },
+ "cited_result": "Comparison of MCI vs HC classification performance (linear SVM, subject-level 5-fold CV; ADNI rs-fMRI, 299 scans from 143 participants) between higher-order PCn functional networks and the ordinary PC1 network: accuracy falls as n increases, and fusing PCn with PC1 raises sensitivity but not accuracy. Results are reported in figures without significance tests.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result ranks machine-learning classifiers built on different functional-connectivity feature sets by their discrimination performance.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "Unclear",
+   "rationale": "ADNI is the data source, but the paper does not describe which ADNI participants were drawn or how, or how many were removed by the head-motion criteria; motion-based exclusion is itself reasonable.",
+   "signalling": [
+    {
+     "question": "Were appropriate data sources used?",
+     "answer": "No information",
+     "quote": "Searched for ADNI phase, selection or sampling of participants; only: \"Two public datasets, from Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI) and Human Connectome Project (HCP), respectively, are used in our experiments.\"",
+     "page": "2"
+    },
+    {
+     "question": "Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "For ADNI dataset, we first remove the subjects if (1) the maximum translation/rotation of the head motion exceeds 2.0, or (2) the volumes with big frame-to-frame displacement (>0.5) accumulate more than 2.5 min (Power et al., 2012), which leaves us 299 scans (including 154 HCs and 145 MCIs) from 143 participants",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Low",
+   "rationale": "The same automated preprocessing and AAL-based network construction were applied to every scan, and rs-fMRI is available at the point of use; acquisition TR varied (2.2 to 3.1 s) but was handled uniformly.",
+   "signalling": [
+    {
+     "question": "Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "For each subject from ADNI dataset, we discard the first three volumes for magnetization balance, and then use the FSL FEAT software for preprocessing the remaining 137 volumes",
+     "page": "2"
+    },
+    {
+     "question": "Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Finally, we divide the preprocessed volumes into 116 ROIs based on the automatic anatomical labeling (AAL) template (Tzourio-Mazoyer et al., 2002), and extract its mean blood oxygen level dependent (BOLD) signals (automated pipeline; no manual step described)",
+     "page": "2"
+    },
+    {
+     "question": "Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "The edge weights of the BFN are adopted as features for classification.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "Unclear",
+   "rationale": "MCI and HC labels are used with no diagnostic definition, criteria, source or timing relative to the scan.",
+   "signalling": [
+    {
+     "question": "Was the outcome determined appropriately, with a pre-specified or standard definition, similarly for all, without knowledge of predictors and at an appropriate interval?",
+     "answer": "No information",
+     "quote": "Searched for MCI/HC definitions, diagnostic criteria and scan-to-diagnosis timing; only: \"which leaves us 299 scans (including 154 HCs and 145 MCIs) from 143 participants (with some participants scanned at one or more times)\"",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "Edge features far outnumber participants, and the number of MCI participants (as opposed to scans) is not reported. Features were selected by univariable t-tests and it is not stated that this was done inside the training folds. Only ACC, SEN and SPE are reported (no AUC, calibration or variability), in figures only, from a single 5-fold CV. The best t-test p threshold is identified from test performance, and methods are compared without statistical testing. The split is correctly at participant level and the fusion weight was tuned in an inner CV.",
+   "signalling": [
+    {
+     "question": "Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "In consideration of the fact that the number of edges far exceeds the sample size, t-test is used to select edge weight features prior to the classification task.",
+     "page": "6"
+    },
+    {
+     "question": "Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "The edge weights of the BFN are adopted as features for classification.",
+     "page": "6"
+    },
+    {
+     "question": "Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for the number of ADNI scans or participants before motion exclusion; not reported.",
+     "page": "2"
+    },
+    {
+     "question": "Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data handling; none reported.",
+     "page": "2-6"
+    },
+    {
+     "question": "Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "t-test is used to select edge weight features prior to the classification task.",
+     "page": "6"
+    },
+    {
+     "question": "Were complexities in the data accounted for appropriately (repeated scans per participant; participant-level split)?",
+     "answer": "Yes",
+     "quote": "the classification performance is evaluated by five-fold subject-level cross validation (5-F CV), to ensure that fMRI scans of the subject do not appear in both training and testing sets",
+     "page": "4"
+    },
+    {
+     "question": "Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "We evaluate the classification performance of different methods by a set of quantitative measures, including accuracy (ACC), sensitivity (SEN), and specificity (SPE). ... The classification results on two datasets are reported in Figures 6, 7.",
+     "page": "7"
+    },
+    {
+     "question": "Were model overfitting and optimism accounted for (feature selection and tuning within training folds; test set held out from tuning)?",
+     "answer": "Probably no",
+     "quote": "where the optimal parameter \u03bb is selected in the range of [0.1, 0.2, 0.3, 0.4, \u00b7 \u00b7 \u00b7 , 0.9] by an inner 5-F CV on the training set. ... In terms of the fused classification results, it can also be observed that p = 0.05 will result in the best ACC, SEN, and SPE, as shown in Figure 9.",
+     "page": "5, 8"
+    },
+    {
+     "question": "Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for a final model or feature weights; only the count of selected features is given (\"PC1 includes the largest number of features (207 features)\").",
+     "page": "8"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST: analysis domain high; participants and outcome unclear; predictors low; internal cross-validation only)",
+ "overall_category": "high",
+ "overall_rationale": "The analysis domain is high: univariable feature screening not shown to be within folds, extreme feature-to-participant ratio, threshold effects read off test performance, no discrimination or calibration beyond accuracy, sensitivity and specificity, no variability and no significance testing of the model comparison. Participant sampling and the outcome definition are not described.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The MCI definition is not reported, so its match to the review's target condition cannot be checked."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 10,
+  "matched": 8
+ }
+}

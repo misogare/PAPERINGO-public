@@ -1,0 +1,139 @@
+{
+ "paper_id": "P-144",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Vergani et al., 'Event-related potential markers of subjective cognitive decline and mild cognitive impairment during a sustained visuo-attentive task', NeuroImage: Clinical 45 (2025) 103760. It has 178 participants (119 SCD, 40 MCI, 19 HS) and reports the non-monotonic ERP pattern (attenuation in SCD, partial compensatory enhancement in MCI), which is the pattern the review cites."
+ },
+ "cited_result": "The non-monotonic ordering of ERP features across groups (HS > SCD < MCI). Sensory and cognitive ERP components are attenuated in SCD relative to healthy subjects, with a partial 'compensatory' rebound in MCI relative to SCD. The principal support is Table 2 and Figs 4C/5: normalised integrals were -30.74% in SCD and -22.37% in MCI relative to HS; the aggregated SCD vs MCI difference was a trend (p = 0.0678); the P2 and N1 integral differences between SCD and MCI were significant in Table 2.",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result compares ERP features between SCD, MCI and healthy-subject groups recorded at a single EEG session, so it is a between-group association at one time point.",
+ "domains": [
+  {
+   "domain": "Item 1: Criteria for inclusion clearly defined",
+   "judgment": "Unclear",
+   "rationale": "Inclusion and exclusion criteria are stated for SCD and MCI patients. No inclusion criteria and no recruitment source are given for the 19 healthy subjects, who are the reference for every normalised deviation.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Unclear",
+     "quote": "The following inclusion criteria were adopted: satisfied criteria for SCD (Albert et al., 2011) or MCI (McKhann et al., 2011); Mini Mental State Examination (MMSE) score > 24, corrected for age and education [...] HS subjects, on the other hand, were only examined on a few scales",
+     "page": "2; 4"
+    }
+   ]
+  },
+  {
+   "domain": "Item 2: Study subjects and setting described in detail",
+   "judgment": "Yes",
+   "rationale": "The paper describes the cohort (PREVIEW project, Careggi University Hospital, EEG at IRCCS Don Gnocchi, Florence), gives group sizes and sex, and reports demographics per group in Table 1.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "We enrolled 178 individuals (117F), including 119 SCD patients (85F), 40 MCI patients (24F), and 19 healthy individuals (8F). [...] EEG data were collected from eligible subjects at IRCCS Don Gnocchi (Florence, Italy) using the 64-channel Galileo-NT system",
+     "page": "2; 3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 3: Exposure (clinical group assignment) measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "Patients were assigned to groups after a comprehensive clinical and neuropsychological work-up under a published protocol. Healthy subjects were examined on fewer scales.",
+   "signalling": [
+    {
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "underwent thorough family and clinical history evaluations, neurological examinations, extensive neuropsychological assessments, premorbid intelligence estimation, and depression evaluations",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 4: Objective, standard criteria for the condition",
+   "judgment": "Unclear",
+   "rationale": "Standard clinical criteria are cited for SCD and MCI. Biomarker (ATN) classification exists only for a subset of 58 patients, and no criterion is given for classifying someone as a healthy subject.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Unclear",
+     "quote": "A subset of 58 patients (34 SCD and 24 MCI) underwent CSF collection for assessment of A\u03b242, A\u03b242/A\u03b240, total-tau (t-tau) and phosphorylated-tau (p-tau).",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 5: Confounding factors identified",
+   "judgment": "Yes",
+   "rationale": "Age is identified as a confounder and sex is acknowledged. Education differs strongly between groups (10.32 vs 13.41 vs 14.95 years) but is not named as a confounder.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "To account for the effect of age on neural features and task performance, we applied an age correction procedure using a linear model [...] Biological sex was not included as a factor modulating the results in this analysis.",
+     "page": "3; 11"
+    }
+   ]
+  },
+  {
+   "domain": "Item 6: Strategies to deal with confounding stated",
+   "judgment": "Unclear",
+   "rationale": "A strategy is stated for age only: each feature is regressed on age with the regression pooled across groups. Because MCI patients are older, this can also remove variance that belongs to the group difference. No strategy is given for sex (42% female in HS, 71% in SCD, 60% in MCI) or for education.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Unclear",
+     "quote": "we employed the Huber Regressor (sklearn.linear_model.HuberRegressor) to regress each neural feature against age and subsequently removed the age-related variance [...] Patients with MCI had a higher age, lower educational level and lower performance on cognitive and visuomotor assessments than subjects with SCD and HS.",
+     "page": "3; 4"
+    }
+   ]
+  },
+  {
+   "domain": "Item 7: Outcomes (ERP features) measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "EEG was recorded on a standard 64-channel system, cleaned with ICA, and features were extracted by one automated algorithm applied identically to every group. No reliability data are given and blinding to group is not stated, but automated extraction limits assessor influence.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "The features of these components were extracted using a custom-developed algorithm that identifies peaks, latencies, and integrals within a predefined time window.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 8: Appropriate statistical analysis",
+   "judgment": "No",
+   "rationale": "The time-resolved tests pool channel-by-subject voltage values into a single distribution, so correlated channels from the same person are treated as independent observations. Features are extracted per channel. The Table 2 H statistics are larger than subject-level data can produce: the N1 peak SCD vs HS comparison reports H = 50.78 with n = 115 and 19, but even complete separation of the two groups gives H of about 48.6. The P2 latency and P900 peak H values are about five to six times what subject-level data would give, matching the 5 occipital and 6 central channels. This suggests the feature comparisons, including the SCD vs MCI differences behind the rebound, are pseudo-replicated and their p values inflated. The methods also state FDR correction for ERP dynamics while the Fig. 3 caption states Bonferroni, and the group sizes in Tables 3 and 4 differ between table headers and notes.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "No",
+     "quote": "c \u00d7 n is the matrix dimension of c (number of channels) and n (number of subjects within the group g) [...] We extracted neural features from defined ERP components, including voltage peaks, latencies, and integrals (Simpson method) from each channel of occipital and central scalp parcellations. [Table 2, Peak N1, SCD vs HS:] **** 0.0 (50.78)",
+     "page": "3; 8"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (JBI analytical cross-sectional). Under this review's rule, a 'No' on item 8 (appropriate statistical analysis) gives high risk.",
+ "overall_category": "high",
+ "overall_rationale": "Items 1 and 4 are unclear because the healthy reference group has no stated inclusion or classification criteria. Item 6 is unclear because only age is adjusted, while sex and education differ between groups. Item 8 is No because the group comparisons treat correlated channel-level values as independent observations: the reported H statistics exceed the maximum that subject-level data allow. This inflates the significance of the SCD vs MCI differences that make up the cited rebound. Under the review rule, a No on appropriate analysis gives high risk.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "some concerns",
+   "rationale": "A single-centre, SCD-enriched memory-clinic cohort, with only 40 MCI patients and 19 healthy subjects; group biomarker status is known for a subset only."
+  },
+  {
+   "domain": "Measurement",
+   "concern": "low",
+   "rationale": "The ERP features come from one task (3-CVT) recorded on a standard 64-channel system, which matches the review's use."
+  }
+ ],
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 3
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-81",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Cao, Ma, Nayak and Duong, 'Deep learning combining FDG-PET and neurocognitive data accurately predicts MCI conversion to Alzheimer's dementia 3-year post MCI diagnosis', Neurobiology of Disease 187 (2023) 106310. It uses ADNI data (164 sMCI, 93 pMCI) and compares PET, cognitive-score and combined models. This matches the review's citation (Cao et al. 2023)."
+ },
+ "cited_result": "Head-to-head comparison of input sets for predicting MCI-to-AD conversion within 3 years (ADNI, 5-fold cross-validation validation sets, Table 3, p.4). The PET+Age+CS model is best on balanced accuracy (0.7326 \u00b1 0.0978; AUC 0.7849 \u00b1 0.0963). Cognitive scores alone (BA 0.7130, AUC 0.7496) outperform PET only (BA 0.5651, AUC 0.6102). This is the principal result behind both cited sentences.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the discrimination of multivariable deep-learning prognostic models for MCI-to-AD conversion, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "low",
+   "rationale": "The data come from the ADNI longitudinal cohort. Inclusion depended on having a baseline FDG-PET scan within two months of diagnosis, and no outcome-based exclusions are described.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Yes",
+     "quote": "Data were obtained from the Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI) database (http://adni.loni.usc.edu), which included ADNI1, ADNI2, or ADNIGO datasets.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "The inclusion criteria require the recruited participants to have a 3D whole-brain FDG-PET scan taken within two months of baseline diagnosis, with T1 preprocessing and without being converted to SUVR.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The PET images and cognitive scores are baseline measures, processed with one pipeline, taken before the outcome occurred, and available when the model would be used. The authors mention scanner differences only as a general caveat.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes. The same registration and masking pipeline is used for all. Scanner heterogeneity is mentioned but not harmonised.",
+     "quote": "PET scans are first registered to a reference brain using FSL-FLIRT",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Yes. The predictors were measured at baseline, before conversion.",
+     "quote": "FDG-PET and CS were obtained at MCI diagnosis to predict AD conversion within three years of MCI diagnosis using convolutional neural networks.",
+     "page": "1"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "FDG-PET and CS were obtained at MCI diagnosis to predict AD conversion within three years of MCI diagnosis using convolutional neural networks.",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The outcome is AD by ADNI consensus clinical diagnosis. The authors state that some of the cognitive scores used as predictors (CDR-SB, logical memory, MMSE, mPACC) were used in diagnosing AD. That is incorporation bias, and it directly inflates the cognitive-score models against the PET-only model in the cited comparison. The paper also gives no minimum follow-up for stable MCI.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "the definition for CN, MCI, and AD are derived from the consensus clinical diagnosis reported in the ADNI cohort.",
+     "page": "6"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes. The outcome is ADNI consensus diagnosis within a stated 3-year window.",
+     "quote": "Those who do convert are labeled as unstable-MCI, while those who do not are labeled as stable-MCI.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No",
+     "quote": "It is not surprising that the neurocognitive data together predicted better than FDG-PET per se because some of the neurocognitive data were used in the diagnosis of AD.",
+     "page": "4"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "the definition for CN, MCI, and AD are derived from the consensus clinical diagnosis reported in the ADNI cohort.",
+     "page": "6"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably no. The clinical diagnosis draws on the same cognitive scores.",
+     "quote": "likely because some of CN scores were used to define AD.",
+     "page": "4"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information. The 3-year horizon is stated, but Methods and Results were searched for a minimum follow-up for stable MCI or for handling of those followed for less than 3 years, and none was found.",
+     "quote": "to predict if a patient with mild cognitive impairment (MCI) will convert to dementia within three years of their baseline diagnosis.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 93 converters for a 3D CNN on whole-brain images. The reported conversion metrics come from the cross-validation validation folds, which were also used to choose architectures and optimisers. No held-out test result is reported for the conversion task. Calibration is not assessed, and class imbalance (93 against 164) is not handled, giving sensitivities of 0.42 to 0.61. Missing data, participant flow and censoring are not reported, and there is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no. There are 93 events for a deep 3D CNN, and the authors call the sample small.",
+     "quote": "The current FDG PET dataset had a small sample size and did not contain longitudinal data.",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes. The cognitive scores are entered as continuous inputs.",
+     "quote": "the inputs consist of an array containing five cognitive scores for patients",
+     "page": "2"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information. Sections 2.1 and 3.1 were searched for a participant flow or post-inclusion exclusions, and none is reported.",
+     "quote": "The final cohort that met the criteria contained a total of 612 subjects, including 205 patients with the diagnosis of Dementia of Alzheimer\u2019s type (DAT), 150 cognitively normal subjects, 164 stable-MCI subjects, and 93 unstable-MCI subjects.",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information. Methods were searched for missing cognitive scores or scans and how they were handled. Nothing is reported.",
+     "quote": "Searched for: missing cognitive scores or PET data and their handling (sections 2.1 to 2.4); none reported.",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably yes. The scores were chosen from prior work.",
+     "quote": "These cognitive test scores were selected for being the top five markers for diagnosing Alzheimer\u2019s dementia.",
+     "page": "2"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring) accounted for appropriately?",
+     "answer": "No information. The outcome is binary within 3 years, and the paper was searched for how censored or lost-to-follow-up participants were handled. Nothing is stated.",
+     "quote": "Searched for: censoring, loss to follow-up or minimum follow-up in stable MCI; not reported.",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no. Only discrimination is reported, at a fixed 0.5 threshold, with no calibration.",
+     "quote": "where 0.5 is the threshold between a positive and negative prediction",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no. The metrics come from validation folds, and the architecture was chosen on performance.",
+     "quote": "Balanced accuracy (BA), specificity, sensitivity, and AUC of the validation sets were obtained using 5-fold cross validation. [p.4] ... but the one outlined above yielded the strongest performing. [p.6]",
+     "page": "4; 6"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information. This is a deep network, and no weights are reported.",
+     "quote": "Searched for: final model weights; not applicable to the reported network architecture.",
+     "page": "2"
+    },
+    {
+     "question": "4.AI-a Is the train/test split at participant level?",
+     "answer": "Probably yes. The split is at patient level, with one scan time point per subject.",
+     "quote": "The set of images were randomly split into 70% train, 15% validation, and 15% test sets at the patient level to avoid data leakage during training",
+     "page": "2"
+    },
+    {
+     "question": "4.AI-b Are preprocessing, feature selection and hyperparameter tuning done within training folds only?",
+     "answer": "Probably no. Architecture, merging strategy and optimiser were chosen by comparing performance on the cross-validation folds that produced the reported metrics.",
+     "quote": "5-fold cross-validation was used to create train and validation sets over five separate folds for the prediction training.",
+     "page": "4"
+    },
+    {
+     "question": "4.AI-c Is the test set held out from all tuning?",
+     "answer": "Probably no. A test set was set aside for the AD versus CN pre-training stage, but the conversion results are reported on validation folds.",
+     "quote": "During the training process, the test set was always set aside until a model had been selected from the validation step.",
+     "page": "3"
+    },
+    {
+     "question": "4.AI-d Was class imbalance considered and handled?",
+     "answer": "Probably no. No weighting or resampling is described for 93 against 164, although balanced accuracy is reported. Sensitivity is 0.42 to 0.61 (Table 3).",
+     "quote": "164 stable-MCI subjects, and 93 unstable-MCI subjects",
+     "page": "2"
+    },
+    {
+     "question": "4.AI-e Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal (cross-validated), with selection on the same folds. There is no external validation.",
+     "quote": "However, our model needs to be tested on larger datasets to achieve generalizability.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "ADNI MCI patients with baseline FDG-PET fit the review's MCI conversion question. The authors note the cohort is mostly Caucasian."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Baseline FDG-PET, cognitive scores and age are relevant predictors."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "The outcome, clinical conversion to AD within 3 years, matches the review's question."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST): Outcome and Analysis domains high; Participants and Predictors low.",
+ "overall_category": "high",
+ "overall_rationale": "The Outcome domain is high risk because the cognitive-score predictors are part of the AD diagnosis the model predicts (acknowledged by the authors). This inflates exactly the cognitive-score against PET comparison the review cites. The Analysis domain is high risk because metrics come from validation folds also used for model selection, events are few, and there is no calibration or external validation.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 17
+ }
+}

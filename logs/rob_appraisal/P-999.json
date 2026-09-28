@@ -1,0 +1,241 @@
+{
+ "paper_id": "P-999",
+ "document_check": {
+  "matches": true,
+  "note": "Research Square preprint (posted 13 April 2023, not peer reviewed): 'Associations of Antihypertensive Medication Consumption and Drug-Drug Interaction with Statin and Metformin with Reduced Alzheimer's Disease and Related Dementias Risk among Hypertensive Patients with Mild Cognitive Impairment using High Volume Claims Data'. The manuscript byline is Lundin SK, Hu X, Feng J, Lundin KK, Chen Y, Tao C; the Research Square cover lists Cui Tao first. The cited aHR 1.06 (1.04, 1.08) is in Table 3."
+ },
+ "cited_result": "Adjusted hazard ratio for incident ADRD in users of any antihypertensive medication versus non-users of any antihypertensive, among 128,683 hypertensive patients with MCI in Optum claims: aHR 1.06 (95% CI 1.04 to 1.08).",
+ "tool": "ROBINS-E",
+ "tool_reason": "The cited result is the effect of a medication exposure on progression to ADRD in an observational claims cohort, and the authors frame it causally ('protective effect').",
+ "domains": [
+  {
+   "domain": "1 Confounding",
+   "judgment": "High",
+   "rationale": "Users and non-users differ markedly in age and comorbidity. Key confounders are not measured: blood pressure level or hypertension severity, socioeconomic status, healthcare access and frailty. Age enters only in coarse categories, and the timing of the statin and metformin covariates is undefined. There is no active-comparator or new-user design.",
+   "signalling": [
+    {
+     "question": "Did the authors control for all important confounding factors?",
+     "answer": "No",
+     "quote": "Also, other relevant social determinants of health (SDOH) such as socioeconomic status, access to healthcare, and social support networks are not available on claims data.",
+     "page": "19"
+    },
+    {
+     "question": "Which confounders were adjusted for?",
+     "answer": "Partial set",
+     "quote": "HR was adjusted for age, sex, race, atrial fibrillation, congestive heart failure, chronic obstructive pulmonary disease, hyperlipidemia, ischemic heart disease, obesity, traumatic brain injury, type \u2161 diabetes, stroke, anxiety disorder, depression, substance use disorder, and tobacco use, and consumption of metformin and statin.",
+     "page": "13"
+    },
+    {
+     "question": "Were confounders measured validly and with adequate resolution?",
+     "answer": "Probably no",
+     "quote": "age in 6 categories (<65, 65-69, 70-74, 75-79, 80-84, 85-90) (age of patients was capped at 90 years)",
+     "page": "9"
+    },
+    {
+     "question": "Were blood pressure level or hypertension severity measured?",
+     "answer": "No information",
+     "quote": "Searched for blood pressure values, hypertension severity or control; none reported or adjusted.",
+     "page": "8-9; 13"
+    },
+    {
+     "question": "Is there evidence of imbalance suggesting residual confounding by indication?",
+     "answer": "Yes",
+     "quote": "AHM users had significantly younger mean age at first MCI diagnosis than that of non-users ... AHM users consistently had higher incidence for all the comorbidities (all P \u2264 0.039)",
+     "page": "11-12"
+    },
+    {
+     "question": "Could adjusted variables have been affected by the exposure (timing of statin and metformin use)?",
+     "answer": "No information",
+     "quote": "3) drug use: statin and metformin use.",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "2 Measurement of the exposure",
+   "judgment": "High",
+   "rationale": "Exposure is ever-use at any time during the study period, with no window relative to the index date. That permits immortal-time and reverse-timing misclassification that depends on follow-up length. Dose and adherence are ignored, and the time-varying prescription data are not used in the reported model.",
+   "signalling": [
+    {
+     "question": "Is the exposure well defined over an appropriate time window?",
+     "answer": "No",
+     "quote": "The study included 100,678 patients who were taking at least one class of AHM and 28,005 who were not taking any AHMs during the study period.",
+     "page": "4"
+    },
+    {
+     "question": "How were users and non-users defined?",
+     "answer": "Ever versus never, no time window",
+     "quote": "'AHM users' refer to patients consuming at least one antihypertensive medication according to the WHOCC ATC classification system, whereas 'AHM non-users' refer to patients who do not take any form of antihypertensive medications.",
+     "page": "9"
+    },
+    {
+     "question": "Was exposure measured validly (dose, adherence)?",
+     "answer": "Probably no",
+     "quote": "lack of adherence to medications have not been considered ... the dosage of AHM is not accounted for in our study",
+     "page": "19"
+    },
+    {
+     "question": "Was exposure modelled as time-varying?",
+     "answer": "Probably no",
+     "quote": "although we have access to time-varying changes in prescription",
+     "page": "19"
+    }
+   ]
+  },
+  {
+   "domain": "3 Selection of participants into the study",
+   "judgment": "High",
+   "rationale": "Hypertension eligibility uses diagnoses from the follow-up period, so selection depends on post-index survival and healthcare contact. Follow-up starts at MCI diagnosis, not at treatment initiation, and prevalent users are included. The hypertension codes as printed are chronic bronchitis, emphysema and COPD codes. Table 1 COPD prevalence (about 30 to 37%) suggests this is a reporting error, but it leaves eligibility unverifiable.",
+   "signalling": [
+    {
+     "question": "Was selection into the study based on characteristics observed after the start of follow-up?",
+     "answer": "Yes",
+     "quote": "Hypertension (ICD-9: 491.x, 492.x, 496; ICD-10: J41.x, J42, J43.2, J43.8, J43.9, J44.x) is defined as having two or more outpatient/inpatient diagnosis of elevated blood pressure on different days within the same 24-month in follow-up period.",
+     "page": "8"
+    },
+    {
+     "question": "Do start of follow-up and start of exposure coincide (new-user design)?",
+     "answer": "No",
+     "quote": "We define the index date as the date of the first ever Mild Cognitive Impairment (MCI) diagnosis of a patient.",
+     "page": "7"
+    },
+    {
+     "question": "Are the eligibility definitions internally consistent with the data?",
+     "answer": "No",
+     "quote": "Chronic obstructive pulmonary disease (COPD) 8,298 (29.6%) 37,036 (36.8%)",
+     "page": "11"
+    },
+    {
+     "question": "Were adjustment techniques used to correct for selection bias?",
+     "answer": "No information",
+     "quote": "Searched for inverse probability weighting, new-user or landmark methods; none described.",
+     "page": "9-10"
+    }
+   ]
+  },
+  {
+   "domain": "4 Post-exposure interventions",
+   "judgment": "Some concerns",
+   "rationale": "Statin and metformin co-medication are adjusted as covariates without a defined time window, so they may include treatments started after the exposure and influenced by it. The analysis does not address this.",
+   "signalling": [
+    {
+     "question": "Were there post-exposure interventions, influenced by the exposure, that could affect the outcome?",
+     "answer": "Probably yes",
+     "quote": "3) drug use: statin and metformin use.",
+     "page": "9"
+    },
+    {
+     "question": "Did the analysis account for them appropriately?",
+     "answer": "No information",
+     "quote": "Searched for the timing window of statin and metformin use relative to index or exposure; not stated in the text (details deferred to Supplementary Table 2).",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "5 Missing data",
+   "judgment": "Some concerns",
+   "rationale": "Demographics are complete. However, disenrollment ends observation and follow-up is censored at the last encounter, which may be informative. Comorbidities are coded only as present or absent from claims.",
+   "signalling": [
+    {
+     "question": "Were data complete for exposure, outcome and confounders?",
+     "answer": "Probably yes",
+     "quote": "There was no missing data on demographic information.",
+     "page": "9"
+    },
+    {
+     "question": "Could loss to follow-up or censoring be related to exposure and outcome?",
+     "answer": "Probably yes",
+     "quote": "Other conditions such as diagnosis of diseases e.g., ADRD, MCI, hypertension or death may not be reported if the patient no longer subscribes to the insurance system.",
+     "page": "19"
+    },
+    {
+     "question": "How was follow-up ended for those without ADRD?",
+     "answer": "Censored at last encounter",
+     "quote": "the time elapsed from the index date to the date of the last healthcare encounter",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "6 Measurement of the outcome",
+   "judgment": "High",
+   "rationale": "As printed, the ADRD outcome includes G31.83, the same ICD-10 code used to define index MCI, as well as delirium and symptom codes (F05, F06.x, R41.81). This makes the outcome an invalid measure of dementia. Claims-based ascertainment also depends on healthcare contact, which differs by exposure because users carry more comorbidities.",
+   "signalling": [
+    {
+     "question": "Was the outcome defined validly and distinctly from the index condition?",
+     "answer": "No",
+     "quote": "The diagnosis date of incident mild cognitive impairment (ICD-9: 331.81, 294.9; ICD-10: G31.83, F09) ... lewy-body associated dementia (ICD-9: 331.82; ICD-10: G31.83)",
+     "page": "8"
+    },
+    {
+     "question": "Does the outcome definition include non-dementia codes?",
+     "answer": "Yes",
+     "quote": "non-specific dementia (ICD-9: 290.0, 290.1, 290.2, 290.3, 290.8, 290.9, 797.0; ICD-10: F02.8, F03.9, F04, F05, F06.0, F06.1, F06.2, F06.3, R41.81)",
+     "page": "8"
+    },
+    {
+     "question": "Could outcome ascertainment differ between exposure groups?",
+     "answer": "Probably yes",
+     "quote": "AHM users consistently had higher incidence for all the comorbidities (all P \u2264 0.039)",
+     "page": "11-12"
+    },
+    {
+     "question": "Were outcome codes validated in this population?",
+     "answer": "No information",
+     "quote": "Searched for validation or adjudication of ADRD codes; codes are taken from prior literature (Halpern et al.) without validation here.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "7 Selection of the reported result",
+   "judgment": "Some concerns",
+   "rationale": "The paper reports no protocol. The illness-death (semi-competing risks) analysis is described but its results are not reported, and the sensitivity analysis is summarised without numbers. The conclusion stresses protective class effects while the any-AHM estimate points the other way.",
+   "signalling": [
+    {
+     "question": "Was the analysis pre-specified in a protocol or registration?",
+     "answer": "No information",
+     "quote": "Searched for protocol, pre-registration or analysis plan; none mentioned.",
+     "page": "1-20"
+    },
+    {
+     "question": "Are all described analyses reported?",
+     "answer": "No",
+     "quote": "We evaluated the cumulative incidence and the effects of the AHM consumption using the semi-competing risks model i.e., Illness-Death model, with death (terminal event) without the ADRD diagnosis (non-terminal event) as a competing event.",
+     "page": "10"
+    },
+    {
+     "question": "Are sensitivity results presented with estimates?",
+     "answer": "No",
+     "quote": "We also performed sensitivity analysis among hypertensive patients with MCI without any Statin or Metformin consumption ... which did not show any significant difference.",
+     "page": "10"
+    },
+    {
+     "question": "Is the cited estimate reported as analysed?",
+     "answer": "Yes",
+     "quote": "Patients who use any form of AHMs had 6% higher adjusted hazard ratio of ADRD (95% CI: (1.04, 1.08), P < 0.001) than non-users (Table 3).",
+     "page": "14"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (ROBINS-E; confounding, exposure measurement, participant selection and outcome measurement high)",
+ "overall_category": "high",
+ "overall_rationale": "Four domains are high: unmeasured confounding by indication and SES, an ever-use exposure defined over the whole study period, eligibility that uses post-index information, and an outcome definition that overlaps the index MCI code and includes non-dementia codes. Overall equals the most severe domain.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Population and comparison",
+   "concern": "some",
+   "rationale": "The population is US claims (Optum) hypertensive MCI identified by broad ICD codes, and the comparison is any AHM versus no AHM. The review sets this against an agent-level HR (0.59) from another study, which is a different contrast."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 21,
+  "matched": 18
+ }
+}

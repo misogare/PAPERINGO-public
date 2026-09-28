@@ -1307,7 +1307,6 @@
       "id": "VF-26",
       "statement": "Depressive symptomatology and MCI are robustly and reciprocally associated across independent cohorts, designs and populations - but the depression-to-MCI direction is the better-evidenced one, and every corpus study establishing the reverse direction uses a design that cannot separate reciprocal causation from a shared common cause.",
       "supporting_papers": [
-        "P-624",
         "P-644",
         "P-646",
         "P-656",
@@ -1318,7 +1317,7 @@
       "method_families": "5",
       "dataset_families": "5",
       "notes": "P-646 (US Health and Retirement Study, Waves 4-14, 1998-2018, N=9317 and 9428, Fine-Gray competing-risks): baseline high-risk depressive symptoms predict incident MCI at fully adjusted SHR 1.20 (95% CI 1.08-1.34, p=0.001) and baseline MCI predicts subsequent high-risk depressive symptoms at SHR 1.16 (1.01-1.33, p=0.032). P-624 (Shandong chronic-heart-failure cohort, N=288, two-wave cross-lagged panel): T1 social frailty -> T2 MCI effect -0.578 and T1 MCI -> T2 social frailty effect -0.646, model fit RMSEA 0.068. P-644 (Tianjin/Shanghai community, N=1394, logistic regression plus bootstrap mediation): depressive symptoms independently associated with MCI at OR 1.82 (1.20-2.76, p=0.005), with significant mediation running in both directions. P-656 (FDNY World Trade Center responders, N=337, robust quasi-Poisson): major depressive episode adjusted RR 1.62 (1.16-2.27) and comorbid PTSD/MDE RR 2.31 (1.74-3.06) for prevalent MCI. P-657 (52-study meta-analysis, 29,321 older adults with MCI, 17 countries, 6 continents): pooled subthreshold-depression prevalence 28.1% (24.2-32.0), stable under leave-one-out and unchanged by trim-and-fill. Method families (5): competing-risks survival; cross-lagged structural model; bootstrap mediation; robust Poisson with population-attributable fractions; prevalence meta-analysis. Dataset families (5): HRS, Shandong CHF, Tianjin/Shanghai community, FDNY WTC, 52-study synthesis. SCOPE CAVEAT, which is the point of the record: the reciprocity half of the claim is design-limited. P-646's authors state that two separate models were fitted rather than one containing both pathways, so true bidirectionality cannot be fully established; P-644 is cross-sectional and its authors concede the two mediation directions cannot be arbitrated; P-624 has only two waves six months apart; P-656 is cross-sectional and states the temporal ordering is unresolved. Ties directly to open gap ACTOR-G-019. A SECOND caveat ties to ACTOR-G-018: every member dichotomises depression at a scale cut-off, so this is an association between MCI and a binary symptom flag, not a dose-response. [2026-08-26: +P-912 systematic review of psychiatric risk factors for MCI-to-AD progression (17 longitudinal papers; cross-species depression support) - 6th supporting paper, adds review-level design diversity.]",
-      "evidence_count": 6,
+      "evidence_count": 5,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 4,
@@ -1336,7 +1335,11 @@
         "scope": "Grounded at finding-card level (summaries.md), NOT against source PDFs."
       },
       "manuscript_status": "include",
-      "human_evaluation_note": "CONFIRMED Tier1/Tier2 split. The split is intellectually honest: association is Tier 1 across five methods and five datasets, reciprocity is Tier 2 because no member's design licenses it. Dichotomisation caveat properly scoped."
+      "human_evaluation_note": "CONFIRMED Tier1/Tier2 split. The split is intellectually honest: association is Tier 1 across five methods and five datasets, reciprocity is Tier 2 because no member's design licenses it. Dichotomisation caveat properly scoped.",
+      "rejected_supporters": [
+        "P-624"
+      ],
+      "rejected_supporters_note_2026_09_28": "P-624 removed: its exposure is social frailty (HALFT) and it contains no measure of depression, so it does not support the statement (found by the risk-of-bias reading of 2026-09-28 and checked against the PDF)."
     },
     {
       "id": "VF-27",

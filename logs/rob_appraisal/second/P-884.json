@@ -1,0 +1,194 @@
+{
+ "paper_id": "P-884",
+ "document_check": {
+  "matches": true,
+  "note": "Mizuguchi, Yamamoto, Omiya, Endo, Tano, Oya and Takano 2023, J Aging Res & Lifestyle 12:72-76, 'Novel Screening Tool Using Non-linguistic Voice Features Derived from Simple Phrases to Detect Mild Cognitive Impairment and Dementia'. Participants came from two Japanese hospitals (Takeyama Hospital and Honjo Kodama Hospital). The three-class average one-vs-rest AUC is 0.81, matching the cited result."
+ },
+ "cited_result": "Three-class (healthy control, MCI, AD/D) LightGBM classifier on 17 non-linguistic acoustic features from /a/ and /pa-ta-ka/: average one-vs-rest AUC 0.81 and accuracy 66.7%, under five-fold participant-grouped cross-validation on 195 recordings from 150 participants.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUC) of a multivariable machine-learning classifier for diagnostic classification, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "PROBAST Domain 1: Participants",
+   "judgment": "unclear",
+   "rationale": "This is a prospective observational sample from two hospitals, which is an appropriate data source. However, how participants were selected (consecutive or convenience) and how many were excluded are not reported. Healthy controls were drawn from hospital attendees and are very few.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "The participants of this prospective, observational study comprised 150 patients who were aged \u226545 years (up to 95 years) at the time of examination at two hospitals in Japan.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Patients with respiratory infections and patients who did not understand or complete the assessment process were excluded. (Searched for consecutive, recruit or enrolment procedure: the selection method and the number excluded are not reported.)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "PROBAST Domain 2: Predictors",
+   "judgment": "low",
+   "rationale": "The same recording equipment and phrases were used for everyone. Features were extracted algorithmically and are available at the point of use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Sound recordings were obtained by using a directional pin microphone (ME-52W; OLYMPUS, Tokyo, Japan) connected to a portable, linear pulse-code modulation recorder (TASCAM DR-100mkIII; TEAC Corporation, Tokyo, Japan) at a sampling rate of 96 kHz with a 24-bit resolution.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "After the audio signals were downsampled to 16 kHz with 16-bit resolution, 17 acoustic features were extracted",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Recording the two phrases (/a/ and /pa-ta-ka/) generally took less than 10 s",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "PROBAST Domain 3: Outcome",
+   "judgment": "high",
+   "rationale": "Groups were assigned only from screening-test cut-offs, not from a clinical diagnosis of MCI or dementia. Which tests were used varied between participants. The interval between voice recordings and cognitive testing is not reported, and repeat recordings on different days carry one label.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "Based on the scores of these assessments, the participants were classified into one of three cognitive groups: healthy control (HE), MCI, and AD/D.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "Inclusion criteria MoCA-J \u226526 MoCA-J \u226425 HDS-R \u226521 (or MMSE \u226524) MoCA-J \u226425 HDS-R \u226420 (or MMSE \u226423)",
+     "page": "3 (Table 1)"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "The participants were requested to complete two or three cognitive assessments: the Japanese version of the Montreal Cognitive Assessment (MoCA-J) (4,24), the revised version of the Hasegawa's Dementia Scale (HDS-R) (25), and/or the mini-mental state examination (MMSE) (3).",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "The participants were requested to complete two or three cognitive assessments ... and/or the mini-mental state examination (MMSE)",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "Based on the scores of these assessments, the participants were classified into one of three cognitive groups (outcome assigned from test-score cut-offs; predictors are computed acoustic features)",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "In some instances, the patient's voice was recorded more than twice on different days (2\u20135 times, with an adequate interval between recordings), thereby resulting in 195 sound recordings from 150 participants. (The timing of recordings relative to cognitive testing is not reported.)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "PROBAST Domain 4: Analysis (with PROBAST+AI considerations)",
+   "judgment": "high",
+   "rationale": "The smallest class has 13 recordings, against 17 features. Folds were split at participant level and SMOTE was restricted to training data. However, the Optuna tuning is not stated to be nested inside the training folds, and one tuned parameter set was used for evaluation, so optimism is likely. Performance is internally validated only, with no calibration, no confidence intervals and no external validation. Metrics are computed per recording, so participants with repeat recordings count more than once. Missing data are not addressed.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "N (% female) 13 (69.2%) 77 (70.1%) 105 (51.4%)",
+     "page": "3 (Table 1)"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "LightGBM (Microsoft, Redmond, WA, USA), a gradient-boosting tree algorithm for classification, was used to create the machine-learning models.",
+     "page": "2"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Voice was analyzed on 195 recordings from 150 patients (age, 45\u201395 years).",
+     "page": "1"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data, imputation and incomplete recordings: nothing reported beyond excluding patients who 'did not understand or complete the assessment process'.",
+     "page": "not found (Methods, page 2)"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "All 17 acoustic features contributed to the prediction model.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. repeated measures) accounted for appropriately? [AI: participant-level split]",
+     "answer": "Probably yes",
+     "quote": "All data from a given participant were categorized in the test set or training set, but not in both, to eliminate potential bias owing to identity-confounding factors.",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "The average of the three one-vs-rest (OvR) AUCs and the classification accuracy, based on the confusion matrix, were calculated to test the overall performance of the prediction model (no calibration or confidence intervals reported)",
+     "page": "2"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for? [AI: tuning within training folds; test set held out from tuning; validation type]",
+     "answer": "Probably no",
+     "quote": "The hyperparameters for the LightGBM classifiers were optimized using the Optuna hyperparameter optimization framework (Preferred Networks, Tokyo, Japan). The following optimized parameters were used to build and evaluate the models ... since our model was built with the data from only two hospitals in Japan, further validation should be conducted",
+     "page": "2; 4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "No final model is presented; only importance values are given: 'The LightGBM importance (gain) value ranged from 1021 to 2370'.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was class imbalance handled, and were augmentation and preprocessing confined to the training data?",
+     "answer": "Probably yes",
+     "quote": "we applied the synthetic minority oversampling technique (SMOTE) (27) to balance the sample size between targets in the training dataset",
+     "page": "2"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "Older hospital attendees at two Japanese hospitals; healthy controls are few and also hospital-based."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Two short phrases recorded with standard equipment, applicable at the point of use."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "MCI is defined by screening cut-offs rather than clinical criteria, and the dementia class mixes aetiologies: 'The AD/D group predominantly consisted of patients with AD, followed by dementia with Lewy bodies and frontotemporal dementia.' (page 4)."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 3 (outcome from screening-score cut-offs, applied inconsistently) and Domain 4 (very few healthy-control events, tuning not shown to be nested, no calibration or external validation) are both high; Domain 1 is unclear.",
+ "confidence": "high",
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 17,
+  "matched": 15
+ }
+}

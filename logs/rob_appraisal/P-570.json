@@ -1,0 +1,206 @@
+{
+ "paper_id": "P-570",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Chen Y, Qi Y, Hu Y, et al., Li T, Le W (ADNI), 'Integrated cerebellar radiomic-network model for predicting mild cognitive impairment in Alzheimer's disease', Alzheimer's Dement 2025;21:e14361. It develops cerebellar and hippocampal radiomic models in ADNI (n = 1319) with an in-house test set (n = 308) and an NC-to-MCI conversion analysis (n = 371). Table 2 and the conversion AUCs match the cited statements."
+ },
+ "cited_result": "The principal cited result is the comparative discrimination of cerebellar vs hippocampal radiomic-network models (Table 2, p. 11). For MCI vs NC, the cerebellar model scored AUC 0.94 in training and 0.86 in testing, against 0.69 and 0.72 for the hippocampal model. For AD vs NC and AD vs MCI, hippocampal AUCs were higher, with DeLong P significant in training only (test P = 0.200 and 0.157). A second cited result is the NC-to-MCI conversion AUC: 0.818 cerebellar vs 0.659 hippocampal, with no test reported (p. 12).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited results are the discrimination (AUC) and ranking of machine-learning diagnostic and prognostic models, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1 Participants",
+   "judgment": "High",
+   "rationale": "The diagnostic groups were sampled separately, which is a case-control design. The in-house NC came partly from a physical examination centre and patients from neurology. Inclusion and exclusion criteria appear only in the supplement. The conversion analysis was restricted to NC participants who completed 72 months of follow-up.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g., cohort, cross-sectional consecutive sample)?",
+     "answer": "Probably no",
+     "quote": "An in-house dataset of individuals (102 NC, 104 MCI, and 102 AD) were enrolled who had visited the neurology department or the physical examination center at the First Affiliated Hospital of Dalian Medical University.",
+     "page": "p. 3 of 18"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "additional details about the diagnostic and exclusion criteria of subjects and the image acquisition are provided in Supplementary Material S1. ... Among the 371 NC subjects who completed the 72-month follow-up",
+     "page": "p. 3 of 18; p. 11 of 18"
+    }
+   ]
+  },
+  {
+   "domain": "2 Predictors",
+   "judgment": "Low",
+   "rationale": "Radiomic features come from automated segmentation and PyRadiomics on baseline 3 T T1 MRI with the same preprocessing for everyone, so they are available when the model would be used. Scanner heterogeneity mainly affects transportability.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "standard T1-weighted anatomical imaging was obtained by volumetric 3D magnetization-prepared rapid gradient echo (MPRAGE) or equivalent protocols with slightly different resolutions across patients. Only 3.0 T MRI images were used in the ADNI and in-house cohorts.",
+     "page": "p. 3 of 18"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "The cerebel- lar and hippocampal automated mask extraction was executed using VolBrain",
+     "page": "p. 3 of 18"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "We developed an integrated approach combining radiomics and structural connectome-based modeling, using three-dimensional (3D)-T1 MRI scans from both the Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI) dataset and an in-house dataset",
+     "page": "p. 2 of 18"
+    }
+   ]
+  },
+  {
+   "domain": "3 Outcome",
+   "judgment": "Unclear",
+   "rationale": "Diagnostic and conversion criteria are deferred to the supplement. Whether ADNI and in-house diagnoses were made in the same way, and the interval between MRI and diagnosis, are not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Among them, 137 NC progressed to MCI, which was determined by the MMSE and CDR (Supplementary Material S1 in supporting information).",
+     "page": "p. 3 of 18"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched the main text for NC/MCI/AD diagnostic criteria (e.g., Petersen, NIA-AA, MMSE/CDR cut-offs): deferred to Supplementary Material S1, not in the document.",
+     "page": "p. 3 of 18"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "Among them, 137 NC progressed to MCI, which was determined by the MMSE and CDR",
+     "page": "p. 3 of 18"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "additional details about the diagnostic and exclusion criteria of subjects and the image acquisition are provided in Supplementary Material S1.",
+     "page": "p. 3 of 18"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "Subjects in the ADNI database included ADNI-1, ADNI-GO, ADNI-2, and ADNI-3 studies (Retrospective use of archived diagnoses; radiomic features were computed afterwards by the study team. No explicit blinding statement.)",
+     "page": "p. 3 of 18"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information (classification); Yes (conversion)",
+     "quote": "The NC subjects (n = 371) were followed up for 72 months, with a follow-up interval of 6 to 12 months in the first 3 years and 12 months after 3 years",
+     "page": "p. 3 of 18"
+    }
+   ]
+  },
+  {
+   "domain": "4 Analysis",
+   "judgment": "High",
+   "rationale": "There were 2730 cerebellar candidate features. Univariable p < 0.05 filtering and LASSO appear to have been run on the whole ADNI set before 5-fold CV, so the training estimates leak information. The best of ten classifiers was chosen per task on unstated grounds. No calibration is reported. Site harmonisation is not reported. Training AUCs near 0.998 fell to 0.83-0.90 on the test set, which shows optimism, and the only significant hippocampal advantages come from these training estimates. The conversion AUCs follow forward stepwise selection in 371 completers with no validation described, and the Kaplan-Meier cut-offs used test data. The in-house set is an independent external test for the Table 2 models, which is a strength.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "Consequently, a total of 2730 cerebel- lar radiomic features ... (n = 1319, 574 NCs, 530 MCI, and 215 AD patients)",
+     "page": "p. 6 of 18; p. 3 of 18"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "The cutoff values used in these analyses were determined as the median values from both the training and testing sets. (Dichotomisation only for Kaplan-Meier risk groups; classifiers used continuous features.)",
+     "page": "p. 12 of 18"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information (classification); Probably no (conversion)",
+     "quote": "Among the 371 NC subjects who completed the 72-month follow-up",
+     "page": "p. 11 of 18"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data, imputation or complete-case statements: none found.",
+     "page": "pp. 3-7 of 18"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "The extracted radiomic features based on the radiomics and morphological network properties were fileted using t tests and Mann\u2013Whitney U tests, retaining those with P values < 0.05.",
+     "page": "p. 6 of 18"
+    },
+    {
+     "question": "4.6 Were complexities in the data (multi-site data, harmonisation) accounted for?",
+     "answer": "No information",
+     "quote": "The color bar represents -log(P), with P values computed through a mega-analysis across six sites. (Searched for ComBat or site harmonisation: none reported.)",
+     "page": "p. 8 of 18"
+    },
+    {
+     "question": "4.6a Were preprocessing and feature selection done within training folds only (no leakage)? (AI)",
+     "answer": "Probably no",
+     "quote": "Standardization in the feature domain was performed before the fea- ture selection. ... To assess the performance of the radiomic model, data were randomly separated into five subsets; one subset was used as the validation set and the remaining subsets as the training set.",
+     "page": "p. 6 of 18"
+    },
+    {
+     "question": "4.6b Was the split at participant level? (AI)",
+     "answer": "No information",
+     "quote": "Searched for number of scans per participant or subject-level splitting: not stated.",
+     "page": "p. 6 of 18"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "the corresponding areas under the curve (AUCs), sensitivity, and specificity were used to evaluate the classification performance of the models.",
+     "page": "p. 6 of 18"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for; was the test set held out from all tuning? (AI)",
+     "answer": "Probably no",
+     "quote": "the DeLong test validated that the hippocampal models significantly outperformed the cerebellar models for both AD versus NC (P < 0.0001) and AD versus MCI (P < 0.01) in the training sets (Table 2). ... the AdaBoost classifier exhibited greater robustness and was used in this study to construct the cerebellar model ... Using forward stepwise regression, we selected the optimal radiomic and network feature subsets for both cerebellar and hippocampal models.",
+     "page": "p. 11 of 18"
+    },
+    {
+     "question": "4.8a Is the reported performance apparent, internally or externally validated? (AI)",
+     "answer": "Table 2: internal CV plus external in-house test; conversion AUCs: apparent (no validation described)",
+     "quote": "all subjects from the in-house database were used as independent external validation sets to verify the reliability and robustness of the corresponding models.",
+     "page": "p. 6 of 18"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for final model coefficients: only selected features and SHAP plots are reported (Supplementary Material S3 not in the document).",
+     "page": "p. 11 of 18"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST)",
+ "overall_category": "high",
+ "overall_rationale": "The participants domain is high risk because of case-control sampling of diagnostic groups and the completers-only conversion cohort. The analysis domain is high risk because of univariable feature filtering before CV, a very high feature-to-event ratio, per-task classifier selection, no calibration, clear training optimism and unvalidated stepwise conversion models. The outcome domain is unclear because the criteria sit in the supplement.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The groups have a case-control spectrum. The in-house NC were recruited from a physical examination centre and patients from a neurology department in one Chinese hospital, while ADNI participants are research volunteers."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "The predictors are standard 3 T T1 MRI radiomics, although texture features may not transfer across scanners without harmonisation."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "The outcome is clinical NC/MCI/AD labels whose criteria are not given in the main text."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 13,
+  "matched": 8
+ }
+}

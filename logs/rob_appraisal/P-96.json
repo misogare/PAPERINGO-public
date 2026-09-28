@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-96",
+ "document_check": {
+  "matches": true,
+  "note": "Wu X, Yao X, Shi J, Tang M, Zhou Q, Chen K. Development and validation of a machine learning model for early screening of high-risk mild cognitive impairment from the multi-cohort data. International Journal of Medical Informatics 2025;203:106030. A random forest on seven variables (education, grip strength, height, weight, creatinine, MCV, platelet count), developed in CHARLS 2015, with external AUROC 0.83 (Yiwu 2021 community cohort) and 0.87 (CHARLS 2011 wave). This matches the cited context."
+ },
+ "cited_result": "External-validation AUROC of the seven-variable random forest: 0.83 (95% CI 0.82 to 0.84) in External Set 1 (Yiwu 2021 community cohort, n = 4,140, 572 MCI) and 0.87 (0.86 to 0.88) in External Set 2 (CHARLS 2011 wave, n = 1,782, 297 MCI).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the external discrimination (AUROC) of a multivariable machine-learning screening model, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1 Participants",
+   "judgment": "unclear",
+   "rationale": "CHARLS is an appropriate population-based source for a cross-sectional diagnostic model. However, the eligibility criteria, age restriction, dementia exclusion and selection of the 2,932 analysed participants (and of the external samples) are given only in Fig. 1 and the supplement, not in the text.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Yes",
+     "quote": "The CHARLS is a nationally representative longitudinal study of Chinese residents aged 45 years and above in which extensive data on demographics, health, and socioeconomic factors are collected.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched Methods 2.1 for age limits, dementia exclusion and exclusion for missing blood or examination data. The text refers elsewhere: 'Details of the sample selection process are outlined in Fig. 1 and the supplementary materials.'",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2 Predictors",
+   "judgment": "low",
+   "rationale": "The seven retained predictors are routine objective measurements (anthropometry, grip strength, blood tests) plus education. They are defined in Table 1, are unlikely to be influenced by knowledge of the MMSE result, and are available at the time of intended use. Measurement protocols for the Yiwu cohort are not described in the text.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "A comprehensive list of the included features and their descriptive statistics is provided in Table 1, with detailed information on the measurement methods for each variable also included.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "our model utilizes universally available clinical and physical examination indicators, such as grip strength, height, weight, creatinine, and blood cell indices",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Once routine physical and laboratory test results are available, the system predicts the MCI risk for each individual in less than five seconds.",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "3 Outcome",
+   "judgment": "high",
+   "rationale": "'MCI' is a statistical label: an MMSE score at least 1 SD below the age-stratum mean, with no clinical assessment, no functional criterion, no stated dementia exclusion and no education adjustment. Education is the model's dominant predictor, and the authors acknowledge classification bias from education. The model therefore partly learns education-related MMSE performance, which biases its apparent accuracy for MCI.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "Fourth, the use of MMSE scores alone to define MCI may also introduce classification bias, particularly in populations with varying educational backgrounds, as no education-based adjustment was applied.",
+     "page": "10"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "To define MCI, we adopted an operational criterion based on the concept of aging-associated cognitive decline (AACD), which classifies individuals as cognitively impaired if their performance falls at least one standard deviation (SD) below the age-specific mean.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "Participants scoring \u22651 SD below their age group\u2019s mean MMSE were classified as having cognitive impairment consistent.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Following this framework, we categorized participants into 5-year age strata. For each group, we computed the mean MMSE score and corresponding SD to establish age-specific norms [24].",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "In this study, all participants underwent standardized, face-to-face cognitive assessments evaluating six cognitive domains",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "Third, the cross-sectional design of this study limits the ability to infer causal relationships and to track the progression of MCI over time.",
+     "page": "10"
+    }
+   ]
+  },
+  {
+   "domain": "4 Analysis",
+   "judgment": "high",
+   "rationale": "There are enough events, calibration was reported, and MICE and SMOTE are stated to be confined to training folds. However: (a) the Table 3 threshold metrics for both external sets match a 1:1 case:control ratio, not the stated prevalences, which contradicts the statement that external cohorts were not resampled and casts doubt on how the cited AUROCs were computed; (b) External Set 2 may contain the same individuals as the development set; (c) feature selection partly relied on univariable Pearson correlation, and it is not stated whether selection was inside the CV folds; (d) the internal sensitivity and specificity are reported inconsistently.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Yes",
+     "quote": "MCI, No. (%) Yes 518(17.7) 572(13.8) 297(16.7)",
+     "page": "5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "dependence plots in Fig. 4E reveal non-linear effects for certain predictors such as GS and MCV",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched Methods 2.1 and Results 3.1 for participant flow and exclusions. The text says only 'Details of the sample selection process are outlined in Fig. 1 and the supplementary materials.'",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "To avoid information leakage, MICE was applied after data splitting and restricted to the training data within each cross-validation fold.",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably no",
+     "quote": "This study implemented three complementary feature selection methods: Pearson correlation coefficient to identify linear feature-target relationships, random forest to capture non-linear interactions, and Recursive Feature Elimination (RFE) for iterative feature subset optimization [35\u201337].",
+     "page": "2"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "Finally, the potential individual-level overlap between CHARLS 2011 and 2015 cohorts may exist.",
+     "page": "10"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "Yes",
+     "quote": "Second, we evaluated the calibration by examining the calibration curves and calculating the Brier score.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably yes",
+     "quote": "The final model was also externally validated by external set1 and external set2 to assess their generalizability, and robustness across different populations, and different temporal.",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Probably no",
+     "quote": "Furthermore, the RF has a sensitivity of 0.906 and a specificity of 0.786.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was the training/test split at the participant level (no person's data on both sides)?",
+     "answer": "Yes for External Set 1; Probably no for External Set 2",
+     "quote": "Finally, the potential individual-level overlap between CHARLS 2011 and 2015 cohorts may exist.",
+     "page": "10"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and tuning done within training folds only?",
+     "answer": "Probably yes for imputation and SMOTE; No information for feature selection",
+     "quote": "Like the imputation procedure, SMOTE was performed exclusively within the training folds during cross-validation and was not applied to test sets or external validation cohorts.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably yes",
+     "quote": "All models were trained on the training set using stratified 5-fold cross-validation to optimize performance and reduce overfitting.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was class imbalance handled without affecting the evaluation data?",
+     "answer": "Probably no",
+     "quote": "PPV 0.851 0.735 0.793 NPV 0.86 0.767 0.782 F1 0.856 0.757 0.785",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Externally validated (geographic and temporal); the internal figure of 0.93 is labelled 'Training Set'",
+     "quote": "For External Set 1, the Random Forest model achieved an AUROC of 0.83 (95 % CI: 0.82\u20130.84), demonstrating comparable discriminative performance to that of the training set (AUROC: 0.93).",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "Community-dwelling Chinese older adults, which matches a community-screening use."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Routine examination and blood variables, as the review describes."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "The outcome is MMSE performance at least 1 SD below the age-group mean, not clinically diagnosed MCI."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST)",
+ "overall_category": "high",
+ "overall_rationale": "The Outcome domain is high risk: MCI is an MMSE-only statistical cut-off with no education adjustment, while education is the leading predictor. The Analysis domain is also high risk: the external-set threshold metrics are consistent only with rebalanced evaluation data, External Set 2 may share individuals with the development set, and selection was partly univariable. Participants is unclear. Any high domain makes the overall rating high.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 23,
+  "matched": 18
+ }
+}

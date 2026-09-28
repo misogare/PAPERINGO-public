@@ -1,0 +1,215 @@
+{
+ "paper_id": "P-581",
+ "document_check": {
+  "matches": true,
+  "note": "Torso M, Khosropanah P, Chance SA, Ridgway GR. 'Predicting progression from MCI to dementia using cortical disarray measurement from diffusion MRI', Alzheimer\u2019s Dement. 2025;21:e70310. NACC, 826 participants, 196 MCI in the survival analysis. The cited Kaplan-Meier and pairwise log-rank results appear on pp. 7-8."
+ },
+ "cited_result": "Kaplan-Meier stratification of time to dementia in 196 MCI participants, using dichotomised PerpPD+ cortical diffusivity signature, hippocampal volume fraction, cortical thickness signature and cortical volume fraction. All but cortical volume stratified progression. Principal cited result: the pairwise log-rank comparison of the N+ curves, in which only PerpPD+ differed significantly from cortical volume fraction (chi-square 4.051, P < 0.05).",
+ "tool": "QUIPS",
+ "tool_reason": "The cited result compares how single dichotomised imaging markers (prognostic factors) relate to later conversion to dementia in Kaplan-Meier curves; no multivariable model's discrimination or calibration is reported.",
+ "domains": [
+  {
+   "domain": "1 Study participation",
+   "judgment": "moderate",
+   "rationale": "This is a convenience sample of NACC research-centre participants who had DTI and passed scan-quality exclusions, and the paper gives no counts of people screened or excluded. Non-converters needed at least 2 years of follow-up while converters were kept whatever their follow-up, so entry to the MCI sample depended on follow-up and outcome. The same sample is used for every marker, which limits the effect on the between-marker comparison.",
+   "signalling": [
+    {
+     "question": "Is the source population described?",
+     "answer": "Yes",
+     "quote": "This analysis used data from 15 ADRCs collected between 2009 and 2023.",
+     "page": "p. 3"
+    },
+    {
+     "question": "Are inclusion and exclusion criteria adequately described?",
+     "answer": "Yes",
+     "quote": "had a clinical AD-type presentation (AD, MCI) who had undergone MRI scanning (T1-weighted structural and DTI) and clinical evaluation. ... Diffusion scans with slice thickness > 3 mm or b-value > 3000 or acquired from 1.5T MRI scanners were not included in the study.",
+     "page": "p. 3"
+    },
+    {
+     "question": "Is selection unrelated to outcome or follow-up?",
+     "answer": "No",
+     "quote": "Individuals with objective cognitive deficits who did not progress to dementia during the available follow-up periods. Only participants with a minimum follow-up of 2 years were included. ... Note that the survival analysis (described below) includes all 196 MCI participants and does not make use of the MCI C and MCI NC groups as defined above.",
+     "page": "p. 3"
+    },
+    {
+     "question": "Are numbers screened, eligible and excluded reported?",
+     "answer": "No information",
+     "quote": "Searched for a flow diagram or counts of NACC participants screened, excluded for scan criteria, or excluded for short follow-up; none found.",
+     "page": "pp. 3-5"
+    },
+    {
+     "question": "Is the baseline sample adequately described?",
+     "answer": "Yes",
+     "quote": "Table 1 summarizes characteristics of all the participants included in this study.",
+     "page": "p. 3"
+    }
+   ]
+  },
+  {
+   "domain": "2 Study attrition",
+   "judgment": "moderate",
+   "rationale": "Numbers at risk are reported by year and censoring is handled by Kaplan-Meier. The paper gives no reasons for censoring or loss and does not compare people censored early with those followed longer. Numbers at risk fall sharply after year 3.",
+   "signalling": [
+    {
+     "question": "Is follow-up (numbers at risk) reported?",
+     "answer": "Yes",
+     "quote": "Number of participants available at each time point Negative 154 140 127 91 64 38 17 11 7 3",
+     "page": "p. 9"
+    },
+    {
+     "question": "Are reasons for loss to follow-up provided?",
+     "answer": "No information",
+     "quote": "Searched for 'lost to follow-up', 'withdraw', 'censor', 'dropout'; none found.",
+     "page": "whole text"
+    },
+    {
+     "question": "Are participants lost to follow-up compared with those followed?",
+     "answer": "No information",
+     "quote": "Searched for any comparison of censored versus retained participants; only group mean follow-up is given: 'Follow-up time, years 7.1 (2.7) 4.7 (2.2) 5.7 (2.8)'",
+     "page": "p. 4"
+    }
+   ]
+  },
+  {
+   "domain": "3 Prognostic factor measurement",
+   "judgment": "moderate",
+   "rationale": "Every marker is measured by automated pipelines and adjusted and dichotomised the same way. The cut-points come from the CU versus AD distributions, not from the MCI outcome, and the signatures were defined on independent ADNI data. However, PerpPD+ was chosen from three diffusivity metrics because it best separated converters from non-converters in this same MCI sample, while the macrostructural comparators were fixed in advance. That outcome-driven choice favours the diffusivity marker in the cited comparison. The software is proprietary.",
+   "signalling": [
+    {
+     "question": "Is a clear definition of the prognostic factor and its cut-point provided?",
+     "answer": "Yes",
+     "quote": "adjusted for confounds (age, sex, scanner model, and b-value) using linear models and then dichotomized into neurodegeneration positive (N+) ... using a cutpoint determined as the crossing point of the estimated probability density functions of the CU and AD groups.",
+     "page": "p. 5"
+    },
+    {
+     "question": "Were the regions defined independently of the study data?",
+     "answer": "Yes",
+     "quote": "Values for the three cortical diffusivity metrics were averaged over bilaterally symmetric meta-regions or \u201cAD signatures\u201d comprising medial\u2013temporal and connected regions, previously determined using",
+     "page": "p. 3"
+    },
+    {
+     "question": "Was the choice of factor independent of the outcome in the analysed sample?",
+     "answer": "No",
+     "quote": "measure that best distinguishes the two MCI groups at the regional level will be included.",
+     "page": "p. 5"
+    },
+    {
+     "question": "Is the factor measured in the same way for all participants with a valid method?",
+     "answer": "Probably yes",
+     "quote": "Cortical diffusivity analysis was conducted using a proprietary software tool (Cortical Disarray Measurement [CDM]; patent WO2016162682A1).",
+     "page": "p. 3"
+    }
+   ]
+  },
+  {
+   "domain": "4 Outcome measurement",
+   "judgment": "moderate",
+   "rationale": "Conversion to dementia is based on clinical diagnoses from many centres. The paper gives no diagnostic criteria for dementia at follow-up and does not say whether diagnosing clinicians were blind to the MRI.",
+   "signalling": [
+    {
+     "question": "Is a clear definition of the outcome provided?",
+     "answer": "Partly",
+     "quote": "with objective cognitive deficits at baseline who progressed to dementia at any follow-up visit after the MRI scan.",
+     "page": "p. 3"
+    },
+    {
+     "question": "Was the outcome measured validly and without knowledge of the prognostic factor?",
+     "answer": "No information",
+     "quote": "Searched for dementia diagnostic criteria at follow-up and for blinding of clinical diagnosis to imaging; none found.",
+     "page": "pp. 3-5"
+    },
+    {
+     "question": "Was the outcome measured in the same way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Survival functions were generated to estimate the probability of remaining in the MCI state or progressing to dementia over time.",
+     "page": "p. 5"
+    }
+   ]
+  },
+  {
+   "domain": "5 Study confounding",
+   "judgment": "moderate",
+   "rationale": "Each marker was adjusted for age, sex, scanner and b-value before dichotomisation. Baseline cognitive severity, APOE \u03b54 and education were not adjusted for, although converters differed on APOE \u03b54 and MMSE, and no multivariable survival model was fitted.",
+   "signalling": [
+    {
+     "question": "Are important confounders measured?",
+     "answer": "Yes",
+     "quote": "To characterize the cohort, the Mini-Mental State Examination (MMSE), apolipoprotein E (APOE) \u03b54, and CDR global and sum of boxes (CDR-SB) scores were used.",
+     "page": "p. 3"
+    },
+    {
+     "question": "Are important confounders accounted for in the analysis?",
+     "answer": "Partly",
+     "quote": "each value of the compared measures (PerpPD+ signature, HVF, CT signature, and CVF) were adjusted for confounds (age, sex, scanner model, and b-value) using linear models",
+     "page": "p. 5"
+    },
+    {
+     "question": "Are baseline differences in prognostic variables acknowledged?",
+     "answer": "Yes",
+     "quote": "The distribution of APOE \u03b54 carriers and non-carriers differed significantly between the groups, with a higher proportion of APOE \u03b54 carriers observed in the AD and MCI C group.",
+     "page": "p. 5"
+    }
+   ]
+  },
+  {
+   "domain": "6 Statistical analysis and reporting",
+   "judgment": "high",
+   "rationale": "The cited comparison between markers uses pairwise log-rank tests on N+ and N- groups drawn from the same 196 people, so the groups overlap. The test assumes independent samples, which these are not, and the paper corrects for none of the 12 pairwise tests. There are no hazard ratios, concordance statistics or paired comparisons of discrimination. Markers were dichotomised (the authors acknowledge the oversimplification). Table 4 has an impossible confidence interval. All authors are employed by, or co-founded, the company that holds the patent on the diffusivity method.",
+   "signalling": [
+    {
+     "question": "Is the analytic strategy appropriate for comparing prognostic factors?",
+     "answer": "No",
+     "quote": "Two separate Kaplan\u2013Meier pairwise comparison analyses were performed to assess significant differences between survival curves for each of the four measures compared (Figure 3). One analysis compared the positive curves of each measure, while the other focused on the negative curves.",
+     "page": "p. 7"
+    },
+    {
+     "question": "Is multiplicity accounted for in the pairwise comparisons?",
+     "answer": "No",
+     "quote": "Differences in survival curves between groups were formally tested using the log-rank test. Statistical significance was set at P < 0.05.",
+     "page": "p. 5"
+    },
+    {
+     "question": "Are continuous factors handled appropriately?",
+     "answer": "No",
+     "quote": "biomarker-positive and biomarker-negative groups, which might oversimplify the continuous nature of these measures.",
+     "page": "p. 11"
+    },
+    {
+     "question": "Is there sufficient and consistent presentation of data?",
+     "answer": "Partly",
+     "quote": "N- HVF 2490.1 186.1 2126.1 2032.6 [mean survival 2490.1 days with a 95% CI upper bound of 2032.6, below the estimate]",
+     "page": "p. 8"
+    },
+    {
+     "question": "Is there no concern about selective reporting or conflicts of interest?",
+     "answer": "Probably no",
+     "quote": "MT, PK, and GR are currently employed at a company, Oxford Brain Diagnostics. SAC has a patent (WO2016162682A1) related to the diffusion MRI analysis used in the present study.",
+     "page": "p. 12"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (QUIPS): the statistical analysis domain is high and the other five are moderate.",
+ "overall_category": "high",
+ "overall_rationale": "The cited between-marker comparison rests on uncorrected pairwise log-rank tests between overlapping groups of the same participants, which assume independence the data do not have. The diffusivity metric was chosen by its separation of converters in the same MCI sample, while the comparators were fixed in advance. Selection depended on follow-up for non-converters, baseline severity was not adjusted for, conversion was not blinded or defined, and the authors have a commercial interest. One high domain gives high overall.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "US research-centre MCI (NACC) scanned with 3T DTI; relevant to the review question though restricted to centres with diffusion imaging."
+  },
+  {
+   "domain": "Prognostic factor",
+   "concern": "some",
+   "rationale": "PerpPD+ is a proprietary, patented measure with CU/AD-derived cut-points; reproducibility outside the developer is not shown."
+  }
+ ],
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 18
+ }
+}

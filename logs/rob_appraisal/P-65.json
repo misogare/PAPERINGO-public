@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-65",
+ "document_check": {
+  "matches": true,
+  "note": "Liu Y, Yao L, Liu J, Li H, Zeng Y, Xu Y. Leveraging hemispheric asymmetry in structural MRI with an attention-guided 3D CNN for early prediction of Alzheimer\u2019s conversion (HemiNet). Neural Networks 197 (2026) 108534. ADNI, 573 participants (300 pMCI/273 sMCI), 36-month conversion, AUC 0.8401. This matches record C-204 in the cited context."
+ },
+ "cited_result": "Prediction of MCI-to-AD conversion within 36 months from structural MRI with the HemiNet 3D CNN on ADNI (n = 573): five-fold stratified cross-validation, AUC 0.8401 \u00b1 0.0297. Secondary: in the ablation, the baseline DenseNet had AUC 0.7854 and the full model 0.8401.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUC) of a deep-learning prognostic model predicting MCI-to-AD conversion, and a comparison with its ablated variants, so PROBAST with PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "ADNI is an appropriate longitudinal cohort. The paper does not report how the 573 participants were selected from ADNI-1/2/3/GO, or whether participants with incomplete 36-month follow-up or reversion were excluded. Excluding them could bias the sMCI group. Excluding left-handed participants is justified but narrows the population.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Yes",
+     "quote": "a multi-center, longitudinal cohort (Petersen et al., 2010)",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "64 left-handed or mixed-handed subjects were excluded from the original ADNI cohort during the preprocessing stage. (Searched for other selection criteria, handling of incomplete follow-up and a participant flow; none reported.)",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "high",
+   "rationale": "The model is presented as predicting from a single baseline scan, but the ADNI analysis used 1905 scans from 573 participants. The test-set Grad-CAM figure shows scans at M06 and M24, and only the OASIS-3 evaluation is stated to use baseline scans. Follow-up scans of pMCI participants may have been acquired near or after conversion, so the predictors may not correspond to the intended moment of prediction.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "all scans were aligned with the MNI152 1mm template (Fonov et al., 2009, 2011) and resampled to an isotropic resolution of 1.5 mm",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "the framework is implemented as an end-to-end DL architecture",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably no",
+     "quote": "Across the ADNI-1/2/3/GO phases, 573 subjects (300 pMCI and 273 sMCI) were included, with 1905 corresponding sMRI scans analyzed in detail. [p. 3]; baseline T1-weighted structural MRI scans were used for model evaluation [p. 3, OASIS-3 only]; On the test set, heatmap visualizations were generated from the feature maps immediately before the fully connected layer [p. 8]",
+     "page": "3, 8"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "low",
+   "rationale": "The outcome is clinical conversion to AD within 36 months, the standard ADNI pMCI/sMCI definition, applied in the same way to all participants over an appropriate horizon. It is a clinical outcome rather than one derived from the imaging predictors.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "participants in the pMCI group were initially diagnosed with MCI at baseline and converted to AD within 36 months of follow-up",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "all compared methods were evaluated on the ADNI dataset and adopted a consistent 36-month follow-up period for de\ufb01ning sMCI and pMCI",
+     "page": "7"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "The distinction between the two groups was based on clinical progression",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "participants in the pMCI group were initially diagnosed with MCI at baseline and converted to AD within 36 months of follow-up",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "The distinction between the two groups was based on clinical progression",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "converted to AD within 36 months of follow-up",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The partitions are at the participant level, augmentation is confined to training data, and there is an external OASIS-3 test (n = 144). Against this, calibration was not assessed, and the reported sensitivity equals accuracy in every configuration, which suggests a weighted-average recall rather than class sensitivity. The paper does not report how multiple scans per participant were aggregated, how model selection and tuning were done (no validation split is described), or the participant flow. A 13M-parameter network was trained from scratch on 573 participants, and the external set has 82 events.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "573 subjects (300 pMCI and 273 sMCI) [p. 3]; Its parameter count (13.01M) is only 18.9% that of DenseNet-169 (68.70M). [p. 6]",
+     "page": "3, 6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "voxel intensities were standardized using zero-mean normalization (mean = 0, variance = 1)",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for a participant flow or numbers screened and excluded (other than the 64 left- or mixed-handed); none reported.",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing scans, incomplete follow-up or imputation; none reported.",
+     "page": "3, 6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "the framework is implemented as an end-to-end DL architecture",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (multiple scans per participant, multi-site data) accounted for appropriately?",
+     "answer": "No information",
+     "quote": "with 1905 corresponding sMRI scans analyzed in detail (no description of how several scans per participant were modelled or aggregated)",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "model performance was evaluated using a suite of metrics, including accuracy (ACC), sensitivity (SEN), speci\ufb01city (SPE), precision (PRE), F1-score, and the area under the curve (AUC)",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably yes",
+     "quote": "The dataset of 573 patients was partitioned into \ufb01ve mutually exclusive subsets to prevent data leakage [p. 6]; the Proposed Network achieved the best performance on OASIS-3, with an AUC of 0.8137 \u00b1 0.0351 and an accuracy of 0.7345 \u00b1 0.0239 [p. 8]",
+     "page": "6, 8"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "Data will be made available on request.",
+     "page": "10"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "The dataset of 573 patients was partitioned into \ufb01ve mutually exclusive subsets to prevent data leakage",
+     "page": "6"
+    },
+    {
+     "question": "AI: Are augmentation and preprocessing confined to training data?",
+     "answer": "Yes",
+     "quote": "random noise was added to the training data to enhance generalization",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "Training was performed using the Adam optimizer with a batch size of 2, a learning rate of 1e-5, 100 epochs, and binary cross-entropy loss. (No validation split, early stopping or checkpoint selection described.)",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Not needed (near-balanced 300/273)",
+     "quote": "573 subjects (300 pMCI and 273 sMCI)",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated (five-fold CV, the cited result) and externally validated on OASIS-3",
+     "quote": "Each experiment was independently repeated \ufb01ve times using identical data partitions to ensure statistical robustness.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "The sample is ADNI research volunteers, right-handed only."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "The model is intended for a single baseline scan, but development appears to have used several scans per participant."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "The outcome is the standard 36-month MCI-to-AD conversion."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 2 is high because the development and test data appear to include follow-up scans (1905 scans for 573 participants, test-set images at M24), not only baseline scans. Domain 4 is high: no calibration, a sensitivity-reporting anomaly, an unreported tuning procedure and unreported handling of repeated scans. Domain 1 is unclear. The external OASIS-3 validation reduces, but does not remove, concern about optimism.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 11
+ }
+}

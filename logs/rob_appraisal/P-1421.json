@@ -1,0 +1,226 @@
+{
+ "paper_id": "P-1421",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Valletta M et al. 'Blood biomarkers of Alzheimer's disease and progression across different stages of cognitive decline in the community', Nature Communications (2025) 16:10412 (SNAC-K cohort). Table 2 reports HR 1.07 (0.73, 1.56) for high vs low p-tau217 for the normal cognition to MCI transition (basic model), as cited."
+ },
+ "cited_result": "Association of high vs low baseline serum p-tau217 (cut-off 0.134 pg/mL) with the transition from normal cognition to MCI: HR 1.07 (0.73 to 1.56), basic multistate Markov model (age as time scale, adjusted for sex and education), n=2148. Fully adjusted: HR 1.19 (0.75 to 1.88).",
+ "tool": "QUIPS",
+ "tool_reason": "The cited result is the association of one prognostic factor (baseline p-tau217 level) with a later outcome (the transition to MCI), estimated as a hazard ratio. It is not a prediction model and not a causally framed exposure.",
+ "domains": [
+  {
+   "domain": "D1 Study participation",
+   "judgment": "Moderate",
+   "rationale": "The source is a random population sample (73% participation) and is well described. However, 833 of the 3123 dementia-free participants (27%) were excluded for missing blood biomarkers, and they differ systematically: older, more often female, less educated, more comorbid. The authors acknowledge this may bias results toward underestimation.",
+   "signalling": [
+    {
+     "question": "Is the source population and sampling frame adequately described?",
+     "answer": "Yes",
+     "quote": "At baseline (2001-2004), 3363 randomly selected individuals aged 60+ from the Kungsholmen district of Stockholm were enrolled (73% participation rate).",
+     "page": "6"
+    },
+    {
+     "question": "Is there adequate participation in the study by eligible persons?",
+     "answer": "Probably no",
+     "quote": "We selected dementia-free participants at baseline (n = 3123) and excluded individuals missing data on blood biomarkers (n = 833), obtaining a baseline population of 2290 participants.",
+     "page": "6"
+    },
+    {
+     "question": "Are those excluded compared with those included?",
+     "answer": "Yes",
+     "quote": "Participants with missing data were on average older, more frequently females, and had a lower educational level and a higher prevalence of chronic diseases (p < 0.001) than those with complete baseline data.",
+     "page": "6"
+    },
+    {
+     "question": "Is the potential impact of the exclusion acknowledged?",
+     "answer": "Yes",
+     "quote": "Since these individuals were at higher risk of dementia, their exclusion may have led to an underestimation of the results.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "D2 Study attrition",
+   "judgment": "Low",
+   "rationale": "Attrition was low (6.2%), and drop-outs are described and compared with those retained. An inverse-probability-weighted sensitivity analysis for attrition gave consistent estimates. Death is modelled as an absorbing state, and unknown MCI status among surviving dementia-free participants is handled within the model.",
+   "signalling": [
+    {
+     "question": "Is the proportion of the baseline sample lost to follow-up reported?",
+     "answer": "Yes",
+     "quote": "Overall, 142 (6.2%) participants dropped out after the baseline assessment, leaving 2148 participants with available follow-up (Supplementary Fig S2).",
+     "page": "6"
+    },
+    {
+     "question": "Are participants lost to follow-up compared with those retained?",
+     "answer": "Yes",
+     "quote": "Compared to those with available follow-up data, participants who dropped out were younger (mean age difference: \u22127.52 years; 95% CI: \u22129.27, \u22125.76)",
+     "page": "6"
+    },
+    {
+     "question": "Is attrition accounted for in the analysis?",
+     "answer": "Yes",
+     "quote": "Sensitivity analyses using inverse probability weighting (IPW) to account for attrition yielded estimates that were consistent with the main results (Supplementary Tables S8 and S9).",
+     "page": "2"
+    },
+    {
+     "question": "Is incomplete outcome information handled appropriately?",
+     "answer": "Yes",
+     "quote": "For participants who were alive and dementia-free but lacked information on their MCI status, the model accounted for this uncertainty by assuming that their exact state was unknown but could be limited to either normal cognition or MCI.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "D3 Prognostic factor measurement",
+   "judgment": "Low",
+   "rationale": "Serum p-tau217 was measured for everyone at baseline with a commercial assay (ALZpath Simoa) in one laboratory, with precision reported. The binary cut-off came from an earlier SNAC-K analysis optimised for 10-year dementia (training/test split), not for the MCI outcome studied here. Only 5 values below detection were imputed. The measure is serum, where concentrations are lower than in plasma.",
+   "signalling": [
+    {
+     "question": "Is the prognostic factor clearly defined and measured with a valid and reliable method?",
+     "answer": "Yes",
+     "quote": "Simoa ALZpath p-Tau-217 Advantage PLUS Kit for serum p-tau217",
+     "page": "6"
+    },
+    {
+     "question": "Are cut-offs for the prognostic factor defined independently of the outcome studied?",
+     "answer": "Probably yes",
+     "quote": "Within the training dataset, we used a non-parametric bootstrapping procedure (5000 iterations) to identify the optimal cut-off for each biomarker to predict the onset of all-cause dementia within 10 years.",
+     "page": "6"
+    },
+    {
+     "question": "Is the same method and setting of measurement used for all participants?",
+     "answer": "Yes",
+     "quote": "Peripheral venous blood samples were collected at baseline (fasting was not compulsory) and serum aliquots were stored at the Karolinska Institutet Bio Bank at \u221280 \u00b0C in cryogenic storage vials.",
+     "page": "6"
+    },
+    {
+     "question": "Is missing or undetectable prognostic factor data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Data below the limit of detection were replaced, using a not missing at random strategy, through single-value imputation, with a value of 0 (n = 6 for A\u03b242, 15 for p-tau181, 5 for p-tau217 and 15 for t-tau).",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "D4 Outcome measurement",
+   "judgment": "Moderate",
+   "rationale": "MCI has a clear algorithmic definition applied the same way at every wave: at least 1.5 SD below age-specific norms in at least one of five domains, with preserved function. However, it rests on a single assessment and requires no complaint or confirmation, which invites misclassification. Participants under 78 were assessed only every six years, so transitions from normal cognition to MCI can be missed. People who went straight from normal cognition to dementia are assumed to have passed through MCI. Such largely non-differential misclassification of the cited transition could attenuate the HR toward the null. The paper does not say whether psychologists knew biomarker values, but the definition is based on test scores.",
+   "signalling": [
+    {
+     "question": "Is the outcome clearly defined?",
+     "answer": "Yes",
+     "quote": "Individuals were classi\ufb01ed as having MCI if they scored \u22641.5 SD below the age-speci\ufb01c mean in at least one cognitive domain and showed largely preserved functional independence",
+     "page": "6"
+    },
+    {
+     "question": "Is the same method used for all participants at each wave?",
+     "answer": "Yes",
+     "quote": "The same procedure was used to identify MCI at follow-ups, using the baseline cut-offs.",
+     "page": "6"
+    },
+    {
+     "question": "Is outcome ascertainment frequent enough to capture the transition?",
+     "answer": "Probably no",
+     "quote": "Participants were followed up every six (<78 years old) or three years (\u226578 years old).",
+     "page": "6"
+    },
+    {
+     "question": "Is the outcome classification free of assumptions that could misclassify the transition?",
+     "answer": "Probably no",
+     "quote": "The direct transition from normal cognition to dementia was not allowed; individuals who progressed directly from normal cognition to dementia were assumed to have passed through a MCI phase, although this was not observed due to intermittent observation.",
+     "page": "7"
+    },
+    {
+     "question": "Is the outcome measured without knowledge of the prognostic factor?",
+     "answer": "No information",
+     "quote": "Searched Methods (Data collection, MCI, Blood biomarkers) for when serum was assayed relative to cognitive assessments or for masking of psychologists; not reported. MCI is assigned algorithmically from test scores.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "D5 Study confounding",
+   "judgment": "Low",
+   "rationale": "Age is the time scale, and the basic model adjusts for sex and education. The fully adjusted model adds the comorbidities known to shift blood biomarker levels (chronic kidney disease, heart disease, cerebrovascular disease, anaemia, obesity) and gives a similar estimate (1.19, 0.75 to 1.88). APOE is not adjusted for, but for a prognostic association that is not essential.",
+   "signalling": [
+    {
+     "question": "Are important potential confounders measured?",
+     "answer": "Yes",
+     "quote": "Information on chronic diseases was collected by physicians through clinical evaluation, medical records, self-reports, laboratory tests, and medication use.",
+     "page": "7"
+    },
+    {
+     "question": "Are important potential confounders accounted for in the design or analysis?",
+     "answer": "Yes",
+     "quote": "The baseline transition hazards of the model were assumed to follow a Gompertz distribution55, with age used as time scale.",
+     "page": "7"
+    },
+    {
+     "question": "Is the estimate robust to further adjustment?",
+     "answer": "Yes",
+     "quote": "P-tau217 High vs Low 81/803 vs 230/1345 1.07 (0.73, 1.56) 1.19 (0.75, 1.88)",
+     "page": "4 (Table 2)"
+    }
+   ]
+  },
+  {
+   "domain": "D6 Statistical analysis and reporting",
+   "judgment": "Low",
+   "rationale": "An interval-censored multistate Markov model with death as a competing absorbing state suits intermittently observed cognitive transitions. Model assumptions are stated. Continuous biomarkers use splines with prespecified knots. Every transition is reported, including null ones, reporting follows STROBE, and the code is public.",
+   "signalling": [
+    {
+     "question": "Is the statistical model adequate for the design?",
+     "answer": "Yes",
+     "quote": "We used a four-state model accounting for interval-censoring.",
+     "page": "7"
+    },
+    {
+     "question": "Are continuous prognostic factors handled appropriately?",
+     "answer": "Yes",
+     "quote": "AD blood biomarkers were converted into z-scores and modeled using restricted cubic splines with 3 prespeci\ufb01ed knots at 25th, 50th, and 75th percentiles.",
+     "page": "3 (Fig. 1 legend)"
+    },
+    {
+     "question": "Is there no selective reporting of results?",
+     "answer": "Yes",
+     "quote": "No association was found between AD blood biomarkers and the progression from normal cognition to MCI.",
+     "page": "2"
+    },
+    {
+     "question": "Is the reporting transparent?",
+     "answer": "Yes",
+     "quote": "The results of the study are reported following the STROBE recommendations48.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "Low",
+   "rationale": "The participants are a random urban population sample aged 60 and over from Stockholm, which fits a community question. Excluding people without biomarkers leaves a healthier sample."
+  },
+  {
+   "domain": "Prognostic factor",
+   "concern": "Some concerns",
+   "rationale": "The measure is serum, not plasma, p-tau217, and the cut-off (0.134 pg/mL) was optimised for 10-year dementia, not MCI: 'AD biomarkers were measured in serum, where their concentration is lower compared to plasma.' (p6)"
+  },
+  {
+   "domain": "Outcome",
+   "concern": "Some concerns",
+   "rationale": "MCI is defined psychometrically, with no complaint criterion and no clinical adjudication, which differs from clinically or consensus-defined MCI in other cohorts."
+  }
+ ],
+ "overall": "Moderate risk of bias (reported as some concerns). QUIPS: two domains moderate (participation, outcome measurement); four low.",
+ "overall_category": "some_concerns",
+ "overall_rationale": "Attrition, prognostic factor measurement, confounding and analysis are low risk: low drop-out handled with IPW, a standard assay, age-as-time-scale adjustment with robust full adjustment, and an appropriate multistate model with complete reporting. Two domains are moderate. Participation: 27% of the dementia-free baseline sample was excluded for missing biomarkers, and these people differ systematically. Outcome measurement: single-visit psychometric MCI, six-yearly assessment under age 78, and the modelled assumption that direct progression to dementia passes through MCI, all of which could attenuate the normal-cognition-to-MCI HR. Two moderate domains give an overall rating of moderate.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 23,
+  "matched": 23
+ }
+}

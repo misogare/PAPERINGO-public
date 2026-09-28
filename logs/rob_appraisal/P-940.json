@@ -1,0 +1,128 @@
+{
+ "paper_id": "P-940",
+ "document_check": {
+  "matches": true,
+  "note": "Crocco EA, Curiel RE, Kitaigorodsky M, et al. Intrusion errors and progression of cognitive deficits in older adults with MCI and PreMCI states. Dement Geriatr Cogn Disord 2021;50(2):135-142 (PMC author manuscript). The document reports ROC AUCs for the LASSI-L intrusion ratio between Stable CN and aMCI progressors, and it has no aMCI non-progressor group, as the review states."
+ },
+ "cited_result": "AUC 0.905 (Cued B1 PIE ratio; 0.919 for Cued B2) for separating Stable cognitively normal participants from aMCI participants who progressed to dementia. The Youden cut-point of .44 gave sensitivity 83.3% and specificity 86.3%.",
+ "tool": "QUADAS-2",
+ "tool_reason": "The cited result is the discrimination (AUC) of a single index test, the LASSI-L intrusion ratio, against diagnostic outcome groups; it is not a multivariable model.",
+ "domains": [
+  {
+   "domain": "1. Patient selection",
+   "judgment": "High",
+   "rationale": "Recruitment was a convenience sample. The ROC contrasts two extreme outcome-defined groups: participants normal at both baseline and follow-up, and aMCI participants who all progressed. aMCI non-progressors and PreMCI participants are excluded from the AUC.",
+   "signalling": [
+    {
+     "question": "Was a consecutive or random sample of patients enrolled?",
+     "answer": "No",
+     "quote": "Participants were recruited through outreach events, public announcements, or referrals to participate in the study.",
+     "page": "3"
+    },
+    {
+     "question": "Was a case-control design avoided?",
+     "answer": "No",
+     "quote": "ROC analyses were employed using Youden\u2019s criteria, which revealed sensitivity, specificity, and an area under the ROC curve to determine optimal cut-points for Cued B1 and Cued B2 that successfully distinguished Stable CN from aMCI participants that had progressed to dementia.",
+     "page": "6"
+    },
+    {
+     "question": "Did the study avoid inappropriate exclusions?",
+     "answer": "No",
+     "quote": "All participants in this subgroup met all criteria for aMCI at baseline and progressed to a dementia diagnosis at or before their last follow up evaluation.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Index test",
+   "judgment": "Low",
+   "rationale": "Judged for the cited AUC. The index ratio was measured at baseline, before the outcome was known, with an explicit formula, and the AUC does not depend on a threshold. The cut-points (.44, .24), however, were chosen by Youden's index in the same data. The accompanying sensitivity, specificity and the Table 3 classifications would be at high risk.",
+   "signalling": [
+    {
+     "question": "Were the index test results interpreted without knowledge of the reference standard?",
+     "answer": "Probably yes",
+     "quote": "The present results indicated that baseline intrusion error rates on Cued B1 and Cued B2 recall on the LASSI-L could differentiate stable cognitive normal from aMCI progressors to dementia over 26.5 months",
+     "page": "7"
+    },
+    {
+     "question": "If a threshold was used, was it pre-specified?",
+     "answer": "No (not applicable to the AUC itself)",
+     "quote": "Using Youden\u2019s criteria, a cut-point of.44 (PIE ratio on Cued B1) yielded a sensitivity of 83.3% and specificity of 86.3%",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "3. Reference standard",
+   "judgment": "Low",
+   "rationale": "Dementia was defined by explicit CDR and neuropsychological criteria applied in both source studies, and the LASSI-L was kept out of diagnostic classification. Blinding of diagnosticians to LASSI-L scores is implied, not stated explicitly.",
+   "signalling": [
+    {
+     "question": "Is the reference standard likely to correctly classify the target condition?",
+     "answer": "Probably yes",
+     "quote": "The criteria for dementia used in both studies was a Global CDR of 1.0 or greater, indicating functional deficits, and neuropsychological performance on memory tests that were 2.0 SD or greater, below normal limits for age, education, and language group.",
+     "page": "4"
+    },
+    {
+     "question": "Were the reference standard results interpreted without knowledge of the index test?",
+     "answer": "Probably yes",
+     "quote": "As part of the testing protocol, all participants were administered the Loewenstein-Acevedo Scales for Semantic Interference and Learning (LASSI-L), which was not used for diagnostic classification to avoid potential circularity.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Flow and timing",
+   "judgment": "High",
+   "rationale": "The same assessments were applied in both studies over a mean 26.5-month follow-up. But the analysed groups were defined by outcome: the Stable CN group had to be normal at the final visit and the aMCI group had to progress. There is no flow diagram or count of participants screened, lost or excluded, and the PreMCI groups are not in the AUC.",
+   "signalling": [
+    {
+     "question": "Was there an appropriate interval between index test and reference standard?",
+     "answer": "Probably yes",
+     "quote": "The average follow-up interval between study groups was 26.5 months, and there were no differences between groups when it comes to average follow-up.",
+     "page": "6"
+    },
+    {
+     "question": "Did all patients receive the same reference standard?",
+     "answer": "Yes",
+     "quote": "Both studies are longitudinal investigations using identical assessment methods and diagnostic criteria, including annual clinical and neuropsychological evaluations.",
+     "page": "3"
+    },
+    {
+     "question": "Were all patients included in the analysis?",
+     "answer": "No",
+     "quote": "All participants classified as Stable CN had to meet the criteria for CN at baseline and final follow-up.",
+     "page": "4"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Patient selection",
+   "concern": "High",
+   "rationale": "The two-gate extreme-group sample (stable normal against aMCI converters) does not match the intended use, which is predicting progression among people with MCI or at-risk states. The aMCI group already had impaired delayed recall at baseline, so the AUC largely reflects cross-sectional separation of aMCI from normal cognition."
+  },
+  {
+   "domain": "Index test",
+   "concern": "Low",
+   "rationale": "The LASSI-L intrusion ratio is fully specified (Total Intrusion Errors / (Total Intrusion Errors + Total Correct Responses), p6)."
+  },
+  {
+   "domain": "Reference standard",
+   "concern": "Low",
+   "rationale": "Progression to dementia is defined by CDR of 1 or more plus memory impairment of 2 SD or more, which fits a prognostic target."
+  }
+ ],
+ "overall": "High risk of bias; high applicability concern (patient selection)",
+ "overall_category": "high",
+ "overall_rationale": "Patient selection and flow are both high risk. The AUC comes from an extreme-group comparison with outcome-defined inclusion (normal at both time points against aMCI participants who all converted), so it overstates the test's ability to predict progression. The index test and reference standard are otherwise adequately specified.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 10,
+  "matched": 10
+ }
+}

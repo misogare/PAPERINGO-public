@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-12",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Grillenberger AJ, Shenton N, Lauritzen M, Benedek K, Puthusserypady S. 'Exploring the potential of explainable deep learning for EEG-based cognitive decline prediction', Computers in Biology and Medicine 204 (2026) 111538. It uses the public CAUEEG resting-state EEG dataset from Chung-Ang University Hospital, which matches the review's 'public single-hospital dataset'."
+ },
+ "cited_result": "The review cites no number, so the principal result is appraised: MCI vs normal classification on CAUEEG by the attention models under subject-based 5-fold CV. 1D-Attention: test accuracy 70.11%, sensitivity 68.94%, specificity 71.46%. 2D-Attention: 68.55%.",
+ "tool": "PROBAST",
+ "tool_reason": "The result is the diagnostic performance of a deep-learning classifier distinguishing MCI from normal subjects, which falls under prediction-model performance.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "The data are a retrospective hospital EEG archive with many diagnostic labels, from which only the normal and MCI classes were taken. The paper does not describe how subjects entered the archive, the sampling (consecutive or otherwise), or the inclusion and exclusion criteria for the task.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No information",
+     "quote": "The public CAUEEG dataset comprises 1379 resting state EEG recordings from 1155 subjects at Chung-Ang University Hospital, collected from August 2012 to March 2020 [10].",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Based on a diverse range of diagnostic labels and the goal of developing an early diagnostic tool for dementia, the classification task CAUEEG-Dementia includes the subjects belonging to the classes normal and MCI.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "EEG was recorded with the same montage and settings for all subjects and processed automatically. Age is appended as an input, and both EEG and age are available when the model would be used.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All recordings feature 21 channels, including 19 EEG channels, acquired using the international 10\u201320 system standard. With an analog bandpass filter of 0.5\u201370 Hz, the signals were recorded with a sampling rate of 200 Hz and preprocessed with common average referencing.",
+     "page": "2-3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Data Normalization: A z-score normalization with a per-channel mean and standard deviation for each subject is applied to stabilize training and enhance convergence.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "An additional channel representing age is appended to the input.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The paper gives no information on how the normal and MCI labels in CAUEEG were determined: no diagnostic criteria, assessors, blinding to EEG, or interval between EEG and diagnosis.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched for MCI diagnostic criteria and labelling procedure for CAUEEG; the paper states only 'Based on a diverse range of diagnostic labels'.",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for a named MCI definition (e.g. Petersen, NIA-AA); none given.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether EEG contributed to the clinical diagnosis; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for a common diagnostic process across subjects; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnosticians to EEG; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the interval between EEG recording and diagnosis; not reported.",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The number of normal and MCI subjects in the task is not reported. Performance is given as accuracy-type measures only: no calibration, and the ROC curves come from a single fold with no AUC value. Hyperparameters were tuned by grid search and Bayesian optimisation, and design alternatives were rejected on classification performance, but the paper never shows that this tuning excluded the test folds. The split was properly subject-level. There was no external validation for the MCI task.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No information",
+     "quote": "Searched for the number of normal and MCI subjects in the CAUEEG-Dementia task; only the whole dataset size (1155 subjects) is given.",
+     "page": "2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "The 1D-Attention model, illustrated in Fig. 2(a), processes EEG time series input with dimensions [batch_size = 256, channels = 19, data_points = 2000]. An additional channel representing age is appended to the input.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for participant flow or exclusions from the task; not reported.",
+     "page": "2-4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing channels or recordings and their handling; not reported.",
+     "page": "2-4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "The 1D-Attention model, illustrated in Fig. 2(a), processes EEG time series input with dimensions [batch_size = 256, channels = 19, data_points = 2000].",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Yes",
+     "quote": "The splitting process ensured a balanced class ratio across all folds, with strict separation of data from different visits of the same subject to prevent data leakage.",
+     "page": "4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "Model performance was assessed using a range of standard evaluation metrics, including training accuracy, test accuracy, sensitivity, specificity, precision, and F1-score.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "Throughout the design process, alternative approaches were explored but ultimately rejected due to their poor classification performance.",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported analysis?",
+     "answer": "No information",
+     "quote": "Searched for a final fitted model; only fold-averaged results are reported (Table 1).",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "The evaluation followed a subject-based approach to ensure that no data from the same individual was included in both the training and testing sets.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Are preprocessing, augmentation and tuning done within training folds only?",
+     "answer": "No information",
+     "quote": "Augmentation: Class imbalance is addressed by generating synthetic minority class samples using the SMOTE technique [14].",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "Hyperparameters were optimized using a combination of grid search for initial parameter exploration and Bayesian optimization for final tuning, focusing on parameters such as the learning rate, batch size, and signal normalization approach.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Probably yes",
+     "quote": "The splitting process ensured a balanced class ratio across all folds",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal (subject-level 5-fold CV); no external validation for the MCI task",
+     "quote": "A 5-fold CV was applied to the large CAUEEG dataset, while a 10-fold CV was used for the smaller CESA dataset",
+     "page": "4"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "A single Korean university-hospital EEG archive; case mix and referral pathway not described."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Standard 19-channel clinical EEG plus age."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "MCI labelling procedure not described."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 4 is high risk: calibration is absent, discrimination is shown only as a single-fold ROC with no AUC, event counts are not reported, and it is not shown that tuning and design selection excluded the test folds. Domains 1 and 3 are unclear because the paper does not describe participant selection or outcome ascertainment in CAUEEG.",
+ "confidence": "medium",
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 11,
+  "matched": 8
+ }
+}

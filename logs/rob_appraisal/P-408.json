@@ -1,0 +1,134 @@
+{
+ "paper_id": "P-408",
+ "document_check": {
+  "matches": true,
+  "note": "Delvenne J-F, Scally B, Burke MR. 'Splenium tract projections of the corpus callosum to the parietal cortex classifies Alzheimer's disease and mild cognitive impairment', Neuroscience Letters 810 (2023) 137331, doi:10.1016/j.neulet.2023.137331. This matches the citation (Delvenne et al. 2023; midsagittal splenium tract segments versus full-length tracts)."
+ },
+ "cited_result": "Group difference between MCI (n=20) and controls (n=20). MCI patients had significantly higher MD and RD in the midsagittal-segmented parietal splenium tracts (+/- 6 mm; pFDR 0.019 and 0.016), whereas the full-length tract comparison had no MCI-control difference surviving FDR (full parietal MD p=0.024, pFDR=0.117). This underlies the review's claim that segments detect differences full-length tracts miss.",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result is a between-group comparison of DTI metrics (MCI versus controls) measured at one time point; the review does not cite the ROC classification figure.",
+ "domains": [
+  {
+   "domain": "1. Criteria for inclusion clearly defined",
+   "judgment": "Yes",
+   "rationale": "Groups are defined by explicit NACC diagnostic and aetiology codes, a scan window, consistent DTI parameters and exclusion of neurological and psychiatric disease.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Yes",
+     "quote": "Control individuals were identified as having no cognitive symptoms (NACCUDSD = 1) and no suspected underlying aetiology of AD (NACCALZP = 8). MCI patients were identified as having a clinically judged cognitive status consistent with MCI (NACCUDSD = 3) and a suspected primary aetiology of AD (NACCALZP = 1).",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study subjects and setting described in detail",
+   "judgment": "Yes",
+   "rationale": "The data source (NACC, 34 US ADRCs) and a demographic and clinical table are given. The contributing sites, scan dates, and how the matched controls and AD patients were picked from the eligible pool are not described.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "The NACC comprises of demographic, neurocognitive and clinical data, as well as genetic biomarker information and neuroimaging data from individuals seen at 34 Alzheimer\u2019s Disease Research Centers (ADRCs) in the United States.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Exposure measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "Diagnostic group membership comes from ADRC clinical judgement recorded in standard NACC fields. The scan could fall up to one year from the diagnostic visit, which allows some misclassification.",
+   "signalling": [
+    {
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "Scans that were performed within +/- 1 year of an individual\u2019s visit to an ADRC were requested. ADRC clinical judgements of cognitive status (item NACCUDSD) and underlying aetiology (item NACCALZP) were used to identify cognitively normal, MCI and AD individuals.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Objective, standard criteria for the condition",
+   "judgment": "Unclear",
+   "rationale": "MCI is identified from clinicians' judgement codes. The document names no diagnostic criteria (for example Petersen or NIA-AA), and 3 of 20 controls had a global CDR of 0.5.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Unclear",
+     "quote": "0.5 = questionable impairment (n (%)) 3 (15.0) 20 (100.0) 9 (45.0)",
+     "page": "6 (Appendix 1)"
+    }
+   ]
+  },
+  {
+   "domain": "5. Confounding factors identified",
+   "judgment": "Yes",
+   "rationale": "Age, sex, scanner/site effects and tract density (streamline count) are identified as confounders.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "Since quantitative streamline measures have been shown to covary with DTI scalars [25], we first examined group differences in approximate tract density.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "6. Strategies to deal with confounding stated",
+   "judgment": "Yes",
+   "rationale": "Controls and AD patients were matched to the MCI group on age and sex, participants were restricted to those with identical DTI acquisition parameters, and gender and tract density entered the ANCOVA models as covariates.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Yes",
+     "quote": "Therefore, only participants with consistent and complete DTI scanning parameters were selected to eliminate any between-site effects. ... Equivalent numbers of control individuals and AD patients were then selected to match the age and gender distribution of the MCI group. ... We included tract density as a covariate in addition to gender in the following analyses.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "7. Outcomes measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "Standard DTI preprocessing (ExploreDTI) and an established tractography protocol were used. ROIs were drawn by hand for each participant, with no statement that the operator was blind to diagnosis and no inter- or intra-rater reliability. Seven participants had no parietal tracts reconstructed.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "Regions of interest (ROIs) were drawn onto the DTI scans of each participant to isolate the occipital, temporal and parietal tract bundles that pass through the splenium.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "Unclear",
+   "rationale": "ANCOVA with FDR correction suits each MCI-control comparison. But the cited contrast (segments detect what full tracts miss) rests on differing FDR significance, not a direct test. FDR was applied within each of the two analysis protocols rather than across both. Participants without reconstructed tracts were dropped (complete-case analysis). Table 1 reports partial eta squared values that cannot follow from the F statistics (for example F = 0.56 with np2 = 0.981), which casts doubt on the reporting.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "Unclear",
+     "quote": "False discovery rate (FDR) adjustments for multiple comparisons were implemented across the models for each combination of ROI, DTI metric and Group. The same analysis protocol was conducted for both the full tract and segmented tract analysis.",
+     "page": "2"
+    }
+   ]
+  }
+ ],
+ "overall": "Some concerns",
+ "overall_category": "some_concerns",
+ "overall_rationale": "No item is 'No'. The design addresses the main confounders (age and sex matching, identical acquisition protocol, covariates). Items 4, 7 and 8 are unclear: diagnostic criteria are not named, ROIs were drawn by hand with no blinding or reliability data, and the segment-versus-full-tract claim is inferred from differing significance with no direct comparison, alongside inconsistent effect sizes. By this review's rule the rating is some concerns.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "Small, homogeneous US research-centre sample",
+   "rationale": "There are 20 MCI (suspected AD aetiology), 20 AD and 20 controls from NACC ADRCs, all White and restricted to one DTI protocol. Generalisation to other populations or scanners is uncertain."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 4
+ }
+}

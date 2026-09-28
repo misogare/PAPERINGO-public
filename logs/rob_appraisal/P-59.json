@@ -1,0 +1,207 @@
+{
+ "paper_id": "P-59",
+ "document_check": {
+  "matches": true,
+  "note": "Egas-L\u00f3pez JV, Balogh R, Imre N, et al. Automatic screening of mild cognitive impairment and Alzheimer\u2019s disease by means of posterior-thresholding hesitation representation. Computer Speech & Language 75 (2022) 101377. The paper is a Szeged Memory Clinic speech study (25 HC, 25 MCI, 25 mild AD) using pause and hesitation features. This matches the citation 'Egas-L\u00f3pez et al. 2022'."
+ },
+ "cited_result": "Pause/hesitation (silent and filled pause) features as discriminative signals: three-class HC/MCI/mild AD classification with posterior-thresholding hesitation features (context-dependent DNN, all three speech tasks and feature sets fused), mean AUC 0.804 and MCI-class AUC 0.709. This is the principal result; the review cites the study only generically.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discriminative performance of an SVM classifier distinguishing MCI (and mild AD) from controls using speech pause features, which is a diagnostic machine-learning model question for PROBAST with PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "From a corpus of more than 150 subjects, the authors removed those with poor sound quality or no diagnostic consensus, then selected demographically matched groups of 25 each. This artificial, balanced selection excludes the ambiguous cases a screening tool would meet, which inflates separability.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No",
+     "quote": "This corpus comprises recordings taken from more than 150 subjects. Due to technical issues like poor sound quality and controversial diagnosis (i.e. when our clinical expert panel could not reach a consensus), some subjects were filtered out.",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "Furthermore, we insisted on performing our experiments on data where the demographic properties of the speaker groups did not differ significantly, which also reduced the number of subjects.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Every participant followed the same three-task recording protocol. Features are computed automatically from the frame-level posteriors of a DNN acoustic model trained on an external corpus (BEA), and would be available at the time of use. Recordings were trimmed manually at the start and end only.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Hence, we had three recordings for each subject, each containing spontaneous speech with a different speaker task",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Each recording was edited; namely, parts before the subject started to speak and after his last phoneme uttered were manually removed.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Our Deep Neural Network acoustic models were trained on a subset of the BEA Hungarian corpus (Neuberger et al., 2014)",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "low",
+   "rationale": "MCI and mild AD were diagnosed by a multidisciplinary consensus panel using Petersen and McKhann criteria, independently of the speech features and before recording. Two details are not reported: how healthy controls were confirmed, and the interval between diagnosis and recording.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Yes",
+     "quote": "Diagnosis was based on the consensus of a clinical expert panel consisting of a psychiatrist, a neurologist and a psychologist, who reviewed neuroimaging scans (CT, MRI) when available, and also the results of three cognitive screenings tests",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "In the case of MCI, Petersen\u2019s criteria (Petersen et al., 1999), while for AD, internationally used guidelines (McKhann et al., 2011) were followed.",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "who reviewed neuroimaging scans (CT, MRI) when available, and also the results of three cognitive screenings tests",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "those having no cognitive impairment at the time of recording (i.e. healthy controls, HC)",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "MCI and mAD patients were selected after a medical diagnosis.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched Section 2 for the time between clinical diagnosis and speech recording; not reported.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 25 participants per class against 51 to 151 features per recording, fused across three tasks. More than half the corpus was dropped, including subjects with poor sound quality (a complete-case approach). Performance is reported at the Equal Error Rate threshold with no calibration. The weights for fusing predictions are not described, and many configurations were compared, with the best reported in the abstract. Validation is internal only, although the hyperparameters were tuned by nested CV at the subject level.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "each speaker group, resulting in a total of 75 speakers and 225 recordings. [p. 4]; hence we had 50 features for each hesitation type [p. 6]",
+     "page": "4, 6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "hence we had 50 features for each hesitation type",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "This corpus comprises recordings taken from more than 150 subjects. Due to technical issues like poor sound quality and controversial diagnosis (i.e. when our clinical expert panel could not reach a consensus), some subjects were filtered out.",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "Due to technical issues like poor sound quality and controversial diagnosis (i.e. when our clinical expert panel could not reach a consensus), some subjects were filtered out.",
+     "page": "3"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "hence we had 50 features for each hesitation type",
+     "page": "6"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "we employed a 25-fold cross-validation, where each fold consisted of 1 HC, 1 MCI and 1 mAD subject. Therefore, each classifier model was trained on the speech of 72 subjects.",
+     "page": "6-7"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "These metrics were calculated by setting the decision threshold along with the Equal Error Rate (EER).",
+     "page": "7"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably no",
+     "quote": "we decided to take the weighted mean of the posterior probability estimates produced by the individual classifier models, which we found to be a simple-yet-robust technique.",
+     "page": "7"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for SVM weights and the fusion weights; neither is reported.",
+     "page": "6-7"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "we employed a 25-fold cross-validation, where each fold consisted of 1 HC, 1 MCI and 1 mAD subject",
+     "page": "6-7"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Probably yes (hyperparameters); no information for fusion weights",
+     "quote": "This way we ensured that we avoided any form of peeking",
+     "page": "7"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes (balanced by design)",
+     "quote": "each speaker group, resulting in a total of 75 speakers and 225 recordings.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (nested leave-one-triplet-out CV)",
+     "quote": "Unfortunately, our ethical agreement does not allow the sharing of these speech recordings.",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The groups are artificially balanced and demographically matched (25/25/25), with contested diagnoses removed."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "The primary task is three-class (HC/MCI/mild AD), and the headline binary metrics pool MCI with mild AD, so they do not directly answer MCI versus control."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 1 (selection of a matched 75-subject subset from more than 150, excluding contested diagnoses) and domain 4 (small sample against many features, many configurations with the best reported, undescribed fusion weights, EER-threshold metrics, no calibration, no external validation) are high.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 19
+ }
+}

@@ -1,0 +1,152 @@
+{
+ "paper_id": "P-553",
+ "document_check": {
+  "matches": true,
+  "note": "Kim S-E, Shin C, Yim J, Seo K, Ryu H, Choi H, Park J, Min B-K (2023) 'Resting-state electroencephalographic characteristics related to mild cognitive impairments', Front. Psychiatry 14:1231861. It is a cross-sectional eyes-closed resting EEG comparison of 12 MCI and 13 HC participants covering spectral power, multiscale entropy, wPLI connectivity and graph measures. The cited null spectral result sits alongside positive complexity, connectivity and graph results (pages 7 to 11)."
+ },
+ "cited_result": "No spectral power difference between MCI and HC after FDR correction, while group differences were reported for multiscale sample entropy (C4, scale 4), wPLI connectivity, global, local and nodal efficiency, and small-worldness.",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result compares EEG measures between an MCI group and a control group at one time point, which the brief assigns to the JBI analytical cross-sectional checklist.",
+ "domains": [
+  {
+   "domain": "1. Criteria for inclusion clearly defined",
+   "judgment": "No",
+   "rationale": "MCI diagnosis (Petersen criteria) and exclusions are stated. The paper gives no inclusion criteria for the healthy controls, although all 25 participants are described as recruited from the memory clinic.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "No",
+     "quote": "This study recruited 25 individuals, from the outpatient memory clinic of the Department of Neurology at Hanyang University Hospital in Seoul and Guri, Korea. Twelve patients were diagnosed with MCI by two neurologists using Petersen\u2019s criteria (58).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study subjects and setting described in detail",
+   "judgment": "Yes",
+   "rationale": "The paper names the setting (two hospital sites) and reports age, sex, education, K-MMSE and CDR-SB by group.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "TABLE 1 Demographic and neuropsychological data of healthy controls (HCs) and individuals with mild cognitive impairment (MCI).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Exposure (group status) measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "MCI status was assigned by two neurologists. However, the only cognitive measures reported are K-MMSE and CDR, and the paper does not describe how controls were confirmed as cognitively normal.",
+   "signalling": [
+    {
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "All participants underwent the Clinical Dementia Rating (CDR) and the Korean Mini-Mental State Examination (K-MMSE).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Objective, standard criteria for the condition",
+   "judgment": "Unclear",
+   "rationale": "Petersen criteria are standard for MCI, but no criteria are given for the control group. The controls' median CDR-SB of 0.5 (IQR 0.5 to 1) does not differ from the MCI group, so some controls may be cognitively impaired.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Unclear",
+     "quote": "CDR-SB 0.5 (0.5\u20131) 1 (0.5/1.5) 0.21",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "5. Confounding factors identified",
+   "judgment": "Unclear",
+   "rationale": "Age, sex and education were compared between groups but not named as confounders. The small sample leaves a 4-year median education difference non-significant. Medication (for example cholinesterase inhibitors) and vigilance or drowsiness during the recording are not considered.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Unclear",
+     "quote": "As shown in Table 1, there was a signi\ufb01cant di\ufb00erence in K-MMSE scores between the two groups, while there were no signi\ufb01cant di\ufb00erences in terms of sex, education, age, and CDR-SB. (Searched for 'medication', 'drowsiness', 'vigilance', 'sleep' and 'confound': none.)",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "6. Strategies to deal with confounding",
+   "judgment": "No",
+   "rationale": "All group comparisons are unadjusted Wilcoxon rank-sum tests. The Discussion calls the MCI group 'age-matched', but the Methods describe no matching procedure.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "No",
+     "quote": "We used the Wilcoxon rank-sum test to compare the measures between the two groups and determine if their distributions were signi\ufb01cantly di\ufb00erent.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "7. Outcome (EEG measures) measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "The paper uses a standard 19-channel clinical EEG, but artefact epochs were rejected by eye with no statement of blinding to group. Recordings lasted about 30 minutes, supine with eyes closed at any time between 9 AM and 5 PM, and vigilance was not controlled. No reliability data are given.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "We visually examined the EEG data and manually rejected epochs with considerable artifacts.",
+     "page": "4"
+    },
+    {
+     "question": "Were recording conditions controlled for state effects?",
+     "answer": "Unclear",
+     "quote": "The EEG recordings were performed during daytime hours (9 AM\u20135 PM) on weekdays for approximately 30 min. The participants were examined in a supine position with eyes closed in a sound-attenuated room.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "No",
+   "rationale": "The contrast the review cites (spectral power null, other measures positive) is produced by uneven multiplicity handling in a sample of 25. Spectral power was FDR-corrected across 19 electrodes per band. Connectivity was corrected only across 5 bands at each of 171 connections. Network efficiency and small-world were not corrected at all, although they were scanned over thresholds in 1% steps, and some figure captions still label them FDR-corrected. There is no formal test between measure families.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used, with multiplicity handled consistently?",
+     "answer": "No",
+     "quote": "We also adjusted the p-values for PSD, complexity, functional connectivity, and nodal e\ufb03ciency using a false discovery rate (FDR) test to control for multiple comparisons excluding network e\ufb03ciency and small world.",
+     "page": "7"
+    },
+    {
+     "question": "Was the connectivity correction adequate for the number of tests?",
+     "answer": "No",
+     "quote": "In the functional connectivity analysis, p-values were computed for 171 connections within each frequency band, and then the FDR approach was applied to the set of p-values from \ufb01ve frequency bands, separately at each connection.",
+     "page": "7"
+    },
+    {
+     "question": "Were graph results robust to threshold choice?",
+     "answer": "No",
+     "quote": "Moreover, a notable di\ufb00erence was observed in the gamma band, with sparsity thresholds ranging from 10% to 11%.",
+     "page": "11"
+    }
+   ]
+  }
+ ],
+ "overall": "High (by the review's JBI rule: items 6 and 8 answered No).",
+ "overall_category": "high",
+ "overall_rationale": "Confounding is not handled, and the analysis applies very different multiplicity corrections to the measure families being contrasted, with no test between families. The positive graph and connectivity findings are therefore favoured over the corrected null spectral finding, in only 12 versus 13 participants.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Controls were drawn from a memory clinic with no stated criteria, and their CDR-SB does not differ from the MCI group, so the comparison may not be MCI against cognitively normal people."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 11,
+  "matched": 11
+ }
+}

@@ -1,0 +1,140 @@
+{
+ "paper_id": "P-1135",
+ "document_check": {
+  "matches": true,
+  "note": "Qin Y, Cui J, Chen D, Han H, Cao H, Zhang R, Zhu H, Zhang M, Yu H. Characterizing bidirectional transitions in mild cognitive impairment and post-reversion based on longitudinal neuroimaging and cognitive assessments. Alzheimer's Dement 2025;21:e70263. The design (retrospective ADNI cohort, 1019 participants with MCI at entry, functional multistate model, follow-up up to 14.67 years) and the post-reversion findings match the cited study."
+ },
+ "cited_result": "Probability of progressing from reverted normal cognition (rNC) back to MCI, rising from 8% to 35.71% at year 10 in the functional multistate model (Model 5), with an rNC to MCI transition intensity 3.34 times the MCI to NC intensity and close to the MCI to AD intensity (0.120). This is the basis of the review's statement that reversion does not confer lasting protection.",
+ "tool": "JBI prevalence",
+ "tool_reason": "The cited result is an incidence estimate (a cumulative transition probability of re-progression among reverters) from a descriptive natural-history multistate model, which the authors say is not a prediction model. Under this review's rules an incidence estimate takes the JBI prevalence checklist.",
+ "domains": [
+  {
+   "domain": "Item 1: Sample frame appropriate to the target population",
+   "judgment": "No",
+   "rationale": "ADNI is a volunteer convenience sample. The authors say it over-represents impairment and under-represents reverters, and that bears directly on reversion and re-progression rates.",
+   "signalling": [
+    {
+     "question": "Was the sample frame appropriate to address the target population?",
+     "answer": "No",
+     "quote": "This observation may be partly attributed to the nature of the ADNI cohort as a convenience sample, primarily consisting of voluntary participants, potentially resulting in an elevated representation of individuals with cognitive impairments and a corresponding underrepresentation of those who reverted to NC.",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "Item 2: Participants sampled appropriately",
+   "judgment": "Unclear",
+   "rationale": "All ADNI participants with MCI at entry who had at least two visits were included, so this is effectively a census of the database. The paper does not report how many were excluded by the two-visit rule, and underlying recruitment was by volunteering.",
+   "signalling": [
+    {
+     "question": "Were study participants sampled in an appropriate way?",
+     "answer": "Unclear",
+     "quote": "Subjects were included if they (1) were diagnosed with MCI at study entry and (2) underwent at least two visits during the study period until AD diagnosis or until December 2022, whichever came first.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 3: Sample size adequate",
+   "judgment": "No",
+   "rationale": "The cohort has 1019 participants overall, but the cited estimate rests on 93 reverters, 191 rNC observations and 32 re-progressions. The authors report limited precision, and no confidence interval is given for the 35.71% figure.",
+   "signalling": [
+    {
+     "question": "Was the sample size adequate?",
+     "answer": "No",
+     "quote": "For rNC, we observed 32 (16.75%) transitions from rNC to MCI and 159 (83.25%) remaining in the rNC state. At the end of the study, the cohort consisted of 93 rMCI, 567 sMCI, and 359 pMCI. [...] This is further reinforced by Figure S29, which shows that the transition intensity distribution from rNC to MCI derived through bootstrapping has a wider range and limited precision.",
+     "page": "5; 9"
+    }
+   ]
+  },
+  {
+   "domain": "Item 4: Subjects and setting described in detail",
+   "judgment": "Unclear",
+   "rationale": "The setting (ADNI, multicentre) is named, but baseline characteristics and the diagnostic criteria are in supplementary material that is not part of the source document.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Unclear",
+     "quote": "Descriptive statistics for key baseline variables are presented in Table S1.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "Item 5: Analysis with sufficient coverage of the identified sample",
+   "judgment": "No",
+   "rationale": "Median follow-up was 2 years (IQR 1 to 4), but the cited probability is reported at year 10. Late estimates therefore rest on a small and selected remainder, and the authors link the late model misfit to shrinking follow-up.",
+   "signalling": [
+    {
+     "question": "Was the data analysis conducted with sufficient coverage of the identified sample?",
+     "answer": "No",
+     "quote": "The median follow-up time was 2 years (interquartile range 1, 4 years), with total follow-up ranging from 0.417 to 14.67 years.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "Item 6: Valid methods for identifying the condition",
+   "judgment": "Yes",
+   "rationale": "Cognitive states were assigned with ADNI's standardised clinical diagnostic criteria (which include MMSE and CDR) at scheduled reassessments.",
+   "signalling": [
+    {
+     "question": "Were valid methods used for the identification of the condition?",
+     "answer": "Yes",
+     "quote": "It is worth noting that diagnostic criteria in the ADNI database encompassed both the Mini-Mental State Examination and Clinical Dementia Rating, hence we excluded these two scales from our study during the subsequent model-building process.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 7: Condition measured in a standard, reliable way for all",
+   "judgment": "Yes",
+   "rationale": "All participants followed the same ADNI reassessment protocol. Variable intervals suit a continuous-time multistate model.",
+   "signalling": [
+    {
+     "question": "Was the condition measured in a standard, reliable way for all participants?",
+     "answer": "Yes",
+     "quote": "Cognitive states were systematically reassessed approximately every 6 months or annually, defined as any of the following: rNC, MCI, or AD.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 8: Appropriate statistical analysis",
+   "judgment": "Unclear",
+   "rationale": "A continuous-time multistate model with bootstrap is suitable for panel data, and the rNC fit is reported as good. However, no interval is given for the cited 35.71%, the Markov and time-homogeneity assumptions are not reported, and dropout linked to severity is not modelled.",
+   "signalling": [
+    {
+     "question": "Was there appropriate statistical analysis?",
+     "answer": "Unclear",
+     "quote": "The observed and expected transition percentage curves for rNC closely aligned, showing a high degree of agreement at each observation point. For MCI and AD, the percentage curves matched well during the first 5 years but started to diverge thereafter, with an overestimation for MCI and an underestimation for AD.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "Item 9: Response rate adequate or low response managed",
+   "judgment": "No",
+   "rationale": "The authors acknowledge that retention differed by severity but do not correct for it. The number of ADNI MCI participants excluded by the two-visit rule is not reported.",
+   "signalling": [
+    {
+     "question": "Was the response rate adequate, and if not, was the low response rate managed appropriately?",
+     "answer": "No",
+     "quote": "When stratifying the total follow-up duration across 1019 subjects, we observed that individuals with shorter follow-up duration tended to exhibit more severe cognitive impairment (Figures S27 and S28).",
+     "page": "9"
+    }
+   ]
+  }
+ ],
+ "overall": "Some concerns (JBI prevalence, applying this review's rule). Items 6 and 7 (valid measurement of the condition) are Yes and item 8 (analysis) is Unclear, so the rule does not give high. Items 1, 3, 5 and 9 are No.",
+ "overall_category": "some_concerns",
+ "overall_rationale": "The condition was ascertained in a standardised way, and the analysis item is Unclear rather than No, so the review's rule gives some concerns. The concerns are still substantial: the estimate comes from a volunteer convenience cohort that the authors say under-represents reverters, it rests on 93 reverters and 32 re-progressions with limited precision, and it is reported at year 10 although median follow-up was 2 years and more impaired participants left earlier. The year-10 re-progression figure should be read as imprecise and possibly biased in an unknown direction.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 9,
+  "matched": 8
+ }
+}

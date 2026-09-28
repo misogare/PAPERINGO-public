@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-352",
+ "document_check": {
+  "matches": true,
+  "note": "Hoang B, Pang Y, Dodge H, Zhou J (2024). Translingual Language Markers for Cognitive Assessment from Spontaneous Speech. Interspeech 2024:977-981 (PMC author manuscript). It is a TAUKADIAL Challenge submission reporting 78.2% average validation balanced accuracy and 45.1% test balanced accuracy, which matches the citing sentences."
+ },
+ "cited_result": "Principal cited result: MCI vs NC classification balanced accuracy of the translingual pipeline. The mean over 100 random 90/10 splits of the challenge training data was 78.2% (after outlier removal and multi-task prior). The organisers' held-out test set (40 subjects) gave 45.1%.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the diagnostic performance of a machine-learning classifier (validation vs test balanced accuracy), so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The challenge dataset was assembled by diagnostic class and balanced for age and gender, which is case-control-type sampling for a diagnostic model. Recruitment, setting and eligibility are not described in this paper.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably no",
+     "quote": "The TAUKADIAL Challenge Dataset [7] consists of spontaneous speech samples corresponding to audio recordings of picture description tasks produced by both cognitively normal subjects and patients diagnosed with MCI. ... The dataset has been evenly balanced with respect to age and gender to eliminate potential confounding and bias [7].",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched for recruitment source, setting, inclusion and exclusion criteria. None are given; the dataset is described only by reference [7] and by counts: \"The training dataset has 129 participants in total, including 67 participants who identified as Chinese speakers and 62 as English speakers.\"",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "Features were extracted automatically without reference to labels. However, the elicitation stimuli differ by language, the text pipeline differs (translation for Chinese, back-translation for English), and the MCI proportion differs by language (41/62 English vs 33/67 Chinese). Language-linked feature differences could therefore act as a proxy for class. The size of this effect cannot be judged.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "The three pictures used for English and Chinese speakers are different.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Yes",
+     "quote": "We use OpenAI\u2019s Automatic Speech Recognition (ASR) model Whisper [12] to transcript the raw audio files.",
+     "page": "4"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Each subject has three individual audio recordings corresponding to descriptions of three corresponding pictures.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The reference classification is supplied by the challenge, with no description of diagnostic criteria, assessors, blinding or timing in this paper.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Only statement found: \"A clinical classification is provided for each subject, either healthy normal cognition (NC) or mild cognitive impairment (MCI).\" Searched for diagnostic criteria and who made the diagnosis.",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for MCI criteria (e.g. Petersen, NIA-AA, cognitive test cut-offs); none reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether speech or picture description contributed to the diagnosis; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for whether the English and Chinese groups were diagnosed with the same procedure or at the same sites; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the clinical classification; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the timing of speech recording relative to diagnosis; not reported.",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 3,006 candidate features for 129 participants (74 MCI). Participants flagged as misclassified with high confidence were removed from the whole training set before the reported validation. Feature count, treatments and hyperparameters were selected on the same repeated validation splits whose mean is reported. Only balanced accuracy and F1 were reported, with no discrimination or calibration measure. The held-out test result (45.1%) collapsed relative to validation (78.2%), which is consistent with severe optimism.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "the combination of BERT embedding and MFCC acoustic features results in 3006 dimensions, whereas we only have 129 samples.",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "we apply 6 descriptive statistics functions (mean, standard deviation, variance, max, min, median), generating a total of 234-dimensional MFCC features for one speech.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "we propose a two-phase training strategy to filter out the potential outliers in the whole training dataset. We first count the number of failure cases with wrongly high confidence during the first step of training, then filter out the subjects that appear multiple times for the second-step re-training.",
+     "page": "5"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing recordings, failed transcriptions or missing MMSE; not reported.",
+     "page": "2-7"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably yes",
+     "quote": "In our final solution, we utilized the supervised feature selection based on sparse learning technique LASSO [17]",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "Since each subject has three speech recordings, one for each picture, we independently extract and then concatenate these MFCC features of all three speeches on a specific subject.",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "we calculate the average and standard deviation of Balanced Accuracy and F1 for classification tasks, as well as Root Mean Square Error for regression tasks on the validation data.",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "We select our top 5 hyperparameters based on an average of 100 random seeds of Balanced Accuracy and RMSE for validation data to submit test predictions to the TAUKADIAL Challenge Organizers. ... Our proposed method achieves 45.1% balanced accuracy and 2.578 root mean square error.",
+     "page": "7"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for final model coefficients or selected features; not reported.",
+     "page": "4-7"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level?",
+     "answer": "Probably yes",
+     "quote": "In this section, we evaluate the method\u2019s performance by randomly splitting the TAUKADIAL Challenge training data into 90% for training and 10% for validation.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection and tuning done within training folds only?",
+     "answer": "Probably no",
+     "quote": "\"where the hyper-parameter k is chosen based on the validation data.\" (page 5). Outlier filtering was applied \"in the whole training dataset\" (page 5), and it is not stated that LASSO selection was refitted within each split.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Yes (organisers' test set), but five submissions were chosen on validation",
+     "quote": "The test dataset includes 40 subjects, and the goals of the competition are to 1) predict the clinical classification (NC/MCI) and 2) predict the MMSE score of each subject.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Class imbalance and its handling?",
+     "answer": "Addressed by loss re-weighting",
+     "quote": "we re-weight the data points with {0.4, 0.2, 0.3, and 0.3}",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "78.2% is internal (repeated random splits, with selection optimism); 45.1% is on a held-out test set from the same challenge",
+     "quote": "We see that the strategy of Outlier detection significantly improves averaged performance after filtering out some subjects with possible label issues.",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "Challenge sample of English and Chinese speakers balanced for age and gender; setting and recruitment not described."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Picture-description speech is obtainable at the intended point of use."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "MCI definition not reported."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 1 (case-control-type challenge sampling) and Domain 4 are high. In Domain 4, features far outnumber participants, outliers were removed from the training data using model errors, and model selection was done on the same validation splits whose mean is reported. The 78.2% validation figure is therefore strongly optimistic; the held-out 45.1% (below the 50% chance level for balanced accuracy) is the less biased estimate.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 16,
+  "matched": 14
+ }
+}

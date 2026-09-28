@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-88",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Peng, Wang, Song, Hou, Jin, Qin, Yuan, Wei and Shu, '18F-FDG-PET Radiomics Based on White Matter Predicts The Progression of Mild Cognitive Impairment to Alzheimer Disease: A Machine Learning Study', Academic Radiology 2023;30:1874-1884. It builds an SVM combining a PET white-matter radiomics signature with CDR and ADAS scores. This matches the review's citation (Peng et al. 2023a, PET-radiomics-plus-clinical-score SVM)."
+ },
+ "cited_result": "Discrimination of the integrated SVM model (white-matter FDG-PET psychoradiomics signature plus CDR and ADAS scores) for MCI-to-AD progression in ADNI-2/GO: AUC 0.868 in training (n = 238, 71 progressors) and 0.865 in the test group (n = 103, 31 progressors; sensitivity 0.839, specificity 0.806) (Table 3, p.8).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the performance of a multivariable machine-learning prognostic model (SVM) for MCI progression, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The ADNI cohort is an appropriate source. However, participants whose course was bidirectional (MCI to AD and back) were excluded, which uses information about the future outcome course that would not be known when predicting. Participants lacking data were also excluded, with no count of how many.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Yes",
+     "quote": "The ADNI is a longitudinal multicenter study designed to develop clinical, imaging, biochemical, and genetic biomarkers for the early detection and monitoring of AD.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no. Exclusions were based on the later outcome trajectory (reverters) and on missing data.",
+     "quote": "(1) lack of relevant research data ... (MCI progresses to AD and then to MCI)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "Baseline predictors went through one radiomics pipeline and are available at the time of use. However, two radiologists corrected the white-matter segmentations by hand with no statement of blinding to progression status. PET came from three scanner vendors, and the authors concede that equipment and processing changed over time across the entry-number split.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes. A uniform resampling and discretisation pipeline was used, but texture features came from GE, Philips and Siemens scanners without harmonisation, and the authors flag time-related equipment change.",
+     "quote": "the gray level of the images was discretized and normalized to 32 orders. [p.3] ... that absolutely can introduce a time-based bias [p.10]",
+     "page": "3; 10"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information. Methods were searched for whether the radiologists who corrected segmentations were blind to progression status. Nothing is stated.",
+     "quote": "two radiologists will manually adjust it at this time, and these corrections has proved to be necessary.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "(2) baseline MRI, PET, and clinical data",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The outcome is progression to AD during up to 8 years of ADNI follow-up. The paper states no diagnostic criteria for AD, no fixed prediction horizon and no minimum follow-up for stable MCI. Whether the CDR and ADAS predictors overlap the diagnostic criteria cannot be judged from the document.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information. Materials and Methods were searched for how progression to AD was diagnosed.",
+     "quote": "In total, we enrolled 341 patients with MCI, and 102 of these patients progressed to AD during a follow-up period of 8 years",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information. The paper names no AD diagnostic criteria. Materials and Methods and the Discussion were searched.",
+     "quote": "In total, we enrolled 341 patients with MCI, and 102 of these patients progressed to AD during a follow-up period of 8 years",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information. CDR and ADAS are predictors, but the document does not state how AD was diagnosed, so any overlap cannot be judged from it.",
+     "quote": "Specifically, we analyzed the subjects\u2019 general demographic information, APOE4 gene status (positive vs. negative), Mini-Mental State Examination (MMSE) score, Alzheimer\u2019s Disease Assessment Scale (ADAS) score, and Clinical Dementia Rating (CDR).",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes. All participants come from one source, ADNI-2 and ADNI-GO.",
+     "quote": "The case data included in this study were obtained from the ANDI-2 and ANDI-GO datasets",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information. The paper was searched for who assigned progression status and with what information.",
+     "quote": "Searched for: blinding of progression diagnosis to clinical scale scores or imaging; not reported.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information. Follow-up runs up to 8 years with no fixed horizon or minimum follow-up for stable MCI reported.",
+     "quote": "102 of these patients progressed to AD during a follow-up period of 8 years",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There were 71 training events against 279 candidate radiomics features plus clinical variables, so events per candidate predictor are well below 1. Outcome-driven feature reduction and univariable or stepwise selection of clinical predictors were used. Participants lacking data were excluded, and time-to-event data with variable follow-up were analysed as a binary outcome. The held-out test group is a non-random split by entry number with only 31 events, and there is no external validation. Calibration curves and a held-out test partly offset these problems.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No. There are 71 events in training for 279 candidate radiomics features plus clinical candidates, and 31 events in the test group.",
+     "quote": "In all, 279 features were extracted for each subject [p.3] ... Progressive MCI (n = 71) [p.5]",
+     "page": "3; 5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes. The clinical scales are modelled as continuous (per-unit ORs).",
+     "quote": "ADAS score 1.134 (1.059, 1.215)",
+     "page": "7"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "We divided these patients according to their entry numbers in the ADNI database as follows: training group, 238 patients and test group, 103 patients.",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no. The analysis is complete-case, with participants lacking data excluded and no count reported.",
+     "quote": "(1) lack of relevant research data",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably no. Table 2 carries only univariately significant variables into the multivariate model, and the methods describe stepwise selection.",
+     "quote": "APOE4 1.429 (0.706, 2.891) 0.321 NA NA [Table 2, p.7] ... Potential clinical predictors of MCI progression were selected using the backward stepwise selection method [p.3]",
+     "page": "7; 3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring) accounted for appropriately?",
+     "answer": "Probably no. Progression over variable follow-up of up to 8 years is modelled as a binary classification without handling censoring. Kaplan-Meier is used only afterwards to compare risk groups.",
+     "quote": "102 of these patients progressed to AD during a follow-up period of 8 years",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably yes. AUC, sensitivity, specificity, Hosmer-Lemeshow, calibration curves and decision curves are reported, although calibration is shown only graphically.",
+     "quote": "the consistency between the predicted and actual progression of MCI was visualized using calibration curves.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably yes. The model was built with 10-fold cross-validation in training and assessed on a held-out group, but that group is small (31 events).",
+     "quote": "We used data from the training group to construct a predictive model of AD [p.2] ... we used 10-fold cross-validation while constructing the integrated model. [p.4]",
+     "page": "2; 4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information. The SVM weights and final specification are not reported.",
+     "quote": "When the Linear of SVM is 0.1, the model has the best accuracy and Kappa value.",
+     "page": "4"
+    },
+    {
+     "question": "4.AI-a Is the train/test split at participant level?",
+     "answer": "Yes. Each patient is in either the training or the test group.",
+     "quote": "We divided these patients according to their entry numbers in the ADNI database as follows: training group, 238 patients and test group, 103 patients.",
+     "page": "2"
+    },
+    {
+     "question": "4.AI-b Are feature selection and tuning done within the training data only?",
+     "answer": "Probably yes",
+     "quote": "redundant and irrelevant features were excluded from the training dataset",
+     "page": "3"
+    },
+    {
+     "question": "4.AI-c Is the test set held out from all tuning?",
+     "answer": "Probably yes. Classifiers were chosen by cross-validation in training, and the cut-off was set in training.",
+     "quote": "We used data from the training group to construct a predictive model of AD",
+     "page": "2"
+    },
+    {
+     "question": "4.AI-d Was class imbalance considered and handled?",
+     "answer": "Probably no. The imbalance is acknowledged but not addressed.",
+     "quote": "In this study, there were 239 negative cases (stable group) and 102 positive cases (progressive group)",
+     "page": "9"
+    },
+    {
+     "question": "4.AI-e Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal validation by a non-random split-sample (ADNI entry number). There is no external validation.",
+     "quote": "and requires validation using external datasets",
+     "page": "9"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "The participants are ADNI-2/GO MCI patients with reverters and incomplete-data cases removed, which is narrower than a clinical MCI population."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "unclear",
+   "rationale": "The model needs FDG-PET, MRI co-registration and manual correction of segmentations by radiologists, which limits routine use."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "Progression is defined over follow-up of up to 8 years with no fixed horizon, so it is not directly comparable with fixed-window conversion outcomes."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST): Participants and Analysis domains high; Predictors and Outcome unclear.",
+ "overall_category": "high",
+ "overall_rationale": "Two domains are high risk, so the overall judgement is high. Reverters were excluded on the basis of later outcome information. Events per candidate predictor are well below 1, with outcome-driven and univariable or stepwise selection, complete-case exclusion and no handling of censoring. Validation is internal only, on a small non-random test group.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 18,
+  "matched": 14
+ }
+}

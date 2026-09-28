@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-13",
+ "document_check": {
+  "matches": true,
+  "note": "Ge X, Cui K, Qin Y, Chen D, Han H, Yu H. Screening strategies and dynamic risk prediction models for Alzheimer's disease. J Psychiatr Res 2023;166:92-99. This is a retrospective ADNI cohort of 718 people with MCI, with Cox and random survival forest models of conversion to AD built on longitudinal markers. Author, year, data source (ADNI) and model family (survival models) all match the cited context."
+ },
+ "cited_result": "The comparison of longitudinal and baseline-only prognostic models for MCI-to-AD conversion by C-index. In the high-risk group the best longitudinal model (CDRSB) had C-index 0.816 (optimism-corrected 0.805) against 0.677/0.665 for the best baseline model (ADAS13), and 'All the longitudinal models performed better than the baseline models'. In the low-risk group ADAS13 went from 0.825/0.793 at baseline to 0.914/0.885 longitudinally. The supporting final model is the high-risk Cox model: C-index 0.844, optimism-corrected 0.829, test set 0.805.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the discrimination (C-index) of multivariable prognostic survival models with and without longitudinal predictors, so it is prediction-model performance.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "ADNI is a suitable cohort source. However, the groups in which the cited comparison is made (high-risk n = 340, low-risk n = 378) were formed by clustering each person's whole follow-up FAQ trajectory. That information does not exist at baseline and tracks the functional decline that goes with conversion, so the target population cannot be identified when the model would be used, and group membership is partly driven by the outcome process.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort)?",
+     "answer": "Yes",
+     "quote": "We constructed a retrospective cohort by reviewing individuals with baseline diagnosis of MCI and at least one follow-up visits between November 2005 and May 2021.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "namely the high-risk or low-risk MCI category, using HDDC approach based on FPC scores (page 2); Thus, HDDC was performed to identify the risk groups based on FAQ. The high- and low-risk groups included 340 and 378 individuals with MCI, respectively. (page 3)",
+     "page": "2, 3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "high",
+   "rationale": "The longitudinal predictors are functional principal component scores that summarise trajectories over visits running up to 96 months. The paper never says these trajectories were cut off at a landmark time or before conversion, except in the low-risk RSF landmark evaluation. The predictors that give the longitudinal advantage therefore cannot be shown to be available when the model is intended to be used, and they may include visits close to or after the outcome.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "A total of 718 individuals were assessed at baseline and at 6, 12, 18, 24, 36, 48, 60, 72, 84, and 96 months of follow-up.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "Searched Methods 2.2 to 2.5 and Results 3.3 for any restriction of the longitudinal measurements to visits before conversion or before a landmark. The only description is: FPCA was employed to extract the trajectory pattern of a single longitudinal process and summarized as a set of FPC scores",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably no",
+     "quote": "In the training set, five functional principal components were extracted by MFPCA, namely rho1 to rho5, which capture the essential information in the CDRSB and hippocampal longitudinal markers. (page 4). A landmark is used only for the low-risk RSF evaluation: Landmark times were chosen as t = [12, 24] months. (page 5)",
+     "page": "4, 5"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The paper does not say how conversion to AD was diagnosed. It is therefore not possible to judge whether the outcome was determined appropriately, whether it was blind to the predictors, or whether predictors such as CDRSB, MMSE or FAQ fed into the diagnosis. The follow-up interval is appropriate.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched Methods 2.1 to 2.5 for the criteria used to diagnose AD at follow-up. Only MCI criteria are given: The criteria for MCI diagnosis were the same as those defined by Hojjati et al. (2017).",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for a definition of conversion or of AD diagnosis; none is given beyond 'predicting the conversion of MCI to AD'.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "This study incorporated multiple longitudinal clinical assessments, including ADAS13, Clinical Dementia Rating Sum of Boxes (CDRSB), Mini Mental State Examination (MMSE). The paper does not say whether any of these were part of the AD diagnosis.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for whether the same diagnostic procedure was applied across ADNI-1/GO and ADNI-2; not reported.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the diagnosing clinicians to cognitive scores or MRI; not reported.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "195 individuals with MCI (44.7%) progressed to AD over 8 years, with a mean time to onset of AD of 28.3 \u00b1 21.4 months (range 6.0\u201396.0 months).",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Missing data were handled well, censoring was modelled, and discrimination, Brier scores and bootstrap optimism correction are reported. Against this: the markers were chosen by single-marker C-index comparisons and by comparing 192 candidate models on the full risk-group data; the risk groups were formed on all 718 people before any train/test split; events per risk group are not reported; the low-risk accuracy table is computed on the training set (n = 264); and the only validation is internal. Optimism from marker and strategy selection is not covered by the bootstrap.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No information",
+     "quote": "Events are given only by ADNI phase (195 of 436; 98 of 282), not for the high-risk (n = 340) or low-risk (n = 378) groups in which models were fitted. A total of 192 models were compared to determine the optimal screening strategy for individuals with high-risk MCI.",
+     "page": "2, 4"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Table 4 reports per-unit hazard ratios for continuous predictors, e.g. Age 0.95 (0.93,0.98)",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "So, there is no need data imputation and all the individuals were included in statistical analysis.",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "allows for observations of missing value and different time visits to individuals (Li et al., 2018).",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably no",
+     "quote": "We compared the predictive performance (i.e., the C-index) of six clinical assessment longitudinal markers and found that CDRSB was the strongest predictor of conversion from MCI to AD",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks) accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "Cox regression and RSF models were constructed based on the optimal strategy for predicting the conversion of MCI to AD. (page 2). Competing death was not modelled: We only studied the risk of MCI progression to AD and did not consider death as an outcome. (page 6)",
+     "page": "2, 6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "Probably yes",
+     "quote": "The concordance index (C-index) and Brier scores (BS) were calculated to evaluate the discrimination and calibration of the Cox models, respectively. (page 2); A calibration plot was constructed to assess the accuracy of the predictive model. (page 4). The cited baseline-versus-longitudinal comparison itself uses C-index only.",
+     "page": "2, 4"
+    },
+    {
+     "question": "4.8 Were overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "To correct for optimism bias in the Cox and RSF models, we performed internal validation using 500 bootstrap samples. (page 2). The low-risk accuracy is reported on the training data: The low-risk MCI dataset (n = 378) was split into a training set (n = 264) and a test set (n = 114). (page 4); Comparison of prediction accuracy for individuals with low-risk MCI at different time points (n = 264). (page 7)",
+     "page": "2, 4, 7"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Probably yes",
+     "quote": "Cox prognosis model of individuals with high-risk mild cognitive impairment (MCI) (n = 237).",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "The high-risk MCI dataset (n = 340) was randomly split into a training set (n = 237) and test set (n = 103).",
+     "page": "4"
+    },
+    {
+     "question": "AI: Are preprocessing, feature construction and selection done within the training data only?",
+     "answer": "Probably no",
+     "quote": "MFPCA for the final model is run in the training set, but the risk-group clustering on FAQ trajectories and the choice of screening strategy were done on all participants before the split: Thus, HDDC was performed to identify the risk groups based on FAQ.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Probably yes",
+     "quote": "When ntree = 500, node size = 9, and mtry = 10, the out-of-bag error rate was the lowest (10.45%), and the RSF model was very stable.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is class imbalance handled?",
+     "answer": "Not applicable",
+     "quote": "Time-to-event outcome analysed with Cox and RSF models; no classification threshold imbalance issue.",
+     "page": "2"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internal only",
+     "quote": "In addition, the C-index of the test set was 0.805 (random split of the same ADNI data; no external data set).",
+     "page": "4"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1, 2 and 4 are high risk and domain 3 is unclear. The longitudinal advantage is estimated in risk groups defined from follow-up trajectories, using trajectory summaries that are not shown to be restricted to information available before the outcome. Markers and strategies were also selected on the full data, and validation is internal only.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "ADNI research volunteers, mostly well educated and white; the authors note the cohort 'may not represent the general population'."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "high",
+   "rationale": "The longitudinal predictors need repeated visits over years, so the model cannot be applied at a single baseline assessment."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Conversion from MCI to AD matches a core review question."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 18,
+  "matched": 10
+ }
+}

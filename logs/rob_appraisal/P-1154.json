@@ -1,0 +1,212 @@
+{
+ "paper_id": "P-1154",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Alhasan MS et al., 'FDG-PET brain glucose hypometabolism predicts Alzheimer's disease progression pathways in cognitively normal adults: A longitudinal competing risks modeling', Metabolism Open 28 (2025) 100400. It uses 1,136 cognitively normal ADNI participants, Fine-Gray competing-risks regression over four progression pathways, and a multinomial pathway classifier with AUC 0.994 to 0.999 for direct conversion. This matches the cited study, population and 'near-ceiling discrimination'."
+ },
+ "cited_result": "Discrimination of the pathway prediction model for direct conversion from normal cognition to AD dementia (AUC 0.999 / 0.994 / 0.994 at 12 / 24 / 36 months; Table 4, p7), developed in cognitively normal ADNI participants, with the competing-risks framing in which the competing events are the other progression pathways.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination of a multivariable prognostic model (a multinomial pathway classifier within a competing-risks framework), so PROBAST applies, with the PROBAST+AI items.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "ADNI is a suitable prospective cohort. But eligibility is conditioned on future information: at least 180 days of follow-up were required, and the authors say this removes early rapid converters. Eligibility is also applied or reported inconsistently: the cohort is defined by MMSE >= 24 and CDR 0, yet the results analyse 'participants with MCI at baseline (MMSE 20-23)'.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used, e.g. cohort, RCT or nested case-control study data?",
+     "answer": "Yes",
+     "quote": "This longitudinal observational study analyzed data from the ADNI, a multisite longitudinal cohort designed to develop biomarkers for Alzheimer\u2019s disease clinical trials",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "The study included cognitively normal participants aged 55 years and older with baseline FDG-PET imaging and minimum 180-day longitudinal follow-up through August 2025. ... Among participants with MCI at baseline (MMSE 20\u201323), low FDG metabolism resulted in six-fold higher risk ... The 180-day minimum follow-up requirement was designed to ensure meaningful observation periods however it may exclude rapidly progressing individuals who convert before adequate follow-up assessment.",
+     "page": "2; 5; 14"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The main predictor, the baseline FDG-PET MetaROI, was acquired under a harmonised protocol before the outcome occurred and would be available when the model is used. The unspecified supplementary cognitive predictors are dealt with under domains 3 and 4.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "FDG-PET imaging was performed according to harmonized ADNI protocols with standardized acquisition parameters across participating sites.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "For participants with multiple FDG-PET scans, baseline values were defined as the earliest available measurement, preferentially selecting screening or baseline visit data.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Brain glucose metabolism was quantified using the MetaROI composite score, representing a validated region-of-interest approach",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The outcome is a study-specific pathway construct. Whether a conversion counts as 'direct' depends on whether an MCI visit happened to be documented. The cognitive measures that define diagnostic status (MMSE, CDR) may also have been used as predictors, and the paper does not say whether the authors who manually reviewed diagnoses were blinded to FDG. The timing is internally inconsistent: 167 of 168 direct conversions had occurred by 12 months, yet the labels are said to rest on 10-year outcomes.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "Clinical diagnoses followed standardized ADNI protocols with manual screening and review for the ADNI files by the contributing authors to ensure proper validation and confidence.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "rapid direct conversion (converted directly from normal cognition to dementia without documented MCI stage) ... Four progression pathways were concluded from our analyses",
+     "page": "2; 1"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably no",
+     "quote": "Cognitively normal status was defined using established ADNI criteria including Mini-Mental State Examination (MMSE) scores \u226524, Clinical Dementia Rating (CDR) of 0 ... with brain glucose metabolism as the primary predictor, supplemented by baseline cognitive measures when appropriate.",
+     "page": "2; 3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Diagnostic transitions were validated by requiring consistency across consecutive visits (minimum 180-day intervals) to minimize misclassification from temporary fluctuations.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for any statement that the diagnosing clinicians or the authors who manually reviewed diagnoses were blinded to FDG-PET or other biomarkers; none found. The pathways were instead checked against biomarkers: 'pathway assignments were cross-validated against Amyloid beta and atrophy biomarker patterns'.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably no",
+     "quote": "Direct AD Conversion 12 months 167 (14.7) 0.999 0.005 Excellent ... 36 months 168 (14.8) 0.994 0.008 Excellent ... Pathway phenotypes based on 10-year longitudinal follow-up outcomes.",
+     "page": "7; 5"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are enough events and the split is at participant level. However, missing data were substantial: 36.2% of FDG-PET values were missing even though FDG-PET was an inclusion criterion, and imputation was used. The multinomial horizon models do not say how censoring was handled. Calibration is reported only as labels, and the 'AUC (95 % CI)' column contains no intervals. No model coefficients are reported, class imbalance is not addressed, and there is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably yes",
+     "quote": "MCI as First Event 12 months 514 (45.4) ... Direct AD Conversion ... 24 months 168 (14.8)",
+     "page": "7"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Metabolic effects were modeled as continuous z-scores and categorical tertiles to capture both linear dose-response relationships and clinically relevant threshold effects.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Among the 1136 cognitively normal participants included our study ... Models trained on cognitively normal participants at baseline (N = 1133).",
+     "page": "3; 7"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "Missing data patterns were evaluated with multiple imputation methods applied when missingness exceeded 10 % for key variables. ... Missing data patterns, especially for ADAS scores which were 29.3 % missing and FDG-PET data estimated at 36.2 % missing rate, may introduce selection biases despite multiple imputation methods",
+     "page": "3; 14"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No information",
+     "quote": "Searched for how the supplementary predictors were chosen; the only statement is 'supplemented by baseline cognitive measures when appropriate'.",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "Primary analyses utilized competing risks regression using Fine-Gray subdistribution hazards models ... Pathway prediction modeling utilized multinomial logistic regression ... Participants maintaining cognitive stability were censored at their final assessment.",
+     "page": "3; 2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "Probably no",
+     "quote": "Calibration was evaluated using Hosmer-Lemeshow tests and Brier scores ... AUC (95 % CI) Brier Score Calibration ... 24 months 168 (14.8) 0.994 0.008 Excellent",
+     "page": "3; 7"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably yes",
+     "quote": "Subject-grouped k-fold cross-validation provided additional validation while maintaining statistical independence by ensuring no participant appeared in both training and testing sets. ... Temporal validation across different time periods confirmed model generalizability with less than 5 % AUC degradation",
+     "page": "3; 8"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched the text and Tables 1 to 6 for coefficients or odds ratios of the multinomial model; none are reported (Table 4 gives only events, AUC, Brier score and a calibration label).",
+     "page": "7"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level (no person's data on both sides)?",
+     "answer": "Yes",
+     "quote": "ensuring no participant appeared in both training and testing sets",
+     "page": "3"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and tuning confined to training folds?",
+     "answer": "Probably no",
+     "quote": "Raw MetaROI values were converted to standardized z-scores relative to the study population",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was class imbalance addressed?",
+     "answer": "No information",
+     "quote": "Searched for imbalance, weighting, oversampling or SMOTE; nothing found, although direct conversion was about 14.8% of participants.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (Table 4 does not say whether its values are apparent or cross-validated)",
+     "quote": "Prospective validation studies in different settings and populations are warranted to confirm the generalizability of metabolic thresholds and pathway prediction models beyond research cohorts.",
+     "page": "14"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Participants, outcome and analysis are each at high risk, which alone makes the overall rating high. Eligibility depended on follow-up and was inconsistently applied. The outcome was study-constructed, possibly shared predictors, and its timing does not add up. The analysis had heavy imputation of the main predictor, no censoring handling or calibration beyond labels, and no external validation.",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The model was developed only in cognitively normal ADNI volunteers, not in people with MCI; the review sentence itself says so."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "The predictor is baseline FDG-PET MetaROI, a standard imaging measure."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "The outcome is a four-way pathway label (including 'MCI-only' and 'direct CN to AD'), not MCI-to-dementia conversion."
+  }
+ ],
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 13
+ }
+}

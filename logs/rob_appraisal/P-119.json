@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-119",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Rezaee and Zhu, 'Diagnose Alzheimer's disease and mild cognitive impairment using deep CascadeNet and handcrafted features from EEG signals', Biomedical Signal Processing and Control 99 (2025) 106895. It reports 98.84% three-class (CO, MCI, AD) accuracy on the Figshare EEG set. Participant numbers are given only for AD (59 patients); controls and MCI are given as signal counts (110 and 56). The cited sentence is accurate."
+ },
+ "cited_result": "98.84% overall accuracy for three-class control/MCI/AD classification of EEG with the optimised CascadeNet using deep plus handcrafted features on the Figshare dataset (Table 5 'Combined', Table 7 'Figshare-3 optCascadeNet', Section 4.3.4).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination performance (accuracy) of a deep-learning diagnostic classifier, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The data are a secondary public repository with diagnostic groups sampled by known status (case-control-type sampling). Recruitment, setting and eligibility are not described, and control and MCI participant numbers are not reported. The AD group includes severe cases, which widens the spectrum.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used, e.g. cohort, RCT or nested case-control study data?",
+     "answer": "Probably no",
+     "quote": "Figshare contains the signals of the study of Cejnek et al. [13], conducted in 2017, and available in the Figshare database (2021) [23]. The proposed approach was validated using EEG records from 59 Alzheimer's patients with 303 signals. Moreover, 110 signals from controls and 56 signals from MCI patients were also analyzed.",
+     "page": "4"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched for recruitment setting, inclusion or exclusion criteria, and the number of control and MCI participants. None reported; only signal counts are given.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the data source's case mix representative of intended use (spectrum)?",
+     "answer": "Probably no",
+     "quote": "Additionally, the original dataset included severe AD cases, whereas the new dataset features moderate AD",
+     "page": "10"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "The predictors are EEG-derived features computed algorithmically and available at the time of use. But recordings came from two systems with different sampling rates, and the paper does not say how they were distributed across the diagnostic classes, so the predictor could be confounded with class.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "The recordings were made on a 21-channel digital EEG setup (Walter EEG PL-231, Germany) with a sampling frequency of 256 Hz and a TruScan 32 (Alien Technik Ltd., Czech Republic) with a frequency of 128 Hz.",
+     "page": "4"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Time-frequency spectra are generated from windowed EEG data using the STFT.",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "significant features are extracted from the spectrogram. These features can be categorized into two types: deep features obtained using deep learning models and handcrafted features extracted using statistical and signal processing techniques.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The reference diagnoses (CO, MCI, AD) come from the source repository. The paper gives no information on diagnostic criteria, on who assigned the diagnoses and whether they were blind to the EEG, on whether EEG contributed to the diagnosis, or on timing.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched for diagnostic criteria (NIA-AA, Petersen, NINCDS-ADRDA, MMSE or clinical assessment) for the Figshare labels. None reported.",
+     "page": "4"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for an outcome or diagnosis definition. None reported.",
+     "page": "4"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether EEG contributed to the clinical diagnosis. Not reported.",
+     "page": "4"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for how diagnoses were assigned across groups. Not reported.",
+     "page": "4"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnosticians to EEG. Not reported.",
+     "page": "4"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the timing of EEG recording relative to diagnosis. Not reported.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The sample is very small (59 AD patients; control and MCI participant counts unknown) for a network of about 17 million parameters. It is not clear that the 70/30 split was at participant level, and there are multiple signals per patient and overlapping windows. Filter feature selection and standardisation are not shown to be confined to the training folds. Window length and overlap were chosen on the same cross-validation results that are reported (98.84% is the best configuration). The authors themselves note possible overfitting. The classes are imbalanced (303/110/56 signals) with no reported handling. Only accuracy-type metrics are given, with no calibration or CIs. The three-class CO/MCI/AD model has no external validation: the Brazilian dataset has no MCI class and the model was retrained on it.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "validated using EEG records from 59 Alzheimer's patients with 303 signals. Moreover, 110 signals from controls and 56 signals from MCI patients were also analyzed. ... the proposed model has about 17 million trainable parameters",
+     "page": "4, 7"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Normalized features are adjusted to the range [0, 1], while standardized features have zero mean and unit variance",
+     "page": "7"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for a participant or signal flow and for exclusions of recordings. Not reported.",
+     "page": "4, 6"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing or poor-quality recordings and how they were handled. Not reported for the Figshare set.",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably no",
+     "quote": "The application of a filter method reduces the number of features in the EEG signal",
+     "page": "2"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks, sampling of control participants) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "A 70 %-to-30 % split of data was used for training and testing in the study. However, to analyze the algorithm during validation data generation, the k-fold cross-validation (CV) method was employed, specifically using a 5-fold CV, separated by subject (patient).",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "The effectiveness of the proposed strategy is evaluated using metrics such as F-measures, specificity, sensitivity, and overall detection accuracy.",
+     "page": "1"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "Despite these measures, achieving a metric of 100 % indicates possible overfitting. ... The outcomes of 5-fold cross validation (CV) were reported in this figure, and the most accurate results were analyzed using overlap and frame length. ... As a result, classification accuracy after different repetitions was 98.84 % on average.",
+     "page": "8, 12"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for the final model specification or weights. Not reported (deep network); the 98.84% in Tables 5 and 7 does not correspond to any row of the validation Table 3.",
+     "page": "9, 12"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level (no person on both sides)?",
+     "answer": "Probably no",
+     "quote": "A 70 %-to-30 % split of data was used for training and testing in the study.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection, augmentation and tuning confined to training folds (no leakage)?",
+     "answer": "Probably no",
+     "quote": "Standardization, a crucial preprocessing step, is performed before the training of networks to ensure input data have zero mean and a standard deviation of one.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "No information",
+     "quote": "Many previous works have focused on binary classification due to the imbalanced nature of the data. Imbalanced data can lead to reduced accuracy in multi-class classification.",
+     "page": "2"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "No",
+     "quote": "This dataset includes EEG recordings from 88 participants, divided into three groups: 35 Control subjects (CO), 31 Mild AD patients, and 22 Moderate AD patients. ... The classification and reporting of accuracy were based on the same experimental setting as the first dataset.",
+     "page": "10"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Participants were drawn from a repository with an unknown setting and selection, and the AD group includes severe cases. This does not represent the intended use of detecting MCI among people presenting with cognitive concerns."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "unclear",
+   "rationale": "The EEG features are feasible in practice, but two acquisition systems with different sampling rates were mixed without explanation."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The criteria for the MCI and AD reference labels are not reported."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Participants are high (case-control-type repository sampling with no eligibility information) and analysis is high (tiny sample relative to model size, participant-level separation of the 70/30 split not established, configuration tuned on the reported CV results, possible preprocessing leakage, class imbalance unaddressed, no calibration or CIs, no external validation of the three-class CO/MCI/AD model). PROBAST rates overall high if any domain is high.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 14,
+  "matched": 12
+ }
+}

@@ -1,0 +1,213 @@
+{
+ "paper_id": "P-273",
+ "document_check": {
+  "matches": true,
+  "note": "Wang, Gao, Wei, Johnston, Yuan, Zhang and Yu, 'Predicting long-term progression of Alzheimer's disease using a multimodal deep learning model incorporating interaction effects', Journal of Translational Medicine 2024; 22:265. DISFC interaction-aware multimodal deep fusion model (sMRI, clinical, SNP) on ADNI, with cross-validation AUC 0.962 and independent test AUC 0.939."
+ },
+ "cited_result": "Discrimination of the DISFC interaction-aware multimodal deep-fusion model for MCI-to-AD conversion within 4 years: mean AUC 0.962 (SD 0.041) across stratified tenfold cross-validation in 238 ADNI-1/GO/2 MCI participants. Independent ADNI-3 test: AUC 0.939 in 14 participants.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUC) of a multivariable deep-learning prognostic model.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "ADNI is an appropriate longitudinal source, but inclusion required complete trimodal baseline data and follow-up past set durations, and excluded reverters. In addition, 45 AD patients, who are not the target MCI population, were added to model training.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Yes",
+     "quote": "This multi-center, multi-cohort retrospective study collected structural magnetic resonance imaging (sMRI), clinical assessments, and genetic polymorphism data of 252 patients with MCI at baseline from the Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI) database.",
+     "page": "1"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "(b) availability of T1-weighted sMRI scan, clinical assessments, and genetic polymorphism data at baseline, (c) follow-up visits exceeding defined durations. ... Participants with reversed diagnostic status and repeated enrollment in the pMCI or sMCI groups were excluded. ... Additionally, 45 subjects with AD were included in the model training to provide insights into pathological changes and address class imbalance.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Baseline sMRI (multi-scanner, processed through one pipeline), clinical scores and SNPs were measured before the outcome and are available at baseline.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The acquisition of T1-weighted sMRI scans involved multiple scanners, each with its customized scanning protocols. The initial preprocessing steps were conducted through FreeSurfer (version 7.1.1)",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "to predict the risk of MCI progression to AD at baseline",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "availability of T1-weighted sMRI scan, clinical assessments, and genetic polymorphism data at baseline",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "No criteria are given for conversion to AD. The clinical predictors include MMSE, CDR-SB, ADAS, RAVLT and FAQ, and the paper itself states that clinical assessment and neuropsychological testing are core components of AD diagnostic criteria, so predictors are probably part of the outcome determination. No blinding is reported. The follow-up horizon differs between the cross-validation set (48 months) and the test set (36 to 48 months).",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "We categorized all MCI subjects into progressive MCI (pMCI) or stable MCI (sMCI) based on their progression to AD during follow-up. (Searched for the diagnostic criteria used to define conversion; none stated.)",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched Methods for a named standard (for example NINCDS-ADRDA or ADNI criteria) for AD conversion; none stated.",
+     "page": "2-5"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably no",
+     "quote": "Clinical assessment and neuropsychological testing are crucial components of current diagnostic criteria for probable AD [7, 8].",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "The cross-validation set consisted of 238 MCI subjects from ADNI-1 and ADNI-GO/2 cohorts, with a 48-month follow-up. ... The independent test set comprised 14 MCI subjects with follow-up durations ranging from 36 to 48 months from the ongoing ADNI-3 cohort",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for any statement on blinding of the diagnosing clinicians to baseline clinical, imaging or genetic data; none found.",
+     "page": "2-5"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "On the cross-validation set, our model achieved superior results for predicting MCI conversion within 4 years",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are about 91 converters in cross-validation for a 3D CNN with clinical, interaction and 49 SNP inputs, and 3 converters in the independent test (AUC 95% CI 0.796 to 1.000). Analysis is complete-case, with mean imputation. The SNP Lasso selection, imputation and scaling are not stated to be within folds. The 'best-performing model, determined by validation performance' makes the averaged cross-validation AUC optimistic, and architecture choices were compared on the same cross-validation. Adding AD patients to training changes the case mix, and it is not reported whether they entered the validation folds. No calibration was reported.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Of the 252 MCI patients, 94 (37.3%) progressed to AD, and 158 (62.7%) remained stable during follow-up. ... with only one misclassification observed among the three pMCI cases.",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Subsequently, all variables were normalized using the Min\u2013Max scaler.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "Another limitation is the small sample size, which is a consequence of the inclusion criteria requiring multimodal completeness and sufficient follow-up duration.",
+     "page": "11"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "Mean imputation was employed for handling missing data.",
+     "page": "2-3"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably yes",
+     "quote": "In the first stage, a knowledge-driven approach selected 1023 AD-related SNPs that had achieved gene-wide significance in the IGAP meta-analysis [28]. In the second stage, a data-driven approach with Lasso regression was performed to identify the most important 49 features.",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "Additionally, 45 subjects with AD were included in the model training to provide insights into pathological changes and address class imbalance.",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "We evaluated the model performance using the area under the receiver operating characteristic curve (AUC), accuracy, sensitivity, specificity, and F1 score.",
+     "page": "1"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "The best-performing model, determined by validation performance, was evaluated on the independent test set to assess its generalizability. ... Notably, we calculated the average results across folds as the overall performance of the tenfold cross-validation.",
+     "page": "5"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for release of final model weights or code; only SHAP summaries are reported.",
+     "page": "8"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level?",
+     "answer": "Probably yes",
+     "quote": "we performed stratified tenfold cross-validation to ensure each patient was tested once.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and tuning done within training folds only?",
+     "answer": "Probably no",
+     "quote": "In the second stage, a data-driven approach with Lasso regression was performed to identify the most important 49 features. ... Data augmentation was applied to augment training data",
+     "page": "3, 5"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably no for the cited cross-validation AUC; probably yes for the 14-participant ADNI-3 test",
+     "quote": "The best-performing model, determined by validation performance, was evaluated on the independent test set to assess its generalizability.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes, by adding a different population",
+     "quote": "Additionally, 45 subjects with AD were included in the model training to provide insights into pathological changes and address class imbalance.",
+     "page": "2"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internally cross-validated (cited 0.962); independent test within ADNI-3 with 14 participants",
+     "quote": "On the independent test set, DISFC demonstrated good generalizability with an AUC of 0.939 (95% CI 0.796\u20131.000) and accuracy of 92.86% (95% CI 66.13\u201399.82%).",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "ADNI MCI completers with full trimodal data; the authors note a predominantly well-educated, white sample."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "The model needs genome-wide genotyping plus 3D sMRI, which are not routinely available at the point of MCI assessment."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Participants (complete-data completers, reverters excluded, AD patients added to training), outcome (undefined conversion criteria, probable incorporation of the cognitive predictors) and analysis (few events for a deep model, probable leakage, model selected on validation folds, 3-event test set, no calibration) are all high risk.",
+ "confidence": "high",
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 21,
+  "matched": 19
+ }
+}

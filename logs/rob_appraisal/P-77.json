@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-77",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Alsuhaibani, Dodge and Mahoor, 'Mild cognitive impairment detection from facial video interviews by applying spatial-to-temporal attention module', Expert Systems With Applications 252 (2024) 124185. It classifies MCI against NC from I-CONECT facial videos, and the abstract reports 88% accuracy. This matches the review's citation (Alsuhaibani et al. 2024)."
+ },
+ "cited_result": "Accuracy of the STAM transformer classifier for MCI versus normal cognition from facial video interviews (I-CONECT intervention arm): best theme Halloween 87.5% (abstract: 88%; F1 0.89, AUC 0.87) with sequence plus segment positional embeddings, 10-fold cross-validation (Table 4, p.7). Over five reshuffled fold assignments, Halloween mean is 84.38% (SD 5.84) and the other themes 61.34% to 77.96% (Table 7, p.7).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (accuracy) of a deep-learning classifier for MCI versus normal cognition, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "About half of the eligible participants' videos per theme were dropped by manual quality rating: 30 of 66, 30 of 60, 32 of 59 and 39 of 59 kept. The paper does not say the rating was blind to diagnosis. The authors link poor-quality videos to older adults' difficulty with the technology, which may be related to cognitive status. The analysed sample is therefore selected in a way that could bias discrimination.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Yes",
+     "quote": "A total of 158 themes of video chats have been recorded among 68 subjects who were assigned to the intervention (i.e. video-chats) group.",
+     "page": "5"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no. A large share of videos was excluded by subjective quality rating, and the reasons for exclusion may be linked to cognitive status.",
+     "quote": "The number of eliminated videos within a theme is concernedly large which is mainly based on the video quality. ... some participants did not show their faces for the majority of the video. Therefore, older adults are having challenges in handling computer intermedium interviews.",
+     "page": "8"
+    },
+    {
+     "question": "1.AI Data source (PROBAST+AI): were data curated without reference to the outcome?",
+     "answer": "No information on blinding. The quality curation was manual and decided which videos were kept.",
+     "quote": "The quality assessment is performed manually because it is challenging to automate this step. The participants\u2019 videos that do not meet the quality standards are dropped. We set the passing limit for video ratings of Very good and Good.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Features come from an unsupervised autoencoder and a standard frame pipeline applied to everyone. Labels are not used in feature extraction, and the features would be available when the model is used.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Because the videos have different frame rates, we fixed the rate of frame extraction in the videos.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes. The features come from an autoencoder trained without labels.",
+     "quote": "we trained an autoencoder from scratch",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "the proposed method can be integrated into a screening technique for cost-effective MCI detection in non-clinical settings for older adults.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The outcome is a clinical MCI or NC diagnosis from the trial, taken at the time point nearest the videos. The diagnostic criteria and procedure are not described.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information. Sections 4.1 and 2 were searched for the diagnostic procedure or criteria.",
+     "quote": "These participants were clinically diagnosed with either MCI or NC at the baseline.",
+     "page": "5"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information. The paper names no MCI criteria. Sections 1 and 4.1 were searched.",
+     "quote": "These participants were clinically diagnosed with either MCI or NC at the baseline.",
+     "page": "5"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes. Facial features are not part of the clinical diagnosis.",
+     "quote": "These participants were clinically diagnosed with either MCI or NC at the baseline.",
+     "page": "5"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes. Within each theme the same assessment wave is used, with month 6 for Halloween.",
+     "quote": "In our experiment, we used the clinical status assessed at the beginning of the trial except for the Halloween theme which occurred near the six-month (24 weeks) assessment.",
+     "page": "6"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes. The clinical diagnosis in the trial is independent of the later video analysis.",
+     "quote": "These participants were clinically diagnosed with either MCI or NC at the baseline.",
+     "page": "5"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "We used the cognitive status assessed closest to the video chats.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 14 to 19 MCI participants per theme. Excluded or missed sessions were handled by complete-case analysis. Configuration choices (positional embeddings, sequence size, overlap, loss) were compared and chosen on the same cross-validation test folds, with no separate validation set. The headline figure is the best theme from one fold partition, and repeated partitions give lower means. Calibration was not assessed, and there is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No. There are 30 to 39 participants per theme, with 14 to 19 MCI.",
+     "quote": "Summertime 80.7 (4.75) 15.8 (2.79) 14/16 8/22",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes. Continuous latent features are normalised, not categorised.",
+     "quote": "Before conducting our experiments, we normalized the feature vectors.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No. Only 30 to 39 of the 59 to 66 participants attending each theme were analysed.",
+     "quote": "some participants have missed these themes\u2019 sessions or their videos are excluded in the current study due to quality issues with the videos.",
+     "page": "5"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No. The analysis is complete-case, with participants dropped for missed sessions or low-quality video.",
+     "quote": "some participants have missed these themes\u2019 sessions or their videos are excluded in the current study due to quality issues with the videos.",
+     "page": "5"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes. Features are learned without univariable screening.",
+     "quote": "we trained an autoencoder from scratch",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes. Sequences are combined per video (one video per participant per theme).",
+     "quote": "We labeled the video as correctly classified if the majority of its sequences are correctly classified.",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no. Only discrimination measures are reported, with no calibration.",
+     "quote": "Accuracy, F1 score, and Area under the Receiver Operating Characteristic Curve (AUC) are the evaluation metrics.",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No. The best results are selected and reported, and the configuration was chosen on test-fold performance. Repeated partitions show lower means.",
+     "quote": "The more iteration performed the clearer the conclusion we can state. However, our initial results are within the results presented in the table. ... We are comparing our best results with the best results achieved from previous works.",
+     "page": "7"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information. This is a deep network, and no final weights are reported.",
+     "quote": "Searched for: final model weights or specification beyond the STAM architecture; not reported.",
+     "page": "5"
+    },
+    {
+     "question": "4.AI-a Is the train/test split at participant level?",
+     "answer": "Yes. Participants are assigned to folds, with one interview per theme each.",
+     "quote": "We randomly assigned the subjects to 10 different folds for all themes separately [p.6] ... Because subjects had one interview per theme in the study [p.4]",
+     "page": "6; 4"
+    },
+    {
+     "question": "4.AI-b Are preprocessing, feature learning and hyperparameter tuning done within training folds only?",
+     "answer": "Probably no. The paper does not say whether the autoencoder was trained only on training-fold frames, and configuration choices were made from test-fold results.",
+     "quote": "The model was trained for 32 epochs using the Adam optimizer and Mean Square Error (MSE) loss function.",
+     "page": "6"
+    },
+    {
+     "question": "4.AI-c Is the test set held out from all tuning?",
+     "answer": "No. Sequence size, overlap and loss were selected by comparing accuracies on the same cross-validation test folds.",
+     "quote": "The sequence size of 15 has performed overall better than the size of 20 and 25.",
+     "page": "7"
+    },
+    {
+     "question": "4.AI-d Was class imbalance considered and handled?",
+     "answer": "Yes",
+     "quote": "We implemented the Weighted BCE to deal with the unbalanced representation of classes during the training.",
+     "page": "6"
+    },
+    {
+     "question": "4.AI-e Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal (10-fold cross-validation) with tuning on the test folds. There is no external validation.",
+     "quote": "Table 5 shows the best results of the studies and compares them with our top performance result among the themes in this study.",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "Participants are socially isolated volunteers aged 75 and over from the trial's intervention arm, filtered for video quality."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "unclear",
+   "rationale": "The videos come from semi-structured chats with trained conversational staff. They are not recordings from a self-administered instrument."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "The outcome is a clinical MCI versus NC diagnosis."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST): Participants and Analysis domains high; Outcome unclear; Predictors low.",
+ "overall_category": "high",
+ "overall_rationale": "Two domains are high risk, so the overall judgement is high. About half of the videos were excluded by a quality rating not stated to be blind, which may be linked to cognition. The samples are very small, with tuning and best-result selection on the cross-validation test folds and no calibration or external validation.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 21
+ }
+}

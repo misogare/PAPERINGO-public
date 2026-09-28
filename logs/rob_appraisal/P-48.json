@@ -1,0 +1,213 @@
+{
+ "paper_id": "P-48",
+ "document_check": {
+  "matches": true,
+  "note": "Franciotti R, Nardini D, Russo M, Onofrj M, Sensi SL. Comparison of Machine Learning-based Approaches to Predict the Conversion to Alzheimer's Disease from Mild Cognitive Impairment. Neuroscience 514 (2023) 143-152. ADNI MCI, RF/GB/XGB models by feature class. Matches the cited study (Franciotti et al. 2023)."
+ },
+ "cited_result": "Ranking of feature classes for predicting conversion from MCI to AD within 36 months: sMRI-only models (n = 318) had the lowest accuracy (0.77 to 0.79) compared with models that include neuropsychological scores (0.81 to 0.83 alone, n = 587; up to 0.88 with sMRI, n = 318; up to 0.89 to 0.90 with AD biomarkers, n = 422).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result ranks the discrimination (accuracy) of machine-learning prognostic models built on different predictor sets, which is model performance and so falls under PROBAST, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "Domain 1: Participants",
+   "judgment": "Unclear",
+   "rationale": "The data source (ADNI longitudinal cohort) is appropriate, but no MCI eligibility criteria, selection numbers or handling of participants with under 36 months of follow-up are reported. Each feature class uses a different complete-data subset, and the sMRI subset is described as acquired on a single scanner type.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort)?",
+     "answer": "Yes",
+     "quote": "Data used in the preparation of this article were obtained from the ADNI database (https://adni.loni.usc.edu) and used in a previous paper (Massetti et al., 2022).",
+     "page": "2 (journal p. 144)"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Single classes or class combinations with a sample size lower than 300 were excluded from the analyses. [Searched for: MCI diagnostic criteria, ADNI phases, number screened and excluded, minimum follow-up for s-MCI, reverters; none reported.]",
+     "page": "3 (journal p. 145)"
+    },
+    {
+     "question": "AI (data source): is the data source and its restrictions described?",
+     "answer": "Probably no",
+     "quote": "MRI data (Image Collections, https://adni.loni.usc.edu) were acquired with a Magnetization Prepared-RApid Gradient Echo (MP-RAGE) protocol by employing a Philips 3 T MRI scanner",
+     "page": "2 (journal p. 144)"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 2: Predictors",
+   "judgment": "Low",
+   "rationale": "All predictors come from baseline with standard ADNI protocols and automated FreeSurfer processing. They were measured before the outcome and are available at the intended time of use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Like the previous paper (Massetti et al., 2022), the sMRI analysis was performed with Freesurfer (version 6.0).",
+     "page": "3 (journal p. 145)"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "This study grouped MCI baseline data into three classes: neuropsychological features, sMRI-related data, and AD-related biomarkers.",
+     "page": "2 (journal p. 144)"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "This study grouped MCI baseline data into three classes",
+     "page": "2 (journal p. 144)"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 3: Outcome",
+   "judgment": "Unclear",
+   "rationale": "Conversion to AD within 36 months is a standard horizon, but the paper gives no diagnostic criteria, no information on whether the diagnosing clinicians knew the predictors, and no information on whether cognitive or functional scores used as predictors (MMSE, CDR-SB, FAQ, ADAS-Cog) entered the diagnosis. That matters for the cited comparison, because incorporation of scores into the outcome would favour score-carrying models over sMRI-only models.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "identify the best strategy to divide MCI subjects into two groups: individuals who converted to AD within the 36-month follow-up (c-MCI) or not (s-MCI). [Searched for: AD diagnostic criteria or procedure; none reported.]",
+     "page": "3 (journal p. 145)"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "[Searched for: NINCDS-ADRDA, NIA-AA or any named criteria for conversion; none reported.]",
+     "page": "whole text"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "[Searched for: how conversion was diagnosed and whether MMSE, CDR-SB, FAQ or ADAS-Cog (all listed as predictors in Table 1) contributed; not described.]",
+     "page": "3 (journal p. 145), Table 1"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "[Searched for: outcome ascertainment procedure; not described.]",
+     "page": "whole text"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "[Searched for: blinding of diagnosing clinicians to test scores, MRI or CSF; not described.]",
+     "page": "whole text"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "individuals who converted to AD within the 36-month follow-up (c-MCI) or not (s-MCI)",
+     "page": "3 (journal p. 145)"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 4: Analysis",
+   "judgment": "High",
+   "rationale": "Events per class are not reported and the test sets are small (15% of 318 is about 48 participants for sMRI). The analysis is complete-case with no stated missing-data handling, and performance rests on accuracy, PPV, NPV, sensitivity and specificity only, with no AUC and no calibration. There is a single random split, and hyperparameter tuning selected 'the best performance' with no statement that the test set was excluded. There is no cross-validation or external validation, and the 'Error' margins are undefined.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No information",
+     "quote": "sMRI data (n = 318) [Searched for: number of c-MCI and s-MCI per class; not reported. The sMRI class has 38 features (Table 2, left and right).]",
+     "page": "4 (journal p. 146), Table 3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "The volumes of the brain regions, computed with asegstats2table, were normalized by dividing by the total intracranial volume of each patient",
+     "page": "3 (journal p. 145)"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "Neuropsychological data (n = 587) sMRI data (n = 318) AD-related biomarkers (n = 422)",
+     "page": "4 (journal p. 146), Table 3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "[Searched for: missing data, imputation, exclusion for incomplete data; nothing reported. The differing class sizes imply complete-case analysis.]",
+     "page": "whole text"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "RF, GB, and XGB were also applied after RF features selection technique",
+     "page": "4 (journal p. 146)"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks) accounted for appropriately?",
+     "answer": "No information",
+     "quote": "[Searched for: handling of participants without 36 months of follow-up, censoring or death; not described.]",
+     "page": "whole text"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "Accuracy, positive predictive value (PPV), negative predictive value (NPV), sensitivity, and speci\ufb01city were calculated for RF, GB, and XGB before and after RF feature selection to evaluate the performance of each ML algorithm.",
+     "page": "4 (journal p. 146)"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "From the entire dataset, information of 85% of subjects was randomly extracted and used for the training phase performed by RF, GB, and XGB separately. After the training stage, the testing phase was applied by each ML algorithm to the remaining 15% of the dataset.",
+     "page": "3 (journal p. 145)"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Not applicable",
+     "quote": "[Tree ensembles; no coefficients are reported.]",
+     "page": "not applicable"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level?",
+     "answer": "Yes",
+     "quote": "information of 85% of subjects was randomly extracted and used for the training phase",
+     "page": "3 (journal p. 145)"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection and tuning confined to training data, and was the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "From several extractions, the algorithm \ufb01ts the model for each combination of values and then selects the hyperparameter combination that provides the best performance.",
+     "page": "3 (journal p. 145)"
+    },
+    {
+     "question": "AI: Was class imbalance reported and handled?",
+     "answer": "No information",
+     "quote": "[Searched for: class proportions, resampling, class weights; not reported.]",
+     "page": "whole text"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal (single random hold-out split), no external validation",
+     "quote": "the testing phase was applied by each ML algorithm to the remaining 15% of the dataset",
+     "page": "3 (journal p. 145)"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "Some concerns",
+   "rationale": "ADNI research volunteers, and the sMRI subset is from Philips 3 T scans. Generalisation to memory-clinic MCI is uncertain."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "Low",
+   "rationale": "The outcome is conversion to AD dementia within 36 months, which matches the review's prognostic question."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST: participants unclear, predictors low, outcome unclear, analysis high)",
+ "overall_category": "high",
+ "overall_rationale": "The analysis domain is high: no calibration or AUC, a single small random hold-out with unclear tuning isolation, unreported events, and complete-case subsets with no missing-data handling. Under PROBAST any high domain makes the overall rating high. The outcome definition is also unreported, and for this particular comparison (score-carrying versus sMRI-only) any incorporation of cognitive scores into the outcome would bias the ranking in the direction cited.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 15,
+  "matched": 11
+ }
+}

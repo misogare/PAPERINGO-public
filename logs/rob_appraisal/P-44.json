@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-44",
+ "document_check": {
+  "matches": true,
+  "note": "Hwang H, Kim SE, Lee HJ, Lee DA, Park KM. 'Identification of amnestic mild cognitive impairment by structural and functional MRI using a machine-learning approach', Clinical Neurology and Neurosurgery 238 (2024) 108177. Linear SVM, 50 aMCI and 26 cognitively unimpaired; accuracy 88.9% (structural volumes) and 92.9% (structural + functional connectome). Matches the citation."
+ },
+ "cited_result": "Linear SVM classification of aMCI versus cognitively unimpaired: accuracy 88.9% (AUC 0.889) with structural volumes, rising to 92.9% (AUC 0.929) when functional connectomic profiles are added (p.4).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the diagnostic classification accuracy of a machine-learning classifier (SVM) and the comparison of two such models, so PROBAST with PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "Diagnostic case-control design: retrospectively recruited aMCI patients compared with separately enrolled controls free of any medical or neurological disorder (0% hypertension, diabetes or hyperlipidaemia against 36%, 16% and 26% in aMCI), which widens the spectrum and inflates discrimination.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No",
+     "quote": "We retrospectively recruited 50 individuals clinically diagnosed with aMCI who underwent neuropsychological testing at the Haeundae Paik Hospital between March 2018 and January 2020. ... We further enrolled 26 age- and sex-matched individuals with no history of medical or neurological disorders as controls.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "Hypertension (%) 18 (36.0) 0 (0) <0.001 (Table 1); 6) patients who underwent both structural T1-weighted and resting-state functional MRI (p.2)",
+     "page": "2, 3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Same scanner and protocol for all participants; volumes and graph measures derived with automated pipelines (FreeSurfer, CONN), which are available at the time of clinical work-up.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All MRI scans in the aMCI and CU groups were performed using the same scanner (3.0 T MRI, AchievaTx, Phillips Healthcare) equipped with a 32-channel head coil and the same protocols.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "We further obtained the absolute cortical and subcortical structural volumes using these automated methods.",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "All patients underwent structural T1-weighted magnetic resonance imaging (MRI) and resting-state functional MRI.",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "aMCI was defined by standard Petersen criteria using a neuropsychological battery, but the document does not show that controls received the same testing (controls were defined by absence of disease history, and their education is not reported), and the interval between testing and MRI is not given.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome (reference diagnosis) determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "All patients met Petersen\u2019s criteria for aMCI [25]",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "All patients met Petersen\u2019s criteria for aMCI [25]: 1) a subjective memory complaint by the patient or his/her caregiver; 2) normal overall cognitive performance on the Korean version of the Mini-Mental State Examination",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "4) objective memory decline of less than \u22121.0 SD on the Seoul Verbal Learning Test (SVLT) and Rey-Osterrieth Complex Figure Test (RCFT), which measures verbal and visual memory, respectively",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "We further enrolled 26 age- and sex-matched individuals with no history of medical or neurological disorders as controls. Searched for whether controls completed the Seoul Neuropsychological Screening Battery: the text says only 'in all patients', and Table 1 reports education for aMCI only.",
+     "page": "2, 3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "The Seoul Neuropsychological Screening Battery was used as a neuropsychological examination in all patients.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the interval between neuropsychological testing and MRI acquisition: not reported.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "76 participants with many candidate features; features selected by univariable t-tests apparently on the whole sample before the train/test split (leakage); the reported percentages reproduce exactly as confusion matrices over 99 cases, which matches neither the 76 participants nor a 20% hold-out; the AUC equals the balanced accuracy, i.e. it was computed from binary predictions; no calibration; no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "this was a single-center, retrospective study enrolling only 50 aMCI patients and 26 healthy controls",
+     "page": "5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "All variables were standardized using z-scores.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "In the classification of verbal or visual-aMCI (n = 22) versus both aMCI (n = 28), an SVM classifier based on structural volume alone revealed a low accuracy of 36.7%, sensitivity of 31.8%, specificity of 40.7% (the subtype percentages reproduce as 7/22 and 11/27, i.e. 49 of the 50 aMCI patients; no exclusion is reported)",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data or exclusions after enrolment: none reported.",
+     "page": "2-4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "Student\u2019s t-tests were performed to compare each variable between the aMCI and CU groups and between the verbal- or visual-aMCI and both aMCI groups. The variables that were significantly different between the two groups were retained (p < 0.05).",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "All MRI scans in the aMCI and CU groups were performed using the same scanner ... and the same protocols.",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "the SVM classifier based on structural volumes revealed an accuracy of 88.9%, sensitivity of 91.8%, specificity of 86.0%, positive predictive value of 86.5%, negative predictive value of 91.5%, and area under the curve (AUC) of 0.889.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "To perform model selection, 80% of the subjects were randomly selected for use as the training dataset, whereas the remaining 20% were considered the test, or holdout, dataset. (p.3); Further studies with larger sample sizes are required to validate our results. (p.5)",
+     "page": "3, 5"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "Searched for the selected features and SVM weights of the final model: not reported in the main text (feature comparisons are in Supplementary Tables 1 and 2).",
+     "page": "3-4"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level?",
+     "answer": "Probably yes",
+     "quote": "80% of the subjects were randomly selected for use as the training dataset",
+     "page": "3"
+    },
+    {
+     "question": "AI: Were feature selection and tuning done within the training folds only?",
+     "answer": "Probably no",
+     "quote": "Feature selection from structural volumes and functional connectomic profiles was performed to determine the relevant features for classification. Student\u2019s t-tests were performed to compare each variable between the aMCI and CU groups ... Thereafter, we used a support vector machine (SVM) algorithm, a supervised classifier with a linear kernel function, and executed k-fold cross-validation.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably no",
+     "quote": "The test dataset was used to provide an unbiased evaluation of the final model fit to the training dataset.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "No information",
+     "quote": "Searched for oversampling, weighting or balancing of the 50 aMCI versus 26 CU classes: not described, although the reported metrics correspond to about 49 and 50 cases per class.",
+     "page": "3-4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal only; which set produced the metrics is unclear",
+     "quote": "When structural volumes and functional connectomic profiles were combined, the accuracy increased to 92.9%, with a sensitivity of 93.9%, specificity of 92.0%, positive predictive value of 92.0%, negative predictive value of 93.9%, and AUC of 0.929.",
+     "page": "4"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Controls are volunteers free of medical disease and vascular risk factors, not people presenting with memory complaints, the population the authors name as the intended use."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Standard T1 and resting-state fMRI on one clinical scanner."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "aMCI by Petersen criteria."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "High risk in participants (case-control with disease-free controls) and analysis (small sample, univariable feature selection likely before the split, metrics from an unexplained 99-case set, AUC computed from binary predictions, no calibration or external validation); outcome unclear.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 13
+ }
+}

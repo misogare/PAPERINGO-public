@@ -1,0 +1,195 @@
+{
+ "paper_id": "P-567",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Wang L, Zheng Z, Su Y, Chen K, Weidman D, Wu T, Lo S, Lure F, Li J (ADNI, AIBL), 'Early Prediction of Progression to Alzheimer's Disease using Multi-Modality Neuroimages by a Novel Ordinal Learning Model ADPacer', IISE Trans Healthc Syst Eng 2024;14(2):167-177 (author manuscript). ADPacer is an ordinal support-vector model. Table 2 gives a cross-validated accuracy of 0.95 in ADNI for class 1-3 vs 4, which matches the cited value."
+ },
+ "cited_result": "Cross-validated accuracy of 0.95 in ADNI for ADPacer's ordinal predictions collapsed to the binary task of conversion within vs beyond five years (class 1-3 vs 4; Table 2, p. 25). The ordinal overall CV accuracy is 0.83 (Table 1).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (accuracy) of a multivariable machine-learning prognostic model for MCI-to-AD conversion, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1 Participants",
+   "judgment": "Low",
+   "rationale": "A longitudinal cohort (ADNI) is an appropriate source for a prognostic model. The inclusion criteria (amyloid-positive MCI visits with T1 MRI and florbetapir PET) are explicit, and all eligible ADNI samples were included.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Yes",
+     "quote": "The dataset used in this study included 282 samples from 209 participants in ADNI. Each sample corresponds to a clinical visit.",
+     "page": "p. 6"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "1) the patient is assessed as having amyloid-positive MCI at the visit, which can be either the initial visit when the MCI diagnosis is first made or a follow-up visit when the MCI status remains unchanged; 2) T1 MRI and florbetapir-PET (a type of amyloid-PET) were collected during the visit. ... we chose to include all available samples in the ADNI database according to the inclusion criteria stated in Section 2.1.",
+     "page": "p. 6; p. 15"
+    }
+   ]
+  },
+  {
+   "domain": "2 Predictors",
+   "judgment": "Low",
+   "rationale": "Predictors are computed with standard automated pipelines applied to all participants, and they are available at the visit when the model would be used.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "T1 MRI was processed by FreeSurfer v7.1 [17] to obtain volumetric and cortical thickness measures following standard, published procedures [18]. Amyloid-PET was processed by a PET Unified Pipeline to obtain regional standardized uptake value ratios (SUVR)",
+     "page": "p. 6"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "T1 MRI was processed by FreeSurfer v7.1 [17] to obtain volumetric and cortical thickness measures following standard, published procedures [18]. (Automated processing of visit-time data; no explicit blinding statement found.)",
+     "page": "p. 6"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "t is also the time when ADPacer can be deployed.",
+     "page": "p. 5"
+    }
+   ]
+  },
+  {
+   "domain": "3 Outcome",
+   "judgment": "Unclear",
+   "rationale": "The document does not describe the diagnostic criteria for AD conversion, or whether the diagnosis drew on MMSE and CDR, which are also predictors. Outcome timing depends on unaligned visit schedules. The class 3 window is stated inconsistently.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched for the criteria or procedure used to diagnose conversion to AD (clinical diagnosis, NINCDS-ADRDA, MMSE/CDR thresholds): the document defines only time windows for classes.",
+     "page": "pp. 4-6"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "Class 1\u20134 represents conversion to AD within one year, between one and two years, between three and five years, and beyond five years from the time of a clinical visit, t",
+     "page": "p. 5"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "from commonly used cognitive and clinical assessments such as the Mini-Mental State Examination (MMSE) total score and the Clinical Dementia Rating Scale (CDR) global score and sum-of-boxes score (MMSE and CDR are predictors; the document does not state whether the AD diagnosis used them.)",
+     "page": "p. 7"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "One reason causing label ambiguity in the training data is that the assessment times of different patients may not perfectly align.",
+     "page": "p. 4"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for any statement that diagnosing clinicians were blind to cognitive scores or imaging: none found.",
+     "page": "pp. 5-7"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "this class, defined as MCI patients who have not converted to AD in five years, has substantial heterogeneity.",
+     "page": "p. 14"
+    }
+   ]
+  },
+  {
+   "domain": "4 Analysis",
+   "judgment": "High",
+   "rationale": "167 evaluable samples (35-46 per class) were used against more than 300 candidate features. The ambiguously labelled 115 samples (41%) were excluded from evaluation. Only accuracy is reported, with no discrimination or calibration measures. The tuning parameter was chosen by the same CV that produced the reported accuracy, with no nested CV, and the model was then refitted on all data. For the class 1-3 vs 4 task, class imbalance (132 vs 35 evaluable samples) is not addressed. On the positive side, the split is at participant level and feature weighting was done inside the CV.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "among the 282 samples, 167 samples have precise class labels (46, 41, 45, and 35 for class 1\u20134, respectively) ... 156 features extracted from MRI were included ... 151 features extracted from amyloid-PET were included",
+     "page": "p. 6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Then, we used these weights in the RBF kernel to re-train a nonlinear ADPacer.",
+     "page": "p. 11"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "This is why only precisely-labeled samples were included in the left-out validation fold",
+     "page": "p. 12"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "In the AIBL dataset, some of the aforementioned non-imaging features are missing, such as education and CDR sum-of-boxes score. (Searched for missing-data handling in the ADNI development data: none reported.)",
+     "page": "p. 7"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "we embedded a feature weighting scheme within the CV.",
+     "page": "p. 11"
+    },
+    {
+     "question": "4.6 Were complexities in the data (multiple samples per participant) accounted for; was the train/test split at participant level? (AI)",
+     "answer": "Yes",
+     "quote": "we cautiously designed the cross validation (CV) scheme in model evaluation by splitting CV folds among patients not samples.",
+     "page": "p. 6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "No",
+     "quote": "We reported the overall accuracy and class-specific accuracy based on the CV in Table 1.",
+     "page": "p. 12"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for; was the test fold held out from hyperparameter tuning? (AI)",
+     "answer": "No",
+     "quote": "We used CV based on patients not samples to avoid overfitting (see more discussion in Section 2.1), and selected the \u03bb with the highest CV accuracy.",
+     "page": "p. 11"
+    },
+    {
+     "question": "4.8a Class imbalance handled? (AI)",
+     "answer": "Probably no",
+     "quote": "Our dataset is fairly balanced in each class. ... future research may investigate how to optimize the performance of ADPacer in the presence of class imbalance",
+     "page": "p. 11; p. 16"
+    },
+    {
+     "question": "4.8b Is the cited performance apparent, internally or externally validated? (AI)",
+     "answer": "Internally validated only (CV with tuning optimism); external AIBL check on very small samples",
+     "quote": "(b) class 1\u20133 vs. 4 (19 samples). On the AIBL data, ADPacer achieved accuracies of 0.75 and 0.84 accuracies for task (a) and (b), respectively.",
+     "page": "p. 13"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for final model coefficients or weights: not reported beyond named top features and modality-level SHAP.",
+     "page": "pp. 14-15"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST)",
+ "overall_category": "high",
+ "overall_rationale": "The analysis domain is high risk. The sample is small relative to more than 300 features, 41% of samples were excluded from evaluation, performance is accuracy only with no calibration, and tuning is not nested, so the reported CV accuracy is optimistic. The outcome domain is unclear because the AD diagnostic criteria and their overlap with MMSE/CDR predictors are not described.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "Participants are restricted to amyloid-positive (florbetapir) MCI research volunteers in ADNI, and multiple visits per person are included."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "The outcome is a binary horizon derived from ordinal pace classes. Class 4 mixes late converters with non-AD MCI."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 17,
+  "matched": 16
+ }
+}

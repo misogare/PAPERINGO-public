@@ -1,0 +1,134 @@
+{
+ "paper_id": "P-45",
+ "document_check": {
+  "matches": true,
+  "note": "Shaji S, Palanisamy R, Swaminathan R. 'Structural irregularities in MR corpus callosal images and their association with cerebrospinal fluid biomarkers in Mild Cognitive Impairments', Neuroscience Letters 810 (2023) 137329. ADNI baseline MRI and CSF, 171 participants (48 HC, 60 EMCI, 63 LMCI); Fourier irregularity measures correlated with CSF markers. The cited pooled correlation of one measure (FC3) with Abeta42 is reported on p.4."
+ },
+ "cited_result": "In the pooled sample of all 171 participants, one callosal irregularity measure (FC3) was significantly correlated with CSF Abeta42 (Pearson, p < 0.05; p.4, Fig. 4).",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result is an association between an MRI shape measure and a CSF biomarker measured at a single (baseline) time point, so the JBI checklist for analytical cross-sectional studies applies.",
+ "domains": [
+  {
+   "domain": "1. Inclusion criteria clearly defined",
+   "judgment": "No",
+   "rationale": "Only an age- and gender-matched 'subset' of ADNI with complete CSF data is described; the criteria and process for choosing the subset are not given.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "No",
+     "quote": "A subset of MR volumes belonging to HC, EMCI, and LMCI subjects are considered after age and gender matching is performed. ... After accounting for missing data, 171 subjects (HC-48; EMCI-60; LMCI-63) are considered for analysis.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Subjects and setting described",
+   "judgment": "Unclear",
+   "rationale": "Age, sex, education, MMSE and CSF values are tabulated, but the setting is given only as the ADNI database, with no phase, sites or period.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Unclear",
+     "quote": "In this study, baseline T1-weighted structural MR brain images obtained from Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI) database are employed [21].",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Exposure measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "Segmentation is automated (FreeSurfer 5.3) and visually checked, applied identically to all, but the Fourier irregularity coefficients are a new measure with no validity or reliability data, taken from a single mid-sagittal slice.",
+   "signalling": [
+    {
+     "question": "Was the exposure (callosal irregularity) measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "FreeSurfer is widely employed for CC segmentation and has been reported to be concordant with gold standard manual segmentation [23]. Each volumetric CC output from Freesurfer is visually inspected for accuracy and no manual corrections are required.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Objective, standard criteria for the condition",
+   "judgment": "Unclear",
+   "rationale": "The criteria used to classify participants as HC, EMCI or LMCI are not stated.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "No information",
+     "quote": "Searched the Database and Methods sections for the diagnostic criteria for HC, EMCI and LMCI (e.g. memory-test cut-offs, CDR): none given beyond 'HC, EMCI, and LMCI subjects' drawn from ADNI.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "5. Confounding factors identified",
+   "judgment": "No",
+   "rationale": "Groups were matched on age and sex, but no confounders of the irregularity-Abeta42 correlation (for example diagnostic group, age, head size) are identified for the association analysis.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "No",
+     "quote": "No significant differences in age, sex, and education are observed among the subject groups.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "6. Strategies to deal with confounding",
+   "judgment": "No",
+   "rationale": "The association is an unadjusted Pearson correlation computed over pooled diagnostic groups.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "No",
+     "quote": "The association of these measures with CSF markers, namely A\u03b242, t-tau, and p-tau, is investigated using Pearson\u2019s correlation coefficient (R-value) [11].",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "7. Outcome measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "CSF Abeta42 came from the ADNI repository, but the assay and platform are not described.",
+   "signalling": [
+    {
+     "question": "Were the outcomes (CSF Abeta42) measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "Lumbar punctures were carried out to obtain the CSF samples of the considered subjects. The concentrations of Amyloid beta (A\u03b242), phosphorylated-tau (p-tau), and total-tau (t-tau) in CSF were obtained from ADNI repository [21].",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "No",
+   "rationale": "The eight components were pre-selected by ANOVA on the same data, then about 96 uncorrected Pearson tests were run (8 components \u00d7 3 markers, pooled and in each of 3 groups); pooling groups that differ in both Abeta42 and irregularity can produce a correlation driven by group membership; distributional assumptions were not checked.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "No",
+     "quote": "Eight Fourier analysis-based components, namely FC2, FC3, FC29, FC30, FC54, FC55, FC77 and FC78 are found to be significant (p < 0.05) in differentiating HC, EMCI and LMCI subjects. (p.4); A p-value < 0.05 is considered to be statistically significant [11]. (p.3)",
+     "page": "3, 4"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "some concerns",
+   "rationale": "Highly educated ADNI volunteers (mean education about 16 years) selected as a matched subset with complete CSF data."
+  }
+ ],
+ "overall": "High risk of bias (JBI analytical cross-sectional: items 5, 6 and 8 No)",
+ "overall_category": "high",
+ "overall_rationale": "By the review's rule, 'No' on confounder identification, confounder strategy and statistical analysis gives high risk: the pooled FC3-Abeta42 correlation is unadjusted, based on components pre-selected in the same data, and one of many uncorrected tests.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 7,
+  "matched": 5
+ }
+}

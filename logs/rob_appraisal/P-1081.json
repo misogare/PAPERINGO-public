@@ -1,0 +1,192 @@
+{
+ "paper_id": "P-1081",
+ "document_check": {
+  "matches": true,
+  "note": "Irwin C, Tjandra D, Hu C, et al. (2024) 'Predicting 5-year dementia conversion in veterans with mild cognitive impairment', Alzheimer's Dement (DADM) 16:e12572. It is a retrospective VA EHR cohort of 59,782 veterans with MCI. Table 3A (p8) reports obese vs normal BMI HR 0.75 (0.71\u20130.79), as cited."
+ },
+ "cited_result": "Obesity (vs normal BMI) recorded at MCI diagnosis and 5-year hazard of all-cause dementia: HR 0.75 (95% CI 0.71 to 0.79), from the multivariable Cox model fitted in the real training set.",
+ "tool": "QUIPS",
+ "tool_reason": "The cited result is the adjusted association of one prognostic factor (BMI category at MCI diagnosis) with later dementia, which both the review and the authors frame as associational. It is not the model's predictive performance, so QUIPS fits rather than PROBAST or ROBINS-E.",
+ "domains": [
+  {
+   "domain": "1. Study participation",
+   "judgment": "low",
+   "rationale": "The study used all eligible patients in the national VA data warehouse, with clearly stated age, ICD-coded MCI and dementia-exclusion criteria, and the baseline sample is described in full (Table 1). Requiring ICD-coded MCI at two visits may under-capture MCI; this is mainly an applicability point.",
+   "signalling": [
+    {
+     "question": "Is the source population and sampling frame adequately described?",
+     "answer": "Yes",
+     "quote": "We assembled a retrospective cohort of veterans who were seen January 1, 1999 to December 31, 2016 in the US VA Healthcare System",
+     "page": "2"
+    },
+    {
+     "question": "Are inclusion and exclusion criteria adequately described?",
+     "answer": "Yes",
+     "quote": "Diagnosis of MCI was based on the patient having International Classification of Diseases Ninth or Tenth revision (ICD-9 or -10) classification of MCI (Table S1 in supporting information) made on two or more separate clinic visits",
+     "page": "2"
+    },
+    {
+     "question": "Was there adequate participation by eligible persons?",
+     "answer": "Yes",
+     "quote": "Out of 24,936,924 unique patients from 1999 to 2016, 59,782 patients met inclusion criteria (Figure 1).",
+     "page": "5"
+    },
+    {
+     "question": "Were prevalent dementia cases excluded at baseline?",
+     "answer": "Yes",
+     "quote": "Patients with diagnosis of dementia (Table S1) prior to or up to 6 months after initial MCI diagnosis were excluded from analysis.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study attrition",
+   "judgment": "moderate",
+   "rationale": "Loss to follow-up and death were both treated as censoring. The number and characteristics of those censored for either reason are not reported, and vital status of those lost was not checked. In older adults, death is plausibly related to both BMI and dementia.",
+   "signalling": [
+    {
+     "question": "Is the proportion lost to follow-up reported?",
+     "answer": "No information",
+     "quote": "Searched for counts of patients lost to follow-up or dying within 5 years; none given. 'The alive/dead status of those lost to follow-up was not determined using separate non-EHR datasets because the aim of the study was to evaluate the utility of data derived only from the VA EHR.'",
+     "page": "3"
+    },
+    {
+     "question": "Are losses (including deaths) handled so as not to bias the association?",
+     "answer": "Probably no",
+     "quote": "Patients were followed from MCI diagnosis (entry age) until they developed ACD, they were lost to follow-up, died, or 5 years after MCI diagnosis.",
+     "page": "3"
+    },
+    {
+     "question": "Are participants lost to follow-up compared with those who completed follow-up?",
+     "answer": "No information",
+     "quote": "Searched for any comparison of censored versus followed participants; none reported.",
+     "page": "3-5"
+    }
+   ]
+  },
+  {
+   "domain": "3. Prognostic factor measurement",
+   "judgment": "moderate",
+   "rationale": "BMI came from routine EHR records at MCI diagnosis and was measured the same way for everyone. The time window and category cut-points are not stated, and the 2.43% with no BMI were given the mean, which puts them all into one category.",
+   "signalling": [
+    {
+     "question": "Is a clear definition of the prognostic factor provided (including cut-points)?",
+     "answer": "Probably no",
+     "quote": "Demographic (age, sex, race, ethnicity, and body mass index [BMI]) and selected co-morbid conditions were extracted from EHR at the time of MCI diagnosis and the dataset was locked prior to final analyses.",
+     "page": "3"
+    },
+    {
+     "question": "Is the method of measurement the same for all participants?",
+     "answer": "Probably yes",
+     "quote": "Demographic (age, sex, race, ethnicity, and body mass index [BMI]) and selected co-morbid conditions were extracted from EHR at the time of MCI diagnosis",
+     "page": "3"
+    },
+    {
+     "question": "Are missing prognostic-factor data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "If a patient did not have any recorded BMI measurement (2.43%), then we imputed the mean.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Outcome measurement",
+   "judgment": "moderate",
+   "rationale": "All-cause dementia was taken from ICD codes using a validated phenotype that has only 82% specificity and no reported sensitivity. The authors acknowledge that diagnostic work-up intensity varies across providers, so ascertainment depends on healthcare contact.",
+   "signalling": [
+    {
+     "question": "Is a clear definition of the outcome provided?",
+     "answer": "Yes",
+     "quote": "ACD was defined using the ICD-9 or ICD-10 codes (Table S1) from the VA Centralized Interactive Phenomics Resource (CIPHER) Phenotype 00083",
+     "page": "3"
+    },
+    {
+     "question": "Is the method of outcome measurement adequately valid and reliable?",
+     "answer": "Probably no",
+     "quote": "validated to have 82% specificity based on rigorous chart review.",
+     "page": "3"
+    },
+    {
+     "question": "Is outcome ascertainment the same for all participants?",
+     "answer": "Probably no",
+     "quote": "the heterogeneity of expertise among clinical providers in a large health-care system making the ICD diagnosis decision, and the heterogeneity of intensity of diagnostic workup leading to dementia diagnosis.",
+     "page": "10"
+    }
+   ]
+  },
+  {
+   "domain": "5. Study confounding",
+   "judgment": "high",
+   "rationale": "The HR is adjusted for demographics and comorbidities chosen by stepwise AIC for prediction. Important confounders of the late-life BMI and dementia relationship were not measured: prodromal weight loss or reverse causation, smoking, education, frailty and cognitive severity at diagnosis. The authors say the associations may be spurious, for example through collider bias.",
+   "signalling": [
+    {
+     "question": "Are all important confounders measured?",
+     "answer": "Probably no",
+     "quote": "The study is restricted to demographic and co-morbid conditions",
+     "page": "10"
+    },
+    {
+     "question": "Are important confounders accounted for in the design or analysis?",
+     "answer": "Probably no",
+     "quote": "We used backward stepwise selection on co-morbid predictors to identify a parsimonious model based on the Akaike information criterion (AIC)",
+     "page": "3"
+    },
+    {
+     "question": "Do the authors acknowledge residual confounding or non-causal bias?",
+     "answer": "Yes",
+     "quote": "The risk/protective factors identified represent associational and not necessarily causal relationships with ACD conversion. Associational relationships may contain spurious correlations, such as those from collider bias.",
+     "page": "10"
+    }
+   ]
+  },
+  {
+   "domain": "6. Statistical analysis and reporting",
+   "judgment": "moderate",
+   "rationale": "The Cox model's proportional-hazards assumption was checked, and the full and reduced models are reported. However, covariates were chosen by stepwise selection, death was handled as censoring with no competing-risk analysis, and the HR was estimated only in the 70% training partition.",
+   "signalling": [
+    {
+     "question": "Is the statistical model appropriate for the design?",
+     "answer": "Partly",
+     "quote": "The proportional hazards assumption of the fitted Cox proportional hazard model was evaluated for each predictor by graphical methods and a formal score test of B(t).",
+     "page": "3"
+    },
+    {
+     "question": "Is the model-building strategy adequate?",
+     "answer": "Probably no",
+     "quote": "We used backward stepwise selection on co-morbid predictors to identify a parsimonious model based on the Akaike information criterion (AIC)",
+     "page": "3"
+    },
+    {
+     "question": "Is the estimate derived from the whole cohort?",
+     "answer": "No",
+     "quote": "We randomly partitioned our cohort into a training set (70%) and test set (30%) for prediction modeling.",
+     "page": "3"
+    },
+    {
+     "question": "Is there evidence of selective reporting?",
+     "answer": "Probably no",
+     "quote": "a comparison of Full versus Reduced Model is shown in Table S4 in supporting information",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "moderate",
+   "rationale": "The cohort is about 96% male and mostly White veterans, with MCI and dementia both taken from ICD codes."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Study confounding is high: the BMI HR comes from a prediction-oriented model with no adjustment for prodromal weight loss, smoking, education or frailty. Attrition, prognostic-factor measurement, outcome measurement and analysis each carry moderate concerns. Under the review's QUIPS rule, any high domain makes the overall rating high.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 18,
+  "matched": 17
+ }
+}

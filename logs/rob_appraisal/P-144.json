@@ -1,0 +1,193 @@
+{
+ "paper_id": "P-144",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Vergani et al., 'Event-related potential markers of subjective cognitive decline and mild cognitive impairment during a sustained visuo-attentive task', NeuroImage: Clinical 45 (2025) 103760. It is a single-centre cross-sectional ERP comparison of 119 SCD, 40 MCI and 19 healthy subjects. It reports the non-monotonic ERP pattern and the MCI 'compensatory enhancement' relative to SCD that the review cites."
+ },
+ "cited_result": "The non-monotonic ordering of ERP features across clinical groups: SCD attenuated relative to HS, while MCI shows a partial rebound relative to SCD (for example the normalised integral HS > SCD < MCI and the P600 gain in MCI over SCD), which argues against reading ERP components as a linear severity index.",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result compares ERP features measured at one time point between diagnostic groups (HS, SCD, MCI), so it is a cross-sectional group comparison rather than a model or an accuracy estimate.",
+ "domains": [
+  {
+   "domain": "Item 1: Criteria for inclusion clearly defined",
+   "judgment": "Unclear",
+   "rationale": "Inclusion and exclusion criteria are explicit for the SCD and MCI patients. No recruitment source or eligibility criteria are given for the 19 healthy subjects, and the cited non-monotonic pattern depends on the HS reference group.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Unclear",
+     "quote": "The following inclusion criteria were adopted: satisfied criteria for SCD (Albert et al., 2011) or MCI (McKhann et al., 2011); Mini Mental State Examination (MMSE) score > 24, corrected for age and education",
+     "page": "2"
+    },
+    {
+     "question": "Were inclusion criteria reported for the healthy subjects?",
+     "answer": "No information",
+     "quote": "Searched Sections 2.1, 2.2 and 2.8 for a recruitment source or inclusion/exclusion criteria for the healthy subjects; the only statement is 'and 19 healthy individuals (8F)'.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 2: Study subjects and setting described in detail",
+   "judgment": "Yes",
+   "rationale": "The setting (PREVIEW study at Careggi University Hospital, EEG at IRCCS Don Gnocchi) and the group demographics (age, sex, education, MMSE in Table 1) are reported.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "In brief, PREVIEW is a longitudinal study on Subjective Cognitive Decline started in October 2020",
+     "page": "2"
+    },
+    {
+     "question": "Are participant characteristics tabulated by group?",
+     "answer": "Yes",
+     "quote": "Demographic, clinical characteristics and task performance of study participants.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "Item 3: Exposure (diagnostic group membership) measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "Patients were classified after extensive clinical and neuropsychological work-up. The paper contradicts itself about the healthy subjects: it states that all participants had the full assessment, and later that HS were examined on only a few scales. So HS status may rest on a thinner assessment.",
+   "signalling": [
+    {
+     "question": "Was group membership established in a valid and reliable way for all groups?",
+     "answer": "Unclear",
+     "quote": "underwent thorough family and clinical history evaluations, neurological examinations, extensive neuropsychological assessments",
+     "page": "2"
+    },
+    {
+     "question": "Were the healthy subjects assessed in the same way as patients?",
+     "answer": "Probably no",
+     "quote": "HS subjects, on the other hand, were only examined on a few scales, showed the highest scores on cognitive tests (e.g. MMSE), were younger and had the highest levels of education",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "Item 4: Objective, standard criteria used for measurement of the condition",
+   "judgment": "Yes",
+   "rationale": "SCD and MCI were defined by cited published criteria with an MMSE threshold and preserved ADL/IADL. The reference list is omitted from the extract, so the pairing of the cited criteria sources cannot be checked.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Yes",
+     "quote": "The following inclusion criteria were adopted: satisfied criteria for SCD (Albert et al., 2011) or MCI (McKhann et al., 2011)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 5: Confounding factors identified",
+   "judgment": "Yes",
+   "rationale": "Age is explicitly identified as a confounder of neural features. Sex is acknowledged as a factor that was not modelled. The large group differences in age and education are reported.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "To account for the effect of age on neural features and task performance, we applied an age correction procedure using a linear model (Pukelsheim, 1994).",
+     "page": "3"
+    },
+    {
+     "question": "Were other group imbalances recognised?",
+     "answer": "Yes",
+     "quote": "Patients with MCI had a higher age, lower educational level and lower performance on cognitive and visuomotor assessments than subjects with SCD and HS.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "Item 6: Strategies to deal with confounding stated",
+   "judgment": "Unclear",
+   "rationale": "Only age was handled, by regressing it out of each feature. Education (MCI about 10 years against HS about 15 years) and sex were not adjusted, and sex was explicitly left out. It is not stated whether the age model was fitted in the pooled sample, where age is collinear with group, or whether it was applied to the instant-by-instant ERP dynamics.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Unclear",
+     "quote": "to regress each neural feature against age and subsequently removed the age-related variance.",
+     "page": "3"
+    },
+    {
+     "question": "Were sex and education accounted for?",
+     "answer": "No",
+     "quote": "Biological sex was not included as a factor modulating the results in this analysis.",
+     "page": "11"
+    }
+   ]
+  },
+  {
+   "domain": "Item 7: Outcomes (ERP features) measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "ERPs were recorded on a 64-channel system with impedance control and standard preprocessing (filtering, interpolation, re-referencing, ICA). Features were extracted by an automated algorithm within predefined windows, and the code is public.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "average re-referencing, and artefactual component exclusion via ICA (Siems et al., 2016).",
+     "page": "3"
+    },
+    {
+     "question": "Was feature extraction standardised?",
+     "answer": "Yes",
+     "quote": "The features of these components were extracted using a custom-developed algorithm that identifies peaks, latencies, and integrals within a predefined time window.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 8: Appropriate statistical analysis",
+   "judgment": "No",
+   "rationale": "The instant-by-instant ERP analysis pools channel-by-subject values into one distribution per group. This treats correlated channels from the same person as independent observations and inflates significance for the dynamics evidence, including the P600 gain in MCI. The correction method is reported inconsistently (FDR in Methods, Bonferroni in the figure captions). The aggregated SCD against MCI integral difference that carries the 'rebound' was only a non-significant trend.",
+   "signalling": [
+    {
+     "question": "Was the unit of analysis appropriate?",
+     "answer": "No",
+     "quote": "c \u00d7 n is the matrix dimension of c (number of channels) and n (number of subjects within the group g)",
+     "page": "3"
+    },
+    {
+     "question": "Was multiple-comparison correction applied consistently?",
+     "answer": "Probably no",
+     "quote": "The multiple comparison correction used for ERP dynamics was the FDR Benjamini-Hochberg, while for all the other test was Bonferroni.",
+     "page": "3"
+    },
+    {
+     "question": "Was the correction reported for the ERP dynamics figures consistent with Methods?",
+     "answer": "No",
+     "quote": "the associated p-value corrected by Bonferroni\u2019s method (alpha < 0.05)",
+     "page": "7"
+    },
+    {
+     "question": "Is the SCD to MCI rebound statistically supported at the aggregated level?",
+     "answer": "Probably no",
+     "quote": "with a trend between SCD and MCI (H = 5.197, p = 0.0678)",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (JBI analytical cross-sectional: item 8 No; items 1, 3 and 6 Unclear)",
+ "overall_category": "high",
+ "overall_rationale": "By the review's rule, a 'No' on appropriate statistical analysis gives high risk. The ERP dynamics are tested with channels and subjects pooled as independent observations. Confounding by education and sex is not addressed (only age was regressed out). The healthy reference group (n = 19) has no stated eligibility criteria and a thinner assessment. The aggregated SCD to MCI rebound is only a trend.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "some concerns",
+   "rationale": "Single-centre Italian memory-clinic cohort, MCI restricted to MMSE > 24; healthy group small (19) and younger and more educated than patients."
+  },
+  {
+   "domain": "Measurement",
+   "concern": "low",
+   "rationale": "Visuo-attentive 3-CVT task ERPs at occipital and central clusters; directly the ERP components the review discusses."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 16,
+  "matched": 15
+ }
+}

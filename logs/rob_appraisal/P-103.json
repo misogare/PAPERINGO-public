@@ -1,0 +1,98 @@
+{
+ "paper_id": "P-103",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Zhou M, Tang AS, Zhang H, et al. 'Identifying progression subphenotypes of Alzheimer's disease from large-scale electronic health records with machine learning', Journal of Biomedical Informatics 165 (2025) 104820. It describes the dynaPhenoM framework (dynamic multimodal topic model plus time-aware latent class analysis) applied to INSIGHT, OneFlorida+ and UCSF EHR data. This matches the citing sentence (Zhou et al. 2025)."
+ },
+ "cited_result": "Unsupervised derivation of five organ-system progression subphenotypes among 2,579 INSIGHT patients who progressed from MCI to AD. The authors report that four of them (respiratory, musculoskeletal, cardiovascular, endocrine/metabolic) reappear when the whole pipeline is re-run separately in OneFlorida+ (n = 950) and UCSF (n = 678).",
+ "tool": "not applicable",
+ "tool_reason": "The cited result is data-driven cluster discovery and its re-derivation in other cohorts. It is not a model's predictive performance, an index-test accuracy, a prognostic-factor or exposure association, a between-group comparison or a prevalence estimate, and none of the listed tools has signalling questions that assess the validity of clusters.",
+ "domains": [
+  {
+   "domain": "Tool selection (no risk-of-bias tool fits)",
+   "judgment": "not applicable",
+   "rationale": "The groups are outputs of clustering, not predefined comparators. There is no reference standard for subtype membership. The cross-cohort 'replication' re-runs the pipeline instead of testing the development-cohort model. The subtype-membership prediction analysis (accuracy and AUC) could be appraised with PROBAST, but it is not the cited result.",
+   "signalling": [
+    {
+     "question": "Does the cited result report the performance of a prediction model or classifier?",
+     "answer": "No",
+     "quote": "derived potential AD progression subphenotypes as clusters of patients with similar topic profiles",
+     "page": "7"
+    },
+    {
+     "question": "Does the cited result compare predefined groups, or estimate an exposure, prognostic-factor or group association?",
+     "answer": "No",
+     "quote": "Our study identified five subphenotypes associated with distinct organ systems for disease progression from MCI to AD",
+     "page": "1"
+    },
+    {
+     "question": "Is there a reference standard against which subtype assignment is judged?",
+     "answer": "No information",
+     "quote": "Searched for a reference standard, ground truth or external criterion for subtype membership; none found. Concordance between cohorts was judged by label overlap: 'Similarity was assessed by calculating the percentage of overlapping diagnostic categories.'",
+     "page": "10"
+    },
+    {
+     "question": "Is the cross-cohort finding a test of the development-cohort model in independent data?",
+     "answer": "No",
+     "quote": "We repeated the same subphenotyping process shown in Fig. 1 on the UCSF (Table S4) and OneFlorida+ (Table S5) cohorts.",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "Credibility features of the cited result (descriptive; not a tool judgment)",
+   "judgment": "not applicable (descriptive)",
+   "rationale": "Recorded for the adjudicator; this is not a risk-of-bias rating. The sample is restricted to coded progressors and case definitions come from billing codes. The number of topics and clusters was chosen partly by clinical interpretation. Subtypes were matched across cohorts by organ-system label after separate derivation, and the paper is internally inconsistent about whether UCSF has a unique subtype.",
+   "signalling": [
+    {
+     "question": "Is the population restricted to patients who progressed from MCI to AD?",
+     "answer": "Yes",
+     "quote": "Initially, we included patients diagnosed with both MCI and AD. Subsequently, we excluded patients whose first AD onset time or dementia onset time preceded the MCI onset time.",
+     "page": "2"
+    },
+    {
+     "question": "Are MCI and AD defined by billing codes rather than clinical criteria?",
+     "answer": "Yes",
+     "quote": "We identified patients with AD and MCI based on ICD-9 and ICD-10 codes (Table S1).",
+     "page": "2"
+    },
+    {
+     "question": "Was the model order (topics, clusters) chosen partly by subjective judgment?",
+     "answer": "Yes",
+     "quote": "Additionally, we also considered clinical interpretation of the identified topics.",
+     "page": "6"
+    },
+    {
+     "question": "Is the cross-cohort concordance of subtypes reported consistently?",
+     "answer": "No",
+     "quote": "These subphenotypes aligned with the five subphenotypes identified in the INSIGHT cohort.",
+     "page": "9"
+    },
+    {
+     "question": "Do the authors acknowledge limitations bearing on the subtypes?",
+     "answer": "Yes",
+     "quote": "Second, varying cohort demographics could introduce noise into subphenotypes. Last, the lack of specificity of diagnoses can lead to incomplete or inaccurate records, potentially biasing findings.",
+     "page": "11"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "high",
+   "rationale": "Only patients with both MCI and AD codes, in that order, are included. The subtypes describe coded progressors, not people with MCI in general."
+  }
+ ],
+ "overall": "Not applicable: no risk-of-bias tool fits data-driven subtype discovery",
+ "overall_category": "not_applicable",
+ "overall_rationale": "The cited result is an unsupervised clustering finding, and none of the review's tools assesses cluster validity. Credibility concerns are recorded descriptively: progressor-only ICD-coded sample, model order chosen partly by clinical judgment, and cross-cohort matching by organ-system labels after separate derivation.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 7
+ }
+}

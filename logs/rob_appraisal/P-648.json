@@ -1,0 +1,153 @@
+{
+ "paper_id": "P-648",
+ "document_check": {
+  "matches": true,
+  "note": "Wang Q, Yu R, Dong C, Zhou C, Xie Z, Sun H, Fu C, Zhu D. Association and prediction of Life's Essential 8 score, genetic susceptibility with MCI, dementia, and MRI indices: a prospective cohort study. J Affect Disord 2024;360:394-402. UK Biobank; 1797 (1.4%) incident MCI over a median 13.0 years; the limitation about health-conscious volunteers is present. Matches the review's Wang et al. 2024c."
+ },
+ "cited_result": "Cumulative incidence of ICD-10-coded MCI (G31.8, R41, F06.7) in UK Biobank: 1797 of 126,785 cognitively unimpaired participants (1.4%) over a median 13.0 years of hospital-inpatient and death-record linkage. The review also cites the authors' stated limitation that health-conscious volunteers may have led to underestimated incidence.",
+ "tool": "JBI prevalence",
+ "tool_reason": "The cited result is an incidence proportion (the share of participants who accrued a coded MCI diagnosis), so the JBI checklist for prevalence and incidence studies applies. The paper's hazard ratios and AUCs are not the cited result.",
+ "domains": [
+  {
+   "domain": "1. Sample frame appropriate to the target population",
+   "judgment": "No",
+   "rationale": "This is a volunteer cohort aged 40-69 that the authors state is more health-conscious than the general population, and they note this may lower incidence.",
+   "signalling": [
+    {
+     "question": "Was the sample frame appropriate to address the target population?",
+     "answer": "No",
+     "quote": "participants who volunteered in the UK Biobank were more health-conscious than the general population (Batty et al., 2020), which may have underestimated the incidence of MCI and dementia.",
+     "page": "8 (journal p. 401)"
+    }
+   ]
+  },
+  {
+   "domain": "2. Participants sampled appropriately",
+   "judgment": "No",
+   "rationale": "The analysis is restricted to the 139,257 participants with complete LE8 data (roughly a quarter of the more than 500,000 cohort), minus those with missing covariates. It is a complete-case subset with no comparison of included and excluded participants.",
+   "signalling": [
+    {
+     "question": "Were study participants sampled in an appropriate way?",
+     "answer": "No",
+     "quote": "Among 139,257 participants who had completed data on LE8 components, a total of 126,785 participants (including an imaging subsample of 25,312 participants) were included in the analysis after excluding 12,472 participants who were already diagnosed MCI or all-cause dementia at baseline (n = 221) and those with missing data on potential covariates (n = 12,251)",
+     "page": "2 (journal p. 395)"
+    }
+   ]
+  },
+  {
+   "domain": "3. Sample size adequate",
+   "judgment": "Yes",
+   "rationale": "With 126,785 participants, precision is not a concern.",
+   "signalling": [
+    {
+     "question": "Was the sample size adequate?",
+     "answer": "Yes",
+     "quote": "We included 126,785 participants with a mean (SD) age of 56.0 (8.0) years and 53.5 % were female.",
+     "page": "3 (journal p. 396)"
+    }
+   ]
+  },
+  {
+   "domain": "4. Subjects and setting described",
+   "judgment": "Yes",
+   "rationale": "The assessment centres, age range and baseline characteristics by outcome (Table 1) are reported.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "Participants attended 1 of 22 assessment centers across England, Wales, and Scotland, where they completed the touchscreen questionnaire, underwent physiological measurement, and provided biological samples at a baseline assessment visit.",
+     "page": "2 (journal p. 395)"
+    }
+   ]
+  },
+  {
+   "domain": "5. Coverage of the identified sample",
+   "judgment": "Yes",
+   "rationale": "Outcomes were ascertained by record linkage for every included participant, so there is no differential loss to follow-up in the analysed sample.",
+   "signalling": [
+    {
+     "question": "Was the data analysis conducted with sufficient coverage of the identified sample?",
+     "answer": "Yes",
+     "quote": "Participants gave informed consent for data linkage to national hospital inpatient admissions",
+     "page": "2 (journal p. 395)"
+    }
+   ]
+  },
+  {
+   "domain": "6. Valid methods for identification of the condition",
+   "judgment": "No",
+   "rationale": "MCI was defined by three ICD-10 codes, including the symptom code R41 and G31.8, found in hospital inpatient and death records. No validation of these codes for MCI is reported; the high-positive-predictive-value statement belongs to the UK Biobank dementia algorithm. MCI diagnosed outside hospital admissions would be missed.",
+   "signalling": [
+    {
+     "question": "Were valid methods used for the identification of the condition?",
+     "answer": "No",
+     "quote": "The International Classification of Diseases (ICD) coding system was used to define MCI (ICD-10 codes: G31.8, R41, and F06.7). All-cause dementia (Field 42018) ... The algorithm was developed by the UK Biobank outcome adjudication group to classify disease outcomes with high positive predictive value.",
+     "page": "2 (journal p. 395)"
+    }
+   ]
+  },
+  {
+   "domain": "7. Condition measured in a standard, reliable way for all",
+   "judgment": "Yes",
+   "rationale": "The same linked-record ascertainment and censoring date applied to every participant.",
+   "signalling": [
+    {
+     "question": "Was the condition measured in a standard, reliable way for all participants?",
+     "answer": "Yes",
+     "quote": "Hospital inpatient data and death data were censored on 30 November 2022",
+     "page": "3 (journal p. 396)"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "No",
+   "rationale": "Incidence is given only as a crude proportion, with no confidence interval, no person-time rate and no account of competing death. The numerator is internally inconsistent: Table 1's 'developed MCI' column sums to 1425 (592 + 833; 1.1%), against 1797 in the text and in Table 2.",
+   "signalling": [
+    {
+     "question": "Was there appropriate statistical analysis?",
+     "answer": "No",
+     "quote": "After a median of 13.0 years of follow-up, 1797 (1.4 %) cognitively unimpaired people developed MCI",
+     "page": "3 (journal p. 396)"
+    },
+    {
+     "question": "Are numerator and denominator reported consistently?",
+     "answer": "No",
+     "quote": "Female 67,831 66,792 (98.5) 592 (0.8) 447 (0.7) Male 58,954 57,513 (97.6) 833 (1.4) 608 (1.0) (Table 1)",
+     "page": "3 (journal p. 396)"
+    }
+   ]
+  },
+  {
+   "domain": "9. Response rate adequate or managed",
+   "judgment": "Unclear",
+   "rationale": "The UK Biobank recruitment response rate is not reported. The healthy-volunteer effect is acknowledged but not handled, for example by weighting.",
+   "signalling": [
+    {
+     "question": "Was the response rate adequate, and if not, was the low response rate managed appropriately?",
+     "answer": "No information",
+     "quote": "Searched for response rate, number invited, participation proportion and weighting. None is reported beyond the acknowledgement of health-conscious volunteers (p. 8).",
+     "page": "2, 8 (journal pp. 395, 401)"
+    }
+   ]
+  }
+ ],
+ "overall": "High (JBI prevalence under this review's rule: 'valid methods for identification of the condition' (item 6) and 'appropriate statistical analysis' (item 8) are both No).",
+ "overall_category": "high",
+ "overall_rationale": "The incidence estimate rests on unvalidated, broad ICD codes in hospital inpatient and death records. It comes from a health-conscious volunteer complete-case subset, is reported without a confidence interval or person-time rate, and has an internally inconsistent numerator. Any of items 6 or 8 at No makes the rating high.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Target population",
+   "concern": "High",
+   "rationale": "This is a predominantly White, health-conscious volunteer cohort aged 40-69 at baseline, with hospital-record ascertainment only. The 1.4% describes coded ascertainment in this cohort, not population MCI incidence. The review's wording, scoped to 'registry-linked ICD-coded ascertainment in UK Biobank', respects this."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 9,
+  "matched": 8
+ }
+}

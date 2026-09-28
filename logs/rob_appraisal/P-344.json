@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-344",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Jahani S, Roshanaei G, Tapak L. 'Assessing the accuracy of survival machine learning and traditional statistical models for Alzheimer's disease prediction over time: a study on the ADNI cohort', BMC Med Res Methodol (2025) 25:250, doi:10.1186/s12874-025-02689-w. It covers 902 people with MCI from ADNIMERGE, 379 of whom converted, with follow-up of up to 16 years. RSF reached a C-index of 0.878, CoxPH 0.863 and GBSA 0.803. The predictors include FDG-PET and MRI volumes. All of this matches the cited contexts."
+ },
+ "cited_result": "Test-set comparison of survival models for MCI-to-AD progression in ADNI: C-index 0.878 for the random survival forest (95% CI 0.877 to 0.879), against 0.863 for CoxPH, 0.862 for Weibull, 0.860 for CoxEN and 0.803 for gradient boosting survival analysis. RSF ranked best and gradient boosting worst.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the discrimination (C-index) of multivariable prognostic survival models, both machine-learning and classical, for a future outcome, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "low",
+   "rationale": "The data come from a longitudinal multicentre cohort (ADNI), with MCI at baseline as the inception point. Only 15 of 917 participants were excluded, although the medication exclusion is not specified.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort data)?",
+     "answer": "Yes",
+     "quote": "This study utilized the ADNIMERGE dataset from the ADNI database, which encompasses longitudinally collected data from all four phases of the ADNI project spanning 2005 to 2023.",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "From the initial cohort of 917 participants diagnosed with MCI at baseline, 902 individuals with at least one follow-up visit were included following systematic exclusions for incomplete follow-up and potentially confounding medication use (Fig. 1).",
+     "page": "3"
+    },
+    {
+     "question": "AI (data source): is the data source described and suitable for the intended use?",
+     "answer": "Probably yes",
+     "quote": "The ADNI was launched in 2003 as a public\u2013private partnership, led by Principal Investigator Michael W. Weiner, MD, and includes participants between the ages of 50 and 91, recruited at 63 research sites across the United States and Canada.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are baseline ADNI protocol measures (cognitive tests, FDG-PET, MRI volumes, ApoE), recorded before the outcome and available at baseline.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Each participant was characterized by these 14 baseline features",
+     "page": "5"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Yes",
+     "quote": "From the initial cohort of 917 participants diagnosed with MCI at baseline",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "The analysis was conducted for the 14 top features, including (a) gene expression (ApoE_\u03b54), (b) PET (FDG), (c) MRI (Hippocampus, Entorhinal, Fusiform, MidTemp), (d) cognitive tests",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The report gives no criteria for conversion to AD. As written, time-to-event is measured to the last follow-up visit rather than to the visit at which conversion was diagnosed, which would misdate every converter's event time and distort the C-index for all models. This may be a wording error; if so, the domain would be unclear rather than high. The report also does not say whether conversion was diagnosed blind to the baseline measures, or whether selected predictors (CDR-SB, FAQ, ADAS13, Logical Memory) formed part of the diagnosis.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "Each participant was characterized by these 14 baseline features, with two target outcomes: time-to-event (months from baseline to last follow-up visit) and progression status (conversion to AD or censored observation).",
+     "page": "5"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "I searched Methods and Results for diagnostic criteria for conversion to AD ('diagnos', 'criteria', 'conversion'). The only definition is 'progression status (conversion to AD or censored observation)'.",
+     "page": "3-5"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "I searched for whether CDR-SB, FAQ, ADAS13 or Logical Memory (all among the 14 selected predictors) contributed to the AD conversion diagnosis, and found no statement.",
+     "page": "3-7"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "I searched for how conversion was ascertained across the four ADNI phases pooled in ADNIMERGE, and found no description.",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "I searched for blinding of the diagnosing clinicians to baseline cognitive, imaging or genetic data, and found none reported.",
+     "page": "3-5"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "The progression-free rates at 1, 4, and 8 years were 86% (95% CI: 84%\u201389%), 56% (95% CI: 52%\u201360%), and 39% (95% CI: 35%\u201345%), respectively.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Hyperparameters were tuned within the training folds, and the test set was held out from tuning. Against that, Lasso-Cox feature selection, correlation filtering and missForest imputation appear to have been run on all 902 participants before the train/test split: the preprocessing section comes first, then 'After preprocessing, the data was randomly split'. That leaks test-set outcome information into predictor selection. There are about 11 events per candidate predictor in the full data (379 events, 34 features) and about 8 in training, which is low for random survival forests. Proportional hazards, competing risk of death and site clustering are not addressed. The bootstrap confidence intervals are implausibly narrow (plus or minus 0.001 on a C-index from 271 test participants), and a Wilcoxon test over 1000 bootstrap replicates inflates significance. The claimed statistical superiority of RSF is therefore unreliable. Only one split was used, with no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "During the follow-up period, 379 individuals (42.0%) progressed from MCI to AD ... Among the 61 features, 27 were removed due to missing values exceeding 25% in the MCI subset.",
+     "page": "5; 3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "Figure 7 presents partial dependence plots derived from the RSF model for the 14 biomarkers, ordered by SHAP importance, demonstrating their individual effects on survival probability based on training data.",
+     "page": "7"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "902 individuals with at least one follow-up visit were included",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "For the remaining 34 features, we employed the nonparametric missForest method [30] using random forest predictions for imputation",
+     "page": "3"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "The Lasso Cox regression analysis selected 17 best features with nonzero coefficients. After excluding highly collinear variables (Pearson correlation r > 0.70 or r < \u22120.70) to prevent overfitting, 14 final features were retained for model development.",
+     "page": "5"
+    },
+    {
+     "question": "4.6 Were complexities in the data (censoring, competing risks, proportional hazards, clustering) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "I searched for proportional-hazards testing of the CoxPH model, treatment of death as a competing risk and adjustment for the 63-site structure, and found none reported.",
+     "page": "3-9"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately, including calibration?",
+     "answer": "Probably yes",
+     "quote": "The calibration plot (Panel B) shows good agreement between predicted and observed overall survival probabilities across the range",
+     "page": "5"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "Statistical comparison using paired Wilcoxon signed-rank test with Bonferroni correction for multiple comparisons revealed that all models performed significantly different from the RSF reference model (P-value < 0.001 for both C-index and IBS metrics). Bootstrap resampling (n = 1000) was used to estimate CIs",
+     "page": "5"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "I searched the main text for CoxPH/Weibull coefficients or the final RSF settings. Only a reference to 'Supplementary Table S1' for hyperparameters is given.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "After preprocessing, the data was randomly split into non-overlapping training (n = 631, 70%) and testing (n = 271, 30%) sets using stratified sampling based on event status",
+     "page": "4"
+    },
+    {
+     "question": "AI: Were preprocessing and feature selection done within the training data only (no leakage)?",
+     "answer": "Probably no",
+     "quote": "All baseline characteristics listed in Table 1 were incorporated into the Lasso Cox regression model.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was the test set held out from all hyperparameter tuning?",
+     "answer": "Yes",
+     "quote": "We performed hyperparameter optimization for RSF, GBSA, and CoxEN models using fivefold cross-validation on training data, selecting parameter combinations that maximized C-index performance (Supplementary Table S1).",
+     "page": "4"
+    },
+    {
+     "question": "AI: Class imbalance and its handling",
+     "answer": "Probably yes",
+     "quote": "using stratified sampling based on event status to ensure balanced representation across both subsets",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal split-sample only",
+     "quote": "As a result, these models needed to be validated on independent cohorts from different countries and ethnic backgrounds, particularly non-white and non-western populations, to ensure their broader generalizability.",
+     "page": "14"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 4 is high risk. Feature selection and imputation appear to have been done on the full data set before the split, events per variable are low for machine-learning survival models, and competing risks and proportional hazards are not addressed. The confidence intervals are implausibly narrow and the significance testing on bootstrap replicates is invalid, which undermines the claimed RSF superiority. Domain 3 is high because no outcome definition is given and event time is stated as time to last follow-up. Under PROBAST, any high domain makes the overall rating high. For the cited ranking, the 0.015 C-index gap between RSF and CoxPH comes from one split of 271 participants with no valid uncertainty estimate.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "The sample is an ADNI research cohort 'predominantly composed of white North-American participants' (page 14), with ADNI's MCI definition."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "The model relies on FDG-PET and MRI volumetrics alongside research cognitive batteries, which are not routinely available in most clinical settings."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "The outcome, conversion from MCI to AD over time, matches the review's MCI-to-AD prognosis question."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 21,
+  "matched": 10
+ }
+}

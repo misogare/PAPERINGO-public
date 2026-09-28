@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-41",
+ "document_check": {
+  "matches": true,
+  "note": "Rahim N, Ahmad N, Ullah W, Bedi J, Jung Y. 'Early progression detection from MCI to AD using multi-view MRI for enhanced assisted living', Image and Vision Computing 157 (2025) 105491. ADNI structural MRI, multi-plane 2D-slice heterogeneous ensemble, AUC 92.87%. The cited details (15 AD patients added to the positive class, converters between M18 and M48, 15 participants per class in the test set) are all in the document (p.8, Table 1)."
+ },
+ "cited_result": "Discrimination of the heterogeneous multi-plane ensemble (EfficientNet + ConvNext + DenseNet + CBAM + MHA head) for sMCI versus pMCI+AD on the ADNI hold-out test set: accuracy 91.77%, sensitivity 87.69%, specificity 88.53%, AUC 92.87% (Table 4, p.12).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUC) of a deep-learning classifier predicting MCI progression, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "ADNI is a suitable cohort source, but participants were selected by data availability, converters were restricted to those converting between M18 and M48, and 15 patients already diagnosed with AD were added to the positive class to balance it, which is an inappropriate inclusion for a model meant to predict progression in people with MCI.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Probably yes",
+     "quote": "The data for this study were sourced from the Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI) database [45].",
+     "page": "8"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "For this study, we selected 192 subjects from ADNI 1, ADNI GO, and ADNI 2 based on data availability. ... We specifically used pMCI subjects starting from M18, as they progressed to full AD by M48. Furthermore, we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "The imaging protocol and preprocessing were uniform and features are automated, but the document does not say clearly which visit's scan was used for the pMCI group ('starting from M18') and, for the 15 AD patients, the scan comes from the dementia stage, which would not be available when the model is meant to be used on an MCI patient.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Our dataset comprised 3 T T1-weighted anatomical sequences obtained using the volumetric 3D MPRAGE protocol, with a voxel size of 1 \u00d7 1 \u00d7 1 mm.",
+     "page": "8"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "In this study, we utilized a predefined pipeline for preprocessing the MRI volumes and conducted visual inspections with medical domain experts to validate the accuracy and quality of the processed images.",
+     "page": "6"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used (including which visit's scan was used)?",
+     "answer": "No information",
+     "quote": "We specifically used pMCI subjects starting from M18, as they progressed to full AD by M48. (p.8); Although baseline MRI data were effectively utilized for predicting AD progression (p.15). Searched for an explicit statement of the scan visit used for pMCI and AD participants: none beyond these.",
+     "page": "8, 15"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The positive class is a composite of incident conversion in a non-standard M18 to M48 window and prevalent AD, so the outcome is not defined or determined the same way for all participants; early converters are not accounted for, and the diagnostic procedure and its blinding are not described.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "The subjects were classified into two groups (sMCI and pMCI+AD) according to their diagnoses throughout the study period, which spanned from baseline to month 48 of the ADNI study.",
+     "page": "8"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "The second group (pMCI) included 81 participants who were diagnosed with MCI at baseline but progressed to AD within 2.5 years, between month 18 (M18) and M48.",
+     "page": "8"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for how the ADNI diagnoses were made and whether MRI informed them; the document gives no diagnostic criteria.",
+     "page": "8"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No",
+     "quote": "Furthermore, we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously.",
+     "page": "8"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for any statement on blinding of the clinical diagnosis to imaging; none found.",
+     "page": "8"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably no",
+     "quote": "The first group (sMCI) consisted of 96 subjects diagnosed with MCI throughout the study, from baseline (BL) to 48 (M48). The second group (pMCI) included 81 participants who were diagnosed with MCI at baseline but progressed to AD within 2.5 years, between month 18 (M18) and M48.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The test set is 15 participants per class; the configurations carried forward were chosen from results that the paper says are all test-set results, so the test set was not held out from model selection; slice-level versus participant-level evaluation is not described; no calibration; no external validation; and the headline metrics are internally inconsistent (in a balanced test set accuracy must lie between sensitivity and specificity, yet 91.77% exceeds both 87.69% and 88.53%).",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "Test 15 15 132 3960 3960 3960 11,880 (Table 1 test row: 15 sMCI, 15 pMCI subjects)",
+     "page": "8"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "For consistency, the input image dimensions were fixed at 121 \u00d7 121 \u00d7 1 across all experiments.",
+     "page": "8"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Total 96 96 (Table 1: 71 + 10 + 15 subjects per class across train, validation and test)",
+     "page": "8"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "For this study, we selected 192 subjects from ADNI 1, ADNI GO, and ADNI 2 based on data availability.",
+     "page": "8"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Five prominent deep CNN models, EfficientNet, XceptionNet, ResNet, ConvNext, and DenseNet, were evaluated as feature extractors.",
+     "page": "7"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. many slices per participant) accounted for appropriately?",
+     "answer": "No information",
+     "quote": "From each volume, 132 middle slices from the axial, coronal, and sagittal planes were selected. Searched for how slice-level outputs were aggregated to a participant-level prediction: not described.",
+     "page": "8"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "To comprehensively assess the model performance, we reported several key evaluation metrics, including accuracy, sensitivity, specificity, and area under the receiver operating characteristic curve.",
+     "page": "8"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "It is important to note that Experiment 2 focused solely on the top-performing CNN models, along with their respective MRI planes and classification heads, as highlighted in bold in Table 2. (p.11); all results reported in this study were based on the test set (p.8)",
+     "page": "8, 11"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "The datasets, results, and code used to conduct the comprehensive analysis are made available to the research community. Weights are not reported in the document; the reported metrics are internally inconsistent (accuracy 91.77% above sensitivity 87.69% and specificity 88.53%).",
+     "page": "1, 12"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level?",
+     "answer": "Probably yes",
+     "quote": "The dataset was carefully partitioned to ensure that no data leakage occurred, and all results reported in this study were based on the test set.",
+     "page": "8"
+    },
+    {
+     "question": "AI: Were preprocessing, augmentation and hyperparameter tuning done within the training data only?",
+     "answer": "Probably yes",
+     "quote": "Additionally, we implemented an early stopping procedure, halting the training if no improvement in validation accuracy was detected",
+     "page": "8"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning and model selection?",
+     "answer": "Probably no",
+     "quote": "It is important to note that Experiment 2 focused solely on the top-performing CNN models, along with their respective MRI planes and classification heads, as highlighted in bold in Table 2.",
+     "page": "11"
+    },
+    {
+     "question": "AI: Was class imbalance handled appropriately?",
+     "answer": "No",
+     "quote": "Furthermore, we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously.",
+     "page": "8"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal hold-out only",
+     "quote": "The datasets used in this study were exclusively sourced from the ADNI database.",
+     "page": "15"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The positive class includes patients already diagnosed with AD, so the population differs from people with MCI in whom progression is to be predicted."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Standard 3T T1 MPRAGE MRI, as would be available clinically."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "The outcome mixes prevalent AD with conversion in a restricted M18 to M48 window rather than conversion within a defined horizon."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "High risk in participants (AD patients added to the positive class, availability-based selection), outcome (composite, non-standard window) and analysis (30-participant test set also used for configuration selection, no calibration, no external validation, internally inconsistent metrics); predictors unclear.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 13
+ }
+}

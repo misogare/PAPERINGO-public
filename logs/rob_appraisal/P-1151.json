@@ -1,0 +1,204 @@
+{
+ "paper_id": "P-1151",
+ "document_check": {
+  "matches": true,
+  "note": "Anagnostakis F, Kokkorakis M, Asvestis C, Papadimopoulos I, Nagarajan S, Talbot K, Li L, Chen Y, Nasrallah IM, Wen J, Davatzikos C. Impact of cardiometabolic conditions on the progression from mild cognitive impairment to dementia: a large cohort study. Alzheimer's Dement 2025;21:e70692. This is a TriNetX US EHR network with propensity-score-matched cohorts, and it matches the cited study. The obesity HR the review cites (1.05, 0.97 to 1.13) is not in the extracted text, probably because it sits in the Figure 2 panels, which did not survive extraction. The text does confirm that obesity was not significantly associated with progression overall."
+ },
+ "cited_result": "Principal result: associations of cardiometabolic conditions diagnosed at least 5 years before MCI with progression to all-cause dementia (the primary outcome), in 1:1 propensity-score-matched cohorts. Type 2 diabetes HR 1.18 (1.06 to 1.31); hypertension 1.14 (1.05 to 1.23); hyperlipidemia 1.07 (1.02 to 1.14), and 1.21 (1.11 to 1.32) for AD dementia. Obesity was not significant (the review cites HR 1.05, 0.97 to 1.13). All four come from the same design.",
+ "tool": "ROBINS-E",
+ "tool_reason": "The cited results are effects of exposures (cardiometabolic conditions) on progression to dementia in an observational EHR cohort. The authors frame them causally ('Impact of'; propensity score matching 'to control for confounders'), so ROBINS-E applies.",
+ "domains": [
+  {
+   "domain": "1. Bias due to confounding",
+   "judgment": "high",
+   "rationale": "Education, socioeconomic position, APOE and baseline cognitive severity were not available (searched: educat, socioecon, APOE as covariate). The matching also included treatments of the exposure itself and conditions that may lie on the causal path: insulin in 33.3% of diabetes patients and 34.8% of their matched controls; antilipemic agents in 67.5% of both hyperlipidemia groups; and, for obesity, type 2 diabetes, hypertension and hyperlipidemia. Balance on measured covariates was achieved.",
+   "signalling": [
+    {
+     "question": "1.1 Did the authors control for all the important confounding factors for which this was necessary?",
+     "answer": "Probably no",
+     "quote": "Additionally, unmeasured confounding variables not included in the propensity score matching, as well as diagnostic inconsistencies across health-care organizations, may pose limitations.",
+     "page": "9"
+    },
+    {
+     "question": "1.2 Were the confounding factors that were controlled for measured validly and reliably?",
+     "answer": "Probably no",
+     "quote": "The most significant limitation is bias and inconsistency in ICD diagnostic codes, which could be affected by regional physician practice standards and thoroughness in documentation.",
+     "page": "8"
+    },
+    {
+     "question": "1.3 Did the authors control for any variables that could have been affected by the exposure?",
+     "answer": "Yes",
+     "quote": "Similarly, the following medications were included in the propensity score matching: antilipemic agents, beta blockers, calcium channel blockers, antiarrhythmics, diuretics, angiotensin-converting enzyme (ACE) inhibitors, angiotensin II inhibitors, insulin, oral hypoglycemic agents,",
+     "page": "3"
+    },
+    {
+     "question": "1.4 Did the authors use an appropriate analysis method to control for confounding?",
+     "answer": "Probably yes",
+     "quote": "for each cohort with logistic regression, using greedy nearest-neighbor matching with a to lerance level of 0.01 and a maximum allowable difference of 0.1 between propensity scores.",
+     "page": "4"
+    },
+    {
+     "question": "1.6 Is there evidence that controlling for confounding was not successful?",
+     "answer": "Probably no",
+     "quote": "Full characteristics are summarized in Table 1, and all covariates had a standardized mean difference < 0.1 after weighting.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Bias arising from measurement of the exposure",
+   "judgment": "some concerns",
+   "rationale": "Exposure comes from ICD codes or a single laboratory value. The comparator is only 'without the diagnosis 5 years prior', so matched controls include many people with the condition (insulin 34.8% of diabetes controls; antilipemics 67.5% of hyperlipidemia controls). The error is likely non-differential and biases toward the null.",
+   "signalling": [
+    {
+     "question": "2.1 Does the exposure measure characterise the exposure well enough to answer the question?",
+     "answer": "Probably no",
+     "quote": "Participants with a diagnosis of individual risk factors, that is, hyperlipidemia, diabetes, hypertension, or obesity that was diagnosed at least 5 years before the MCI diagnosis, were compared to those without the diagnosis 5 years prior to the MCI diagnosis",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Was the exposure measured validly and reliably?",
+     "answer": "Probably no",
+     "quote": "Specifically, for type 2 diabetes, we used a single HbA1c \u22656.5% or ICD-10 E11 codes, which may lead to some misclassification relative to American Diabetes Association diagnostic recommendations",
+     "page": "9"
+    },
+    {
+     "question": "2.3 Were errors in exposure measurement related to the outcome?",
+     "answer": "Probably no",
+     "quote": "Third, we focused on the impact of cardiometabolic diseases with a minimum duration of 5 years to avoid confounding effects of recent diagnoses",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "3. Bias in selection of participants into the study (or analysis)",
+   "judgment": "some concerns",
+   "rationale": "People entered at MCI diagnosis, after at least 5 years of exposure, and had to be alive and free of dementia. The exposure affects death and earlier dementia, so susceptible exposed people are depleted before entry (index-event bias). This comes with a question posed in an MCI population and does not depend on the outcome, but it is not corrected.",
+   "signalling": [
+    {
+     "question": "3.1 Was selection of participants based on characteristics observed after the start of exposure?",
+     "answer": "Yes",
+     "quote": "We identified study cohorts of patients with a diagnosis of MCI and an age of \u226550 years.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Were the post-exposure variables that influenced selection associated with exposure and influenced by the outcome or its causes?",
+     "answer": "Probably yes",
+     "quote": "Individuals should have at least one health-care visit within 1 year before their cohort entry. Patients were excluded if they had any diagnosis of dementia at any time before cohort entry",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Do the start of follow-up and start of exposure coincide?",
+     "answer": "No",
+     "quote": "participants were examined for dementia outcomes that occurred within 10 years of their cohort entry date",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Were corrections applied for selection biases?",
+     "answer": "No information",
+     "quote": "Searched for corrections for index-event or survivor selection (weighting, bias analysis): none reported.",
+     "page": "2-4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Bias due to post-exposure interventions",
+   "judgment": "some concerns",
+   "rationale": "Treatment of the conditions after cohort entry is likely, but it is neither described nor modelled.",
+   "signalling": [
+    {
+     "question": "4.1 Were there post-exposure interventions influenced by prior exposure that could affect the outcome?",
+     "answer": "No information",
+     "quote": "Lastly, the models used did not account for time-dependent variations in the laboratory measurements, which may reduce the accuracy of the predictions.",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "5. Bias due to missing data",
+   "judgment": "some concerns",
+   "rationale": "People who left the network were censored at their last record; the proportion censored is not reported, and deaths are not addressed (searched: death, died, competing). Absence of a code is treated as absence of the condition, and missing data are not discussed (searched: missing, imput).",
+   "signalling": [
+    {
+     "question": "5.2 Were complete data on the outcome available for all, or nearly all, participants?",
+     "answer": "Probably no",
+     "quote": "If the last recorded event (outcome of interest or other medical encounter) in a patient\u2019s record was in the time window of the analysis period, the patient was censored on the day after that last recorded event.",
+     "page": "4"
+    },
+    {
+     "question": "5.3 Were complete data on confounders available for all, or nearly all, participants?",
+     "answer": "No information",
+     "quote": "The cofounders included are based on the ICD-10 diagnosis and generic drug names",
+     "page": "3"
+    },
+    {
+     "question": "5.4 Were missing data handled appropriately, or is the result robust to them?",
+     "answer": "No information",
+     "quote": "Searched for missing-data handling, competing-risk analysis of death and loss-to-follow-up counts: none reported.",
+     "page": "3-4"
+    }
+   ]
+  },
+  {
+   "domain": "6. Bias arising from measurement of the outcome",
+   "judgment": "some concerns",
+   "rationale": "Dementia came from routine-care ICD coding by clinicians who knew the comorbidities. Detection may be higher in exposed people who have more contact with health care, and the vascular versus AD subtype attribution may depend on knowing about vascular risk factors. The concern is greater for subtypes than for all-cause dementia.",
+   "signalling": [
+    {
+     "question": "6.1 Was the outcome measured validly and reliably?",
+     "answer": "Probably yes",
+     "quote": "The primary outcome was all-cause dementia, based on ICD-10 codes F01, F02, F03, G30, G31.0, or G31.83, within 10 years of enrollment.",
+     "page": "3"
+    },
+    {
+     "question": "6.2 Were outcome assessors aware of the exposure history?",
+     "answer": "Probably yes",
+     "quote": "TriNetX is a platform that de-identifies and aggregates electronic health record (EHR) data",
+     "page": "2"
+    },
+    {
+     "question": "6.3 Could assessment of the outcome have been influenced by knowledge of exposure?",
+     "answer": "Probably yes",
+     "quote": "The most significant limitation is bias and inconsistency in ICD diagnostic codes, which could be affected by regional physician practice standards and thoroughness in documentation.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "7. Bias in selection of the reported result",
+   "judgment": "some concerns",
+   "rationale": "All four exposures and all three outcomes are reported, and the primary outcome is named. There is no protocol or registration (searched: protocol, regist, pre-specified). The paper does not say which HRs were recalculated over time intervals for non-proportional hazards, and the platform analysis was re-run during revision.",
+   "signalling": [
+    {
+     "question": "7.1 Was the result likely selected from multiple exposure measurements or definitions?",
+     "answer": "Probably no",
+     "quote": "The four cohorts with patients with MCI consisted of: (1) 1867 with type 2 diabetes versus 1867 without type 2 diabetes, (2) 6643 with hyperlipidemia versus 6643 without hyperlipidemia, (3) 4118 with obesity versus 4118 without obesity, and (4) 3275 with hypertension versus 3275 without hypertension",
+     "page": "4"
+    },
+    {
+     "question": "7.2 Was the result likely selected from multiple outcome measurements?",
+     "answer": "Probably no",
+     "quote": "In additional analyses, we investigated two dementia subtypes, that is, vascular dementia (ICD-10: F01) and AD dementia (ICD-10: G30)",
+     "page": "3"
+    },
+    {
+     "question": "7.3 Was the result likely selected from multiple analyses?",
+     "answer": "No information",
+     "quote": "The proportional hazards assumption was tested using the generalized Schoenfeld approach on the TriNetX platform, with adjusted HRs recalculated for specific time intervals if the assumptions were violated. Data were lastly analyzed on July 17, 2025, within the TriNetX Analytics platform.",
+     "page": "4"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (ROBINS-E). Confounding is high; the other six domains have some concerns.",
+ "overall_category": "high",
+ "overall_rationale": "The overall rating is the most severe domain rating. Confounding is high because key confounders (education, socioeconomic position, APOE, cognitive severity) were unavailable, and because the matching included treatments of the exposure and probable mediators, so matched controls share much of the exposure. The remaining domains have some concerns: coded exposures with a contaminated comparator, selection at MCI diagnosis after long exposure, uncounted censoring and deaths, routine-care outcome coding, and no protocol. Comparator contamination and matching on mediators both tend to bias estimates toward the null, which matters most for the null obesity result the review cites.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 17,
+  "matched": 17
+ }
+}

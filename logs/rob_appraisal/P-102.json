@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-102",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Mao C, Xu J, Rasmussen L, et al. 'AD-BERT: Using pre-trained language model to predict the progression from mild cognitive impairment to Alzheimer's disease', Journal of Biomedical Informatics 144 (2023) 104442. It is a domain-adapted BERT model over clinical progress notes that predicts MCI-to-AD progression. This matches the citing sentence (Mao et al. 2023)."
+ },
+ "cited_result": "Discrimination of the AD-BERT model (BERT further pretrained on NMEDW notes, then fine-tuned) for MCI-to-AD progression, using progress notes written up to the first MCI diagnosis. Principal result: the no-restrict setting on the NMEDW held-out test set, AUC 0.849 and F1 0.440. Also cited: WCM, AUC 0.883 and F1 0.680. Both are benchmarked against 7 baseline models.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discriminative performance of a machine-learning prognostic model (MCI-to-AD progression), and the model is ranked against baselines, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "low",
+   "rationale": "Retrospective EHR cohort of ICD-coded MCI patients from two health systems. The stated exclusions (only one encounter; no notes before diagnosis) are justified and do not select on the outcome. The full criteria are shown in Fig. 1, which is not reproduced in the text.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used, e.g. cohort, RCT or nested case-control study data?",
+     "answer": "Probably yes",
+     "quote": "We identified a cohort of patients with MCI from the Northwestern Medicine Enterprise Data Warehouse (NMEDW) and Weill Cornell Medicine (WCM) using ICD-9 (331.83) and ICD-10 (G31.84) codes.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "The patients having only 1 encounter may indicate that their medical records are not complete in our healthcare system. It would be safer to exclude them than to count them as negative/control samples.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are free-text progress notes written before, or at, the first MCI diagnosis. The same pipeline processed them for all patients, and they were recorded before the outcome, so they are available when the model would be used.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "We preprocessed each progress note derived from the EHRs of all eligible patients as follows",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "All progress notes before the first encounter when a patient was diagnosed with MCI were collected for risk prediction.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "The progress notes no later than the first MCI diagnosis were used for the prediction.",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "Progression to AD is defined only by ICD billing codes. The authors say these codes are less reliable than clinical staging, and that excluding encounters with missing codes can place true cases in the control group. In the principal no-restrict setting, controls are anyone not yet coded with AD, over variable follow-up (mean 521 days), with no minimum horizon.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "ICD codes are primarily used for billing, and are not as reliable as the Clinical Dementia Rating (CDR) scale score or imaging biomarkers like amyloid and tau.",
+     "page": "7"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "Those who progressed to AD (identified by ICD-9 [331.0] and ICD-10 [G30.*]) were considered as the case group, and the control group was defined as MCI patients who have not yet been diagnosed with AD.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "The conversion time is defined by the time length from the first MCI diagnosis date to the first AD diagnosis date (based on ICD-9/10 codes: 331.0, G30.*).",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "In our study, we excluded the patient encounters with missing ICD codes including those from other hospitals. This may exclude encounters with AD, resulting in assigning a case sample to the control group.",
+     "page": "6"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched the methods and limitations for how the AD diagnoses behind the ICD codes were made, and whether diagnosing clinicians or coders were blind to the earlier progress notes. Nothing is reported; diagnoses come from routine care.",
+     "page": "2-3, 6-7"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No",
+     "quote": "Besides the no-restrict prediction that is to predict whether an MCI patient will progress to AD without time restriction",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "No calibration was reported, and there is one random 8:2 split per site (about 79 NMEDW test events, computed from 396 cases). In the no-restrict setting, censored controls are treated as non-events. Encounters with missing codes and patients without notes were excluded. The NMEDW test patients' notes were part of the self-supervised pretraining corpus. The WCM result comes from re-fine-tuning on a WCM training split, not from applying a fixed model to external data.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "We identified 396 cases and 3261 controls from NMEDW",
+     "page": "2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Not applicable",
+     "quote": "Each note is split into sections by the newline character",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "We identified a total of 3657 MCI patients from NMEDW and 2563 patients from WCM.",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "We also excluded the patients who have no progress notes when or before they were diagnosed with MCI.",
+     "page": "6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Then a fully connected linear layer appended with a sigmoid activation is employed to predict the probability of MCI-to-AD progression from the patient representation.",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks, sampling of controls) accounted for appropriately?",
+     "answer": "No",
+     "quote": "Average conversion days 723 (MCI to AD) 521 (MCI lasts)",
+     "page": "4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "We evaluated the predictive ability of a predictive model based on two metrics, F1 score and AUC.",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "For fine-tuning, each study cohort was randomly stratified into training and test sets by 8:2, and the training set was further split 1/5 as the validation set that was used to select the best model in the training process.",
+     "page": "3"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported analysis?",
+     "answer": "No information",
+     "quote": "We released the pre-trained model to hugging face",
+     "page": "2"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level (no data from one person on both sides)?",
+     "answer": "Probably yes",
+     "quote": "all the section embeddings of a patient are then combined to generate a vector representation for that individual by global MaxPooling",
+     "page": "3"
+    },
+    {
+     "question": "AI: Are preprocessing, representation learning and tuning confined to the training data (no leakage)?",
+     "answer": "Probably no",
+     "quote": "We first pretrained an AD-BERT model from BC-BERT [23] on the corpus of notes for all MCI patients from NMEDW dataset; the corpus contained about 37,000 clinical progress notes with an average length of 6250 characters.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Probably yes",
+     "quote": "After AD-BERT was pretrained, we then fine-tuned AD-BERT for the MCI-to-AD prediction task using the training patients, and evaluated the model performance on an independent test set.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes",
+     "quote": "we applied a stratified batch sampler to ensure the same case/control ratio in all batches, and used a class-weighted loss function based on the case/control ratio.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated (held-out split at each site); not externally validated as a fixed model",
+     "quote": "The fine-tuning and testing were performed on both the NMEDW dataset and WCM dataset.",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "MCI is identified from ICD billing codes in two US academic health systems, not from clinical criteria."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Progress notes are routinely available at the time of the MCI diagnosis."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "The outcome is ICD-coded AD, which differs from clinically or biomarker-defined AD; the authors acknowledge this (p. 7)."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 3 (Outcome) and 4 (Analysis) are high. The outcome relies on billing codes with admitted misclassification. The principal no-restrict setting counts controls with variable, often short follow-up as non-progressors without handling censoring. There is no calibration and one random split with modest test events. The NMEDW test notes were in the pretraining corpus. The WCM figure is not an external validation of a fixed model.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 23,
+  "matched": 16
+ }
+}

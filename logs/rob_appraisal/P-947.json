@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-947",
+ "document_check": {
+  "matches": true,
+  "note": "Giraldo, Sijbers and Romero for ADNI, 'Quantification of cognitive impairment to characterize heterogeneity of patients at risk of developing Alzheimer's disease dementia', Alzheimer's Dement (DADM) 2021;13:e12237. The cited numbers (mean AUC 0.68 vs 0.63 within 12 months, 0.76 vs 0.69 within 60 months, composite domain scores against standard test totals) appear on page 6."
+ },
+ "cited_result": "Discrimination (mean AUC over 1000 repeated random splits) of random-forest classifiers predicting MCI-to-AD-dementia progression from six CFA-derived domain composite scores plus age, sex and education, compared with classifiers trained on standard test totals: 0.68 vs 0.63 (12-month window) and 0.76 vs 0.69 (60-month window).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination of machine-learning classifiers that predict progression to dementia, compared across predictor sets, which is prognostic model performance.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "The data come from a longitudinal research cohort (ADNI), which suits a prognostic model. The paper does not describe MCI eligibility or exclusions beyond choosing each person's first visit with complete test data, so it is unclear whether the inclusions were appropriate. It is a single research cohort.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Probably yes",
+     "quote": "Data was provided by the Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI) database. ADNI is a public\u2013private partnership with the primary goal of testing whether brain imaging, biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of MCI and early AD.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the MCI eligibility criteria, the diagnostic definition of MCI and any exclusions. The only selection described is: 'The demographics and characteristics of these groups are presented in Table 1, corresponding to the first visit with complete information.'",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are neuropsychological subscores combined with weights learned on a separate learning set, and they were computed the same way for every evaluation participant. They were measured at the index visit, before the outcome window, and they are available wherever the test battery is given.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The evaluation set corresponded to the remaining 60% of MCI participants (n = 408), for which composite scores were calculated using the parameters from the learning set. (Minor heterogeneity: 'one of the naming tests depending on its availability', p. 2.)",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "This evaluation consisted of classifying MCI patients as either stable or converters following the time window approach27 fixing five different time periods: 12, 24, 36, 48, and 60 months. The six composite scores along with age, sex, and years of education were used to train random forest classifiers.",
+     "page": "4"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "the proposed methodology needs the subscores from neuropsychological tests and information with this level of detail is not available in other public databases.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The paper never describes how conversion to AD dementia was diagnosed, who diagnosed it, or whether the diagnosing clinicians were blind to the test scores. It does say that ADNI diagnostic labels depend on the neuropsychological evaluation, the same source the predictors come from, so incorporation bias is possible but not documented. The windows (12 to 60 months) are appropriate.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched for the dementia or AD diagnostic criteria and who adjudicated conversion. The paper states only: 'Domain-specific scores were also evaluated in the automated prediction of progression from MCI to AD dementia.'",
+     "page": "4"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "following the time window approach27 fixing five different time periods: 12, 24, 36, 48, and 60 months.",
+     "page": "4"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether the conversion diagnosis used the same test scores. The only related statement concerns the MCI label: 'Indeed, these participants should have exhibited some memory impairment during the neuropsychological evaluation to be diagnosed with MCI according to the ADNI criteria.'",
+     "page": "5"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for a uniform diagnostic protocol for conversion across participants and sites. None is described.",
+     "page": "2-4"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the diagnosing clinicians to the neuropsychological test results. None is reported.",
+     "page": "2-6"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "fixing five different time periods: 12, 24, 36, 48, and 60 months.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis (including PROBAST+AI considerations)",
+   "judgment": "high",
+   "rationale": "The only performance measure is AUC: calibration is never assessed. Participants were chosen by complete test data. The main text does not report how many events fall in each window or how non-converters with shorter follow-up were handled. In mitigation, feature construction (normative standardisation, subscore screening, CFA weights) used a separate learning partition, the split is by participant, the number of trees was fixed rather than tuned, class imbalance was handled by balanced subsampling, and performance was internally validated over 1000 repeated splits. There was no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No information",
+     "quote": "Searched for the number of converters in each window. The main text refers elsewhere: 'this is likely due to the varying number of cases used for training and testing at each time window (see File C in supporting information).'",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "The six composite scores along with age, sex, and years of education were used to train random forest classifiers.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for how participants censored before the end of a window without converting were handled. Case numbers vary by window ('varying number of cases used for training and testing at each time window') and the details are deferred to File C.",
+     "page": "6"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "corresponding to the first visit with complete information",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Subscores whose variance was inflated by a few outliers were not included in the model, neither were the subscores showing no significant correlation (greater than 0.25) with any other one and were not evaluating a similar task (see File A).",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks) accounted for appropriately?",
+     "answer": "No information",
+     "quote": "Searched for how censoring was handled when the time-to-conversion outcome was turned into window-specific binary labels. It is not described in the main text.",
+     "page": "4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "No",
+     "quote": "Classification performance was assessed by constructing the receiver operating characteristic (ROC) and calculating its area under the curve (AUC).",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably yes",
+     "quote": "at each iteration, a RF classifier was trained with a balanced subset by randomly selecting the 70% of the underrepresented class with an equal number of samples from the other class. The classifier was tested with the remaining observations, in some cases reaching a larger number of samples. This process was repeated 1000 times per time window.",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Not applicable",
+     "quote": "Random-forest ensemble with no single final model reported; 'code for processing ADNI data and reproducing the reported results is available in https://github.com/diagiraldo/neuropsycho_adni'",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Probably yes",
+     "quote": "The evaluation set corresponded to the remaining 60% of MCI participants (n = 408), for which composite scores were calculated using the parameters from the learning set.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Were preprocessing and feature selection confined to training data (no leakage)?",
+     "answer": "Yes",
+     "quote": "Before establishing a factor model, variability of subscores and pairwise correlations were examined in the data partition used for CFA.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was the test set held out from hyperparameter tuning?",
+     "answer": "Probably yes",
+     "quote": "The number of trees for all RF was set at 200.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was class imbalance addressed?",
+     "answer": "Yes",
+     "quote": "Depending on the time window, data for training the classifier might be highly unbalanced. This was taken into account when designing the cross-validation scheme",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally or externally validated?",
+     "answer": "Internally validated only",
+     "quote": "One important limitation of this study is that only data from ADNI were used, so generalization to other samples of populations was not tested.",
+     "page": "8"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "ADNI MCI participants are research volunteers, and the paper itself finds a control-like subgroup that points to false-positive MCI labels ('This particular subgroup supports previous findings, which suggest a considerable number of false positives in the diagnosis of MCI in the ADNI database', p. 5)."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "The scores need item-level subscores from nine tests. The authors say this level of detail is not available in other public databases (p. 8), which limits transport."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Progression to AD dementia within 1 to 5 years matches the review's use."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 4 is high: calibration was not assessed, participants were selected on complete data, and event counts and the handling of censoring are not reported in the main text. Domain 1 and domain 3 are unclear. The internal validation is well designed (participant-level split, feature learning on separate data, no tuning on test data, 1000 repeats), but there is no external validation. Under PROBAST, one high domain makes the overall rating high.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 17,
+  "matched": 16
+ }
+}

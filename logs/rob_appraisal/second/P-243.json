@@ -1,0 +1,219 @@
+{
+ "paper_id": "P-243",
+ "document_check": {
+  "matches": true,
+  "note": "Wu, Wang, Gu, Zhu and Fang, 'Investigating predictors of progression from mild cognitive impairment to Alzheimer's disease based on different time intervals', Age and Ageing 2023; ADNI machine-learning study. The cited result is in the document: LASSO kept eight variables, three of them MRI volume measures (Fusiform, MidTemp, ICV), and the importance ranking puts FAQ, mPACCtrailsB, RAVLT_immediate and ADAS11 at the top."
+ },
+ "cited_result": "Predictor selection and importance ranking of the final MCI-to-AD (3-year) prediction model: LASSO kept eight predictors (ADAS11, RAVLT_immediate, RAVLT_learning, FAQ, Fusiform, MidTemp, ICV, mPACCtrailsB), and feature and permutation importance from the AdaBoost (logistic regression base) model ranked cognitive and functional scores highest.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the predictor set and predictor-importance ranking of a multivariable machine-learning prognostic model, so it concerns the development of a prediction model, not a single prognostic factor.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The data source is appropriate: ADNI is a longitudinal cohort. But inclusion required a full 3-year follow-up with a known outcome, and participants whose diagnosis changed in both directions were excluded. Both are selections made on follow-up and outcome trajectory, which can distort the predictor-outcome relationships the model learns.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort)?",
+     "answer": "Yes",
+     "quote": "Data was obtained from the Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI, https://ida.loni.usc.edu) database, The ADNI project aims to comprehensively assess the progress of MCI and early AD by combining longitudinal magnetic resonance imaging (MRI), positron emission tomography (PET) and biomarker data and clinical neuropsychological scale assessment.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "The inclusion criteria of the samples in this study were: (i) diagnosed with MCI at baseline; (ii) had a follow-up time of 3 years; (iii) had outcome (cognitive status) information. Participants diagnosed with bidirectional changes during follow-up were excluded [24].",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are standard baseline demographic, neuropsychological and MRI-volume measures, normalised the same way for everyone. They were measured at baseline, before the outcome, and would be available at the time of intended use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "the Max-Min normalisation method was applied for continuous variables like age and education. While the neuropsychological test variables were normalised by dividing their scores by the total scores of the corresponding scale.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Supplementary Table S9 summarises the differences of baseline variables between the MCI and AD groups.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Machine learning models were applied to predict the progression from MCI to AD, using demographic, neuropsychological test and MRI-related biomarkers.",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The outcome is ADNI clinical conversion to AD, and its criteria are only in a supplement not included in the source. The retained predictors are cognitive and functional scales (FAQ, ADAS11, RAVLT, mPACC), and the paper itself describes these as informing dementia assessment and diagnosis. So the predictors are probably not independent of the outcome definition, and no blinding of the diagnosing clinicians is reported. This incorporation risk bears directly on the cited finding that cognitive and functional scores rank highest.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "The diagnostic criteria of MCI and AD can be found in Supplementary Table S1 and at the ADNI website",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "The diagnostic criteria of MCI and AD can be found in Supplementary Table S1 and at the ADNI website",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably no",
+     "quote": "The speed and degree of FAQ changes have certain significance for the assessment of clinical dementia function.",
+     "page": "5"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The follow-up interval for ADNI was 6\u201312 months.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched Methods and Discussion for any statement that the clinicians assigning follow-up diagnoses were blinded to baseline neuropsychological or MRI data; none found.",
+     "page": "2-6"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "There are 13, 18, 5, 23, and 13 patients with MCI progression in 0-6, 6-12, 12-18, 18-24, and 24-36 months, respectively.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are about 188 events in the 70% development portion for 29 candidate predictors, and the interval-specific results rest on 5 to 23 events. The analysis is restricted to completers. missForest imputation and scaling are described before the split, with no statement that they were fitted within the training data. Censoring and time-to-event structure are ignored. There is no external validation. The strengths are that LASSO selection and tuning were done inside the 70% cross-validation, the 30% test set was held out, the split was by patient, and calibration was reported. The data set on which importance was computed is not stated.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "Finally, a total of 627 patients with baseline MCI were screened, of whom 269 patients progressed to AD at a 3-year follow-up and 358 patients remained MCI. ... Finally, we included 29 variables in four categories",
+     "page": "2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "we map all variables to the same dimensional range (0\u20131) to ensure that they are in uniform and comparable dimensions.",
+     "page": "2"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "(ii) had a follow-up time of 3 years; (iii) had outcome (cognitive status) information. Participants diagnosed with bidirectional changes during follow-up were excluded [24].",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "variables with a missing rate of more than 20% were also excluded (Supplementary Table S3). For the remaining variables with missing value (Supplementary Table S4), we used the missForest algorithm to fill it.",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "the feature selection and hyperparameter tunning were performed separately in the 70% of data with 5-fold cross validation. ... the Least Absolute Shrinkage And Selection Operator (LASSO) was applied to screen features [28].",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "The global model was assessed by grouping the outcomes of the test data at different time intervals (0\u20136, 6\u201312, 12\u201318, 18\u201324 and 24\u201336 months).",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Yes",
+     "quote": "Calibration curve, expected calibration error (ECE) and brier score were used to evaluate the calibration results.",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably yes",
+     "quote": "The 30% of data was used as test set, and was only applied to verify the performance of models.",
+     "page": "2-3"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for the final AdaBoost/logistic regression coefficients or weights; only a nomogram in Supplementary Figure S6 is mentioned, and the supplement is not in the source.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level?",
+     "answer": "Yes",
+     "quote": "All patients were firstly assigned to two parts (70% versus 30%).",
+     "page": "2"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and tuning done within training folds only?",
+     "answer": "Probably no",
+     "quote": "we used the missForest algorithm to fill it. ... In order to reduce model computation and generalise model performance, we map all variables to the same dimensional range (0\u20131)",
+     "page": "2"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Yes",
+     "quote": "Finally, the test set (30%) was used to assess the performance of optimal model.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "No information",
+     "quote": "Searched for resampling, class weighting or threshold adjustment (269 progressors versus 358 stable); none reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internally validated only (split sample)",
+     "quote": "the performance of our model is subject to change outside of this dataset, which needs to be refined in future studies to explore the generalisability of our models in a wider range of populations and regions.",
+     "page": "6"
+    },
+    {
+     "question": "AI: On which data was variable importance computed?",
+     "answer": "No information",
+     "quote": "Supplementary Figure S5 and Supplementary Table S15 show the importance rank of variables by the best fusion model.",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "ADNI MCI participants followed for progression to AD match the review's MCI focus, though the authors note overrepresentation of white, non-Hispanic older adults."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "The outcome is clinical conversion to AD within 3 years, which fits the review's use of the study."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1, 3 and 4 are high risk: outcome-based selection of participants (completers only, bidirectional changers excluded), probable incorporation of the cognitive and functional predictors into the clinical outcome, and analysis concerns (modest events per variable, imputation before the split, censoring ignored, internal validation only).",
+ "confidence": "medium",
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 19
+ }
+}

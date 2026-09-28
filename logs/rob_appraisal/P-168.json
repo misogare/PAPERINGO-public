@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-168",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Ding et al., 'Prediction of progression from mild cognitive impairment to Alzheimer's disease with longitudinal and multimodal data', Front. Dement. 2:1271680 (2023). It uses ADNI, 347 MCI participants and 77 converters. The LSTM over five timepoints (AUC 0.93) is compared with a random forest at the 24-month index visit (AUC 0.90), and a random forest given all five timepoints reached AUC 0.89, as the review states."
+ },
+ "cited_result": "The discrimination comparison: an LSTM over five 6-monthly timepoints (AUC 0.93 plus or minus 0.06) against a random forest on the single index visit (AUC 0.90 plus or minus 0.09; DeLong P = 0.039). A random forest given all five timepoints (AUC 0.89) did not improve on the index-visit baseline.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the discrimination of two prognostic machine-learning models for 2-year MCI-to-AD conversion.",
+ "domains": [
+  {
+   "domain": "Domain 1: Participants",
+   "judgment": "High",
+   "rationale": "ADNI is an appropriate longitudinal cohort. But reverters to normal cognition were excluded from a model intended for people with MCI at the index exam, and the sample was restricted to people with complete NP and MRI data at five visits.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Yes",
+     "quote": "a large-scale multi-center longitudinal study",
+     "page": "1"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "The participants who either reverted to normal cognitive status (n = 19) or cannot determine the cognitive status at the 48-month follow-up examination (n = 187) were excluded.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 2: Predictors",
+   "judgment": "Low",
+   "rationale": "NP tests and FreeSurfer MRI volumes follow standard ADNI protocols, are measured before the outcome window and are available at the index exam.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "the study utilized T1-weighted images acquired from ADNI-approved 3 T scanners",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "and the outcome is de\ufb01ned as the progression from MCI to AD before 48-month.",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "while the input for the dense layer was static features including demographic information such as age, sex, and education.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 3: Outcome",
+   "judgment": "High",
+   "rationale": "AD conversion was diagnosed with MMSE, CDR and Logical Memory, which are also among the predictors (MMSE, CDR-SB, LDELTOTAL). The outcome is therefore not independent of the predictors, which the authors call 'circular'. Diagnosticians had the test results.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "The study utilized several measures including subjective memory concern, the Logical Memory Test (LMT), Mini-Mental State Exam (MMSE), Clinical Dementia Rating scale (CDR)",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "and the outcome is de\ufb01ned as the progression from MCI to AD before 48-month.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No",
+     "quote": "Using NP tests for the diagnosis of AD and MCI can be circular, as these conditions are diagnosed based on the severity of cognitive dysfunction.",
+     "page": "6"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "we interpolated the diagnosis by the status from the immediate prior and follow up exams if the diagnosis was consistent.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably no",
+     "quote": "The study utilized several measures including subjective memory concern, the Logical Memory Test (LMT), Mini-Mental State Exam (MMSE), Clinical Dementia Rating scale (CDR)",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "Participants were followed up for 2 years since the index exam (equivalent to 48-months since the baseline exam), during which 77 (22.2%) were converted to AD.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 4: Analysis",
+   "judgment": "High",
+   "rationale": "There are 77 events for about 110 longitudinal inputs, and 206 of 553 eligible participants were dropped because their outcome was unknown or they reverted, with no handling of censoring. Only AUC is reported, with no calibration. Performance is internally cross-validated only, with hyperparameters chosen on the same data and preprocessing not stated to be fold-wise. The LSTM received Bayesian hyperparameter optimisation while the comparator random forest used a fixed 100-tree configuration, which biases the cited head-to-head comparison.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "In this study, we included 15 NP tests such as the functional assessment questionnaire (FAQ)",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "All continuous variables (i.e., NP test scores and MRI measures) were normalized to have a mean of zero and standard deviation of one.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "The participants who either reverted to normal cognitive status (n = 19) or cannot determine the cognitive status at the 48-month follow-up examination (n = 187) were excluded.",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "variables with missing values comprising more than 50% were excluded. Multiple imputations using the chained equations (MICE) method (Azur et al., 2011) was used to impute the remaining features with missing values.",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "In this study, we included 15 NP tests such as the functional assessment questionnaire (FAQ)",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "or cannot determine the cognitive status at the 48-month follow-up examination (n = 187) were excluded.",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "The objective function being optimized was the average area under the receiver operating characteristic (ROC) curve (AUC) across all folds.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "We further built the model based on the selected best hyperparameters and evaluate its 2-year risk prediction performance.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 (continued) Were the compared models tuned comparably?",
+     "answer": "No",
+     "quote": "The model consisted of 100 decision trees.",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for a reported final model, weights or feature importances; none reported beyond the architecture and hyperparameter search space.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the split between training and test data at the participant level?",
+     "answer": "Probably yes",
+     "quote": "while the input for the dense layer was static features including demographic information such as age, sex, and education.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Were preprocessing, imputation and tuning confined to training folds?",
+     "answer": "No information",
+     "quote": "All continuous variables (i.e., NP test scores and MRI measures) were normalized to have a mean of zero and standard deviation of one.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably no",
+     "quote": "The optimization was performed using two separate 10-fold cross-validation procedures for hyperparameter selection and model performance evaluation.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was class imbalance present and handled?",
+     "answer": "No information",
+     "quote": "Searched Methods 2.4 and 2.5 for weighting, resampling or threshold handling of the 77 converters against 270 non-converters; none reported.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally cross-validated only",
+     "quote": "are based on a relatively small sample size",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST)",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1, 3 and 4 are high. The outcome is diagnosed partly from the same neuropsychological tests used as predictors. Reverters and participants with unknown outcome were excluded without censoring methods. Events per input are few, performance is internally cross-validated only with no calibration, and the two models compared were tuned unequally. Predictors are low risk.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "ADNI research volunteers (mean education 16 years) with complete NP and MRI data at five visits; reverters excluded."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "The LSTM needs MRI and 15 NP tests at five 6-monthly visits, which is seldom available in routine care."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "2-year clinical conversion from MCI to AD matches the review's progression question."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 23,
+  "matched": 23
+ }
+}

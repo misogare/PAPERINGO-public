@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-337",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Ghosh, Pal, Lutz and Luo (2025), 'Ensemble survival analysis for preclinical cognitive decline prediction in Alzheimer's disease using longitudinal biomarkers', J Alzheimers Dis 107(3):1256-1266 (author manuscript PMC). It compares baseline-only with longitudinal (baseline plus change-score) survival models directly, which is what VF-03 describes. The summaries.md header for Paper 337 names the same file (PMID_40808576_nihms-2108765.pdf)."
+ },
+ "cited_result": "In 721 ADNI cognitively normal participants (142 progressions to MCI/AD), the ensemble survival model (Elastic Net features + BMA over RSF, DeepSurv, XGBoost) reached C-index 0.885 and time-dependent AUC 0.898 with baseline plus visit-1 change scores, against 0.608 and 0.606 for baseline-only features (0.904 and 0.922 with visit-2 changes added). This longitudinal-versus-baseline comparison is the result supporting VF-03.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (C-index, time-dependent AUC) of multivariable machine-learning survival models predicting progression, compared across predictor sets, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "ADNI is an appropriate longitudinal source. However, inclusion required at least two follow-up visits, so the sample was selected on post-baseline follow-up information that is not available at the moment of a baseline prediction.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Yes",
+     "quote": "We analyzed longitudinal biomarker data from 721 CN participants in the ADNI study, of whom 142 (19.7%) progressed (104 to MCI, 38 to AD)",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "requiring at least two follow-up visits for longitudinal analysis.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "high",
+   "rationale": "Time to progression is counted from baseline over the full follow-up, but the longitudinal models use predictors measured at 6 and 12 months without a landmark reset. Predictor information from visits 1 and 2 was therefore not available at the time origin, and it can coincide with the visit at which conversion is diagnosed.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Longitudinal variables included neuroimaging biomarkers (hippocampal, intracranial, ventricle, mid-temporal, fusiform gyrus, entorhinal cortex, whole brain volumes), PET biomarkers (fluorodeoxyglucose [FDG], Pittsburgh Compound B [PIB], AV45), and cognitive assessments (MMSE, Alzheimer's Disease Assessment Scale [ADAS13], Montreal Cognitive Assessment [MoCA], FAQ, Rey Auditory Verbal Learning Test [RAVLT] components), all measured longitudinally",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably no",
+     "quote": "Survival analysis focused on time to first clinical progression, including only baseline CN participants and censoring non-progressors at their last visit in the ADNI longitudinal record, while predictors were assessed over three visits (baseline, visit 1, and visit 2)",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably no",
+     "quote": "with events (conversion from CN to MCI/AD) occurring over the full follow-up period, while predictors were limited to data from baseline, the 6-month follow-up (Visit 1), and the 12-month follow-up (Visit 2).",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The outcome follows standard ADNI criteria. But those criteria are built from MMSE, CDR, logical memory and FAQ, and the strongest predictors are changes in exactly these measures, so predictors are part of the outcome definition. The outcome is also assigned by clinicians who see the same scores.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Yes",
+     "quote": "CN, MCI, and AD were defined per ADNI criteria, with CN requiring MMSE 24\u201330 and CDR 0, MCI per Petersen et al.3 with CDR 0.5, and AD per NINCDS/ADRDA probable AD criteria",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "MCI per Petersen et al.3 with CDR 0.5, and AD per NINCDS/ADRDA probable AD criteria,23",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No",
+     "quote": "The rate of change in the FAQ was the strongest predictor in both EA and BMA, highlighting its sensitivity to functional decline. Other top predictors included rates of change in MoCA, MMSE, ADAS13, and LDELTOTAL",
+     "page": "9"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "CN, MCI, and AD were defined per ADNI criteria",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably no",
+     "quote": "requiring memory impairment, deficits in at least one other cognitive domain (e.g., MMSE 20\u201326 for global cognition), and functional impairment (e.g., Functional Activities Questionnaire, FAQ >9, CDR 0.5\u20131 for mild to moderate severity).",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably no",
+     "quote": "Analysis utilized data from up to three visits per participant: baseline, a 6-month follow-up (Visit 1), and a 12-month follow-up (Visit 2)",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The events-per-candidate-predictor ratio was low (142 events for 51 to 99 candidates). Imputation, standardisation and penalised feature selection are described as preprocessing before the split. BMA weights were derived from validation-set C-indices. Calibration was claimed but not reported, and there was no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "Baseline included 51 variables, increasing to 75 with visit 1 ... and 99 with visit 2",
+     "page": "7"
+    },
+    {
+     "question": "4.1b Events available",
+     "answer": "Probably no",
+     "quote": "With only 142 progression events, the Cox model was also more susceptible to overfitting and unstable risk estimates.",
+     "page": "5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "Continuous variables were standardized (zero mean, unit variance), categorical variables one-hot encoded",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Missing data were imputed using Multiple Imputation by Chained Equations (MICE),24 generating 20 datasets over 1000 iterations, pooled via Rubin's Rules.",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "While we did not conduct formal sensitivity analyses for violations of the MAR assumption, the decision to adopt MAR reflects both the structure of the data and the practical constraints of high-dimensional imputation.",
+     "page": "10"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Feature selection utilized Cox LASSO25 and Cox Elastic Net,26 extending traditional Cox proportional hazards (Cox PH) models with regularization penalties to handle high-dimensional data.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data (censoring, competing risks, sampling) accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "using inverse probability of censoring weighting (IPCW) to adjust for censoring bias",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "These metrics, detailed with results in Tables 2 and 3, ensure robust assessment of ranking and calibration.",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in performance accounted for?",
+     "answer": "Probably no",
+     "quote": "each model's concordance index (C-index) on the validation set was transformed into an approximate likelihood, and these likelihoods were normalized to obtain posterior probabilities.",
+     "page": "6"
+    },
+    {
+     "question": "AI: were preprocessing, imputation and feature selection done within training folds only (no leakage)?",
+     "answer": "Probably no",
+     "quote": "Missing data were imputed using Multiple Imputation by Chained Equations (MICE),24 generating 20 datasets over 1000 iterations, pooled via Rubin's Rules. Continuous variables were standardized (zero mean, unit variance), categorical variables one-hot encoded, and penalized regression selected predictive features.",
+     "page": "4"
+    },
+    {
+     "question": "AI: was the split at participant level and the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "The dataset was split into 80% training and 20% testing sets, with 5-fold cross-validation ensuring robustness.",
+     "page": "4"
+    },
+    {
+     "question": "AI: class imbalance and its handling",
+     "answer": "Probably yes",
+     "quote": "of whom 142 (19.7%) progressed (104 to MCI, 38 to AD)",
+     "page": "3"
+    },
+    {
+     "question": "AI: is the reported performance apparent, internally validated or externally validated?",
+     "answer": "No (internal only)",
+     "quote": "Future research should validate our models externally across populations",
+     "page": "10"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results reported?",
+     "answer": "No information",
+     "quote": "Looked for final model coefficients or selected-feature lists with weights; the text gives only importance rankings (Figure 1) and says features varied across imputed datasets.",
+     "page": "7-9"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "ADNI cognitively normal volunteers match the review's question on CN-to-MCI progression, although they are a research-cohort sample."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "high",
+   "rationale": "The longitudinal predictor sets include PET and CSF measures and post-baseline change scores; the authors themselves note that deployment would need minimally invasive predictors."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Progression to MCI or AD is defined by ADNI criteria."
+  }
+ ],
+ "overall": "high",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1 to 4 are all high. Domain 2 and Domain 3 bear directly on the VF-03 comparison: the longitudinal models add 6- and 12-month changes in the very scores that define the outcome (FAQ, MMSE, logical memory), measured without a landmark reset and possibly at the conversion visit itself. The advantage of longitudinal over baseline-only models (0.885 against 0.608) is therefore likely inflated by incorporation and look-ahead, on top of the leakage and optimism concerns in Domain 4.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 23,
+  "matched": 20
+ }
+}

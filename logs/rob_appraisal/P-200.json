@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-200",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Cheung EYW, Chau ACM, Tang FH (ADNI). 'Radiomics-Based Artificial Intelligence Differentiation of Neurodegenerative Diseases with Reference to the Volumetry', Life 2022;12:514. It reports AUC 0.9992 for MCI vs CN with the volumetry (V) model: matches the cited context."
+ },
+ "cited_result": "Random-forest classification of MCI versus CN from 45 FreeSurfer regional volumes (V-model), ADNI1, 293 MCI and 192 CN images: AUC 0.9992 \u00b1 0.0022 (accuracy 0.9905).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUC) of a machine-learning diagnostic classifier, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "High",
+   "rationale": "The images were drawn from ADNI1 diagnostic groups, which is case-control-type sampling, not a consecutive sample of people in whom the diagnostic question arises. Eligibility is undefined apart from a requirement of more than 36 months of follow-up, and the way the 582 images were chosen is not described.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably no",
+     "quote": "In this study, a total of 582 T1 MPRAGE images were collected from ADNI1 cohorts from ADNI database.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "All eligible participants underwent brain MRI scanning and clinical cognitive evaluations, and were clinically followed-up for more than 36 months.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Low",
+   "rationale": "Regional volumes come from automated FreeSurfer segmentation, applied the same way to every T1 image and available at the time of use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "The volumetric segmentation and cortical thickness analysis was performed with the FreeSurfer v7.1.0 image analysis suite",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Using automatic segmentation in volumetry analysis and consider all brain regions for model building enables the process to become operator independent.",
+     "page": "10"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Brain regional volume of 45 regions were obtained",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "Unclear",
+   "rationale": "The paper states no diagnostic criteria for CN, MCI or AD. It also does not say whether the label is the diagnosis at the time of the scan or after the more than 36 months of follow-up. Blinding and exclusion of imaging from the diagnosis are not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "There were 192 images of CN, 293 images of MCI and 97 image of AD.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for diagnostic criteria for CN, MCI and AD (MMSE, CDR, Petersen or NINCDS-ADRDA): none stated.",
+     "page": "2-4"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether imaging contributed to diagnostic labels: not reported.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "a total of 582 T1 MPRAGE images were collected from ADNI1 cohorts from ADNI database",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnosis to MRI: not reported.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "were clinically followed-up for more than 36 months",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "The unit of analysis is 'images', and nothing says one image per participant, so a random image-level split may leak participants across sets. It is unclear whether the reported AUC comes from the 15% held-out test set or from 10-fold cross-validation. The 'overfitting test' resamples the same data. There is no external validation and no calibration. The smaller class gives about 4 events per candidate predictor (192 CN, 45 volumes).",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "Brain regional volume of 45 regions were obtained [...] There were 192 images of CN, 293 images of MCI",
+     "page": "3; 2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "The random forest algorithm in the software R was employed for each model",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for exclusions, FreeSurfer failures or discarded images: none reported.",
+     "page": "2-4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data handling: not reported.",
+     "page": "2-4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "45 brain regional volumes were segmented by surface-based method, all were used to develop the V-model.",
+     "page": "8"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. multiple images per participant) accounted for appropriately?",
+     "answer": "No information",
+     "quote": "All images were randomly divided into a training group, validation group and test group in ratio 70:15:15.",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "The model performance analysis was evaluated by the area under the receiver operating characteristics (ROC) curve (AUC). An average of AUC, accuracy, sensitivity and specificity was reported with standard deviation.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "The expected performance of the resulting model was evaluated by the 10-fold cross validation. [...] By selecting the same amount of sample size (n = 50) from each of the groups, each model was tested to avoid overfitting.",
+     "page": "3; 4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "Searched for a final model specification: only lists of important variables (Table 3) are reported.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was the train/test split at the participant level?",
+     "answer": "No information",
+     "quote": "All images were randomly divided into a training group, validation group and test group in ratio 70:15:15.",
+     "page": "2"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection and tuning done within training folds only?",
+     "answer": "Probably yes",
+     "quote": "The random forest algorithm in the software R was employed for each model as classifier with a maximum of 500 trees.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "To provide realistic model performance estimation, the ten-fold cross validation was adopted for model training and validation.",
+     "page": "9"
+    },
+    {
+     "question": "AI: Class imbalance and how handled?",
+     "answer": "Probably no",
+     "quote": "Sample Size MCI = 293:CN = 192",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internally validated only",
+     "quote": "Further studies are suggested to include an external dataset for validation.",
+     "page": "9"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "High",
+   "rationale": "ADNI1 research diagnostic groups; not a clinical population in whom MCI is suspected."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "Low",
+   "rationale": "Standard T1 MRI with automated FreeSurfer volumes."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "Unclear",
+   "rationale": "Diagnostic criteria and the time point of the label are not stated."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1 and 4 are high, and domain 3 is unclear. Diagnostic-group sampling from ADNI1 meets an image-level random split with no stated participant-level separation, an unclear source for the reported AUC (test set or cross-validation), an 'overfitting test' drawn from the same data, no calibration and no external validation.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 14,
+  "matched": 11
+ }
+}

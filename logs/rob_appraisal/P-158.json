@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-158",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Ceyhan, Bek and Onal-Suzek, 'Machine Learning-Based Prediction Models for Cognitive Decline Progression: A Comparative Study in Multilingual Settings Using Speech Analysis', J Aging Res & Lifestyle 2024;13:43-50. It trains acoustic-feature classifiers on the ADReSS AD against cognitively normal benchmark and a 60-person Turkish dementia-clinic (MUDC) sample, as the review states."
+ },
+ "cited_result": "Classification performance of acoustic-feature machine-learning models: principally the ADReSS random forest (95% accuracy by 10-fold cross-validation on augmented segments; 73% on the ADReSS test set). The MUDC MLP (94% cross-validated) and cross-language transfer (72% and 76%) are also covered.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination of multivariable machine-learning classifiers built on acoustic speech features.",
+ "domains": [
+  {
+   "domain": "Domain 1: Participants",
+   "judgment": "High",
+   "rationale": "ADReSS is a balanced, age- and sex-matched AD against cognitively normal sample, which is a case-control-type data source for a diagnostic model. The MUDC eligibility criteria are not reported, and the paper describes that sample both as MCI patients and as balanced CN and AD.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No",
+     "quote": "it is a balanced dataset composed of cognitively normal (CN) patients",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched the Dataset section and Tables 1 and 2 for inclusion or exclusion criteria for the MUDC sample; none reported. The sample is described inconsistently: 'Both datasets are composed of cognitively normal (CN) and AD patients balanced in terms of age and sex along with their written MMSE scores.' versus 'on 60 patients with mild cognitive impairment in the MUDC.'",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 2: Predictors",
+   "judgment": "Low",
+   "rationale": "Acoustic features were extracted by the same automated pipeline within each dataset, independently of diagnosis, and are available at the time of use. Recording environments differed between datasets, which matters only for cross-language transfer.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The preprocessing of the audio data involved framing, trimming, and augmenting the audio files programmatically to enable repeating this process in both datasets.",
+     "page": "4"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "the files were programmatically framed into 20-second segments using Python Librosa libraries",
+     "page": "4"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "each participant was presented with the Cookie Theft Picture and was instructed to provide a comprehensive description of the image within 1 minute (Figure 1).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 3: Outcome",
+   "judgment": "Unclear",
+   "rationale": "The paper does not describe how AD or CN status was diagnosed in ADReSS, and it never defines the class label used for the MUDC classifier (only MMSE bands are shown). Timing between MMSE and recording is short.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched Methods and Tables 1 and 2 for the diagnostic procedure or criteria for AD, CN or MCI labels; only 'Breakdown of ADReSS Training Dataset participants by Gender and AD status' and MUDC MMSE bands are given.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for the MUDC classification target; the only grouping is 'Table 2. Breakdown of MUDC Dataset participants by Gender and MMSE Scores'.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "Table 3. Audio features extracted from datasets",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for a common label definition across ADReSS and MUDC; none given. The paper notes 'Turkish training dataset is limited to mild cognitive delay although Adress dataset contains a wider spectrum of the disease.'",
+     "page": "7"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "tests on all these patients within one month before the SS recordings were retrieved.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "Immediately after their formal MMSE cognitive test at the clinic, each participant was presented with the Cookie Theft Picture",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 4: Analysis",
+   "judgment": "High",
+   "rationale": "There are few events per candidate feature (78 AD cases, 98 features). Each recording is split into several speed-perturbed segments before 10-fold cross-validation, with no speaker-level grouping, so segments of the same person can sit on both sides of a split. Accuracy rose from 52% unaugmented to 95% augmented but fell to 73% on the held-out test set, a pattern consistent with leakage. Tuning and univariable feature selection share the evaluation folds, and no calibration is reported.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Data not augmented\u2013 Feature selection NOT performed - 98 Features",
+     "page": "5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "For feature normalization, the Python StandardScaler function was used.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "to create 1520 samples from 153 samples for the training dataset and 800 samples from 48 samples for the test dataset (Figure 2B).",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched Methods and Results for missing recordings, unusable audio or missing MMSE; nothing reported.",
+     "page": "3-5"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably no",
+     "quote": "Feature selection using the KBest algorithm did not eliminate any of these features",
+     "page": "4"
+    },
+    {
+     "question": "4.5 (continued) Was the final model built on a reduced feature set?",
+     "answer": "Yes",
+     "quote": "Data normalized \u2013 Feature reduction performed \u2013 30 features",
+     "page": "5"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. multiple samples per participant) accounted for appropriately?",
+     "answer": "No",
+     "quote": "we programmatically perturbed each section at speeds of 0.7, 0.8, 1.2, and 1.3 to create 1520 samples from 153 samples for the training dataset",
+     "page": "4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "Table 5 displays the average accuracy, F1, and AUC scores when using a 10-fold cross-validation score for the RF algorithm",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "we performed GridSearchCV hyperparameter optimization using 10-fold cross-validation for logistic regression (LR), random forest (RF) and neural network (NN)-multilayer perceptron (MLP) algorithms for both datasets.",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for a reported final model or feature importances; only best hyperparameters are listed in Tables 4 and 6.",
+     "page": "5-6"
+    },
+    {
+     "question": "AI: Was the split between training and test data at the participant level?",
+     "answer": "Probably no",
+     "quote": "The difference in the mean cross-validation score between the augmented and unaugmented data clearly demonstrates the value of increasing the sample size for model creation.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and tuning confined to training folds?",
+     "answer": "Probably no",
+     "quote": "One of the main purposes of preprocessing was to increase the sample size for each dataset to avoid overfitting and reduce bias.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably yes",
+     "quote": "we implemented validation with the Adress Test Dataset, which had 60 recordings with a balanced population of gender and MMSE scores. We achieved 73% accuracy for the labels (dementia or not)",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was class imbalance present and handled?",
+     "answer": "Yes",
+     "quote": "it is a balanced dataset composed of cognitively normal (CN) patients",
+     "page": "2"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally cross-validated (95%); held-out test 73%; cross-dataset 72% and 76%",
+     "quote": "The accuracy rate was 52% before augmentation and feature extraction on the ADRess dataset and 65% on the MUDC dataset.",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST)",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1 and 4 are high. The participants come from a case-control-type balanced benchmark and an undescribed clinic sample. The headline accuracy comes from cross-validation over augmented segments with no participant-level grouping, tuning and feature selection inside the same folds, few events per feature and no calibration. The outcome domain is unclear because label definitions are not reported.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "ADReSS contrasts AD dementia with cognitively normal speakers, not MCI; the MUDC composition is described inconsistently."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Acoustic features from a one-minute picture description are feasible in the intended setting."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "The target is AD against CN (ADReSS) or an undefined MMSE-related label (MUDC), not MCI detection or progression."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 19
+ }
+}

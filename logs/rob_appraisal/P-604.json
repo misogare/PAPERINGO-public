@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-604",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Yang M, Wang Y, Tian C, et al. 'Development and External Validation of a Gait Test Based Diagnostic Model for Detecting Mild Cognitive Impairment', Arch Phys Med Rehabil 2024;105:930-8. This matches 'Yang et al. 2024, P-604'. The cited AUC 0.906 (dual-task gait model) versus 0.989 (MoCA) and the authors' explanation about the MoCA's role in the diagnostic criteria are both in the document (p7-8)."
+ },
+ "cited_result": "Derivation-sample discrimination of the serial-subtraction-7 dual-task gait model (gait speed, dual-task cost, years of education): AUC 0.906 (95% CI 0.854 to 0.958), compared with AUC 0.989 for a MoCA-only model in the same data (p4, p7, Table 4).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination of a multivariable logistic diagnostic model for MCI and its ranking against a MoCA model, so PROBAST applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The study uses a diagnostic case-control design with convenience sampling. Common gait-affecting conditions (osteoarthritis, frailty, sarcopenia, stroke) and anyone with missing predictor data were excluded, which is inappropriate for a community screening model.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used, e.g. cohort, RCT or nested case-control study data?",
+     "answer": "No",
+     "quote": "Design: A diagnostic case-control test. [p1] The study used a case-control design and followed the TRIPOD [p2]",
+     "page": "1, 2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "(1) had a gait disorder (such as Parkinson\u2019s disease, rheumatoid arthritis, osteoarthritis, undergoing knee or hip surgery, sarcopenia, stroke, frailty); ... (4) were unable to cooperate with the investigation or had missing data on the variables of interest",
+     "page": "2"
+    },
+    {
+     "question": "1.x (AI consideration) Data source representative of intended use",
+     "answer": "No",
+     "quote": "the study sample was obtained through a convenient sampling method, which may introduce selection bias and limit the generalizability of the findings",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "Gait tests followed standardised instructions and use predictors available at screening. No blinding of the video step-counting or gait timing to known MCI status is reported, even though case status was established first in a case-control design.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "supplemental table 1 (available online only at http://www.archives-pmr.org/) provided the standardized instructions for the test procedure, ensuring the consistency among participants.",
+     "page": "4"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "Searched Methods for blinding of testers or video reviewers to cognitive status; only: 'The number of steps taken by participants to complete the middle 6 meters of each test was determined by reviewing the recorded video.'",
+     "page": "4"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "only a 10-meter walkway and a mobile phone for video recording are necessary",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "MCI was diagnosed by specialist physicians using NIA-AA criteria, applied identically in both samples. Gait predictors are not part of the definition. Whether diagnosticians knew the gait results, and the interval between diagnosis and gait testing, are not reported. The MoCA comparator is incorporated into the reference standard.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "Cognitive status of participants (dementia, MCI, or normal cognition) were assessed by physicians specialized in cognitive aging and dementia based on diagnostic criteria.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "criteria as recommended by the National Institute on Aging and the Alzheimer\u2019s Association workgroup was used for MCI diagnosis",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "(2) objective evidence of impairment in 1 or more cognitive domains [gait not part of the definition; for the MoCA comparator: 'where MoCA is acknowledged as the objective evidence of cognitive impairment, meeting one of the diagnostic criteria' p8]",
+     "page": "2, 8"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "The inclusion or exclusion criteria of the validation sample and the diagnostic procedures were the same as the derivation sample.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched Methods for the order of diagnosis and gait testing and for blinding of physicians to gait results; not reported.",
+     "page": "2-4"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the interval between cognitive diagnosis and gait testing; only recruitment windows (December 2020 to June 2021; June to July 2022) are given.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 62 events for many candidate predictors. Predictors were chosen by forward stepwise selection after univariable screening of gait tests, and the best of three models was picked by AUC in the same data. Participants with missing data were excluded, and there was no resampling-based internal validation; the 'internal validation' was an age and sex subgroup check. The cited AUC 0.906 is therefore apparent performance. The temporal external validation is small (19 MCI cases), and its reported sensitivity and specificity do not match its reported group sizes.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "the sample size for both the case and control group was calculated as N=1.962\u21790.8 (1-0.8)/0.12=62",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for categorisation of gait speed, DTC or education; model formulas are only in 'supplemental table 3', which is not in the document.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "134 older adults (\u226565 years) for the derivation sample were recruited, comprising 62 individuals in the cognitively normal group and 62 in the MCI group [p3]; an additional 70 participants were recruited from June 2022 to July 2022. Ultimately, 65 participants were included in the analysis [p3]",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No",
+     "quote": "(4) were unable to cooperate with the investigation or had missing data on the variables of interest",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably no",
+     "quote": "multivariate binary logistic regression analysis with forward stepwise regression was conducted to develop models [p4]; gait speed in task of serial subtractions 7 exhibited the highest screening efficacy for MCI [p4]",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks, sampling of control participants) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "The study used a case-control design [no reweighting for the artificial 50% prevalence is reported, although calibration is reported]",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably yes",
+     "quote": "Model calibration was assessed using calibration curves and Hosmer-Lemeshow goodness-of-fit tests.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "To account for the potential effect of age and sex on cognitive function, we assessed the efficacy of the model based on serial subtractions 7 task in different age and sex groups.",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "The formulas for these models are presented in supplemental table 3 [not available in the document]",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level (no person on both sides)?",
+     "answer": "Yes",
+     "quote": "The most effective model derived from this analysis was then externally validated in a separate sample without any additional adjustment.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning and model selection?",
+     "answer": "Probably yes",
+     "quote": "Age and sex were not included in the models as they would be used for internal validation of the models.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Class imbalance and how it was handled",
+     "answer": "Balanced by design",
+     "quote": "comprising 62 individuals in the cognitively normal group and 62 in the MCI group",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Apparent (cited result)",
+     "quote": "the diagnostic models constructed in this study demonstrated the AUC of 0.989 for MoCA was higher than the AUC of 0.906 for the DT",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The sample is a convenience case-control sample from five Wuhan communities that excluded osteoarthritis, frailty, sarcopenia, stroke and joint surgery. This differs from the unselected older community population in which the model is intended for screening."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "The predictors are phone-video gait speed, dual-task cost and education, which are feasible at screening."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "MCI is defined by standard NIA-AA clinical criteria."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST); high concern for applicability",
+ "overall_category": "high",
+ "overall_rationale": "Domain 1 is high because of the case-control design, convenience sampling and exclusion of gait-affecting conditions and missing data. Domain 4 is high because of low events per candidate predictor, stepwise and univariable-guided selection, model choice on the same data, complete-case exclusion and no optimism correction. The cited AUC 0.906 is apparent performance. The MoCA comparison is further biased in the MoCA's favour because the MoCA forms part of the reference standard.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 14
+ }
+}

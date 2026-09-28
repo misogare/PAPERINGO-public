@@ -1,0 +1,196 @@
+{
+ "paper_id": "P-26",
+ "document_check": {
+  "matches": true,
+  "note": "Ding X, Zheng Z, Wang H, et al. Persistent depressive-symptom trajectories predict conversion from mild cognitive impairment to Alzheimer's disease: A longitudinal ADNI study. Journal of Affective Disorders 391 (2025) 120066. Longitudinal ADNI cohort (n = 397 primary; n = 612 for the 24-month sensitivity analysis). The cited 24-month null result and the spline dose-response analysis are both reported."
+ },
+ "cited_result": "Principal cited result: the 24-month depressive-symptom trajectory sensitivity analysis, in which the persistently high GDS trajectory did not independently predict MCI-to-AD conversion (adjusted HR 1.23, 95% CI 0.83 to 1.83; p = 0.297; n = 612). Also cited: the restricted cubic spline dose-response analysis of month-36 GDS in the 36-month cohort (n = 397; p nonlinear 0.481, p overall < 0.001), and the absence of biomarker stratification in this ADNI analysis.",
+ "tool": "QUIPS",
+ "tool_reason": "The cited result is the adjusted association of a single prognostic factor (depressive-symptom trajectory or GDS score) with later MCI-to-AD conversion in a cohort, not the performance of a multivariable prediction model, so QUIPS applies.",
+ "domains": [
+  {
+   "domain": "1. Study participation",
+   "judgment": "Moderate",
+   "rationale": "The source cohort (ADNI MCI participants) and the sequential exclusions are reported with numbers, but the landmark design removes all early converters (236 before month 24), 53 were dropped for missing covariates, and no comparison of analysed versus excluded participants is given. ADNI's own MCI entry criteria are not described in the document. The analysed sample is a selected subset of slower progressors with follow-up.",
+   "signalling": [
+    {
+     "question": "Is the source population and baseline study sample adequately described?",
+     "answer": "Probably yes",
+     "quote": "A total of 1015 participants with a baseline diagnosis of MCI were initially considered.",
+     "page": "3"
+    },
+    {
+     "question": "Are recruitment, sampling and exclusions described, and are the exclusions unlikely to be related to both the prognostic factor and the outcome?",
+     "answer": "Probably no",
+     "quote": "From the same initial cohort, we excluded those who converted within 24 months (n = 236) and those without conversion data beyond 24 months (n = 114), leaving 612 participants for the 24-month trajectory sensitivity analysis",
+     "page": "3"
+    },
+    {
+     "question": "Are the baseline characteristics of included and excluded participants compared?",
+     "answer": "No information",
+     "quote": "Searched for any comparison of the 403 excluded participants with the analysed 612 (or 397); the text refers only to a flow diagram (Additional Fig. 1) and gives no characteristics of those excluded.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study attrition",
+   "judgment": "Moderate",
+   "rationale": "About 16% (114 of 726) of the landmark-eligible cohort for the 24-month analysis were excluded for having no conversion data after month 24. Reasons and characteristics of those lost are not reported, and the authors acknowledge differential follow-up completeness and possible under-ascertainment of late conversions (stated for the 36-month curves).",
+   "signalling": [
+    {
+     "question": "Is the proportion of the eligible sample providing outcome data adequate?",
+     "answer": "Partly",
+     "quote": "we excluded those who converted within 24 months (n = 236) and those without conversion data beyond 24 months (n = 114)",
+     "page": "3"
+    },
+    {
+     "question": "Are reasons for loss to follow-up and the characteristics of those lost described?",
+     "answer": "No information",
+     "quote": "Searched for reasons for missing post-landmark follow-up and for a completer versus non-completer comparison; none reported.",
+     "page": "3"
+    },
+    {
+     "question": "Is censoring likely to be non-informative (follow-up completeness similar across groups)?",
+     "answer": "Probably no",
+     "quote": "Although we applied a landmark analysis and censored only at the last visit with a definitive diagnosis, this differential follow-up completeness may underestimate late conversions and contribute to apparent plateaus in the curves.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "3. Prognostic factor measurement",
+   "judgment": "Moderate",
+   "rationale": "The GDS-15 is a standard instrument applied identically to all, but it is self-reported, the 24-month trajectories rest on only three assessments that the authors call less stable (non-differential misclassification would bias towards the null, which matters for a null result), and missing data were imputed by single random-forest imputation without reporting how much GDS data were missing.",
+   "signalling": [
+    {
+     "question": "Is the prognostic factor clearly defined and measured with a valid method?",
+     "answer": "Yes",
+     "quote": "The 15-item version of the GDS was used to assess depressive symptoms in the participants of the ADNI study.",
+     "page": "3"
+    },
+    {
+     "question": "Is the measurement reliable enough to limit misclassification?",
+     "answer": "Probably no",
+     "quote": "Because trajectory classes based on only three assessments are inherently less stable, any true long-term association was likely masked despite the increased number of events.",
+     "page": "7"
+    },
+    {
+     "question": "Are missing prognostic-factor data handled appropriately?",
+     "answer": "Partly",
+     "quote": "Missing data were handled using the random forest algorithm, an imputation technique that utilizes multiple decision trees to predict and fill in missing values based on observed relationships within the data.",
+     "page": "4"
+    },
+    {
+     "question": "Is the factor free of reporting bias?",
+     "answer": "Probably no",
+     "quote": "First, our reliance on the 15-item GDS provides a convenient measure of symptom burden but does not substitute for a formal clinical diagnosis, and self-report may be influenced by reporting biases.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "4. Outcome measurement",
+   "judgment": "Moderate",
+   "rationale": "Conversion is defined as the first visit with an AD diagnosis, but the diagnostic criteria are not stated in the document, visits without a recorded diagnosis were skipped, and there is no information on whether diagnosing clinicians were unaware of GDS scores.",
+   "signalling": [
+    {
+     "question": "Is the outcome clearly defined?",
+     "answer": "Probably yes",
+     "quote": "From this landmark, the primary endpoint was defined as the first follow-up visit at which a participant's diagnosis changed from MCI to AD (Ding et al., 2024).",
+     "page": "3"
+    },
+    {
+     "question": "Is the outcome ascertained in the same way and completely for all participants?",
+     "answer": "Partly",
+     "quote": "Because some later visits did not record a cognitive diagnosis, we considered only those visits with a clear MCI or AD determination",
+     "page": "3"
+    },
+    {
+     "question": "Were outcome assessors unaware of the prognostic factor?",
+     "answer": "No information",
+     "quote": "Searched for blinding or masking of the ADNI diagnosis to GDS scores ('blind', 'masked', 'without knowledge'); not reported.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "5. Study confounding",
+   "judgment": "Moderate",
+   "rationale": "Core covariates (age, sex, education, APOE e4, marital status, CDR-SB and MMSE at the landmark) were adjusted for, but antidepressant use, vascular comorbidity and amyloid or tau status were not, and the authors acknowledge residual confounding.",
+   "signalling": [
+    {
+     "question": "Are important potential confounders measured and accounted for in the analysis?",
+     "answer": "Partly",
+     "quote": "In multivariable Cox regression adjusted for age, sex, education, APOE \u03b54 status, marital status, CDR-SB, and MMSE at month 24",
+     "page": "4 and 6"
+    },
+    {
+     "question": "Is residual confounding acknowledged or addressed?",
+     "answer": "Acknowledged, not addressed",
+     "quote": "Second, although appropriate statistical methods were employed to adjust for various confounding factors, other potential confounders could not be accounted for.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "6. Statistical analysis and reporting",
+   "judgment": "High",
+   "rationale": "For the principal cited result, the proportional-hazards assumption was violated and the Kaplan-Meier curves crossed, yet the conclusion of no independent prediction rests on a standard Cox hazard ratio that averages a time-varying effect; no time-varying or piecewise model was fitted. Event counts for the 24-month analysis are only in a supplement, and the spline result gives no numeric per-point effect. The sensitivity analysis itself was pre-described in the methods and reported openly.",
+   "signalling": [
+    {
+     "question": "Is the statistical model appropriate and are its assumptions met?",
+     "answer": "No",
+     "quote": "Schoenfeld residual tests indicated violation of the proportional-hazards assumption (global p = 0.012).",
+     "page": "4"
+    },
+    {
+     "question": "Is the conclusion drawn from an analysis that respects that assumption?",
+     "answer": "No",
+     "quote": "the HR for the high-symptom group was 1.23 (95 % CI 0.83\u20131.83; p = 0.297), confirming that 24-month trajectories alone did not independently predict long-term conversion.",
+     "page": "6"
+    },
+    {
+     "question": "Is sufficient information presented (events, effect sizes) to judge the analysis?",
+     "answer": "Partly",
+     "quote": "Participants with persistently high depressive symptoms did not differ significantly from those with low symptoms in the univariable analyses (Crude HR 1.29, 95 % CI 0.89\u20131.89; p = 0.182) (Additional Table 4).",
+     "page": "4"
+    },
+    {
+     "question": "Is there no selective reporting of results?",
+     "answer": "Probably yes",
+     "quote": "To test the robustness of our findings to the length of the depressive-symptom exposure window, we carried out a sensitivity analysis using GDS scores over the first 24 months post-enrollment.",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Statistical analysis is rated high (a Cox hazard ratio used to conclude no association despite a documented proportional-hazards violation), and the other five domains are moderate. By the QUIPS rule (any high, or three or more moderate) the overall rating is high. The spline dose-response result in the 36-month cohort would also be rated high, because 295 of 692 landmark-eligible participants (about 43%) were excluded for lacking follow-up beyond month 36.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "Moderate",
+   "rationale": "ADNI research volunteers with MCI who had not converted by the landmark and had later follow-up; the fastest progressors are excluded by design."
+  },
+  {
+   "domain": "Prognostic factor",
+   "concern": "Low",
+   "rationale": "The GDS-15 is a widely used self-report measure, applied at routine annual visits."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "Low",
+   "rationale": "Clinical MCI-to-AD conversion is the outcome of interest, though the diagnostic criteria are not stated in the document."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 16,
+  "matched": 10
+ }
+}

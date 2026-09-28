@@ -1,0 +1,134 @@
+{
+ "paper_id": "P-409",
+ "document_check": {
+  "matches": true,
+  "note": "Luo Y, Sun T, Ma C, Zhang X, Ji Y, Fu X, Ni H. 'Alterations of Brain Networks in Alzheimer's Disease and Mild Cognitive Impairment: A Resting State fMRI Study Based on a Population-specific Brain Template', Neuroscience 452 (2021) 192-207, doi:10.1016/j.neuroscience.2020.10.023. This matches the citation (Luo et al. 2021; fMRI networks, all-Chinese sample, population-specific template)."
+ },
+ "cited_result": "The review cites the study's design: a resting-state fMRI graph analysis in an all-Chinese sample on the Chinese2020 template, with no cross-ancestry comparison. It gives no number. The principal result appraised is the between-group comparison of graph metrics, MCI (n=27) versus healthy controls (n=33) (and AD n=24). For example, MCI showed higher Frontal_Mid_L degree centrality and nodal efficiency, lower Cerebelum_Crus1_R degree centrality and clustering coefficient, and lower cerebellar and vermis local efficiency (ANOVA with FDR, LSD/Tamhane post hoc).",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The study's result is a comparison of fMRI network metrics between diagnostic groups and controls measured at a single time point.",
+ "domains": [
+  {
+   "domain": "1. Criteria for inclusion clearly defined",
+   "judgment": "Yes",
+   "rationale": "Patients were diagnosed by NIA-AA criteria; the exclusion criteria (other neurological, systemic or psychiatric illness, substance abuse, brain damage, MRI exclusions) and the control criteria are stated.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Yes",
+     "quote": "Twenty-eight patients diagnosed with probable AD based on the guidelines of the National Institute on Aging-Alzheimer\u2019s Association (NIA-AA) workgroups (McKhann et al., 2011) and twenty-eight patients diagnosed with MCI according to the NIA-AA guidelines (Albert et al., 2011) were recruited prospectively from local hospitals.",
+     "page": "2 (journal p. 193)"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study subjects and setting described in detail",
+   "judgment": "Yes",
+   "rationale": "Recruitment sources (local hospitals for patients, community advertising for controls), ethnicity, handedness and a full demographic and clinical table are reported. The hospitals and recruitment period are not named, and patients and controls came from different sources.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "Thirty-five HCs without any history of major medical, neurologic, or psychiatric illnesses were recruited from surrounding community using online and traditional advertising.",
+     "page": "2 (journal p. 193)"
+    }
+   ]
+  },
+  {
+   "domain": "3. Exposure measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "Diagnostic group assignment used clinical history, neuropsychological testing and MRI, and one experienced neuropsychologist carried out all assessments for consistency.",
+   "signalling": [
+    {
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "All evaluations and assessments were performed by one experienced neuropsychologist to ensure the consistency of the results.",
+     "page": "3 (journal p. 194)"
+    }
+   ]
+  },
+  {
+   "domain": "4. Objective, standard criteria for the condition",
+   "judgment": "Yes",
+   "rationale": "MCI and AD were diagnosed with the published NIA-AA criteria (Albert 2011; McKhann 2011).",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Yes",
+     "quote": "Patients\u2019 diagnoses were based on clinical history, neuropsychological testing, and neurological examination by MRI according to standard criteria (Albert et al., 2011; McKhann et al., 2011).",
+     "page": "2 (journal p. 193)"
+    }
+   ]
+  },
+  {
+   "domain": "5. Confounding factors identified",
+   "judgment": "Yes",
+   "rationale": "Age, gender, education and head motion are identified, as are depression and vascular burden, which were used for exclusion.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "Hamilton Depression Scale (HAMD) and Hachinski Ischemic Score (HIS) were used to exclude subjects with obvious depression or vascular dementia, respectively.",
+     "page": "3 (journal p. 194)"
+    }
+   ]
+  },
+  {
+   "domain": "6. Strategies to deal with confounding stated",
+   "judgment": "Unclear",
+   "rationale": "Head motion was handled by exclusion (7 participants) and Friston-24 nuisance regression, and obvious depression and vascular dementia were excluded. But the group ANOVA on graph metrics has no covariates: age and gender were regressed out only in the correlation analyses. The groups were not matched, even though controls were younger (66.8 vs 70.8 years in AD, p = 0.052) and HAMD and HIS were significantly higher in MCI than controls. Residual motion was not compared between groups.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Unclear",
+     "quote": "7 subjects (4 with AD, 1 with MCI, and 2 HCs) were excluded due to excessive head motion ... (P < 0.05, FDR-corrected for multiple comparisons, age and gender were regressed out as covariates)",
+     "page": "3 (journal p. 194); 4 (journal p. 195)"
+    }
+   ]
+  },
+  {
+   "domain": "7. Outcomes measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "All participants were scanned on one 3 T scanner with one protocol, using standard automated preprocessing and graph toolboxes (DPARSF, SPM8, GRETNA). The authors note that fMRI reliability is generally modest and that the template was built from 1.5 T images, but these limits apply equally to all groups.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "Each subject accepted MR examination on a 3.0 T MAGNETOM Prisma MR scanner (Siemens Healthcare, Erlangen, Germany) equipped with a 64-channel head-neck coil.",
+     "page": "3 (journal p. 194)"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "Unclear",
+   "rationale": "ANOVA with FDR correction and post hoc tests is a suitable framework. However, each metric was analysed at its own 'optimal' sparsity threshold, found by searching 46 values, and the criterion for 'optimal' is never stated. If thresholds were chosen by the size of the group difference, the reported results would be selected among many analyses, and it is not stated that the FDR correction covers the threshold search. There is also no covariate adjustment.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "Unclear",
+     "quote": "we performed a search in the range of 0.05\u20130.5 with a 0.01 step size to obtain the optimal threshold value ... the optimal sparsity threshold value was 0.05, 0.05, 0.05, 0.22, 0.06, 0.13, 0.22, and 0.11 respectively.",
+     "page": "4 (journal p. 195)"
+    }
+   ]
+  }
+ ],
+ "overall": "Some concerns",
+ "overall_category": "some_concerns",
+ "overall_rationale": "Selection, diagnostic criteria and outcome acquisition are sound (single scanner, NIA-AA criteria). Handling of confounding in the group comparison is unclear (no adjustment for age, sex, depression or vascular scores; motion handled only by exclusion and regression). The analysis is unclear because per-metric sparsity thresholds came from a search with no stated criterion, which risks selective reporting. No item is 'No', so by this review's rule the rating is some concerns.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "Single-ethnicity, single-centre sample",
+   "rationale": "The sample is Han Chinese, right-handed, recruited in Tianjin (27 MCI, 24 AD, 33 controls). Patients came from hospitals and controls from community advertising, so the findings may not transfer to other ancestries or settings."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 6
+ }
+}

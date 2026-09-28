@@ -1,0 +1,206 @@
+{
+ "paper_id": "P-5",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Gao H, Zhao S, Zheng G, et al. 'Using a dual-stream attention neural network to characterize mild cognitive impairment based on retinal images', Computers in Biology and Medicine 166 (2023) 107411. It is a multimodal (fundus plus OCT) deep-learning study of MCI, matching the review's 'retinal multimodal deep learning (Gao et al. 2023)'."
+ },
+ "cited_result": "The review cites the study as an example of retinal multimodal deep learning without a number, so the principal result is appraised. This is the classification performance of the dual-stream cross-fusion attention network (DuCAN), using paired fundus photographs and OCT images to classify MCI, AD and cognitively normal participants in the first (Daping Hospital) dataset: accuracy 91.64%, AUC 96.78%, MCI precision 84.96% (Table 2).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the diagnostic classification performance of a deep-learning model (MCI against AD and controls), so PROBAST with PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The first dataset is a case-control sample of diagnosed AD and MCI hospital patients and age-matched controls, with small numbers. No recruitment procedure or ocular exclusion criteria are reported, and the authors acknowledge that coexisting eye disease was not addressed.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No",
+     "quote": "The first dataset included information for a total of 29 patients (58 eyes) with MCI, 50 age-matched individuals with CN (100 eyes), and 38 patients (76 eyes) with AD.",
+     "page": "6"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "However, in our work, we did not conduct research on the relationship between eye diseases and cognitive impairment.",
+     "page": "10"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "The imaging devices are named and the imaging is automated. However, image sizes differed by data source, and the paper does not report whether acquisition was identical across the diagnostic groups. Group-related acquisition differences could be learned by the network.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for: whether all diagnostic groups were imaged with the same devices and protocol. Reported: 'OCT images were captured using a SS-OCT system (VG 200 SS-OCT, Topcon Corporation, Tokyo, Japan).' but also 'Due to the different sources of data, the image sizes were also different.'",
+     "page": "6; 5"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Patients also underwent imaging using a fully automatic non- mydriatic fundus camera (RetiCam 3100; SYSEYE; Chongqing, China).",
+     "page": "6"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "We believe that our DuCAN model can leverage the basic community eye-care substructure to screen potential cases of MCI.",
+     "page": "10"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "AD and MCI were diagnosed by a full NIA-AA 2011 work-up, but controls were classified by neuropsychological assessment alone (differential determination). Blinding of the diagnoses to the retinal imaging is not reported. The 1 to 90 day interval is acceptable.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Yes",
+     "quote": "neuropsychological assessment, structural neuroimaging, and laboratory tests, according to the National Institute on Aging and",
+     "page": "6"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "neuropsychological assessment, structural neuroimaging, and laboratory tests, according to the National Institute on Aging and",
+     "page": "6"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "neuropsychological assessment, structural neuroimaging, and laboratory tests, according to the National Institute on Aging and",
+     "page": "6"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "The CN group included individuals who were cognitively healthy and did not have any neurological",
+     "page": "6"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for: whether clinical diagnoses were made blind to fundus/OCT findings. Not reported.",
+     "page": "6"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "of 1\u201390 days between the ophthalmic examination and clinical evaluation.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are only 29 MCI participants. Data are split and counted at image level (18 OCT images per eye, both eyes, randomly paired images) with no statement of participant-level splitting, so the same person is likely on both sides of the split. Loss weights and hyperparameters were chosen on validation performance. Class imbalance and the missing fundus images were not properly handled. There is no calibration and no external validation of the MCI classifier. The reported results are internally inconsistent.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "The first dataset included information for a total of 29 patients (58 eyes) with MCI, 50 age-matched individuals with CN (100 eyes), and 38 patients (76 eyes) with AD.",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Not applicable (image input)",
+     "quote": "Given fundus and OCT images as inputs, modality features from fundus photographs and OCT images were extracted by MFE modules individually",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for: participant flow and the number of participants analysed. Only image counts are given: 'Training 1007 779 1960 3534 3724 11,004'",
+     "page": "6"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "The number of fundus photographs was smaller compared to that of OCT images. Although we employed image enhancement methods to expand the data during the pairing input process, there was a potential impact on the model\u2019s performance and generalization.",
+     "page": "10"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Given fundus and OCT images as inputs, modality features from fundus photographs and OCT images were extracted by MFE modules individually",
+     "page": "3"
+    },
+    {
+     "question": "4.6 (AI) Was the split between training and test data at the participant level?",
+     "answer": "Probably no",
+     "quote": "Each 3D-OCT set contained 18 images centered on the corneal apex. | The input data included randomly selected paired images, with the batch size set to 8 | Test 152 285 190 513 532 1672",
+     "page": "6"
+    },
+    {
+     "question": "4.6 (AI) Were augmentation and tuning confined to training data, and was the test set held out from all tuning?",
+     "answer": "Probably no",
+     "quote": "The training time was 14 h, and the early stop trick was used to avoid model overfitting. | DuCAN achieved the highest accuracy of 84.52% and AUC of 92.67% | We applied 5-fold cross validation, which involved training using 80% of the data and testing with the remaining 20% five times for each fold.",
+     "page": "6; 8; 7"
+    },
+    {
+     "question": "4.6 (AI) Was class imbalance handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for: handling of class imbalance in the first-dataset (AD/MCI/CN) training. None is reported. Imbalance handling is mentioned only for the fine-tuning task: 'The loss function was a combination of focus loss and cross-entropy.'",
+     "page": "8"
+    },
+    {
+     "question": "4.6 (AI) Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal only, no external validation of the MCI classifier",
+     "quote": "In practical clinical or primary care environments, the performance of DL-based classification methods would be weakened",
+     "page": "10"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "recall, specificity, F1 score, and AUC, were computed to analyze the effectiveness of our framework.",
+     "page": "7"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "Firstly, the size of our dataset was small, which is a challenge for DL algorithms typically requiring large amounts of data and may lead to overfitting.",
+     "page": "10"
+    },
+    {
+     "question": "4.9 Do the final model and its reported results correspond to one another?",
+     "answer": "Probably no",
+     "quote": "the proposed network DuCAN had an accuracy of 91.64% and an AUC of 96.78%. | DuCAN achieved the highest accuracy of 84.52% and AUC of 92.67% | The overall accuracy was 82.46%, while the AUC was 84.41%. | curacy of 91.46% and an AUC of 94.41%",
+     "page": "7; 8; 8; 8"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "The participants domain is high: this is a small hospital case-control sample (29 MCI) with no ocular exclusions. The analysis domain is high: data were handled at image level with no participant-level split reported (likely same-person leakage), tuning used validation performance, there was no external validation or calibration, and the reported results are inconsistent. The predictors and outcome domains are unclear. The 91.64% accuracy is at high risk of being optimistic.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Diagnosed hospital AD/MCI patients against age-matched controls, while the model is intended for community screening."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "unclear",
+   "rationale": "Swept-source OCT and fundus imaging suit eye-care settings, but acquisition consistency across groups and sources is not reported."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "NIA-AA 2011 clinical diagnosis for the first dataset matches the review's MCI target condition."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 15
+ }
+}

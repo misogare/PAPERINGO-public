@@ -1,0 +1,140 @@
+{
+ "paper_id": "P-1254",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Liu T, Li N, Pu J et al. 'The plasma derived exosomal miRNA-483-5p/502-5p serve as potential MCI biomarkers in aging', Experimental Gerontology 186 (2024) 112355. It is a community study from north-western China with a nested case-control biomarker substudy. It reports miR-483-5p AUC 0.901 (sensitivity 79.2%, specificity 100%), which is the 'single exosomal miRNA with an AUC of 0.90' that the review cites."
+ },
+ "cited_result": "Diagnostic accuracy of plasma exosomal miR-483-5p for telling MCI apart from age-matched controls: AUC 0.901, sensitivity 79.2%, specificity 100%, in 24 MCI and 24 age-matched controls.",
+ "tool": "QUADAS-2",
+ "tool_reason": "The cited result is the accuracy of one biomarker (a single exosomal miRNA) against a clinical reference standard for MCI, so QUADAS-2 applies. It is not a multivariable model.",
+ "domains": [
+  {
+   "domain": "D1 Patient selection",
+   "judgment": "High",
+   "rationale": "This is a two-gate case-control design. Participants were sampled separately by disease status: 24 MCI patients and 24 controls chosen at random from the survey, plus a separately recruited younger control group. It was not a consecutive or random sample of the people in whom the test would be used. The controls are called age-matched but are about 5 years younger (Table 3: 73.35 vs 78.12 years). People with any condition that affects cognition, severe mental illness or acute inflammation were excluded, which removes the harder differential-diagnosis cases. The exclusion list is also internally contradictory ('older than 65 years').",
+   "signalling": [
+    {
+     "question": "1.1 Was a consecutive or random sample of patients enrolled?",
+     "answer": "No",
+     "quote": "As the biomarker exploration cohort, 24 MCI patients and 24 age-matched controls were chosen at random.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Was a case-control design avoided?",
+     "answer": "No",
+     "quote": "The miRNA-study cohort included 24 MCI patients, 24 age matched control and 24 supplemented control group younger than 65 years.",
+     "page": "4"
+    },
+    {
+     "question": "1.3 Did the study avoid inappropriate exclusions?",
+     "answer": "Probably no",
+     "quote": "The exclusion criteria should be as follows: older than 65 years; with a history of illnesses or injuries that have an impact on cognitive function; any inflammation that is acute; people who are unable to converse.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "D2 Index test",
+   "judgment": "High",
+   "rationale": "The paper does not say whether laboratory staff were blinded to group. No threshold is given for the reported sensitivity and specificity, so the cut-off was evidently chosen from the ROC curve of the same 48 samples. The ROC is reported for the two best of four candidate miRNAs, with no validation sample. It is also unclear whether the miRNAs were measured on individual samples or on pooled plasma ('paired pool plasma'), which matters for a per-person AUC.",
+   "signalling": [
+    {
+     "question": "2.1 Were the index test results interpreted without knowledge of the results of the reference standard?",
+     "answer": "No information",
+     "quote": "Searched sections 2.2 to 2.8 (sample preparation, exosome isolation, miRNA extraction and qPCR, statistics) for blinding or masking of laboratory staff to MCI or control status; none reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "2.2 If a threshold was used, was it pre-specified?",
+     "answer": "Probably no",
+     "quote": "Sensitivity, specificity, and other relevant measures were derived to further evaluate the diagnostic performance.",
+     "page": "3"
+    },
+    {
+     "question": "Additional (not a QUADAS-2 signalling question): was the index test result reported for a candidate chosen independently of these data, on individual samples?",
+     "answer": "Unclear",
+     "quote": "For uniformity and quantification of exosome isolation, paired pool plasma containing 100 mg protein were prepared.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "D3 Reference standard",
+   "judgment": "Unclear",
+   "rationale": "The MCI criteria of the European Consortium (Portet 2006) are a recognised construct. Here, though, impairment is defined by a single MoCA cut-off of 26 with no stated education adjustment, in a sample where 20 of the 99 MCI participants were illiterate (Table 2). The paper does not say who made the clinical evaluation. MCI status was assigned in the survey before participants were picked for the biomarker substudy, so the reference standard was probably interpreted without knowledge of the index test.",
+   "signalling": [
+    {
+     "question": "3.1 Is the reference standard likely to correctly classify the target condition?",
+     "answer": "Unclear",
+     "quote": "the clinical evaluation shows a score < 26 by MoCA, on the contrary, MoCA \u226526 is considered normal",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Were the reference standard results interpreted without knowledge of the results of the index test?",
+     "answer": "Probably yes",
+     "quote": "As the biomarker exploration cohort, 24 MCI patients and 24 age-matched controls were chosen at random.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "D4 Flow and timing",
+   "judgment": "Unclear",
+   "rationale": "Everyone received the same MoCA-based reference standard. The reported sensitivity (79.2% = 19/24) and specificity (100% = 24/24) fit all 48 participants being analysed. The interval between blood sampling and the cognitive survey is not reported.",
+   "signalling": [
+    {
+     "question": "4.1 Was there an appropriate interval between index test and reference standard?",
+     "answer": "No information",
+     "quote": "Searched sections 2.1 and 2.2 for the date of blood sampling relative to the MoCA survey; only the survey start ('from September 2019') and sample handling are reported.",
+     "page": "2"
+    },
+    {
+     "question": "4.2 Did all patients receive a reference standard?",
+     "answer": "Yes",
+     "quote": "The questionnaire scale consists of four parts: demographic characteristics, lifestyle and habits, history of chronic diseases including hypertension, diabetes, coronary heart disease (CHD) and Montreal Cognitive Assessment (MoCA).",
+     "page": "2"
+    },
+    {
+     "question": "4.3 Did patients receive the same reference standard?",
+     "answer": "Yes",
+     "quote": "as provided by the MCI Working Group of the European Consortium on Alzheimer's Disease, 2006 (Portet et al., 2006).",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were all patients included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "From ROC analysis, miR-483-5p showed an AUC of 0.901 (sensitivity 79.2 % and specificity 100 %)",
+     "page": "4-5"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Patient selection",
+   "concern": "High",
+   "rationale": "The ROC compares 24 clearly impaired MCI participants (mean MoCA 20.37) with 24 healthy controls (mean MoCA 26.17), after people with conditions affecting cognition were excluded. That is not the mixed community population in which a screening biomarker would be used."
+  },
+  {
+   "domain": "Index test",
+   "concern": "Low",
+   "rationale": "Plasma exosomal miR-483-5p (ultracentrifugation, then qPCR normalised to an external control) is the test the review cites. One caveat: it is unclear whether pooled or individual plasma was used."
+  },
+  {
+   "domain": "Reference standard",
+   "concern": "Low",
+   "rationale": "The target condition, all-cause MCI by the Portet 2006 criteria, matches the review's MCI construct. No subtype is distinguished."
+  }
+ ],
+ "overall": "High risk of bias. Applicability concerns: high for patient selection.",
+ "overall_category": "high",
+ "overall_rationale": "Two domains are high risk. Patient selection used a small two-gate case-control sample (24 vs 24) with imperfect age matching and exclusion of complex cases. For the index test, the threshold was data-driven, blinding was not reported, the best two of four candidates were reported, and there was no validation. Under QUADAS-2 any high domain makes the overall judgment high, so the AUC of 0.901 is likely optimistic.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 10,
+  "matched": 7
+ }
+}

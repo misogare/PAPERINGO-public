@@ -1,0 +1,185 @@
+{
+ "paper_id": "P-671",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Katayama O, Lee S, Bae S et al., 'Lifestyle changes and outcomes of older adults with mild cognitive impairment: A 4-year longitudinal study', Archives of Gerontology and Geriatrics 94 (2021) 104376. NCGG-SGS community cohort in Obu, Japan, 769 with MCI at baseline. Table 5 adjusted model gives age OR 0.79 (0.75 to 0.84) for reverters, matching the cited result."
+ },
+ "cited_result": "Adjusted multinomial logistic regression over 4 years (imputed data set, n=769): each year of baseline age gives OR 0.79 (95% CI 0.75 to 0.84) for being a reverter to normal cognition, relative to the implied reference outcome category (converters). Age is entered as a covariate alongside lifestyle-class membership.",
+ "tool": "QUIPS",
+ "tool_reason": "The cited result is the association of a single prognostic factor (baseline age) with a later outcome (reversion vs conversion), not the performance of a prediction model.",
+ "domains": [
+  {
+   "domain": "1. Study participation",
+   "judgment": "Moderate",
+   "rationale": "The source cohort and eligibility are described and baseline characteristics are reported. However, sampling was not random, the participation rate among eligible residents is not given, and people with care needs or health problems were excluded.",
+   "signalling": [
+    {
+     "question": "Is the source population adequately described?",
+     "answer": "Yes",
+     "quote": "We used data from the NCGG\u2013SGS, a study on health promotion for older adults in Obu, Japan (Shimada et al., 2013). Between August 2011 and February 2012, 5104 community-dwelling older adults initially participated in the first-wave assessment.",
+     "page": "2"
+    },
+    {
+     "question": "Was the sampling frame and recruitment adequate (random or consecutive)?",
+     "answer": "No",
+     "quote": "our study did not use random sampling for data collection",
+     "page": "7"
+    },
+    {
+     "question": "Are inclusion and exclusion criteria described?",
+     "answer": "Yes",
+     "quote": "Participants were excluded if they required support or care as certified by the Japanese public long-term care insurance system, were dependent on basic activities of daily living, were unable to complete performance-based assessments, had a health problem",
+     "page": "2"
+    },
+    {
+     "question": "Is the baseline study sample described?",
+     "answer": "Yes",
+     "quote": "we analyzed data from 769 older adults (mean age, 72.1 \u00b1 5.4 years; men, 356; and women, 413) aged over 65 years\u2019 old, who had developed MCI at the time of the first-wave.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study attrition",
+   "judgment": "High",
+   "rationale": "325 of 769 (42%) had no follow-up cognitive examination. Their outcome category was imputed with multivariate normal imputation; no number of imputations, imputation model or handling of a categorical outcome is described. The imputation moved the reversion rate from 52.3% (observed) to 33.3%, so the estimate depends heavily on imputed outcomes. Completers differed from non-completers, and people who died or relocated appear to have been excluded, which is likely to remove older converters.",
+   "signalling": [
+    {
+     "question": "Is the proportion lost to follow-up small?",
+     "answer": "No",
+     "quote": "Of the 769 participants, 325 did not undergo the second-wave cognitive examination (Fig. 1).",
+     "page": "2"
+    },
+    {
+     "question": "Do participants lost to follow-up differ from completers?",
+     "answer": "Yes",
+     "quote": "Because potential bias was identified in the first-wave data as a result of the sample size of those remaining, from lost to follow-up, we used multivariate normal imputation to adjust for the selection bias and information loss (Supplementary Table 1).",
+     "page": "2"
+    },
+    {
+     "question": "Is the handling of missing outcomes adequate and does it leave the result stable?",
+     "answer": "Probably no",
+     "quote": "Of the 444 participants in the no imputation group, 232 (52.3%) participants reverted to NC from MCI. The reversion rate for participants after data imputation was 33.3%.",
+     "page": "4"
+    },
+    {
+     "question": "Were deaths and relocations retained or accounted for?",
+     "answer": "Probably no",
+     "quote": "had responses with missing data on the exclusion criteria (relocation or death during the follow-up period and NC or global cognitive impairment [GCI] at the first-wave assessment)",
+     "page": "2"
+    },
+    {
+     "question": "Were attempts made to collect outcome information on those lost?",
+     "answer": "Probably yes",
+     "quote": "participants were tracked monthly for new incident dementia (AD or other dementia subtypes) (Ministry of Health Labour, and Welfare of Japan, 2012.) as recorded by the Japanese National Health Insurance and Later-Stage Medical Care systems.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Prognostic factor measurement",
+   "judgment": "Low",
+   "rationale": "Age is an objective factor available for all participants and analysed as a continuous variable per year.",
+   "signalling": [
+    {
+     "question": "Is the prognostic factor measured validly and reliably for all participants?",
+     "answer": "Yes",
+     "quote": "mean age, 72.1 \u00b1 5.4 years",
+     "page": "2"
+    },
+    {
+     "question": "Is the method and setting of measurement the same for all, and is the factor reported in continuous form?",
+     "answer": "Yes",
+     "quote": "Age (years) \u2013 \u2013 \u2013 \u2013 0.88 (0.85\u20130.93) < 0.01 0.79 (0.75\u20130.84) < 0.01",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "4. Outcome measurement",
+   "judgment": "Moderate",
+   "rationale": "A reliable tablet battery defines MCI or normal cognition using age- and education-normed thresholds, while conversion is defined by a raw MMSE cut-off below 24 (and/or insurance-recorded AD). The outcome categories therefore handle age differently, which bears directly on an age association. Classification is based on a single follow-up assessment, and the authors acknowledge false-positive reversion.",
+   "signalling": [
+    {
+     "question": "Is the outcome measured with a valid and reliable method?",
+     "answer": "Probably yes",
+     "quote": "The NCGG-FAT has high test-retest reliability, moderate-to-high criterion-related validity, and predictive validity to determine dementia in community-dwelling older adults",
+     "page": "2"
+    },
+    {
+     "question": "Is the outcome definition consistent across categories with respect to the prognostic factor?",
+     "answer": "Probably no",
+     "quote": "(scores of >1.5 standard deviations [SDs] that specified age and educational means)",
+     "page": "3"
+    },
+    {
+     "question": "How was conversion defined?",
+     "answer": "Yes",
+     "quote": "the converters were those who had GCI; as indicated by the Mini Mental State Examination (MMSE) (Folstein, Folstein & McHugh, 1975) cutoff score of <24 points",
+     "page": "2"
+    },
+    {
+     "question": "Is misclassification of the outcome acknowledged?",
+     "answer": "Yes",
+     "quote": "the reversion rate from MCI to NC before imputed samples was 52.3% may have been affected by false positives",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "5. Study confounding",
+   "judgment": "Moderate",
+   "rationale": "Many covariates are adjusted for. However, baseline MCI subtype, which differed strongly across outcome groups, is not in the model. The adjustment set also includes likely age mediators (walking speed, MMSE, GDS), so the age OR is a conditional estimate from a model built for lifestyle classes.",
+   "signalling": [
+    {
+     "question": "Are important potential confounders measured and accounted for in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Unadjusted and adjusted models included the following covariates: participants\u2019 age, sex, educational qualification, current smoking, heart disease, pulmonary disease, hypertension, diabetes mellitus, walking speed, MMSE score, and 15-item Geriatric Depression Scale (GDS)",
+     "page": "3"
+    },
+    {
+     "question": "Were all important baseline differences accounted for?",
+     "answer": "Probably no",
+     "quote": "Category of MCI < 0.01",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "6. Statistical analysis and reporting",
+   "judgment": "Moderate",
+   "rationale": "Multinomial regression is appropriate and the age estimate is reported with its CI. However, the reference outcome category is not stated, age is modelled linearly without checks, and imputation details are missing. Table 5 contains an internal inconsistency (a walking-speed CI excluding 1 with P>0.05). Events per parameter for the smallest category are modest (118 converters, about 14 parameters).",
+   "signalling": [
+    {
+     "question": "Is the statistical model adequately described, including the reference category?",
+     "answer": "Probably no",
+     "quote": "Multinomial logistic regression analysis with class membership as independent variable and mainteiners and reverters as dependent variable.",
+     "page": "6"
+    },
+    {
+     "question": "Is reporting internally consistent?",
+     "answer": "No",
+     "quote": "Walking speed (m/s) \u2013 \u2013 \u2013 \u2013 1.76 (0.57\u20135.42) > 0.05 6.89 (1.87\u201325.30) > 0.05",
+     "page": "6"
+    },
+    {
+     "question": "Are imputation methods (number of imputations, model, pooling) reported?",
+     "answer": "No information",
+     "quote": "Searched sections 2.1 and 2.4 for number of imputations, variables in the imputation model and pooling rules; only 'Multivariate normal imputation allows for the use of a shrinkage estimator for the covariances.' is given",
+     "page": "2"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (QUIPS: study attrition high; participation, outcome measurement, confounding and analysis moderate)",
+ "overall_category": "high",
+ "overall_rationale": "Under QUIPS, any high domain gives high overall. For 42% of the cohort the 4-year outcome was imputed by an under-described multivariate normal method, which shifted the reversion rate from 52.3% to 33.3%. Deaths and relocations appear to have been excluded. Separately, the outcome categories handle age inconsistently (age-normed thresholds for normal cognition versus a raw MMSE cut-off for conversion), so the age OR is vulnerable to both attrition and definitional bias.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 18
+ }
+}

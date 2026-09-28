@@ -1,0 +1,152 @@
+{
+ "paper_id": "P-941",
+ "document_check": {
+  "matches": true,
+  "note": "Mouchet J, Betts KA, Georgieva MV, et al. Classification, Prediction, and Concordance of Cognitive and Functional Progression in Patients with MCI in the United States: A Latent Class Analysis. J Alzheimers Dis 2021;82:1667-1682. It reports NACC CDR-SB latent classes of 21% fast, 22% slow and 57% no progression (N=830), matching the review."
+ },
+ "cited_result": "Growth-mixture-model classification of 830 NACC participants with incident MCI by CDR-SB trajectory: 21% fast progression (+1.8 points/year), 22% slow progression (+0.5/year), 57% no progression.",
+ "tool": "JBI prevalence",
+ "tool_reason": "The cited result is the distribution (prevalence) of progression-trajectory classes in an incident MCI cohort, not the performance of the predictor model or a causal effect.",
+ "domains": [
+  {
+   "domain": "1. Sample frame appropriate to address the target population",
+   "judgment": "No",
+   "rationale": "The title and aims refer to patients with MCI in the United States, but the frame is research-centre participants (referrals and volunteers, highly educated), which the authors state is not representative of clinical practice.",
+   "signalling": [
+    {
+     "question": "Was the sample frame appropriate to address the target population?",
+     "answer": "No",
+     "quote": "study results may not be generalized to the entire US population as many NACC participants represent a clinic-based convenience sample with high education level and may thus not adequately reflect patients encountered in real-world clinical practice.",
+     "page": "13"
+    }
+   ]
+  },
+  {
+   "domain": "2. Participants sampled appropriately",
+   "judgment": "Unclear",
+   "rationale": "All eligible NACC records were taken, but several eligibility criteria use information from after the index date: AD etiology on or after index, no Parkinson's disease or stroke until end of follow-up, and at least one post-index outcome. Recruitment also varies by centre.",
+   "signalling": [
+    {
+     "question": "Were study participants sampled in an appropriate way?",
+     "answer": "Unclear",
+     "quote": "4) AD etiology on or after the index visit, and 5) no diagnosis of Parkinson\u2019s disease or stroke at any time from the enrollment in the ADC until the end of follow-up.",
+     "page": "3"
+    },
+    {
+     "question": "Were recruitment procedures uniform across centres?",
+     "answer": "No",
+     "quote": "Furthermore, individual ADCs recruit and enroll participants according to their own protocols and do not have required recruitment criteria.",
+     "page": "13"
+    }
+   ]
+  },
+  {
+   "domain": "3. Adequate sample size",
+   "judgment": "Yes",
+   "rationale": "N=830 for the CDR-SB analysis.",
+   "signalling": [
+    {
+     "question": "Was the sample size adequate?",
+     "answer": "Yes",
+     "quote": "In total, 830 NACC participants newly diagnosed with MCI met the study selection criteria.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Subjects and setting described in detail",
+   "judgment": "Yes",
+   "rationale": "The data source (26 ADCs, 2005 to 2019) and detailed sample characteristics (Table 1) are reported.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "In the overall study sample, mean age was 79 years, and 58% were females (Table 1). The vast majority (78%) of participants had at least some college education, 78% were non-Hispanic white, and 55% were married.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "5. Coverage of the identified sample",
+   "judgment": "Yes",
+   "rationale": "All eligible participants entered the CDR-SB latent class analysis, and intermittent missing visits were retained through full information maximum likelihood.",
+   "signalling": [
+    {
+     "question": "Was the data analysis conducted with sufficient coverage of the identified sample?",
+     "answer": "Yes",
+     "quote": "Of these, 830 (100%) were included in the CDR-SB analytic cohort, and 515 (62%) were included in the FAQ analytic cohort (Fig. 1).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "6. Valid methods for identifying the condition (progression class)",
+   "judgment": "Unclear",
+   "rationale": "CDR-SB is a valid measure, but class membership comes from an exploratory growth mixture model. Classification quality (entropy) is only in the supplement, not in this document, and the class count was chosen partly on parsimony and smallest-class size. MCI itself was a single-clinician or consensus diagnosis, and 12% had CDR-SB 0 at diagnosis.",
+   "signalling": [
+    {
+     "question": "Were valid methods used for the identification of the condition?",
+     "answer": "Unclear",
+     "quote": "Fifth, GMM is considered an exploratory data analysis tool, and, given its flexibility, it may identify extraneous latent classes.",
+     "page": "13"
+    },
+    {
+     "question": "Is classification quality (entropy) reported in the article text?",
+     "answer": "No information",
+     "quote": "Searched the Results for entropy or posterior-probability values; the text only says the model was selected on fit statistics 'and entropy' with values in 'Supplementary Table 1', which is not part of this document.",
+     "page": "3-4"
+    }
+   ]
+  },
+  {
+   "domain": "7. Condition measured in a standard, reliable way for all participants",
+   "judgment": "Yes",
+   "rationale": "CDR-SB was collected with the standardised NACC UDS protocol at approximately annual visits. Diagnostic criteria changed in 2015, which affects MCI diagnosis more than CDR-SB scoring.",
+   "signalling": [
+    {
+     "question": "Was the condition measured in a standard, reliable way for all participants?",
+     "answer": "Yes",
+     "quote": "Data were collected prospectively on an approximately annual basis using a standardized clinical evaluation.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "Yes",
+   "rationale": "Growth mixture models used several fit criteria, handled missing data by FIML, and compared 2 to 4 classes and linear to cubic forms. The class proportions are reported without confidence intervals.",
+   "signalling": [
+    {
+     "question": "Was there appropriate statistical analysis?",
+     "answer": "Yes",
+     "quote": "Given that participants may have occasionally missed a yearly assessment, CDR-SB and FAQ missing data over time were accommodated using full information maximum likelihood under the missing at random assumption",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "9. Response rate / attrition adequate or managed",
+   "judgment": "Unclear",
+   "rationale": "Attrition is not quantified. The analysis assumes data are missing at random, while the authors concede that decliners are more likely to be lost, which would push participants towards the no-progression class. No sensitivity analysis for this is reported.",
+   "signalling": [
+    {
+     "question": "Was the response rate adequate, and if not, was the low response rate managed appropriately?",
+     "answer": "Unclear",
+     "quote": "Lastly, while the exact reason for attrition is not available in the data, participants with worsening cognitive impairment, neuropsychiatric symptoms, and difficulty with functional activities may be more likely to be lost to follow-up [60]. As a result, the long-term decline in all endpoints, particularly in later years post-MCI diagnosis, may be underestimated",
+     "page": "13"
+    }
+   ]
+  }
+ ],
+ "overall": "Some concerns (by the review's JBI rule: no key item is 'No'; sample frame 'No', and sampling, class identification and attrition 'Unclear')",
+ "overall_category": "some_concerns",
+ "overall_rationale": "Measurement and analysis are sound. The class proportions, however, come from a research-centre convenience frame, with eligibility partly conditioned on future information, from an exploratory mixture model whose classification quality is not reported in the text, and under a missing-at-random assumption that the authors themselves doubt. The fast and slow shares may be underestimated and do not generalise beyond NACC-type samples.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 10,
+  "matched": 10
+ }
+}

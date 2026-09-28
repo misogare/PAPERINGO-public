@@ -1,0 +1,200 @@
+{
+ "paper_id": "P-924",
+ "document_check": {
+  "matches": true,
+  "note": "Hammers DB, Suhrie KR, Porter SM, Dixon AM, Duff K. Validation of one-year reliable change in the RBANS for community-dwelling older adults with amnestic Mild Cognitive Impairment. Clin Neuropsychol 2022;36(6):1304-1327 (author manuscript). External validation of SRB equations in 64 community-recruited and 58 clinic-recruited aMCI participants, compared with raw baseline versus follow-up testing. Matches the cited study."
+ },
+ "cited_result": "Raw comparison of baseline and one-year scores showed no decline (and gains on the memory indexes in the community sample). Applying SRB prediction equations to the same data showed observed follow-up scores significantly below predicted, classified as reliable 'decline'. The scoring method therefore determined whether decline was detected.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result rests on how a multivariable regression prediction model (SRB equations predicting follow-up RBANS from baseline score, age, education, sex, ethnicity and retest interval) performs when externally validated. The comparison of predicted with observed scores is a calibration assessment, so PROBAST applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "Both samples came from earlier research studies with sensible criteria. However, the clinic sample, and part of the community sample, were recruited for a cognitive-training study. The report does not say whether training was delivered between the two RBANS administrations, which would affect follow-up scores.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No information",
+     "quote": "Searched for whether training or any intervention took place between baseline and follow-up ('training', 'intervention', 'control'). The document says only: recruited from a cognitive disorder clinic from 2016 to 2018 for a study of cognitive training and amnestic MCI (Duff et al., Under Review).",
+     "page": "4"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Yes",
+     "quote": "Inclusion criteria for both samples included being aged 65 years or older and functionally independent. Exclusion criteria for both samples included neurological conditions likely to affect cognition, dementia, major psychiatric condition, current severe depression, substance abuse, anti-convulsant or anti-psychotic medications, and residence in a skilled nursing or living facility.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Predictors were defined as in the development equations and measured the same way in both samples, using the same test form. They were recorded before the outcome and are available when the equations are meant to be used, at the follow-up visit.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Specifically, the combination of demographic variables (e.g., age, education, sex, ethnicity), retest interval, and baseline RBANS Index score was used to predict the RBANS Index score at follow-up one year later.",
+     "page": "6"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Yes",
+     "quote": "All participants were administered the RBANS (Randolph, 2012) at both baseline and approximately one year later.",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "The retest interval was represented as days from T1 to T2.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "low",
+   "rationale": "The predicted outcome, the RBANS Index at follow-up, is a standardised test given on the same form to everyone at a fixed one-year interval, and the decline threshold is the standard one. Examiner blinding is not reported, but the scoring is standardised.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Yes",
+     "quote": "The Index scores utilize age-corrected normative comparisons from the test manual to generate standard scores (M = 100, SD = 15), with higher scores indicating better cognition.",
+     "page": "5"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "z scores below \u22121.645 commonly represent \u201cdecline\u201d (or smaller practice effect relative to expectation)",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "This z score was represented by the equation, z = (T2 \u2013 T2\u2019)/ SEest.",
+     "page": "6"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "To be consistent with the original Hammers et al. (2020) SRB equations, the same form of each test (Form A) was used across the two testing sessions.",
+     "page": "5"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "The RBANS is a neuropsychological test battery comprising 12 subtests that are used to calculate Index scores for domains of immediate memory, visuospatial/constructional, attention, language, delayed memory, and global neuropsychological functioning. (Examiner blinding to baseline scores is not reported.)",
+     "page": "5"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "the community amnestic MCI sample was older, less educated, more predominantly female, and possessed shorter retest intervals on average than the clinic amnestic MCI sample (all ps < .001). Although differences were observed, these variables were all incorporated into the original Hammers et al. SRB equations",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The validation samples are small (64 and 58, analysed separately; fewer than 100 each). Attrition and missing data are not reported. The only performance measures are mean z against 0 (calibration-in-the-large) and the share of participants in each band, with no calibration across the range of baseline scores and no external criterion for true decline. As a result, the analysis cannot tell real decline apart from a model that over-predicts at low baseline scores, and the authors say so themselves. On the AI-specific points: the validation samples are independent of the development sample, nothing was tuned, and the performance reported is external.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "including those recruited from the community (n = 64) and those recruited from a memory disorders clinic (n = 58).",
+     "page": "1"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "Age and education were represented as years old at baseline and number of years of formal education, respectively. Sex was coded as male = 0, and female = 1.",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for enrolled versus analysed counts, 'attrition', 'lost', 'completed', 'excluded' and 'drop'; only the analysed numbers (64 and 58) are given.",
+     "page": "1-16"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for 'missing' and 'imputation'; nothing reported.",
+     "page": "1-16"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Not applicable",
+     "quote": "Please see Table 2 for the specific SRB prediction algorithms for the RBANS Indexes (Hammers, Suhrie, Porter, et al., 2020) applied to the current samples.",
+     "page": "6"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "Z scores for each RBANS Index for both the community and clinic amnestic MCI samples were separately compared to expectation (z = 0) based on the normal distribution of z scores using a one-sample t test.",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "Overall, potential reasons that the one-year RBANS scores in the current samples are consistently lower than predicted include the following: (1) the equations are not representative or appropriate for the samples, or (2) the equations are appropriate and also permitting observation of the subtle decline over one year that is not observed through \u201ctraditional\u201d methods.",
+     "page": "11"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Not applicable",
+     "quote": "Hammers and colleagues\u2019 SRB prediction equations were applied to two independent samples of community-dwelling older adults with amnestic Mild Cognitive Impairment (MCI)",
+     "page": "1"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Not applicable",
+     "quote": "Previously published SRB prediction equations for the RBANS Index scores were applied to the current RBANS Baseline and Follow-up performances of our community and clinic amnestic MCI samples.",
+     "page": "6"
+    },
+    {
+     "question": "AI-specific: are the validation data independent of development data, held out from all tuning, and is performance externally validated?",
+     "answer": "Yes",
+     "quote": "Hammers et al.\u2019s (2020) SRB equation development sample \u2013 for which the RBANS Index and subtest SRB prediction equations were calculated \u2013 included 129 robustly cognitively intact community-dwelling older adults",
+     "page": "5"
+    },
+    {
+     "question": "AI-specific (extrapolation): was the case-mix within the range of the development data, or was the resulting mis-prediction handled?",
+     "answer": "No",
+     "quote": "As a result of Hammers et al.\u2019s SRBs being more susceptible to regression to the mean effects at the extremes, they likely over-estimated T2 predictions for low baseline scores or under-estimated T2 predictions for very high baseline scores in our sample.",
+     "page": "13"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The model was built in robustly intact older adults and applied to aMCI samples that were almost entirely Caucasian and highly educated, with no aetiological characterisation. The authors state: 'the lack of clinical characterization or identification of probable etiology of our amnestic MCI samples may be a limitation' (p. 14)."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "'Decline' means scoring below the practice effect expected in intact adults, not clinical progression or an independently verified decline. The authors note that over-prediction 'may result in the appearance of \u201cdeclines\u201d relative to prediction for an individual who performed generally comparable between T1 and T2' (p. 15)."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "The predictors are routine demographics, the baseline RBANS score and the retest interval, all available in clinical practice."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST)",
+ "overall_category": "high",
+ "overall_rationale": "Domain 4 is high risk. The validation samples are small. Attrition and missing data are not reported. The performance assessment is limited to calibration-in-the-large with no external criterion, so 'decline detected by SRB' cannot be separated from miscalibration of equations that were developed in intact adults and over-predict at low baseline scores. Domain 1 is unclear because it is not reported whether training took place between tests.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 19
+ }
+}

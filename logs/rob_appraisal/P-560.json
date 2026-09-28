@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-560",
+ "document_check": {
+  "matches": true,
+  "note": "Sighinolfi G, Mitolo M, Pizzagalli F, et al. (2024) 'Sulcal Morphometry Predicts Mild Cognitive Impairment Conversion to Alzheimer's Disease', J Alzheimers Dis 99:177-190, doi:10.3233/JAD-231192. It is a retrospective single-centre 1.5T study of 25 HC, 12 MCInc, 25 MCIc and 25 AD. The cited statement that sulcal width beat cortical thickness in each group comparison is on page 10."
+ },
+ "cited_result": "The authors state that sulcal width achieved better discrimination (single-feature logistic classifiers, ROC AUC) than cortical thickness in every group comparison, most clearly for MCIc versus MCInc. No statistical test compares the two measures.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result ranks the discriminative performance (ROC AUC of logistic classifiers, plus an ISOMAP-SVM classifier) of data-selected sulcal-width features against cortical-thickness features, including a prognostic conversion contrast, so it is a comparison of prediction-model performance rather than the accuracy of one pre-specified index test.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "High",
+   "rationale": "The diagnostic contrasts compare referred patients with healthy volunteers from a database, which is a case-control design. In the prognostic contrast, MCI patients who developed non-AD disorders were excluded because of their follow-up outcome, and the paper does not report how many.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably no",
+     "quote": "Healthy controls were selected from the Neuroimaging Laboratory database",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "different from AD were excluded from the study and are not counted in the \ufb01nal cohort of 37 MCI subject.",
+     "page": "3"
+    },
+    {
+     "question": "AI consideration: were data sources and sampling suitable for the intended use?",
+     "answer": "Probably no",
+     "quote": "Eighty-seven subjects were retrospectively included in this study.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Unclear",
+   "rationale": "All scans come from one scanner and go through one pipeline, and the MRI was taken at baseline. However, sulcal labels were manually corrected at node level, and the paper does not say whether operators were blind to diagnosis or conversion status.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Brain MR studies were performed using a 1.5 Tesla system (GE Medical Systems Signa HDx 15) equipped with a quadrature birdcage head coil.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "the labeling of each of the 123 sulci in every subject was visually inspected by two independent operators, using the Anatomist toolbox (Searched for 'blind' and 'unaware': no statement on blinding to group or outcome.)",
+     "page": "4"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "The maximum interval between the clinical assessment at baseline and the MR scan was three months.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "High",
+   "rationale": "Diagnoses follow international clinical criteria, but no biomarkers were used. MRI was part of the diagnostic workup, and the paper does not say whether it informed the diagnosis. Follow-up for non-converters was highly variable (29 \u00b1 22.6 months) with no stated minimum, so some 'non-converters' may have been followed too briefly. The authors acknowledge this.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "according to international criteria for MCI [28] and AD [29].",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "according to international criteria for MCI [28] and AD [29].",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "to perform brain MR investigation as part of the diagnostic workup. (The paper does not say whether MRI findings contributed to the clinical diagnosis.)",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Clinical and neuropsychological evaluation of MCI patients was performed at baseline and clinical evaluation was repeated after an average of 28 \u00b1 15 months.",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for 'blind', 'unaware' and 'independent' in relation to the clinical diagnosis: none.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably no",
+     "quote": "Another potential limitation is the variable duration of the follow-up that may have an in\ufb02uence on the clinical outcome.",
+     "page": "11"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "Hundreds of candidate features were screened on 37 MCI patients (12 non-converters), selected by univariable significance on the full sample, and only the best feature per contrast was reported. The main results are in-sample AUCs at in-sample optimal cut-points with no calibration. Leave-one-out cross-validation refits only the logistic model after feature selection on all data, so information leaks from test to training. The ISOMAP-SVM classifier is likewise trained on pre-selected features. Class imbalance is not addressed, variable follow-up is ignored, there is no external validation, and no test compares the width and thickness AUCs.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Moreover, in this study, the non-converter MCI group size was smaller than the other subgroups.",
+     "page": "11"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "All the quantitative MR parameters of each subject were adjusted for the Total Intracranial Volume (TIV), as measured with FreeSurfer 5.3.0, using the residual methods",
+     "page": "5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "The same cohort of participants, with the exclusion of one MCI patient, due to the failed reconstruction of sulci, and the addition of seven healthy controls, was previously studied by Mitolo and colleagues [3]",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "identi\ufb01able in all subjects, and they were therefore under-represented in the data, even though they were maintained for the following analysis.",
+     "page": "5"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "In the next section, results are reported only for the feature that achieved the best discrimination performance for each contrast, even though additional features have demonstrated good classi\ufb01cation capabilities.",
+     "page": "6"
+    },
+    {
+     "question": "4.6 Were complexities in the data (for example censoring from variable follow-up) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "Statistical signi\ufb01cance was set at p < 0.05 after Bonferroni correction, taking into account 4 \u00d7 106 tests",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "basing on the optimal ROC point estimated through the Index of Union [41]",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "The cross validation returned AUC and accuracy values on average 2-4% lower with respect to the values of the in-sample analysis reported in this section",
+     "page": "6"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for logistic coefficients or model equations: none reported.",
+     "page": "5-8"
+    },
+    {
+     "question": "AI consideration: was the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "where one subject\u2019s classi\ufb01cation was predicted basing on the logistic \ufb01t obtained from the remaining individuals of the two groups taken into account.",
+     "page": "6"
+    },
+    {
+     "question": "AI consideration: were feature selection and preprocessing confined to the training folds, with the test set held out from all tuning?",
+     "answer": "No",
+     "quote": "was used to \ufb01t a logistic model as a classi\ufb01er and to calculate a Receiver Operating Characteristic (ROC) curve for the outcomes.",
+     "page": "5"
+    },
+    {
+     "question": "AI consideration: was class imbalance handled?",
+     "answer": "No information",
+     "quote": "Searched for 'imbalance', 'weight' and 'resampling': 12 MCInc against 25 MCIc with no handling reported.",
+     "page": "6"
+    },
+    {
+     "question": "AI consideration: is reported performance apparent, internally or externally validated?",
+     "answer": "No",
+     "quote": "As the size of the sample would not allow to build training and test sets, to assess the solidity of the outcomes, beside the in-sample analysis, the same procedure was repeated while performing a Leave-One-Out cross validation",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST: participants, outcome and analysis high; predictors unclear).",
+ "overall_category": "high",
+ "overall_rationale": "Three domains are high risk. The design is case-control with outcome-based exclusions. Conversion labels depend on highly variable follow-up. The analysis selects the best of many features on the full sample, reports mainly in-sample AUCs, has cross-validation that leaks information, and has no external validation. The ranking of width over thickness also has no between-measure test.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Single-centre retrospective referrals (2009 to 2018), younger volunteer controls, and exclusion of MCI patients who progressed to non-AD disorders."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some",
+   "rationale": "Node-level manual relabelling of sulci by expert neuroradiologists is not part of routine practice."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some",
+   "rationale": "AD conversion is a clinical diagnosis with no pathophysiological biomarkers available."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 20
+ }
+}

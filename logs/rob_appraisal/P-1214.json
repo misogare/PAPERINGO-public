@@ -1,0 +1,129 @@
+{
+ "paper_id": "P-1214",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Kim D-H, 'Longitudinal Analysis of Amyloid PET and Brain MRI for Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease: Findings from the ADNI Cohort', Tomography 2025;11:37 (doi:10.3390/tomography11030037). It is an imaging-based conversion study in 180 ADNI MCI patients, which matches the cited 'imaging-based conversion model (Kim 2025)'."
+ },
+ "cited_result": "Principal result: prediction of MCI-to-AD conversion within 6 years by the baseline composite imaging 'shape feature' (AV-45 BASS multiplied by MRI BAI), AUC 0.891 (95% CI 0.836 to 0.933), with sensitivity 0.79 and specificity 0.87 at a Youden-derived cut-off of 1.60. The review cites the fact that this conversion predictor includes no medication covariate.",
+ "tool": "QUADAS-2",
+ "tool_reason": "The cited result is the prognostic accuracy (ROC AUC, sensitivity and specificity at a cut-off) of a single fixed composite imaging index against later conversion. No multivariable model with covariates is fitted, so QUADAS-2 applies rather than PROBAST.",
+ "domains": [
+  {
+   "domain": "1. Patient selection",
+   "judgment": "high",
+   "rationale": "The sample was selected on the availability of baseline and 2-year PET and MRI, not consecutively or at random. Non-converters also had to have completed 6 years of clinical follow-up while converters did not, which is an outcome-dependent exclusion. The appendix counts (295 excluded, 244 included) do not reconcile with the 180 analysed.",
+   "signalling": [
+    {
+     "question": "Was a consecutive or random sample of patients enrolled?",
+     "answer": "No",
+     "quote": "For this study, we specifically selected participants diagnosed with MCI at baseline who had undergone both amyloid PET and brain MRI scans at baseline and at 2-year follow-up.",
+     "page": "2"
+    },
+    {
+     "question": "Was a case-control design avoided?",
+     "answer": "Yes",
+     "quote": "we extracted data from the ADNI 2 and GO datasets for 180 patients with MCI (early MCI or late MCI) who had baseline and 2-year follow-up AV-45 PET and brain MRI data, as well as 6-year follow-up clinical assessment data.",
+     "page": "3"
+    },
+    {
+     "question": "Did the study avoid inappropriate exclusions?",
+     "answer": "No",
+     "quote": "Patients who did not undergo clinical assessments for up to 6 years and did not achieve conversion to dementia were excluded.",
+     "page": "3"
+    },
+    {
+     "question": "Were the included and excluded patients comparable (selection check)?",
+     "answer": "Probably no",
+     "quote": "Although a statistically significant difference was observed for age (p = 0.044), the magnitude of this difference was relatively small",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Index test",
+   "judgment": "high",
+   "rationale": "The cut-offs behind the reported sensitivity and specificity were chosen by maximising Youden's J in the same 180 patients, with no validation set. No blinding of the semiautomatic quantification to outcome is reported. The composite formula itself was pre-defined from earlier work, and the AUC does not depend on the threshold, but the reported accuracy is apparent. Reported 'Youden's J' values exceed 1 (for example 1.65), which is a computational or reporting error.",
+   "signalling": [
+    {
+     "question": "Were the index test results interpreted without knowledge of the results of the reference standard?",
+     "answer": "No information",
+     "quote": "Searched for blind, masked, unaware or independent reading; only found: 'Brain beta-amyloid deposition was quantified using a semiautomatic method, by applying the brain amyloid smoothing score (BASS).'",
+     "page": "4"
+    },
+    {
+     "question": "If a threshold was used, was it pre-specified?",
+     "answer": "No",
+     "quote": "The optimal cutoff points for differentiating converters and nonconverters were determined using Youden's J statistic (J = Sensitivity + Specificity \u22121).",
+     "page": "5"
+    },
+    {
+     "question": "Was the composite index defined before analysis?",
+     "answer": "Probably yes",
+     "quote": "The shape feature is obtained by multiplying the BASS and BAI [17].",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "3. Reference standard",
+   "judgment": "high",
+   "rationale": "The target condition is labelled conversion to AD, but it is operationalised as a global CDR threshold ('exceeded 1'), with no aetiological AD diagnosis described. Read literally, the threshold requires CDR 2, which is inconsistent with the label and with a 42% conversion rate. Nothing is reported on whether CDR raters were blind to the imaging.",
+   "signalling": [
+    {
+     "question": "Is the reference standard likely to correctly classify the target condition?",
+     "answer": "Probably no",
+     "quote": "The onset of dementia was defined as the first time the Clinical Dementia Rating (CDR) value exceeded 1 during the follow-up period.",
+     "page": "3"
+    },
+    {
+     "question": "Were the reference standard results interpreted without knowledge of the results of the index test?",
+     "answer": "No information",
+     "quote": "Searched for blinding of clinical/CDR assessors to PET or MRI results; the only description is: 'Cognitive function was assessed using the CDR, the 13-item AD Assessment Scale\u2013Cognitive Subscale (ADAS-cog), the Functional Activities Questionnaire (FAQ), and the Mini-Mental State Examination (MMSE).'",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Flow and timing",
+   "judgment": "high",
+   "rationale": "The interval from the baseline index test to the 6-year outcome is appropriate, and all patients were rated with the CDR. However, only those who converted or who completed 6 years were analysed, so patients lost to follow-up without conversion were dropped. The appendix table reports 244 'Inclusion' patients against 180 analysed, and this is unexplained.",
+   "signalling": [
+    {
+     "question": "Was there an appropriate interval between index test and reference standard?",
+     "answer": "Probably yes",
+     "quote": "Patients were categorized into two groups: (i) converters, who progressed to AD within the 6-year follow-up period; and (ii) nonconverters.",
+     "page": "3"
+    },
+    {
+     "question": "Did all patients receive the same reference standard?",
+     "answer": "Probably yes",
+     "quote": "Cognitive function was assessed using the CDR, the 13-item AD Assessment Scale\u2013Cognitive Subscale (ADAS-cog), the Functional Activities Questionnaire (FAQ), and the Mini-Mental State Examination (MMSE).",
+     "page": "3"
+    },
+    {
+     "question": "Were all patients included in the analysis?",
+     "answer": "No",
+     "quote": "Patients who did not undergo clinical assessments for up to 6 years and did not achieve conversion to dementia were excluded.",
+     "page": "3"
+    },
+    {
+     "question": "Do the participant counts reconcile?",
+     "answer": "No",
+     "quote": "Table A1. Demographic characteristics of the study population. Characteristics Exclusion Inclusion p-Value Number 295 244",
+     "page": "13"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (QUADAS-2: high in all four risk-of-bias domains).",
+ "overall_category": "high",
+ "overall_rationale": "The sample was selected on complete longitudinal imaging, and non-converters without 6-year follow-up were excluded (outcome-dependent selection). Thresholds were derived in the same data with no validation. The reference standard is an ambiguous global CDR threshold rather than an AD diagnosis, and assessor blinding is not reported. Participant flow does not reconcile. Any single high domain makes the overall judgment high.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 11,
+  "matched": 9
+ }
+}

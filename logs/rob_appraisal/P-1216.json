@@ -1,0 +1,204 @@
+{
+ "paper_id": "P-1216",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Liu W, Li Y, Qin W, et al., 'The impact of cholinesterase inhibitors on cognitive trajectories in mild cognitive impairment patients based on amyloid beta status', Alzheimer's & Dementia 2025;21:e70193 (doi:10.1002/alz.70193). It is an ADNI observational cohort of 558 amnestic MCI participants (168 ChEI users). The cited finding (ChEI use associated with higher risk of progression; the authors cannot tell whether decline prompted treatment) is in the document."
+ },
+ "cited_result": "IPTW-adjusted time-varying Cox model: ChEI use vs non-use and progression from amnestic MCI to AD dementia, HR 1.77 (95% CI 1.15 to 2.73), in 558 ADNI participants.",
+ "tool": "ROBINS-E",
+ "tool_reason": "The cited result is the effect of an exposure (cholinesterase-inhibitor use) on an outcome (progression to AD dementia) in an observational cohort. It is framed causally ('impact', IPTW, differences 'attributed to the different therapeutic approaches'), so ROBINS-E applies.",
+ "domains": [
+  {
+   "domain": "1. Bias due to confounding",
+   "judgment": "high",
+   "rationale": "IPTW balanced a reasonable set of baseline covariates. However, the key confounder, confounding by indication (the clinical decline or judgement that prompts prescription), was not measured, and the authors acknowledge this. Users were prevalent users at the ADNI baseline, so the baseline cognition and amyloid covariates may themselves have been measured after exposure began. The figure legends and the Methods disagree on which covariates entered the weights.",
+   "signalling": [
+    {
+     "question": "Did the authors control for all the important confounding factors for which this was necessary?",
+     "answer": "Probably no",
+     "quote": "Moreover, without documentation of clinical decision-making, it remained unclear whether cognitive decline preceded and prompted ChEI initiation or resulted from the treatment itself, complicating the interpretation of ChEI efficacy.",
+     "page": "10"
+    },
+    {
+     "question": "Were confounding factors that were controlled for measured validly and reliably?",
+     "answer": "Probably yes",
+     "quote": "Propensity scores were estimated using logistic regression, which included age, gender, education, ethnicity, race, APOE \u03b54 status, baseline ADAS cog13, CDR-SB, MMSE, baseline AV45 SUVR, and medical history (hypertension, stroke).",
+     "page": "4"
+    },
+    {
+     "question": "Did the authors control for any variables measured after the start of exposure that could have been affected by the exposure?",
+     "answer": "Probably yes",
+     "quote": "There were 63 participants who were not using ChEIs at baseline but initiated treatment during follow-up with at least 1 year of continuous use and two subsequent visits. These participants were analyzed separately as the ChEI initiation group",
+     "page": "3"
+    },
+    {
+     "question": "Was an appropriate analysis method used, and was residual confounding acknowledged?",
+     "answer": "Probably no",
+     "quote": "Although IPTW was employed to balance between-group differences and common demographic and clinical confounders were accounted for, potential bias may persist due to unmeasured confounders.",
+     "page": "10"
+    },
+    {
+     "question": "Is the covariate set for the weights reported consistently?",
+     "answer": "No",
+     "quote": "All analyses were adjusted for age, gender, education, and APOE \u03b54 status using IPTW.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "2. Bias arising from measurement of the exposure",
+   "judgment": "some concerns",
+   "rationale": "Exposure came from pharmacy prescription records with dates, which is reasonable. Adherence and dose were not assessed, and exposure is a time-fixed binary classification (continuous use over 12 months). The non-user definition relies on never using ChEIs during follow-up, so classification uses post-baseline information that may relate to decline.",
+   "signalling": [
+    {
+     "question": "Does the exposure measure characterise the exposure well?",
+     "answer": "Probably yes",
+     "quote": "Drug information was obtained from pharmacy data in the ADNI database, including drug name and dates of prescription",
+     "page": "3"
+    },
+    {
+     "question": "Was the exposure measured without important error (adherence, dose)?",
+     "answer": "Probably no",
+     "quote": "Third, the reliance on retrospective medication records limited the assessment of treatment adherence and dosage effects.",
+     "page": "10"
+    },
+    {
+     "question": "Could exposure classification have been influenced by knowledge of the outcome or by post-baseline events?",
+     "answer": "Probably yes",
+     "quote": "ChEI non-users were defined as who had never used ChEIs but had completed a minimum of two follow-up assessments.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Bias in selection of participants into the study (or into the analysis)",
+   "judgment": "high",
+   "rationale": "Selection depended on characteristics observed after exposure started: at least 12 months of continuous use, at least two follow-up assessments, and exclusion of use shorter than 1 year. It also depended on never using ChEIs throughout follow-up (for non-users). Follow-up did not start at treatment initiation for prevalent users. No technique for selection bias (new-user design, landmark or censoring weights) was used.",
+   "signalling": [
+    {
+     "question": "Was selection of participants into the study (or analysis) based on participant characteristics observed after the start of the exposure?",
+     "answer": "Yes",
+     "quote": "ChEI users were defined as participants who had continuously used donepezil, rivastigmine, or galantamine for more than 12 months with at least two follow-up assessments.",
+     "page": "3"
+    },
+    {
+     "question": "Were participants excluded on post-exposure characteristics likely to be associated with the outcome?",
+     "answer": "Probably yes",
+     "quote": "Thirty-three participants were excluded for memantine monotherapy use (over 1 year), and 457 were excluded for either using ChEIs combined with memantine at the baseline or for ChEI use less than 1 year.",
+     "page": "3"
+    },
+    {
+     "question": "Did the start of follow-up and start of exposure coincide for most participants?",
+     "answer": "Probably no",
+     "quote": "There were 63 participants who were not using ChEIs at baseline but initiated treatment during follow-up with at least 1 year of continuous use and two subsequent visits. These participants were analyzed separately as the ChEI initiation group",
+     "page": "3"
+    },
+    {
+     "question": "Were adjustment techniques used that are likely to correct for selection biases?",
+     "answer": "No information",
+     "quote": "Searched for new-user, landmark, immortal time, inverse probability of censoring weights; IPTW is described only for confounding: 'To minimize potential selection bias and confounding, inverse probability of treatment weighting (IPTW) was applied.'",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Bias due to post-exposure interventions",
+   "judgment": "some concerns",
+   "rationale": "Memantine was excluded at baseline only. Nothing is reported on memantine or other treatments started during follow-up, which could differ by exposure group and affect progression.",
+   "signalling": [
+    {
+     "question": "Were there post-exposure interventions that were influenced by prior exposure and could affect the outcome, and were they addressed?",
+     "answer": "No information",
+     "quote": "Searched for memantine or other anti-dementia treatment started during follow-up; only baseline exclusions reported: '457 were excluded for either using ChEIs combined with memantine at the baseline or for ChEI use less than 1 year.'",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "5. Bias due to missing data",
+   "judgment": "some concerns",
+   "rationale": "About one third of the medication-record population (1063/3167) was excluded for insufficient or inconsistent data, with no comparison of excluded and included participants. Follow-up was incomplete, and death was not captured as a competing risk. Missing baseline covariates were multiply imputed.",
+   "signalling": [
+    {
+     "question": "Were data reasonably complete for exposure and confounders?",
+     "answer": "Probably no",
+     "quote": "Among these, 1063 were excluded due to insufficient or inconsistent sociodemographic or medical data.",
+     "page": "3"
+    },
+    {
+     "question": "Were missing confounder data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Missing baseline data were handled using multiple imputation by chained equations with predictive mean matching.",
+     "page": "4"
+    },
+    {
+     "question": "Were outcome data reasonably complete?",
+     "answer": "Probably no",
+     "quote": "Second, the ADNI database did not systematically collect mortality data to address death as a potential competing risk for AD progression, and not all participants completed the full 10-year follow-up period.",
+     "page": "10"
+    },
+    {
+     "question": "Is there evidence that the result was not biased by missing data?",
+     "answer": "No information",
+     "quote": "Searched for a comparison of excluded vs included participants or a sensitivity analysis for censoring or missing data; none reported.",
+     "page": "3-5"
+    }
+   ]
+  },
+  {
+   "domain": "6. Bias arising from measurement of the outcome",
+   "judgment": "some concerns",
+   "rationale": "The outcome used standard criteria (NINCDS-ADRDA with CDR 1 or higher) applied at ADNI visits to all participants. Dementia diagnosis involves clinical judgement, and assessor blinding to ChEI use is not reported.",
+   "signalling": [
+    {
+     "question": "Could measurement or ascertainment of the outcome have differed between exposure groups?",
+     "answer": "Probably no",
+     "quote": "AD dementia diagnosis during follow-up was made according to the National Institute of Neurological and Communicative Disorders and Stroke (NINCDS)-Alzheimer's Disease and Related Disorders Association (ADRDA) criteria (NINCDS/ADRDA) criteria for probable AD,40 with participants showing a CDR score of 1 or higher.",
+     "page": "3"
+    },
+    {
+     "question": "Were outcome assessors aware of the participants' exposure status?",
+     "answer": "No information",
+     "quote": "Searched for blind or masked outcome assessment with respect to medication use; none reported.",
+     "page": "2-5"
+    }
+   ]
+  },
+  {
+   "domain": "7. Bias in selection of the reported result",
+   "judgment": "some concerns",
+   "rationale": "No protocol or pre-registered analysis plan is cited, only STROBE. Several analyses were run: unadjusted and IPTW Kaplan-Meier, Cox with a time-dependent APOE term after a Schoenfeld test, and stratified and interaction models. The p value for the cited HR (0.001) is inconsistent with its 95% CI (1.15 to 2.73 implies p of about 0.01).",
+   "signalling": [
+    {
+     "question": "Was the result reported in accordance with a pre-specified analysis plan?",
+     "answer": "No information",
+     "quote": "Searched for protocol, registration or statistical analysis plan; only: 'This study adhered to the Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) reporting guidelines.'",
+     "page": "3"
+    },
+    {
+     "question": "Is the reported result likely to have been selected from multiple analyses or model specifications?",
+     "answer": "Probably yes",
+     "quote": "The residual test revealed significant time-varying effects of APOE \u025b4 status (p = 0.003); therefore, APOE \u025b4 was incorporated as a time-dependent variable in the Cox proportional hazards model.",
+     "page": "5"
+    },
+    {
+     "question": "Is the reported estimate internally consistent?",
+     "answer": "No",
+     "quote": "The IPTW-adjusted model revealed that ChEI users had a significantly higher risk of progression to AD dementia compared to non-users (HR = 1.77, 95% CI: 1.15 to 2.73, p = 0.001)",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (ROBINS-E: most severe domain judgment is high, in confounding and in selection of participants).",
+ "overall_category": "high",
+ "overall_rationale": "There is strong, unmeasured confounding by indication: decline plausibly prompts prescription, and the authors state they cannot tell which came first. A prevalent-user design adjusts for baseline covariates that may already reflect exposure. Selection depended on post-exposure characteristics (12 or more months of continuous use, repeated visits, non-users never treated). Measurement of exposure, post-exposure interventions, missing data, measurement of the outcome and selection of the reported result each add some concerns. Overall equals the most severe domain: high.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 17,
+  "matched": 12
+ }
+}

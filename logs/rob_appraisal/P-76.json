@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-76",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Sun, Dodge and Mahoor, 'MC-ViViT: Multi-branch Classifier-ViViT to detect Mild Cognitive Impairment in older adults using facial videos', Expert Systems With Applications 238 (2024) 121929, available online 4 October 2023. It classifies MCI against normal cognition from facial videos recorded in the I-CONECT trial and reports a top accuracy of 90.63%. This matches the review's citation (Sun et al. 2023, facial-video analysis)."
+ },
+ "cited_result": "Accuracy of the MC-ViViT deep-learning classifier for MCI versus normal cognition from facial interview videos (I-CONECT), per-theme K-fold cross-validation: best 90.63% (29/32, Crafts Hobbies; F1 93.03%, AUC 0.6042); range 85.37% to 90.63% across four themes (Table 2, p.7).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (accuracy) of a machine-learning classifier for MCI versus normal cognition, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "Using trial data is appropriate. The paper does not say how 4 of 161 conversation themes were chosen, or which of the 186 randomised participants contributed the 32 to 41 videos per theme. Frames were curated by hand from videos of variable quality, and the paper does not say whether curation was blind to diagnosis.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Yes",
+     "quote": "I-CONECT Study is a randomized controlled behavioral intervention trial aimed to enhance cognitive functions by providing frequent social interactions using video chats.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information. Sections 4.1 and 4.2 were searched for criteria for choosing 4 of 161 themes and for which participants' videos entered each theme (32 to 41 of 186). Only the statements quoted were found.",
+     "quote": "In the current study, we selected the following 4 themes: Crafts Hobbies, Day Time TV Shows, Movie Genres, and School Subjects. ... The four themes that are studied in this paper may have videos from 40 participants or less.",
+     "page": "6"
+    },
+    {
+     "question": "1.AI Data source (PROBAST+AI): are the data of consistent quality, and were they curated without reference to the outcome?",
+     "answer": "Probably no. Video quality varies, and frames were deleted by hand, with no statement that this was done blind to diagnosis.",
+     "quote": "due to the lack of a consistent video recording environment, the videos\u2019 qualities vary a lot. [p.9] ... Finally, we browse the kept images and manually delete the wrongly saved ones. [p.6]",
+     "page": "9; 6"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The inputs are video frames that went through the same automated pipeline for everyone. They were recorded during conversations and would be available when the model is used. The manual step removed face-detection errors and did not use diagnosis as an input.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "To address this problem, we decide to drop the first 3 min and the last 2.5 min of each video. ... We used this method to process different themes.",
+     "page": "6"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes. Features are learned automatically from the frames. The manual deletion step targets face-detection errors.",
+     "quote": "Finally, we browse the kept images and manually delete the wrongly saved ones.",
+     "page": "6"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Even a cell phone can help film facial videos.",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "MCI and NC are stated as trial diagnoses, but the paper gives no diagnostic criteria, procedure or timing relative to the recorded sessions. The video features are not part of the diagnosis.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information. Sections 1 and 4.1 were searched for how MCI and NC were diagnosed. Only group counts are given.",
+     "quote": "86 participants are diagnosed as NC, while 100 people are diagnosed as MCI.",
+     "page": "6"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information. The paper names no MCI criteria (for example Petersen or NIA-AA). Sections 1, 4.1 and the Discussion were searched.",
+     "quote": "86 participants are diagnosed as NC, while 100 people are diagnosed as MCI.",
+     "page": "6"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes. The facial video features are derived after the trial diagnosis and are not part of it.",
+     "quote": "86 participants are diagnosed as NC, while 100 people are diagnosed as MCI.",
+     "page": "6"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes. A single trial diagnosis is used for all participants.",
+     "quote": "86 participants are diagnosed as NC, while 100 people are diagnosed as MCI.",
+     "page": "6"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes. The diagnoses were assigned in the trial, and the video features were computed afterwards for this study.",
+     "quote": "86 participants are diagnosed as NC, while 100 people are diagnosed as MCI.",
+     "page": "6"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information. The paper does not say when the diagnosis was made relative to the recorded sessions (over 6 months).",
+     "quote": "The participants had a 30-minute long chat per session with standardized interviewers (conversational staff) 4 times a week over a period of 6 months.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are very few participants: 32 to 41 per theme, with 12 to 21 NC. The test fold also served as the validation set during training, and the tubelet size t was chosen on the same test-fold accuracies, so the cross-validated accuracy is optimistic. Calibration was not assessed. Accuracy of 85% to 91% sits beside AUCs of 0.50 to 0.61, which the authors explain away. There is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No. There are 32 to 41 participants per theme, with 20 to 22 MCI and 12 to 21 NC, for a deep transformer model.",
+     "quote": "MCI/NC 20/12 20/21 21/14 22/17",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes. Raw frames are used as input and nothing is categorised.",
+     "quote": "is an end-to-end model",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no. Only 32 to 41 of 186 randomised participants per theme are analysed, and no reason is given for leaving the rest out.",
+     "quote": "Subject number is the total number of videos in the corresponding theme.",
+     "page": "6"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information. Sections 4.1 and 4.2 were searched for participants without usable video or with unusable frames. Nothing is reported.",
+     "quote": "Searched for: handling of participants or sessions without usable facial video (sections 4.1 and 4.2); none reported.",
+     "page": "6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes. Features are learned end-to-end, with no univariable screening.",
+     "quote": "MC-ViViT extracts spatiotemporal features of videos in one branch and augments representations by the MC module.",
+     "page": "1"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes. Clips are combined per participant by majority vote, and folds are split by participant.",
+     "quote": "we use majority voting to assign a video to MCI or NC based on the number of classified clips.",
+     "page": "4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No. Calibration was not assessed. AUCs of 0.4952 to 0.6122 are close to chance and do not agree with the reported accuracy.",
+     "quote": "The average AUC of all four themes is 0.56.",
+     "page": "7"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No. The test fold was used as the validation set during training.",
+     "quote": "Here, we use the test set as the validation one during the training process.",
+     "page": "6"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information. This is a deep network, so no weights are reported to compare.",
+     "quote": "Searched for: reported model weights or final model specification beyond architecture; not applicable to the end-to-end network.",
+     "page": "4"
+    },
+    {
+     "question": "4.AI-a Is the train/test split at participant level (no data from one person on both sides)?",
+     "answer": "Yes",
+     "quote": "Moreover, videos in each fold belong to different participants.",
+     "page": "6"
+    },
+    {
+     "question": "4.AI-b Are preprocessing, feature selection, augmentation and hyperparameter tuning done within training folds only?",
+     "answer": "No. There is no separate validation set, and hyperparameters such as t were chosen using test-fold results.",
+     "quote": "Hence, we do not use a validation set in our experiments. [p.6] ... Thereby, we choose \ud835\udc61= 4. [p.8]",
+     "page": "6; 8"
+    },
+    {
+     "question": "4.AI-c Is the test set held out from all tuning?",
+     "answer": "No. The accuracies in the t ablation (Table 4) are the same test-fold figures as the headline Table 2, and t = 4 was picked from them.",
+     "quote": "The prediction accuracy on 4 themes with different t size.",
+     "page": "7"
+    },
+    {
+     "question": "4.AI-d Was class imbalance considered and handled?",
+     "answer": "Probably yes. A focal-loss component weights the minority class, and sensitivity and specificity are reported.",
+     "quote": "The HP loss addresses the inter- and intra-class imbalanced issues",
+     "page": "2"
+    },
+    {
+     "question": "4.AI-e Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal only (K-fold cross-validation), partly apparent because the test fold was used for model selection. There is no external validation.",
+     "quote": "K-fold Cross Validation sets one fold as the test set and the resting folds as the training sets every time.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "The participants are trial volunteers aged 75 and over from Portland and Detroit, with unexplained per-theme subsets. It is unclear how well this carries over to community screening."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "unclear",
+   "rationale": "The videos come from semi-structured chats led by trained interviewers on study-provided devices. They are not recordings from a self-administered instrument."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "The outcome, a clinical MCI versus NC diagnosis, matches the review's MCI-versus-control question."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST): Analysis domain high; Participants and Outcome unclear; Predictors low.",
+ "overall_category": "high",
+ "overall_rationale": "The Analysis domain is high risk, so the overall judgement is high. The test fold doubled as the validation set during training and hyperparameters were tuned on the same folds. Samples per theme are tiny, calibration was not assessed, AUC is near chance, and there is no external validation. Participant selection and the outcome definition are not reported.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 17
+ }
+}

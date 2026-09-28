@@ -1,0 +1,208 @@
+{
+ "paper_id": "P-245",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Marzi C, Scheda R, Salvadori E, et al. 'Fractal dimension of the cortical gray matter outweighs other brain MRI features as a predictor of transition to dementia in patients with mild cognitive impairment and leukoaraiosis', Front Hum Neurosci 2023;17:1231513, doi:10.3389/fnhum.2023.1231513. The review cites cortical fractal dimension as a predictor, which matches this study (cortical GM FD was the top SHAP-ranked feature in an XGBoost model of 2-year MCI-to-dementia transition)."
+ },
+ "cited_result": "Cortical grey-matter fractal dimension was the top-ranking feature (median absolute SHAP value) in an XGBoost classifier predicting 2-year transition from MCI to dementia. The cohort was 64 MCI patients with moderate-to-severe leukoaraiosis, 18 of whom converted. Overall model AUC was 0.69 (90% CI 0.53-0.85).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is a predictor ranking (SHAP feature importance) from a machine-learning prognostic classifier, which PROBAST with the AI-specific items covers.",
+ "domains": [
+  {
+   "domain": "1 Participants",
+   "judgment": "unclear",
+   "rationale": "The data come from a prospective multicentre cohort with consecutive identification. However, the 64 analysed participants were 'selected from a single center' out of 138 recruited, and the basis of that selection (for example availability of the full MRI protocol) and any losses are not stated.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort)?",
+     "answer": "Yes",
+     "quote": "In this longitudinal study, we aimed to analyze MRI features that may predict the transition to dementia in patients with MCI and T2 hyperintensities in the cerebral WM, also known as leukoaraiosis.",
+     "page": "1"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "For this study, 64 participants were selected from a single center, and they underwent baseline MRI and annual neuropsychological testing over a 2 year period (Table 1).",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "2 Predictors",
+   "judgment": "low",
+   "rationale": "All predictors were measured at baseline on one 1.5 T scanner under a shared protocol. FD was computed with an automated toolkit, and the predictors are available from standard 3D T1 images at the time of intended use. Blinding of the FreeSurfer editing operator to outcome is not stated, but the baseline acquisition precedes the outcome.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All examinations were performed on a 1.5 T system (Intera, Philips Medical System, Best, The Netherlands)",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Therefore, we applied an automated selection of spatial scales for each brain region, searching for the interval of spatial scales in which the linear regression shows the best fit",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "the FD measurement can be derived from standard, high-resolution 3D T1-weighted images commonly included in clinical MRI protocols.",
+     "page": "10"
+    }
+   ]
+  },
+  {
+   "domain": "3 Outcome",
+   "judgment": "unclear",
+   "rationale": "Dementia used the standard DSM-5 definition with annual assessment over a suitable 2-year interval. The document does not say whether diagnosticians were blind to baseline MRI or neuropsychological predictors, and baseline neuropsychological scores (themselves predictors) may have informed the diagnosis.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "Sixty-four participants with MCI and moderate to severe leukoaraiosis underwent baseline MRI examinations and annual neuropsychological testing over a 2 year period. The diagnosis of dementia was based on established criteria.",
+     "page": "1"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "The definition of change from MCI to dementia, or major neurocognitive disorder, was conducted in accordance with the DSM-5 criteria (Salvadori et al., 2018).",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes for MRI features; no information for neuropsychological predictors",
+     "quote": "Searched for whether baseline MoCA, SDMT, Stroop etc. contributed to the dementia diagnosis; not stated. MRI features are not part of DSM-5 criteria.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The VMCI Tuscany study was approved by the local ethical committees of the three participating centers in the Tuscany region of Italy, namely Florence, Pisa, and Siena, which shared selection criteria and assessment protocols (Poggesi et al., 2012).",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the clinicians assigning dementia status to MRI findings or baseline scores; not reported.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "After 2 years, 18 (28.1%) participants had converted from MCI to dementia.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4 Analysis",
+   "judgment": "high",
+   "rationale": "The validation design is sound: nested bootstrap with subject-level inner CV, preprocessing learned within training data, and test samples held out from tuning. But there are 18 events for 21 candidate features (EPV below 1). Only discrimination was evaluated (no calibration). Mean imputation was used. No single final model is reported. The claim that GM FD 'outweighs' hippocampal volume rests on a Wilcoxon test across 100 non-independent bootstrap repetitions, which overstates precision. There is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "After 2 years, 18 (28.1%) participants had converted from MCI to dementia.",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "Additionally, standardization was performed by rescaling each feature to have a mean of zero and a variance of one.",
+     "page": "5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Patients without transition to dementia (N = 46) ... Patients with transition to dementia (N = 18)",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "During the training phase, missing values in the data were imputed by replacing them with the average value of the corresponding feature.",
+     "page": "5"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "These categories included demographic features (age, sex, and education), adjusted neuropsychological scores (MoCA, TMT-A, ROC-F immediate copy, SDMT, Stroop, VS), visually assessed MRI features (lacunar infarcts, cerebral microbleeds, EPVS basal ganglia, EPVS centrum semiovale), and quantitative MRI features (WM lesion load, GM FD, WM FD, hippocampal volume, GM volume, WM volume, Median MD, Median FA).",
+     "page": "7"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "The stratified sampling ensured that samples possessing a particular characteristic, i.e., the transition to dementia, were selected in the same proportion in the training, validation, and test sets as they existed in the entire dataset.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "For each repetition of the stratified nested validation, the classifier's performance was evaluated on the outer test set using the area under the receiver operating characteristic (ROC) curve (AUC).",
+     "page": "7"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Yes",
+     "quote": "the model with that combination of hyperparameters' values was re-trained on the outer training set and tested on the unseen outer test set, thus preventing any form of peeking effect",
+     "page": "5"
+    },
+    {
+     "question": "4.9 Do predictors and weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "Therefore, we obtained 100 global SHAP values for each feature and calculated the median over the repetitions as the final global feature importance.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Is the split at participant level?",
+     "answer": "Yes",
+     "quote": "The outer training set was then used for hyperparameter optimization through an inner subject-level 5-fold CV.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Were preprocessing, tuning and feature handling done within training data only?",
+     "answer": "Yes",
+     "quote": "These imputation and standardization techniques were exclusively learned during the training phase and subsequently applied in the validation and testing phases",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Probably yes (stratification only)",
+     "quote": "The stratified sampling ensured that samples possessing a particular characteristic, i.e., the transition to dementia, were selected in the same proportion",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is the importance ranking inference appropriate?",
+     "answer": "Probably no",
+     "quote": "The global contribution of the top-ranking predictive feature was compared to the second feature of the ranking through a one-tailed Wilcoxon signed rank with a significance of 0.05.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internally validated only",
+     "quote": "Therefore, to enhance the robustness and generalizability of the results, further validation in independent samples would be beneficial.",
+     "page": "10"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST: participants unclear, predictors low, outcome unclear, analysis high)",
+ "overall_category": "high",
+ "overall_rationale": "The analysis domain is high because 18 events support 21 candidate features, discrimination is only modest (AUC 0.69, 90% CI 0.53-0.85), there is no calibration and no external validation, and the significance test for the top rank uses dependent bootstrap repetitions. A SHAP ranking from such a model is unstable, and subset selection and outcome blinding are unreported.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "MCI with moderate-to-severe leukoaraiosis from one Italian referral centre; not general MCI and not cognitively unimpaired adults."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 19
+ }
+}

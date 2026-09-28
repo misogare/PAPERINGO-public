@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-177",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Stonnington CM, Wu J, Zhang J, et al. 'Improved prediction of imminent progression to clinically significant memory decline using surface multivariate morphometry statistics and sparse coding', J Alzheimers Dis 2021;81(1):209-220 (PMC author manuscript). Cognitively unimpaired adults, prediction of amnestic MCI within about 2 years, 92% accuracy for surface MMS versus 79% (Arizona) for hippocampal volume: matches the cited context."
+ },
+ "cited_result": "Random-forest classification of cognitively unimpaired progressors to amnestic MCI within about 2 years versus matched nonprogressors from baseline hippocampal surface multivariate morphometry statistics with patch-based sparse coding: 92% accuracy in the Arizona cohort (92% ADNI, 90% combined), against 79% (Arizona) for hippocampal volume.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (accuracy) of a machine-learning prognostic classifier for later progression to aMCI, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "High",
+   "rationale": "Prospective cohorts were the data sources, but participants were sampled as extreme groups: progressors with a scan about 2 years before diagnosis against nonprogressors required to stay unimpaired for at least 4 years (and, in Arizona, to have FDG-PET too). People with intermediate outcome timing or shorter follow-up were left out. This inflates discrimination.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Probably yes",
+     "quote": "These study participants were a sub-cohort of 280 drawn from our 23-year longitudinal Arizona APOE cohort study.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "78 CU adults who subsequently progressed to amnestic MCI in approximately 2 years (\u201cprogessors\u201d) and 80 matched adults who remained CU for at least 4 years (\u201cnonprogressors\u201d) [...] had both MRI and FDG PET data while still cognitively unimpaired at the epoch approximately 2 years prior to progression",
+     "page": "1; 2-3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Low",
+   "rationale": "The surface features come from an automated FIRST pipeline run the same way on every T1 scan, with no human reading of the outcome. The MRI would be available in practice. One caveat: the progressors' index scan was chosen by counting back from the known progression date.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All the T1-weighted MR images were automatically segmented by using FIRST",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "With default parameters, we ran the run_first_all command and extracted the segmentation of left and right hippocampi.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "\u201cBaseline\u201d scans were the MRI scans from progressors at 2 years prior to clinically significant decline and the corresponding matched nonprogressors\u2019 MRI scans.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "Low",
+   "rationale": "aMCI was diagnosed with published criteria from a clinical, functional and neuropsychological battery, and the same criteria were applied to ADNI. MRI features are not part of the definition. The surface features were derived later from an existing dataset, so the diagnoses could not have been influenced by them. The two groups have different follow-up windows, but that is a selection problem already scored in domain 1.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Yes",
+     "quote": "The aMCI diagnosis was determined based on published criteria[14, 15] using clinical, functional, and neuropsychological data that included a wide battery of tests with >1 test per domain.",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "The aMCI diagnosis was determined based on published criteria[14, 15]",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "We did not include amyloid or tau biomarkers in defining MCI.",
+     "page": "1"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Study participants were drawn from ADNI data bases utilizing the same criteria to categorize and match progressors and nonprogressors described above for the Arizona cohort.",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "Because the Arizona data set was identical to our prior study,[4] the improved accuracy in this study can be explained by our use of hippocampal surface MMS combined with patch-based sparse coding algorithms.",
+     "page": "7"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "developed clinically significant memory impairment, i.e. aMCI, in approximately 2 years and 60 age, sex, education and APOE-matched nonprogressors who remained cognitively unimpaired for at least 4 years",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "The sample is very small for the feature space: 18 events in Arizona and 78 combined, against 1800 learned features. Only accuracy, sensitivity and specificity are reported, with no AUC, calibration or confidence intervals. The sparse-coding dictionary appears to have been learned on all subjects before cross-validation, which is possible leakage. The reported results look like the best of repeated runs. The model was never trained in one cohort and tested in the other. The matched case-control sampling is ignored. The volume comparator was validated by leave-one-out rather than 5-fold, so the 92% versus 79% comparison is not like for like.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "18 \u201cprogressor\u201d participants developed clinically significant memory impairment [...] obtained 1800-dimensional features for each subject.",
+     "page": "2; 5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "In this study, we chose random forest algorithm.",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Combining the Arizona and ADNI cohorts (78 progressors and 80 nonprogressors) achieved 90% prediction accuracy, 90% sensitivity, and 90% specificity.",
+     "page": "6"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data, excluded scans, segmentation failure or quality control of FIRST outputs: none reported.",
+     "page": "1-10"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Finally, with max-pooling, we chose the maximum values for each feature over 1008 patches and obtained 1800-dimensional features for each subject.",
+     "page": "5"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. matched sampling, clustering, pooled cohorts) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "Nonprogressors and progressors were matched for age, sex, education, and apolipoprotein E4 allele dose.",
+     "page": "1"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "No",
+     "quote": "compute the following performance measures, Sensitivity = C11/(C11 + C12), Specificity = C22/(C21 + C22) and Accuracy",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "and then we started learning the dictionary and sparse codes by Stochastic Coordinate Coding. [...] The results show our method is relatively stable with different patch selection and comparable to the best accuracy results reported in Table 2 and 3.",
+     "page": "5; 8"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for a final model specification or feature importances: none reported; the paper says 'we generally cannot visualize the selected features'.",
+     "page": "9"
+    },
+    {
+     "question": "AI: Was the train/test split at the participant level?",
+     "answer": "Probably yes",
+     "quote": "For the k-fold cross-validation, we randomly shuffled the dataset and split it to k groups.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Were preprocessing, feature learning and tuning done within training folds only (no leakage)?",
+     "answer": "Probably no",
+     "quote": "The dictionary was initialized by randomly selecting patches,[43] which has proved to be an efficient method in practice, and then we started learning the dictionary and sparse codes by Stochastic Coordinate Coding.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "Searched for hyperparameter tuning, number of trees, nested cross-validation or a held-out test set: none reported.",
+     "page": "5-6"
+    },
+    {
+     "question": "AI: Was class imbalance present and handled?",
+     "answer": "Yes",
+     "quote": "Combining the Arizona and ADNI cohorts (78 progressors and 80 nonprogressors)",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internally validated only",
+     "quote": "We were able to replicate our improved results in a completely independent data set from ADNI that differed from the Arizona data set in age, sex, and percentage APOE4 carriers.",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "High",
+   "rationale": "APOE-enriched research cohort and ADNI with matched extreme groups; not a representative cognitively unimpaired population."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "Low",
+   "rationale": "Standard T1 MRI with an automated pipeline."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "Low",
+   "rationale": "Clinical aMCI within about 2 years matches the cited question, though without amyloid or tau confirmation."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1 and 4 are high. Extreme-group sampling (nonprogressors stable for at least 4 years) meets a very small event count (18 in the Arizona cohort from which the cited 92% vs 79% comes) and 1800 features. Validation is internal only, with possible leakage from dictionary learning before cross-validation, apparent reporting of best runs, no calibration or AUC, and a comparator validated by a different cross-validation scheme.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 19
+ }
+}

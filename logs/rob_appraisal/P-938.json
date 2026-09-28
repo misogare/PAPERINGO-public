@@ -1,0 +1,151 @@
+{
+ "paper_id": "P-938",
+ "document_check": {
+  "matches": true,
+  "note": "De Looze C, Dehsarvi A, Crosby L, Vourdanou A, Coen RF, Lawlor BA, Reilly RB. Cognitive and Structural Correlates of Conversational Speech Timing in Mild Cognitive Impairment and Mild-to-Moderate Alzheimer's Disease. Front Aging Neurosci 2021;13:637404. This matches the review's description (conversational speech timing with cognitive and brain-volume correlates)."
+ },
+ "cited_result": "Cross-sectional associations between conversational speech-timing measures and domain-specific cognitive composite scores and regional brain volumes (linear mixed-effects models, final N=32: 10 AD, 10 MCI, 12 HC). Examples: slower speech rate and shorter turns with lower memory and visuoconstructional/executive scores, and with smaller left MTG volume.",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result is a set of associations measured at one time point (speech timing against cognitive scores and MRI volumes). The exploratory classifier is not what the review cites.",
+ "domains": [
+  {
+   "domain": "1. Inclusion criteria clearly defined",
+   "judgment": "Yes",
+   "rationale": "Age, language, literacy and NIA-AA diagnostic criteria are stated. Patient exclusion criteria are not stated.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Yes",
+     "quote": "Participants included in this study were over 50 years of age, fluent in English and literate, to ensure that they could complete all assessments and tasks (N = 80). MCI and mild-to-moderate AD diagnoses were based on NIA-AA criteria (Albert et al., 2011; Sperling et al., 2011).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Subjects and setting described",
+   "judgment": "Yes",
+   "rationale": "The recruitment sites are named and Table 1 describes the final 32 participants. However, 32 of the 80 recruited were analysed, after random selection for MRI and technical or abnormal-score exclusions.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "Twenty older adults with MCI and 20 older adults with mild-to-moderate AD were recruited from the Memory Clinic of the Mercers Institute for Successful Ageing (MISA) in St. James's Hospital, Dublin, Ireland. Forty healthy volunteers (HC) were recruited from the Memory Research Unit in Trinity College Dublin.",
+     "page": "4"
+    },
+    {
+     "question": "How was the analysed subsample selected?",
+     "answer": "Random MRI selection, then exclusions",
+     "quote": "Thirteen participants with MCI, 13 with AD and 16 HC, without prior MRI contraindications, e.g., pacemakers, cerebral aneurysm clips or other, were randomly selected to undergo brain MRI (N = 42).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Exposure measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "The cognitive composites come from standard instruments (RBANS, MoCA) given by an experienced nurse. Regional volumes come from FreeSurfer 6.0 with visual quality control.",
+   "signalling": [
+    {
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "All participants underwent two neuropsychological tests, which were administered and assessed by an experienced nurse.",
+     "page": "4"
+    },
+    {
+     "question": "Were brain volumes measured with a standard pipeline and quality control?",
+     "answer": "Yes",
+     "quote": "All unprocessed input volumes were inspected for evidence of motion artefact. Surface segmentation failures were identified using Freeview.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "4. Objective, standard criteria for the condition",
+   "judgment": "Yes",
+   "rationale": "MCI and AD were diagnosed with NIA-AA criteria.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Yes",
+     "quote": "MCI and mild-to-moderate AD diagnoses were based on NIA-AA criteria (Albert et al., 2011; Sperling et al., 2011).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "5. Confounding factors identified",
+   "judgment": "Yes",
+   "rationale": "Age, sex, education and head size are identified. The interlocutor (the same caregiver partnered patient and matched control) is handled by design, not named as a confounder.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "Estimated Total Intracranial Volume served to control for individual differences in head size in regression analyses.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "6. Strategies to deal with confounding",
+   "judgment": "Yes",
+   "rationale": "All models are adjusted for the identified confounders.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Yes",
+     "quote": "All our models were adjusted for age, sex, and education.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "7. Outcomes measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "Speech timing was derived automatically (VAD, Praat scripts) and checked manually by a speech expert. Inter-rater reliability is not reported.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "The acoustic annotation was manually checked by a speech expert and corrected where needed.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "No",
+   "rationale": "Mixed models suit the repeated trials. But each model has five cognitive predictors (or ROIs) with trial interactions plus three covariates, fitted to 32 participants, with backward/forward stepwise selection. Interaction tests use 11 to 14 degrees of freedom, and 'marginal' results are reported alongside Bonferroni-significant ones. The p-values and coefficients after stepwise selection in so small a sample are unreliable and likely inflated.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "No",
+     "quote": "A stepwise procedure (backward and forward) was employed to assess the significance of the predictors.",
+     "page": "6"
+    },
+    {
+     "question": "Is the sample adequate for the model complexity?",
+     "answer": "No",
+     "quote": "Although our analyses are exploratory due to the sample size under investigation",
+     "page": "4"
+    },
+    {
+     "question": "Were sub-threshold results reported as findings?",
+     "answer": "Yes",
+     "quote": "Significant results (p < 0.006, i.e., after Bonferroni correction) and tendencies or marginally significant results (p < 0.01, i.e., after Bonferroni correction) are reported herein.",
+     "page": "9"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (by the review's JBI rule: item 8, appropriate statistical analysis, is 'No')",
+ "overall_category": "high",
+ "overall_rationale": "Measurement and confounder adjustment are adequate, but the reported associations come from stepwise-selected, heavily parameterised mixed models in 32 participants (a subsample of 80), with marginal findings reported alongside corrected ones. The authors call the analysis exploratory, and the specific correlates the review describes are at high risk of being overstated.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 12,
+  "matched": 10
+ }
+}

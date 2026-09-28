@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-35",
+ "document_check": {
+  "matches": true,
+  "note": "Yang J, Xie Y, Wang T, Pu Y, et al. 'Machine learning-based risk prediction of mild cognitive impairment in patients with chronic heart failure: A model development and validation study', Geriatric Nursing 62 (2025) 145-156. It is a cross-sectional study of 602 hospitalised CHF patients with LR, XGBoost, SVM and ANN models. This matches the cited 'Yang et al. 2025' chronic heart failure context."
+ },
+ "cited_result": "Discrimination of MCI in hospitalised chronic heart failure patients by the XGBoost model (AUC 0.940, 95% CI 0.921 to 0.959), cited as evidence that population-specific MCI prediction is feasible in chronic heart failure.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the development and performance of multivariable machine-learning prediction models for MCI, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "High",
+   "rationale": "The cross-sectional design suits a diagnostic model. However, participants were a convenience sample of inpatients from two hospitals, not consecutive admissions, and one inclusion criterion (asymptomatic Stage B) contradicts the NYHA II to IV requirement. The case mix may therefore not represent the intended population.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes (cross-sectional clinical sample suits a diagnostic model)",
+     "quote": "602 CHF patients were included in this cross-sectional analysis.",
+     "page": "1"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no (convenience sampling; contradictory inclusion criteria)",
+     "quote": "In this study, convenience sampling method was used to select CHF patients hospitalized in two tertiary care hospitals in Mianyang City from December 2023 to May 2024 for cross-sectional survey.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Low",
+   "rationale": "Predictors are defined questionnaires, clinician diagnoses and admission laboratory values, collected the same way for all patients, independently of the blinded outcome assessment, and available on admission.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All laboratory and imaging test results were the \ufb01rst assessment upon admission.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Participants completed paper questionnaires, and investigators provided uniform instructions for any questions.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Dynamic nomogram helps clinicians perform early screening in large populations.",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "Low",
+   "rationale": "MCI was classified with pre-specified, education-adjusted MoCA-B cut-offs after MMSE-based exclusion of dementia. Assessors were trained and blind to predictor data. It is a screening-instrument definition rather than a clinical diagnosis, which is noted under applicability.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes (validated screening cut-offs; no clinical diagnosis)",
+     "quote": "Patients with MMSE scores indicating dementia were excluded, and MCI was assessed based on MoCA-B scores.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "MCI criteria are: illiteracy and primary education < 19, middle school < 22, and university and above < 24.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes (education enters the cut-offs but is not a final predictor)",
+     "quote": "sleep duration per night and gender was optimal (AIC = 654.19).",
+     "page": "6"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All investigators involved in MCI assessment were trained systematically by neurologists with over 10 years of experience",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Yes",
+     "quote": "with blinding to predictor data, data entry, and statistical analysis.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes (same admission; exact timing of cognitive testing not stated)",
+     "quote": "In a quiet setting, the researchers \ufb01rst asked patients about their current improvement in heart failure symptoms.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "There are about 302 events for 38 candidate predictors (EPV about 8). The sample-size calculation assumed a near-maximal R-squared. Age was dichotomised. Predictors were selected by LASSO followed by stepwise regression on the full data, outside any resampling. Hyperparameters were tuned by grid search on the same data after bootstrap validation, with no held-out test set and no external validation. The AUC of 0.940 is therefore likely optimistic.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no (302 MCI for 38 candidate predictors; assumed Cox-Snell R-squared 0.749 is about the maximum attainable at 50% prevalence)",
+     "quote": "The covariate effect sum of squares (csrsquared) was set at 0.749, and candidate predictors were 38.",
+     "page": "2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably no (age dichotomised at 65; sleep duration categorised)",
+     "quote": "Age (65 years vs <65 years)",
+     "page": "7"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes (602 analysed throughout; outlier removal not detailed)",
+     "quote": "In this study, box plots were used to identify and remove outliers.",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "For variable types with < 15 % missing data, MissForest in the mice package was used to impute variables containing missing values in turn with 5 imputations.",
+     "page": "3"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably yes (LASSO then stepwise AIC, not univariable; stepwise selection counted under 4.8)",
+     "quote": "Variables selected by LASSO were then used for backward stepwise LR analysis,43 and variables \ufb01nally included in the model were determined based on Akaike Information Criterion (AIC).",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "No information",
+     "quote": "Searched for adjustment or clustering by hospital (two centres) and other design complexities. None described; classes were balanced (302 vs 300).",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Yes (AUC, calibration plots, Brier score, DCA)",
+     "quote": "In addition, the calibration of the model was detected by calibration plots and Brier scores; the applicability of the model in the clinic was assessed using decision curve analysis (DCA).",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "The discriminative performance of the models was internally validated using 1000 Bootstrap self-sampling. Subsequently, the model was repeatedly tested and adjusted by grid search to determine the parameters of the optimal model.",
+     "page": "3"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "No information for the XGBoost model (parameters only in a supplement not available); the LR nomogram is based on Table 2",
+     "quote": "LR, XGBoost, SVM, and ANN models were optimized through repeated training and grid parameter tuning, and the \ufb01nal parameters were shown in Appendix S1.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Is the split between training and test data at participant level?",
+     "answer": "No split (bootstrap resampling of the full sample; no held-out test set)",
+     "quote": "The discriminative performance of the models was internally validated using 1000 Bootstrap self-sampling.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and hyperparameter tuning done within training folds only?",
+     "answer": "Probably no (feature selection on the full data before validation)",
+     "quote": "The analysis was \ufb01rst performed using the least absolute shrinkage and selection operator (LASSO)42 combined with ten-fold cross validation to prevent over-\ufb01tting and address severe covariance.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "No",
+     "quote": "Subsequently, the model was repeatedly tested and adjusted by grid search to determine the parameters of the optimal model.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Not needed (classes balanced)",
+     "quote": "In the screened population, the incidence of MCI was 50.2 %.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Apparent or bootstrap-internal only; no external validation",
+     "quote": "the predictive model developed in this study is based on a single sample only",
+     "page": "10"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 4 is high: low events per candidate predictor, dichotomised age, data-driven selection outside resampling, tuning on the same data with no held-out or external test set, so the AUC of 0.940 is likely optimistic. Domain 1 is high: convenience sampling of inpatients and contradictory inclusion criteria. Domains 2 and 3 are low.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "Low",
+   "rationale": "Hospitalised CHF patients (NYHA II to IV) in two Chinese tertiary hospitals match the cited chronic heart failure context. Generalisability beyond these sites is untested."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "Low",
+   "rationale": "Admission laboratory values and brief questionnaires are routinely obtainable."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "Some concerns",
+   "rationale": "MCI is defined by MoCA-B screening cut-offs, not by clinical diagnosis."
+  }
+ ],
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 23,
+  "matched": 22
+ }
+}

@@ -1,0 +1,192 @@
+{
+ "paper_id": "P-524",
+ "document_check": {
+  "matches": true,
+  "note": "Song R, Wu X, Liu H, et al. (2022) 'Prediction of Cognitive Progression in Individuals with Mild Cognitive Impairment Using Radiomics as an Improvement of the ATN System: A Five-Year Follow-Up Study', Korean J Radiol 23(1):89-100. ADNI-GO/ADNI-2 data: 147 HC, 197 MCI, 128 AD. The cited five-year progression rates of 11.9% (A-T-N-) and 92.3% (A+T+N+) appear in Table 3."
+ },
+ "cited_result": "Five-year cumulative progression from MCI to AD by baseline ATN profile (Kaplan-Meier, 197 ADNI MCI), ranging from 11.9% in A-T-N- (n=42) to 92.3% in A+T+N+ (n=39).",
+ "tool": "QUIPS",
+ "tool_reason": "The cited result links a baseline biomarker profile (ATN category) with a later clinical outcome (progression to AD) through profile-stratified progression rates. It is a prognostic-factor association, not the discrimination of a prediction model, so QUIPS applies even though the N component is derived from a radiomics score.",
+ "domains": [
+  {
+   "domain": "1. Study participation",
+   "judgment": "Moderate",
+   "rationale": "The source (ADNI-GO/ADNI-2) is named and baseline characteristics are tabulated. But the 'strict inclusion criteria' are not listed beyond complete baseline data, the recruitment period is not stated, and the number of eligible ADNI MCI participants and the reasons for exclusion are not reported.",
+   "signalling": [
+    {
+     "question": "Adequate description of source population and sampling frame?",
+     "answer": "Yes",
+     "quote": "The data used in this study were downloaded from the Alzheimer's Disease Neuroimaging Initiative (ADNI) website (adni.loni.usc.edu). ... In total, 147 HCs, 197 patients with MCI, and 128 patients with AD from ADNI-GO and ADNI-2 were included.",
+     "page": "2"
+    },
+    {
+     "question": "Inclusion and exclusion criteria adequately described?",
+     "answer": "Probably no",
+     "quote": "All participants had complete demographic, clinical, and laboratory characteristics and MR images of T1-weighted imaging at the baseline of data collection. ... Second, due to our strict inclusion criteria, the sample size of this study was not large enough.",
+     "page": "2, 9"
+    },
+    {
+     "question": "Adequate participation of eligible persons (number eligible, number excluded and why)?",
+     "answer": "No information",
+     "quote": "Searched the methods, results and Figure 1 legend for the number of ADNI-GO/ADNI-2 MCI participants screened or excluded; none reported.",
+     "page": "2-5"
+    },
+    {
+     "question": "Baseline study sample described for key characteristics?",
+     "answer": "Yes",
+     "quote": "The baseline characteristics of the participants are shown in Table 1 and Supplementary Table 1.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study attrition",
+   "judgment": "High",
+   "rationale": "Inclusion appears to have required either conversion or at least 60 months of follow-up. Profile-specific progressors sum exactly to the 100 converters, consistent with simple proportions and no censoring. MCI participants lost to follow-up before 60 months without converting therefore seem to have been excluded rather than censored. Their number, reasons and characteristics are not reported, and outcome-dependent completeness of this kind can inflate cumulative progression.",
+   "signalling": [
+    {
+     "question": "Adequate proportion of the study sample has complete outcome data / loss to follow-up reported?",
+     "answer": "No",
+     "quote": "All MCI patients were followed up until AD conversion or for at least 60 months.",
+     "page": "1"
+    },
+    {
+     "question": "Attempts to collect information on participants who dropped out, and reasons for loss described?",
+     "answer": "No information",
+     "quote": "Searched for dropouts, loss to follow-up, censoring or withdrawals; the only follow-up statement is \"The MCI subjects were followed up for 6\u201360 months, with a follow-up interval of 6\u201312 months in the first 3 years and 12 months after 3 years. Among them, 100 patients progressed to dementia, and the remaining 97 patients remained stable during the follow-up period.\"",
+     "page": "2"
+    },
+    {
+     "question": "No important differences between participants who completed and those who did not?",
+     "answer": "No information",
+     "quote": "Searched for any comparison of included vs excluded or lost participants; none reported.",
+     "page": "2-9"
+    }
+   ]
+  },
+  {
+   "domain": "3. Prognostic factor measurement",
+   "judgment": "Moderate",
+   "rationale": "A, T and N are clearly defined and measured the same way for everyone from ADNI protocols. However, all three cut-offs were derived from the data (Youden index for HC vs AD in the same data set), not pre-specified. The N score comes from a new radiomics model whose features were filtered by univariable tests on the full HC/AD data before cross-validation, with outliers replaced by the median, and it has no external validation. The CSF assay is not named.",
+   "signalling": [
+    {
+     "question": "Clear definition of the prognostic factor?",
+     "answer": "Yes",
+     "quote": "A+ referring to A\u03b2 pathology (CSF A\u03b242 levels \u2264 952 pg/mL), T+ referring to pathologic p-tau (CSF p-tau > 24.38 pg/mL), and N+ referring to the neurodegeneration radiomics biomarker (rad-score > 0.4561).",
+     "page": "5"
+    },
+    {
+     "question": "Continuous variables reported or appropriate (pre-specified) cut-points used?",
+     "answer": "Probably no",
+     "quote": "For each CSF biomarker, a receiver operating characteristic (ROC) curve was generated, and Youden's index was calculated to determine the optimal biomarker and cutoff value for discriminating between HCs and AD patients.",
+     "page": "4"
+    },
+    {
+     "question": "Method of measurement adequately valid and reliable?",
+     "answer": "Probably yes (CSF); uncertain (radiomics N)",
+     "quote": "First, abnormal values were replaced by the median. ... Mann-Whitney U tests were first introduced to select features with p < 0.05, as potentially informative features.",
+     "page": "4"
+    },
+    {
+     "question": "Same method and setting of measurement for all participants?",
+     "answer": "Yes",
+     "quote": "MRI data acquisition techniques were standardized across different scanners according to the ADNI protocol ... Clinical and CSF information was directly collected from the ADNI assessment files.",
+     "page": "3, 2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Outcome measurement",
+   "judgment": "Moderate",
+   "rationale": "The follow-up schedule is uniform and the handling of reversion is stated. The criteria and assessors for 'progression to dementia/AD' at follow-up are not described, and blinding of outcome assessors to CSF status is not reported. The radiomics N was derived later by the authors, so it could not have influenced the ADNI diagnoses.",
+   "signalling": [
+    {
+     "question": "Clear definition of the outcome?",
+     "answer": "Probably no",
+     "quote": "Participants who temporarily progressed from MCI to AD and returned to MCI during the entire observation period were not considered to have cognitive progression in this study.",
+     "page": "2"
+    },
+    {
+     "question": "Method of outcome measurement valid and reliable, and same for all?",
+     "answer": "No information",
+     "quote": "Searched for the diagnostic criteria or assessor applied at follow-up conversion (e.g. NINCDS-ADRDA at follow-up, ADNI clinician diagnosis); only the follow-up interval is given: \"a follow-up interval of 6\u201312 months in the first 3 years and 12 months after 3 years.\"",
+     "page": "2"
+    },
+    {
+     "question": "Outcome assessed blind to the prognostic factor?",
+     "answer": "No information",
+     "quote": "Searched for blinding of follow-up diagnosis to CSF results; not reported.",
+     "page": "2-4"
+    }
+   ]
+  },
+  {
+   "domain": "5. Study confounding",
+   "judgment": "Moderate",
+   "rationale": "Important covariates (age, education, APOE \u03b54, baseline MMSE/ADAS-Cog) were measured but not accounted for. Progression by profile is crude Kaplan-Meier. The authors note that A+T+N+ patients had more severe baseline impairment. Because the cited result is a descriptive, unadjusted range rather than an independent effect, the concern is moderate rather than high.",
+   "signalling": [
+    {
+     "question": "Important potential confounders measured?",
+     "answer": "Yes",
+     "quote": "Demographic characteristics included age, sex, education level, alcohol abuse, body mass index, and prevalence of apolipoprotein (APOE) \u03b54.",
+     "page": "2"
+    },
+    {
+     "question": "Important confounders accounted for in design or analysis?",
+     "answer": "No",
+     "quote": "Cognitive progression of MCI patients with different ATN profiles was estimated using the Kaplan-Meier method, and any differences between different ATN profile groups were evaluated with a stratified log-rank test for overall comparisons and pairwise comparisons adjusted by Bonferroni correction.",
+     "page": "4"
+    },
+    {
+     "question": "Evidence that profiles differ on baseline severity?",
+     "answer": "Yes",
+     "quote": "However, in this study, we found that for A+T+N+ patients, the overall cognitive impairment was more serious, and the risk of cognitive progress was higher.",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "6. Statistical analysis and reporting",
+   "judgment": "Moderate",
+   "rationale": "All eight profiles are reported with their N, so selective reporting is not evident. However, the cells are small (13-42), no confidence intervals or hazard ratios are given, the stratification variable of the 'stratified log-rank test' is not stated, and censoring handling is not described. The follow-up statements conflict ('6\u201360 months' vs 'at least 60 months').",
+   "signalling": [
+    {
+     "question": "Sufficient presentation of data to assess adequacy of analysis?",
+     "answer": "Probably no",
+     "quote": "A-T-N- 42 95.2 92.9 88.1 11.9 ... A+T+N+ 39 74.4 15.4 7.7 92.3",
+     "page": "8"
+    },
+    {
+     "question": "Analysis appropriate for the design, with measures of precision?",
+     "answer": "Probably no",
+     "quote": "Searched Table 3, Figure 4 and the results text for confidence intervals, hazard ratios or censoring counts; none reported. Table 3 gives point probabilities only.",
+     "page": "6, 8"
+    },
+    {
+     "question": "No selective reporting of results?",
+     "answer": "Probably yes",
+     "quote": "Table 3. The 1-, 3-, 5-Year Probabilities of No Cognitive Progression and 5-Year Cumulative Progression Rates of 8 ATN Profiles of Mild Cognitive Impairment Patients",
+     "page": "8"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (QUIPS: attrition high; participation, prognostic factor measurement, outcome measurement, confounding and analysis moderate)",
+ "overall_category": "high",
+ "overall_rationale": "Study attrition is high. Inclusion apparently required conversion or at least 60 months of follow-up, and the profile-specific progressors add up exactly to the 100 converters with no censoring, so non-converters lost early were probably excluded, which can inflate progression proportions. Five further domains are moderate: data-derived cut-offs, an unvalidated radiomics N, an undefined conversion outcome, unadjusted crude estimates, and no precision estimates. Under QUIPS one high domain, or three or more moderate domains, gives high.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "Selected research cohort",
+   "rationale": "ADNI participants are highly educated (about 16 years), research volunteers with complete CSF and MRI data. Progression rates in this selected, apparently complete-follow-up subsample may not carry over to clinical MCI populations."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 15,
+  "matched": 10
+ }
+}

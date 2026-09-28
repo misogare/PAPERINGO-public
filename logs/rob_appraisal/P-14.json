@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-14",
+ "document_check": {
+  "matches": true,
+  "note": "Lei B, Zhu Y, Yu S, et al. Multi-scale enhanced graph convolutional network for mild cognitive impairment detection. Pattern Recognition 2023;134:109106 (available online October 2022). The paper is an MSE-GCN that fuses rs-fMRI functional and DTI structural connectivity, applied to 184 ADNI subjects. This matches 'multi-scale graph convolution over functional and structural connectivity (Lei et al. 2022)'."
+ },
+ "cited_result": "The context cites the method rather than a number. The principal result appraised is the leave-one-out cross-validated classification performance of the MSE-GCN on fused DTI and rs-fMRI connectivity: accuracy 85.42% for EMCI vs NC, 93.46% for LMCI vs NC, 92.31% for LMCI vs EMCI and 83.11% for the three-class task (abstract: mean accuracy 90.39%).",
+ "tool": "PROBAST",
+ "tool_reason": "The result is the diagnostic performance of a machine-learning classifier, which is prediction-model performance.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "Participants were sampled by diagnostic group from ADNI (40 LMCI, 77 EMCI, 67 NC), which is a case-control type selection. No inclusion or exclusion criteria are reported, and neither is the way these 184 were chosen from the database.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No",
+     "quote": "40 late mild cognitive impairment (LMCI) patients, 77 early mild cognitive impairment (EMCI) patients, and 67 normal controls (NC) are obtained from the ADNI dataset",
+     "page": "4"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched Section 3.1 and Table 2 for selection criteria, the scan-availability requirement and the sampling method. Only group counts, sex and age are given (Table 2 summarizes the subjects\u2019 information in this study.)",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Connectivity features come from standard automated pipelines applied identically to all subjects, and imaging, age and sex would be available at the time of use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "The R-fMRI data preprocessing procedure is performed using GRETNA [47]. (page 4); The DTI data preprocessing procedure is performed using PANDA with five steps [50]. (page 5)",
+     "page": "4, 5"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Features were derived by automated pipelines: Finally, we obtain the time series of each individual ROI of each subject via the time series over all voxels in particular ROI.",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "both image data (e.g., R-fMRI and DTI) and non-image data (e.g., gender and age) are utilized to construct a sparse graph",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The EMCI, LMCI and NC labels are taken from ADNI with no description of the diagnostic criteria, who applied them, or the timing relative to the scans.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched Sections 3 and 4 for how the diagnostic labels were assigned; the only statement is that subjects 'are obtained from the ADNI dataset'.",
+     "page": "4"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "No diagnostic criteria for EMCI, LMCI or NC are stated anywhere in the text.",
+     "page": "4"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Without the diagnostic criteria it cannot be established whether imaging contributed to the labels.",
+     "page": "4"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for the labelling procedure; not reported.",
+     "page": "4"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnosis to imaging; not reported.",
+     "page": "4"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the interval between the DTI/rs-fMRI scans and the diagnostic visit; not reported.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The sample is very small for a deep graph network (184 subjects, 40 LMCI, 500 features). The random-walk step p and the Chebyshev order K were chosen from the same leave-one-out results that are then reported, and grid search is not described as nested. The transductive population graph contains the held-out subject. No calibration is reported, class imbalance is not addressed, and there is no external validation. The F1 values for the same configuration differ between Table 3 and Table 4.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "For all GCN-based competing methods, we use the same model parameters: 20% dropout rate, 10 \u22125 wt of the l 2 regularization term, 0.002 learning rate, and 500 features. (page 5); Since ADNI is a relatively small dataset (page 5)",
+     "page": "5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Features are continuous LWCC values; age enters edge weights through a threshold: where \u03b2 is the standard deviation of the subjects\u2019 ages.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "We use a total number of 184 subjects in this study.",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing scans, failed preprocessing or missing demographics; nothing reported.",
+     "page": "4, 5"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No information",
+     "quote": "How the '500 features' were chosen, and whether inside the cross-validation folds, is not described.",
+     "page": "5"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "we can obtain \u03bb + 1 feature vectors F composed of LWCC when \u03bb FCs and one SC are obtained from a subject",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "Probably no",
+     "quote": "The performance is evaluated and compared by mean values of classification accuracy ( ACC ), sensitivity ( SEN ), specificity ( SPEC ), and F-score (F1).",
+     "page": "5"
+    },
+    {
+     "question": "4.8 Were overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "model at different scales and select the best scale p from the average cross-validation results. ... Therefore, we set the optimal p as 5. (page 8); Also, grid search is applied to select optimal parameters for all methods. (page 5)",
+     "page": "5, 8"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Network weights are not reported. Table 3 gives F1 84.67 for Ours(F) EMCI vs NC, while Table 4 gives F1 89.98 for LWCC in the same task and configuration.",
+     "page": "7, 9"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Probably yes",
+     "quote": "we use a leave one-out (LOO) cross-validation strategy for all experiments to conduct fair comparisons (one feature vector per subject)",
+     "page": "5"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection and hyperparameter tuning done within the training folds only?",
+     "answer": "No",
+     "quote": "all subjects are represented by using a sparse graph (denoted as an MCI-graph), in which each vertex denotes a subject\u2019s features (page 2). Hyperparameters p and K were chosen from cross-validated results (page 8).",
+     "page": "2, 8"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "No",
+     "quote": "when K = 4, the model obtains the best classification results (the same LOOCV folds supply both the tuning and the reported performance)",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is class imbalance handled?",
+     "answer": "No information",
+     "quote": "Groups of 40 LMCI, 77 EMCI and 67 NC; searched for weighting or resampling and found none.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internal only",
+     "quote": "Four groups of detection experiments and comparison with the state-of-the-art methods have been conducted on ADNI dataset",
+     "page": "10"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 1 (case-control sampling) and domain 4 (very small sample, hyperparameters tuned on the reported cross-validation, no calibration, no external validation) are high risk, and domain 3 is unclear.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Diagnostic groups were selected from a research database, not a clinical or screening population."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "Needs both DTI and rs-fMRI research acquisitions."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The label definitions are not reported."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 14,
+  "matched": 7
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-197",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Odusami M, Maskeliunas R, Damasevicius R. 'An Intelligent System for Early Recognition of Alzheimer's Disease Using Neuroimaging', Sensors 2022;22:740. It reports 98.86% accuracy for five-way AD/CN/EMCI/LMCI/MCI classification: matches the cited context."
+ },
+ "cited_result": "Five-way (AD, CN, EMCI, LMCI, MCI) slice-level classification by concatenated ResNet18/DenseNet121 features with Kaiming initialisation: test accuracy 98.86%.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the accuracy of a deep-learning diagnostic classifier, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "High",
+   "rationale": "This is a small convenience benchmark subset of ADNI sampled by diagnostic class, with 13 to 25 scans per class. No eligibility criteria are given, the SMC class is dropped without explanation, and the paper contradicts itself on the sample (138 scans with 13 MCI, versus 25 subjects per class and 125 in total).",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No",
+     "quote": "There are 138 MRI scans in the dataset, with 25 CN, 25 SMC, 25 EMCI, 25 LMCI, 13 MCI, and 25 AD scans [18].",
+     "page": "5"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "where 25 subjects were used from each of the five categories of AD, MCI, EMCI, LMCI, and NC (a total of 125 subjects)",
+     "page": "18"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Unclear",
+   "rationale": "The paper does not say how the 7509 images were derived from 138 scans: slice selection, plane and preprocessing are all missing. The modality is also ambiguous; the abstract refers to functional brain networks and the acknowledgements to fMRI. Blinding of slice selection to class cannot be judged.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "A total of 7509 processed MRI images were evaluated from the ADNI database",
+     "page": "5"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "Searched for slice selection, plane, preprocessing or registration steps: only 'processed MRI images' and resizing ('The images of the dataset were resized to 224 \u00d7 224 pixels') are reported.",
+     "page": "5; 7"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "The hospital server retrieves the patient\u2019s brain MRI images from the MRI server, which are stored in NIfTI",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "Unclear",
+   "rationale": "Class labels are said to come from cognitive test results, but no criteria are given for CN, EMCI, LMCI, MCI or AD. It is not explained what the 'MCI' class is, as distinct from EMCI and LMCI. The statement that every participant was diagnosed with AD contradicts the CN group.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "The participants are above the age of 71, and each has been diagnosed with Alzheimer\u2019s disease and assigned to one of these phases according to their cognitive test results [18].",
+     "page": "5"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for diagnostic criteria for EMCI, LMCI, MCI, CN and AD: none stated; labels are attributed to reference [18].",
+     "page": "5"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "assigned to one of these phases according to their cognitive test results [18]",
+     "page": "5"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for how labels were assigned across classes: not reported.",
+     "page": "5"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnostic labelling to imaging: not reported.",
+     "page": "5"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the interval between scan and diagnostic assessment: not reported.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "There are very few participants per class. Train and validation images were split at random at image level, so slices from the same scan fall on both sides. The test set is tiny ('samples from one subject', 20 slices per class) and was used to choose the weight initialisation. The analysis ignores clustering of slices within participants, gives no confidence intervals or calibration, and reports figures inconsistently (the Discussion's accuracies differ from Table 4).",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "There are 138 MRI scans in the dataset, with 25 CN, 25 SMC, 25 EMCI, 25 LMCI, 13 MCI, and 25 AD scans [18].",
+     "page": "5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "Both Resnet18 and DenseNet121 were set with weights that had been pre-trained using natural photos from ImageNet [48].",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "There are 138 MRI scans in the dataset, with 25 CN, 25 SMC, 25 EMCI, 25 LMCI, 13 MCI, and 25 AD scans [18].",
+     "page": "5"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data, excluded scans or quality control: none reported.",
+     "page": "5-7"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "The high-level features of the entire connected layers of both Resnet18 and Densenet21 were linked into a single vector to form the classification descriptor",
+     "page": "6"
+    },
+    {
+     "question": "4.6 Were complexities in the data (clustering of slices within participants) accounted for appropriately?",
+     "answer": "No",
+     "quote": "A total of 7509 processed MRI images were evaluated from the ADNI database and the data split utility (random split) in PyTorch divided the data into 5256 and 2253 images for training and validation, respectively.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "Accuracy, precision, and recall were used to assess the performance of the proposed system.",
+     "page": "1"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "Table 4 shows that for the Kaiming weight initialization technique, the three different multiclass methods demonstrate the highest test accuracies. Therefore, Kaiming weight initialization was set for this study.",
+     "page": "16"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "Searched for a released final model or weights: not reported.",
+     "page": "1-18"
+    },
+    {
+     "question": "AI: Was the train/test split at the participant level?",
+     "answer": "No",
+     "quote": "the data split utility (random split) in PyTorch divided the data into 5256 and 2253 images for training and validation",
+     "page": "5"
+    },
+    {
+     "question": "AI: Were preprocessing, augmentation and tuning done within training data only?",
+     "answer": "No information",
+     "quote": "For optimization of the hyperparameters of the deep learning model, we used the AutoKeras 1.0.8 library, which optimizes both the architecture and hyperparameters as guided by the Bayesian optimization",
+     "page": "7"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "No",
+     "quote": "Table 4 shows that for the Kaiming weight initialization technique, the three different multiclass methods demonstrate the highest test accuracies. Therefore, Kaiming weight initialization was set for this study.",
+     "page": "16"
+    },
+    {
+     "question": "AI: Class imbalance and how handled?",
+     "answer": "No information",
+     "quote": "13 MCI, and 25 AD scans [18]",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internal, on a very small test set",
+     "quote": "The confusion matrix was generated using a test dataset taking samples from one subject that was not used for training. [...] Each of the classes consists of 20 slices each.",
+     "page": "10; 8"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "High",
+   "rationale": "A tiny ADNI benchmark subset sampled by diagnostic class; not a clinical population."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "Unclear",
+   "rationale": "Modality (structural MRI or fMRI) and slice selection are not clearly described."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "High",
+   "rationale": "The five-way labels include an undefined 'MCI' class separate from EMCI and LMCI, so the staging target does not correspond to a defined clinical construct."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1 and 4 are high, and domains 2 and 3 are unclear. The design is a small diagnostic-class convenience sample with an image-level random split. The test set is tiny and was also used for model selection. There is no clustering adjustment, uncertainty or calibration, and the reporting is internally inconsistent.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 14,
+  "matched": 13
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-58",
+ "document_check": {
+  "matches": true,
+  "note": "Gosztolya G, Balogh R, Imre N, et al. Cross-lingual detection of mild cognitive impairment based on temporal parameters of spontaneous speech. Computer Speech & Language 69 (2021) 101215. The sample is 33 English-speaking (New York) and 33 Hungarian-speaking (Szeged) participants; Table 4 reports cross-lingual all-feature AUCs of 0.835 and 0.819. This matches the citation."
+ },
+ "cited_result": "Cross-lingual MCI vs healthy control classification from ASR-derived temporal speech parameters (all 15 features, SVM, leave-one-speaker-out nested CV): AUC 0.835 for English speakers with Hungarian ASR (14 MCI/19 HC) and AUC 0.819 for Hungarian speakers with English ASR (13 MCI/20 HC). Classifiers were trained and tested within each language.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUC) of a machine-learning classifier (SVM) separating MCI from healthy controls, which is a diagnostic prediction model question for PROBAST with PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The participants are two clinically labelled groups recruited at memory clinics. No sampling frame (consecutive or random) is described, so the design functions as a diagnostic case-control comparison. Exclusions (depression on the GDS, MMSE < 24, education < 8 years) remove key differential presentations. Of 88 recruited, 22 were excluded.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably no",
+     "quote": "A total of 88 elderly individuals were recruited in parallel from two outpatient clinics.",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "patients scoring above 10 on GDS-30 or above 5 on GDS-15 were excluded from the study.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are temporal parameters extracted automatically by phone-level ASR from recordings made under a standardised telephone protocol. They were recorded after the clinical evaluation and would be available at the time of use. The only manual step was trimming the recordings to the subject's speech.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Each participant\u2019s monologue was recorded by a call recorder application installed on the mobile phone device.",
+     "page": "4"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "This allows the automatic extraction of acoustic markers, which can then be employed to perform automatic subject categorization via machine learning techniques.",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "After the clinical evaluation, spontaneous speech samples were obtained from all the participants.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The paper cites Petersen's criteria, but in the Hungarian sample objective impairment was operationalised by MMSE bands (28-30 HC, 24-27 MCI). That split is crude and prone to misclassification. For the English sample the paper does not say how objective impairment was measured. The outcome was established before the speech recording and does not include the predictors.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "This decision was based on Petersen\u2019s criteria (Petersen et al., 1999) in both language groups, with the Mini-Mental State Examination (MMSE, Folstein et al., 1975) serving as a measure for objective cognitive impairment in the Hungarian-speaking sample (30-28 points: HC; 27-24 points: MCI).",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "This decision was based on Petersen\u2019s criteria (Petersen et al., 1999) in both language groups",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "a brief neuropsychological test battery (including the MMSE, the Clock Drawing Test (CDT, Manos and Wu, 1994), and the Geriatric Depression Scale (GDS))",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "In all other aspects, the inclusion/exclusion criteria were the same at both sites.",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Yes",
+     "quote": "After the clinical evaluation, spontaneous speech samples were obtained from all the participants.",
+     "page": "4"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "After the clinical evaluation, spontaneous speech samples were obtained from all the participants.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Each model has 13 or 14 MCI cases for 15 predictors. Validation is internal only (leave-one-speaker-out), with no confidence intervals and many feature-subset and ASR-language comparisons. It is not stated whether standardisation was done within folds. Nested CV for the hyperparameters and within-training upsampling are appropriate. Cllr well above minCllr shows poor calibration, which the authors acknowledge.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "since we had 14 and 13 MCI subjects for English and Hungarian, respectively",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "The extracted temporal parameter vectors were standardized before using them in the machine learning step.",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "In the end, a total of 66 subjects were eligible for \ufb01nal inclusion.",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched Sections 2 to 4 for missing recordings, failed ASR output or missing test scores; none reported.",
+     "page": "3-6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "hence we calculated 15 temporal parameters overall.",
+     "page": "5"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "To balance class distribution during model training, we employed upsampling by repeating examples (i.e. subjects) belonging to the class with fewer examples",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "Probably yes",
+     "quote": "In our opinion this indicates that the decision threshold between the two speaker categories was usually not set reliably.",
+     "page": "7"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably no",
+     "quote": "having fewer than 100 examples (i.e. subjects) is an extremely small dataset [p. 6]; We calculated these values at Equal Error Rate (EER) [p. 6]",
+     "page": "6"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for SVM weights or a final model specification; none reported.",
+     "page": "6-8"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "we always trained our SVM model on the features extracted from the speech of 32 speakers. In the next step, this machine learning model was evaluated on the remaining speaker.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Yes",
+     "quote": "This way we ensured that we avoided any form of peeking, which would have created a bias in our scores, had we used standard cross-validation.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Are preprocessing steps confined to training folds?",
+     "answer": "No information",
+     "quote": "The extracted temporal parameter vectors were standardized before using them in the machine learning step.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes",
+     "quote": "we employed upsampling by repeating examples (i.e. subjects) belonging to the class with fewer examples",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (leave-one-speaker-out nested CV within each language)",
+     "quote": "Note that, after this step, we still train and evaluate our SVM classi\ufb01ers on subjects belonging only to one language",
+     "page": "8"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The samples are very small, recruited at memory clinics, and exclude depressed participants and those with MMSE < 24."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "The predictors are temporal parameters from 8 kHz telephone recordings extracted by automatic ASR, which is feasible in practice."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "In one sample, MCI is operationalised by MMSE bands."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 1 (clinic-labelled two-group sampling with restrictive exclusions) and domain 4 (about 14 events per model, internal validation only, many comparisons, no confidence intervals) are high, and domain 3 is unclear.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 21
+ }
+}

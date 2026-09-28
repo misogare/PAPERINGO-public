@@ -1,0 +1,127 @@
+{
+ "paper_id": "P-463",
+ "document_check": {
+  "matches": true,
+  "note": "Rodr\u00edguez-Gonz\u00e1lez, N\u00fa\u00f1ez, G\u00f3mez, Hoshi, Shigihara, Hornero and Poza (2024), 'Unveiling the alterations in the frequency-dependent connectivity structure of MEG signals in mild cognitive impairment and Alzheimer\u2019s disease', Biomedical Signal Processing and Control 87:105512. This is a resting-state MEG study (67 HC, 44 MCI, 50 AD) using Connectivity-based Meta-Bands. It reports no band-power analysis, which matches the cited context."
+ },
+ "cited_result": "Cross-sectional comparison of connectivity-based meta-band metrics between MCI and healthy controls from resting-state MEG. The MCI-specific findings are significant HC-MCI differences in Topological Adaptation for matrices assigned to meta-band 1 and in the standard deviation of the Degree of Dominance. No band-power comparison is made.",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result is a comparison of a neurophysiological measure between MCI and control groups at one time point, with no prediction model, index-test accuracy or exposure effect. The review's rule for such results is the JBI analytical cross-sectional checklist. Mapping used: item 3 is the diagnostic classification that defines the groups, item 4 is the criteria for the condition, and item 7 is the MEG outcome metrics.",
+ "domains": [
+  {
+   "domain": "1. Were the criteria for inclusion in the sample clearly defined?",
+   "judgment": "Unclear",
+   "rationale": "Diagnostic criteria and a control exclusion are stated. There are no explicit inclusion or exclusion criteria for patients, no age range and no recruitment pathway.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Unclear",
+     "quote": "The diagnoses were carried out according to the National Institute on Aging and Alzheimer\u2019s Association (NIA-AA) criteria [27,28]. The healthy elderly controls (HC) did not suffer psychiatric disorders nor have a history of neurological alterations.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Were the study subjects and the setting described in detail?",
+   "judgment": "Unclear",
+   "rationale": "Age, sex and MMSE by group, and the two acquisition hospitals, are given. The recruitment source (memory clinic or community), the recruitment period and how many patients at each site were in each group are not.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Unclear",
+     "quote": "The MEG acquisition took place in the Hokuto Hospital and Kumagaya General Hospital using a MEG Vision PQ1160C (Yokogawa Electric, sampling frequency of 1000 Hz) and a RICOH160-1",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Was the exposure (group classification) measured in a valid and reliable way?",
+   "judgment": "Unclear",
+   "rationale": "No detail is given on who made the diagnoses, which neuropsychological assessments were used beyond the MMSE in Table 1, or whether biomarkers were used.",
+   "signalling": [
+    {
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "Searched for the diagnostic work-up, the assessors and the test battery; the only statement is: 'The diagnoses were carried out according to the National Institute on Aging and Alzheimer\u2019s Association (NIA-AA) criteria [27,28].'",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Were objective, standard criteria used for measurement of the condition?",
+   "judgment": "Yes",
+   "rationale": "MCI and AD were diagnosed with the standard NIA-AA criteria.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Yes",
+     "quote": "The diagnoses were carried out according to the National Institute on Aging and Alzheimer\u2019s Association (NIA-AA) criteria [27,28].",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "5. Were confounding factors identified?",
+   "judgment": "Yes",
+   "rationale": "The authors identify and test the age difference between groups, and test sex. Acquisition site (two different MEG systems) is not treated as a confounder.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "The groups displayed differences in age (\ud835\udf122 = 44.48, p-value < 0.001, Kruskal\u2013Wallis test), but not in sex (\ud835\udf122 = 5.16, p-value = 0.076, Chi-squared test).",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "6. Were strategies to deal with confounding factors stated?",
+   "judgment": "No",
+   "rationale": "Mean ages differ markedly (71.0, 77.2 and 81.6 years). Age was handled only by a univariable correlation screen, and the bootstrap group comparisons are unadjusted, with no matching, stratification or covariate adjustment. Acquisition site is not addressed beyond resampling to a common rate.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "No",
+     "quote": "To prevent misinterpretation of results, the impact of age as confounding factor was evaluated in the parameters under study. Results showed no significant impact in any of the parameters under study (p-value > 0.05, Spearman\u2019s correlation test, FDR corrected).",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "7. Were the outcomes measured in a valid and reliable way?",
+   "judgment": "Unclear",
+   "rationale": "The preprocessing and source pipeline are standard and applied identically to all participants. However, three of the five metrics are introduced for the first time with no reliability data. Trial selection was by visual inspection, with no blinding reported. Two different MEG systems were used and are asserted to be equivalent.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "While AS and DoD were already presented in [8], TA, SR and BLZC are introduced here for the first time.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "8. Was appropriate statistical analysis used?",
+   "judgment": "Yes",
+   "rationale": "The analysis is a bootstrap comparison of group means with Benjamini-Hochberg FDR correction, and the reference topology was derived from a separate HC training subset, so HC comparisons use independent HCtest subjects. The missing confounder adjustment is scored under item 6.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "Yes",
+     "quote": "The multiple comparison problem was controlled by applying false discovery rate (FDR) correction using the Benjamini and Hochberg procedure [45,46].",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "overall": "High (JBI analytical cross-sectional; item 6, confounder strategy, answered No)",
+ "overall_category": "high",
+ "overall_rationale": "Under this review's rule, a No on confounder strategy makes the result high risk. The groups differ substantially in age, the comparisons are unadjusted, and acquisition site is not addressed. Inclusion criteria, setting, diagnostic work-up and outcome reliability are also unclear.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 6
+ }
+}

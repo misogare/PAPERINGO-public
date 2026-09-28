@@ -1,0 +1,140 @@
+{
+ "paper_id": "P-542",
+ "document_check": {
+  "matches": true,
+  "note": "Huang J, Jung J-Y, Nam CS (2022) 'Estimating effective connectivity in Alzheimer's disease progression: A dynamic causal modeling study', Front. Hum. Neurosci. 16:1060936. It is a DCM/PEB analysis of ADNI-2 resting-state fMRI in 34 AD, 31 LMCI, 34 EMCI and 31 CN participants (130 in total). The cited counts of connections surviving the 0.99 threshold are reported on page 8."
+ },
+ "cited_result": "At a 0.99 posterior-probability threshold, the group-level PEB connections fell from full connectivity in CN, to two connections in EMCI, one in LMCI and none in AD (n = 130).",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result compares an imaging measure between diagnostic groups at a single time point (a biomarker in MCI stages against controls), which the brief assigns to the JBI analytical cross-sectional checklist.",
+ "domains": [
+  {
+   "domain": "1. Criteria for inclusion clearly defined",
+   "judgment": "Unclear",
+   "rationale": "MMSE, CDR and memory-complaint criteria are listed. However, the EMCI/LMCI boundary is given only as 'more severe', and there is an unusual requirement for stable diagnosis over at least 24 months. The paper does not describe how the 130 were chosen from the eligible ADNI-2 participants.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Unclear",
+     "quote": "(3) LMCI patients: MMSE scores above 24, CDR = 0.5, have subjective memory complaints, abnormal memory functions (more severe compared to EMCIs)",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study subjects and setting described in detail",
+   "judgment": "Unclear",
+   "rationale": "The paper reports only sex, age, MMSE and CDR, and names ADNI-2 as the source. It does not report education, APOE status, sites or acquisition dates. CN participants are older than the patient groups.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Unclear",
+     "quote": "Gender 19F/12M 24F/10M 13F/18M 18F/16M Age 76.65 \u00b1 6.40 72.00 \u00b1 6.56 73.00 \u00b1 8.51 73.34 \u00b1 7.36 0.059",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Exposure (diagnostic stage) measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "Group membership comes from ADNI clinical data (MMSE, CDR), and stage was required to be stable across at least 24 months of visits.",
+   "signalling": [
+    {
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "All subjects remained in their progression stage (stable) throughout the entire data collection visits (spanning for at least 24 months).",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "4. Objective, standard criteria for the condition",
+   "judgment": "Unclear",
+   "rationale": "The criteria paraphrase ADNI categories but leave out the memory cut-offs that separate EMCI from LMCI. The stated AD criterion (MMSE 20 to 26) contradicts the AD group's reported mean MMSE of 19.80, so the criteria may not have been applied as stated.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Unclear",
+     "quote": "(4) AD patients: MMSE scores ranging from 20 to 26, CDR above 0.5 [versus Table 1, page 2: 'MMSE score 29.32 \u00b1 0.93 27.91 \u00b1 1.89 27.54 \u00b1 1.87 19.80 \u00b1 4.02']",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "5. Confounding factors identified",
+   "judgment": "No",
+   "rationale": "The paper identifies no confounders. Age (CN older), sex distribution, education and in-scanner head motion are not discussed as confounders. The only related remark is a limitation about comorbid conditions.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "No",
+     "quote": "We did not include other complications (e.g., depression, Parkinson\u2019s disease) in our current study (Searched for 'confound', 'covariate', 'education' and 'motion' as a group difference: none.)",
+     "page": "11"
+    }
+   ]
+  },
+  {
+   "domain": "6. Strategies to deal with confounding",
+   "judgment": "No",
+   "rationale": "Group-level PEB models and ANOVAs were fitted without covariates, and the design used no matching.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "No",
+     "quote": "The connectivity strengths for each subject group were compared using analysis of variance (ANOVA). Bonferroni correction was applied for multiple comparisons.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "7. Outcome (effective connectivity) measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "The paper uses a standard SPM12 DCM pipeline with literature-based 8 mm spherical ROIs. It does not report motion exclusion thresholds, framewise displacement or group differences in motion, and it does not state the DCM variant (spectral or stochastic). No reliability evidence is given.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "The preprocessing also included regression of head motion parameters, realignment for head movement, and spatial normalization using T1 image uni\ufb01ed segmentation to the Montreal Neurological Institute (MNI) space.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "No",
+   "rationale": "The cited result counts connections that pass a posterior-probability threshold in four separately estimated group PEB models. It is not a between-group contrast within one PEB model and has no covariates. The paper's own ANOVA of subject-level strengths contradicts the pattern: no connection differed significantly between CN and AD. The CN and EMCI group posterior means for the L-PCC self-connection differ by about 0.35 (-3.409E-01 against 7.504E-03), yet the ANOVA mean difference is 0.0002 (p = 1.0). Group n and within-group variance also affect threshold counts.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "No",
+     "quote": "However, the fully connected pattern only persisted for the CN group. Only two connections remained for the EMCI group after thresholding for 0.99 level. One connection (self connection L-PCC \u2192L-PCC) remained for the LMCI group at 0.99 level. No connection was left after thresholding for the AD patient group.",
+     "page": "8"
+    },
+    {
+     "question": "Do the formal group comparisons support the cited pattern?",
+     "answer": "No",
+     "quote": "ANOVA of the e\ufb00ective connection strengths showed only connections L-PCC \u2192L-PCC, R-PCC \u2192R-ACC, and R-ACC \u2192R-ACC were signi\ufb01cantly di\ufb00erent within subject groups. [Table 7, page 10: L-PCC \u2192L-PCC CN vs EMCI mean difference 0.0002, Sig. 1.0000; CN vs AD 0.0275, Sig. 0.4792]",
+     "page": "8"
+    }
+   ]
+  }
+ ],
+ "overall": "High (by the review's JBI rule: items 5, 6 and 8 answered No).",
+ "overall_category": "high",
+ "overall_rationale": "Confounders are neither identified nor handled. The cited 'full to none' pattern comes from thresholding separately fitted group models rather than from a tested group contrast, and the study's own subject-level ANOVA does not support it. By the review's rule, a No on confounder identification, confounder strategy or analysis gives high risk.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some",
+   "rationale": "ADNI-2 participants restricted to those with at least 24 months of stable diagnosis, which removes converters and reverters."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 9,
+  "matched": 7
+ }
+}

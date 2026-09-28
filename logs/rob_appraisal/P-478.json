@@ -1,0 +1,206 @@
+{
+ "paper_id": "P-478",
+ "document_check": {
+  "matches": true,
+  "note": "Delgorio, Hiscox, McIlvain, Kramer, Diano, Twohy, Merritt, McGarry, Schwarb, Daugherty, Ellison, Lanzi, Cohen, Martens and Johnson (2023), 'Hippocampal subfield viscoelasticity in amnestic mild cognitive impairment evaluated with MR elastography', NeuroImage: Clinical 37:103327. It includes 20 aMCI and 63 CN participants. It reports the combined CA1-CA2 stiffness plus volume AUC as 0.85, against 0.71 for stiffness alone and 0.77 for volume alone (page 5), which matches the cited numbers."
+ },
+ "cited_result": "Discrimination of aMCI from cognitively normal adults by logistic-regression classifiers: combined CA1-CA2 shear stiffness plus CA1-CA2 volume AUC 0.85 (95% CI 0.75 to 0.94), against stiffness alone 0.71 and volume alone 0.77. The supporting claim 'regardless of volume' comes from the DG-CA3 volume-group interaction analysis (Analysis 3).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the discrimination (AUC) of multivariable logistic-regression classifiers for aMCI status, including a two-predictor combined model, so PROBAST applies with the PROBAST+AI considerations answered in domains 1 and 4.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "High",
+   "rationale": "This is two-gate, case-control sampling. aMCI volunteers were recruited through adverts aimed at people with memory complaints, and controls were enrolled separately on a phone screen. Phone-screen-positive people not confirmed in person (intermediate cases) were excluded, and only 20 of 61 confirmed aMCI enrolled. The result is spectrum bias, which inflates AUC.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (for a diagnostic model, a cross-sectional cohort rather than case-control sampling)?",
+     "answer": "No",
+     "quote": "aMCI participants were recruited via flyers, social media advertisements, and direct mailings targeting older adults with self-reported memory complaints. ... Older adults determined to be neurotypical and not likely to have aMCI based on their TICS-m scores and self-reported medical history were eligible to enroll in the study in the CN group.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "Individuals who were considered likely aMCI based on phone screen, but were not confirmed during in person screening, were not included in this study.",
+     "page": "2"
+    },
+    {
+     "question": "AI consideration (data source): is the development sample representative of the intended-use population?",
+     "answer": "No",
+     "quote": "182 older adults were considered as likely aMCI based on their phone screen and TICS-m score and invited for in person screening, and subsequently 61 older adults were screened as aMCI.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Low",
+   "rationale": "All participants had the same 3 T MRE and structural protocol, with automated segmentation and inversion. The predictors are available at the point of use. Manual review of segmentations is not stated to be blinded, but the pipeline is largely automated.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Each participant underwent an MRI session on a Siemens 3 T Prisma",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "HCsf regions were segmented from the TSE scan using Automated Segmentation of Hippocampal Subfields (ASHS) ... Segmentations and registrations were manually reviewed at each step for errors.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "a high-resolution MRE scan using a 3D multiband, multishot spiral MRE sequence with 1.25 mm isotropic resolution",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "High",
+   "rationale": "The outcome was determined differently in the two groups. Only aMCI candidates had the in-person neuropsychological battery, CDR and neuropsychologist review. Controls were classified on a telephone TICS-m and self-report, so undetected impairment among controls was not ruled out. The interval between diagnosis and MRI is not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "All screening instruments and the CDR were administered by trained individuals under the supervision of a clinical neuropsychologist on the research team, who also reviewed all cases to confirm aMCI.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "Individuals were classified as having likely aMCI if they met the following criteria: (A) scored > 21 on the MMSE-2 (Moise et al., 2004; Petersen, 2004), but (B) produced at least one score < -1.5 SD of an age-matched normative sample",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "(C) were determined to have a Clinical Dementia Rating (CDR) total score < 1.0 (Morris, 1993) indicating that a reliable informant confirms that the person has some cognitive challenges but not dementia.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No",
+     "quote": "Once potential aMCI participants passed this recruitment stage, they were assessed in person with a neuropsychological test battery",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "Individuals who were confirmed as aMCI during screening may not have enrolled in this study and completed MRI scans for several reasons including contraindications to MRI or lack of interest in the study when enrollment was available.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the interval between screening/diagnosis and the MRI session ('interval', 'days', 'weeks', 'same day'); not reported.",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "There were 20 outcome events across candidate predictors spanning four subfields, three measures, age and sex. Predictors were chosen by significance in Analysis 1 and entered stepwise. Outliers (1.5 x IQR) were removed, including 2 of 20 aMCI for CA1-CA2 volume. No calibration was reported. The AUCs are apparent performance on the development data, with no cross-validation, bootstrap or external validation. Class imbalance (20:63) was not addressed, and the model coefficients are not reported.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "including 20 participants with a diagnosis of aMCI",
+     "page": "2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "We grouped participants based on HCsf volumes into low- and high-volume groups (split at the sample mean) [this dichotomisation applies to Analysis 3 only; the cited AUC model used continuous predictors]",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "10 outliers in the volume data (DG-CA3: 2 CN, 3 aMCI; CA1-CA2: 2 CN, 2 aMCI; SUB: 2 CN, 1 aMCI; ERC: 1 CN)",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "For all models, outliers were detected using a 1.5x interquartile range (IQR) cutoff and were removed accordingly.",
+     "page": "3"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "Models were run only for the significant HCsf MRE regions from Analysis 1",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "To account for subject-specific and group-specific global differences, MRE measures were normalized to global brain \u03bc and \u03be, respectively",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "receiver operating characteristic (ROC) curves were constructed to validate classification performance results from the logistic regressions, which is quantified by the area under the curve (AUC). [searched 'calibration': none]",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "the combined CA1-CA2 \u03bc and volume ROC curve had a larger AUC of 0.85 [95 % CI: 0.75\u20130.94], compared to the individual \u03bc (AUC = 0.71 [95 % CI: 0.56\u20130.85]) and volume (AUC = 0.77 [95 % CI: 0.64\u20130.90]) ROC curves",
+     "page": "5"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for regression coefficients or odds ratios for the combined model, and for whether age and sex entered the ROC predictions; not reported.",
+     "page": "4-5"
+    },
+    {
+     "question": "AI consideration: participant-level train/test split; preprocessing and tuning within training folds only; test set held out",
+     "answer": "No",
+     "quote": "We performed stepwise logistic regression analyses, adjusting for age and sex, to determine if HCsf MRE metrics improved classifier performance beyond HCsf volumes [no split, cross-validation or held-out set; covariate normalisation used sample-wide means and regression weights]",
+     "page": "3-4"
+    },
+    {
+     "question": "AI consideration: class imbalance handled; performance apparent, internal or external",
+     "answer": "No",
+     "quote": "Eighty-three older adults were recruited (age: 60\u201390 years) to participate in this study, including 20 participants with a diagnosis of aMCI [imbalance 20:63 not addressed; performance is apparent]",
+     "page": "2"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "High",
+   "rationale": "The sample is community volunteers recruited through adverts, with controls screened by telephone and no amyloid or tau confirmation. This differs from a clinical population in which the classifier would be used."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "Unclear",
+   "rationale": "The predictors come from a high-resolution research MRE protocol with nonlinear inversion that is not routinely available clinically."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "Unclear",
+   "rationale": "'Likely aMCI' is a clinical-neuropsychological definition without biomarker confirmation, and controls did not receive the same assessment."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Participants (case-control sampling, with intermediate cases excluded), outcome (differential verification between groups) and analysis (20 events, univariable-significance and stepwise selection, outlier removal, no calibration, apparent AUC with no internal or external validation) are each high risk. PROBAST therefore gives high overall risk of bias.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 21,
+  "matched": 14
+ }
+}

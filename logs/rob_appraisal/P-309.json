@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-309",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Guan T, Shang L, Yang P, et al. 'Joint ensemble learning-based risk prediction of Alzheimer's disease among mild cognitive impairment patients', J Prev Alzheimers Dis 12 (2025) 100083, doi:10.1016/j.tjpad.2025.100083. It uses NACC UDS 3.0 data on 3674 people with MCI and 964 progressions to AD, with a median follow-up of 24.5 months. It compares RSF, XGBoost and Cox models on one 7:3 random split. The cited numbers (0.781, 0.781, 0.798; no imaging predictors; median 24.5 months) match the document."
+ },
+ "cited_result": "The validation-set comparison of survival models for MCI-to-AD progression in NACC: C-index 0.781 for the random survival forest, 0.781 for XGBoost and 0.797 for Cox (0.798 for Cox without ApoE \u03b54). The machine-learning models were no better than Cox, and no significance test was reported.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the discrimination (C-index) of multivariable prognostic models, both machine-learning and Cox, for a future outcome, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "low",
+   "rationale": "The data come from a prospective multicentre cohort (NACC ADRCs), with MCI at the first MCI visit as the inception point. This is appropriate for a prognostic model. Exclusions that depend on follow-up and on missing data are assessed under domain 4.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort data)?",
+     "answer": "Yes",
+     "quote": "The NACC follow-up data were collected by Alzheimer's Disease Research Centers (ADRCs) located at medical institutions across the United States.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "subjects with MCI (note: the first visit at which MCI was diagnosed was considered the baseline for this analysis).",
+     "page": "2"
+    },
+    {
+     "question": "AI (data source): is the data source described and suitable for the intended use?",
+     "answer": "Probably yes",
+     "quote": "This study used the UDS version 3.0 from the National Alzheimer's Coordinating Center (NACC)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors come from the standardised UDS 3.0 battery, measured at the baseline MCI visit before the outcome occurred. They are obtainable from history and neuropsychological testing.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "UDS 3.0 aims to address the deficiencies of the previous version and includes updated data on episodic memory, processing speed, executive function, language and constructive ability, etc.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Yes",
+     "quote": "the first visit at which MCI was diagnosed was considered the baseline for this analysis",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "the predictors in this study could be collected from simple medical history or neuropsychological tests.",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "AD was diagnosed clinically by the ADRC investigators. The diagnostic criteria are not given in the main text. The report does not say whether diagnosis was blinded to baseline predictors or whether the predictors (CDR domain scores, MoCA, UDS tests) contributed to the dementia diagnosis. Event status was taken from the most recent visit, and how event time was dated is not described.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "The diagnoses of MCI and AD were determined by the investigator and documented in the database.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "This study defined the survival event outcome as follows: in the most recent follow-up, the subjects were clinically evaluated as having dementia and diagnosed with AD. If AD was still not diagnosed at the last follow-up, the patient was censored.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "I searched for the criteria the ADRC investigators used to diagnose AD dementia and whether CDR, MoCA or UDS test results formed part of them. The main text gives none; it points to 'the footnotes of Supplementary eTable 2'.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The diagnoses of MCI and AD were determined by the investigator and documented in the database.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "I searched for blinding of the diagnosing investigators to baseline neuropsychological or CDR results, and found none reported.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "The median follow-up time was 24.5 months (IQR 13.4\u201340.4).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The event count is adequate (964 events; about 670 in training against 40 candidate predictors), and continuous predictors were kept continuous. The problems are these. Inclusion required at least 2 follow-up visits and excluded people with more than 30% missing predictors, which conditions on post-baseline information. Death and non-AD dementia were censored rather than treated as competing risks, and centre clustering and proportional-hazards checks are not reported. Calibration was not assessed beyond an integrated Brier score (no RSF IBS reported), and no confidence intervals or tests accompany the C-index comparison that the review cites. The report does not say whether predictor selection and imputation were done only in the training set. There is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably yes",
+     "quote": "During the follow-up, a total of 964 subjects progressed from MCI to AD. ... Ultimately, a total of 40 predictors were preliminarily included.",
+     "page": "4; 2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "The risk increased by 0.019 times for every one-year increase in the subject's age (0.011\u20130.027, p value < 0.001).",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "2. subjects with \u2265 2 follow-up visits. The exclusion criterion was as follows: subjects with more than 30 % missing data for preselected predictor variables. Ultimately, 3674 research subjects were included.",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "The missing data were not completely missing at random [ 23 ]; therefore, the random forest imputation method was used for data imputation",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "The 40 preliminarily selected predictors were further selected according to the predictor importance ranking methods of the RSF (Bagging: Random Survival Forest) and XGBoost (Boosting: Extreme Gradient Boosting) evaluation models.",
+     "page": "2"
+    },
+    {
+     "question": "4.6 Were complexities in the data (censoring, competing risks, clustering) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "If AD was still not diagnosed at the last follow-up, the patient was censored.",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately, including calibration?",
+     "answer": "Probably no",
+     "quote": "The survival analysis model used the concordance index (C-index), Integrated Brier Score (IBS) and AUC at different time points to assess the effect.",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably yes",
+     "quote": "The fivefold cross-validation method was used to perform internal cross-validation on the training set.",
+     "page": "3"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Yes",
+     "quote": "Table 2 Multivariate Cox proportional hazard regression model.",
+     "page": "8"
+    },
+    {
+     "question": "AI: Was the train/test split at the participant level?",
+     "answer": "Probably yes",
+     "quote": "The dataset was divided into a training set and a validation set at a 7:3 ratio.",
+     "page": "2"
+    },
+    {
+     "question": "AI: Were imputation and predictor selection done within the training data only (no leakage)?",
+     "answer": "No information",
+     "quote": "I searched for whether random forest imputation, the importance/SHAP ranking and the hierarchical clustering were run on the training set or on all 3674 subjects, and found no statement either way.",
+     "page": "2"
+    },
+    {
+     "question": "AI: Was the validation set held out from all tuning?",
+     "answer": "No information",
+     "quote": "The parameters were set to n_estimators = 1000, min_samples_split = 10, min_samples_leaf = 10, max_depth = 10, and max_features = 'sqrt'.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Class imbalance and its handling",
+     "answer": "Not applicable (time-to-event outcome, about 26% events, no resampling)",
+     "quote": "In the training set, approximately 26 % of the subjects developed AD. In the validation set, approximately 27 % of the subjects developed AD.",
+     "page": "2"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal split-sample only",
+     "quote": "Fourth, the present study lacks external validation. Owing to the lack of suitable external validation data, this study did not perform external validation.",
+     "page": "9"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 4 is high risk. Participants were excluded on the basis of follow-up and missing data, competing risks were ignored, calibration was not assessed, the cited C-index comparison has no uncertainty estimates, and it is unclear whether predictor selection was separated from validation. Domain 3 is unclear because the diagnostic criteria and blinding are not reported. Under PROBAST, any high domain makes the overall rating high. For the cited comparison specifically, the C-index differences (0.781 against 0.797) are point estimates from one split with no interval or test, which is how the review already describes them.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "The sample is NACC ADRC research participants, mostly white and highly educated (median 16 years of schooling). The authors note 'the backgrounds of the subjects who can participate in the cohort may not be representative of all people' (page 9)."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "The predictors include CDR domain ratings and research neuropsychological tests (Craft Story, Benson figure), which need trained raters. That limits the stated primary-care intended use."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "The outcome, clinically diagnosed AD dementia after MCI, matches the review question on MCI-to-AD prognosis."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 18
+ }
+}

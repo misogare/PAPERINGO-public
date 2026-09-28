@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-12",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Grillenberger AJ, Shenton N, Lauritzen M, Benedek K, Puthusserypady S (2026) 'Exploring the potential of explainable deep learning for EEG-based cognitive decline prediction', Computers in Biology and Medicine 204:111538. It uses the public CAUEEG resting-state EEG dataset from Chung-Ang University Hospital (19-channel 10-20 clinical EEG), which matches 'clinical-grade EEG with deep learning on a public single-hospital dataset'."
+ },
+ "cited_result": "Subject-level classification of MCI versus normal controls on the public CAUEEG dataset with the attention deep-learning models under 5-fold cross-validation. Principal result: 1D-Attention test accuracy 70.11% (sensitivity 68.94%, specificity 71.46%); 2D-Attention 68.55%. The paper's separate CESA preclinical task (confidential Danish cohort, 56.08%) is not the result cited.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the diagnostic classification performance of a deep-learning EEG model for MCI versus normal, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "Routinely collected hospital EEG with diagnostic labels is an acceptable source for a diagnostic model. However, the paper reports no inclusion or exclusion criteria, no sampling frame and not even the number of normal and MCI subjects in the task; it refers to the dataset paper instead.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "from 1155 subjects at Chung-Ang University Hospital, collected from August 2012 to March 2020 [10].",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "the classification task CAUEEG-Dementia includes the subjects belonging to the classes normal and MCI. (searched for eligibility, exclusion criteria and the number of subjects per class in the task; none reported)",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are the raw resting-state EEG, recorded to one standard protocol and processed by an automated pipeline, plus age. They were assessed identically for everyone and cannot be influenced by the diagnostic label.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "With an analog bandpass filter of 0.5\u201370 Hz, the signals were recorded with a sampling rate of 200 Hz and preprocessed with common average referencing.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Data Normalization: A z-score normalization with a per-channel mean and standard deviation for each subject is applied to stabilize training and enhance convergence.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "An additional channel representing age is appended to the input.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The paper does not describe how normal and MCI labels were assigned, which criteria were used, whether EEG contributed to the clinical diagnosis (incorporation) or whether labelling was blind to the EEG.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched for diagnostic criteria, clinician or neuropsychological assessment behind the CAUEEG labels; only 'Based on a diverse range of diagnostic la-bels' with no description.",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for a named MCI definition; none reported (deferred to reference [10]).",
+     "page": "2-3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether EEG findings contributed to the hospital diagnosis; not reported.",
+     "page": "1-15"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for the labelling procedure; not described.",
+     "page": "1-15"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnosis to EEG; not reported.",
+     "page": "1-15"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for timing between EEG recording and diagnostic labelling; not reported.",
+     "page": "1-15"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Splitting is at subject level, with visits of one subject kept together, and imbalance is handled. However, the number of MCI and normal subjects is not reported. Architectures were chosen and hyperparameters tuned by grid search and Bayesian optimisation without saying which data were used or whether the test folds were excluded. Where SMOTE was applied is not stated. Calibration is not assessed, discrimination is given mainly as accuracy (the ROC curves cover one split only, with no AUC values), and there is no external validation for the CAUEEG-MCI task.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No information",
+     "quote": "dataset, being approximately ten times smaller than the CAUEEG-MCI dataset, can limit the model\u2019s ability to learn generalizable patterns (the number of MCI and normal subjects in the task is never stated)",
+     "page": "10"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Each sample is cropped in windows of the same size, ensuring identical dimensions for the model input.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for the number of CAUEEG normal/MCI recordings available versus analysed; not reported.",
+     "page": "2-6"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data, artefact-rejected or excluded recordings; not reported.",
+     "page": "1-15"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "processes EEG time series input with dimensions [batch_size = 256, channels = 19, data_points = 2000].",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "The splitting process ensured a balanced class ratio across all folds, with strict separation of data from different visits of the same subject to prevent data leakage.",
+     "page": "4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "No",
+     "quote": "Model performance was assessed using a range of standard evaluation metrics, including training accuracy, test accuracy, sensitivity, specificity, precision, and F1-score. / All figures are created taking one cross validation split.",
+     "page": "4, 15"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "Hyperparameters were optimized using a combination of grid search for initial parameter exploration and Bayesian optimization for final tuning / alternative approaches were explored but ultimately rejected due to their poor classification",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Not applicable",
+     "quote": "1D-Attention 21,474 68.59 70.11 68.94 71.46 73.96 71.34 (Table 1(a); deep network, no reported coefficients)",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level (no person on both sides)?",
+     "answer": "Yes",
+     "quote": "The evaluation followed a subject-based approach to ensure that no data from the same individual was included in both the training and testing sets.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection, augmentation and hyperparameter tuning done within training folds only?",
+     "answer": "No information",
+     "quote": "Augmentation: Class imbalance is addressed by generating syn-thetic minority class samples using the SMOTE technique [14]. (normalisation is per subject and cropping is during training, but whether SMOTE and tuning were restricted to training folds is not stated)",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "Fig. 3. Evaluation of (a) training accuracy, (b) validation accuracy, (c) test accuracy, and (d) validation loss, of the CAUEEG-MCI task using 5-fold CV. (a validation set exists but its derivation and role in tuning are not described)",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was class imbalance present and handled?",
+     "answer": "Yes",
+     "quote": "Augmentation: Class imbalance is addressed by generating syn-thetic minority class samples using the SMOTE technique [14].",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (5-fold cross-validation on CAUEEG)",
+     "quote": "A 5-fold CV approach was employed to ensure representative results and minimize variability.",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "Hospital patients with normal cognition or MCI at one Korean university hospital, a plausible target population for EEG-based MCI detection, although the case mix is not described."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Standard 19-channel resting-state clinical EEG plus age."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The MCI labelling criteria are not reported in this document."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "PROBAST overall is high because Domain 4 (analysis) is high. Calibration is absent and discrimination is reported as accuracy only. Model and hyperparameter selection is not shown to be kept away from the test folds, the number of subjects per class is unreported, and there is no external validation. Domains 1 and 3 are unclear because the paper defers participant selection and label definition entirely to the dataset paper. The subject-level splitting is a real strength. This rating is closer to the boundary than for P-6 or P-9.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 13,
+  "matched": 11
+ }
+}

@@ -1,0 +1,212 @@
+{
+ "paper_id": "P-9",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Poor FF, Dodge HH, Mahoor MH (2024) 'A multimodal cross-transformer-based model to predict mild cognitive impairment using speech, language and vision', Computers in Biology and Medicine 182:109199. It fuses speech, transcribed language and facial video from I-CONECT recorded conversations. The review's figures (fusion AUC 85.3% vs 60.9% for the best unimodal model on one theme) match Table 2 and Table 3 for the Crafts Hobbies theme."
+ },
+ "cited_result": "Crafts Hobbies theme (29 participants, 18 MCI/11 NC): speech+language+vision cross-transformer fusion AUC 85.3 \u00b10.5% against 76.3% for the best bimodal model (language+vision) and 60.9% for the best unimodal model (vision), from 5 repeats of 10-fold cross-validation.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the discrimination (AUC) of machine-learning classifiers for MCI versus NC, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "The data source is a registered trial, which is appropriate. The analysed sample for the cited theme is only the 29 experimental-arm participants who had a recording on that theme. The paper gives no count of participants excluded to reach this subset and no eligibility detail beyond age and the trial's broad population, and the MCI:NC ratio moves from 1:1 in the trial to 18/11.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Yes",
+     "quote": "The data is collected through the Internet-Based Conversational Engagement Clinical Trial (I-CONECT), (link #NCT02871921)",
+     "page": "5"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Out of 186 randomized subjects, 155 participants started either the intervention or control group assignments. The control group received only weekly 10-minute phone check-ins which were not included in our study. / We used four themes of the I-CONECT dataset: Crafts and Hobbies, Movie-Genres, Daytime TV Shows, and School Subjects because these themes had the most participants with video recordings. [Table 1: 'Crafts Hobbies 80.4 18/11 20/9 29'] Searched for eligibility criteria and a count of experimental-arm participants excluded from each theme subset; none reported.",
+     "page": "5, 7"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "All three modalities are extracted automatically, by the same pipeline and pretrained models, from each participant's recorded conversation, so predictor values cannot depend on the diagnosis.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "the first 3 min and the last 2.5 min of each video were dropped to remove the interviewer\u2019s face. ... Conversations were transcribed using Automatic Speech Recognition (ASR) specifically developed for older subjects [49].",
+     "page": "5"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "In this stage, embeddings of three modalities are extracted all using pretrained DL-based models.",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "our model, which utilized ecologically valid recorded conversations, could serve as a cost-effective screening tool for MCI in the future.",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "MCI and NC labels come from the trial, but the paper gives no diagnostic criteria, procedure, timing or blinding.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched for diagnostic criteria (Petersen/NIA-AA, MoCA, MMSE, CDR, consensus, neuropsychological battery). Only: 'socially isolated non-demented (MCI and NC, 1:1 ratio balanced) older subjects aged 75+.'",
+     "page": "5"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for a named MCI definition; none reported.",
+     "page": "1-10"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether conversational, speech or facial data informed the MCI classification; not described.",
+     "page": "1-10"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for the diagnostic procedure; not described.",
+     "page": "1-10"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnosticians; not reported.",
+     "page": "1-10"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for when MCI status was assessed relative to the recorded theme sessions (which spanned up to 12 months); not reported.",
+     "page": "1-10"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The cited theme has 29 participants, with 11 in the minority class, for a multimodal transformer. The 10-fold test folds hold about 3 people each, and the paper does not say how per-fold AUC was computed. The unit of the fold split is not stated. There is no validation set or nested procedure. The comparator 'best unimodal/bimodal' models and the showcased theme (the highest fusion AUC of the four, although called 'arbitrary') were picked from test results. The class imbalance was not addressed, calibration was not reported and there is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Crafts Hobbies 80.4 18/11 20/9 29 (Table 1: age, MCI/NC, female/male, subjects)",
+     "page": "7"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "A fully connected layer is added after the embedding extraction to make the dimensions of the visual feature vector compatible with the linguistic feature vector for the fusion stage.",
+     "page": "5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Crafts Hobbies 84.2 \u00b11.2 85.3 \u00b10.5 80.0 \u00b12.1 93.1 \u00b13.1 74.7 \u00b12.3 29 (Table 2, subjects = 29, as in Table 1)",
+     "page": "8"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing or unusable audio, video or transcript data, failed face detection and exclusions; only a general remark in related work ('there might be some missing information for one modality due to the quality or noise'), with no handling described for this study.",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "In this stage, embeddings of three modalities are extracted all using pretrained DL-based models.",
+     "page": "5"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "For each subject, the sentences related to the interviewee (not the interviewer) are extracted from the respective transcript to have a single text file of the conversation for each subject.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "No",
+     "quote": "The model performances are evaluated with Accuracy, Precision, Recall, and F1-score. Additionally, the Area under the ROC Curve (AUC) is calculated. (no calibration; per-fold AUC with about 3 test participants per fold not explained)",
+     "page": "7"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "to avoid over-fitting, 10-fold cross-validation was used to calculate the model performance. / for an arbitrary theme (for example Crafts Hobbies), the average AUC of multimodal method, bimodal method and unimodal method is 85.3%, 76.3% and 60.9%, respectively.",
+     "page": "7, 9"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Not applicable",
+     "quote": "Lastly, we merged the output of the joint representation of these modalities and passed the final unique representation to the Multi-Layer Perceptron for classification. (deep network, no reported coefficients)",
+     "page": "7"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level (no person on both sides)?",
+     "answer": "No information",
+     "quote": "we randomly create our 10 folds, train our model on each fold, and assess the performance on the corresponding test set. (unit of splitting not stated; one file per subject per modality suggests, but does not confirm, subject-level samples)",
+     "page": "7"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection, augmentation and hyperparameter tuning done within training folds only, and is the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "Finally, we deployed Multi-Layer Perceptron (MLP) where Adam [55] was used as the optimizer (learning rate: 1e-3) (searched for a validation set, tuning procedure or nested cross-validation; none described)",
+     "page": "7"
+    },
+    {
+     "question": "AI: Was class imbalance present and handled?",
+     "answer": "No",
+     "quote": "BCEwithLogits was used as the loss function (unweighted; theme sample 18 MCI/11 NC; searched for weighting, resampling or stratified folds; none reported)",
+     "page": "7"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (repeated 10-fold cross-validation within each theme)",
+     "quote": "Specifically, we repeat our 10-fold validation 5 times independently where for each fold configuration, we randomly create our 10 folds",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "Socially isolated, non-demented US adults aged 75+, restricted to trial participants with a recording on a given theme."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "The model needs a theme-specific webcam conversation with audio, face video and ASR; the interviewer's segments are removed using trial timestamps."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The MCI definition is not reported."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "PROBAST overall is high because Domain 4 (analysis) is high. The cited 85.3% vs 60.9% contrast rests on 29 participants, and cross-validation folds of about 3 people are not described at the participant level. Comparators and the showcased theme were selected on test results, there is no validation set, the imbalance was not handled, calibration is missing and there is no external validation. Domains 1 and 3 are unclear because of theme-based subsetting and an unreported MCI definition.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 14,
+  "matched": 9
+ }
+}

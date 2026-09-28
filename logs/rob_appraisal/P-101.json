@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-101",
+ "document_check": {
+  "matches": true,
+  "note": "Xiao Y, Jia Z, Dong M, et al. Development and validity of computerized neuropsychological assessment devices for screening mild cognitive impairment: ensemble of models with feature space heterogeneity and retrieval practice effect. Journal of Biomedical Informatics 2022;131:104108. Memory Guard (MG) smartphone/tablet app with a Naive Bayes plus AdaBoost classifier: accuracy 93.75%, AUC 0.923, falling to 77.50% and 0.835 without time scores. This matches Xiao et al. 2022b (P-101)."
+ },
+ "cited_result": "Principal cited result: the Memory Guard classifier (Naive Bayes with AdaBoost) on the test sample, with accuracy 93.75%, AUC 0.923, sensitivity 91.67% and specificity 95.45%, separating MoCA-defined 'suspected MCI high-risk' participants from cognitively normal participants. The review also cites the within-study ablation in which removing time scores lowered accuracy to 77.50% and AUC to 0.835.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited results are the discrimination of a machine-learning classifier built from app item and response-time features, and the change in its performance when predictor sets are removed, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1 Participants",
+   "judgment": "low",
+   "rationale": "The sample is a cross-sectional community sample from two sites, with a reported response rate and pre-specified eligibility criteria suited to an app-based screening tool. Participants with MoCA below 16 were not assigned to either group, and their number is not reported.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "A total of 333 participants from two communities in Shanghai and Henan Province were included in the verification process of MG. The response rate was 90.38%.",
+     "page": "6"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "The inclusion criteria for participants were: (1) age 55 years and over; (2) no serious visual or hearing impairment; (3) no mental disorders; (4) no stroke, severe depression, head trauma;(5) able to use smart products;(6) without dementia diagnosed by a physician.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2 Predictors",
+   "judgment": "low",
+   "rationale": "Item scores and response times are recorded automatically by the app, so they are independent of the MoCA result and available at the time of use. Recording on different devices and operating systems could add measurement variation to timing features, but the paper states touch-screen timing was chosen for accuracy.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "MG was presented in the form of an app, and operated through mobile phones or tablets with a touch-screen using the Android or IOS system.",
+     "page": "5"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "This screening instrument features the possibility of self-administration via a smartphone app, provides data automatically recorded both in terms of response and reaction time",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "In this study, each participant completed the assessment by both MG and MoCA.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "3 Outcome",
+   "judgment": "high",
+   "rationale": "The reference standard is a MoCA cut-off (16 to 23 versus above 23), labelled 'suspected MCI high-risk', not a clinical MCI diagnosis. MG items were adapted from MMSE and MoCA and administered within 15 minutes of the MoCA, so the predictors partly reproduce the reference test. Blinding of the MoCA scorers to MG results is not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "Participants with a score of \u226423 and \u226516 were classed as the suspected MCI high-risk group; those with a score of \uff1e23 were classed as the cognitively normal group.",
+     "page": "4-5"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "a score of 23 was used as the threshold from the MoCA test [47] and the recommendation of clinical experts.",
+     "page": "4"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably no",
+     "quote": "items from the traditional paper-based cognitive function evaluation tests were referred to, including MMSE, MoCA, Hasegawa Dementia Scale, Wechsler Adult Intelligence Scale, and Clock Drawing Test.",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "In this study, each participant completed the assessment by both MG and MoCA.",
+     "page": "5"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched Methods 3.2.2 for blinding of MoCA scorers to MG output. The text reports only 'The score of MoCA was assessed by two experts. When there was a discrepancy, further discussion was required to reach a consensus.'",
+     "page": "5"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "The test interval between MoCA and the system of MG was less than 15 min.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "4 Analysis",
+   "judgment": "high",
+   "rationale": "There were 150 high-risk participants in total for a model chosen from 198 candidate items plus time scores and ending with 38 features. The filter step used univariable group tests, and the wrapper step optimised features on accuracy and AUC in the validation phase, so the test data were not held out from selection. Calibration and confidence intervals were not reported. The size of the evaluation set is not reported and the reported accuracies do not fit the stated 7:3 split. There was no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "After three steps of feature engineering, 38 features were included in the model (17 features of option score, 20 features of time score, and 1 demographic feature).",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "The reading time score and the total time score were both reciprocal of the corresponding duration.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched Methods 3.2 and Results 4.2 to 4.3 for the numbers in the training and test samples. The text gives only 'The ratio of training samples to test samples is about 7:3.'",
+     "page": "5"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for handling of incomplete tests or missing items. The text notes only 'if the participant withdrew from the test for personal reasons, time recording would be suspended.'",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "First, we grouped the participants according to the results of AD8 test (G1:AD8 \u22652; G2: AD8\uff1c2) and compared the differences of each group in the scores on the MG basic items.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "data collection for the training sample was from October 2017 to June 2018; data collection for the test sample was from July 2018 to October 2018.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "No",
+     "quote": "Classification accuracy is measured by the number of correct predictions made divided by the total number of predictions made, multiplied by 100 to turn it into a percentage.",
+     "page": "5"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "Phase III involved the validation of measuring instruments. The features incorporated into the modeling process were optimized based on the classification accuracy and area under curve.",
+     "page": "1"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched Methods 3.1.2.3 and Results for a specification of the final Naive Bayes/AdaBoost model (priors, likelihoods, boosting weights); none reported.",
+     "page": "4, 6"
+    },
+    {
+     "question": "AI: Was the training/test split at the participant level (no person's data on both sides)?",
+     "answer": "Probably yes",
+     "quote": "data collection for the training sample was from October 2017 to June 2018; data collection for the test sample was from July 2018 to October 2018.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Were feature selection and tuning done within the training data only (no leakage)?",
+     "answer": "Probably no",
+     "quote": "Finally, the features incorporated into the modeling process were optimized based on the following two aspects: the classification accuracy and area under the curve (AUC). By iterating the model, we obtained 38 features to incorporate into the decision model.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably no",
+     "quote": "The features incorporated into the modeling process were optimized based on the classification accuracy and area under curve.",
+     "page": "1"
+    },
+    {
+     "question": "AI: Was class imbalance considered and handled?",
+     "answer": "Probably yes",
+     "quote": "Sex N (%) Male 41(27.3) 65(35.5) 106 (31.8) Female 109(72.7) 118(64.5) 227 (68.2)",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated (temporal split) only; no external validation",
+     "quote": "The ratio of training samples to test samples is about 7:3.",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "Community adults aged 55 and over who can use smart devices, which matches app-based screening."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "App item and time scores, as the review describes."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "The outcome is a MoCA-defined 'suspected MCI high-risk' group (MoCA 16 to 23), not clinically diagnosed MCI."
+  }
+ ],
+ "overall": "High risk of bias (PROBAST)",
+ "overall_category": "high",
+ "overall_rationale": "The Outcome domain is high risk: the reference is a MoCA cut-off, the MG items were derived from MoCA and MMSE, and scorer blinding is not reported. The Analysis domain is high risk: the events-per-feature ratio is low, selection was univariable, features were optimised on validation performance, calibration was not assessed, the evaluation set size is unreported and there was no external validation. Any high domain makes the overall rating high.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 21,
+  "matched": 17
+ }
+}

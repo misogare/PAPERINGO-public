@@ -1,0 +1,189 @@
+{
+ "paper_id": "P-816",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Wei R, Buss SS, Milde R, et al. 'Automated phenotyping of mild cognitive impairment and Alzheimer's disease and related dementias using electronic health records', International Journal of Medical Informatics 200 (2025) 105917. The model is an L1-regularised logistic regression on TF-IDF n-grams from clinical notes plus ICD codes and dementia medications. AUROC is 0.98, and there are cross-site MGH/BIDMC experiments, which matches the cited description."
+ },
+ "cited_result": "Discrimination of the L1 logistic-regression EHR phenotyping model (notes + ICD + medications) for chart-review MCI/ADRD labels, which the review cites as discrimination >= 0.97 with external validation. Headline AUROC 0.98 (MGH+BIDMC training, MGH testing). Cross-site AUROC 0.98 [0.97-0.98] for BIDMC to MGH, and 0.95 [0.93-0.96] for MGH to BIDMC.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination of a multivariable machine-learning classifier for a diagnostic (phenotyping) target, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1 Participants",
+   "judgment": "high",
+   "rationale": "This is a retrospective two-hospital EHR sample drawn by stratified sampling on predictor status (MED/ICD groups), so it is deliberately enriched. The authors state its performance does not represent an unselected population. Patients with uncertain labels (112 patients, 765 visits) and short notes were excluded. The study period is inconsistent between abstract and methods.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably no",
+     "quote": "\"We randomly selected patients for inclusion using a stratified sampling strategy, to ensure adequate representation of patients with low, medium, and high likelihood of having an MCI/ADRD diagnosis to facilitate subsequent model development.\" [p2]; \"Thus, the performance statistics calculated for our cohort do not represent the performance that we would expect in a general, unselected hospital population.\" [p4]",
+     "page": "2; 4"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "\"Cases marked as \u2018uncertain\u2019 were excluded.\" [p3]; \"A total of 112 cases, accounting for 765 visits, were excluded due to uncertain manual annotations.\" [p4]; \"it may have biased the model toward clearer cases, potentially limiting its applicability to more ambiguous cases in real-world scenarios.\" [p7]",
+     "page": "3; 4; 7"
+    }
+   ]
+  },
+  {
+   "domain": "2 Predictors",
+   "judgment": "high",
+   "rationale": "The predictors are routine EHR entries that will be available when the model is used. However, the window of notes used differs by predictor status: patients with any MED or ICD record contribute only notes after that record, while MED-ICD- patients contribute any note. Predictors are therefore not assessed in the same way for all participants, in a way linked to the outcome.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "\"If a patient had any MED or ICD records, only notes recorded after the first appearance of a MED or ICD record were selected for analysis.\"",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "\"Clinical notes included office visit notes, admission notes, progress notes, discharge notes, and correspondence from all medical specialties in the MGH and BIDMC systems.\"",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "\"This approach holds potential for large-scale MCI/ADRD research utilizing EHR databases.\"",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3 Outcome",
+   "judgment": "high",
+   "rationale": "The reference label is a yes/no judgment by a single neurologist, with no stated diagnostic criteria, made by reading the same notes that form the predictors, using a keyword-highlighting tool. The predictors are therefore part of the outcome determination and were not blinded. The same neurologist also defined the ICD and medication predictor groups. No second rater or agreement statistic is reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "\"A neurologist (MBW) performed manual review of all notes in each of the \u2019MED + ICD+\u2019, \u2019MED + ICD-\u2019, \u2019MED- ICD+\u2019, and \u2019MED-ICD-\u2019 groups, and assigned a final yes/no label regarding MCI/ ADRD status.\"",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "\"The primary outcome was a confirmed diagnosis of MCI or ADRD, determined through manual chart review.\" (searched for diagnostic criteria applied by the reviewer; none stated)",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No",
+     "quote": "\"We used a web-based tool developed in house that highlights keywords within notes from a provided list.\"",
+     "page": "2-3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "\"A neurologist (MBW) performed manual review of all notes in each of the \u2019MED + ICD+\u2019, \u2019MED + ICD-\u2019, \u2019MED- ICD+\u2019, and \u2019MED-ICD-\u2019 groups\"",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No",
+     "quote": "\"ICD groupings and medications were defined a priori by three neurologists (MBW, SZ, SM)\" [p3]; labels assigned by MBW from review of all notes [p3]",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "\"Through manual chart review, we established ground truth labels for the presence or absence of MCI/ADRD diagnoses.\"",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "4 Analysis",
+   "judgment": "high",
+   "rationale": "There are many events, and L1 selection is used rather than univariable screening. Hyperparameters were tuned in the inner loop of nested CV, and class imbalance was handled with class weights. However, the model scores individual notes, patients contribute many visits, and nothing says folds or test sets were split at the patient level, so leakage cannot be excluded. Nothing says TF-IDF was fitted within training folds. Calibration and the classification threshold are not reported. Enrolled and analysed counts do not reconcile. The headline 0.98 comes from combined-site training tested on MGH, which is internal validation. Several table and text values conflict.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Yes",
+     "quote": "\"the final MGH and BIDMC cohort included 1,106 (30.5 %) MCI/ADRD-positive patients from 1,634 visits\"",
+     "page": "4"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "\"For each note, we created a vector representation of the information within the note using TF-IDF weighting [26,27].\"",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "\"The MGH cohort comprised 2,058 patients with 3,332 visits, while the BIDMC cohort included 1,819 patients with 3,479 visits. A total of 112 cases, accounting for 765 visits, were excluded due to uncertain manual annotations. After categorizing patients into four sampling groups, the final counts were as follows: 3,626 patients with 5,612 visits.\" (3,877 minus 112 is 3,765, not 3,626)",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for handling of missing notes, ICD or medication data; only \"All patients included in the study had at least one clinical note.\"",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "\"LASSO regularization [30] was employed in logistic regression for automated feature selection\"",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (clustering; participant-level train/test split) accounted for appropriately?",
+     "answer": "No information",
+     "quote": "\"to assign a probability to each note, representing the likelihood of the clinical note indicating MCI/ADRD.\"; \"we implemented 5-fold stratified nested cross-validation [28].\" (searched for patient-level or grouped splitting; none stated, although, e.g., \"the \u2019MED + ICD+\u2019 group had 133 patients with 1,751 visits\" [p4])",
+     "page": "3; 4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "Probably no",
+     "quote": "\"Model performance was evaluated using accuracy, precision, recall, specificity, F1-score, area under the AUROC [31], and area under the AUPRC [32].\" (no calibration; no threshold stated)",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for (tuning within training folds, held-out test, external validation)?",
+     "answer": "Probably yes",
+     "quote": "\"Hyperparameter optimization for all models was conducted using a grid search [29] approach with internal cross-validation.\"; \"1) MGH as Training Set, BIDMC as Testing Set: We trained the model exclusively with data from MGH and tested the model on data from BIDMC. 2) BIDMC as Training Set, MGH as Testing Set\"",
+     "page": "3"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "\"Fig. 6 shows the coefficient values of the top 15 features selected during model training.\" (full final model not reported in the text)",
+     "page": "5"
+    },
+    {
+     "question": "AI: class imbalance handled",
+     "answer": "Yes",
+     "quote": "\"To deal with imbalanced numbers of positive and negative subsamples, we used class weights inversely proportional to subsample size.\"",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The sample is enriched by stratified MED/ICD sampling, with uncertain cases excluded, and comes from two Boston hospitals."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "The target is chart-documented MCI and ADRD combined (a phenotyping label), not the diagnosis of MCI alone."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "All four PROBAST domains are at high risk. The sample is enriched on predictor status, with uncertain cases excluded. Note selection depends on predictor status. The single-reader reference label is derived from the same notes that serve as predictors. The analysis does not report a patient-level split, calibration or a threshold, and its counts and reported values are inconsistent. Cross-site validation exists, but between two hospitals in one city.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 18,
+  "matched": 12
+ }
+}

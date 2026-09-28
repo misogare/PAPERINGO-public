@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-66",
+ "document_check": {
+  "matches": true,
+  "note": "Zarei et al., Clinical Imaging 115 (2024) 110301, 'Automated classification of Alzheimer's disease, mild cognitive impairment, and cognitively normal patients using 3D convolutional neural network and radiomic features from T1-weighted brain MRI'. ADNI T1 MRI, hippocampus and amygdala radiomics plus 3D CNN, binary classifications including MCI vs CN. Matches the cited study (Zarei et al. 2024) and the cited claim of a hippocampal radiomics classifier separating MCI from controls."
+ },
+ "cited_result": "Radiomics-based classifier (PyRadiomics features from hippocampus and amygdala ROIs, SVM) for MCI vs cognitively normal: ACC 71.6 +/- 3.0 %, AUC 77.8 +/- 4.5 (ROI fusion); hippocampus-only ACC 71.0 +/- 1.9 %, AUC 77.6 +/- 4.4 (Table 6), estimated on randomly split test images from 200 MCI and 200 CN ADNI participants.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (accuracy, AUC) of a machine-learning diagnostic classifier, which PROBAST with the PROBAST+AI considerations covers.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "Diagnostic groups were sampled separately from a research database (case-control-type sampling for a diagnostic model), and no eligibility criteria or diagnostic definitions are reported.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Probably no",
+     "quote": "We randomly selected baseline structural MRI data (T1-weighted images) from a total of 2403 images of 599 different individuals, including 853 images of 200 cases with cognitively normal controls (CN), 602 images of 199 patients with AD, and 948 images of 200 patients with mild cognitive impairment (MCI) at baseline.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched Methods 2.1 and Table 2 for inclusion or exclusion criteria (diagnostic criteria, MMSE/CDR ranges, comorbidity exclusions, scanner or site restrictions); none reported. The only selection statement is 'In this study, we utilized subject data from ADNI with individual Institutional Review Board (IRB) approval'.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Radiomic features were produced by the same automated preprocessing, segmentation and PyRadiomics pipeline for every image, from a single baseline MRI available at the time of intended use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All selected images have undergone four important preprocessing stages.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "A total of 1746 features have been extracted from each ROI region separately obtained from the left and right hippocampus and amygdala.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "In this study, we developed and validated a CNN that can individual diagnosis of AD and MCI patients, based on a single cross-sectional brain structural MRI scan.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The MCI and CN labels are taken from ADNI but the paper gives no diagnostic criteria, no information on how labels were assigned, and nothing on blinding; the timing (baseline MRI with baseline diagnosis) is appropriate.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched for the diagnostic procedure or criteria for AD, MCI and CN (Petersen, NIA-AA, MMSE, CDR, consensus diagnosis); none described. Labels are stated only as '948 images of 200 patients with mild cognitive impairment (MCI) at baseline'.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched Methods for a named outcome definition; none given.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether MRI or hippocampal measures contributed to the diagnostic label; not stated.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for how labels were determined across participants; not stated.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnosis to imaging; not reported.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "We randomly selected baseline structural MRI data (T1-weighted images)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The data were split at image level with about four images per participant, so the same person can sit in training and test sets. About 6,984 radiomic features were used for 400 participants in the MCI vs CN task. No calibration was reported, the SVM grid-search data are unspecified, and validation was internal only.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Radiomic features ((4 \u00d7 1746) \u00d7 1)",
+     "page": "7"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "To input the age values into the network, we normalized them by dividing them by 100.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "Performance of the CNN was validated and tested with three binary classifications: AD vs CN, AD vs MCI, MCI vs CN.",
+     "page": "5"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data, failed segmentation or excluded scans; not mentioned.",
+     "page": "2-5"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "The proposed neural network is designed to use both the extracted radiomic features and features extracted by the convolutional layers during the training process.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "No",
+     "quote": "The initial step involved randomly dividing the MRI data for each classification dataset into a sizeable training and validation set (80 % of images) and a testing set (20 % of images).",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "To evaluate the performance of the CNN, various performance measures were used such as accuracy (ACC) and receiver operating characteristic (ROC) curves with the corresponding area under the ROC curve (AUC).",
+     "page": "5"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "No",
+     "quote": "We obtained data from single-center datasets, which may limit the reproducibility of findings.",
+     "page": "8"
+    },
+    {
+     "question": "4.9 Do predictors and weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "The implementation details and results are accessible from the GitHub repository",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the train/test split at participant level?",
+     "answer": "No",
+     "quote": "randomly dividing the MRI data for each classification dataset into a sizeable training and validation set (80 % of images) and a testing set (20 % of images)",
+     "page": "5"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and hyperparameter tuning confined to training folds?",
+     "answer": "No information",
+     "quote": "a grid search method was employed, which selects the best parameters with the highest classification accuracy by substituting various parameters and presenting the outcomes.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably yes",
+     "quote": "training is performed to determine the network parameters, and validation is carried out to progress towards optimal parameters.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes",
+     "quote": "MCI 200 948 ... CN 200 853 (Table 2: groups of similar size, so imbalance is not a material issue)",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only",
+     "quote": "The performance evaluation method employed in this study was the 5-fold cross-validation method.",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The sample is three selected ADNI diagnostic groups of equal size, not a clinical population in which MCI must be distinguished."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Uses routine T1 MRI with an automated pipeline."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The MCI definition is not reported."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Participants (domain 1) and analysis (domain 4) are high. The groups were sampled by diagnosis without reported eligibility criteria. The random split was at image level, so participants can leak between training and test. The feature-to-participant ratio is very high, there is no calibration and no external validation. Outcome (domain 3) is unclear.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 16,
+  "matched": 13
+ }
+}

@@ -1,0 +1,212 @@
+{
+ "paper_id": "P-884",
+ "document_check": {
+  "matches": true,
+  "note": "Mizuguchi D, Yamamoto T, Omiya Y, et al. (2023) 'Novel Screening Tool Using Non-linguistic Voice Features Derived from Simple Phrases to Detect Mild Cognitive Impairment and Dementia', J Aging Res & Lifestyle 12:72-76. It reports a LightGBM three-class classifier (HE/MCI/AD-D) built on 17 acoustic features from 195 recordings of 150 patients at two Japanese hospitals, with mean one-vs-rest AUC 0.81 (page 4)."
+ },
+ "cited_result": "Three-class (HE, MCI, AD/D) LightGBM classifier on 17 non-linguistic acoustic features, five-fold participant-grouped cross-validation: mean one-vs-rest AUC 0.81, accuracy 66.7% (pages 1 and 4).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination of a multivariable machine-learning diagnostic classifier, so PROBAST applies with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "Domain 1: Participants",
+   "judgment": "Unclear",
+   "rationale": "The study is described as prospective and observational at two hospitals, but the way the 150 patients were selected (consecutive or convenience) is not reported. The healthy-control class is very small and comes from hospital patients.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used, e.g. cohort, RCT or nested case-control study data?",
+     "answer": "Probably yes",
+     "quote": "The participants of this prospective, observational study comprised 150 patients who were aged \u226545 years (up to 95 years) at the time of examination at two hospitals in Japan.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched for sampling method (consecutive/random), recruitment period and participant flow; none reported. Only exclusions given: 'Patients with respiratory infections and patients who did not understand or complete the assessment process were excluded.'",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 2: Predictors",
+   "judgment": "Low",
+   "rationale": "The same two phrases were recorded with one described equipment set-up, and the features were extracted algorithmically. The predictors are available at the point of use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "The patients were asked to utter two simple phrases: 1) sustain the vowel sound (/a/) for more than three seconds and 2) repeat the trisyllable (/pa-ta-ka/) five times or more as quickly as possible.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "After the audio signals were downsampled to 16 kHz with 16-bit resolution, 17 acoustic features were extracted, including the statistics of pitch(F0)-related or voice quality-related features (e.g., shimmer, jitter, and harmonics-to-noise ratio)",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Recording the two phrases (/a/ and /pa-ta-ka/) generally took less than 10 s",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 3: Outcome",
+   "judgment": "High",
+   "rationale": "The outcome classes come from screening-test cut-offs, not clinical diagnosis. Participants took different tests (HDS-R or MMSE). The timing between each of the 195 recordings and the cognitive test is not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "Based on the scores of these assessments, the participants were classified into one of three cognitive groups: healthy control (HE), MCI, and AD/D.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "Inclusion criteria MoCA-J \u226526 | MoCA-J \u226425 HDS-R \u226521 (or MMSE \u226524) | MoCA-J \u226425 HDS-R \u226420 (or MMSE \u226423)",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "we aimed to test the performance of prediction models for detecting cognitive dysfunction using purely acoustic features (i.e., without linguistic features).",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "The participants were requested to complete two or three cognitive assessments: the Japanese version of the Montreal Cognitive Assessment (MoCA-J) (4,24), the revised version of the Hasegawa\u2019s Dementia Scale (HDS-R) (25), and/or the mini-mental state examination (MMSE) (3).",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for a statement on whether cognitive testing was scored independently of the recordings; none. The outcome rule is a fixed score cut-off (Table 1).",
+     "page": "2-3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "In some instances, the patient\u2019s voice was recorded more than twice on different days (2\u20135 times, with an adequate interval between recordings), thereby resulting in 195 sound recordings from 150 participants. (No interval between recording and cognitive assessment is reported.)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 4: Analysis",
+   "judgment": "High",
+   "rationale": "The smallest class has 13 recordings against 17 features. Splits are at participant level and SMOTE is confined to training data. However, the hyperparameters were optimised and then fixed 'to build and evaluate the models', with no statement that tuning was nested in the training folds. There is no calibration, no CI and no external validation, and performance is counted per recording.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "N (% female) 13 (69.2%) 77 (70.1%) 105 (51.4%) (Table 1, HE / MCI / AD/D) / The sample size in the HE group was smaller than that in the other two groups (p2)",
+     "page": "2, 3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "LightGBM (Microsoft, Redmond, WA, USA), a gradient-boosting tree algorithm for classification, was used to create the machine-learning models.",
+     "page": "2"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "thereby resulting in 195 sound recordings from 150 participants. (Table 1 group counts sum to 195.)",
+     "page": "2, 3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing recordings, missing test scores, imputation or exclusions after enrolment; none reported.",
+     "page": "2-4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably yes",
+     "quote": "All 17 acoustic features contributed to the prediction model.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks, sampling of control participants) accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "All data from a given participant were categorized in the test set or training set, but not in both, to eliminate potential bias owing to identity-confounding factors.",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "The average of the three one-vs-rest (OvR) AUCs and the classification accuracy, based on the confusion matrix, were calculated to test the overall performance of the prediction model in discriminating between the three classes.",
+     "page": "2"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "The hyperparameters for the LightGBM classifiers were optimized using the Optuna hyperparameter optimization framework (Preferred Networks, Tokyo, Japan). The following optimized parameters were used to build and evaluate the models",
+     "page": "2"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for the final model specification; only feature importance reported: 'The LightGBM importance (gain) value ranged from 1021 to 2370 (AVE\u00b1SD = 1531\u00b1369)'.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "All data from a given participant were categorized in the test set or training set, but not in both",
+     "page": "2"
+    },
+    {
+     "question": "AI: Are preprocessing, augmentation and tuning confined to training folds, with the test set held out from all tuning?",
+     "answer": "Probably no",
+     "quote": "we applied the synthetic minority oversampling technique (SMOTE) (27) to balance the sample size between targets in the training dataset. (SMOTE confined to training; no statement that Optuna tuning was nested within training folds.)",
+     "page": "2"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes",
+     "quote": "we applied the synthetic minority oversampling technique (SMOTE) (27) to balance the sample size between targets in the training dataset.",
+     "page": "2"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only",
+     "quote": "For the model evaluation, we applied five-fold group cross-validation. (p2) / since our model was built with the data from only two hospitals in Japan, further validation should be conducted (p4)",
+     "page": "2, 4"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 3 is high because the outcome classes come from screening-score cut-offs applied with different tests. Domain 4 is high because of the very small control class, possibly non-nested hyperparameter tuning, no calibration or CIs, recording-level evaluation and no external validation. By PROBAST, any high domain makes the overall rating high.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "High",
+   "rationale": "Hospital patients (mean age about 78 to 82) with only 13 control recordings; not a community screening population."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "Low",
+   "rationale": "The two short phrases can be recorded in the intended screening setting."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "High",
+   "rationale": "MCI and dementia are defined by screening-test cut-offs, not clinical diagnosis. The AD/D class mixes AD, DLB and FTD."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 13
+ }
+}

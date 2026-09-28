@@ -1,0 +1,139 @@
+{
+ "paper_id": "P-255",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Pedersen FN, Lois N, Biessels GJ, Exalto L, Perez-Hoyos S, Simo R, Grauslund J (RECOGNISED study group), 'Testing the use of retinal microvascular parameters to identify individuals with type 2 diabetes with mild cognitive impairment', Primary Care Diabetes 2026, doi:10.1016/j.pcd.2026.02.004. A cross-sectional analysis of 578 eyes of 307 people with type 2 diabetes (182 MCI, 125 normal cognition). This matches the cited Pedersen et al. 2026 study of retinal microvascular geometry and MCI in diabetes."
+ },
+ "cited_result": "Cross-sectional association between retinal microvascular parameters and MCI in type 2 diabetes. The principal result is that arteriolar tortuosity was the only parameter still associated with MCI after multivariable adjustment (OR 1.44, 95% CI 1.08 to 1.92 per SD; 315 eyes).",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result is an association between a measured characteristic (retinal geometry) and MCI status at one time point, framed as an association rather than as model performance, so the JBI analytical cross-sectional checklist applies.",
+ "domains": [
+  {
+   "domain": "1. Criteria for inclusion clearly defined",
+   "judgment": "Yes",
+   "rationale": "The paper states the age, diabetes duration and a detailed list of ophthalmic and systemic exclusions.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Yes",
+     "quote": "Eligible participants were 65 years of age or older with type 2 diabetes with at least five years of diabetes duration. Subjects were excluded if they had history of previous stroke or neurodegenerative disorder, severe non-proliferative diabetic retinopathy (NPDR), diabetic macular edema, proliferative diabetic retinopathy (PDR)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study subjects and setting described in detail",
+   "judgment": "Yes",
+   "rationale": "The paper reports the recruitment period, the sites and countries, and baseline characteristics by cognitive group (Table 1).",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "Between November 2020 and February 2022, participants were recruited from eleven clinical sites throughout seven European countries which included Denmark, Italy, Montenegro, Portugal, Spain, The Netherlands and the United Kingdom.",
+     "page": "2 (Table 1 on page 4)"
+    }
+   ]
+  },
+  {
+   "domain": "3. Exposure measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "Measurement used semi-automated software with a standard protocol, and the single grader was masked to cognitive status. However, intra-grader reliability was reported only for AVR, not for tortuosity, which is the parameter behind the cited result. Six camera models and 30 or 45 degree fields were used across centres. Arteriolar tortuosity could be measured in only 315 of 578 eyes, and the paper gives no reasons for the missing measurements and does not compare eyes with and without them.",
+   "signalling": [
+    {
+     "question": "Was the exposure (retinal microvascular parameters, in particular arteriolar tortuosity) measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "Fundus cameras varied among centers [...] The retinal parameters were assessed with a semiautomatic software, VAMPIRE-Web [...] A single trained grader (FP) performed all measurements, masked from participant's characteristics/clinical data, including cognitive status. To determine the intra-observer reproducibility of the measures obtained, the intra correlation coefficient was determined based on the repeated grading of AVR scores. [...] Arteriolar (n = 315)",
+     "page": "2; 4 (Table 2)"
+    }
+   ]
+  },
+  {
+   "domain": "4. Objective, standard criteria for the condition",
+   "judgment": "Yes",
+   "rationale": "MCI was defined by a 13-test neuropsychological battery scored against local norms, with explicit percentile thresholds and an mCDR limit.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition (MCI)?",
+     "answer": "Yes",
+     "quote": "Based on percentile scores, the individuals were considered to have MCI if the average score of one or more domains were below the 15th percentile or if over half of the tests in a single domain were below the 5th percentile and the mCDR score was < 1.0.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "5. Confounding factors identified",
+   "judgment": "Yes",
+   "rationale": "The paper names a relevant set of vascular, metabolic, demographic and educational confounders.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "we performed univariable and multivariable logistic regression analysis adjusted for age, sex, mean arterial pressure, HbA1c, duration of diabetes, years of education, severity of DR, alcohol consumption (yes/no) and episodes of hypoglycemia (yes/no).",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "6. Strategies to deal with confounding",
+   "judgment": "Yes",
+   "rationale": "The paper reports multivariable adjustment for the identified confounders.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Yes",
+     "quote": "Results are reported as OR (per SD increment) [...] aadjusted for age, sex, diabetes duration, severity of diabetic retinopathy, HbA1c, years of education, mean arterial pressure, alcohol consumption and hypoglycemic events during the past six months.",
+     "page": "3; 4 (Table 2 footnote)"
+    }
+   ]
+  },
+  {
+   "domain": "7. Outcome measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "MCI status came from a detailed battery and the mCDR, scored against local norms. Retinal grading was done separately at a central site, masked to cognition. The paper does not say whether neuropsychological testers were masked to retinal data, but the retinal parameters were derived later, so this is unlikely to matter. mCDR was missing for 10 participants, and the paper does not say how they were classified.",
+   "signalling": [
+    {
+     "question": "Were the outcomes (MCI status) measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "The assessment of MCI was based on a detailed NTB and the modified Clinical Dementia Rating (mCDR). The NTB included 13 tests covering five cognitive domains [...] We evaluated test scores according to local norms and reference data.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "Yes",
+   "rationale": "The model is a logistic regression with cluster-robust standard errors for two eyes per person, plus one-eye sensitivity analyses. There are residual concerns. The tortuosity analysis is complete-case (315 eyes). Eight parameters were tested without multiplicity adjustment, which the authors acknowledge. The reported direction is inconsistent: an OR of 1.44 'per SD increment' is described as 'the less the tortuosity the higher the risk'.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "Yes",
+     "quote": "As both eyes of each participant were included in the analysis, cluster robust standard errors were applied. To test the robustness of our findings, we performed additional sensitivity analysis using only the eye with the highest severity of DR and afterwards the eye with the lowest severity of DR. [...] there is a potential for spurious associations due to multiple testing.",
+     "page": "3; 5"
+    }
+   ]
+  }
+ ],
+ "overall": "Some concerns (JBI analytical cross-sectional: 7 of 8 items Yes; exposure measurement Unclear)",
+ "overall_category": "some_concerns",
+ "overall_rationale": "The eligibility criteria, MCI definition, confounder adjustment and clustered analysis are all sound, and none of the four key items (5 to 8) is No. The rating is not low because of the exposure behind the cited result. Reliability was shown only for AVR, cameras and fields varied across sites, and tortuosity was missing for about 45% of eyes with no explanation. Uncorrected multiple testing across eight parameters (acknowledged by the authors) and the inconsistent OR direction add further uncertainty to the single surviving association.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "People aged 65 or over with type 2 diabetes for at least five years, excluding those with severe or proliferative retinopathy, macular oedema, HbA1c > 10% or depression. The authors themselves note that the strict criteria limit extrapolation to people with type 2 diabetes in general."
+  },
+  {
+   "domain": "Exposure and outcome",
+   "concern": "low",
+   "rationale": "The exposure is retinal geometry from colour fundus photographs, and MCI is defined by a full neuropsychological battery. Both match the review's framing of a cross-sectional MCI association in diabetes."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 4
+ }
+}

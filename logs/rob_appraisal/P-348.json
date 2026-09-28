@@ -1,0 +1,212 @@
+{
+ "paper_id": "P-348",
+ "document_check": {
+  "matches": true,
+  "note": "Thorvaldsson V, Svensson J, Basic E, Jonsson M, Kettunen P, Wallin A (2026). Machine learning prediction of dementia conversion in mild cognitive impairment: a two- to six-year follow-up study. J Int Neuropsychol Soc 32:11-23. It uses the Gothenburg MCI Study with 11 ML algorithms, fitted with and without cognitive delta scores. This matches the citing sentences."
+ },
+ "cited_result": "Principal cited result: the comparison of discrimination (AUC-ROC) between the 11 classifiers built on baseline predictors only (Table 4) and the same classifiers with T2-minus-T1 cognitive delta scores added (Table 5). AUC was higher with delta scores in 8 of 11 algorithms: LDA 0.89 to 0.92, KNN 0.89 to 0.91, LASSO 0.90 to 0.94, ridge 0.92 to 0.94, elastic net 0.91 to 0.94, random forest 0.91 to 0.92, gradient boosting 0.89 to 0.93, SVM 0.91 to 0.93. It was lower for logistic regression (0.85 to 0.79, model did not converge), naive Bayes (0.91 to 0.87) and decision tree (0.82 to 0.77).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares how well multivariable machine-learning classifiers predict prognosis (MCI-to-dementia conversion), so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "The data source is appropriate: a longitudinal memory-clinic cohort. However, the paper does not report inclusion and exclusion criteria beyond GDS stage, or how people without follow-up were handled. There is also a high applicability concern: 40% of the sample were GDS stage 2 (subjective cognitive impairment), not MCI.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort)?",
+     "answer": "Yes",
+     "quote": "Data for the present study were drawn from the Gothenburg MCI Study (Wallin et al., 2016), a longitudinal investigation of individuals with MCI.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched for inclusion/exclusion criteria, loss to follow-up, and whether attendance at T2 was required (the delta models need T2 data). The only criterion stated is: \"In the present study, only stages 2 and 3 were included: stage 2 reflects subjective cognitive impairment, and stage 3 corresponds to MCI.\" Table 2 lists \"Stage 2. Subjective cognitive impairment 138 (40)\" (page 3).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "high",
+   "rationale": "The delta scores are T2 minus T1, and the T2 test session is the same 2-year visit at which most conversions were diagnosed (Table 1). So for the delta-score models, the added predictors would not be available when the model is meant to be used (baseline), and for most converters they are measured at the same time as the outcome. Baseline predictors were assessed in a standardised way.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Six trained psychologists administered the tests using a standardized procedure.",
+     "page": "4"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes for baseline predictors; No information for the T2 component of the delta scores",
+     "quote": "Baseline data were collected before the outcome. For T2 testing, searched for blinding of testers to clinical status at the follow-up visit and found none. The T2 component is defined as: \"using delta scores calculated as the difference between follow-up (T2) and baseline (T1) cognitive test results.\"",
+     "page": "7"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "No (delta-score models)",
+     "quote": "\"we added the differences score (T2-T1) from the cognitive assessments to our model, reflecting change in cognitive performance between the baseline and two-year follow-up assessment.\" The stated target is \"predicting dementia conversion occurring between two to six years following the baseline assessment.\" Table 1 lists most diagnoses in the \"T2 (2 years)\" column (e.g. \"Alzheimer\u00b4s disease (AD) 29 7 2\").",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The dementia diagnosis used standard criteria, and the authors state that predictor information was not used in diagnosis. But for the delta-score models there is effectively no gap between the T2 predictor and the T2 outcome for most converters, and follow-up length varied from 2 to 6 years.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Yes",
+     "quote": "was diagnosed according to the Diagnostic and Statistical Manual of Mental Disorders criteria for dementia, Third Edition, Revised (DSM-III-R; American Psychiatric Association, 1987), in conjunction with the NINCDS-ADRDA criteria for probable AD (McKhann et al., 1984).",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "Less common dementia subtypes were diagnosed using established consensus criteria",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "Importantly, information from cognitive assessments or other variables later used as predictors in the ML models was not incorporated into the clinical diagnostic decision-making process.",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "we cannot entirely exclude the possibility of minor variations in diagnostic procedures, which could introduce subtle inconsistencies in case classification.",
+     "page": "10"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "We further reiterate that none of the baseline predictors used in the ML classification was incorporated into the diagnostic decision-making.",
+     "page": "5"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No (delta-score models); Yes for baseline-only models",
+     "quote": "\"Baseline assessments began in the year 2000, with subsequent waves of data collection initiated in 2002, 2004, and 2006.\" The delta scores use the T2 (two-year) assessment, which is the visit listed in Table 1 for most diagnoses.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 84 events against 54 candidate predictors, plus the added delta scores, which is about 1.6 events per candidate predictor. A binary outcome was used over variable 2-6 year follow-up, with no handling of censoring. Nested LOOCV with tuning and imputation inside the folds is a strength. There was no external validation, class imbalance was not addressed, no formal test compared AUCs between the delta and baseline-only models, and final model weights are not reported.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "The principal limitation is the small sample size (N = 347; converters n = 84), which increases the risk of overfitting and high variance",
+     "page": "10"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Where required, predictors were centered and scaled prior to model fitting.",
+     "page": "5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "(MCI; N = 347; prevalence = 84 cases, 24%)",
+     "page": "6"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Imputation was performed within each LOOCV training fold only, such that the imputation model was estimated using the training data and then applied to the held-out observation, thereby preventing data leakage.",
+     "page": "5"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "The LASSO can reduce some coefficients to zero, effectively performing variable selection",
+     "page": "7"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "For the ML prediction models, the dementia outcome variable was coded as binary. Individuals who received any dementia diagnosis were coded as one, and those who remained stable were coded as zero.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Yes",
+     "quote": "Model calibration was additionally assessed using the calibration intercept and slope",
+     "page": "5"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably yes (internal validation only)",
+     "quote": "Within each training set, we performed internal resampling to tune hyperparameters, ensuring that the held-out test case was never used during model selection.",
+     "page": "5"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for final model coefficients or the fitted model. Only standardised variable-importance plots are reported (Figures 2 and 4).",
+     "page": "7-9"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level?",
+     "answer": "Yes",
+     "quote": "In this approach, each observation serves once as the test set, while the remaining n-1 cases form the training set.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection and tuning done within training folds only?",
+     "answer": "Probably yes",
+     "quote": "Data preprocessing, including standardization and missing data imputation, was conducted within the caret framework.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Class imbalance and its handling?",
+     "answer": "Not handled",
+     "quote": "This discrepancy is partly driven by class imbalance, with converters comprising only 24% of our sample.",
+     "page": "8"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (nested LOOCV); no external validation",
+     "quote": "Replication in larger, preferable multi-site, cohorts is warranted to obtain more precise and generalizable performance estimates.",
+     "page": "10"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The cohort mixes GDS stage 2 (subjective cognitive impairment, 138/347, 40%) with GDS stage 3 MCI. The review cites it as an MCI study."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "high",
+   "rationale": "Delta-score models need a two-year follow-up test session, which does not match a baseline prediction setting."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "All-cause dementia by standard clinical criteria matches the conversion question."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 2, 3 and 4 are high. The delta-score arm uses T2 cognitive data gathered at the visit where most conversions were diagnosed, so predictors and outcome coincide in time. Events per candidate predictor are very low, censoring from variable follow-up is ignored, and there is no external validation. The between-model AUC gains were not formally tested and several are small with overlapping CIs.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 20
+ }
+}

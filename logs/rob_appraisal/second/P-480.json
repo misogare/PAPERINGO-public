@@ -1,0 +1,127 @@
+{
+ "paper_id": "P-480",
+ "document_check": {
+  "matches": true,
+  "note": "Lassi M, Fabbiani C, Mazzeo S, et al. 'Degradation of EEG microstates patterns in subjective cognitive decline and mild cognitive impairment: Early biomarkers along the Alzheimer's Disease continuum?' NeuroImage: Clinical 38 (2023) 103407. A cross-sectional EEG comparison of SCD (n = 57), MCI (n = 46) and HC (n = 19) from the PREVIEW cohort, Florence. This matches the review's 'one EEG cohort (Lassi et al. 2023, P-480)'."
+ },
+ "cited_result": "The between-group comparison of resting-state EEG features across HC, SCD and MCI. MCI differed in microstate-sequence temporal structure (microstate C duration and coverage, transition probabilities, Lempel-Ziv complexity), while spectral power and network connectivity were reported as largely similar across groups.",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result compares EEG measures between diagnostic groups at a single time point, which is a cross-sectional group comparison, not a prediction model or single-test accuracy estimate.",
+ "domains": [
+  {
+   "domain": "Item 1: Criteria for inclusion clearly defined",
+   "judgment": "Yes",
+   "rationale": "Explicit inclusion and exclusion criteria are given for patients, with additional criteria for controls.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Yes",
+     "quote": "The following inclusion criteria were adopted: complaint of cognitive decline with a duration of \u22656 months; Mini Mental State Examination (MMSE) score >24, corrected for age and education",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 2: Study subjects and setting described in detail",
+   "judgment": "Yes",
+   "rationale": "The patient source (consecutive self-referrals to a regional memory centre), recruitment period and demographics (Table 1) are reported. The recruitment source of the volunteer controls is not described, but group demographics are.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "including consecutive patients with SCD and MCI who self-referred to the Regional Reference Center for Alzheimer\u2019s Disease and Cognitive Disorders of Careggi Hospital, Florence",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 3: Exposure measured in a valid and reliable way (exposure = diagnostic group assignment)",
+   "judgment": "Yes",
+   "rationale": "Patients were classified after a full clinical, neurological and neuropsychological work-up. Controls were screened more lightly (MMSE and examination), which is a minor asymmetry.",
+   "signalling": [
+    {
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "extensive neuropsychological investigation, estimation of premorbid intelligence, and assessment of depression",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 4: Objective, standard criteria used for measurement of the condition",
+   "judgment": "Yes",
+   "rationale": "SCD and MCI were defined by published consensus criteria (SCD-I, NIA-AA).",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Yes",
+     "quote": "They were classified as 57 SCD, according to Subjective Cognitive Decline Initiative (SCD-I) Working Group (Jessen et al., 2014) criteria, and 46 MCI based on NIA-AA criteria (Albert et al., 2011).",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 5: Confounding factors identified",
+   "judgment": "Yes",
+   "rationale": "The authors identify age as a confounder of the SCD versus MCI comparison. Table 1 also shows large education differences (15.64, 12.61 and 10.02 years), which are not discussed.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "Another limitation of the current work is the absence of age matching between the SCD and MCI groups.",
+     "page": "11"
+    }
+   ]
+  },
+  {
+   "domain": "Item 6: Strategies to deal with confounding factors stated",
+   "judgment": "No",
+   "rationale": "Group comparisons are unadjusted one-way ANOVA or Kruskal-Wallis tests. There is no covariate adjustment, matching or stratification for age (HC 64.29, SCD 67.19, MCI 74.26 years) or education. The authors argue from the literature that age effects run in the opposite direction, but that is a post hoc argument, not a strategy.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "No",
+     "quote": "Since our sample size was limited, we only considered a limited number of possible covariates, most notably the CSF biomarkers.",
+     "page": "11"
+    }
+   ]
+  },
+  {
+   "domain": "Item 7: Outcomes measured in a valid and reliable way (outcome = EEG spectral, network and microstate metrics)",
+   "judgment": "Yes",
+   "rationale": "The study used a standardised 64-channel eyes-closed protocol, a documented PREP and ICA pipeline, and established microstate, imaginary-coherence and graph metrics. Some steps were manual (visual flagging of components, visual artefact removal, visual sorting of maps), and blinding of those steps to diagnostic group is not stated. This is a minor concern.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "All the remaining components were inspected visually and flagged either as brain or non-brain depending on their power spectra profiles and time-courses.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 8: Appropriate statistical analysis used",
+   "judgment": "No",
+   "rationale": "The groups differ markedly in age and education, yet all comparisons are unadjusted. Dozens of omnibus tests were run across spectral, ROI, network and microstate features (for example delta p = 0.041, ROI p = 0.034), with Bonferroni correction applied only to post hoc pairwise tests, not across features. The 'largely similar' conclusion for spectral and network measures rests on non-significance with 19 controls. The Hurst-exponent result is also reported inconsistently: the text says SCD and MCI differed from HC, but the statistics listed are HC vs SCD and SCD vs MCI.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "No",
+     "quote": "When the domain displayed normal behavior in most variables, we used one-way ANOVA to compare the three groups, followed by t-test post-hoc tests for pairwise comparisons. ... All post-hoc comparisons were corrected with the Bonferroni method.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (JBI analytical cross-sectional: items 6 and 8 answered No)",
+ "overall_category": "high",
+ "overall_rationale": "Under this review's rule, a No on confounder strategy (item 6) or appropriate analysis (item 8) gives High. Age and education differ substantially between groups and no comparison adjusts for them. Multiplicity across many features is uncontrolled at the omnibus level. The null spectral and network findings come from underpowered comparisons. Selection, diagnostic criteria and EEG measurement are otherwise well described.",
+ "confidence": "high",
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 8
+ }
+}

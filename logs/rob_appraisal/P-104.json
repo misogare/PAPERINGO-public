@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-104",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Shen HT, Zhu X, Zhang Z, Wang S-H, Chen Y, Xu X, Shao J. 'Heterogeneous data fusion for predicting mild cognitive impairment conversion', Information Fusion 66 (2021) 54-63, available online 4 September 2020. It is a sparse-regression fusion of auxiliary data (age, PET, AD/NC MRI) for pMCI/sMCI classification in ADNI, benchmarked head-to-head against other feature-selection methods. This matches the citing sentence (Shen et al. 2020)."
+ },
+ "cited_result": "Head-to-head pMCI/sMCI classification in ADNI (conversion within 24 months) of the proposed auxiliary-data fusion method against Original, GSR-Pre, GSR-Aux, SSL and DTL, under repeated 10-fold cross-validation. Principal result: on Data 1 (MRI + PET), ProAuto-noAge reaches accuracy 78.70% and AUC 77.56%, against 70.90% and 71.10% for DTL (Table 1). Age-inclusive variants are reported further in Fig. 6.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discriminative performance and ranking of machine-learning classifiers for MCI conversion, which PROBAST with the PROBAST+AI considerations covers.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "ADNI is a longitudinal cohort, which is an appropriate source in principle. The paper reports no MCI eligibility criteria, and Data 2 selects participants on CSF availability although CSF is not a predictor. The complete-case restriction is rated under 4.3 and 4.4.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used, e.g. cohort, RCT or nested case-control study data?",
+     "answer": "Probably yes",
+     "quote": "we used the Alzheimer\u2019s Disease Neuro-imaging Initiative (ADNI) data set publicly available on the web",
+     "page": "5"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "It is noteworthy that we did not use CSF features in our experiments and CSF features only help us to decide the used subjects.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The same automated MRI and PET region-of-interest pipeline was applied to every subject, and the imaging would be available at the MCI assessment. The imaging visit is not stated, and several reported ROI names do not match the stated AAL template, but the extraction was uniform.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "We finally obtained 90 gray matter volumes from a MRI image and 90 mean intensities from a PET image and used them for features.",
+     "page": "5"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "We preprocessed the MRI and PET images by sequentially applying spatial distortion correction, skull-stripping, and cerebellum removal",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "MRI features as the predictor data to identify whether a MCI subject progresses to AD (i.e., pMCI) or not (i.e., sMCI) within 24 months.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "24-month conversion is a standard definition with a fixed horizon. The paper gives no information on the criteria used to diagnose AD, whether predictors fed into the diagnosis, whether assessors were blind, or whether sMCI subjects had at least 24 months of follow-up.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched the data-set and experimental-settings sections for the diagnostic criteria for AD conversion; only the label definition is given: 'The pMCI subjects were those who converted to AD within 24 months, while sMCI subjects were those who did not convert to AD within 24 months.'",
+     "page": "5"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "The pMCI subjects were those who converted to AD within 24 months, while sMCI subjects were those who did not convert to AD within 24 months.",
+     "page": "5"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for how the ADNI conversion diagnoses were made (for example, whether imaging informed them); nothing is reported.",
+     "page": "5"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The pMCI subjects were those who converted to AD within 24 months, while sMCI subjects were those who did not convert to AD within 24 months.",
+     "page": "5"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for whether conversion was diagnosed blind to MRI and PET; nothing is reported.",
+     "page": "5"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "identify whether a MCI subject progresses to AD (i.e., pMCI) or not (i.e., sMCI) within 24 months",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are very few outcome events for the number of candidate predictors: 55 pMCI (Data 1) and 31 pMCI (Data 2) against 180 imaging features plus age. The analysis is complete-case only, with PET available for about half of ADNI-I. No calibration is reported, only internal cross-validation was done, and Data 2 is by definition a subset of Data 1, so it is not independent. The nested cross-validation for tuning and the embedded feature selection are appropriate.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "\u2018Data1\u2019 included all subjects with complete MRI and PET data, consisting of 93 AD, 99 NC, 55 pMCI, and 59 sMCI subjects",
+     "page": "5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "We finally obtained 90 gray matter volumes from a MRI image and 90 mean intensities from a PET image and used them for features.",
+     "page": "5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "Specifically, while all the subjects in ADNI-I have MRI data, PET data are available for only about half of them.",
+     "page": "8"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No",
+     "quote": "First, the proposed framework can be extended to handle samples with missing values.",
+     "page": "8"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "we devise a novel sparse feature selection model that jointly exploits both the predictor data and the auxiliary data",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. censoring, competing risks, sampling of controls) accounted for appropriately?",
+     "answer": "No information",
+     "quote": "Searched for minimum follow-up of sMCI subjects or handling of dropout before 24 months; nothing is reported.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "We employed classification ACCuracy (ACC), SENsitivity (SEN), SPEcificity (SPE), and Area Under the receiver operating characteristic Curve (AUC) as the evaluation metrics.",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably yes",
+     "quote": "We repeated the 10-fold cross-validation for 100 times on all methods, each of which conducted 5-fold nested cross-validations for model selection.",
+     "page": "5"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported analysis?",
+     "answer": "No information",
+     "quote": "Searched for a final fitted model or its coefficients; only selection-frequency maps across 1000 runs are given (Figs. 3-5).",
+     "page": "7-8"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Probably yes",
+     "quote": "We finally obtained 90 gray matter volumes from a MRI image and 90 mean intensities from a PET image and used them for features.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Are feature selection and hyperparameter tuning confined to the training folds (no leakage)?",
+     "answer": "Probably yes",
+     "quote": "each of which conducted 5-fold nested cross-validations for model selection",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Probably yes",
+     "quote": "We used grid search in the search range of {10\u22125, \u2026 , 105} to determine the related parameter values",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was class imbalance present and handled?",
+     "answer": "Not applicable (classes near balanced)",
+     "quote": "55 pMCI, and 59 sMCI subjects",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (repeated cross-validation); no external validation",
+     "quote": "\u2018Data2\u2019 includes all subjects with complete MRI, PET, and CerebroSpinal Fluid (CSF), consisting of 50 AD, 51 NC, 31 pMCI, and 30 sMCI subjects",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "ADNI research volunteers who have complete MRI and PET (and CSF for Data 2), which is unlike routine memory-clinic MCI populations."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "high",
+   "rationale": "The model needs both MRI and PET (tracer not stated), and training uses AD/NC auxiliary cohorts; PET is not routinely available."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "24-month conversion to AD is a standard target."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 4 (Analysis) is high: about 55 or 31 events against about 181 candidate predictors, complete-case restriction, no calibration and no external validation. Domains 1 (Participants) and 3 (Outcome) are unclear because the paper does not report MCI eligibility criteria or how conversion was diagnosed. The head-to-head ranking rests on repeated cross-validation within the same 114 or 61 MCI subjects.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 17
+ }
+}

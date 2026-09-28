@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-83",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Boudaya, Chaabene, Bouaziz, Hokelmann and Chaari (2024), 'Mild Cognitive Impairment detection based on EEG and HRV data', Digital Signal Processing 147:104399. It is an EEG+HRV MCI-versus-HC classification study, which is the modality VF-07 names for this supporter ('EEG+HRV'). The summaries.md header for Paper 83 names the same PDF file (1-s2.0-S1051200424000241-main.pdf)."
+ },
+ "cited_result": "Performance of the hybrid voting classifier (SVM + GB + RF) on fused EEG and HRV time-domain, frequency-domain and non-linear features, recorded during the CERAD task, for MCI versus healthy controls: average accuracy 93.86%, sensitivity 93.87%, specificity 93.53% across CERAD tests (best 97.43% on test T1). This is the result through which the study supports VF-07's claim that temporal-dynamic features serve as MCI-discriminative signals in EEG+HRV.",
+ "tool": "PROBAST",
+ "tool_reason": "The result is the discrimination of a machine-learning classifier built from many EEG and HRV features to label participants as MCI or healthy control, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "Diagnosed MCI cases and healthy controls were recruited separately, so this is a diagnostic case-control design. 9 of 24 recruited participants (37.5%) were then excluded on the basis of the raw data and the CERAD score. Table 1 also labels one participant inconsistently.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "No",
+     "quote": "During this study, our data was gathered from 24 participants including 13 MCI (6 aMCI and 7 naMCI) and 11 HC aged from 63 to 83.",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "Based on the collected raw data and the calculated score of the CERAD task 9 participants are excluded. Therefore, this work is limited on only 15 patients.",
+     "page": "3"
+    },
+    {
+     "question": "PROBAST+AI data quality: are participant group labels reported consistently?",
+     "answer": "Probably no",
+     "quote": "P22 F 83 HC naMCI 5 24.7 TS (Table 1 row: a participant assigned to the HC group but given an MCI subtype)",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "All participants used the same devices and the same protocol. The features are computed algorithmically from the signals, and they are available when the model would be used.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "To simultaneously record EEG and HRV data, the patient is equipped with the Emotiv Epoc X and Polar H10.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Time, frequency, and non-linear features are extracted from raw EEG and HRV signals.",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "In this study, a data acquisition protocol is made using EEG and HRV signals during the CERAD task.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The MCI label (the reference classification) is only called 'an MCI diagnosis'. No diagnostic criteria, diagnosing clinician, cognitive cut-offs, verification of HC status or timing relative to recording is reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Looked for how the MCI diagnosis and HC status were established (criteria, clinician, tests); the only statement is: 'to meet the inclusion criteria, a patient must be between the ages of 50 and 85 and have an MCI diagnosis.'",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Looked for named diagnostic criteria (e.g. Petersen, NIA-AA, DSM); none reported anywhere in the text.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "Time, frequency, and non-linear features are extracted from raw EEG and HRV signals.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Looked for a common diagnostic procedure applied to both groups; none described.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "to meet the inclusion criteria, a patient must be between the ages of 50 and 85 and have an MCI diagnosis.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Looked for the date of diagnosis relative to the EEG/HRV recording session; not reported.",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Only 8 MCI participants against a large feature set. The 3-s segments were shuffled and split 75/25, so segments from the same person fell on both sides of the split (confusion-matrix counts of 34 TP and 39 TN far exceed 15 persons). The window length, classifier choice and hybrid composition were selected on test-set accuracy. Cross-validation was also done over instances. No calibration was reported and there was no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Our dataset includes 15 subjects who were randomly assigned to training and testing groups of 7 HC and 8 MCI, respectively.",
+     "page": "1"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "A Z-score method was used, allowing to center the values around the mean",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "Based on the collected raw data and the calculated score of the CERAD task 9 participants are excluded.",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Looked for handling of missing or artefact-contaminated signal segments; none reported.",
+     "page": "4-6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No information",
+     "quote": "The next phase is the preprocessing process which involves feature scaling and reduction.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. clustering of segments within participants) accounted for appropriately? (AI: split at participant level?)",
+     "answer": "No",
+     "quote": "For each test, we separated our data into 75% for the training set and 25% for the testing set. To boost the effectiveness of ML model accuracy and to reduce the rate of overfitting, we applied the shuffling strategy throughout the data partitioning process.",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "Various metrics such as accuracy (Acc), precision (Pre), sensitivity (Sen), specificity (Spec), and F1-score (F1-S) are used for numerical validation",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for? (AI: test set held out from tuning and model selection?)",
+     "answer": "No",
+     "quote": "According to the findings, the best time window corresponds to the lowest duration (i.e., 3 s) for both EEG and HRV signals.",
+     "page": "6"
+    },
+    {
+     "question": "4.8b AI: was the hybrid composition chosen without reference to test results?",
+     "answer": "No",
+     "quote": "Our hybrid ML model combines the best findings of these three models: SVM, GB, and RF.",
+     "page": "7"
+    },
+    {
+     "question": "4.8c AI: did cross-validation keep each person's data on one side of the split?",
+     "answer": "Probably no",
+     "quote": "As regards leave-one-out cross-validation (LOOCV) method, the model is evaluated on an instance that was left out following the training on all other instances.",
+     "page": "8"
+    },
+    {
+     "question": "AI: were preprocessing (scaling, reduction) and hyperparameter tuning done within training folds only?",
+     "answer": "No information",
+     "quote": "SVM with a Gaussian kernel (\u03b3= 0.01 and C= 10), GB, and RF.",
+     "page": "6"
+    },
+    {
+     "question": "AI: class imbalance and its handling",
+     "answer": "Probably yes",
+     "quote": "Our dataset includes 15 subjects who were randomly assigned to training and testing groups of 7 HC and 8 MCI, respectively.",
+     "page": "1"
+    },
+    {
+     "question": "AI: is the reported performance apparent, internally validated or externally validated?",
+     "answer": "No (internal, segment-level only; no external validation)",
+     "quote": "Finally, as stated hereabove, validations on larger datasets with additional experimentation on volunteers will be considered.",
+     "page": "9"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results reported?",
+     "answer": "No information",
+     "quote": "Looked for a final model specification (selected features, trained weights, tuning procedure); only the SVM hyperparameters are stated.",
+     "page": "6-7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "15 highly selected participants (separately recruited cases and controls, 9 of 24 excluded) do not represent the population in which MCI detection would be used."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Consumer EEG headset and chest-strap HRV during a standard cognitive battery are feasible in the intended setting."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The MCI label is not defined, so whether it matches the review's MCI construct cannot be judged."
+  }
+ ],
+ "overall": "high",
+ "overall_category": "high",
+ "overall_rationale": "Domain 1 (case-control recruitment and outcome-related exclusions) and Domain 4 (segment-level shuffled split with the same participants in training and test, test-set model selection, 8 events, no calibration or external validation) are high, and Domain 3 is unclear. The 93.86% accuracy is therefore very likely optimistic and reflects recognition of individuals at least as much as MCI status.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 18,
+  "matched": 16
+ }
+}

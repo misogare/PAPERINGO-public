@@ -1,0 +1,139 @@
+{
+ "paper_id": "P-99",
+ "document_check": {
+  "matches": true,
+  "note": "Zubrikhina MO et al. Machine learning approaches to mild cognitive impairment detection based on structural MRI data and morphometric features. Cognitive Systems Research 2023;78:87-95 (available online 13 December 2022). FreeSurfer morphometry in 145 MCI patients from a Moscow memory clinic and 62 healthy volunteers. It reports reduced hippocampal voxel counts in MCI and an SVC classifier (accuracy 0.73). This matches Zubrikhina et al. 2022 (P-99) as cited."
+ },
+ "cited_result": "Lower FreeSurfer hippocampal voxel counts in MCI (n = 145) than in healthy controls (n = 62): right hippocampus p < 0.001 (Table 2) and left hippocampus p < 0.05 (Table 3). The review cites this as hippocampal atrophy reproduced in a FreeSurfer volumetry pipeline, in a single-centre cohort.",
+ "tool": "JBI analytical cross-sectional",
+ "tool_reason": "The cited result is a single-time-point comparison of a structural biomarker (hippocampal volume) between MCI and controls, which the brief assigns to the JBI analytical cross-sectional checklist. The groups were recruited from separate sources (case-control-type sampling), and this is reflected in items 1, 3 and 5.",
+ "domains": [
+  {
+   "domain": "Item 1 Criteria for inclusion clearly defined",
+   "judgment": "Unclear",
+   "rationale": "Eligibility for MCI patients is stated (over 65, ICD-10 F06.7, listed exclusions). For controls, no criteria are given beyond 'healthy volunteers', and the control age range (68.9 \u00b1 5.3) implies some were under 65.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Unclear",
+     "quote": "Participants from the control group (HC), a total of 62 (20 males), aged 68.9 \u00b1 5.3, were selected from a pool of healthy volunteers. [...] Patients over the age of 65 who had been diagnosed with mild cognitive impairment (F06.7) were eligible.",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 2 Study subjects and setting described in detail",
+   "judgment": "No",
+   "rationale": "The settings are named and age and sex are given. The recruitment period, education and group MMSE/MoCA scores (which were collected) are not reported.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "No",
+     "quote": "MCI patients, a total of 145 (16 males), aged 73.9 \u00b1 7.3 were selected from \u00abMemory Clinic\u00bb (Moscow, Russia). Healthy controls matched with the patients in age were recruited from the volunteers who came for periodic health examinations in the outpatient clinic N\u25e6121 (Moscow, Russia).",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 3 Exposure (diagnostic group membership) measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "Here the exposure is the diagnostic group (MCI vs control). MCI group membership was assigned at a multidisciplinary consensus conference, but the paper does not say how cognitive normality was confirmed in the volunteer controls.",
+   "signalling": [
+    {
+     "question": "Was the exposure (group membership, MCI vs healthy control) measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "All diagnoses were assigned at a daily consensus conference among neurologists, neuropsychologists and psychiatrists.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 4 Objective, standard criteria for the condition",
+   "judgment": "Yes",
+   "rationale": "MCI was classified with ICD-10 (F06.7) after standardised neurological and neuropsychological examination.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "Yes",
+     "quote": "The International Classification of Diseases (ICD-10) was used to determine the diagnosis status. Participants received standardized neurobehavioral exams, including neurological examination, neuropsychological testing.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 5 Confounding factors identified",
+   "judgment": "No",
+   "rationale": "No confounders are named for the volumetric comparison. The groups differ by 5 years in mean age and in sex ratio (32% vs 11% male), and head size is not considered, yet the paper describes the controls as age-matched.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "No",
+     "quote": "Healthy controls matched with the patients in age were recruited from the volunteers who came for periodic health examinations",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 6 Strategies to deal with confounding stated",
+   "judgment": "No",
+   "rationale": "Group differences were tested with unadjusted univariate tests on raw voxel counts. There was no covariate adjustment for age, sex or intracranial volume, and no achieved matching.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "No",
+     "quote": "The Mann-Whitney U test and T-test were used to test the hypotheses about the means of the selected features from the brain regions.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "Item 7 Outcome (hippocampal volume) measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "FreeSurfer 6.0.1 recon-all is a standard automated method. However, the acquisition is described as 'T2-weighted' at 1.5 T while FreeSurfer is said to use T1w data, no segmentation quality control is reported, and raw voxel counts were kept without head-size normalisation.",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "T2-weighted images from Toshiba 1.5 T MR scanner were acquired with the following parameters [...] We applied FreeSurfer 6.0.1 software package [...] for extracting morphometric features from T1w MRI data.",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 8 Appropriate statistical analysis",
+   "judgment": "No",
+   "rationale": "The features tested were the ones the ML models had selected on the same data (circular selection then testing). There was no correction for multiple comparisons across the many morphometric features and no covariate adjustment.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "No",
+     "quote": "After selecting the important features, post-hoc analysis was carried out to show the differences in brain regions between the MCI group and the HC group.",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "low",
+   "rationale": "Memory-clinic MCI (ICD-10 F06.7) against community volunteers fits an MCI-versus-control question, but the setting is single-centre."
+  },
+  {
+   "domain": "Measurement",
+   "concern": "unclear",
+   "rationale": "Raw FreeSurfer voxel counts at 1.5 T without intracranial-volume normalisation may not be comparable with the normalised volumetry used in other cohorts."
+  }
+ ],
+ "overall": "High risk of bias (JBI analytical cross-sectional; review rule triggered by items 5, 6 and 8 answered No)",
+ "overall_category": "high",
+ "overall_rationale": "Confounders were not identified (item 5) and not addressed (item 6), and the analysis tests features that were selected by models fitted to the same data, with no multiplicity correction or adjustment (item 8). Under the review's rule, any No on items 5, 6, 7 or 8 gives an overall rating of high.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 6
+ }
+}

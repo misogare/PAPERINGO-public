@@ -1,0 +1,206 @@
+{
+ "paper_id": "P-27",
+ "document_check": {
+  "matches": true,
+  "note": "Yao J, Chen Y, Huang Z-c, Chen Z-w, Yin Z-h, Liang F-r. A machine learning-based discriminative framework for mild cognitive impairment risk in middle-aged and elderly Chinese patients with depression: evidence from CHARLS and CLHLS. Journal of Affective Disorders 394 (2026) 120701, available online 12 November 2025 (hence 'Yao et al. 2025'). Eight ML models were developed on CHARLS 2018 (n = 1,964) and externally validated on CLHLS 2018 (n = 6,782)."
+ },
+ "cited_result": "The review sentence does not restate the finding. It is appraised as the study's machine-learning MCI discrimination result: random forest, the best of eight models, with internal hold-out AUC 0.801 (CHARLS) and external AUC 0.653 (CLHLS), plus its SHAP-derived predictor ranking (education, loneliness, household registration, IADL disability, dyslipidaemia).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the performance and predictor ranking of multivariable machine-learning classifiers for (concurrent) MCI, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "Unclear",
+   "rationale": "Nationally sampled surveys are an appropriate source for a cross-sectional discriminative model. However, participants were restricted to those with complete cognitive and depression data, which can remove the most impaired respondents, and the numbers excluded are not reported in the text. The title targets 'middle-aged' adults but the inclusion age is 60 or over.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "Both surveys employ a multistage stratified sampling method and include detailed variables on individual characteristics, family background, and community environment",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "The inclusion criteria for participants in both datasets were consistent: 1. Age \u226560 years; 2. Complete cognitive dimension-related data; 3. Complete depression scale responses; 4. Patients with depression.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Low",
+   "rationale": "Predictors are standard survey items collected in the same interview, independently of the later computed outcome, and are available at a first visit. Harmonisation of predictor definitions in CLHLS is not described, but this affects the external validation, not the development result.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The sociodemographic characteristics included in this study were age, gender, education, marital status, household registration type, residence, number of people living in the household, and participation in public medical insurance.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "In addition, the included indicators such as IADL score and loneliness were baseline single measurements",
+     "page": "8"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "In contrast, this study focuses on indicators that are widely used in clinical practice and can be quickly obtained through inquiry at the first visit.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "High",
+   "rationale": "MCI is a psychometric proxy (a score at least 1 SD below the age-band mean) with no clinical assessment. The stated definition refers to the CMMSE, but the development cohort (CHARLS) used a different HRS-type battery, so how MCI was defined in the development data is not clearly reported. The two cohorts used different instruments, and the reported number of MCI cases in CHARLS is inconsistent (330 vs 491).",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "In this study, we used age - associated cognitive decline (AACD) as the diagnostic criterion, specifically defined as a CMMSE score \u22651 SD below the age - stratified mean",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "At present, no consensus exists on the diagnostic criteria for MCI.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "CHARLS evaluate cognitive performance using the identical methodological framework adopted by the U.S. Health and Retirement Study",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No",
+     "quote": "This might be because the MCI diagnosis in the CHARLS and CLHLS cohorts employed different cognitive assessment tools, among which CMMSE had a strong age dependence.",
+     "page": "8"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "Individuals who met the AACD criteria within each age group were classified as MCI patients.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "we limited the analysis to the dataset of 2018 instead of conducting a longitudinal analysis.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "Missing data were imputed by an unspecified method before the train/test split (possible leakage). The best model was chosen partly on test-set AUC, so the reported hold-out AUC is optimistic. Hyperparameter tuning is not described, calibration was assessed only by Brier score (no calibration plot, slope or intercept) after SMOTE oversampling, and the complex survey design was ignored. Case counts and the number of final predictors are internally inconsistent. External discrimination fell to AUC 0.653. The split was at participant level (one record per person) and SMOTE was applied to the training set only.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably yes",
+     "quote": "We randomly split the 1964 participants from CHARLS (1634 non - MCI, 330 MCI) into a training set and an internal validation set at a 7:3 ratio",
+     "page": "4"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "No information",
+     "quote": "For instance, in the case of education, yellow dots correspond to a value of 3, signifying an education level of junior high school or above.",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "We randomly split the 1964 participants from CHARLS (1634 non - MCI, 330 MCI) into a training set and an internal validation set at a 7:3 ratio",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately (imputation within training data only)?",
+     "answer": "Probably no",
+     "quote": "After excluding variables with a missing data rate greater than 20 %, 24 variables were ultimately retained for analysis. The missing data for [...] the retained variables are shown in Table S1. Subsequently, we imputed the missing data. We randomly split the 1964 participants",
+     "page": "3 and 4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "Candidate features identified by LASSO were subsequently reviewed against clinical expertise and prior literature to finalise the model covariates.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data (sampling design, class imbalance) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "Due to the significant class imbalance in the training set, which could affect the performance of ML models, we applied the Synthetic Minority Over - sampling Technique (SMOTE) method.",
+     "page": "4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately, including calibration?",
+     "answer": "Probably no",
+     "quote": "Brier scores were calculated to measure the discrepancy between predicted probabilities and observed outcomes.",
+     "page": "4"
+    },
+    {
+     "question": "4.8 Were overfitting and optimism accounted for (test set held out from model selection and tuning)?",
+     "answer": "No",
+     "quote": "Furthermore, given that RF has the highest AUC in the test set, it is considered a model with strong clinical applicability.",
+     "page": "5 and 6"
+    },
+    {
+     "question": "4.9 Do the predictors and weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "Ultimately, eight discriminative variables were identified: education, household registration, loneliness, IADL, diabetes, hypertension, and exercise.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the split between training and test data at participant level?",
+     "answer": "Yes",
+     "quote": "We randomly split the 1964 participants from CHARLS (1634 non - MCI, 330 MCI) into a training set and an internal validation set at a 7:3 ratio",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was hyperparameter tuning done within training data only?",
+     "answer": "No information",
+     "quote": "Searched for 'hyperparameter', 'tuning', 'grid' and 'parameter'; no tuning procedure is described in the text.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally and externally validated",
+     "quote": "Using the cohort from CLHLS for external validation, the AUC (0.653, 95 % CI: 0.636\u20130.670) of RF did not reach the level of the validation set, and only showed moderate discriminative ability",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "The outcome domain is high (a psychometric MCI proxy whose definition does not match the development cohort's instrument, and inconsistent case counts). The analysis domain is high (imputation before splitting, test set used for model selection, no calibration assessment, untuned or unreported hyperparameters). Under PROBAST any high domain gives high overall risk.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "Moderate",
+   "rationale": "Community-dwelling Chinese adults aged 60 or over with CESD-10 of 10 or more; not a clinically diagnosed depression population and not middle-aged adults."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "Low",
+   "rationale": "Simple questionnaire and history items obtainable in routine care."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "High",
+   "rationale": "MCI is defined psychometrically (AACD), not by clinical criteria, and is measured concurrently rather than prospectively."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 15
+ }
+}

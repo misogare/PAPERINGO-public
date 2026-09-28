@@ -1,0 +1,198 @@
+{
+ "paper_id": "P-1133",
+ "document_check": {
+  "matches": true,
+  "note": "Yu H-H, Tan L, Jiao M-J, et al. (2025) 'Dissecting the clinical and pathological prognosis of MCI patients who reverted to normal cognition: a longitudinal study', BMC Medicine 23:260. It is an ADNI cohort with 109 MCI reverters, 334 stable MCI and 353 stable NC followed for 6 years. It reports no significant difference in AD hazard between reverters and stable NC (p = 0.533), a higher risk of cognitive decline for reverters vs NC, and a lower AD hazard for reverters vs stable MCI, as cited."
+ },
+ "cited_result": "Principal result: AD dementia hazard for MCI reverters vs stable normal cognition over six years, HR 1.522 (95% CI 0.379 to 6.108), p = 0.533. Also cited: reverters vs stable MCI, HR 0.104; reverters vs stable NC for cognitive decline, HR 3.355.",
+ "tool": "QUIPS",
+ "tool_reason": "The cited result is the association of one prognostic factor (MCI reversion status at year 2) with later incident AD dementia, estimated by Cox regression in a cohort. It is not a model's performance or a causal exposure effect, so QUIPS fits.",
+ "domains": [
+  {
+   "domain": "1. Study participation",
+   "judgment": "moderate",
+   "rationale": "The sample is ADNI volunteers with high education. How 1,042 participants were chosen from more than 2,200 in ADNI is not explained. Groups are defined by diagnostic status at year 2, after excluding those who progressed.",
+   "signalling": [
+    {
+     "question": "Is the source population adequately described?",
+     "answer": "Yes",
+     "quote": "We used data from ADNI-1, ADNI-GO, ADNI-2, and ADNI-3, with collection dates up to 2022.",
+     "page": "2"
+    },
+    {
+     "question": "Is the selection of the study sample from the source adequately described?",
+     "answer": "Probably no",
+     "quote": "Based on the above-mentioned criteria, a total of 600 MCI and 442 CN subjects",
+     "page": "2"
+    },
+    {
+     "question": "Is the baseline sample adequately described and defined?",
+     "answer": "Yes",
+     "quote": "The participants were divided into three groups based on the first 2-year cognitive diagnosis changes, including MCI reverters who reverted from MCI to NC, stable MCI, and stable NC whose cognition was continuously normal across 2 years. Afterward, the second year was redefined as the new baseline.",
+     "page": "2"
+    },
+    {
+     "question": "Does the sample represent the population of interest?",
+     "answer": "Probably no",
+     "quote": "the representation of ADNI is limited due to the participants being volunteers with relatively high education rather than the community population",
+     "page": "10-11"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study attrition",
+   "judgment": "moderate",
+   "rationale": "About 15% of participants were dropped from the analyses because they lacked continuous follow-up, with no comparison to those retained, and the sample shrinks over time.",
+   "signalling": [
+    {
+     "question": "Is the proportion with follow-up reported?",
+     "answer": "Yes",
+     "quote": "Of these, 673 (84.55%) individuals with continuous follow-up were further included for subsequent analyses.",
+     "page": "5"
+    },
+    {
+     "question": "Are participants lost compared with those retained?",
+     "answer": "No information",
+     "quote": "Searched for a comparison of participants with and without continuous follow-up; none reported.",
+     "page": "5"
+    },
+    {
+     "question": "Is loss to follow-up handled appropriately?",
+     "answer": "Partly",
+     "quote": "Participants were censored at their last follow-up visit.",
+     "page": "4"
+    },
+    {
+     "question": "Is attrition over time acknowledged?",
+     "answer": "Yes",
+     "quote": "The ADNI\u2019s sample size is limited and it decreases with the extension of follow-up time, especially for longitudinal data of CSF biomarkers.",
+     "page": "11"
+    }
+   ]
+  },
+  {
+   "domain": "3. Prognostic factor measurement",
+   "judgment": "moderate",
+   "rationale": "Reversion is defined clearly and the same way for everyone, using composite-score criteria. However, it rests on a single year-2 assessment with a liberal single-domain threshold, the norms come from the 'stable CN' group that the classification itself defines, and practice effects could produce apparent reversion.",
+   "signalling": [
+    {
+     "question": "Is a clear definition of the prognostic factor provided?",
+     "answer": "Yes",
+     "quote": "defined as > 1 SD below the age, education, and gender-adjusted normative mean, within at least one cognitive domain [19].",
+     "page": "2"
+    },
+    {
+     "question": "Is the method of measurement valid and independent of the classification?",
+     "answer": "Probably no",
+     "quote": "The mean and standard deviation (SD) of composites score were calculated based on stable CN population at baseline.",
+     "page": "2"
+    },
+    {
+     "question": "Is the measurement free from practice or repeated-testing artefacts?",
+     "answer": "Probably no",
+     "quote": "Lastly, practice effects might manifest as improvements in cognitive tests due to repetitive evaluation [48, 49].",
+     "page": "11"
+    }
+   ]
+  },
+  {
+   "domain": "4. Outcome measurement",
+   "judgment": "low",
+   "rationale": "AD dementia was diagnosed against published criteria within the standard ADNI protocol, applied the same way to every group. Blinding to prior MCI status is not reported.",
+   "signalling": [
+    {
+     "question": "Is a clear definition of the outcome provided?",
+     "answer": "Yes",
+     "quote": "The dementia diagnosis referenced published criteria [18, 21, 22].",
+     "page": "2"
+    },
+    {
+     "question": "Is the method of outcome measurement the same for all participants?",
+     "answer": "Probably yes",
+     "quote": "Cox proportional hazard regression models were applied to assess the associations of different MCI transition status with incident AD dementia risk.",
+     "page": "4"
+    },
+    {
+     "question": "Were outcome assessors blind to prognostic factor status?",
+     "answer": "No information",
+     "quote": "Searched for 'blind', 'masked', 'unaware': no statement.",
+     "page": "2-5"
+    }
+   ]
+  },
+  {
+   "domain": "5. Study confounding",
+   "judgment": "low",
+   "rationale": "The Cox models are adjusted for age, sex, APOE4 and education, which covers the reverter vs NC differences at the new baseline. A sensitivity analysis adding self-reported comorbidities gave consistent results.",
+   "signalling": [
+    {
+     "question": "Are important confounders measured and accounted for?",
+     "answer": "Yes",
+     "quote": "All models were adjusted for age, sex, APOE4 status, and years of education.",
+     "page": "5"
+    },
+    {
+     "question": "Was robustness to additional covariates tested?",
+     "answer": "Yes",
+     "quote": "In sensitivity analysis adjusting comorbidities, the results were consistent to the primary analysis (Additional file: Table 3).",
+     "page": "6"
+    },
+    {
+     "question": "Are measurements of confounders valid?",
+     "answer": "Partly",
+     "quote": "Comorbidities of hypertension, diabetes, coronary heart disease, stroke, depression, anxiety, obstructive sleep apnea syndrome, and insomnia were collected from self-reporting",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "6. Statistical analysis and reporting",
+   "judgment": "moderate",
+   "rationale": "The proportional-hazards assumption was tested. However, the number of AD events per group is not reported, and 390 of the 462 reverters and stable NC entered the comparison without explanation. The very wide CI shows few events for a four-covariate model, and the authors read non-significance as similarity.",
+   "signalling": [
+    {
+     "question": "Is the model appropriate and its assumptions checked?",
+     "answer": "Yes",
+     "quote": "Schoenfeld\u2019s residuals were used to test the proportional hazards assumption.",
+     "page": "4"
+    },
+    {
+     "question": "Are the numbers analysed and events reported?",
+     "answer": "Probably no",
+     "quote": "Primary analysis ... 390 1.522 (0.379, 6.108) 0.533 [searched for AD event counts per group; not reported in the main text]",
+     "page": "8"
+    },
+    {
+     "question": "Is the result interpreted without overstatement?",
+     "answer": "Probably no",
+     "quote": "MCI reverters, independent from stable MCI, had similar neurodegenerative and amyloid pathological trajectories and AD risks to stable NC.",
+     "page": "10"
+    },
+    {
+     "question": "Is there selective reporting?",
+     "answer": "Probably no",
+     "quote": "Interestingly, there were no significant differences in AD risks between MCI reverters and stable NC (p > 0.050) (Fig. 2 and Table 2).",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "moderate",
+   "rationale": "The ADNI volunteers are highly educated, and MCI is defined by the study's own composite-score algorithm."
+  }
+ ],
+ "overall": "High risk of bias (by the review's QUIPS rule: three or more moderate domains)",
+ "overall_category": "high",
+ "overall_rationale": "Four domains carry moderate concerns and none is high. The concerns are an unexplained selection from ADNI with groups conditioned on year-2 status; about 15% excluded for lacking continuous follow-up, with no comparison; reversion defined at a single visit using circular norms and open to practice effects; and unreported event counts with a very imprecise HR. Outcome measurement and confounding are low. Under the review's rule, three or more moderate domains make the overall rating high.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 19,
+  "matched": 17
+ }
+}

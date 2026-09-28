@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-52",
+ "document_check": {
+  "matches": true,
+  "note": "Hu S-J, Ma B-C, Zheng X, Ma B-X, Xia X-F. Hippocampal auto-segmentation based on deep learning for identifying MRI biomarkers of early mild cognitive impairment. Neuroscience 591 (2025) 76-82. Single-centre (Wenzhou Seventh People's Hospital) hippocampal radiomics classifier separating MCI from normal controls. This matches the citation 'Hu et al. 2025, P-52' for hippocampal radiomics classifiers in a single-centre cohort."
+ },
+ "cited_result": "Hippocampal radiomics classifier (7 features, XGBoost) separating MCI (n = 105) from normal controls (n = 45): held-out test-set AUC 0.864 (95% CI 0.73-0.89); training AUC 0.935.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination of a machine-learning diagnostic classifier (MCI versus controls) built from radiomic features, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The study is a retrospective two-group comparison: MCI patients against controls selected to match them. That is a diagnostic case-control design, and it inflates discrimination. Participants with severe atrophy or poor-quality images were excluded, and the paper does not say how the 105 MCI patients were identified.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "No",
+     "quote": "Forty-five participants with normal MoCA performance (MoCA score \u226527), matched for gender, age, and educational level, served as the normal control (NC) group.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "(5) no encephalomalacia or severe/diffuse cerebral atrophy.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are radiomic features from routine 3D T1 MRI, segmented automatically and acquired with the same protocol for every participant. They would be available at the time of intended use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All participants underwent standardized brain MRI scans and completed the Beijing version of the Montreal Cognitive Assessment (MoCA) and Mini-Mental State Examination (MMSE).",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "The hippocampus was automatically segmented by a new deep-learning network based on convolutional neural network (CNN) model",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "all participants underwent brain MRI examination within one week prior to assessment.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "MCI status rests only on MoCA/MMSE cut-offs; the paper uses no clinical diagnostic criteria and no functional assessment, and the authors acknowledge this. The reported data contradict the stated control definition: controls were defined by MoCA \u226527, yet their mean MoCA was 22.53, and the groups did not differ on MoCA (p = 0.17) or MMSE (p = 0.09). The reference classification is therefore unreliable.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "cognitive impairment was assessed solely using the MoCA, without incorporating a comprehensive neuropsychological test battery, potentially limiting the standardization of cognitive classification.",
+     "page": "6"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No",
+     "quote": "Forty-five participants with normal MoCA performance (MoCA score \u226527) [p. 2]; Table 1: MoCA score 21.65 \u00b1 3.86 22.53 \u00b1 2.91 0.17 [p. 3]",
+     "page": "2-3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "For the MMSE, cutoff scores were defined by educational background \u226419 for no formal schooling, \u226422 for completed primary school, and \u226426 for secondary education or above",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "All participants underwent standardized brain MRI scans and completed the Beijing version of the Montreal Cognitive Assessment (MoCA) and Mini-Mental State Examination (MMSE).",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "Written informed consent to participate in this study was waived due to the retrospective nature of the study.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "all participants underwent brain MRI examination within one week prior to assessment.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The model was built from 1183 candidate features, with only 30 controls in training. Features were screened by univariable hypothesis tests, and z-score normalisation used the whole-cohort mean. The paper does not say whether the reproducibility, hypothesis-test, Spearman and LASSO steps were restricted to the training set. Calibration was not assessed, the test set was 45 participants with 15 controls, and there was no external validation. Hyperparameter tuning was confined to the training set.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "training set that was composed of 75 MCI patients and 30 NC subjects [p. 2]; A total of 1183 radiomic features were systematically extracted from the bilateral hippocampus of each subject. [p. 2]",
+     "page": "2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "hippocampal feature values were normalized using z-score transformation",
+     "page": "2"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No information",
+     "quote": "Searched for numbers screened, excluded or not analysed; only the analysed total is given: 'The study cohort comprised 150 participants, including 105 patients with mild cognitive impairment (MCI) and 45 age- and gender-matched NC subjects.'",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched Methods and Statistical analysis for missing data, imputation or exclusions for missing values; none reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "Subsequent hypothesis testing identified 252 radiomic features (140 original features and 112 wavelet features) showing statistically significant intergroup differences.",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. case-control sampling) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "Proportional representation of both diagnostic groups in each dataset was ensured by this stratified partitioning approach",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "Model performance was evaluated through Receiver Operating Characteristic (ROC) curve analysis, with calculation of key metrics including Area Under the Curve (AUC), sensitivity, specificity.",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably no",
+     "quote": "\u00b5 corresponds to the mean feature value across the entire patient cohort [p. 2]; the relatively small sample size and lack of external validation may constrain the generalizability of our findings [p. 6]",
+     "page": "2, 6"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Finally, a radiomics score (Rad-score) was calculated for each patient based on the 7 selected features for subsequent regression model fitting. (The Rad-score formula is from LASSO; the final XGBoost model's settings are not reported.)",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "The study cohort of 150 subjects was randomly partitioned into training and validation datasets at a 7:3 ratio",
+     "page": "2"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection and augmentation confined to the training data (no leakage)?",
+     "answer": "Probably no",
+     "quote": "The minimum redundancy maximum correlation analysis was performed on 20 samples through duplicate segmentation, resulting in 548 radiomic features",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Yes",
+     "quote": "The tuning was performed using 5-fold stratified cross-validation on the training set only",
+     "page": "2"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Probably no",
+     "quote": "Proportional representation of both diagnostic groups in each dataset was ensured by this stratified partitioning approach",
+     "page": "2"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal split-sample only (training AUC is apparent)",
+     "quote": "Notably, the XGBoost model, utilizing the seven selected features, achieved the highest AUC in the test set (AUC = 0.864, 95 %CI:0.73\u20130.89).",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The sample comes from a single Chinese hospital and is retrospective, with severe atrophy excluded and controls matched to cases. It does not reflect the spectrum of people who would be screened."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "The model uses routine 3D T1 MRI with automated segmentation."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "MCI is defined only by screening-test cut-offs, not by a clinical MCI diagnosis."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 1 (diagnostic case-control sampling), domain 3 (outcome defined by screening cut-offs only, contradicted by the reported control MoCA) and domain 4 (univariable screening of 1183 features, whole-cohort normalisation, no calibration, small test set, no external validation) are each high.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 12
+ }
+}

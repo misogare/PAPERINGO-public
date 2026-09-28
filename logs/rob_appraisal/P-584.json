@@ -1,0 +1,212 @@
+{
+ "paper_id": "P-584",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Gallego-Rudolf J, Wiesman AI, Yakoub Y, Zetterberg H, Blennow K, Baillet S, Villeneuve S et al., 'Prediction of mild cognitive impairment progression using time-sensitive multimodal biomarkers', a medRxiv preprint posted 22 September 2025 (doi:10.1101/2025.09.20.25336240) and not peer reviewed. It is a PREVENT-AD analysis (n = 102, 31 progressors) and matches the cited claims: the clinical model is predictive; plasma, Abeta PET and tau PET add to it; hippocampal volume does not; time-varying alpha power adds beyond clinical and plasma markers."
+ },
+ "cited_result": "Principal: incremental prediction of progression to MCI from nested Cox models. Plasma Abeta42/40 and p-tau217, neocortical Abeta PET and entorhinal tau PET improved on a clinical and genetic model (likelihood ratio tests vs clinical), while hippocampal volume did not. Also cited: the time-varying alpha-power term improving on clinical plus plasma markers (LRT = 5.12, p(FDR) = 0.0237).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the added predictive performance of biomarkers within multivariable Cox prognostic models (model comparison by likelihood ratio, AIC and C-index), which is a multivariable prediction-model question.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "Low",
+   "rationale": "The data come from a prospective longitudinal cohort with clear inclusion criteria. Exclusions were technical (dental-implant MEG noise, poor PET, missing plasma) and are unlikely to relate to the outcome, although they reduce the sample (handled under analysis).",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Yes",
+     "quote": "We analyzed data from a subset of participants from the PRe-symptomatic EValuation of Experimental or Novel Treatments for Alzheimer\u2019s Disease (PREVENT-AD) cohort, a longitudinal study of cognitively unimpaired older adults with elevated familial risk for sporadic AD",
+     "page": "22"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "We excluded 19 participants due to high-amplitude MEG noise from ferromagnetic dental implants, one for poor-quality PET data, and two with missing plasma measurements, yielding 102 participants for analysis.",
+     "page": "22"
+    },
+    {
+     "question": "Were inclusion criteria stated?",
+     "answer": "Yes",
+     "quote": "Inclusion criteria required a Montreal Cognitive Assessment score \u2265 26 (Nasreddine et al., 2005) and Clinical Dementia Rating of 0",
+     "page": "22"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Low",
+   "rationale": "Predictors were measured with single-site, standardised MEG, PET, MRI and plasma protocols at baseline, before diagnosis. Blinding of the semi-automated processing is not stated, but the measures are largely automated. MRI and plasma samples were the ones 'closest' to baseline (mean offsets 0.84 and 0.91 years), and a sensitivity analysis of plasma timing gave similar results.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Relative alpha-band (8\u201312 Hz) power was averaged across six bilateral temporal-lobe regions (entorhinal, fusiform, inferior parietal, lingual, middle temporal, parahippocampal) and used as the MEG biomarker",
+     "page": "24"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "All were cognitively unimpaired at biomarker collection",
+     "page": "22"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "Biomarkers were not always collected on the same day, introducing modest timing offsets. However, sensitivity analyses using actual acquisition dates of plasma collection\u2014rather than aligning them to MEG/MRI/PET session dates\u2014yielded nearly identical results, supporting robustness.",
+     "page": "18"
+    },
+    {
+     "question": "Were timing offsets reported?",
+     "answer": "Yes",
+     "quote": "The scan closest to MEG/PET acquisition was selected (mean interval = 0.84 years; SD = 0.63).",
+     "page": "23"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "Low",
+   "rationale": "MCI was determined by a multidisciplinary consensus panel blinded to APOE and all biomarkers, after annual RBANS testing for everyone, over a mean follow-up of 5.9 years. Named diagnostic criteria are not given, but the procedure is standard for the cohort.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Yes",
+     "quote": "Decline in at least one domain prompted review by a multidisciplinary consensus panel at the Centre for Studies on Prevention of Alzheimer\u2019s Disease (StoP-AD).",
+     "page": "23"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "The panel, blinded to APOE genotype and all biomarker data, determined MCI status, based on longitudinal neuropsychological, clinical, and medical information.",
+     "page": "23"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "The panel, blinded to APOE genotype and all biomarker data",
+     "page": "23"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "PREVENT-AD participants complete annual cognitive testing with the Repeatable Battery for the Assessment of Neuropsychological Status (RBANS; Randolph et al., 1998)",
+     "page": "23"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Yes",
+     "quote": "The panel, blinded to APOE genotype and all biomarker data, determined MCI status",
+     "page": "23"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "Over a mean follow-up of 5.88 years (SD = 1.64; range = 0.19\u20137.45), 31 participants progressed to MCI and 71 remained stable.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "With 31 events, the full model (4 clinical plus 6 biomarker terms) and the stepwise model (plus 2 time interactions) have roughly 3 events per parameter. It is a complete-case analysis (22 of 124 excluded). Time-interaction terms were carried forward because they were significant in the same data, and a stepwise AIC selection was used. No calibration is reported. No cross-validation, bootstrap or shrinkage was done, so all performance is apparent. The 'extended samples' contain the main cohort and have no MEG, so they are not independent validation of the alpha-power findings.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Limitations include the relatively small sample size, reflecting the difficulty of acquiring longitudinal multimodal data in at-risk but asymptomatic individuals, and class imbalance (31 progressors vs. 71 non-progressors).",
+     "page": "18"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Time-varying associations between the z-scored biomarker values and the predicted log risk scores",
+     "page": "13"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "The main analytic sample comprised 124 participants who underwent A\u03b2 and tau PET imaging and resting-state MEG between 2017 and 2019.",
+     "page": "22"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "We excluded 19 participants due to high-amplitude MEG noise from ferromagnetic dental implants, one for poor-quality PET data, and two with missing plasma measurements, yielding 102 participants for analysis.",
+     "page": "22"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably no",
+     "quote": "For time-dependent effects, we added biomarker \u00d7 time interaction terms to each of the models combining clinical and biomarker information, entering them individually while keeping the rest of the predictors as linear terms.",
+     "page": "28"
+    },
+    {
+     "question": "4.5 (continued) Was data-driven predictor selection used for the final model?",
+     "answer": "Yes",
+     "quote": "A stepwise selection procedure (step, base R) was applied to the full model (all biomarkers + significant time interactions) to identify a parsimonious predictor set.",
+     "page": "28"
+    },
+    {
+     "question": "4.6 Were complexities in the data (censoring, non-proportional hazards) accounted for appropriately?",
+     "answer": "Yes",
+     "quote": "Models were fitted with coxph; proportional hazards assumptions were tested using cox.zph.",
+     "page": "27"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "Model performance was assessed via likelihood ratio tests (LRTs) against the null model (FDR-corrected, n = 7). Pairwise LRTs compared each biomarker model to the clinical model (FDR-corrected, n = 6).",
+     "page": "27"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for? (AI-specific: split, held-out test set, apparent vs validated performance)",
+     "answer": "No",
+     "quote": "While Cox models are robust to moderate class imbalance (Cox, 1972), the sample size precluded the use of cross-validation or more complex machine learning approaches.",
+     "page": "18"
+    },
+    {
+     "question": "Is the replication sample independent of the development sample?",
+     "answer": "No",
+     "quote": "we also examined three extended PREVENT-AD samples comprising the main analysis cohort plus participants with available plasma or PET biomarkers but no MEG scans.",
+     "page": "7"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "Probably yes",
+     "quote": "The algorithm selected a final parsimonious model comprising age (log(HR) = 0.32, HR = 1.38, p = 0.1326), hippocampal volume (log(HR) = 0.39, HR = 1.48, p = 0.0661), the time-varying effect of alpha power (log(HR) = 0.01, HR = 1.01, p = 0.0047), neocortical A\u03b2 PET burden (log(HR) = 0.44, HR = 1.55, p = 0.0086), and entorhinal tau PET uptake (log(HR) = 0.60, HR = 1.82, p = 0.0027)",
+     "page": "14"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Participants, predictors and outcome are low risk, but the analysis domain is high. The events-per-parameter ratio is very low, the analysis is complete-case, interaction terms and the stepwise model were selected on the same data, no calibration is reported, and there was no internal or external validation, so the incremental-value estimates are apparent and optimistic. Under PROBAST, any high domain gives an overall high rating.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The sample is cognitively unimpaired volunteers with a parental or multiple-sibling history of AD, and the outcome is progression to MCI (not MCI to dementia). This limits transfer to general MCI populations."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some",
+   "rationale": "The predictors are research-grade MEG (275-channel), HRRT PET and mass-spectrometry and Simoa plasma assays, which are not routinely available."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "The outcome is consensus-panel MCI diagnosis, which is relevant to preclinical risk prediction."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 24,
+  "matched": 0
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-74",
+ "document_check": {
+  "matches": true,
+  "note": "Bucholc et al., Expert Systems With Applications 217 (2023) 119541, 'A hybrid machine learning approach for prediction of conversion from mild cognitive impairment to dementia'. NACC-UDS, cognitive trajectory classes from unsupervised clustering added to multi-visit cognitive scores in RF/SVM/LR/kNN-ensemble models, 'up to 6.5 % higher accuracy'. Matches the cited study (Bucholc et al. 2023)."
+ },
+ "cited_result": "Adding unsupervised cognitive trajectory classes to multi-visit cognitive scores improved the accuracy of predicting MCI-to-dementia conversion in NACC (Model 1: n = 768, 112 converters at Y2; Model 2: n = 409, 65 converters at Y3). The abstract claims up to 6.5 % higher accuracy. Examples: RF Model 2 87.5 % vs 81.3 %; ensemble Model 1 85.0 % vs 81.4 % (Table 2, mean over 10 held-out test sets).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the performance of prognostic machine-learning models for conversion to dementia (with vs without trajectory-class inputs), which PROBAST with the PROBAST+AI considerations covers.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "low",
+   "rationale": "The data come from a longitudinal multi-centre cohort with standardised annual assessments. Restricting to people with MCI at every visit up to the prediction time matches the intended use. Exclusions for missing data are addressed under analysis.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Yes",
+     "quote": "The primary purpose of the NACC-UDS is to provide a standard set of assessment procedures, collected longitudinally (approximately annually), to describe ADRC participants with AD and mild cognitive impairment and compare them to cognitively healthy controls",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "All participants at BL and Y1 in Model 1 and BL, Y1, and Y2 in Model 2 had MCI diagnosis.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Standardised cognitive and functional tests were given by trained staff at visits before the outcome visit and are available at the time of prediction.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "subsequent follow-up visits by trained research personnel, clinicians, and psychometrists.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Yes",
+     "quote": "Model 1, disease prognosis at Year 2 (Y2) was determined based on cognitive scores at BL and Year 1 (Y1) and cognitive trajectory classes derived using cognitive scores from the BL and Y1 visits",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "cognitive trajectory classes derived using cognitive scores from the BL and Y1 visits",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "Dementia was a clinical diagnosis under standard guidelines, applied through each centre's own protocol, and the one-year horizon is appropriate. The paper does not say whether the diagnosing clinicians used the same cognitive tests (including earlier-visit scores) that serve as predictors, or whether they were blind to them.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "The incidence of MCI and AD are determined based on the clinical diagnosis made by a single physician or a consensus panel according to each ADRC\u2019s diagnostic protocol",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "each ADRC generally adheres to the modified Petersen criteria for establishing MCI diagnoses and to the DSM-IV or NINDS-ADRDA guidelines for the clinical diagnosis of AD",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether MMSE, FAQ, LOGIMEM and the other predictor tests informed the clinical diagnosis of dementia; not stated.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "according to each ADRC\u2019s diagnostic protocol; however, each ADRC generally adheres to the modified Petersen criteria",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the Y2/Y3 diagnosis to prior cognitive scores; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "models were developed using patient data with 3 (n = 768) (Model 1) and 4 (n = 409) visits (Model 2), separated by one year.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The analysis is complete-case, excluding records with missing values and requiring attendance at the outcome visit. There are few events for the number of candidate inputs, especially in Model 2 (65 events). There is no calibration. Accuracy on an outcome with about 85 % non-converters is barely above the no-information rate, the reported 'AUC' equals the mean of sensitivity and specificity from hard labels, and the clustering was fitted on the full sample including test participants. Nested validation with repeated held-out tests mitigates optimism in part.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably no",
+     "quote": "Among 768 MCI participants with the record of 3 visits (Model 1), 112 converted to dementia at Y2. Out of 409 MCI participants with 4 visits (Model 2), 65 converted to dementia at Y3.",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "Note that Z-score normalization was applied to transform multi-scaled data inputs into a common range.",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "After removing patient records with missing values for selected input features and including only individuals with MCI diagnosis",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No",
+     "quote": "After removing patient records with missing values for selected input features",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "all input variables were retained for model training.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "Note that after initial data cleaning, the sample size of MCI individuals with 5 visits or more (n < 100) was limited and insufficient to obtain unbiased performance estimates for prognostic models. (Loss to follow-up, death and competing risks before the outcome visit are not addressed; inclusion requires the outcome visit.)",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "the specificity of our models, i.e., the ability to correctly identify MCI converters, varied hugely between different",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably yes",
+     "quote": "We implemented the nested validation procedure, with the inner loop serving for model/parameters selection and the outer loop assessing the quality of tuned models on the held-out testing set (10 repeats)",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "Table S2 contains the hyper-parameter search spaces and a set of optimal hyperparameters used for the best performing Model 1 and Model 2.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was the train/test split at participant level?",
+     "answer": "Probably yes",
+     "quote": "The full dataset was randomly divided into two subsets, namely the model development set (90 %), used for model training and validation, and the held-out testing set (10 %)",
+     "page": "4"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and hyperparameter tuning confined to training folds?",
+     "answer": "Probably no",
+     "quote": "FAQ 607 (79 %) 161 (21 %) (Table 1 cluster counts sum to the full n = 768, so the Stage 1 clustering that produces the trajectory inputs was fitted on all participants, test sets included. SMOTE and RF-RFE were confined to training or development data.)",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Yes",
+     "quote": "The optimal hyperparameter selection was conducted by applying grid search with 10-fold cross validation (CV).",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes",
+     "quote": "we applied the Synthetic Minority oversampling technique (SMOTE) to oversample the under-represented class labels in the training set (i.e., individuals with dementia) prior to model fitting",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (repeated random held-out test sets)",
+     "quote": "the external validation using independent datasets is essential.",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "MCI patients in ADRC research clinics with serial annual assessments. The complete-data restriction narrows the population somewhat."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Routine, low-cost cognitive and functional tests."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Clinical conversion to dementia at one year."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Analysis (domain 4) is high. It is a complete-case analysis, event numbers are limited (65 in Model 2), and there is no calibration. Model comparisons rest on accuracy in a sample about 85 % non-converters, where the best models detect only 24 to 58 % of converters. The trajectory clustering used the full sample including test participants. Outcome (domain 3) is unclear because it is not stated whether the diagnosing clinicians knew, or used, the predictor tests. Participants and predictors are low.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 22,
+  "matched": 21
+ }
+}

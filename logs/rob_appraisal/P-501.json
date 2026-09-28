@@ -1,0 +1,178 @@
+{
+ "paper_id": "P-501",
+ "document_check": {
+  "matches": true,
+  "note": "Deng et al., 'Novel methodology for detection and prediction of mild cognitive impairment using resting-state EEG', Alzheimer's & Dementia 2024;20:145-158 (accepted July 2023, doi:10.1002/alz.13411). 137 Black American participants (84 HC, 53 MCI); the classifier uses only time-varying functional-connectivity features, as the review states."
+ },
+ "cited_result": "Discrimination of MCI from HC by a weighted-majority-vote ensemble of 21 AdaBoost classifiers built on multiscale time-varying EEG functional-connectivity features, with no spectral-power features: leave-one-out accuracy 91.97% and 3-fold accuracy 91.17%.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the classification performance of a machine-learning model built on many EEG connectivity features.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "Unclear",
+   "rationale": "A community sample of older adults with self-reported cognitive concern, all diagnosed by consensus, is an appropriate cross-sectional source, but no exclusion criteria are reported.",
+   "signalling": [
+    {
+     "question": "Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "persons were recruited if they considered themselves to be fully functioning, though they also responded positively to a question asking if they were concerned that they may have experienced a potential decline in cognitive ability over the past year.",
+     "page": "2"
+    },
+    {
+     "question": "Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched for exclusion criteria (neurological or psychiatric disease, medication, EEG quality exclusions); none reported. Recruitment text: \"We recruited 137 community-dwelling Black participants (122 females, 15 males), ranging in age from 60 to 90 years, from the greater Detroit area.\"",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Low",
+   "rationale": "The same EEG system and protocol were used for everyone; features are computed algorithmically from a 3-minute resting recording available at the point of use; manual artefact inspection is not reported as blinded, but artefact rejection is unlikely to be driven by diagnosis.",
+   "signalling": [
+    {
+     "question": "Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "We performed EEG recordings in a community center at the University of Michigan (UM) Detroit Center or the Institute of Gerontology at Wayne State University using the same EEG system.",
+     "page": "3"
+    },
+    {
+     "question": "Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Off-line inspection was used to identify and remove segments of EEG contaminating either excessive noise, saturation, or lack of EEG activity. ... An automatic computerized procedure using a rejection criterion of +/\u2013 100 mV on any channel affected by artifacts (muscular, instrumental) was used to identify acceptable epochs.",
+     "page": "3"
+    },
+    {
+     "question": "Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "each participant received a 3-minute, eye-closed resting-state EEG recording.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "Unclear",
+   "rationale": "Consensus diagnosis with the NACC UDS is a standard, appropriate outcome, but the interval between EEG and the diagnosis used as label is not reported, and Table 2 shows diagnoses up to a year earlier than the EEG for some participants.",
+   "signalling": [
+    {
+     "question": "Was the outcome determined appropriately?",
+     "answer": "Yes",
+     "quote": "were diagnosed through the MADRC consensus conference using the National Alzheimer\u2019s Coordinating Center (NACC) Uniform Data Set (UDS)\u201484 of them being HC and 53 with MCI",
+     "page": "3"
+    },
+    {
+     "question": "Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "National Alzheimer\u2019s Coordinating Center (NACC) Uniform Data Set (UDS)",
+     "page": "3"
+    },
+    {
+     "question": "Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "were diagnosed through the MADRC consensus conference using the National Alzheimer\u2019s Coordinating Center (NACC) Uniform Data Set (UDS) (no indication that EEG entered the consensus)",
+     "page": "3"
+    },
+    {
+     "question": "Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All participants ... were diagnosed through the MADRC consensus conference",
+     "page": "2-3"
+    },
+    {
+     "question": "Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "No statement on blinding; the connectivity features are research-derived and not part of the UDS consensus process (\"were diagnosed through the MADRC consensus conference using the National Alzheimer\u2019s Coordinating Center (NACC) Uniform Data Set (UDS)\").",
+     "page": "3"
+    },
+    {
+     "question": "Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the EEG-to-baseline-diagnosis interval; not reported. Table 2, subject 10: \"2016\" | \"MCI, \u22120.5019\" | \"2015, aMCI\" (EEG test year 2016, first-visit diagnosis 2015).",
+     "page": "10"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "Very few events per candidate feature (53 MCI against 198 primitive features per window size across 8 window sizes). Features were screened by univariable t-tests on all 137 participants before cross-validation (leakage), and the 21 voters were chosen by their leave-one-out accuracy and then evaluated with the same cross-validation (test data used for tuning). Only accuracy is reported (no AUC, no calibration), class imbalance was not handled, and there is no external validation.",
+   "signalling": [
+    {
+     "question": "Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Here L = 25, 50, 100, 200, 400, 800, 1600, and 3200, and M = 10, 15, 20, 25, 30, 35, 40, or 45. (with 198 primitive features per window size and 53 MCI participants)",
+     "page": "5"
+    },
+    {
+     "question": "Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Using a regularized LDA (linear discriminant analysis), we mapped the feature vector of each participant to a point in a one-dimensional subspace or axis",
+     "page": "5"
+    },
+    {
+     "question": "Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "the shortest length of the eye-closed, resting-state EEG among all the 137 participants was 110 s. Therefore, for each participant, we kept the first 110 s",
+     "page": "3"
+    },
+    {
+     "question": "Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "for each participant, we kept the first 110 s of the eye-closed, resting-state EEG signals of all the 64 channels for further analysis. (no missing data reported)",
+     "page": "3"
+    },
+    {
+     "question": "Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "each primitive feature for all the 137 subjects was put together and screened using the t test, and only M out of the 198 primitive features with the smallest P-values were selected to formulate the feature vector.",
+     "page": "4-5"
+    },
+    {
+     "question": "Were complexities in the data (including class imbalance) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "First, we have more HC (84) than MCI (53). As a result, the model is better trained for HC. We can see that in all the cross-validation tests, the model achieves a higher accuracy in the discrimination of HC than that of the MCI.",
+     "page": "12"
+    },
+    {
+     "question": "Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "The leave-one-out cross-validation accuracy is 91.97% and 3-fold accuracy is 91.17%.",
+     "page": "1"
+    },
+    {
+     "question": "Were model overfitting, underfitting and optimism in model performance accounted for? (split at participant level; preprocessing, selection and tuning within training folds; test set held out)",
+     "answer": "No",
+     "quote": "We selected N = 21 classifiers, which delivered the highest accuracy in leave-one-out cross-validation as our voters, as marked by the red boxes in Figure 3. The same group of voters was used for the soft discrimination of HC and MCI for leave-one-out, 10-fold, 5-fold, and 3-fold cross-validations",
+     "page": "5-6"
+    },
+    {
+     "question": "Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for a final fitted model or weights; only selected-feature tables in the supplement are referenced (\"The complete tables of selected features ... can be found in the Supplemental File\").",
+     "page": "8"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST: analysis domain high; participants and outcome unclear; predictors low; internally validated only)",
+ "overall_category": "high",
+ "overall_rationale": "The analysis domain is high on its own. Univariable feature screening on the full data set and choosing classifiers by the same cross-validated accuracy that is then reported mean the 91.97% figure is optimistic apparent performance, not a validated estimate. The events-per-feature ratio is extremely low and there is no external validation.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "Community-dwelling Black American older adults, about 89% female, all reporting cognitive concern; applicability to other MCI populations is uncertain."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 17,
+  "matched": 11
+ }
+}

@@ -1,0 +1,201 @@
+{
+ "paper_id": "P-306",
+ "document_check": {
+  "matches": true,
+  "note": "Agbavor F, Liang H. Multilingual Prediction of Cognitive Impairment with Large Language Models and Speech Analysis. Brain Sci 2024;14:1292 (INTERSPEECH 2024 TAUKADIAL Challenge). Table 6 reports balanced accuracy 0.612 (language-agnostic) and 0.818 (language-specific) on the unseen test set. Table 5 reports English-trained models applied to Chinese tasks at balanced accuracy 0.418 to 0.529. The authors, benchmark and numbers match the cited sentence."
+ },
+ "cited_result": "MCI versus normal-cognition classification on the TAUKADIAL unseen test set (40 participants, 120 recordings): balanced accuracy 0.612 for the language-agnostic Whisper-embedding neural network against 0.818 for the language-specific majority-vote ensemble (Table 6). Secondary: English-trained models applied to Chinese picture-description tasks reached balanced accuracy 0.418 to 0.529 (Table 5, not the test set).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (balanced accuracy) of machine-learning classifiers for MCI and a ranking of two modelling pipelines, which is a prediction-model performance question.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The data are a challenge corpus of diagnosed MCI and cognitively normal speakers, matched on age and sex by propensity score. This is case-control-type sampling, which tends to inflate discrimination relative to an intended screening population. No eligibility criteria, recruitment sites or periods are reported in the document.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Probably no",
+     "quote": "The dataset is curated to ensure a balanced representation of age and sex among participants, thereby mitigating potential confounding factors and bias using a propensity score matching approach [25,26].",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched for inclusion or exclusion criteria, MCI diagnostic criteria, recruitment settings and dates. The document defers to the organisers: \"The dataset used in this work was provided by the organizers of the INTERSPEECH 2024 TAUKADIAL Challenge [23]\"",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are Whisper encoder embeddings, extracted automatically and identically from the recordings, which would be available at the time of use. The picture sets differ between languages. This matters for the pooled language-agnostic model's comparability but is not a bias in how predictors were assessed.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "In this study, we employ the Whisper model to extract embeddings representing acoustic features from both Chinese and English datasets. ... It is important to note that the pictures used for descriptions in each language were different.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Yes",
+     "quote": "The encoder component of the Whisper model generates embeddings, which serve as representations of the acoustic features extracted from the input speech.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Our method relies only on acoustic features extracted from spontaneous speech recordings using Whisper encoder embeddings [14]",
+     "page": "9"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The challenge organisers supplied the MCI and normal-cognition labels. The document does not describe how the diagnosis was made, whether it was harmonised across the English and Chinese sites, or whether the picture-description assessments contributed to it.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched for the diagnostic procedure for MCI and normal cognition. Only: \"speech samples and clinical information for speakers of Mandarin Chinese and English with different levels of cognitive impairment as well as individuals with normal cognition (NC) [25]\"",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for an MCI definition (Petersen, NIA-AA, DSM or clinical consensus); none reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Recordings were \"collected while the speakers participated in picture description tasks conducted as cognitive assessments in clinical settings.\" Whether these assessments informed the diagnosis is not reported.",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for a common diagnostic protocol across the English and Chinese data; only different picture tasks are described: \"In the Chinese language dataset, participants similarly were asked to provide a detailed description of three pictures depicting Taiwanese culture.\"",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for masking of diagnosing clinicians to the speech recordings; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "collected while the speakers participated in picture description tasks conducted as cognitive assessments in clinical settings.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The samples are very small for 1280-dimensional inputs: about 74 MCI participants in training (222 recordings at three per participant) and a 40-participant test set. No confidence intervals or calibration are reported. The unit of the internal 80/20 split is not stated despite three recordings per person. Predictions were manually checked before submission, and the number of test submissions is not reported. The pipeline comparison also confounds language-specificity with ensembling. AI considerations: the test set appears participant-disjoint. Tuning used a training-only split. The fitting scope of z-scoring is not stated. Class imbalance was handled only by the balanced-accuracy metric. Performance is a held-out internal split of one challenge corpus, with no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "The training dataset comprises 387 voice recordings from 129 participants from MCI patients and normal cognition (NC) subjects. The test dataset consists of 120 recordings from 40 participants. Within the training set, 222 samples belong to the MCI group, while the remaining 165 samples are healthy control. ... This version of the Whisper model offers embeddings of 1280 dimensions",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "These embeddings were further normalized by using z-score normalization, which were then utilized as inputs for classifiers, such as neural networks (NNs).",
+     "page": "4"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "In Table 6, we show the results of the MCI classification task on the unseen test set.",
+     "page": "8"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing or unusable recordings, failed transcriptions and exclusions; none reported.",
+     "page": "3-8"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "For language agnostic modeling, we directly used the embeddings from Whisper as input into a neural network, regardless of language.",
+     "page": "5"
+    },
+    {
+     "question": "4.6 Were complexities in the data (e.g. clustering of recordings within participants) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "To determine optimal hyperparameters for our models, we adopt a methodology that involves dividing the training data into an 80/20 split for training and validation sets. ... we use a stratified approach based on both the detected language and diagnosis when dividing the data",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (discrimination and calibration)?",
+     "answer": "No",
+     "quote": "we assess model performance using the following metrics from the challenge: unweighted average recall (UAR, also called balanced accuracy), specificity, sensitivity, and F1 Score.",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "Finally, we manually checked the predictions to ensure consistency across the tasks for each subject before submission to the competition organizer.",
+     "page": "5"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for final model parameters, released code or model weights; none reported.",
+     "page": "2-12"
+    },
+    {
+     "question": "AI: Is the training/test split at participant level?",
+     "answer": "Probably yes (test set); No information (internal 80/20 split)",
+     "quote": "The test dataset consists of 120 recordings from 40 participants.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Are preprocessing and tuning confined to training data, with the test set held out from all tuning?",
+     "answer": "Probably yes for tuning; No information for normalisation",
+     "quote": "The results of within-language analysis for the English dataset are presented in Table 2 ... In Table 6, we show the results of the MCI classification task on the unseen test set.",
+     "page": "6, 8"
+    },
+    {
+     "question": "AI: Is class imbalance handled, and is performance apparent, internal or external?",
+     "answer": "Imbalance addressed only through balanced accuracy; internal held-out split, no external validation",
+     "quote": "Within the training set, 222 samples belong to the MCI group, while the remaining 165 samples are healthy control.",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domains 1 and 4 are high: a matched case-control-type challenge corpus, tiny participant counts relative to feature dimension, no confidence intervals or calibration, manual checking of predictions before submission, and an unstated split unit for repeated recordings. Domain 3 is unclear because the reference diagnosis is not described. By PROBAST rules any high domain gives high overall.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "A propensity-matched sample of diagnosed MCI and normal-cognition speakers from a challenge corpus does not represent a screening or memory-clinic population."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "unclear",
+   "rationale": "The MCI definition is not reported in the document."
+  }
+ ],
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 15,
+  "matched": 15
+ }
+}

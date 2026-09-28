@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-69",
+ "document_check": {
+  "matches": true,
+  "note": "Di et al., Artificial Intelligence in Medicine 138 (2023) 102510, 'Detecting mild cognitive impairment and dementia in older adults using naturalistic driving data and interaction-based classification from influence score'. LongROAD naturalistic driving data, 2977 participants, MCI and dementia pooled into one label. Matches the cited study (Di et al. 2023) and the cited description."
+ },
+ "cited_result": "Principal result: ensemble interaction-based ResBlocks classifier (Model 5: demographics + driving time-series features + I-score modules) classifying pooled MCI/dementia vs healthy. Accuracy 96 %, F1 0.98, AUC 0.87 on a held-out random test set of 90 healthy and 15 MCI/dementia participants (Table 3, Table A.8). The review cites the study for its data modality (naturalistic driving telemetry) and for pooling MCI and dementia as one outcome.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the performance of a machine-learning classifier for MCI/dementia status, a prediction-model question covered by PROBAST with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "low",
+   "rationale": "The data come from a prospective multi-site cohort of active older drivers recruited from primary care. Only 13 of 2990 were excluded, for fewer than 10 monthly records.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Yes",
+     "quote": "The LongROAD study recruited a total of 2990 active drivers aged 65 to 79 years from primary care clinics and healthcare systems and performed baseline assessment and vehicle instrumentation.",
+     "page": "4"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "Those who have less than 10 monthly records are excluded from the subsequent analysis. After preprocessing, objectively collected driving trajectories from 2977 participants are available.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "high",
+   "rationale": "Driving predictors were recorded automatically and uniformly. However, the time-series features summarise the whole follow-up (up to 44 months), while the outcome is the most severe diagnosis at any point in that period. The predictor data therefore include driving after diagnosis and would not be available at the intended time of early detection.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "The DataLogger detects and records an array of data whenever the vehicle is in operation, and transmits data with a built-in 3G cellular system to the data center at the end of each driving trip.",
+     "page": "4"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "objectively collected driving trajectories from 2977 participants are available.",
+     "page": "4"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "No",
+     "quote": "Participants\u2019 lengths of study vary from 1 to 44 months. ... However, here we only use the most severe one.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The paper does not describe how diagnoses were made. The outcome pools MCI, AD and other or unspecified dementia, is taken as the most severe label over follow-up windows of different lengths, and overlaps in time with the predictor window.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Note that throughout the study period, participants were interviewed annually. Thus, we have each participant\u2019s yearly diagnosis label. (Searched for the diagnostic procedure, criteria, or source such as medical records or self-report; none described.)",
+     "page": "4"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "Of all the participants, 61 have been diagnosed with cognitive impairment over time. Among these 61 patients, 36 have MCI, 8 Alzheimer\u2019s disease, and 17 have other or unspecified dementia.",
+     "page": "4"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether driving data or demographics informed the diagnosis label; not stated.",
+     "page": "4"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "For instance, if one participant was healthy at the beginning of the study but gradually moved to MCI, unspecified dementia, and then Alzheimer\u2019s disease, we will assign a value of one for this participant.",
+     "page": "4"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the diagnosis to driving data; not reported.",
+     "page": "4"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No",
+     "quote": "Each participant has a annual label of her disease level. Here we only use one final class for each participant.",
+     "page": "14"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 61 events (46 in training) against 1488 time-series features plus demographics, and a single random split leaves 15 test events. Module selection with BDA/I-score is described as applied to 'the dementia dataset', without saying it was confined to training. The number of modules was chosen by AUC. There is no calibration, and F1 and sensitivity treat the majority healthy class as positive. Varying follow-up is not modelled.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "We randomly select 90 healthy and 15 dementia data points as the test data, and use the remaining 2826 healthy and 46 dementia data points as the training data.",
+     "page": "8"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "After variable modules are generated, the original variables instead of partitions are used to estimate their effects and to construct a classifier.",
+     "page": "5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "After preprocessing, objectively collected driving trajectories from 2977 participants are available.",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing months, gaps in DataLogger records, or imputation; not mentioned beyond the 10-month exclusion.",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably yes",
+     "quote": "The BDA algorithm is a heuristic method to select the most influential variable subsets.",
+     "page": "6"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "Participants\u2019 lengths of study vary from 1 to 44 months.",
+     "page": "4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "No",
+     "quote": "The confusion matrix contains the number of true positive (top left), true negative (bottom right), false positive (bottom left), and false negative (top right) predictions made by the model",
+     "page": "11"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably no",
+     "quote": "Applying BDA to the dementia dataset, we present the top five most predictive variable modules from I-score in Table 1.",
+     "page": "6"
+    },
+    {
+     "question": "4.9 Do predictors and weights in the final model correspond to the reported results?",
+     "answer": "No information",
+     "quote": "Searched for final model weights or a released model; none reported.",
+     "page": "7-10"
+    },
+    {
+     "question": "AI: Was the train/test split at participant level?",
+     "answer": "Yes",
+     "quote": "To reorganize one participant\u2019s features into one row, we further vectorize the uniform-dimensional matrix data to a vector.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and hyperparameter tuning confined to training folds?",
+     "answer": "No information",
+     "quote": "Applying BDA to the dementia dataset, we present the top five most predictive variable modules from I-score in Table 1. (SMOTE was applied to training data only: 'In this paper, we use SMOTE to balance the training data.' p. 8)",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "Fig. 4. Effect of number of nodules on AUC during training.",
+     "page": "9"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes",
+     "quote": "After balancing, there are 8160 training points in total and half of them are MCI/dementia.",
+     "page": "8"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated (single random split), no external validation",
+     "quote": "We randomly select 90 healthy and 15 dementia data points as the test data",
+     "page": "8"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "Community-dwelling older drivers recruited from primary care."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "high",
+   "rationale": "The predictors summarise up to 44 months of driving, including the period after diagnosis, which does not match early detection."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "MCI, AD and other dementia are pooled, so the result is not specific to MCI."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Predictors (domain 2), outcome (domain 3) and analysis (domain 4) are all high. The driving predictors and the outcome window overlap, and the outcome is the most severe label over variable follow-up. There are 46 training events for about 1,500 features, and feature selection and module-number tuning are not shown to be confined to training data. Only 15 events are in the test set, there is no calibration, and F1 and sensitivity are computed with the healthy class as positive.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 18,
+  "matched": 18
+ }
+}

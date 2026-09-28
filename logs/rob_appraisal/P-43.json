@@ -1,0 +1,194 @@
+{
+ "paper_id": "P-43",
+ "document_check": {
+  "matches": true,
+  "note": "Defrancesco M, Marksteiner J, Lenhart L, et al. 'Combined cognitive assessment and automated MRI volumetry improves the diagnostic accuracy of detecting MCI due to Alzheimer's disease', Progress in Neuropsychopharmacology & Biological Psychiatry 136 (2025) 111157, available online 29 September 2024. Single memory clinic (Innsbruck), 62 MCI patients, 21 converters; stepwise LDA of cognitive and FreeSurfer MRI measures. Matches the citation (Defrancesco et al. 2024)."
+ },
+ "cited_result": "Comparison of LDA models for MCI converters versus non-converters: combined cognitive + MRI model AUC 0.94 versus cognition alone (lower AUC, Fig. 1), with the same cross-validated accuracy of 85.5% for both (Table 5a,b; pp.5, 7).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the discrimination and accuracy of multivariable prediction models (LDA) for conversion from MCI to AD dementia, so PROBAST applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "A retrospective memory-clinic cohort is an acceptable source, but inclusion required at least two follow-up visits (excluding those lost to follow-up) and visually rated hippocampal and medial temporal atrophy at baseline, so the sample is selected on follow-up availability and on an MRI feature related to the predictors; the number screened is not reported.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "Data for this study were retrospectively collected from the files and MRI scans of individuals diagnosed with MCI at the Memory Clinic within the Department of Psychiatry at the Medical University of Innsbruck; Austria between 2013 and 2023.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "Each participant in the study underwent a thorough neuropsychological assessment and a comprehensive clinical interview at the initial baseline evaluation, and at least two follow-up visits, with the minimum follow-up period set at 12 months. ... iiii) as well as positive biomarkers of neuronal injury (Hippocampal and medial temporal atrophy measures by visual rating).",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Baseline cognitive tests (CERAD battery, CLOX, TMT) and automated FreeSurfer 6.0 measures were obtained the same way for all, before the outcome occurred, with scanner effects examined; all are available at a memory-clinic baseline visit.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "To test scanner related differences of volume and cortical thickness measurement between the two MRI control data sets and patient\u2019s samples, general linear models were set up with each MRI parameter as dependent variable, the scanner type as factor and age and gender as covariates.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Baseline (Neuropsychology, MRI) and clinical follow-up data from 62 MCI patients were analysed retrospectively.",
+     "page": "1"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "At baseline, all patients underwent a 3 T MRI and the APO \u03b5 genotype was determined.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "Conversion was judged by standard McKhann criteria, but those criteria rest on impairment on the same neuropsychological battery that supplies the cognitive predictors, and the diagnosis was made in routine care with access to that testing; no fixed prediction horizon was set, although non-converters were followed for a long time.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "At follow-up, progression from MCI to AD dementia (MCI converter) was based on McKhann criteria (McKhann et al., 2011) for probable AD dementia",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "At follow-up, progression from MCI to AD dementia (MCI converter) was based on McKhann criteria (McKhann et al., 2011) for probable AD dementia",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably no",
+     "quote": "ii) impaired neuropsychological function of >2 SD or more corrected for age and education in one memory function (verbal or figural memory) and at least one other cognitive domain",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "MCI non-converters still met the baseline inclusion criteria for MCI at all follow-up visits.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably no",
+     "quote": "Each patient underwent neuropsychological testing at both baseline and during regular follow-up examinations as an integral component of the routine clinical evaluation process.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "MCI non-converters remained stable on average for 10 years (98.4 \u00b1 13.6 month \u2013 last follow-up) while MCI-converters converted to AD dementia within a mean follow-up time of 2.3 years (range 12 to 60 month, 27.7 \u00b1 15.6 month).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "21 events against about 13 candidate predictors; cognitive predictors pre-selected on univariable group differences and then by stepwise LDA on the full data; leave-one-out cross-validation applied to accuracy only, so the AUC (the quantity on which the combined model is said to be better) appears apparent; no calibration; no external validation; reported error rates and model coefficients are inconsistent.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Out of 62 MCI patients 21 (34 %) converted to AD dementia (p.1); Group comparison of neuropsychological measures at baseline revealed in 4 out of 10 items significant lower z-scores in MCI converters (p.4)",
+     "page": "1, 4"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "For statistical analysis, MRI measures were normalized by each subject\u2019s intracranial volume. Data were further processed by z-transformation using mean centering and unit-variance scaling of the gender adjusted healthy control cohorts.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "In this study, LDA was applied to classify 62 patients into the two groups MCI converters and non-converters based on various measures",
+     "page": "3"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing data, imputation or participants excluded from the analysis: none reported.",
+     "page": "2-4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "Therefore, these cognitive variables were selected for the combined LDA model as possible predictors of imminent conversion from MCI stage to AD dementia. (p.5); three neuropsychological measures (verbal fluency animals, word list learning, CLOX 1) that remained in the model after applying the stepwise discriminant analysis (p.3)",
+     "page": "3, 5"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "general linear models were set up with each MRI parameter as dependent variable, the scanner type as factor and age and gender as covariates.",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "We applied a leave-one-out cross validation procedure for computing the accuracy rate of the model. ... Last but not least a ROC / AUC analysis illustrates the ability for discrimination of the model between the two groups",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "Following cross-validation the overall classification error was 12.9 %. (p.5); Panel a,b: 85.5 % of cross-validated grouped cases were correctly classified. (p.7)",
+     "page": "5, 7"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "Probably no",
+     "quote": "The standardized coefficients of the LD function yielded for the factor temporal lobe 0.53, for CLOX 1 0.40, for verbal fluency animals (z-score) -0.86, and for word list learning (z-score) 0.51, respectively. (p.5); factor hippocampus and factor temporal lobe as well as the following neuropsychological measures (Table 5 note, p.7)",
+     "page": "5, 7"
+    },
+    {
+     "question": "AI/validation: Is the reported performance apparent, internally validated or externally validated; how was class imbalance handled?",
+     "answer": "Internal (LOOCV) for accuracy only; AUC apparently apparent; no external validation",
+     "quote": "For group membership, frequency-weighted a priori probability was assumed. We applied a leave-one-out cross validation procedure for computing the accuracy rate of the model.",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "Amnestic MCI in one Austrian memory clinic, all Caucasian, with visually rated medial temporal atrophy required at entry; narrower than MCI in general."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Standard cognitive tests and FreeSurfer measures available at a clinic visit, although z-scores need a local control cohort."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Clinical conversion to probable AD dementia by McKhann criteria, without amyloid or tau confirmation."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "High risk in participants (selection on follow-up availability and baseline atrophy), outcome (cognitive predictors share instruments with the outcome criteria; diagnosis not blinded) and analysis (EPV below 2, univariable and stepwise selection on the full data, AUC not cross-validated, no calibration or external validation).",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 17
+ }
+}

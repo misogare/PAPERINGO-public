@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-19",
+ "document_check": {
+  "matches": true,
+  "note": "Cai F, Xue S, Si G, Liu Y, Chen X, He J, Zhang M. Prediction and validation of mild cognitive impairment in occupational dust exposure population based on machine learning. Ecotoxicol Environ Saf 2024;285:117111. It covers 1,938 miners (plus a 351-person test set) and seven ML algorithms, with XGBoost and logistic regression the best. This matches 'Cai et al. 2024' and the occupational context."
+ },
+ "cited_result": "Machine-learning discrimination of MoCA-defined MCI in dust-exposed coal miners: XGBoost AUC 0.959 training, 0.795 validation and 0.913 in the additional 351-person test set; logistic regression AUC 0.818, 0.816 and 0.778.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUC) of multivariable machine-learning models classifying current MCI status, which is diagnostic prediction-model performance.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "unclear",
+   "rationale": "The development sample is a well-described cross-sectional series of health-examination attendees with 96.9% participation, which is appropriate for a diagnostic model. The additional 351-person test set, which gives the headline AUC, has no description of how, when or where it was recruited.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Yes",
+     "quote": "Workers exposed to dust who underwent health examinations at the Occupational Health Examination Center from May 2022 to October 2022 were selected as research subjects.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "Exclusion criteria: (1) History of brain trauma or intracranial disease-related diseases. (2) Uncooperative with questionnaire survey. (3) Incomplete physical examination data. (Exclusion for incomplete data is addressed under 4.3 and 4.4.)",
+     "page": "2"
+    },
+    {
+     "question": "1 (validation set). Is the selection of the test-set participants described?",
+     "answer": "No information",
+     "quote": "Another 351 miners were also recruited as the group. (page 2); We collected an additional 351 cases of dust-exposed population as a test set for cognitive impairment assessment. (page 4)",
+     "page": "2, 4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "Predictors were collected uniformly by trained interviewers and would be available at the time of use. The interviewer-rated HAMA and the questionnaire were administered in the same face-to-face session as the MoCA, and blinding to the MoCA result is not reported.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "The one-to-one surveys were conducted face-to-face by six research members who received the same training.",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "Searched Sections 2.1 and 2.2 for the order of administration or for blinding of the HAMA/SSRS assessment to the MoCA score; not reported.",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "based on baseline characteristics of the workers",
+     "page": "1"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "'MCI' is a single MoCA screening threshold (\u226426, described as 'may be' MCI), with no clinical diagnosis, no functional criterion and no reported education adjustment. A screening cut-off is likely to misclassify, especially in a population where education level varies and is itself a predictor.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "A total score of \u226426 is considered to indicate that there may be mild cognitive impairment (MCI), and a total score of > 26 is defined as a normal population.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "Searched for an education correction or clinical confirmation of the MoCA threshold; none reported. The label rests on 'there may be mild cognitive impairment'.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "the scale includes seven dimensions: visuospatial, naming, attention, language, abstract thinking, memory, and orientation.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "The investigators were trained uniformly, followed the test guidelines strictly, and used a uniform introduction during the test.",
+     "page": "2-3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of the MoCA administrator to the questionnaire responses; not reported.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "The participants must register their personal information, attend the occupational health checks and sign voluntary consent before undertaking the questionnaire survey.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Predictors were chosen by univariable then multivariable significance testing on all 1,938 people before the train/validation split, which leaks information into the validation set. SSRS and HAMA were categorised, and participants with incomplete data were excluded. No calibration is reported. XGBoost fell from AUC 0.959 in training to 0.795 in validation, and its selection appears to rest partly on test-set results. The test set has only 50 events and comes from the same single mine. Test-set accuracy, sensitivity and specificity disagree between the text and Table 6.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably yes",
+     "quote": "Among the 1938 coal mine workers, 331 were found to have MCI, with a detection rate of 17.08 %. (the test set has 50 MCI cases)",
+     "page": "5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably no",
+     "quote": "The optimal HAMA score ranges were considered to represent no/minimal anxiety\u22647; mild anxiety = 8\u201314; moderate = 15\u201323; severe \u226524",
+     "page": "2"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "(3) Incomplete physical examination data.",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No",
+     "quote": "Exclusion criteria: ... (3) Incomplete physical examination data. (complete-case analysis; no imputation described)",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "Multivariate logistic regression analysis, including the above statistically significant indicators, showed that educational level (p = 0.012), age (p = 0.007), length of service (p<0.001), SSRS (p = 0.01066), and HAMA (p<0.001) were",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "Single-site cross-sectional data without clustering or censoring: A database was established using EpiData 3.1 software, and data was double-entered.",
+     "page": "3"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "Probably no",
+     "quote": "The model\u2019s predictive performance was evaluated using AUC, and the variable weights of the model were interpreted using SHapley. (no calibration reported)",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "1938 workers exposed to dust were randomly divided into a training set and a validation set at a ratio of 8:2. Seven machine learning predictive models were constructed based on the above multivariate logistic regression analysis results.",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "XGBoost hyperparameters and final logistic coefficients are not reported. Dietary pattern is significant in the multivariable model (Table 2: 1.95 (1.30, 2.92) 0.001) but is not named among the model inputs.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "The dataset was randomly divided into a training set and a validation set in an 8:2 ratio of 1550 and 388 individuals, respectively.",
+     "page": "1"
+    },
+    {
+     "question": "AI: Are feature selection and preprocessing done within the training data only?",
+     "answer": "No",
+     "quote": "Univariate analysis and multivariable logistic regression were employed to identify independent risk factors for cognitive impairment among miners. The dataset was randomly divided into a training set and a validation set",
+     "page": "1"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning and model selection?",
+     "answer": "Probably no",
+     "quote": "After a comprehensive performance comparison, we selected the best-performing XGBOOST model.",
+     "page": "7"
+    },
+    {
+     "question": "AI: Is class imbalance handled?",
+     "answer": "No information",
+     "quote": "About 17% MCI; searched for weighting, resampling or threshold strategy and found none apart from reported cut-offs (XGBoost 0.18).",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internal only",
+     "quote": "(1) The data used in this model comes from a single coal mine. More external data may be needed to improve the model\u2019s generalizability.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 3 (MoCA screening threshold as the MCI label) and domain 4 (univariable selection on the full data before splitting, no calibration, complete-case analysis, apparent test-set model selection, internal validation only) are high risk, and domains 1 and 2 are unclear.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "Working-age coal miners (mean age about 43 to 49) from one mine, unlike the older populations in which MCI is usually studied."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Routine questionnaire and health-check variables."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "The MoCA \u226426 screen is not MCI by clinical criteria."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 21,
+  "matched": 13
+ }
+}

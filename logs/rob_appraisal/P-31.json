@@ -1,0 +1,206 @@
+{
+ "paper_id": "P-31",
+ "document_check": {
+  "matches": true,
+  "note": "Zhou H, Yin L, Su R, Zhang Y, Yuan Y, Xie P, Li X. STCGRU: A hybrid model based on CNN and BiGRU for mild cognitive impairment diagnosis. Computer Methods and Programs in Biomedicine 248 (2024) 108123. The cited 99.95% mean accuracy under 10-fold cross-validation over 9,720 five-second segments is reported."
+ },
+ "cited_result": "Mean classification accuracy of 99.95% (kappa 0.9989) for the STCGRU CNN-BiGRU classifier distinguishing MCI from healthy controls, under 10-fold cross-validation over 9,720 five-second raw EEG segments from 27 participants (11 MCI, 16 HC).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination performance of a deep-learning diagnostic classifier, so PROBAST with the PROBAST+AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "High",
+   "rationale": "The data are a small public two-group dataset (11 MCI, 16 HC) drawn from cardiac catheterisation unit patients, with no description of how cases and controls were sampled. This is effectively a diagnostic case-control design that excludes the spectrum of patients in whom the model would be used.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably no",
+     "quote": "All experiments in this paper were done on a publicly available EEG dataset of 27 subjects [33]. 16 HC and 11 MCI subjects were part of this EEG dataset. All subjects were selected from patients admitted to cardiac catheterization units of Sina and Nour Hospitals, Isfahan, Iran[38].",
+     "page": "5"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "Subjects with a history of major psychiatric disorders, substance misuse, head trauma, severe medical disease, and dementia were excluded.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "Low",
+   "rationale": "The input is raw EEG recorded under a single stated protocol, is not interpreted by a person, and would be available at the time of intended use. Whether recording conditions differed systematically between the MCI and HC groups is not reported, which matters when unpreprocessed signals are used.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "All subjects were instructed to close their eyes and feel relaxed and conscious to avoid drowsiness during the EEG recordings. For each subject, the recording lasted for 30 min, and signals were digitized using 32-channel EEG device with a sampling frequency of 256 Hz",
+     "page": "5"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "To verify the robustness of the model we propose, we use EEG data that has not undergone any pre-processing as training data, and we only segment the raw EEG data according to the required duration.",
+     "page": "5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "The STCGRU uses the raw EEG signals as the input data.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "Unclear",
+   "rationale": "The document does not say how MCI and HC labels were assigned (criteria, tests, assessor blinding or timing relative to the EEG); it defers to the dataset's source papers.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "No information",
+     "quote": "Searched the dataset description (Section 4.1) for the MCI diagnostic criteria (Petersen criteria, MMSE or neuropsychological cut-offs, clinician diagnosis); none given. The only statement is general: 'Currently, the diagnosis of MCI is typically made using neuropsychological tests [3]'.",
+     "page": "1 and 5"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "No information",
+     "quote": "Searched for a named MCI definition for the dataset; none reported.",
+     "page": "5"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No information",
+     "quote": "Searched for whether EEG contributed to the MCI label; not reported.",
+     "page": "5"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for the labelling procedure; not reported.",
+     "page": "5"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for blinding of diagnosticians to EEG; not reported.",
+     "page": "5"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the timing of cognitive assessment relative to EEG recording; not reported.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "High",
+   "rationale": "With 11 participants in the outcome group the sample is far too small. The 9,720 segments (360 per person) were split into folds with no statement of subject-level partitioning, so segments from the same person almost certainly fall on both sides of each split, which explains near-perfect fold accuracies. Clustering is ignored, there is no calibration, the learning-rate schedule was chosen by performance on an unstated data set, and there is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "We used an MCI-based EEG dataset that is small in size (total 27 subjects, including 16 HC subjects and 11 patients with MCI), so one of the limitations of this study is the small size of data",
+     "page": "6"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "In this study, we segment the EEG signals of all subjects according to 5 s segments. Since the sampling frequency is 256 Hz, each EEG data sample was an array with 19 rows and 1280 columns.",
+     "page": "5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "so we only take the first 1800 s of each subject's EEG signals for the experiment.",
+     "page": "5"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for missing or unusable recordings or segments; none reported.",
+     "page": "5"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "The experimental results show that the hybrid model proposed in this paper can directly extract compelling spatio-temporal features from the raw EEG data for classification.",
+     "page": "1"
+    },
+    {
+     "question": "4.6 Were complexities in the data (repeated segments per participant) accounted for appropriately?",
+     "answer": "No",
+     "quote": "After segmentation, a total of 9720 samples are obtained, which included 3960 MCI samples and 5760 HC samples.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately, including calibration?",
+     "answer": "No",
+     "quote": "Thus, in addition to the most common metric, accuracy, we introduce other metrics such as kappa value, sensitivity, specificity, precision, and F1-score to minimize the impact of data imbalance",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were overfitting and optimism accounted for?",
+     "answer": "No",
+     "quote": "To enhance the performance of STCGRU further, we compare two learning rate schedules, StepLR and CosineAnnealingLR. Ultimately, we selected StepLR due to its better performance when applied to STCGRU.",
+     "page": "6"
+    },
+    {
+     "question": "4.9 Do the model and weights correspond to the reported results?",
+     "answer": "Probably yes",
+     "quote": "The implementation code of STCGRU is available at https://github.com/GreyRaven1999/STCG RU.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was the split between training and test data at participant level (no person on both sides)?",
+     "answer": "Probably no",
+     "quote": "for each fold, we first divide the data into the training set and the test set in the ratio of 9:1 according to the 10-fold cross-validation method.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "To minimize the randomness of the experimental results, we divide the EEG data using 10-fold cross-validation and fixed the random seed in the experiments.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internal (segment-level cross-validation only)",
+     "quote": "After 10-fold cross-validation, the average classification accuracy of the hybrid model reached 99.95 %, while the average kappa value reached 0.9989.",
+     "page": "1"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Participants (a 27-person two-group case-control-type sample) and analysis (11 outcome participants, segment-level cross-validation with probable within-subject leakage, no calibration, no external validation) are both high risk, and the outcome definition is unreported. Under PROBAST any high domain gives high overall risk, and the 99.95% accuracy is very likely inflated.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "High",
+   "rationale": "The sample is cardiac catheterisation unit patients in one Iranian centre, 27 people in two selected groups."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "Low",
+   "rationale": "Resting-state 19-channel EEG is a plausible clinical input."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "Unclear",
+   "rationale": "The MCI labelling procedure is not described in the document."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 15,
+  "matched": 13
+ }
+}

@@ -1,0 +1,189 @@
+{
+ "paper_id": "P-1232",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Gao J, Chen P, Li Z, et al., 'Identification of lncRNA in circulating exosomes as potential biomarkers for MCI among the elderly', Journal of Affective Disorders 2025;370:401-411 (doi:10.1016/j.jad.2024.11.029). It reports the three-lncRNA exosomal panel with AUC 70.0% (64.1% to 76.0%), which matches the cited AUC 0.70 (0.64 to 0.76)."
+ },
+ "cited_result": "Discrimination of MCI from healthy controls by the combined predicted probability of three plasma exosomal lncRNAs (LINC001380, ENST00000484033, ENST00000531087) from logistic regression: AUC 0.700 (95% CI 0.641 to 0.760), sensitivity 72.0%, specificity 60.7%, in 150 MCI cases and 150 controls.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited AUC is the discrimination of a multivariable diagnostic model: a logistic-regression combined predicted probability of three biomarkers. The brief assigns the performance of a multivariable prediction model to PROBAST, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "A diagnostic case-control design with 1:1 age- and sex-matched healthy controls is an inappropriate data source for a diagnostic model: it inflates discrimination and fixes prevalence at 50%. Participants were restricted to those with complete data, with broad comorbidity exclusions.",
+   "signalling": [
+    {
+     "question": "Were appropriate data sources used, e.g. cohort, RCT or nested case-control study data?",
+     "answer": "No",
+     "quote": "This case-control study enrolled 155 patients with MCI and 155 healthy controls from a community-based population aged\u226560 years.",
+     "page": "1"
+    },
+    {
+     "question": "Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "Subjects with completed data of sociodemographic characteristics, disease history, and cognitive examination were selected to participate in the present study.",
+     "page": "2"
+    },
+    {
+     "question": "Were controls drawn from the intended-use population?",
+     "answer": "No",
+     "quote": "We included 155 elderly patients with MCI as the case group, with a 1:1 proportion-matched 155 non-MCI elderly subjects served as the healthy control group.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "The lncRNAs were measured by one qRT-PCR protocol for all participants and are available at the intended time of use. Nothing is reported on whether laboratory staff were blind to case status, or on whether cases and controls were processed in the same batches.",
+   "signalling": [
+    {
+     "question": "Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "LncRNA expression levels were standardized to those of glyceraldehyde-3-phosphate dehydrogenase (GAPDH). Relative expression levels were quantified based on the crossing point values and normalized to the reference gene.",
+     "page": "3"
+    },
+    {
+     "question": "Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "Searched for blinding of laboratory staff to case/control status, sample coding or batch randomisation; none reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Blood was collected in EDTA tubes to inhibit clotting, and plasma was separated within two hours after blood collection.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "MCI was operationalised by education-specific MMSE cut-offs alone, although the Petersen criteria are cited. No functional or informant assessment is described. The cases' mean MMSE of 18.46 (SD 5.07) raises concern that some cases have impairment beyond MCI. The timing between blood draw and cognitive assessment is not reported.",
+   "signalling": [
+    {
+     "question": "Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "MCI was determined using an education-specific cut-off point for the MMSE total score. MMSE \u226417 for illiterate, MMSE \u226420 for primary school education, and MMSE \u226424 for secondary school and above.",
+     "page": "2"
+    },
+    {
+     "question": "Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably no",
+     "quote": "who had been diagnosed with MCI by reference to Petersen criteria. (Petersen, 2004)",
+     "page": "2"
+    },
+    {
+     "question": "Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "All subjects underwent cognitive assessment using Chinese version of the Mini-Mental State Examination (MMSE) in present study.",
+     "page": "2"
+    },
+    {
+     "question": "Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The MMSE was conducted face-to-face by trained investigators in strict accordance with the guidelines and protocol and was completed within 5\u201310 min.",
+     "page": "2"
+    },
+    {
+     "question": "Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "The MMSE was conducted face-to-face by trained investigators in strict accordance with the guidelines and protocol and was completed within 5\u201310 min.",
+     "page": "2"
+    },
+    {
+     "question": "Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the timing of blood collection relative to the MMSE; not reported.",
+     "page": "2-3"
+    },
+    {
+     "question": "Is the case severity consistent with MCI?",
+     "answer": "Probably no",
+     "quote": "MMSE, score 18.46 (5.07) 28.15 (2.07) <0.001",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The AUC is apparent performance: the logistic model's predicted probability was evaluated in the same 300 samples used to fit it, with no cross-validation, bootstrap or held-out test set. The external dataset tests different markers (blood ATP2A2 and PSEN1 mRNA), not the lncRNA panel. Candidate lncRNAs were chosen by univariable differential-expression screening (P<0.05, fold change) plus pathway selection in a tiny sequencing subset. Calibration was not assessed, the matched design was not accounted for, and complete-case selection was used. Participant counts are inconsistent (5 vs 10 sequenced pairs; 300 vs 290 remaining for qRT-PCR). On the PROBAST+AI points: discovery and qRT-PCR sets are distinct participants; classes are balanced only by the case-control design; performance is apparent, not internally or externally validated.",
+   "signalling": [
+    {
+     "question": "Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably yes",
+     "quote": "Fig. 3 shown that there were significant differences in expression of target lncRNAs between 150 MCI patients and 150 healthy subjects.",
+     "page": "5"
+    },
+    {
+     "question": "Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Table 3 shows odds ratios (ORs) for levels of exosome lncRNA in MCI patients relative to controls after multivariate adjustment",
+     "page": "5"
+    },
+    {
+     "question": "Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "We randomly selected 10 MCI patients and corresponding healthy controls from 310 samples for RNA sequencing, and another 300 samples for qRT-PCR testing.",
+     "page": "4"
+    },
+    {
+     "question": "Were participants with missing data handled appropriately?",
+     "answer": "No",
+     "quote": "Subjects with completed data of sociodemographic characteristics, disease history, and cognitive examination were selected to participate in the present study.",
+     "page": "2"
+    },
+    {
+     "question": "Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "The differentially expressed mRNAs and lncRNAs were screened with log2(fold change) \u22651 or log2(fold change) \u2264\u22121 and statistical significance P value <0.05 by the Ballgown package in R",
+     "page": "4"
+    },
+    {
+     "question": "Was the discovery (feature-selection) sample separate from the evaluation sample at participant level?",
+     "answer": "Probably yes",
+     "quote": "We randomly selected blood samples from five elderly MCI cases and their corresponding control group samples for exosome extraction and RNA sequencing. We then performed qRT-PCR validation of lncRNA in exosomes from the remaining blood samples.",
+     "page": "2"
+    },
+    {
+     "question": "Were complexities in the data (e.g. matching) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "To assess the contribution of target lncRNAs in plasma exosomes to the risk of MCI development, we constructed a multivariate logistic regression model.",
+     "page": "3"
+    },
+    {
+     "question": "Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "Probably no",
+     "quote": "When using the predicted risk algorithm, the AUC of ROC curves for the combination of plasma exosomal LINC001380, ENST00000484033 and ENST00000531087 was 70.0 % (CI: 64.1 %\u201376.0 %, P < 0.001) with a sensitivity of 72.0 % and a specificity of 60.7 %",
+     "page": "5"
+    },
+    {
+     "question": "Were model overfitting, underfitting and optimism in model performance accounted for (internal or external validation)?",
+     "answer": "No",
+     "quote": "On the other hand, we validated the predictive power of target genes using an external dataset of 80 MCI patients and 104 healthy controls. The AUC for the combination of plasma ATP2A2 and PSEN1 was 69.5 %",
+     "page": "5"
+    },
+    {
+     "question": "Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for the coefficients or intercept of the combined three-lncRNA model; only per-lncRNA ORs in Table 3 and 'ROC curves of combinations of target lncRNA levels were calculated as a potentially better prognostic tool.'",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST: high in participants, outcome and analysis; unclear in predictors).",
+ "overall_category": "high",
+ "overall_rationale": "The source is a diagnostic case-control design with healthy controls. The outcome is defined by MMSE cut-offs only, with a case mean MMSE of about 18. Candidate markers were chosen by univariable screening. The cited AUC is apparent performance of a logistic model evaluated on its own fitting data, with no internal validation and no external validation of the lncRNA panel. With three domains at high risk, the overall judgment is high.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 14
+ }
+}

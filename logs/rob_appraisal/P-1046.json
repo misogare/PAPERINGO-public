@@ -1,0 +1,158 @@
+{
+ "paper_id": "P-1046",
+ "document_check": {
+  "matches": true,
+  "note": "Document is Mattke S, Jun H, Chen E, Liu Y, Becker A, Wallick C. 'Expected and diagnosed rates of mild cognitive impairment and dementia in the U.S. Medicare population: observational analysis', Alzheimer's Research & Therapy (2023) 15:128. It contrasts claims-documented MCI and dementia rates in 100% Medicare data with expected prevalence from a Health and Retirement Study cognitive-assessment-based model, and it reports a case-definition sensitivity (original vs modified CCW dementia algorithm). This fits convergence VF-29."
+ },
+ "cited_result": "Principal result supporting VF-29: 2017-2019 MCI prevalence among Medicare beneficiaries aged 65+ (n = 41,205,474) was 0.015 from claims-documented diagnosis (ICD-10-CM G31.84 / ICD-9 331.83, 2 claims on separate days), against an expected 0.196 from an HRS probit model predicting Langa-Kabeto-Weir CIND. The observed-to-expected detection rate was 0.079, so about 7.4 of 8 million expected cases were undiagnosed. Secondary case-definition contrast: dementia observed rate 0.106 with the original CCW algorithm vs 0.095 with the modified algorithm.",
+ "tool": "JBI prevalence",
+ "tool_reason": "The cited result is a set of population prevalence estimates (claims-diagnosed vs cognitive-assessment-based expected MCI prevalence, and their ratio), so the JBI prevalence checklist applies. The probit model only generates the expected prevalence, and its discrimination is not the cited result, so PROBAST does not fit.",
+ "domains": [
+  {
+   "domain": "Item 1: Sample frame appropriate to address the target population",
+   "judgment": "Yes",
+   "rationale": "The target is US Medicare beneficiaries aged 65+. The frame is the 100% FFS and Medicare Advantage population, and the expected rates come from a nationally representative survey.",
+   "signalling": [
+    {
+     "question": "Was the sample frame appropriate to address the target population?",
+     "answer": "Yes",
+     "quote": "The analyses include the 100% sample for beneficiaries aged 65 and older enrolled in Medicare FFS or a Medicare Advantage Plan, who were nearly continuously enrolled either for at least 3 years or until death. ... the Health and Retirement Study (HRS), a nationally representative survey of older US adults that contains cognitive assessments",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 2: Study participants sampled in an appropriate way",
+   "judgment": "Yes",
+   "rationale": "This is a census of eligible beneficiaries with no sampling. The standard CCW continuous-enrolment restriction, needed for a 3-year ascertainment window, excluded 13.2%, and the characteristics of those excluded are not described.",
+   "signalling": [
+    {
+     "question": "Were study participants sampled in an appropriate way?",
+     "answer": "Yes",
+     "quote": "Across all 3-year windows from 2015 to 2019, this restriction excluded 13.2% (n = 6,890,000) of beneficiaries aged 65 and older during each of the 3 years.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "Item 3: Sample size adequate",
+   "judgment": "Yes",
+   "rationale": "Over 38 million beneficiaries per window, and 9,808 HRS respondents for the temporal validation.",
+   "signalling": [
+    {
+     "question": "Was the sample size adequate?",
+     "answer": "Yes",
+     "quote": "Included beneficiaries 38,739,387 39,965,446 41,205,474 [Table 1]; Validation of predicted rates against observed rates using 2016 HRS data among respondents aged 65 and older (N=9,808)",
+     "page": "4, 7"
+    }
+   ]
+  },
+  {
+   "domain": "Item 4: Study subjects and setting described in detail",
+   "judgment": "Yes",
+   "rationale": "Denominators and rates are given by observation window, age, sex, race and ethnicity, dual eligibility and coverage type, and the data source and years are stated.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Yes",
+     "quote": "Table 2 Observed and expected rates and detection rates for MCI and dementia by age, 2017 to 2019 ... Table 4 Observed and expected rates and detection rates for MCI and dementia by race and ethnicity, 2017 to 2019",
+     "page": "4-5"
+    }
+   ]
+  },
+  {
+   "domain": "Item 5: Data analysis conducted with sufficient coverage of the identified sample",
+   "judgment": "Yes",
+   "rationale": "All included beneficiaries are analysed across the listed care settings, subgroup rates are reported separately, and HRS sampling weights were applied.",
+   "signalling": [
+    {
+     "question": "Was the data analysis conducted with sufficient coverage of the identified sample?",
+     "answer": "Yes",
+     "quote": "We analyzed claims and encounter data for inpatient and outpatient facilities, carriers, and skilled nursing facilities and the corresponding enrollment data for 2015 to 2019. ... Sampling weights were used in the analysis.",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 6: Valid methods used for the identification of the condition",
+   "judgment": "Unclear",
+   "rationale": "Both ways of identifying the condition use established rules, but neither is shown to be valid for MCI. The observed rate rests on one diagnosis code, with two claims and no validation reported, and the authors concede claims misclassification. The expected rate treats CIND as MCI, which the authors say is 'not the same as a true clinical diagnosis', and comes from a demographic-only model with AUC 0.670 for MCI. Both issues could widen the observed-expected gap.",
+   "signalling": [
+    {
+     "question": "Were valid methods used for the identification of the condition?",
+     "answer": "Unclear",
+     "quote": "No definitions for MCI are currently published by the CCW, so we identified the diagnosis based on ICD-10-CM code G31.84 (i.e., mild cognitive impairment of uncertain or unknown etiology) and the ICD-9-CM code 331.83 (i.e., mild cognitive impairment), also requiring 2 claims on separate days.",
+     "page": "3"
+    },
+    {
+     "question": "Were valid methods used for the identification of the condition? (expected prevalence)",
+     "answer": "Unclear",
+     "quote": "to categorize participants as cognitively normal, as having cognitive impairment but no dementia ([CIND] with CIND representing MCI), or as having dementia. [p.3] ... The area under the receiver operating characteristic curve was 0.670 for separating MCI from being cognitively normal [p.4] ... we estimated the expected prevalence of MCI based on cognitive test scores, which is not the same as a true clinical diagnosis. ... the classification algorithm based on claims data may have misclassified some individuals [p.6]",
+     "page": "3, 4, 6"
+    }
+   ]
+  },
+  {
+   "domain": "Item 7: Condition measured in a standard, reliable way for all participants",
+   "judgment": "Yes",
+   "rationale": "The claims algorithm (codes, two claims on separate days, rolling 3-year windows, MCI-dementia assignment rules) and the model-based expected rate were applied the same way to every beneficiary. The HRS classification uses proxy interviews for respondents unable to be interviewed, which is part of the published classification. The authors flag possible differential dementia classification in minority groups, which bears on subgroup rather than overall estimates.",
+   "signalling": [
+    {
+     "question": "Was the condition measured in a standard, reliable way for all participants?",
+     "answer": "Yes",
+     "quote": "We required 2 claims with the remaining codes on separate days in either setting over rolling windows of 3 years. ... These classifications were based on cognitive assessments of self-respondents and proxy interviews, usually with a spouse or other family member, if a respondent was unable or unwilling to do an interview.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 8: Appropriate statistical analysis",
+   "judgment": "Unclear",
+   "rationale": "The approach is described: a probit model with sampling weights, temporal validation on 2016 HRS with good calibration-in-the-large, and O/E ratios. However, the text reports no confidence intervals or other uncertainty for the expected rates or detection rates, and the derivation of the national estimates sits in a supplement that was not available.",
+   "signalling": [
+    {
+     "question": "Was there appropriate statistical analysis?",
+     "answer": "Unclear",
+     "quote": "The derivation of national estimates of the rate of Medicare beneficiaries with CIND and dementia based on these predicted probabilities is detailed in Additional file 1: Methods. [p.3] ... Applying these estimates to 2016 HRS data showed that the predicted rate of MCI in 2016 was 0.176 compared with an observed rate of 0.175 [p.4]. (Looked for: confidence intervals or uncertainty for expected rates and O/E ratios in Tables 1-5 and text; none reported.)",
+     "page": "3-4"
+    }
+   ]
+  },
+  {
+   "domain": "Item 9: Response rate adequate, or low response managed appropriately",
+   "judgment": "Unclear",
+   "rationale": "Response does not apply to the Medicare administrative census. The expected rate depends on HRS survey data, and the document gives no HRS response or attrition rates, only that sampling weights were used.",
+   "signalling": [
+    {
+     "question": "Was the response rate adequate, and if not, was the low response rate managed appropriately?",
+     "answer": "Unclear",
+     "quote": "Sampling weights were used in the analysis. (Looked for: HRS response or attrition rates for the 2000-2016 waves used; none reported.)",
+     "page": "3"
+    }
+   ]
+  }
+ ],
+ "overall": "Some concerns (JBI prevalence: items 6, 8 and 9 Unclear; no item answered No; items 1-5 and 7 Yes).",
+ "overall_category": "some_concerns",
+ "overall_rationale": "The brief's overall rule is written for the cross-sectional checklist. Here it is applied through the prevalence items for valid and reliable measurement of the condition (6 and 7) and appropriate analysis (8). None is No, so risk is not high. It is not low because the MCI case definitions on both sides lack demonstrated validity: a single unvalidated claims code in the numerator, and model-predicted CIND acknowledged not to equal clinical MCI in the denominator. No uncertainty is reported for the expected rates or O/E ratios, and HRS response is not reported.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "low",
+   "rationale": "Full US Medicare population aged 65+ with near-continuous enrolment. Estimates apply to that insured older population and not to people under 65."
+  },
+  {
+   "domain": "Condition definition",
+   "concern": "some concerns",
+   "rationale": "'MCI' means CIND (Langa-Kabeto-Weir) on the expected side and ICD code G31.84 / 331.83 on the observed side. Neither is a clinical MCI diagnosis made against consensus criteria."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 10,
+  "matched": 6
+ }
+}

@@ -1,0 +1,213 @@
+{
+ "paper_id": "P-268",
+ "document_check": {
+  "matches": true,
+  "note": "Kim, Kim, Kim, Kim and Kim, 'Electroencephalography-based classification of Alzheimer's disease spectrum during computer-based cognitive testing', Scientific Reports 2024; 14:5252. Single-cohort EEG study comparing resting and memory-encoding acquisition for 4-class classification (SCD, naMCI, aMCI, AD), with best cKNN accuracy 67.24% (resting) against 93.10% (encoding)."
+ },
+ "cited_result": "Within one cohort of 58 patients, EEG features from a memory-encoding task gave higher 4-class classification performance than resting-state EEG for every model (best cKNN accuracy 93.10% encoding against 67.24% resting, under leave-one-subject-out evaluation).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result compares the discrimination of machine-learning classifiers built on two sets of EEG features, which is a question about prediction model performance.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "Participants were hospital patients recruited by diagnostic group: 20 SCD, 10 naMCI, 18 aMCI and 10 AD. The design is case-control-like, with no consecutive or random sampling and no inclusion or exclusion criteria reported.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably no",
+     "quote": "The participants labeled as SCD, naMCI, aMCI, and AD were patients at the Korea University Medicine.",
+     "page": "4"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "A total of 60 participants were recruited for this study. Two were excluded because of missing data or dropouts. (Searched for eligibility criteria, comorbidity exclusions, recruitment period and sampling method; none reported.)",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "EEG was recorded for everyone with the same 64-channel system and an automated pipeline, and the features are available at the time of intended use.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "Recordings were obtained from 64 scalp electrodes based on the 10/20 system",
+     "page": "7"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "An average reference was used and ICA was automatically applied to correct artifacts and noise caused by blinking, muscle movements, and electrocardiography.",
+     "page": "7"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "resting EEG data were obtained by asking the participants to rest with eyes closed, and with eyes opened, each for 3 min. Subsequently, EEG data were recorded during cognitive tasks.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "Group labels come from CDR staging plus an SNSB-II memory cut-off, with no biomarker confirmation, although the paper calls ATN biomarkers the gold standard. The reported CDR means (SCD 0.21, aMCI 0.47, AD 0.67) do not match the stated definition (CDR 0 = SCD, 0.5 = MCI, 1 = AD), so the labels were not assigned consistently with the stated rule. The interval between clinical assessment and EEG is not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "CDR 0 was defined as SCD, CDR 0.5 as MCI, and CDR 1 as AD",
+     "page": "4"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "Compared to the age and education norms, MCI patients with in-memory domain scores below \u2212 1.0 SD were classified as aMCI and otherwise, as naMCI",
+     "page": "4"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "The SNSB-II was performed on the patients and/or caregivers with subjective memory complaints.",
+     "page": "4"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "CDR 0.21 \u00b1 0.25 0.50 0.47 \u00b1 0.11 0.67 \u00b1 0.24",
+     "page": "5"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for whether diagnostic labels were assigned before or blind to EEG recording; not reported.",
+     "page": "4-8"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for the interval between SNSB-II/CDR assessment and the EEG session; not reported.",
+     "page": "4-7"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 58 participants (10 in the smallest classes) against 2268 to 2772 candidate features per state. Features were screened by univariable one-way ANOVA across the four groups, and ridge weights were then applied. Both steps appear to use the whole sample (fixed counts of 56 and 258 selected features), so selection leaks into the LOSO evaluation. The best of 12 models was chosen on test F1. There is no calibration, no handling of class imbalance, and no external validation. For the cited comparison, the encoding state had a larger candidate pool (three sessions) and more selected features, so leakage from whole-sample screening can inflate it more than the resting state. The fixed-feature-number analysis (Fig. 8) addresses the feature count but not the leakage.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "The resting and memory-encoding states of 58 patients (20 with SCD, 10 with naMCI, 18 with aMCI, and 10 with AD) were measured and classified into four groups.",
+     "page": "1"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "AP is the square of the amplitude and RP is the percentage of the total power occupied by each frequency band.",
+     "page": "7"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "A total of 60 participants were recruited for this study. Two were excluded because of missing data or dropouts.",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Two were excluded because of missing data or dropouts.",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "First, we performed a one-way ANOVA for the four groups to select useful features from the significant extracted features, which had a p value of < 0.05.",
+     "page": "8"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "To evaluate the performance, we used the LOSO strategy",
+     "page": "8"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "This study used sensitivity, specificity, precision, F1-score, accuracy, and area under of receiver operating characteristic curve (AUC) to evaluate the model\u2019s performance.",
+     "page": "8"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "Thus cKNN emerged as the best model with the highest F1 score, the test performance of each group was compared more detailly",
+     "page": "10"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for the final feature weights or model specification of the cKNN classifier; not reported.",
+     "page": "8-13"
+    },
+    {
+     "question": "AI: Is the train/test split at participant level?",
+     "answer": "Yes",
+     "quote": "To evaluate the performance, we used the LOSO strategy",
+     "page": "8"
+    },
+    {
+     "question": "AI: Were preprocessing, feature selection, augmentation and tuning done within training folds only?",
+     "answer": "Probably no",
+     "quote": "Therefore, 56 features in Resting, and 258 features in Encoding (84 features in 1st Encoding, 93 features in 2nd Encoding and 81 features in 3rd Encoding) were selected and used for classification. ... We attempted to prevent overfitting of the model by finding the coefficients of the ridge regression model and applying them as feature weights.",
+     "page": "8"
+    },
+    {
+     "question": "AI: Was the test set held out from all tuning?",
+     "answer": "Probably no",
+     "quote": "Figure 6 shows the validation and test results of the four classes classified using the nine ML models and three DL models.",
+     "page": "10"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "No information",
+     "quote": "Searched for resampling or class weighting for the 20/10/18/10 class sizes; none reported.",
+     "page": "8"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internally validated (LOSO), optimistic because of whole-sample feature selection; no external validation",
+     "quote": "our study is subject to certain limitations, including a limited number of samples and the exclusive use of data collected from a single hospital without external comparisons.",
+     "page": "13"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "A single Korean hospital sample of SCD, naMCI, aMCI and AD patients with no healthy controls and very small MCI subgroups."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "Groups are defined by clinical staging (CDR and SNSB-II) without biomarkers, though the study frames the task as detecting AD-spectrum pathology."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Participants (hospital patients recruited by group, no eligibility criteria), outcome (labels inconsistent with the stated CDR definition, no biomarker confirmation) and analysis (58 participants against thousands of features, univariable whole-sample feature screening leaking into LOSO, model chosen on test performance, no calibration or external validation) are all high risk.",
+ "confidence": "high",
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 20,
+  "matched": 20
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "paper_id": "P-25",
+ "document_check": {
+  "matches": true,
+  "note": "Song Y, Yuan Q, Liu H, Gu K, Liu Y. Machine learning algorithms to predict mild cognitive impairment in older adults in China: A cross-sectional study. J Affect Disord 2025;368:117-126 (available online September 2024). It analyses 6,434 CHARLS 2020 participants with six ML models, LightGBM the best. This matches 'Song et al. 2024'."
+ },
+ "cited_result": "The context does not state the finding itself. The principal result appraised is the discrimination of six machine-learning classifiers for MCI in CHARLS 2020: AUC 0.69 (SVM) to 0.77 (RF), with LightGBM (AUC 0.76, Brier 0.125) judged the best-performing model.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination and ranking of multivariable machine-learning classifiers for current MCI status, which is diagnostic prediction-model performance.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "low",
+   "rationale": "A nationally representative cross-sectional survey restricted to adults aged 60 or over is an appropriate source for a diagnostic model. The exclusion for missing data is assessed in domain 4.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Yes",
+     "quote": "The data for this study were derived from 2020 CHARLS data. As the first nationally representative survey of middle-aged and older adults in China",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably yes",
+     "quote": "The inclusion criteria for this study were as follows: 1) individuals aged \u226560 years and 2) with data regarding having or not having explanatory variables for cognitive dimensions.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Predictors are standardised CHARLS survey items collected the same way for everyone and available at the time of use. The MCI label was derived afterwards by the analysts.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "This study then extracted sociodemographic data, health status, physical activity, psychological status and other index data from the 2020 CHARLS database as independent variables",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "the participants in each age group who meet the AACD criteria were classified as MCIs. (label derived by analysts from test scores after data collection)",
+     "page": "2"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "The CHARLS questionnaire provides data from many modules, such as sociodemographic data, psychological status, and health status",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "MCI is a psychometric label: 1 SD below the age-group mean on a 31-point survey battery, with no clinical or functional assessment. The label is defined relative to age, which is itself a predictor. Missing cognitive-module data (up to 25%) were imputed from gender, region, marital status, education and age, which are also predictors. The outcome is therefore partly built from the predictors and was not determined the same way for everyone.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "we defined MCI using age-related cognitive decline (AACD; i.e., at least 1 standard deviation (SD) below the age criteria) (page 2); First, cognitive function is assessed only by a scale, not by clinical assessment or other cognitive tests. (page 8)",
+     "page": "2, 8"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "Thus far, there is no consensus on the diagnostic criteria for MCI. Thus, in the present study, we defined MCI using age-related cognitive decline (AACD ...) (Richards et al., 1999).",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "No",
+     "quote": "variables such as gender, region, marital status, education, and age were used as explanatory variables for cognitive dimensions to predict cognitive ability. After using various filling methods, the complete cognitive data in 2020 were obtained.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "The variables of the cognitive module were missing to a certain extent, and the proportion of missing values was <25 %.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No",
+     "quote": "variables such as gender, region, marital status, education, and age were used as explanatory variables for cognitive dimensions to predict cognitive ability.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Yes",
+     "quote": "The data for this study were derived from 2020 CHARLS data. (same survey wave, concurrent assessment)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Candidate predictors were screened by univariable P < 0.05. Imputation was done on the full data set. According to the Results, SMOTE oversampling was applied before the train/test split, contradicting the Methods, so synthetic records may have entered the test set. The complex survey design is ignored, calibration is shown only as a Brier score, and there is no external validation. The reported PPV (0.91 to 0.93) is impossible at 11.8% prevalence with specificity 0.91 to 0.93 unless the test set was rebalanced, and an MCC of 0.76 alongside NPV 0.28 and PPV 0.93 is mathematically impossible (MCC \u2264 \u221a(PPV\u00d7NPV) \u2248 0.51). The robustness checks are also unstable (RF MCC 0.28 at an 8:2 split).",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Yes",
+     "quote": "the average age was (67.54 \u00b1 5.20) years, and 761 (11.8 %) had MCI. (18 features selected)",
+     "page": "4"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably no",
+     "quote": "night sleep duration:short (<6 h), moderate (6\u20138 h; reference group), and long sleep (>8 h) (page 3); assigning the values of 2 categorical variables as 0 and 1, respectively, and the values of 3 categorical variables as 0, 0.5, 1, respectively (page 2)",
+     "page": "2, 3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "The exclusion criteria were as follows: 1) persons aged <60 years and 2) missing values with >10 % in the interested variables. (number excluded not reported)",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "Finally, after combining the statistical results of each dataset, the sample size of 6434 older adults was obtained. (imputation on the full data, including the outcome, before splitting; pooling across imputations for ML not described)",
+     "page": "2"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "the point-two sequence correlation analysis was conducted for the continuous variables, after which the characteristic variables with P values <0.05 were selected as the model inputs.",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "CHARLS adopts a multistage PPS random sampling method based on implicit stratification to ensure that the sample is well represented (no weighting or clustering adjustment described)",
+     "page": "2"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "Probably no",
+     "quote": "We assessed the probabilistic accuracy of the best-performing model using the Brier score (no calibration plot, slope or intercept)",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "No",
+     "quote": "The SMOTE algorithm was used to oversample the minority samples. The dataset was then divided into a training set and a test set (6:4 ratio).",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for final LightGBM hyperparameters or model specification; only SHAP rankings are reported.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Probably no",
+     "quote": "Methods: after which we used the SMOTE algorithm to oversample the minority samples on the training set. (page 3). Results: SMOTE applied before the split (page 4). Synthetic records derived from participants may appear on both sides.",
+     "page": "3, 4"
+    },
+    {
+     "question": "AI: Are preprocessing and feature selection done within the training data only?",
+     "answer": "Probably no",
+     "quote": "On the training set, the RF algorithm was used as the classification model for recursive feature elimination. (feature elimination in training, but imputation, and per the Results SMOTE, on the full data)",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Probably yes",
+     "quote": "The score evaluation was conducted through ROC and AUC values by grid search and 5-fold cross-examination, and the hyperparameters of the model were selected.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is class imbalance handled?",
+     "answer": "Yes, but possibly with leakage",
+     "quote": "The SMOTE algorithm was used to oversample the minority samples.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally or externally validated?",
+     "answer": "Internal only",
+     "quote": "once the model was established, it still needed to be validated using an independent external cohort.",
+     "page": "8"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 3 (psychometric outcome partly imputed from the predictors and defined relative to age) and domain 4 (univariable screening, imputation and possibly SMOTE before the split, survey design ignored, impossible performance figures, no external validation) are high risk.",
+ "confidence": "high",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "low",
+   "rationale": "Community-dwelling Chinese adults aged 60 or over from a national survey."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Routine survey variables."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "high",
+   "rationale": "An AACD threshold on a 31-point survey battery, partly imputed, is not MCI by clinical criteria."
+  }
+ ],
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 24,
+  "matched": 11
+ }
+}

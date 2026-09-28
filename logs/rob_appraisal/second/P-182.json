@@ -1,0 +1,224 @@
+{
+ "paper_id": "P-182",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Kwak et al., 'Differential Role for Hippocampal Subfields in Alzheimer's Disease Progression Revealed with Deep Learning', Cerebral Cortex 2022;32:467-478 (advance access 29 July 2021). It uses ADNI, a DenseNet classifier of pMCI vs sMCI and occlusion analysis of hippocampal subfields, which matches the review's citation."
+ },
+ "cited_result": "Occlusion analysis of a DenseNet classifier trained on AD vs CN and tested on 118 pMCI vs 263 sMCI from ADNI-2/GO (accuracy 75.85%, AUC 0.777). Occluding the presubiculum, subiculum, CA1 and molecular layer caused the largest accuracy losses. About 10.5% of hippocampal volume (fimbria, parasubiculum, CA2/3) was 'redundant' for pMCI vs sMCI classification.",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result ranks subfields by how much a deep-learning classifier's accuracy falls when each is occluded, so it is a property of a machine-learning classifier's performance. PROBAST with the AI considerations applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "ADNI is an appropriate source, but 65 MCI participants who reverted to CN were excluded. This exclusion depends on the outcome and removes intermediate cases from the test set.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "An additional sample of 381 subjects with MCI at baseline, obtained from ADNI-2/GO, was used to test the model.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "We excluded 65 subjects who were diagnosed with MCI at baseline but reverted to CN status during follow-up.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Voxel intensities from a fixed bounding box on baseline 3T T1 images, processed by one automated pipeline for all participants, independently of outcome.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All images were corrected for intensity nonuniformity artifacts (Sled et al. 1998) and were registered into the MNI152 template using FMRIB Software Library v6.0",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Intensity values from each voxel within the bounding box were then extracted and used as inputs in the deep learning model described below.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "First, while our study considered longitudinal clinical evaluations, we did not examine longitudinal changes in imaging metrics.",
+     "page": "10"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "pMCI and sMCI labels come from ADNI clinical diagnoses that do not use the MRI predictors. The follow-up window is only partly specified: at least 18 months, with no upper bound or fixed horizon. Stable cases with short follow-up may include later converters.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "This dataset was labeled as either stable MCI (sMCI) or progressive MCI (pMCI) based on longitudinal diagnostic evaluations obtained at least 18 months apart.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "Subjects who were classified as pMCI were those who were diagnosed with MCI at baseline and progressed to a diagnosis of probable AD by the time of the follow-up visit",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "Inclusion criteria for AD were: 1) subjective memory concerns. 2) MMSE scores between 20 and 26. 3) CDR score of 0.5 or 1.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "subjects in the pMCI group were subjects who over the course of a similar duration progressed from a diagnosis of MCI to probable AD",
+     "page": "6"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "the investigators within the ADNI contributed to the design and implementation of the ADNI and/or provided data but did not participate in analysis or writing of this article",
+     "page": "1"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably no",
+     "quote": "Subjects in the sMCI group were those who were diagnosed with MCI at baseline and maintained their MCI status at the follow-up visit.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The test set has enough events (118) and was held out from training, and augmentation stayed within training. However, reverters were excluded, missing or failed scans are not reported, and there is no calibration. Subfield contributions are single point accuracies on one test set with no uncertainty. The model carried forward was the best of the cross-validation folds. The subfield ranking and the 10.5% change point were derived on the same test set, the change point from a curve fitted to 12 points. Zeroing voxels creates out-of-distribution inputs, and accuracy with 31% pMCI prevalence falls to about 30% on full occlusion, so accuracy loss partly reflects predictions shifting towards one class. The size confound was checked for the four largest subfields only. There is no external validation for the MCI task.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "Probably yes",
+     "quote": "Based on these criteria, a total of 118 pMCI and 263 sMCI subjects were included in this study.",
+     "page": "2"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "The voxel intensities within the bounding box were normalized into a range between 0 and 1.",
+     "page": "3"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "We excluded 65 subjects who were diagnosed with MCI at baseline but reverted to CN status during follow-up.",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched Methods and Results for missing or unusable scans, failed registration or subfield segmentation, and quality-control exclusions. None is reported.",
+     "page": "2-6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "As input data, the model utilizes voxel intensity values from a 3D bounding box surrounding the entire hippocampal region.",
+     "page": "6"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "We additionally evaluated whether the class imbalance in the testing dataset (Table 1) affected the performance of the model, through a random permutation test.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately, including calibration?",
+     "answer": "No",
+     "quote": "Each occluded hippocampal subfield was then ranked based on the performance (accuracy) of the model, relative to the original model, where input data from the entire hippocampus was used.",
+     "page": "5"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "The model with the best performance achieved maximal accuracy of 94.07% in one of the folds",
+     "page": "6"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for final model weights or coefficients. The model is a convolutional network with no regression weights, so this question has little application; nothing is reported.",
+     "page": "3-4"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "we used a classification framework in which MCI progression is predicted based on a model that trains to differentiate AD versus CN data.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Are preprocessing, augmentation and hyperparameter tuning done within training data only?",
+     "answer": "Yes",
+     "quote": "Data augmentation (see Materials and Methods) was applied within the training dataset to improve the performance of the model and its generalizability.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Probably yes",
+     "quote": "The model that yielded the best performance was then validated using an independent dataset from ADNI-1, in the task of differentiating AD versus CN.",
+     "page": "5"
+    },
+    {
+     "question": "AI: Was class imbalance considered and handled?",
+     "answer": "Yes",
+     "quote": "A focal loss function based on cross-entropy loss for imbalanced data was also used, but it had no differential effect on the performance of the model.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the occlusion procedure a valid measure of each subfield's contribution?",
+     "answer": "Probably no",
+     "quote": "the occlusion analysis was performed by setting the intensities of voxels to zero, a step that can potentially introduce noise in the deep learning model in the regions surrounding the occluded voxels.",
+     "page": "10"
+    },
+    {
+     "question": "AI: Is reported performance apparent, internally validated or externally validated?",
+     "answer": "Held-out test set from the same data source (ADNI-2/GO); no external validation for pMCI vs sMCI",
+     "quote": "classification of MCI progression with very low accuracy (\u223c30%) was evident even when 100% of the volume of the hippocampus was occluded.",
+     "page": "7"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias (PROBAST: domains 1 and 4 high, domain 3 unclear, domain 2 low)",
+ "overall_category": "high",
+ "overall_rationale": "The test sample excludes reverters on the basis of outcome. The subfield ranking and redundancy estimate are point accuracies on a single test set with no uncertainty, derived and evaluated on the same data. They are measured by zero-occlusion, which produces out-of-distribution inputs, and by accuracy under class imbalance. The model carried forward was the best cross-validation fold, and no external validation exists for the MCI task. Any high domain gives overall high risk.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "ADNI-2/GO research volunteers. The classifier was trained on AD vs CN extremes rather than on MCI, then applied to prognosis."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "Baseline 3T T1 MRI of the hippocampal region is obtainable at the intended time of use."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "Progression is defined over a window of at least 18 months with no fixed horizon, which differs from fixed-horizon conversion definitions."
+  }
+ ],
+ "appraiser": "model reader (independent second reading, blinded to the first), under the operator's delegation of 2026-09-28",
+ "review_status": "pending operator review",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 24,
+  "matched": 22
+ }
+}
