@@ -174,9 +174,9 @@ def main():
                "instrument was applied to this corpus (Supplementary Table S7, item 11). What is reported here instead, for "
                f"each of the {len(per)} studies cited in Sections 1 to 8 that belong to the corpus, is the set of appraisal-relevant "
                "characteristics that are coded for every study in the registry: these are extracted facts, not "
-               "bias judgments, and they are not a substitute for an appraisal. The per-study table is published "
-               "as `logs/appraisal_characteristics.md` and the worksheet an appraiser would fill in, with the "
-               "judgment columns left blank, as `logs/appraisal_worksheet.csv`.\n")
+               "bias judgments, and they are not a substitute for an appraisal. The per-study worksheet an appraiser "
+               "would fill in, with these facts pre-filled and the judgment columns left blank, is released with the "
+               "other materials as `logs/appraisal_worksheet.csv` (Section 2, data availability).\n")
     out.append("| Design group | Studies | Instrument a formal appraisal would use |")
     out.append("|---|---|---|")
     for k, v in sorted(byi.items(), key=lambda kv: -kv[1]):
