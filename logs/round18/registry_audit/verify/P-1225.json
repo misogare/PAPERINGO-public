@@ -1,0 +1,18 @@
+{
+  "paper": "P-1225",
+  "pdf_used": "C:/Users/aryas/Downloads/PAPERINGO/downloads/3. Molecular, Genetic and Fluid Biomarkers/1-s2.0-S0022510X23002666-main.pdf (the corrected map path, the same file as the first reader's located_source), read through my own PyMuPDF extract C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/tmp/vE_P-1225.txt. The pack text pdf/P-1225.txt is a different paper (Jobin et al. 2023) and was not used.",
+  "fields": {
+    "Validation_Type": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "V2",
+      "registry_code": "V1",
+      "reason": "Confirmed. V1 is leave-one-out cross-validation in a small sample. The paper runs a single in-sample ROC analysis of plasma p-tau181 for AD-pathology carriers vs non-carriers, pooling SCD and MCI patients and excluding AD dementia. It picks the Youden-optimal cut-off (2.69 pg/mL) and reports AUC 0.910, accuracy, sensitivity, specificity, PPV and NPV on the same patients (p.3 methods, p.4 results). A search of the full text finds no leave-one-out, k-fold, bootstrap, train/test split or external cohort. Small n alone does not make a study V1. Under 'Absence of reporting = V2', unvalidated same-sample evaluation is V2.",
+      "quote": "Receiver operating characteristic (ROC) analyses were performed to evaluate the ability of plasma p-tau181 to distinguish between AP+ and AP- patients. The Youden's method was used to detect the best cut-off value and accuracy, sensitivity, specificity, positive predictive value and negative predictive value for plasma p-tau181.",
+      "page": 3,
+      "first_quote_verbatim": true,
+      "first_quote_note": "Verbatim on p.3 both in my extract and in the first reader's pack2_work/P-1225_located.txt."
+    }
+  },
+  "notes": "Only the one field the first reader judged error was re-checked; the Task_Type 'defensible' call was out of scope. The PPV is printed as 75.00% in the abstract but 79.17% in the results (p.4), an internal inconsistency in the paper that does not affect the validation code."
+}

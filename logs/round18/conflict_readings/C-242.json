@@ -1,0 +1,59 @@
+{
+ "id": "C-242",
+ "reader": "adjudicator",
+ "papers_read": [
+  {"paper": "P-709", "pdf_is_right_paper": true, "title_as_printed": "The psychometric properties of the Four Square Step Test in older adults with mild cognitive impairment", "read_in_full": true},
+  {"paper": "P-1013", "pdf_is_right_paper": true, "title_as_printed": "Ecological Fall Prediction Sensitivity, Specificity, and Accuracy in Patients with Mild Cognitive Impairment at a High Risk of Falls", "read_in_full": true},
+  {"paper": "P-695", "pdf_is_right_paper": true, "title_as_printed": "Six-month change in gait speed to discriminate between those with and without falls history in older people with Mild Cognitive Impairment and mild Alzheimer disease", "read_in_full": true}
+ ],
+ "what_each_reports": {
+  "P-709": "Sahin et al., Geriatric Nursing 61 (2025) 532-537. Within 46 neurologist-referred MCI participants (CDR 0.5; 22 fallers and 24 non-fallers by self-reported falls over the preceding 12 months), Four Square Step Test time separated fallers from non-fallers: Youden cut-off 15.11 s, AUC 0.825 (no CI printed), sensitivity 77.38% (77.8% in the Fig. 3 caption), specificity 89.50%, p < 0.001. Median FSST was 17.02 s in fallers vs 14.00 s in non-fallers. The cut-off was derived and evaluated in the same sample, with no validation set.",
+  "P-1013": "Kim, Park and You, Sensors 2023, 23, 6977. The sample was 40 participants: 20 healthy adults (mean age 25.20) and 20 older adults labelled MCI by MMSE 20-23, a low ABC score and at least one fall in the past 3 months (mean age 79.00). A chest-worn inertial postural-sway system recorded during BBS and TUG gave ROC AUCs of 0.82-0.94 with 95% CIs (Table 2). At Youden cut-offs it gave sensitivity 0.82-0.99, specificity 0.69-0.90 and accuracy 0.53-0.81 (Table 3). The ROC criterion is stated as clinical fall-prediction scores (BBS < 40, TUG > 14 s) in Section 2.4 and as falls within 3 months in Section 2.5. Caution: in 7 of the 8 rows of Table 3 the printed accuracy lies below both the sensitivity and the specificity. That is arithmetically impossible, because accuracy is a prevalence-weighted average of the two. The printed specificity formula is also wrong: TN/(TN+FN).",
+  "P-695": "Context only. Masse et al., Geriatric Nursing 48 (2022) 274-279. A prospective 6-month cohort (40 preserved cognition, 36 MCI, 34 mild AD) with monthly fall calendars. Age-adjusted change in gait speed did not discriminate fallers (Table 3: p = 0.185 PrC, 0.232 MCI, 0.528 AD; the text attaches p = 0.185 to MCI, contradicting its own table). Recurrent falls in MCI reached p = 0.017 with an uninformative interval (Table 4). Its predictor differs from both P-709's and P-1013's."
+ },
+ "quantity_a": "In-sample ROC discrimination, by a stopwatch-timed clinical stepping test (FSST), of a self-reported history of at least one fall in the preceding 12 months, within a neurologist-referred CDR 0.5 MCI group in Turkey (n = 46, mean age 71.7). The outcome was ascertained retrospectively, before the test.",
+ "quantity_b": "In-sample ROC discrimination, by chest-worn inertial postural-sway measures, of either BBS < 40 / TUG > 14 s fall-risk cut-offs (Sec. 2.4) or a 3-month fall history that coincides with group membership (Sec. 2.5). The sample pools 20 healthy adults aged about 25 with 20 older adults (mean age 79) labelled MCI by MMSE 20-23 plus a recent fall, in Korea.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Both papers find that their instrument discriminates their fall criterion, in the same direction, and the figures overlap. P-709's AUC 0.825 lies within P-1013's AUC range of 0.82-0.94 and inside its TUG-criterion 95% intervals (for example 0.84, 0.70-0.97). Neither paper tests the other's instrument or claims an ordering between the two, so there is nothing for one result to contradict.",
+ "gates": {
+  "task": "match: T4 on both registry rows (fall-risk discrimination).",
+  "dataset_family": "mismatch: Turkish hospital neurology cohort (Prof. Dr. A. Ilhan Ozdemir Training and Research Hospital) vs Korean convenience sample (Yonsei University, Wonju); no waiver on record.",
+  "validation_tier": "match: V2 on both rows; both are in-sample ROC analyses with Youden cut-offs and no held-out or external validation.",
+  "modality_family": "mismatch: stopwatch-timed clinical performance test vs wearable 9-axis inertial sensor; no waiver on record."
+ },
+ "endpoint_and_metric": "Endpoint incompatible, metric type compatible. Both papers report ROC AUC (P-1013 Table 2), so the registry warning 'AUC_ROC vs Accuracy' is a coding artefact. The reference standards differ. P-709 uses recalled falls over 12 months within MCI. P-1013 uses BBS/TUG cut-offs, or a 3-month fall history that coincides with MCI-versus-young-control membership.",
+ "performance_validity": "The flag does not apply. P-709's AUC is 0.825; P-1013's AUC is at most 0.94 and its accuracy at most 0.81, all below 0.97. P-1013's sensitivity of 0.99 is not the flag's metric, and performance_suspect is false for both papers in the pack. The candidate could only be a cross-instrument performance comparison, and neither study claims an ordering.",
+ "independence": "Independent: different countries, teams and samples, with no shared authors or cohort. Both cite the Sao Carlos falls group (P-709 ref. 8, Ansai et al.; P-1013 ref. 25, Goncalves et al.), but only as citations.",
+ "bridging_evidence": [
+  {"paper": "P-695", "quote": "Changes in gait speed over a short period of time do not discriminate fallers in older people with MCI or AD in a mild stage.", "how_it_bears": "Context only, not bridging. P-695 tests a different predictor (6-month change in gait speed) against prospectively recorded falls. It neither separates nor ranks the P-709 and P-1013 results, and none is needed, because the pair does not disagree."}
+ ],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record asserts no disagreement. It is a pre-emptive filing, and its only claim is that a performance comparison across the pair would be invalid.",
+  "Read against the PDFs, both results point the same way. The FSST separates recalled fallers within MCI (AUC 0.825), the wearable separates its own fall criterion (AUC 0.82-0.94), and the AUCs overlap.",
+  "The two papers test different instruments, and neither claims an ordering the other refutes; the rule lists this case as not incompatible.",
+  "Even if a disagreement were asserted, the quantities differ (reference standard, the population behind the MCI label, instrument), so the fallback would be documented_incommensurability, never genuine.",
+  "Several record statements misread the sources (see record_defects), notably that P-1013's positives are never falls and that the pair differs in metric type."
+ ],
+ "evidence_quotes": [
+  {"paper": "P-709", "page": 3, "quote": "fall history, namely the number of falls they had in the preceding 12 months."},
+  {"paper": "P-709", "page": 3, "quote": "The optimum cut-off time for the FSST of 15.11 s was identiﬁed to best discriminate fallers from non-fallers with MCI. The AUC was 0.825, with 77.38 % sensitivity and 89.50 % speciﬁcity."},
+  {"paper": "P-709", "page": 6, "quote": "Older adults self-reported their fall history. Asking them about their fall experiences may have biased memory, underestimating fall frequency."},
+  {"paper": "P-709", "page": 5, "quote": "The FSST time under the cutoff value indicates that an older adult with MCI is at high risk for falling."},
+  {"paper": "P-1013", "page": 2, "quote": "A convenience sample of 20 healthy adults (mean age, 25.20 ± 3.19 years) and 20 older adults with MCI (mean age, 79.00 ± 8.25 years)"},
+  {"paper": "P-1013", "page": 2, "quote": "(3) a mini-mental state examination (MMSE) score of 20–23, and (4) a history of falls (e.g., at least one fall in the past 3 months)."},
+  {"paper": "P-1013", "page": 5, "quote": "The criteria for fall scores were classiﬁed as positive (probability of falls occurring) or negative (probability of no falls occurring), which were fall prediction scores (BBS < 40, TUG > 14 s)"},
+  {"paper": "P-1013", "page": 5, "quote": "Among the participants, those who experienced falls within 3 months were considered positive and those who did not were classiﬁed as negative"},
+  {"paper": "P-1013", "page": 8, "quote": "The AUC derived from posture sway data showed a good to excellent fall prediction capability, ranging from 0.82 to 0.94 (Table 2)."},
+  {"paper": "P-1013", "page": 1, "quote": "The fall prediction sensitivity ranged from 0.82 to 0.99, speciﬁcity ranged from 0.69 to 0.90, and accuracy ranged from 0.53 to 0.81."}
+ ],
+ "record_defects": [
+  "Two sentences are filed under paper P-709, and the conflict_statement calls the first 'its own appraisal': 'it does not predict anything' and 'in a cohort selected for memory impairment the outcome measure is contaminated by the very deficit that defines the exposure group'. Neither is in the P-709 PDF; both are summary-block appraisal. The PDF's own caveat is recall bias 'underestimating fall frequency' (p. 6), and its authors present the cut-off as marking high fall risk (p. 5). The underlying facts are correct: 12-month self-report recorded at baseline, and a cut-off derived and evaluated in the same 46 participants.",
+  "'P-1013's positives are never falls at all' is too strong. Section 2.5 defines positives for the cut-off analysis as participants 'who experienced falls within 3 months'; only Section 2.4 names BBS < 40 / TUG > 14 s as the ROC criterion. The paper is internally inconsistent. In the Section 2.5 reading the positive class coincides with the MCI group, because a fall in the past 3 months was an MCI inclusion criterion.",
+  "The record sets P-709's AUC against P-1013's accuracy, sensitivity and specificity, and the gate output warns of an AUC_ROC vs Accuracy metric mismatch. But P-1013 reports ROC AUCs of 0.82-0.94 with 95% CIs (Table 2), so metric type is not what separates the pair.",
+  "'both are single-site MCI cohorts of comparable size': half of P-1013's sample (20 of 40) is healthy adults aged about 25, and its MCI group is defined by MMSE 20-23, ABC score and a recent fall, not by a clinical diagnosis. P-709 uses neurologist-assigned CDR 0.5, and the ROC samples are 46 vs 40.",
+  "'null in every stratum' for P-695 is correct for any fall, but P-695's Table 4 reports recurrent falls in MCI at p = 0.017 (interval 5.582-30969485). The record's per-group p-values follow P-695's Table 3, which P-695's own text contradicts."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A disagreement grounded in the sources, for example one paper testing the other's instrument on the same fall outcome with the opposite result, or reporting that its instrument fails to discriminate fallers in MCI. Neither PDF contains such a result. If the adjudicator reads the pair as an implied performance ranking of the FSST against the wearable, the verdict moves to documented_incommensurability (different instrument, reference standard and population), not to genuine."
+}

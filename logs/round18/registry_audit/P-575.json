@@ -1,0 +1,19 @@
+{
+  "paper": "P-575",
+  "pack": 2,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Transcranial Direct Current Stimulation for Global Cognition in Mild Cognitive Impairment",
+  "is_model_study": false,
+  "blind_first": "blind codes were written to this file before the registry codes file was opened",
+  "blind_codes": {"Task_Type": "T6", "Category": "C5", "Validation_Type": "V2", "Sample_N": "Not reported (narrative review; no count of included studies given)", "Publication_Year": "2025", "ADNI_Dependent": "false"},
+  "registry_codes": {"Task_Type": "T6", "Category": "C2", "Validation_Type": "V2", "Sample_N_Approx": "Not reported (narrative review)", "Publication_Year": "2025", "ADNI_Dependent": "False"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T6", "reason": "Narrative review article (labelled 'Review Article') of tDCS for cognition in MCI."},
+    "Category": {"verdict": "error", "correct_code": "C5", "reason": "The review synthesises tDCS intervention studies whose evidence is cognitive outcome scores (ACE-R, MMSE, ADAS-Cog) plus safety/adverse events: clinical-trial and neuropsychological data, i.e. C5. tDCS is a stimulation intervention, not an electrophysiological recording (C2 = EEG/MEG/ERP/fNIRS), and the method/intervention does not decide the category. EEG appears only in a half-page Future Directions subsection ('Electroencephalogram (EEG)-tDCS', p. 4) next to PET, fMRI and blood-biomarker subsections, so C2 is marginal at best while the primary domain C5 is missing from the code. C5;C2 would be acceptable; C2 alone is not.", "quote": "Studies examining the cognitive impacts of tDCS have largely used two specific outcome measures, the Addenbrooke\u2019s Cognitive Examination-Revised (ACE-R) and Mini-Mental State Examination (MMSE), as markers of global cognition.", "page": 3},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "Narrative review; no predictive model (V2 by convention)."},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "Not reported", "reason": "The review reports no participant total and no count of included studies (68 references, no search/selection reported)."},
+    "Publication_Year": {"verdict": "match", "correct_code": "2025", "reason": "Chonnam Med J 2025;61:1-8 (accepted 27 December 2024)."},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "false", "reason": "Review; ADNI not used."}
+  },
+  "notes": "ADNI_Dependent is stored as 'False' (capitalised) while other rows use 'false'; harmless if the census lower-cases the field, otherwise a parsing risk. The PDF sits in download folder '5. Neuroimaging and Neurophysiological Biomarkers', which may explain the C2 code, but the data-domain definition points to C5."
+}

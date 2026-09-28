@@ -1,0 +1,53 @@
+{
+  "paper": "P-111",
+  "pdf_used": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/pdf/P-111.txt (quotes re-checked with PyMuPDF against C:/Users/aryas/Downloads/PAPERINGO/downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809420303530-main.pdf)",
+  "is_model_study": true,
+  "scope": "Second reading of the first reader's error fields only (defensible fields not re-read, per caller's scope). Codes judged against the PDF (Oltu et al., Biomed Signal Process Control 63 (2021) 102223), as instructed.",
+  "fields": {
+    "Task_Type": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "T3",
+      "registry_code": "T1",
+      "reason": "Confirmed. A single bagged-trees classifier separates AD, MCI and HC in one three-way scheme (Fig. 3; confusion matrices Figs. 9-10). Every reported figure is three-class: 5-fold CV accuracy 96.5% with class-averaged sensitivity and specificity (Table 4), and held-out test accuracy 93.88% (Table 5). No binary MCI-vs-HC figure is reported. The paper sets itself against prior studies that 'only performed binary classification' (pp.2, 10) and claims a 'three-way classification between AD-MCI-HC' (p.10). T3 is multi-class staging, and the project's config/extraction_normalisation_rules.json lists 'three-class HC/MCI/AD' as a T3 trigger. T1 (MCI-vs-HC discrimination) is not the quantified task.",
+      "quote": "the accuracy of 93.88%, the specificity of 96.62% and the sensitivity of 93.24% is obtained for differentiating MCI patients, AD patients, and HC.",
+      "page": 8,
+      "supporting_quote": "In this paper, we have proposed a robust machine learning approach to ensure successful discrimination between three groups of EEG records (AD, MCI, and HC).",
+      "supporting_page": 10,
+      "first_quote_verbatim": true
+    },
+    "Category": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "C2",
+      "registry_code": "C5",
+      "reason": "Confirmed. The data are 19-channel resting eyes-closed EEG recorded at Baskent University Hospital. The features are DWT sub-band PSD (Burg method) and interhemispheric coherence (Table 3: 277 features x 490 epochs). MoCA only characterises the groups (Table 1) and is not a model input. The primary domain C2 is missing and C5 has no basis. The registry's C5 matches the misattached summary block (a cognitive-scale ML study), not this PDF. The registry row's modality 'Clinical/tabular' and journal 'NPG Neurologie - Psychiatrie - Geriatrie' also come from that block.",
+      "quote": "This study analyzed the EEGs of 35 subjects (16 MCI, 8 AD, 11 healthy control) with the developed algorithm.",
+      "page": 1,
+      "first_quote_verbatim": true
+    },
+    "Validation_Type": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "V3",
+      "registry_code": "not reported",
+      "reason": "Confirmed. 'not reported' is outside the V1-V4 enum (the template sets not_reported_allowed false), and the paper does report its protocol. First, 5-fold CV over all 490 epochs selects the classifier (Table 4). Then a random 50/50 train/test split is made at subject level (every epoch of a subject falls in either train or test, p.8), and a held-out test result is reported (Table 5). The template assigns a train/test split without an external site to V3, and the normalisation rules give V3 for a subject-level split. Not V1: n = 35, but no LOOCV is used. Not V4: single hospital.",
+      "quote": "50% of data is chosen randomly as train data and used for training the classifier. The remaining epochs are employed to validate the classification algorithm. None of the training data is used as test data.",
+      "page": 8,
+      "supporting_quote": "Moreover, it was ensured that a subject\u2019s all epochs were in the test set or the train set but not in both.",
+      "supporting_page": 8,
+      "first_quote_verbatim": true
+    },
+    "Sample_N_Approx": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "35",
+      "registry_code": "72",
+      "reason": "Confirmed. The paper analyses 35 subjects (16 MCI + 8 AD + 11 HC, Table 1; 35 x 14 epochs = 490 epochs), stated on pp.1, 2, 8 and 9. The number 72 appears nowhere in the paper text. It matches the misattached summary block's sample line ('72 - 21 AD/24 MCI/27 HC'), not this PDF.",
+      "quote": "35 subjects participated in the study, between the ages of 65 and 90.",
+      "page": 2,
+      "first_quote_verbatim": true
+    }
+  },
+  "notes": "I confirm the first reader's root-cause finding. The summaries.md block 'Paper 111: 1-s2.0-S1746809420303530-main.pdf' names this PDF but describes a different study: ML on FAST/MoCA/MMSE/ADL/IADL/GDS scores, published in NPG Neurologie - Psychiatrie - Geriatrie, 2024. The registry row mixes the two: its year (2020) fits this PDF, while its category, N, modality and journal fit the block. The block needs re-summarising from this PDF, and the row needs re-coding from it."
+}

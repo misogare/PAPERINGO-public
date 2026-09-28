@@ -1,0 +1,117 @@
+{
+  "description": "Gold standard examples of deep, semantic gaps and genuine architectural conflicts curated manually by the human. These are used as few-shot examples for Agent 4.1 (Actor/Hypothesiser) to understand the level of depth and analytical rigour required, rather than superficial combinatorial matching. Also carries rejected_complementary: negative few-shot examples with correction notes, added at Gate G4 per AGENTS.md so the Actor/Critic do not repeat a rejected pattern. NOTE: agent4_relational.py currently loads only genuine_gaps and genuine_conflicts, so rejected_complementary is recorded but not yet consumed.",
+  "genuine_gaps": [
+    {
+      "gap_statement": "Has any multi-site ophthalmic AI study validated optical coherence tomography (OCT) or OCTA biomarkers for Mild Cognitive Impairment (MCI) using the same patient cohort scanned across devices from two or more different vendors (e.g., Zeiss vs. Heidelberg vs. Topcon) to mathematically quantify vendor-induced performance variance or domain shift?",
+      "reasoning": "Highlights a critical hardware/domain shift vulnerability rather than just a missing modality combination."
+    },
+    {
+      "gap_statement": "Has any published speech-based machine learning architecture achieved language-agnostic, zero-shot Mild Cognitive Impairment (MCI) detection that maintains an AUROC or AUC above 0.80 across English, Mandarin Chinese, and at least one other language family simultaneously, without any language-specific fine-tuning or retraining?",
+      "reasoning": "Identifies a failure in cross-cultural and structural generalisation in linguistic models."
+    },
+    {
+      "gap_statement": "Has any machine learning study specifically optimized its objective function to predict the mechanisms of 'MCI reversion' back to normal cognition, explicitly isolating modifiable resilience signatures rather than modeling progression to dementia?",
+      "reasoning": "Points out a systemic bias in how objective functions are framed (progression vs reversion)."
+    },
+    {
+      "gap_statement": "Explainable AI (XAI) relies on descriptive feature attribution (e.g., SHAP, heatmaps) without proving it provides actionable clinical reasoning or actually improves clinician decision-making.",
+      "reasoning": "Moves beyond 'XAI is missing' to critique the actual clinical utility of current XAI methods."
+    },
+    {
+      "gap_statement": "Has any longitudinal speech biomarker study utilized the degradation of 'code-switching' fluidity in bilingual older adults as a primary predictive feature for early executive dysfunction or Mild Cognitive Impairment?",
+      "reasoning": "A highly specific, theoretically grounded physiological/behavioral marker that is being overlooked."
+    },
+    {
+      "gap_statement": "Prognostic models treat central nervous system markers as absolute ground truth, failing to map the temporal lag and decoupling between peripheral microvascular pathways and central amyloidosis. Is there mathematical evidence in the dementia literature proving that peripheral neurodegeneration maps a distinct, non-central prodromal pathway that occurs years before central amyloid/tau markers change?",
+      "reasoning": "Challenges the fundamental temporal assumptions and 'ground truth' standard used in current modeling."
+    },
+    {
+      "gap_statement": "Machine learning architectures force continuous, interval-censored multi-visit clinical trial data into artificial, discrete cross-sectional binary labels.",
+      "reasoning": "A deep critique of how data structure is handled in the dataset modeling pipeline."
+    },
+    {
+      "gap_statement": "EEG-based screening for amyloid-positive MCI has only been demonstrated in single-site settings (AUC ~0.85) without any multi-site replication to quantify cross-site variability or generalisability.",
+      "reasoning": "Highlights a methodological weakness in EEG biomarker validation, where promising results lack robustness due to absence of multi-site standardisation and replication."
+    },
+    {
+      "gap_statement": "No studies have applied digital or behavioral biomarkers (speech, EEG, handwriting, driving, facial video) to predict or explain MCI reversion back to normal cognition.",
+      "reasoning": "Reveals a structural blind spot where digital biomarkers are confined to diagnosis tasks, ignoring reversion dynamics and resilience pathways."
+    },
+    {
+      "gap_statement": "Hemispheric asymmetry and handedness-related structural differences are not explicitly modeled or controlled for in AI-based neuroimaging predictors for MCI.",
+      "reasoning": "Identifies a confounding biological factor (handedness-driven asymmetry) that may bias learned representations in neuroimaging models."
+    },
+    {
+      "gap_statement": "No published study combines longitudinal EEG source activity biomarkers with EHR and DTI MRI features for MCI progression prediction.",
+      "reasoning": "Represents a missing multimodal integration opportunity across electrophysiology, clinical records, and structural connectivity."
+    },
+    {
+      "gap_statement": "No study integrates connectivity/mediation analysis from multimodal MRI with cross-modal MEG and EEG datasets for predicting MCI progression.",
+      "reasoning": "Highlights an unexploited architectural space where high-resolution electrophysiology and MRI-based connectivity modeling remain siloed."
+    },
+    {
+      "gap_statement": "There is no consensus on whether current MCI diagnostic criteria (e.g., Petersen rules) are compatible with or optimal for computational biomarker-driven models.",
+      "reasoning": "Exposes a conceptual misalignment between clinical definitions and machine learning objectives, potentially limiting model validity and comparability."
+    },
+    {
+      "gap_statement": "No longitudinal follow-up data exists for MCI patients after computational diagnosis; the clinical utility of AI flagging (earlier intervention, delayed decline, improved outcome) has never been demonstrated in a prospective AI-vs-standard-of-care trial.",
+      "reasoning": "Separates biomarker->conversion accuracy from real-world clinical utility: papers report predictive performance but none show that acting on an AI flag changes outcomes. Human-verified that all 10 apparent closers were false positives (keyword overlap only, no prospective trial) -- a model case of why lexical 'closing papers' must not auto-close a gap."
+    },
+    {
+      "gap_statement": "No published study combines review-grade structural-MRI classification pipelines with ERP/EEG electrophysiology for MCI-to-normal reversion (T5) prediction.",
+      "reasoning": "A human-curated cross-modal combinatorial gap: unlike the bare 'No paper combines X with Y' templates (noise), this is a specific, defensible pairing of structural MRI and ERP/EEG for the under-studied reversion task. Illustrates the depth a combinatorial gap needs before it is worth surfacing."
+    }
+  ],
+  "genuine_conflicts": [
+    {
+      "paper_a": "P-41",
+      "paper_b": "P-65",
+      "claim_a": "Multi-view 2D projection ensemble \u2014 AUC ~0.92 on T2, external validation",
+      "claim_b": "3D hemispheric asymmetry CNN \u2014 AUC ~0.84 on T2, external validation",
+      "resolution_note": "Multi-view 2D projection ensemble (P-41) outperforms 3D hemispheric asymmetry CNN (P-65) by 8 AUC points on external validation, suggesting lateral asymmetry alone is insufficient as an architectural principle for MCI conversion prediction.",
+      "interpretation": "Lateral asymmetry alone is insufficient as an architectural principle for MCI conversion prediction",
+      "reasoning": "This is a genuine conflict because it contrasts two fundamentally different architectural philosophies (2D ensemble vs 3D lateral asymmetry) and provides a clinically relevant interpretation of why the performance gap exists."
+    },
+    {
+      "paper_a": "P-82",
+      "paper_b": "P-3",
+      "claim_a": "Transformer on FreeSurfer features \u2014 83.3% Acc on T2, ADNI, structural MRI, V2",
+      "claim_b": "CNN with attention transfer \u2014 74.61% Acc on T2, ADNI, structural MRI, V2",
+      "resolution_note": "Genuine architectural conflict: different architecture families (transformer vs CNN) on same task T2, same dataset ADNI, same modality structural MRI, same validation tier V2, gap 8.7%. Pre-computed anatomical ROIs (FreeSurfer) beat end-to-end voxel learning (CNN) on small datasets.",
+      "interpretation": "Pre-computed anatomical ROIs (FreeSurfer) beat end-to-end voxel learning (CNN) on small datasets",
+      "reasoning": "Highlights a core architectural debate: explicit feature engineering (ROIs) vs end-to-end deep learning on a specific dataset size."
+    }
+  ],
+  "rejected_complementary": [
+    {
+      "example_id": "CF-cand-88..97 (batch P-658..P-667)",
+      "rejected_pattern": "Mechanical concatenation presented as synthesis: combined_insight = \"P-<A> finds <A finding> and reports limitation <A limitation> P-<B> finds <B finding> and reports limitation ...\", cut at a fixed 55-word budget.",
+      "why_rejected": "This is copy-paste, not synthesis. All 97 candidates in complementary_candidates.json are exactly 55 words and all begin \"P-<id> finds\". A complementary finding must state what A shows, what B ADDS, and what the combination reveals that neither shows alone. Synthesis markers (whereas, however, complement, neither, in contrast, remains unknown, untested, no study) occurred 0 times in 9 of the 10 candidates reviewed.",
+      "correction_note": "Do NOT emit a candidate whose combined_insight can be produced by string-joining the two source records. Require at least one clause that is true of the PAIR and of neither paper alone. If no such clause can be written, the candidate is not a complementary finding and must be dropped."
+    },
+    {
+      "example_id": "CF-cand-88..97 clinical_implication",
+      "rejected_pattern": "clinical_implication built by concatenating the two registry Modality strings behind a fixed stem: \"Evaluate fused <modality A> plus <modality B> under matched validation for T<n>\".",
+      "why_rejected": "A method suggestion is not a clinical implication. It states what a researcher might try next, not what the combined evidence means for a patient or a decision. All 97 candidates begin \"Evaluate fused\".",
+      "correction_note": "clinical_implication must name the clinical decision, population or risk the combined finding bears on. If the only available sentence is a proposal to fuse two modalities, leave the field empty rather than filling it with the modality strings."
+    },
+    {
+      "example_id": "CF-cand-94 (P-663 x P-139), CF-cand-97 (P-667 x P-139)",
+      "rejected_pattern": "Pairing justified only by shared surface attributes - both cross-sectional, both T4, both older adults, both East Asian cohorts - across incompatible modalities and constructs (FDG-PET empathy correlates vs a tabular decision-tree classifier; a boundary-extension familiarity paradigm vs the same classifier).",
+      "why_rejected": "Surface co-occurrence of study-design fields is not complementarity. Neither paper measures anything the other measures, and no clinical question is jointly addressed, so no synthesis is possible even in principle.",
+      "correction_note": "Before proposing a pair, require a shared clinical QUESTION or a shared measured CONSTRUCT. Matching on study_design_type, Task_Type, region or age band alone is insufficient and produces spurious cross-products."
+    },
+    {
+      "example_id": "CF-cand-92, CF-cand-96 (paired against P-128)",
+      "rejected_pattern": "Candidate generated against a registry row that carries duplicate_of (P-128 duplicate_of P-126).",
+      "why_rejected": "Duplicate records must not enter pairing. The conflict path already gates on duplicate_of; the complementary-candidate path does not, so 7 candidates file-wide (CF-cand-01, 38, 45, 56, 59, 92, 96) cite a duplicate-flagged paper.",
+      "correction_note": "Apply the same duplicate_of exclusion used by the conflict path before forming complementary pairs, and re-anchor any surviving pairing to the canonical paper (here P-126)."
+    },
+    {
+      "example_id": "CF-cand-88 paper_a_finding; CF-cand-90/92/94/95/96/97 paper_b_finding",
+      "rejected_pattern": "Finding fields truncated mid-clause, or filled with raw PDF-extract spillover (\"Results This study encompassed 52 trials with 8452 participants 9 GWASs ...\"), with the normaliser deleting decimal points, minus signs, parentheses and semicolons.",
+      "why_rejected": "Truncation can delete the entire direction of effect - CF-cand-88 stops at \"aMCI shows\", removing what was shown. Character stripping produced \"APOE 4\" for \"APOE e4\", \"3 0 T\" for \"3.0 T\" and \"Hedges g -0 49 95 percent CI -0 76 -0 23\". OCR damage (\"speci city\", \"fronto -temp oro-parietal\") shows the text came from the extract, not the curated summary.",
+      "correction_note": "Source finding fields from the curated \"### Key findings reported\" block in summaries.md, never from the raw PDF extract. Preserve numerals, signs and decimal points verbatim. If a finding will not fit the budget, shorten at a clause boundary and keep the direction of effect."
+    }
+  ]
+}

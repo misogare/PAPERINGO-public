@@ -1,0 +1,22 @@
+{
+  "paper": "P-570",
+  "pdf_is_right_paper": true,
+  "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-570.txt (full extract, 18 pages; title matches summaries.md '## Paper 570'); page = PDF page marker in the extract",
+  "registry_code": "V3",
+  "correct_code": "V4",
+  "changed": true,
+  "training_data": "ADNI-1/GO/2/3: 1,319 participants (574 NC/530 MCI/215 AD); cerebellar radiomic-network features selected and AdaBoost MCI-vs-NC classifier trained with 5-fold internal CV",
+  "test_data": "In-house cohort, First Affiliated Hospital of Dalian Medical University, China: 308 participants (102 NC/104 MCI/102 AD); cerebellar MCI-vs-NC model test AUC 0.864",
+  "model_fixed_before_external_test": true,
+  "reason": "The MCI-vs-NC cerebellar model was trained on ADNI and tested on an in-house cohort from a hospital in China that did not contribute to training, so the study reaches V4 (the highest tier it reports). Two caveats: the NC-to-MCI conversion model (the T2 task, AUC 0.818/0.852) was built and evaluated only in the 371 ADNI NC participants, and a figure caption says the group-difference p-values came from a 'mega-analysis across six sites', which leaves open whether in-house data informed the feature screen.",
+  "quotes": [
+    {"page": 4, "quote": "C, An integrated radiomic-network model was constructed using training data from the ADNI database and subsequently validated using an independent in-house testing set."},
+    {"page": 6, "quote": "In addition to the internal validation, all subjects from the in-house database were used as independent external validation sets to verify the reliability and robustness of the corresponding models."},
+    {"page": 3, "quote": "An in-house dataset of individuals (102 NC, 104 MCI, and 102 AD) were enrolled who had visited the neurology department or the physical examination center at the First Affiliated Hospital of Dalian Medical University."},
+    {"page": 7, "quote": "The ADNI dataset consisted of 574 NC, 530 individuals with MCI, and 215 AD patients, serving as the training set. The in-house dataset comprising 102 NC, 104 MCI, and 102 AD patients was used as the testing set."},
+    {"page": 11, "quote": "The testing set revealed the cerebellar model\u2019s performance metrics as an AUC of 0.86 (95% CI: 0.793\u20130.899), with a sensitivity of 73.8% and specificity of 84.9%"},
+    {"page": 11, "quote": "Among the 371 NC subjects who completed the 72-month follow-up, we identified two groups: those who progressed to MCI (p-NC, n = 137) and those who remained stable (s-NC, n = 234)."},
+    {"page": 8, "quote": "The color bar represents -log(P), with P values computed through a mega-analysis across six sites."}
+  ],
+  "confidence": "medium"
+}

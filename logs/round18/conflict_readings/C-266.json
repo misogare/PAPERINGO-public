@@ -1,0 +1,90 @@
+{
+  "id": "C-266",
+  "reader": "adjudicator",
+  "reader_note": "Model reader (Claude), reading delegated by the adjudicator on 2026-09-27 under CONFLICT_BRIEF.md. Candidate verdict for the human adjudicator; not an operator gate decision.",
+  "papers_read": [
+    {
+      "paper": "P-1407",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Plasma Biomarkers and Disease Prognosis in Mild Cognitive Impairment with Lewy Bodies (Donaghy PC, Hasoon J, Hamilton CA, et al.; Movement Disorders 40(6):1200-1205, 2025; DOI 10.1002/mds.30181)",
+      "read_in_full": true
+    },
+    {
+      "paper": "P-1267",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "The free plasma amyloid A\u03b21\u201342/A\u03b21\u201340 ratio predicts conversion to dementia for subjects with mild cognitive impairment with performance equivalent to that of the total plasma A\u03b21\u201342/A\u03b21\u201340 ratio. The BALTAZAR study (Schraen-Maschke S, Duhamel A, Vidal JS, et al.; Neurobiology of Disease 193 (2024) 106459; doi 10.1016/j.nbd.2024.106459)",
+      "read_in_full": true
+    }
+  ],
+  "pack_history_note": "The first versions of ROOT/pdf/P-1407.txt and ROOT/pdf/P-1267.txt were other papers: Dintica et al., 'Depressive symptoms and plasma AT(N) biomarkers...', Neurobiology of Aging 158 (2026) 11-17; and Holper et al., 'Protocol of a Phase II ... Trial of S-Adenosyl Methionine...', J Prev Alz Dis 2023;10(4):800-809. This reader found the mismatch, located the right PDFs in the repository (downloads/3. Molecular, Genetic and Fluid Biomarkers/PMID_40156325_MDS-40-1200.pdf and downloads/3. Molecular, Genetic and Fluid Biomarkers/1-s2.0-S0969996124000585-main.pdf) and read both in full. The coordinator then regenerated both pack files from those PDFs (message of 2026-09-27). The regenerated files were re-read in full and match the PDFs page for page. Nothing in this verdict rests on the wrong texts. Pages below are the '=== page N ===' markers of the regenerated pack files.",
+  "what_each_reports": {
+    "P-1407": "Cox models for conversion to dementia OR death (composite), adjusted for age, sex, years of education and baseline MMSE. Blood results are standardised to the control mean, and the Abeta42/40 ratio is inverted so that a higher value means greater abnormality (Methods p.2; Table 1 footnote p.3). Abeta42/40 HR (Table 1, p.3): all MCI (n = 120) 1.06 (0.83-1.35), p = 0.636; probable MCI-LB (n = 62) 1.23 (0.94-1.60), p = 0.130; MCI-AD (n = 43) 0.67 (0.37-1.20), p = 0.180. None is significant. The whole-cohort and MCI-LB estimates point the same way as P-1267 (lower ratio, higher hazard); the MCI-AD estimate points the other way with an interval spanning 1. Events: 72/131 converted to dementia or died (probable MCI-LB 41/63; MCI-AD 21/47); median time to event 2.0 years; mean follow-up given as 3 years (p.2) and 2.7 years (p.3). Only NfL was significant in the whole cohort (HR 1.58, 1.17-2.11). Plasma was assayed on Simoa Human Neurology 4-Plex E. MCI-LB and MCI-AD groups were assigned from the final diagnosis after follow-up. The authors call the analyses exploratory, with no multiple-comparison correction, and attribute the MCI-AD nulls to 43 cases and 21 events.",
+    "P-1267": "BALTAZAR subgroup of 106 MCI (Petersen criteria; mean age 78.3; 81% amnestic; Lewy body, parkinsonian, frontotemporal and vascular MCI excluded, p.9). Plasma Abeta1-42/Abeta1-40 on INNO-BIA (Luminex xMAP): free = undiluted plasma, total = 1/3 denaturing dilution. Cox models for adjudicated conversion to dementia (NIA-AA), censored at 36 months or last visit, adjusted for age, sex, education and APOE e4. 50/106 converted, 48 of them to probable AD; one participant died, not counted as an event. Continuous ratio, per percentage point, adjusted: free HR 0.95 (0.91-0.99), p = 0.038; total 0.92 (0.86-0.98), p = 0.013. Unadjusted: free 0.97 (0.93-1.02), p = 0.21; total 0.94 (0.88-1.01), p = 0.053 (Table 3, p.6). Highest quartile vs three lower quartiles, adjusted: free 0.36 (0.15-0.87), p = 0.022; total 0.37 (0.16-0.89), p = 0.027. Unadjusted: free 0.43 (0.18-1.03), p = 0.058; total 0.36 (0.15-0.85), p = 0.019. Global quartile test for the free ratio: p = 0.24 unadjusted, 0.13 adjusted. The relationship was not linear: free-ratio conversion was 42.3%, 46.4%, 58.3% and 29.2% from Q1 to Q4 (p.6)."
+  },
+  "quantity_a": "Hazard of the composite endpoint dementia-or-death, time to event with no fixed horizon (median time to event 2.0 years; mean follow-up about 3 years). Per control-referenced SD of the inverted plasma Abeta42/40 ratio (Simoa, total peptide). Population: Newcastle MCI cohort aged 60 or over, about half probable MCI-LB (62 of 120 in the whole-cohort model) plus a possible MCI-LB group; MCI-AD (n = 43) and MCI-LB subgroups assigned from the final diagnosis after follow-up. Covariates: age, sex, education, MMSE.",
+  "quantity_b": "Hazard of adjudicated conversion to dementia (96% probable AD), censored at 36 months. Per percentage point of plasma Abeta1-42/Abeta1-40, and for the highest quartile vs the three lower quartiles, on INNO-BIA free and total fractions. Population: BALTAZAR memory-clinic MCI with Lewy body, parkinsonian, frontotemporal and vascular MCI excluded. Covariates: age, sex, education, APOE e4.",
+  "same_quantity": false,
+  "incompatible_if_same": "No. P-1407's whole-cohort (1.06, 0.83-1.35) and probable MCI-LB (1.23, 0.94-1.60) estimates point the same way as P-1267: a more abnormal (lower) ratio carries a higher hazard. They are simply not significant. Only the MCI-AD estimate (0.67, 0.37-1.20, p = 0.180) points the other way, and its interval spans 1, so P-1407's own statistics support no direction there. The contrasts cannot be put on a common scale from the printed figures: per control-SD of an inverted Simoa ratio against per percentage point or top quartile of an INNO-BIA ratio, and P-1407 does not print the control SD. So no reported interval can be shown to exclude the other. What remains is significant vs non-significant, which Section 5.2 says is not a data conflict.",
+  "gates": {
+    "task": "match: both T2 (prognosis of MCI; registry Task_Type T2 for both)",
+    "dataset_family": "mismatch: Newcastle MCI cohort (UK) vs BALTAZAR (France, NCT01315639); no waiver on record",
+    "validation_tier": "n/a, counted as matched: both are Cox association studies that validate no model (registry V2 for both)",
+    "modality_family": "match: fluid biomarkers (plasma Abeta42/40); assay platform differs (Simoa Human Neurology 4-Plex E vs INNO-BIA free and total fractions)"
+  },
+  "endpoint_and_metric": "incompatible: endpoint is dementia OR death (P-1407) vs adjudicated dementia conversion censored at 36 months with death not an event (P-1267). Both metrics are Cox hazard ratios, but for different contrasts and covariate sets: per control-SD of an inverted ratio, adjusted for MMSE, vs per percentage point of ratio or top quartile vs rest, adjusted for APOE e4.",
+  "performance_validity": "not a performance comparison: both report association hazard ratios and no discrimination statistic; performance_suspect is false for both",
+  "independence": "Independent: different cohorts, countries, assays and author lists; no shared participants or authors found.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "P-1407 does report Abeta42/40 hazard ratios with 95% intervals in every group (Table 1, p.3). The record's 'not prognostic' is a set of non-significant estimates, not an absence of data.",
+    "Two of the three P-1407 estimates point the same way as P-1267's protective high ratio: whole cohort 1.06 and probable MCI-LB 1.23, with the ratio inverted so higher means more abnormal. P-1267 gives continuous HRs of 0.95 per point (free) and 0.92 (total), and top-quartile HRs of 0.36 and 0.37.",
+    "The one opposite point estimate, MCI-AD 0.67 (0.37-1.20, p = 0.180), is not supported by P-1407's own statistics. The authors attribute their MCI-AD nulls to 43 cases and 21 events. So there are no 'opposite directions each supported by the study's own statistics'.",
+    "No reported interval excludes the other, because the two contrasts sit on scales the printed figures cannot reconcile. What remains is a difference in significance, which Section 5.2 says is not a data conflict; as the operator wrote for C-234, the difference is one of precision, not direction.",
+    "P-1267's positive result is itself conditional on adjustment and on grouping the lower quartiles after inspection: unadjusted free top-quartile HR 0.43 (0.18-1.03), p = 0.058; free continuous 0.97, p = 0.21; adjusted global quartile test p = 0.13.",
+    "Had the results disagreed, the pair would still be documented incommensurability, not genuine: (a) endpoint, dementia-or-death vs dementia censored at 36 months; (b) population, Lewy body MCI excluded in P-1267 but about half of P-1407's whole cohort; (c) contrast and assay, per control-SD Simoa vs per-point and top-quartile INNO-BIA; (d) the dataset-family gate fails with no waiver on record."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-1407", "page": 1, "quote": "Plasma Biomarkers and Disease Prognosis in Mild Cognitive Impairment with Lewy Bodies"},
+    {"paper": "P-1407", "page": 1, "quote": "DOI: 10.1002/mds.30181"},
+    {"paper": "P-1407", "page": 2, "quote": "hazard ratios for conversion to dementia or death with correction for age, sex, years in education, and MMSE."},
+    {"paper": "P-1407", "page": 2, "quote": "MMSE and blood results were standardized with respect to the control mean."},
+    {"paper": "P-1407", "page": 2, "quote": "The A\u03b242/40 ratio was inversed and so a greater value represents greater abnormality to allow for direct comparison of hazard ratios."},
+    {"paper": "P-1407", "page": 2, "quote": "were classi\ufb01ed as MCI-AD at baseline if their \ufb01nal diagnosis was either MCI-AD"},
+    {"paper": "P-1407", "page": 2, "quote": "Simoa Human Neurology 4-Plex E"},
+    {"paper": "P-1407", "page": 3, "quote": "In the entire MCI cohort, 72/131 participants (55%) converted to dementia or died."},
+    {"paper": "P-1407", "page": 3, "quote": "In MCI-AD, 21/47 participants (45%) converted to dementia or died."},
+    {"paper": "P-1407", "page": 3, "quote": "All MCI (n = 120) A\u03b242/40 a 1.06 (0.83\u20131.35) 0.636"},
+    {"paper": "P-1407", "page": 3, "quote": "Probable MCI-LB (n = 62) A\u03b242/40 a 1.23 (0.94\u20131.60) 0.130"},
+    {"paper": "P-1407", "page": 3, "quote": "MCI-AD (n = 43) A\u03b242/40 a 0.67 (0.37\u20131.20) 0.180"},
+    {"paper": "P-1407", "page": 3, "quote": "aResults have been reversed to allow for direct comparison of hazard ratios."},
+    {"paper": "P-1407", "page": 4, "quote": "We found no relationship between plasma biomarkers and conversion to dementia/death or cognitive decline in MCI-AD."},
+    {"paper": "P-1407", "page": 4, "quote": "The absence of an association of pTau181 and disease progression in our cohort may be due to a relatively small number of MCI-AD cases (n = 43) and a lower number of dementia/death events observed (n = 21)."},
+    {"paper": "P-1407", "page": 5, "quote": "these results must be considered exploratory and con\ufb01rmed in independent cohorts."},
+    {"paper": "P-1267", "page": 1, "quote": "https://doi.org/10.1016/j.nbd.2024.106459"},
+    {"paper": "P-1267", "page": 1, "quote": "Free amyloid levels (defined by the amyloid fraction directly accessible to antibodies of the assay) were obtained with the undiluted plasma, whereas total amyloid levels were obtained after the dilution of plasma (1/3) with a denaturing buffer."},
+    {"paper": "P-1267", "page": 2, "quote": "than those in the three lower quartiles: hazard ratio = 0.36 (95% confidence interval [0.15\u20130.87]), after adjustment for age, sex, education, and APOE \u03b54 (p-value = 0.022)."},
+    {"paper": "P-1267", "page": 3, "quote": "The MCI diagnosis was based on Petersen\u2019s criteria"},
+    {"paper": "P-1267", "page": 3, "quote": "The duration of follow-up was censored at M36 as only one patient converted to AD later."},
+    {"paper": "P-1267", "page": 5, "quote": "47.2% (n = 50) of the MCI participants converted to dementia and among them, 96% (n = 48) to probable AD."},
+    {"paper": "P-1267", "page": 5, "quote": "Moreover, one participant died during the three-year follow-up."},
+    {"paper": "P-1267", "page": 6, "quote": "The free and total A\u03b21\u201342/A\u03b21\u201340 ratio were significantly associated with conversion to dementia with Hazard ratios of 0.95 (p = 0.038) and 0.92 (P = 0.013) respectively (Table 3)."},
+    {"paper": "P-1267", "page": 6, "quote": "Free A\u03b21\u201342/A\u03b21\u201340 ratio (%)b 0.97 (0.93\u20131.02) 0.21 0.95 (0.91\u20130.99) 0.038"},
+    {"paper": "P-1267", "page": 6, "quote": "Free A\u03b21\u201342/A\u03b21\u201340 ratio quartiles (%)b 0.24 0.13"},
+    {"paper": "P-1267", "page": 6, "quote": "1 (reference) 0.43 (0.18\u20131.03) 1 (reference) 0.36 (0.15\u20130.85) 0.058 0.019"},
+    {"paper": "P-1267", "page": 6, "quote": "The relationship between conversion and the free plasma A\u03b21\u201342/A\u03b21\u201340 ratio was not linear"},
+    {"paper": "P-1267", "page": 9, "quote": "To increase the likelihood of conversion to AD, we excluded participants with Lewy Body, Parkinsonian, frontotemporal, or vascular MCI disorders."}
+  ],
+  "record_defects": [
+    "conflict_statement '131 with outcome data, 72 conversions over mean ~2.7 years': the PDF's 72/131 'converted to dementia or died' (p.3), so these are composite dementia-or-death events, not conversions. The Abeta42/40 Cox models use n = 120 (all MCI), 62 (probable MCI-LB) and 43 (MCI-AD), not 131 (Table 1, p.3).",
+    "conflict_statement 'baseline plasma Abeta42/40 carried no prognostic value ... in any MCI group' and claim_a 'A-beta42/40 was not prognostic in any group': the PDF gives non-significant HRs (1.06, 1.23, 0.67), two of which point the same way as P-1267. 'No prognostic value' reads a null as evidence of absence.",
+    "review_note issue (iii) and blocker_flag_operator_review_2026_09_14 say P-1407 reports 'only a null ... with no HR, CI or p-value for Abeta42/40' and that 'there is no HR from P-1407 that could be placed against P-1267's HR 0.36'. Table 1 (p.3) prints HR, 95% CI and p for Abeta42/40 in all three groups. They are per control-SD of an inverted ratio, so not numerically comparable with a top-quartile HR, but they exist and their direction can be compared.",
+    "review_note 'Lewy-body enriched (62 probable MCI-LB of 131 with outcome data)': 62 is the probable MCI-LB n in the Cox model, the event text gives 41/63, and the PDF never uses 'with outcome data'. The enrichment itself is correct."
+  ],
+  "pack_defects": [
+    "First-pack ROOT/pdf/P-1407.txt and ROOT/pdf/P-1267.txt were the wrong papers (Dintica et al. 2026, doi 10.1016/j.neurobiolaging.2025.11.005; Holper et al. 2023, doi 10.14283/jpad.2023.55). data/paper_pdf_map.json had mapped P-1407 and P-1267 by folder-scan (scores 0.71 and 0.70, verified: true) to 1-s2.0-S0197458025002003-main.pdf and 1-s2.0-S2274580724001705-main.pdf. The coordinator repaired both during this round; the regenerated files are the papers named in papers_read.",
+    "Registry row P-1407: task_substage 'MCI_to_AD' and population_specificity 'general' do not describe an MCI cohort that is about half probable MCI-LB with a dementia-or-death endpoint. Noted only, since the operator's 2026-09-14 flag asked for no re-coding."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "A genuine reading would need a statistically supported opposite direction on a comparable estimand: for example, P-1407's MCI-AD group (or a comparable Lewy body-excluded MCI cohort) showing that a higher Abeta42/40 carries a significantly higher hazard of dementia on the same kind of contrast, plus a dataset-family waiver on record. Neither PDF contains such a result. If the adjudicator classifies by estimand before compatibility, as the operator's C-234 reclassification listed 'different quantities' first, the same facts give documented_incommensurability (dementia-or-death vs dementia censored at 36 months; Lewy body-enriched vs Lewy body-excluded MCI; per control-SD Simoa vs top-quartile INNO-BIA contrasts; dataset-family gate failed without waiver). Either way the pair is not genuine."
+}

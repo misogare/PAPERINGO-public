@@ -1,0 +1,19 @@
+{
+  "paper": "P-532",
+  "pdf_is_right_paper": true,
+  "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-532.txt (full extract, 12 pages; title matches summaries.md '## Paper 532'); page = PDF page marker in the extract",
+  "registry_code": "V1",
+  "correct_code": "V4",
+  "changed": true,
+  "training_data": "Cohort A: ADNI (355 MCI: 168 converters/187 non-converters; 94 HC used only for radiomic feature-stability analysis); feature selection and L1-penalised Cox models fitted in repeated 10-fold CV within ADNI",
+  "test_data": "Cohort B: Department of Neurology, Huashan Hospital, Shanghai, China (22 MCI: 10 converters/12 non-converters); dual-modality C-index 0.798 (ADNI test folds 0.766)",
+  "model_fixed_before_external_test": true,
+  "reason": "The radiomic Cox models were built on ADNI only, and the Huashan Hospital cohort (another institution and country) is used purely as an external test set, so the study reaches V4; V1 (LOOCV, n<100) does not describe it. The Huashan C-indices are reported as mean (SD) over the ADNI-trained CV models, and the external set is very small (n=22), which the authors themselves flag.",
+  "quotes": [
+    {"page": 2, "quote": "Participants were recruited from 2 independent medical centers. Cohort A comprised 355 patients with MCI and 94 healthy control participants (HCs) whose data were collected from the Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI) database (http://adni.loni.usc.edu/). Cohort B comprised 22 patients with MCI whose data were collected from the Department of Neurology at the Huashan Hospital in Shanghai, China."},
+    {"page": 7, "quote": "Although the sample size of the Huashan dataset was somewhat small as an external test dataset whose inclusion might have therefore led to overfitting and inconsistent results among the different modalities, our findings verified the feature stability across different ethnic cohorts."},
+    {"page": 7, "quote": "C-indices are expressed as the mean (standard deviation) as derived from multiple 10-fold cross-validation in each model."},
+    {"page": 10, "quote": "Third, the C-index values of cohort B may contain uncertainty in the external test dataset owing to the small sample size. Research must be furthered using external test data with a larger sample size and greater heterogeneity to confirm our findings. Lastly, considering that the ADNI data were used as the training dataset, differences in ethnicity between the training and testing groups should not be ignored."}
+  ],
+  "confidence": "high"
+}

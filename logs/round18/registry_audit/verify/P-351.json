@@ -1,0 +1,18 @@
+{
+  "paper": "P-351",
+  "pdf_used": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/pdf/P-351.txt",
+  "fields": {
+    "Category": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "C1;C3;C5",
+      "registry_code": "C3",
+      "reason": "Confirmed. The similarity-network-fusion model takes three co-equal input modalities, each turned into its own similarity matrix before fusion: cognitive/neuropsychological scores (ADAS, RAVLT, mPACCdigit, mPACCtrailsB, LDELTOTAL, TRABSCOR, FAQ; C5), genetics (APOE status and polygenic hazard score; C3) and seven structural MRI volumes (ventricles, hippocampus, whole brain, entorhinal, fusiform, middle temporal, ICV; C1). The paper's own statement of its contribution names all three. The registry keeps only C3, which is the smallest input (two genetic variables; blood-transcriptome GSVA and CSF are used afterwards to characterise the clusters), and leaves out two primary input domains, MRI and neuropsych. Under the rule, a missing primary data domain is an error, not an omitted secondary domain. PET (AV45, FDG) and CSF only characterise the clusters and add nothing beyond C1/C3.",
+      "quote": "This study presents a novel application of SNF to integrate cognitive, genetic, and structural MRI data, enabling the simultaneous identification of disease subtypes in AD.",
+      "page": 13,
+      "first_quote_verbatim": true,
+      "first_quote_note": "Verbatim on p.1 (abstract); the extract has a soft hyphen in 'net-work' at a line break."
+    }
+  },
+  "notes": "Quotes normalise PDF-extract artefacts (soft hyphens and line-break hyphens removed, lines joined by spaces)."
+}

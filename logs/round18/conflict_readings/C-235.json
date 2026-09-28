@@ -1,0 +1,62 @@
+{
+ "id": "C-235",
+ "reader": "adjudicator",
+ "papers_read": [
+  {"paper": "P-989", "pdf_is_right_paper": true, "title_as_printed": "Mild behavioral impairment linked to progression to Alzheimer’s disease and cortical thinning in amnestic mild cognitive impairment", "read_in_full": true},
+  {"paper": "P-997", "pdf_is_right_paper": true, "title_as_printed": "Longitudinal cognitive changes in patients with early Parkinson's disease and neuropsychiatric symptoms", "read_in_full": true}
+ ],
+ "what_each_reports": {
+  "P-989": "Yoon, Lee, Kwak and Kim 2023 (Front Aging Neurosci 14:1051621), matching the record. 1,184 amnestic MCI patients aged 60-85 from two Seoul centres, mean follow-up 3.1 +/- 2.0 years; 284 (24%) progressed to clinically diagnosed AD (NINCDS-ADRDA). Two-step clustering of five NPI-Q-approximated MBI domains gave asymptomatic (n=561, 47.4%), affective-dysregulation-only (n=348, 29.4%) and complex (n=275, 23.2%) groups. Multivariable Cox HR for progression to AD: complex vs asymptomatic 2.541 (1.904-3.392), p<0.001; affective-only vs asymptomatic 1.214 (0.883-1.670), p=0.232. Per-domain HRs (Table 4) are all above 1 and significant, e.g. impulse dyscontrol 1.920 (1.444-2.554) and affective dysregulation 1.373 (1.049-1.796). No hazard by number of domains is reported.",
+  "P-997": "Meng, Jin, Wang and Fang 2023 (CNS Neurosci Ther 29:2259-2266), matching the record. 423 drug-naive, newly diagnosed PD patients in PPMI (33 sites), 315 retained at year 5. Each baseline neuropsychiatric symptom is modelled separately. Annual MoCA change (linear mixed model) vs no symptom: depression -0.638, psychosis -0.708, state anxiety -0.439, trait anxiety -0.346, apathy -0.296, ICDs +0.017 (p=0.905). GEE odds of PD-MCI: depression OR 2.575 (1.771-3.744), state anxiety 2.462, trait anxiety 2.605, psychosis 1.739, apathy 1.554, ICDs 1.173 (0.830-1.659), p=0.366. ICDs were associated only with decline in HVLT-R recognition discrimination (beta -0.280, p=0.043), which the authors say should be interpreted cautiously. The paper contains no analysis of symptom counts, clusters or aggregation."
+ },
+ "quantity_a": "Hazard of progression from amnestic MCI to clinically diagnosed AD dementia, comparing data-driven MBI-profile clusters (complex vs asymptomatic), in Korean memory-clinic aMCI patients aged 60-85; multivariable Cox hazard ratio; mean 3.1-year follow-up.",
+ "quantity_b": "Association of each baseline neuropsychiatric symptom, modelled one at a time, with the annual rate of change in cognitive test scores (linear mixed-model beta) and with occurrence of PD-MCI (GEE odds ratio), in drug-naive early Parkinson's disease (PPMI); 5-year follow-up.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Wherever the two papers touch, they point the same way: in both, neuropsychiatric symptoms go with worse cognitive outcomes. The only apparent split is impulse-type symptoms, and it is a same-direction significance difference on different constructs. P-989's MBI impulse dyscontrol (agitation/aggression, irritability, aberrant motor behaviour) has HR 1.920 (1.444-2.554); P-997's QUIP impulse-compulsive disorders (gambling, sexual, buying, eating, punding and similar) have OR 1.173 for PD-MCI (0.830-1.659). Affective symptoms also agree in direction: P-989's affective-dysregulation domain HR is 1.373 (significant); P-997's depression OR is 2.575 and its anxiety ORs 2.462/2.605. The record's aggregation-versus-decomposition opposition is not a result of either paper, so nothing incompatible exists to compare.",
+ "gates": {
+  "task": "match: both registry T4 (association/risk-factor studies; neither builds a classifier)",
+  "dataset_family": "mismatch: SMG-SNU Boramae Medical Center and Dongjak-Gu Center for Dementia, Seoul (2012-2020) vs PPMI (33 international sites); no waiver on record",
+  "validation_tier": "n/a (counted as matched): both are association studies that validate no model (Cox HRs; LME/GEE)",
+  "modality_family": "match in substance: both use clinical neuropsychiatric symptom ratings (informant NPI-Q vs GDS-15, STAI, QUIP and MDS-UPDRS Part I items). The registry modality_subtype differs because P-989 is coded multimodal_MRI after its n=202 MRI subset, which is not its prognostic analysis"
+ },
+ "endpoint_and_metric": "incompatible: P-989 reports a Cox hazard ratio for time to clinically diagnosed AD dementia. P-997 reports linear mixed-model betas for annual change in cognitive test scores, and GEE odds ratios for PD-MCI (two or more tests more than 1.5 SD below normal, without functional impairment).",
+ "performance_validity": "not a performance comparison (hazard ratios, regression coefficients and odds ratios; no discrimination metric on either side).",
+ "independence": "Distinct studies: different cohorts (Seoul memory-clinic aMCI vs PPMI), different author groups, no shared participants.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The opposition the record describes, profile aggregation against symptom-to-outcome decomposition as competing answers, is not a result of either paper. P-997 models each symptom separately and never analyses symptom counts, clusters or aggregation, so the record misreads its paper (P-997 p3 quote on the model terms).",
+  "P-989 is not an aggregation-only study. It reports decomposed per-domain hazard ratios, all significant, alongside its clusters, so the two papers do not embody opposed architectures (P-989 p5 quote and Table 4 row).",
+  "The 'dose-response' the record attributes to P-989 is not tested. The complex cluster includes 45 single-domain patients (16.4%), and no hazard by number of domains is reported (P-989 p4 quote).",
+  "The record's own resolution presents both findings as true and neither paper as in error, which is an 'architectural fork'; the rule records that as a false positive (record resolution and resolution_note; results quoted from both PDFs).",
+  "Where the results touch, they agree in direction. The impulse-type contrast is a significance-only difference on different constructs: MBI impulse dyscontrol HR 1.920 against QUIP ICDs OR 1.173 with an interval including 1 (P-989 p3 and p5 quotes; P-997 p3 and p5 quotes). Depression also raises PD-MCI odds in P-997 (p3 quote).",
+  "Read as a disagreement, the pair would fail anyway as documented incommensurability. The populations are amnestic MCI vs drug-naive early PD, the outcomes are AD-dementia conversion hazard vs cognitive-score slopes and PD-MCI odds, and the dataset families are unmatched with no waiver (P-997 p2 quote; P-989 p1 and p3 quotes)."
+ ],
+ "evidence_quotes": [
+  {"paper": "P-989", "page": 1, "quote": "Compared to the asymptomatic group, the complex group was associated with a higher risk of progression to AD (hazard ratio = 2.541 [1.904–3.392], p < 0.001), but the affective dysregulation group was not (1.214 [0.883–1.670], p = 0.232)."},
+  {"paper": "P-989", "page": 3, "quote": "A total 1,184 individuals with aMCI who visited SMG-SNU Boramae Medical Center or Dongjak-Gu Center for Dementia between 2012 and 2020 were included in the present study."},
+  {"paper": "P-989", "page": 3, "quote": "(3) impulse dyscontrol (NPI-Q: agitation/aggression, irritability/liability, aberrant motor behavior)"},
+  {"paper": "P-989", "page": 4, "quote": "Most of the participants including in the third cluster revealed symptoms in multiple MBI domains (1 domain, n = 45 (16.4%); 2 domains, n = 130 (47.3%); 3 domains, n = 74 (26.9%); 4 or 5 domains, n = 27 (9.4%))."},
+  {"paper": "P-989", "page": 5, "quote": "After adjusting the significant covariates, the presence of each MBI domain and MBI-positive were associated with higher risk of progression to AD (Table 4)."},
+  {"paper": "P-989", "page": 5, "quote": "Impulse dyscontrol 1.920 1.444–2.554 < 0.001"},
+  {"paper": "P-997", "page": 2, "quote": "All the PD patients recruited were drug-naïve."},
+  {"paper": "P-997", "page": 3, "quote": "used as independent variables in each model: the presence/absence of NPS at baseline, visit, and visit*NPS interaction term."},
+  {"paper": "P-997", "page": 3, "quote": "ICDs were evaluated by the short version of the Questionnaire for Impulsive-Compulsive Disorders in PD for ICDs and related behaviors (gambling, sexual, buying, eating, punding, hobbyism, walkabout, and the compulsive use of medication)."},
+  {"paper": "P-997", "page": 3, "quote": "The odds of MCI was significantly greater among depressed patients in comparison with those of non-depressed patients (odds ratio [OR] = 2.575; 95% confidence interval [CI]: 1.771–3.744, p < 0.001) in the GEE model (Figure 1)."},
+  {"paper": "P-997", "page": 5, "quote": "Finally, there is no significant difference in the odds of MCI with and without QUIP (OR = 1.173; 95% CI: 0.830–1.659; p = 0.366) in the GEE model (Figure 1)."},
+  {"paper": "P-997", "page": 6, "quote": "QUIP also demonstrated a link with memory impairment, but with a large p-value (p = 0.043); as such, this relationship should be interpreted cautiously."},
+  {"paper": "P-997", "page": 6, "quote": "Finally, multiple NPS frequently co-occur in PD patients, especially depression and anxiety; it is difficult to differentiate between these multiple manifestations."}
+ ],
+ "record_defects": [
+  "Description: 'more co-occurring domains = higher hazard, dose-response'. P-989 reports no hazard by number of domains; its complex cluster includes 45 single-domain patients (16.4%), and only cluster-level and per-domain HRs are given.",
+  "claim_b and description: 'prognostic signal lives in the symptom-to-outcome MAPPING, not in symptom count' and 'a count-based aggregation would average the specificity away'. P-997 never analyses symptom counts or aggregation. Each symptom is modelled separately, and its limitations name symptom co-occurrence as something it could not disentangle.",
+  "claim_b: 'ICDs accelerate memory decline'. P-997's ICD finding is a single test (HVLT-R recognition discrimination, beta -0.280, p=0.043) that the authors say should be interpreted cautiously. ICDs were not associated with HVLT-R delayed recall (p=0.615), and the results text also lists recognition discrimination among the non-significant tests.",
+  "The description casts P-989 as the aggregation side against decomposition, but P-989 itself reports decomposed per-domain Cox HRs (Table 4), all significant.",
+  "Description: 'both cohorts model NPS against cognitive deterioration with comparable longitudinal designs'. The outcomes differ (time to clinically diagnosed AD dementia vs annual test-score change and PD-MCI occurrence), and so do the populations (amnestic MCI vs drug-naive early PD).",
+  "dataset_family_equivalence: 'single-centre Korean aMCI cohort'. P-989 recruited from two sites, SMG-SNU Boramae Medical Center and Dongjak-Gu Center for Dementia.",
+  "demotion_note_2026_08_29: 'all four deterministic gates fail'. Task matches (T4/T4), and the validation-tier gate does not apply to two association studies (both coded V2); only dataset family and the registry modality subtype differ.",
+  "[registry row, not the ledger record] P-989's modality_subtype 'multimodal_MRI' describes its n=202 MRI subset; the prognostic analysis uses NPI-Q-derived MBI domains only. Its primary_metric_type 'not reported' should be a hazard ratio."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only a same-quantity result would change it. For example, either paper reporting an association of the same symptom construct with the same outcome in the opposite direction, supported by its own statistics, or a single-cohort study in which cluster-level and per-symptom models reach contradictory prognostic conclusions for the same outcome. Neither paper contains such a result. If the adjudicator prefers to read the record as asserting a disagreement, the fallback outcome is documented_incommensurability: population, outcome, metric and dataset family differ, with no waiver. Genuine is excluded under either reading."
+}

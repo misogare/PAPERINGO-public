@@ -1,0 +1,19 @@
+{
+  "paper": "P-1241",
+  "pack": 4,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "CSF peptides from VGF and other markers enhance prediction of MCI to AD progression using the ATN framework",
+  "is_model_study": true,
+  "blind_codes": {"Task_Type": "T2", "Category": "C3", "Validation_Type": "V3", "Sample_N": "719 (142 NL + 83 SMC + 240 EMCI + 141 LMCI + 113 AD)", "Publication_Year": "2023", "ADNI_Dependent": "true"},
+  "blind_code_notes": "Year: issue Neurobiology of Aging 121 (2023); online 1 Oct 2022.",
+  "registry_codes": {"Task_Type": "T2", "Category": "C3", "Validation_Type": "V2", "Sample_N_Approx": "EMCI 187 (168 stable/19 converters) + LMCI 119 (63 stable/56 converters); full sample for state classification", "Publication_Year": "2023", "ADNI_Dependent": "true"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T2", "acceptable_codes": ["T2"], "reason": "Core result is prediction of 36-month MCI-to-AD conversion (EMCI/LMCI converters vs stable) with sensitivity, specificity, balanced accuracy and ROC AUC.", "quote": "a derivative from VGF, when combined with AT markers, most strongly enhanced prediction of MCI to AD conversion", "page": 1},
+    "Category": {"verdict": "match", "correct_code": "C3", "acceptable_codes": ["C3"], "reason": "CSF amyloid/tau and targeted-proteomics CSF peptides (VGF, NPTX2, SPP1, CHI3L1, YWHAZ) plus CSF GAP-43; APOE and demographics as covariates.", "quote": "", "page": 3},
+    "Validation_Type": {"verdict": "error", "correct_code": "V3", "acceptable_codes": ["V3"], "reason": "Signatures are tuned by 10 x 10-fold stratified CV on CUI vs AD and then evaluated on a separate, held-out test set of EMCI and LMCI subjects not used in training; Table 3 labels these columns 'Test Set'. That is k-fold plus a held-out test partition (V3), not CV-only (V2). Not V4: the test subjects (and the second VGF confirmation cohort) are also from ADNI.", "quote": "Performance of the signatures derived from these algorithms for accurately classifying CUI versus AD subjects was estimated via 10 iterations of 10-fold stratified cross-validation ... These signatures were then applied to an independent group of EMCI and LMCI subjects at baseline to predict their future progression to AD within 36-months.", "page": 3},
+    "Sample_N_Approx": {"verdict": "defensible", "correct_code": "719", "acceptable_codes": ["719", "306"], "reason": "The paper analyses 719 subjects in total; the registry string totals 306 (EMCI 187 + LMCI 119), which is the 36-month conversion test set in Table 2, and leaves the full sample unquantified. The registry uses one of the paper's Ns (test set rather than total).", "quote": "Data from 719 subjects across NL, SMC, EMCI, LMCI, and AD were included in this study", "page": 4},
+    "Publication_Year": {"verdict": "match", "correct_code": "2023", "acceptable_codes": ["2023", "2022"], "reason": "Neurobiology of Aging 121 (2023) 15-27; available online 1 October 2022.", "quote": "Neurobiology of Aging 121 (2023) 15–27", "page": 1},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "true", "acceptable_codes": ["true"], "reason": "All subjects from ADNI-GO/ADNI-2.", "quote": "Subjects in this study were drawn from ADNI-GO and ADNI-2", "page": 3}
+  },
+  "notes": "The validation miscode matters for the review's validation-tier statistics, since this is a classification study (V2 undercounts held-out testing). The Sample_N string begins with '187' (the EMCI subset); a parser taking the first integer would record 187, which is neither the total (719) nor the test set (306). Recommend Sample_N_Approx = 719 (test set 306)."
+}

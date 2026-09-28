@@ -1,0 +1,60 @@
+{
+  "paper": "P-753",
+  "pack": 6,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Learning potential and visuospatial memory could predict amyloid-beta positron emission tomography positivity in amnestic mild cognitive impairment",
+  "is_model_study": true,
+  "blind_codes": {
+    "Task_Type": "T4",
+    "Category": "C5;C1",
+    "Validation_Type": "V2",
+    "Sample_N": "64 (31 Abeta-PET negative + 33 Abeta-PET positive aMCI)",
+    "Publication_Year": "2023",
+    "ADNI_Dependent": "false"
+  },
+  "registry_codes": {
+    "Task_Type": "T4",
+    "Category": "C5",
+    "Validation_Type": "V2",
+    "Sample_N_Approx": "64 - 31 Abeta-PET negative/33 Abeta-PET positive, all patients with amnestic MCI and all analysed. The total of 64 is printed in the abstract (\"64 patients with aMCI (31 Abeta-PET (-) and 33 ())\", plus sign lost in extraction), again at the head of the results",
+    "Publication_Year": "2023",
+    "ADNI_Dependent": "false"
+  },
+  "judgement": {
+    "Task_Type": {
+      "verdict": "match",
+      "correct_code": "T4",
+      "reason": "The discrimination task is amyloid-PET status within aMCI only; there is no healthy-control group, so this is a biomarker-subtype task, not MCI vs HC."
+    },
+    "Category": {
+      "verdict": "defensible",
+      "correct_code": "C5 or C5;C1",
+      "reason": "The analysed predictors are neuropsychological tests (C5), which the registry codes. Amyloid PET (C1) is the reference label being predicted. Whether a label-only modality counts as a data domain is a judgement, so omitting C1 is at most the omission of a secondary domain.",
+      "quote": "Patients underwent Aβ-PET scans using 18F-florbetaben and the Seoul Neuropsychological Screening Battery.",
+      "page": 1
+    },
+    "Validation_Type": {
+      "verdict": "match",
+      "correct_code": "V2",
+      "reason": "Logistic regression and ROC were fitted and evaluated in the full sample of 64, with no CV, test set or external data (absence of reporting = V2)."
+    },
+    "Sample_N_Approx": {
+      "verdict": "match",
+      "correct_code": "64",
+      "quote": "This cross-sectional study included 64 patients with aMCI (31 Aβ-PET (-) and 33 (+))",
+      "page": 1
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2023",
+      "quote": "Available online 22 August 2023",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "false",
+      "reason": "Single memory clinic (Pusan National University Hospital), no ADNI data."
+    }
+  },
+  "notes": ""
+}

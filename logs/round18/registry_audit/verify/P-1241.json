@@ -1,0 +1,32 @@
+{
+  "paper": "P-1241",
+  "pdf_used": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/pdf/P-1241.txt",
+  "fields": {
+    "Validation_Type": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "V3",
+      "registry_code": "V2",
+      "reason": "Confirmed. The design has two stages. (1) Signatures are trained on cognitively unimpaired (NL+SMC) versus AD, and their performance is estimated by 10 iterations of 10-fold stratified CV. (2) The frozen signatures are then applied to a separate group of EMCI and LMCI subjects who were not used in training, to predict 36-month conversion. Table 3 labels these columns 'Test Set', as distinct from 'Internal Cross-Validation', and p.4 calls the step an independent verification. The core task (MCI-to-AD conversion, the registry's own T2) is evaluated only on this held-out partition. That is k-fold plus a held-out test partition, which is V3. V2 ('no separate test set') is contradicted by the paper. It is not V4: the test subjects, and the second VGF confirmation cohort, all come from ADNI-GO/ADNI-2, the same consortium as the training data.",
+      "quote": "Performance of the signatures derived from these algorithms for accurately classifying CUI versus AD subjects was estimated via 10 iterations of 10-fold stratified cross-validation ... These signatures were then applied to an independent group of EMCI and LMCI subjects at baseline to predict their future progression to AD within 36-months.",
+      "page": 3,
+      "supporting_quote": "Internal Cross-Validation (CUI vs. AD) Test Set (Early MCI to AD progression in 36m) Test Set (Late MCI to AD progression in 36m)",
+      "supporting_page": 10,
+      "first_quote_verbatim": true,
+      "first_quote_note": "Verbatim on p.3 apart from extract artefacts: the 'fi' ligature in 'stratified' and the line-break hyphen in 'sub- jects'."
+    },
+    "Sample_N_Approx": {
+      "first_verdict": "defensible",
+      "final_verdict": "defensible",
+      "correct_code": "719",
+      "acceptable_codes": ["719", "306"],
+      "registry_code": "EMCI 187 (168 stable/19 converters) + LMCI 119 (63 stable/56 converters); full sample for state classification",
+      "reason": "Confirmed. The study includes 719 subjects (Table 1: 142 NL + 83 SMC + 240 EMCI + 141 LMCI + 113 AD = 719). The registry string gives numbers only for the 36-month conversion test set in Table 2 (EMCI 168 + 19 = 187; LMCI 63 + 56 = 119; total 306); these subgroup counts match Table 2 exactly. It leaves the full sample unquantified. 306 is a figure the paper supports (test set versus whole sample), which is the discovery-versus-validation case the definition calls defensible. Not a match, because the whole-study analysed N is 719.",
+      "quote": "Data from 719 subjects across NL, SMC, EMCI, LMCI, and AD were included in this study",
+      "page": 4,
+      "first_quote_verbatim": true,
+      "first_quote_note": "Verbatim on p.4."
+    }
+  },
+  "notes": "Parser caveat (unchanged from the first reader): the first integer in the registry string is 187, which is neither the total (719) nor the test set (306); 719 (test set 306) would be the unambiguous entry. Quotes normalise extract artefacts (ligatures, line-break hyphens, table header cells joined by spaces)."
+}

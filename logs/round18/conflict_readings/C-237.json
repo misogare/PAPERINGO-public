@@ -1,0 +1,64 @@
+{
+ "id": "C-237",
+ "reader": "adjudicator",
+ "papers_read": [
+  {"paper": "P-1232", "pdf_is_right_paper": true, "title_as_printed": "Identification of lncRNA in circulating exosomes as potential biomarkers for MCI among the elderly", "read_in_full": true},
+  {"paper": "P-1254", "pdf_is_right_paper": true, "title_as_printed": "The plasma derived exosomal miRNA-483-5p/502-5p serve as potential MCI biomarkers in aging", "read_in_full": true}
+ ],
+ "what_each_reports": {
+  "P-1232": "Gao et al. 2025 (J Affect Disord 370:401-411), matching the record. Case-control study in the Guangzhou community, aged >=60. Cases are 155 MCI patients (Petersen criteria operationalised by education-specific MMSE cut-offs; mean MMSE 18.46); controls are 155 age/sex-matched 1:1 (mean MMSE 28.15). RNA-seq on a small subset, qRT-PCR on 150 v 150. Three exosomal lncRNAs (LINC001380, ENST00000484033, ENST00000531087) combined as a logistic predicted probability give AUC 0.700 (95% CI 0.641-0.760), sensitivity 72.0%, specificity 60.7%, in-sample. The external AddNeuroMed dataset GSE63060 (80 MCI, 104 controls; described as blood RNA profiles) tested two target genes, ATP2A2 and PSEN1: AUC 0.695 (0.618-0.7715). The lncRNA panel itself was evaluated only in the Chinese sample.",
+  "P-1254": "Liu et al. 2024 (Exp Gerontol 186:112355), matching the record. Community survey in Gansu: 275 people aged over 65, 99 with MCI by MoCA < 26 plus European-consortium criteria. The miRNA cohort had 24 MCI patients (mean age 78.12, MoCA 20.37), 24 'age-matched' controls (73.35, MoCA 26.17) and 24 controls under 65. Four literature-preselected exosomal miRNAs were measured by qPCR. ROC for MCI vs age-matched controls: miR-483-5p AUC 0.901 (sens 79.2%, spec 100%); miR-502-5p AUC 0.872 (sens 79.2%, spec 83.3%). No CI, no cross-validation, no external cohort."
+ },
+ "quantity_a": "Cross-sectional discrimination (in-sample ROC AUC) of a logistic combination of three plasma-exosomal lncRNAs, for MCI defined by education-specific MMSE cut-offs versus 1:1 age/sex-matched community controls aged >=60 (Guangzhou; qRT-PCR set of 150 v 150).",
+ "quantity_b": "Cross-sectional discrimination (in-sample ROC AUC, no CI) of single plasma-exosomal miRNAs (miR-483-5p; miR-502-5p), for MCI defined by MoCA < 26 plus European-consortium criteria versus community controls over 65 who averaged about 4.8 years younger (Gansu; 24 v 24).",
+ "same_quantity": false,
+ "incompatible_if_same": "Yes, if they were one quantity. P-1232's interval (0.641-0.760) excludes 0.901. P-1254 prints no CI, but a Hanley-McNeil approximation for AUC 0.901 with 24 v 24 (reader's calculation, not in the paper) is roughly 0.81-0.99, which excludes 0.700. The gap is therefore not noise; the verdict rests on the two AUCs estimating different quantities.",
+ "gates": {
+  "task": "match: both T1, MCI vs healthy controls, cross-sectional",
+  "dataset_family": "mismatch: a Guangzhou community case-control sample (with AddNeuroMed used for target genes only) vs a Gansu community survey. The record itself sets dataset_equal false and records no waiver",
+  "validation_tier": "match in substance: the registry has V3 vs V2, but both contested AUCs are in-sample estimates without external validation. P-1232's external AddNeuroMed analysis tested ATP2A2 and PSEN1, not the lncRNA panel",
+  "modality_family": "match: fluid biomarkers (plasma exosomal RNA; ultracentrifugation plus qPCR)"
+ },
+ "endpoint_and_metric": "compatible metric type (cross-sectional ROC AUC, MCI vs controls) but not the same estimand. The predictor (three-lncRNA logistic panel vs one pre-selected miRNA), the case definition (MMSE education-specific cut-offs vs MoCA < 26) and the control group (matched vs about 4.8 years younger) all differ.",
+ "performance_validity": "The flag does not apply to P-1254 on the PDF, although the pack marks it true. Its highest AUC is 0.901, and the implied accuracy at the reported operating point is 43/48 = 0.896 (reader's computation); both are below 0.97. The automatic test presumably tripped on the 100% specificity. The 24 v 24 sample, the missing CI, selection of the marker from four candidates and the lack of an external cohort remain caveats. The candidate is a performance comparison, but it fails on quantity before the flag matters. P-1232 is not flagged (AUC 0.700).",
+ "independence": "Distinct studies: different cohorts (Guangzhou vs Gansu), provinces and author groups; no shared participants. P-1232's external AddNeuroMed data are unrelated to P-1254.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two AUCs are for different predictors: a logistic combination of three exosomal lncRNAs (P-1232) and a single literature-preselected exosomal miRNA (P-1254). Neither study measures the other's markers, and a different predictor set is a different quantity under the rule (P-1232 p5 quote; P-1254 p1 and p2 quotes).",
+  "Neither study claims the ordering the other would refute. P-1232's only lncRNA-versus-miRNA remark concerns research scope, not accuracy, and P-1254 does not discuss lncRNAs (P-1232 p8 quote).",
+  "The population behind the shared 'MCI vs healthy controls' label differs. P-1232 defines MCI by education-specific MMSE cut-offs (mean MMSE 18.46) against matched controls; P-1254 defines it by MoCA < 26 (mean MoCA 20.37) against controls about 4.8 years younger (P-1232 p2 and p3 quotes; P-1254 p2 and p4 quotes).",
+  "The dataset-family gate fails (two distinct community cohorts) and no waiver is on record. The record's 'all four deterministic gates pass' contradicts its own dataset_equal: false.",
+  "If the quantities were the same, the estimates would be incompatible (non-overlapping uncertainty). The verdict therefore does not dismiss the gap as noise; it rests on the quantity difference (P-1232 p5 and P-1254 p1 quotes).",
+  "The record overstates P-1232's validation. The lncRNA panel was evaluated only in the Chinese sample, and the AddNeuroMed analysis tested ATP2A2 and PSEN1 (P-1232 p3, p4, p5 and p9 quotes).",
+  "The pack's performance-validity flag on P-1254 does not apply on the PDF: its highest AUC is 0.901 (P-1254 p1 quote)."
+ ],
+ "evidence_quotes": [
+  {"paper": "P-1232", "page": 2, "quote": "We included 155 elderly patients with MCI as the case group, with a 1:1 proportion-matched 155 non-MCI elderly subjects served as the healthy control group."},
+  {"paper": "P-1232", "page": 2, "quote": "MCI was determined using an education-specific cut-off point for the MMSE total score."},
+  {"paper": "P-1232", "page": 3, "quote": "MMSE, score 18.46 (5.07) 28.15 (2.07) <0.001"},
+  {"paper": "P-1232", "page": 3, "quote": "We used blood RNA profiles from subjects from the AddNeuroMed consortium"},
+  {"paper": "P-1232", "page": 4, "quote": "We selected two genes (ATP2A2 and PSEN1) for analysis during this process."},
+  {"paper": "P-1232", "page": 5, "quote": "the AUC of ROC curves for the combination of plasma exosomal LINC001380, ENST00000484033 and ENST00000531087 was 70.0 % (CI: 64.1 %–76.0 %, P < 0.001) with a sensitivity of 72.0 % and a specificity of 60.7 % (Fig. 4A)."},
+  {"paper": "P-1232", "page": 5, "quote": "we validated the predictive power of target genes using an external dataset of 80 MCI patients and 104 healthy controls."},
+  {"paper": "P-1232", "page": 8, "quote": "exosomal lncRNAs may offer a broader research space and prospect in central nervous system disorders, such as cognitive impairment, compared to miRNAs."},
+  {"paper": "P-1232", "page": 9, "quote": "although we used dataset from the UK population to validate the predictive effect of target genes on MCI, we only evaluated the predictive effect of target exo-lncRNAs in the Chinese population."},
+  {"paper": "P-1254", "page": 1, "quote": "we evaluated miR-483-5p (Area Under the Curve (AUC) is 0.901, sensitivity 79.2 % and specificity 100 %) and miR-502-5p (AUC is 0.872, sensitivity 79.2 % and specificity 83.3 %)"},
+  {"paper": "P-1254", "page": 2, "quote": "Based on the amassed evidence, we have selected miRNA-132-3p, −206, −483-5p, and 502-5p as prospective candidates."},
+  {"paper": "P-1254", "page": 2, "quote": "the clinical evaluation shows a score < 26 by MoCA, on the contrary, MoCA ≥26 is considered normal"},
+  {"paper": "P-1254", "page": 2, "quote": "As the biomarker exploration cohort, 24 MCI patients and 24 age-matched controls were chosen at random."},
+  {"paper": "P-1254", "page": 4, "quote": "Age(years), Mean ± SD 59.56 ± 4.31 73.35 ± 5.33 78.12 ± 5.83"},
+  {"paper": "P-1254", "page": 4, "quote": "MoCA, Mean ± SD 27.13 ± 2.13 26.17 ± 1.14 20.37 ± 3.52"},
+  {"paper": "P-1254", "page": 7, "quote": "Receiver operating characteristic curves for miR-483-5p and miR-502-5p to discriminate MCI from age-matched control."}
+ ],
+ "record_defects": [
+  "Description: 'P-1232's three-lncRNA panel achieves 0.700 WITH external validation'; resolution_note: 'externally validated, AUC 0.700'. The panel was evaluated only in the Chinese sample. The external AddNeuroMed (GSE63060) analysis tested two target genes (ATP2A2, PSEN1) in blood RNA profiles, and 0.700 is an in-sample figure.",
+  "claim_b and description: 'n=72 ROC cohort' and '0.901 with 100% specificity on n=72'. The ROC compares 24 MCI patients with 24 age-matched controls (n=48); the 24 controls under 65 are not part of it.",
+  "Description: 'all four deterministic gates pass'. The record's own dataset_equal: false contradicts this (distinct Guangzhou and Gansu cohorts, no waiver on record), and the registry validation tiers also differ (V3 vs V2).",
+  "Description: 'cross-sectional community cohorts'. P-1232 is a 1:1 matched case-control study; P-1254's ROC subset is drawn from a community survey.",
+  "claim_a: 'n=310 discovery'. The AUC 0.700 comes from the qRT-PCR set (150 MCI v 150 controls). RNA-seq discovery used a small subset: five pairs per Methods 2.2, while Results 3.1 says ten MCI patients and their controls.",
+  "[registry row, not the ledger record] P-1232's Validation_Type V3 overstates the lncRNA panel's validation, which is internal only. P-1254's Sample_N_Approx 'miRNA/ROC cohort 72' should read 48 for the ROC."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A same-quantity result would change it: the three lncRNAs and miR-483-5p measured in one cohort under one case definition, or either marker set re-measured in the other's population, with estimates whose uncertainty excludes the other's. No such study is in the corpus; a search of summaries.md finds these markers only in the P-1232 and P-1254 blocks. Waiving the dataset-family gate alone would not change the outcome, because the predictor sets differ. If the adjudicator reads the record's 'Both findings can stand' as an architectural fork, the alternative label is false_positive. Genuine is excluded under either reading."
+}

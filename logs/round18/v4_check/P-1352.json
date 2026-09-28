@@ -1,0 +1,14 @@
+{"paper": "P-1352", "pdf_is_right_paper": true,
+ "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-1352.txt",
+ "registry_code": "V3", "correct_code": "V3", "changed": false,
+ "training_data": "NCGG Biobank (National Center for Geriatrics and Gerontology, Japan), blood RNA-seq: discovery cohort of 73 followed MCI (26 MCI-C / 47 MCI-NC), 5-fold CV to choose the marker combination",
+ "test_data": "Validation cohort of 72 followed MCI (26 MCI-C / 46 MCI-NC) from the same NCGG Biobank",
+ "model_fixed_before_external_test": true,
+ "reason": "The Cox model (IGK, TRA and WDR37 plus age, sex and APOE e4) and its risk cut-off were fixed on the discovery cohort, then applied to the validation cohort (C-index 0.643; log-rank P = 2.57e-3). Both cohorts come from the one NCGG Biobank, so this is a held-out partition of a single institution: V3, matching the 2026-09-27 audit recode already in the block. Leakage caveat: the WDR37 screen compared all 52 MCI-C and 93 MCI-NC, which include the validation cohort.",
+ "quotes": [
+  {"page": 6, "quote": "We obtained 856 blood samples with measured mRNA expression and their associated clinical data from the NCGG Biobank."},
+  {"page": 7, "quote": "All data were strictly separated into a discovery cohort and a validation cohort."},
+  {"page": 4, "quote": "The adjusted model was then evaluated on a validation cohort of 72 subjects (26 MCI-C and 46 MCI-NC), which was completely independent from the discovery cohort."},
+  {"page": 3, "quote": "during which time 52 (35.86%) converted to AD (i.e., were classified as MCI-C), and the remaining 93 MCI patients (64.14%) were classified as MCI-NC."}
+ ],
+ "confidence": "high"}

@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.0",
+  "description": "17-field structured extraction schema for MCI progression papers",
+  "fields": [
+    {
+      "id": "Paper_ID",
+      "type": "string",
+      "description": "Stable unique identifier derived from filename or DOI slug",
+      "example": "P-108",
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "Category",
+      "type": "enum",
+      "values": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "multi_value": true,
+      "description": "Data-domain taxonomy v2 (method lives in Architecture_Family, not here). C1=Neuroimaging (MRI/fMRI/DTI/PET); C2=Electrophysiology (EEG/MEG/ERP/fNIRS); C3=Molecular/Fluid (CSF/plasma/genomics/omics); C4=Behavioural/Digital (speech/language/gait/eye/handwriting/sensors); C5=Clinical/Population (EHR/surveys/neuropsych/cohorts/epidemiology); C6=Peripheral/Indirect markers (retinal/oculomics and other non-CNS scans linked to MCI)",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "Modality",
+      "type": "string",
+      "description": "Primary data modality. Be specific: T1-sMRI not just MRI; rs-fMRI not just fMRI; plasma GFAP not just biomarker",
+      "example": "rs-fMRI longitudinal",
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "Method_Architecture",
+      "type": "string",
+      "description": "Model name and key design. Max 12 words. Include the specific architecture, not just 'deep learning'.",
+      "example": "3D ResNet twin-branch + multi-level attention + spatial pyramid pooling",
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "Task_Type",
+      "type": "enum",
+      "values": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6"
+      ],
+      "description": "T1=MCI vs HC current-state DISCRIMINATION; T2=pMCI vs sMCI conversion prediction; T3=multi-class staging HC/EMCI/LMCI/AD; T4=subtype/biomarker/correlational; T5=MCI reversion prediction; T6=clinical/population/review/descriptive",
+      "required": true,
+      "not_reported_allowed": false,
+      "normalisation_note": "T1 vs T4 - THE DECIDING TEST IS WHETHER DISCRIMINATION IS QUANTIFIED, NOT WHETHER A HEALTHY CONTROL GROUP EXISTS. Assign T1 only when the study fits or evaluates a classifier, a diagnostic model or a cut-point and reports (or would report) a discrimination figure - accuracy, AUC, F1, sensitivity/specificity or kappa. A study that merely compares group MEANS between MCI and controls (t-test, ANOVA, effect size, correlation, odds ratio, \"significant group difference\") is T4, however central the MCI-vs-HC contrast is to its argument. Rationale: Task_Type is a COMPARABILITY GATE - agent4_relational.py gates both gap generation and complementary-finding generation on Task_Type equality, so pooling no-metric group-mean studies with fitted classifiers mints incommensurable comparisons. CAUTION: an existing Best_Metric of \"not reported\" is AMBIGUOUS and must not be used as the test on its own - it may mean the paper genuinely classifies nothing, or that an early extraction pass missed a real metric. Resolve from the summary block or the PDF; a paper that classifies but whose metric was never captured stays T1 and needs a Best_Metric fix instead. T2: map to T2 ONLY if the task is explicitly progressive vs stable MCI or MCI-to-AD conversion; do not map general MCI detection to T2. T5: reversion-to-normal PREDICTION only. Never use T5 for interventions, trials or reviews.",
+      "boundary_decision": "PAPERINGO-8ug, resolved 2026-08-11. Evidence: T1 rows carried a discrimination metric 89 per cent of the time (100/112) against 27 per cent for T4 (63/230); zero T4 rows were labelled task_substage=MCI_vs_HC while 86 of 112 T1 rows were, so the alternative reading had no existing constituency. Twelve legacy T1 rows lacked a discrimination metric; on audit against their summaries and PDFs, 8 were re-coded to T4 (P-17, P-87, P-364, P-421, P-447, P-451, P-563, P-762) and 4 were confirmed as genuine classification papers whose metric had simply never been extracted (P-143, P-150, P-160, P-306)."
+    },
+    {
+      "id": "Best_Metric",
+      "type": "string",
+      "description": "Single best reported classification figure with metric type prefix. Format: TYPE VALUE. Never report without type prefix.",
+      "example": "Acc 91.4%",
+      "valid_prefixes": [
+        "Acc",
+        "bACC",
+        "AUC",
+        "F1",
+        "kappa",
+        "Sens",
+        "Spec",
+        "NR"
+      ],
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "Best_AUC",
+      "type": "float_or_NR",
+      "description": "AUC value if reported, else NR. Do not compute AUC from sensitivity/specificity.",
+      "example": "0.874",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "Dataset",
+      "type": "string",
+      "description": "Primary dataset name(s). Use canonical names from normalisation rules. Include phase if ADNI.",
+      "example": "ADNI-2, ADNI-3",
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "Sample_N_Approx",
+      "type": "string",
+      "description": "Approximate total N. If per-class breakdown known, write as 'N_class1 + N_class2'. If N not reported, write NR.",
+      "example": "82 MCI + 85 HC",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "Validation_Type",
+      "type": "enum",
+      "values": [
+        "V1",
+        "V2",
+        "V3",
+        "V4"
+      ],
+      "description": "V1=LOOCV small-n (<100); V2=k-fold CV same dataset no separate test set; V3=k-fold + held-out test partition; V4=external institutional validation (different institution or country)",
+      "required": true,
+      "not_reported_allowed": false,
+      "normalisation_note": "If paper says 'train/test split' without external site, assign V3. If same dataset different fold, assign V2. Absence of reporting = V2 not V4."
+    },
+    {
+      "id": "Architecture_Family",
+      "type": "enum",
+      "values": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8"
+      ],
+      "description": "A1=traditional ML (SVM/RF/LR/XGBoost/NB); A2=CNN (1D/2D/3D/(2+1)D); A3=RNN/LSTM/GRU; A4=Transformer/attention; A5=GNN/GCN/GAT; A6=Ensemble (multi-family); A7=NLP/LLM-based; A8=Other/hybrid",
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "XAI_Method",
+      "type": "string",
+      "description": "Post-hoc explainability method used. Use canonical tags: Grad-CAM; SHAP; LIME; attention-map; occlusion; decision-tree; fuzzy-rules; none",
+      "example": "Grad-CAM",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "Key_Novelty",
+      "type": "string",
+      "description": "The single most novel contribution. Max 12 words. Must distinguish this paper from prior work.",
+      "example": "First cross-lingual speech MCI pipeline; temporal pause features transfer cross-language",
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "Primary_Limitation",
+      "type": "string",
+      "description": "The single most important acknowledged limitation. Max 12 words.",
+      "example": "Single-centre Chinese cohort; no prospective external validation",
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "Journal",
+      "type": "string",
+      "description": "Full journal name (not abbreviation). Conference papers: write 'Conference: [name]'. Preprints: write 'Preprint: [server]'.",
+      "example": "Computers in Biology and Medicine",
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "Publication_Year",
+      "type": "integer",
+      "description": "Year of publication (not submission). Use online-first date if print date unavailable.",
+      "example": 2023,
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "ADNI_Dependent",
+      "type": "boolean",
+      "description": "True if ADNI (any phase) is the primary or sole dataset. False if ADNI is used only for secondary comparison.",
+      "example": true,
+      "required": true,
+      "not_reported_allowed": false
+    },
+    {
+      "id": "study_design_type",
+      "type": "enum",
+      "values": [
+        "cross_sectional",
+        "longitudinal_2point",
+        "longitudinal_multipoint",
+        "future_value_forecasting",
+        "survival_analysis"
+      ],
+      "description": "The fundamental study design regarding time points.",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "task_substage",
+      "type": "enum",   "values": [
+    "SCD_to_MCI",
+    "NC_to_MCI",
+    "pMCI_vs_sMCI",
+    "MCI_to_AD",
+    "EMCI_to_AD",
+    "MCI_vs_HC",
+    "multiclass_staging",
+    "MCI_reversion",
+    "biomarker_correlation",
+    "aMCI_Apos_vs_Aneg"
+   ],
+      "description": "The specific task substage of progression.",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "population_specificity",
+      "type": "enum",
+      "values": [
+        "general",
+        "T2DM",
+        "sarcopenia",
+        "chronic_pain",
+        "occupational",
+        "CHF",
+        "PD",
+        "other_disease_specific"
+      ],
+      "description": "Specific characteristics or diseases of the target population.",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "modality_subtype",
+      "type": "string",
+      "description": "Subtype specific to the modality family (e.g., structural_MRI_only, trimodal_MRI_PET_CSF).",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "prediction_horizon_years",
+      "type": "integer_or_null",
+      "description": "Prediction horizon for forecasting or survival analysis in years.",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "primary_metric_type",
+      "type": "enum",
+      "values": [
+        "AUC_ROC",
+        "Accuracy",
+        "Balanced_Accuracy",
+        "C_index",
+        "Sensitivity_Specificity",
+        "PPV",
+        "Hazard_Ratio",
+        "Odds_Ratio"
+      ],
+      "description": "The type of the primary evaluation metric reported.",
+      "required": true,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "duplicate_of",
+      "type": "string",
+      "description": "If this paper is a duplicate of another, the ID of the original paper.",
+      "required": false,
+      "not_reported_allowed": true
+    },
+    {
+      "id": "Open_Problems",
+      "type": "string",
+      "description": "Summary of explicitly stated open problems or future research directions in the paper. Extract from 'Open problems' section if present. Clean whitespace and truncate to 600 characters.",
+      "example": "Need larger multi-centre validation; lack of longitudinal data; unclear generalisation across demographics",
+      "required": true,
+      "not_reported_allowed": true
+    }
+  ],
+  "extraction_prompt_template": "You are extracting structured metadata from an academic paper summary.\nReturn ONLY a valid JSON object with exactly the keys listed below.\nIf a field cannot be determined from the text, set its value to \"not reported\".\nDo not infer, estimate, or fabricate any value.\nFor Task_Type: map to T2 ONLY if the task is explicitly progressive vs stable MCI or MCI-to-AD conversion.\nFor Validation_Type: absence of external site = V2 not V4.\nFor Best_Metric: always include the metric type prefix (Acc/AUC/bACC/F1/kappa).\n\nFields to extract: Paper_ID, Category, Modality, Method_Architecture, Task_Type, Best_Metric, Best_AUC, Dataset, Sample_N_Approx, Validation_Type, Architecture_Family, XAI_Method, Key_Novelty, Primary_Limitation, Journal, Publication_Year, ADNI_Dependent\n\nPaper summary:\n{summary_text}\n\nFull text excerpt (methods + results):\n{full_text_excerpt}"
+}

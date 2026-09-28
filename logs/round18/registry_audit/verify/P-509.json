@@ -1,0 +1,20 @@
+{
+  "paper": "P-509",
+  "pdf_used": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/pdf/P-509.txt",
+  "fields": {
+    "Category": {
+      "first_verdict": "defensible",
+      "final_verdict": "error",
+      "correct_code": "C5",
+      "registry_code": "C4",
+      "reason": "Upgraded from defensible. The study's only data are scores on TASIT Part 2, a standardised, criterion-referenced social-cognition test given by the examiner within 'an extensive neuropsychological battery'. Participants watch 15 video vignettes and answer yes / no / don't know, and correct answers are summed per scene type. That is neuropsychological test data, which the definitions place in C5 ('neuropsych'). C4 covers behavioural/digital data modalities (speech, language samples, gait, eye movements, handwriting, sensors). No speech, language-sample, eye-tracking or sensor data are collected from participants. The first reader's case for C4 rests on the construct the test measures (comprehension of sarcasm from dialogue and paralinguistic cues). But the definitions say the data domain decides the category, and the construct a test measures does not change that, any more than the method does. Coding C4 on that basis would move every language or social-cognition neuropsych test into C4, which contradicts 'neuropsych' being listed under C5. C5 is therefore the study's primary and only data domain, and it is missing from the code. By the rule, a missing primary domain is an error, not an omitted secondary domain. Corroboration: the project's modality alias for this study ('neuropsychological_TASIT_theory_of_mind_sarcasm') maps to 'neuropsychological_scores_only' in config/extraction_normalisation_rules.json, a family kept separate from speech_acoustic, gait and psychophysics. The registry row's own Modality reads 'Neuropsychological/Behavioural'.",
+      "quote": "all participants were evaluated with an extensive neuropsychological battery and selected for the purpose of the study, which thoroughly assesses memory capacity, complex executive functioning ability, emotion recognition and social cognition",
+      "page": 7,
+      "supporting_quote": "The participants have only to respond with saying “yes”, “no” or “don’t know”. Finally, all correct answers were calculated for the 15 scenes of Sincere Sarcasm (5), Simple Sarcasm (5) and Paradoxical Sarcasm (5) comprehension.",
+      "supporting_page": 7,
+      "first_quote_verbatim": true,
+      "first_quote_note": "Both parts verbatim: the p.7 sentence (line-break hyphen in 'recog-nition') and the p.6 sentence ('fi' ligature in 'specifically')."
+    }
+  },
+  "notes": "Registry consistency: P-1129 (a meta-analysis of emotion-recognition/ToM/empathy tests) is coded C5 with Modality 'Neuropsychological social-cognition', so C5 for P-509 would also bring the registry into line with itself. Quotes normalise extract artefacts (ligatures, line-break hyphens)."
+}

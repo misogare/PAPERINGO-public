@@ -1,0 +1,61 @@
+{
+ "id": "C-259",
+ "reader": "adjudicator",
+ "reader_note": "Model reader acting on the operator's delegated instruction of 2026-09-27. The verdict is a candidate for the operator; it is not a gate decision.",
+ "papers_read": [
+  {"paper": "P-845", "pdf_is_right_paper": true, "title_as_printed": "The role of exercise in the prevention and treatment of Alzheimer's disease and mild cognitive impairments (Brooks, Krishnamoorthy, Sumien; Ageing Research Reviews 102 (2024) 102555)", "read_in_full": true},
+  {"paper": "P-848", "pdf_is_right_paper": true, "title_as_printed": "Effectiveness of various exercise on neuropsychiatric symptoms among older adults with mild cognitive impairment or dementia: A systematic review and network meta-analysis (Kong et al.; Ageing Research Reviews 112 (2025) 102890)", "read_in_full": true},
+  {"paper": "P-1131", "pdf_is_right_paper": true, "title_as_printed": "Identifying Exercise Interventions That May Slow the Progression of Cognitive Decline in Older Adults With Mild Cognitive Impairment: A Scoping Review (Castro, Bamdas, Ortega, Jacomino; Cureus 17(3): e80895, 2025). Context paper named in the record, not part of the pair.", "read_in_full": true}
+ ],
+ "what_each_reports": {
+  "P-845": "A narrative review with no pooled estimate; the article states that no data were used [q4]. It tallies a table of 34 RCTs in MCI and AD, classed as aerobic, non-aerobic, mixed or walking. Its verdict is that aerobic exercise led to the most benefits [q1]. It adds three graded statements about aerobic exercise: moderate evidence that it improves memory in MCI; substantial evidence that it improves other cognitive domains in MCI and AD; and potential to enhance independent living and 'decrease psychiatric symptoms such as depression' [q2]. On the alternative it says there is 'very little evidence that non-aerobic exercise provides these beneficial effects' [q3]. It reports no effect size, no interval and no between-modality test for any outcome.",
+  "P-848": "A frequentist NMA of 34 studies (29 RCTs and 5 quasi-experimental; 3655 participants with MCI or dementia). Only three studies met Petersen criteria for MCI [q9]. For the primary outcome, NPS (NPI family), resistance exercise gives SMD -1.70 (95% CI -3.12 to -0.29) against active control, with SUCRA 91.8% [q7]. That estimate rests on three trials: Camara-Calmaestra 2025 (AD), Fleiner 2017 (dementia) and Holthoff 2015 (AD) [q8]. Multi-component exercise gives -0.70 (-1.32 to -0.08); no other comparison is significant, and I2 is 93.2% [q12]. In the dementia subgroup (29 studies), resistance gives -1.77 (-3.27 to -0.26) [q10]. For cognition, multi-component ranks first (SUCRA 80.2%) with no significant differences between types [q11]. For QoL, aerobic ranks first (77.5%), again without significant differences. For ADL, finger exercise gives 0.86 (0.02 to 1.71)."
+ },
+ "quantity_a": "A qualitative ordinal verdict, with no estimate, no interval and no between-modality test, that aerobic exercise gives the most benefit. It covers cognition and independent living, and in its conclusion psychiatric symptoms, and it rests on a narrative tally of RCTs in MCI and AD. 'Non-aerobic' in P-845 means strength, balance, yoga, stretching and similar exercise.",
+ "quantity_b": "Pooled SMDs for neuropsychiatric symptoms (NPI family) of each exercise type against active control, with SUCRA ranks, in older adults with MCI or dementia. The resistance node consists of three dementia/AD trials.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The headline rankings concern different outcomes: P-845 ranks on cognition and independent living, while P-848 ranks on NPS and does not rank resistance exercise for cognition at all. P-845 does touch psychiatric symptoms, but there its statement concerns the amount of evidence ('very little evidence that non-aerobic exercise provides these beneficial effects'). It carries no estimate, so it offers no statistic that P-848's SMD could exclude. On cognition, P-848 finds no significant differences between exercise types [q11], which refutes no aerobic-first reading.",
+ "gates": {
+  "task": "match: T6 vs T6.",
+  "dataset_family": "match: both synthesise published exercise trials in cognitive impairment. At least eight trials appear in both tables (Rolland 2007, Lamb 2018, Hoffmann 2016, Holthoff 2015, Yang 2015, Fajersztajn 2008, Ohman 2016/2017, Lam 2011/2012); this is recorded under independence.",
+  "validation_tier": "n/a: two evidence syntheses, counted as matched.",
+  "modality_family": "match at the family level (exercise interventions), mismatch at the node level. The same trial is classed differently: Holthoff 2015 is 'Aerobic' in P-845's Table 1 but 'Resistance exercise' in P-848's Table 1 [q5, q6], and Hoffmann 2016 is 'Aerobic' in P-845 but 'Multi-component' in P-848 [q13, q14]."
+ },
+ "endpoint_and_metric": "incompatible. P-845 reports no metric of any kind, while P-848 reports SMDs against active control. The outcome behind each 'best modality' claim also differs: cognition and independent living for P-845, NPS for P-848.",
+ "performance_validity": "Not a performance comparison.",
+ "independence": "The trial sets overlap, with at least eight shared trials (see dataset_family). The teams differ (UNT Health Science Center; Jilin University), and P-848 does not cite P-845.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two 'best modality' claims concern different outcomes: P-845's aerobic verdict rests on cognition and independent living [q1], and P-848's resistance ranking on NPS [q7].",
+  "P-845 produces no estimate [q4]. Its one statement bearing on psychiatric symptoms under non-aerobic exercise is an evidence-volume claim [q3], with no statistic that can be set against P-848's SMD of -1.70 (-3.12 to -0.29) [q7].",
+  "The modality classes differ between the two reviews: one of P-848's three resistance trials, Holthoff 2015, is classed as aerobic by P-845 [q5, q6, q8]. P-845 itself concedes that its three-way classification is coarse [q15].",
+  "The populations behind the label differ. P-848's resistance estimate rests entirely on three dementia/AD trials, and only three of its 34 studies met Petersen MCI criteria [q8, q9]. P-845 tallies MCI and AD trials together.",
+  "The shared outcome of cognition shows no incompatibility either, since P-848 finds no significant differences between exercise types there [q11]."
+ ],
+ "evidence_quotes": [
+  {"id": "q1", "paper": "P-845", "page": 1, "quote": "We determined that aerobic exercise led to the most benefits, that many cognitive domains improve with exercise, and that aerobic exercise enhances the ability for independent living."},
+  {"id": "q2", "paper": "P-845", "page": 9, "quote": "has the potential to enhance independent living skills and decrease psychiatric symptoms such as depression in these patients"},
+  {"id": "q3", "paper": "P-845", "page": 9, "quote": "However, there is very little evidence that non-aerobic exercise provides these beneficial effects"},
+  {"id": "q4", "paper": "P-845", "page": 9, "quote": "No data was used for the research described in the article."},
+  {"id": "q5", "paper": "P-845", "page": 3, "quote": "Holthoff 2015 AD Aerobic Usual Care 12 Lack of Decline Lack of Decline"},
+  {"id": "q6", "paper": "P-848", "page": 6, "quote": "Holthoff et al., (2015) Germany AD 30 15/15 72.4 \u00b1 4.3 70.7 \u00b1 5.4 50.0 Resistance exercise (passive, motor-assisted or active training of the legs)"},
+  {"id": "q7", "paper": "P-848", "page": 1, "quote": "resistance exercise (SMD = \u22121.70, 95 % CI: \u22123.12 to \u22120.29) ranked first with 91.8 %"},
+  {"id": "q8", "paper": "P-848", "page": 8, "quote": "3 explored the effects of resistance exercise (C\u00b4amara-Calmaestra et al., 2025; Fleiner et al., 2017; Holthoff et al., 2015)"},
+  {"id": "q9", "paper": "P-848", "page": 3, "quote": "Only three studies focused on the effects of exercise interventions on older adults meeting Petersen\u2019s diagnostic criteria for MCI."},
+  {"id": "q10", "paper": "P-848", "page": 8, "quote": "Across 29 studies involving individuals with dementia, resistance exercise (SMD = \u22121.77, 95 % CI: \u22123.27, \u22120.26)"},
+  {"id": "q11", "paper": "P-848", "page": 8, "quote": "The NMA results revealed that there were no statistically significant differences between exercise types (Fig. 3B)."},
+  {"id": "q12", "paper": "P-848", "page": 8, "quote": "High statistical heterogeneity was observed overall (I2 = 93.2 %, p < 0.001)."},
+  {"id": "q13", "paper": "P-845", "page": 3, "quote": "Hoffmann 2016 AD Aerobic Usual Care 12 Lack of Decline Yes"},
+  {"id": "q14", "paper": "P-848", "page": 5, "quote": "Hoffmann et al., (2016) Denmark AD 200 107/93 69.8 \u00b1 7.4 71.3 \u00b1 7.3 43.5 Multi-component exercise (resistance and aerobic exercise)"},
+  {"id": "q15", "paper": "P-845", "page": 7, "quote": "For the purpose of this review, we chose to classify each intervention as aerobic exercise, non-aerobic, or mixed."}
+ ],
+ "record_defects": [
+  "claim_a and the proposed OUTCOME_DOMAIN_MISMATCH code say that P-845 ranks aerobic exercise on memory and independent living only. P-845's conclusion also says that aerobic exercise 'has the potential to ... decrease psychiatric symptoms such as depression' and that there is 'very little evidence that non-aerobic exercise provides these beneficial effects' [q2, q3]. P-845 therefore addresses the NPS domain qualitatively. The incommensurability rests on the missing estimate and the differing modality classes, not on P-845 being silent about NPS.",
+  "The record says two of the three reviews pool MCI with dementia, which understates P-848's case. The resistance estimate that anchors the pair rests on three dementia/AD trials only, so it contains no MCI evidence at all [q8, q9].",
+  "The P-1131 evidence quote 'Scoping review (not quantitative meta-analysis); only 10 studies (mostly non-US); none analysed sex as a factor; none used meta-analytic pooling of effect sizes' does not occur in P-1131; it is digest prose. The other P-1131 quote paraphrases the abstract, which reads 'prompted more beneficial results' and 'Resistance training shows promise'.",
+  "The P-848 quote beginning 'Only three estimates in this entire paper cleared statistical significance' does not occur in P-848, and the record itself labels it digest prose. Its content matches the PDF: resistance and multi-component exercise for NPS, and finger exercise for ADL."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A genuine conflict would need an estimate, in P-845 or another synthesis, of aerobic against resistance exercise on NPS in MCI, with the modality classes aligned to P-848's and an interval that excludes P-848's resistance effect. P-845 contains no estimate of any kind."
+}

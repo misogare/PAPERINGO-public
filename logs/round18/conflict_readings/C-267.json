@@ -1,0 +1,90 @@
+{
+  "id": "C-267",
+  "reader": "adjudicator",
+  "reader_note": "Model reader (Claude), reading delegated by the adjudicator on 2026-09-27 under CONFLICT_BRIEF.md. Candidate verdict for the human adjudicator; not an operator gate decision.",
+  "papers_read": [
+    {
+      "paper": "P-1427",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Association of Alzheimer’s disease progression with YKL40 levels in peripheral blood and cerebrospinal fluid: a systematic review and meta-analysis (Yang Q, Wang R, Pei J, Fu Q, Zhan Y, Zhu W; Front. Neurol. 17:1768353, 2026; doi 10.3389/fneur.2026.1768353)",
+      "read_in_full": true
+    },
+    {
+      "paper": "P-1337",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "YKL-40 as a Potential Biomarker for the Differential Diagnosis of Alzheimer’s Disease (Mavroudis I, Chowdhury R, Petridis F, et al.; Medicina 2022, 58, 60; doi 10.3390/medicina58010060)",
+      "read_in_full": true
+    }
+  ],
+  "pack_history_note": "The first version of ROOT/pdf/P-1427.txt was another paper: Li et al., 'Association between lipocalin-2 and mild cognitive impairment or dementia: A systematic review and meta-analysis of population-based evidence', Ageing Research Reviews 89 (2023) 101984. It contains no YKL-40 content. This reader found the mismatch, located the right PDF in the repository (downloads/3. Molecular, Genetic and Fluid Biomarkers/PMID_41725729_fneur-17-1768353.pdf) and read it in full. The coordinator then regenerated the pack file from it (message of 2026-09-27). The regenerated file was re-read in full and matches the PDF page for page. P-1337.txt was the right paper throughout. Nothing in this verdict rests on the wrong text. Pages below are the '=== page N ===' markers of the pack files.",
+  "what_each_reports": {
+    "P-1427": "PROSPERO-registered systematic review and random-effects SMD meta-analysis of observational studies, searched to 1 May 2025 (30 studies; 24 CSF, 8 blood). CSF YKL-40 AD vs MCI, 15 studies: SMD 0.25 (95% CI -0.08 to 0.57), p = 0.134, I2 = 89.2%. The estimate is positive (AD above MCI) but not significant, and the authors call it 'an increasing trend'. The same comparison is also printed as p = 0.12 by t-test (p.4) and p = 0.53 (p.8). Its AD-vs-MCI subgroup Table 4 (p.8) carries the same SMD, CI, I2 and p values as the MCI-vs-HC Table 2 (p.6), with every diagnostic-criteria and sex-proportion subgroup significant (SMD 0.70 to 1.26) while the overall is not. Other CSF results: AD vs HC 1.37 (1.09-1.65); MCI vs HC 0.96 (0.51-1.41), from the same 15 studies as AD vs MCI. Blood: AD vs HC 0.40 (0.18-0.63); MCI vs HC 0.79 (0.03-1.55). MCI means any MCI diagnosed by international criteria, with no stable/progressive split. The paper cites P-1337 as its reference 7 and presents its null as an update of 'other meta-analyses, often based on a limited number of studies'.",
+    "P-1337": "Meta-analysis of case-control studies from 1990 to October 2021 (English only; NOS quality; fixed or random effects by heterogeneity; influence analysis; Egger's test). The methods state an SMD with 95% CI, but the figure captions describe weighted mean differences in pg/mL, and the printed tau2 values (170.06, 1529.33, 1969.97, 360.25) are far outside the range a standardised effect takes; the pooled quantity therefore appears to be an unstandardised mean difference. CSF YKL-40 results: (a) AD vs 'MCI', 7 studies, random effects, I2 = 97.4%: z = 2.02, p = 0.0429, 'significantly increased in AD patients compared to MCI patients'; the abstract names this comparison AD vs stable MCI. (b) AD vs MCI-AD (progressive MCI), 5 studies, fixed effects, I2 = 64.2%: z = 7.68, p < 0.0001. (c) MCI-AD vs stable MCI, 5 studies: z = 4.31, p < 0.0001. (d) AD vs controls, 11 studies: z = 12.17. (e) MCI vs controls, 6 studies: z = 1.30, p = 0.195, not significant. (f) MCI-AD vs controls: p = 0.0997, not significant. Pooled estimates, CIs and per-comparison study lists appear only in raster forest plots and are not in the text. The paper proposes CSF YKL-40 for the differential diagnosis between AD and MCI and notes that its MCI comparisons rest on limited data."
+  },
+  "quantity_a": "Pooled SMD of CSF YKL-40, AD minus any-MCI (clinical diagnosis by international criteria), random effects, 15 observational studies published to May 2025.",
+  "quantity_b": "Pooled difference in CSF YKL-40, AD minus 'MCI' (stable MCI per the abstract), random effects, 7 case-control studies from 1990 to October 2021; stated as an SMD but apparently an unstandardised mean difference. Separately, AD minus MCI-AD (progressive MCI), fixed effects, 5 studies.",
+  "same_quantity": false,
+  "incompatible_if_same": "No. On the one contrast both report, CSF YKL-40 AD vs MCI, both estimates favour AD over MCI. P-1427's is not significant (SMD 0.25, -0.08 to 0.57); P-1337's is barely significant (z = 2.02, p = 0.0429). A z of 2.02 puts P-1337's lower 95% bound at only about 3% of its point estimate. That is the reader's arithmetic from the printed z, since the interval itself is only in an image. If the effect were an SMD, that bound would exceed P-1427's point estimate of 0.25 only for a pooled SMD above about 8, which is implausible. The results differ in significance, not direction, and Section 5.2 says a difference in significance is not a data conflict. P-1337's stronger AD vs MCI-AD result (z = 7.68) concerns a comparison P-1427 does not make.",
+  "gates": {
+    "task": "match: both T6 evidence syntheses (registry Task_Type T6 for both)",
+    "dataset_family": "match: both pool the published case-control literature on CSF YKL-40 in AD and MCI, with overlapping primary studies. The overlap is recorded as non-independence (Section 5.2), not a mismatch.",
+    "validation_tier": "n/a, counted as matched: two evidence syntheses",
+    "modality_family": "match: fluid biomarkers; the contested comparison is CSF in both (P-1427 also pools blood, which P-1337 does not)"
+  },
+  "endpoint_and_metric": "partly compatible, not identical. Analyte, fluid and direction of contrast agree (CSF YKL-40, AD minus MCI). The MCI comparator is any MCI in P-1427 but stable MCI per P-1337's abstract. P-1427 pools SMDs, while P-1337 states SMD yet prints tau2 values and captions that indicate an unstandardised mean difference. Direction and significance can be compared; magnitudes and intervals cannot be set side by side.",
+  "performance_validity": "not a performance comparison: pooled group differences in biomarker level; no discrimination statistic is contested; performance_suspect is false for both",
+  "independence": "Not independent: the two syntheses re-pool overlapping primary studies. Kester et al. 2015, Olsson et al. 2013 (dated 2012 in P-1337's text), Janelidze et al. 2016 and Zhang et al. 2018 are among P-1427's 15 AD-vs-MCI studies (refs 40, 43, 38, 35) and are described in P-1337. P-1427 also cites P-1337 as its reference 7. No shared authors. The exact overlap in P-1337's 7-study AD-vs-MCI pooling cannot be established, because its study lists are only in raster forest plots. Per Section 5.2 the overlap is recorded as non-independence, not disqualifying.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "On the one comparison both papers report, CSF YKL-40 AD vs MCI, the point estimates agree in direction. P-1427 gives SMD 0.25 (-0.08 to 0.57), which it calls 'an increasing trend'. P-1337 says YKL-40 was 'significantly increased in AD patients compared to MCI patients'.",
+    "The difference is in significance only, and P-1337's side is itself marginal: z = 2.02, p = 0.0429, seven studies, I2 = 97.4%. Section 5.2 says 'a difference in statistical significance between two of them is not a data conflict'. The operator reached the same reading for C-234 (compatible results; 'the difference is one of precision, not direction').",
+    "P-1337's strongly significant AD vs MCI-AD result (z = 7.68, fixed effects) and its MCI-AD vs stable MCI result concern progressive MCI, which P-1427 never separates. Setting them against P-1427's any-MCI null would set a claim about X against a claim about Y.",
+    "The papers' opposite interpretive conclusions follow from that significance difference, not from opposite data. P-1337 proposes YKL-40 for 'the differential diagnosis between AD and MCI'; P-1427 stresses 'its limited ability to differentiate between MCI and AD'. P-1427 presents its null as an update of earlier, smaller meta-analyses and cites P-1337 as reference 7.",
+    "P-1427's reporting of this comparison is internally inconsistent: p = 0.134, 0.12 and 0.53 are all printed, and its Table 4 repeats Table 2's values with every subgroup significant. This weakens its null further and cannot turn it into a result in the opposite direction."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-1427", "page": 1, "quote": "However, CSF YKL-40 levels showed no statistically significant difference between AD and MCI groups (SMD = 0.25, 95%CI: [−0.08, 0.57]; p = 0.134)."},
+    {"paper": "P-1427", "page": 1, "quote": "its limited ability to differentiate between MCI and AD highlights the need for its combined use with other biomarkers"},
+    {"paper": "P-1427", "page": 1, "quote": "doi: 10.3389/fneur.2026.1768353"},
+    {"paper": "P-1427", "page": 2, "quote": "Utilization of international diagnostic criteria for AD, MCI, and pre-AD was reported."},
+    {"paper": "P-1427", "page": 3, "quote": "There are 15 eligible studies (5, 18, 21, 24, 26, 28, 29, 31, 34, 35, 38–41, 43) investigating CSF YKL-40 levels between MCI patients and HCs."},
+    {"paper": "P-1427", "page": 4, "quote": "Fifteen comparative studies (5, 18, 21, 24, 26, 28, 29, 31, 34, 35, 38–41, 43) comparing CSF YKL-40 levels between AD patients and those with MCI were included."},
+    {"paper": "P-1427", "page": 4, "quote": "demonstrated comparable CSF YKL-40 concentrations between AD and MCI cohorts (p = 0.12, Student’s t-test)"},
+    {"paper": "P-1427", "page": 4, "quote": "[SMD = 0.25, 95%CI: (−0.08, 0.57); p = 0.134; I2 = 89.2%, p = 0.0004]"},
+    {"paper": "P-1427", "page": 5, "quote": "whereas the overall meta-analysis incorporating all studies failed to reach significance (p = 0.134)"},
+    {"paper": "P-1427", "page": 6, "quote": "NIA-AA 7 0.99 (0.77, 1.20) 46.0% 0.000"},
+    {"paper": "P-1427", "page": 8, "quote": "NIA-AA 7 0.99 (0.77, 1.20) 46.0% 0.000"},
+    {"paper": "P-1427", "page": 8, "quote": "Notably, while CSF YKL-40 levels in AD patients showed an increasing trend compared to MCI patients, this difference did not reach statistical significance (p = 0.53)."},
+    {"paper": "P-1427", "page": 8, "quote": "Other meta-analyses, often based on a limited number of studies, reported higher CSF YKL-40 levels in AD than in MCI"},
+    {"paper": "P-1427", "page": 9, "quote": "By synthesizing more recent evidence, our updated analysis suggests that YKL-40 elevations may already be present at the MCI and even preclinical stages"},
+    {"paper": "P-1427", "page": 13, "quote": "Mavroudis I, Chowdhury R, Petridis F, Karantali E, Chatzikonstantinou S, Balmus IM, et al. YKL-40 as a potential biomarker for the differential diagnosis of Alzheimer's disease."},
+    {"paper": "P-1427", "page": 14, "quote": "Kester MI, Teunissen CE, Sutphen C, Herries EM, Ladenson JH, Xiong C, et al."},
+    {"paper": "P-1427", "page": 14, "quote": "Olsson B, Hertze J, Lautner R, Zetterberg H, Nägga K, Höglund K, et al."},
+    {"paper": "P-1337", "page": 1, "quote": "The quantitative analysis showed that the levels of YKL-40 were signiﬁcantly higher in Alzheimer’s disease compared to controls, to mild cognitive impairment (MCI) AD (MCI-AD) and to stable MCI."},
+    {"paper": "P-1337", "page": 1, "quote": "as well as for the differential diagnosis between AD and MCI."},
+    {"paper": "P-1337", "page": 2, "quote": "the standardized mean difference, and a 95% conﬁdence interval."},
+    {"paper": "P-1337", "page": 3, "quote": "Kester et al. (2015), examined the utility of YKL-40 in the CSF in 37 cognitively normal individuals, 61 MCI and 65 AD patients"},
+    {"paper": "P-1337", "page": 3, "quote": "Olsson et al. (2012) investigated the CSF YKL-40 levels in 96 AD patients, 65 healthy controls and 170 patients with MCI"},
+    {"paper": "P-1337", "page": 4, "quote": "The ﬁgures indicate the means, standard errors (pg/mL), 95% conﬁdence intervals, and weighted mean differences for each study included in this meta-analysis."},
+    {"paper": "P-1337", "page": 6, "quote": "The random effect model showed a z-value of 1.30 with a p-value of 0.1950 (Figure 1C)."},
+    {"paper": "P-1337", "page": 7, "quote": "For the comparison between patients with MCI that progressed to AD and stable MCI 5 studies were used."},
+    {"paper": "P-1337", "page": 7, "quote": "The comparison between Alzheimer’s disease patients and mild cognitive impairment showed high heterogeneity with I2 = 97.4%, and τ2 = 1969.97, and a z-value of 2.02 and a p-value of 0.0429 on seven studies (Figure 4A)."},
+    {"paper": "P-1337", "page": 7, "quote": "YKL-40 was therefore signiﬁcantly increased in AD patients compared to MCI patients."},
+    {"paper": "P-1337", "page": 8, "quote": "We used a ﬁxed effects model which showed a z-value of 7.68 (p < 0.0001), hence YKL-40 levels in the CSF of AD patients were signiﬁcantly increased in comparison to MCI patients progressing to AD."},
+    {"paper": "P-1337", "page": 9, "quote": "the available data for the comparisons between MCI and MCI-AD and MCI and control groups were limited, which makes the reliability of the results on these comparisons weaker."}
+  ],
+  "record_defects": [
+    "review_note issue 1 says 'P-1337 narrates CSF YKL-40 studies 1990-2021'. The PDF pools them quantitatively, printing z, p, I2 and tau2 for each comparison, with forest and funnel plots, Egger's tests and NOS scoring (pp.2, 4-8).",
+    "review_note issue 3 relies on P-1337's block calling it a 'Narrative review, not a formal ...' synthesis, and the block adds 'no pooled effect sizes with CIs'. The PDF pools effects and plots them with 95% confidence intervals, although the plots are images.",
+    "conflict_statement frames the pair as P-1427 'does not differ significantly' against P-1337 'significantly higher'. Both PDFs place AD above MCI; the record does not state that P-1427's point estimate is positive or that P-1337's AD-vs-MCI result is marginal (z = 2.02, p = 0.0429, I2 = 97.4%).",
+    "conflict_statement 'significantly higher in AD than in both MCI-AD and stable MCI' takes the abstract's label. The results section names the 7-study comparison only 'mild cognitive impairment' (p.7), so the stable-MCI reading comes from the abstract, not from a separately reported pooling."
+  ],
+  "pack_defects": [
+    "First-pack ROOT/pdf/P-1427.txt was the wrong paper (Li et al. 2023, lipocalin-2 meta-analysis, doi 10.1016/j.arr.2023.101984). data/paper_pdf_map.json had mapped P-1427 by folder-scan (score 0.8, verified: true) to 1-s2.0-S1568163723001435-main.pdf. The coordinator repaired it during this round.",
+    "Registry row P-1337 describes a narrative review: Method_Architecture 'Structured review with qualitative-quantitative synthesis', Best_Metric 'Directional ...', primary_metric_type 'descriptive', Sample_N 'Not reported in source (narrative review)'. The PDF is a meta-analysis that prints z and p for each pooled comparison and the number of studies in each (11, 6, 5, 5, 7, 5). Its task_substage 'MCI_vs_HC' also does not match the paper's focus on AD-vs-MCI and MCI-AD differential diagnosis.",
+    "Source defect in P-1427, noted for any reuse of its AD-vs-MCI figures: Table 4 (AD vs MCI subgroups, p.8) duplicates Table 2 (MCI vs HC, p.6) value for value, and the AD-vs-MCI p-value is printed three ways (0.134, 0.12, 0.53)."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "Only a statistically supported opposite direction for CSF YKL-40 AD vs MCI, i.e. MCI significantly above AD, in one of the papers would make this a disagreement, and neither reports one. Seeing P-1337's Figure 4A (an image, not in the text) would show whether its interval excludes P-1427's estimate. With z = 2.02 its lower bound sits near zero, and its metric appears to be unstandardised, so that is very unlikely. If the adjudicator classifies by the MCI label (stable vs any MCI) and metric type before compatibility, the same facts give documented_incommensurability. Either way the pair is not genuine."
+}

@@ -1,0 +1,13 @@
+{"paper": "P-1140", "pdf_is_right_paper": true,
+ "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-1140.txt",
+ "registry_code": "V3", "correct_code": "V3", "changed": false,
+ "training_data": "NACC-v1v2 (UDS versions 1-2, participants enrolled 2005-2015 at the NIA Alzheimer's Disease Research Centers): AD cohort n=397, LB cohort n=37; Monte Carlo cross-validation (5000 random 90/10 or 66/34 splits) inside this set",
+ "test_data": "NACC-v3 (UDS version 3, participants enrolled after March 2015 through the same NACC ADRC network)",
+ "model_fixed_before_external_test": true,
+ "reason": "The final 5-feature Cox/RF-I/RF-R models were fixed on NACC-v1v2 and then tested on NACC-v3, which the authors call external validation. But NACC-v3 is a later enrolment wave of the same NACC consortium and centres, the analogue of ADNI-3 after ADNI-1/2 that the audit excludes from V4. It is a temporal held-out partition of the development data, so V3 stands.",
+ "quotes": [
+  {"page": 2, "quote": "We combined the first two versions (NACC-v1v2) as the training data, and the third version as the testing data set. Participants in the NACC-v1v2 were enrolled in the study between 2005 and 2015, while participants in the NACC-v3 were enrolled after March 2015."},
+  {"page": 4, "quote": "For each cohort (LB and AD), we first used data from NACC-v1v2 to build predictive models by using the three survival methods (Cox model, RF-I model, and RF-R model). The predictive models were then used to be tested on the data sets from NACC-v3."},
+  {"page": 6, "quote": "We conducted external validation on the NACC-v3 data set by using the final predictive model with the identified 5 features to predict AD dementia from MCI in the AD cohort"}
+ ],
+ "confidence": "high"}

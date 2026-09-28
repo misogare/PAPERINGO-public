@@ -1,0 +1,21 @@
+{
+  "paper": "P-908",
+  "pdf_used": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/pdf/P-908.txt (quotes re-checked with PyMuPDF against C:/Users/aryas/Downloads/PAPERINGO/downloads/1. Clinical Assessments, Behavioral and Social Factors/1-s2.0-S2950307825000761-main.pdf)",
+  "is_model_study": false,
+  "scope": "Second reading of the first reader's error field only (Task_Type). The Category 'defensible' call was not re-read, per caller's scope.",
+  "fields": {
+    "Task_Type": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "T4",
+      "registry_code": "T6",
+      "reason": "Confirmed. This is a cross-sectional analysis of ADNI baseline data. It fits a linear regression of ADAS13 on fasting serum TSH and a logistic regression of MCI-vs-HC status on TSH, and reports only beta coefficients and odds ratios. It evaluates no classifier or cut-point: AUC, accuracy and sensitivity/specificity appear nowhere in the paper, and the 'risk prediction' in the title is never operationalised. The core result is a blood-biomarker association with cognition and with MCI status, and the paper calls TSH 'a biomarker of central thyroid function' (p.7). The binding template puts biomarker/correlational studies in T4. It also states that an MCI-vs-control comparison by 'odds ratio' 'is T4, however central the MCI-vs-HC contrast is to its argument'. Its T6 clause for epidemiology applies only 'unless their core result is one of T1-T5', and here the core result is T4. Counter-reading considered: config/extraction_normalisation_rules.json lists 'risk factor analysis without classifier' as a T6 trigger. That is the only text that could carry T6. The same file lists 'biomarker' and 'correlation' as T4 triggers, and the audit brief makes the template definitions binding, so T6 is not a supportable second reading.",
+      "quote": "The odds of being diagnosed with MCI at baseline decreased with higher TSH levels in the total study population (adj. ORTotal=0.87[0.79, 0.95], p-value=0.002) and in males (adj. ORMales=0.80[0.70, 0.92], p-value=0.001).",
+      "page": 1,
+      "supporting_quote": "Using TSH as a biomarker of central thyroid function",
+      "supporting_page": 7,
+      "first_quote_verbatim": true
+    }
+  },
+  "notes": "For the adjudicator: the first reader called P-1217's T6/T4 'defensible' (dietary-exposure epidemiology). P-908 differs in two ways. Its exposure is a measured blood biomarker, and its second aim is exactly the MCI-vs-HC odds-ratio comparison that the template's deciding test assigns to T4."
+}

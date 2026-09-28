@@ -1,0 +1,23 @@
+{
+  "paper": "P-96",
+  "outside_sample": true,
+  "counted_in_error_rate": false,
+  "pdf_used": "C:/Users/aryas/Downloads/PAPERINGO/downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1386505625002473-main.pdf (the data/paper_pdf_map.json path; right paper: Wu et al., Int J Med Inform 203 (2025) 106030), read through my own PyMuPDF extract C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/tmp/vE_P-96.txt",
+  "fields": {
+    "Validation_Type": {
+      "first_verdict": "none (outside the sample; defect reported by a conflict reader)",
+      "final_verdict": "error",
+      "correct_code": "V4",
+      "registry_code": "V2",
+      "reason": "A random-forest MCI screening model is trained on CHARLS 2015 (n = 2,932; a Peking University study) with stratified 5-fold CV and grid search. The fixed model is then applied to two external sets. External Set 1 is the 2021 Yiwu Community Cohort (n = 4,140), collected separately in Yiwu, Zhejiang, under Zhejiang University School of Medicine ethics approval (AUROC 0.83). External Set 2 is CHARLS 2011 (n = 1,782), an earlier wave of the training study used as temporal validation (AUROC 0.87); the authors note possible individual overlap with CHARLS 2015 (p.10). Neither external set was used in training: imputation and SMOTE were confined to the training folds and 'not applied to test sets or external validation cohorts' (p.4). Under the definition, CHARLS 2011 alone would not qualify for V4, because a different wave of the same study is like a later ADNI phase and not an external institution. The Yiwu cohort, however, is a test set from a different institution than the training data, which is what V4 requires (a different institution OR a different country). V2 ('no separate test set') is contradicted by the paper. The answer to the conflict reader's question: the geographic set makes this V4; the temporal set does not.",
+      "quote": "The external validation utilized two independent datasets to evaluate the model\u2019s generalizability and robustness. The first dataset, referred to as External Set 1, was derived from the 2021 Yiwu Community Cohort, which was collected in Yiwu City, Zhejiang Province, China. This cohort represents a geographically distinct population. Ethical approval for this dataset was obtained from the Ethics Committee of Zhejiang University School of Medicine.",
+      "page": 2,
+      "supporting_quote": "For External Set 1, the Random Forest model achieved an AUROC of 0.83 (95 % CI: 0.82\u20130.84)",
+      "supporting_page": 5,
+      "second_supporting_quote": "The second external dataset, referred to as External Set 2, was constructed using data from an earlier wave of CHARLS, allowing us to assess the model\u2019s performance across different time points.",
+      "second_supporting_page": 2,
+      "first_quote_verbatim": null
+    }
+  },
+  "notes": "Outside the audit sample: to be corrected but not counted in the error rate. Also outside the field asked about: the registry's Sample_N_Approx is 'not reported', but Table 2 (p.5) gives 2,932 training + 4,140 External Set 1 + 1,782 External Set 2 (8,854 in all; 2,932 for model development). Two inconsistencies inside the paper do not affect the V4 call. The Introduction (p.2) pairs the external AUROCs the other way round from the Results (0.87 Yiwu / 0.83 CHARLS 2011, against 0.83 / 0.87 on p.5). The ethics statement (p.10) calls the Yiwu set the 'Yiwu 2011 Cohort', while the Methods say 2021."
+}

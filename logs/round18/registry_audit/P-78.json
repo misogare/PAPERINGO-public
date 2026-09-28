@@ -1,0 +1,66 @@
+{
+  "paper": "P-78",
+  "pack": 6,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "A dynamic time series inference learning framework for individualized prediction of mild cognitive impairment progression",
+  "is_model_study": true,
+  "blind_codes": {
+    "Task_Type": "T2",
+    "Category": "C1",
+    "Validation_Type": "V4",
+    "Sample_N": "1667 analysed = 1393 ADNI-1/2/GO pre-training cohort (897-subject longitudinal training subset) + 101 internal held-out test (Dataset B) + 173 external test (Dataset A: 29 ADNI-3 + 144 OASIS-3); Table 1 lists 1566; ADNI-1/2/GO source pool 2430",
+    "Publication_Year": "2025",
+    "ADNI_Dependent": "true"
+  },
+  "registry_codes": {
+    "Task_Type": "T2",
+    "Category": "C1",
+    "Validation_Type": "V2",
+    "Sample_N_Approx": "1393",
+    "Publication_Year": "2025",
+    "ADNI_Dependent": "true"
+  },
+  "judgement": {
+    "Task_Type": {
+      "verdict": "match",
+      "correct_code": "T2",
+      "reason": "Explicit sMCI vs pMCI (MCI-to-AD within 36 months) conversion prediction, reported as AUC and accuracy.",
+      "quote": "subjects diagnosed with MCI at all time points are defined as sMCI; subjects diagnosed with MCI at any follow-up visit and who progressed to AD within three years are defined as pMCI",
+      "page": 3
+    },
+    "Category": {
+      "verdict": "match",
+      "correct_code": "C1",
+      "reason": "Structural MRI is the only input modality; CDRSB serves only as a supervision label."
+    },
+    "Validation_Type": {
+      "verdict": "error",
+      "correct_code": "V4",
+      "reason": "The paper has a separate held-out test partition (8:2 split of ADNI-1/2/GO, Dataset B) and an external test set (Dataset A) that includes 144 OASIS-3 subjects from a different cohort/institution; the headline comparisons (Tables 3 and 6) are on Dataset A. V2 (k-fold on the same data, no separate test set) is contradicted. ADNI-3 alone would not count as external under the definitions, but OASIS-3 does; even on the strictest reading the floor is V3 (held-out test partition), not V2.",
+      "quote": "Dataset A, as an independent external test set, consists of baseline T1-weighted sMRI images from 29 subjects in ADNI-3 and 144 subjects in OASIS-3.",
+      "page": 3
+    },
+    "Sample_N_Approx": {
+      "verdict": "defensible",
+      "correct_code": "1667 analysed (1393 + 101 + 173); 1393 = training cohort",
+      "reason": "The paper reports several Ns: 1393 pre-training subjects (Table 1), an 897-subject training subset, 101 internal test subjects (Dataset B) and 173 external test subjects (Dataset A). The registry's 1393 is the discovery/training-cohort N and omits the 274 test subjects on which performance is reported.",
+      "quote": "551 subjects lacking Clinical Dementia Rating Sum of Boxes (CDRSB) were excluded, and 1393 subjects with complete CDRSB data were included, totaling 6313 sMRI images",
+      "page": 3
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2025",
+      "reason": "Online 25 November 2025; issue is volume 302 (2026). Either year is acceptable.",
+      "quote": "Available online 25 November 2025",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "true",
+      "reason": "ADNI-1/2/GO is the sole training source (and ADNI-3 supplies test subjects); OASIS-3 is only a secondary external test set.",
+      "quote": "the 2430 subjects from ADNI-1/2/GO were divided into the overall training set and the overall testing set in an 8:2 ratio",
+      "page": 3
+    }
+  },
+  "notes": "The Validation_Type error bears directly on the review's external-validation statistic. This classification study trains on ADNI-1/2/GO and tests on an independent OASIS-3 cohort (plus ADNI-3 and an 8:2 internal held-out split), so it belongs with the V4 studies, not V2. The registry N (1393) is the training cohort only; performance figures come from the 101 + 173 test subjects."
+}

@@ -1,0 +1,66 @@
+{
+  "paper": "P-1265",
+  "pack": 6,
+  "pdf_is_right_paper": false,
+  "title_as_printed": "Classification, Prediction, and Concordance of Cognitive and Functional Progression in Patients with Mild Cognitive Impairment in the United States: A Latent Class Analysis",
+  "pdf_problem": "The pack extract (pdf/P-1265.txt) is not the mapped paper. It is Mouchet et al., J Alzheimers Dis 82 (2021) 1667-1682, DOI 10.3233/JAD-210305, a NACC latent-class study and the source of P-941 in summaries.md. data/paper_pdf_map.json points P-1265 at downloads/1. Clinical Assessments, Behavioral and Social Factors/PMID_34219723_jad-82-jad210305.pdf (method folder-scan, score 0.7), although its title field names the serum glutamate paper. The same Mouchet file is also mapped to P-630 and P-941. Scanning downloads/ for the mapped title found the correct PDF: downloads/3. Molecular, Genetic and Fluid Biomarkers/1-s2.0-S0967586824003679-main.pdf (Gao Y, Zhang H, Hu Y, J Clin Neurosci 129 (2024) 110828, DOI 10.1016/j.jocn.2024.110828). The P-1265 block in summaries.md and the registry row both describe that paper. All blind codes and verdicts below come from the correct PDF, coded blind before the codes file was opened. The extract is saved at scratchpad/r18_p6_work/p6_P-1265_correct.txt and page numbers refer to it.",
+  "coded_from_title": "Baseline serum glutamate: Implications for diagnosis and prediction in mild cognitive impairment and Alzheimer’s disease of the Alzheimer’s Disease Neuroimaging Initiative",
+  "is_model_study": true,
+  "blind_codes": {
+    "Task_Type": "T4",
+    "Category": "C3",
+    "Validation_Type": "V2",
+    "Sample_N": "783 (224 CN + 181 sMCI + 193 pMCI + 185 AD)",
+    "Publication_Year": "2024",
+    "ADNI_Dependent": "true"
+  },
+  "registry_codes": {
+    "Task_Type": "T2",
+    "Category": "C3",
+    "Validation_Type": "V2",
+    "Sample_N_Approx": "783 (CN 224, sMCI 181, pMCI 193, AD 185)",
+    "Publication_Year": "2024",
+    "ADNI_Dependent": "true"
+  },
+  "judgement": {
+    "Task_Type": {
+      "verdict": "defensible",
+      "correct_code": "T2 or T4",
+      "reason": "A multi-aim study of a single biomarker, with two honest readings. T2: the headline positive result is MCI-to-AD conversion prediction (sMCI vs pMCI groups; a Cox model in MCI shows lower serum Glu predicts a higher conversion hazard), which meets the rule of an explicit MCI-to-AD conversion task. T4: serum Glu is analysed through group-mean differences, Spearman correlations with CSF and cognition, and a hazard ratio, and the one discrimination analysis (ROC against CN) was null. T1 is a minor third reading, since AUCs against CN are reported.",
+      "quote": "Lower levels of serum Glu could predict the progression from MCI to AD.",
+      "page": 1
+    },
+    "Category": {
+      "verdict": "match",
+      "correct_code": "C3",
+      "reason": "Serum targeted metabolomics (Biocrates p180, LC-MS/MS) plus CSF Abeta/tau; cognitive scores appear only as correlates (C5 secondary).",
+      "quote": "employing a targeted metabolomics approach to quantitatively measure metabolites in serum",
+      "page": 2
+    },
+    "Validation_Type": {
+      "verdict": "match",
+      "correct_code": "V2",
+      "reason": "In-sample ROC and Cox analyses with no cross-validation, test partition or external cohort."
+    },
+    "Sample_N_Approx": {
+      "verdict": "match",
+      "correct_code": "783",
+      "quote": "This study included 783 participants from the Alzheimer’s Disease Neuroimaging Initiative-1 (ADNI-1) cohort, categorized into cognitively normal (CN, n = 224), stable MCI (sMCI, n = 181), progressive MCI (pMCI, n = 193), and AD (n = 185).",
+      "page": 1
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2024",
+      "quote": "Available online 11 September 2024",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "true",
+      "reason": "ADNI-1 is the sole dataset.",
+      "quote": "The 783 participants were selected from the ADNI-1 cohort",
+      "page": 2
+    }
+  },
+  "notes": "The registry row is correct for the right paper. The defect is in data/paper_pdf_map.json: the P-1265 path points to the Mouchet 2021 PDF, which belongs to P-941 (the P-630 entry points to the same file and should also be checked). For reference, blind codes for the mis-mapped Mouchet PDF would have been T4/T6, C5, V2, N 830, 2021, ADNI false, so auditing it would have produced spurious errors. Update: during this audit, a concurrent session's commit f028bc9 (2026-09-27 11:54, 'PDF map: 63 wrong-file or wrong-DOI rows repaired') re-pointed P-1265 to the correct PDF (method block-doi-repair-2026-09-27). The pack extract predates that repair. The P-630 entry still points to the Mouchet file."
+}

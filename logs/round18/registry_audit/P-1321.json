@@ -1,0 +1,18 @@
+{
+  "paper": "P-1321",
+  "pack": 1,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Effects of occupational exposure factors interacting with NLRP3 gene polymorphisms on mild cognitive impairment: A cross-sectional study of workers in an aluminum electrolysis production environment",
+  "is_model_study": false,
+  "blind_codes": {"Task_Type": "T4", "Category": "C3;C5", "Validation_Type": "V2", "Sample_N": "478 workers (211 MCI + 267 non-MCI)", "Publication_Year": "2025", "ADNI_Dependent": "false"},
+  "registry_codes": {"Task_Type": "T4", "Category": "C3,C5", "Validation_Type": "V2", "Sample_N_Approx": "478 workers", "Publication_Year": "2025", "ADNI_Dependent": "false"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T4", "reason": "The study reports odds ratios for MCI by occupational-exposure principal component and NLRP3 genotype, with no classifier. That is a genetic/exposure association (T4); T6 (occupational epidemiology) would also be supportable.", "quote": "high PC2 exposure significantly increased the odds of MCI [OR (95 % CI): 1.99 (1.36, 2.91)], and the rs10754558 G/C genotype was independently associated with MCI", "page": 1},
+    "Category": {"verdict": "match", "correct_code": "C3;C5", "reason": "Genotyping (C3) plus occupational-exposure epidemiology and MoCA (C5). The registry writes the same two codes with a comma instead of a semicolon.", "quote": "Genotyping of polymorphisms in the NLRP3 gene (rs10754558, rs10925027, rs3806265, rs4612666) was performed.", "page": 1},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "No predictive model is fitted; the analyses are logistic association models.", "quote": "All analyses were performed using logistic regression models.", "page": 4},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "478", "reason": "478 workers = 211 MCI + 267 non-MCI (Table 1).", "quote": "We assessed the cognitive function of 478 workers in a factory in Guangxi, China", "page": 1},
+    "Publication_Year": {"verdict": "match", "correct_code": "2025", "reason": "Available online 26 August 2025; volume 16 (2025).", "quote": "Hygiene and Environmental Health Advances 16 (2025) 100144", "page": 1},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "false", "reason": "Workers at a single factory in China; ADNI is not used.", "quote": "This study involved 478 workers from a large electrolytic aluminum production enterprise in Guangxi Province, China.", "page": 2}
+  },
+  "notes": "Category is written with a comma ('C3,C5') instead of the template's semicolon. litreview_stats.domain() sends every multi-code value to OTHER, so the census is unaffected, but any consumer that splits on ';' would read it as one unknown code. The population is aluminium-electrolysis workers (mean age about 39), with MCI defined as MoCA < 26."
+}

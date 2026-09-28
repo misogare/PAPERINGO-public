@@ -1,0 +1,18 @@
+{
+  "paper": "P-444",
+  "pack": 1,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Parkinson's disease mild cognitive impairment with MRI evidence of cholinergic nucleus 4 degeneration: A new subtype?",
+  "is_model_study": false,
+  "blind_codes": {"Task_Type": "T4", "Category": "C1;C5", "Validation_Type": "V2", "Sample_N": "162 PD-MCI (40 low Ch4 GMD + 122 normal Ch4 GMD); 171 PPMI healthy controls used only as norming reference", "Publication_Year": "2025", "ADNI_Dependent": "false"},
+  "registry_codes": {"Task_Type": "T2", "Category": "C1", "Validation_Type": "V2", "Sample_N_Approx": "162", "Publication_Year": "2025", "ADNI_Dependent": "false"},
+  "judgement": {
+    "Task_Type": {"verdict": "error", "correct_code": "T4", "reason": "The study defines a PD-MCI subtype by MRI Ch4 grey-matter density. It then compares clinical profile and time to cognitive-domain milestones between subtypes (Kaplan-Meier, log-rank, Cox HR). The progression outcome is the first-reached of six PPMI cognitive-domain milestones (p3: MoCA <21, MDS-UPDRS item 1.1 >=3, hallucinations, apathy, dementia diagnosis, dementia composite). That is neither progressive-vs-stable MCI labelling nor MCI-to-AD conversion, and no conversion-prediction model or discrimination figure is reported. The paper frames itself as subtyping ('A new subtype?'), which the template assigns to T4; T2 applies ONLY when the task is explicitly pMCI/sMCI or MCI-to-AD conversion.", "quote": "Objective: To determine whether PD-MCI patients with MRI evidence of Ch4 degeneration exhibit a different clinical profile and cognitive trajectory than those without Ch4 degeneration.", "page": 1},
+    "Category": {"verdict": "defensible", "correct_code": "C1 (or C1;C5)", "reason": "The primary domain is structural MRI (Ch4 GMD by voxel-based morphometry), which the registry carries. The clinical scales are the secondary C5 domain it omits: MDS-UPDRS, UPSIT, SCOPA-AUT, the neuropsychological battery and the PPMI milestones.", "quote": "Those with low Ch4 GMD had significantly worse MDS-UPDRS total and subscale scores (II–III), greater autonomic dysfunction, and reduced olfaction (all P < 0.05).", "page": 1},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "No predictive model is validated: the analyses are group comparisons plus a survival association. The authors state that the threshold was derived and evaluated in the same cohort.", "quote": "The Ch4 z-score threshold (−1 SD) was derived within the same cohort in which it was evaluated.", "page": 6},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "162", "reason": "162 PD-MCI patients were analysed (122 normal + 40 low Ch4 GMD). The 171 PPMI healthy controls serve only as the norming reference.", "quote": "The sample size of 162 PD patients (n = 122 vs. 40)", "page": 4},
+    "Publication_Year": {"verdict": "match", "correct_code": "2025", "reason": "Available online 10 October 2025; volume 141 (2025).", "quote": "Parkinsonism and Related Disorders 141 (2025) 108072", "page": 1},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "false", "reason": "The data come from PPMI; ADNI is not used.", "quote": "using data from the Michael J. Fox Foundation’s Parkinson’s Progression Markers Initiative (PPMI)", "page": 2}
+  },
+  "notes": "The T2 code puts this PD subtype study, which fits no classifier, into the review's T1-T3 classification subset. There it counts as a V2, non-ADNI classification study. The population is Parkinson's disease MCI (PD-MCI), not the AD continuum."
+}

@@ -1,0 +1,66 @@
+{
+  "paper": "P-111",
+  "pack": 3,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "A novel electroencephalography based approach for Alzheimer’s disease and mild cognitive impairment detection",
+  "is_model_study": true,
+  "blind_codes": {
+    "Task_Type": "T3 (alt T1)",
+    "Category": "C2",
+    "Validation_Type": "V3",
+    "Sample_N": "35 (16 MCI + 8 AD + 11 HC)",
+    "Publication_Year": "2020 (online 28 Sep 2020; issue 2021)",
+    "ADNI_Dependent": "false"
+  },
+  "registry_codes": {
+    "Task_Type": "T1",
+    "Category": "C5",
+    "Validation_Type": "not reported",
+    "Sample_N_Approx": "72",
+    "Publication_Year": "2020",
+    "ADNI_Dependent": "false"
+  },
+  "judgement": {
+    "Task_Type": {
+      "verdict": "error",
+      "correct_code": "T3",
+      "reason": "A single bagged-trees classifier separates AD, MCI and HC in one three-way scheme. Every reported figure is three-class: 5-fold CV accuracy 96.5%, held-out test accuracy 93.88%, and sensitivity/specificity averaged over the three classes. No binary MCI vs HC figure is reported. The authors position the work explicitly as three-way AD-MCI-HC classification, which is the template's multi-class staging code (T3). T1 would need an MCI vs HC discrimination figure that the paper does not give.",
+      "quote": "In this paper, we have proposed a robust machine learning approach to ensure successful discrimination between three groups of EEG records (AD, MCI, and HC).",
+      "page": 10
+    },
+    "Category": {
+      "verdict": "error",
+      "correct_code": "C2",
+      "reason": "The data are 19-channel resting-state EEG (DWT sub-band PSD and interhemispheric coherence features). The primary domain C2 is missing and C5 has no basis: MoCA is used only to characterise the groups.",
+      "quote": "This study analyzed the EEGs of 35 subjects (16 MCI, 8 AD, 11 healthy control) with the developed algorithm.",
+      "page": 1
+    },
+    "Validation_Type": {
+      "verdict": "error",
+      "correct_code": "V3",
+      "reason": "'not reported' is outside the V1-V4 vocabulary and contradicts the paper, which reports 5-fold cross-validation for classifier selection and then a random subject-wise 50/50 train/test split with a held-out test result. That is a train/test split without an external site, so V3. Not V1: n=35 is small, but no LOOCV is used.",
+      "quote": "50% of data is chosen randomly as train data and used for training the classifier. The remaining epochs are employed to validate the classification algorithm. None of the training data is used as test data.",
+      "page": 8
+    },
+    "Sample_N_Approx": {
+      "verdict": "error",
+      "correct_code": "35",
+      "reason": "The paper states 35 subjects three times (pp.1, 2, 9). The number 72 does not appear anywhere in the paper as a sample size.",
+      "quote": "35 subjects participated in the study, between the ages of 65 and 90.",
+      "page": 2
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2020 or 2021",
+      "reason": "Online 28 September 2020; issue Biomed Signal Process Control 63 (2021) 102223. Registry uses the online year.",
+      "quote": "Available online 28 September 2020",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "false",
+      "reason": "EEG recorded at Baskent University Hospital; no ADNI."
+    }
+  },
+  "notes": "Root cause is a misattached summary block. The summaries.md block 'Paper 111: 1-s2.0-S1746809420303530-main.pdf' names the correct file but describes a different study: ML classifiers on cognitive/functional scales (FAST, MoCA, MMSE, ADL, IADL, GDS). Its sample-size line reads '72 — 21 AD/24 MCI/27 HC, EEG resting+working-memory'. Neither matches this PDF (35 subjects; EEG DWT/PSD/coherence; bagged trees). The registry values C5, N 72 and T1 appear to derive from that block, so other P-111 registry columns (modality, method, best metric) are probably wrong too, and the block itself needs re-summarising."
+}

@@ -1,0 +1,18 @@
+{
+  "paper": "P-781",
+  "pack": 1,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "P71: Predicting amyloid-ß deposition status in amnestic mild cognitive impairment using neuropsychological profiles.",
+  "is_model_study": true,
+  "blind_codes": {"Task_Type": "T4", "Category": "C5;C1", "Validation_Type": "V2", "Sample_N": "67 (33 amyloid-PET+ aMCI + 34 amyloid-PET- aMCI)", "Publication_Year": "2023", "ADNI_Dependent": "false"},
+  "registry_codes": {"Task_Type": "T4", "Category": "C5", "Validation_Type": "V2", "Sample_N_Approx": "67 - 33 amyloid-PET positive aMCI / 34 amyloid-PET negative aMCI. The abstract prints this explicitly and redundantly (\"67 aMCI patients (N = 67; 33 aMCI with amyloid positive ... and 34 aMCI with amyloid negative ...)\"), and the two groups sum exactly to the ", "Publication_Year": "2023", "ADNI_Dependent": "false"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T4", "reason": "The study discriminates amyloid-PET status (a biomarker) within aMCI. There is no MCI-vs-HC contrast, so T1 does not apply, and biomarker-status discrimination is T4.", "quote": "The association of cognitive test scores and dichotomized Aβ deposition status was examined using logistic regression models in patients with aMCI.", "page": 1},
+    "Category": {"verdict": "defensible", "correct_code": "C5 (or C5;C1)", "reason": "Two readings. C5 alone: the analysed predictors are neuropsychological test scores, the primary domain. C5;C1: amyloid PET (and MRI) supplies the outcome label. The registry's C5 carries the primary domain and omits only the secondary imaging domain that serves as reference standard.", "quote": "All participants underwent Seoul Neuropsychological Screening Battery for a comprehensive neuropsychological test battery and brain MRI. To determine Aβ deposition status, each participant underwent amyloid PET scans using 18F-florbetaben.", "page": 1},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "Logistic regression and ROC were run on the whole sample of 67. No cross-validation, test partition or external set is reported, so absence of reporting = V2.", "quote": "Receiver operating characteristic (ROC) curves were used to examine the predictive ability of cognitive test to detect Aβ deposition status in aMCI.", "page": 1},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "67", "reason": "The leading number 67 = 33 + 34, as printed. The registry string ends in truncated commentary, but its number is right.", "quote": "This is a cross-sectional study of 67 aMCI patients (N = 67; 33 aMCI with amyloid positive (Aβ-PET (+)), and 34 aMCI with amyloid negative (Aβ-PET (-))).", "page": 1},
+    "Publication_Year": {"verdict": "match", "correct_code": "2023", "reason": "This is an abstract from the 2023 IPA International Congress. Crossref for doi 10.1017/S1041610223002478 gives International Psychogeriatrics 35(S1):119, issued 2023-12. The Elsevier-hosted PDF's metadata says '(2024)', which reflects re-hosting, not publication.", "quote": "2023 IPA International Congress", "page": 1},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "false", "reason": "The sample comes from a single Korean clinic (Pusan National University). ADNI is not used.", "quote": "1 Department of Psychiatry, Pusan National University School of Medicine, Busan, Korea", "page": 1}
+  },
+  "notes": "This is a one-page conference abstract (IPA 2023, poster P71), not a full paper, but all six codes can be supported from the abstract. is_model_study is true because logistic-regression/ROC discrimination of amyloid status is reported (combined AUC 0.833). The task is T4, so the study does not enter the T1-T3 classification subset."
+}

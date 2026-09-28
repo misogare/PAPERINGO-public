@@ -1,0 +1,59 @@
+{
+ "id": "C-253",
+ "reader": "adjudicator",
+ "papers_read": [
+  {"paper": "P-1216", "pdf_is_right_paper": true, "title_as_printed": "The impact of cholinesterase inhibitors on cognitive trajectories in mild cognitive impairment patients based on amyloid beta status", "read_in_full": true},
+  {"paper": "P-1215", "pdf_is_right_paper": true, "title_as_printed": "Choline alphoscerate: insights between acquired certainties and future perspectives", "read_in_full": true},
+  {"paper": "P-929", "pdf_is_right_paper": true, "title_as_printed": "Change in cognitive function according to cholinesterase inhibitor use and amyloid PET positivity in patients with mild cognitive impairment", "read_in_full": true}
+ ],
+ "what_each_reports": {
+  "P-1216": "Liu et al., Alzheimer's Dement 2025;21:e70193. ADNI cohort of 558 amnestic MCI: 168 ChEI users with more than 12 months of continuous donepezil, rivastigmine or galantamine, and 390 never-users, followed for up to 120 months. The IPTW-adjusted Cox model (APOE e4 time-dependent) gives progression to AD dementia HR 1.77 (95% CI 1.15-2.73, p = 0.001) and reversion to normal cognition HR 0.17 (0.06-0.52). By amyloid stratum: Abeta+ HR 2.18 (1.31-3.63, p = 0.003); Abeta- HR 1.57 (0.71-3.47, p = 0.26). The ChEI x AV45 interaction is HR 0.27 (0.07-1.04, p = 0.06). The authors state the design allows 'only for the assessment of associations' and that it is unclear whether decline prompted ChEI initiation.",
+  "P-1215": "Biggio and Mencacci, Front Aging Neurosci 17:1613566 (2025; corrected 29 January 2026). A narrative review of choline alphoscerate, a cholinergic precursor, funded by Neopharmed Gentili with sponsored medical writing. It relays Ponomareva et al. 2024 (randomized, 100 amnestic MCI, choline alphoscerate vs no therapy, 3 years): cognitive-deficit progression 12.2% vs 39.1% and conversion to AD 8.2% vs 26.1%, with no test statistic or interval printed. It also relays, without numbers, Kim et al. 2025 (a nationwide Korean longitudinal study) as showing reduced conversion from MCI to AD and vascular dementia. It concludes that the precursor 'may also be useful as a preventive therapy against development of Alzheimer's disease in patients with MCI'. It gives no conversion estimate for cholinesterase inhibitors alone.",
+  "P-929": "Context only. Pyun et al., Alzheimer's Res Ther (2021) 13:10. Seoul cohort of 111 MCI (73 ChEI users, 38 non-users), with a 25:25 propensity-matched subsample. ChEI use was not associated with 1-year progression to CDR 1 (multivariate OR 1.120, 0.204-6.238, p = 0.892); low baseline MMSE predicted progression (OR 0.606, 0.381-0.873)."
+ },
+ "quantity_a": "Association (IPTW-adjusted Cox HR) of cholinesterase-inhibitor use (donepezil, rivastigmine or galantamine, more than 12 months continuous) vs never-use with time to AD dementia (NINCDS-ADRDA, CDR 1 or higher), in ADNI amnestic MCI followed for up to 10 years; observational.",
+ "quantity_b": "Effect of choline alphoscerate vs no therapy on 3-year conversion to AD in amnestic MCI. It is given as crude conversion proportions (8.2% vs 26.1%) relayed second-hand from one randomized Russian study, plus an unquantified reduced-conversion statement from a Korean nationwide observational study; the review has no primary data.",
+ "same_quantity": false,
+ "incompatible_if_same": "The directions look opposite only at the level of the shared label ('cholinergic treatment in MCI and conversion to AD'). P-1216's HR 1.77 has an interval excluding 1, while P-1215 relays a lower conversion proportion under treatment. P-1215 prints no test statistic or interval for that difference, so only one side's direction rests on its own statistics. The two results concern different drugs, so the question does not arise.",
+ "gates": {
+  "task": "mismatch: P-1216 is T2 (exposure association with MCI-to-AD progression) and P-1215 is T6 (narrative treatment review; the record's 'T5' is stale); no waiver on record.",
+  "dataset_family": "mismatch: ADNI vs the primary literature P-1215 relays for conversion (Ponomareva 2024, Russia; Kim 2025, South Korea); no waiver on record.",
+  "validation_tier": "n/a, counted as matched: an association study and a narrative evidence synthesis, neither of which validates a model. The registry's V1 for P-1216 ('LOOCV small-n') does not fit a 558-person Cox study.",
+  "modality_family": "mismatch: the registry codes PET vs review_no_primary_data. More substantively, the exposure is a different drug class (cholinesterase inhibitors vs choline alphoscerate)."
+ },
+ "endpoint_and_metric": "Incompatible: P-1216 gives a time-to-event HR over up to 120 months, P-1215 crude 3-year conversion percentages with no test statistic. The comparators also differ: never-users in an observational cohort vs no therapy in an open randomized comparison.",
+ "performance_validity": "not a performance comparison",
+ "independence": "Independent: no shared cohort or authors, and P-1215 cites neither ADNI nor P-1216. P-1215 is industry-funded (Neopharmed Gentili, with sponsored medical writing by Springer Healthcare) and carries a post-publication correction (10.3389/fnagi.2026.1744201).",
+ "bridging_evidence": [
+  {"paper": "P-929", "quote": "In addition, ChEI use or non-use could not predict disease progression to CDR 1 at 1-year follow-up visit.", "how_it_bears": "Context only, not bridging. P-929 studies the same drug class as P-1216, so it cannot link cholinesterase inhibitors to choline alphoscerate; P-1216 cites it (ref. 27, Pyun et al. 2021) among its 'no effects' studies. On the printed numbers, P-929's OR interval (0.204-6.238) contains P-1216's HR 1.77, although the metric (OR vs HR), horizon (1 year vs up to 10) and endpoint (CDR 1 vs AD dementia) all differ. So the held P-1216 x P-929 handoff shows no incompatibility on its face. It is a separate candidate and is not decided here."}
+ ],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "Different exposure: P-1216 measures cholinesterase inhibitors (donepezil, rivastigmine, galantamine), whereas P-1215's preventive claim concerns choline alphoscerate, a cholinergic precursor, so the two results are about different drugs.",
+  "Different metric and horizon: an IPTW Cox hazard ratio over up to 120 months against crude 3-year conversion proportions relayed without a test statistic.",
+  "Neither paper reports on the other's quantity: P-1215 gives no conversion figure for cholinesterase inhibitors alone in MCI, and P-1216 has no choline alphoscerate data.",
+  "The task and dataset-family gates fail, with no waiver on record.",
+  "The record's own revised statement already disclaims a disagreement. On the sources, the right disposition is incommensurability of exposure, not a finding of harm or benefit."
+ ],
+ "evidence_quotes": [
+  {"paper": "P-1216", "page": 5, "quote": "The IPTW-adjusted model revealed that ChEI users had a significantly higher risk of progression to AD dementia compared to non-users (HR = 1.77, 95% CI: 1.15 to 2.73, p = 0.001) (Table 2)."},
+  {"paper": "P-1216", "page": 3, "quote": "donepezil, rivastigmine, or galantamine for more than 12 months with at least two follow-up assessments"},
+  {"paper": "P-1216", "page": 6, "quote": "ChEI+/Aβ+ participants had a significantly higher risk of conversion to AD dementia compared to ChEI−/Aβ+ participants (HR = 2.18, 95% CI: 1.31 to 3.63, p = 0.003)"},
+  {"paper": "P-1216", "page": 10, "quote": "it remained unclear whether cognitive decline preceded and prompted ChEI initiation or resulted from the treatment itself"},
+  {"paper": "P-1215", "page": 1, "quote": "Choline alphoscerate is a cholinergic precursor naturally found in the brain"},
+  {"paper": "P-1215", "page": 6, "quote": "In this prospective, randomized study in 100 patients with amnesic type MCI, progression of cognitive deficits were reduced after 3 years of choline alphoscerate compared with no therapy (12.2% vs. 39.1%), and the conversion rate to Alzheimer’s disease was lower (8.2% vs. 26.1%)"},
+  {"paper": "P-1215", "page": 6, "quote": "Other researchers have shown that choline alphoscerate reduced conversion from MCI to Alzheimer’s disease dementia and vascular dementia, suggesting its value as an early intervention (Kim et al., 2025)."},
+  {"paper": "P-1215", "page": 8, "quote": "emerging evidence suggests that the administration of this cholinergic precursor may also be useful as a preventive therapy against development of Alzheimer’s disease in patients with MCI"},
+  {"paper": "P-1215", "page": 8, "quote": "This study received funding support from Neopharmed Gentili, Italy."}
+ ],
+ "record_defects": [
+  "The conflict_statement says the claim rests 'on a single unreplicated Russian trial', and an evidence quote filed under P-1215 reads 'single study in Russia reported conversion benefits without independent replication'. In fact P-1215 cites a second source for reduced conversion, Kim et al. 2025, a nationwide longitudinal study in South Korea (p. 6). The quoted sentence is summary-block text, not in the PDF.",
+  "'recommending its addition to donepezil': P-1215's expert-opinion section (p. 8) recommends choline alphoscerate for cognitive disorders, affective alterations and pseudodepression, and gives dosing. It does not recommend the donepezil combination; it only reports that combination studies showed benefit (e.g. 'addition of choline alphoscerate to donepezil reduces brain atrophy in patients with MCI or Alzheimer’s disease', p. 7).",
+  "claim_a says 'its own authors decline causal inference'. The limitations do so ('allowing only for the assessment of associations', p. 10), but the abstract states 'Both ChEI use and Aβ burden independently accelerated MCI progression and cognitive decline' (p. 1, line-break hyphen removed), and the discussion attributes a mechanism to ChEIs. The authors use causal wording in the headline and hedge only in the limitations.",
+  "claim_a calls P-1216 'the only corpus record that estimates a cholinergic-exposure effect on MCI-to-AD progression inside a single amyloid-characterised cohort with propensity weighting'. P-929 (amyloid-PET-characterised, propensity-score matched) supersedes this, as the record's own revised conflict_statement concedes, but claim_a was never revised.",
+  "The record describes P-929 as using 'amyloid PET within 6 months of baseline'. The PDF also admitted positive scans taken more than 6 months before and negative scans taken more than 6 months after, and 27 of the 50 analysed participants had PET outside the 6-month window (p. 2).",
+  "Gate output 'FAIL Task_Type: T2 vs T5' and 'skip task_substage: not reported on one side' do not match the current registry row for P-1215, which reads Task_Type T6 and task_substage 'treatment_review'. This concerns registry state, not a PDF contradiction."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A same-drug pairing. If P-1215 reported a conversion estimate in MCI for cholinesterase inhibitors alone that favoured treatment on its own statistics, or if P-1216 had analysed choline alphoscerate, the exposure difference would disappear; the task and dataset-family gates would still need an explicit waiver before a genuine verdict could be considered. Neither PDF supplies such an estimate."
+}

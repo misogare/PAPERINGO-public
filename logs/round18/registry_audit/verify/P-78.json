@@ -1,0 +1,21 @@
+{
+  "paper": "P-78",
+  "pdf_used": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/pdf/P-78.txt (quotes re-checked with PyMuPDF against C:/Users/aryas/Downloads/PAPERINGO/downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S0957417425041910-main.pdf)",
+  "is_model_study": true,
+  "scope": "Second reading of the first reader's error field only (Validation_Type). The Sample_N_Approx 'defensible' call was not re-read, per caller's scope.",
+  "fields": {
+    "Validation_Type": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "V4",
+      "registry_code": "V2",
+      "reason": "Confirmed. Training uses ADNI-1/2/GO only, after an 8:2 subject-level split (p.3). Performance is reported on two test sets. Dataset B is the held-out 20% of ADNI-1/2/GO (101 subjects). Dataset A is 'an independent external test set' of 29 ADNI-3 + 144 OASIS-3 subjects (p.3). The headline comparisons are on Dataset A (Table 3, Fig. 7, and the Table 6 training-strategy ablation). The Platt-scaling calibrator is trained on the training set and only validated on Dataset A (p.9), so Dataset A never enters training. OASIS-3 is a separate study collected at a different institution, not a later ADNI phase, so Dataset A meets V4 ('a test set from a different institution'). The paper itself frames this as validation 'in cross-center scenarios' (p.2). Caveat: Dataset A results are pooled across ADNI-3 and OASIS-3, with no OASIS-only figure, but OASIS-3 makes up 144/173 (83%) of it. V2 ('no separate test set') is contradicted on any reading: even setting OASIS-3 aside, the held-out Dataset B makes the floor V3.",
+      "quote": "the model was trained and validated on the ADNI-1/2/Go datasets and tested on two independent datasets (ADNI-3 and OASIS-3).",
+      "page": 8,
+      "supporting_quote": "Dataset A, as an independent external test set, consists of baseline T1-weighted sMRI images from 29 subjects in ADNI-3 and 144 subjects in OASIS-3.",
+      "supporting_page": 3,
+      "first_quote_verbatim": true
+    }
+  },
+  "notes": "This is a classification study with a genuine external test cohort, so it belongs with the V4 studies in the external-validation statistic."
+}

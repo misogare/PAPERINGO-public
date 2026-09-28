@@ -1,0 +1,13 @@
+{"paper": "P-1147", "pdf_is_right_paper": true,
+ "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-1147.txt",
+ "registry_code": "V3", "correct_code": "V4", "changed": true,
+ "training_data": "ADNI (all phases, downloaded 10 Sep 2024), 1012 participants with MCI at baseline (346 progressed to AD dementia); internal five-fold CV",
+ "test_data": "NACC (June 2024 freeze, 35 Alzheimer's Disease Research Centers plus one exploratory centre), 2087 participants with MCI at baseline and an AD etiologic diagnosis (696 progressed)",
+ "model_fixed_before_external_test": true,
+ "reason": "Parameters of the MFMM joint models (Models 1-6) and the BMA combinations were estimated on ADNI and applied to NACC without re-estimation (stacking C-index 0.743 in NACC vs 0.777 in ADNI CV). NACC is a different consortium, and the brief names ADNI-to-NACC as V4. The paper does not check for ADNI/NACC co-enrolment.",
+ "quotes": [
+  {"page": 5, "quote": "External validation was conducted using the NACC dataset to evaluate the generalizability of the MFMM framework. Parameters estimated from the ADNI training cohort were applied to the NACC cohort to compute the C-index for Models 1 through 6."},
+  {"page": 3, "quote": "The validation cohort was derived from the NACC,12 which integrates longitudinal clinical and imaging data from 35 Alzheimer\u2019s Disease Research Centers (ADRCs) and one exploratory center."},
+  {"page": 6, "quote": "The stacking method achieved a C-index of 0.743 (95% CI: 0.725\u20130.762), matching the performance of Model 4 (historical model)"}
+ ],
+ "confidence": "high"}

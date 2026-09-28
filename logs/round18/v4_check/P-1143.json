@@ -1,0 +1,13 @@
+{"paper": "P-1143", "pdf_is_right_paper": true,
+ "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-1143.txt",
+ "registry_code": "V3", "correct_code": "V4", "changed": true,
+ "training_data": "ADNI (ADNIMERGE + RECMHIST), 494 cognitively normal participants with at least one follow-up (389 censored / 105 converted to MCI); stratified 90/10 train/test split with nested 10x5-fold CV",
+ "test_data": "AIBL (Australian Imaging, Biomarker & Lifestyle study), 320 CN participants (290 censored / 30 converted), plus the 10% ADNI hold-out",
+ "model_fixed_before_external_test": true,
+ "reason": "The Fast RSF trained on ADNI (FS1) was applied unchanged to AIBL, an Australian cohort from a different consortium that played no part in training (C-index 0.73). A second model, retrained on ADNI with only the 17 shared features, gave 0.75 on AIBL, and a sensitivity analysis with multiple imputation in AIBL gave 0.77. A fixed model on a cohort from another consortium and country is V4. Caveat: five of the model's top-10 features are not collected in AIBL and were zero-filled in stage 1.",
+ "quotes": [
+  {"page": 8, "quote": "In the first stage, we applied the original top-performing model\u2014trained on the full ADNI feature set (FS1)\u2014to the AIBL dataset after aligning feature dimensions by adding missing variables with neutral values. This resulted in a C-index of 0.73, demonstrating robust predictive performance and highlighting the model\u2019s consistent capabilities across datasets."},
+  {"page": 8, "quote": "The fast random survival forest model was retrained using these shared features and achieved a C-index of 0.79 on the ADNI test set and 0.75 on the AIBL dataset."},
+  {"page": 13, "quote": "The dataset is first divided into training and testing sets in a stratified manner, with a ratio of 90% for training and 10% for testing as shown in Fig. 4."}
+ ],
+ "confidence": "high"}

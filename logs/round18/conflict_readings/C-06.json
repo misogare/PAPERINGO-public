@@ -1,0 +1,70 @@
+{
+  "id": "C-06",
+  "reader": "adjudicator",
+  "papers_read": [
+    {
+      "paper": "P-95",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Analysis of neuropsychological and neuroradiological features for diagnosis of Alzheimer’s disease and mild cognitive impairment (Kurbalija V, Geler Z, et al.; International Journal of Medical Informatics 178 (2023) 105195)",
+      "read_in_full": true
+    },
+    {
+      "paper": "P-96",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Development and validation of a machine learning model for early screening of high-risk mild cognitive impairment from the multi-cohort data (Wu X, Yao X, et al.; International Journal of Medical Informatics 203 (2025) 106030)",
+      "read_in_full": true
+    }
+  ],
+  "what_each_reports": {
+    "P-95": "Serbian single-centre cohort (Neurology Clinic, University Clinical Centre of Vojvodina, Novi Sad, May 2016 to March 2019), N = 90 (30 AD, 30 MCI, 30 controls), 482 features, 3-class AD/MCI/control classification with seven Weka classifiers under 10 x 10 stratified cross-validation; no external cohort. All 482 features: accuracy 66.22-81.00%, weighted-average AUROC 76.3-95.0% (naive Bayes best, 81.00% / 94.95%). Expert-selected NP groups: best single group 65.67-74.22% accuracy, best NP combination 71.11-79.78% accuracy across the seven classifiers (Table 7). Expert-selected NR groups (visual rating scales, DTI tract metrics, FSL subcortical volumes): below 50% accuracy except in three classifier-group cells, and 'lags significantly behind' the all-feature reference. NR values are printed only in Figs D1-D4, which the extract does not carry, and NR was left out of Table 7. Within this cohort NP outperforms NR.",
+    "P-96": "Training on CHARLS wave 3 (2015; N = 2,932, 518 with the MCI label), external validation on the Yiwu 2021 community cohort (N = 4,140) and CHARLS 2011 (N = 1,782). The label is 'high-risk MCI': MMSE at least 1 SD below the mean of the participant's 5-year age stratum (AACD criterion), not a clinical diagnosis. Predictors: seven routine variables (education, grip strength, height, weight, creatinine, mean corpuscular volume, platelet count) chosen from 34 demographic, health, lifestyle, physical-examination and blood variables. Random forest: training-set AUROC 0.93 (0.91-0.95), accuracy 85.5%, sensitivity 0.906, specificity 0.850; external AUROC 0.83 (Set 1, Yiwu) and 0.87 (Set 2, CHARLS 2011) per Section 3.4 and Table 3 (the introduction lists the two in the reverse order). No MRI and no neuropsychological-test predictor anywhere in the paper, and no NP-versus-MRI comparison of any kind."
+  },
+  "quantity_a": "Within-study ranking of expert-selected neuropsychological feature groups against neuroradiological feature groups (DTI tract metrics, visual atrophy/WMH ratings, subcortical volumes) for 3-class AD/MCI/control classification accuracy and weighted AUROC, 10 x 10 stratified CV, Serbian memory-clinic cohort of 90.",
+  "quantity_b": "Discrimination (AUROC, accuracy) of a seven-variable physical-examination and blood-test random forest for an MMSE-defined high-risk-MCI label versus the rest, in Chinese community cohorts. P-96 reports no quantity that compares structural MRI with neuropsychological scores.",
+  "same_quantity": false,
+  "incompatible_if_same": "There is no second result to set against P-95. Claim_b ('Structural MRI outperforms NP scores (79% vs 72%)') has no counterpart anywhere in P-96, which uses neither MRI nor neuropsychological-test predictors. With one side absent, incompatibility cannot arise.",
+  "gates": {
+    "task": "mismatch: P-95 is 3-class AD vs MCI vs control diagnosis (registry T3, multiclass_staging); P-96 is binary screening for an MMSE-defined high-risk-MCI label (registry T1). The record's task_equivalence=true is wrong.",
+    "dataset_family": "mismatch: P-95 is an unnamed single-centre clinical cohort from Novi Sad, Serbia; P-96 is CHARLS 2015 (training) with Yiwu 2021 and CHARLS 2011 (external). Neither is ADNI. P-95 is not CHARLS: the record's note gives P-96's cohort to P-95. P-95 contains a stray footnote URL to the ADNI acknowledgement list, but its data section states the Novi Sad source.",
+    "validation_tier": "mismatch: P-95 uses internal 10 x 10 stratified CV only (V2); P-96 adds geographic (Yiwu 2021) and temporal (CHARLS 2011) external validation to internal 5-fold CV, so the registry's V2 for P-96 understates it. The registry's Sample_N 'not reported' for P-96 is also wrong (Table 2: 2,932 / 4,140 / 1,782).",
+    "modality_family": "mismatch: P-95 sets NP tests against MRI-derived features (DTI, visual rating scales, FSL subcortical volumes; the registry's 'MRI/PET' is inaccurate, since there is no PET); P-96 uses demographics, anthropometry, grip strength and routine blood tests. The record's modality_family 'clinical_survey' with modality_family_equal 'Yes' is wrong."
+  },
+  "endpoint_and_metric": "incompatible: P-95 reports 3-class accuracy and weighted-average AUROC for AD/MCI/control against clinical diagnoses (NINCDS-ADRDA, Petersen/NIA-AA); P-96 reports binary AUROC and accuracy for a psychometric label (MMSE at least 1 SD below the age-stratum mean).",
+  "performance_validity": "Not a performance comparison in substance: the record claims a modality-ranking reversal. In any case the flag does not apply to either paper. P-95's best is 81.00% accuracy with AUROC 94.95% (below 0.97), and P-96's is AUROC 0.93 with external validation.",
+  "independence": "Independent: different countries, cohorts and author groups, with no shared participants or authors. Both appear in International Journal of Medical Informatics, which does not bear on independence.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "Claim_b misreads P-96. Its predictors are seven routine physical-examination and blood variables and its outcome is defined from the MMSE, so it contains no structural-MRI result and no NP-score predictor that could be ranked against each other.",
+    "P-96's only statements about imaging describe other studies as dependent on costly imaging; it never compares MRI with neuropsychological scores.",
+    "Claim_a has P-95's direction right (NP better than NR) but not its numbers. The text reports NR groups mostly below 50% accuracy, and Table 7 leaves NR out entirely, so no 83%-vs-76% NP-vs-NR pair is printed.",
+    "With one side absent, the record describes no disagreement between two studies. Under the outcome order this is a false positive before any incommensurability question arises; the pair would also fail all four deterministic gates."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-95", "page": 4, "quote": "the research study was carried out at the Neurology Clinic of the University Clinical Centre of Vojvodina and Vojvodina Institute of Oncology, Center for Diagnostic Imaging from May 2016 to March 2019."},
+    {"paper": "P-95", "page": 4, "quote": "The data includes neuroradiological (NR) and neuropsychological (NP) parameters of 90 people, divided into three different groups of equal sizes (per 30 participants)"},
+    {"paper": "P-95", "page": 7, "quote": "the creation of ML classifiers which will be trained to perform the 3-class classification."},
+    {"paper": "P-95", "page": 17, "quote": "the results of all the other NR groups were less than 50 %, i.e. most of the patients were classified in the wrong class."},
+    {"paper": "P-95", "page": 18, "quote": "As the NR groups proved to be unsuitable for classifying patients, we did not include them in this analysis."},
+    {"paper": "P-95", "page": 19, "quote": "The results for the groups of attributes chosen by physicians suggest that NP attributes and their ranks are quite better than NR."},
+    {"paper": "P-96", "page": 1, "quote": "The Mini-Mental State Examination (MMSE) was used for MCI diagnosis. Seven key variables (education, grip strength, height, weight, creatinine, mean corpuscular volume, and platelet count) were selected through majority voting."},
+    {"paper": "P-96", "page": 2, "quote": "Participants scoring ≥1 SD below their age group’s mean MMSE were classified as having cognitive impairment consistent."},
+    {"paper": "P-96", "page": 2, "quote": "The training dataset was derived from the third wave of the CHARLS, which was conducted from July 1 to September 30, 2015."},
+    {"paper": "P-96", "page": 1, "quote": "The model demonstrated high diagnostic performance with a sensitivity of 0.906, specificity of 0.850, and accuracy of 85.5%."},
+    {"paper": "P-96", "page": 9, "quote": "While these models offer excellent performance, they are highly dependent on costly imaging and genetic assessments, limiting their use in real-world primary care settings [21,22]."}
+  ],
+  "record_defects": [
+    "claim_b 'Structural MRI outperforms NP scores (79% vs 72%)': P-96 has no MRI data and no NP-test predictors, and prints no 79% or 72%; its model is a seven-variable physical-examination/blood-test random forest (accuracy 85.5%, AUROC 0.93).",
+    "claim_a '(83% vs 76%)': no such NP-vs-NR pair is printed in P-95's text or tables. The NR groups are mostly below 50% accuracy, and Table 7 has no NR rows (the 83.4 and 76.5 in it are NP-group AUROCs for LR/NB and C4.5). P-95's best NP combination is 79.78% accuracy (SVM) and its all-feature best is 81.00% (naive Bayes). Its NR set is DTI, visual rating scales and subcortical volumes, not structural MRI alone.",
+    "apparent_performance_gap 'MRI > NP in P-96' is false; P-96 makes no modality ranking.",
+    "resolution_note 'P-95 uses CHARLS cognitive cohort' is false: P-95 is a Novi Sad (Serbia) clinical cohort. CHARLS is P-96's cohort.",
+    "resolution_note 'P-96 uses ADNI' is false: P-96 uses CHARLS 2015, Yiwu 2021 and CHARLS 2011, and ADNI is not mentioned in the paper.",
+    "resolution_note 'NP test batteries differ (MMSE + vocabulary vs MMSE + CDR + HVLT)' is false for both papers. P-95's NP set is MMSE, ACE III, RAVLT, ROCF, TMT, WMS-R, WAIS (similarities, cube, code), BNT, fluency, EXIT25, FAB, WCST and HVO, plus depression, NPI, quality-of-life and daily-living scales, with no CDR, HVLT or vocabulary test. P-96 has no NP battery among its predictors; the MMSE only defines its outcome.",
+    "task_equivalence=true is false: 3-class clinical diagnosis vs binary screening for an MMSE-defined label.",
+    "modality_family 'clinical_survey' with modality_family_equal 'Yes' is false: NP tests against MRI-derived features in P-95; physical examination and blood tests in P-96.",
+    "The rejection reason ('dataset-specific battery composition explains ranking conflict') presupposes a ranking conflict that neither PDF contains.",
+    "Provenance: the record's claims and note are unchanged since its first commit (087db63, 2026-03-28). At that commit summaries.md already described P-96 as the CHARLS physical-examination model, so claim_b did not come from a misattached block."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "Only evidence that the record meant a different paper for P-96, such as an ADNI study comparing structural MRI with an MMSE/CDR/HVLT battery as its note implies. I found no candidate: P-96's PDF, map title and summary block (then and now) are the CHARLS screening paper, and in summaries.md HVLT first appears at P-510. If such a paper were identified, it would be a new pair to adjudicate, and against P-95 (3-class Serbian clinic cohort) it would still face task and dataset-family gate failures. P-95's per-classifier NR values sit only in Figs D1-D4, which the extract does not carry, but no figure value could supply the missing second side."
+}

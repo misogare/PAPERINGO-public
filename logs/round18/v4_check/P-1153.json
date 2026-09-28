@@ -1,0 +1,13 @@
+{"paper": "P-1153", "pdf_is_right_paper": true,
+ "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-1153.txt",
+ "registry_code": "V3", "correct_code": "V4", "changed": true,
+ "training_data": "ADNI AD-dementia/NC 18F-FDG-PET development set (n=487), with a stratified ADNI internal test set (n=73)",
+ "test_data": "J-ADNI AD-dementia/NC (n=196, Japan) for diagnosis. For prognosis: J-ADNI MCI (n=129) and HABS NC (n=274, Harvard Aging Brain Study), plus ADNI MCI (n=663) internally",
+ "model_fixed_before_external_test": true,
+ "reason": "The DL classifier was trained on ADNI only, then frozen (the trained model is released on GitHub). It was tested on J-ADNI AD/NC (AUC 0.98, accuracy 90.8% at the fixed 0.5 threshold), and its fixed output was carried into J-ADNI MCI and HABS NC to test prognostic value. The study's own model therefore reaches V4 on cohorts from another consortium and country. Caveat: the prognostic Cox models (clinical + SUVR + DL output) and the DL tertile cut-offs were refitted inside each cohort, so the J-ADNI and HABS iAUCs are not fixed-model external estimates; only the DL score itself is fixed.",
+ "quotes": [
+  {"page": 3, "quote": "The DL model was developed using the ADNI AD-dementia/NC development set and tested on the ADNI AD-dementia/NC test set, and externally tested on the J-ADNI AD-dementia/NC set to assess the diagnostic performance on an Asian population."},
+  {"page": 3, "quote": "Second, after the DL model development, the prognostic value of DL output for cognitive decline was evaluated in conjunction with clinical features and 18F-FDG-PET SUVR in the ADNI MCI, J-ADNI MCI, and HABS NC sets."},
+  {"page": 5, "quote": "18F-FDG-PET-based DL could distinguish between AD-dementia and NC with AUCs of 0.97 and 0.98, and accuracies of 91.8% and 90.8% on the ADNI AD-dementia/NC test set and the J-ADNI AD-dementia/NC set, respectively."}
+ ],
+ "confidence": "high"}

@@ -1,0 +1,33 @@
+{
+  "paper": "P-304",
+  "pdf_used": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/pdf/P-304.txt (quotes re-checked with PyMuPDF against C:/Users/aryas/Downloads/PAPERINGO/downloads/4. Computational Models and Modern AI Architectures/PMID_39670404_nihms-2038228.pdf)",
+  "is_model_study": true,
+  "scope": "Second reading of the first reader's error fields only (Validation_Type, Sample_N_Approx). The Category 'defensible' call was not re-read, per caller's scope.",
+  "fields": {
+    "Validation_Type": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "V3",
+      "registry_code": "V2",
+      "reason": "Confirmed. ADNI and NACC are each run separately. Every method is trained on a random 80% of patients and tested on the held-out 20%, over ten random splits (Table 1 reports mean +/- SD over ten runs). There is no external site, since neither dataset tests a model trained on the other. V2 requires 'no separate test set', which the paper contradicts. The template's note assigns a train/test split without an external site to V3, and the normalisation rules list an explicit 80/20 split as V3. No validation set or tuning procedure is described. The repeated random hold-out resembles Monte Carlo cross-validation, but the definitions map a patient-level train/test split to V3, not V2.",
+      "quote": "We evaluated all the methods on ten different randomly generated training and test splits. The number of patients selected for training was 80% of the total number of patients, while 20% were used for testing.",
+      "page": 11,
+      "supporting_quote": "The experiments were performed on ADNI and NACC datasets separately",
+      "supporting_page": 11,
+      "first_quote_verbatim": true
+    },
+    "Sample_N_Approx": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "1664 (250 ADNI + 1414 NACC)",
+      "registry_code": "1169",
+      "reason": "Confirmed. Models are trained and evaluated only on patients with at least seven visits: 250 ADNI + 1,414 NACC = 1,664. 1,169 is the ADNI count after preprocessing, before the seven-visit restriction. It never enters training or evaluation, and it leaves out NACC, which is analysed in every experiment. It matches no study-level total: analysed 1,664; post-preprocessing 1,169 + 8,121 = 9,290; source 2,288 + 46,513 = 48,801. It is not an enrolled-vs-analysed or discovery-vs-validation alternative of the kind the defensible clause covers, and even for ADNI alone the analysed N is 250.",
+      "quote": "Finally, we focused on patients with at least seven visits for training and model evaluation. This resulted in a final ADNI dataset of 20 longitudinal features for 250 patients and a final NACC dataset with 5 longitudinal features for 1,414 patients.",
+      "page": 11,
+      "supporting_quote": "After preprocessing, the dataset had 20 longitudinal features for 1,169 patients across 5,759 visits, derived from cognitive performance tests and MRI scans.",
+      "supporting_page": 11,
+      "first_quote_verbatim": true
+    }
+  },
+  "notes": "This is a classification study, so its validation tier enters the review's validation statistics."
+}

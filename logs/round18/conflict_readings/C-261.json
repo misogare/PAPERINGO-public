@@ -1,0 +1,78 @@
+{
+  "id": "C-261",
+  "reader": "adjudicator",
+  "reader_identity": "model reader (Claude Opus 5.5) on the reading delegated 2026-09-27; this verdict is a candidate for the operator, not a gate decision",
+  "quote_convention": "Quotes are verbatim from the ROOT/pdf extracts, with line breaks and non-breaking spaces rendered as single spaces; ligatures, curly quotes and dashes are kept as printed (UTF-8).",
+  "papers_read": [
+    {
+      "paper": "P-824",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Sociodemographic Factors Predict Incident Mild Cognitive Impairment: A Brief Review and Empirical Study",
+      "read_in_full": true,
+      "note": "Jin S et al., JAMDA 24 (2023) 1959-1966, doi 10.1016/j.jamda.2023.08.016; pages 1-15 including Supplementary Material 1, Supplementary Tables 1-4 and both reference lists. Figures 1-2 and Supplementary Figures 1-4 are images and are not in the extract."
+    },
+    {
+      "paper": "P-981",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Risk scores of incident mild cognitive impairment in a Beijing community-based older cohort",
+      "read_in_full": true,
+      "note": "Li X et al., Front Aging Neurosci 2022;14:976126; pages 1-9. Supplementary Table S1 is online only and not in the extract."
+    }
+  ],
+  "what_each_reports": {
+    "P-824": "A 0-53 point composite of 13 predictors (age, sex, education, residence, marital status, smoking, BMI < 18.5, abnormal night sleep, social activity, weekly contact with a child, depressive symptoms, vision problem, brain damage; mostly self-reported, no cognitive test), weighted from a Cox model fitted in CHARLS, gives a 5-year ROC AUC of 0.861 in CHARLS (development, apparent), 0.797 in CLHLS and 0.823 in RuLAS (external cohorts). The text prints no confidence interval or standard error for these AUCs (Figure 1 is an image not in the extract). Incident 'MCI' is a single score threshold at follow-up that differs by cohort: CHARLS cognitive score more than 1 SD below the mean; CLHLS CMMSE < 18; RuLAS HDS < 21.5. The child-contact item was not collected in CLHLS or RuLAS and was imputed from CHARLS means. RuLAS recruited people aged 70-87; Supplementary Table 1 gives n = 651, 260 events (39.9%) and mean time to event or censoring of 40.1 months, while the text reports 1,823 included.",
+    "P-981": "Two different quantities. (a) RS1 and RS2 are logistic scores fitted cross-sectionally in 5,921 BABRI participants aged 50-80 (MMSE > 23 at entry) to discriminate PREVALENT MCI at baseline (1,174 MCI vs 4,747 NC): RS1 (age, education, sex, cerebrovascular disease, income level, intellectual activity, physical activity) AUC 0.640 (95% CI 0.620-0.660); RS2 (RS1 plus MMSE <= 27) AUC 0.712 (0.694-0.730). (b) RS3 is the only incident-MCI model: of 921 participants normal at baseline with at least two follow-up visits, 72 developed MCI (7.8%); RS3 (RS2 plus memory N1N5, ROCF delayed recall and verbal fluency) AUC 0.785, sensitivity 0.717, specificity 0.830, no CI; mean follow-up 2.25 y (converters) and 2.01 y (non-converters) in Table 4, 'average 3-year' in the abstract. MCI is a two-expert consensus diagnosis on Petersen criteria requiring objective memory impairment (1.5 SD) and no objective impairment in other domains."
+  },
+  "quantity_a": "Discrimination (ROC AUC) of 5-year incident 'MCI' defined by a single global cognitive screening threshold at follow-up (RuLAS: HDS < 21.5), in community-dwelling adults aged 70-87 in Rugao, by a test-free sociodemographic/self-report score developed in another cohort (external validation).",
+  "quantity_b": "The figures the record cites (0.64-0.70) are apparent ROC AUCs for PREVALENT consensus Petersen (memory-only) MCI versus normal cognition at baseline, in Beijing community adults aged 50-80 with MMSE > 23, from logistic demographic/lifestyle/vascular scores (RS2 includes MMSE). P-981's one incident-MCI estimate (RS3, 0.785) adds memory and fluency test scores and covers a mean follow-up of about 2 to 3 years.",
+  "same_quantity": false,
+  "incompatible_if_same": "Not demonstrably. Set against RS1/RS2 the numbers would clash (P-981's intervals 0.620-0.660 and 0.694-0.730 both exclude 0.823), but those are prevalent-case estimates and so not the same quantity. Against P-981's only incident estimate (0.785, no CI), P-824's 0.823 (no CI in the text) is 0.04 higher with no uncertainty stated on either side. Neither paper claims an ordering of predictor sets that the other refutes; both conclude that scores built from such factors predict MCI.",
+  "gates": {
+    "task": "match as coded, mismatch on the cited figures: the registry codes both T4, but the P-981 figures the record cites (RS1/RS2) discriminate prevalent MCI from normal cognition at one time point, a detection task; only RS3 predicts incident MCI.",
+    "dataset_family": "mismatch: CHARLS, CLHLS and RuLAS (P-824) versus BABRI Beijing (P-981); no waiver on record.",
+    "validation_tier": "mismatch: P-824's 0.823 is an external-cohort estimate (registry V4); every P-981 AUC is apparent, computed in the fitting sample (registry V2); no waiver on record.",
+    "modality_family": "match at family level (clinical/population survey, history and lifestyle data; no imaging or fluid biomarkers), with different predictor sets: P-981's RS2 contains MMSE and RS3 adds memory and verbal-fluency test scores, while P-824's score contains no cognitive test."
+  },
+  "endpoint_and_metric": "incompatible: the metric type is ROC AUC in both (P-981 equates it with the c statistic), but the endpoints differ in construct (single global-screen cut-off versus consensus Petersen memory-only MCI), in type (RS1/RS2 prevalent versus P-824 incident) and in horizon (5-year AUC versus mean follow-up of about 2 years, 'average 3-year' in P-981's abstract).",
+  "performance_validity": "flag does not apply: no figure reaches 0.97 (the highest is P-824's apparent 0.861 in CHARLS) and both pack flags are false; the candidate is a performance comparison, but neither study meets the exclusion.",
+  "independence": "independent: different cohorts (CHARLS/CLHLS/RuLAS versus BABRI) and disjoint author teams (Zhejiang University with co-authors versus the Beijing Normal University BABRI Centre); no shared participants reported.",
+  "bridging_evidence": [],
+  "verdict": "documented_incommensurability",
+  "grounds": [
+    "P-981's 0.640 and 0.712 discriminate prevalent MCI in the baseline cross-section, not incident MCI, so they measure a different quantity from P-824's 5-year incident AUC [q8, q9, q10].",
+    "The outcome constructs differ: P-824's validation cohorts count 'MCI' when a global screening score falls below a cut-off (CMMSE < 18, HDS < 21.5, the HDS cut-off sourced from a dementia-screening validation study), whereas P-981 requires a two-expert consensus on Petersen criteria with memory-only impairment [q2, q3, q4, q5, q6, q7].",
+    "P-981's one incident-MCI estimate (0.785) comes from a model that adds memory and fluency tests to RS2, which already contains MMSE, a different predictor set from P-824's test-free score [q11, q12, q13].",
+    "The horizons differ (5-year AUC in P-824; mean follow-up of about 2 to 3 years in P-981's incident sub-cohort), and the dataset-family and validation-tier gates fail with no waiver on record [q1, q14].",
+    "Neither paper claims what the other refutes: both conclude that risk scores built from such factors predict MCI [q1, q15]."
+  ],
+  "evidence_quotes": [
+    {"id": "q1", "paper": "P-824", "page": 1, "quote": "Our empirical work suggested that the area under the curve for a 5-year MCI prediction was 0.861 in CHARLS, 0.797 in CLHLS, and 0.823 in RuLAS."},
+    {"id": "q2", "paper": "P-824", "page": 4, "quote": "have incident MCI if his or her cognitive score was more than 1 SD below the mean"},
+    {"id": "q3", "paper": "P-824", "page": 5, "quote": "A participant was deﬁned to have incident MCI if his or her CMMSE (Chinese version of the Mini-Mental State Examination) score was less than 18 points during follow-up."},
+    {"id": "q4", "paper": "P-824", "page": 5, "quote": "participant was deﬁned to have incident MCI if his or her Hasegawa’s Dementia Scale (HDS) score was less than 21.5 during follow-up."},
+    {"id": "q5", "paper": "P-824", "page": 8, "quote": "Tsai N, Gao ZX. Validity of Hasegawa’s Dementia Scale for screening dementia among aged Chinese."},
+    {"id": "q6", "paper": "P-981", "page": 3, "quote": "Consensus diagnoses were assigned by two multidisciplinary experts. The subjects were diagnosed with MCI if they had the following symptoms according to Petersen’s criteria"},
+    {"id": "q7", "paper": "P-981", "page": 3, "quote": "no objective impairment in other cognitive domains (attention, visuospatial, language and executive function)."},
+    {"id": "q8", "paper": "P-981", "page": 3, "quote": "The predictive accuracy of the model was assessed based on discrimination, which refers to the ability of the index to accurately distinguish between NC and MCI individuals"},
+    {"id": "q9", "paper": "P-981", "page": 4, "quote": "In this sample, 1,174 subjects (19.8%) were diagnosed with MCI."},
+    {"id": "q10", "paper": "P-981", "page": 6, "quote": "The AUC for model 1 was 0.640 (95% CI 0.620–0.660), and the AUC for model 2 was 0.712 (0.694–0.730)"},
+    {"id": "q11", "paper": "P-981", "page": 3, "quote": "Then, we established risk score (RS) model 1 and model 2 (model 1 + MMSE) for MCI."},
+    {"id": "q12", "paper": "P-981", "page": 5, "quote": "we added cognitive performance to risk model 3 for predicting incident MCI."},
+    {"id": "q13", "paper": "P-981", "page": 5, "quote": "The AUC of the incident MCI model was 0.785, sensitivity = 0.717, and speciﬁcity = 0.830"},
+    {"id": "q14", "paper": "P-981", "page": 1, "quote": "in a sub-cohort who had an average 3-year follow-up."},
+    {"id": "q15", "paper": "P-981", "page": 1, "quote": "A combination of risk factors is predictive of the likelihood of MCI."},
+    {"id": "q16", "paper": "P-981", "page": 5, "quote": "At baseline, 921 participants were classiﬁed as normal cognition (NC); among them, 849 participants maintained NC status, and 72 (7.8%) developed MCI."}
+  ],
+  "record_defects": [
+    "claim_b and conflict_statement present RS1/RS2 (0.64-0.70) as discrimination of '~3-year incident MCI'; P-981 computes them on prevalent MCI in the 5,921-person baseline cross-section (1,174 MCI vs 4,747 NC; the Figure 1A intervals of about +/-0.02 fit that sample, not 72 incident events). Only RS3 (0.785) is an incident-MCI model [q8, q9, q10].",
+    "RS1/RS2 are called 'non-cognitive'; RS2 includes MMSE (MMSE <= 27 carries 6 points in Table 2), and its AUC is 0.712, above the 0.64-0.70 range the record takes from the abstract [q10, q11].",
+    "The RS1/RS2 predictor list ('age, education, cerebrovascular disease, intelligence, physical activities') omits sex and income level, which are in Table 2; 'intelligence' is the abstract's word for intellectual activities.",
+    "'incident MCI 7.8% (72/849)': 72 of 921 participants normal at baseline developed MCI (7.8%); 849 is the number who stayed normal (the abstract's 'of 849' is the paper's own slip) [q16].",
+    "'~3 years': the abstract says 'average 3-year follow-up', but Table 4 gives mean follow-up of 2.25 y for converters and 2.01 y for non-converters.",
+    "The evidence quotes attributed to P-824 ('The three cohorts do not measure the same outcome, so the validation is not validation.'; 'The higher of the two external-cohort discrimination figures...'; 'No confidence interval or standard error for any of the paper's three AUCs.') and to P-981 ('RS models 1/2 achieved AUCs between 0.64 and 0.70 (...)'; 'Petersen-criteria consensus MCI diagnoses with five-domain neuropsychological battery.'; 'incident MCI 7.8% (72/849) over ~3 years.') are summary-block wording, not text of the PDFs. The 'no CI' statement is true of P-824's text only, since Figure 1 is not in the extract.",
+    "'dementia-range screening cut-offs' is the record's characterisation, not the paper's: P-824 calls CMMSE < 18 and HDS < 21.5 MCI definitions; only its cited sources (a dementia-subtype prevalence study for the CMMSE cut-off and a dementia-screening validation of the HDS) indicate dementia-screening provenance [q3, q4, q5].",
+    "Registry row, not ledger text: P-824 prediction_horizon_years is 'not reported', but the paper reports 5-year AUCs and states that 3- and 7-year results were similar (Supplementary Figures 3 and 4)."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "An estimate of the same quantity from both sides: P-981 reporting an incident-MCI AUC for a test-free demographic and lifestyle score over a comparable horizon, or P-824 reporting its score's AUC against a consensus clinical MCI diagnosis, with uncertainty on both estimates that excludes the other. Even then the dataset-family and validation-tier mismatches would need a waiver stated on the record."
+}

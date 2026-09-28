@@ -1,0 +1,79 @@
+{
+  "id": "C-257",
+  "reader": "adjudicator",
+  "papers_read": [
+    {"paper": "P-698", "pdf_is_right_paper": true, "title_as_printed": "Effects of aerobic exercise on global cognitive function and sleep in older adults with mild cognitive impairment: A systematic review and meta-analysis", "read_in_full": true},
+    {"paper": "P-699", "pdf_is_right_paper": true, "title_as_printed": "Effects of exergaming in older individuals with mild cognitive impairment and dementia: A systematic review and meta-analysis", "read_in_full": true}
+  ],
+  "what_each_reports": {
+    "P-698": "Ahn & Kim, Geriatric Nursing 2023;51:9-16 (PROSPERO CRD42022343916). 11 RCTs of single-modality aerobic exercise versus health education, stretching or usual activity in adults >=60 meeting MCI criteria (Petersen 1999, DSM-5); 715 analysed. Global cognition (MMSE, MoCA or NCSE; Hedges' g, random effects): SMD 0.76, 95% CI 0.37-1.14 in the abstract but 0.37-0.91 in the Results (the sensitivity section cites an overall 0.70), I2 83%, 95% prediction interval -0.63 to 2.15. Subgroups: with cognitive factors 1.04 (0.54-1.53) versus without 0.37 (-0.22-0.95), Q(1)=2.91, p=0.09; session time Q(1)=1.41, p=0.24; frequency Q(2)=7.67, p=0.02, meta-regression b=0.264, p=0.001. Sleep (2 RCTs) SMD -2.07 (-6.76 to 2.62), not significant.",
+    "P-699": "Cai, Ma, Li, Lu, Geriatric Nursing 2023;51:351-359 (PROSPERO CRD42022347399). 10 RCTs of exergaming versus regular activities without exergaming (traditional physical activity, cognitive or physical-cognitive training, usual care) in adults >=60 with MCI (4 trials, n=166) or dementia (6 trials, n=350); 8 meta-analysed as mean differences on the original scales. MMSE pool (5 trials: Amjad 2019 in MCI; Padala 2012, Padala 2017, van Santen 2020, Zheng 2021 in dementia): MD 0.95, 95% CI -1.17 to 3.08, P=0.38, I2 74%; MD 2.49 (2.12-2.85) after excluding Padala 2012. MoCA pool (3 trials, all MCI: Amjad 2019, Liao 2020, Liu 2022): MD 2.12 (0.53-3.70), P=0.009, I2 98-99%; MD 1.35 (0.01-2.68) after excluding Amjad 2019. Abstract and conclusion report a cognitive benefit, with a caution for heterogeneity."
+  },
+  "quantity_a": "Pooled standardised mean difference (Hedges' g, random effects) in global cognition (MMSE, MoCA or NCSE) at end of intervention for single-modality aerobic exercise versus non-exercise controls (health education, stretching, usual activity), in RCTs of adults >=60 with MCI.",
+  "quantity_b": "Pooled mean difference in MMSE points (random effects) at end of intervention for exergaming versus regular activities (mostly traditional physical activity, stretching or usual care), in 5 RCTs of adults >=60, four in dementia and one in MCI. P-699's MCI-only global-cognition estimate is a different pool (MoCA MD, 3 MCI trials).",
+  "same_quantity": false,
+  "incompatible_if_same": "No. Both point estimates favour the intervention: SMD 0.76 (significant) against MMSE MD 0.95 (95% CI -1.17 to 3.08, non-significant). A difference in significance is not a data conflict (Section 5.2), and P-699's MCI-only pool shows a significant benefit (MoCA MD 2.12, 0.53-3.70), the same direction as P-698.",
+  "gates": {
+    "task": "match: T6 on both rows (intervention-efficacy syntheses).",
+    "dataset_family": "mismatch: the primary literatures pooled are disjoint; none of P-698's 11 aerobic-exercise RCTs is among P-699's 10 exergaming RCTs. No waiver on record.",
+    "validation_tier": "n/a (two evidence syntheses; counted as matched).",
+    "modality_family": "match at family level (exercise-class intervention measured with global-cognition screening scales), but the intervention differs within the family (aerobic exercise versus exergaming)."
+  },
+  "endpoint_and_metric": "incompatible: P-698 pools Hedges' g standardised differences across MMSE, MoCA and NCSE against non-exercise controls; P-699's contested pool is a raw MMSE mean difference against mostly active or usual-care controls in a majority-dementia set. Comparison, population and metric all differ; the registry's population-gate FAIL (MCI versus MCI, dementia) is correct.",
+  "performance_validity": "not a performance comparison (intervention-efficacy syntheses)",
+  "independence": "Independent: no shared primary trial. P-698 pools Bademli 2019, Chang 2021, Choi & Lee 2018, Doi 2017, Karthikeyan 2020, Law 2019, Song & Yu 2019, Tao 2019, Tsai 2019, Varela 2011 and Wei & Ji 2014; P-699 includes Liu 2022, Torpil 2021 (printed 'Torpi2021'), Zheng 2021, van Santen 2020, Amjad 2019, Karssemeijer 2019, Wiloth 2017, Padala 2017, Padala 2012 and Liao 2020. Different author teams (Korea; China); same journal volume only. This settles the trial-overlap check the record's residual_risk left open.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "Both headline estimates favour the intervention (P-698 SMD 0.76, significant; P-699 MMSE MD 0.95, 95% CI -1.17 to 3.08, P = 0.38), so the claimed opposition is a significance-only difference, which Section 5.2 says is not a data conflict.",
+    "P-699's own headline is positive: its abstract reports a significant difference on MMSE and MoCA and its conclusion says exergaming improves cognition in older adults with MCI or dementia, so the reviews do not reach opposite verdicts.",
+    "P-699's null MMSE pool is four dementia trials plus one MCI trial, while its only MCI-only global-cognition pool (MoCA: Amjad 2019, Liao 2020, Liu 2022) shows a significant benefit (MD 2.12, 0.53-3.70), the same direction as P-698.",
+    "The record misreads P-699: the paper names no primary outcome, and the 'open problem' and 'abstract does not match the results table' sentences the record quotes are not in the PDF.",
+    "Were there a disagreement, the quantities would still differ: aerobic exercise against non-exercise controls on a standardised scale versus exergaming against mostly traditional physical activity or usual care on MMSE points, in MCI versus a mostly dementia pool, with the dataset-family gate unmatched."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-698", "page": 1, "quote": "(standardized mean difference [SMD]=0.76, 95%"},
+    {"paper": "P-698", "page": 1, "quote": "interval [CI]:0.37, 1.14)"},
+    {"paper": "P-698", "page": 2, "quote": "(1) Participants: older adults aged 60 years and above who met the diagnostic criteria for MCI;29,30 (2) Interventions: aerobic exercise (e. g., dancing, walking, bicycle, cycling, and stepping); (3) Comparisons: health education, stretching, and usual activity; (4) Outcomes: global cognitive function as the primary outcome"},
+    {"paper": "P-698", "page": 2, "quote": "based on the standardized mean difference (SMD; Hedges’^g)."},
+    {"paper": "P-698", "page": 3, "quote": "We used the global cognitive function of the 11 selected RCTs as a measuring instrument of the Mini Mental State Exam, Montreal Cognitive Assessment, and Neurobehavioral Cognitive Status Examination."},
+    {"paper": "P-698", "page": 3, "quote": "Finally, 715 participants (369 and 346 in the exercise and control groups, respectively) were analyzed."},
+    {"paper": "P-698", "page": 4, "quote": "exercise was 0.76 [95% CI: 0.37, 0.91]."},
+    {"paper": "P-698", "page": 4, "quote": "However, neither the type of aerobic exercise nor the time of exercise per session was the cause of heterogeneity"},
+    {"paper": "P-698", "page": 4, "quote": "differ from the overall mean effect of 0.70"},
+    {"paper": "P-698", "page": 5, "quote": "The estimated prediction interval (95% PI) showed that the distribution of cognitive enhancement effects ranged from -0.63 to 2.15"},
+    {"paper": "P-698", "page": 6, "quote": "Aerobic exercise type Cognitive factor 6 1.04 0.54 1.53 2.91(1) 0.09 Non-cognitive factor 5 0.37 -0.22 0.95"},
+    {"paper": "P-698", "page": 6, "quote": "0.99 0.43 1.54 1.41(1) 0.24"},
+    {"paper": "P-698", "page": 6, "quote": "Exercise frequency 1»2/weeks 3 0.45 -0.19 1.09 7.67(2) 0.02"},
+    {"paper": "P-698", "page": 6, "quote": "Exercise frequency 0.264 0.080 3.306 0.001"},
+    {"paper": "P-699", "page": 1, "quote": "The results of the meta-analysis demonstrated a statistically signiﬁcant difference in the Mini-mental State Examination, Mon- treal Cognitive Assessment"},
+    {"paper": "P-699", "page": 2, "quote": "60 years with a diagnosis of MCI and dementia."},
+    {"paper": "P-699", "page": 2, "quote": "(3) Control: The comparison group accepted regular activities with- out exergaming, including traditional physical activities, cogni- tive training, and physical and cognitive training."},
+    {"paper": "P-699", "page": 2, "quote": "Four studies38,40,41,45 reported adults with MCI (n = 166) and six reported adults with dementia"},
+    {"paper": "P-699", "page": 3, "quote": "Five studies38,42-44,47 evaluated the effects of exergame interventions on MMSE scores."},
+    {"paper": "P-699", "page": 3, "quote": "on MMSE scores (MD=0.95, 95% CI 1.17 to 3.08, P =0.38)."},
+    {"paper": "P-699", "page": 6, "quote": "MMSE 5 74 0.04 Random 0.95 -1.17"},
+    {"paper": "P-699", "page": 3, "quote": "After the exclusion of one study42 with a large amount of heterogeneity, the remaining four articles indicated a signiﬁcant beneﬁcial effect on the MMSE score in favor of the experimental group compared to con- trol group (MD = 2.49, 95% CI 2.12 to 2.85, P<0.00001)"},
+    {"paper": "P-699", "page": 3, "quote": "Analyzing three studies38,40,41 based on the MoCA scores, the meta-analysis results demonstrated that exergaming had a signiﬁ- cant beneﬁcial effect on MoCA scores with heterogeneity between studies (MD=2.12,95% CI 0.53 to 3.70, P =0.009,I2 = 99%, random- effect model)."},
+    {"paper": "P-699", "page": 4, "quote": "Liu2022 China RCT 16/17 MCI"},
+    {"paper": "P-699", "page": 4, "quote": "Zheng2021 China RCT 18/20 dementia"},
+    {"paper": "P-699", "page": 4, "quote": "Santen2020 Netherlands RCT 52/32 dementia"},
+    {"paper": "P-699", "page": 4, "quote": "Amjad 2019 Pakistan RCT 20/18 MCI"},
+    {"paper": "P-699", "page": 5, "quote": "Padala 2017 USA RCT 15/15 Mild Alzheimer’s"},
+    {"paper": "P-699", "page": 5, "quote": "Padala 2012 USA RCT 11/11 mild Alzheimer’s dementia (AD)."},
+    {"paper": "P-699", "page": 5, "quote": "LIAO 2020 China RCT 18/16 MCI"},
+    {"paper": "P-699", "page": 7, "quote": "For MMSA scores, the control groups in the included studies’ performed traditional physical activities."},
+    {"paper": "P-699", "page": 7, "quote": "Although our meta-analysis showed that exergaming improves cognitive and physical function in older adults with MCI or dementia, the limited number of included studies and the large heterogeneity limit the strength of the evidence"}
+  ],
+  "record_defects": [
+    "conflict_statement: the two reviews do not 'reach opposite headline verdicts'; P-699's abstract reports a significant difference on MMSE and MoCA and its conclusion states that exergaming improves cognition in older adults with MCI or dementia (with a caution for heterogeneity).",
+    "conflict_statement and claim_b call the MMSE pool P-699's 'PRIMARY' cognitive estimate; P-699 designates no primary outcome and reports the MMSE and MoCA pools side by side.",
+    "The record omits P-699's MCI-only MoCA pool (3 MCI trials, MD 2.12, 95% CI 0.53-3.70, P = 0.009), which agrees in direction with P-698; the null MMSE pool is four dementia trials plus one MCI trial (Amjad 2019).",
+    "claim_b ('pooling MCI AND dementia in one cognitive estimate (166 MCI across 4 trials, 350 dementia across 6 trials)'): those counts describe the 10 included trials; no single cognitive pool combines them (MMSE: 5 trials, 1 in MCI; MoCA: 3 trials, all MCI).",
+    "Quotes attributed to P-699 ('whether the cognitive benefits survive when MCI and dementia are analysed separately'; 'The most serious problem is that the abstract does not match the results table'; 'whether exergaming outperforms an equally dosed conventional physical-plus-cognitive training arm, which Liao 2020 specifically failed to show on MoCA') are not in the PDF; they are summary-block text (summaries.md lines 63217 and 63233). The abstract-versus-table mismatch they describe is real (the abstract lists MMSE, SPPB and PASE as significant; Table 2 gives P = 0.38, 0.87 and 0.11), and P-699 does report that Liao 2020 found no MoCA difference against physical-cognitive training.",
+    "claim_a ('its two dosing moderator claims rest on non-significant between-group tests'): the session-time contrast is non-significant (Q(1) = 1.41, p = 0.24), but the frequency moderator is significant (Q(2) = 7.67, p = 0.02; meta-regression b = 0.264, p = 0.001); the other non-significant contrast (cognitive factors, Q(1) = 2.91, p = 0.09) is about exercise type, not dose.",
+    "residual_risk ('P-699 never identifies which two of its ten trials were dropped'): not stated outright, but recoverable, since the pools list their references (MMSE 38, 42-44, 47; MoCA 38, 40, 41; SPPB/PASE 39, 44) and Torpil 2021 [45] and Wiloth 2017 [46] enter none; and the unchecked trial overlap it raises is now checked: the two reviews share no trial."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "A disagreement would need an MCI-only exergaming (or aerobic-exercise) pool, with a comparable comparator and metric, whose interval excludes benefit or points the other way; P-699's MCI-only pool (MoCA) points the same way as P-698. Label alternative: documented_incommensurability (intervention, comparator, population and metric all differ; dataset family unmatched) if compatibility is judged only after the quantity question, as the operator did for C-234; no reading makes the pair genuine."
+}

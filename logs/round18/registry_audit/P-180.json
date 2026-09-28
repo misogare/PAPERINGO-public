@@ -1,0 +1,18 @@
+{
+  "paper": "P-180",
+  "pack": 1,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Deep learning prediction of mild cognitive impairment conversion to Alzheimer's disease at 3 years after diagnosis using longitudinal and whole-brain 3D MRI",
+  "is_model_study": true,
+  "blind_codes": {"Task_Type": "T2", "Category": "C1", "Validation_Type": "V3", "Sample_N": "1111 (320 NC + 237 AD + 554 MCI = 333 sMCI + 221 pMCI)", "Publication_Year": "2021", "ADNI_Dependent": "true"},
+  "registry_codes": {"Task_Type": "T2", "Category": "C1", "Validation_Type": "V2", "Sample_N_Approx": "1111", "Publication_Year": "2021", "ADNI_Dependent": "true"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T2", "reason": "The task is pMCI vs sMCI prediction of conversion at 3 years, reported as balanced accuracy.", "quote": "The goal of our study was to develop and evaluate a novel deep learning algorithm to predict mild cognitive impairment (MCI) to AD conversion at three years after diagnosis using longitudinal and whole-brain 3D MRI.", "page": 1},
+    "Category": {"verdict": "match", "correct_code": "C1", "reason": "The only input is T1-weighted 3D MRI.", "quote": "Longitudinal data include T1-weighted 3D MRI obtained at initial presentation with diagnosis of MCI and at 12-month follow up.", "page": 1},
+    "Validation_Type": {"verdict": "error", "correct_code": "V3", "reason": "The data get a stratified random 75/25 train/test split at patient level, with 4-fold cross-validation inside the training portion. The test partition is held out from all training and validation (p5: 'once the test partition was randomly selected, the test set images were set aside and not used for any training or validation'). All data are from ADNI, with no external site. The template says: 'If paper says train/test split without external site, assign V3'; V3 = k-fold + held-out test partition.", "quote": "Data were split into 75% and 25% for training and testing, respectively, with 4-fold cross validation.", "page": 1},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "1111", "reason": "320 NC + 237 AD + 554 MCI (333 sMCI + 221 pMCI, per Table 1 on p4) = 1111.", "quote": "This retrospective study consisted of 320 normal cognition (NC), 554 MCI, and 237 AD patients.", "page": 1},
+    "Publication_Year": {"verdict": "match", "correct_code": "2021", "reason": "Published 25 May 2021.", "quote": "Published 25 May 2021", "page": 1},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "true", "reason": "ADNI (phases 1, GO, 2 and 3) is the sole dataset.", "quote": "Patients were taken from the ADNI1, ADNIGO, ADNI2, and ADNI3 patient sets.", "page": 3}
+  },
+  "notes": "Coding V2 instead of V3 undercounts V3 among classification (T1-T3) studies and in Table 1's 2021 row."
+}

@@ -1,0 +1,398 @@
+{
+ "screened": 42,
+ "dropped_at_screen": [
+  {
+   "key": "P-828|P-878",
+   "quantity": "Odds of prevalent MCI by sarcopenia status (AWGS criteria), community-dwelling Chinese older adults, cross-sectional logistic regression",
+   "reason": "P-828 does not report the stated quantity (possible sarcopenia). On the matched quantity (defined sarcopenia vs none), the two studies agree in direction and their CIs overlap (P-878 OR 1.357, 1.031-1.787; P-828 adjusted OR 2.37, 0.98-5.62). The only opposite-signed estimate is P-878's possible-sarcopenia OR 0.718. That figure looks like an outcome or reference coding inversion, since in the same block handgrip (OR 1.047/kg), gait speed (1.571), ASMI (1.405) and depression (0.956) are all signed against the paper's own conclusions. MCI definitions (AACD telephone battery vs MMSE cut-off + IADL), reference groups (P-828's 'normal' also excludes osteoporosis) and age floors (45+ vs 65+) also differ. Separate data note for the operator, outside this screen: P-878's registry and ledger rows may carry the 0.718 figure as a protective association and should be checked against its source Table 2.",
+   "score": 1
+  },
+  {
+   "key": "P-363|P-830",
+   "quantity": "Choroidal size on enhanced-depth OCT: total choroidal area (P-363) against subfoveal choroidal thickness (P-830)",
+   "reason": "The two studies may share data. P-830's roster includes 'Robbins 2020', which it cites for 'thinning of the choroid via OCTA ... could also be detected in MCI' (Table 1 MCI choroidal angioarchitecture, OCTA k=1, n=204). P-363 is Robbins et al., AJO 2021 (223:359-367), an EDI-OCT study whose participants sum to 278. It is unresolved whether that citation is P-363. If it is, P-830 read P-363 as consistent with thinning. Separately, P-363's block has a defect: its '### What is the sample size?' field reads '150 (target) - STUDY PROTOCOL; target enrollment 50 DS/50 MCI/50 HC', but the block's own methods give 67 AD / 74 MCI / 137 controls. That field needs repair before G3 sourcing of Sample_N_Approx.",
+   "score": 2
+  },
+  {
+   "key": "P-642|P-668",
+   "quantity": "Change in MMSE after a non-pharmacological cognitive intervention vs control, in MCI (pooled RCT evidence)",
+   "reason": "None that would change the verdict. If the pair is revisited, the question is whether Tarnanas et al. 2014 is included in P-642's immersive-VR node. Even so, the comparison would be one trial against a pooled class estimate, not P-668's synthesis.",
+   "score": 1
+  },
+  {
+   "key": "P-1265|P-1293",
+   "quantity": "Serum/peripheral-blood glutamate concentration",
+   "reason": "If revisited, two things are unresolved. First, whether P-1293's source gives a test statistic for glutamate. Second, the P-1293 metabolome fluid (serum vs plasma). Even with both resolved, P-1265 offers no all-MCI vs CN contrast to oppose it. Block note: P-1293 carries two conflicting Validation Type Assigned lines (the V2 audit line above a stale V3 line). The stale line should be removed so agent3 parses V2.",
+   "score": 2
+  },
+  {
+   "key": "P-708|P-878",
+   "quantity": "Sarcopenia status and odds of MCI in Chinese adults aged 45+ (CHARLS)",
+   "reason": "Different exposures: possible sarcopenia (P-878, OR 0.718) is not diagnosed sarcopenia (P-708, OR 1.625). The outcomes also differ, incident vs prevalent MCI. On the matched exposure the two agree, P-878 defined sarcopenia OR 1.357 (1.031-1.787) against P-708 OR 1.625 (1.188-2.224). P-878's contrary sign comes from inconsistent sign coding inside its own table, which the P-878 authors do not interpret as protective. If anything needs following up, it is P-878's reference categories, not a cross-study contradiction.",
+   "score": 1
+  },
+  {
+   "key": "P-646|P-878",
+   "quantity": "Depressive symptoms (CES-D based) and MCI in community-dwelling middle-aged and older adults (population-level association)",
+   "reason": "Different horizon (incident over 20 years vs cross-sectional prevalence) and different exposure coding (binary CES-D-8 of 4 or more vs a per-point CESD-10 score). P-878's depressive-symptom OR below 1 sits in a Table 2 whose handgrip, gait-speed and FTSST ORs are all sign-inverted against the paper's own conclusions. That looks like an outcome-coding or reporting artefact, so it belongs in the coding-error queue for P-878's registry row, not in the contradiction queue.",
+   "score": 2
+  },
+  {
+   "key": "P-647|P-892",
+   "quantity": "Baseline MoCA score (per point) as a predictor of conversion from MCI to dementia / major NCD",
+   "reason": "Same direction once P-892's own descriptive data and interpretation are taken into account (lower MoCA means more conversion in both). The apparent OR above 1 comes from the coding direction. The population class also differs: SVD/vascular MCI vs general community MCI.",
+   "score": 1
+  },
+  {
+   "key": "P-1133|P-217",
+   "quantity": "Risk of later progression (to MCI/dementia) in people who reverted from MCI to normal cognition",
+   "reason": "Different quantity. P-217 does not report a result for the contrast P-1133 measures (AD-dementia hazard, reverters vs stable MCI). Its 2.48-fold figure compares the <MCI-to-MCI re-progression intensity with a baseline MCI transition rate, not with stable-MCI dementia risk. Its 'reversion does not mean long-term low risk' is an interpretation with no contradicting comparator statistic.",
+   "score": 1
+  },
+  {
+   "key": "P-513|P-528",
+   "quantity": "Resting-state ALFF in the left superior temporal gyrus, MCI vs healthy controls (ALE coordinate meta-analysis)",
+   "reason": "The two results are for different subregions (BA22 vs BA39/41) drawn from different network-restricted study pools (SN vs DAN), and the measures differ (ALFF+fALFF vs ALFF). ALE clusters that point opposite ways in non-overlapping voxels are not mutually exclusive. A minor data oddity, not a reason to advance: both blocks give 321 subjects for different analyses (P-513 decreased ALFF/fALFF, 12 experiments; P-528 increased ALFF, 13 experiments). If anyone checks coordinates, check this count at the same time.",
+   "score": 2
+  },
+  {
+   "key": "P-1364|P-1377",
+   "quantity": "Serum interleukin-6 concentration, MCI vs non-demented controls",
+   "reason": "P-1364's contrast is MCI vs osteoarthritis controls. The authors attribute the raised IL-6 to osteoarthritis, and the block gives no MCI vs healthy-control IL-6 difference. The candidate's claim 'IL-6 lower in MCI than controls' is really 'IL-6 higher in inflamed osteoarthritis patients', which is a different quantity from P-1377's MCI vs healthy HC comparison. What could reopen it: the pair would be worth re-examining only if the P-1364 source reported a significant MCI below healthy-serum-HC difference for IL-6. The block gives no sign of one.",
+   "score": 1
+  },
+  {
+   "key": "P-1103|P-517",
+   "quantity": "Resting-state functional connectivity involving medial prefrontal/medial frontal cortex and anterior cingulate cortex, MCI vs healthy controls",
+   "reason": "Different quantity. P-517 reports region-level convergence of increased-FC foci with unspecified seeds, not the mPFC-ACC edge. For this pair to be a contradiction, the ALE clusters would have to come mainly from experiments seeded in the mPFC reporting increased FC to the ACC, or seeded in the ACC reporting it to the mPFC. That is unlikely given the authors' reading of the increase as compensation for decreased PCC activity. P-1103 also gives no numeric statistic for the group difference.",
+   "score": 2
+  },
+  {
+   "key": "P-528|P-529",
+   "quantity": "Resting-state ALFF in the middle temporal gyrus, clinical MCI vs healthy controls",
+   "reason": "The candidate rests on laterality. It pairs P-528's right-MTG decrease with P-529's left-MTG increase. ALE is a coordinate-convergence method, so the absence of a left-MTG cluster in P-528 is not evidence of a left-MTG decrease. P-529's same-hemisphere right-temporal findings agree in direction with P-528. The only way this could revive is if P-528's full foci tables list a left-MTG ALFF decrease, and its block's results section, which names hemispheres region by region, gives no sign of that.",
+   "score": 1
+  },
+  {
+   "key": "P-217|P-986",
+   "quantity": "Risk of later progression after reverting from MCI to normal cognition (older adults with clinical MCI)",
+   "reason": "Different quantity. P-217 measures re-progression to MCI against a baseline transition rate, and its dementia probability rises over time within the post-reversion group. P-986 measures incident-dementia hazard for reverters vs stable MCI. Neither block reports the other's result, so there is no opposite-direction finding on the same comparison.",
+   "score": 1
+  },
+  {
+   "key": "P-649|P-740",
+   "quantity": "Effect of DHA (n-3 PUFA) supplementation vs placebo on global cognitive function in older adults with MCI",
+   "reason": "Different instrument (WAIS-RC full-scale IQ vs MMSE), different population class (MCI only vs mixed MCI/AD, with the MCI-like subgroup null in P-740) and different horizon (12 vs 24 months). Under the rule this is not the same quantity.",
+   "score": 2
+  },
+  {
+   "key": "P-642|P-921",
+   "quantity": "Effect of immersive virtual-reality cognitive intervention on global cognition (MMSE) in older adults with MCI",
+   "reason": "Different contrast (between-arm vs control against within-group pre-post), and P-921 reports no MMSE. On the shared instrument (MoCA), P-642 is null, not opposite.",
+   "score": 1
+  },
+  {
+   "key": "P-1273|P-1364",
+   "quantity": "Serum interleukin-6 (IL-6) concentration",
+   "reason": "The comparator differs: P-1364's NIC group is osteoarthritis patients with raised systemic inflammation, and its authors attribute the IL-6 gap to that group, not to MCI. The population class also differs: MCI due to AD versus MCI within cerebrovascular stenosis. And P-1273 has no statistic for IL-6 on its own.",
+   "score": 1
+  },
+  {
+   "key": "P-1248|P-1364",
+   "quantity": "Circulating (blood) interleukin-6 level, MCI vs non-impaired comparison group",
+   "reason": "P-1364's significant IL-6 contrast uses an osteoarthritis comparator, and the authors attribute the high comparator IL-6 to osteoarthritis. P-1364 reports no IL-6 difference between MCI and healthy controls, so it does not report a result on the same quantity as P-1248. The block does not say which group the 3.1 pg/mL belongs to (MCI or HC). That does not change the outcome, because the direction against healthy controls is never claimed.",
+   "score": 1.5
+  },
+  {
+   "key": "P-556|P-864",
+   "quantity": "Correlation between medial temporal (hippocampal-region) volume and episodic/delayed memory in cognitively normal older adults",
+   "reason": "Different quantity: presubiculum subfield vs a four-region average, and MoCA MIS vs an RAVLT/Logical Memory composite. P-864's control-group figure is a non-significant average with no per-region value, and P-556 reports no coefficient. On the comparable whole-hippocampus measure, both studies imply no significant correlation in cognitively normal adults. This is a significance-only difference in different measures, not a contradiction.",
+   "score": 1
+  },
+  {
+   "key": "P-892|P-964",
+   "quantity": "Baseline MoCA score as a predictor of conversion from MCI to dementia / major neurocognitive disorder (odds ratio)",
+   "reason": "Different population class: SVD or vascular MCI (P-892) vs general tertiary-hospital MCI (P-964). Beyond that, P-892's own block and descriptive data show the same direction as P-964 (lower MoCA means higher conversion risk). The OR 1.09 is described as borderline and is interpreted in its own block as lower MoCA raising risk, so the opposite direction is an artefact of scaling or reading the sign, not a result the study itself reports. The horizons also differ (1 year vs about 24 months).",
+   "score": 1
+  },
+  {
+   "key": "P-1103|P-513",
+   "quantity": "Resting-state functional connectivity involving the cingulate / medial frontal region, clinical MCI vs healthy controls",
+   "reason": "Different quantity. The pair sets a single mPFC-seed to ACC edge (P-1103) against an ALE cluster of increased FC with salience-network seeds (P-513). The 'cingulate' match is only a location in the brain, not the same connection. P-513 also reports decreased medial/dorsal frontal FC and decreased ACC ReHo, pointing the same way as P-1103.",
+   "score": 1.5
+  },
+  {
+   "key": "P-1317|P-363",
+   "quantity": "Choroidal vascularity in MCI vs cognitively normal controls",
+   "reason": "Different quantity: the subfoveal OCT CVI ratio vs UWF en-face large-vessel density. P-363's own absolute luminal area is higher in MCI, the same direction as P-1317. Note also that both papers come from the same Duke group (Robbins, Grewal, Fekrat), and P-1317 uses the EMINDS cohort, so the participants probably overlap and the two studies are not independent. Separate block defect: P-363's 'What is the sample size?' field reads '150 (target) - STUDY PROTOCOL; target enrollment 50 DS/50 MCI/50 HC'. That contradicts the block's own 67 AD / 74 MCI / 137 controls and should be repaired (the likely registry Sample_N_Approx error too).",
+   "score": 1.5
+  },
+  {
+   "key": "P-151|P-740",
+   "quantity": "Omega-3 (n-3 PUFA: EPA/DHA) supplementation vs placebo, effect on global cognition (MMSE-type scores)",
+   "reason": "Overlapping estimates on the matching population. The narrow MCI-only CrI belongs to a different population class from P-740's mixed MCI/AD sample, and P-740's own MCI-like subgroup is null. The candidate's significant harm is a secondary mixed-model beta with an unknown contrast. P-740 is plausibly nested in P-151's omega-3 node. The atom pair compares different interventions.",
+   "score": 1
+  },
+  {
+   "key": "P-791|P-831",
+   "quantity": "Baseline depressive symptoms as a risk factor for incident MCI (risk ratio for developing MCI, higher vs lower depressive symptoms)",
+   "reason": "Different population class: P-831 is restricted to people with SCD, P-791 samples the general older population. Different contrast and metric: P-831 pools unadjusted SMD-derived ORs (progressors versus stable, SMD reference group not stated), while P-791 reports a Poisson RR for CES-D >=10. The horizon and the MCI definition also differ. The 0.01 gap between the intervals does not make these the same quantity. P-791's 1.45 has a further limitation: it comes from the N=3962 persistent-residence subsample, and the extract states no adjustment set for it.",
+   "score": 2
+  },
+  {
+   "key": "P-325|P-822",
+   "quantity": "Crude (unadjusted) sex difference in screen-defined MCI prevalence among community-dwelling older adults",
+   "reason": "The instrument and population definitions differ, and in both papers the sex contrast is a secondary crude descriptive. Neither is adjusted for education, which drives the female deficit in older Chinese cohorts. Reading the source documents cannot turn this into a same-quantity comparison.",
+   "score": 2
+  },
+  {
+   "key": "P-773|P-878",
+   "quantity": "Cross-sectional association between long self-reported nightly sleep duration and the odds of MCI (vs cognitively normal) in community-dwelling Chinese older adults (logistic OR)",
+   "reason": "Comparing the two needs a linearity conversion across different parameterisations, and the converted intervals still overlap. The outcome definitions and exclusions also differ, including depression, the main suspected confounder of long sleep. P-773's continuous MoCA curve is an inverted U with its optimum at 6.87 hours, the same direction as P-878. The P-878 block's Table 2 also shows sign oddities in other rows (possible sarcopenia OR 0.718, depressive symptoms OR 0.956), although the candidate reports that the crude 8-hours-or-more row reproduces from the counts.",
+   "score": 2
+  },
+  {
+   "key": "P-1112|P-1215",
+   "quantity": "Effect of choline alfoscerate (choline alphoscerate) use vs non-use / no therapy on conversion from MCI to Alzheimer's disease dementia (relative risk of conversion)",
+   "reason": "The P-1215 block reports no statistic for the conversion result and cites it second-hand (Ponomareva 2024 is not in the corpus). The only intervals are reconstructions, and they overlap P-1112's null intervals. Population, design, dosing and metric also differ. The only pairing that could be admissible is P-1112 against the primary Ponomareva 2024 paper, and that would still need its reported statistics and would likely remain overlapping.",
+   "score": 1
+  },
+  {
+   "key": "P-1127|P-711",
+   "quantity": "Pooled proportion of people with MCI recruited in clinical/hospital settings who revert to normal cognition",
+   "reason": "The two estimates differ in horizon and outcome definition, as the blocks show: reversion as end-of-follow-up status in studies of 3 years or more vs a label change with no follow-up limit. That makes them different quantities under the rule. The remaining disagreement is magnitude-only between pooled means of heterogeneous meta-analyses (I2 90-98%), with the same direction pattern, and P-711 never tested its setting subgroups formally.",
+   "score": 2
+  },
+  {
+   "key": "P-680|P-835",
+   "quantity": "Pooled standardised effect of exercise (any modality) vs control on overall cognition (cognitive outcomes pooled across domains) in older adults with MCI",
+   "reason": "Same-direction magnitude discrepancy between random-effects means of different study sets and pooling units. Record it as a magnitude discrepancy explained by selection (blood-marker trials, non-amnestic only, non-RCTs allowed), per-study composite vs multilevel domain-level pooling, and heterogeneity, not as a genuine contradiction.",
+   "score": 1
+  },
+  {
+   "key": "P-646|P-678",
+   "quantity": "Adjusted association of female (vs male) sex with incident MCI in community-dwelling older adults who were cognitively intact at baseline",
+   "reason": "Different outcome instruments and norming, different metric type and horizon, different national populations and adjustment for education. Sex is a covariate in both. The source documents cannot repair this, because P-678 reports no model with direct education adjustment or education-normed outcomes. Not a same-quantity contradiction.",
+   "score": 2
+  },
+  {
+   "key": "P-803|P-822",
+   "quantity": "Crude (unadjusted) association of sex with prevalent MCI in community-dwelling older adults in East Asia",
+   "reason": "Different MCI instrument and operational definition (MoCA-J 25/26 screen versus education-stratified MMSE plus IADL), and different national populations, for a crude descriptive quantity driven by education. Reading the source documents cannot change this: the blocks already give both numbers and both definitions. Separately, P-803's own figures disagree: the printed 50.6% women in the normal column does not reconcile with its Table 2 or with the 804 women in the sample (recomputed 56.0%). Women stay over-represented in MCI either way.",
+   "score": 2
+  },
+  {
+   "key": "P-759|P-760",
+   "quantity": "ADAS-Cog change (points, lower = better) with manual/electro-acupuncture vs control in Chinese amnestic MCI, mean difference",
+   "reason": "Different comparison: waitlist-controlled total effect versus sham-acupoint-controlled specific effect. About 30% of P-760's net difference comes from the waitlist arm getting worse (+1.72). The disjoint intervals are expected from the design difference and are same-direction.",
+   "score": 1
+  },
+  {
+   "key": "P-682|P-878",
+   "quantity": "Low muscle strength state (AWGS-type low grip / possible sarcopenia) and odds of MCI in community-dwelling Chinese older adults",
+   "reason": "P-878 Table 2 coding error: the possible-sarcopenia row is the reciprocal of the crude OR its own Table 1 implies. Recommend recording the pair as reclassified on reading (P-878 coding error), not admitting it, and correcting the P-878 atom. The same inversion already dissolved P-644|P-878.",
+   "score": 1
+  }
+ ],
+ "advanced_low_score": [
+  {
+   "key": "P-644|P-878",
+   "quantity": "Adjusted OR for prevalent MCI per unit of continuous gait speed (m/s) in Chinese community-dwelling adults, cross-sectional, AWGS-measured gait. Handgrip strength (per kg) and depressive-symptom score are secondary checks on the same pair.",
+   "score": 2
+  },
+  {
+   "key": "P-517|P-774",
+   "quantity": "PCC-seeded resting-state FC to medial frontal cortex (medial SFG / medial frontal gyrus) and to the cingulate (middle cingulate), clinical (amnestic) MCI vs healthy controls in older adults",
+   "score": 3
+  },
+  {
+   "key": "P-1220|P-1396",
+   "quantity": "Relative plasma valine level, clinical/community MCI vs cognitively normal older controls (cross-sectional metabolomics)",
+   "score": 3.5
+  },
+  {
+   "key": "P-1275|P-1341",
+   "quantity": "Pooled SMD of blood (serum/plasma) NfL, clinical MCI vs cognitively healthy controls, cross-sectional, all assays pooled (P-1341 blood subgroup vs P-1275 blood pool)",
+   "score": 2
+  },
+  {
+   "key": "P-249|P-680",
+   "quantity": "Pooled standardised difference in means of exercise (aerobic, resistance or multimodal, no concurrent cognitive task) against a non-exercise control on global cognition in older adults with MCI, from RCTs, at the end of the intervention.",
+   "score": 3
+  },
+  {
+   "key": "P-711|P-986",
+   "quantity": "Per-year age and reversion from MCI to normal cognition among people with MCI: P-986 adjusted IRR (Poisson, follow-up offset) in a Swedish population cohort vs P-711 random-effects pooled OR across 19 heterogeneous studies that include P-986's own cohort.",
+   "score": 3
+  },
+  {
+   "key": "P-517|P-529",
+   "quantity": "Voxelwise resting-state ALFF difference, MCI vs HC, in right posterior inferior temporal/fusiform cortex (BA37/BA20), at matching voxels",
+   "score": 2
+  }
+ ],
+ "skipped_already_read": [],
+ "adjudicated": 3,
+ "genuine": 0,
+ "results": [
+  {
+   "key": "P-249|P-674",
+   "paper_a": "P-249",
+   "paper_b": "P-674",
+   "mined_quantity": "Pooled SMD (random effects) of an exercise-only intervention against a non-exercise control on global cognition in older adults with clinically diagnosed MCI, from RCTs, at the end of the intervention. Duration is an unresolved part of the estimand: 12 months or more (P-249) against 6-48 weeks (P-674).",
+   "score": 5,
+   "verdict": "documented_incommensurability",
+   "confidence": "high",
+   "quantity": "The two pooled figures estimate different quantities.\n\nP-249 (Reparaz-Escudero 2024): pooled SMD (random effects, HKSJ) of LONG-TERM exercise alone, in programmes of 12 months or more, against a sham/stretching/social-activity control. Outcome is global cognition as change from baseline to end of study, which is 12 months for all three MCI trials. Population is community-dwelling older adults with MCI at baseline, k=3 (van Uffelen 2008, Lam 2012, Lam 2015): SMD 0.06 (95% CI -0.10 to 0.21).\n\nP-674 (Ahn & Kim 2023): pooled SMD (DerSimonian-Laird, Hedges' g on change scores) of exercise alone against no treatment, usual activity, education, stretching, recreation or social activity. Outcome is global cognition at the END of 6-48 week programmes (18 of 21 trials ran 24 weeks or less). Population is adults aged 60+ with Petersen MCI in community, nursing-home and care-home settings, k=21: SMD 0.65 (0.39 to 0.91).\n\nOnly two P-674 trials reach 48 weeks (Lam 2012, Lam 2015), and both are also in P-249's MCI pool.",
+   "finding_a": "P-249, p.12-13 (section 3.10): long-term exercise alone had \"a negligible impact on participants diagnosed with MCI at baseline (SMD = 0.06; 95 %CI: -0.10, 0.21)\". The trials are van Uffelen 2008 (walking, 12 months), Lam 2012 (tai chi, 12 months) and Lam 2015 (multicomponent physical arm, 12 months), per Table 2 on p.8. The per-trial SMDs in Fig. 3 (p.11) are van Uffelen -0.14 [-0.47; 0.19], Lam 2012 0.11 [-0.14; 0.36] and Lam 2015 0.11 [-0.13; 0.35]. The outcome is change from baseline to last follow-up (p.2-3). The overall exercise-alone estimate across non-demented adults is 0.05 (-0.04 to 0.13), k=9 (p.1, p.10).",
+   "finding_b": "P-674, p.3 (section 3.4): \"The mean effect (SMD) was 0.65 (95% CI: 0.39 to 0.91)\", from 21 RCTs (2,210 enrolled, 1,916 analysed), with I2 85% and tau2 0.2752. Outcome timing is \"end of exercise therapy\" (p.2), and Table 1 (p.4-5) gives durations of 6-48 weeks.\n\nFig. 3 (p.6) gives per-trial values. The two 48-week trials sit near zero: Lam 2012 0.16 [-0.10, 0.41] and Lam 2015 -0.04 [-0.28, 0.19]. The pooled 0.65 comes from shorter trials such as Bademli 2019 (20 weeks, nursing home) 2.69, Langoni 2019a (24 weeks) 1.45, Song 2016 (12 weeks) 1.35, Song & Yu 2019 (16 weeks) 1.16, Wei & Ji 2014 (24 weeks) 1.08, and Lam 2011 (coded 8 weeks) 1.01 [0.78, 1.25].\n\nThe sensitivity section (p.5) quotes \"0.53 in all studies\", which does not match 0.65.",
+   "same_quantity": "No. The element that fails is horizon and dose.\n\n- Comparison: both are exercise alone against a non-exercise control, so the class broadly matches. The mix differs: all three of P-249's MCI trials used active or sham controls (sham activity, stretching, social activities), while most P-674 trials used usual activity or education.\n- Outcome and metric: matched. Both pool global cognition as an SMD of change from baseline across mixed instruments. P-674's Fig. 3 shows within-group change means (e.g. Lam 2015 -0.2 vs -0.1; Bademli 3.27 vs -1.18), so the effect-size construction does not separate the two.\n- Horizon and dose: NOT matched. P-249 requires programmes of at least 12 months and measures at 12 months or later. P-674 measures at the end of programmes of mostly 8-24 weeks; 18 of its 21 cognition trials ran 24 weeks or less, and only Lam 2012 and Lam 2015 reach 48 weeks. The rule's reading lists horizon as part of the same estimand.\n- Population: both are older adults with clinically diagnosed MCI (Petersen, CDR 0.5 or IWG criteria), so the class matches. However, P-249 admits only community-dwelling adults, while P-674 includes nursing-home and care-home trials (Bademli, Varela, Wei & Ji); its facility subgroup gives SMD 1.43.\n- Design: RCTs in both.\n\nThe two source documents show that horizon is the separating condition. At the horizon they share (the 48-week / 12-month Hong Kong trials), P-674 estimates 0.16 and -0.04 and P-249 estimates 0.11 and 0.11. P-674 also enters the same randomised Hong Kong cohort twice (R=171:218): at its interim point (Lam 2011, g=1.01) and at 1 year (Lam 2012, g=0.16). So inside P-674 itself, horizon changes the estimate for one trial.",
+   "incompatible": "No, not on any shared quantity. As printed, the two pooled intervals are disjoint (P-249's upper bound 0.21 is below P-674's lower bound 0.39), so they would be incompatible if they measured the same quantity. They do not. P-249 pools only interventions of 12 months or more; P-674's pooled value averages end-of-programme effects from mostly 8-24 week trials.\n\nOn the one quantity both documents estimate, long-duration exercise in MCI at about 12 months, they agree:\n- P-674: Lam 2012 0.16 [-0.10, 0.41] and Lam 2015 -0.04 [-0.28, 0.19]\n- P-249: Lam 2012 0.11 [-0.14, 0.36], Lam 2015 0.11 [-0.13, 0.35], and MCI pool 0.06 [-0.10, 0.21]\n\nAll of these intervals overlap. The gap between the pooled numbers comes from the short-duration trials that P-249 excludes by design. Other differences that go with duration remain untested: passive controls, small trials, facility settings, and the double entry of the Lam trial. The disagreement is between different estimands, not a contradiction about one.",
+   "gates": "- Task: matched (both T6 in the registry; syntheses of intervention trials).\n- Dataset family: different trial pools that overlap on two trials (Lam 2012, Lam 2015). A waiver would have been available on population grounds (\"population-level intervention effect; both older adults with clinically diagnosed MCI\"), though P-249 is community-only and P-674 includes facility residents. The pair does not fail here; it fails the endpoint/horizon compatibility judged at adjudication.\n- Validation tier: not applicable to syntheses, so counted as matched.\n- Modality family: matched (global cognition measured by clinical screening instruments such as MMSE, MoCA, ADAS-Cog and CDR-SoB/NCSE, pooled as SMD). The registry's modality strings differ (P-249 \"Behavioural/digital\" vs P-674 cognitive scales), but the measurement class is the same.\n- Endpoint and metric type: the metric matches (change-score SMD). The endpoint horizon does not: 12 months or more after programmes of at least 12 months, against the end of 6-48 week programmes. This is the failing element.",
+   "independence": "These are distinct studies by unrelated author groups (Navarrabiomed/UPNA, Spain; Kangwon National University, Korea). Non-independence goes on the record: two of the three trials in P-249's MCI subgroup (Lam 2012, Lam 2015) are also in P-674's pool, and P-674 enters the Lam 2011/2012 Hong Kong trial twice.",
+   "manuscript_statement": "Not applicable: the verdict is not genuine.",
+   "quotes": [
+    {
+     "paper": "P-249",
+     "page": "2",
+     "quote": "The interventions consisted of long-term (≥12 months) physical exercise alone or in combination with other non-pharmacological strategies."
+    },
+    {
+     "paper": "P-249",
+     "page": "2",
+     "quote": "changes in global cognitive function, with the latter defined as the change in any validated measure of cognitive function from baseline to the last follow-up."
+    },
+    {
+     "paper": "P-249",
+     "page": "12-13",
+     "quote": "a negligible impact on participants diagnosed with MCI at baseline (SMD = 0.06; 95 %CI: −0.10, 0.21) (van Uffelen et al., 2008; Lam et al., 2012, 2015)"
+    },
+    {
+     "paper": "P-249",
+     "page": "11 (Fig. 3)",
+     "quote": "Uffelen et al. 2008 −0.14 [−0.47; 0.19] ... Lam et al, 2012 0.11 [−0.14; 0.36] ... Lam et al. 2015 0.11 [−0.13; 0.35]"
+    },
+    {
+     "paper": "P-249",
+     "page": "8 (Table 2)",
+     "quote": "Mind-body exercise, Tai-chi; 12 months"
+    },
+    {
+     "paper": "P-674",
+     "page": "2",
+     "quote": "comparisons: no treatment, usual care, health education, and stretching; outcomes: the primary outcome was global cognitive function, and the secondary outcome was depression; timing of outcome measurement: end of exercise therapy; study design: only RCTs."
+    }
+   ],
+   "advocate": null,
+   "challenge": null,
+   "final_genuine": false,
+   "upheld": null
+  },
+  {
+   "key": "P-1081|P-1151",
+   "paper_a": "P-1081",
+   "paper_b": "P-1151",
+   "mined_quantity": "Obesity at or before the MCI diagnosis vs non-obesity (P-1081: vs normal BMI) in clinical MCI, US EHR cohorts, confounder-adjusted hazard ratio for incident all-cause dementia (P-1081 5-year conversion; P-1151 10-year window). Exposure timing differs: contemporaneous BMI category vs obesity recorded before MCI.",
+   "score": 5,
+   "verdict": "documented_incommensurability",
+   "confidence": "high",
+   "quantity": "The two papers estimate different quantities. P-1081: hazard ratio for 5-year conversion to ICD-coded all-cause dementia, for obese vs normal BMI category, where BMI was measured in the EHR at the time of MCI diagnosis (mean imputed for 2.43% with no BMI). The Cox model was trimmed by backward stepwise AIC selection and covers US veterans aged 50 or over with ICD-coded MCI. P-1151: hazard ratio for ICD-10 all-cause dementia within 10 years, for an obesity diagnosis made at least 5 years before the MCI diagnosis (ICD-10 codes plus BMI as a proxy) vs no such diagnosis 5 years before MCI. It uses 1:1 propensity-score matching in TriNetX US EHR adults aged 50 or over with MCI.",
+   "finding_a": "P-1081 (Irwin et al. 2024, VA Corporate Data Warehouse; 59,782 veterans with MCI; 15,420 (25.8%) converted to all-cause dementia within 5 years). Table 3A (p8, real training set, backward stepwise Cox), BMI with Normal as the reference: Obese HR 0.75 (0.71-0.79); Overweight 0.87 (0.83-0.91); Underweight 0.87 (0.72-1.06); BMI overall p<0.001. The three synthetic-data models give the same values. The text (p5, p7) calls high BMI 'protective'. BMI was taken 'at the time of MCI diagnosis' (p3). The paper does not state its BMI category cut-offs in the main text. The cohort is 96-97% male, median age at MCI diagnosis 71.",
+   "finding_b": "P-1151 (Anagnostakis et al. 2025, TriNetX US Collaborative Network; obesity cohort 4118 MCI+obesity vs 4118 matched controls, aged 50 or over; 1520 dementia events among the exposed, mean follow-up 2280 days). The overall figure appears only in the Figure 2 obesity panel (p7), confirmed on the rendered page: HR 1.05 (0.97 to 1.13); RD -0.12 (-3.73 to 3.49). The text (p4) says obesity was 'not significant across all sensitivity analyses (Figures 2 and S1), with the exception of males with obesity (HR 1.13, 95% CI: 1.01 to 1.26; RD 3.20, 95% CI: -2.37 to 8.78)'. The exposure is obesity 'diagnosed at least 5 years before the MCI diagnosis', compared with 'those without the diagnosis 5 years prior to the MCI diagnosis' (p2). The cohort is 45% male, mean age 68.5.",
+   "same_quantity": "No. The exposure and the reference group differ in definition, and these are the elements that decide what is estimated.\n(1) Exposure timing. P-1081 uses the BMI category recorded at MCI diagnosis, i.e. current body mass in someone already cognitively impaired. P-1151 uses an obesity diagnosis made at least 5 years before MCI and says the lag was chosen on purpose, 'to avoid confounding effects of recent diagnoses' (p8). P-1081's own discussion (p7) explains its protective result through late-life BMI decline tracking cognitive decline ('decreased energy metabolism leading to decline in BMI and cognition'). That reverse-causation pathway is exactly what the P-1151 lag is built to remove, so the two designs are aimed at different causal questions.\n(2) Ascertainment. P-1081 uses a measured BMI category. P-1151 uses ICD-10 obesity codes plus BMI as a proxy, with no race-specific cut-offs. Its PS-covariate list and Table 1 name the code family 'overweight and obesity' (the Table 1 row is N/A in the obesity cohort), so the exposure may include overweight codes; the exact codes are in Tables S1-S3, which are not in the PDF.\n(3) Reference group. P-1081 compares against measured normal BMI, with overweight and underweight modelled separately. P-1151 compares against people who had no obesity diagnosis 5 years before MCI. That group mixes normal-weight and overweight people and possibly people who became obese in the 5 years before MCI; the paper does not say that controls had to be non-obese at MCI. Recombining P-1081's categories into obese vs non-obese gives roughly 0.82, which does not remove the timing and reference differences.\n(4) Outcome: both are ICD-coded all-cause dementia, compatible. Horizon: 5-year truncated Cox vs a 10-year window. This is secondary under proportional hazards, but it matters because a reverse-causation effect is time-varying.\n(5) Metric: both are hazard ratios, compatible.\n(6) Adjustment. P-1081 is a stepwise prediction model: age, race, ethnicity, sex, cerebrovascular disease, stroke, MI, hypertension, diabetes, alcohol abuse, sleep apnoea; the authors warn of collider bias. P-1151 matches on T2D, hypertension, hyperlipidemia, ischaemic heart disease, CKD, sleep disorders, depression, medications and more. Both condition on metabolic mediators, so this is a secondary difference.\n(7) Population class. Both are US EHR adults aged 50 or over with ICD-coded clinical MCI, but P-1081 is veterans (96% male) and P-1151 is a general insured population (45% male). That alone would count as a moderator, not a class difference.\nThe decisive failure is element (1), made worse by (2) and (3).",
+   "incompatible": "On the numbers alone, the intervals exclude each other: P-1081 obese vs normal 0.75 (0.71-0.79), roughly 0.82 when recombined to obese vs non-obese, against P-1151 overall 1.05 (0.97-1.13). The male stratum goes in the opposite direction and is significant (1.13, 1.01-1.26), against P-1081's 0.75 in a 96% male cohort, though it is one of several sensitivity analyses. So if the two were the same quantity, the results could not both be true. They are not the same quantity, though. Present BMI at the time of MCI diagnosis and an obesity diagnosis made 5 or more years earlier are different exposures with different reference groups. A protective association with current BMI in prodromal disease, alongside a null association with long-standing obesity, is exactly what the reverse-causation account (the late-life 'obesity paradox') predicts. P-1081 itself proposes that account. The numeric disagreement is therefore not a contradiction on a shared estimand.",
+   "gates": "Task: P-1081 is registered T2 (conversion prediction); P-1151 is registered T4. This is a mismatch, but the contested quantity is an association hazard ratio in both, so it could be waived for an association comparison. Dataset family: VA Corporate Data Warehouse vs TriNetX, different. A waiver would be available on population grounds: a population-level association, with both samples being US EHR adults aged 50 or over with ICD-coded clinical MCI, and the sex mix (96% vs 45% male) treated as a moderator. The pair fails on estimand before any waiver matters. Validation tier: not applicable to an association estimate, counted as matched (the registry lists V3 vs V2). Modality family: clinical EHR in both, matched. Endpoint: ICD-coded all-cause dementia in both, compatible. Metric type: HR in both, compatible. Failure point: same-quantity at adjudication, on exposure definition and timing plus the reference group.",
+   "independence": "Distinct studies with no shared authors and distinct data sources (VA CDW 1999-2016 vs the TriNetX US Collaborative Network with 2010-2017 enrolment). Independent; no non-independence to record.",
+   "manuscript_statement": "Not applicable (not genuine).",
+   "quotes": [
+    {
+     "paper": "P-1081",
+     "page": "3",
+     "quote": "Demographic (age, sex, race, ethnicity, and body mass index [BMI]) and selected co-morbid conditions were extracted from EHR at the time of MCI diagnosis and the dataset was locked prior to final analyses."
+    },
+    {
+     "paper": "P-1081",
+     "page": "3",
+     "quote": "If a patient did not have any recorded BMI measurement (2.43%), then we imputed the mean."
+    },
+    {
+     "paper": "P-1081",
+     "page": "3",
+     "quote": "We used backward stepwise selection on co-morbid predictors to identify a parsimonious model based on the Akaike information criterion (AIC)"
+    },
+    {
+     "paper": "P-1081",
+     "page": "8",
+     "quote": "TABLE 3 Cox proportional hazard model for real and synthetic data training sets (backward stepwise selection). ... BMI <0.001 ... Underweight 0.87 (0.72–1.06) ... Normal Ref ... Overweight 0.87 (0.83–0.91) ... Obese 0.75 (0.71–0.79)"
+    },
+    {
+     "paper": "P-1081",
+     "page": "7",
+     "quote": "On the other hand, high BMI was protective of ACD conversion. This is consistent with prior studies that in late life, elevated BMI was found to be associated with lower AD risk40 and slower disease progression in MCI41. The biological mechanisms underlying this observation remain unknown with some proposing changes in behaviors such as eating, decreased energy metabolism leading to decline in BMI and cognition, and changes in adipose tissue hormone levels41."
+    },
+    {
+     "paper": "P-1081",
+     "page": "10",
+     "quote": "The risk/protective factors identified represent associational and not necessarily causal relationships with ACD conversion. Associational relationships may contain spurious correlations, such as those from collider bias."
+    }
+   ],
+   "advocate": null,
+   "challenge": null,
+   "final_genuine": false,
+   "upheld": null
+  },
+  {
+   "key": "P-671|P-986",
+   "paper_a": "P-671",
+   "paper_b": "P-986",
+   "mined_quantity": "Adjusted per-year association of baseline age with reversion from MCI to normal cognition in community-dwelling older adults with MCI (reversion vs non-reversion)",
+   "score": 5,
+   "verdict": "documented_incommensurability",
+   "confidence": "high",
+   "quantity": "The two studies estimate different things. P-671 (Katayama 2021, NCGG-SGS, Obu, Japan): adjusted multinomial-logistic odds ratio per year of baseline age for NC status versus conversion (GCI, MMSE<24, and/or AD) at a single 4-year reassessment. Converters are the reference category. Community-dwelling adults aged 65 and over with psychometric MCI, and 325 of the 769 outcomes are imputed. P-986 (Overton 2023, GAS/SNAC, Skane, Sweden): adjusted Poisson incidence-rate ratio per year of age at the first MCI classification, for the rate per person-year of the first detected reversion. The comparison group is stable MCI only; dementia progressors and people who lost MCI eligibility are outside the 744. The offset is time to reversion or to the end of follow-up. The visit schedule depends on age: every 3 years over 78, every 6 years under 78. Ages run 59-94 and a cognitive complaint is required. The only estimand close to shared, reversion versus remaining MCI, is not reported by P-671. It can be derived as about 0.90 per year from imputed data, and even then it sits on a cumulative-odds scale, not a person-time rate scale.",
+   "finding_a": "P-671, Table 5, p.6 (adjusted models): Age (years) OR 0.79 (0.75-0.84), P<0.01, in the reverters column; OR 0.88 (0.85-0.93), P<0.01, in the maintainers column. The table has only maintainer and reverter columns, so converters are the reference. Table 1, p.4 (the imputed group): mean baseline age 69.6 for reverters (n=256), 72.3 for maintainers (n=395) and 76.4 for converters (n=118); one-way ANOVA P<0.01, post hoc R<M,C and M<C. Of the 769, 325 had no second-wave cognitive examination and their status was estimated by multivariate normal imputation (p.2). In the 444 with observed outcomes, 232 (52.3%) reverted; after imputation the rate was 33.3% (p.4). If observed outcomes were kept, only about 24 of the 325 imputed outcomes are reversions (about 7%). The imputed statuses therefore follow first-wave covariates, which presumably include age. No age estimate from observed data only is reported. My derivation, not the paper's: reverters versus maintainers implies 0.79/0.88 = 0.90 per year, with an approximate 95% CI of 0.83-0.97 if the two estimates were independent. The paper reports no CI for this contrast.",
+   "finding_b": "P-986, Table 4, p.12: Age (y) IRR 1.02 (1.01; 1.03), p<0.001, under the Petersen criteria (n=744: 323 reverters, 421 stable MCI). Under the NP criteria (n=375) it is 1.00 (0.98; 1.02), p=0.885. Model covariates (p.5): sex, age, education, cohabitation, physical activity, alcohol, BMI, cardiovascular disease, smoking, sleep disturbances, number of impaired domains and depression. The offset is time from the first MCI visit to reversion or to the end of follow-up, with a robust variance estimator. Average adjusted predictions (p.9): probability of reversion 0.38 at age 60 and 0.46 at age 70. Unadjusted, Table 1 (p.8): mean age at first MCI is 68.2 for reverters and 68.5 for stable MCI (Petersen), and 66.8 versus 69.3 (NP). So on the cumulative-proportion scale, P-986's own reverters are not older. The positive association appears only in the adjusted person-time rate model, and only under one of the two criteria. The authors call the finding contrary to most prior work and attribute it to selective attendance of healthy older adults (p.14). Visits are every 3 years over 78 and every 6 years under 78 (p.3).",
+   "same_quantity": "No. Element by element:\n(1) Exposure. Chronological age per year in both. Matched.\n(2) Comparison. P-671's reported estimate is reversion versus conversion to GCI/AD. P-986's is reversion versus stable MCI, with progressors excluded from the analytic sample. Age is expected to separate reverters from converters even when it does not separate reverters from people who stay at MCI. P-671's own maintainer-versus-converter OR (0.88) shows that most of the 0.79 is the conversion contrast. Not matched.\n(3) Outcome and horizon. P-671: status at one reassessment after 4 years. P-986: the first reversion detected at any of several visits over a median of 7.0 years. The reversion definition also differs: P-986 requires a retained complaint and intact ADL; P-671 does not. Not matched.\n(4) Metric type. Cumulative odds ratio versus incidence-rate ratio. For the age covariate specifically, P-986's person-time denominator depends on age by design, because the interval to the visit that detects a reversion is 3 years over 78 and 6 years under 78. Older participants also have more visits and so more chances to cross the threshold. Illustrative arithmetic, not in the paper: a doubling of the event rate above 78, fitted linearly over this age distribution (mean 68, SD 9), gives roughly 1.02 per year, the reported size. The paper gives no age-stratified or visit-interval-adjusted estimate, so the size of this artefact cannot be measured from the document. Not matched.\n(5) Population. Both are community-dwelling older adults with psychometrically defined MCI (about 1.5 SD or below the 7th percentile, age-normed). P-671 is aged 65 and over and does not require a complaint. P-986 spans 59-94, includes 60-64-year-olds and requires a complaint. Broadly the same class, with a different age frame.\n(6) Adjustment. P-671 adjusts for MMSE, walking speed and 4-year lifestyle-change class. P-986 adjusts for number of impaired domains, alcohol, cohabitation and BMI. Different sets.\n(7) Data. P-671's estimate rests on 42% imputed outcomes; P-986's rests on observed attenders. The mismatches in (2) and (4) are each enough to make these different estimands.",
+   "incompatible": "Not shown on a shared quantity. The two reported estimates, 0.79 (0.75-0.84) and 1.02 (1.01-1.03), do have opposite signs with CIs excluding 1. But they estimate different contrasts (versus converters against versus stable MCI) on different metrics (4-year cumulative odds against a person-time rate with an age-dependent visit schedule). Take the closest shared contrast, reversion versus remaining MCI. P-671's figure there is derived only (about 0.90, no reported CI, imputed outcomes). P-986's own descriptive data on the cumulative scale show reverters no older than stable MCI (68.2 v 68.5 Petersen; 66.8 v 69.3 NP). The opposite direction exists only in P-986's adjusted rate model, where the time denominator varies with age by design. It is also criteria-dependent within the same cohort: NP gives 1.00 (0.98-1.02). The authors themselves attribute it to a design feature. So the two papers do not report incompatible results on the same quantity.",
+   "gates": "Task: T5 in both registry rows; matched. Dataset family: NCGG-SGS (Japan) versus GAS/SNAC (Sweden); mismatched. A waiver would be available on population grounds (a population-level association in community-dwelling older adults with psychometrically defined MCI), but it is not applied: the pair fails same-quantity on comparison and metric type, and the age frame differs (65+ versus 59-94). Validation tier: V2 in both rows, but not applicable to association studies; counted as matched. Modality family: the exposure is chronological age (demographic) and the outcome is classified from neuropsychological batteries in both; matched in class, although the registry modality_subtype labels differ (population_cohort_epidemiology versus neuropsychological_scores_only). Endpoint and metric-type compatibility at adjudication: fails (reversion-versus-conversion OR against reversion-versus-stable-MCI IRR with an age-dependent person-time offset).",
+   "independence": "Independent. Different cohorts (NCGG-SGS, Obu, Japan; GAS/SNAC, Skane, Sweden), different countries and different author groups (Katayama/Shimada; Overton/Elmstahl). No shared authors. P-986 cites an earlier NCGG-SGS paper (Shimada 2019, ref 27) but not P-671.",
+   "manuscript_statement": "Not applicable: the verdict is not genuine.",
+   "quotes": [
+    {
+     "paper": "P-671",
+     "page": "1",
+     "quote": "The participants in this study were 769 community-dwelling older adults aged ≥65 years with MCI at baseline."
+    },
+    {
+     "paper": "P-671",
+     "page": "2",
+     "quote": "Of the 769 participants, 325 did not undergo the second-wave cognitive examination (Fig. 1)."
+    },
+    {
+     "paper": "P-671",
+     "page": "2",
+     "quote": "we used multivariate normal imputation to adjust for the selection bias and information loss (Supplementary Table 1)."
+    },
+    {
+     "paper": "P-671",
+     "page": "4",
+     "quote": "Of the 444 participants in the no imputation group, 232 (52.3%) participants reverted to NC from MCI. The reversion rate for participants after data imputation was 33.3%."
+    },
+    {
+     "paper": "P-671",
+     "page": "4",
+     "quote": "Age (years)* 69.6 (3.5) 72.3 (5.2) 76.4 (6.5) < 0.01a R<M,C; M<C"
+    },
+    {
+     "paper": "P-671",
+     "page": "6",
+     "quote": "Table 5 Multinomial logistic regression analysis with class membership as independent variable and mainteiners and reverters as dependent variable."
+    }
+   ],
+   "advocate": null,
+   "challenge": null,
+   "final_genuine": false,
+   "upheld": null
+  }
+ ]
+}

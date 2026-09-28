@@ -1,0 +1,18 @@
+{
+  "paper": "P-304",
+  "pack": 5,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "A Dynamic Model for Early Prediction of Alzheimer's Disease by Leveraging Graph Convolutional Networks and Tensor Algebra",
+  "is_model_study": true,
+  "blind_codes": {"Task_Type": "T2", "Category": "C5;C1", "Validation_Type": "V3", "Sample_N": "1664 (250 ADNI + 1414 NACC, final >=7-visit datasets)", "Publication_Year": "2025", "ADNI_Dependent": "true (co-primary with NACC; false arguable)"},
+  "registry_codes": {"Task_Type": "T2", "Category": "C5", "Validation_Type": "V2", "Sample_N_Approx": "1169", "Publication_Year": "2025", "ADNI_Dependent": "true"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T2", "reason": "Binary MCI-to-AD conversion prediction at the next visit (labels 0 = MCI, 1 = AD).", "quote": "We trained DyEPAD on longitudinal EHR data to predict conversion of MCI patients to AD at the next visit.", "page": 11},
+    "Category": {"verdict": "defensible", "correct_code": "C5;C1", "reason": "The registry's C5 captures the primary domain (longitudinal EHR / cognitive test records). In ADNI, the 20 model features also include MRI-derived measures (C1), a secondary domain the code omits. The NACC features are cognitive tests only.", "quote": "After preprocessing, the dataset had 20 longitudinal features for 1,169 patients across 5,759 visits, derived from cognitive performance tests and MRI scans.", "page": 11},
+    "Validation_Type": {"verdict": "error", "correct_code": "V3", "reason": "Every method is trained on 80% of patients and tested on a held-out 20%, over ten random train/test splits. Each dataset (ADNI, NACC) is run separately, so there is no external validation. The definition says a 'train/test split' without an external site is V3. V2 requires 'no separate test set', which the paper contradicts. The splits are repeated random hold-outs rather than one fixed test set, but each evaluation uses patients held out of training.", "quote": "We evaluated all the methods on ten different randomly generated training and test splits. The number of patients selected for training was 80% of the total number of patients, while 20% were used for testing.", "page": 11},
+    "Sample_N_Approx": {"verdict": "error", "correct_code": "1664 (250 ADNI + 1414 NACC)", "reason": "1,169 is the ADNI count after preprocessing, before the paper restricted the data to patients with at least seven visits. It also leaves out the NACC dataset entirely. The models were trained and evaluated on 250 ADNI + 1,414 NACC patients = 1,664. No reading of the paper gives a study total of 1,169: the analysed total is 1,664, the post-preprocessing total is 9,290 and the source total is 48,801.", "quote": "Finally, we focused on patients with at least seven visits for training and model evaluation. This resulted in a final ADNI dataset of 20 longitudinal features for 250 patients and a final NACC dataset with 5 longitudinal features for 1,414 patients.", "page": 11},
+    "Publication_Year": {"verdict": "match", "correct_code": "2025", "reason": "Pac Symp Biocomput. 2025; 30: 675-689.", "quote": null, "page": null},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "true", "reason": "ADNI is one of two co-primary datasets; every experiment is run on ADNI and NACC separately. ADNI is not a secondary comparison, so true is supportable. False would also be arguable, because NACC is an equal primary dataset with a larger analysed N (1,414 vs 250).", "quote": "The experiments were performed on ADNI and NACC datasets separately", "page": 11}
+  },
+  "notes": "This is a classification study, so the V2 code enters the validation-tier statistics. The 1169 figure also understates the analysed sample (1664)."
+}

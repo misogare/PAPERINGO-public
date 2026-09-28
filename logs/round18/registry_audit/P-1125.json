@@ -1,0 +1,19 @@
+{
+  "paper": "P-1125",
+  "pack": 2,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Can we detect cognitive \"super-agers\" in Parkinson's disease? Cognitive, neuropsychiatric and motor outcomes in the first 10 years of Parkinson's disease",
+  "is_model_study": false,
+  "blind_first": "blind codes were written to this file before the registry codes file was opened",
+  "blind_codes": {"Task_Type": "T4", "Category": "C5", "Validation_Type": "V2", "Sample_N": "689 (233 superagers + 339 cognitively normal + 117 PD-MCI)", "Publication_Year": "2025", "ADNI_Dependent": "false"},
+  "registry_codes": {"Task_Type": "T4", "Category": "C5", "Validation_Type": "V3", "Sample_N_Approx": "689 (superagers / cognitively normal / PD-MCI)", "Publication_Year": "2025", "ADNI_Dependent": "false"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T4", "reason": "Longitudinal multilevel models compare trajectories of three baseline cognitive subgroups (superagers, cognitively normal, PD-MCI) in global cognition, depression, anxiety and motor severity. No classifier, cut-point or discrimination figure. Subtype/group-comparison study, T4 (T6 as a descriptive cohort study would also be arguable)."},
+    "Category": {"verdict": "match", "correct_code": "C5", "reason": "PPMI cohort data: neuropsychological tests, MoCA, GDS, STAI-T, MDS-UPDRS III. Baseline CSF markers (alpha-synuclein, tau/amyloid ratios) enter only a sensitivity analysis, so C3 is at most a marginal secondary domain."},
+    "Validation_Type": {"verdict": "error", "correct_code": "V2", "reason": "No predictive model is fitted or validated: there is no train/test split, held-out partition or cross-validation anywhere in the paper. The analyses are multilevel group-difference models (plus ANOVA of baseline CSF markers). Under the convention a non-model study is V2; V3 (k-fold + held-out test) has no basis.", "quote": "Multilevel modeling examined differences between the three cognitive groups (superagers, PD-MCI, cognitively normal) and dependent variables. A separate multilevel modeling analysis was performed for each dependent variable.", "page": 4},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "689", "reason": "Final analysed sample 689 (from 1135 queried): 233 superagers + 339 cognitively normal + 117 PD-MCI (pp. 3, 5)."},
+    "Publication_Year": {"verdict": "match", "correct_code": "2025", "reason": "Parkinsonism Relat Disord. 2025 April; 133: 107345 (p. 1)."},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "false", "reason": "Data from the Parkinson's Progression Markers Initiative (PPMI); ADNI not used."}
+  },
+  "notes": "The V3 code places a non-model cohort study in the held-out-test validation tier. Since is_model_study is false, this row should not enter the review's validation-tier statistics at all; if it currently does, it inflates the V3 count."
+}

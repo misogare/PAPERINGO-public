@@ -1,0 +1,19 @@
+{
+  "paper": "P-567",
+  "pdf_is_right_paper": true,
+  "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-567.txt (full extract, author manuscript; title matches summaries.md '## Paper 567'); page = PDF page marker in the extract",
+  "registry_code": "V3",
+  "correct_code": "V4",
+  "changed": true,
+  "training_data": "ADNI: 282 visit-level samples from 209 amyloid-positive MCI participants (T1 MRI + florbetapir PET + non-imaging data); 30-fold patient-level CV for tuning, final model re-trained on all ADNI data",
+  "test_data": "AIBL (Australia): 33 amyloid-positive MCI samples (PiB PET); binary tasks class 1-2 vs 3-4 (24 samples, accuracy 0.75) and class 1-3 vs 4 (19 samples, accuracy 0.84)",
+  "model_fixed_before_external_test": true,
+  "reason": "The final ADPacer model was trained on all ADNI data with CV-chosen tuning parameters and then applied to AIBL, a different consortium and country, which is V4; the registry's V3 describes only the ADNI cross-validation. The authors call AIBL a preliminary validation (small n, different amyloid tracer, PET features standardised within each dataset, reduced non-imaging feature set).",
+  "quotes": [
+    {"page": 5, "quote": "This study used ADNI data as the primary source for developing and demonstrating ADPacer. As a supplementary, we also included some data from AIBL. Due to the small sample size of the AIBL data, its role in this study is secondary, limited to only providing some preliminary validation of the model."},
+    {"page": 13, "quote": "Finally, we applied the ADPacer model trained using ADNI data to AIBL samples. For this purpose, the model was re-trained using all the ADNI data under the optimal tuning parameters found under CV. Then, the trained model was applied to predict the ordinal class of each sample in AIBL."},
+    {"page": 13, "quote": "First, to mitigate the impact of different tracers used to acquire amyloid-PET in the ADNI and AIBL datasets, the features extracted from amyloid-PET were standardized within each dataset separately."},
+    {"page": 13, "quote": "On the AIBL data, ADPacer achieved accuracies of 0.75 and 0.84 accuracies for task (a) and (b), respectively."}
+  ],
+  "confidence": "high"
+}

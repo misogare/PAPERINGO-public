@@ -1,0 +1,19 @@
+{
+  "paper": "P-554",
+  "pdf_is_right_paper": true,
+  "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-554.txt (full extract, 16 pages; title matches summaries.md '## Paper 554'); page = PDF page marker in the extract",
+  "registry_code": "V1",
+  "correct_code": "V2",
+  "changed": true,
+  "training_data": "Shanghai Memory Study (memory clinic of Huashan Hospital, Fudan University, Shanghai): 116 MCI (41 converters/75 non-converters); features selected by group t-tests on the whole cohort, SVM evaluated by stratified 10-fold CV",
+  "test_data": "ADNI 1/2/GO: 102 MCI (25 converters/77 non-converters); the SMS-selected features were carried over, but the SVM was rebuilt and evaluated by 10-fold CV within ADNI (sMRI+fMRI AUC 0.86)",
+  "model_fixed_before_external_test": false,
+  "reason": "Only the feature set was transferred to ADNI: the SVM was re-trained ('tuned') on ADNI data and scored by 10-fold cross-validation there, so ADNI took part in developing the model it evaluates and this is not V4. Within each cohort the design is k-fold CV without a held-out partition, which is V2; V1 (LOOCV) is also wrong.",
+  "quotes": [
+    {"page": 3, "quote": "Two independent cohorts were used: Shanghai Memory Study (SMS) cohort for selection of potentially effective features and internal cross-validation, and ADNI cohort for these features' external validation, which is different from SMS cohort in population origins, clinical characteristics, scanners, and imaging parameters."},
+    {"page": 6, "quote": "The same MCI features for MCI prediction selected by SMS cohort were applied to ADNI cohort, to evaluate the effectiveness of these selected features on an independent external dataset. SVM-based prediction model construction and evaluation, and the 10-fold cross-validation approach was also utilized in ADNI data, in consistency with SMS cohort."},
+    {"page": 12, "quote": "Specifically, the models constructed from SMS cohort were tuned when validated on ADNI cohort, using same selected MRI predictors as inputs."},
+    {"page": 12, "quote": "Given these factors in nature, it is plausible to tune the neuroimaging models to obtain population-specific parameters for the selected MRI predictors, which alleviate the influence of population heterogeneity and contribute to the effectiveness of proposed imaging features."}
+  ],
+  "confidence": "high"
+}

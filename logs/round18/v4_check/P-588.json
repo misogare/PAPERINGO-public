@@ -1,0 +1,20 @@
+{
+  "paper": "P-588",
+  "pdf_is_right_paper": true,
+  "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-588.txt (full extract, 13 pages; title matches summaries.md '## Paper 588'); page = PDF page marker in the extract",
+  "registry_code": "V3",
+  "correct_code": "V2",
+  "changed": true,
+  "training_data": "BABRI (Beijing Normal University; 135: 76 NC/30 MCI/29 AD) and ADNI (275: 107 NC/126 MCI/42 AD), each analysed separately",
+  "test_data": "No separate test cohort: SVM and regression models evaluated by leave-one-out CV within each cohort (headline AUC 0.901 for CN vs MCI is ADNI LOOCV on n=233); no model trained in one cohort was applied to the other",
+  "model_fixed_before_external_test": null,
+  "reason": "Each cohort was analysed on its own with leave-one-out CV, so the 'two independent cohorts' are a replication with re-fitted models rather than an external test, and there is no held-out partition (not V3). The comparisons behind the headline results have n>=100 (ADNI CN vs MCI n=233), so the template's V1 (LOOCV, n<100) does not fit and this is V2 (CV within the same dataset, no separate test set).",
+  "quotes": [
+    {"page": 1, "quote": "Using multimodal MRI and amyloid-PET data from two cohorts (BABRI: N = 135; ADNI: N = 275)"},
+    {"page": 5, "quote": "We therefore constructed linear regression and support vector machine (SVM) models under leave-one-out cross-validation (see Experimental Section)."},
+    {"page": 11, "quote": "Leave-one-out cross-validation (LOOCV) was employed: for each subgroup comparison (CN vs MCI, CN vs AD, MCI vs AD), one sample was iteratively excluded as the test set, while the remaining samples were used to train the model."},
+    {"page": 7, "quote": "We also evaluated their diagnostic utility in the BABRI cohort (Figure 4d-f)."},
+    {"page": 8, "quote": "c) For CN versus MCI classi\ufb01cation, entropy-lh yielded excellent performance (AUC = 0.901)"}
+  ],
+  "confidence": "high"
+}

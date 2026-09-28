@@ -1,0 +1,75 @@
+{
+  "id": "C-260",
+  "reader": "challenger",
+  "reader_note": "Model reader (Claude) acting as the adversarial second reader under CHALLENGE_BRIEF.md on 2026-09-27. Candidate finding for the human adjudicator; not an operator gate decision.",
+  "first_reader_verdict": "documented_incommensurability",
+  "papers_read": [
+    {"paper": "P-1225", "pdf_is_right_paper": true, "title_as_printed": "Plasma p-tau181 as a promising non-invasive biomarker of Alzheimer's Disease pathology in Subjective Cognitive Decline and Mild Cognitive Impairment (Giacomucci et al.; Journal of the Neurological Sciences 453 (2023) 120805)", "read_in_full": true},
+    {"paper": "P-1231", "pdf_is_right_paper": true, "title_as_printed": "Blood biomarkers for the diagnosis of amnestic mild cognitive impairment and Alzheimer's disease: A systematic review and meta-analysis (Qu et al.; Neuroscience and Biobehavioral Reviews 128 (2021) 479-486)", "read_in_full": true}
+  ],
+  "quotes_checked": [
+    {"paper": "P-1225", "page": 1, "quote": "were classified as carriers of AD pathology (AP+) when A+ was associated with T+ (regardless of N)", "found_verbatim": true},
+    {"paper": "P-1225", "page": 4, "quote": "(as 100% of these patients were AP+) and we merged SCD and MCI, as there were no differences between these groups in p-tau181 concentrations when adjusted for confounding variables.", "found_verbatim": true},
+    {"paper": "P-1225", "page": 3, "quote": "Patients were classified as T+ or T– if CSF p-tau concentrations were higher or lower than cut-off values respectively.", "found_verbatim": true},
+    {"paper": "P-1225", "page": 2, "quote": "Lumipulse GPhospho Tau (181)", "found_verbatim": true},
+    {"paper": "P-1225", "page": 6, "quote": "The higher AUC that we found in our study may be due to the fact that we did not consider Aβ positivity alone, but the combination with other biomarkers of A/T(N) system", "found_verbatim": true},
+    {"paper": "P-1225", "page": 2, "quote": "Between March 2019 and September 2022, we consecutively collected 81 plasma samples", "found_verbatim": true},
+    {"paper": "P-1225", "page": 7, "quote": "Secondly, the lack of a healthy control group", "found_verbatim": true},
+    {"paper": "P-1225", "page": 4, "quote": "The analysis showed that plasma p-tau181 was highly accurate for discriminating between AP+ and AP- patients (AUC = 0.910) (Fig. 4).", "found_verbatim": true},
+    {"paper": "P-1231", "page": 5, "quote": "The blood biomarkers were conducted in the systematic review of 32 eligible studies (Supplementary Table 6).", "found_verbatim": true},
+    {"paper": "P-1231", "page": 5, "quote": "P-tau 181 (AUC = 0.610−0.840; sensitivity 67–71 %; specificity 66–86 %)", "found_verbatim": true},
+    {"paper": "P-1231", "page": 2, "quote": "The ratio of means method (RoM method) was used to evaluate the difference in biomarker concentrations between patients and controls", "found_verbatim": true},
+    {"paper": "P-1231", "page": 2, "quote": "for records from inception to May 17, 2021", "found_verbatim": true},
+    {"paper": "P-1225", "page": 6, "quote": "Karikari et al. described that plasma p-tau181 was able to discriminate Aβ + from Aβ- MCI (AUC of 79.9%)", "found_verbatim": true},
+    {"paper": "P-1231", "page": 5, "quote": "show good diagnostic accuracy in identifying AD and aMCI patients from controls", "found_verbatim": true},
+    {"paper": "P-1231", "page": 2, "quote": "controls included cognitively healthy volunteers", "found_verbatim": true},
+    {"paper": "P-1225", "page": 4, "quote": "36 (8 SCD, 14 MCI, 14 CE-d) out of 72 patients (50.00%) were classified AP+, while the other 36 (18 SCD, 18 MCI) were classifies as non-carriers AP.", "found_verbatim": true}
+  ],
+  "quote_check_note": "All 16 first-reader quotes were matched against ROOT/pdf/P-1225.txt and ROOT/pdf/P-1231.txt on the page stated, after collapsing whitespace. q10 and q14 match only with the soft hyphen and line break inside 'speci-ficity' and 'iden-tifying' removed; the source typos in q16 ('CE-d', 'classifies') are the extract's own.",
+  "strongest_case_against_the_verdict": "Three routes, the second and third on quantities the ledger record did not name. (a) Same analyte, same metric type, overlapping symptomatic populations, independent studies: P-1225's plasma p-tau181 AUC of 0.910 lies above P-1231's entire P-tau181 range (0.610-0.840), and P-1225's sensitivity of 86.36% (95% CI 77.29-95.34) excludes P-1231's sensitivity range (67-71%). If picking out A+T+ patients inside a symptomatic clinic sample is at least as hard as separating AD and aMCI patients from controls, an AUC above the literature's range contradicts it. (b) A claim-level conflict: P-1231 finds blood P-tau181 rising with clinical stage (AD vs aMCI ratio of means 1.36, 1.20-1.54, p < 0.001), while P-1225 concludes that plasma p-tau181 was 'not influenced by the stage or the severity of cognitive decline' and detected no difference between MCI and AD dementia. (c) A ratio-of-means route: P-1225's MCI vs SCD ratio (2.91/2.15 = 1.35; delta-method 95% CI about 1.09-1.68, my computation) against P-1231's aMCI-vs-controls P-tau181 ratio, which the abstract's range (1.36-2.16) suggests could be as high as 2.16.",
+  "why_it_does_or_does_not_succeed": "None of the three survives the source documents. (a) The two AUCs have different target conditions and comparators. P-1225 separates A+T+ patients from other patients within SCD and MCI, with AD dementia excluded, no healthy controls, and T defined by CSF p-tau181 (the index analyte, measured in another fluid). P-1231's range is for AD and aMCI patients against controls. P-1231's figure is a range of study-level results from a 32-study systematic review, not a pooled estimate with an interval, so one further study outside it contradicts nothing. P-1225's own AUC has an approximate 95% interval of 0.82-1.00 from its counts (Hanley-McNeil; the first reader's computation, which I reproduced), which reaches below the top of the range. Neither paper establishes that the biomarker-defined problem is the harder one, and P-1225's authors attribute their higher AUC to the A/T(N) target; its sensitivity is taken at a Youden cut-off chosen in the same sample for that different target. (b) On the one quantity both papers actually measure, the unadjusted ratio of plasma p-tau181 concentration in AD dementia to MCI, they agree. P-1225's means (4.03 vs 2.91 pg/mL) give 1.38 (delta-method 1.08-1.77, my computation) against P-1231's pooled 1.36 (1.20-1.54). P-1225's 'no differences ... between MCI and AD demented patients' is a Bonferroni post-hoc non-significance with 14 and 32 patients, so the difference is one of significance only. Its 'not influenced by the stage' is a different estimand, the stage effect adjusted for AP status, and even there its own coefficient is positive with a 95% CI excluding zero (Diagnosis B = 0.415, 0.051-0.778, p = 0.026). The paper calls that coefficient non-significant only against its 0.0125 threshold. The AD dementia vs SCD ratio (1.87, 1.49-2.36, my computation) also falls inside P-1231's AD vs controls 2.06 (1.39-3.06), although SCD is not a control group. (c) P-1231's text prints no aMCI-vs-controls ratio for P-tau181; it appears only in Fig. 4, which is not in the extract, and the abstract's upper value 2.16 matches no printed P-tau181 comparison. P-1225 has no healthy controls: its SCD patients (30.76% AP+ in Table 2) are not 'cognitively healthy volunteers', and it does not restrict its MCI group to amnestic MCI. The population behind the label differs, which is incommensurability. Gates: task (T1 vs T6), dataset family and validation tier fail with no waiver on record. A C-227-style waiver of the task and design gates for a synthesis set against a primary study would be conceivable only if the quantity were shared. An argument for false_positive exists: the record is itself a filed incommensurability note, and the only shared quantity agrees. It does not displace documented_incommensurability, because the contested AUCs are different quantities. The C-238 precedent, where the contested quantities differed and the one shared quantity agreed, was accepted at G4 as documented incommensurability, as was C-239, a record of the same kind. The first reader's grounds stand; (b) adds a ground they did not name, and it points the same way.",
+  "challenge_result": "upheld",
+  "proposed_verdict": "documented_incommensurability",
+  "grounds": [
+    "The two AUCs have different target conditions and comparators: A+T+ against other patients inside SCD and MCI with no healthy controls (P-1225), against AD and aMCI patients versus controls (P-1231).",
+    "P-1225's reference standard defines T status by CSF p-tau181, the index analyte measured in another fluid, and its authors attribute their higher AUC to the A/T(N) target rather than to the marker.",
+    "P-1231's P-tau181 AUC figure is a range of study-level results from a 32-study systematic review, with no pooled estimate or interval that a single study could contradict.",
+    "On the one quantity both papers measure, the plasma p-tau181 concentration ratio of AD dementia to MCI, the results agree (P-1225 4.03/2.91 = 1.38; P-1231 pooled 1.36, 1.20-1.54), and P-1225's non-significant post-hoc difference is a difference of significance only.",
+    "P-1225's claim that p-tau181 is not influenced by stage is a pathology-adjusted estimand on which its own stage coefficient is positive with a CI excluding zero (B = 0.415, 0.051-0.778), so it does not oppose P-1231's stage gradient.",
+    "No ratio-of-means comparison of MCI against controls is available: P-1231 prints no aMCI-vs-controls P-tau181 ratio in its text, and P-1225 has no healthy control group.",
+    "The task, dataset-family and validation-tier gates fail with no waiver on record."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-1225", "page": 4, "quote": "The analysis showed that plasma p-tau181 was highly accurate for discriminating between AP+ and AP- patients (AUC = 0.910) (Fig. 4)."},
+    {"paper": "P-1225", "page": 4, "quote": "For the purpose of this analysis, we did not consider AD-d group (as 100% of these patients were AP+) and we merged SCD and MCI"},
+    {"paper": "P-1225", "page": 3, "quote": "Patients were classified as T+ or T– if CSF p-tau concentrations were higher or lower than cut-off values respectively."},
+    {"paper": "P-1225", "page": 7, "quote": "Secondly, the lack of a healthy control group"},
+    {"paper": "P-1225", "page": 6, "quote": "The higher AUC that we found in our study may be due to the fact that we did not consider Aβ positivity alone, but the combination with other biomarkers of A/T(N) system"},
+    {"paper": "P-1225", "page": 3, "quote": "Plasma p-tau181 (pg/ ml) 2.15 (±0.88)*** 2.91 (±1.38) 4.03 (±1.39)***"},
+    {"paper": "P-1225", "page": 5, "quote": "plasma p-tau181 levels were lower in SCD as compared to AD demented patients, while no differences were detected between SCD and MCI and between MCI and AD demented patients."},
+    {"paper": "P-1225", "page": 6, "quote": "This suggest that plasma p-tau181 levels were not influenced by the stage or the severity of cognitive decline, but exclusively by the underlying neurodegenerative processes"},
+    {"paper": "P-1225", "page": 7, "quote": "Diagnosis 0.415 0.051 0.778 0.224 0.026"},
+    {"paper": "P-1225", "page": 7, "quote": "(significant differences at p < 0.0125)"},
+    {"paper": "P-1225", "page": 2, "quote": "patients who received a clinical diagnosis of MCI according to NIA-AA criteria [5]"},
+    {"paper": "P-1225", "page": 6, "quote": "AP+ 30.76%i 43.75%j 100%i,j"},
+    {"paper": "P-1231", "page": 3, "quote": "P-tau 181 1.36, 95 %CI = 1.20–1.54, p < 0.001"},
+    {"paper": "P-1231", "page": 3, "quote": "P-tau 181 2.06, 95 %CI = 1.39–3.06, p < 0.001"},
+    {"paper": "P-1231", "page": 5, "quote": "P-tau 181 (AUC = 0.610−0.840; sensitivity 67–71 %; specificity 66–86 %)"},
+    {"paper": "P-1231", "page": 5, "quote": "show good diagnostic accuracy in identifying AD and aMCI patients from controls"},
+    {"paper": "P-1231", "page": 2, "quote": "controls included cognitively healthy volunteers (volunteers recruited by other means from the population) or individuals who were sampled when admitted to hospital."},
+    {"paper": "P-1231", "page": 2, "quote": "AD and aMCI participants were recruited in population-, community- or clinical-based centers, and conformed to AD and MCI diagnostic criteria"},
+    {"paper": "P-1231", "page": 5, "quote": "higher levels of P-tau 181 on AD to controls and aMCI to controls"},
+    {"paper": "P-1231", "page": 1, "quote": "P-tau 181 (1.36–2.16)"}
+  ],
+  "evidence_quote_note": "Evidence quotes are verbatim from the regenerated pack extracts, allowing for whitespace collapse (the P-1225 table rows span one cell per line) and for soft hyphens at line breaks. The ratios of means, their delta-method intervals and the Hanley-McNeil interval are my computations from the printed means, SDs and counts; neither paper reports them.",
+  "corrections_to_first_reader": [
+    "quantity_b and ground 1 call P-1231's cases 'CLINICALLY diagnosed'. P-1231 says only that AD and aMCI participants 'conformed to AD and MCI diagnostic criteria' (p.2) and does not say whether biomarkers entered those diagnoses. What holds is that P-1231 names no biomarker-defined target condition, and that is enough for the verdict.",
+    "quantity_b says the 32-study range spans 'mixed assays'. Section 3.7 does not name the assays behind its AUC ranges; the ELISA, IMR and SIMOA comparison in Section 3.2 concerns the ratio-of-means analyses, so 'mixed assays' is an inference."
+  ],
+  "source_notes": [
+    "P-1225's accuracy figures are not mutually consistent: PPV 79.17% (19/24) and NPV 90.32% (28/31) imply 22 AP+ and 33 AP- patients, which would give specificity 84.8% and accuracy 85.5%, not the printed 82.5% and 84.21%; the text gives 36 AP- patients. The ROC denominator is therefore uncertain, but the approximate AUC interval barely moves (standard error about 0.045 on either count) and the verdict is unaffected.",
+    "P-1225's abstract gives the AP-status coefficient as B = 1.670 (1.097-2.244), while the text and Table 4 give 1.627 (1.006-2.248).",
+    "P-1231's aMCI-vs-controls P-tau181 ratio appears only in Fig. 4, which is not in the extract; the abstract's P-tau181 range of 1.36-2.16 has an upper value that matches no printed P-tau181 comparison (AD vs controls is 2.06), so it cannot be attributed from the text."
+  ],
+  "confidence": "high"
+}

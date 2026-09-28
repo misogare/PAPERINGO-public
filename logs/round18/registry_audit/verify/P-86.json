@@ -1,0 +1,31 @@
+{
+  "paper": "P-86",
+  "pdf_used": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/pdf/P-86.txt",
+  "fields": {
+    "Task_Type": {
+      "first_verdict": "defensible",
+      "final_verdict": "error",
+      "correct_code": "T3",
+      "registry_code": "T1",
+      "reason": "Upgraded from defensible. The only model fitted and evaluated is a three-class classifier of normal aging, MCI and AD. The fused CNN-GAT vector feeds one output layer giving the three class probabilities (p.5), 'All reported Accuracy, Precision, Recall/Sensitivity, and F1-scores were calculated using macro-averaging across classes' (p.5), Tables 3-4 report per-class Normal/MCI/AD rows, and Fig. 6 shows one-vs-rest ROC curves per class. The headline MCI AUC (0.719 combined, 0.696 CNN) is MCI versus normal plus AD, not MCI versus HC. No binary MCI-vs-HC figure appears anywhere in the paper; the only MCI-vs-NC numbers are other studies' results quoted in the Discussion. Under the definitions, T1 is MCI-vs-HC discrimination and T3 is multi-class staging. The project's own rules (config/extraction_normalisation_rules.json) define T1 as 'MCI vs Healthy Controls - current state binary classification' and T3 as 'Multi-class staging - HC/EMCI/LMCI/AD four-class or three-class', and list 'three-class HC/MCI/AD' as a T3 trigger. The first reader's case for T1 rests on the paper's framing (title and abstract stress MCI versus normal aging). The audit codes the task that is actually quantified, not the framing: the T1/T4 test applies 'however central the MCI-vs-HC contrast is to its argument'. The quantified task is three-class staging, so the registry's T1 is contradicted.",
+      "quote": "Herein, a combined CNN–GAT framework was constructed for the classification of AD, MCI and normal aging.",
+      "page": 3,
+      "supporting_quote": "All reported Accuracy, Precision, Recall/Sensitivity, and F1-scores were calculated using macro-averaging across classes.",
+      "supporting_page": 5,
+      "first_quote_verbatim": true,
+      "first_quote_note": "Both parts verbatim: the p.3 sentence as quoted; the p.1 abstract sentence has a soft hyphen in 'out-performed' at a line break."
+    },
+    "ADNI_Dependent": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "false",
+      "registry_code": "true",
+      "reason": "Confirmed. Table 1 gives the pooled sample by source: NACC 1679 of 1900 (88%), ADNI 145 (8%), Hanyang University Hospital 76 (4%). All three are pooled into site-stratified 5-fold cross-validation. ADNI is neither the primary nor the sole dataset (NACC is primary), so ADNI_Dependent is false under the definition ('True if ADNI (any phase) is the primary or sole dataset').",
+      "quote": "ADNI 145 (8 %) ... NACC 1679 (88 %)",
+      "page": 2,
+      "first_quote_verbatim": true,
+      "first_quote_note": "Assembled from Table 1 cells on p.2; each row label and its N (%) cell are on consecutive lines in the extract. The cell values are verbatim; the 'Table 1:' prefix and the ellipses are the first reader's."
+    }
+  },
+  "notes": "Quotes normalise PDF-extract artefacts (soft hyphens removed, table cells joined by spaces)."
+}

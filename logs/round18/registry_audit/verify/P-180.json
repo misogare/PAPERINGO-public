@@ -1,0 +1,19 @@
+{
+  "paper": "P-180",
+  "pdf_used": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/pdf/P-180.txt (PyMuPDF extract of downloads/4. Computational Models and Modern AI Architectures/PMID_34141888_peerj-cs-07-560.pdf; right paper)",
+  "fields": {
+    "Validation_Type": {
+      "first_verdict": "error",
+      "final_verdict": "error",
+      "correct_code": "V3",
+      "registry_code": "V2",
+      "reason": "Confirmed. The MCI cohort gets a stratified random 75/25 split at patient level into training/validation (415 = 249 sMCI + 166 pMCI) and testing (139 = 84 sMCI + 55 pMCI) (p.3). The networks are optimised with 4-fold cross-validation inside the training/validation portion only. The test partition is set aside, never used for training or validation, and its balanced accuracy is reported separately from the validation-fold figures (p.5). All data are ADNI (phases 1, GO, 2 and 3), with no external site. V3 = k-fold + held-out test partition, and the template says 'If paper says train/test split without external site, assign V3.' V2 requires no separate test set, which the paper contradicts.",
+      "quote": "Data were split into 75% and 25% for training and testing, respectively, with 4-fold cross validation.",
+      "page": 1,
+      "supporting_quote": "To prevent data leakage, once the test partition was randomly selected, the test set images were set aside and not used for any training or validation.",
+      "supporting_page": 5,
+      "first_quote_verbatim": true
+    }
+  },
+  "notes": "Only the one field the first reader judged error was re-checked. Classification study (pMCI vs sMCI, T2), so the V2 code undercounts V3 in the classification-only validation statistics."
+}

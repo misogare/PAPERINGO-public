@@ -1,0 +1,18 @@
+{
+  "paper": "P-349",
+  "pack": 1,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "The top 100 cited articles on artificial intelligence in Alzheimer's disease and mild cognitive impairment: a bibliometric analysis",
+  "is_model_study": false,
+  "blind_codes": {"Task_Type": "T6", "Category": "C1", "Validation_Type": "V2", "Sample_N": "100 articles (top-cited, from 22,646 WoS records); no participants", "Publication_Year": "2026", "ADNI_Dependent": "false"},
+  "registry_codes": {"Task_Type": "T6", "Category": "C1", "Validation_Type": "not reported", "Sample_N_Approx": "100 articles", "Publication_Year": "2026", "ADNI_Dependent": "false"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T6", "reason": "A bibliometric review.", "quote": "We conducted a bibliometric analysis of the 100 most cited articles on AI applied to AD and MCI.", "page": 1},
+    "Category": {"verdict": "match", "correct_code": "C1", "reason": "The study has no participant data. The literature it covers is dominated by MRI (66/100 articles) and PET (25/100), so C1 is the dominant data domain; a multi-code reading would also be arguable.", "quote": "Notably, MRI emerged as the most frequently utilized imaging modality, serving as a critical variable in 66 studies for ML analysis.", "page": 3},
+    "Validation_Type": {"verdict": "error", "correct_code": "V2", "reason": "'not reported' is not one of the V1-V4 codes. The study fits no predictive model, and the template codes such studies V2 ('Absence of reporting = V2 not V4'; convention: no model = V2). scripts/litreview_stats.py tier() maps any non-V token to NR, so this row is counted in Table 1's NR column (2026 row) instead of V2. The error does not affect the classification-only statistics, because the study is T6.", "quote": "We conducted a bibliometric analysis of the 100 most cited articles on AI applied to AD and MCI.", "page": 1},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "100 articles", "reason": "The unit of analysis is 100 articles; there are no participants.", "quote": "Citation counts ranked articles, and the top 100 were manually screened.", "page": 1},
+    "Publication_Year": {"verdict": "match", "correct_code": "2026", "reason": "Published 12 January 2026. The Frontiers volume, 17, is the 2025 volume, so either year would match.", "quote": "PUBLISHED 12 January 2026", "page": 1},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "false", "reason": "A bibliometric study; it uses no dataset.", "quote": "We searched the Web of Science database using keywords related to AD, MCI, and AI", "page": 1}
+  },
+  "notes": "The only field in error is the out-of-vocabulary Validation_Type. Its census effect is one row counted in NR instead of V2 in Table 1 (all included studies)."
+}

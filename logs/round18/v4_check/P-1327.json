@@ -1,0 +1,13 @@
+{"paper": "P-1327", "pdf_is_right_paper": true,
+ "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-1327.txt",
+ "registry_code": "V3", "correct_code": "V4", "changed": true,
+ "training_data": "North American ADNI, 1,314 subjects, randomly halved into an SVM training half and a validation half used to fine-tune hyperparameters (BAAD: VBM + RBF-SVM; SVMst and SVMcog)",
+ "test_data": "AIBL (n=519, Australia), J-ADNI (n=592, Japan), MIRIAD (n=69, UCL Dementia Research Centre, UK) and OASIS (n=128, USA)",
+ "model_fixed_before_external_test": true,
+ "reason": "Both SVMs were trained and tuned only on North American ADNI. They were then applied to four cohorts from other consortia and countries, with the ADLS > 0.5 cut-off fixed in advance (Table 3: AD/NL accuracy 88.0-94.2% for SVMst, 92.5-100% for SVMcog). A fixed model on external cohorts is V4. Figure 5 also shows cohort-specific optimal cut-offs, but Table 3 uses the fixed 0.5 cut-off, and AUC is threshold-free. MCI-progression prediction was assessed in the ADNI validation half and as a pMCI-vs-NL comparison in J-ADNI.",
+ "quotes": [
+  {"page": 1, "quote": "We randomly selected half from the total 1,314 subjects of AD neuroimaging Initiative (ADNI) from North America for SVM training, and the remaining half were used for validation to fine-tune the model hyperparameters."},
+  {"page": 1, "quote": "further evaluated it in test datasets involving 519, 592, 69, and 128 subjects from the Australian Imaging, Biomarker & Lifestyle Flagship Study of Aging (AIBL), Japanese ADNI, the Minimal Interval Resonance Imaging in AD (MIDIAD) and the Open Access Series of Imaging Studies (OASIS), respectively."},
+  {"page": 9, "quote": "The performance was recalculated with the cuttoff value of ADLS > 0.5 because the optimal cut-off value for AD diagnosis of ADLS in the NA-ADNI database was 0.48, and the results are summarized in Table 3. The classification accuracy was ranged from 88.0 to 94.2% and 92.5 to 100% for SVMst and SVMcog, respectively."}
+ ],
+ "confidence": "high"}

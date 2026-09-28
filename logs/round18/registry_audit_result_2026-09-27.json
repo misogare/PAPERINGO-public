@@ -1,0 +1,242 @@
+{
+ "n_studies": 60,
+ "fields": {
+  "Task_Type": {
+   "strict": 5,
+   "lenient": 19
+  },
+  "Category": {
+   "strict": 6,
+   "lenient": 23
+  },
+  "Validation_Type": {
+   "strict": 8,
+   "lenient": 9
+  },
+  "Sample_N_Approx": {
+   "strict": 2,
+   "lenient": 12
+  },
+  "Publication_Year": {
+   "strict": 0,
+   "lenient": 0
+  },
+  "ADNI_Dependent": {
+   "strict": 1,
+   "lenient": 1
+  }
+ },
+ "strict_fields": 22,
+ "lenient_fields": 64,
+ "total_fields": 360,
+ "rows_with_error": 18,
+ "n_classification": 22,
+ "cls_validation_errors": 6,
+ "cls_task_errors": 4,
+ "fixes": [
+  {
+   "paper": "P-78",
+   "field": "Validation_Type",
+   "registry": "V2",
+   "correct": "V4",
+   "reason": "Confirmed. Training uses ADNI-1/2/GO only, after an 8:2 subject-level split (p.3). Performance is reported on two test sets. Dataset B is the held-out 20% of ADNI-1/2/GO (101 subjects). Dataset A is 'an independent external test set' of 29 ADNI-3 + 144 OASIS-3 subjects (p.3). The headline comparisons are on Dataset A (Table 3, Fig. 7, and the Table 6 training-strategy ablation). The Platt-scaling calibrator is trained on the training set and only validated on Dataset A (p.9), so Dataset A never enters training. OASIS-3 is a separate study collected at a different institution, not a later ADNI phase, so Dataset A meets V4 ('a test set from a different institution'). The paper itself frames this as validation 'in cross-center scenarios' (p.2). Caveat: Dataset A results are pooled across ADNI-3 and OASIS-3, with no OASIS-only figure, but OASIS-3 makes up 144/173 (83%) of it. V2 ('no separate test set') is contradicted on any reading: even setting OASIS-3 aside, the held-out Dataset B makes the floor V3.",
+   "quote": "the model was trained and validated on the ADNI-1/2/Go datasets and tested on two independent datasets (ADNI-3 and OASIS-3).",
+   "page": 8
+  },
+  {
+   "paper": "P-86",
+   "field": "ADNI_Dependent",
+   "registry": "true",
+   "correct": "false",
+   "reason": "Confirmed. Table 1 gives the pooled sample by source: NACC 1679 of 1900 (88%), ADNI 145 (8%), Hanyang University Hospital 76 (4%). All three are pooled into site-stratified 5-fold cross-validation. ADNI is neither the primary nor the sole dataset (NACC is primary), so ADNI_Dependent is false under the definition ('True if ADNI (any phase) is the primary or sole dataset').",
+   "quote": "ADNI 145 (8 %) ... NACC 1679 (88 %)",
+   "page": 2
+  },
+  {
+   "paper": "P-111",
+   "field": "Task_Type",
+   "registry": "T1",
+   "correct": "T3",
+   "reason": "Confirmed. A single bagged-trees classifier separates AD, MCI and HC in one three-way scheme (Fig. 3; confusion matrices Figs. 9-10). Every reported figure is three-class: 5-fold CV accuracy 96.5% with class-averaged sensitivity and specificity (Table 4), and held-out test accuracy 93.88% (Table 5). No binary MCI-vs-HC figure is reported. The paper sets itself against prior studies that 'only performed binary classification' (pp.2, 10) and claims a 'three-way classification between AD-MCI-HC' (p.10). T3 is multi-class staging, and the project's config/extraction_normalisation_rules.json lists 'three-class HC/MCI/AD' as a T3 trigger. T1 (MCI-vs-HC discrimination) is not the quantified task.",
+   "quote": "the accuracy of 93.88%, the specificity of 96.62% and the sensitivity of 93.24% is obtained for differentiating MCI patients, AD patients, and HC.",
+   "page": 8
+  },
+  {
+   "paper": "P-111",
+   "field": "Category",
+   "registry": "C5",
+   "correct": "C2",
+   "reason": "Confirmed. The data are 19-channel resting eyes-closed EEG recorded at Baskent University Hospital. The features are DWT sub-band PSD (Burg method) and interhemispheric coherence (Table 3: 277 features x 490 epochs). MoCA only characterises the groups (Table 1) and is not a model input. The primary domain C2 is missing and C5 has no basis. The registry's C5 matches the misattached summary block (a cognitive-scale ML study), not this PDF. The registry row's modality 'Clinical/tabular' and journal 'NPG Neurologie - Psychiatrie - Geriatrie' also come from that block.",
+   "quote": "This study analyzed the EEGs of 35 subjects (16 MCI, 8 AD, 11 healthy control) with the developed algorithm.",
+   "page": 1
+  },
+  {
+   "paper": "P-111",
+   "field": "Validation_Type",
+   "registry": "not reported",
+   "correct": "V3",
+   "reason": "Confirmed. 'not reported' is outside the V1-V4 enum (the template sets not_reported_allowed false), and the paper does report its protocol. First, 5-fold CV over all 490 epochs selects the classifier (Table 4). Then a random 50/50 train/test split is made at subject level (every epoch of a subject falls in either train or test, p.8), and a held-out test result is reported (Table 5). The template assigns a train/test split without an external site to V3, and the normalisation rules give V3 for a subject-level split. Not V1: n = 35, but no LOOCV is used. Not V4: single hospital.",
+   "quote": "50% of data is chosen randomly as train data and used for training the classifier. The remaining epochs are employed to validate the classification algorithm. None of the training data is used as test data.",
+   "page": 8
+  },
+  {
+   "paper": "P-111",
+   "field": "Sample_N_Approx",
+   "registry": "72",
+   "correct": "35",
+   "reason": "Confirmed. The paper analyses 35 subjects (16 MCI + 8 AD + 11 HC, Table 1; 35 x 14 epochs = 490 epochs), stated on pp.1, 2, 8 and 9. The number 72 appears nowhere in the paper text. It matches the misattached summary block's sample line ('72 - 21 AD/24 MCI/27 HC'), not this PDF.",
+   "quote": "35 subjects participated in the study, between the ages of 65 and 90.",
+   "page": 2
+  },
+  {
+   "paper": "P-180",
+   "field": "Validation_Type",
+   "registry": "V2",
+   "correct": "V3",
+   "reason": "Confirmed. The MCI cohort gets a stratified random 75/25 split at patient level into training/validation (415 = 249 sMCI + 166 pMCI) and testing (139 = 84 sMCI + 55 pMCI) (p.3). The networks are optimised with 4-fold cross-validation inside the training/validation portion only. The test partition is set aside, never used for training or validation, and its balanced accuracy is reported separately from the validation-fold figures (p.5). All data are ADNI (phases 1, GO, 2 and 3), with no external site. V3 = k-fold + held-out test partition, and the template says 'If paper says train/test split without external site, assign V3.' V2 requires no separate test set, which the paper contradicts.",
+   "quote": "Data were split into 75% and 25% for training and testing, respectively, with 4-fold cross validation.",
+   "page": 1
+  },
+  {
+   "paper": "P-248",
+   "field": "Category",
+   "registry": "C1",
+   "correct": "C5",
+   "reason": "Confirmed. This is a narrative review (Mukherjee et al., Ageing Research Reviews 100 (2024) 102457) of sleep deprivation in the elderly. Its sections cover sleep patterns by age and gender; mechanisms (hormones, diet, physical activity, stress); consequences for physical, mental and cognitive health, citing survey cohorts such as NHANES; and interventions (CBT, melatonin, sleep and light education, public-health policy). That is clinical/population content, C5. Neuroimaging appears only in passing sentences: MRI markers of brain ageing and 'changes in brain anatomy' (both p.13), and one clause on brain beta-amyloid deposition (p.10). EEG is mentioned only to define sleep stages (p.4). The paper states that no data were used. C1 is therefore marginal, and the primary domain C5 is missing from the code, which the definitions judge as error.",
+   "quote": "However, sleep disorders exacerbate existing conditions such as epilepsy and asthma, necessitating interventions like cognitive behavioral therapy (CBT) and medications such as melatonin to mitigate their impact. Education emerges as a crucial tool in promoting healthier sleep habits across all age groups.",
+   "page": 1
+  },
+  {
+   "paper": "P-304",
+   "field": "Validation_Type",
+   "registry": "V2",
+   "correct": "V3",
+   "reason": "Confirmed. ADNI and NACC are each run separately. Every method is trained on a random 80% of patients and tested on the held-out 20%, over ten random splits (Table 1 reports mean +/- SD over ten runs). There is no external site, since neither dataset tests a model trained on the other. V2 requires 'no separate test set', which the paper contradicts. The template's note assigns a train/test split without an external site to V3, and the normalisation rules list an explicit 80/20 split as V3. No validation set or tuning procedure is described. The repeated random hold-out resembles Monte Carlo cross-validation, but the definitions map a patient-level train/test split to V3, not V2.",
+   "quote": "We evaluated all the methods on ten different randomly generated training and test splits. The number of patients selected for training was 80% of the total number of patients, while 20% were used for testing.",
+   "page": 11
+  },
+  {
+   "paper": "P-304",
+   "field": "Sample_N_Approx",
+   "registry": "1169",
+   "correct": "1664 (250 ADNI + 1414 NACC)",
+   "reason": "Confirmed. Models are trained and evaluated only on patients with at least seven visits: 250 ADNI + 1,414 NACC = 1,664. 1,169 is the ADNI count after preprocessing, before the seven-visit restriction. It never enters training or evaluation, and it leaves out NACC, which is analysed in every experiment. It matches no study-level total: analysed 1,664; post-preprocessing 1,169 + 8,121 = 9,290; source 2,288 + 46,513 = 48,801. It is not an enrolled-vs-analysed or discovery-vs-validation alternative of the kind the defensible clause covers, and even for ADNI alone the analysed N is 250.",
+   "quote": "Finally, we focused on patients with at least seven visits for training and model evaluation. This resulted in a final ADNI dataset of 20 longitudinal features for 250 patients and a final NACC dataset with 5 longitudinal features for 1,414 patients.",
+   "page": 11
+  },
+  {
+   "paper": "P-321",
+   "field": "Task_Type",
+   "registry": "T2",
+   "correct": "T4",
+   "reason": "Confirmed. The study's task is subphenotype discovery. GNN embeddings of longitudinal OneFlorida+ EHR encounters are clustered (time-series k-means with DTW) into four MCI-to-AD progression subphenotypes. The subphenotypes are then characterised (comorbidities, Kaplan-Meier survival after AD diagnosis) and predicted from pre-MCI information (AUROC 0.67-0.70). Every included patient converted: inclusion required 'a conversion time to the AD of more than six months' (p.5), and the cohort's mean MCI-to-AD time is 891 days (p.9). So there is no stable-MCI group and no pMCI-vs-sMCI or conversion prediction. The only other model output is the GNN's auxiliary next-encounter stage forecast ('preclinical, MCI, and AD', p.7). That is a three-class representation-learning objective used to shape the embeddings, and its metrics appear only in supplementary eTables 2-5. The template maps to T2 'ONLY if the task is explicitly progressive vs stable MCI or MCI-to-AD conversion', and subtype studies are T4.",
+   "quote": "To identify disease progression subphenotypes in patients with mild cognitive impairment (MCI) and AD using electronic health records (EHRs).",
+   "page": 3
+  },
+  {
+   "paper": "P-349",
+   "field": "Validation_Type",
+   "registry": "not reported",
+   "correct": "V2",
+   "reason": "Confirmed. 'not reported' is not one of the V1-V4 codes. The paper is a bibliometric analysis of the 100 most-cited AI-in-AD/MCI articles from Web of Science, analysed with VOSviewer. It fits and validates no predictive model. The definitions give V2 for such a study: 'Absence of reporting = V2 not V4', and by convention a study that fits no predictive model is coded V2. This is an out-of-vocabulary code, not a misreading of the paper. Its census effect is one row counted as NR instead of V2 in the all-studies validation tally. The study is T6, so the classification-only statistics are unaffected.",
+   "quote": "We conducted a bibliometric analysis of the 100 most cited articles on AI applied to AD and MCI.",
+   "page": 1
+  },
+  {
+   "paper": "P-351",
+   "field": "Category",
+   "registry": "C3",
+   "correct": "C1;C3;C5",
+   "reason": "Confirmed. The similarity-network-fusion model takes three co-equal input modalities, each turned into its own similarity matrix before fusion: cognitive/neuropsychological scores (ADAS, RAVLT, mPACCdigit, mPACCtrailsB, LDELTOTAL, TRABSCOR, FAQ; C5), genetics (APOE status and polygenic hazard score; C3) and seven structural MRI volumes (ventricles, hippocampus, whole brain, entorhinal, fusiform, middle temporal, ICV; C1). The paper's own statement of its contribution names all three. The registry keeps only C3, which is the smallest input (two genetic variables; blood-transcriptome GSVA and CSF are used afterwards to characterise the clusters), and leaves out two primary input domains, MRI and neuropsych. Under the rule, a missing primary data domain is an error, not an omitted secondary domain. PET (AV45, FDG) and CSF only characterise the clusters and add nothing beyond C1/C3.",
+   "quote": "This study presents a novel application of SNF to integrate cognitive, genetic, and structural MRI data, enabling the simultaneous identification of disease subtypes in AD.",
+   "page": 13
+  },
+  {
+   "paper": "P-444",
+   "field": "Task_Type",
+   "registry": "T2",
+   "correct": "T4",
+   "reason": "Confirmed. This is a subtyping study of Parkinson's disease MCI (keyword 'Subtyping'; title 'A new subtype?'). 162 PD-MCI patients from PPMI are split by a -1 SD Ch4 grey-matter-density z-score into low (40) and normal (122) Ch4 groups. The groups are then compared on clinical scales (Kruskal-Wallis, chi-square) and on time to the first of six PPMI cognitive-domain milestones (Kaplan-Meier, log-rank P = 0.0017, Cox HR 1.75). The outcome is a composite (MoCA <21, MDS-UPDRS item 1.1 >=3, hallucinations, apathy, and two dementia definitions). It is not a progressive-vs-stable MCI label or MCI-to-AD conversion, and the main text reports no discrimination figure (no accuracy, AUC or sensitivity/specificity). The template allows T2 ONLY when the task is explicitly pMCI vs sMCI or MCI-to-AD conversion, so T2 is ruled out. A subtype-prognosis association is T4.",
+   "quote": "Objective: To determine whether PD-MCI patients with MRI evidence of Ch4 degeneration exhibit a different clinical profile and cognitive trajectory than those without Ch4 degeneration.",
+   "page": 1
+  },
+  {
+   "paper": "P-538",
+   "field": "Category",
+   "registry": "C5",
+   "correct": "C2;C1",
+   "reason": "Confirmed. The model inputs are qEEG/ERP measures from the eVox system and volumetric MRI from Neuroreader. The eVox recording is 19-channel EEG: eyes-open and eyes-closed resting state plus a Go/No-Go ERP task, and its final predictors are P300b amplitude, Reaction Time and Commission Errors. The final MRI predictor is left temporal lobe volume. These are C2 and C1; the title, abstract and keywords ('electroencephalography, magnetic resonance imaging') name them as the study's data. Chart-review clinical data (MMSE, demographics) supply the diagnostic labels and act as covariates. The registry's C5 omits the primary domain, C2 (and also C1), which the brief defines as an error. Reaction Time and Commission Errors are task-performance measures recorded during the ERP test, so a secondary C5 (or C4) could be added. Any correct code must contain C2;C1.",
+   "quote": "We investigated diagnostic categorization using an FDA-cleared quantitative electroencephalographic/event-related potential (qEEG/ERP)-based cognitive testing system (eVox\u00ae by Evoke Neuroscience) combined with an automated volumetric magnetic resonance imaging (vMRI) tool (Neuroreader\u00ae by Brainreader).",
+   "page": 1
+  },
+  {
+   "paper": "P-575",
+   "field": "Category",
+   "registry": "C2",
+   "correct": "C5",
+   "reason": "Confirmed. This is a narrative review ('Review Article') of transcranial direct current stimulation for global cognition in MCI. The evidence it synthesises is neuropsychological outcome scores (ACE-R, MMSE, ADAS-Cog) and adverse-event reports from tDCS trials, which is clinical/neuropsychological data (C5). tDCS is a stimulation intervention, not an electrophysiological recording. C2 is defined by recording modalities (EEG/MEG/ERP/fNIRS), and the method or intervention does not decide the category. EEG appears only in one Future Directions subsection ('Electroencephalogram (EEG)-tDCS', p.4), next to parallel PET, fMRI and blood-biomarker subsections, so C2 is marginal at most. The primary domain C5 is missing from the code, which the definitions judge as error. C5;C2 would be defensible; C2 alone is not.",
+   "quote": "Studies examining the cognitive impacts of tDCS have largely used two specific outcome measures, the Addenbrooke\u2019s Cognitive Examination-Revised (ACE-R) and Mini-Mental State Examination (MMSE), as markers of global cognition.",
+   "page": 3
+  },
+  {
+   "paper": "P-908",
+   "field": "Task_Type",
+   "registry": "T6",
+   "correct": "T4",
+   "reason": "Confirmed. This is a cross-sectional analysis of ADNI baseline data. It fits a linear regression of ADAS13 on fasting serum TSH and a logistic regression of MCI-vs-HC status on TSH, and reports only beta coefficients and odds ratios. It evaluates no classifier or cut-point: AUC, accuracy and sensitivity/specificity appear nowhere in the paper, and the 'risk prediction' in the title is never operationalised. The core result is a blood-biomarker association with cognition and with MCI status, and the paper calls TSH 'a biomarker of central thyroid function' (p.7). The binding template puts biomarker/correlational studies in T4. It also states that an MCI-vs-control comparison by 'odds ratio' 'is T4, however central the MCI-vs-HC contrast is to its argument'. Its T6 clause for epidemiology applies only 'unless their core result is one of T1-T5', and here the core result is T4. Counter-reading considered: config/extraction_normalisation_rules.json lists 'risk factor analysis without classifier' as a T6 trigger. That is the only text that could carry T6. The same file lists 'biomarker' and 'correlation' as T4 triggers, and the audit brief makes the template definitions binding, so T6 is not a supportable second reading.",
+   "quote": "The odds of being diagnosed with MCI at baseline decreased with higher TSH levels in the total study population (adj. ORTotal=0.87[0.79, 0.95], p-value=0.002) and in males (adj. ORMales=0.80[0.70, 0.92], p-value=0.001).",
+   "page": 1
+  },
+  {
+   "paper": "P-1125",
+   "field": "Validation_Type",
+   "registry": "V3",
+   "correct": "V2",
+   "reason": "Confirmed. No predictive model is fitted or validated. The analyses are multilevel models of longitudinal group differences between superagers, cognitively normal and PD-MCI patients (689, PPMI) in MoCA, GDS, STAI-T and UPDRS-III over 10 years. Two sensitivity analyses follow: restriction to age >=70, and a CSF analysis (ANOVA of baseline CSF markers across groups, with the markers that differed added as covariates to the aim-1 models). A search of the full text finds no train/test split, held-out partition, cross-validation or external test set; 'classified' refers only to the rule-based baseline group assignment. The convention codes a non-model study V2. V3 (k-fold + held-out test partition) has no basis in the paper.",
+   "quote": "Multilevel modeling examined differences between the three cognitive groups (superagers, PD-MCI, cognitively normal) and dependent variables. A separate multilevel modeling analysis was performed for each dependent variable.",
+   "page": 4
+  },
+  {
+   "paper": "P-1217",
+   "field": "Category",
+   "registry": "C3",
+   "correct": "C5",
+   "reason": "Confirmed. The data are UK Biobank population-cohort data: Oxford WebQ 24-h dietary recalls (choline estimated from the USDA food-composition database), hospital and death-record ICD-9/10 codes for incident dementia/AD/MCI, touchscreen cognitive tests, and questionnaire covariates. No CSF, plasma, genomic or omic data are analysed. The limitations say genotypes were not available ('due to the absence of genetic data, we included the family history of dementia as a covariate instead of specific genotypes', p.7), and circulating choline was not measured (p.8). So C3 has no basis as a data domain, and the primary domain, C5, is missing. That choline is a molecule describes the exposure, not the data domain.",
+   "quote": "Third, self-reported dietary intake is subject to recall bias, and circulating choline concentrations were not measured.",
+   "page": 8
+  },
+  {
+   "paper": "P-1225",
+   "field": "Validation_Type",
+   "registry": "V1",
+   "correct": "V2",
+   "reason": "Confirmed. V1 is leave-one-out cross-validation in a small sample. The paper runs a single in-sample ROC analysis of plasma p-tau181 for AD-pathology carriers vs non-carriers, pooling SCD and MCI patients and excluding AD dementia. It picks the Youden-optimal cut-off (2.69 pg/mL) and reports AUC 0.910, accuracy, sensitivity, specificity, PPV and NPV on the same patients (p.3 methods, p.4 results). A search of the full text finds no leave-one-out, k-fold, bootstrap, train/test split or external cohort. Small n alone does not make a study V1. Under 'Absence of reporting = V2', unvalidated same-sample evaluation is V2.",
+   "quote": "Receiver operating characteristic (ROC) analyses were performed to evaluate the ability of plasma p-tau181 to distinguish between AP+ and AP- patients. The Youden's method was used to detect the best cut-off value and accuracy, sensitivity, specificity, positive predictive value and negative predictive value for plasma p-tau181.",
+   "page": 3
+  },
+  {
+   "paper": "P-1241",
+   "field": "Validation_Type",
+   "registry": "V2",
+   "correct": "V3",
+   "reason": "Confirmed. The design has two stages. (1) Signatures are trained on cognitively unimpaired (NL+SMC) versus AD, and their performance is estimated by 10 iterations of 10-fold stratified CV. (2) The frozen signatures are then applied to a separate group of EMCI and LMCI subjects who were not used in training, to predict 36-month conversion. Table 3 labels these columns 'Test Set', as distinct from 'Internal Cross-Validation', and p.4 calls the step an independent verification. The core task (MCI-to-AD conversion, the registry's own T2) is evaluated only on this held-out partition. That is k-fold plus a held-out test partition, which is V3. V2 ('no separate test set') is contradicted by the paper. It is not V4: the test subjects, and the second VGF confirmation cohort, all come from ADNI-GO/ADNI-2, the same consortium as the training data.",
+   "quote": "Performance of the signatures derived from these algorithms for accurately classifying CUI versus AD subjects was estimated via 10 iterations of 10-fold stratified cross-validation ... These signatures were then applied to an independent group of EMCI and LMCI subjects at baseline to predict their future progression to AD within 36-months.",
+   "page": 3
+  },
+  {
+   "paper": "P-1408",
+   "field": "Task_Type",
+   "registry": "T2",
+   "correct": "T4",
+   "reason": "Confirmed. This is a single-centre prospective cohort of 201 ALS patients. They are classified with the MBNI framework (NC/MCI/MBI/MCBI/FTD-dem), and the classes are related to tracheostomy-free survival (Kaplan-Meier, Cox HR 5.3 for MCI) and to ALS disease progression (binary logistic regression). 'Disease progression' is ALS functional decline, measured by the monthly ALSFRS-R decline and King's staging (p.2). It is not progressive-vs-stable MCI or MCI-to-AD conversion, and no discrimination figure is reported. In this paper MCI is a predictor label inside ALS, not a population split into converters. T2 is ruled out by 'map to T2 ONLY if the task is explicitly progressive vs stable MCI or MCI-to-AD conversion'. The classification-prognosis association is T4; T6 (descriptive clinical cohort) is also arguable, but T2 is not.",
+   "quote": "Prognostic value was analyzed using Kaplan\u2013Meier survival curves, Cox proportional hazards models, and logistic regression for disease progression.",
+   "page": 1
+  }
+ ],
+ "operator_review_2026_09_28": {
+  "date": "2026-09-28",
+  "by": "operator, stated in session on 2026-09-28",
+  "statement": "The operator reviewed the round-18 registry corrections (the 22 audit fields plus P-96, P-92 and P-13, and the 16 validation tiers of the targeted external-validation check) by delegation and accepts them (operator's words: 'i trust you on the registry corrections too record it').",
+  "scope": "Every correction had been confirmed by two independent model readers from the study's PDF with quoted evidence (logs/round18/registry_audit/verify/, logs/round18/v4_check/); the corrections themselves are unchanged."
+ }
+}

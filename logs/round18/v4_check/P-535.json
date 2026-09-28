@@ -1,0 +1,21 @@
+{
+  "paper": "P-535",
+  "pdf_is_right_paper": true,
+  "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-535.txt (full extract, 9 pages; title matches summaries.md '## Paper 535'); page = PDF page marker in the extract",
+  "registry_code": "V1",
+  "correct_code": "V3",
+  "changed": true,
+  "training_data": "Movement Disorders Clinic, Asan Medical Center, Seoul: baseline FDG-PET of 43 PD-MCI (23 PDD converters/20 stable MCI), scans 2011-2015; linear SVM with 10-fold CV",
+  "test_data": "Independent test set from the same Asan Medical Center (19 PD-MCI: 9 converters/10 stable; scans 2014-2016, retrieved January 2022): AUC 0.73, accuracy 73.7%. Additional cross-sectional sets with no conversion outcome: Asan (18 NL/17 PDNC/19 PDD) and Crescentwood Memory Clinic/Health Sciences Centre, Winnipeg, Canada (22 MCI/17 DLB, plus 10 PD scanned ON/OFF levodopa)",
+  "model_fixed_before_external_test": true,
+  "reason": "The conversion model's only independent outcome test is a later retrieval of patients from the same Asan Medical Center, so the prognostic model reaches V3 (10-fold CV plus a same-institution test set), not V1. The fixed SVM was also applied to a Winnipeg (Canada) cohort, but only to report what share of cross-sectional MCI and DLB patients it labels as converters; that cohort has no conversion follow-up, so it does not externally validate the reported PD-MCI-to-PDD prediction.",
+  "quotes": [
+    {"page": 6, "quote": "In this retrospective chart review study, scans from patients with a clinical diagnosis of PD at the Movement Disorders Clinic at the Asan Medical Center in Seoul, from 2011 to 2015, were used to train the SVM classifier (Table 1)."},
+    {"page": 6, "quote": "For an independent testing set, additional data were retrieved in January 2022 (the baseline FDG-PET scans were taken between 2014 and 2016)."},
+    {"page": 6, "quote": "Table 1. Characteristics of patients in the training data set from the Asan Medical Center"},
+    {"page": 2, "quote": "We evaluated the classifier\u2019s performance in an additional testing set of 19 patients, 10 of whom had stable MCI and 9 of whom progressed to PDD. The SVM classifier predicted progression from MCI to PDD with an accuracy of 73.7% and a sensitivity and specificity of 67% and 80%, respectively (Figure 2C)."},
+    {"page": 2, "quote": "We used the SVM model to classify patients with MCI versus those with DLB from the Health Sciences Center in Winnipeg. The SVM model classified 94.12% of patients with DLB"},
+    {"page": 3, "quote": "as PDD converters, whereas 27.27% of patients with MCI were classified as PDD converters (Figure 3B)."}
+  ],
+  "confidence": "medium"
+}

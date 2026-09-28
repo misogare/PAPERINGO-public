@@ -1,0 +1,20 @@
+{
+  "paper": "P-596",
+  "pdf_is_right_paper": true,
+  "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-596.txt (full extract, 12 pages; title matches summaries.md '## Paper 596'); page = PDF page marker in the extract",
+  "registry_code": "V3",
+  "correct_code": "V4",
+  "changed": true,
+  "training_data": "NYU School of Medicine / Brain Research Laboratories cohort (screened at the NYU Silberstein ADRC): 88 SCI participants followed 5-7 years (45 stable/43 declined to MCI or dementia), 176 EEG segments; LR, SVM and RF estimated by LOOCV and 0.632+ bootstrap (AUC ~0.90)",
+  "test_data": "Two external cohorts: University of Kentucky (Cohort 1, n=19: 11 stable/8 decliners; locked LR accuracy 0.68, SVM 0.74) and Italy/Neuroconnect (Cohort 2, n=28: 10 stable/18 decliners; LR 0.68, SVM 0.61); threshold 0.5",
+  "model_fixed_before_external_test": true,
+  "reason": "The LR and SVM models were locked after development on the NYU cohort and then tested unchanged on cohorts from the University of Kentucky and from Italy, which is V4; the registry's V3 misses this. Both external cohorts are very small (n=19 and n=28), and the Kentucky sample was cognitively normal elderly not selected for subjective complaints.",
+  "quotes": [
+    {"page": 2, "quote": "The database used for the derivation of this algorithm was an expansion of the population from the New York University School of Medicine/Brain Research Laboratories (NYUSOM/BRL) database"},
+    {"page": 4, "quote": "Two of the three algorithms (LR and SVM) were locked for external validation due to a more stable behavior across the LOOCV procedure. A final external validation of the two locked algorithms included performance values when tested using two independent and unseen cohorts of subjects."},
+    {"page": 7, "quote": "The locked LR and SVM algorithms were tested on two small external independent cohorts of data (Cohort 1, University of Kentucky, Dr. Y. Jiang; and Cohort 2, Italy, Dr. P. M. Rossini)."},
+    {"page": 7, "quote": "In summary the performance accuracy of Cohort 1 averaged across the two models was 0.71, approximately the 10-point drop expected for such an independent sample."},
+    {"page": 8, "quote": "Prediction performance for both locked algorithms on the Italy cohort 2 (classification threshold set at 0.5)."}
+  ],
+  "confidence": "high"
+}

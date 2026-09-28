@@ -1,0 +1,74 @@
+{
+  "id": "C-256",
+  "reader": "adjudicator",
+  "papers_read": [
+    {"paper": "P-1000", "pdf_is_right_paper": true, "title_as_printed": "Disease progression and costs at the 3-year follow-up of the GERAS-US study", "read_in_full": true},
+    {"paper": "P-1093", "pdf_is_right_paper": true, "title_as_printed": "Potential Impact of Slowing Disease Progression in Early Symptomatic Alzheimer’s Disease on Patient Quality of Life, Caregiver Time, and Total Societal Costs: Estimates Based on Findings from GERAS-US Study", "read_in_full": true}
+  ],
+  "what_each_reports": {
+    "P-1000": "Chandler, Rentz, Zagar, Kim, Schwartz, Fillit, Alzheimer's Dement (Amst) 2023;15:e12430; Eli Lilly-funded. GERAS-US amyloid-positive MCI (N=300) and mild dementia (N=317) at 76 US sites, followed to 36 months (MCI N=154 at 36 months). MMRM LS-mean total societal cost per patient per month in MCI: $2430 at baseline, $1977 at 6 months, $2007 at 36 months (MILD $4063, $3032, $3392), 'steady from 6 to 36 months' after an initial decline the authors attribute to post-diagnosis care planning; no formal trend test. The MCI MMSE decline is described as about 1 point and not significant; MCI study-partner indirect costs rose from $718 to $961. The discussion ties rising caregiver costs to clinical progression.",
+    "P-1093": "Chandler, Ye, Mi, Doty, Johnston, J Alzheimers Dis 2024;100:563-578; Eli Lilly-funded post-hoc analysis of the same cohort (N=617: 300 MCI / 317 MILD AD). Observed mean monthly total cost in MCI: $2,430.3 at baseline, $1,975.1 at 6 months, $2,048.9 at 36 months ('increased modestly' from 6 to 36 months). MMRM MMSE change to 36 months in MCI: LSMC -2.1 (-2.9, -1.3), p<0.001. In the outcome set (108 MCI completers with MMSE and outcomes at baseline and 36 months) a log-link gamma GLM of cumulative 36-month cost on MMSE change (coefficient -0.046, SE 0.019) implies +$8,504 (95% CI $1,479-$16,108) for the observed decline versus no decline; a 30% slowing implies a $2,638 saving. The authors call these counterfactual predictions from observational data."
+  },
+  "quantity_a": "Cohort-level trajectory of LS-mean total societal cost per patient per month (RUD-based, opportunity-cost method, MMRM) at baseline, 6 and 36 months in GERAS-US amyloid-positive MCI (N=300 at baseline, 154 at 36 months), described without a formal trend test.",
+  "quantity_b": "Covariate-adjusted between-patient association, among 108 GERAS-US amyloid-positive MCI completers, between 36-month MMSE change and cumulative 36-month total societal cost (log-link gamma GLM with baseline MMSE, age, comorbidity count and partner relationship), expressed as the cost increment at the observed mean decline (-2.1 points) versus no decline, plus counterfactual 20-30% slowing scenarios.",
+  "same_quantity": false,
+  "incompatible_if_same": "No. Both can be true at once: a positive gradient of cumulative cost on cognitive decline across patients is compatible with flat cohort-mean monthly costs after an initial post-diagnosis fall. P-1093 itself reports the same flat trajectory (MCI $2,430.3 to $1,975.1 to $2,048.9) alongside its +$8,504 estimate, and P-1000's authors attribute rising caregiver costs to progression, so on both points the papers agree in direction.",
+  "gates": {
+    "task": "match: T4 on both rows (association and progression outcomes; no classifier).",
+    "dataset_family": "match: both are the GERAS-US amyloid-positive cohort (NCT02951598; identical baseline N=617, 300 MCI / 317 MILD). The identity is the non-independence, not a comparability strength.",
+    "validation_tier": "n/a (counted as matched): neither paper validates a predictive model; the registry's V2 versus V3 carries no meaning here.",
+    "modality_family": "match: both use RUD-derived resource-use costs and MMSE from the same visits; the registry's modality_subtype split (population_cohort_epidemiology versus health_economic_model) codes the analysis type, not the data."
+  },
+  "endpoint_and_metric": "incompatible: P-1000 reports LS-mean cost per patient per month at each visit (a cohort trajectory); P-1093's contested figure is the GLM-implied increase in cumulative 36-month cost for the observed MMSE decline versus none (a between-patient gradient in a completer subset). Different endpoints and metrics; the registry's 'not reported' versus 'effect_size' warning is right in substance.",
+  "performance_validity": "not a performance comparison",
+  "independence": "Not independent: same GERAS-US amyloid-positive cohort (identical N=617 and identical MCI baseline cost of $2,430), shared first author (Julie M. Chandler) and sponsor (Eli Lilly); P-1093 cites P-1000 as its reference [26] for the cost trajectory. These are two analyses of one study, not two studies.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "P-1093 reports the same observed cost trajectory as P-1000 (a fall to month 6, then stable with a modest rise to month 36) in the same paper as its +$8,504 estimate, so its authors present both results as true together.",
+    "The +$8,504 is the GLM-implied cost increment for the observed MMSE decline versus no decline in 108 MCI completers, a between-patient gradient rather than a claim that cohort-mean costs rose; the record's own residual_risk concedes the quantities are 'not logically contradictory'.",
+    "P-1000's authors do not read their data as costs failing to track progression: they write that rising caregiver costs 'show the additional economic impact associated with clinical progression', the direction P-1093 models.",
+    "The record's premise that costs stayed flat despite a documented MCI decline misreads P-1000, which reports the MCI decline as about 1 point and not significant.",
+    "What the record adds is a citation-hygiene note (cite P-1093's figures as modelled), which P-1093 states itself in its limitations; a filed note is not a disagreement.",
+    "The two papers share cohort, first author and sponsor, and P-1093 cites P-1000 as its source, so they could not be independent arms of a contradiction in any case."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-1000", "page": 1, "quote": "Julie M. Chandler1"},
+    {"paper": "P-1000", "page": 1, "quote": "Societal cost changes were examined in amyloid-positive patients with mild cognitive impairment due to AD (MCI) and mild dementia due to AD (MILD)."},
+    {"paper": "P-1000", "page": 1, "quote": "Total societal costs (dollars/month) for MCI and MILD, respectively, were higher at baseline ($2430 and $4063) but steady from 6 ($1977 and $3032) to 36 months ($2007 and $3392)."},
+    {"paper": "P-1000", "page": 1, "quote": "the rate of decline was significant for patients with MILD but not for those with MCI."},
+    {"paper": "P-1000", "page": 3, "quote": "Formal tests for cost trends over time within disease sever- ity are not presented but confidence intervals at each time point are provided."},
+    {"paper": "P-1000", "page": 4, "quote": "MCI N = 300 MILD N = 317 Total N = 617"},
+    {"paper": "P-1000", "page": 4, "quote": "onlyamodestdeclineof1pointontheMMSE,theMILDcohortshowed an approximately 4-point decline on the MMSE over 3 years, which is considered clinically meaningful."},
+    {"paper": "P-1000", "page": 7, "quote": "In the MCI patients, study partner indirect non-medical costs changed little over the 3-year period, but at 36 months these costs tended to be higher (MCI: $961 [95% CI: 736, 1185]) than they were at baseline (MCI: $718 [95% CI: 501, 935])."},
+    {"paper": "P-1000", "page": 7, "quote": "In this early symptomatic AD cohort, patients with MILD had a meaningful decline in cognition over 36 months while patients with MCI did not."},
+    {"paper": "P-1000", "page": 7, "quote": "The initial decline is likely due to more efficient clinical management and care planning after diagnosis."},
+    {"paper": "P-1000", "page": 9, "quote": "The rise in direct non-medical costs for patients with MILD and the trend toward rising indirect caregiver costs among patients with MCI and MILD over 36 months show the additional economic impact associated with clinical progression in early symptomatic AD."},
+    {"paper": "P-1093", "page": 1, "quote": "Observed natural progression over 36 months was associated with: 5.1 point decline in the Bath Assessment of Subjective Quality of Life in Dementia (BASQID) score (for HRQoL), increase in 1,050 hours of total caregiver time, and $8,504 total societal costs for MCI"},
+    {"paper": "P-1093", "page": 3, "quote": "Amyloid-positive patients with MCI or MILD AD from the GERAS-US study were included in this study (full analysis set, N = 617)."},
+    {"paper": "P-1093", "page": 4, "quote": "The models included baseline MMSE, change in MMSE from baseline to 36 months, age, number of comorbidities, and study partner"},
+    {"paper": "P-1093", "page": 4, "quote": "However, the outcome analysis set only comprised of those who completed the study and had measure- ment of MMSE and outcomes at baseline and month 36 (n = 108 MCI and n = 114 MILD AD)."},
+    {"paper": "P-1093", "page": 7, "quote": "At month 6, the total societal cost declined to $1,975.1 (2,332.6) for MCI and $3,066.9 (2,510.7) for MILD AD."},
+    {"paper": "P-1093", "page": 7, "quote": "From 6 months to 36 months, total societal costs in both groups increased modestly: to $2,048.9 (2,536.3) in MCI and $3,396.2 (2,367.1) in mild AD (Fig. 2 C)."},
+    {"paper": "P-1093", "page": 7, "quote": "The LSMC (95% CI) in MMSE from baseline to 36 months was –2.1 (–2.9, –1.3) for MCI and –4.1 (–4.9, –3.4) for MILD AD"},
+    {"paper": "P-1093", "page": 8, "quote": "For the MCI group, the observed 2.1 points wors- ening in MMSE was associated with an increase of $8,504 (95% CI, $1,479, $16,108) in total societal costs per patient over 36 months."},
+    {"paper": "P-1093", "page": 11, "quote": "Total societal cost MCI –2.1 (observed progression) –0.046 (0.019) 10.2% (1.8%, 19.3%) $8,504 ($1,479, $16,108)"},
+    {"paper": "P-1093", "page": 12, "quote": "In the current study, there was an initial decline in total societal costs from baseline to 6 months, after which the mean total societal costs remained relatively stable through 36 months in both groups."},
+    {"paper": "P-1093", "page": 12, "quote": "diagnosis at baseline, as described in our previous study [26]."},
+    {"paper": "P-1093", "page": 12, "quote": "For the MCI and MILD AD groups, the observed disease progression led to increased total societal cost of $8,504 and $12,795, respectively"},
+    {"paper": "P-1093", "page": 13, "quote": "progression are based on counterfactual predictions using observational data"},
+    {"paper": "P-1093", "page": 15, "quote": "Chandler JM, Rentz DM, Zagar A, Kim Y, Schwartz RL, Fillit H (2023) Disease progression and costs at the 3-year follow-up of the GERAS-US study. Alzheimers Dement (Amst) 15, e12430."}
+  ],
+  "record_defects": [
+    "claim_a and the evidence note on P-1000's decline ('the absence of aggregate cost escalation is not explained by an absence of progression'): P-1000 reports the MCI MMSE decline as about 1 point and not significant, and says patients with MCI did not have a meaningful decline, so a documented MCI decline alongside flat costs is not what P-1000 reports.",
+    "The sentence quoted as P-1000's authors' own reading ('It shows that substantial economic burden is already present at MCI due to AD, while worsening function and caregiver burden become more prominent with mild dementia') is not in the PDF; it is summary-block text (summaries.md line 150369). P-1000's discussion instead links rising caregiver costs to clinical progression and says slowing the disease would delay 'the economic and caregiver burden associated with disease progression'.",
+    "conflict_statement: 'total societal costs in the MCI stratum FELL over the 36 months, from about $2,430 to $2,007' compresses a fall from baseline to month 6 ($2430 to $1977) followed by a steady level to month 36 ($2007); P-1093 describes the 6-to-36-month change as a modest increase ($1,975.1 to $2,048.9).",
+    "conflict_statement: the pair does not 'point in opposite directions on whether progression produces observable cost escalation in MCI'; neither paper claims progression fails to raise costs, and 'the same cohort's own aggregate cost trajectory contains no rise for it to correspond to' treats a between-patient gradient as if it predicted a rise in cohort-mean monthly cost.",
+    "fp_codes_cleared POPULATION_SPECIFICITY: P-1000 is not 'the broader GERAS-US MCI/mild-dementia cohort'; it analyses the same amyloid-positive patients (N=617: 300 MCI, 317 MILD) as P-1093, so the registry's 'general' versus 'general_early_AD' split is a coding artefact, not a population difference.",
+    "fp_codes_cleared DUPLICATE_PAPER: P-1000 appeared in Alzheimer's & Dementia: Diagnosis, Assessment & Disease Monitoring (2023;15:e12430; cited by P-1093 as 'Alzheimers Dement (Amst)'), not 'Alz Dementia TRCI'.",
+    "'+$8,504 is a coefficient from a fitted GLM ... in an outcome subset of 222 of 617': the MCI model uses the 108 MCI completers (222 is MCI plus MILD), and $8,504 is the increment implied by the coefficient (-0.046 per MMSE point, log scale) at the full-analysis-set LSMC of -2.1, not the coefficient itself.",
+    "(Registry row, not the ledger record) P-1000's Sample_N_Approx says the denominator is not reported, but Table 1 gives N=300 MCI and N=317 MILD (617 total); its task_substage 'MCI_to_AD' does not describe the paper, which models no conversion."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "A disagreement would need a result on the same quantity pointing the other way, for example a GERAS-US analysis finding cumulative cost unrelated or inversely related to MMSE decline; even then a second analysis of this cohort would be the same study, not an independent one. Label alternative: documented_incommensurability (cohort-mean trajectory versus between-patient cost gradient) if compatibility is judged only after the quantity question; never genuine, also because the two are non-independent. Separate observation, not this record's claim: the two reports differ on the size of the MCI MMSE decline in the same cohort (P-1000: about 1 point, described as not significant, from 'actual scores'; P-1093: MMRM LSMC -2.1, -2.9 to -1.3, p<0.001), which appears to reflect observed completer means versus model-based least-squares means; being one cohort and one author group, that is a within-study reporting inconsistency worth noting, not a contradiction between distinct studies."
+}

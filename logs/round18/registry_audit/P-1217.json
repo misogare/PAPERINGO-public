@@ -1,0 +1,80 @@
+{
+  "paper": "P-1217",
+  "pack": 3,
+  "pdf_is_right_paper": false,
+  "title_as_printed": "Dietary fatty acids and risk for Alzheimer's disease, dementia, and mild cognitive impairment: A prospective cohort meta-analysis",
+  "correct_pdf": {
+    "path": "downloads/3. Molecular, Genetic and Fluid Biomarkers/1-s2.0-S0002916524008694-main.pdf",
+    "title_as_printed": "Association of dietary choline intake with incidence of dementia, Alzheimer disease, and mild cognitive impairment: a large population-based prospective cohort study",
+    "doi": "10.1016/j.ajcnut.2024.11.001",
+    "how_found": "read-only title scan of the first two pages of all 1,679 PDFs under downloads/; single hit",
+    "note": "The pack extract is Zhu et al. 2021, Nutrition 90:111355 (fatty-acid meta-analysis). The registry row describes the choline cohort study, so blind codes and judgements below are against the correct PDF; page numbers refer to it."
+  },
+  "is_model_study": false,
+  "blind_codes": {
+    "Task_Type": "T6 (alt T4)",
+    "Category": "C5",
+    "Validation_Type": "V2",
+    "Sample_N": "125,594",
+    "Publication_Year": "2024 (online 7 Nov 2024; issue 2025)",
+    "ADNI_Dependent": "false"
+  },
+  "blind_codes_pack_extract": {
+    "paper": "Zhu et al. 2021, Nutrition 90:111355, dietary fatty acids and AD/dementia/MCI, prospective cohort meta-analysis",
+    "Task_Type": "T6",
+    "Category": "C5",
+    "Validation_Type": "V2",
+    "Sample_N": "14 studies; 54,177 participants",
+    "Publication_Year": "2021",
+    "ADNI_Dependent": "false"
+  },
+  "registry_codes": {
+    "Task_Type": "T4",
+    "Category": "C3",
+    "Validation_Type": "V2",
+    "Sample_N_Approx": "125,594 (1,103 incident dementia, 491 AD, 87 MCI cases)",
+    "Publication_Year": "2025",
+    "ADNI_Dependent": "false"
+  },
+  "judgement": {
+    "Task_Type": {
+      "verdict": "defensible",
+      "correct_code": "T6 or T4",
+      "reason": "UK Biobank prospective cohort; Cox hazard ratios and logistic odds ratios relating dietary choline to incident dementia/AD/MCI and to baseline cognitive performance. No classifier. It is epidemiology (T6), but the core result is an exposure-outcome association, which the template also admits as T4 (correlational). The registry's T4 is one of the two readings.",
+      "quote": "The objective of this study was to explore the associations between dietary choline intake and the incidence of dementia, Alzheimer disease (AD), mild cognitive impairment (MCI), and current cognitive performance in the United Kingdom Biobank cohort.",
+      "page": 1
+    },
+    "Category": {
+      "verdict": "error",
+      "correct_code": "C5",
+      "reason": "The data domain is a population cohort: 24-h dietary recall questionnaires (choline estimated from a USDA food-composition table), hospital and death-record ICD codes, and touchscreen cognitive tests. No CSF, plasma, genomic or omic data are analysed; the limitations state that circulating choline was not measured (p.8). C3 has no basis as a data domain, and the primary domain C5 is missing. That choline is a molecule is a feature of the exposure, not of the data.",
+      "quote": "Dietary choline intake was categorized into quartiles of consumption based on 24-h dietary recalls, with units expressed as milligrams per day.",
+      "page": 1
+    },
+    "Validation_Type": {
+      "verdict": "match",
+      "correct_code": "V2",
+      "reason": "Association analysis (Cox, logistic, restricted cubic splines); no predictive model is validated."
+    },
+    "Sample_N_Approx": {
+      "verdict": "match",
+      "correct_code": "125594",
+      "reason": "125,594 participants analysed.",
+      "quote": "Among 125,594 participants (55.8% female), with a mean age of 56.1 y (range: 40–70 years) at baseline and a median follow-up of 11.8 y",
+      "page": 1
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2024 or 2025",
+      "reason": "Online 7 November 2024; issue Am J Clin Nutr 121 (2025) 5-13. Registry uses the issue year.",
+      "quote": "Available online 7 November 2024",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "false",
+      "reason": "UK Biobank; no ADNI."
+    }
+  },
+  "notes": "PDF-map defect: data/paper_pdf_map.json maps P-1217 to downloads/1. Clinical Assessments, Behavioral and Social Factors/1-s2.0-S0899900721002173-main.pdf with verified:true (folder-scan, score 0.8) and doi 10.1016/j.nut.2021.111355, which are the fatty-acid meta-analysis's file and DOI. The registry row itself was coded from the correct paper. The '491 AD' in the registry N string matches the paper's Results and Table 2; the paper's abstract says 385 AD (an inconsistency within the paper)."
+}

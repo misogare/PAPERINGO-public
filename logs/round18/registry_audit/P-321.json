@@ -1,0 +1,62 @@
+{
+  "paper": "P-321",
+  "pack": 3,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Identifying Alzheimer’s Disease Progression Subphenotypes via a Graph-based Framework using Electronic Health Records",
+  "is_model_study": true,
+  "blind_codes": {
+    "Task_Type": "T4",
+    "Category": "C5",
+    "Validation_Type": "V3",
+    "Sample_N": "2,525",
+    "Publication_Year": "2025 (Research Square preprint posted 7 Apr 2025)",
+    "ADNI_Dependent": "false"
+  },
+  "registry_codes": {
+    "Task_Type": "T2",
+    "Category": "C5",
+    "Validation_Type": "V3",
+    "Sample_N_Approx": "2525",
+    "Publication_Year": "2025",
+    "ADNI_Dependent": "false"
+  },
+  "judgement": {
+    "Task_Type": {
+      "verdict": "error",
+      "correct_code": "T4",
+      "reason": "This is subtype discovery. GNN embeddings of longitudinal EHR encounters are clustered (time-series k-means with DTW) into four MCI-to-AD progression subphenotypes, and ML models then predict subphenotype membership (AUROC 0.67-0.70). Inclusion required every patient to convert to AD, so there is no stable-MCI group and no progressive-vs-stable or conversion prediction. The GNN's next-encounter stage forecast (preclinical/MCI/AD) is an auxiliary representation-learning objective whose metrics sit in supplementary eTables. The template restricts T2 to explicit pMCI vs sMCI or MCI-to-AD conversion prediction. The abstract states the aim: 'To identify disease progression subphenotypes in patients with mild cognitive impairment (MCI) and AD using electronic health records (EHRs).' (p.3)",
+      "quote": "patients were required to have a conversion time to the AD of more than six months.",
+      "page": 5
+    },
+    "Category": {
+      "verdict": "match",
+      "correct_code": "C5",
+      "reason": "OneFlorida+ EHR data (diagnoses, medications, demographics, vitals)."
+    },
+    "Validation_Type": {
+      "verdict": "match",
+      "correct_code": "V3",
+      "reason": "Patient-stratified 70/10/20 train/validation/test split, plus 5-fold cross-validated Bayesian search on the training set; single consortium, no external site."
+    },
+    "Sample_N_Approx": {
+      "verdict": "match",
+      "correct_code": "2525",
+      "reason": "2,525 MCI/AD patients in the final analysis.",
+      "quote": "Our final analysis included 2,525 eligible MCI and AD patients in the cohort.",
+      "page": 9
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2025",
+      "reason": "Research Square preprint posted 7 April 2025.",
+      "quote": "Posted Date: April 7th, 2025",
+      "page": 2
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "false",
+      "reason": "OneFlorida+ Clinical Research Consortium EHRs; no ADNI."
+    }
+  },
+  "notes": "Non-peer-reviewed preprint (DOI 10.21203/rs.3.rs-6257332/v1). Coding it T2 would place a subphenotype-membership AUROC (0.67-0.70) among conversion-prediction results."
+}

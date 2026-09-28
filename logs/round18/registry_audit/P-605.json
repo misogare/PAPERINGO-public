@@ -1,0 +1,18 @@
+{
+  "paper": "P-605",
+  "pack": 1,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Empirical Classification of Neuropsychiatric Symptoms and Association of Classes With Diagnostic Progression and Cognitive Decline in Mild Cognitive Impairment and Alzheimer's Disease Populations",
+  "is_model_study": false,
+  "blind_codes": {"Task_Type": "T4", "Category": "C5", "Validation_Type": "V2", "Sample_N": "1472 (1066 MCI + 406 AD)", "Publication_Year": "2025", "ADNI_Dependent": "true"},
+  "registry_codes": {"Task_Type": "T2", "Category": "C5", "Validation_Type": "V2", "Sample_N_Approx": "1472", "Publication_Year": "2025", "ADNI_Dependent": "True"},
+  "judgement": {
+    "Task_Type": {"verdict": "defensible", "correct_code": "T4 or T2", "reason": "Two readings. T4: the core result is a latent-class subtyping of neuropsychiatric symptoms across MCI and AD (1472 participants), with associations to cognitive slopes and to conversion hazard; no conversion-prediction model or discrimination figure (AUC or accuracy) is reported. T2: MCI-to-AD conversion is an explicit outcome (Cox models in the MCI subset, with the classes entered as 'Predictors in the Cox proportional hazards model', p3), which meets the template's 'explicitly ... MCI-to-AD conversion' clause. The registry's T2 is the looser of the two readings.", "quote": "Subsequently, Cox proportional hazards models were used in individuals with MCI to assess whether the rate of conversion to AD differed across the NPS groups.", "page": 1},
+    "Category": {"verdict": "match", "correct_code": "C5", "reason": "The data are the NPI/NPI-Q, a neuropsychological battery and the FAQ from a clinical cohort. APOE enters only as a covariate.", "quote": "NPSs were assessed using either the NPI or the NPI Questionnaire (NPI-Q).", "page": 2},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "No predictive model is validated; the analyses are LCA, mixed models and Cox associations.", "quote": "Linear mixed models of repeated measures were used to compare changes in cognitive performance across 5 years as a function of NPS class.", "page": 1},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "1472", "reason": "1472 = 1066 MCI + 406 AD.", "quote": "This procedure yielded a study sample that included 1472 participants, comprising 1066 individuals with MCI and 406 individuals with AD dementia at baseline", "page": 2},
+    "Publication_Year": {"verdict": "match", "correct_code": "2025", "reason": "Published in 2025.", "quote": "Biological Psychiatry June 1, 2025; 97:1059–1066", "page": 1},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "true", "reason": "ADNI (phases 1, GO, 2 and 3) is the sole dataset.", "quote": "This study utilized data obtained from the ADNI-1, ADNI-GO, ADNI-2, and ADNI-3 databases", "page": 2}
+  },
+  "notes": "Under the T2 code, this study, which fits no classifier, enters the T1-T3 classification subset as a V2, ADNI-dependent row. That adds to both the classification V2 share and the classification ADNI share; under the stricter T4 reading it would not be in the subset. ADNI_Dependent is written 'True' (capitalised), but litreview_stats.py lower-cases the value, so the census is unaffected."
+}

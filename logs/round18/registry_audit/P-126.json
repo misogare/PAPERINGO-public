@@ -1,0 +1,63 @@
+{
+  "paper": "P-126",
+  "pack": 6,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Multi-omics integration reveals distinct MCI subtypes with molecular and phenotypic heterogeneity in Alzheimer’s disease progression",
+  "is_model_study": false,
+  "blind_codes": {
+    "Task_Type": "T4",
+    "Category": "C3;C5",
+    "Validation_Type": "V2",
+    "Sample_N": "305 MCI (+156 CN controls in the differential-expression analysis; +18 scRNA-seq donors from Synapse, 9 CN + 9 MCI)",
+    "Publication_Year": "2026",
+    "ADNI_Dependent": "true"
+  },
+  "registry_codes": {
+    "Task_Type": "T4",
+    "Category": "C3",
+    "Validation_Type": "V2",
+    "Sample_N_Approx": "305",
+    "Publication_Year": "2026",
+    "ADNI_Dependent": "true"
+  },
+  "judgement": {
+    "Task_Type": {
+      "verdict": "match",
+      "correct_code": "T4",
+      "reason": "Unsupervised multi-omics subtyping into four MCI subtypes, with survival and phenotype characterisation."
+    },
+    "Category": {
+      "verdict": "defensible",
+      "correct_code": "C3 or C3;C5",
+      "reason": "Two of the three clustering inputs are omics (DNA methylation and genetics), which is C3 and is coded. The third input is cognitive assessments (C5), and MRI and amyloid PET (C1) are used for validation. The registry keeps the primary domain and omits the secondary ones.",
+      "quote": "we integrated methylation profiles, cognitive assessments, and genetics data from 305 individuals in the Alzheimer’s Disease Neuroimaging Initiative (ADNI) cohort using the mixKernel multi-omics fusion method",
+      "page": 1
+    },
+    "Validation_Type": {
+      "verdict": "match",
+      "correct_code": "V2",
+      "reason": "Unsupervised clustering; the leave-one-out step checks cluster stability and does not validate a predictive model."
+    },
+    "Sample_N_Approx": {
+      "verdict": "defensible",
+      "correct_code": "305 (subtyping cohort); total analysed larger",
+      "reason": "305 is the subtyping cohort and the principal analysed N. The paper also analyses 156 cognitively normal ADNI controls in the transcriptomic differential-expression and Scissor analyses, and 18 scRNA-seq donors from Synapse, so the total analysed exceeds 305. The registry uses the principal-cohort N.",
+      "quote": "we additionally downloaded gene expression data for 156 control samples who remained cognitively normal throughout the follow-up period (from baseline to the last visit)",
+      "page": 8
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2026",
+      "quote": "Available online 9 January 2026",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "true",
+      "reason": "ADNI is the primary dataset; the Synapse scRNA-seq data are secondary.",
+      "quote": "The data used in this study were obtained from the Alzheimer’s Disease Neuroimaging Initiative (ADNI) database.",
+      "page": 2
+    }
+  },
+  "notes": ""
+}

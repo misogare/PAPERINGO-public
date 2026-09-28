@@ -1,0 +1,18 @@
+{
+  "paper": "P-1408",
+  "pack": 1,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Identifying Mild Behavioral and Neurocognitive Impairment in Amyotrophic Lateral Sclerosis (MBNI-ALS) Provides Key Prognostic Insights",
+  "is_model_study": false,
+  "blind_codes": {"Task_Type": "T4", "Category": "C5", "Validation_Type": "V2", "Sample_N": "201 ALS patients", "Publication_Year": "2025", "ADNI_Dependent": "false"},
+  "registry_codes": {"Task_Type": "T2", "Category": "C5", "Validation_Type": "V2", "Sample_N_Approx": "201 ALS patients (67 consecutive months of recruitment; median 15-month follow-up)", "Publication_Year": "2025", "ADNI_Dependent": "false"},
+  "judgement": {
+    "Task_Type": {"verdict": "error", "correct_code": "T4", "reason": "ALS patients are classified with the MBNI framework (NC/MCI/MBI/MCBI/FTD-dem). The classes are then related to tracheostomy-free survival (Kaplan-Meier, Cox HR) and to the ALS functional progression rate (logistic regression, OR). 'Disease progression' here is ALS motor-functional decline (ALSFRS-R monthly decline and King's staging, p2), not progressive-vs-stable MCI or MCI-to-AD conversion, and no discrimination figure is reported. A subtype-prognosis association is T4. T6 (descriptive clinical cohort) is also supportable; T2 is not.", "quote": "Prognostic value was analyzed using Kaplan–Meier survival curves, Cox proportional hazards models, and logistic regression for disease progression.", "page": 1},
+    "Category": {"verdict": "match", "correct_code": "C5", "reason": "The data are neuropsychological and behavioural assessments plus clinical scales in a clinical cohort. Genetic screening is marginal.", "quote": "Participants underwent comprehensive cognitive and behavioral assessments.", "page": 1},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "No predictive model is validated; the analyses are survival and logistic associations.", "quote": "Cox proportional hazards models, adjusted for key clinical covariates, estimated hazard ratios.", "page": 3},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "201", "reason": "201 ALS patients. The number is right, but the registry commentary on the recruitment span is wrong (see notes).", "quote": "A prospective cohort of 201 ALS patients was evaluated between January 2018 and July 2024.", "page": 1},
+    "Publication_Year": {"verdict": "match", "correct_code": "2025", "reason": "Published in 2025.", "quote": "European Journal of Neurology, 2025; 32:e70171", "page": 1},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "false", "reason": "A single-centre ALS clinic in Naples; ADNI is not used.", "quote": "201 patients with amyotrophic lateral sclerosis (ALS) were consecutively recruited at the ALS Clinic Centre Federico II University Hospital", "page": 2}
+  },
+  "notes": "The T2 code puts an ALS cohort study, which fits no classifier, into the T1-T3 classification subset (counted as V2, non-ADNI). The Sample_N commentary gets the recruitment span wrong: January 2018 to July 2024 is 78 months, not 67; '67' appears to come from the paper's 67% figure. The parsed N of 201 is right. The population is ALS, and 'MCI' here is an ALS cognitive-classification label."
+}

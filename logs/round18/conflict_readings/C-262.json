@@ -1,0 +1,99 @@
+{
+  "id": "C-262",
+  "reader": "adjudicator",
+  "reader_identity": "model reader (Claude Opus 5.5) on the reading delegated 2026-09-27; this verdict is a candidate for the operator, not a gate decision",
+  "quote_convention": "Quotes are verbatim from the ROOT/pdf extracts, with line breaks and non-breaking spaces rendered as single spaces (a hyphen at a line end is kept and joined); curly quotes and dashes are kept as printed (UTF-8). Table rows are quoted cell by cell in printed order.",
+  "papers_read": [
+    {
+      "paper": "P-13",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Screening strategies and dynamic risk prediction models for Alzheimer’s disease",
+      "read_in_full": true,
+      "note": "Ge X, Cui K, Qin Y, Chen D, Han H, Yu H. J Psychiatr Res 166 (2023) 92-99, doi 10.1016/j.jpsychires.2023.09.013; pages 1-8. Supplementary Tables 1-9 are online only."
+    },
+    {
+      "paper": "P-1128",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Early prediction of Alzheimer’s disease using artificial intelligence and cortical features on T1WI sequences",
+      "read_in_full": true,
+      "note": "Zeng R, Yang B, Wu F, Liu H, Wu X, Tang L, Song R, Zheng Q, Wang X, Guo D. Front Neurol 2025;16:1552940; pages 1-10. The pair is P-13 x P-1128 as named in the conflict_statement (paper_b is null in the record)."
+    },
+    {
+      "paper": "P-524",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Prediction of Cognitive Progression in Individuals with Mild Cognitive Impairment Using Radiomics as an Improvement of the ATN System: A Five-Year Follow-Up Study",
+      "read_in_full": false,
+      "note": "Context only: named in the record as an earlier case of the registry Best_AUC repair class; it bears on no quantity in this pair. Title checked, not read in full."
+    },
+    {
+      "paper": "P-574",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Changes in the Parietal Lobe Subregion Volume at Various Stages of Alzheimer’s Disease and the Role in Cognitively Normal and Mild Cognitive Impairment Conversion",
+      "read_in_full": false,
+      "note": "Context only, as for P-524. Title checked, not read in full."
+    },
+    {
+      "paper": "P-940",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Intrusion errors and progression of cognitive deficits in older adults with mild cognitive impairment (MCI) and PreMCI States",
+      "read_in_full": false,
+      "note": "Context only, as for P-524. Title checked, not read in full."
+    }
+  ],
+  "what_each_reports": {
+    "P-13": "In 718 ADNI MCI participants seen at visits up to 96 months, clustering of longitudinal FAQ trajectories defined a high-risk group (n = 340; 80.9% LMCI) and a low-risk group (n = 378). For the high-risk group (random split 237 training / 103 test), a Cox model on three functional principal-component scores of longitudinal CDRSB and hippocampal volume, plus baseline ADAS13, MMSE, RAVLT and FAQ, demographics and APOE e4, reached C-index 0.844 (95% CI 0.815-0.873) in the training set, 0.829 after bootstrap optimism correction and 0.805 in the test set (no CI printed). The low-risk group was modelled with a random survival forest reported by time-dependent AUC (0.787-0.935), not by C-index.",
+    "P-1128": "In 162 ADNI MCI patients (68 converting to AD within 6-60 months, 94 not converting in 5 years; reverters excluded), randomly split 112 training / 50 validation, Cox models on 37 baseline T1 cortical-morphology and gray-matter-network radiomics features with or without clinical factors gave, for the morphology-network-clinical model, C-index 0.951 (0.928-0.974) in training and 0.880 (0.817-0.943) in validation. The nomogram (MoCA, FAQ, rad-score) is reported with C-index 0.951, the training figure. Table 2 prints the network-morphology validation C-index as 0.844 (0.756-0.932), while the abstract and Section 3.2 print 0.884. No external validation."
+  },
+  "quantity_a": "P-13: concordance index for time to MCI-to-AD conversion (visits to 96 months) in the ADNI high-risk MCI subgroup defined post hoc by clustering longitudinal FAQ trajectories, for a dynamic Cox model on longitudinal CDRSB and hippocampal-volume trajectory scores plus baseline cognition, demographics and APOE e4; the headline 0.844 is the apparent (training) estimate.",
+  "quantity_b": "P-1128: concordance index for time to MCI-to-AD conversion within 60 months in ADNI MCI selected as converters within 60 months or patients stable for 5 years (reverters excluded), for a baseline Cox model on T1 cortical morphology and gray-matter network radiomics plus MoCA and FAQ; 0.880 on a 50-patient random hold-out (0.951 in training).",
+  "same_quantity": false,
+  "incompatible_if_same": "Only in form. Like for like, P-1128 is higher at both levels: training 0.951 (0.928-0.974) versus 0.844 (0.815-0.873), with non-overlapping intervals, and hold-out 0.880 (0.817-0.943) versus 0.805 (no CI). If these were one estimand the training intervals would exclude each other; but they are the performances of different models on different inputs in different (sub)populations, and neither paper claims an ordering that the other refutes. The record's reconciliation (0.880 versus 0.844, 'concordant') is not like for like, because 0.844 is P-13's training figure.",
+  "gates": {
+    "task": "match: T2 in both; time to MCI-to-AD conversion modelled by Cox regression.",
+    "dataset_family": "match: ADNI in both (recorded below as non-independence).",
+    "validation_tier": "mismatch as coded, not waived: registry V2 for P-13 and V3 for P-1128. From the PDFs both studies have an internal random-split hold-out (P-13 test n = 103, C-index 0.805; P-1128 validation n = 50, 0.880), so the tier would match only if those hold-out figures were compared; the 0.844 carried for P-13 is its apparent training estimate.",
+    "modality_family": "mismatch in composition, not waived: the registry codes both 'structural_MRI_only', but P-13's model combines longitudinal CDRSB and hippocampal-volume trajectories with baseline cognitive tests and APOE e4 genotype, while P-1128's combines baseline cortical morphology and network radiomics with MoCA and FAQ. The shared family is structural MRI plus clinical scales, with a genetic channel only in P-13 and a different input representation (longitudinal trajectory scores versus baseline radiomics)."
+  },
+  "endpoint_and_metric": "incompatible: the metric type matches (C-index), but the endpoint differs in horizon (visits to 96 months versus 60 months) and in case definition (P-1128 keeps only converters within 60 months or patients stable for 5 years and excludes reverters; P-13 keeps all MCI with at least one follow-up), and P-13's estimate is confined to a high-risk subgroup identified from follow-up FAQ trajectories.",
+  "performance_validity": "flag does not apply: the highest figure is P-1128's training 0.951, below 0.97, and both pack flags are false; this is a performance comparison, so the exclusion was checked and is not triggered.",
+  "independence": "shared cohort: both draw MCI participants from ADNI (P-13: ADNI-1, ADNI-GO and ADNI-2, visits to May 2021; P-1128: ADNI MCI with 5-year follow-up), so participants very probably overlap; author teams are distinct (Jinzhou and Shanxi versus Chongqing). Recorded as non-independence.",
+  "bridging_evidence": [],
+  "verdict": "documented_incommensurability",
+  "grounds": [
+    "P-13's 0.844 is the training-set C-index of a high-risk-subgroup model (237 training patients of 340 high-risk of 718), with 0.829 after optimism correction and 0.805 on its test split, so it is neither the population nor the evaluation level of P-1128's 0.880 [q1, q2, q3].",
+    "P-13's subgroup is defined by clustering follow-up FAQ trajectories, a different population behind the label 'MCI' from P-1128's converters within 60 months and 5-year-stable patients with reverters excluded [q4, q8, q9].",
+    "The predictor sets and input representations differ: longitudinal CDRSB and hippocampal trajectory scores with baseline cognition and genetic variables in P-13, baseline cortical morphology and network radiomics with MoCA and FAQ in P-1128 [q5, q6, q11].",
+    "The horizons differ: visits to 96 months in P-13 against 60 months in P-1128, whose horizon the paper states [q7, q9, q10].",
+    "Neither paper evaluates the other's model or claims an ordering that the other refutes, so the like-for-like gap (P-1128 higher by 0.107 in training and 0.075 on hold-out) is a spread across different models and samples, not a contradiction [q2, q12]."
+  ],
+  "evidence_quotes": [
+    {"id": "q1", "paper": "P-13", "page": 4, "quote": "The high-risk MCI dataset (n = 340) was randomly split into a training set (n = 237) and test set (n = 103)."},
+    {"id": "q2", "paper": "P-13", "page": 4, "quote": "The C-index of the model was 0.844 (95% CI: 0.815–0.873), and the optimism-corrected C-index by bootstrapping was 0.829. In addition, the C-index of the test set was 0.805 (see details in Table 4)."},
+    {"id": "q3", "paper": "P-13", "page": 2, "quote": "To correct for optimism bias in the Cox and RSF models, we performed internal validation using 500 bootstrap samples."},
+    {"id": "q4", "paper": "P-13", "page": 3, "quote": "Thus, HDDC was performed to identify the risk groups based on FAQ. The high- and low-risk groups included 340 and 378 individuals with MCI, respectively."},
+    {"id": "q5", "paper": "P-13", "page": 4, "quote": "five functional principal components were extracted by MFPCA, namely rho1 to rho5, which capture the essential information in the CDRSB and hippocampal longitudinal markers."},
+    {"id": "q6", "paper": "P-13", "page": 4, "quote": "In addition, we incorporated demographic information, genetic variables, and other clinical assessments at baseline, except CDRSB."},
+    {"id": "q7", "paper": "P-13", "page": 2, "quote": "A total of 718 individuals were assessed at baseline and at 6, 12, 18, 24, 36, 48, 60, 72, 84, and 96 months of follow-up."},
+    {"id": "q8", "paper": "P-1128", "page": 2, "quote": "In the follow-up period, participants with bidirectional changes (MCI to AD and back to MCI) were excluded."},
+    {"id": "q9", "paper": "P-1128", "page": 2, "quote": "The dataset included baseline T1W images and clinical data of 68 MCI patients who progressed to AD in 6–60 months and 94 other MCI patients without AD conversion in 5 years"},
+    {"id": "q10", "paper": "P-1128", "page": 8, "quote": "All individuals in our study were followed up for 5 years, which brought our model closer to the real situation."},
+    {"id": "q11", "paper": "P-1128", "page": 7, "quote": "This nomogram included 3 predictors: the Montreal Cognitive Assessment (MoCA) score, Functional Assessment Questionnaire (FAQ) score, and rad-score (Figure 4A)."},
+    {"id": "q12", "paper": "P-1128", "page": 5, "quote": "Network-Morphology-Clinical 0.951 0.928 0.974 0.880 0.817 0.943"},
+    {"id": "q13", "paper": "P-1128", "page": 5, "quote": "Network-Morphology 0.928 0.898 0.958 0.844 0.756 0.932"},
+    {"id": "q14", "paper": "P-1128", "page": 5, "quote": "The C-indexes of those models in the validation group were 0.765, 0.784, 0.849, 0.877, 0.884 and 0.880, respectively."},
+    {"id": "q15", "paper": "P-1128", "page": 1, "quote": "A multi-predictor nomogram with high accuracy for individual AD prediction (C-index = 0.951) was established."},
+    {"id": "q16", "paper": "P-1128", "page": 8, "quote": "Second, our research lacked independent external validation."}
+  ],
+  "record_defects": [
+    "The reconciliation ('against the honest figure the difference is 0.036 IN P-1128's FAVOUR ... concordant, not incompatible') sets P-1128's hold-out 0.880 against P-13's 0.844, which is P-13's training estimate (optimism-corrected 0.829, test 0.805). Like for like, P-1128 is higher by 0.107 in training (intervals 0.928-0.974 and 0.815-0.873 do not overlap) and by 0.075 on hold-out [q2, q12].",
+    "'P-1128 horizon unstated' ('8.0 vs ?'): P-1128 states conversion within 6-60 months, non-converters followed for 5 years, and calibration at 1, 3 and 5 years [q9, q10].",
+    "'its own validation table ranks morphology-network (0.884) above the declared winner': Table 2 prints the network-morphology validation C-index as 0.844 (0.756-0.932), below 0.880; only the abstract and Section 3.2 print 0.884, and the interval's midpoint matches 0.844. The charge that the declared best model was chosen on training is not supported by the table [q13, q14].",
+    "'both are T1-derived structural MRI feature sets on ADNI with no PET, CSF or genetic channel': P-13's model includes APOE e4 genotype and longitudinal CDRSB trajectories with baseline ADAS13, MMSE, RAVLT and FAQ, and conditions on follow-up data; P-1128's best model and nomogram include MoCA and FAQ [q5, q6, q11].",
+    "'the only pair in this pack that clears all four comparability gates': those are the gatecheck columns; under the review's four gates the validation tier is coded V2 versus V3 and the modality composition differs, neither waived.",
+    "residual_risk: 'P-13's 0.844 comes from N=718 over an 8-year horizon': it comes from the training set of the high-risk subgroup (n = 237) [q1].",
+    "POPULATION_SPECIFICITY cleared as 'neither is a disease-restricted subpopulation': P-13's 0.844 is confined to a high-risk subgroup defined by longitudinal FAQ trajectories [q4].",
+    "paper_b is null although the statement names P-13; claim_a is truncated at 500 characters and claim_b is a placeholder (flagged 2026-09-14, not repaired)."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "A comparison on one estimand: the same (sub)population and horizon with baseline inputs of the same family, for example P-13 reporting a hold-out C-index for a baseline MRI-plus-clinical model in all MCI over 60 months whose interval excluded P-1128's 0.880 (0.817-0.943), together with a claim in one paper that the other refutes. The validation-tier and modality-composition mismatches would also need a waiver on record."
+}

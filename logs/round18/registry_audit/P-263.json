@@ -1,0 +1,101 @@
+{
+  "paper": "P-263",
+  "pack": 6,
+  "pdf_is_right_paper": false,
+  "title_as_printed": "Personalized modeling of Alzheimer’s disease progression estimates neurodegeneration severity from EEG recordings",
+  "pdf_problem": "The pack extract matches title_in_pdf_map, but the map entry itself is wrong for P-263. data/paper_pdf_map.json records method 'formula-unverified', score 0.0, verified false, pointing at downloads/4. Computational Models and Modern AI Architectures/PMID_38371358_DAD2-16-e12526.pdf (Amato et al., Alzheimers Dement DADM 2024;16:e12526, DOI 10.1002/dad2.12526). That paper appears nowhere in summaries.md (no title or DOI hit). The P-263 block is headed '## Paper 263: 1-s2.0-S1935861X21000041-main.pdf' and describes Benussi A, Grassi M, Palluzzi F, et al., 'Classification accuracy of TMS for the diagnosis of mild cognitive impairment', Brain Stimulation 14 (2021) 241-249, DOI 10.1016/j.brs.2021.01.004. The registry row (T3, C2, V2, 160, 2021, false) was coded from that paper. Its PDF is on disk at downloads/1. Clinical Assessments, Behavioral and Social Factors/1-s2.0-S1935861X2100005X-main.pdf, which the map assigns to P-863 under a different title. The pack PDF (Amato) was coded blind (blind_codes). The mismatch only surfaced after the codes file was opened, so the 'judgement' block is a NON-BLIND check of the registry row against its actual source, Benussi 2021 (extract at scratchpad/r18_p6_work/p6_P-263_actual_source_Benussi2021.txt; page numbers in 'judgement' refer to it). 'judgement_vs_pack_pdf' gives the literal comparison with the Amato PDF (page numbers refer to pdf/P-263.txt).",
+  "actual_source_title": "Classification accuracy of TMS for the diagnosis of mild cognitive impairment",
+  "is_model_study": true,
+  "blind_codes": {
+    "Task_Type": "T1",
+    "Category": "C2",
+    "Validation_Type": "V2",
+    "Sample_N": "119 (17 HC + 58 SCD + 44 MCI)",
+    "Publication_Year": "2024",
+    "ADNI_Dependent": "false",
+    "note": "blind codes of the pack PDF (Amato et al. 2024), which is not P-263's actual source"
+  },
+  "registry_codes": {
+    "Task_Type": "T3",
+    "Category": "C2",
+    "Validation_Type": "V2",
+    "Sample_N_Approx": "160",
+    "Publication_Year": "2021",
+    "ADNI_Dependent": "false"
+  },
+  "judgement_basis": "non-blind check against the actual source of the P-263 row and summary block, Benussi et al. 2021 (Brain Stimulation)",
+  "judgement": {
+    "Task_Type": {
+      "verdict": "defensible",
+      "correct_code": "T1, T3 or T4",
+      "reason": "Benussi 2021 chains three binary random-forest classifiers (MCI vs HC, then MCI-FTD vs MCI-non-FTD, then MCI-AD vs MCI-DLB) to assign each subject to one of four classes. T3 fits that multi-class structure including HC, but not its staging meaning, since the classes are aetiologies rather than stages. T1 (the first-level MCI vs HC classifier, accuracy 0.84) and T4 (aetiological MCI subtype) are the alternative readings.",
+      "quote": "As reported in Fig. 3, a hierarchical series of subsequent 3 binary (two-groups) and independent classifiers were employed: i) MCI vs HC; ii) MCI-FTD vs MCI-non-FTD (MCI-AD or MCI-DLB), iii) MCI-AD vs MCI-DLB.",
+      "page": 5
+    },
+    "Category": {
+      "verdict": "match",
+      "correct_code": "C2",
+      "reason": "The only analysed data are TMS paired-pulse measures recorded by EMG (neurophysiology); CSF, PET and DaTSCAN enter only as diagnostic reference labels."
+    },
+    "Validation_Type": {
+      "verdict": "defensible",
+      "correct_code": "V2 (or V3)",
+      "reason": "Two readings. V2: the new classifier was trained and validated with 5-fold CV within the same multicentre cohort, and Table 2 is labelled '5-fold cross-validation'. V3: a previously published classifier trained on about 650 dementia patients was applied to this new MCI cohort, but the paper does not show that cohort came from different institutions.",
+      "quote": "By computing a new classifier, both trained and validated on the current cohort of MCI patients, classification indices with 5-fold-cross validation adjusted for age, sex and center, showed even higher accuracy (ranging from 0.83 to 0.93)",
+      "page": 6
+    },
+    "Sample_N_Approx": {
+      "verdict": "defensible",
+      "correct_code": "153 analysed (160 assessed)",
+      "reason": "The abstract prints '160 participants were included'. Results state that 160 were assessed for eligibility, 7 were excluded, and 153 (64 MCI-AD + 28 MCI-FTD + 14 MCI-DLB + 47 HC) were analysed. The registry uses the enrolled figure.",
+      "quote": "Thus, one hundred fifty-three subjects were considered in the present analysis.",
+      "page": 5
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2021",
+      "quote": "Available online 13 January 2021",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "false",
+      "reason": "Italian multicentre TMS cohort; no ADNI data."
+    }
+  },
+  "judgement_vs_pack_pdf": {
+    "Task_Type": {
+      "verdict": "error",
+      "correct_code": "T1",
+      "reason": "Amato 2024 trains a binary HC vs MCI classifier (random forest, F1 0.95) and has no multi-class classifier.",
+      "quote": "We then tested several machine learning algorithms to perform a binary classification between HC subjects and MCI patients based on the EEG features identified in the previous section.",
+      "page": 4
+    },
+    "Category": {
+      "verdict": "match",
+      "correct_code": "C2"
+    },
+    "Validation_Type": {
+      "verdict": "match",
+      "correct_code": "V2",
+      "reason": "Nested cross-validation in a single-centre sample."
+    },
+    "Sample_N_Approx": {
+      "verdict": "error",
+      "correct_code": "119",
+      "quote": "we collected electroencephalography (EEG) recordings at rest from participants in healthy (HC, n = 17), subjective cognitive decline (SCD, n = 58), and mild cognitive impairment (MCI, n = 44) conditions",
+      "page": 1
+    },
+    "Publication_Year": {
+      "verdict": "error",
+      "correct_code": "2024",
+      "quote": "Alzheimer’s Dement. 2024;16:e12526.",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "false"
+    }
+  },
+  "notes": "The census row for P-263 is consistent with its own paper (Benussi 2021); the defect is the PDF map. The Amato 2024 EEG paper is not a corpus study, so its disagreement with the row is not a registry error, and it should not be counted as three registry errors. The map also assigns the Benussi PDF to P-863 under the title 'Medical Journey of Patients with Mild Cognitive Impairment...'; that entry should be checked. Minor: the P-263 summary block writes '160 subjects: 64 MCI-AD, 28 MCI-FTD, 14 MCI-DLB, 47 healthy controls', which sums to 153. Status check after the concurrent commit f028bc9 (2026-09-27 11:54, 63 map rows repaired): the P-263 entry is still the unrepaired formula-unverified Amato path, and P-863 still points to the Benussi PDF under the 'Medical Journey...' title."
+}

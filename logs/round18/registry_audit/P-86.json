@@ -1,0 +1,19 @@
+{
+  "paper": "P-86",
+  "pack": 4,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "A combined model of convolutional neural networks and graph attention networks for improved classification of mild cognitive impairment",
+  "is_model_study": true,
+  "blind_codes": {"Task_Type": "T3", "Category": "C1", "Validation_Type": "V2", "Sample_N": "1900 (1023 normal + 543 MCI + 334 dementia; Hanyang 76, ADNI 145, NACC 1679)", "Publication_Year": "2026", "ADNI_Dependent": "false"},
+  "blind_code_notes": "Task: T1 arguable given the paper's MCI-vs-normal-aging framing. Validation: V3 arguable from the phrase 'reserved test set', but reported metrics are 5-fold CV means. Year: online 23 Dec 2025, issue 2026.",
+  "registry_codes": {"Task_Type": "T1", "Category": "C1", "Validation_Type": "V2", "Sample_N_Approx": "1900", "Publication_Year": "2025", "ADNI_Dependent": "true"},
+  "judgement": {
+    "Task_Type": {"verdict": "defensible", "correct_code": "T3", "acceptable_codes": ["T3", "T1"], "reason": "Two honest readings. The model is a 3-class classifier of normal aging / MCI / AD with one-vs-rest per-class AUCs (T3, multi-class staging). The title and abstract frame the contribution as MCI classification that separates MCI from normal aging (T1). The MCI AUC (0.719) is MCI vs rest, not strictly MCI vs HC, so T3 is the more literal code, but T1 is supportable from the paper's own framing.", "quote": "Herein, a combined CNN–GAT framework was constructed for the classification of AD, MCI and normal aging. [p.3] / The combined CNN-GAT model outperformed existing single-model approaches, particularly in MCI classification, effectively distinguishing subtle variations between normal aging and MCI. [p.1]", "page": 3},
+    "Category": {"verdict": "match", "correct_code": "C1", "acceptable_codes": ["C1"], "reason": "T1-weighted MRI volumes and CIVET cortical thickness only.", "quote": "Magnetic resonance imaging volume data were analyzed using a CNN, whereas cortical thickness data were modeled using a GAT", "page": 1},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "acceptable_codes": ["V2"], "reason": "Stratified 5-fold CV over the pooled three-site data (stratified by class and site); reported AUCs are fold means. Sites are mixed across folds, so this is not external validation.", "quote": "stratified 5-fold cross-validation was performed jointly by diagnostic class and acquisition site, ensuring proportional representation of subjects from each site in every fold", "page": 5},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "1900", "acceptable_codes": ["1900"], "reason": "Table 1 total 1900 (334 dementia, 543 MCI, 1023 normal).", "quote": "Total 1900 (100 %)", "page": 2},
+    "Publication_Year": {"verdict": "match", "correct_code": "2025", "acceptable_codes": ["2025", "2026"], "reason": "Online 23 December 2025 (online-first year acceptable); issue NeuroImage 325 (2026).", "quote": "NeuroImage 325 (2026) 121674 Available online 23 December 2025", "page": 1},
+    "ADNI_Dependent": {"verdict": "error", "correct_code": "false", "acceptable_codes": ["false"], "reason": "ADNI supplies only 145 of 1900 subjects (8%); the primary dataset is NACC (1679, 88%), plus 76 Hanyang University Hospital subjects. ADNI is neither primary nor sole.", "quote": "Table 1: Hanyang 76 (4 %) ... ADNI 145 (8 %) ... NACC 1679 (88 %)", "page": 2}
+  },
+  "notes": "ADNI_Dependent=true inflates the review's ADNI-dependence statistic; this is a NACC-dominated three-source study. Task T1 vs T3 affects the task-mix census only at the margin (defensible)."
+}

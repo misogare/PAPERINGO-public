@@ -1,0 +1,14 @@
+{"paper": "P-1232", "pdf_is_right_paper": true,
+ "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-1232.txt",
+ "registry_code": "V3", "correct_code": "V3", "changed": false,
+ "training_data": "Guangzhou community case-control cohort (155 MCI / 155 controls, Southern Medical University): exosomal RNA-seq discovery on a random subset of 10 samples, then qRT-PCR on the remaining 300",
+ "test_data": "qRT-PCR set (150 MCI / 150 controls, same cohort) for the 3-lncRNA panel. AddNeuroMed/DCR whole-blood microarray GSE63060 (80 MCI / 104 controls) for the two target genes ATP2A2 and PSEN1 only",
+ "model_fixed_before_external_test": false,
+ "reason": "Confirmed: the external AddNeuroMed data tested only two target mRNAs (ATP2A2, PSEN1), with their ROC and cut-off (-0.56) derived in that dataset. The reported 3-lncRNA exosomal panel (AUC 0.700) was never applied there, and the authors state they evaluated it only in the Chinese population. That is external replication of genes, not of the study's model, so not V4 (certain). V3 stands for the discovery-versus-qRT-PCR split within the Guangzhou cohort. V2 is arguable, because the panel's logistic combination was fitted and scored on the same 300 qRT-PCR samples.",
+ "quotes": [
+  {"page": 4, "quote": "We selected two genes (ATP2A2 and PSEN1) for analysis during this process."},
+  {"page": 4, "quote": "We randomly selected 10 MCI patients and corresponding healthy controls from 310 samples for RNA sequencing, and another 300 samples for qRT-PCR testing."},
+  {"page": 5, "quote": "On the other hand, we validated the predictive power of target genes using an external dataset of 80 MCI patients and 104 healthy controls. The AUC for the combination of plasma ATP2A2 and PSEN1 was 69.5 % (CI: 61.8 %\u201377.15 %, P < 0.001) (Fig. 4B)"},
+  {"page": 9, "quote": "Secondly, although we used dataset from the UK population to validate the predictive effect of target genes on MCI, we only evaluated the predictive effect of target exo-lncRNAs in the Chinese population."}
+ ],
+ "confidence": "medium"}

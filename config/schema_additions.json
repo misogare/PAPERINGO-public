@@ -1,0 +1,16 @@
+{
+  "study_design_type": {
+    "type": "categorical",
+    "values": [
+      "longitudinal_multipoint",
+      "longitudinal_2point",
+      "cross_sectional",
+      "future_value_forecasting",
+      "survival_analysis"
+    ],
+    "extraction_prompt": "Extract the study_design_type for this paper. Choose from: ['longitudinal_multipoint', 'longitudinal_2point', 'cross_sectional', 'future_value_forecasting', 'survival_analysis']",
+    "blocking_rule": "If study_design_type differs by more than 1 category, route to partial not genuine",
+    "evidence_count": 5,
+    "added_from": "fp_feedback_loop"
+  }
+}

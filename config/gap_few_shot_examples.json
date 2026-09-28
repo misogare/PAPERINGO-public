@@ -1,0 +1,45 @@
+{
+  "few_shot_conflict_fps": [
+    {
+      "pair": [
+        "P-23",
+        "P-82"
+      ],
+      "verdict": "false_positive",
+      "reason": "P-23 uses trimodal MRI+PET+CSF (TASNet). P-82 uses structural MRI only (FreeSurfer ROIs). Both coded as structural_mri modality family \u2014 but trimodal fusion has CSF and PET information unavailable to structural-MRI-only models. The gap is a modality content difference, not an architectural conflict."
+    },
+    {
+      "pair": [
+        "P-27",
+        "P-96"
+      ],
+      "verdict": "false_positive",
+      "reason": "P-27 is a depression-specific elderly cohort from CHARLS \u2014 participants have pre-existing depressive disorder as a comorbidity. P-96 is the general CHARLS population (no depression filter). Both use CHARLS data so dataset_equal=Yes, but the clinical populations are fundamentally different. Predictors for MCI in depressed patients differ systematically from general-population predictors."
+    },
+    {
+      "pair": [
+        "P-166",
+        "P-25"
+      ],
+      "verdict": "false_positive",
+      "reason": "P-166 is a sarcopenia-specific cohort \u2014 participants have skeletal muscle deterioration as a primary condition, which is independently associated with cognitive decline. P-25 is the general CHARLS population. The sarcopenia biomarker profile (muscle mass, gait speed, grip strength) drives P-166's model differently from general cognitive predictors."
+    }
+  ],
+  "tp_conflict_examples": [
+    {
+      "pair": [
+        "P-82",
+        "P-3"
+      ],
+      "verdict": "genuine",
+      "reason": "Transformer on FreeSurfer ROI features (83.3% Acc) vs CNN with attention transfer on voxels (74.61% Acc). Same task T2, same dataset ADNI, same validation tier V2, same structural MRI modality. Gap 8.7% \u2014 genuine. Interpretation: pre-computed anatomical ROIs (FreeSurfer) beat end-to-end voxel learning on small N datasets. Inductive bias of anatomical parcellation outweighs representational capacity of voxel CNNs when N < 300."
+    }
+  ],
+  "gap_fp_patterns": {
+    "FIELD_ALREADY_ADDRESSED": 1,
+    "EXISTS_IN_EXTERNAL_LITERATURE": 3,
+    "DATA_SCARCITY": 2,
+    "COMBINATORIAL_GAP": 2
+  },
+  "new_gap_keywords": []
+}

@@ -1,0 +1,21 @@
+{
+  "paper": "P-248",
+  "pack": 2,
+  "pdf_is_right_paper": false,
+  "title_as_printed": "Explainable Vision Transformer with Self-Supervised Learning to Predict Alzheimer's Disease Progression Using 18F-FDG PET (Khatri & Kwon, Bioengineering 2023, 10, 1225) - this is the paper in the pack extract; it is NOT the registry's paper",
+  "located_source": {"path": "downloads/1. Clinical Assessments, Behavioral and Social Factors/1-s2.0-S1568163724002757-main.pdf", "title": "Mechanisms, consequences and role of interventions for sleep deprivation: Focus on mild cognitive impairment and Alzheimer's disease in elderly", "citation": "Mukherjee U, Sehar U, Brownell M, Reddy PH. Ageing Research Reviews 100 (2024) 102457, doi:10.1016/j.arr.2024.102457", "how_found": "first-page title scan of all PDFs under downloads/; extracted with PyMuPDF to scratchpad pack2_work/P-248_located.txt; the judgements below (and page numbers) refer to this located PDF"},
+  "is_model_study": false,
+  "blind_first": "blind codes were written to this file before the registry codes file was opened",
+  "blind_codes": {"Task_Type": "T6", "Category": "C5", "Validation_Type": "V2", "Sample_N": "Not reported (narrative review; data statement: no data was used)", "Publication_Year": "2024", "ADNI_Dependent": "false"},
+  "blind_codes_of_misattached_pdf_for_context": {"Task_Type": "T2", "Category": "C1", "Validation_Type": "V2 (5-fold CV)", "Sample_N": "469 (224 MCI-c + 245 MCI-s)", "Publication_Year": "2023", "ADNI_Dependent": "true"},
+  "registry_codes": {"Task_Type": "T6", "Category": "C1", "Validation_Type": "V2", "Sample_N_Approx": "not reported", "Publication_Year": "2024", "ADNI_Dependent": "false"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T6", "reason": "Narrative review article (labelled 'Review article') on sleep deprivation in the elderly with a focus on MCI/AD."},
+    "Category": {"verdict": "error", "correct_code": "C5", "reason": "The review covers causes (hormones, diet, physical activity, stress), consequences (physical, mental, cognitive health) and interventions (CBT, melatonin, sleep education, public-health policy) of sleep deprivation: clinical/population content, C5. Neuroimaging appears only in two passing sentences about MRI markers of brain ageing (pp. 12-13), and the paper states it used no data (p. 13). C1 is therefore marginal while the primary domain C5 is missing from the code.", "quote": "However, sleep disorders exacerbate existing conditions such as epilepsy and asthma, necessitating interventions like cognitive behavioral therapy (CBT) and medications such as melatonin to mitigate their impact. Education emerges as a crucial tool in promoting healthier sleep habits across all age groups.", "page": 1},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "Narrative review; no predictive model (V2 by convention)."},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "Not reported", "reason": "No participant total or study count; data statement 'No data was used for the research described in the article.' (p. 13)."},
+    "Publication_Year": {"verdict": "match", "correct_code": "2024", "reason": "Ageing Research Reviews 100 (2024) 102457; available online 17 August 2024."},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "false", "reason": "Review; ADNI not used."}
+  },
+  "notes": "PDF-map defect: the pack extract P-248.txt is Khatri & Kwon 2023 (ViT on ADNI FDG-PET, pMCI vs sMCI; would code T2/C1/V2/469/2023/ADNI true), from map path 'downloads/4. Computational Models and Modern AI Architectures/PMID_37892955_bioengineering-10-01225.pdf' with method 'formula-unverified', score 0.0. The registry row's T6/not reported/2024/false fit the sleep review, so the row describes the right paper; its C1 coincides with the wrong PDF's domain, which may or may not be how it arose. During this session the working-tree data/paper_pdf_map.json was changed by someone else to point P-248 at the PDF located here (method 'registry-audit-located-2026-09-27'); I did not modify any repository file."
+}

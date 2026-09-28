@@ -1,0 +1,62 @@
+{
+  "paper": "P-618",
+  "pack": 3,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Prevalence, risk and protective factors for mild cognitive impairment in a population-based study of Singaporean elderly",
+  "is_model_study": false,
+  "blind_codes": {
+    "Task_Type": "T6 (alt T4)",
+    "Category": "C5",
+    "Validation_Type": "V2",
+    "Sample_N": "953 analysed (122 MCI + 831 NC); 973 Singaporean Chinese with complete data before excluding 19 dementia + 1 unclassified; 1010 complete interviews; 1060 consented",
+    "Publication_Year": "2021 (online 25 Nov 2021; issue 2022)",
+    "ADNI_Dependent": "false"
+  },
+  "registry_codes": {
+    "Task_Type": "T4",
+    "Category": "C5",
+    "Validation_Type": "V2",
+    "Sample_N_Approx": "973 Singaporean Chinese (122 MCI / 831 NC); 1010 total DaHA",
+    "Publication_Year": "2022",
+    "ADNI_Dependent": "False"
+  },
+  "judgement": {
+    "Task_Type": {
+      "verdict": "defensible",
+      "correct_code": "T6 or T4",
+      "reason": "No classifier or discrimination figure. It is population epidemiology (MCI prevalence 12.5%), which reads as T6. Its other core results are risk/protective-factor associations (Poisson relative risks) and the gender distribution of MCI subtypes, which fit T4 (correlational/subtype). Both readings are available under the template; the registry's T4 is one of them.",
+      "quote": "Thus this population-based study aimed to determine the prevalences of MCI and its subtypes, as well as to identify the risk and protective factors for MCI in the Chinese elderly population of Singapore.",
+      "page": 1
+    },
+    "Category": {
+      "verdict": "match",
+      "correct_code": "C5",
+      "reason": "Door-to-door population cohort (DaHA) with interviews, medical history and neuropsychological assessment."
+    },
+    "Validation_Type": {
+      "verdict": "match",
+      "correct_code": "V2",
+      "reason": "Association study (univariate tests, Poisson regression for relative risk); no predictive model is validated."
+    },
+    "Sample_N_Approx": {
+      "verdict": "defensible",
+      "correct_code": "953 analysed (973 before excluding dementia/unclassified)",
+      "reason": "The paper reports several Ns: 1060 consented, 1010 with complete interviews, 973 Singaporean Chinese, 953 analysed after excluding 19 dementia cases and 1 unclassified participant (Tables 1-3 all state N = 953). The registry total 973 is a stage figure the paper does report, but it is not the analysed N. The registry's own breakdown (122 MCI / 831 NC) sums to 953, not 973.",
+      "quote": "The characteristics of the 953 Singaporean Chinese participants, after excluding the dementia patients, are shown in Table 1.",
+      "page": 3
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2021 or 2022",
+      "reason": "Online 25 November 2021; issue J Psychiatr Res 145 (2022). Registry uses the issue year.",
+      "quote": "Available online 25 November 2021",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "false",
+      "reason": "Singapore DaHA cohort; no ADNI."
+    }
+  },
+  "notes": "ADNI_Dependent is stored as 'False' (capitalised) where other rows use 'false'; a case-sensitive census parse would miscount it. Sample_N_Approx total (973) disagrees with its own group breakdown (953)."
+}

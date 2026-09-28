@@ -1,0 +1,77 @@
+{
+  "id": "C-263",
+  "reader": "adjudicator",
+  "reader_identity": "model reader (Claude Opus 5.5) on the reading delegated 2026-09-27; this verdict is a candidate for the operator, not a gate decision",
+  "quote_convention": "Quotes are verbatim from the ROOT/pdf extracts, with line breaks and non-breaking spaces rendered as single spaces (a hyphen at a line end is kept and joined); curly quotes and special hyphens are kept as printed (UTF-8).",
+  "papers_read": [
+    {
+      "paper": "P-1017",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Understanding the role of psychiatrists in the diagnosis and management of mild cognitive impairment and mild Alzheimer’s disease dementia: a cross‑sectional survey",
+      "read_in_full": true,
+      "note": "Gopalakrishna G, Brunton S, Pruzin J, Alford S, Hamersky C, Sabharwal A. BMC Psychiatry (2023) 23:716, doi 10.1186/s12888-023-05129-5; pages 1-8 of the regenerated ROOT/pdf/P-1017.txt. The first pack file for P-1017 was a different paper (Woodward et al., J Alzheimers Dis 89 (2022) 803-809, corpus P-979), from a PDF-map error the coordinator reports repaired; no verdict was formed on that text, and this adjudication rests only on the regenerated file."
+    },
+    {
+      "paper": "P-1080",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Real‑life management of patients with mild cognitive impairment: an Italian survey",
+      "read_in_full": true,
+      "note": "Bonanni L, Cagnin A, Carrarini C, Logroscino G, Marra C, Rainero I. Neurol Sci (2024) 45:4279-4289, doi 10.1007/s10072-024-07478-9; pages 1-11. Supplementary materials 1-3 (centre list and survey items) are online only."
+    }
+  ],
+  "what_each_reports": {
+    "P-1017": "Anonymous online survey (4 February to 1 March 2021) of US physicians recruited from an opt-in research panel: 301 qualified, 50 of them psychiatrists (70% geriatric psychiatry, 56% neuropsychiatry interest), each required to have seen at least 25 MCI/mild AD patients in the past month. Psychiatrists report personally diagnosing 67% of their MCI/mild AD patients (9% referred for diagnosis, 23% previously diagnosed), using mental status testing (94%), medical history (86%), neurological exam (61%), blood tests (59%) and imaging (55%); 69% follow APA guidelines, 82% report advanced training, 92% receive referrals and 46% see themselves as care coordinator. All figures are self-report, not audited; the statement that psychiatrists 'can provide timely and accurate diagnosis' is the authors' conclusion, not a measured accuracy. Funded by Novo Nordisk, three authors being employees.",
+    "P-1080": "Two-phase survey of 121 Italian neurologists at 17 centres chosen by the scientific board for their MCI activity. Phase 1 (self-reported usual practice): 83.1% use the MCI category, 40.2% also use alternative criteria, 40% do not diagnose prodromal AD/MCI due to AD; MMSE used for screening by 93.3%, MoCA 57.1%, second-level neuropsychology 70.4%; brain MRI 97.5%, CT 62.4%, FDG-PET 52.5%, amyloid PET 45.2%, EEG 50%; routine laboratory tests 78.8-100%. Phase 2 (decisions recorded for 203 patients over 3 months): MMSE in 95.1%, MoCA 38.4%, MRI 80%, FDG-PET 21.1%, amyloid PET 5.9%. No agreement statistic or between-centre test. The verdict 'suboptimal management of MCI patients in Italy' is inferred from the heterogeneity of criteria, tests and treatments."
+  },
+  "quantity_a": "Self-reported share of their own MCI/mild AD caseload that high-volume US psychiatrists (n = 50) personally diagnose, and the proportions of those psychiatrists reporting given diagnostic methods, guideline use, training and a care-coordinator role.",
+  "quantity_b": "Proportions of Italian neurologists (121, self-report) and of their patients (203, recorded decisions) with given diagnostic criteria, tests, imaging and treatments, read as between-clinician heterogeneity, and the authors' normative verdict that management is suboptimal.",
+  "same_quantity": false,
+  "incompatible_if_same": "No. A panel of US psychiatrists who diagnose two-thirds of their caseload and an Italian neurologist sample with heterogeneous criteria can both be as reported. On the one item both surveys ask, use of a brief mental-status screen, they agree (94% of psychiatrists; MMSE for screening by 93.3% of neurologists). Items that differ numerically (imaging 55% versus brain MRI 97.5%; blood testing 59% versus routine laboratory tests 78.8-100%) compare different specialties in different countries with different item wording, so they are not estimates of one quantity, and neither paper claims the other's figure is wrong.",
+  "gates": {
+    "task": "match: T6 (clinician practice surveys, no model) in both, per registry.",
+    "dataset_family": "mismatch: a US commercial opt-in physician panel versus an Italian network of board-selected memory centres; two distinct samples, no waiver on record.",
+    "validation_tier": "n/a: two descriptive surveys that validate no model (counted as matched).",
+    "modality_family": "match at family level (clinician questionnaire), with different instruments: P-1080 adds a patient-level record of actual decisions (phase 2); P-1017 is a single practice-and-attitude questionnaire."
+  },
+  "endpoint_and_metric": "incompatible: both report proportions, but of different units and items (share of a psychiatrist's own caseload personally diagnosed and share of psychiatrists endorsing a method or role, versus share of neurologists or of patients with a given criterion, test or treatment); the one common item, a brief cognitive screen, gives concordant proportions.",
+  "performance_validity": "not a performance comparison.",
+  "independence": "independent: different countries, specialties, samples and author teams; both industry-supported, by different sponsors (Novo Nordisk for P-1017; an unconditional PIAM grant for P-1080).",
+  "bridging_evidence": [],
+  "verdict": "documented_incommensurability",
+  "grounds": [
+    "P-1017 measures who diagnoses and with which self-reported tools in a panel of 50 high-volume US psychiatrists [q1, q2, q3, q4].",
+    "P-1080 measures how uniform diagnostic and therapeutic practice is among Italian neurologists at board-selected centres and infers suboptimal management from that heterogeneity [q7, q8, q9, q10].",
+    "The favourable and unfavourable verdicts concern different clinician populations and different constructs, and P-1080 itself excluded psychiatrists, so a claim about one cannot contradict the claim about the other [q5, q12].",
+    "Where both surveys ask the same question, use of a brief mental-status screen, they agree (94% versus 93.3%) [q2, q11].",
+    "The record's statement that P-1080 reports no percentage is wrong, but the percentages it does report describe Italian neurologists or their patients, not US psychiatrists, so they form no incompatible pair [q10, q11]."
+  ],
+  "evidence_quotes": [
+    {"id": "q1", "paper": "P-1017", "page": 1, "quote": "A total of 301 physicians participated in the survey, 50 of whom were psychiatrists."},
+    {"id": "q2", "paper": "P-1017", "page": 1, "quote": "Of their patients with all-cause MCI or mild AD dementia, psychiatrists reported personally diagnosing two-thirds (67%). Psychiatrists used various methods to diagnose MCI or mild AD dementia including mental status testing (94%)"},
+    {"id": "q3", "paper": "P-1017", "page": 3, "quote": "HCPs who had previously opted in to participate in online research surveys were recruited via email."},
+    {"id": "q4", "paper": "P-1017", "page": 4, "quote": "Most respondents reported subspecializing in geriatric psychiatry (70%) or neuropsychiatry (56%)."},
+    {"id": "q5", "paper": "P-1017", "page": 1, "quote": "They can provide timely and accurate diagnosis of clinical MCI and mild AD dementia and develop optimal treatment plans for patients."},
+    {"id": "q6", "paper": "P-1017", "page": 7, "quote": "Self-reporting is a limitation inherent to survey-based research."},
+    {"id": "q7", "paper": "P-1080", "page": 1, "quote": "Information gathered in the first phase of the survey highlighted a non-uniform use of diagnostic criteria and procedures for MCI, as well as a very heterogeneous therapeutic strategy among Italian neurologists."},
+    {"id": "q8", "paper": "P-1080", "page": 1, "quote": "The results of our study reflect a suboptimal management of MCI patients in Italy and highlight the need of standardized diagnostic and therapeutic approaches for this condition."},
+    {"id": "q9", "paper": "P-1080", "page": 2, "quote": "Selected clinicians were deliberately chosen based on their experience in the management of patients with MCI."},
+    {"id": "q10", "paper": "P-1080", "page": 3, "quote": "Most neurologists (88.6%) reported to visit often (several times per month) patients with MCI, and 83.1% reported to use the diagnostic category of MCI."},
+    {"id": "q11", "paper": "P-1080", "page": 3, "quote": "the neuropsychological test most frequently used for screening (93.3%), followed by Montreal Cognitive Assessment (MoCA) (57.1%)."},
+    {"id": "q12", "paper": "P-1080", "page": 8, "quote": "the survey to neurologists alone, thereby excluding geriatricians and psychiatrists who are also involved in the identification and care of MCI patients"},
+    {"id": "q13", "paper": "P-1080", "page": 2, "quote": "were deliberately chosen based on their involvement in the management of patients with MCI"},
+    {"id": "q14", "paper": "P-1080", "page": 2, "quote": "the proposed Italian guidelines for a biological diagnosis of MCI [13]"},
+    {"id": "q15", "paper": "P-1017", "page": 1, "quote": "Almost one-third of patients suspected of having MCI or mild AD dementia are referred to specialists including psychiatrists."},
+    {"id": "q16", "paper": "P-1017", "page": 5, "quote": "Psychiatrists reported most commonly following the American Psychiatric Association guidelines (69%) for treatment of MCI and mild AD dementia."}
+  ],
+  "record_defects": [
+    "conflict_statement: 'P-1080 reports no percentage, agreement statistic or between-centre test for any of its claims, so no gap magnitude exists': P-1080 prints many percentages (Table 1: MMSE 93.3%, MoCA 57.1%, second-level neuropsychology 70.4%, brain MRI 97.5%; Table 2: MMSE in 95.1% of patients; 83.1% use the MCI category). It reports no agreement statistic or between-centre test, which is right [q10, q11].",
+    "claim_b: '17 self-selected Italian memory/neurology centres': the board invited 17 centres 'deliberately chosen' for their MCI activity and all accepted; clinicians were also chosen for experience. The sample is selected, not self-selected (still non-random) [q9, q13].",
+    "The P-1017 evidence quote 'Psychiatrists already diagnose and manage most MCI/mild AD patients they see but do not perceive themselves as care coordinators, exposing a coordination gap in the care pathway.' and the inference that P-1017's 'own conclusion is itself a gap finding' are summary-block wording; the paper's conclusion is favourable ('They can provide timely and accurate diagnosis ...') and mentions the coordinator point as a qualification. The incommensurability does not rest on that reading [q5].",
+    "Other quotes attributed to the papers ('Opt-in online survey panel; modest psychiatrist cell (n=50); ...'; 'Descriptive: 121 neurologists, 203 patients; ...'; 'Survey-based, descriptive design; self-selected participating centres/neurologists; ...'; 'MCI is clinically heterogeneous ... non-uniform or absent') are summary-block or registry wording, not PDF text; 'About one-third of patients ...' paraphrases the paper's 'Almost one-third of patients suspected of having MCI or mild AD dementia are referred to specialists including psychiatrists.' [q15].",
+    "'a US specialty in which 82% of respondents report advanced formal MCI/AD training': the 82% is of the 50 psychiatrists, not of all 301 respondents.",
+    "'The Italian setting is a stated guideline-absent regime': P-1080 says there is no unanimously accepted practical guidance, but also refers to 'the proposed Italian guidelines for a biological diagnosis of MCI'; 'guideline-absent' overstates [q14].",
+    "'pass all four deterministic comparability gates': those are the gatecheck columns; under the review's four gates the dataset-family gate fails (a US panel versus an Italian centre network), with no waiver on record."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "Two surveys estimating the same proportion in the same class of clinicians (for example, the share of neurologists who personally make the MCI diagnosis, or who use a named test or criterion), with estimates whose uncertainty excludes each other and a claim in one paper that the other contradicts; nothing in these two papers does that."
+}

@@ -1,0 +1,164 @@
+{
+  "conflict_fp_reason_codes": {
+    "DESIGN_MISMATCH": {
+      "description": "One paper is longitudinal/multi-timepoint, other is cross-sectional baseline",
+      "missing_field": "study_design_type",
+      "field_values": [
+        "longitudinal_multipoint",
+        "longitudinal_2point",
+        "cross_sectional",
+        "future_value_forecasting",
+        "survival_analysis"
+      ],
+      "blocking_rule": "If study_design_type differs by more than 1 category, route to partial not genuine",
+      "count_in_audit": 15
+    },
+    "POPULATION_SPECIFICITY": {
+      "description": "One paper uses a disease-specific subpopulation (T2DM, sarcopenia, chronic pain, miners), other uses general population",
+      "missing_field": "population_specificity",
+      "field_values": [
+        "general",
+        "disease_specific_T2DM",
+        "disease_specific_sarcopenia",
+        "disease_specific_chronic_pain",
+        "occupational"
+      ],
+      "blocking_rule": "If one paper is disease_specific and the other is general, dataset_family_equivalence = False regardless of survey modality",
+      "count_in_audit": 5
+    },
+    "TASK_SUBSTAGE_MISMATCH": {
+      "description": "Both coded T2 but actually different conversion stages: SCD->MCI vs MCI->AD vs NC->MCI vs pMCI->sMCI",
+      "missing_field": "task_substage",
+      "field_values": [
+        "SCD_to_MCI",
+        "NC_to_MCI",
+        "MCI_to_AD",
+        "pMCI_vs_sMCI",
+        "EMCI_to_AD"
+      ],
+      "blocking_rule": "If task_substage differs, task_equivalence = False even if T-code matches",
+      "count_in_audit": 8
+    },
+    "MODALITY_SUBTYPE_MISMATCH": {
+      "description": "Same broad modality family code but different specific modality (e.g., EEG-only vs EEG+HRV, structural MRI vs trimodal MRI+PET+CSF, acoustic speech vs written clinical notes NLP) ALSO SPLIT 2026-07-31 (operator G5, from C-229): 'digital cognitive training' is NOT one modality family. In P-642 (28 RCTs, 1621 participants) non-immersive serious games improved global cognition (MMSE MD 1.63, 95% CI 0.69-2.62) while immersive head-mounted VR produced a significant MMSE DECLINE versus control (MD -1.18, -2.18 to -0.20) - opposite directions within a single network. Any gate coding them into one bucket regenerates this false-positive class; any synthesis pooling them averages a harm signal against a benefit signal.",
+      "missing_field": "modality_subtype",
+      "field_values": [
+        "structural_MRI_only",
+        "structural_MRI_plus_PET",
+        "structural_MRI_trimodal",
+        "EEG_only",
+        "EEG_HRV",
+        "acoustic_speech",
+        "NLP_text",
+        "NLP_clinical_notes",
+        "immersive_VR",
+        "non_immersive_CCT",
+        "serious_games_non_immersive",
+        "mobile_application_CCT"
+      ],
+      "blocking_rule": "modality_subtype must match at the sub-level, not just the family level",
+      "count_in_audit": 5
+    },
+    "METRIC_TYPE_MISMATCH": {
+      "description": "Papers report different metric types (AUC vs Accuracy vs bACC vs C-index) making numerical gap invalid",
+      "missing_field": "primary_metric_type",
+      "field_values": [
+        "AUC_ROC",
+        "Accuracy",
+        "Balanced_Accuracy",
+        "C_index",
+        "Sensitivity_Specificity",
+        "PPV",
+        "Odds_Ratio",
+        "Hazard_Ratio"
+      ],
+      "blocking_rule": "If primary_metric_type differs, gap_magnitude cannot be computed \u2014 route to claim-level conflict flag only",
+      "count_in_audit": 3
+    },
+    "GAP_BELOW_THRESHOLD": {
+      "description": "Numeric gap exists but falls below the validation-tier threshold",
+      "missing_field": null,
+      "blocking_rule": "Already in rules \u2014 threshold check failed",
+      "count_in_audit": 1
+    },
+    "DUPLICATE_PAPER": {
+      "description": "One or both papers are duplicates of another corpus entry",
+      "missing_field": "duplicate_of",
+      "blocking_rule": "If duplicate_of field is not null, exclude from all conflict detection",
+      "count_in_audit": 1
+    },
+    "PREDICTION_HORIZON_MISMATCH": {
+      "description": "Papers predict conversion at different time horizons (1-year vs 3-year vs 5-year)",
+      "missing_field": "prediction_horizon_years",
+      "field_values": [
+        null,
+        1,
+        2,
+        3,
+        5,
+        "variable"
+      ],
+      "blocking_rule": "If prediction_horizon_years differs by more than 1 year, route to partial",
+      "count_in_audit": 3
+    }
+  },
+  "gap_fp_reason_codes": {
+    "FIELD_ALREADY_ADDRESSED": {
+      "description": "The gap is addressed by papers already in the corpus, LLM missed them",
+      "action": "Add closure paper IDs to gap record, set status to partially_open or closed"
+    },
+    "TOO_SPECIFIC": {
+      "description": "Gap statement is so narrow it is trivially true (every gap at this specificity would qualify)",
+      "action": "Discard or merge with a broader gap"
+    },
+    "NOT_IN_SCOPE": {
+      "description": "Gap is outside the corpus scope (e.g., clinical trial design, drug development)",
+      "action": "Discard"
+    },
+    "RESTATEMENT": {
+      "description": "Gap is a restatement of an already-confirmed gap in different words",
+      "action": "Merge with existing gap, add to synonyms list"
+    },
+    "EXISTS_IN_EXTERNAL_LITERATURE": {
+      "description": "A 'corpus-wide absence' gap is real for the 399-paper sample but the research EXISTS in the broader literature (confirmed via external search). Corpus absence is a sampling artifact, not a genuine research gap.",
+      "action": "Reject. LESSON: the Actor must weigh broader-literature plausibility (not just corpus absence) before proposing structural-absence gaps; prefer methodological/within-paper gaps that are demonstrably unaddressed."
+    },
+    "DATA_SCARCITY": {
+      "description": "Genuinely understudied only because the data to study it is inherently scarce (e.g. MCI reversion: patients present after MCI onset, so pre-reversion longitudinal data barely exists).",
+      "action": "Reject as a research gap; it is a data limitation. Distinguish from actionable METHODOLOGICAL gaps doable with existing data (those stay genuine, e.g. reversion objective-function or digital-biomarker gaps)."
+    },
+    "COMBINATORIAL_GAP": {
+      "description": "A 'no study combines modality/method X with Y' gap with no robust physiological/architectural reason WHY that specific combination is critical (deprecated noise per AGENTS.md).",
+      "action": "Reject. Do not propose combine-X-with-Y gaps."
+    },
+    "EVIDENCE_TOPIC_DRIFT": "A cited supporting paper does not mention the gap's construct at all; the link from that paper's finding to the gap is the miner's inferential bridge, not the paper's claim. Detected in ACTOR-G-041 (P-594 cited for SUVR reference instability but never mentions reference region / normalisation / SUVR).",
+    "EVIDENTIAL_OVERSTATEMENT": "Quoted text is real and verbatim but sits in a significance / importance / novelty field as an unquantified author assertion, and is presented by the miner as a measured finding with no comparator statistic in the record. Detected in ACTOR-G-041 (P-327 'white matter superior to cerebellum as reference region').",
+    "MISASSIGNED_MEASUREMENT_FAMILY": "The gap asserts a dichotomy between two measurement families but assigns two instances of the SAME family to opposite arms, manufacturing the contrast. Detected in ACTOR-G-042 (P-480 microstate-sequence LZC and P-463 meta-band-sequence BLZC are both Lempel-Ziv on state-label sequences).",
+    "UNIVERSAL_NEGATIVE_FALSIFIED_BY_OWN_CITATIONS": "A 'no study does X' clause is contradicted by the very papers the gap cites as evidence. Detected in ACTOR-G-042 ('no corpus study computes both families in one MCI cohort' - falsified by P-553 and P-480, both cited in the same record)."
+  },
+  "gap_fn_reason_codes": {
+    "KEYWORD_MISS": {
+      "description": "Gap is genuine but the keyword set used in closure check missed it",
+      "action": "Add new keywords to gap seed list"
+    },
+    "COMBINATORIAL_MISS": {
+      "description": "Gap involves combining two modalities never co-present in a single paper",
+      "action": "Add combinatorial gap detection step"
+    },
+    "CLAIM_LEVEL_MISS": {
+      "description": "Gap is a claim-level contradiction (two papers reach opposite conclusions) not a numeric absence",
+      "action": "Add claim-level conflict detection step"
+    }
+  },
+  "ia_fp_reason_codes": {
+    "STRAWMAN_PRIOR_BELIEF": "The 'prior belief' is constructed by the miner rather than held by the field. Test: does the source paper (or assumption_registry.json, or another corpus paper) STATE the belief as the standing view? If the source frames the question as 'unclear'/equipoise, or the corpus records the opposite position, reject. First detected: IA-65 (P-615 states equipoise; P-675 records a format-agnostic field position).",
+    "MODEL_FITTED_VALUE_AS_MEASURED": "A model-fitted/predicted value at chosen covariate levels is presented as a measured subgroup effect, while the directly estimated contrast is null or absent. First detected: IA-64 (fitted g=-0.41 at age 70 vs directly pooled g=-0.08, p=.309).",
+    "SOURCE_REFUSES_CONCLUSION": "The source paper explicitly declines the conclusion the IA asserts, or lists it as an open problem / primary limitation. The KB must not assert as overturned what the authors call unresolved. First detected: IA-64 ('the review cannot decide whether prospective timing is genuinely spared in MCI').",
+    "DERIVED_RANK_INHERITS_FLAGGED_ARTIFACT": "A derived/secondary quantity (SUCRA rank, ratio, composite score) is claimed robust while the primary estimate that generates it is conceded to be artifactual. Derived quantities are functions of the estimates - contaminate the estimate and the derivative is contaminated by construction (SUCRA additionally REWARDS extreme point estimates). First detected: IA-65 (SUCRA 93.6% defended while SMD 5.02 conceded artifactual).",
+    "SCOPE_POOLED_POPULATION": "An MCI-specific reversal is claimed from an analysis pooling MCI with dementia/other populations - especially damning when the source itself lists the MCI-specific effect as an open problem. First detected: IA-65 (53-RCT network pools dementia+MCI; 'MCI-specific format effects' listed as open).",
+    "FAILS_SOURCE_OWN_CORRECTION": "The reversal-bearing result does not survive the source's own pre-specified multiple-comparison correction, and the record falls back to an uncorrected pairwise contrast. Selecting the nominally significant survivor from the family the correction was policing is the exact error the correction prevents. First detected: IA-66 (omnibus PFDR=0.066 while every other effect cleared FDR).",
+    "AUTHORS_DECLINED_TO_CLAIM": "The source files the result under open problems/speculation and omits it from its own significance and novelty statements; the miner elevates it to a headline finding. First detected: IA-66 (NDI absent from P-651's significance and Key Novelty; authors call it a 'pseudo-increase').",
+    "EXCEPTION_ALREADY_IN_FIELD": "The supposedly overturned pattern is already an established, cited exception in the literature, and the source positions itself as CONCORDANT with it. Extending a known alternative pattern to a new population is replication/extension, not a belief reversal. First detected: IA-66 (gliosis-attributed NDI increases already reported in Parkinson disease and post-ECT, cited by P-651 itself).",
+    "UNQUANTIFIED_REVERSAL_CLAUSE": "The sentence carrying the reversal reports no statistic (no p, no effect size, no correction status), often deferring to supplementary tables not reproduced in the corpus record. First detected: IA-66 (2-group NDI contrast stated qualitatively only)."
+  }
+}

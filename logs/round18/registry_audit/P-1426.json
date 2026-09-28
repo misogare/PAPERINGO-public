@@ -1,0 +1,19 @@
+{
+  "paper": "P-1426",
+  "pack": 4,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Longitudinal changes of blood β-synuclein in cognitively unimpaired, mild cognitive impairment and sporadic Alzheimer´s disease",
+  "is_model_study": true,
+  "blind_codes": {"Task_Type": "T4", "Category": "C3", "Validation_Type": "V2", "Sample_N": "463 (135 CU + 166 MCI + 162 AD)", "Publication_Year": "2026", "ADNI_Dependent": "true"},
+  "blind_code_notes": "Task: T2 arguable (single-marker AUC 0.90 for MCI converters vs stable). The preliminary blind record set is_model_study=false; on reflection it is set true because, under the template's own wording ('a classifier, a diagnostic model or a cut-point'), the study evaluates single-biomarker cut-points by ROC (AUC, sensitivity/specificity at a threshold) without fitting a multivariable model or validating. Either way V2 is correct.",
+  "registry_codes": {"Task_Type": "T2", "Category": "C3", "Validation_Type": "V2", "Sample_N_Approx": "463 ADNI participants (135 CU + 166 MCI + 162 AD); 235 with at least one follow-up serum; CSF AD biomarkers for 194; β-synuclein-vs-NRGN comparison subset 148.", "Publication_Year": "2026", "ADNI_Dependent": "true"},
+  "judgement": {
+    "Task_Type": {"verdict": "defensible", "correct_code": "T4", "acceptable_codes": ["T4", "T2"], "reason": "Two honest readings. The stated aim and title are a longitudinal characterisation of a serum biomarker (group comparisons, rate of change, correlations), which is T4. But the paper also evaluates a beta-synuclein cut-point for MCI-to-dementia conversion with AUC, sensitivity and specificity, and headlines conversion prediction in the abstract and conclusions, which supports T2.", "quote": "β-Synuclein discriminated MCI (Aβ+) converters from stable MCI (Aβ+) with an AUC of 0.90 (95% CI 0.78–1.00, Fig. 1G) and a sensitivity and specificity of 76.9% and 100% (threshold 10.3 pg/mL). [p.4] / The aim of the present study was to characterize serum β-synuclein levels in longitudinal samples from participants of the Alzheimer´s Disease Neuroimaging Initiative (ADNI) at different stages of AD [p.2]", "page": 4},
+    "Category": {"verdict": "match", "correct_code": "C3", "acceptable_codes": ["C3"], "reason": "Serum beta-synuclein by IP-MS; CSF/plasma biomarkers from ADNI.", "quote": "we investigated serum β-synuclein by immunoprecipitation-mass spectrometry (IP-MS) in 463 participants", "page": 1},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "acceptable_codes": ["V2"], "reason": "ROC analyses of single markers on the same data; no model fitting, no held-out or external test set.", "quote": "Receiver operating characteristic (ROC) curve analysis including the area under the curve (AUC) was used to assess the discriminatory performance of biomarkers.", "page": 4},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "463", "acceptable_codes": ["463"], "reason": "463 participants (135 CU, 166 MCI, 162 AD); subsets correctly described.", "quote": "In our study, we included serum samples from 463 ADNI participants", "page": 2},
+    "Publication_Year": {"verdict": "match", "correct_code": "2026", "acceptable_codes": ["2026"], "reason": "Alzheimer's Research & Therapy (2026) 18:45; accepted 21 January 2026.", "quote": "Received: 22 October 2025 / Accepted: 21 January 2026", "page": 11},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "true", "acceptable_codes": ["true"], "reason": "ADNI 1 and ADNI GO serum samples are the sole data.", "quote": "Our study included 463 participants (40.0% female, n = 185) from the ADNI cohort (ADNI 1 and ADNI GO)", "page": 4}
+  },
+  "notes": "No field in error. The T2 code places this biomarker-characterisation study in the conversion-prediction task tally; T4 is the more literal reading of its aim, T2 is supported by its conversion AUC."
+}

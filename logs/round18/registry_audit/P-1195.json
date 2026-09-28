@@ -1,0 +1,19 @@
+{
+  "paper": "P-1195",
+  "pack": 2,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Mitochondrial dysfunction, oxidative stress, neuroinflammation, and metabolic alterations in the progression of Alzheimer's disease: A meta-analysis of in vivo magnetic resonance spectroscopy studies",
+  "is_model_study": false,
+  "blind_first": "blind codes were written to this file before the registry codes file was opened",
+  "blind_codes": {"Task_Type": "T4 (meta-analysis whose core result is a metabolite group difference vs HC; T6 also arguable)", "Category": "C1", "Validation_Type": "V2", "Sample_N": "1H-MRS: 40 MCI studies (1238 MCI + 1473 HC) and 39 AD studies (1248 AD + 1682 HC); 31P-MRS: 9 studies (123 patients + 119 HC)", "Publication_Year": "2021", "ADNI_Dependent": "false"},
+  "registry_codes": {"Task_Type": "T6", "Category": "C1", "Validation_Type": "V2", "Sample_N_Approx": "79 1H-MRS studies (MCI: 1238 pts/1473 HC; AD: 1248/1682) + 31P: 9 studies (123 AD + 119 HC)", "Publication_Year": "2021", "ADNI_Dependent": "false"},
+  "judgement": {
+    "Task_Type": {"verdict": "defensible", "correct_code": "T6 or T4", "reason": "Two readings: T6 (meta-analysis, the default) or T4 (the core result is a pooled metabolite/biomarker group difference in MCI and AD vs HC, which the definitions allow to override the meta-analysis default). The registry's T6 is one of the two supportable codes.", "quote": "we reviewed the literature on in vivo human brain 1H and 31P-MRS studies and use meta-analyses to identify patterns of brain metabolic alterations in MCI and AD. 40 and 39 studies on MCI and AD, respectively, were classified according to brain regions. Our results indicate decreased N-acetyl aspartate and creatine but increased myo-inositol levels in both MCI and AD", "page": 1},
+    "Category": {"verdict": "match", "correct_code": "C1", "reason": "In vivo 1H- and 31P-magnetic resonance spectroscopy (MR-based neuroimaging)."},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "Meta-analysis; no predictive model (V2 by convention)."},
+    "Sample_N_Approx": {"verdict": "defensible", "correct_code": "58 distinct 1H-MRS studies (40 with an MCI group, 39 with an AD group) or 79 study-group entries; participants as registry", "reason": "Participant figures are exactly the paper's (MCI 1238 patients/1473 HC; AD 1248/1682; 31P 123 patients/119 HC). The '79 1H-MRS studies' is the sum of the paper's per-group counts (40 + 39), but Table 1 (pp. 30-32) lists 58 distinct 1H-MRS studies, 21 of which report both an MCI and an AD group (e.g. Catani et al. 2001, 11/14/11), so 79 counts 21 studies twice. Two readings: 79 study-group entries as the paper enumerates them, or 58 distinct studies.", "quote": "For in vivo 1H-MRS data, 40 MCI (1473 HCs and 1238 patients) and 39 AD (1682 HCs and 1248 patients) studies were included.", "page": 5},
+    "Publication_Year": {"verdict": "match", "correct_code": "2021", "reason": "Ageing Res Rev. 2021 December; 72: 101503 (author manuscript header, p. 1)."},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "false", "reason": "Literature meta-analysis (PubMed/EMBASE/Cochrane); ADNI not used as a dataset."}
+  },
+  "notes": "The 31P part is labelled '123 AD + 119 HC' in the registry, but the paper says '123 patients and 119 HC subjects from eight AD studies and one MCI study' (p. 5), so not all 123 are AD. If the census uses a study count for meta-analyses, 58 distinct 1H-MRS studies (plus 9 31P studies) is the precise figure rather than 79."
+}

@@ -1,0 +1,22 @@
+{
+  "paper": "P-92",
+  "outside_sample": true,
+  "counted_in_error_rate": false,
+  "pdf_used": "C:/Users/aryas/Downloads/PAPERINGO/downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1361841521001286-main.pdf (the data/paper_pdf_map.json path; right paper: Zhang et al., 'Deep Fusion of Brain Structure-Function in Mild Cognitive Impairment', Medical Image Analysis 72 (2021) 102082), read through my own PyMuPDF extract C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/audit/tmp/vE_P-92.txt",
+  "fields": {
+    "Validation_Type": {
+      "first_verdict": "none (outside the sample; defect reported by a reader)",
+      "final_verdict": "error",
+      "correct_code": "V2",
+      "registry_code": "not reported",
+      "reason": "The reader's report is right. The graph-based deep model (GBDM) classifies MCI vs NC on 214 ADNI subjects (116 NC / 98 MCI; sMRI + rs-fMRI + DTI) and is evaluated by 5-fold cross-validation (p.7). The same 5-fold scheme is used for every hyper-parameter setting (p.10). There is no held-out test partition. The only evaluation scheme described is 5-fold CV, and the 'testing dataset' loss and accuracy curves in Fig. 10 (p.14) are never described as a separate hold-out set. The 'Reproducibility and generalizability' analysis (p.14) takes 124 subjects from 28 other ADNI centres and re-runs the method with its own 5-fold CV. That is a within-ADNI replication by retraining, not a test of the trained model on data from another institution, and ADNI is a single consortium. So V3 and V4 do not apply, and V1 does not apply either (5-fold, n = 214). V2 = k-fold CV on the same dataset with no separate test set. 'not reported' is out of vocabulary and is contradicted by the explicitly reported 5-fold CV.",
+      "quote": "For classification, we conducted 5-fold cross-validation using the 214 subjects (116NC/98MCI).",
+      "page": 7,
+      "supporting_quote": "We applied the same data preprocessing, normalization steps and our method on this new dataset. We adopted 5-fold cross-validation to evaluate the same nine model settings as in Section 4.6.",
+      "supporting_page": 14,
+      "first_quote_verbatim": null,
+      "quote_note": "The extract prints 'classification' with an fi ligature; otherwise verbatim."
+    }
+  },
+  "notes": "Outside the audit sample: to be corrected but not counted in the error rate. Also outside the field asked about: the registry's Best_Metric is 'not reported', but the paper reports 92.7% accuracy (abstract p.1; best setting sigma = 2.0, G(148, 296), p.11). Sample_N_Approx 214 and ADNI_Dependent true agree with the paper."
+}

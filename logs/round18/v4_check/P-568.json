@@ -1,0 +1,19 @@
+{
+  "paper": "P-568",
+  "pdf_is_right_paper": true,
+  "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-568.txt (full extract, 15 pages; title matches summaries.md '## Paper 568'); page = PDF page marker in the extract",
+  "registry_code": "V1",
+  "correct_code": "V4",
+  "changed": true,
+  "training_data": "ADNI-GO/2/3 'ADNI risk dataset': 68 unique CN/MCI participants, 115 baseline-scan samples; elastic-net penalised Cox model with 5-fold CV for hyperparameters, repeated 20 times (HCP group gradients used only as an alignment template)",
+  "test_data": "OASIS-3 (Washington University School of Medicine, St Louis): OASIS risk dataset, 33 participants (C-index 0.716 +/- 0.015); OASIS diagnosis dataset, 803 participants (cross-sectional risk-score comparison)",
+  "model_fixed_before_external_test": true,
+  "reason": "The risk score was fitted on ADNI only; OASIS-3 data were normalised with ADNI means and SDs and scored with the 20 ADNI-fitted models, so a fixed model was evaluated on another institution's cohort (V4, not V1). The OASIS risk set is small (n=33), and its time to conversion was imputed with an OASIS-fitted Weibull model before the C-index was computed.",
+  "quotes": [
+    {"page": 1, "quote": "We developed a prognostic model using a large-scale Alzheimer\u2019s Disease Neuroimaging Initiative dataset, and it was validated using external data obtained from the Open Access Series of Imaging Studies."},
+    {"page": 6, "quote": "We then normalized the FC manifolds and demographic and clinical covariates using the mean and standard deviations derived from the ADNI risk dataset. We predicted the risk scores for the two external validation datasets from all identified models from 20 iterations and averaged the risk scores."},
+    {"page": 10, "quote": "In the OASIS risk dataset, the prognostic accuracy achieved a C-index of 0.716 \u00b1 0.015, and survival curves between the fast and slow conversion groups were significantly different (log-rank test, p = 0.019; Fig. 3A left)."},
+    {"page": 3, "quote": "The IRB of Washington University School of Medicine approved the OASIS study"}
+  ],
+  "confidence": "high"
+}

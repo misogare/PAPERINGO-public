@@ -1,0 +1,74 @@
+{
+  "id": "C-02",
+  "reader": "adjudicator",
+  "papers_read": [
+    {"paper": "P-48", "pdf_is_right_paper": true, "title_as_printed": "Comparison of Machine Learning-based Approaches to Predict the Conversion to Alzheimer\u2019s Disease from Mild Cognitive Impairment", "read_in_full": true},
+    {"paper": "P-56", "pdf_is_right_paper": true, "title_as_printed": "Machine learning based on functional and structural connectivity in mild cognitive impairment", "read_in_full": true}
+  ],
+  "what_each_reports": {
+    "P-48": "Franciotti, Nardini, Russo, Onofrj, Sensi, Neuroscience 514 (2023) 143-152. ADNI MCI participants classified as converting to AD within 36 months (c-MCI) or not (s-MCI) by Random Forest, Gradient Boosting and XGBoost (plus hard voting), trained on a random 85% and tested on the remaining 15%. Metrics are accuracy, PPV, NPV, sensitivity and specificity only; no AUC is reported anywhere in the paper. Test accuracy (RF/GB/XGB): neuropsychological 0.83/0.82/0.81 (n = 587); sMRI 0.79/0.79/0.77 (n = 318); CSF/APOE biomarkers 0.85/0.74/0.74 (n = 422); neuropsychological + biomarkers 0.87/0.85/0.89 (n = 422; voting 0.90); neuropsychological + sMRI 0.83/0.88/0.83 (n = 318; voting 0.85); errors +/-0.08 to +/-0.12. The authors conclude that combining feature classes improved on single classes. The paper makes no early-versus-late fusion comparison.",
+    "P-56": "Li, Shao, Wang, Liu, Yang, Wang, Xi, Magnetic Resonance Imaging 109 (2024) 10-17. 32 MCI versus 32 normal elderly controls enrolled from the Shanghai Sanlin community (not ADNI); resting-state fMRI functional-connectivity edges and DTI structural-connectivity edges selected by group t-tests; SVM evaluated by leave-one-out cross-validation. Functional connectivity alone: accuracy 71.88%, AUC 0.78. Structural connectivity alone: accuracy 92.19%, AUC 0.99. Both feature sets input simultaneously to one SVM: accuracy 93.75%, AUC 0.99. There is no late or adaptive fusion, and 92.19% is the structural-only accuracy, not an AUC and not the fused model."
+  },
+  "quantity_a": "Accuracy (with PPV, NPV, sensitivity, specificity) for conversion to AD within 36 months versus stable MCI, among ADNI MCI participants, single random 85/15 hold-out, tabular inputs (neuropsychological scores, FreeSurfer sMRI volumes and cortical thicknesses, CSF Abeta42/t-tau/p-tau, APOE e4).",
+  "quantity_b": "ROC AUC (and accuracy) for current-state MCI versus normal elderly controls, cross-sectional, 64 Shanghai community participants, leave-one-out cross-validation, inputs rs-fMRI and DTI connectivity edges.",
+  "same_quantity": false,
+  "incompatible_if_same": "No. The contrast the record describes (early fusion at 85% AUC versus adaptive late fusion at 92% AUC on the same ADNI data) exists in neither paper: P-48 reports no AUC and makes no fusion-strategy comparison, and P-56 fuses by feeding both feature sets into one SVM. The one claim both papers make about combining modalities points the same way (combination beat single modalities), and two different methods reporting different scores, where neither study claims an ordering the other refutes, is not an incompatibility.",
+  "gates": {
+    "task": "mismatch: P-48 is T2 (MCI converting to AD within 36 months versus stable MCI); P-56 is T1 (MCI versus normal controls, cross-sectional). The registry codes them T2 and T1; the record's 'matched task (T2)' is wrong. No waiver on record.",
+    "dataset_family": "mismatch: P-48 uses ADNI; P-56 uses 64 participants enrolled from the Shanghai Sanlin community (October 2021 to February 2023) and mentions ADNI only when citing another study. No waiver on record.",
+    "validation_tier": "mismatch: P-48 trains on a random 85% and tests on the held-out 15% (registry V2); P-56 uses leave-one-out cross-validation on n = 64 (V1 under the template definition 'LOOCV small-n (<100)', as the registry codes it).",
+    "modality_family": "mismatch: P-48 uses FreeSurfer structural MRI, CSF proteins, APOE e4 genotype and neuropsychological scores, with no functional MRI and no DTI; P-56 uses resting-state fMRI functional connectivity plus DTI structural connectivity. The record reaches 'mismatch' for a reversed reason (it says P-48 includes functional MRI and P-56 is structural)."
+  },
+  "endpoint_and_metric": "incompatible: 36-month conversion (P-48) versus cross-sectional MCI-versus-control status (P-56); P-48 reports accuracy-type metrics only and no AUC, while P-56's headline is ROC AUC. The record's '85% AUC' for P-48 does not exist.",
+  "performance_validity": "flag applies because P-56's fused and structural-only models reach AUC 0.99 (accuracy 93.75% and 92.19%) under leave-one-out cross-validation on 64 participants with no external cohort, and the paper does not state that its t-test feature selection was repeated inside the LOOCV folds; P-48 is not flagged (best accuracy 0.90 +/- 0.08). The record is a performance comparison resting on P-56, so it could not be genuine on this ground alone.",
+  "independence": "Distinct studies: no shared authors (Franciotti, Nardini, Russo, Onofrj, Sensi, Chieti-Pescara, Italy; Li, Shao, Wang, Liu, Yang, Wang, Xi, Shanghai East Hospital and Donghua University, China) and no shared cohort (ADNI versus a Shanghai community sample). Nothing to record as non-independence.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "Both PDFs are the papers the ledger IDs point to (the printed titles match the pack's PDF map and the corpus blocks for P-48 and P-56), so the mismatch lies in the record's claims, not in the PDFs.",
+    "Claim_a misreads P-48's metric: the paper computes accuracy, PPV, NPV, sensitivity and specificity only, so there is no '85% AUC' to compare.",
+    "Claim_a also understates P-48's multimodal result, whose headline is accuracy 0.90 (0.88 and 0.89 for single algorithms), not 85%.",
+    "Claim_b misreads P-56's dataset: its 64 participants were enrolled from the Shanghai Sanlin community, not ADNI.",
+    "Claim_b misreads P-56's method and number: both connectivity feature sets were fed simultaneously into one SVM (feature-level fusion, not adaptive late fusion), the fused AUC is 0.99, and 92.19% is the accuracy of the structural-connectivity model alone.",
+    "The record's modality reason is reversed: P-48's inputs are neuropsychological scores, FreeSurfer structural MRI and CSF/APOE biomarkers, whereas P-56 is the rs-fMRI plus DTI study.",
+    "With the claims corrected there is no disagreement: both papers report that combining modalities beat single modalities, and neither compares fusion strategies.",
+    "Independently of the misreadings, the papers estimate different quantities (36-month conversion accuracy in ADNI versus cross-sectional MCI-versus-control AUC in a Shanghai sample), so all four gates fail with no waiver on record.",
+    "P-56's AUC 0.99 from leave-one-out cross-validation on 64 participants, a sample its authors call small, meets the Section 2 performance-validity exclusion, which alone would bar a genuine verdict."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-48", "page": 1, "quote": "Comparison of Machine Learning-based Approaches to Predict the Conversion to Alzheimer\u2019s Disease from Mild Cognitive Impairment"},
+    {"paper": "P-56", "page": 1, "quote": "Machine learning based on functional and structural connectivity in mild cognitive impairment"},
+    {"paper": "P-48", "page": 4, "quote": "Accuracy, positive predictive value (PPV), negative predictive value (NPV), sensitivity, and speci\ufb01city were calculated for RF, GB, and XGB before and after RF feature selection to evaluate the performance of each ML algorithm."},
+    {"paper": "P-48", "page": 1, "quote": "the highest accuracy (0.90) was reached by employing neuropsychological and AD-related biomarkers."},
+    {"paper": "P-48", "page": 5, "quote": "GB and XGB reached the best performance revealed by the highest accuracy, PPV, NPV, sensitivity, and speci\ufb01city for combining neuropsychological features with sMRI data (0.88) and AD-related biomarkers (0.89)."},
+    {"paper": "P-48", "page": 3, "quote": "individuals who converted to AD within the 36-month follow-up (c-MCI) or not (s-MCI)"},
+    {"paper": "P-48", "page": 3, "quote": "From the entire dataset, information of 85% of subjects was randomly extracted and used for the training phase performed by RF, GB, and XGB separately."},
+    {"paper": "P-48", "page": 2, "quote": "This study grouped MCI baseline data into three classes: neuropsychological features, sMRI-related data, and AD-related biomarkers."},
+    {"paper": "P-48", "page": 3, "quote": "AD-related biomarkers encompassed CSF proteins like Ab42 (ABETA), total-Tau (t-Tau), phosphorylated-Tau (p-Tau), p-Tau/ABETA ratio (Delli Pizzi et al., 2019), and APOE e4 genotype from blood samples."},
+    {"paper": "P-48", "page": 8, "quote": "The combination of sMRI and neuropsychological variables increased all performance indices compared to each class\u2019s individual results."},
+    {"paper": "P-56", "page": 2, "quote": "From October 2021 to February 2023, we enrolled 64 subjects from the Shanghai Sanlin community, comprising 32 patients with MCI and 32 subjects as NCs."},
+    {"paper": "P-56", "page": 1, "quote": "All subjects underwent examinations for resting-state functional magnetic resonance imaging (rs-fMRI) and diffusion tensor imaging (DTI)."},
+    {"paper": "P-56", "page": 5, "quote": "When both functional and structural connectivity were simultaneously used as inputs for SVM classifiers, the classification accuracy, sensitivity, and specificity of the task were 93.75%, 93.75%, and 93.75%, respectively."},
+    {"paper": "P-56", "page": 1, "quote": "combining functional and structural connectivity features resulted in a classification accuracy and AUC value of 93.75% and 0.99, respectively."},
+    {"paper": "P-56", "page": 1, "quote": "The classification results using the structural connectivity feature yielded an accuracy of 92.19% and an AUC value of 0.99."},
+    {"paper": "P-56", "page": 3, "quote": "we opted for the leave-one-out cross-validation (LOOCV) algorithm for evaluation and prediction."},
+    {"paper": "P-56", "page": 6, "quote": "Our findings demonstrate that multimodal imaging based on rs-fMRI and DTI effectively enhances the classification accuracy of patients with MCI."},
+    {"paper": "P-56", "page": 6, "quote": "First, the studies included relatively small sample sizes, which may introduce bias into the results."}
+  ],
+  "record_defects": [
+    "claim_a: P-48 reports no AUC (accuracy, PPV, NPV, sensitivity and specificity only); its accuracies for combined feature classes are 0.83-0.89 per algorithm and 0.85-0.90 with voting, so '85% AUC' misstates the metric type and understates the headline (0.90).",
+    "claim_a: 'early fusion' is not a design P-48 names or tests; it pools tabular feature classes for tree ensembles and makes no early-versus-late fusion comparison.",
+    "claim_b: P-56 is not an ADNI study; its 64 participants were enrolled from the Shanghai Sanlin community.",
+    "claim_b: P-56 uses no adaptive late fusion; both connectivity feature sets were input simultaneously to one SVM.",
+    "claim_b: P-56 reports no 92% AUC; the fused model has AUC 0.99 (accuracy 93.75%), and 92.19% is the accuracy of the structural-connectivity model alone.",
+    "task_equivalence true and 'matched task (T2)': P-56 is T1 (MCI versus controls), not T2.",
+    "dataset_family_equivalence true and 'dataset (ADNI)': P-56 does not use ADNI.",
+    "validation_tier_comparable true and 'validation tier (V2)': P-56 uses leave-one-out cross-validation on 64 participants (V1); P-48 uses a single 85/15 hold-out (V2).",
+    "resolution_note 'P-48 includes functional MRI; P-56 structural': reversed; P-48 has no functional MRI (FreeSurfer sMRI, CSF proteins, APOE e4, neuropsychological tests) and P-56 is the rs-fMRI plus DTI study.",
+    "resolution_note 'The early-vs-late fusion gap': no such contrast exists in the two papers.",
+    "apparent_performance_gap '7 percentage points (85% vs 92%)': neither figure is reported for the stated quantity, so the gap is an artefact of the claims.",
+    "Provenance: claim_a and claim_b reproduce, nearly word for word, the illustrative 'tp_conflict_examples' entry for [P-48, P-56] (verdict 'genuine') in config/gap_few_shot_examples.json ('Early fusion (concatenated multimodal, AUC 0.85) vs adaptive late fusion (AUC 0.92) on same task T2, same dataset ADNI, same validation tier V2, same structural MRI modality'), which neither PDF nor either corpus block supports; the same file's false-positive example describes P-48 as 'MRI+DTI+fMRI without genetics', which the PDF also contradicts (no DTI or fMRI; APOE e4 genotype is an input)."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "Nothing in these two PDFs. A different verdict would need a re-pointed record naming studies that actually compare early and adaptive late fusion on the same ADNI conversion task and metric. If this record were rewritten with the papers' real figures (P-48 accuracy 0.85-0.90 for 36-month conversion; P-56 AUC 0.99 for MCI versus controls), the verdict would become documented_incommensurability (task, dataset family, validation tier, modality family and metric type all differ, no waiver), and P-56 would remain excluded from performance comparisons."
+}

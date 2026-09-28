@@ -1,0 +1,73 @@
+{
+  "id": "C-05",
+  "reader": "adjudicator",
+  "papers_read": [
+    {"paper": "P-85", "pdf_is_right_paper": true, "title_as_printed": "Screening tools for subjective cognitive decline and mild cognitive impairment based on task-state prefrontal functional connectivity: a functional near-infrared spectroscopy study", "read_in_full": true},
+    {"paper": "P-86", "pdf_is_right_paper": true, "title_as_printed": "A combined model of convolutional neural networks and graph attention networks for improved classification of mild cognitive impairment", "read_in_full": true}
+  ],
+  "what_each_reports": {
+    "P-85": "Pu, Huang et al., NeuroImage 310 (2025) 121130. 246 participants (55 NC, 80 SCD, 111 MCI) recruited from hospitals, workplaces, communities and villages in Zhejiang and Shanghai (not ADNI); 203 retained for fNIRS analysis (48 NC, 65 SCD, 90 MCI). Features: task-state prefrontal fNIRS functional connectivity (phase-locking values among 10 ROIs for HbO, HbR and HbT) recorded during the MMSE, BNT or HVLT, plus those scales' scores and completion times, PCA-reduced and fed to nine default-parameter classical classifiers (LDA, LR, GNB, SVM, KNN, RF, XGBoost, GBDT, RUSBoost); five-fold cross-validation; no external cohort; no attention model of any kind. Best MCI vs NC: accuracy 0.920 (LR in the MMSE task; LDA in the BNT task), AUC 0.970 (LR, MMSE task; 95% CI 0.946-0.993). Best MCI vs SCD: accuracy 0.800 (SVM), AUC 0.870 (LR). Best SCD vs NC: accuracy 0.761 (XGBoost), AUC 0.792 (LDA). Its MCI vs NC accuracies of about 87-89% all come from classical models (e.g. SVM 0.891, 0.877 and 0.884 across the MMSE, BNT and HVLT tasks; GNB 0.870 in the HVLT task).",
+    "P-86": "Kim, Jeon, Seo, Lee, Kim, Kim, NeuroImage 325 (2026) 121674 (online 23 December 2025). 1,900 T1-weighted MRI scans: NACC 1,679 (88%), ADNI 145 (8%), Hanyang University Hospital 76 (4%). One 3-class classifier (AD, MCI, normal aging): a 3D CNN on brain volumes plus a modified graph attention network (self-attention) on CIVET cortical thickness, whose embeddings are z-scored, projected, concatenated and passed to a fully connected layer; stratified five-fold cross-validation by class and site; no SVM. MCI one-vs-rest AUC: CNN 0.696, GAT 0.639, combined 0.719 (95% CI 0.691-0.747; the Results text gives 72.3%), MLP 0.540; AD AUC 82.6% (CNN) rising to 86.5% (combined). Modified GAT per-class accuracy: normal 71.3, MCI 72.9, AD 90.4. No 87% or 88% accuracy or AUC is reported; the only 88-values are the NACC share and the modified GAT's normal-class sensitivity (88.2) and MCI specificity (88.8)."
+  },
+  "quantity_a": "Binary accuracy and ROC AUC for MCI versus normal controls (also MCI versus SCD and SCD versus NC) from task-state prefrontal fNIRS connectivity plus cognitive-scale features, Chinese community and hospital sample, internal five-fold cross-validation.",
+  "quantity_b": "One-vs-rest ROC AUC for MCI (and macro-averaged per-class metrics) within a 3-class AD/MCI/normal classifier on T1 structural MRI, NACC-dominated multi-site sample, stratified internal five-fold cross-validation.",
+  "same_quantity": false,
+  "incompatible_if_same": "No. The record gives a one-point gap (88% versus 87%) that it itself calls noise, which is not a disagreement on any reading, and neither paper tests attention-based fusion against concatenation plus SVM, so neither claims an ordering the other refutes. Setting the papers' actual figures side by side (P-85 MCI vs NC AUC 0.970; P-86 MCI AUC 0.719) would still compare two methods' scores on different endpoints, inputs and samples, not incompatible results on one quantity.",
+  "gates": {
+    "task": "mismatch: P-85 builds three binary classifiers among NC, SCD and MCI (registry T3, multiclass_staging); P-86 builds one 3-class classifier for AD, MCI and normal aging and reports one-vs-rest AUCs (registry T1/MCI_vs_HC, which does not reflect the 3-class design). Even the closest endpoints differ: MCI versus NC in P-85 against MCI versus the rest of an AD/MCI/normal sample in P-86. No waiver on record.",
+    "dataset_family": "mismatch: P-85 recruited its own participants in Zhejiang and Shanghai (no ADNI); P-86 is 88% NACC, 8% ADNI and 4% Hanyang (the registry's Dataset 'ADNI' and ADNI_Dependent 'true' for P-86 are contradicted by its Table 1). No waiver on record.",
+    "validation_tier": "match: both use internal five-fold cross-validation with no external cohort (P-85 five-fold CV; P-86 stratified five-fold CV by class and site); registry V2 for both.",
+    "modality_family": "mismatch: P-85 is task-state prefrontal fNIRS plus paper-and-pencil cognitive-scale scores and completion times; P-86 is T1-weighted structural MRI only (volumes and cortical thickness). The record's 'digital_behaviour' label for P-85 does not describe fNIRS."
+  },
+  "endpoint_and_metric": "incompatible: P-85's figures are binary accuracy and ROC AUC for MCI versus NC (or versus SCD); P-86's are macro-averaged per-class metrics and one-vs-rest AUC in a 3-class task that includes AD. The record's 88% and 87% carry no metric type and match no figure reported for the designs it names.",
+  "performance_validity": "flag applies to P-85's best figure because its MCI-vs-NC AUC of 0.970 (95% CI 0.946-0.993) comes from internal five-fold cross-validation on the 48 NC and 90 MCI participants retained for analysis, with no external cohort; P-86 is not near ceiling (MCI AUC 0.719). The flag is not decisive here, because the record's contested '88%' is not that figure and the pair fails on its claims and on quantity first.",
+  "independence": "Distinct studies: no shared authors (Pu, Huang, Li, Cui and colleagues, Shanghai Mental Health Center and Kangci Hospital of Jiaxing, China; Kim, Jeon, Seo, Lee, Kim, Kim, Hanyang and Konkuk Universities, Seoul) and no shared participants (P-85's own Zhejiang/Shanghai recruits versus NACC, ADNI and Hanyang scans). The record's 'same cohort' is false. Nothing to record as non-independence.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "Both PDFs are the papers the ledger IDs point to (the printed titles match the pack's PDF map and the corpus blocks for P-85 and P-86), so the mismatch lies in the record's claims, not in the PDFs.",
+    "Claim_a misreads P-85's method: its models are nine classical classifiers run with default parameters on fNIRS connectivity and scale features, with no attention or self-attention component.",
+    "Claim_a misreads P-85's data: participants were recruited from hospitals and communities in Zhejiang and Shanghai, not taken from ADNI.",
+    "Claim_a's '88%' is not a P-85 result for any attention model; the paper's headline is MCI versus NC accuracy 92.0% and AUC 97.0% from classical models.",
+    "Claim_b misreads P-86's method: the CNN and GAT embeddings are concatenated and passed to a fully connected layer, with no SVM; the self-attention the record assigns to P-85 is in fact P-86's GAT branch.",
+    "Claim_b misreads P-86's data: 1,679 of its 1,900 scans (88%) come from NACC and only 145 (8%) from ADNI, so there is no 'same cohort' with P-85.",
+    "P-86 reports no 87% figure: its combined model's MCI AUC is 0.719 (72.3% in the Results text) in a 3-class AD/MCI/normal task.",
+    "The record describes no disagreement (a one-point gap it calls noise), and neither paper evaluates the other's method or claims the ordering the other would refute.",
+    "Independently of the misreadings, the pair fails the task, dataset-family and modality-family gates with no waiver, so a corrected record would be documented incommensurability, not genuine."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-85", "page": 1, "quote": "Screening tools for subjective cognitive decline and mild cognitive impairment based on task-state prefrontal functional connectivity: a functional near-infrared spectroscopy study"},
+    {"paper": "P-86", "page": 1, "quote": "A combined model of convolutional neural networks and graph attention networks for improved classification of mild cognitive impairment"},
+    {"paper": "P-85", "page": 1, "quote": "Activated prefrontal FC data measured by fNIRS were collected from 55 normal controls, 80 SCD patients, and 111 MCI patients."},
+    {"paper": "P-85", "page": 3, "quote": "277 individuals were initially recruited including patients; caregivers; staff members and retirees of Kangci Hospital of Jiaxing and Shanghai Mental Health Center"},
+    {"paper": "P-85", "page": 5, "quote": "based on the FC among the 10 ROIs under the time series for HBO, HBR and HBT signals along with the scores and completion times for the MMSE, BNT and HVLT"},
+    {"paper": "P-85", "page": 16, "quote": "we employed nine widely used machine learning models, including LDA, LR, GNB, SVM, KNN, RF, XGBoost, GBDT, and RUSboost"},
+    {"paper": "P-85", "page": 5, "quote": "All parameters used in the nine models were consistent with those suggested by default in Classifier of Python 3.11."},
+    {"paper": "P-85", "page": 5, "quote": "Five-fold cross-validation was adopted to divide the samples into four training sets and one test set"},
+    {"paper": "P-85", "page": 1, "quote": "Accuracies of 92.0 % for MCI vs. NC, 80.0 % for MCI vs. SCD, and 76.1 % for SCD vs. NC were achieved, and the highest AUC values were 97.0 % (95 % CI: 94.6 %-99.3 %) for MCI vs. NC"},
+    {"paper": "P-85", "page": 6, "quote": "Consequently, 203 participants, including 48 NC volunteers (NC group), 65 SCD individuals (SCD group), and 90 MCI individuals (MCI group) were finally included for the FC analysis."},
+    {"paper": "P-86", "page": 3, "quote": "Herein, a combined CNN\u2013GAT framework was constructed for the classification of AD, MCI and normal aging."},
+    {"paper": "P-86", "page": 3, "quote": "The GAT layer applies a self-attention mechanism to the input data to produce a feature vector that considers the interdependence among different regions."},
+    {"paper": "P-86", "page": 5, "quote": "Finally, the feature vector from the CNN branch and the compressed vector from the GAT branch are concatenated and passed into a fully connected layer for classification."},
+    {"paper": "P-86", "page": 2, "quote": "Hanyang 76 (4 %) ... ADNI 145 (8 %) ... NACC 1679 (88 %)"},
+    {"paper": "P-86", "page": 5, "quote": "stratified 5-fold cross-validation was performed jointly by diagnostic class and acquisition site"},
+    {"paper": "P-86", "page": 6, "quote": "All AUC values and ROC curves represent the mean \u00b1 standard deviation across five folds of stratified cross-validation (e.g., CNN: 0.696 \u00b1 0.025 for MCI; GAT: 0.639 \u00b1 0.040; combined: 0.719 \u00b1 0.015; MLP: 0.540 \u00b1 0.102)."},
+    {"paper": "P-86", "page": 6, "quote": "the AUC increased to 86.5 % for AD and 72.3 % for MCI"}
+  ],
+  "record_defects": [
+    "claim_a: P-85 contains no attention-based or self-attention fusion; it feeds PCA-reduced fNIRS connectivity and cognitive-scale features to nine classical classifiers with default parameters.",
+    "claim_a: P-85 is not an ADNI study; its 246 participants were recruited in Zhejiang and Shanghai.",
+    "claim_a: '88%' is not a P-85 result for the stated method; the paper's headline is MCI versus NC accuracy 0.920 and AUC 0.970, and its accuracies near 87-89% are classical-model results (e.g. SVM 0.884 in the HVLT task).",
+    "claim_b: P-86 uses no SVM; the CNN and GAT embeddings are concatenated and passed to a fully connected layer.",
+    "claim_b: P-86 is not 'ADNI with same cohort': 1,679 of its 1,900 scans are NACC, 145 ADNI and 76 Hanyang, and it shares no participants with P-85.",
+    "claim_b: P-86 reports no 87% figure; its combined model's MCI AUC is 0.719 (72.3% in the Results text) and its AD AUC 86.5%.",
+    "The claims appear transposed: the attention mechanism belongs to P-86 (GAT self-attention) and the SVM to P-85 (one of its nine classifiers), and neither paper matches the claim filed against it.",
+    "task_equivalence true: P-85 runs NC/SCD/MCI binary tasks and P-86 a 3-class AD/MCI/normal task.",
+    "dataset_family_equivalence true: the samples come from different sources (P-85's own Chinese recruits versus NACC-dominated multi-site data).",
+    "apparent_performance_gap '1 percentage point (88% vs 87%)': neither figure is reported for the designs named, so the gap is an artefact of the claims.",
+    "resolution_note 'both fusion->SVM pathway': P-86 has no SVM, and 'attention regularisation' has no referent in P-85; the stored text also carries a mis-encoded arrow ('fusion\u00e2\u2020\u2019SVM').",
+    "modality_family 'digital_behaviour|structural_mri': P-85's modality is fNIRS with paper-and-pencil scales, not digital behaviour (the 'No' equality outcome is nonetheless correct)."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "Nothing in these two PDFs. If the record were rewritten with the papers' actual figures (P-85 MCI vs NC accuracy 0.920 / AUC 0.970 from fNIRS plus scales; P-86 MCI one-vs-rest AUC 0.719 from structural MRI in a 3-class task), the verdict would become documented_incommensurability (task, dataset family, modality family and metric definition differ; only the validation tier matches). A genuine verdict would need two studies that test attention-based fusion against concatenation plus SVM on the same endpoint and sample family and report opposite, statistically supported orderings."
+}

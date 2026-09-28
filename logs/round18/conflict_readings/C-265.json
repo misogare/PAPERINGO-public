@@ -1,0 +1,190 @@
+{
+  "id": "C-265",
+  "reader": "adjudicator",
+  "papers_read": [
+    {
+      "paper": "P-1403",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Plasma p-tau217 identifies cognitively normal older adults who will develop cognitive impairment in a 10-year window",
+      "read_in_full": true,
+      "note": "Yakoub Y, Gonzalez-Ortiz F, Ashton NJ, et al., Villeneuve S. Alzheimer's Dement. 2025;21:e14537, doi 10.1002/alz.14537."
+    },
+    {
+      "paper": "P-1421",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Blood biomarkers of Alzheimer's disease and progression across different stages of cognitive decline in the community",
+      "read_in_full": true,
+      "note": "Valletta M, Vetrano DL, Gregorio C, et al., Grande G. Nature Communications (2025) 16:10412, doi 10.1038/s41467-025-66728-2."
+    }
+  ],
+  "what_each_reports": {
+    "P-1403": "Cohort: PREVENT-AD, cognitively unimpaired adults with a first-degree family history of AD (plasma sample n=215; mean age 65.2 at classification; 73% female; 41% APOE e4 carriers). Follow-up: mean 5.65 years after plasma (range 1.01-10.47). MCI was classified by blinded consensus. Plasma A/T groups used Abeta42/40 < 0.09 (IP-MS) and p-tau217 > 3.98 pg/mL (in-house Simoa; 2 SD above the mean of Abeta-PET-negative CU adults). Group sizes: A+T+ 21 (16 progressed), A-T+ 7 (5), A+T- 60 (14), A-T- 127 (25). Cox models vs A-T-: A+T+ HR 7.81 (95% CI 3.92-15.59), P<0.001; A-T+ HR 4.25 (1.60-11.31), P=0.004; A+T- HR 1.14 (0.58-2.24), P=0.69. Continuous-biomarker ROC AUCs across plasma, CSF and PET: 0.74-0.81 for tau, 0.77-0.82 for Abeta+tau. The authors say the HRs should be interpreted with caution (small A+T+ and A-T+ groups; 20% of A-T- progressed).",
+    "P-1421": "Cohort: SNAC-K, a random population sample aged 60+ from Stockholm, with 2148 dementia-free participants followed (median age 72.2; 61.5% female; 381 with MCI at baseline). Follow-up: mean 9.6 years, up to 16. Markers were measured in serum by Simoa (ALZpath p-tau217). Analysis used multistate Markov models on an age time scale. NC to MCI: p-tau217 high vs low (cut-off 0.134 pg/mL, the Youden optimum for 10-year all-cause dementia; 803 vs 1345 participants) HR 1.07 (0.73-1.56) basic and 1.19 (0.75-1.88) fully adjusted. Abeta42/40 low vs high HR 0.98 (0.72-1.34). None of the six markers was associated with NC to MCI, whether as continuous splines, as dichotomies, or as combinations of p-tau217, NfL and GFAP. The same markers did predict MCI to AD dementia: p-tau217 HR 2.11 (1.61-2.76); NfL 2.34 (1.77-3.11); three elevated markers 3.71 (2.22-6.20)."
+  },
+  "quantity_a": "Hazard of incident all-cause MCI in CU adults with a first-degree family history of AD, as a Cox HR over a mean 5.65 years after plasma sampling. MCI: blinded consensus requiring more than 1.0 SD below norms on an RBANS composite or two RAVLT scores, plus a subjective memory complaint and/or observed decline. Exposure: joint plasma A+T+ (or A-T+) status vs A-T-, with thresholds anchored to Abeta-PET-negative CU adults.",
+  "quantity_b": "Hazard of the NC-to-MCI transition in a random community sample aged 60+, as a multistate Markov HR on an age time scale over a mean 9.6 years (up to 16). MCI: psychometric, 1.5 SD or more below the age-specific mean in at least one of five domains with preserved function; reversion allowed. Exposure: single serum markers above vs below Youden cut-offs derived for 10-year all-cause dementia (p-tau217 > 0.134 pg/mL; 37% of participants 'high'), plus continuous splines.",
+  "same_quantity": false,
+  "incompatible_if_same": "On the tau arm, yes. P-1403's A+T+ interval (3.92-15.59) and P-1421's p-tau217 interval (0.73-1.56 basic; 0.75-1.88 fully adjusted) exclude each other. P-1403's A-T+ lower bound (1.60) lies just above P-1421's basic upper bound (1.56) but inside its fully adjusted interval. On the amyloid arm, no. P-1403's A+T- vs A-T- HR 1.14 (0.58-2.24) and P-1421's Abeta42/40 HR 0.98 (0.72-1.34) are both null and overlap. The candidate therefore stands or falls on whether the tau-arm quantities are the same, and they are not.",
+  "gates": {
+    "task": "match: both are T2 prognosis, and the contested arm is incident MCI from normal cognition in both. P-1421's registry substage MCI_to_AD describes its headline result, but it also reports the NC-to-MCI transition.",
+    "dataset_family": "mismatch: PREVENT-AD (Montreal; a research cohort enriched for family history) vs SNAC-K (Stockholm; population-based). No waiver on the record.",
+    "validation_tier": "n/a: both are association studies that validate no model (registry V2 for both); counted as matched.",
+    "modality_family": "match: fluid (blood) biomarkers. The subtype differs: plasma (in-house Gothenburg Simoa p-tau217, IP-MS Abeta42/40) vs serum (ALZpath Simoa p-tau217, Simoa Neuro 3-plex A Abeta42/40)."
+  },
+  "endpoint_and_metric": "The metric is compatible (hazard ratios in both); the endpoint is shared in name only. 'MCI' is defined differently: consensus with a complaint or decline requirement vs a single-visit psychometric criterion with modelled reversion. Follow-up differs (mean 5.65 vs 9.6 years). The exposures differ: joint A/T status on AD-anchored cut-offs vs single-marker dichotomies on dementia-optimised cut-offs.",
+  "performance_validity": "Not a performance comparison (hazard-ratio associations). Neither paper is flagged, and P-1403's AUCs (0.66-0.82) are far below the 0.97 test.",
+  "independence": "Independent: different cohorts, countries and author teams, with no shared authors or participants.",
+  "bridging_evidence": [],
+  "verdict": "documented_incommensurability",
+  "grounds": [
+    "The exposure contrasts differ. P-1403's HR of 7.81 compares joint plasma A+T+ with A-T-, on thresholds anchored to Abeta-PET-negative CU adults; A+T+ is 10% of its sample (p.3, p.4). P-1421's HR of 1.07 compares serum p-tau217 above vs below a cut-off tuned to predict 10-year all-cause dementia, with 803 of 2148 participants 'high' (p.4, p.6). P-1421 has no A/T classification. P-1403 reports no whole-sample single-marker or continuous hazard ratio: its Cox models are by A/T group only, and its continuous analysis is ROC AUC (p.4, p.8).",
+    "The population behind the 'cognitively unimpaired older adults' label differs. PREVENT-AD enrols only people with a first-degree family history of AD (p.3). SNAC-K is a random community sample aged 60+ with median age 72.2, 865 of 2148 aged 78 or over (p.2, p.6). Both papers note that MCI can arise without AD pathology: P-1403 says most A-T- progressors probably have non-neurodegenerative conditions (p.10), and P-1421 says mild cognitive deficits are not necessarily the expression of an underlying neuropathology (p.5). P-1403 also names community settings as untested (p.3).",
+    "The dataset-family gate fails (PREVENT-AD vs SNAC-K) and no waiver is on the record. Under the C-232 precedent, waiving the cohort gate would not cure an exposure (predictor) mismatch.",
+    "The endpoint and horizon differ. P-1403 counts consensus MCI requiring a subjective complaint and/or observed decline, over a mean 5.65 years after plasma (p.4). P-1421 counts psychometric MCI (1.5 SD or more below the age-specific mean in one domain) with reversion modelled, over a mean 9.6 years (p.2, p.6).",
+    "Matrix and assay differ: plasma on an in-house Gothenburg Simoa vs serum on the ALZpath Simoa. P-1421 states that its cohort-derived cut-offs may not carry over to other laboratory platforms (p.6).",
+    "On the closest shared quantity, amyloid alone, the two agree: both are null (P-1403 p.7; P-1421 Table 2, p.4). Including Abeta42/40 in the record's disagreement therefore adds no disagreement. The tension is confined to the tau arm, where the exposures differ.",
+    "In fairness to the candidate: P-1421's null also holds for continuous p-tau217 (splines, p.2), so the tension is not only a cut-off artefact, and the two papers' headline answers do diverge. It stays unadjudicable because no like-for-like hazard ratio exists across the two papers."
+  ],
+  "evidence_quotes": [
+    {
+      "paper": "P-1403",
+      "page": 2,
+      "quote": "Cox proportional hazard models indicated a greater progression rate in A+T+plasma and A−T+plasma compared to A−T−plasma individuals (HR = 7.81 [95% CI = 3.92 to 15.59] and HR = 4.25 [1.60–11.31] respectively)."
+    },
+    {
+      "paper": "P-1403",
+      "page": 3,
+      "quote": "a longitudinal observational study of individuals with a first-degree family history of AD"
+    },
+    {
+      "paper": "P-1403",
+      "page": 3,
+      "quote": "plasma and CSF p-tau217 levels were set at 2 standard deviation (SD) above the mean of Aβ PET–negative individuals who were CU from the PREVENT-AD cohort (plasma p-tau217: 3.98 pg/mL",
+      "note": "A line-break hyphen in 'indi-viduals' has been joined."
+    },
+    {
+      "paper": "P-1403",
+      "page": 4,
+      "quote": "Using Aβ42/40 and p-tau217 plasma biomarkers to classify participants, 10% (21/215) were classified as A+T+, 28% (60/215) as A+T−, 3% (7/215) as A−T+, and 59% (127/215) as A−T−."
+    },
+    {
+      "paper": "P-1403",
+      "page": 7,
+      "quote": "There were no differences between A+T−plasma and A−T−plasma group (HR = 1.14, P = 0.69, 95% CI = 0.58 to 2.24)."
+    },
+    {
+      "paper": "P-1403",
+      "page": 4,
+      "quote": "participants needed to have a subjective memory complaint21 and/or have an objective decline witnessed over multiple cognitive follow-ups."
+    },
+    {
+      "paper": "P-1403",
+      "page": 4,
+      "quote": "The mean cognitive follow-up was 5.65 years (SD = 1.45, range 1.01–10.47) after plasma classification"
+    },
+    {
+      "paper": "P-1403",
+      "page": 4,
+      "quote": "A total of 228 participants were included in the study, of whom 62 (27%) developed MCI."
+    },
+    {
+      "paper": "P-1403",
+      "page": 8,
+      "quote": "with AUC ranging from 0.66 to 0.75 for Aβ, from 0.74 to 0.81 for tau, and between 0.77 to 0.82 for their combinations (Figure 3)."
+    },
+    {
+      "paper": "P-1403",
+      "page": 3,
+      "quote": "Future studies in diverse populations and community settings are needed to validate our findings.",
+      "note": "A line-break hyphen in 'find-ings' has been joined."
+    },
+    {
+      "paper": "P-1403",
+      "page": 10,
+      "quote": "Given this limitation and the fact that 20% of our reference group developed MCI, the HRs between groups should be interpreted with caution."
+    },
+    {
+      "paper": "P-1403",
+      "page": 10,
+      "quote": "MCI can develop for multiple reasons and most A−T−individuals probably have non-neurodegenerative conditions such as vascular or psychiatric conditions."
+    },
+    {
+      "paper": "P-1421",
+      "page": 1,
+      "quote": "Elevated NfL and GFAP were linked to reduced MCI reversion to normal cognition, whereas no biomarker was associated with MCI development from normal cognition."
+    },
+    {
+      "paper": "P-1421",
+      "page": 4,
+      "quote": "P-tau217 High vs Low 81/803 vs 230/1345 1.07 (0.73, 1.56) 1.19 (0.75, 1.88)",
+      "note": "Table 2 row, 'From NC to MCI' columns: transitions/participants, basic-model HR, fully adjusted HR. Table cells are joined with spaces."
+    },
+    {
+      "paper": "P-1421",
+      "page": 4,
+      "quote": "138/1119 vs 173/1029 0.98 (0.72, 1.34) 0.99 (0.70, 1.41)",
+      "note": "Table 2 row for Abeta42/40 Low vs High, 'From NC to MCI' columns. Table cells are joined with spaces."
+    },
+    {
+      "paper": "P-1421",
+      "page": 4,
+      "quote": "Cut-offs: 0.057 for Aß−42/40 ratio, 1.512 pg/mL for p-tau181, 0.134 pg/mL for p-tau217"
+    },
+    {
+      "paper": "P-1421",
+      "page": 6,
+      "quote": "we used a non-parametric bootstrapping procedure (5000 iterations) to identify the optimal cut-off for each biomarker to predict the onset of all-cause dementia within 10 years."
+    },
+    {
+      "paper": "P-1421",
+      "page": 6,
+      "quote": "At baseline (2001-2004), 3363 randomly selected individuals aged 60+ from the Kungsholmen district of Stockholm were enrolled (73% participation rate)."
+    },
+    {
+      "paper": "P-1421",
+      "page": 2,
+      "quote": "At baseline, median age of study participants was 72.2 years, 61.5% were females"
+    },
+    {
+      "paper": "P-1421",
+      "page": 2,
+      "quote": "Age ≥78 N = 865",
+      "note": "Table 1 column header; the overall column is N = 2148."
+    },
+    {
+      "paper": "P-1421",
+      "page": 6,
+      "quote": "Individuals were classiﬁed as having MCI if they scored ≤1.5 SD below the age-speciﬁc mean in at least one cognitive domain"
+    },
+    {
+      "paper": "P-1421",
+      "page": 6,
+      "quote": "Third, our results based on cut-offs derived within the SNAC-K cohort, may not fully extend to more diverse populations or alternative laboratory platforms."
+    },
+    {
+      "paper": "P-1421",
+      "page": 2,
+      "quote": "No association was found between AD blood biomarkers and the progression from normal cognition to MCI."
+    },
+    {
+      "paper": "P-1421",
+      "page": 5,
+      "quote": "A possible explanation is that mild cognitive deﬁcits are not necessarily the expression of an underlying neuropathology."
+    },
+    {
+      "paper": "P-1421",
+      "page": 2,
+      "quote": "The strongest associations with all-cause and AD dementia were shown by NfL (HR 1.84, 95% CI 1.43, 2.36 for all-cause and HR 2.34, 95% CI 1.77, 3.11 for AD dementia) and p-tau217 (HR 1.74, 95% CI 1.38, 2.19 for all-cause and HR 2.11, 95% CI 1.61, 2.76 for AD dementia)"
+    }
+  ],
+  "record_defects": [
+    "conflict_statement's '62/228 progressors over a mean 5.65-year post-classification follow-up' mixes denominators. 62/228 is the whole study sample (P-1403 p.4), while 5.65 years is the plasma sample's follow-up. The plasma sample (n=215) had 60 progressors (16+14+5+25, p.5).",
+    "conflict_statement's 'combined biomarker AUC 0.77-0.82' is the range across the plasma, CSF and PET combined models (p.8), not a plasma-only figure. The plasma-specific AUC appears only in Figure 3, not in the text.",
+    "conflict_statement's 'plasma p-tau217-based A+T+ status' leaves out that A+T+ also requires plasma Abeta42/40 below 0.09 by IP-MS (p.3). The HR of 7.81 is a joint A/T contrast against A-T-, not a p-tau217 marker effect; the record's own review_note says the same.",
+    "conflict_statement's 'the same markers strongly predicted MCI-to-dementia (NfL HR 2.34, p-tau217 HR 2.11)' uses the hazard ratios for MCI to AD dementia. For all-cause dementia they are 1.84 and 1.74 (P-1421 p.2).",
+    "conflict_statement counts 'Abeta42/40 among them' as part of the disagreement, but P-1403's own amyloid-only contrast is also null (A+T- vs A-T- HR 1.14, 0.58-2.24; p.7). On amyloid the two papers agree.",
+    "conflict_type 'semantic_directional' overstates the pair. It is a strong positive association set against a null whose point estimates lie slightly above 1 (1.07 basic, 1.19 fully adjusted), not opposite directions."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "Two things together: a waiver of the dataset-family gate on the record, and a like-for-like exposure. Examples: SNAC-K reporting NC-to-MCI hazards for an A+T+ vs A-T- classification or for an AD-anchored p-tau217 threshold; or PREVENT-AD reporting a whole-sample, single-marker p-tau217 hazard ratio at a comparable cut-off. The pair would become a genuine candidate if such a contrast still gave non-overlapping intervals and there were evidence that family-history enrichment does not change the share of incident MCI that is AD-driven. A SNAC-K NC-to-MCI estimate for participants under 78, closer in age to PREVENT-AD, would bear on the population ground; the main text does not give one."
+}

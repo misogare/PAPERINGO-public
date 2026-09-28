@@ -1,0 +1,14 @@
+{"paper": "P-1221", "pdf_is_right_paper": true,
+ "source_read": "C:/Users/aryas/AppData/Local/Temp/claude/C--Users-aryas-Downloads-PAPERINGO/ae4da8a7-34c7-41fb-b9af-cbd04b882da9/scratchpad/r18/v4/pdf/P-1221.txt",
+ "registry_code": "V3", "correct_code": "V3", "changed": false,
+ "training_data": "EMIF-AD MBD, 10 of its 11 European cohorts pooled. Multiclass NC/MCI/AD models: 70% random train split. MCI-conversion models: all 194 MCI with paired proteomics and metabolomics (103 sMCI / 91 cMCI), 3-fold CV repeated 10 times",
+ "test_data": "Multiclass models: the 30% test split of the pooled cohorts, plus the EDAR cohort held out whole (proteins NC 21 / MCI 44 / AD 65; metabolites NC 29 / MCI 18 / AD 32). EDAR is itself one of the 11 EMIF-AD MBD cohorts. MCI-conversion model: no separate test set",
+ "model_fixed_before_external_test": true,
+ "reason": "The registry's best metric, the MCI-conversion AUC of 0.872, is cross-validated only, with features selected on the same 194 MCI; EDAR was expressly not used because it held 5 sMCI and 6 cMCI. Only the diagnostic NC/MCI/AD models reach beyond V2: a 70/30 split, plus the EDAR cohort held out whole, but EDAR belongs to the same EMIF-AD MBD consortium. The paper does not show that EDAR's recruiting centres differ from the training cohorts' centres (both multicentre studies draw on the same European memory-clinic network), so this is a held-out cohort within one consortium: V3 stands. It would become V4 only if Supplementary Table 1 showed that EDAR's sites are not among the training cohorts' sites.",
+ "quotes": [
+  {"page": 3, "quote": "It is a cross-cohort study consisting of collated data from 11 European cohorts that aims to discover novel diagnostic and prognostic markers for AD-type dementia by performing analyses in multiple biomarker modalities."},
+  {"page": 3, "quote": "To create multiclass models of proteins, data from the EDAR cohort was reserved for validation purposes (NC = 21, MCI = 44, AD = 65) while data from the other cohorts was randomly split into train (NC = 147, MCI = 240, AD = 84) and test (NC = 62, MCI = 102, AD = 35) in 70/30 proportion."},
+  {"page": 3, "quote": "In this scenario, subjects from the EDAR cohort were not reserved for validation purposes since it did not include enough samples to this end (sMCI = 5, cMCI = 6)."},
+  {"page": 7, "quote": "This model showed a mean AUC of 0.872 within the cross-validation (Table 2)."}
+ ],
+ "confidence": "medium"}

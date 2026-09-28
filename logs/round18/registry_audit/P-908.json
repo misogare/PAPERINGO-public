@@ -1,0 +1,18 @@
+{
+  "paper": "P-908",
+  "pack": 5,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Thyroid-stimulating hormone and cognitive impairment in non-depressed non-demented multiethnic middle-aged and older US adults: Assessing sex-specific risk prediction",
+  "is_model_study": false,
+  "blind_codes": {"Task_Type": "T4", "Category": "C3;C5", "Validation_Type": "V2", "Sample_N": "1845 (789 HC + 1056 MCI); adjusted models N = 1672", "Publication_Year": "2025", "ADNI_Dependent": "true"},
+  "registry_codes": {"Task_Type": "T6", "Category": "C3", "Validation_Type": "V2", "Sample_N_Approx": "1845", "Publication_Year": "2025", "ADNI_Dependent": "true"},
+  "judgement": {
+    "Task_Type": {"verdict": "error", "correct_code": "T4", "reason": "This is a cross-sectional association analysis of ADNI baseline data. It regresses ADAS13 on serum TSH (linear) and MCI-vs-HC status on TSH (logistic) and reports only beta coefficients and odds ratios. It fits no classifier or cut-point and reports no AUC, accuracy or sensitivity/specificity. The core result is a blood-biomarker correlation with cognition and with MCI-vs-HC status. The deciding test puts such studies in T4 ('odds ratio ... is T4, however central the MCI-vs-HC contrast is'). The T6 epidemiology clause applies only 'unless their core result is one of T1-T5', and here the core result is T4. The paper itself calls TSH 'a biomarker of central thyroid function' (p.7).", "quote": "The odds of being diagnosed with MCI at baseline decreased with higher TSH levels in the total study population (adj. ORTotal=0.87[0.79, 0.95], p-value=0.002) and in males (adj. ORMales=0.80[0.70, 0.92], p-value=0.001).", "page": 1},
+    "Category": {"verdict": "defensible", "correct_code": "C3;C5", "reason": "The registry's C3 captures the primary domain (fasting serum TSH). The ADAS13 neuropsychological score is the dependent variable of half the analyses, and MCI diagnosis is the logistic outcome. Both are secondary C5 data that the code omits. Readings: C3 alone (primary exposure) or C3;C5 (adds the neuropsychological outcome).", "quote": "ADAS13 score was included as a dependent variable, and continuous TSH levels (µIU/mL) as an independent variable.", "page": 2},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "No predictive model is validated; the regression models are association models only. Convention: V2.", "quote": null, "page": null},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "1845", "reason": "1845 participants met the inclusion criteria (789 HC + 1056 MCI). The adjusted models used 1672 because of missing APOE data.", "quote": "A total of 1845 participants with a median age of 73 years (IQR: 68, 78) met the inclusion criteria", "page": 3},
+    "Publication_Year": {"verdict": "match", "correct_code": "2025", "reason": "Available online 6 August 2025; Archives of Gerontology and Geriatrics Plus 2 (2025).", "quote": null, "page": null},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "true", "reason": "ADNI is the sole dataset.", "quote": "Alzheimer’s Disease Neuroimaging Initiative (ADNI) study participants with complete baseline data on demographic characteristics, TSH, depression assessment, and overall cognition were included.", "page": 2}
+  },
+  "notes": "The title says 'risk prediction', but the paper reports no discrimination metric, so it is not a model study. The T6 code would place this biomarker-association study in the clinical/descriptive bucket of the task-mix census instead of T4."
+}

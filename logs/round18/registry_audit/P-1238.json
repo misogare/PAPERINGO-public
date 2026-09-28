@@ -1,0 +1,24 @@
+{
+  "paper": "P-1238",
+  "pack": 1,
+  "pdf_is_right_paper": false,
+  "title_as_printed": "Cerebral amyloid accumulation is associated with distinct structural and functional alterations in the brain of depressed elders with mild cognitive impairment",
+  "correct_pdf": {
+    "title_as_printed": "Functional connectivity differences in Alzheimer's disease and amnestic mild cognitive impairment associated with AT(N) classification and anosognosia",
+    "citation": "Mondragon JD, Maurits NM, De Deyn PP, for ADNI. Neurobiology of Aging 101 (2021) 22-39. doi 10.1016/j.neurobiolaging.2020.12.021",
+    "local_path": "downloads/3. Molecular, Genetic and Fluid Biomarkers/1-s2.0-S0197458020304395-main.pdf"
+  },
+  "is_model_study": false,
+  "blind_codes": {"Task_Type": "T4", "Category": "C1;C3", "Validation_Type": "V2", "Sample_N": "121 in FC analysis (26 HC + 78 aMCI + 17 AD); 143 eligible; 73 in anosognosia analysis", "Publication_Year": "2021", "ADNI_Dependent": "true"},
+  "blind_codes_for_supplied_extract_Hyung2021": {"Task_Type": "T4", "Category": "C1", "Validation_Type": "V2", "Sample_N": "130 (43 HC + 87 MCI with depression)", "Publication_Year": "2021", "ADNI_Dependent": "false"},
+  "registry_codes": {"Task_Type": "T4", "Category": "C1", "Validation_Type": "V2", "Sample_N_Approx": "121 for FC analysis; 73 for anosognosia analysis", "Publication_Year": "2021", "ADNI_Dependent": "true"},
+  "judgement": {
+    "Task_Type": {"verdict": "match", "correct_code": "T4", "reason": "Judged against the correct PDF (Mondragon 2021); page numbers are pages of that PDF. The study compares functional connectivity between groups defined by AT(N) biomarker profile and runs a voxel-wise regression on anosognosia. There is no classifier or discrimination figure.", "quote": "We assessed local functional coupling and between-network connectivity through between-group intrinsic local correlation and independent component analyses.", "page": 1},
+    "Category": {"verdict": "defensible", "correct_code": "C1 (or C1;C3)", "reason": "The primary domain is imaging: rs-fMRI, plus amyloid PET and FDG-PET for A and N. The registry carries it. CSF p-tau, which supplies the T of the AT(N) grouping, is a secondary C3 domain the registry omits.", "quote": "As ADNI participants did not undergo PET imaging for tau in the ADNI-2 and ADNI-GO study phases, tau burden “T” was assessed by using CSF p-tau levels in this study.", "page": 4},
+    "Validation_Type": {"verdict": "match", "correct_code": "V2", "reason": "No predictive model; the analyses are group comparisons and regressions.", "quote": "For voxel-level measurements, two-sample paired t-tests were performed on mean regional activation maps to assess between-group differences", "page": 5},
+    "Sample_N_Approx": {"verdict": "match", "correct_code": "121", "reason": "The FC analysis used 121 participants (26 HC + 78 aMCI + 17 AD) out of 143 eligible; the anosognosia analysis used 73. The registry gives both figures.", "quote": "One hundred and twenty-one and 73 participants were included in the FC and the anosognosia analysis, respectively.", "page": 1},
+    "Publication_Year": {"verdict": "match", "correct_code": "2021", "reason": "Available online 8 January 2021; Neurobiology of Aging 101 (2021).", "quote": "Available online 8 January 2021", "page": 1},
+    "ADNI_Dependent": {"verdict": "match", "correct_code": "true", "reason": "ADNI-2/ADNI-GO is the sole dataset.", "quote": "Data were obtained from the Alzheimer's Disease Neuroimaging Initiative (ADNI) database", "page": 3}
+  },
+  "notes": "The supplied extract (pdf/P-1238.txt) is the wrong paper: Hyung et al., J Affect Disord 281 (2021) 459-466, doi 10.1016/j.jad.2020.12.049, which is P-643's paper. data/paper_pdf_map.json has P-1238 (folder-scan, score 0.8) pointing its path and DOI at that Hyung file (1-s2.0-S0165032720331396-main.pdf) while its title field names the Mondragon paper. P-1286 (score 0.7, a different title) also points at the same Hyung file and is probably mis-mapped too. No P-ID in the map points at the Mondragon file, which exists locally at downloads/3. Molecular, Genetic and Fluid Biomarkers/1-s2.0-S0197458020304395-main.pdf. The registry row matches the Mondragon paper (121/73, ADNI true), so I judged it against that PDF, and all six codes are supportable. Judged against the supplied Hyung extract, Sample_N (130) and ADNI (false) would have failed, but those would be artefacts of the wrong PDF, not registry errors. The pdf_map entry needs repair; it affects PDF-based audits and paper_kb SOURCES footers."
+}

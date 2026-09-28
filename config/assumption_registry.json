@@ -1,0 +1,846 @@
+{
+  "schema_version": "1.0",
+  "description": "Registry of known prior clinical and scientific beliefs to check against AI evidence in Agent 4E. Each entry defines a belief, its domain, and the signal that would constitute disproof.",
+  "assumption_types": {
+    "Region_Irrelevance": "AI analysis (Grad-CAM, attention, SHAP) assigns zero or negligible weight to a region previously assumed important",
+    "Mechanism_Misattribution": "AI evidence shows a symptom or biomarker traces to a different anatomical source than assumed",
+    "Predictor_Surprise": "A variable assumed irrelevant achieves top predictive rank; a variable assumed dominant drops out",
+    "Biomarker_Sequence_Reversal": "AI evidence shows a biomarker signal appears earlier than previously assumed in the disease cascade",
+    "Feature_Insufficient": "A feature assumed sufficient as a standalone biomarker fails when tested in isolation",
+    "Feature_Context_Dependent": "A feature assumed universally effective fails in one context but succeeds in another"
+  },
+  "known_assumptions": [
+    {
+      "id": "KA-01",
+      "domain": "Retinal imaging",
+      "belief": "The optic nerve head (ONH) is a key retinal biomarker for MCI via the brain-eye connection",
+      "assumed_since": "Multiple retinal MCI papers, 2018-2022",
+      "disproof_signal": "XAI analysis (Grad-CAM, attention) assigns zero or negligible weight to ONH region in a retinal MCI classification model",
+      "assumption_type": "Region_Irrelevance",
+      "currently_invalidated_by": [
+        "DuCAN_Retinal"
+      ],
+      "clinical_implication_if_disproved": "Retinal MCI biomarkers reside in RNFL thinning and vascular morphology, not the optic disc. OCT analysis should focus on parafoveal RNFL.",
+      "modality_required": "retinal"
+    },
+    {
+      "id": "KA-02",
+      "domain": "Cardiac comorbidity MCI",
+      "belief": "In CHF patients, cardiac-specific features (ejection fraction, cardiac output) dominate MCI risk",
+      "assumed_since": "Clinical cardiology-neurology literature, 2015-2020",
+      "disproof_signal": "ML feature importance ranking places cardiac output features outside top predictors; psychosocial or metabolic features rank higher",
+      "assumption_type": "Predictor_Surprise",
+      "currently_invalidated_by": [
+        "P-35"
+      ],
+      "clinical_implication_if_disproved": "CHF-MCI screening should prioritise psychosocial adaptation and thyroid function assessments over cardiac function metrics.",
+      "modality_required": "clinical_survey"
+    },
+    {
+      "id": "KA-03",
+      "domain": "Functional connectivity MCI",
+      "belief": "Postcentral gyrus voxel-mirrored homotopic connectivity (VMHC) is a reliable standalone MCI biomarker",
+      "assumed_since": "VMHC MCI literature, 2016-2021",
+      "disproof_signal": "SVM using postcentral-gyrus VMHC alone achieves near-chance accuracy (below 70%) for binary MCI classification",
+      "assumption_type": "Feature_Insufficient",
+      "currently_invalidated_by": [
+        "P-55"
+      ],
+      "clinical_implication_if_disproved": "Single-region interhemispheric connectivity markers are insufficient standalone. Multi-feature combination or DTI assessment of the same zone required.",
+      "modality_required": "fmri"
+    },
+    {
+      "id": "KA-04",
+      "domain": "Motor biomarkers in MCI",
+      "belief": "Fine motor inconsistency in MCI patients reflects motor cortex or cerebellar atrophy",
+      "assumed_since": "Motor-cognition literature, 2010-2019",
+      "disproof_signal": "CART or equivalent analysis identifies hippocampal volume (not motor cortex volume) as primary predictor of trial-to-trial motor variability",
+      "assumption_type": "Mechanism_Misattribution",
+      "currently_invalidated_by": [
+        "P-53"
+      ],
+      "clinical_implication_if_disproved": "Repeated-trial motor variability is a hippocampal-memory biomarker, not a motor biomarker. Motor variability testing can proxy medial temporal integrity without neuroimaging.",
+      "modality_required": "digital_behaviour"
+    },
+    {
+      "id": "KA-05",
+      "domain": "EEG cognitive neuroscience",
+      "belief": "Posterior brain regions are the primary cognitive processing centres; their decline maps directly to cognitive impairment",
+      "assumed_since": "Posterior Cortical Atrophy literature; classical cognitive neuroscience",
+      "disproof_signal": "EEG attention mapping or saliency analysis finds frontal regions more active in cognitively declining patients than healthy controls, consistent with PASA (posterior-to-anterior shift in aging)",
+      "assumption_type": "Mechanism_Reframing",
+      "currently_invalidated_by": [
+        "P-12"
+      ],
+      "clinical_implication_if_disproved": "Elevated frontal EEG activity in MCI is a compensatory overactivation marker of posterior failure, not preserved frontal cognition. Frontal EEG hyperactivity should be interpreted as burden-displacement.",
+      "modality_required": "eeg"
+    },
+    {
+      "id": "KA-06",
+      "domain": "White matter biomarkers",
+      "belief": "Corpus callosum volumetric loss is the earliest detectable white matter MCI signal",
+      "assumed_since": "White matter MCI literature, 2012-2020",
+      "disproof_signal": "Shape analysis (Fourier, surface irregularity) detects corpus callosum boundary changes that correlate with CSF p-tau before volumetric loss is measurable",
+      "assumption_type": "Biomarker_Sequence_Reversal",
+      "currently_invalidated_by": [
+        "P-45"
+      ],
+      "clinical_implication_if_disproved": "Shape irregularity metrics should precede volumetric metrics in white matter staging models. Standard FreeSurfer volume-only pipelines miss an earlier signal.",
+      "modality_required": "structural_mri"
+    },
+    {
+      "id": "KA-07",
+      "domain": "Cortical surface connectivity",
+      "belief": "Gyral surface connectivity features are effective primary MCI discriminators",
+      "assumed_since": "Cortical surface analysis MCI literature, 2015-2021",
+      "disproof_signal": "A gyral-zone surface connectivity feature achieves near-chance accuracy as a standalone feature, while DTI tract integrity through the same anatomical zone achieves AUC above 0.75",
+      "assumption_type": "Feature_Context_Dependent",
+      "currently_invalidated_by": [
+        "P-55",
+        "P-91"
+      ],
+      "clinical_implication_if_disproved": "The functional unit is the white matter tract, not the cortical surface. Gyral zone features should be assessed via DTI fibre tract integrity, not surface VMHC.",
+      "modality_required": "fmri"
+    },
+    {
+      "id": "KA-08",
+      "domain": "Neuroimaging superiority",
+      "belief": "Brain scans are categorically superior to cognitive and neuropsychological assessments for MCI conversion prediction",
+      "assumed_since": "Neuroimaging-dominant MCI literature consensus, widespread",
+      "disproof_signal": "Cognitive scores alone achieve higher AUC or accuracy than brain imaging alone for pMCI/sMCI conversion in a direct comparison",
+      "assumption_type": "Predictor_Surprise",
+      "currently_invalidated_by": [
+        "P-81"
+      ],
+      "clinical_implication_if_disproved": "Investment in expensive imaging infrastructure for MCI conversion prediction is not supported by evidence when cognitive assessments are available. Imaging adds most value for conversion timeline, not binary conversion prediction.",
+      "modality_required": "structural_mri|fmri"
+    },
+    {
+      "id": "KA-09",
+      "domain": "EEG frequency bands in MCI",
+      "belief": "Alpha band suppression is the primary EEG marker of MCI",
+      "assumed_since": "Classical EEG-MCI literature, 1990s-2010s",
+      "disproof_signal": "ML feature importance or graph-metric analysis identifies delta or theta band as the highest-weight EEG discriminator over alpha",
+      "assumption_type": "Predictor_Surprise",
+      "currently_invalidated_by": [],
+      "clinical_implication_if_disproved": "EEG MCI protocols should prioritise delta/theta connectivity metrics over alpha power suppression depending on the target (amyloid burden vs hippocampal damage).",
+      "modality_required": "eeg"
+    },
+    {
+      "id": "KA-10",
+      "domain": "Transfer learning domain compatibility",
+      "belief": "Transfer learning from any large medical imaging dataset to MCI improves performance regardless of source domain pathology",
+      "assumed_since": "Transfer learning literature applied to medical imaging, 2017-2022",
+      "disproof_signal": "Model transferred from a pathologically incompatible source domain performs below a directly trained baseline; or XAI shows transferred attention maps highlight irrelevant anatomical regions",
+      "assumption_type": "Feature_Context_Dependent",
+      "currently_invalidated_by": [],
+      "clinical_implication_if_disproved": "Source domain biological compatibility must be verified before transfer learning. Domain-compatibility checks require systematic cross-paper analysis of source domain pathological focus vs target domain requirements.",
+      "modality_required": "structural_mri|fmri"
+    },
+    {
+      "id": "KA-11",
+      "domain": "Hippocampal texture vs volume",
+      "belief": "Hippocampal texture features carry independent discriminative information beyond hippocampal volume for MCI detection",
+      "assumed_since": "Radiomics MCI literature, 2018-2023",
+      "disproof_signal": "Radiomics texture features from hippocampus achieve accuracy convergent with FreeSurfer volumetric features on the same task and dataset, implying texture adds no independent signal",
+      "assumption_type": "Feature_Insufficient",
+      "currently_invalidated_by": [],
+      "clinical_implication_if_disproved": "For current-state MCI vs HC classification, hippocampal volume is the primary signal; texture may be more informative for conversion prediction where volumetric differences are smaller.",
+      "modality_required": "structural_mri"
+    },
+    {
+      "id": "KA-12",
+      "domain": "Structural MRI staging",
+      "belief": "The hippocampus (medial temporal lobe) is the most informative single brain region for structural-MRI detection of MCI and for predicting progression from normal cognition to MCI.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "A model or study in which non-hippocampal regions/measures (amygdala subfields, subcortical/white-matter indices, textural or network features) match or beat hippocampal volume for MCI detection or conversion prediction",
+      "assumption_type": "Feature_Insufficient",
+      "currently_invalidated_by": [
+        "IA-34"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "structural_mri",
+      "status": "attested_2026_09_27",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations.",
+      "belief_pre_2026_09_27": "Hippocampal volume / macrostructural atrophy (hippocampal volume, cortical thickness) is the primary, sufficient and best single structural-MRI marker for MCI detection and MCI-to-dementia conversion; other regions and measures add little",
+      "status_pre_2026_09_27": "proposed_2026_08_29",
+      "demoted_links_2026_09_26": [
+        "IA-01",
+        "IA-21",
+        "IA-38",
+        "IA-39"
+      ],
+      "corpus_attestation_2026_09_27": {
+        "IA-34": "Attested in a narrowed form, carried mainly by P-177; the other quotes are supporting only (practice-level or AD-diagnosis statements). PRIMARY: P-177 (C:/Users/aryas/Downloads/PAPERINGO/downloads/4. Computational Models and Modern AI Architectures/PMID_33749642_nihms-1843971.pdf, abstract): 'We previously described that among baseline FDG-PET and MRI measures known to be preferentially affected in the preclinical and clinical stages of AD, hippocampal volume was the best predictor of incident MCI within 2 years (79% sensitivity/78% specificity)'. Its summary block frames the study as an attempt 'to improve short-horizon progression prediction beyond standard hippocampal volume metrics', i.e. hippocampal volume is the benchmark to beat. SUPPORTING: P-66 (.../1-s2.0-S0899707124002316-main.pdf, section 2.5): 'the most informative features of the brain images for Alzheimer diagnosis are texture and shape of hippocampus and amygdala regions' (AD diagnosis and two regions, so it supports the hippocampal-radiomics feature family, not single-region primacy for MCI). P-595 (PDF introduction): 'hippocampal volumetry has emerged as a robust MRI biomarker for AD diagnosis', and (discussion) 'Hippocampal atrophy is a significant hallmark of AD neurodegeneration, is widely used in research and clinical diagnosis'. P-581 (PDF): hippocampal volume 'is commonly used in research, trials, and clinical practice'. P-182 (PDF introduction): 'The most widely studied target in AD is the hippocampus (Jack et al. 1992; Fox et al. 1996), and indeed, multiple studies have reported hippocampal volume loss in MCI relative to controls'. These last four describe standard practice rather than a comparative belief and would not attest the prior on their own. NOT attested, and dropped: KA-12's registered 'sufficient ... other regions and measures add little', and the record's 'cerebellum (traditionally viewed as motor-only)' clause, which P-570 itself states only as superseded ('Traditionally associated with motor control, the cerebellum is now recognized for its critical involvement in cognitive processes'). Contrary statements in the corpus show the primacy view is held but contested, which fits a bounded, not refuted, outcome: P-50 (multi-region atrophy); P-581 ('it has limitations regarding the progression from MCI to AD'); P-595 ('in early AD, MTL atrophy is often subtle and not reliably detected by conventional MTA ratings'). Search: the challenger's own regex sweep of summaries.md (hippocampal/medial temporal within 160 characters of most widely/commonly/established/validated/sensitive/informative/reliable/used, best, gold standard, strongest, primary marker, earliest, first affected, well established, reference standard, most studied; 49 hits, P-369 excluded as a known fabricated block), plus the auditor's PDF list; own PyPDF2 extraction of P-570, P-224, P-50, P-99, P-177, P-66, P-182, P-595, P-581 and P-672."
+      },
+      "attestation_provenance_2026_09_27": "Status set on operator instruction of 2026-09-27. The belief was narrowed to the form attested in the corpus, and the attestation quotes were found in source PDFs by the round-15 re-adjudication (two model readers per record, an auditor and a challenger instructed to refute it; see each IA's readjudication_2026_09_26). 'attested' means a corpus study states the belief as held; it is not an operator confirmation and no human re-read the quotes."
+    },
+    {
+      "id": "KA-13",
+      "domain": "Biomarker ordering",
+      "belief": "Structural atrophy precedes detectable functional-connectivity disruption in the MCI stage",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "Functional-connectivity change observed before or without measurable atrophy in the same cohort",
+      "assumption_type": "Biomarker_Sequence_Reversal",
+      "currently_invalidated_by": [
+        "IA-37"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "fmri|structural_mri",
+      "status": "proposed_2026_08_29",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-14",
+      "domain": "Connectomics",
+      "belief": "Resting-state fMRI functional connectivity is the necessary and superior connectivity modality for network-level MCI detection; structural (DTI) connectivity is secondary",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "Structural connectivity (DTI) matching or exceeding functional connectivity for the same detection task within one study",
+      "assumption_type": "Feature_Context_Dependent",
+      "currently_invalidated_by": [
+        "IA-30"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "fmri",
+      "status": "proposed_2026_08_29",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-15",
+      "domain": "ML methodology",
+      "belief": "Greater model or representation complexity (whole-image deep learning, machine-learning survival models, higher-order functional-network representations) extracts information that simpler region-based, clinical, Cox or pairwise-connectivity models miss, and so predicts or classifies MCI outcomes more accurately.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "A simpler interpretable model matching or beating the complex model on the same data and validation protocol",
+      "assumption_type": "Predictor_Surprise",
+      "currently_invalidated_by": [
+        "IA-15",
+        "IA-16",
+        "IA-40"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "structural_mri|fmri|clinical_survey",
+      "status": "attested_2026_09_27",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations.",
+      "belief_pre_2026_09_27": "Greater model or representation complexity (whole-image deep learning, ML survival ensembles, higher-order network representations) extracts more prognostic information than simple interpretable region-based, clinical or low-order models",
+      "status_pre_2026_09_27": "proposed_2026_08_29",
+      "demoted_links_2026_09_26": [],
+      "corpus_attestation_2026_09_27": {
+        "IA-15": "P-37 (Bae et al. 2021, Neurobiology of Aging; PDF downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S0197458020304140-main.pdf, Introduction; the challenger re-extracted it and found the text verbatim): \"previous research has relied on specific features (e.g., cortical thickness and hippocampal volume) extracted from raw data to train the model (Zheng and Casari, 2018). This approach assumes that the chosen feature is the most informative and may neglect important information inherent in the raw data. CNN is a deep-learning approach that has evolved in recent years to produce better classification performance and feature visualization than conventional machine learning methods across several fields (Borji et al., 2019). A CNN trained on raw, whole brain data can automatically extract the important imaging features and can offer insights beyond current methods in predicting disease progression.\" This is a belief held in the field (cited to Borji 2019), not P-274's own hypothesis. Supporting, from P-274's own Discussion (verbatim): \"in the study by [22], they received significantly better results using a DL model and MRI images compared to e.g. MMSE, hippocampal volume, cerebrospinal fluid A\u03b2 and tau\". The block phrase \"Many studies assume deep imaging models are superior\", quoted by the 2026-09-15 second reader, was written by the summariser and does not appear in the P-274 PDF. Attestation therefore rests on P-37.",
+        "IA-16": "P-344 (Jahani et al. 2025, BMC Med Res Methodol 25:250; PDF downloads/4. Computational Models and Modern AI Architectures/PMID_41193962_12874_2025_Article_2689.pdf); the challenger re-extracted it and found the text verbatim. Introduction: \"Machine learning survival methods have gained attention for their ability to model nonlinear relationships without traditional assumptions [6, 17]. Gradient Boosting Survival Analysis (GBSA) [18] and RSF [19] have shown superior performance over classical Cox regression in biomedical datasets [20, 21].\" Discussion: \"Sarica et al. [25] compared tree-based survival models, including RSF, with the CoxPH model for predicting the conversion from MCI to AD, revealing that ...\" and \"These studies consistently highlight RSF as a superior model in predicting dementia-related outcomes.\" P-309 Introduction (verbatim): \"the traditional Cox model may be unstable and inaccurate. Machine learning and deep learning are characterized by the ability to address nonlinearity, strongly correlated variables and accurate predictions.\" P-344's abstract also calls the question open (\"their application in MCI-to-AD progression prediction remains limited, with unclear superiority over classical survival models\"). The prior is therefore held but contested; it is still attested for MCI-to-AD prediction.",
+        "IA-40": "P-79 (Wu et al. 2026, Expert Systems with Applications, an MCI-detection study; PDF downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S0957417425046184-main.pdf, Introduction; the challenger found the text verbatim): \"most existing DFCN-based approaches primarily focus on cross-window temporal dynamics while modeling only pairwise relationships between regions of interest (ROIs) within each window. Such approaches disregard how inter-regional function extends beyond simple pairwise interactions, with high-order cooperation among multiple brain regions often reflecting more informative pathological patterns. Moreover, functional connectivity matrices constructed purely from correlation or mutual information neglect high-order topological structures and network hierarchies within each window, potentially limiting both diagnostic accuracy and biomarker discovery.\" P-516's own Introduction attributes the correlation's-correlation belief to earlier work (verbatim): \"the two sequential PCs (denoted as PC2 in this paper) provide a high-order statistic that, in theory, can encode more complex relationship ... Chen et al. (2016) revealed that PC2 can encode the complex interactions between different ROIs, and Zhang et al. (2016) found that PC2 is more sensitive to AD identification.\" Limits: P-79 builds its high-order networks by regression (NRR), not by correlation's correlation, and no corpus study other than P-516 itself mentions PC2. The belief that raising the order of PCn beyond n=2 helps is NOT attested: it is P-516's own research question (\"what will happen if continuing the correlation operation to construct much higher-order BFN by PCn(n>2)\")."
+      },
+      "attestation_provenance_2026_09_27": "Status set on operator instruction of 2026-09-27. The belief was narrowed to the form attested in the corpus, and the attestation quotes were found in source PDFs by the round-15 re-adjudication (two model readers per record, an auditor and a challenger instructed to refute it; see each IA's readjudication_2026_09_26). 'attested' means a corpus study states the belief as held; it is not an operator confirmation and no human re-read the quotes."
+    },
+    {
+      "id": "KA-16",
+      "domain": "Screening access",
+      "belief": "MCI screening requires direct cognitive assessment (at minimum MMSE); routine non-cognitive clinical, physical-exam, blood or autonomic data carry no usable screening signal",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "A non-cognitive-data model reaching clinically useful MCI discrimination without any cognitive test input",
+      "assumption_type": "Feature_Insufficient",
+      "currently_invalidated_by": [
+        "IA-31"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "clinical_survey|digital_behaviour",
+      "status": "proposed_2026_08_29",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-17",
+      "domain": "Amyloid cascade",
+      "belief": "Amyloid is the primary upstream driver of MCI impairment and progression; tau, metabolic and cognitive signals are clinically meaningful only downstream of amyloid positivity",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "Tau, metabolic or cognitive markers carrying prognostic signal in amyloid-negative MCI, or amyloid-PET adding nothing over clinical/gait models",
+      "assumption_type": "Mechanism_Reframing",
+      "currently_invalidated_by": [
+        "IA-03",
+        "IA-41"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "MRI/PET|csf",
+      "status": "proposed_2026_08_29",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-19",
+      "domain": "EEG clinical practice",
+      "belief": "Epileptiform/network-hyperexcitability activity is absent in MCI without seizure history, so spike monitoring is not indicated",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "Epileptiform discharges detected in a substantial fraction of seizure-naive MCI patients and associated with faster decline (verify P-374 against its PDF before confirming)",
+      "assumption_type": "Region_Irrelevance",
+      "currently_invalidated_by": [],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "eeg",
+      "status": "withdrawn_2026_08_30_evidence_void",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations.",
+      "withdrawal_note_2026_08_30": "The verification this entry required ('verify P-374 against its PDF before confirming') was run on 2026-08-30 and FAILED: the epileptiform figures came from the pre-2026-08-30 P-374 summary block, which described a different, non-corpus paper (10.1016/j.jns.2021.117846, the leading fragment of P-378's abstract-book slice). P-374's real paper (Na et al. 2024, 10.1016/j.jns.2024.123113) reports no spike prevalence. Its only invalidating record, IA-25, is now pending_human_review. Do not treat KA-19 as a registered prior unless the operator admits the Horvath abstract as a numbered paper.",
+      "currently_invalidated_by_before_audit_2026_09_14": [
+        "IA-25"
+      ],
+      "stale_link_removed_2026_09_14": "Removed 'IA-25' from currently_invalidated_by. IA-25 (data/invalidated.json) now has status 'rejected_provenance_void' - 2026-09-10 G5 consolidated verdict RETIRED - PROVENANCE VOID (P-374 is Na et al. 2024 and reports no spike prevalence; the 33% / 1.3x figures came from a superseded block describing a different paper) - so KA-19 has no live invalidating record. The withdrawal_note_2026_08_30 ('Its only invalidating record, IA-25, is now pending_human_review') is the operator's text and is left as written; it predates IA-25's retirement. KA-19 stays withdrawn_2026_08_30_evidence_void as the operator ruled.",
+      "audit_note_2026_09_14": "2026-09-14 audit (IA package): stale link to retired IA-25 removed from currently_invalidated_by; status unchanged (withdrawn).",
+      "text_revised_at_audit_2026_09_14": [
+        "currently_invalidated_by"
+      ]
+    },
+    {
+      "id": "KA-20",
+      "domain": "Retinal imaging",
+      "belief": "Subfoveal choroidal thickness is reduced in MCI relative to cognitively normal controls and is a candidate retinal structural biomarker of MCI.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "Choroidal thickening or vessel straightening in an MCI cohort, or direction reversal by comorbidity (e.g. type 2 diabetes)",
+      "assumption_type": "Feature_Context_Dependent",
+      "currently_invalidated_by": [
+        "IA-27"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "retinal",
+      "status": "attested_2026_09_27",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations.",
+      "belief_pre_2026_09_27": "Retinal/choroidal markers change in a fixed direction with MCI: the choroid thins (SFCT) and retinal vessels become more tortuous",
+      "status_pre_2026_09_27": "proposed_2026_08_29",
+      "demoted_links_2026_09_26": [
+        "IA-46"
+      ],
+      "corpus_attestation_2026_09_27": {
+        "IA-27": "Attested (SFCT half only). P-830 (Ge et al. 2021, Ageing Research Reviews systematic review and meta-analysis), PDF abstract (extract glyphs decoded: 'D' = '<', invisible glyph = '='): 'Compared with healthy controls, patients with MCI also had lower thickness of pRNFL (SMD -0.324, p < 0.001), total macular (SMD -0.302, p < 0.001), and subfoveal choroid (SMD -0.462, p = 0.020).' Discussion: 'The thinner retina and choroid, reduced complexity of vessels, and reduced blood flow were consistently detected in the MCI stage compared with healthy controls' (Table 1, MCI choroidal thickness: OCT k = 4, n = 427, limitation codes a, c, d). Also P-363's own introduction (PDF pp. 359-360): 'A recent meta-analysis found that SFCT was significantly decreased in patients with AD compared with that of control subjects. ... SFCT was also shown to decrease in subjects with mild cognitive impairment (MCI)'; and P-1317 (Joseph et al. 2024; PDF at downloads/3. Molecular, Genetic and Fluid Biomarkers/1-s2.0-S2666914524000162-main.pdf, which is missing from data/paper_pdf_map.json): 'Other studies analyzing the choroid have reported decreased subfoveal choroidal thickness in both MCI [35: Bulut et al. 2016] and AD when compared with that of controls.' The registered prior KA-20 as written ('Retinal/choroidal markers change in a fixed direction with MCI: the choroid thins (SFCT) and retinal vessels become more tortuous') is NOT attested: its assumed_since reads 'Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by', so it was built from IA-27 and IA-46 themselves, and no corpus study states its tortuosity half. CHALLENGER ADDITION: P-830 is not fully independent of the disproving cohort. Its reference list contains 'Robbins, C.B., Grewal, D.S., Thompson, A.C., Powers, J.H., Soundararajan, S., Koo, H.Y., Yoon, S.P., Polascik, B.W., Liu, A., Agrawal, R., Fekrat, S., 2020. Choroidal structural analysis in alzheimer's disease, mild cognitive impairment, and cognitively healthy controls. Am. J. Ophthalmol.' (= P-363). Its MCI Table 1 row 'Choroidal angioarchitecture OCTA (k 1, n 204) ... Greater total choroidal area and luminal area, lower choroidal vascularity index' reports P-363's findings, and its text reads 'thinning of the choroid via OCTA (Robbins et al., 2020) ... The thinning of the choroid could also be detected in MCI'. So P-363 was among P-830's included studies and may sit in the k = 4 SFCT pool. P-830 still attests that the field holds the prior, and the P-363 introduction and P-1317 state it independently. But P-830 is not an independent counterweight to P-363."
+      },
+      "attestation_provenance_2026_09_27": "Status set on operator instruction of 2026-09-27. The belief was narrowed to the form attested in the corpus, and the attestation quotes were found in source PDFs by the round-15 re-adjudication (two model readers per record, an auditor and a challenger instructed to refute it; see each IA's readjudication_2026_09_26). 'attested' means a corpus study states the belief as held; it is not an operator confirmation and no human re-read the quotes."
+    },
+    {
+      "id": "KA-21",
+      "domain": "ERP biomarkers",
+      "belief": "Event-related-potential components attenuate monotonically along the continuum from subjective cognitive decline through MCI to AD, so a worse clinical stage implies a more attenuated ERP.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "Non-monotonic (preserved or enhanced) ERP components at an intermediate stage within one cohort",
+      "assumption_type": "Biomarker_Trajectory",
+      "currently_invalidated_by": [
+        "IA-35"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "eeg",
+      "status": "attested_2026_09_27",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations.",
+      "belief_pre_2026_09_27": "ERP cognitive components (N400, P300/P600 family) attenuate monotonically with clinical stage across SCD -> MCI -> AD",
+      "status_pre_2026_09_27": "proposed_2026_08_29",
+      "demoted_links_2026_09_26": [
+        "IA-28"
+      ],
+      "corpus_attestation_2026_09_27": {
+        "IA-35": "Attested. In its general form the prior is stated by the disproving study itself (P-144, the canonical ID of the Vergani 2025 paper; P-576 is its dedup stub). From the Conclusion of PDF downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S2213158225000300-main.pdf: 'ERP dynamics, in particular, revealed critical discontinuities in cognitive decline, challenging the assumption of a linear progression from health to pathology. These deviations could reflect compensatory mechanisms and cerebral resilience, disrupting expected ERP monotonicity. Our methodology captures these nonlinear changes, offering insights beyond standard markers like amplitude attenuation or latency slowing'. Fig. 1E caption: 'Dashed line traces the hypothetical monotonic trend which has been altered by the features values.' An independent corpus study instantiates the monotonic expectation for P3: P-489 (PDF 1-s2.0-S2405844023028487-main.pdf) reports 'there was a gradual decrease in the amplitude and increase in the latency of the P3 potential from the HC group to the AD group'. P-28 treats P300 as a progression marker: 'N200 and P300 latency have been considered as promising biomarkers in the early diagnosis and progression assessment of AD and MCI'. So the prior is not a strawman, but the only corpus statement of it for all components is the disproving study's own framing, which the master already discloses for most priors ('most were registered from the contradicting records themselves')."
+      },
+      "attestation_provenance_2026_09_27": "Status set on operator instruction of 2026-09-27. The belief was narrowed to the form attested in the corpus, and the attestation quotes were found in source PDFs by the round-15 re-adjudication (two model readers per record, an auditor and a challenger instructed to refute it; see each IA's readjudication_2026_09_26). 'attested' means a corpus study states the belief as held; it is not an operator confirmation and no human re-read the quotes."
+    },
+    {
+      "id": "KA-22",
+      "domain": "Prevention epidemiology",
+      "belief": "Physical exercise interventions have a moderate, clinically relevant effect on the cognitive function of older adults.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "A well-powered trial or meta-analysis showing null or boundary-conditioned effects of the lifestyle factor on incident MCI/dementia",
+      "assumption_type": "Feature_Context_Dependent",
+      "currently_invalidated_by": [
+        "IA-67"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "clinical_survey",
+      "status": "attested_2026_09_27",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations.",
+      "belief_pre_2026_09_27": "Modifiable lifestyle factors - physical exercise alone, BMI, diet, sleep - are robust primary protective/risk factors that lower MCI/dementia incidence",
+      "status_pre_2026_09_27": "proposed_2026_08_29",
+      "demoted_links_2026_09_26": [
+        "IA-29"
+      ],
+      "corpus_attestation_2026_09_27": {
+        "IA-67": "Primary (added by challenger): the P-249 PDF itself, Discussion, reporting what the field's earlier syntheses concluded rather than its own hypothesis: 'Our findings are only partly consistent with previous systematic reviews and meta-analyses that recognized a moderate and clinically relevant effect of physical exercise interventions on the cognitive function of older adults (De Souto Barreto et al., 2018; Gallardo-Gomez et al., 2022; Northey et al., 2018).' Its Introduction records that the belief is contested: 'A recent umbrella review of randomized controlled trials (RCTs) has cast doubt on the cognitive benefits of physical exercise interventions' and 'meta-analyses have failed to consistently corroborate the hypothesis that exercise interventions can effectively mitigate the risk of clinically meaningful cognitive deterioration, MCI, or the advent of dementia'. Independent corpus source: P-680 PDF (downloads/1. Clinical Assessments, Behavioral and Social Factors/1-s2.0-S0167494324002176-main.pdf), Introduction: 'Exercise is considered among the most effective nonpharmacological strategies to prevent cognitive decline in mild cognitive impairment (MCI) and prevent dementia in further stages of MCI (Petersen et al., 2018).' The record's lead anchor P-251 cannot be used. data/paper_pdf_map.json maps it to downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S001048252401388X-main.pdf, and a fresh extract of that file is 'Plasma protein-based identification of neuroimage-driven subtypes in mild cognitive impairment via protein-protein interaction aware explainable graph propagational network' (Park et al., doi 10.1016/j.compbiomed.2024.109303; the same file is also mapped to P-10). The quote therefore reconciles with no corpus source. P-806 shares authors with P-249 (NI-10). The belief is attested but contested, so 'robust, established ... stated as settled' overstates it."
+      },
+      "attestation_provenance_2026_09_27": "Status set on operator instruction of 2026-09-27. The belief was narrowed to the form attested in the corpus, and the attestation quotes were found in source PDFs by the round-15 re-adjudication (two model readers per record, an auditor and a challenger instructed to refute it; see each IA's readjudication_2026_09_26). 'attested' means a corpus study states the belief as held; it is not an operator confirmation and no human re-read the quotes."
+    },
+    {
+      "id": "KA-23",
+      "domain": "Intervention synthesis",
+      "belief": "Digital cognitive-training modalities are interchangeable: immersive VR is at least as effective as conventional computerised training for cognition in MCI",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "A head-to-head or network comparison ranking modalities differently, or showing modality-specific effects",
+      "assumption_type": "Feature_Context_Dependent",
+      "currently_invalidated_by": [
+        "IA-50"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "digital_behaviour",
+      "status": "proposed_2026_08_29",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-24",
+      "domain": "Psychiatric cognition",
+      "belief": "Cognitive impairment in late-life psychiatric disorders is mood-state-dependent and distinct from MCI, so it does not carry MCI/dementia risk",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "Persistent cognitive impairment after mood remission, or psychiatric-cohort cognitive deficits predicting later MCI/dementia",
+      "assumption_type": "Mechanism_Reframing",
+      "currently_invalidated_by": [
+        "IA-49",
+        "IA-75"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "clinical_survey",
+      "status": "proposed_2026_08_29",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-25",
+      "domain": "Neuropsychological practice",
+      "belief": "Delayed recall (retention) is the preferred memory index over learning/acquisition for identifying MCI",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "Learning-slope or acquisition indices outperforming delayed recall for MCI identification in the same battery",
+      "assumption_type": "Predictor_Surprise",
+      "currently_invalidated_by": [
+        "IA-74"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "clinical_survey",
+      "status": "proposed_2026_08_29",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-26",
+      "domain": "MCI natural history",
+      "belief": "MCI is a unidirectional prodromal state: progression is the expected course and reversion to normal cognition is rare or a criteria artefact",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-08-29)",
+      "disproof_signal": "Substantial, durable reversion rates in community cohorts (cf. VF-33), or reversion that is not explained by measurement criteria",
+      "assumption_type": "Outcome_Assumption",
+      "currently_invalidated_by": [
+        "IA-77",
+        "IA-83",
+        "IA-85"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "clinical_survey",
+      "status": "proposed_2026_08_29",
+      "provenance": "Proposed by the 2026-08-29 data-quality audit (IA-prior lane) from 30 confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-27",
+      "domain": "Diagnostic hierarchy (cognitive tests vs biomarkers)",
+      "belief": "Static baseline cognitive test score (MMSE, CDR, HVLT) is the gold standard for MCI diagnosis; biomarkers are supplementary confirmatory tools only",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-584 (PREVENT-AD, medRxiv preprint; N=102 cognitively-unimpaired adults, 31 progressors, mean 5.9y follow-up; Cox with time-varying effects) found neocortical amyloid PET,...",
+      "assumption_type": "diagnostic_hierarchy",
+      "currently_invalidated_by": [
+        "IA-02"
+      ],
+      "clinical_implication_if_disproved": "Molecular/neurophysiological biomarkers carry prognostic signal in cognitively-normal individuals that a static cognitive test score misses. CAVEAT: P-584 is...",
+      "modality_required": "neuroimaging",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-28",
+      "domain": "Biomarker determinism",
+      "belief": "Adverse structural/metabolic biomarkers in MCI (reduced hippocampal volume + abnormal FDG-PET) deterministically imply impending cognitive decline / progression.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-592 (INTERCEPTOR, resting-state EEG, N=166: 50 HC / 60 stable-resilient MCI / 56 converters) shows a subgroup of MCI with reduced hippocampal volume AND abnormal FDG-PET who...",
+      "assumption_type": "biomarker_dynamics",
+      "currently_invalidated_by": [
+        "IA-04"
+      ],
+      "clinical_implication_if_disproved": "Adverse structural/metabolic biomarkers do not deterministically predict decline; a functional network-reserve phenotype can decouple structure/metabolism from...",
+      "modality_required": "eeg_meg",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-29",
+      "domain": "AI interpretability",
+      "belief": "Deep learning neural networks trained on brain imaging are black boxes whose decisions are fundamentally uninterpretable",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-81 (3D CNN on whole-brain FDG-PET + neurocognitive scores, ADNI N=612: 150 CN/257 MCI/205 AD; best fusion AUC 0.785) applies Grad-CAM/saliency whose maps qualitatively localise...",
+      "assumption_type": "ai_interpretability",
+      "currently_invalidated_by": [
+        "IA-05"
+      ],
+      "clinical_implication_if_disproved": "Imaging DL is not a pure black box: Grad-CAM saliency qualitatively highlights disease-relevant regions - but this interpretability is NOT validated against...",
+      "modality_required": "neuroimaging",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-30",
+      "domain": "Cognitive reserve",
+      "belief": "Cognitive reserve (education, occupational complexity, lifestyle) is an absolute, stage-independent buffer against the cognitive consequences of neurodegeneration, decoupling cognition from brain...",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-589 (Steffener & LaPlume, COMPASS-ND, cross-sectional, N~606) shows modifiable-behaviour cognitive reserve (social/creative/physical activity) significantly weakened the...",
+      "assumption_type": "cognitive_reserve_mechanism",
+      "currently_invalidated_by": [
+        "IA-07"
+      ],
+      "clinical_implication_if_disproved": "Lifestyle/cognitive-enrichment interventions may buffer the brain-cognition relationship most BEFORE MCI onset; this moderating benefit appears to wane by the...",
+      "modality_required": "clinical_survey",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-31",
+      "domain": "Disease heterogeneity",
+      "belief": "MCI-to-AD progression follows a single dominant pathway with only noise-level inter-patient variation",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-103 identifies reproducible longitudinal subphenotypes (respiratory, musculoskeletal, cardiovascular, endocrine/metabolic) across independent EHR cohorts",
+      "assumption_type": "disease_heterogeneity_assumption",
+      "currently_invalidated_by": [
+        "IA-09"
+      ],
+      "clinical_implication_if_disproved": "Progression risk should be modeled as subtype-specific; one-size-fits-all prognostic thresholds may misclassify patients",
+      "modality_required": "clinical_survey",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-32",
+      "domain": "Subjective vs informant report",
+      "belief": "Self-reported cognitive complaints are as prognostically informative as informant-reported complaints for early progression risk",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-108 meta-analysis reports stronger and more robust progression association for informant-reported SCCs than self-reported SCCs",
+      "assumption_type": "subjective_report_equivalence",
+      "currently_invalidated_by": [
+        "IA-10"
+      ],
+      "clinical_implication_if_disproved": "Early-risk triage should weight informant concern more heavily than self-report alone",
+      "modality_required": "clinical_survey",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-33",
+      "domain": "Portable EEG",
+      "belief": "Portable EEG-based pipelines cannot provide clinically meaningful multi-class AD/MCI/healthy discrimination and are unsuitable for first-line triage",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-112 demonstrates high three-class discrimination using practical spectral and connectivity EEG features with classical ML",
+      "assumption_type": "portable_eeg_limit_assumption",
+      "currently_invalidated_by": [
+        "IA-11"
+      ],
+      "clinical_implication_if_disproved": "EEG can serve as a viable low-cost triage modality before expensive imaging in resource-constrained pathways",
+      "modality_required": "eeg_meg",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations.",
+      "caveat_2026_09_14": "KA-33 codifies IA-11, whose disproving paper P-112 has a MISATTACHED summary block: summaries.md L3018-3092 ('## Paper 112: 1-s2.0-S1746809420303773-main.pdf') describes an EEG DWT/PSD/interhemispheric-coherence AD/MCI/HC pipeline ('Resting-state EEG from 35 participants (AD, MCI, healthy)', 'Bagged Trees classifier with 5-fold cross-validation'), but the PDF at that filename (downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809420303773-main.pdf; data/paper_pdf_map.json doi 10.1016/j.bspc.2020.102249) is Ghoraani et al. 2021, 'Detection of mild cognitive impairment and Alzheimer's disease using dual-task gait assessments and machine learning', BSPC 64:102249 - a gait paper, not an EEG paper. IA-11's summary_match was checked against the block, not the literature, so the disproof_signal here rests on a block whose bibliographic identity is unverified (the EEG study it describes is unidentified in the corpus). Do not treat KA-33 as a registered, evidenced invalidation until P-112 is re-attached to its real paper or the EEG block is assigned to a verified P-ID. Status left as proposed_2026_09_09; IA-11 not touched (outside this package - see handoff).",
+      "audit_note_2026_09_14": "2026-09-14 audit (IA package): added caveat_2026_09_14 (P-112 misattached block); no other change.",
+      "text_revised_at_audit_2026_09_14": []
+    },
+    {
+      "id": "KA-34",
+      "domain": "Meta-analytic ranking reliability",
+      "belief": "Multi-ingredient/multivitamin supplementation is more effective than single nutrients (e.g. omega-3) for preventing MCI, as concluded from the NMA intervention ranking in P-151.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "The NMA ranking does not robustly support multi-ingredient superiority over omega-3: the significant Multi arm rests on N=526 vs the null Omega-3 arm's N=2293 with an implausible...",
+      "assumption_type": "statistical_reliability_of_meta_analytic_ranking",
+      "currently_invalidated_by": [
+        "IA-13"
+      ],
+      "clinical_implication_if_disproved": "Comparative supplement rankings from this single NMA should be treated cautiously; the multi-ingredient>single-nutrient superiority is not robustly supported,...",
+      "modality_required": "clinical_survey",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-35",
+      "domain": "Performance validity",
+      "belief": "Reported near-ceiling MCI-classification accuracies (P-200 AUC 0.9992; P-197 98.86%; P-119 98.84% on N=79; P-1 98.81%) reflect genuine diagnostic ability that will generalise to new patients.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "These accuracies cluster on internal validation (V2) with small/modest N and NO external cohort - HIGHLY SUSPECT for data leakage (subject-level bleed across train/test slices, or...",
+      "assumption_type": "performance_validity_red_flag",
+      "currently_invalidated_by": [
+        "IA-14"
+      ],
+      "clinical_implication_if_disproved": "Do not treat >98% internal-validation accuracy as deployable performance; require external-cohort validation. Such papers should be excluded from...",
+      "modality_required": "neuroimaging",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-36",
+      "domain": "External validity / generalisation",
+      "belief": "Published MCI machine-learning models that report high in-study performance (AUC>0.80, accuracy>70%) reflect diagnostic/prognostic ability that will generalise to real-world, non-ADNI populations.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-329, a systematic review of 138 MCI ML studies, found that while more than half report AUC>0.8 and accuracy>70%, about TWO-THIRDS rely on ADNI and only ~10% perform any external...",
+      "assumption_type": "generalizability_external_validity",
+      "currently_invalidated_by": [
+        "IA-17"
+      ],
+      "clinical_implication_if_disproved": "Reported MCI ML accuracies should be treated as optimistic until externally validated; deployment claims require non-ADNI (ideally prospective) validation....",
+      "modality_required": "any",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-37",
+      "domain": "Biomarker-cognition coupling",
+      "belief": "Cognitive deficits observed in MCI track core AD CSF pathology (amyloid/tau), so cognitive-test abnormalities should correlate with CSF biomarkers.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-386 (retrospective, N=166 MCI) found Reading-the-Mind-in-the-Eyes-Test (RMET, social cognition) correlated with structural MRI, FDG-PET, and neuropsychological measures but...",
+      "assumption_type": "biomarker_cognition_dissociation",
+      "currently_invalidated_by": [
+        "IA-18"
+      ],
+      "clinical_implication_if_disproved": "CSF-biomarker normality does not exclude clinically relevant cognitive (social-cognition) impairment in MCI; multi-domain cognitive assessment captures...",
+      "modality_required": "neuroimaging",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-38",
+      "domain": "Biomarker incremental value",
+      "belief": "In Parkinson's disease MCI (PD-MCI) specifically, amyloid PET imaging improves ML prediction of cognitive impairment over inexpensive clinical/gait features. (NB the field's amyloid-PET-helps...",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-221 ran a direct head-to-head comparison in PD: a clinical+gait model reached >80% accuracy/specificity, while ADDING amyloid PET did NOT improve and 'often weakened'...",
+      "assumption_type": "biomarker_incremental_value",
+      "currently_invalidated_by": [
+        "IA-19"
+      ],
+      "clinical_implication_if_disproved": "Suggestive (not conclusive) evidence that clinical/gait phenotyping may rival amyloid PET for PD-MCI screening. Present as THEMATIC SUPPORT within the...",
+      "modality_required": "neuroimaging",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-39",
+      "domain": "Organ scope of MCI diagnosis",
+      "belief": "The dominant assumption is that MCI classification information resides solely in the brain, so predictive models should be trained on brain imaging alone.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-160 provides preliminary, qualitative evidence (single study, N not reported, no effect sizes) that whole-body PET-derived gut/cardiac metabolic signal, used as a training-time...",
+      "assumption_type": "Organ scope of MCI diagnosis",
+      "currently_invalidated_by": [
+        "IA-22"
+      ],
+      "clinical_implication_if_disproved": "Systemic (gut/cardiac) metabolic signal may carry complementary MCI-relevant information usable as a training-time prior; this does not replace brain-only...",
+      "modality_required": "neuroimaging",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-40",
+      "domain": "Functional biomarker dominance (DMN)",
+      "belief": "Default Mode Network disruption is assumed to be the dominant and consistent resting-state fMRI biomarker for MCI, detectable across all patients and all dynamic states. This is VF-04 in your...",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-49 studied dynamic functional connectivity states in 82 MCI patients and 85 controls using rs-fMRI. The paper identified three distinct DFC states. Crucially, State 2 showed no...",
+      "assumption_type": "Functional biomarker dominance \u2014 DMN assumption",
+      "currently_invalidated_by": [
+        "IA-26"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "neuroimaging",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-41",
+      "domain": "ERP markers in PD-MCI",
+      "belief": "Because MCI is defined by memory impairment and semantic memory is closely linked to episodic memory, the standard assumption is that N400 amplitude \u2014 the neural marker of semantic access difficulty...",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-370 (N=20 PD-MCI, 58 PD-NC, 24 HC; single cross-sectional ERP cohort) found that in PD-MCI the N400 abnormality was not confined to amplitude: alongside REDUCED amplitude,...",
+      "assumption_type": "ERP biomarker pattern specificity in PD-MCI",
+      "currently_invalidated_by": [
+        "IA-32"
+      ],
+      "clinical_implication_if_disproved": "PD-MCI's N400 signature includes a latency/timing component beyond amplitude, so latency-sensitive ERP measures may add value. NOTE: the earlier claim that...",
+      "modality_required": "eeg_meg",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-42",
+      "domain": "Cognitive training generalisation",
+      "belief": "The assumption underlying digital cognitive intervention programmes for MCI is that training one cognitive domain (e.g., memory training) produces generalised improvement across untrained domains...",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-253 conducted a meta-analysis of 25\u201330 RCTs (2,000+ participants) of digital cognitive interventions in MCI. The finding for computerised cognitive training was effect size...",
+      "assumption_type": "Cognitive training generalisation assumption",
+      "currently_invalidated_by": [
+        "IA-33"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA records' clinical_implication fields.",
+      "modality_required": "digital_behaviour",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-43",
+      "domain": "Cognitive-process generality",
+      "belief": "Mild cognitive impairment involves generalised impairment of visual short-term/working-memory (VWM) binding and semantic memory during object/scene processing.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-607 (Allegretti 2025, Cortex; MCI n=30 accuracy / 21 eye-movement) found the MECHANISMS of object-scene VWM binding preserved in MCI - semantic-inconsistency detection benefit,...",
+      "assumption_type": "Cognitive-process generality",
+      "currently_invalidated_by": [
+        "IA-36"
+      ],
+      "clinical_implication_if_disproved": "Attentional/compensatory mechanisms supporting object-scene binding appear preserved at the group-mechanism level in this modest MCI sample and MAY be...",
+      "modality_required": "digital_behaviour",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-44",
+      "domain": "FDG-PET prediction signal",
+      "belief": "FDG-PET prediction of MCI-to-AD conversion depends on brain-wide/global hypometabolism, which is uninformative in amyloid/tau-negative individuals.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-569 (Terstege 2024; ADNI N=399): in whole-cohort logistic regression, focal retrosplenial hypometabolism predicted MCI-to-AD conversion (|Z|=3.181, p=0.0015) whereas brain-wide...",
+      "assumption_type": "Metabolic prediction requires global signal",
+      "currently_invalidated_by": [
+        "IA-42"
+      ],
+      "clinical_implication_if_disproved": "In a single retrospective ADNI cohort, a focal retrosplenial ROI outperformed global hypometabolism for conversion prediction; the suggestion that it carries...",
+      "modality_required": "neuroimaging",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-45",
+      "domain": "FC vs effective connectivity",
+      "belief": "Functional-connectivity strength is a good proxy for effective (directional) connectivity strength.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-542 (Huang 2022; ADNI-2, N=130 across CN/EMCI/LMCI/AD, cross-sectional DCM over 7 DMN/SAN/CEN ROIs): directional (effective) connectivity declined progressively from full...",
+      "assumption_type": "FC as proxy for effective connectivity",
+      "currently_invalidated_by": [
+        "IA-43"
+      ],
+      "clinical_implication_if_disproved": "In this small resting-state ADNI-2 setting, undirected FC may not capture directional network disruption that effective-connectivity modelling reveals;...",
+      "modality_required": "fmri",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-46",
+      "domain": "ATN staging granularity",
+      "belief": "In ATN staging, A+T+N- and A+T+N+ MCI patients can be merged for progression modelling.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-524 (Song 2022; ADNI-GO/ADNI-2, total N=472, progression analysis on 197 MCI across 8 ATN profiles): in this single observational cohort, 5-year MCI-to-AD progression ranged...",
+      "assumption_type": "ATN staging simplification",
+      "currently_invalidated_by": [
+        "IA-44"
+      ],
+      "clinical_implication_if_disproved": "In this ADNI cohort, collapsing N- and N+ within A+T+ obscured a large progression-risk difference, suggesting the neurodegeneration axis should be retained in...",
+      "modality_required": "neuroimaging",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-47",
+      "domain": "Olfactory markers",
+      "belief": "Olfactory recognition MEMORY is impaired already at the MCI(-AD) stage and is therefore a sensitive prodromal marker.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-281 (Audronyte 2023; single-site, cross-sectional, N=90 = 30 CN / 30 MCI-AD / 30 mild-dementia-AD): olfactory recognition memory was significantly impaired in AD dementia but...",
+      "assumption_type": "Olfactory marker prodromal timing",
+      "currently_invalidated_by": [
+        "IA-47"
+      ],
+      "clinical_implication_if_disproved": "In this small single-centre cross-sectional study, olfactory recognition-memory testing was NOT shown to be a sensitive prodromal MCI screen, and verbal memory...",
+      "modality_required": "clinical_survey",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-48",
+      "domain": "EEG acquisition state",
+      "belief": "Awake resting-state EEG is the primary/standard EEG source for MCI screening.",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-201 (Geng 2022; NSRR/SOF, all-female N=40 [20 MCI/20 HC]): in this small single-sex pilot, sleep-EEG features (slow waves, spindles) yielded higher MCI-vs-HC discrimination than...",
+      "assumption_type": "EEG acquisition state",
+      "currently_invalidated_by": [
+        "IA-48"
+      ],
+      "clinical_implication_if_disproved": "In a small all-female pilot, sleep EEG appeared more discriminative than awake resting EEG for MCI; screening protocols could consider evaluating sleep...",
+      "modality_required": "eeg_meg",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-49",
+      "domain": "Prospective timing measurement",
+      "belief": "Prospective interval timing is SPARED in MCI - the standing conclusion of the timing literature (Mioni et al. 2019, whose title states the lack of temporal impairment in MCI; Coelho et al. 2016;...",
+      "assumed_since": "Corpus prior implied by the invalidated-assumption records listed in currently_invalidated_by (audit 2026-09-09)",
+      "disproof_signal": "P-659 (PRISMA multi-level meta-analysis; 12 studies / 14 samples / 80 effect sizes, of which 64 prospective / 562 participants) shows the null MCI result is MEASUREMENT-CONFOUNDED...",
+      "assumption_type": "inference_validity / measurement artifact (interval timing)",
+      "currently_invalidated_by": [
+        "IA-64"
+      ],
+      "clinical_implication_if_disproved": "The negative MCI timing literature cannot be cited as evidence that timing is preserved. Any future study testing the belief must score timing on ACCURACY or...",
+      "modality_required": "meta_analysis",
+      "status": "proposed_2026_09_09",
+      "provenance": "Proposed by the 2026-09-09 gate-readiness triage (IA-prior lane) from confirmed IA records that named no registered prior; needs operator confirmation before the linked IAs count as registered invalidations."
+    },
+    {
+      "id": "KA-50",
+      "domain": "Motor signs in MCI",
+      "belief": "Parkinsonian motor signs in MCI (masked facies, resting tremor, bradykinesia) are aetiology-nonspecific and cannot discriminate which dementia an MCI patient will develop.",
+      "assumed_since": "Clinical neurology literature treating parkinsonian signs in MCI as nondiagnostic (corpus prior confirmed by IA-NEW-1110-01; operator G5 2026-09-10)",
+      "disproof_signal": "P-1110 (NACC UDS, n=4623 MCI, 66 DLB conversions; adjusted Cox, age/education/race/MCI type, competing events excluded): masked facies HR 4.21 (1.74-10.18), resting tremor HR 4.71 (1.44-15.40), bradykinesia HR 3.43 (1.82-6.45) EXCLUSIVELY raised incident DLB risk - selected motor signs carry aetiology-specific prognostic value.",
+      "assumption_type": "Predictor_Surprise",
+      "currently_invalidated_by": [
+        "IA-NEW-1110-01"
+      ],
+      "clinical_implication_if_disproved": "Motor-sign assessment (masked facies, resting tremor, bradykinesia) belongs in MCI follow-up to flag prodromal DLB and stratify aetiology-specific monitoring.",
+      "modality_required": "clinical_motor_exam",
+      "status": "contested_2026_09_14_pending_operator",
+      "provenance": "Registered by the operator G5 pass 2026-09-10 (human gate; coordinator-written event logs/gate_events.log) after PDF-provenance verification of P-1110. KA wording narrowed per consolidated verdict: 'Parkinsonian motor signs in MCI cannot provide aetiology-specific prognostic information'.",
+      "status_before_audit_2026_09_14": "confirmed_2026_09_10",
+      "status_note_2026_09_14": "contested at audit: prior derived circularly from IA-NEW-1110-01; paper's own literature review states the opposite prior was not field-held",
+      "audit_note_2026_09_14": "2026-09-14 audit (IA package). Not deleted; status set to a contested value so the KA-50 <-> IA-NEW-1110-01 link survives for operator disposition. Evidence: pdf_extract_1110.txt L418-426 (Discussion, describing the pre-existing literature, refs 6,9,10,33-37) 'parkinsonism and falls are more prevalent among individuals with MCI-LB (compared to other MCI subtypes) and increase the hazard of progression to DLB in a considerable manner. The odds of having impaired gait, tremor, bradykinesia, and rigidity are two to five times higher among those with MCI-LB versus those with MCI-AD'; L78-80 the stated gap is sign-level granularity ('only rarely researchers have focused on the differential prognostic properties of different motor signs (not composite scores)'); L297-299 the authors call the specificity 'confirmed'; summaries.md L161256 frames the question as unexplored, not contrary. assumed_since cites no source other than IA-NEW-1110-01 itself. IA-NEW-1110-01 demoted to pending_human_review the same day. Recommendation: withdraw KA-50, or re-source assumed_since with an actual citation asserting nonspecificity; if kept, the belief text should also be narrowed to the operator's condition (3) wording ('cannot provide aetiology-specific prognostic information') - not rewritten here because the prior itself is contested.",
+      "text_revised_at_audit_2026_09_14": [
+        "status"
+      ]
+    },
+    {
+      "id": "KA-51",
+      "domain": "Trial endpoint adjudication (MCI due to AD)",
+      "belief": "Investigator-only endpoint ascertainment does not miss clinically adjudicated MCI-due-to-AD events, so endpoint adjudication in an AD prevention trial can be confined to cases the site investigator has flagged as having reached MCI due to AD.",
+      "assumed_since": "Phase-3 AD prevention trial design practice (TOMMORROW adopted MCI due to AD as a primary endpoint event; corpus prior confirmed by IA-101; operator G5 2026-09-10)",
+      "disproof_signal": "P-866 (TOMMORROW adjudication record, 648 dossiers / 386 participants / 96 events): blinded three-stage committee agreed with investigator determinations only 71.0% (kappa 0.327 for MCI due to AD); on the two-consecutive-visit safeguard subset agreement FELL to 40.5% by end of study; 41/410 investigator-negative cases declared events = 42.7% of all 96 - 'events that would have been missed if the adjudications had been limited only to cases when the investigator felt an endpoint had been reached'.",
+      "assumption_type": "inference_validity / measurement reliability (endpoint adjudication)",
+      "currently_invalidated_by": [
+        "IA-101"
+      ],
+      "clinical_implication_if_disproved": "Prevention trials cannot rely on investigator-only endpoint ascertainment for MCI-due-to-AD; independent adjudication of investigator-negative cases is required to avoid missing roughly 40% of events.",
+      "modality_required": "clinical_trial_adjudication",
+      "status": "confirmed_2026_09_10",
+      "provenance": "Registered by the operator G5 pass 2026-09-10 (human gate; coordinator-written event logs/gate_events.log) after PDF-provenance verification of P-866. KA scoped per consolidated verdict to 'investigator-only endpoint ascertainment can miss clinically adjudicated MCI-due-to-AD events' - NOT 'the MCI-due-to-AD construct is unreliable'.",
+      "belief_before_audit_2026_09_14": "The transition to MCI due to AD is a determinate clinical fact that a trained investigator can be relied on to recognise, so investigator-only endpoint ascertainment is a dependable basis for registration-trial endpoints.",
+      "audit_note_2026_09_14": "2026-09-14 audit (IA package): belief rewritten from the construct-level wording ('The transition to MCI due to AD is a determinate clinical fact that a trained investigator can be relied on to recognise ...') to the narrow ascertainment wording the operator's own 2026-09-10 G5 verdict required (see provenance: 'investigator-only endpoint ascertainment can miss clinically adjudicated MCI-due-to-AD events' - NOT 'the MCI-due-to-AD construct is unreliable'). Support: summaries.md P-866 block L132008 'Among the 410 cases where investigator diagnoses did not support an endpoint, the committee disagreed in 41 (10%) and declared an event - and those 41 represent 42.7% of all 96 events in the trial ... \"These are events that would have been missed if the adjudications had been limited only to cases when the investigator felt an endpoint had been reached.\"'; L132044 construct reliability 'raise[d] without settling'. disproof_signal and clinical_implication_if_disproved already narrow - unchanged. Matching edit applied to IA-101 what_disproved_it / prior_belief. Status unchanged (operator gate).",
+      "text_revised_at_audit_2026_09_14": [
+        "belief"
+      ]
+    },
+    {
+      "id": "KA-52",
+      "domain": "Polypharmacy and cognition",
+      "belief": "Polypharmacy medication count is a risk marker for MCI-to-dementia progression whose presence raises expected cognitive decline (the harm direction of the prior literature).",
+      "assumed_since": "P-827 ('the adverse impact of polypharmacy on cognitive function', anchored to a 2024 systematic review), P-1012 ('Polypharmacy has been linked to cognitive decline'), P-970 (risk-factor list); corpus prior confirmed by IA-102; operator G5 2026-09-10",
+      "disproof_signal": "P-1157 (237 Taiwanese MCI, median 34 mo, annual CDR): adjusted HR 0.49 (95% CI 0.31-0.78) for progression with polypharmacy (>=5 prescriptions), KM p=0.005, 89/237 events; corroborated by P-1012 protective profiles OR 0.421 (0.232-0.762, p=0.004) / OR 0.278 (0.137-0.565, p<0.001). The harm direction does not reproduce at the MCI-to-dementia transition.",
+      "assumption_type": "Predictor_Surprise",
+      "currently_invalidated_by": [
+        "IA-102"
+      ],
+      "clinical_implication_if_disproved": "Medication count is not a directionally stable risk marker for MCI-to-dementia progression; the harm direction fails at this stage. Marker-level claim only - confounding by indication (care intensity/ascertainment) is a competing explanation for the protective sign, so no causal reading is licensed.",
+      "modality_required": "clinical_prescription_records",
+      "status": "confirmed_2026_09_10",
+      "provenance": "Registered by the operator G5 pass 2026-09-10 (human gate; coordinator-written event logs/gate_events.log) after PDF-provenance verification of P-1157/P-1012. KA re-scoped per consolidated verdict to marker-level, transition-specific wording; causal reading affirmatively barred."
+    },
+    {
+      "id": "KA-53",
+      "domain": "Non-pharmacological intervention trials in MCI (non-specific / placebo effects)",
+      "belief": "The apparent cognitive benefit reported by non-pharmacological training trials in MCI is driven by non-specific expectancy, engagement, motivation and novelty rather than by the trained content itself.",
+      "assumed_since": "Sourced from three corpus papers INDEPENDENTLY of any invalidated-assumption record. (1) P-859's own Introduction states the objection as field-held: summaries.md L130638 'A standing objection to the whole cognitive-training literature is that its effects are driven by expectancy, engagement, motivation and novelty rather than by training'; the same clause is in the source PDF, pdf_extract_859.txt L9, 'there are concerns that CCT's effects are driven by factors such as expectancy, engagement, motivation, and novelty (3, 4)', citing external references 3-4. (2) P-759, an MCI acupuncture meta-analysis, applies the belief as an operative judgement: summaries.md L73813 'the primary outcomes are examiner-administered scales, so the entire efficacy signal is currently confounded with assessor and participant expectancy'. (3) P-700, a VR-training study in MCI, applies it in a different intervention family: summaries.md L62895 'expectancy and attention effects are not separable from any specific effect of the virtual environment'.",
+      "disproof_signal": "A randomised MCI trial in which measured pre-randomisation expectancy dissociates from outcome - in particular an arm patients expected LESS from outperforming the arm they expected MORE from - or in which measured expectancy predicts no change in the primary cognitive outcome. Note the four constructs are not interchangeable: a test of expectancy alone leaves engagement, motivation and novelty unaddressed.",
+      "assumption_type": "Mechanism_Reframing",
+      "currently_invalidated_by": [
+        "IA-103"
+      ],
+      "clinical_implication_if_disproved": "See the linked IA record's clinical_implication field. Broadly: an active-control training trial's benefit could not be discounted as a pure non-specific artefact on the strength of the standing objection alone, and downgrades applied to unblinded MCI intervention evidence on expectancy grounds (e.g. P-759, P-700) would need to be re-argued rather than assumed.",
+      "modality_required": "clinical_intervention_trial",
+      "status": "proposed_2026_09_14",
+      "provenance": "Minted 2026-09-14 on operator instruction (IA package item 3a) so that IA-103 has a registered prior to point at instead of the placeholder 'NEW_KA_PROPOSED'. PROPOSED, NOT CONFIRMED: registering the prior does not gate IA-103, whose status remains candidate_pending_human_review with an unapplied scope narrowing and an unreconciled load-bearing statistic (see IA-103.scope_operator_review_2026_09_14 and .blocker_operator_review_2026_09_14). No operator gate is claimed by this entry.",
+      "no_circularity_sourcing_2026_09_14": "The belief text is taken from P-859's Introduction and from the operational applications in P-759 and P-700. It is NOT derived from IA-103, and IA-103 is not cited in assumed_since as the source of the prior. This is deliberate: KA-50's assumed_since cites only the IA record that is said to invalidate it ('corpus prior confirmed by IA-NEW-1110-01'), a circular sourcing pattern flagged at the 2026-09-14 audit, and KA-53 must not repeat it. currently_invalidated_by lists IA-103 as the claiming record only - the same convention as KA-24/25/26, which list un-gated IA records - and confers no status on it.",
+      "caveat_2026_09_14": "P-859 itself records that the empirical expectancy literature in this field 'is sparse, with mixed findings, and has been restricted to cognitively intact adults', so this prior is a widely-voiced methodological objection rather than a settled empirical finding; an operator may reasonably judge it closer to equipoise than to a field-held positive claim. Vocabulary note: assumption_type 'Mechanism_Reframing' is not in the file's own assumption_types enum (six values, none of them this), but is the established in-file value used by KA-24 and is the category IA-103's proposed registry text names.",
+      "operator_review_2026_09_14": "Minted by the assistant on operator instruction 2026-09-14 (IA package item 3a): register the expectancy prior covering all four constructs, sourced non-circularly. Status proposed; no gate implied or claimed."
+    }
+  ],
+  "disproof_detection_prompt": "You are reviewing an academic paper summary and its XAI/feature-importance results.\nFor each assumption below, determine if the paper's results constitute a disproof.\nA disproof requires: (1) the relevant analysis was actually performed, (2) the result directly contradicts the prior belief, (3) the contradiction is not attributable to a different task or population.\nReturn a JSON list of objects: {assumption_id, disproved: true/false, evidence_sentence, assumption_type, proposed_clinical_implication}.\nOnly return entries where disproved is true.\n\nAssumptions to check:\n{assumption_list}\n\nPaper summary and XAI results:\n{paper_text}"
+}

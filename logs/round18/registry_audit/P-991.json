@@ -1,0 +1,62 @@
+{
+  "paper": "P-991",
+  "pack": 3,
+  "pdf_is_right_paper": true,
+  "title_as_printed": "Drawing a line?—Visuo-constructive function as discriminator between healthy individuals, subjective cognitive decline, mild cognitive impairment and Alzheimer’s disease and predictor of disease progress compared to a multimodal approach",
+  "is_model_study": true,
+  "blind_codes": {
+    "Task_Type": "T3 (alt T1)",
+    "Category": "C5",
+    "Validation_Type": "V2",
+    "Sample_N": "622 (33 HC + 68 SCD + 301 MCI + 220 AD); 117 at follow-up",
+    "Publication_Year": "2023 (online 1 Feb 2023; issue 2024)",
+    "ADNI_Dependent": "false"
+  },
+  "registry_codes": {
+    "Task_Type": "T1",
+    "Category": "C5",
+    "Validation_Type": "V2",
+    "Sample_N_Approx": "N= 622 (33 HC + 68 SCD + 301 MCI + 220 AD); follow-up n=117",
+    "Publication_Year": "2024",
+    "ADNI_Dependent": "false"
+  },
+  "judgement": {
+    "Task_Type": {
+      "verdict": "defensible",
+      "correct_code": "T1 or T3",
+      "reason": "Discrimination is quantified (ROC AUC, sensitivity/specificity at Youden cut-points, kappa, percent correctly allocated), so T4 is excluded. Two readings are supported: T1, because the paper runs a binary MCI vs non-MCI (SCD+HC) ROC analysis (MMSE AUC 0.700, CDT 0.599, VVT 0.6); and T3, because it also fits four-group multinomial logistic regression over HC/SCD/MCI/AD (my blind code). The registry's T1 is one of the two.",
+      "quote": "Analogous ROC analyses were calculated for the discrimination of MCI and non-MCI excluding AD patients and SCD and non-SCD excluding the groups AD and MCI from analysis.",
+      "page": 4
+    },
+    "Category": {
+      "verdict": "match",
+      "correct_code": "C5",
+      "reason": "Paper-and-pencil neuropsychological screening tests (MMSE, Sunderland CDT, VVT 3.0 Screening) in a memory-clinic cohort."
+    },
+    "Validation_Type": {
+      "verdict": "match",
+      "correct_code": "V2",
+      "reason": "Cut-points and multinomial regressions are fitted and evaluated on the whole sample; no cross-validation or held-out partition is reported, so V2 under the absence-of-reporting rule."
+    },
+    "Sample_N_Approx": {
+      "verdict": "match",
+      "correct_code": "622",
+      "reason": "622 analysed cross-sectionally (33 HC, 68 SCD, 301 MCI, 220 AD); 117 at follow-up.",
+      "quote": "Data from 622 patients (33 HC, 68 SCD, 301 MCI, 220 AD) who completed all three tests were obtained.",
+      "page": 1
+    },
+    "Publication_Year": {
+      "verdict": "match",
+      "correct_code": "2023 or 2024",
+      "reason": "Online-first 1 February 2023; issue Neuropsychiatr (2024) 38:71-81. Registry uses the issue year.",
+      "quote": "Published online: 1 February 2023",
+      "page": 1
+    },
+    "ADNI_Dependent": {
+      "verdict": "match",
+      "correct_code": "false",
+      "reason": "Retrospective data from the Vienna Conversion to Dementia Study (Medical University of Vienna); no ADNI."
+    }
+  },
+  "notes": "Headline result is AD vs all others (VVT sensitivity 62.1%, specificity 83.1%); the MCI vs non-MCI discrimination is weak (AUC 0.60-0.70). A secondary ROC on 76 MCI patients predicts progression (MMSE AUC 0.808)."
+}

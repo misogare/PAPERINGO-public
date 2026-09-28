@@ -1,0 +1,63 @@
+{
+  "id": "C-255",
+  "reader": "adjudicator",
+  "papers_read": [
+    {"paper": "P-1206", "pdf_is_right_paper": true, "title_as_printed": "Exploring galectin-3’s role in predicting mild cognitive impairment in type 2 diabetes and its regulation by miRNAs", "read_in_full": true},
+    {"paper": "P-1212", "pdf_is_right_paper": true, "title_as_printed": "Predictive value of biliverdin reductase-A and homeostasis model assessment of insulin resistance on mild cognitive impairment in patients with type 2 diabetes", "read_in_full": true}
+  ],
+  "what_each_reports": {
+    "P-1206": "Zhou, Dai, Yu, Niu, Wang, Front Med 2024;11:1443133 (Affiliated Zhongda Hospital, Southeast University, Nanjing). 329 T2DM inpatients aged 40-75 with >=3 years of diabetes and >=6 years of education, enrolled Aug 2022-May 2023; MCI = MoCA <26 (education-corrected), 144 MCI / 185 NC. Random 7:3 split; predictors chosen by logistic regression in the training cohort. Gal-3 + age + education nomogram: AUC 0.813 (0.758-0.867) in training (n=231) and 0.775 (0.681-0.870) in the held-out validation cohort (n=98; 43 MCI / 55 NC); Gal-3 alone 0.737 (0.671-0.803) and 0.750 (0.648-0.853); optimism-corrected C-index 0.813 (0.757-0.868). Authors name the lack of multicentre validation as a critical gap.",
+    "P-1212": "Shen et al., J Diabetes Investig 2025;16:936-944 (Affiliated Hospital of Xuzhou Medical University). 140 of 200 enrolled T2DM inpatients admitted for poor glycaemic control, age >=40, Dec 2023-Mar 2024; MCI = MoCA 19-25, normal = MoCA >=26 (education-corrected), 75 MCI / 65 NCF. Random 7:3 split; stepwise AIC in the training set selected diabetes duration, HOMA-IR and BVR-A. Nomogram AUC 0.897 (0.837-0.958) in training and 0.863 (0.752-0.973) in the held-out test set; internal-validation C-index 0.863 (0.752-0.937); 5-fold cross-validation fold AUCs 0.738-0.964, mean 0.884. Single markers: BVR-A 0.791 (0.655-0.926), HOMA-IR 0.737 (0.581-0.893), duration 0.684 (0.522-0.864), with no test comparing them. Authors state only internal validation was done."
+  },
+  "quantity_a": "Discrimination (ROC-AUC) of a Gal-3 + age + education logistic nomogram for concurrent MoCA-screen MCI (MoCA <26) versus normal cognition in T2DM inpatients aged 40-75 (>=3 years diabetes, >=6 years education), single centre in Nanjing, measured on a random 30% held-out validation set (n=98).",
+  "quantity_b": "Discrimination (ROC-AUC, numerically equal to the reported C-index) of a BVR-A + HOMA-IR + diabetes-duration logistic nomogram for concurrent MoCA-screen MCI (MoCA 19-25) versus normal cognition (MoCA >=26) in T2DM inpatients aged >=40 admitted for poor glycaemic control, single centre in Xuzhou, measured on a random 30% held-out test set (size not printed; about 42).",
+  "same_quantity": false,
+  "incompatible_if_same": "No. The held-out estimates are 0.775 (95% CI 0.681-0.870) and 0.863 (95% CI 0.752-0.973): each point estimate lies inside the other's interval, so the 0.088 difference is within the sampling error of validation sets of 98 and about 42 patients. Neither paper measures the other's marker or claims an ordering over it, and the single-marker AUCs also overlap (Gal-3 0.750, 0.648-0.853; BVR-A 0.791, 0.655-0.926).",
+  "gates": {
+    "task": "match: T1 on both rows (concurrent MCI versus normal cognition within T2DM inpatients).",
+    "dataset_family": "mismatch: two separate single-centre inpatient cohorts (Zhongda Hospital, Nanjing, n=329; Affiliated Hospital of Xuzhou Medical University, n=140); no waiver on record (gatecheck does not test this column).",
+    "validation_tier": "match: V2 in both, and by the same design, a random 7:3 split with the model fitted on the training part and evaluated on the held-out part; P-1212 additionally reports 5-fold cross-validation (mean AUC 0.884). The record's claim of different procedures is wrong.",
+    "modality_family": "match: fluid (plasma) biomarkers plus routine clinical variables in both (Gal-3 with age and education; BVR-A and HOMA-IR from fasting glucose and insulin, with diabetes duration)."
+  },
+  "endpoint_and_metric": "compatible: both are the ROC-AUC of a binary logistic nomogram for concurrent MoCA-screen MCI on held-out internal data; P-1212's C-index 0.863 equals its test-set AUC 0.863, and P-1206's optimism-corrected C-index 0.813 equals its training AUC, so the registry's AUC_ROC versus C_index split is a coding artefact. The MCI cut-offs differ slightly (MoCA <26 versus 19-25).",
+  "performance_validity": "flag does not apply: neither row is flagged and no reported figure reaches 0.97 (highest: P-1212 training AUC 0.897; best single cross-validation fold 0.964; held-out 0.863 and 0.775). The record is a performance comparison in form, but the exclusion is not triggered.",
+  "independence": "Independent: different centres (Nanjing versus Xuzhou), different enrolment windows (Aug 2022-May 2023 versus Dec 2023-Mar 2024), different author groups and journals; no shared cohort or authorship.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "The record describes no disagreement: each paper reports its own plasma marker as associated with MCI in T2DM, neither measures or tests the other's marker, and the record itself says there is 'no head-to-head and no disagreement in direction'.",
+    "On the contested number the two held-out estimates are compatible even if read as one quantity: 0.775 (0.681-0.870) and 0.863 (0.752-0.973) each lie inside the other's 95% interval.",
+    "The record misreads P-1212's validation: 0.863 is the AUC of a held-out 30% test set after a 7:3 split, the same design P-1206 used, and the 5-fold cross-validation the record credits it to gave a mean AUC of 0.884.",
+    "P-1212's ranking claims (BVR-A 'more advantageous than HOMA-IR'; the highest efficiency among 'the indicators studied') rank only its own three indicators and say nothing about galectin-3, so neither paper makes an ordering claim that the other refutes.",
+    "Were a disagreement present it would still not be one quantity: the predictor sets are disjoint, the MoCA cut-offs differ (<26 versus 19-25), and the dataset-family gate (two separate single-centre cohorts) is unmatched with no waiver on record."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-1206", "page": 1, "quote": "Results: Galectin-3 was identified as an independent risk factor for MCI, with significant correlations to cognitive decline in T2DM patients."},
+    {"paper": "P-1206", "page": 2, "quote": "Patients were classified into either the mild cognitive impairment (MCI) group (MoCA < 26) or the normal control group (NC) group (MoCA ≥ 26), with 185 individuals in NC group and 144 individuals in MCI group."},
+    {"paper": "P-1206", "page": 4, "quote": "A total of 329 eligible patients were randomly assigned to a training cohort (n = 231) and a validation cohort (n = 98) at a ratio of 7:3."},
+    {"paper": "P-1206", "page": 4, "quote": "we constructed it in the training cohort and assessed its accuracy and generalizability in the validation cohort."},
+    {"paper": "P-1206", "page": 5, "quote": "The optimism-corrected C-index to assess the discrimination of the nomogram model was 0.813"},
+    {"paper": "P-1206", "page": 10, "quote": "Nomogram 0.813(0.758–0.867) 0.775(0.681–0.870)"},
+    {"paper": "P-1206", "page": 12, "quote": "Finally, the absence of multicenter validation was a critical gap."},
+    {"paper": "P-1212", "page": 1, "quote": "Conclusions: Our findings suggest that BVR-A and HOMA-IR are significantly associated with the development of MCI in patients with type 2 diabetes mellitus."},
+    {"paper": "P-1212", "page": 3, "quote": "scores between 19 and 25, inclusive, while scores of 26 or higher indicated normal cognition."},
+    {"paper": "P-1212", "page": 3, "quote": "Secondly, the total sample was divided into the training set and the test set in a 7:3 ratio. The training set was used to screen variables and construct the predictive model, while the test set was used to validate the results."},
+    {"paper": "P-1212", "page": 3, "quote": "The AUC of the BVR-A was 0.791 (95% CI: 0.655–0.926), for HOMA-IR, it was 0.737 (95% CI: 0.581–0.893), and for the duration of diabetes, it was 0.684 (95% CI: 0.522–0.864)"},
+    {"paper": "P-1212", "page": 3, "quote": "In terms of discrimination, the AUC of the training set was 0.897 (95% CI: 0.837–0.958) and the AUC of the test set was 0.863 (95% CI: 0.752–0.973), indicating good model discrimination (Figure S2)."},
+    {"paper": "P-1212", "page": 3, "quote": "Internal validation results showed a C-index of 0.863 (95% CI: 0. 752–0. 937)"},
+    {"paper": "P-1212", "page": 4, "quote": "with AUC values ranging from 0.738 to 0.964. The average AUC value, at 0.884, underscores the model’s stability"},
+    {"paper": "P-1212", "page": 6, "quote": "We also found that BVR-A is more advantageous than HOMA-IR in predicting MCI in these patients."},
+    {"paper": "P-1212", "page": 7, "quote": "(3) Only internal validation was employed to evaluate the discrimination, consistency, and clinical effects of the prediction model. External validation is needed to assess the reliability of the model."},
+    {"paper": "P-1206", "page": 8, "quote": "DM Duration (year) 231 1.045 (1.006–1.087) 0.024 1.001 (0.953–1.050) 0.975"},
+    {"paper": "P-1212", "page": 4, "quote": "Duration of diabetes 0.341 12.278 1.407 (1.163–1.701) <0.001**"}
+  ],
+  "record_defects": [
+    "claim_b and conflict_statement reason (2): 0.863 is not a 5-fold cross-validation estimate inside the derivation sample. P-1212 reports it as the AUC of the held-out test set after a 7:3 split (0.863, 95% CI 0.752-0.973) and as the internal-validation C-index (0.863, 0.752-0.937); its 5-fold cross-validation mean AUC is 0.884 (folds 0.738-0.964).",
+    "claim_a and claim_b ('stronger' versus 'weaker validation procedure') and conflict_statement ('the higher value comes from the procedure with the greater optimism'): both papers fit on a random 70% and evaluate on the held-out 30%; the only difference is test-set size (98 versus about 42), which widens P-1212's interval but does not make its procedure more optimistic.",
+    "P-1212 prints two different upper bounds for the same 0.863 (0.973 for the test-set AUC, 0.937 for the internal-validation C-index and in the abstract); the record carries only 0.937.",
+    "Several evidence_quotes are summary-block or registry wording, not PDF text: 'Retrospective single-centre design; no external multicentre validation', 'Own hospital cohort (...)', 'Small sample; cross-sectional without healthy controls; internal validation only; ...', and the P-1212 quote that runs the C-index and '5-fold cross-validation' together as one result. The facts they state are otherwise consistent with the PDFs, and the verification note's 'verified verbatim' refers to the summaries, not the source documents.",
+    "The ranking quote 'BVR-A had the highest diagnostic efficiency among the studied indicators' paraphrases P-1212's conclusion (among 'the indicators studied', BVR-A 'had the highest efficiency in diagnosing MCI'); the record's point that no comparative test is reported is correct."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "A disagreement would need one paper to evaluate both markers (or the same model) and report held-out AUCs whose intervals exclude each other, or one paper to claim superiority over the other's marker in a way the other refutes; neither PDF does. Label alternative: if the ordered outcomes are read as requiring the same quantity before compatibility is judged, the label would be documented_incommensurability (disjoint predictor sets, different MoCA cut-offs, unmatched dataset family); no reading makes it genuine. Separate observation, not this record's claim: the adjusted odds ratio for diabetes duration differs without overlap (P-1206 1.001, 0.953-1.050, adjusted for age, sex, education, hypertension status and duration, and Gal-3; P-1212 1.407, 1.163-1.701, stepwise model with HOMA-IR and BVR-A), but the covariate sets differ, so these are different estimands, and P-1206's unadjusted odds ratio (1.045, 1.006-1.087) points the same way as P-1212's."
+}

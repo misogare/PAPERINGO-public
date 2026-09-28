@@ -1,0 +1,15 @@
+{"paper": "P-1293", "pdf_is_right_paper": true,
+ "source_read": "C:/Users/aryas/Downloads/PAPERINGO/downloads/3. Molecular, Genetic and Fluid Biomarkers/1-s2.0-S2452318622000356-main.pdf (no mapped PDF; found in downloads/ by title/PII, extracted with PyMuPDF)",
+ "registry_code": "V3", "correct_code": "V2", "changed": true,
+ "training_data": "IHPP community health check-up, Iwaki/Hirosaki (25 aMCI / 25 controls; aMCI diagnosed at Hirosaki University Hospital): multi-omics DataRobot XGBoost with 9-fold CV repeated over 12 seeds",
+ "test_data": "JPSC-AD participants in Hirosaki City (12 aMCI / 12 controls; also diagnosed at Hirosaki University Hospital), miRNA microarray only",
+ "model_fixed_before_external_test": false,
+ "reason": "The validation cohort comes from the same city and was diagnosed at the same hospital (Hirosaki University), so this is not V4 under any reading. Moreover, no model was tested on it. The multi-omics XGBoost could not be applied, because the validation set was measured only for miRNAs. The headline composite index (hsa-miR-4455/hsa-let-7b-3p, AUC 0.971) and its Youden cut-off were computed on the pooled discovery plus validation samples, and hsa-let-7b-3p did not replicate in the validation set. The validation cohort only replicated individual miRNA differences (17 of 42 downregulated), so the classifier reaches V2 (CV only), not V3.",
+ "quotes": [
+  {"page": 2, "quote": "The clinical diagnosis of aMCI was done at Hirosaki University Hospital based on the NIA-AA clinical criteria."},
+  {"page": 2, "quote": "In the validation analysis, 12 normal and 12 aMCI subjects who were residents of Hirosaki City were included. The subjects were participants of the Japan Prospective Studies Collaboration for Aging and Dementia (JPSC-AD) [12] in Hirosaki City. aMCI was screened at baseline surveillance by MMSE, WMS, and noise pareidolia tests and diagnosed with aMCI at Hirosaki University Hospital."},
+  {"page": 6, "quote": "None of the miRNAs that were upregulated in aMCI in the discovery analysis, including hsa-let-7b-3p, were detected or significantly different in the validation analysis."},
+  {"page": 6, "quote": "This index was used to examine biomarker performance for the discovery plus validation sample sets (Fig. 4b)."},
+  {"page": 8, "quote": "Since the number of N was not sufficient to build a diagnostic prediction model using AI, this study used AI for the purpose of finding explanatory factors of high importance in the multi-omics data."}
+ ],
+ "confidence": "high"}

@@ -1,0 +1,73 @@
+{
+  "id": "C-08",
+  "reader": "adjudicator",
+  "papers_read": [
+    {
+      "paper": "P-92",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Deep Fusion of Brain Structure-Function in Mild Cognitive Impairment (Zhang L, Wang L, Gao J, Risacher SL, Yan J, Li G, Liu T, Zhu D; Medical Image Analysis 72 (2021) 102082)",
+      "read_in_full": true
+    },
+    {
+      "paper": "P-97",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Random walks on B distributed resting-state functional connectivity to identify Alzheimer’s disease and Mild Cognitive Impairment (Rahimiasl M, Moghadam Charkari N, Ghaderi F; Clinical Neurophysiology 132 (2021) 2540-2550)",
+      "read_in_full": true
+    }
+  ],
+  "what_each_reports": {
+    "P-92": "ADNI, 214 subjects (116 NC / 98 MCI) with T1, DTI and rs-fMRI; binary MCI vs NC. The model is a graph-based deep network (two-layer GCN) whose adjacency is initialised from the individual DTI structural connectome and updated with a learned rs-fMRI functional profile, with rs-fMRI Pearson correlations as node features (Destrieux, 148 regions). 5-fold cross-validation; dropout 0.6, batch normalisation, early stopping. Best setting (sigma 2.0, G(148,296)): accuracy Best 92.7%, Worst 83.3%, Ave 86.3%; precision 85.7, recall 80.6, specificity 89.9 (Table 4). A second ADNI subset from 28 other centres (124 subjects, 62 NC / 62 MCI) under the same 5-fold CV gives Best 94.1%, Ave 92.0% (Table 5). No AUC is reported anywhere, and the paper runs no concatenation baseline of its own; feature concatenation appears only as a prior-literature strategy in Related Work.",
+    "P-97": "ADNI, 125 subjects (36 HC / 30 EMCI / 33 LMCI / 26 AD; Table 2 prints AD = 25) with rs-fMRI; T1 is used only in preprocessing, and there is no DTI. Task: 4-class HC/EMCI/LMCI/AD. Method: HCP-MMP 360-region functional connectivity mapped with a B-distribution function, node2vec node embeddings (size 4) concatenated into one feature vector, then linear SVM and L2 logistic regression. Five-fold CV repeated 100 times. Accuracy 97.73% (SVM) / 97.32% (LR), quadratic weighted kappa 96.86% / 96.74%; without the mapping function, accuracy 87.2% / 86.96%. No AUC reported."
+  },
+  "quantity_a": "Classification accuracy for binary MCI vs NC from DTI + rs-fMRI connectome fusion, ADNI 214 subjects, 5-fold CV. The headline 92.7% is the Best column of the best setting; that setting's average is 86.3%.",
+  "quantity_b": "Mean accuracy and quadratic weighted kappa over 100 repeats of 5-fold CV for 4-class HC/EMCI/LMCI/AD staging from rs-fMRI-only functional-connectivity embeddings, ADNI 125 subjects.",
+  "same_quantity": false,
+  "incompatible_if_same": "No. Neither paper evaluates the other's method or claims an ordering the other refutes, and neither reports uncertainty for its headline. The record's own framing (91% vs 89%, 'marginal not fundamental difference') describes a small spread between two methods, which the adjudication reading lists as not incompatible. The figures the papers actually print (92.7% binary Best-column accuracy; 97.73% 4-class mean accuracy) are not estimates of one quantity.",
+  "gates": {
+    "task": "mismatch: P-92 is binary MCI vs NC (registry T1, MCI_vs_HC); P-97 is 4-class HC/EMCI/LMCI/AD (registry T3, multiclass_staging). The record's task_equivalence=true is wrong.",
+    "dataset_family": "match: both use ADNI (P-92: 214 subjects from 32 centres plus a 124-subject second set from 28 other centres; P-97: 125 subjects). Neither paper lets subject overlap be determined.",
+    "validation_tier": "match: both use internal cross-validation only (P-92 5-fold; P-97 5-fold repeated 100 times), i.e. V2. P-92's second ADNI set is a retrained replication, not external validation of a fixed model. The registry's Validation_Type 'not reported' for P-92 should be V2, and its Best_Metric 'not reported' should carry Acc 92.7. The record's 'same validation set' is false: the two samples and label sets differ.",
+    "modality_family": "mismatch: P-92 fuses diffusion MRI (DTI tractography connectome) with rs-fMRI; P-97 uses rs-fMRI only, with T1 in preprocessing. They share only the functional-MRI component. The registry's modality_subtype 'structural_MRI_only' for P-97 is wrong: its input is rs-fMRI connectivity."
+  },
+  "endpoint_and_metric": "incompatible: the endpoints differ (binary MCI vs NC against 4-class staging), and neither paper reports an AUC. P-92's headline accuracy is the Best column of its per-setting results (average 86.3%); P-97's is a mean over 100 repeats of 5-fold CV, accompanied by a quadratic kappa that P-92 does not compute.",
+  "performance_validity": "The flag applies to P-97: 97.73% accuracy on internal cross-validation only, N = 125 split over four classes, no external cohort. Its results are therefore left out of cross-study performance comparisons, and a performance comparison resting on it cannot be genuine. The flag does not apply to P-92 (Best-column 92.7%, average 86.3%, below 0.97).",
+  "independence": "Distinct author groups (UT Arlington, Indiana, UNC and Georgia vs Tarbiat Modares, Tehran). Both draw on ADNI, so the dataset family counts once, and participant overlap between P-92's 214/124-subject sets and P-97's 125 subjects is possible but cannot be determined from the papers.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "Claim_a misreads P-92. P-92 reports accuracy, not AUC; its headline is 92.7% (the Best column for the best setting, average 86.3%) for binary MCI vs NC, and no 91% AUC appears. Only the dropout detail is correct (ratio 0.6).",
+    "Claim_b misreads P-97. P-97 uses rs-fMRI only (no DTI) and concatenates node2vec node embeddings from a single functional graph rather than DTI and fMRI features. It reports accuracy and quadratic kappa, not AUC (97.73% for a 4-class task), on its own 125-subject sample, not 'the same validation set' as P-92.",
+    "The record itself describes no disagreement: its resolution note calls the gap expected and 'marginal not fundamental', which is a spread between two methods rather than a contradiction.",
+    "Read against the documents, the pair holds no incompatible claim either: the tasks differ (binary vs 4-class), as do the modality sets (DTI + fMRI vs fMRI) and the accuracy summaries (Best column vs repeated-CV mean). P-97 also meets the performance-validity exclusion, so the pair could not be genuine even if re-drafted."
+  ],
+  "evidence_quotes": [
+    {"paper": "P-92", "page": 1, "quote": "With deep brain connectome, our developed deep model can achieve 92.7% classiﬁcation accuracy on ADNI dataset."},
+    {"paper": "P-92", "page": 6, "quote": "In total, we have 214 subjects including 116 subjects from NC group (60 females, 56 males; 74.26 ± 8.42 yrs.) and 98 subjects from MCI group"},
+    {"paper": "P-92", "page": 7, "quote": "For classiﬁcation, we conducted 5-fold cross-validation using the 214 subjects (116NC/98MCI)."},
+    {"paper": "P-92", "page": 7, "quote": "It is worth noting that our method used noninvasive DTI/fMRI data and achieves the best performance of 92.7% for MCI/NC classiﬁcation."},
+    {"paper": "P-92", "page": 11, "quote": "For accuracy, we showed the best, worst, and averaged results separately. The combination of σ = 2 . 0 with G (148, 296) gives the best accuracy – 92.7%."},
+    {"paper": "P-92", "page": 12, "quote": "Acc a Pre b Rec c Spec d Best Worst Ave e [...] G(148, 296) 2.0 92.7 83.3 86.3 85.7 80.6 89.9"},
+    {"paper": "P-92", "page": 14, "quote": "In this work, we set 0.6 as the dropout ratio."},
+    {"paper": "P-97", "page": 1, "quote": "This study proposes a novel method to accurately classify Healthy Controls, Early Mild Cognitive Impairment, Late Mild Cognitive Impairment, and Alzheimer’s Disease individuals."},
+    {"paper": "P-97", "page": 1, "quote": "an accuracy rate of 97.73% and a quadratic kappa score of 96.86% for the Support Vector Machine"},
+    {"paper": "P-97", "page": 1, "quote": "The concatenation of these embedding has been used to derive the patients’ feature vectors"},
+    {"paper": "P-97", "page": 2, "quote": "Twenty-six AD, Thirty EMCI, Thirty-three LMCI patients, and Thirty-six healthy controls with available resting-state fMRI data have been adopted."},
+    {"paper": "P-97", "page": 3, "quote": "Note that T1 weighted images have been used in the preprocessing steps."},
+    {"paper": "P-97", "page": 7, "quote": "Results of this study for the ADNI database without using the proposed mapping function. ACC = 87.2% SVM classiﬁer"},
+    {"paper": "P-97", "page": 8, "quote": "The pipeline is evaluated through ﬁvefold cross-validation. The cross-validation procedure is repeated 100 times to avoid noisy model performance."},
+    {"paper": "P-97", "page": 8, "quote": "This study reports the accuracy and the quadratic weighted Cohen’s kappa score (Cohen, 1968) in the ﬁnal results."}
+  ],
+  "record_defects": [
+    "claim_a '91% AUC': P-92 reports no AUC in its text, tables or figure captions. Its headline is accuracy, 92.7% (Best column of the best setting; average 86.3%), and on the second ADNI subset 94.1% (average 92.0%). The dropout detail is correct (ratio 0.6).",
+    "claim_b 'DTI + rs-fMRI simple concatenation': P-97 uses no DTI (rs-fMRI only, with T1 in preprocessing). Its concatenation is of node2vec node embeddings from one functional graph, not multimodal feature concatenation.",
+    "claim_b '89% AUC': P-97 reports no AUC. It gives accuracy 97.73% (SVM) / 97.32% (LR) with its mapping function and 87.2% / 86.96% without, and quadratic kappa 96.86% / 96.74%.",
+    "claim_b 'on same validation set' is false: P-97 used its own 125-subject ADNI sample with four classes; P-92 used 214 (and 124) subjects with two classes.",
+    "task_equivalence=true is false: binary MCI vs NC against 4-class HC/EMCI/LMCI/AD.",
+    "modality_family 'functional_mri' with modality_family_equal 'Yes' overstates the match: P-92 is a DTI + rs-fMRI fusion, P-97 is rs-fMRI only.",
+    "apparent_performance_gap '2 percentage points (91% vs 89%)': neither figure is in either paper, and the headline accuracies the papers do print (92.7% binary; 97.73% 4-class) are not comparable.",
+    "resolution_note 'both approaches are variants of DTI+fMRI fusion' and 'Graph representation > concatenation' are false: P-97 is not a fusion method, and it is itself a graph-embedding method (node2vec random walks on a functional connectivity graph).",
+    "Provenance: the record's claims and note are unchanged since its first commit (087db63, 2026-03-28). At that commit the summary blocks already gave P-92 as 92.7% accuracy for MCI vs NC and P-97 as 97.73% accuracy / 96.86% kappa for 4-class staging, so the 91%/89% AUC figures were not taken from the blocks."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "Nothing in these two papers. Neither reports an AUC or a DTI + rs-fMRI concatenation result, and neither makes a claim the other contradicts. A re-drafted record using the papers' real figures would be documented incommensurability (task, modality set and accuracy summary all differ) and would in any case rest on P-97, which meets the performance-validity exclusion. Only a different paper pairing, not a re-reading of these two, could produce a genuine candidate."
+}

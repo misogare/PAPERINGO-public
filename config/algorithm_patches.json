@@ -1,0 +1,19 @@
+{
+  "patches": [
+    {
+      "step": "NEW_BLOCKING_CHECK",
+      "field": "study_design_type",
+      "blocking_field": "study_design_type",
+      "rule": "If study_design_type differs by more than 1 category, route to partial not genuine",
+      "evidence_count": 5
+    },
+    {
+      "step": "GAP_GENERATION_FILTER",
+      "field": "gap_statement",
+      "rule": "Do NOT emit single-paper-limitation gaps: reformatting one paper's Limitations section into a 'gap' (tier=derived, single claiming paper, boilerplate closure 'Requires follow-up validated study addressing this limitation') captures a study weakness, not a corpus-level gap. Only emit a gap where >=2-3 papers converge on a genuine cross-paper absence with specific, testable closure criteria (cf. curated ACTOR G-010..015). Generator disabled in agent4_relational.py (~line 2580); _auto_reject_single_paper_limitation_gaps() auto-rejects strays each run, protecting human_curated records.",
+      "evidence_count": 311,
+      "learned_from": "operator rejection of G-CAND-319..335 (2026-07-30); ~311 accumulated, ~295 already rejected",
+      "date": "2026-07-30"
+    }
+  ]
+}

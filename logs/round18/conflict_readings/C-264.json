@@ -1,0 +1,146 @@
+{
+  "id": "C-264",
+  "reader": "adjudicator",
+  "papers_read": [
+    {
+      "paper": "P-1341",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Neurofilament light chain in cerebrospinal fluid or blood as a biomarker for mild cognitive impairment: A systematic review and meta-analysis",
+      "read_in_full": true,
+      "note": "Zhang J, Cheng H, Liu W, Li H, Song Y, Jia L. Medicine 2022;101:9(e28932), doi 10.1097/MD.0000000000028932."
+    },
+    {
+      "paper": "P-1231",
+      "pdf_is_right_paper": true,
+      "title_as_printed": "Blood biomarkers for the diagnosis of amnestic mild cognitive impairment and Alzheimer's disease: A systematic review and meta-analysis",
+      "read_in_full": true,
+      "note": "Qu Y, Ma Y-H, Huang Y-Y, et al., Yu J-T. Neuroscience and Biobehavioral Reviews 128 (2021) 479-486, doi 10.1016/j.neubiorev.2021.07.007. The pack text first supplied for P-1231 was a different paper (Paitel, Samii and Nielson, 'A systematic review of cognitive event-related potentials in mild cognitive impairment and Alzheimer's disease', Behavioural Brain Research 396 (2021) 112904), a PDF-map error. The coordinator regenerated ROOT/pdf/P-1231.txt during the task. This verdict rests only on the regenerated text, read in full, which matches the repository PDF downloads/3. Molecular, Genetic and Fluid Biomarkers/1-s2.0-S0149763421003067-main.pdf. No verdict was formed on the wrong text."
+    }
+  ],
+  "what_each_reports": {
+    "P-1341": "Blood NfL, MCI vs healthy controls, random-effects standardised mean difference. Plasma, 2 comparisons: SMD 0.10 (95% CI -0.36 to 0.56), I2 73%, P=.67. Simoa, 3 comparisons, which are all of its blood comparisons (Table 1: Lin 2018 plasma, Steinacker 2018 serum, Thijssen 2020 plasma): SMD 0.01 (-0.38 to 0.41), I2 62%, P=.95. In the extract, the minus sign of each lower bound appears as a U+0001 control character. The negative bounds are confirmed because 0.10 and 0.01 are the interval midpoints only when the lower bounds are negative, and the printed P values need intervals that span zero. For context, CSF (4 comparisons, all ELISA): SMD 0.61 (0.21 to 1.01), P<.01. All 7 studies (676 MCI, 504 HC): SMD 0.36 (0.04 to 0.68), P=.03. Search: studies published before May 1, 2021.",
+    "P-1231": "Blood NfL (23 eligible studies), random-effects ratio of means: aMCI vs controls 1.24 (95% CI 1.17-1.32), p < 0.001; AD vs aMCI 1.43 (1.30-1.57), p < 0.001; AD vs controls 1.86 (1.61-2.13), p < 0.001. Search: inception to May 17, 2021, amnestic MCI only. The record's 'NfL AUC 0.59-0.92' is a range from a narrative review of 32 diagnostic-accuracy studies covering AD and aMCI vs controls."
+  },
+  "quantity_a": "Cross-sectional difference in blood NfL concentration between MCI (any subtype, as each included study defined it) and healthy controls, as a standardised mean difference. It rests on three small case-control comparisons published before May 2021, all measured by Simoa (2 plasma, 1 serum).",
+  "quantity_b": "Cross-sectional difference in blood NfL concentration between amnestic MCI and cognitively healthy controls, as a ratio of means. It comes from part of 23 blood-NfL studies searched to May 17, 2021, with assays pooled (the paper names ELISA, IMR and SIMOA).",
+  "same_quantity": false,
+  "incompatible_if_same": "No. Treated as one quantity, the two results agree in direction: SMD 0.10 and 0.01 lie above zero, and the ratio of 1.24 lies above one. They differ only in significance. The two metrics cannot be matched exactly. As an approximate check (my own conversion; neither paper prints it), I used the dispersions P-1341's Table 1 reports for its three blood studies. On those, P-1231's interval of a 17-32% elevation corresponds to SMDs of about 0.44-0.83 (Lin), 0.32-0.61 (Thijssen) and 0.24-0.44 (Steinacker). P-1341's plasma interval (-0.36 to 0.56) overlaps all three ranges. Its Simoa interval (-0.38 to 0.41) overlaps two of the three.",
+  "gates": {
+    "task": "match: both are T6 evidence syntheses (registry T6 for both).",
+    "dataset_family": "match: a synthesis's family is the primary literature it pools. Both pool published blood-NfL comparisons of MCI (P-1341: any subtype; P-1231: amnestic) with cognitively healthy controls, and both searches closed in May 2021. The pooled studies may overlap, but the texts do not allow this to be checked.",
+    "validation_tier": "n/a: two evidence syntheses; counted as matched.",
+    "modality_family": "match: fluid biomarkers. Blood NfL is the contested arm; P-1341's CSF arm is not in dispute."
+  },
+  "endpoint_and_metric": "incompatible (metric type): P-1341 pools standardised mean differences and P-1231 pools ratios of means. Both have a null value, so direction can be compared, but magnitudes and intervals cannot be compared directly. The endpoint construct is shared (cross-sectional blood NfL difference vs controls), but the case label differs: MCI of any subtype vs amnestic MCI. The assay mix also differs: Simoa only vs pooled platforms.",
+  "performance_validity": "Not a performance comparison: the contested results are group-difference effect sizes for NfL. The pack's performance_suspect flag on P-1231 does not apply. Its 'P-tau217 AUC 0.97-0.98' is a range of published AUCs from a narrative review of 32 studies, not an internal-validation classifier, and it concerns a different marker.",
+  "independence": "Different author groups; no shared authors. Both searches closed in May 2021 (P-1341: published before May 1, 2021; P-1231: to May 17, 2021), so the pooled primary studies may overlap. P-1231 lists its included studies only in supplementary tables that are not in the text, so its overlap with P-1341's three blood studies (Lin 2018, Steinacker 2018, Thijssen 2020) cannot be checked. Recorded as possible non-independence, which does not disqualify the pair.",
+  "bridging_evidence": [],
+  "verdict": "false_positive",
+  "grounds": [
+    "On the contested quantity the two syntheses point the same way. P-1341's blood estimates are positive but not significant (plasma SMD 0.10, -0.36 to 0.56; Simoa, i.e. all blood, SMD 0.01, -0.38 to 0.41; p.3, p.4). P-1231's aMCI-vs-control ratio of means is 1.24 (1.17-1.32; p.3).",
+    "What differs is statistical significance, which Section 5.2 of the review says is not a data conflict. P-1341 claims no equivalence. It hedges its blood finding ('may be not a biomarker ... more studies on blood NfL are needed') and names its small samples as a limitation (p.5).",
+    "The reported uncertainty does not show the two results excluding each other. P-1341's plasma interval reaches a moderate positive SMD of 0.56. On P-1341's own blood-study dispersions (Table 1, p.3), that overlaps the SMD range implied by P-1231's interval of 1.17-1.32 (approximate conversion; see incompatible_if_same).",
+    "The record misreads P-1341. It files the pair as 'semantic_directional', but the directions agree. Its proposed ELISA/ECL-vs-Simoa resolution cannot be drawn from P-1341, because there the assay split is the CSF/blood split: the 4 ELISA comparisons are the 4 CSF comparisons, and the 3 Simoa comparisons are the 3 blood comparisons (Table 1, p.3; p.4).",
+    "Even had the results disagreed, the two are not one estimand. The metrics differ (SMD vs ratio of means; P-1231 p.2), the case labels differ (MCI of any subtype vs amnestic MCI; P-1231 p.2) and the assays differ (Simoa only vs pooled platforms; P-1231 p.6). That would point to documented incommensurability, not a genuine contradiction. The brief's order of application puts the false-positive finding first."
+  ],
+  "evidence_quotes": [
+    {
+      "paper": "P-1341",
+      "page": 3,
+      "quote": "However, 2 comparisons in plasma samples found that there was no association between NfL expression levels in MCI cases and HC subjects (SMD=0.10, 95%CI: [\u00010.36,0.56], I2=73%, P=.67).",
+      "note": "The extract renders the minus sign as a U+0001 control character (kept here, escaped), so the lower bound is -0.36. That matches the arithmetic: 0.10 is the midpoint only if the bound is negative, and P=.67 needs an interval spanning zero."
+    },
+    {
+      "paper": "P-1341",
+      "page": 4,
+      "quote": "4 comparisons used the ELISA method (SMD=0.61, 95%CI: [0.21,1.01], I2=85%, P<.01) and 3 comparisons used the Simoa assay (SMD=0.01, 95%CI: [\u00010.38,0.41], I2=62%, P=.95).",
+      "note": "The same U+0001 character stands for the minus sign, so the Simoa lower bound is -0.38. The ELISA figures are identical to the CSF subgroup's. Table 1 (p.3) lists all four ELISA studies as CSF and all three Simoa studies as blood."
+    },
+    {
+      "paper": "P-1341",
+      "page": 3,
+      "quote": "Four comparisons found that higher CSF NfL expression levels in MCI than HC (SMD=0.61, 95%CI: [0.21,1.01], I2=85%, P<.01)."
+    },
+    {
+      "paper": "P-1341",
+      "page": 3,
+      "quote": "When compared with healthy controls (HCs) (Fig. 2), higher levels of NfL were noted in patients with MCI, which reached statistical signiﬁcance (SMD=0.36, 95%CI: [0.04,0.68], P=.03)."
+    },
+    {
+      "paper": "P-1341",
+      "page": 2,
+      "quote": "PubMed, Web of Science, and Embase were searched by 2 investigators for studies published before May 1, 2021, with NfL level comparison between individuals with MCI and controls."
+    },
+    {
+      "paper": "P-1341",
+      "page": 5,
+      "quote": "yet NfL in blood may be not a biomarker of MCI in our study and more studies on blood NfL are needed in future."
+    },
+    {
+      "paper": "P-1341",
+      "page": 5,
+      "quote": "First, the sample sizes meeting standards were small, which would lead to bias for the consequences."
+    },
+    {
+      "paper": "P-1231",
+      "page": 3,
+      "quote": "Twenty-three studies on NfL in blood were eligible"
+    },
+    {
+      "paper": "P-1231",
+      "page": 3,
+      "quote": "aMCI patients compared with controls (1.24, 95 %CI = 1.17–1.32, p < 0.001)."
+    },
+    {
+      "paper": "P-1231",
+      "page": 2,
+      "quote": "for records from inception to May 17, 2021, which reported data for AD biomarkers in blood (serum, plasma or platelet) in patients with AD versus controls, in patients with aMCI versus controls or in patients with AD versus aMCI."
+    },
+    {
+      "paper": "P-1231",
+      "page": 2,
+      "quote": "The ratio of means method (RoM method) was used to evaluate the difference in biomarker concentrations between patients and controls"
+    },
+    {
+      "paper": "P-1231",
+      "page": 2,
+      "quote": "a) AD and aMCI participants were recruited in population-, community- or clinical-based centers, and conformed to AD and MCI diagnostic criteria"
+    },
+    {
+      "paper": "P-1231",
+      "page": 5,
+      "quote": "The blood biomarkers were conducted in the systematic review of 32 eligible studies"
+    },
+    {
+      "paper": "P-1231",
+      "page": 5,
+      "quote": "NfL (AUC = 0.590−0.920; sensitivity 67–84 %"
+    },
+    {
+      "paper": "P-1231",
+      "page": 5,
+      "quote": "show good diagnostic accuracy in identifying AD and aMCI patients from controls.",
+      "note": "A soft line-break hyphen in 'iden-tifying' has been joined."
+    },
+    {
+      "paper": "P-1231",
+      "page": 5,
+      "quote": "P-tau 217 (AUC = 0.970−0.980, sensitivity and specificity >90 %)"
+    },
+    {
+      "paper": "P-1231",
+      "page": 6,
+      "quote": "different measure methods (ELISA, IMR and SIMOA) showed similarly diagnostic values"
+    }
+  ],
+  "record_defects": [
+    "residual_risk says P-1341 searched 'to ~2022'. P-1341 searched for studies published before May 1, 2021 (p.2), so both searches closed in May 2021.",
+    "residual_risk says P-1341's 'blood signal was significant with ELISA/ECL but not with Simoa'. P-1341 has no blood ELISA or ECL estimate. Its four ELISA comparisons are its four CSF comparisons, and its three Simoa comparisons are its three blood comparisons (Table 1, p.3). The ELISA estimate is identical to the CSF estimate (SMD 0.61, 0.21-1.01), so assay and matrix are confounded. ECL appears only as a historical method in the Discussion (p.5).",
+    "residual_risk calls the blood subgroup underpowered with '7 studies total'. The blood subgroup has three comparisons (two plasma, one serum); seven is the total across CSF and blood (Table 1, p.3).",
+    "conflict_statement attaches 'NfL AUC 0.59-0.92' to P-1231's aMCI finding. In P-1231 that range comes from a narrative review of 32 diagnostic-accuracy studies and covers identifying 'AD and aMCI patients from controls' (p.5). It is not an estimate for the aMCI-vs-control contrast.",
+    "conflict_type 'semantic_directional' is wrong. P-1341's blood point estimates are positive (plasma SMD 0.10; Simoa SMD 0.01), the same direction as P-1231's ratio of 1.24; the two differ in significance only.",
+    "review_note objects that P-1231's per-contrast significance is 'inferred, not stated'. The P-1231 PDF states it: aMCI vs controls 1.24, 95% CI 1.17-1.32, p < 0.001 (p.3). The statement's 'significantly' is supported."
+  ],
+  "confidence": "high",
+  "what_would_change_the_verdict": "A P-1341 blood estimate whose interval excluded positive differences: a significantly negative SMD, or an upper bound below the effect a ratio of 1.17 implies. Neither document contains one. P-1231's per-assay NfL values (Fig. 5) are an image and do not appear in the text. A SIMOA-only aMCI estimate there whose interval clearly excluded P-1341's Simoa interval would be the strongest case for a disagreement, but even that would not be an opposite direction."
+}
