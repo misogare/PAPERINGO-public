@@ -1,7 +1,7 @@
 # Risk-of-bias appraisal of the cited studies: summary (2026-09-28)
 
 Operator delegation, 2026-09-28. The appraisal was made by model readers from the source documents under the review
-adjudicator's delegation; every record is model-produced and marked `review_status: pending operator review`.
+adjudicator's delegation; every record is model-produced; the operator reviewed the judgments on 2026-09-28 and accepted them (`operator_review_2026_09_28` on each record).
 Brief: `ROB_BRIEF.md`. Per-study records: `P-nnn.json` (primary reading), `second/P-nnn.json` (blinded second reading).
 The judgments are merged into `logs/appraisal_worksheet.csv` by `scripts/make_appraisal_table.py --write`, and the
 convergence analysis is `scripts/rob_convergence_sensitivity.py`.
