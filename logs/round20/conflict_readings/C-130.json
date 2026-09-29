@@ -1,0 +1,84 @@
+{
+ "id": "C-130",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-187",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Machine learning of brain structural biomarkers for Alzheimer's disease (AD) diagnosis, prediction of disease progression, and amyloid beta deposition in the Japanese population (Shiino et al., Alzheimer's Dement DADM 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-78",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A dynamic time series inference learning framework for individualized prediction of mild cognitive impairment progression (Xu et al., Expert Syst Appl 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-187": "BAAD VBM-ROI SVM trained and tuned on North American ADNI, applied to 1.5T baseline MRI of the Japanese ADNI (J-ADNI). Prediction of disease progression in NON-DEMENTIA participants (387 NL or MCI; 119 MCI->AD, 4 NL->MCI, 1 NL->AD over 3 years): accuracy 77.4-79.4% for ADLS and 79.6-80.4% for ADLSc (MRI+MMSE); abstract gives 76.0-79.3%. No AUC for progression in the main text.",
+  "P-78": "Longitudinal sMRI 3D-DenseNet + Transformer (DTI/DDAS/JTOS) trained on ADNI-1/2/GO. The 90.7% accuracy (AUC 0.871) is the four-time-point (QTP) ablation on Dataset B (101 held-out ADNI-1/2/GO MCI subjects, 36-month window). Single-time-point (STP) on the same Dataset B: ACC 0.763 (95% CI 0.711-0.816), AUC 0.832. External Dataset A (ADNI-3 + OASIS-3 baseline): ACC 0.827, AUC 0.858."
+ },
+ "quantity_a": "Accuracy of a single baseline MRI-derived AD-likelihood score for 3-year progression among Japanese non-demented participants (NL and MCI pooled; progression includes NL->MCI), model trained on a different cohort (North American ADNI).",
+ "quantity_b": "Accuracy of a model using four longitudinal sMRI scans over 36 months to classify pMCI vs sMCI among 101 held-out ADNI-1/2/GO MCI subjects (internal held-out split).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. At the nearest matched quantity (single baseline scan), P-78's STP accuracy is 0.763 with 95% CI 0.711-0.816, which contains P-187's 77.4-79.4%; the recorded 90.7% exists only with four scans.",
+ "gates": {
+  "task": "partial: both 3-year progression prediction, but P-187's population includes normal controls (NL->MCI counted as progression) while P-78 is MCI-only pMCI vs sMCI",
+  "dataset_family": "mismatch: P-187 is J-ADNI (Japanese ADNI, 38 Japanese sites), a distinct cohort from North American ADNI used by P-78; the record's 'dataset_equal: Yes' is wrong",
+  "validation_tier": "mismatch: P-187 applies an ADNI-trained model to an independent cohort (external); P-78's 90.7% is on an internal held-out ADNI split",
+  "modality_family": "match: structural MRI (P-187's ADLSc variant adds MMSE)"
+ },
+ "endpoint_and_metric": "incompatible: both accuracy, but input representation differs (one baseline scan vs four longitudinal scans), population differs (NL+MCI vs MCI only) and cohort differs",
+ "performance_validity": "flag does not apply: both below 0.97",
+ "independence": "Distinct author groups and distinct cohorts (J-ADNI vs ADNI/OASIS); P-187's model was tuned on North American ADNI, which P-78 also uses.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-78's 90.7% accuracy is its four-time-point longitudinal result, whereas P-187 predicts from a single baseline scan, so the input representation differs.",
+  "P-187 pools normal and MCI participants in J-ADNI and counts NL->MCI as progression, whereas P-78 classifies MCI only in ADNI, so population and dataset family differ.",
+  "At the matched single-scan setting P-78 reports 76.3% (95% CI 71.1-81.6%), which contains P-187's 77.4-79.4%, so no disagreement appears where the quantities approach each other."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-187",
+   "page": 5,
+   "quote": "During the 3 years of observation, among the 387 participants with NL or MCI, 119 MCI had converted to AD, 4 NL to MCI, and one NL to AD."
+  },
+  {
+   "paper": "P-187",
+   "page": 5,
+   "quote": "The prediction accuracy of disease progression in non-dementia individuals was 77.4% to 79.4% for ADLS and 79.6% to 80.4% for ADLSc."
+  },
+  {
+   "paper": "P-187",
+   "page": 3,
+   "quote": "We used the radial basis function as the kernel for the SVM, and the values of parameters were optimized using the North American ADNI database."
+  },
+  {
+   "paper": "P-78",
+   "page": 9,
+   "quote": "The model achieved peak performance with QTP, recording an AUC of 87.1 % and an ACC of 90.7 %. Compared to STP, DTP, and TTP, the ACC improved by 14.4 %, 7.7 %, and 3.8 %, respectively"
+  },
+  {
+   "paper": "P-78",
+   "page": 10,
+   "quote": "STP 0.832 (0.783-0.874) 0.763 (0.711-0.816)"
+  },
+  {
+   "paper": "P-78",
+   "page": 3,
+   "quote": "Ultimately, 101 subjects who met the above longitudinal criteria were selected from a total of 486 subjects, and 304 sMRI images were obtained, forming Dataset B."
+  }
+ ],
+ "record_defects": [
+  "resolution_note gives 'Task mismatch from summaries: T1_mci_vs_hc vs T2_conversion' as the reason; both papers report 3-year progression prediction, so that stated reason is wrong.",
+  "dataset_equal 'Yes' and registry Dataset 'ADNI' for P-187 are wrong: P-187 uses the Japanese ADNI (J-ADNI) with a model trained on North American ADNI.",
+  "P-187 registry Validation_Type V2 is wrong for the J-ADNI application of an ADNI-trained model (external).",
+  "claim_a 'Acc 79.3' comes from the abstract range 76.0-79.3%; the results text gives 77.4-79.4% (ADLS) and 79.6-80.4% (ADLSc).",
+  "claim_b '90.7% Acc' does not say it needs four longitudinal scans; P-78's single-scan external result is 82.7% and internal STP is 76.3%.",
+  "P-78 registry Validation_Type V4 applies to Dataset A (ADNI-3/OASIS-3, ACC 0.827), not to the 90.7% figure, which is on the internal Dataset B."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A single-baseline-scan, MCI-only, same-cohort accuracy from P-78 whose CI excluded P-187's range; the reported STP CI includes it."
+}

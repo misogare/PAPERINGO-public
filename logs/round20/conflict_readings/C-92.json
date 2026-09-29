@@ -1,0 +1,83 @@
+{
+ "id": "C-92",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-96",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Development and validation of a machine learning model for early screening of high-risk mild cognitive impairment from the multi-cohort data (Wu et al., International Journal of Medical Informatics 203 (2025) 106030)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-166",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A prediction model for the risk of developing mild cognitive impairment in older adults with sarcopenia: evidence from the CHARLS (Liu et al., Aging Clinical and Experimental Research (2025) 37:69)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-96": "Cross-sectional screening for currently present MMSE-defined cognitive impairment (>=1 SD below the age-stratum mean MMSE, AACD criterion) in the general CHARLS 2015 older population (n=2,932, 17.7% impaired), random forest on 7 routine variables (education, grip strength, height, weight, creatinine, MCV, platelets), stratified 5-fold CV: AUROC 0.93 (95% CI 0.91-0.95) on the training set; external AUROC 0.83 (Yiwu 2021) and 0.87 (CHARLS 2011).",
+  "P-166": "Prognostic prediction of INCIDENT MCI over the next four years among CHARLS participants with sarcopenia (AWGS 2019) and normal cognition at baseline (HRS-style 21-point cognition, AACD plus no IADL disability), 4-layer feed-forward network on 8 sarcopenia-related variables: test AUC 0.708 (95% CI 0.544-0.844, n~83); temporal validation (CHARLS 2015-2018, n=156, 25 events) AUC 0.711 (0.588-0.823)."
+ },
+ "quantity_a": "Diagnostic (cross-sectional) ROC-AUC for currently present MMSE-defined cognitive impairment vs not, general Chinese older population (CHARLS 2015), 7 routine physical/blood variables, internal CV",
+ "quantity_b": "Prognostic ROC-AUC for developing MCI within four years among cognitively normal older adults with sarcopenia (CHARLS 2011-2015, validated 2015-2018), 8 sarcopenia-related variables, held-out test and temporal validation",
+ "same_quantity": false,
+ "incompatible_if_same": "If the quantities were the same the intervals would not overlap (0.91-0.95 vs 0.544-0.844 and 0.588-0.823), but they are not the same quantity: one is detection of prevalent impairment in the general population, the other prediction of incident MCI over four years in a sarcopenic, cognitively normal subgroup with a different cognitive instrument and case definition.",
+ "gates": {
+  "task": "mismatch: P-96 is cross-sectional detection (T1); P-166 predicts incident MCI over four years (the registry codes it T2). The record's task_equal='Yes' and 'AUC 0.711 on T1' are wrong; no waiver on record",
+  "dataset_family": "match: both CHARLS (overlapping waves 2011 and 2015), which also makes the pair non-independent",
+  "validation_tier": "mismatch: P-96 reports external geographic and temporal validation (registry V4) but the contested 0.93 is its internal training-set figure; P-166 reports a temporal validation within CHARLS (registry V3)",
+  "modality_family": "match: clinical/tabular (physical examination, anthropometric and questionnaire variables)"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different endpoints (prevalent MMSE-based impairment vs incident MCI within four years defined from HRS-style cognition plus IADL), different horizon (none vs four years) and different population behind the label (general older adults vs sarcopenic, baseline-normal older adults)",
+ "performance_validity": "flag does not apply: neither paper is flagged; P-96's 0.93 is below 0.97 and comes from a cohort of 2,932 with external validation",
+ "independence": "Shared cohort: both draw on CHARLS, including the 2011 and 2015 waves, so participants may overlap; recorded as non-independence. Different author groups (Zhejiang University vs Nanjing Medical University).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-96's AUROC 0.93 is for detecting currently present MMSE-defined impairment in the general CHARLS 2015 population, a cross-sectional diagnostic quantity.",
+  "P-166's AUC 0.711 is for predicting MCI incidence over the next four years among cognitively normal sarcopenic participants, a prognostic quantity with a four-year horizon.",
+  "The population behind the label differs (general older adults vs a sarcopenia subgroup) and the cognitive case definitions differ (MMSE vs a 21-point HRS battery plus IADL), so the task gate fails with no waiver on record.",
+  "The CHARLS overlap is recorded as non-independence; it does not make the quantities the same."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-96",
+   "page": 1,
+   "quote": "Data from the China Health and Retirement Longitudinal Study (CHARLS) 2015 were used to develop the model."
+  },
+  {
+   "paper": "P-96",
+   "page": 5,
+   "quote": "Of the five machine learning algorithms assessed, the RF model showed the best performance, with an AUROC of 0.93[95 %CI, 0.91\u20130.95]"
+  },
+  {
+   "paper": "P-96",
+   "page": 10,
+   "quote": "Third, the cross-sectional design of this study limits the ability to infer causal relationships and to track the progression of MCI over time."
+  },
+  {
+   "paper": "P-166",
+   "page": 1,
+   "quote": "Our model forecasts MCI incidence over the next four years, categorizing patients into low and high-risk groups based on their risk levels."
+  },
+  {
+   "paper": "P-166",
+   "page": 2,
+   "quote": "Only longitudinal data with normal cognitive function at baseline measurement and with indicators of cognitive and activities of daily living (ADL) outcomes were included."
+  },
+  {
+   "paper": "P-166",
+   "page": 5,
+   "quote": "The AUC of the validation centralized model was 0.711 (0.95 CI, 0.588\u20130.823)."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-166: AUC 0.711 on T1' is wrong on task: P-166 predicts four-year incident MCI (the registry itself codes it T2).",
+  "task_equal='Yes' is wrong: cross-sectional detection vs four-year incidence prediction.",
+  "resolution_note says 'Confirmed genuine: Same metric type (AUC)' while resolution says 'Rejected - false positive'; the note is internally inconsistent and the same metric type does not make the endpoints the same.",
+  "P-96's 0.93 is its training-set (internal CV) figure; the record does not state that its external AUROCs are 0.83 and 0.87."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A pair of CHARLS studies reporting AUCs for the same endpoint (e.g. both prevalent MMSE-based impairment in the general population, or both four-year incident MCI) with non-overlapping intervals."
+}

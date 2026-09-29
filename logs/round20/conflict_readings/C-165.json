@@ -1,0 +1,72 @@
+{
+ "id": "C-165",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-273",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting long-term progression of Alzheimer's disease using a multimodal deep learning model incorporating interaction effects (Wang et al., J Transl Med 2024)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-198",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Progression from Mild Cognitive Impairment to Alzheimer's Disease using MRI-based Cortical Features and a Two-State Markov Model (Ficiara et al., ISBI 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-273": "DISFC trimodal model (3D sMRI + 14 demographic/neuropsychological features + 49 SNPs), 238 ADNI-1/GO/2 MCI, conversion within 48 months, 10-fold CV: AUC 0.962 (SD 0.041); ADNI-3 test n=14 AUC 0.939.",
+  "P-198": "Two-state Markov model with five FreeSurfer cortical-thickness covariates feeding a logistic regression, 721 ADNI1/2 MCI (188 converters), conversion by the second visit about two years later, stratified 10-fold CV: AUC 0.78 +/- 0.08 (sulcal width 0.71 +/- 0.09; no covariates 0.56 +/- 0.10)."
+ },
+ "quantity_a": "ROC-AUC for MCI-to-AD conversion within 48 months, ADNI, predictors = sMRI + cognitive/clinical scores + SNPs, 10-fold CV",
+ "quantity_b": "ROC-AUC for MCI-to-AD conversion within ~2 years, ADNI, predictors = five MRI cortical-thickness measures only, 10-fold CV",
+ "same_quantity": false,
+ "incompatible_if_same": "No: a trimodal model with cognitive scores and genotypes outscoring a five-covariate MRI-only Markov/logistic model is expected and neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match in label (T2) but horizon differs: 48 months vs ~24 months.",
+  "dataset_family": "match: both ADNI (ADNI-1/GO/2 vs ADNI1/2; overlapping participants likely).",
+  "validation_tier": "match: both internal 10-fold CV for the quoted figures.",
+  "modality_family": "mismatch in predictor set: P-273 MRI + neuropsychological scores + SNPs; P-198 structural MRI cortical thickness only."
+ },
+ "endpoint_and_metric": "partly compatible: both ROC-AUC, but horizons differ (4 years vs 2 years) and predictor sets differ.",
+ "performance_validity": "flag does not apply: 0.962 is below 0.97; an (n=14) independent test exists; not a like-for-like performance comparison in any case.",
+ "independence": "Distinct groups (Shanghai Jiao Tong vs Turin/USC); both use ADNI MCI participants, so cohort overlap is likely (non-independence).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-273's 0.962 depends on cognitive test scores and genotypes as well as MRI, whereas P-198's 0.78 uses five MRI cortical-thickness covariates only.",
+  "P-273 predicts conversion within 48 months; P-198 predicts transition by a second visit about two years after baseline.",
+  "With predictor set and horizon both different and no waiver on record, the two AUCs are not the same quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-273",
+   "page": 1,
+   "quote": "On the cross-validation set, our model achieved superior results for predicting MCI conversion within 4 years (AUC, 0.962; accuracy, 92.92%; sensitivity, 88.89%; specificity, 95.33%)"
+  },
+  {
+   "paper": "P-273",
+   "page": 2,
+   "quote": "For each participant, we considered 14 clinical features at baseline, including demographic data (age, sex, education) and cognitive assessments"
+  },
+  {
+   "paper": "P-198",
+   "page": 3,
+   "quote": "using \u03bb to predict whether a test patient will transition to AD within the next two years, given the outcome of the first visit."
+  },
+  {
+   "paper": "P-198",
+   "page": 5,
+   "quote": "cortical thickness (AUC=0.78 \u00b1 0.08; Accuracy= 0.75 \u00b1 0.02) compared to the baseline model (AUC=0.56 \u00b1 0.10; Accuracy=0.65 \u00b1 0.08)."
+  }
+ ],
+ "record_defects": [
+  "resolution_note 'Confirmed genuine: Same metric type (AUC); Gap magnitude 0.182 exceeds threshold' ignores the 4-year vs 2-year horizon and trimodal vs MRI-only predictor sets.",
+  "resolution 'Rejected - false positive', resolution_status 'partially_resolved_candidate' and the note's 'Confirmed genuine' contradict each other.",
+  "P-198 registry Best_Metric 'AUC 0.56' is the no-covariate baseline, not the best model (0.78).",
+  "The record classifies the pair as structural_mri for both, but P-273's quoted AUC rests on clinical and genetic inputs too."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-273 MRI-only AUC at a two-year horizon (not reported) set against P-198's 0.78 with non-overlapping uncertainty."
+}

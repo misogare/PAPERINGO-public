@@ -1,0 +1,87 @@
+{
+ "id": "C-71",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-58",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Cross-lingual detection of mild cognitive impairment based on temporal parameters of spontaneous speech (Gosztolya et al., Computer Speech & Language 69 (2021) 101215)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-6",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Linguistic-based Mild Cognitive Impairment detection using Informative Loss (Pourramezan Fard, Mahoor, Alsuhaibani, Dodge; Computers in Biology and Medicine 176 (2024) 108606)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-58": "SVM on 15 ASR-derived temporal speech parameters (articulation rate, tempo, silent/filled pause measures) from a telephone monologue about the previous day; 33 English speakers (New York; 19 HC, 14 MCI) and 33 Hungarian speakers (Szeged; 20 HC, 13 MCI), Petersen criteria, speaker-wise leave-one-out CV with nested tuning, metrics at equal error rate. 'All features' monolingual: English accuracy 84.8%, AUC 0.932; Hungarian accuracy 75.8%, AUC 0.727; feature-subset and cross-lingual scores span the abstract's '67-92%'.",
+  "P-6": "Transformer (sentence-embedding + sentence cross-attention) with InfoLoss on ASR transcripts of I-CONECT video-chat interviews, 68 participants aged 75+ (34 MCI, 34 NC; Portland and Detroit), subject-level 5-fold CV: accuracy 85.16% (SD 5.76), AUC 84.75% (SD 5.97); over five repeated fold configurations, mean AUC 79.94%."
+ },
+ "quantity_a": "Speaker-wise LOO-CV classification scores (accuracy, AUC and others at EER) for MCI vs HC from acoustic temporal/pause parameters of spontaneous telephone speech, in two 33-person English and Hungarian clinic samples.",
+ "quantity_b": "Subject-level 5-fold CV accuracy/AUC for MCI vs NC from the semantic content of ASR transcripts of semi-structured video conversations, in the 68-person I-CONECT trial sample.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-6's 85.16% lies inside P-58's reported 67-92% range and almost equals P-58's English all-features accuracy of 84.8%. There is no disagreement even on the record's own numbers.",
+ "gates": {
+  "task": "match: both MCI vs cognitively normal detection (T1). P-6's registry Task_Type T2 looks wrong; the paper is MCI vs NC detection.",
+  "dataset_family": "mismatch: P-58 uses its own New York and Szeged clinic samples; P-6 uses I-CONECT (Portland/Detroit). The record's 'dataset_equal: Yes' is wrong; no waiver.",
+  "validation_tier": "match: internal cross-validation only in both.",
+  "modality_family": "match at family level (speech), but different channels: acoustic timing and pauses (P-58) vs transcript semantics (P-6)."
+ },
+ "endpoint_and_metric": "compatible metric types (both report accuracy and AUC); the P-58 '67-92%' is a range spanning several metrics and feature subsets, not a single estimate.",
+ "performance_validity": "flag does not apply: no contested figure is at or above 0.97.",
+ "independence": "Distinct studies, cohorts and author groups.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "P-6's 85.16% accuracy falls inside P-58's reported 67-92% range and matches P-58's English all-features accuracy (84.8%), so the two results describe no disagreement.",
+  "The record's 'P-58: 67-92% range' is a mixed-metric span across feature subsets, languages and ASR systems, not one estimate that could be set against 85.16%.",
+  "Different cohorts (dataset gate fails) and different speech channels (acoustic pauses vs transcript semantics) mean that even a gap would not be a conflict on one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-58",
+   "page": 1,
+   "quote": "because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."
+  },
+  {
+   "paper": "P-58",
+   "page": 6,
+   "quote": "Besides an accuracy score of 84.8%, the recall/sensitivity and speci\ufb01city values were also around 85%."
+  },
+  {
+   "paper": "P-58",
+   "page": 6,
+   "quote": "we did not create separate training and test sets, but opted for speaker-wise cross-validation (CV)"
+  },
+  {
+   "paper": "P-58",
+   "page": 4,
+   "quote": "asked the participant to talk about his or her previous day"
+  },
+  {
+   "paper": "P-6",
+   "page": 7,
+   "quote": "the framework achieves an overall accuracy of 85.16% and an AUC of 84.75%, with the corresponding std of 5.76 and 5.97, respectively."
+  },
+  {
+   "paper": "P-6",
+   "page": 6,
+   "quote": "34 were identified with MCI, while 34 were diagnosed with NC conditions."
+  },
+  {
+   "paper": "P-6",
+   "page": 6,
+   "quote": "individuals aged 75 and above, selected from Portland, Oregon, or Detroit, Michigan in the USA."
+  }
+ ],
+ "record_defects": [
+  "dataset_equal 'Yes' is wrong: P-58 uses New York and Szeged clinic samples, P-6 the I-CONECT trial.",
+  "The rejection reason 'Metric type unclear: Unknown / Acc' is inaccurate: P-58 reports accuracy, precision, recall, specificity, F1 and AUC per feature set; the '67-92%' is a range across them.",
+  "P-6 registry row has Task_Type T2 and Best_Metric AUC 0.8475, whereas the paper is MCI vs NC detection (T1); the record's T1 is right.",
+  "P-6 note (not in the record): Section 4.5 says 'our proposed framework achieved the AUC value of 85.16%', conflating its accuracy with its AUC (84.75%)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these papers: the recorded figures agree. A conflict would need the same speech features evaluated on a shared cohort with non-overlapping results."
+}

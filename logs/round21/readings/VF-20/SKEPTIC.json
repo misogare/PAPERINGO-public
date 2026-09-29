@@ -1,0 +1,231 @@
+{
+  "vf": "VF-20",
+  "role": "skeptic",
+  "status": "candidate / pending_human_review (model reading; not a gate verdict)",
+  "independence_rule_applied": "Appendix H.1: a supporter counts as independent only if BOTH its dataset family and its method family are distinct from the other counted supporters. The boolean 'independent' below uses that rule. A paper can be dataset-independent but not independent under H.1; the reason field says which.",
+  "verdicts": [
+    {
+      "paper": "P-651",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "yes",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": false,
+      "dataset_family": "Single-centre CSVD cohort, First Affiliated Hospital of Chongqing Medical University (58 CSVD-MCI / 54 CSVD-NCI / 57 HC). New dataset.",
+      "method_family": "Diffusion MRI microstructure (hippocampal-subfield NODDI: FISO/ODI/NDI). Same broad family as current supporter P-581 (cortical diffusivity, NACC).",
+      "refutation_attempt": "(1) Comparison run within the study: yes. Subfield volume and NODDI were tested in the same subfield ROIs with the same ANCOVA (age, education) + BH-FDR + Tukey procedure. (2) Population/comparator: vascular (CSVD) MCI vs cognitively unimpaired CSVD, not AD-spectrum MCI vs controls. Against HC, volume DID discriminate. (3) Volume null: stated as a result in section 4.3 ('When comparing the MCI with the NCI, we did not observe significant differences in hippocampal volume'); the pairwise statistics are in Supplementary Table 8, which is not in the extract. (4) Correction to the verifier: section 4.3 limits the secure MCI-vs-NCI microstructural difference to ONE ROI, left CA1-3 ('significant changes were found in the FISO and NDI metrics in the left CA1-3 region'). The verifier's reading that FISO in bilateral subiculum and CA1-3 was higher than CSVD-NCI comes from the omnibus tests in 3.2, whose 'consistently ... compared to CSVD-NC and healthy controls' wording is not backed by pairwise numbers in the main text. NDI's omnibus failed FDR (PFDR 0.066), so FISO in left CA1-3 is the only secure measure. (5) The authors flag CSF partial-volume contamination of FISO (2 mm slices), and FISO correlates negatively with subfield volume (r about -0.23 to -0.35). Part of the FISO signal may therefore be atrophy-related. WMH burden also differed between CSVD-MCI and CSVD-NCI (Fazekas chi2 7.202, p = 0.027). These are caveats, not refutations: at face value the source shows a non-volumetric measure separating MCI from a like comparator where like-for-like volume tests did not, the same kind of group-level evidence round 20 accepted for P-518.",
+      "reason": "Survives as a narrowed 'yes', but thin: one ROI (left CA1-3 FISO), cross-sectional, pairwise statistics only in the supplement, possible CSF partial-volume and WMH confounds, vascular MCI population. Stated form stays 'partly': volume was reduced vs HC, so volume is not 'preserved', and 'late' is the authors' inference from a cross-sectional design. Dataset-independent (Chongqing; no shared site or authors with any supporter), but under H.1 its method family (diffusion MRI microstructure) duplicates P-581. It adds a distinct method family only if the operator splits hippocampal grey-matter NODDI from cortical minicolumn diffusivity.",
+      "quotes": [
+        {"page": 4, "quote": "The FISO indicator demonstrated the most pronounced group differences, with CSVD-MCI patients consistently showing significantly higher values compared to CSVD-NC and healthy controls, particularly in the left hemisphere subiculum (0.34 +/- 0.11 vs. 0.30 +/- 0.11 and 0.29 +/- 0.08, F = 4.521, P = 0.012, PFDR = 0.028) and CA1-3 region (0.36 +/- 0.10 vs. 0.32 +/- 0.07 and 0.31 +/- 0.06, F = 6.898, P = 0.001, PFDR = 0.005)."},
+        {"page": 4, "quote": "NDI measurements showed more limited variations, with only the left hemisphere CA1-3 region demonstrating marginally significant differences (F = 3.178, P = 0.044, PFDR = 0.066)."},
+        {"page": 5, "quote": "The right hemisphere mirrored these findings, with comparable significant differences observed across subiculum, CA1-3, and CA4-DG regions, predominantly between patient groups and healthy controls (Supplementary Material 2 Table 8)."},
+        {"page": 7, "quote": "When comparing the MCI with the NCI, we did not observe significant differences in hippocampal volume, but significant changes were found in the FISO and NDI metrics in the left CA1-3 region."},
+        {"page": 8, "quote": "larger voxels inevitably contain some CSF signals, which may contaminate the measurement of microstructural parameters, especially affecting the FISO index."}
+      ]
+    },
+    {
+      "paper": "P-1425",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "partly",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": false,
+      "dataset_family": "BABRI (Beijing Aging Brain Rejuvenation Initiative), Beijing Normal University. New dataset.",
+      "method_family": "Diffusion MRI (atlas-tract DTI FA/MD). Same broad family as P-581.",
+      "refutation_attempt": "The GM-volume test (voxelwise VBM, p < 0.001 uncorrected then FWE p < 0.05) and the DTI test (20 atlas WM ROIs, ANCOVA + FDR) are not like-for-like, and they measure different tissues. No hippocampal ROI volume test for amyloid-negative MCI vs NC is reported. In the AD-spectrum subgroup (amyloid-positive MCI), bilateral hippocampal atrophy WAS significant. The verifier's own 'partly' already records all of this; the source does not support anything stronger.",
+      "reason": "Not refuted at 'partly'. It does not reach 'yes' in either form, because the volume-vs-diffusion contrast is not tested at comparable sensitivity and volume discriminated in the amyloid-positive group. Dataset-independent (BABRI); method family duplicates P-581 (diffusion). Not counted.",
+      "quotes": [
+        {"page": 3, "quote": "The threshold for the resulting statistical parametric maps was established at p < 0.001 (uncorrected) and then family-wise error (FWE) corrected for multiple comparisons at p < 0.05. Then, the DTI metrics of the atlas-based tract ROIs were analyzed using analysis of covariance (ANCOVA)"},
+        {"page": 4, "quote": "Relative to NC, Abeta-pos MCI showed significant atrophy in the bilateral hippocampus (HIP) and left parahippocampus."},
+        {"page": 5, "quote": "In the Abeta-neg MCI group, an atrophy trend was observed in the right supramarginal gyrus, inferior temporal gyri, left temporal pole, and fusiform gyrus; however, these changes did not reach statistical significance."}
+      ]
+    },
+    {
+      "paper": "P-488",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "yes",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": false,
+      "dataset_family": "BioFIND (MEG + MRI; MRC CBU Cambridge and CTB Madrid; via DPUK). New dataset. P-577 is its registry duplicate stub (same 117 participants) and must never be counted separately.",
+      "method_family": "Resting-state MEG spectral power/covariance. Same family as current supporter P-584 (MEG alpha power, PREVENT-AD).",
+      "refutation_attempt": "Strongest refutation angle: the in-sample head-to-head (Model 3 MEG+clinical AUC 0.81 vs Model 2 hippocampal ratio+clinical 0.75; Model 4 vs Model 2 bootstrap CI 0.026-0.179) uses an MEG cluster chosen after exploring the same data, and the authors name the 'risk of circularity'. The hippocampal ratio was pre-specified, so the logistic models are biased toward MEG. This inflates, but does not remove, the evidence. (a) The authors' non-circular cross-validated stacking with conditional permutation importance (features not selected after seeing the data) still reports 'statistically complementary information from the MEG covariance, MMSE and MRI'. (b) The additive contribution of MEG and the hippocampal ratio survived adding site to Model 4. Caveats that stand: in the cross-validated analysis MRI cortical volumes (0.77) beat MEG covariance (0.74), so parity is not shown there; the site-adjusted spectral cluster test was not significant; AD was a clinical diagnosis without biomarkers.",
+      "reason": "Survives as a narrowed 'yes' on the complementarity strand: MEG carried information beyond hippocampal volume in both the in-sample and the non-circular cross-validated analyses, while hippocampal volume stayed an independent predictor, which is what the narrowed wording's closing sentence says. Stated form stays 'partly': volume was discriminative, not preserved, and 'late' is not tested. Dataset-independent (BioFIND), but under H.1 its method family duplicates P-584. It adds no method family, but it is a peer-reviewed MEG supporter showing information beyond hippocampal volume directly. The operator could use it in place of the preprint P-584 as the MEG-family supporter without changing the count.",
+      "quotes": [
+        {"page": 9, "quote": "It also increased the risk of circularity as our choice of the MEG power was based on visual-statistical exploration."},
+        {"page": 11, "quote": "In contrast, the comparison between Model 2 and Model 4 showed a much clearer, significant difference, with a confidence interval from 0.026 to 0.179, highlighting a substantial improvement in Model 4's discrimination capacity over Model 2 that only used MRI."},
+        {"page": 12, "quote": "It can be seen that despite the pronounced and expected site effect (given the strong imbalance of progression rates), the significantly additive contribution of MEG and hippocampal ratio to explaining progression risk was preserved."},
+        {"page": 13, "quote": "The best marginal performance was observed for MEG covariances (AUC = 0.74, SD = 0.13) and MRI cortical volumes (AUC = 0.77, SD = 0.14). Combining all inputs led to markedly improved classification scores (AUC = 0.81, SD = 0.12)"},
+        {"page": 15, "quote": "The results suggest that the performance of the full model was based on statistically complementary information from the MEG covariance, MMSE and MRI but also highlighted potential contributions from site effects."}
+      ]
+    },
+    {
+      "paper": "P-592",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "yes",
+      "refuted": true,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": false,
+      "dataset_family": "INTERCEPTOR (Italian multicentre MCI cohort); HC recruited outside it. New dataset. P-1124 reports the same INTERCEPTOR cohort and must never be counted alongside it.",
+      "method_family": "Scalp resting EEG spectral power / coherence / small-world index. Resting-state spectral electrophysiology, overlapping P-584's MEG family unless the operator splits EEG from MEG.",
+      "refutation_attempt": "The narrowed 'yes' does not survive. (1) Range restriction by design: every participant was selected FOR hippocampal atrophy (and AD-pattern FDG-PET), so the volume 'null' is within a stratum defined by volume. All four continuous volume measures still trend lower in converters (uncorrected p 0.15, 0.09, 0.06, 0.02). (2) The tests are asymmetric. EEG was tested electrode-wise with FDR within each band; volume was tested as part of a six-test Bonferroni family, and the Table 2 note says 'No results emerged after correction'. (3) No joint model tests EEG beyond continuous hippocampal volume, and there is no prediction model or AUC. (4) Converters had lower baseline MMSE (Table 1). Robustness of EEG to covariates is asserted in the discussion ('the majority of EEG features were robust enough', with 'some trends observable'), with the details in the supplement. So the source shows EEG group differences between converters and stable patients inside an atrophy-positive stratum. It does not show EEG carrying information that hippocampal volume did not, in the way P-478 (joint model) or P-518 (unselected sample, like-for-like null) did.",
+      "reason": "Downgraded narrowed yes -> partly. What it does show: within MCI already positive for hippocampal atrophy and AD-pattern FDG-PET, baseline EEG separated 36-month converters from stable patients. Stated form stays 'partly': volume is not 'preserved' (the sample was selected for atrophy) and atrophy at baseline does not support 'late'. Dataset-independent (INTERCEPTOR); its method family overlaps MEG (P-584/P-488) unless split. Not counted.",
+      "quotes": [
+        {"page": 5, "quote": "Given the notably high conversion risk observed in the group with both hippocampal atrophy and FDG-PET hypometabolism (48.28%), a more detailed analysis was conducted on this subgroup of MCI participants"},
+        {"page": 7, "quote": "Group comparisons were performed using independent-samples t-tests for continuous variables and chi-square for categorical variables and corrected with Bonferroni method. No results emerged after correction."},
+        {"page": 7, "quote": "Table 2 p-values: AdaBoost left 0.15, AdaBoost right 0.09, FreeSurfer left 0.06, FreeSurfer right 0.02 (sMCI-resilient 2876.68 vs cMCI 2729.07 mm3 FreeSurfer right)"},
+        {"page": 8, "quote": "Results suggested that, although some trends are observable, the majority of EEG features were robust enough to the potential confounding effects such as age, sex, education, family history, and baseline cognitive performance."}
+      ]
+    },
+    {
+      "paper": "P-554",
+      "verifier_stated": "no",
+      "verifier_narrowed": "partly",
+      "refuted": false,
+      "final_stated": "no",
+      "final_narrowed": "partly",
+      "independent": false,
+      "dataset_family": "Shanghai Memory Study (Huashan Hospital, Fudan) + ADNI arm. New for SMS; ADNI is not a current supporter dataset.",
+      "method_family": "rs-fMRI (static/dynamic ALFF, dFC). Same family as current supporter P-518.",
+      "refutation_attempt": "Converters had baseline hippocampal and amygdala atrophy, and sMRI beat fMRI externally (ADNI 0.82 vs 0.76), so the stated form fails. For the narrowed form, the complementarity (sMRI+fMRI > sMRI) is untested, with feature selection on the whole SMS cohort before CV. The comparator is thickness plus subcortical volumes, not hippocampal volume alone. The verifier's 'partly' already carries these limits.",
+      "reason": "Not refuted at narrowed 'partly' (parity plus untested complementarity). Method family duplicates P-518. Not counted.",
+      "quotes": []
+    },
+    {
+      "paper": "P-729",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "partly",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": false,
+      "dataset_family": "Chinese PLA General Hospital, Beijing, PD cohort (25/25/25). New dataset.",
+      "method_family": "rs-fMRI degree centrality. Same family as P-518.",
+      "refutation_attempt": "Volume was tested only in the two DC clusters that correlated with MoCA, i.e. regions chosen for their functional difference. Hippocampal and whole-brain volume were not tested, and the right-hippocampus DC cluster was never volume-tested. The population is Parkinson's MCI. The P = 0.069 null at n = 25 per group is in a self-described pilot.",
+      "reason": "Holds only as 'partly' (different population and comparator). Method family duplicates P-518. Not counted.",
+      "quotes": [
+        {"page": 4, "quote": "There was no significant difference among the three groups for the volumes of the two ROIs (cluster 1: left FFG/cerebellum lobule VI; F = 1.914, P = 0.155 and cluster 2: left precuneus; F=2.780, P = 0.069) that were related to cognitive abilities (MoCA score)."}
+      ]
+    },
+    {
+      "paper": "P-531",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "partly",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "no",
+      "independent": true,
+      "dataset_family": "Zhongshan Hospital (Fudan), Shanghai, longitudinal PD cohort (49 PD, 10 converters, 37 HC). New dataset.",
+      "method_family": "ASL perfusion (CBF). New family.",
+      "refutation_attempt": "The source does not show that CBF carried information. (1) The only converter effect is a subgroup x visit interaction in 1 of 14 prefrontal ROIs, F(1,96) = 4.66, p = 0.036. The authors call it 'marginal' and it is not corrected across ROIs; at 14 uncorrected tests about 0.7 false positives are expected. (2) The reported statistics are internally implausible: denominator df 96 with 49 patients, and partial eta2 0.90 for F = 4.66. (3) There was no baseline subgroup effect (p = 0.256), so CBF did not predict conversion. (4) The test is asymmetric: CBF was tested as change V0->V1, volume only cross-sectionally at V1, and the PD group had significant prefrontal atrophy over the same interval. (5) Hippocampal volume was never measured, and the population is Parkinson's.",
+      "reason": "Refuted in both forms (partly -> no). A chance-compatible uncorrected interaction in one ROI, with implausible reported statistics and no baseline prediction, does not demonstrate a non-volumetric measure detecting MCI or carrying information beyond volume. Dataset- and method-independent, but that is moot.",
+      "quotes": [
+        {"page": 5, "quote": "A marginal subgroup difference was found in the left lateral orbitofrontal cortex, an interaction between subgroup and visit was found [F(1,96) = 4.66, p = 0.036, partial eta2 = 0.90] in addition to an effect of visit [F(1) = 16.0, p < 0.001, partial eta2 = 0.254]. No main effect of the subgroup was found (p = 0.256). No effect of the subgroup was found in any other prefrontal ROIs (ps > 0.145)."},
+        {"page": 6, "quote": "However, from V0 to V1, subjects with PD showed a significantly cortical atrophy in the bilateral lateral orbitofrontal cortex (left: t(48) = 2.91, p = 0.005; right: t(48) = 2.98, p = 0.005)"}
+      ]
+    },
+    {
+      "paper": "P-538",
+      "verifier_stated": "no",
+      "verifier_narrowed": "partly",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "no",
+      "independent": false,
+      "dataset_family": "Pacific Brain Health Center, Santa Monica, retrospective chart review (SCD/MCI/dementia). New dataset.",
+      "method_family": "qEEG/ERP (P300b) plus go/no-go behavioural performance. Electrophysiology family, overlapping P-584.",
+      "refutation_attempt": "For MCI specifically, the non-volumetric BRAIN measure does not carry the information. In the imaging subset, P300b separated only dementia from SCD (post hoc 'dementia<SCD, p < 0.02'). The only qEEG/ERP-system variable separating MCI from SCD was Commission Errors, a behavioural task-performance score, not a functional, microstructural, mechanical or metabolic brain measure. Left temporal volume separated MCI from SCD (p < 0.0004) and matched or exceeded the qEEG/ERP model (AUC 0.74 vs 0.72). P300b's retention alongside volume (OR 0.25, p = 0.008) comes from a three-class model dominated by the dementia contrasts. The MCI-vs-SCD combined AUC (0.79 vs 0.74) is untested and includes the behavioural variable.",
+      "reason": "Refuted at narrowed partly -> no. The source does not show a non-volumetric brain measure carrying MCI information beyond volume. The comparator is also SCD, not controls, and the volume is temporal lobe, not hippocampal. Not counted.",
+      "quotes": [
+        {"page": 5, "quote": "P300b Amplitude 10.3 (5.3) 11.0 (4.8) 13.8 (7.6) 3.34, p = 0.04 dementia<SCD, p < 0.02 ... Commission Errors ... MCI > SCD, p < 0.04 ... Left Temporal Lobe Volume ... MCI < SCD, p < 0.0004"},
+        {"page": 6, "quote": "MCI versus SCI 0.72 (0.63, 0.82) [qEEG/ERP only] ... MCI versus SCI 0.74 (0.63, 0.85) [vMRI only] ... MCI versus SCI 0.79 (0.69, 0.90) [qEEG/ERP+vMRI]"}
+      ]
+    },
+    {
+      "paper": "P-224",
+      "verifier_stated": "no",
+      "verifier_narrowed": "partly",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "no",
+      "independent": true,
+      "dataset_family": "Rumailah Hospital memory clinic, Hamad Medical Corporation / WCM-Qatar. New dataset.",
+      "method_family": "Corneal confocal microscopy (peripheral corneal nerve fibres). New family, but outside the statement's named brain-measure families.",
+      "refutation_attempt": "Neither narrowed strand is shown. (1) Parity: volume had the higher AUC (hippocampus 78%, whole brain 78% vs CNFD 74%, CNBD 73%, CNFL 71%); only untested cut-off accuracy favoured CCM. (2) Information beyond volume: no model entered CCM and volume together. The 'independent prognostic ability' rests on volume losing significance after age + MoCA adjustment in a smaller MRI sample (26% missing), with similar point estimates and wide CIs. That is an interpretation, not a demonstrated increment. The combined CNFD + hippocampus AUC (75.6%) did not exceed hippocampus alone (78%), and the authors state 'Combining CCM measures with brain volumetry did not have any major impact.' (3) CCM is a peripheral measure, not one of the functional, mechanical or microstructural brain measures the narrowed wording lists.",
+      "reason": "Refuted at narrowed partly -> no: by the paper's own statistics volume was numerically superior, and no increment over volume was demonstrated. Dataset-independent and a new family, but moot.",
+      "quotes": [
+        {"page": 4, "quote": "The area under the curve (AUC) to predict progression to dementia was 74% (95% CI 64-85%, p < 0.0001) for CNFD, 73% (95% CI 63%-84%, p < 0.0001) for CNBD, 71% (95% CI 61%-82%, p < 0.0001) for CNFL ... 78% (95% CI 67%-89%, p < 0.0001) for hippocampal volume, 78% (95% CI 66%-91%, p < 0.0001) for whole brain volume"},
+        {"page": 5, "quote": "The AUC of a combined abnormal CNFD (<=25 no./mm2) and abnormal hippocampus volume (<=0.44 ICV%) or abnormal whole brain volume (<=72 ICV%) were 75.6% (95% CI 63%-88%) and 72.4% (95% CI 60%-85%), respectively."},
+        {"page": 8, "quote": "Certainly, CCM has an independent prognostic ability compared to hippocampus and whole brain volume. Combining CCM measures with brain volumetry did not have any major impact."}
+      ]
+    },
+    {
+      "paper": "P-44",
+      "verifier_stated": "no",
+      "verifier_narrowed": "partly",
+      "refuted": false,
+      "final_stated": "no",
+      "final_narrowed": "partly",
+      "independent": false,
+      "dataset_family": "Haeundae Paik Hospital (Inje University), Busan. New dataset.",
+      "method_family": "rs-fMRI connectome. Same family as P-518.",
+      "refutation_attempt": "The reported AUC gain (0.889 -> 0.929, p = 0.022) is the study's own result, but it is weakened. Features were filtered by group t-tests before the 80/20 split. The same test calls the subtype model 'significant' (p = 0.017) at chance-level AUC 0.528. There is no functional-only model. Volume was strongly discriminative. The verifier's 'partly' already carries these limits; the source does not support 'yes'.",
+      "reason": "Not refuted at narrowed 'partly'. Method family duplicates P-518. Not counted.",
+      "quotes": [
+        {"page": 4, "quote": "The p-value for the AUC was 0.022. ... and AUC of 0.528. The p-value for the AUC was 0.017."}
+      ]
+    },
+    {
+      "paper": "P-1107",
+      "verifier_stated": "no",
+      "verifier_narrowed": "partly",
+      "refuted": false,
+      "final_stated": "no",
+      "final_narrowed": "partly",
+      "independent": true,
+      "dataset_family": "NCKUH memory clinic, Tainan, retrospective MCI cohort (86). New dataset.",
+      "method_family": "SPECT perfusion (eZIS). New family (metabolic/functional).",
+      "refutation_attempt": "The verifier's decoding of the swapped Table 5/6 captions is correct: the OR table is headed 'Conversion from MCI to Dementia' (MTA OR 3.05, severity OR 5.35, CDR-SB OR 3.08), and the text says so. The AUCs are 0.719 (eZIS severity) and 0.720 (MTA), with no comparison test. The narrowed wording is about VOLUME, but the comparator is a 0-4 visual MTA rating read by one author, not volumetry. MTA was itself an independent predictor. The stepwise model is unstable (86 subjects, severity CI 1.28-22.31). The source cannot support more than 'partly'.",
+      "reason": "Not refuted at narrowed 'partly'. It would count only if the operator accepts a visual MTA rating as standing in for hippocampal volume. It is dataset- and method-independent (the only candidate with a new family), so that operator decision is the one that could change the count.",
+      "quotes": [
+        {"page": 4, "quote": "The MTA score was graded from 0 (no atrophy) to 4 (severe atrophy) based on the width of choroid fissure, width of temporal horn, and height of hippocampal formation [20]. Both the Fazekas scale and MTA score were visually interpreted by author YTP."},
+        {"page": 7, "quote": "The optimal cut-off value, yielding the largest AUC, was found to be 2.5 for MTA (AUC = 0.720, sensitivity = 0.525, and specificity = 0.804)"}
+      ]
+    }
+  ],
+  "tally": {
+    "current_supporters_round20": {
+      "stated_yes": ["P-518"],
+      "narrowed_sustained_by": ["P-518", "P-478", "P-584", "P-581"],
+      "note": "Per round20_reasoning: the narrowed form is supported by P-518, P-478 and P-584, with P-581 as parity evidence; P-432 and P-460 do not support. Four method families (rs-fMRI, MRE, MEG, cortical diffusion), four datasets (Sunshine Coast, Delaware, PREVENT-AD, NACC). P-584 is a medRxiv preprint."
+    },
+    "candidates_surviving_step1": {
+      "narrowed_yes": ["P-651", "P-488"],
+      "narrowed_partly": ["P-1425", "P-592", "P-554", "P-729", "P-44", "P-1107"],
+      "refuted_to_no": ["P-531", "P-538", "P-224"],
+      "stated_yes": []
+    },
+    "stated_independent_yes": ["P-518"],
+    "stated_reaches_three": false,
+    "narrowed_independent_yes": ["P-518", "P-478", "P-584", "P-581"],
+    "narrowed_reaches_three": true,
+    "narrowed_dataset_family_only_count": {
+      "papers": ["P-518", "P-478", "P-584", "P-581", "P-651", "P-488"],
+      "count": 6,
+      "note": "Counting dataset families only. Under H.1 (method family also distinct), P-651 duplicates P-581 (diffusion MRI) and P-488 duplicates P-584 (resting MEG spectral), so they do not raise the H.1 count."
+    },
+    "dataset_families": [
+      "Sunshine Coast local cohort, Australia (P-518)",
+      "University of Delaware single-site cohort (P-478)",
+      "PREVENT-AD (P-584, preprint)",
+      "NACC (P-581)",
+      "Chongqing Medical University First Affiliated Hospital CSVD cohort (P-651; dataset-new, method family = diffusion, as P-581)",
+      "BioFIND, Cambridge + Madrid (P-488; dataset-new, method family = MEG, as P-584; P-577 is its duplicate stub)"
+    ]
+  },
+  "summary": "Skeptic, VF-20. I re-read all 11 candidates from their PDF extracts. STATED form (Table A1: volume a late and insufficient marker; other measures detect MCI or predict conversion where volume is preserved): no candidate reaches 'yes'. Every candidate either had discriminative volume or did not run a like-for-like volume test. The stated count stays at P-518 alone, so it fails. NARROWED form (round 20): two candidates survive as 'yes'. P-651 (Chongqing CSVD cohort): FISO separated CSVD-MCI from CSVD-NCI where hippocampal volume did not. This is thin: the secure difference is one ROI (left CA1-3) per section 4.3, which corrects the verifier's bilateral reading; the pairwise statistics are in the supplement; and CSF partial volume and WMH are possible confounds. P-488 (BioFIND): MEG added to the hippocampal ratio; the in-sample result is inflated by post-hoc cluster choice, but the non-circular cross-validated CPI analysis also shows complementarity. I refuted four verdicts: P-592 narrowed yes->partly (sample selected for atrophy, asymmetric correction, no joint model); P-531 partly->no in both forms (one uncorrected ROI, implausible df and eta2, no baseline prediction); P-538 narrowed partly->no (for MCI vs SCD the signal is behavioural commission errors, not P300b); P-224 narrowed partly->no (volume AUC higher, no increment, peripheral measure). Tally under H.1 (dataset AND method family distinct): the narrowed form is sustained by P-518, P-478, P-584 and P-581 (four families, four datasets), as round 20 found. The surviving candidates add datasets but not method families: P-651 is diffusion, like P-581; P-488 is MEG, like P-584. By dataset family alone the narrowed count would be 6. Operator decisions that could change the record: (a) P-488 could replace the preprint P-584 as the MEG-family supporter; (b) splitting hippocampal NODDI from cortical diffusivity would let P-651 add a family; (c) accepting a visual MTA rating as a stand-in for hippocampal volume would move P-1107 (SPECT perfusion, the only candidate with a new family) to yes. Never double-count P-577 with P-488 or P-1124 with P-592. All verdicts are model readings, pending operator review."
+}

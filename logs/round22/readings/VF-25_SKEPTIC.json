@@ -1,0 +1,123 @@
+{
+ "vf": "VF-25",
+ "role": "skeptic",
+ "round": 22,
+ "date": "2026-09-29",
+ "status": "candidate / pending_human_review (model reading under the operator's round-22 scope decision; not a gate decision; no review or acceptance field is written)",
+ "statement_tested": "VF-25 (reworded, BRIEF_R22.md): Loading the system reveals MCI where the unloaded or static counterpart does not. Within the same study, a measure taken under a more demanding condition (for example dual-task or curved-path walking, peripheral-attention reaction time, or task-evoked responses), or a microstructural index of a structure (for example diffusion measures), separates MCI from a non-impaired comparator. The same measure under the simpler condition, or the corresponding volume, does not.",
+ "refuted_semantics": "refuted = true when the verifier's verdict does not survive the skeptic's reading of the source text (it is downgraded). For verifier 'no' verdicts the skeptic did not try to upgrade; refuted = false means the 'no' stands.",
+ "verdicts": [
+  {
+   "paper": "P-1082",
+   "verifier": "yes",
+   "refuted": false,
+   "final": "yes",
+   "independent": true,
+   "reason": "Upheld from the PDF. The same 55 participants walked a 10 m straight path and a 10 m oval path, three trials each ('For each participant, three trials were conducted on both straight and curved paths', p.3). Table 2 (p.6), same marker under the two conditions: average velocity straight 50.13 +/- 27.92 vs 47.39 +/- 9.80 cm/s, p = 0.780, curve 45.90 +/- 8.89 vs 39.27 +/- 10.09, p = 0.007; cadence p = 0.247 vs 0.018; step velocity mean p = 0.574 vs < 0.001; stride velocity mean p = 0.177 vs < 0.001; step and stride velocity medians p = 0.139 and 0.165 vs < 0.001. Step time, stride time, double-support time and step width (mean and median) follow the same pattern. The authors state the null themselves: 'we noted no significant deviations between MCI and HC groups during straight walking when assessing macro gait markers such as average velocity and cadence ... curved walking illuminated notable disparities between our study groups, even for these macro gait markers' (p.11). Recomputing pooled t-tests from the printed means and SDs reproduces the pattern (straight velocity p about 0.64, curve velocity p about 0.012, curve step velocity p about 0.0001). Comparator: HC 'underwent a similar evaluation but were without any cognitive impairment' (p.2); MoCA 27.13 vs 22.76. Every refutation test fails: the unloaded null is the paper's own statistic, the participants are the same, and the loaded separation is a Results/Table 2 result, not an interpretation. Caveats, not disqualifiers under the round-22 marker-by-marker rule: (1) straight walking separates the groups on 20 of 50 other markers (step length mean p = 0.003, stride length mean p = 0.006) and gives AUC 0.78 (p.10); (2) about 100 uncorrected tests; curve velocity (p = 0.007) would not survive a Bonferroni correction, the curve step and stride velocity results (p < 0.001) might; (3) the adjustment is ambiguous: Methods adjust for BMI, education and GDS (p.3), the Table 2 text says 'adjusted for BMI' (p.6); (4) the HC straight-velocity SD of 27.92 is implausible, but the step and stride velocity nulls carry the null on their own; (5) no condition x group test is printed for the named markers, and the 'significantly higher' curve AUC (0.83 vs 0.78) has no statistic; (6) groups differ on BMI, education and GDS; MCI diagnosed by IDAA work-up without biomarkers. Correction to the verifier's caveat (7): P-114's single-task walk was on the oval path, not a straight path ('a suitable distance from the oval path which was approximately 10 m long ... Individuals were asked to walk at their usual speed regardless of the designated oval path', recovered extract .kilo/worktrees/yellow-macaw/pdf_extract_114.txt, p.3). P-114's single-task velocity separation (55.83 vs 47.26 cm/s, p < 0.001) is therefore a curved-path result, consistent with P-1082's curve arm, and does not cut against P-1082's straight-walking null. P-114 shares the first author, the IDAA recruitment route and the Semnan University of Medical Sciences ethics committee: one dataset family. P-114 is not a supporter (round 21: no), so the count is unaffected."
+  },
+  {
+   "paper": "P-1163",
+   "verifier": "yes",
+   "refuted": false,
+   "final": "yes",
+   "independent": true,
+   "reason": "Upheld from the PDF. Same 74 participants did both tasks (p.3). 'For central reaction time (C-RT), the HC group had a mean of 554.4 ms (SD = 46.6), and the MCI group had a mean of 568.5 ms (SD = 52.6). This difference was not statistically significant (t = -1.22, p = 0.228, Cohen's d = -0.29). In contrast, for Useful-Field Reaction Time (U-RT), the HC group recorded a mean of 580.3 ms (SD = 44.9), while the MCI group had a significantly slower mean of 638.6 ms (SD = 38.4) ... (t = -5.84, p < 0.001, Cohen's d = -1.17)' (p.4). The dissociation is formally tested: 'a significant Task x Group interaction, F(1,72) = 19.09, p < 0.001, etap2 = 0.210' (p.4), and the group effect survives C-RT as a covariate (F(1,72) = 37.94, p < 0.001). Recomputation from the printed means reproduces both tests. Comparator: HC with MoCA-J >= 26 and MMSE-J 28-30 (p.2); age 72.2 vs 73.4, p = 0.12. The loaded condition is peripheral-attention RT, which the reworded statement names as an example. Refutation tests fail. Caveats: (1) fixed task order, central always first (p.3), so an order x group fatigue effect is not excluded by the interaction or the ANCOVA; the Discussion says time-on-task 'could not account for' the slowing (p.7) while Limitation 5 says 'we could not directly examine time-on-task effects' (p.7); (2) 20 vs 80 trials, and the Fig. 1 caption ('Each condition consisted of 20 trials', p.3) contradicts the Methods; (3) targets 20 cm off-centre at 1 m (about 11 deg), so eccentricity and sensory or oculomotor costs are not separated from attentional load; visual orienting frequency higher in MCI at trend level (p = 0.052); (4) groups defined only by MoCA-J/MMSE-J cut-offs, which the authors call provisional (p.7); care-facility residents, single site; (5) the C-RT null is a threshold null (d = -0.29), although the interaction test addresses this; (6) the AUC comparison with MoCA/MMSE is circular and is not used; (7) it is single-task peripheral detection, not a dual task; 'dual-task interference' is Discussion framing only. Independence: Kyoto Tachibana ethics 25-11; no shared site, authors or cohort with any supporter or candidate. Not a preprint (Sci Rep 16:2330)."
+  },
+  {
+   "paper": "P-665",
+   "verifier": "yes",
+   "refuted": false,
+   "final": "yes",
+   "independent": true,
+   "reason": "Upheld from the PDF. Table 3 (p.4): ST-TUG HC 17.60 +/- 2.89 vs MCI 17.29 +/- 2.34 s, T = 0.47, p = 0.64; DT-TUG 24.92 +/- 4.42 vs 29.23 +/- 8.02 s, T = -2.58, p = 0.012; DTC 0.45 vs 0.70, p = 0.014. Text: 'There was no significant difference in the execution time of single-task TUG test between the MCI and HC groups (p> 0.05), while a significant difference in the execution time of the dual-task paradigm was observed (T= -2.58, p= 0.012)' (p.4). Recomputation reproduces both tests. Comparator: HC meeting education-adjusted normal MMSE and MoCA cut-offs (p.2); age, BMI and education not different (Table 1, p.3). Same participants performed both conditions (p.3). Refutation tests fail. Caveats: (1) the dual-task time includes finishing the dialling ('The total time ... taken to complete the entire task (finishing dialing and sitting back on the chair)', p.3), so part of the loaded measure is the cognitive task itself; dialling accuracy 70.0% vs 86.7%, p > 0.05; (2) no group x condition interaction test, two separate t-tests; (3) small sample powered at 75%, stopwatch timing, no blinding reported; (4) the imaging half (surface area separates, thickness does not) is static vs static and irrelevant. SAME SAMPLE AS P-687 (same 30/30, identical demographics and TUG values, ethics [2021] 475-1): the Guangzhou sample counts once."
+  },
+  {
+   "paper": "P-687",
+   "verifier": "yes",
+   "refuted": false,
+   "final": "yes",
+   "independent": false,
+   "reason": "Upheld from the PDF, but NOT independent. 'There was no significant difference in the single task execution time between the MCI and HC groups (MCI: 17.29 +/- 2.34 s, HC: 17.60 +/- 2.89 s, t = 0.47, p = 0.643). However, a significant difference in the execution time of the dual-task paradigm was observed between the two groups (MCI: 29.23 +/- 8.02 s, HC: 24.92 +/- 4.42 s, t = -2.58, p = 0.012)' (p.4). Same ethics approval ('No. [2021]475-1', p.2), same department, identical TUG values and demographics as P-665: one sample reported in two papers. Whole GMV (p = 0.038) and parenchymal volume (p = 0.039) separate MCI from HC (p.4), but they are not the counterpart of the dual-task measure, so this is context only. It may stay on the supporter list as a same-sample report but adds no independent support."
+  },
+  {
+   "paper": "P-651",
+   "verifier": "yes",
+   "refuted": true,
+   "final": "partly",
+   "independent": true,
+   "reason": "Downgraded from yes to partly. What the source shows: against the CSVD-NCI arm (no complaints, CDR 0, MMSE >= 27; a cognitively non-impaired comparator), FISO in left CA1-3 separates CSVD-MCI while subfield volume, by the authors' account, does not: 'When comparing the MCI with the NCI, we did not observe significant differences in hippocampal volume, but significant changes were found in the FISO and NDI metrics in the left CA1-3 region' (Section 4.3, p.7). Why this is not a yes. (1) Against the study's other non-impaired comparator, the healthy-control arm (n = 57), the corresponding volume DOES separate: left CA1-3 volume F = 9.953, PFDR = 0.0048, CA4-DG F = 9.368, PFDR = 0.0048, with differences 'predominantly between patient groups and healthy controls' (Section 3.3, p.5). Under the round-22 rule ('If the static measure also separates the groups, the answer is no'), the dissociation therefore holds for one comparator only, the analogue of a subgroup-only dissociation. (2) The pairwise MCI-vs-NCI statistics for both measures are not in the source text; they are in Supplementary Material 2 (Tables 5 and 8), which is not available. The volume null rests on a Discussion sentence with no statistic. That same sentence claims an MCI-vs-NCI NDI difference that the Results show did not survive FDR (left CA1-3 NDI PFDR = 0.066, p.4), so the Discussion's pairwise claims are not held to the stated FDR threshold. (3) The Results claim FISO was 'consistently' significantly higher in CSVD-MCI than CSVD-NC, 'particularly in the left hemisphere subiculum (0.34 +/- 0.11 vs. 0.30 +/- 0.11 ...)' (p.4). Recomputing from those printed means gives MCI vs NCI t = 1.92, p = 0.057 unadjusted (Tukey-equivalent p about 0.09) for the left subiculum, which is not significant. Left CA1-3 (0.36 +/- 0.10 vs 0.32 +/- 0.07) gives t = 2.44, p = 0.017 (Tukey-equivalent p about 0.02), so the loaded separation against NCI is confined to left CA1-3 and is modest. The printed means are unadjusted, but age and education are balanced (Table 1), so ANCOVA adjustment should change little. (4) WMH burden is heavier in CSVD-MCI than CSVD-NCI (Fazekas p = 0.027, Table 1) and is not a covariate; the authors flag CSF partial-volume contamination of FISO at 2 mm (Section 4.5), so the FISO difference against NCI may track vascular load rather than cognitive status. (5) CSVD-MCI mean MMSE is 27.86 +/- 2.15 despite the MMSE 24-26 inclusion rule, and MMSE did not differ across groups (p = 0.089). What would make it yes: if the operator reads 'a non-impaired comparator' as satisfied by the CSVD-NCI arm alone and accepts the Discussion sentence as the pairwise volume result, P-651 is a yes (Chongqing CSVD cohort; NODDI method family). The source text as available does not show more than that."
+  },
+  {
+   "paper": "P-566",
+   "verifier": "partly",
+   "refuted": false,
+   "final": "partly",
+   "independent": true,
+   "reason": "Partly upheld from the tables; not raised, not lowered. CN vs EMCI: whole-WM f-index t = -6.822, p < 0.001 (Table 7, p.16); WM volume Dunn Z = 0.54, p = 1.00 (Table 8, p.16). Same participants (three CN and one EMCI lack structural images). CN vs LMCI: WM volume also separates (Z = 5.12, p < 0.001), so under the round-22 rule the dissociation holds only for the EMCI subgroup, hence partly. Further limits: GM volume (Z = 4.35) and CSF volume (Z = -3.92) separate CN vs EMCI; the succeeding index is the free-water fraction, while the tissue indices fw-FA, fw-AX and fw-RD all fail at whole-WM level (p = 0.904, 0.543, 0.676); the authors never state the dissociation and summarise the static side as separating ('Volumetric analyses revealed reduced white and gray matter volumes and increased CSF volumes in the MCI groups', p.17); the arms use different pipelines (ComBat plus ANCOVA/Tukey vs unadjusted Kruskal-Wallis/Dunn on percentage volumes); no interaction test. ADNI; would need an all-ADNI declaration only if other ADNI supporters were added."
+  },
+  {
+   "paper": "P-1425",
+   "verifier": "partly",
+   "refuted": false,
+   "final": "partly",
+   "independent": true,
+   "reason": "Partly upheld, at the boundary with no. In amyloid-negative MCI (n = 19) vs NC (n = 32), tract FA and MD differ in most JHU ROIs (Figure 2 superscript a, Bonferroni per the caption, p.5), while VBM grey-matter volume shows only 'an atrophy trend ... however, these changes did not reach statistical significance' (p.5); the authors state the split: 'significant WM damage in both Abeta-pos and Abeta-neg MCI groups, while notable GM atrophy was only observed in the Abeta-pos MCI group' (p.7). Two narrowings: (1) subgroup only; in amyloid-positive MCI, GM volume separates (bilateral hippocampus, left parahippocampus); (2) the static measure is voxelwise GM volume, not the corresponding volume of the WM tracts, which is never analysed, so the 'corresponding volume' element of the statement is not shown. The VBM null carries no statistic and is tested at a stricter threshold (voxelwise p < 0.001 then FWE) than the 20-ROI ANCOVA (FDR in Methods p.3, Bonferroni in the Figure 2 caption). No interaction test; not all NC had PET. If the operator reads 'corresponding volume' strictly, this is no; either way it does not count."
+  },
+  {
+   "paper": "P-661",
+   "verifier": "no",
+   "refuted": false,
+   "final": "no",
+   "independent": true,
+   "reason": "No stands (not re-tested for upgrade). Both groups are amnestic MCI (early n = 18 vs late n = 17): there is no non-impaired comparator, and the insensitive measure is behaviour on the same Go/NoGo task, not a simpler condition of the same EEG measure. Consistent with the round-20 reading."
+  },
+  {
+   "paper": "P-662",
+   "verifier": "no",
+   "refuted": false,
+   "final": "no",
+   "independent": true,
+   "reason": "No stands (not re-tested for upgrade). The LPP group effects are on difference scores (Rea minus Neg) with no per-condition counterpart that fails; a spot-check of the source shows the simpler-condition behavioural measure itself separates the groups (arousal in the Neut condition, t = 2.369, p = .020, p.5), and the LPP window-3 result is marginal (p = .064), uncorrected."
+  },
+  {
+   "paper": "P-666",
+   "verifier": "no",
+   "refuted": false,
+   "final": "no",
+   "independent": true,
+   "reason": "No stands (not re-tested for upgrade). No volumetry or other macrostructural index is analysed; every measure is a diffusion-tensor parameter from the same acquisition, so only the sensitivity half is shown. Consistent with the round-20 reading."
+  }
+ ],
+ "tally": {
+  "rule": "Only 'yes' counts toward the three; 'partly' does not. A dataset family counts once (P-665 and P-687 are one Guangzhou sample).",
+  "independent_yes": ["P-1082", "P-1163", "P-665/P-687"],
+  "dataset_families": [
+   "IDAA clients and volunteers, Iran; ethics Semnan University of Medical Sciences IR.SEMUMS.REC.1398.237 (P-1082; P-114, not a supporter, is the same family)",
+   "Older adults in medical and nursing care facilities, Kyoto/Osaka/Nara, Japan; ethics Kyoto Tachibana University 25-11 (P-1163)",
+   "Department of Rehabilitation Medicine, First Affiliated Hospital of Sun Yat-sen University, Guangzhou, 30 MCI / 30 HC; ethics [2021] 475-1 (P-665 and P-687, one sample)"
+  ],
+  "method_families": [
+   "Instrumented markerless gait analysis (Kinect v2, 50 spatiotemporal markers), single-task straight vs curved-path 10 m walking (P-1082)",
+   "Clinical stopwatch Timed Up and Go, single-task vs dual-task with phone dialling (P-665/P-687)",
+   "Computerised visual reaction time with head-mounted eye tracking, central vs peripheral (UFOV) targets (P-1163)"
+  ],
+  "method_family_caveat": "P-1082 and P-665/P-687 are both loaded walking tests analysed by per-condition two-group tests. They differ in instrument (Kinect spatiotemporal markers vs stopwatch total time), load (path geometry vs concurrent cognitive task) and outcome. The reworded statement lists 'dual-task or curved-path walking' as separate examples. If the operator treats them as one method family, the yes set has two method families (loaded walking; peripheral-attention RT) and Appendix H.1's method-family requirement is met only if P-651 is accepted as yes (adding NODDI diffusion).",
+  "reaches_three": true,
+  "reaches_three_condition": "Three distinct dataset families among the yes supporters. Method-family independence holds if curved-path walking (P-1082) and dual-task TUG (P-665/P-687) are distinct method families; this is the operator's call."
+ },
+ "proposed_supporter_list": ["P-665", "P-687", "P-1082", "P-1163"],
+ "proposed_supporter_note": "P-687 is the same sample as P-665 and counts once; three independent supporters.",
+ "supporters_to_remove": ["P-651", "P-661", "P-662", "P-666"],
+ "supporters_to_remove_note": "P-651 is removed as a supporter of the statement as written (partly: the dissociation holds only against the CSVD-NCI arm, and the pairwise statistics are not in the source text). It is retained if the operator accepts the CSVD-NCI arm as sufficient. The review's Section 4.2 currently opens with P-651 and cites P-661, P-662 and P-666 as supporting cases, so the prose needs revision whichever way P-651 is decided.",
+ "new_supporters_for_rob": [
+  {
+   "paper": "P-1082",
+   "cited_result": "Table 2 (p.6), 30 HC vs 25 MCI, same participants, three trials per path: single-task straight 10 m walking average velocity 50.13 +/- 27.92 vs 47.39 +/- 9.80 cm/s, p = 0.780 (step velocity mean p = 0.574, stride velocity mean p = 0.177, cadence p = 0.247), against curved (oval) 10 m walking average velocity 45.90 +/- 8.89 vs 39.27 +/- 10.09 cm/s, p = 0.007 (step velocity mean p < 0.001, stride velocity mean p < 0.001, cadence p = 0.018)."
+  },
+  {
+   "paper": "P-1163",
+   "cited_result": "Results (p.4), 43 HC vs 31 MCI: central reaction time 554.4 +/- 46.6 vs 568.5 +/- 52.6 ms, t = -1.22, p = 0.228, d = -0.29; UFOV reaction time 580.3 +/- 44.9 vs 638.6 +/- 38.4 ms, t = -5.84, p < 0.001, d = -1.17; Task x Group interaction F(1,72) = 19.09, p < 0.001, partial eta squared 0.210."
+  }
+ ],
+ "summary": "Of the seven verifier yes/partly verdicts, six survive and one is downgraded. P-1082 (curve vs straight walking velocity), P-1163 (UFOV vs central RT, interaction tested) and P-665/P-687 (dual vs single-task TUG, one sample) are yes. P-651 drops from yes to partly: subfield volume separates CSVD-MCI from the healthy-control arm, the MCI-vs-NCI volume null is a Discussion sentence with the statistics in an unavailable supplement, and the printed means do not support the claimed left-subiculum FISO difference against NCI. P-566 and P-1425 stay partly (subgroup only; P-1425 also lacks the corresponding volume). P-661, P-662 and P-666 stay no. Correction: P-114's single-task walk was on the oval path, so it does not cut against P-1082's straight-walking null. Independent yes: three dataset families (IDAA Iran, Kyoto Japan, Guangzhou China), so the reworded VF-25 reaches three, provided the operator treats curved-path walking and dual-task TUG as distinct method families."
+}

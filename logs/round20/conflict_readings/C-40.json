@@ -1,0 +1,84 @@
+{
+ "id": "C-40",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-115",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack file pdf/P-115.txt is Seifallahi et al., 'Detection of mild cognitive Impairment from gait using Adaptive Neuro-Fuzzy Inference system' (BSPC 71 (2022) 103195), which is P-114's paper. The paper the record means (claim '79% Acc', registry row 'Diffusion preprocessing, tensor/kurtosis feature extraction, SER/STT transfer strategies, balanced random forest', ADNI; summaries.md header 1-s2.0-S1746809422004092) is Rallabandi & Seetharaman, 'Classification of cognitively normal controls, mild cognitive impairment and Alzheimer's disease using transfer learning approach', BSPC 79 (2023) 104092. It is not in the pack; I extracted it with PyMuPDF from the repository PDF downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809422005547-main.pdf (DOI printed on page 1) to scratchpad r20/conf/tlss_P115_true.txt and read it in full. The pack file was also read in full.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-14",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multi-scale enhanced graph convolutional network for mild cognitive impairment detection (Lei et al., Pattern Recognition 134 (2023) 109106)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-115": "ADNI diffusion MRI (44 CN, 84 MCI, 22 AD after exclusions), tensor (TFA, TMD) and kurtosis (KFA, KMD) white-matter indices, transfer-learning balanced random forest (SER/STT/MIX), 5-fold CV. Best (MIX_BRF, kurtosis source, tensor target): THREE-CLASS CN/MCI/AD overall (balanced) accuracy 0.79, specificity 0.81, sensitivity 0.78, F1 0.70, geometric mean 0.78; AUC 0.81. Pairwise accuracies CN vs AD 0.96, CN vs MCI 0.72, AD vs MCI 0.70.",
+  "P-14": "ADNI rs-fMRI + DTI connectivity (77 EMCI, 40 LMCI, 67 NC), LWCC features plus age/sex population graph, multi-scale enhanced GCN, leave-one-out CV. Fused-data accuracies: EMCI vs NC 85.42%, LMCI vs NC 93.46%, LMCI vs EMCI 92.31%, three-class LMCI/EMCI/NC 83.11%. The abstract's 'mean classification accuracy of 90.39%' equals the average of the three binary tasks ((85.42+93.46+92.31)/3 = 90.40), one of which (LMCI vs EMCI) is not an MCI-detection contrast."
+ },
+ "quantity_a": "Three-class CN vs MCI vs AD balanced accuracy of a transfer-learning balanced random forest on DTI/DKI white-matter indices, ADNI, 5-fold CV",
+ "quantity_b": "Average accuracy over three binary tasks (EMCI vs NC, LMCI vs NC, LMCI vs EMCI) of a GCN on fused rs-fMRI + DTI connectivity, ADNI, leave-one-out CV",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The closest like-for-like figures are also not in conflict as the rule reads it: P-115's pairwise CN vs MCI accuracy 0.72 pools EMCI and LMCI, while P-14 splits them (85.42% EMCI vs NC, 93.46% LMCI vs NC); the three-class figures use different classes (CN/MCI/AD vs NC/EMCI/LMCI). Neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch: P-115's 0.79 is a three-class CN/MCI/AD result (the registry codes P-115 as T3); P-14's 90.39% is a cross-task average including LMCI vs EMCI",
+  "dataset_family": "match: both ADNI (recorded as possible subject overlap, i.e. non-independence)",
+  "validation_tier": "match: both internal cross-validation (5-fold vs leave-one-out), no external cohort",
+  "modality_family": "partial mismatch: P-115 diffusion MRI only; P-14's headline figures fuse diffusion with resting-state fMRI (its DTI-only arm gives EMCI vs NC 81.94%)"
+ },
+ "endpoint_and_metric": "incompatible: three-class balanced accuracy vs an average of binary accuracies over differently defined classes",
+ "performance_validity": "flag does not apply: no contested value reaches 0.97 (P-115's CN vs AD 0.96 is not the contested figure and is not MCI detection).",
+ "independence": "Both draw on ADNI, so participants may overlap; recorded as non-independence, not disqualifying. Different author groups.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-115's 0.79 is a three-class CN/MCI/AD balanced accuracy, not a T1 MCI-detection accuracy, so the record's 'on T1' is wrong.",
+  "P-14's 90.39% is a mean over three binary tasks, one of which (LMCI vs EMCI) separates two MCI stages rather than detecting MCI, so it is not one estimand.",
+  "The class definitions differ even at the closest match: P-115 pools MCI (CN vs MCI 0.72) and P-14 splits EMCI and LMCI (85.42% and 93.46% against NC).",
+  "The input representation differs: diffusion-only tract indices vs fused rs-fMRI plus DTI connectivity embedded in a population graph with age and sex."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-115",
+   "page": 1,
+   "quote": "Transfer learning model using balanced random forest classifier was able to classify and predict all the groups with an overall accuracy about 0.79 using ensemble of SER and STT forests rather than individual algorithms (SER and STT)."
+  },
+  {
+   "paper": "P-115",
+   "page": 1,
+   "quote": "the proposed model using kurtosis indices as source model classified and predicted with accuracies of 0.96, 0.72 and 0.7 in classifying CN vs AD, CN vs MCI and AD vs MCI respectively."
+  },
+  {
+   "paper": "P-115",
+   "page": 5,
+   "quote": "Balanced accuracy of 0.79 and geometric mean of 0.78 using BRF classifier was obtained for kurtosis indices as source model and tensor indices as target"
+  },
+  {
+   "paper": "P-14",
+   "page": 1,
+   "quote": "with a mean classification accuracy of 90.39% in the detection tasks."
+  },
+  {
+   "paper": "P-14",
+   "page": 5,
+   "quote": "In the four classification tasks, our proposed method has the best mean accuracy of 85.42%, 93.46%, and 92.31%, 83.11% respectively."
+  },
+  {
+   "paper": "P-14",
+   "page": 4,
+   "quote": "40 late mild cognitive impairment (LMCI) patients, 77 early mild cognitive impairment (EMCI) patients, and 67 normal controls (NC) are obtained from the ADNI dataset"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-115: 79% Acc on T1' mislabels a three-class CN/MCI/AD balanced accuracy as T1.",
+  "claim_b 'P-14: 90.39% on T1' presents a cross-task average (including LMCI vs EMCI) as a single T1 result.",
+  "The pack's P-115 PDF (paper_pdf_map.json, 'formula-unverified') is P-114's gait paper; the correct P-115 PDF is 1-s2.0-S1746809422005547-main.pdf (DOI 10.1016/j.bspc.2022.104092), not the S1746809422004092 file named in the summaries.md header.",
+  "The registry row for P-115 gives Best_Metric 'not reported' although the paper reports 0.79 balanced accuracy and 0.81 AUC.",
+  "task_equal='Yes' is wrong."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers: neither reports a pooled-MCI vs CN accuracy on the same inputs as the other."
+}

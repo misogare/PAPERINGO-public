@@ -1,0 +1,81 @@
+{
+ "id": "C-83",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-125",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Tortuosity and discrete compactness biomarkers for machine learning-based classification of mild cognitive impairment (Torres Guzman et al., Biomed Signal Process Control 2026)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-66",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Automated classification of Alzheimer's disease, mild cognitive impairment, and cognitively normal patients using 3D convolutional neural network and radiomic features from T1-weighted brain MRI: A comparative study on detection accuracy (Zarei et al., Clinical Imaging 2024)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-125": "MCI vs HC, ADNI 1.5T, 74 subjects (37/37), 8 amygdala morphometric features (volume, normalised volume, discrete compactness, tortuosity). Abstract: test accuracy 82.14%. Results/Table 6: mean test accuracy 80.00 +/-2.43 (RF), 79.29 (SVM), 77.86 (KNN), 80.00 (ANN); test AUC 85.71-90.31%. 60/40 subject split, about 30 test subjects.",
+  "P-66": "MCI vs CN, ADNI, 200 MCI + 200 CN (948 + 853 images), hippocampus + amygdala ROIs, 1746 radiomic features per ROI fused with a 3D CNN, plus age/sex: ACC 72.7 +/-3.3%, AUC 80 (Table 6). Radiomics alone 71.6%; CNN alone 69.0%; amygdala-only fusion 70.0%. The train/test split is at image level (80/20 of images)."
+ },
+ "quantity_a": "Test accuracy for MCI vs HC in ADNI from 8 hand-crafted amygdala shape/volume features (RF/SVM/KNN/ANN), n=74, subject-level hold-out",
+ "quantity_b": "Test accuracy for MCI vs CN in ADNI from hippocampus+amygdala radiomics (4 x 1746 features) fused with 3D-CNN features and age/sex, n=400 subjects / 1801 images, image-level split",
+ "same_quantity": false,
+ "incompatible_if_same": "No. These are two different predictor sets each reporting a different score, and neither paper claims an ordering the other refutes. P-125's test set is about 28-30 subjects, so the binomial standard error of its accuracy is about 7-8 points, and 72.7% lies within that uncertainty of 80%.",
+ "gates": {
+  "task": "match: both MCI vs CN/HC (T1). P-66's registry row is coded T3, but the binary MCI-vs-CN result exists.",
+  "dataset_family": "match: both ADNI (non-independence possible)",
+  "validation_tier": "match nominally (both internal, V2). Split units differ: P-125 splits by subject; P-66 splits images, with multiple images per subject.",
+  "modality_family": "match: T1 structural MRI"
+ },
+ "endpoint_and_metric": "compatible metric (accuracy, same comparison). The predictor set and input representation differ: 8 amygdala morphometric scalars vs thousands of hippocampal+amygdala radiomic features plus CNN features plus demographics.",
+ "performance_validity": "flag does not apply: no result at or above 0.97 (P-125 best test AUC 90.31%; P-66 AUC 80)",
+ "independence": "Both use ADNI, so subject overlap is possible. No shared authors (Mexico vs Iran/USA groups).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two accuracies come from different predictor sets and input representations (8 amygdala shape/volume features vs radiomics+CNN on two ROIs). This is the same substrate difference that led C-80 to be reclassified as documented incommensurability.",
+  "P-66 splits its data by images rather than subjects, so its test accuracy is not the same estimand as P-125's subject-level hold-out.",
+  "Even read as one quantity, the two values are not incompatible given P-125's roughly 30-subject test set, and neither paper claims the ordering the other would refute."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-125",
+   "page": 1,
+   "quote": "yielding a test accuracy of 82.14 %, area under the curve values between 88.27 % and 91.33 %"
+  },
+  {
+   "paper": "P-125",
+   "page": 9,
+   "quote": "The mean test accuracy was 80.00 \u00b1 2.43 %, 79.29 \u00b1 5.78 %, 77.86 \u00b1 3.71 % and 80.00 \u00b1 3.97 % for the RF, SVM, KNN and ANN models respectively."
+  },
+  {
+   "paper": "P-125",
+   "page": 8,
+   "quote": "used for training were V, VN, DC, and TR for both hemispheres of the amygdala, for a total of 8 features."
+  },
+  {
+   "paper": "P-66",
+   "page": 1,
+   "quote": "In the term of MCI vs CN, radiomic- based algorithm alone obtained ACC of 71.6 % and AUC of 77.8, CNN-based algorithm obtained ACC of 69 % and AUC of 75 and their fusion showed ACC of 72.7 % and AUC of 80."
+  },
+  {
+   "paper": "P-66",
+   "page": 3,
+   "quote": "A total of 1746 features have been extracted from each ROI region"
+  },
+  {
+   "paper": "P-66",
+   "page": 5,
+   "quote": "randomly dividing the MRI data for each classification dataset into a sizeable training and validation set (80 % of images) and a testing set (20 % of images)."
+  }
+ ],
+ "record_defects": [
+  "claim_a 82.14% is the abstract figure only. P-125's Results and Table 6 give a best mean test accuracy of 80.00%, and 82.14% does not appear in its results tables.",
+  "resolution_note 'Metric type unclear: Acc / Unknown' is wrong: both values are accuracy.",
+  "P-66's registry row (T3, Best_Metric AUC 0.80) differs from the record's binary claim. The record's 72.7% MCI-vs-CN value is correct against the PDF."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "The same feature set and the same subject-level protocol applied in both studies, with non-overlapping uncertainty. Neither document provides this."
+}

@@ -1,0 +1,77 @@
+{
+ "id": "C-170",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-158",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Machine Learning-Based Prediction Models for Cognitive Decline Progression: A Comparative Study in Multilingual Settings Using Speech Analysis (Ceyhan, Bek, Onal-Suzek, 2024)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-58",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Cross-lingual detection of mild cognitive impairment based on temporal parameters of spontaneous speech (Gosztolya et al., Computer Speech & Language 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-158": "ADReSS AD vs non-AD, acoustic features, random forest: 95% accuracy in 10-fold CV over speed-augmented segments; 73% on the ADReSS held-out test set. MUDC (60 Turkish patients, all from a dementia outpatient clinic, described as MCI, stratified by MMSE): MLP 94%; cross-language 72% and 76%.",
+  "P-58": "MCI vs healthy controls (Petersen criteria), 15 ASR-derived temporal speech parameters, SVM with speaker-wise leave-one-out nested CV, metrics at equal error rate: English (n=33: 14 MCI/19 HC) accuracy 84.8%, AUC 0.932; Hungarian (n=33: 13 MCI/20 HC) accuracy 75.8%, AUC 0.727 (filler-only 90.9%, AUC 0.912); cross-lingual 78.8%/75.8%; overall range 67-92%."
+ },
+ "quantity_a": "Accuracy for Alzheimer's dementia vs non-AD from acoustic features of Cookie Theft descriptions (ADReSS), segment-augmented 10-fold CV.",
+ "quantity_b": "Speaker-level accuracy (at EER threshold) for MCI vs healthy controls from temporal/hesitation parameters of 'describe your previous day' monologues recorded over the phone (English New York and Hungarian Szeged samples).",
+ "same_quantity": false,
+ "incompatible_if_same": "No: P-58's reported range (67-92%) reaches 92% on a 33-speaker sample, and P-158's held-out ADReSS test accuracy (73%) sits inside that range; nothing here excludes the other.",
+ "gates": {
+  "task": "mismatch: AD vs non-AD (P-158's 95%) vs MCI vs HC (P-58). P-158's MUDC 94% is also not MCI vs HC: all MUDC participants are clinic patients described as MCI, stratified by MMSE bands.",
+  "dataset_family": "mismatch: ADReSS/Pitt (and MUDC) vs the New York/Szeged MCI-HC recordings.",
+  "validation_tier": "nominally internal for both; P-158 CV over augmented segments of the same recordings, P-58 speaker-wise nested leave-one-out.",
+  "modality_family": "speech family for both; input representation differs (spectral/MFCC acoustic features vs ASR-derived articulation-rate and pause parameters)."
+ },
+ "endpoint_and_metric": "incompatible: accuracy on different diagnostic contrasts; P-58 reports EER-thresholded accuracy and a range, not a single estimate.",
+ "performance_validity": "flag not tripped (95% < 0.97); P-158's 95% is a weak estimate (segment-level augmented CV, 73% on held-out test).",
+ "independence": "Distinct studies, datasets and authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-158's 95% accuracy is for Alzheimer's dementia vs non-AD speakers on ADReSS, while P-58's 67-92% is for MCI vs healthy controls, so the population behind the label differs.",
+  "The datasets, speech tasks (picture description vs phone monologue) and features (spectral acoustic vs temporal/pause parameters) differ, so the dataset gate fails and the input representation differs, with no waiver on record.",
+  "Even setting the estimand aside, the values overlap: P-58's range reaches 92%, and P-158's own held-out test accuracy is 73%."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-158",
+   "page": 2,
+   "quote": "it is a balanced dataset composed of cognitively normal (CN) patients and those suffering from Alzheimer's disease (AD)"
+  },
+  {
+   "paper": "P-158",
+   "page": 2,
+   "quote": "we repeated the same Cookie Theft picture exam in Turkish on 60 patients with mild cognitive impairment in the MUDC."
+  },
+  {
+   "paper": "P-158",
+   "page": 5,
+   "quote": "We achieved 73% accuracy for the labels (dementia or not)"
+  },
+  {
+   "paper": "P-58",
+   "page": 1,
+   "quote": "the language on which the ASR system was trained only slightly affects the MCI classification performance, because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."
+  },
+  {
+   "paper": "P-58",
+   "page": 6,
+   "quote": "we did not create separate training and test sets, but opted for speaker-wise cross-validation (CV)"
+  }
+ ],
+ "record_defects": [
+  "dataset_equal 'Yes' is wrong: ADReSS/MUDC (P-158) vs the New York/Szeged recordings (P-58).",
+  "modality_family 'speech_language' is correct, but both claims are labelled 'T1' although P-158's 95% is AD vs non-AD.",
+  "claim_b '67-92% range' is a span of accuracy, precision, recall and specificity across feature subsets, not one estimate; gap_magnitude 0.28 is computed from its lower end.",
+  "claim_a still cites P-276 (repointed to P-158)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-158 subject-level MCI-vs-healthy-control result would be needed; even then the values would have to fall outside P-58's reported range."
+}

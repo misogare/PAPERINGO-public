@@ -1,0 +1,83 @@
+{
+ "id": "C-225",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-244",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Identifying underlying patterns in Alzheimer's disease trajectory: a deep learning approach and Mendelian randomization analysis (Yi et al., eClinicalMedicine 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-353",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Longitudinal multi-modal data prediction model for mild cognitive impairment by deep survival analysis (Zhang et al., BMC Med Inform Decis Mak 2026, article in press)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-244": "Deep-AD survival clustering on baseline clinical plus FreeSurfer sMRI features, 5-fold CV in ADNI. AUC 0.802 is for CN-to-MCI at 3 years (0.876 at 5 years); for MCI-to-AD the AUCs are 0.914 at 3 years and 0.957 at 5 years (range 0.810-0.979 over 1-10 years); MCI-to-AD C-index 0.718; AIBL external C-index 0.752.",
+  "P-353": "tdCoxSNN on baseline demographics/APOE plus longitudinal neuropsychological (11 tests) and sMRI (116 AAL ROI) measures, 922 ADNI MCI, 20% held-out test set: cumulative/dynamic AUC 0.9089 +/- 0.01 at t = 1 year after landmark s = 1 year, MCI-to-AD."
+ },
+ "quantity_a": "The record's figure (0.802) is a time-dependent ROC-AUC for CN-to-MCI conversion at 3 years in cognitively normal ADNI participants (n = 587); P-244's MCI-to-AD 3-year AUC is 0.914.",
+ "quantity_b": "Cumulative/dynamic AUC for MCI-to-AD conversion within 1 year after a 1-year landmark, using longitudinal predictors accumulated to the landmark, ADNI MCI test set (n = 184).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. On the nearest comparable quantity (MCI-to-AD) P-244 reports 0.914 at 3 years and 0.810-0.979 across horizons, which brackets P-353's 0.909; the two agree rather than conflict.",
+ "gates": {
+  "task": "mismatch for the figure used: P-244's 0.802 is a CN-to-MCI transition, not T2 MCI-to-AD; P-244's MCI-to-AD arm is T2 and matches P-353.",
+  "dataset_family": "match: both ADNI (P-244 additionally AIBL external).",
+  "validation_tier": "P-244 5-fold CV plus AIBL external C-index; P-353 internal held-out test set only; AUCs compared are both internal (V2).",
+  "modality_family": "match in broad terms: both clinical/neuropsychological plus structural-MRI ROI features (P-244 baseline only; P-353 longitudinal)."
+ },
+ "endpoint_and_metric": "incompatible as recorded: different transition (CN-to-MCI vs MCI-to-AD) and horizon (3-year from baseline vs 1-year after a 1-year landmark), and time-dependent ROC-AUC vs cumulative/dynamic AUC on a landmarked dynamic model.",
+ "performance_validity": "flag does not apply: neither figure meets the ceiling test and both papers have n > 500; P-244's 0.957-0.979 long-horizon values are not the contested figures.",
+ "independence": "Shared cohort: both use ADNI MCI participants (non-independence recorded); no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim for P-244 misreads its paper: 0.802 is the 3-year CN-to-MCI AUC, not an MCI-to-AD (T2) result.",
+  "P-244's own MCI-to-AD AUC at 3 years is 0.914, essentially equal to P-353's 0.909, so on the comparable transition the papers agree.",
+  "Even setting the misreading aside, horizons and AUC constructions differ (3 years from baseline vs 1 year after a landmark with longitudinal inputs), so no incompatibility on one quantity is present."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-244",
+   "page": 1,
+   "quote": "AUC (CN\u2192MCI, 3 years 0.802, 5 years 0.876; MCI\u2192AD, 3 years 0.914, 5 years 0.957)"
+  },
+  {
+   "paper": "P-244",
+   "page": 3,
+   "quote": "The CN\u2192MCI dataset included 587 patients"
+  },
+  {
+   "paper": "P-244",
+   "page": 12,
+   "quote": "with an AUC of 0.708\u20130.886 and 0.810\u20130.979 on the CN\u2192MCI and MCI\u2192AD cohorts, respectively."
+  },
+  {
+   "paper": "P-353",
+   "page": 3,
+   "quote": "The predictive performance was evaluated using a test set at time intervals t =1, 2, 3, 4 years from the landmark time s = 1."
+  },
+  {
+   "paper": "P-353",
+   "page": 3,
+   "quote": "attaining cdAUC values of 0.9089\u00b10.01 alongside BS of 0.1651\u00b10.01 with t =1 year on the test set"
+  },
+  {
+   "paper": "P-353",
+   "page": 17,
+   "quote": "Across all models, predictive performance declined as the prediction horizon increased."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-244: AUC 0.802 on T2' is wrong: 0.802 is the CN-to-MCI 3-year AUC; P-244's MCI-to-AD 3-year AUC is 0.914.",
+  "P-244's registry Best_Metric 'AUC 0.802' and Sample_N_Approx 587 both come from the CN-to-MCI dataset, although the row is coded T2 (MCI-to-AD dataset n = 783).",
+  "modality_family 'clinical_survey' understates both papers, which model sMRI ROI features with clinical variables.",
+  "P-353's 'AUC 0.91' is a cumulative/dynamic AUC at a 1-year horizon after a 1-year landmark, not a baseline ROC-AUC; the record carries no horizon.",
+  "The resolution_note still names P-320 (repointed to P-81) and its bridging list documents score variance, not a separating condition."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing on these two documents: the like-for-like MCI-to-AD figures (0.914 vs 0.909) agree. A conflict would need a P-244 MCI-to-AD AUC at a matched 1-year landmarked horizon far below P-353's, which P-244 does not report."
+}

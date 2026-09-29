@@ -1,0 +1,65 @@
+{
+ "id": "VF-12",
+ "supporters": [
+  {
+   "paper": "P-6",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "The results of our comprehensive model evaluation using the I-CONECT dataset show that our framework can distinguish between MCI and NC with an average area under the curve of 84.75%.",
+   "page": "1",
+   "note": "Pourramezan Fard et al. 2024 (the record's note calls this I-CONECT paper 'P-11'; the supporter list has P-6, which is this study). Transformer on ASR transcripts of home video-chat conversations, 68 participants (34 MCI, 34 NC), subject-level 5-fold CV: accuracy 85.16%, AUC 84.75%; over 25 repeated fold configurations mean AUC 79.94% (Table 8, p. 9). Single cohort, internal validation only."
+  },
+  {
+   "paper": "P-158",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "Both datasets are composed of cognitively normal (CN) and AD patients balanced in terms of age and sex along with their written MMSE scores. [...] We achieved 73% accuracy for the labels (dementia or not)",
+   "page": "2; 5",
+   "note": "Ceyhan, Bek and Onal-Suzek 2024. Searched for an MCI-versus-normal classification: none is reported. ADReSS is AD versus non-AD; the Turkish MUDC sample (n=60) is described once as 'patients with mild cognitive impairment' but spans MMSE >25 to <20 (Table 2) and is described as CN and AD; the classification label is 'dementia or not'. Accuracies of 94-95% come from 10-fold CV on speed-perturbed segments of the same recordings (augmentation before CV); ADReSS held-out test 73%, cross-language 72-76%. Detects dementia/AD from acoustic speech, not MCI."
+  },
+  {
+   "paper": "P-102",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "We develop a deep learning framework based on the pre-trained Bidirectional Encoder Representations from Transformers (BERT) model using unstructured clinical notes from electronic health records (EHRs) to predict the risk of disease progression from Mild Cognitive Impairment (MCI) to Alzheimer's Disease (AD).",
+   "page": "1",
+   "note": "Mao et al. 2023, AD-BERT. The task is MCI-to-AD progression among patients already coded MCI (NMEDW n=3657, AUC 0.849; WCM n=2563, AUC 0.883), with ICD-code labels. It does not detect MCI, and clinician-written progress notes are clinical data, not a speech, language or conversational biomarker of the patient. Wrong outcome and wrong data type for this statement."
+  },
+  {
+   "paper": "P-58",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "For the English subjects, we achieved high classification scores (in the range 80.0-85.7%, an Area-Under-Curve score of 0.932 and minCllr = 0.305), while for Hungarian, the classification performance was acceptable (with classification metrics falling into the range 66.7-76.9% and with an AUC value of 0.727).",
+   "page": "11",
+   "note": "Gosztolya et al. 2021. Spontaneous speech (describe previous day, recorded over a mobile phone) from two memory clinics, New York (14 MCI, 19 HC) and Szeged (13 MCI, 20 HC); Petersen criteria. Temporal parameters from a phone-level ASR, SVM with speaker-wise nested leave-one-out CV within each language; cross-lingual ASR AUC 0.835 (English) and 0.819 (Hungarian). Two independent small clinic samples within one paper; no model is trained on one cohort and tested on the other."
+  },
+  {
+   "paper": "P-352",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "Table 7 reports the results of our five attempts. Our proposed method achieves 45.1% balanced accuracy and 2.578 root mean square error.",
+   "page": "7",
+   "note": "Hoang et al. 2024, TAUKADIAL challenge (English and Chinese picture descriptions; 129 training participants, 74 MCI/55 NC). The headline 78.2% balanced accuracy is from repeated 90/10 random splits of the training data after outlier removal that drops subjects the model misclassifies with high confidence; on the challenge's held-out test set (40 subjects) the submitted models reach 45.1% balanced accuracy, below chance. The only independent evaluation fails, so this paper is counter-evidence to detection generalising, not support."
+  },
+  {
+   "paper": "P-884",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "The average AUC (i.e., OvR discrimination) was 0.81. Among the three OvR AUCs, the highest was 0.95 when discriminating between HE and the other classes (i.e., MCI and AD/D). [...] predicting HE and the other classes (i.e., MCI and AD/D) achieved an accuracy of 93.8%",
+   "page": "4",
+   "note": "Mizuguchi et al. 2023, two Japanese hospitals, 195 recordings from 150 patients, sustained /a/ and /pa-ta-ka/ (non-linguistic acoustic features), LightGBM, participant-grouped 5-fold CV. Groups are defined by MoCA-J/HDS-R/MMSE cut-offs, not clinical diagnosis; the healthy class has only 13 recordings (Table 1). The 93.8% separates healthy from MCI plus dementia combined; an MCI-specific result is not given in the text (3-class accuracy 66.7%). Supports acoustic detection of cognitive impairment broadly, not MCI versus normal specifically. Not conversational or spontaneous speech."
+  },
+  {
+   "paper": "P-938",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "Finally, our exploratory analyses showed moderate accuracy rates for the speech-based classifiers in the pairwise contrasts, with higher performance for the AD-HC contrast (74%) compared to the MCI-HC contrast (63%).",
+   "page": "14",
+   "note": "De Looze et al. 2021, St James's Hospital / TCD, collaborative referential task with a caregiver. Of 80 recruited, the analysed sample is 32 (10 AD, 10 MCI, 12 HC; Table 1, p. 10), not N=80 as the ledger note states. MCI-HC cross-validated accuracy 62.50-63.41% across trials (Table 6); the 82-84% cited in the ledger is the three-class figure, not MCI detection. Supports only a weak, above-chance MCI-HC discrimination from conversational speech timing in a very small sample."
+  }
+ ],
+ "yes_count": 2,
+ "verdict": "holds_narrowed",
+ "narrowed_wording": "Speech and language features (conversational transcripts, spontaneous-speech timing, conversational turn-taking timing) discriminate MCI from normal cognition better than chance in several small, separately recruited single-site cohorts (I-CONECT; New York and Szeged memory clinics; Dublin), with internally cross-validated AUC 0.73-0.93 in two studies and about 63% accuracy in a third; no study validates an MCI model on an independent cohort, and the one held-out challenge test in the set fell to chance.",
+ "reasoning": "Seven documents, all the studies the ledger means. Two answer yes as stated (P-6, P-58: MCI versus normal from conversational or spontaneous speech, AUC 0.85 and 0.93/0.73). Three do not support it: P-158 classifies dementia/AD, not MCI; P-102 predicts MCI-to-AD progression from clinicians' EHR notes, a different outcome and not a behavioural biomarker; P-352's only independent test is 45.1% balanced accuracy, which cuts against generalisation. Two support narrower forms: P-884 separates healthy from MCI-plus-dementia by score-defined groups with 13 healthy recordings; P-938 reaches only about 63% for MCI-HC in 22 people (the ledger's 82-84% and N=80 are the three-class result and the recruited, not analysed, sample). So fewer than three supporters answer yes. The narrower statement is sustained by P-6, P-58 (two clinic cohorts) and P-938, with P-884 as broader cognitive-impairment support, from four distinct cohorts. The phrase 'across independent cohorts' is only true in the sense that separate cohorts were each validated internally; no MCI model here is tested across cohorts. The Table A1 count should fall from 7 to at most 4, with P-102, P-158 and P-352 removed."
+}

@@ -1,0 +1,78 @@
+{
+ "id": "C-211",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-152",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Features of the superficial white matter as biomarkers for the detection of Alzheimer's disease and mild cognitive impairment: A diffusion tensor imaging study (Bigham, Zamanpour, Zare; Heliyon 8 (2022) e08725)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-301",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable early detection of Alzheimer's disease using ROIs and an ensemble of 138 3D vision transformers (Saad Saoud & AlMarzouqi, Scientific Reports (2024) 14:27756)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-152": "ADNI2 DTI, 72 subjects (24 HC/24 MCI/24 AD), superficial white-matter features, FCBF selection, SVM, internal 5-fold CV. AD vs HC accuracy 95.8%, AUC 0.99; MCI vs HC accuracy 83.3%, AUC 0.88; AD vs MCI accuracy 83.3%, AUC 0.93. No intervals.",
+  "P-301": "ADNI baseline T1 MRI (MALPEM-ADNI), 532 scans (168 CN, 247 MCI, 117 AD); 138 per-ROI 3D vision transformers with a deep-belief-network ensemble, 80/20 train/validation split (results on the validation set). AD vs CN accuracy 0.90, AUROC 0.91; CN vs MCI 0.84, AUROC 0.81; AD vs MCI 0.74, AUROC 0.60; pMCI vs sMCI 0.94, AUROC 0.95; three-class 0.60. No intervals."
+ },
+ "quantity_a": "P-152's recorded figure: accuracy for AD vs healthy controls (n=48), diffusion-MRI superficial white-matter features, internal 5-fold CV",
+ "quantity_b": "P-301's recorded figure: accuracy for AD vs MCI (n=364), T1 structural MRI per-ROI 3D ViT ensemble, single 80/20 split",
+ "same_quantity": false,
+ "incompatible_if_same": "No. On matched contrasts both papers report figures in the same direction: AD vs CN 95.8% vs 0.90, and AD vs MCI 83.3% vs 0.74. Neither gives an interval, and each uses a different modality and model, so neither claims an ordering that the other refutes.",
+ "gates": {
+  "task": "mismatch: the recorded P-152 figure is AD vs HC; the recorded P-301 figure is AD vs MCI",
+  "dataset_family": "match: both ADNI (different subsets)",
+  "validation_tier": "match: both internal only (V2): 5-fold CV vs single 80/20 split",
+  "modality_family": "mismatch: P-152 diffusion MRI (DTI/QSDR, tractography, connectivity networks); P-301 T1 structural MRI"
+ },
+ "endpoint_and_metric": "incompatible: accuracy in both, but on different class contrasts (AD/HC vs AD/MCI), different modalities and class balances (24/24 vs 117/247)",
+ "performance_validity": "flag applies to P-152's recorded figure: AD vs HC AUC 0.99 on 48 subjects with internal CV and no external cohort meets the near-ceiling small-sample exclusion; P-301's figures are below 0.97.",
+ "independence": "Distinct author groups; both ADNI, participants may overlap",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The record sets P-152's AD vs HC accuracy (95.8%) against P-301's AD vs MCI accuracy (0.74), which are different class contrasts.",
+  "The input modalities differ: diffusion-MRI white-matter connectivity features vs T1 structural-MRI regional volumes.",
+  "Comparing like with like, the papers do not contradict each other: both find AD vs CN easier than AD vs MCI, and neither reports intervals that would exclude the other.",
+  "P-152's AD vs HC figure meets the performance-validity exclusion (AUC 0.99, n=48, internal CV only)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-152",
+   "page": 1,
+   "quote": "This method employed DTI data from 72 subjects: 24 subjects as HC, 24 subjects with MCI, and 24 subjects with AD."
+  },
+  {
+   "paper": "P-152",
+   "page": 6,
+   "quote": "HC-AD 95.8 95.8 95.8 95.8 .99 (Table 3: Correction, Accuracy, Sensitivity, Specificity, AUC)"
+  },
+  {
+   "paper": "P-301",
+   "page": 7,
+   "quote": "In the AD vs. MCI task, the proposed approach achieved an accuracy of 74% and an AUROC of 60%."
+  },
+  {
+   "paper": "P-301",
+   "page": 7,
+   "quote": "The proposed model achieved an accuracy of 90% and an AUROC of 91% in the AD vs. CN task."
+  },
+  {
+   "paper": "P-301",
+   "page": 3,
+   "quote": "we divided the ADNI dataset into training and validation sets using an 80/20 split. All reported results reflect the model's performance on the validation set."
+  }
+ ],
+ "record_defects": [
+  "task_equal 'Yes' is wrong: the P-152 figure is AD vs HC, the P-301 figure is AD vs MCI.",
+  "modality_family_equal 'Yes' is wrong at family level: DTI vs T1 structural MRI.",
+  "Registry Modality 'MRI/PET' is wrong for both (no PET in either).",
+  "performance_suspect false for P-152 misses the AD vs HC AUC of 0.99 on n=48 with internal validation only."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A matched-contrast, matched-modality pair with reported uncertainty that excludes each other; these two papers give neither."
+}

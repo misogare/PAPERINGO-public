@@ -1,0 +1,33 @@
+{
+ "id": "VF-05",
+ "supporters": [
+  {
+   "paper": "P-243",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Whatever feature importance ranking methods were utilised, FAQ, mPACCtrailsB, RAVLT_immediate and ADAS11 are important predictors. ... Brain region volume and other variables showed relatively low predictive power, indicating that structural changes may not occur in the early process from MCI to AD",
+   "page": "5-6",
+   "note": "ADNI-1/GO/2/3, N=627 baseline MCI, 269 converters within 3 years (Wu et al. 2023, Age and Ageing). LASSO kept eight predictors: five neuropsychological or functional (ADAS11, RAVLT immediate and learning, FAQ, mPACCtrailsB) and three MRI (Fusiform, MidTemp, ICV). The result is an importance ranking inside one mixed AdaBoost-LR model (feature and permutation importance). The numeric importances are in the supplement (Figure S5, Table S15), not the main text. The study has no cognitive-only against imaging-only comparison. The imaging is FreeSurfer volumes only, with no PET or CSF. It supports the 'importance rankings' limb of the statement."
+  },
+  {
+   "paper": "P-48",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "In our study, independent of the applied ML algorithms, sMRI data showed the lowest accuracy (0.79) compared to other classes.",
+   "page": "1 (abstract); Table 3, p. 4",
+   "note": "ADNI, 36-month conversion (Franciotti et al. 2023, Neuroscience). Single-class accuracies: neuropsychological 0.83/0.82/0.81 (RF/GB/XGB, n=587) against sMRI 0.79/0.79/0.77 (n=318). The margin is 2 to 4 points, the error bands overlap (+/-0.08 against +/-0.12), the two classes were evaluated on different subsamples, and the test set is 15%. The neuropsychological class includes FAQ and CDR-SB, so functional scores are covered. The importance evidence is mixed: in the neuropsychological + sMRI combination, RAVLT-IMM ranked first for GB and XGB but the left amygdala volume ranked first for RF (p. 7). The record's '~0.90 neuropsych + AD biomarkers > imaging alone' contrasts a cognitive+CSF model with imaging, which is not a cognitive-against-imaging comparison. The single-class comparison above is the result that decides it."
+  },
+  {
+   "paper": "P-81",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Neurocognitive scores predicted better than FDG-PET per se, but the best model was a combination of FDG-PET, age, and neurocognitive data, yielding an AUC of 0.785 +/- 0.096 and a balanced accuracy of 0.733 +/- 0.098.",
+   "page": "1 (abstract); Table 3, p. 4",
+   "note": "ADNI-1/2/GO, 257 MCI (164 stable, 93 converting within 3 years) with baseline FDG-PET (Cao et al. 2023, Neurobiol Dis). Table 3: cognitive-scores-only AUC 0.750 and BA 0.713, against PET-only AUC 0.610 and BA 0.565. This is a direct cognitive-only against imaging-only comparison. The imaging is whole-brain FDG-PET in a 3D-CNN, not structural MRI. The cognitive input includes CDR-SB, which contains functional items. The authors attribute part of the advantage to circularity: 'some of the neurocognitive data were used in the diagnosis of AD' (p. 4). Validation is 5-fold CV on a small sample. The record's notes describe this supporter as 'P-320 (twin-branch 3D-CNN, cognitive-only vs PET-only)'. The supporter list and source are P-81, whose design matches that description, so the notes carry a wrong ID."
+  }
+ ],
+ "yes_count": 3,
+ "verdict": "holds",
+ "narrowed_wording": "",
+ "reasoning": "All three sources are the ADNI studies the ledger means, and each reports a result in which neuropsychological or functional scores outrank imaging. P-81 compares cognitive-only with FDG-PET-only directly (AUC 0.75 against 0.61). P-48 compares neuropsychological-only with sMRI-only directly (accuracy 0.81-0.83 against 0.77-0.79). P-243 ranks FAQ and the cognitive composites above the three retained MRI volumes inside one model. The statement is already scoped to ADNI and says it is not verified elsewhere, so the single-dataset base is the scope the statement claims, not a failure. The three method families (boosted LR ensemble, tree ensembles, 3D-CNN) are distinct as the record says. It holds as stated, with three caveats a reader should carry. First, the margins are modest where the comparison is on structural MRI (P-48: 2-4 accuracy points, overlapping error bands, different subsamples), and P-48's own importance ranking in the combined model put an MRI feature first for one learner. Second, the imaging modality differs across supporters (MRI volumes in P-243 and P-48, FDG-PET in P-81). Third, cognitive and functional scores are part of how ADNI assigns the diagnoses being predicted, a circularity P-81's authors name themselves. The record's notes cite 'P-320' where the supporter is P-81. This should be corrected in the record."
+}

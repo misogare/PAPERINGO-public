@@ -1,0 +1,78 @@
+{
+ "id": "C-58",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging (Rallabandi & Seetharaman, 2023, doi 10.1016/j.bspc.2022.104312, file S1746809422007662)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-77",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Mild cognitive impairment detection from facial video interviews by applying spatial-to-temporal attention module (Alsuhaibani, Dodge & Mahoor, Expert Systems With Applications 252 (2024) 124185)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "The record's P-117 (summaries.md S1746809423005462: resting-state EEG, VMD + NSGA-II, best ~99.8% accuracy, sample not reported) could not be checked; the pack PDF is a different paper (OASIS MRI-PET fusion, 95.5% HC vs MCI, AUC 0.988).",
+  "P-77": "Convolutional autoencoder + transformer (STAM) on I-CONECT interview facial videos, MCI vs NC, 10-fold CV per theme with 30-39 videos. Best accuracy 87.5% (Halloween, AUC 0.87; abstract rounds to 88%); other themes 66.7-83.3%; five-iteration mean for Halloween 84.38% (SD 5.84)."
+ },
+ "quantity_a": "Record's P-117: resting-state EEG classifier accuracy, MCI vs healthy, own EEG cohort, internal validation (summary block only).",
+ "quantity_b": "P-77: per-theme video-level accuracy, MCI vs NC, 32 I-CONECT participants in the best theme, 10-fold CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not determinable and not needed; different modality, cohort and unit of analysis. Different methods each reporting their own score is not incompatibility.",
+ "gates": {
+  "task": "match (MCI vs control, T1)",
+  "dataset_family": "mismatch: I-CONECT videos vs P-117's EEG cohort (or OASIS); record's dataset_equal='Yes' unsupported",
+  "validation_tier": "match (both internal, V2)",
+  "modality_family": "mismatch: EEG (or MRI-PET) vs facial video; no waiver on record"
+ },
+ "endpoint_and_metric": "accuracy in both, but on different populations, inputs and analysis units (video-level majority vote on 30-39 subjects per theme)",
+ "performance_validity": "Likely applies to P-117 (claimed 99.81% internal) but unconfirmable without the correct PDF; not needed for the verdict.",
+ "independence": "No shared cohort or authors with P-117.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The supplied P-117 PDF is the wrong paper (OASIS MRI-PET fusion), so the 99.81% EEG result cannot be checked from source.",
+  "Under either identity of P-117 the modality-family gate (EEG or MRI-PET vs facial video) and dataset-family gate (I-CONECT vs another cohort) fail with no waiver.",
+  "P-77's '88%' is its best-theme 87.5% on 32 videos (iteration mean 84.38%), a video-level accuracy on a different cohort and modality."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 4,
+   "quote": "The images in the entire dataset were split into 60 % training, 20 % vali dation and the remaining 20 % as test set."
+  },
+  {
+   "paper": "P-117 (summaries.md block, not the PDF)",
+   "page": null,
+   "quote": "They proposed VMD-based EEG feature extraction with multi-objective channel optimization (NSGA variants) and supervised ML to detect MCI from resting-state EEG."
+  },
+  {
+   "paper": "P-77",
+   "page": 1,
+   "quote": "The detection accuracy using this combined method reached 88%, whereas the accuracy without applying the segments and sequences information of the facial features within a video on a certain theme was 84%."
+  },
+  {
+   "paper": "P-77",
+   "page": 5,
+   "quote": "A total of 158 themes of video chats have been recorded among 68 subjects who were assigned to the intervention (i.e. video-chats) group."
+  },
+  {
+   "paper": "P-77",
+   "page": 6,
+   "quote": "We randomly assigned the subjects to 10 different folds for all themes separately to perform a 10- folds cross-validation evaluation of the model."
+  }
+ ],
+ "record_defects": [
+  "P-117's paper_pdf_map entry points to the wrong PDF (MRI-PET S1746809422007662 instead of EEG S1746809423005462).",
+  "dataset_equal='Yes' has no basis.",
+  "claim_b '88% Acc' is the abstract's rounding of the best theme (87.5%, Halloween, 32 videos); the five-iteration mean for that theme is 84.38%.",
+  "Registry row P-117: Best_Metric and Dataset 'not reported' despite the 99.81% claim.",
+  "resolution_note's bridging list is boilerplate unrelated to either paper."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "The correct P-117 PDF would settle performance validity but could not make an EEG result commensurable with an I-CONECT facial-video result."
+}

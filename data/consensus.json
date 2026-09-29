@@ -57,7 +57,21 @@
         "verdict": "admit",
         "reason": "Admitted on four supporters, each with the anchor in its own findings: P-50 (single-centre SBM; MCI atrophy in hippocampus/amygdala/thalamus, right hippocampal volume correlating with episodic memory), P-52 (hippocampal radiomics, XGBoost best), P-99 (ventricular/medial-temporal structures selected as key MCI discriminators), P-595 (reduced SRLM integrity and hippocampal volume in MCI A+). P-51 and P-66 pruned; see rejected_supporters."
       },
-      "rejected_supporters_note_2026_09_19": "P-51: block contains no hippocampal or medial-temporal content at all (generic structural-biomarker key findings). P-66: hippocampus/amygdala ROIs used as model input only; the finding is about fusion gains, not atrophy. Pruned at human worksheet item 34."
+      "rejected_supporters_note_2026_09_19": "P-51: block contains no hippocampal or medial-temporal content at all (generic structural-biomarker key findings). P-66: hippocampus/amygdala ROIs used as model input only; the finding is about fusion gains, not atrophy. Pruned at human worksheet item 34.",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-50": "partly",
+          "P-52": "no",
+          "P-99": "partly",
+          "P-595": "partly"
+        },
+        "narrowed_wording": "Reduced hippocampal and medial temporal volume in MCI relative to cognitively normal controls was reported in three independent cohorts using different pipelines (single-centre Nanjing, VBM/FSL-FIRST; Moscow memory clinic, FreeSurfer; ADNI amyloid-positive MCI, FreeSurfer/visual MTA/ASHS). These studies do not establish it as the most consistently replicated structural marker: two of them found other structural measures (cortical sulcal depth and gyrification; SRLM integrity, dentate gyrus volume) as or more discriminative.",
+        "file": "logs/round20/convergence_readings/VF-01.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      }
     },
     {
       "id": "VF-02",
@@ -97,7 +111,23 @@
       ],
       "member_resolution_2026_08_22": "Claude delegated judgment 2026-08-22 (operator-delegated resolution of all pending-review records; every supporter independently re-verified against its summaries.md block by a fresh verification agent this session). (a) RESTORE: supporting_papers was AGAIN empty despite the operator-blessed 2026-06-30 restore of the canonical 6 [P-9,P-44,P-43,P-88,P-14,P-273] (audit_note) - the legacy Agent-4 wipe recurred; canonical set restored. (b) ADMITTED after block verification of a measured WITHIN-STUDY unimodal-vs-multimodal comparison: P-570 (combined clinical-radiomic AUC 0.852 vs cerebellar 0.818 / clinical 0.666 / hippocampal 0.659), P-577 (MEG 0.74 + MRI 0.77 -> combined 0.81, single-cohort CV), P-590 (CIMT+PWMH 0.908 vs 0.705/0.722, DeLong p<0.001 - PD-MCI scope, classical logistic fusion; statement text does not restrict to AD-continuum). (c) P-584 HELD: its measured comparison is a nested-Cox incremental-value design over a clinical/genetic covariate baseline - no standalone unimodal-model arm exists in the block, so the statement's own-comparison requirement is not demonstrated; also medRxiv preprint, n=102, CU->MCI window.",
       "manuscript_exposure_operator_review_2026_09_14": "MECHANISM (scripts/agent6_write.py::_vf_included, lines 267-274): after the exclude_from_manuscript_tables / empty-supporting_papers / 'exclude*' / 'candidate|pending*' manuscript_status tests, the function does `if ms.startswith(\"include\"): return True` - an affirmative manuscript_status of include or include_with_caveat SHORT-CIRCUITS every later test, i.e. the record's own `status` (lines 275-284, which reject retired/demoted/insufficient/superseded/deprecated, any status starting with 'pending', and anything containing 'candidate') and the 'never-reviewed' marker test (lines 285-296) are never reached. RE-CHECKED THIS PASS: with manuscript_status deleted this record is STILL included, so on this record the short-circuit is redundant rather than load-bearing - see the per-record note below for what actually carries it through. Currently rendered in review_paper.md Table 6.3 (line 2015). manuscript_status='include'. gate_verified is ABSENT (never true). Gate provenance present but DELEGATED, not operator: review_status='confirmed_g4_delegated' and g4_verdict='PASS Tier-1 (Claude delegated G4 judgment, 2026-06-27)' - the delegate-named confirmation marker that CLAUDE.md and scripts/ledger_lint.py class as self-certification. Without manuscript_status it is still included, because status='verified' clears every test at lines 275-296. So the exposure here is not the short-circuit but the fact that a Tier-1 manuscript claim on 6 supporters rests on a delegated G4 verdict with no operator gate recorded. VF-02 is also the attachment point of one of the 16 consensus.json pending_supporter_proposals (P-1384, elenbecestat MissionAD placebo-arm unimodal-vs-multimodal comparison), so it is accreting proposed supporters while ungated. This pass only surfaces the exposure. manuscript_status, status, gate_verified, supporting_papers and evidence_count are UNCHANGED: removing a record from the manuscript, or confirming its gate, is an operator action.",
-      "operator_review_2026_09_14": "Flagged manuscript exposure on operator instruction (VF package, item 3): tabulated in review_paper.md Table 6.3 via an affirmative manuscript_status with no gate_verified. Flag only - no status, manuscript_status or gate field was changed."
+      "operator_review_2026_09_14": "Flagged manuscript exposure on operator instruction (VF package, item 3): tabulated in review_paper.md Table 6.3 via an affirmative manuscript_status with no gate_verified. Flag only - no status, manuscript_status or gate field was changed.",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds",
+        "supporters": {
+          "P-9": "yes",
+          "P-14": "yes",
+          "P-43": "partly",
+          "P-44": "yes",
+          "P-88": "yes",
+          "P-273": "yes"
+        },
+        "narrowed_wording": "",
+        "file": "logs/round20/convergence_readings/VF-02.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      }
     },
     {
       "id": "VF-03",
@@ -202,7 +232,22 @@
       ],
       "dedup_note_2026_08_29": "supporting_papers: P-338 -> P-337",
       "manuscript_exposure_operator_review_2026_09_14": "MECHANISM (scripts/agent6_write.py::_vf_included, lines 267-274): after the exclude_from_manuscript_tables / empty-supporting_papers / 'exclude*' / 'candidate|pending*' manuscript_status tests, the function does `if ms.startswith(\"include\"): return True` - an affirmative manuscript_status of include or include_with_caveat SHORT-CIRCUITS every later test, i.e. the record's own `status` (lines 275-284, which reject retired/demoted/insufficient/superseded/deprecated, any status starting with 'pending', and anything containing 'candidate') and the 'never-reviewed' marker test (lines 285-296) are never reached. RE-CHECKED THIS PASS: with manuscript_status deleted this record is STILL included, so on this record the short-circuit is redundant rather than load-bearing - see the per-record note below for what actually carries it through. Currently rendered in review_paper.md Table 6.3 (line 2016). manuscript_status='include'. gate_verified is ABSENT (never true). Gate provenance present but DELEGATED, not operator: review_status='confirmed_g4_delegated' and g4_verdict='PASS Tier-2 (Claude delegated G4 judgment, 2026-06-27)' - a self-certification marker under CLAUDE.md / ledger_lint.py. Without manuscript_status it is still included, because status='verified' clears lines 275-296. Same exposure as VF-02: a tabulated claim on 5 supporters whose only gate record is a delegated verdict. This pass only surfaces the exposure. manuscript_status, status, gate_verified, supporting_papers and evidence_count are UNCHANGED: removing a record from the manuscript, or confirming its gate, is an operator action.",
-      "operator_review_2026_09_14": "Flagged manuscript exposure on operator instruction (VF package, item 3): tabulated in review_paper.md Table 6.3 via an affirmative manuscript_status with no gate_verified. Flag only - no status, manuscript_status or gate field was changed."
+      "operator_review_2026_09_14": "Flagged manuscript exposure on operator instruction (VF package, item 3): tabulated in review_paper.md Table 6.3 via an affirmative manuscript_status with no gate_verified. Flag only - no status, manuscript_status or gate field was changed.",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-168": "partly",
+          "P-13": "yes",
+          "P-337": "yes",
+          "P-74": "no",
+          "P-348": "yes"
+        },
+        "narrowed_wording": "In four studies that compare the two directly (three ADNI analyses and one Swedish memory-clinic cohort), adding repeated measurements or change scores to a baseline model improved discrimination. In two of them the follow-up measures overlap the outcome window, and in the ADNI LSTM study the gain is not separable from the change of learner (a random forest given the same five time points did not beat the single-time-point random forest). Non-ADNI replication rests on one cohort.",
+        "file": "logs/round20/convergence_readings/VF-03.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      }
     },
     {
       "id": "VF-04",
@@ -283,6 +328,19 @@
         "by": "operator decision in session on 2026-09-24, taken after reviewing the round-13 source-document audit (both PDFs of each pair read in full by an auditor and an independent challenger; logs/round13_source_audit_2026-09-24.md)",
         "decision": "kept admitted with corrected wording",
         "note": "The 2026-09-19 admit (worksheet item 41) cited 'P-243 LASSO drops MRI', which the PDF contradicts. P-243 still points the same way as an importance ranking; the statement now says so."
+      },
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds",
+        "supporters": {
+          "P-243": "yes",
+          "P-48": "yes",
+          "P-81": "yes"
+        },
+        "narrowed_wording": "",
+        "file": "logs/round20/convergence_readings/VF-05.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
       }
     },
     {
@@ -344,6 +402,21 @@
         "confidence": "medium",
         "note": "Supported as written only for computerized testing and speech: P-101 (\"Key Predictors: Response accuracy, reaction time\"; \"Reaction time features complementary to accuracy scores for MCI discrimination\"), P-58 (\"temporal hesitation-related speech features ... can detect MCI\") and P-59 (posterior-thresholding hesitation features, \"retaining discriminative signal\"), but P-58/P-59 share a group and corpus family (both \"BEA 116 pretrain\", Hungarian cohorts) so speech is one independent line. P-83's block lists only \"Time-domain, frequency-domain, and nonlinear feature extraction from EEG/HRV\" with the finding attributed to multimodal fusion, not to any temporal/reaction-time feature, and P-69's block names \"driving asymmetry/turning and hard-braking\" predictors from \"31 driving time-series variables\" with no reaction-time feature. Narrower scope: temporal/reaction-time features are MCI-discriminative in computerized testing (P-101) and speech (P-58/P-59, non-independent), with driving (P-69) only as time-series behaviour; drop EEG+HRV from the modality list and keep the beyond-accuracy claim pinned to P-101.",
         "action": "kept; modality list overstated: P-83 (EEG+HRV) and P-69 (driving) blocks contain no reaction-time or temporal feature. Review text rescoped to computerised testing and speech"
+      },
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-58": "yes",
+          "P-59": "yes",
+          "P-69": "partly",
+          "P-83": "no",
+          "P-101": "yes"
+        },
+        "narrowed_wording": "Temporal features are used as MCI-discriminative signals in two modalities: speech timing and hesitation (two studies from one Szeged group sharing a feature lineage and clinic) and response times on a computerised test (one community sample labelled by MoCA cut-off); a naturalistic-driving study supports it only for time-series driving features against a label that merges MCI with dementia, and the EEG+HRV study does not isolate temporal features. The increment beyond accuracy-only scoring rests on one within-study test, and in that study it appears for one classifier only (three comparator models did not gain).",
+        "file": "logs/round20/convergence_readings/VF-07.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
       }
     },
     {
@@ -401,21 +474,37 @@
       "min_task_hits": 3,
       "original_statement": "Disease-specific MCI models built within target clinical population outperform general models for that population",
       "review_status": "rescoped_confirmed_human_2026-06-28",
-      "audit_note": "AUDIT 2026-06-27 (per-VF head-to-head verification): OVER-AGGREGATED: NONE of P-19/P-35/P-46/P-91 compares disease-specific vs general models head-to-head; each only reports a specific model in its own population (CHF/PD/occupational/T2DM). 2026-06-28 (human): re-scoped to feasibility-only framing — the 4 papers show population-specific models work, but the specific-vs-general head-to-head remains an open methodological need. Keep as a generalizability/open-need contribution."
+      "audit_note": "AUDIT 2026-06-27 (per-VF head-to-head verification): OVER-AGGREGATED: NONE of P-19/P-35/P-46/P-91 compares disease-specific vs general models head-to-head; each only reports a specific model in its own population (CHF/PD/occupational/T2DM). 2026-06-28 (human): re-scoped to feasibility-only framing — the 4 papers show population-specific models work, but the specific-vs-general head-to-head remains an open methodological need. Keep as a generalizability/open-need contribution.",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds",
+        "supporters": {
+          "P-19": "yes",
+          "P-35": "yes",
+          "P-46": "no",
+          "P-91": "yes"
+        },
+        "narrowed_wording": "",
+        "file": "logs/round20/convergence_readings/VF-09.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      }
     },
     {
       "id": "VF-10",
-      "statement": "Consumer-grade / self-administered behavioural instruments (facial video, mobile computerized cognitive testing) achieve high STANDALONE accuracy for MCI detection (T1, ~88-94%). NOTE: supporting papers report standalone accuracy only; none benchmarks head-to-head against a specialist clinical instrument, so \"competitive with specialist\" is an inference, not a demonstrated comparison.",
+      "statement": "Low-cost behavioural data captured without specialist hardware (facial video from home video chats, a self-administered touchscreen test, speech recorded by a tablet application or over a mobile phone) reach best-case standalone MCI-detection accuracies of about 85-94% in small, internally validated samples from four cohorts; no study benchmarks its channel head-to-head against a specialist instrument.",
       "supporting_papers": [
         "P-76",
         "P-77",
-        "P-101"
+        "P-101",
+        "P-60",
+        "P-58"
       ],
       "independence_met": true,
-      "method_families": 4,
-      "dataset_families": 2,
+      "method_families": 3,
+      "dataset_families": 4,
       "notes": "EEG+handwriting + facial video + mobile speech + computerised test; zero specialist hardware required; deployment barrier reduced",
-      "evidence_count": 3,
+      "evidence_count": 5,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 2,
@@ -426,7 +515,80 @@
       "tier": "Tier2",
       "g4_operator_verdict_2026_08_15": "ACCEPT (Tier 2). Unsupported 'competitive with specialist' framing pruned; statement reports only what the three papers demonstrate - high standalone accuracy (~88-94%) with no specialist hardware - with the absence of head-to-head clinical benchmarking front-and-center. Optional: add P-604 (gait, AUC 0.913) as a supplementary low-cost example if G4 clears it (it is not self-administered).",
       "manuscript_exposure_operator_review_2026_09_14": "MECHANISM (scripts/agent6_write.py::_vf_included, lines 267-274): after the exclude_from_manuscript_tables / empty-supporting_papers / 'exclude*' / 'candidate|pending*' manuscript_status tests, the function does `if ms.startswith(\"include\"): return True` - an affirmative manuscript_status of include or include_with_caveat SHORT-CIRCUITS every later test, i.e. the record's own `status` (lines 275-284, which reject retired/demoted/insufficient/superseded/deprecated, any status starting with 'pending', and anything containing 'candidate') and the 'never-reviewed' marker test (lines 285-296) are never reached. RE-CHECKED THIS PASS: with manuscript_status deleted this record is STILL included, so on this record the short-circuit is redundant rather than load-bearing - see the per-record note below for what actually carries it through. Currently rendered in review_paper.md Table 6.3 (line 2019). manuscript_status='include'. THE RECORD HAS NO `status` FIELD AT ALL and no gate_verified field - identical shape to VF-07: the status tests at lines 275-284 pass vacuously on an empty token and only the non-empty review_status/tier keep it past the marker test. Without manuscript_status it is STILL included. CONTRADICTION WITH THE WORKLIST INSTRUCTION: it is not gate-less - review_status='confirmed_human_g4_2026-08-15' and g4_operator_verdict_2026_08_15='ACCEPT (Tier 2). Unsupported \"competitive with specialist\" framing pruned...'. What is missing is machine-readable gate state. Additional exposure: it is tabulated on the 3-supporter minimum (P-76, P-77, P-101) with dataset_families 2, and its own statement carries a NOTE conceding that no supporter benchmarks head-to-head against a specialist instrument. This pass only surfaces the exposure. manuscript_status, status, gate_verified, supporting_papers and evidence_count are UNCHANGED: removing a record from the manuscript, or confirming its gate, is an operator action.",
-      "operator_review_2026_09_14": "Flagged manuscript exposure on operator instruction (VF package, item 3): tabulated in review_paper.md Table 6.3 via an affirmative manuscript_status with no gate_verified. Flag only - no status, manuscript_status or gate field was changed."
+      "operator_review_2026_09_14": "Flagged manuscript exposure on operator instruction (VF package, item 3): tabulated in review_paper.md Table 6.3 via an affirmative manuscript_status with no gate_verified. Flag only - no status, manuscript_status or gate field was changed.",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-76": "partly",
+          "P-77": "partly",
+          "P-101": "partly"
+        },
+        "narrowed_wording": "Low-cost behavioural data captured without specialist hardware (facial video from home video-chat interviews in one US trial cohort, two analyses; a self-administered smartphone test in one Chinese community sample scored against a MoCA-defined proxy) reported best-case standalone accuracies of about 88-94% in small internally validated samples (other themes and repeated splits 61-90%); only two cohorts, one analysis with AUC near chance, no external validation and no head-to-head against a specialist instrument.",
+        "file": "logs/round20/convergence_readings/VF-10.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "operator_review_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Kept admitted, not failed",
+        "scope": "the round-20 source reading of this record; the wording the synthesis carries and any change to the supporter list await the round-21 corpus search for further supporters"
+      },
+      "supporter_search_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "model readers (round 21): three finders and a gap-filler searched the corpus, each candidate was read in full from its source document, a skeptic challenged every supporting verdict; second round verified the 32 candidates first capped",
+        "candidates_read": 13,
+        "new_yes_on_statement": [
+          "P-60"
+        ],
+        "new_yes_on_narrowed_wording": [
+          "P-58",
+          "P-60",
+          "P-9"
+        ],
+        "new_partly": [
+          "P-1100",
+          "P-114",
+          "P-150",
+          "P-169",
+          "P-2",
+          "P-294",
+          "P-6",
+          "P-604",
+          "P-795"
+        ],
+        "independent_yes_on_statement": [
+          "P-60 (Tsukuba speech-app sample)"
+        ],
+        "independent_yes_on_narrowed_wording": [
+          "I-CONECT (P-76, P-77; P-9 same family)",
+          "Memory Guard Shanghai/Henan community sample (P-101)",
+          "Tsukuba speech-app sample (P-60)",
+          "Szeged-Columbia telephone speech sample (P-58)"
+        ],
+        "files": "logs/round21/readings/VF-10/",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_29": "Consumer-grade / self-administered behavioural instruments (facial video, mobile computerized cognitive testing) achieve high STANDALONE accuracy for MCI detection (T1, ~88-94%). NOTE: supporting papers report standalone accuracy only; none benchmarks head-to-head against a specialist clinical instrument, so \"competitive with specialist\" is an inference, not a demonstrated comparison.",
+      "supporting_papers_pre_2026_09_29": [
+        "P-76",
+        "P-77",
+        "P-101"
+      ],
+      "evidence_count_pre_2026_09_29": 3,
+      "family_counts_pre_2026_09_29": {
+        "dataset_families": 2,
+        "method_families": 4,
+        "independence_met": true
+      },
+      "added_supporters_note_2026_09_29": "Added from the round-21 corpus search after source reading and skeptic challenge (logs/round21/readings): P-60, P-58",
+      "operator_decision_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Adopted the narrowed statement and supporter changes proposed from the round-20 and round-21 source readings",
+        "scope": "statement, supporting_papers, evidence_count and the family counts of this record; the source readings are logs/round20 and logs/round21"
+      }
     },
     {
       "id": "VF-11",
@@ -517,7 +679,24 @@
         "note": "Four listed studies support the statement as written from four dataset families and at least two method families: P-6 (I-CONECT video-interview transcripts, transformer NLP, \"distinguished between MCI and NC with an average AUC of 84.75%\"), P-58 (spontaneous speech temporal features + SVM on separate English and Hungarian MCI/HC cohorts, 67-92%), P-352 (TAUKADIAL spontaneous speech, \"129 train (74 MCI/55 NC)\", translingual markers \"useful for both binary MCI detection and MMSE estimation\"), and weakly P-938 (Dublin conversational speech timing, \"MCI-HC contrast 63%\", speech slowness characterises MCI). Three listed supporters do not carry the claim and should be pruned rather than counted: P-102 is AD-BERT on EHR clinical notes predicting MCI-to-AD progression (clinical data, not MCI detection); P-276's block never mentions MCI (ADReSS/Turkish \"cognitive-impairment severity/MMSE-related status\"); P-884's block states \"MCI-specific discrimination not reported separately\" (only 3-class and HE vs MCI+AD/D). None contradicts the statement; caveat that P-6's sample field reads \"77 AD + 74 HC\" while its method/findings fields say MCI vs NC on I-CONECT.",
         "action": "no action; readers agree"
       },
-      "dedup_note_2026_09_16": "supporting_papers: P-276 -> P-158"
+      "dedup_note_2026_09_16": "supporting_papers: P-276 -> P-158",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-6": "yes",
+          "P-158": "no",
+          "P-102": "no",
+          "P-58": "yes",
+          "P-352": "no",
+          "P-884": "partly",
+          "P-938": "partly"
+        },
+        "narrowed_wording": "Speech and language features (conversational transcripts, spontaneous-speech timing, conversational turn-taking timing) discriminate MCI from normal cognition better than chance in several small, separately recruited single-site cohorts (I-CONECT; New York and Szeged memory clinics; Dublin), with internally cross-validated AUC 0.73-0.93 in two studies and about 63% accuracy in a third; no study validates an MCI model on an independent cohort, and the one held-out challenge test in the set fell to chance.",
+        "file": "logs/round20/convergence_readings/VF-12.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      }
     },
     {
       "id": "VF-13",
@@ -581,23 +760,38 @@
         "grounds": [
           "The P-26 PDF (Ding et al. 2025) models depressive-symptom trajectories over 36 months as a risk factor for MCI-to-AD conversion (group-based trajectory modelling, then Cox); it does not stratify progression into subphenotypes, so it does not support the statement."
         ]
+      },
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-103": "yes",
+          "P-74": "partly",
+          "P-941": "yes",
+          "P-947": "partly"
+        },
+        "narrowed_wording": "MCI-to-AD progression is heterogeneous: in four studies across three data sources (US EHR networks, NACC, ADNI), data-driven clustering or latent-class methods separate patients into subgroups that differ in progression rate or risk. Replication of the subgroups in independent cohorts is shown by one study (P-103, EHR comorbidity subphenotypes among converters); the others show within-cohort structure only.",
+        "file": "logs/round20/convergence_readings/VF-14.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
       }
     },
     {
       "id": "VF-15",
       "status": "confirmed",
       "triage_note_2026_09_09": "2026-09-09 gate-readiness triage: demoted to insufficient_support (2 supporters (P-3, P-104) below the 3-confirmation minimum for a published verified finding; held pending a third independent confirmation. Re-promotable when the third confirmation is verified. File precedent: VF-04/VF-08-candidate.",
-      "statement": "Auxiliary-data-aware fusion (metadata, source-task attention, heterogeneous side-information) improves pMCI prediction over unimodal baselines in studies that test the comparison head-to-head (P-3, P-104, P-81); other fusion architectures report performance without unimodal benchmarking.",
+      "statement": "Adding auxiliary information (cognitive or clinical scores, AD/NC side-information, source-task attention) to an imaging model improves progressive-MCI prediction over the same imaging model alone, by modest margins and mostly without significance tests; fusion is not shown to beat the best non-imaging baseline. Supporters are ADNI cohorts except one Innsbruck memory-clinic cohort (declared exception to dataset-family independence).",
       "supporting_papers": [
         "P-3",
         "P-104",
-        "P-81"
+        "P-81",
+        "P-43"
       ],
       "independence_met": false,
-      "method_families": 2,
-      "dataset_families": 1,
+      "method_families": 4,
+      "dataset_families": 2,
       "notes": "Re-scoped: only P-3 (CAAT attention transfer) and P-104 (dual-attention metadata fusion) run a within-study fusion-vs-unimodal comparison. Dropped P-8 and P-23 (report fusion performance alone, no unimodal benchmark). Third confirmation P-81 (Cao 2023 Neurobiology of Disease) added 2026-09-09: within-study head-to-head on ADNI (612; 150 CN/257 MCI/205 AD, FDG-PET+cognition) \u2014 PET-only vs cognitive-only vs PET+cognitive fusion; fusion best (AUC 0.785), cognitive scores alone beat PET alone. Re-promoted to confirmed.",
-      "evidence_count": 3,
+      "evidence_count": 4,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 2,
@@ -610,7 +804,91 @@
         "statement"
       ],
       "single_dataset_family_operator_review_2026_09_14": "CONFIRMED, MANUSCRIPT-BOUND, ONE DATASET FAMILY (VF package item 6; follow-through on the 2026-09-14 audit). State as it stands: status='confirmed', review_status='rescoped_confirmed_human_2026-06-28', tier Tier2, evidence_count 3, dataset_families 1, independence_met FALSE, gate_verified ABSENT, no manuscript_status - and scripts/agent6_write.py::_vf_included returns True on it, so it is tabulated in review_paper.md Table 6.3 (line 2023) purely on status='confirmed'. It is therefore the only record in the file that publishes a CONFIRMED verified finding while its own independence_met field says the independence test failed. WHY independence_met IS FALSE: yesterday's audit read the registry Dataset column for all three supporters - P-3, P-104 and P-81 are ADNI, ADNI_Dependent=true - and corrected dataset_families 2 -> 1 and independence_met true -> false. The fields were overstated at baseline too (two ADNI supporters had been counted as two families), so this is not a defect introduced by the 2026-09-09 third confirmation. The third supporter itself is sound: P-81's block (summaries.md L860-926) does run the head-to-head the statement requires - 'PET-only, cognitive-score-only, and PET+cognitive fusion models' on '612 - ADNI 150 CN/257 MCI/205 AD', fusion best at 'AUC: 0.785 +/- 0.096'. THE VF-11 LINK, stated precisely rather than as a blanket read-across. VF-11 and VF-15 share EXACTLY ONE defect, and it is this one: three supporters, all ADNI, so a 3-confirmation verified finding rests on a single dataset family. Whatever the operator rules on that question for VF-11 applies identically here - if all-ADNI support cannot carry a confirmed Tier-2 VF, VF-15 fails on the same ground and by the same arithmetic. WHAT DOES NOT CARRY ACROSS (and why this note does not simply copy the VF-11 options): VF-11's 'hold at two vs re-scope the statement' choice exists because its third supporter P-208 does not satisfy the statement's clauses - the block never states the pre-training source and its cohort is the full ADNI1 819, not a small overfitting-prone cohort. VF-15 has no such defect: P-81 fits its statement as written, so 'hold at two' and 'rescope' are not live options here. The live question for VF-15 is only the dataset-family one. ASYMMETRY THE OPERATOR SHOULD SEE: VF-11 was demoted to pending_human_review on 2026-09-14 and is now EXCLUDED by _vf_included, while VF-15 - carrying the identical independence defect - is still included. On the next Agent 6 run Table 6.3 will drop VF-11 and keep VF-15, and VF-15's row will render 'False' in the Independence Met? column of a table of verified findings. NOT CHANGED HERE, as instructed: status stays 'confirmed'; dataset_families, independence_met, supporting_papers, evidence_count, statement and every existing note are untouched. Demoting VF-15, or accepting single-dataset-family support for a confirmed Tier-2 VF, is an operator decision.",
-      "operator_review_2026_09_14": "Added single_dataset_family_operator_review_2026_09_14 on operator instruction (VF package, item 6). Flag only - status left at confirmed and no field value changed."
+      "operator_review_2026_09_14": "Added single_dataset_family_operator_review_2026_09_14 on operator instruction (VF package, item 6). Flag only - status left at confirmed and no field value changed.",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-3": "partly",
+          "P-104": "yes",
+          "P-81": "partly"
+        },
+        "narrowed_wording": "In three ADNI studies, adding auxiliary information to an imaging model (source-task attention maps, AD/NC and PET side-information with age, or cognitive scores) improved progressive-MCI prediction over the same imaging model alone, by modest margins without significance testing in two of the three. The evidence does not show that fusion beats the best unimodal baseline: in P-81, cognitive scores plus age matched or exceeded the fused model on AUC.",
+        "file": "logs/round20/convergence_readings/VF-15.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "operator_review_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Kept admitted, not failed",
+        "scope": "the round-20 source reading of this record; the wording the synthesis carries and any change to the supporter list await the round-21 corpus search for further supporters"
+      },
+      "supporter_search_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "model readers (round 21): three finders and a gap-filler searched the corpus, each candidate was read in full from its source document, a skeptic challenged every supporting verdict; second round verified the 32 candidates first capped",
+        "candidates_read": 25,
+        "new_yes_on_statement": [
+          "P-190",
+          "P-273"
+        ],
+        "new_yes_on_narrowed_wording": [
+          "P-1128",
+          "P-124",
+          "P-185",
+          "P-190",
+          "P-211",
+          "P-225",
+          "P-273",
+          "P-43",
+          "P-48",
+          "P-512",
+          "P-731",
+          "P-88"
+        ],
+        "new_partly": [
+          "P-1214",
+          "P-1245",
+          "P-1327",
+          "P-186",
+          "P-195",
+          "P-23",
+          "P-488",
+          "P-532",
+          "P-536",
+          "P-554",
+          "P-578",
+          "P-72"
+        ],
+        "independent_yes_on_statement": [
+          "ADNI (P-104 from round 20; round-1 candidate P-190; round-2 candidate P-273; one dataset family however many papers)"
+        ],
+        "independent_yes_on_narrowed_wording": [
+          "ADNI (P-3, P-104, P-81 from round 20; round-1 candidates P-512 or P-225 (one sample), P-88, P-190, P-211, P-1128; round-2 candidates P-731 (same sample as P-1128), P-124, P-48, P-185, P-273; one dataset family)",
+          "Innsbruck memory clinic (P-43, round 1)"
+        ],
+        "files": "logs/round21/readings/VF-15/",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_29": "Auxiliary-data-aware fusion (metadata, source-task attention, heterogeneous side-information) improves pMCI prediction over unimodal baselines in studies that test the comparison head-to-head (P-3, P-104, P-81); other fusion architectures report performance without unimodal benchmarking.",
+      "supporting_papers_pre_2026_09_29": [
+        "P-3",
+        "P-104",
+        "P-81"
+      ],
+      "evidence_count_pre_2026_09_29": 3,
+      "family_counts_pre_2026_09_29": {
+        "dataset_families": 1,
+        "method_families": 2,
+        "independence_met": false
+      },
+      "added_supporters_note_2026_09_29": "Added from the round-21 corpus search after source reading and skeptic challenge (logs/round21/readings): P-43",
+      "operator_decision_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Adopted the narrowed statement and supporter changes proposed from the round-20 and round-21 source readings",
+        "scope": "statement, supporting_papers, evidence_count and the family counts of this record; the source readings are logs/round20 and logs/round21"
+      }
     },
     {
       "id": "VF-16",
@@ -653,7 +931,22 @@
       "g4_operator_confirm_2026_08_15": "CONFIRM Tier 1. Textbook recovery of an over-aggregated VF: stripped to four genuinely independent non-ADNI datasets across distinct modalities (MUSE EEG, CAUEEG, CHARLS clinical/blood, LongROAD driving). Populate the pending papers (P-596, P-604) only after G4 clears them.",
       "member_resolution_2026_08_22": "Claude delegated judgment 2026-08-22 (operator-delegated resolution of all pending-review records; every supporter independently re-verified against its summaries.md block by a fresh verification agent this session). P-604 ADMITTED: measured external-validation detection evidence ('external validation ... robust discrimination (AUC 0.913) and good calibration', Outcomes; dual-task gait, walkway only - low-cost, non-invasive, T1 detection). Caveats: case-control derivation, small external sample, MoCA alone outperformed it (complementary screen, not superior). P-596 HELD: scope mismatch - it is 5-7-year PROGNOSTIC prediction from the pre-MCI (SCI) stage, not MCI detection, and its block-vs-note external-accuracy discrepancy (block: robustness confirmed, no numbers; note: ~0.61-0.74 external vs 0.90 internal) cannot be reconciled from the corpus. Operator decision needed on scope extension.",
       "manuscript_exposure_operator_review_2026_09_14": "MECHANISM (scripts/agent6_write.py::_vf_included, lines 267-274): after the exclude_from_manuscript_tables / empty-supporting_papers / 'exclude*' / 'candidate|pending*' manuscript_status tests, the function does `if ms.startswith(\"include\"): return True` - an affirmative manuscript_status of include or include_with_caveat SHORT-CIRCUITS every later test, i.e. the record's own `status` (lines 275-284, which reject retired/demoted/insufficient/superseded/deprecated, any status starting with 'pending', and anything containing 'candidate') and the 'never-reviewed' marker test (lines 285-296) are never reached. RE-CHECKED THIS PASS: with manuscript_status deleted this record is STILL included, so on this record the short-circuit is redundant rather than load-bearing - see the per-record note below for what actually carries it through. Currently rendered in review_paper.md Table 6.3 (line 2024). manuscript_status='include' while status='re-derived_pending_g4'. gate_verified is ABSENT. Same two mechanisms as VF-12: the line-273 short-circuit, and the line-281 pending test missing 're_derived_pending_g4' because it only matches a status that STARTS with 'pending'. Counter-evidence to the 'ungated' reading: review_status='confirmed_human_g4', g4_verdict='PASS (2026-06-27): 4 distinct non-ADNI cohorts/modalities. NIT: only 2 method families (EEG-DL + traditional ML) - do not oversell methodological breadth.', plus g4_operator_confirm_2026_08_15. ALSO: VF-16 is the attachment point of two of the 16 consensus.json pending_supporter_proposals (P-1422 Optum-EHR comorbidity model, P-1354 EGEG nomogram), so an ungated-but-tabulated record is simultaneously accreting proposed supporters. This pass only surfaces the exposure. manuscript_status, status, gate_verified, supporting_papers and evidence_count are UNCHANGED: removing a record from the manuscript, or confirming its gate, is an operator action.",
-      "operator_review_2026_09_14": "Flagged manuscript exposure on operator instruction (VF package, item 3): tabulated in review_paper.md Table 6.3 via an affirmative manuscript_status with no gate_verified. Flag only - no status, manuscript_status or gate field was changed."
+      "operator_review_2026_09_14": "Flagged manuscript exposure on operator instruction (VF package, item 3): tabulated in review_paper.md Table 6.3 via an affirmative manuscript_status with no gate_verified. Flag only - no status, manuscript_status or gate field was changed.",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-2": "yes",
+          "P-12": "partly",
+          "P-96": "yes",
+          "P-69": "partly",
+          "P-604": "yes"
+        },
+        "narrowed_wording": "Low-cost, non-invasive channels (routine physical-examination and blood data, dual-task gait, and a consumer EEG headband combined with tablet handwriting) discriminate MCI from normal cognition without specialist imaging in single-country cohorts, with external validation for the routine-data and gait models only; clinical resting-state EEG reaches modest accuracy (about 70%), and naturalistic driving telemetry discriminates MCI and dementia combined rather than MCI.",
+        "file": "logs/round20/convergence_readings/VF-16.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      }
     },
     {
       "id": "VF-17",
@@ -687,18 +980,20 @@
     },
     {
       "id": "VF-18",
-      "statement": "Ocular channels (retinal structure and eye-movement behavior) are repeatedly supported as scalable biomarker directions for early cognitive decline detection",
+      "statement": "Ocular measures separate MCI from controls in six single-centre cohorts, retinal imaging in four and eye-movement behaviour in two, mostly at group level, with neither external validation nor a test of scalability.",
       "supporting_papers": [
         "P-5",
-        "P-105",
         "P-952",
-        "P-966"
+        "P-966",
+        "P-933",
+        "P-988",
+        "P-163"
       ],
       "independence_met": true,
       "method_families": 2,
-      "dataset_families": 3,
+      "dataset_families": 6,
       "notes": "Retinal multimodal DL and eye-tracking synthesis converge on non-invasive, deployment-friendly screening potential [P948_P957: +P-952 (fundus-photography HOG+SVM, AUC 0.87 MCI) - classical-ML retinal tier joins the retinal-structure leg; note VF-13 retired 2026-08-15, retinal evidence consolidated here.] [P958_P967: +P-966 (GARD Korea, 79 MCI + 170 HC, interleaved PS/AS + Go/No-go) - a PRIMARY oculomotor experiment joins the eye-movement-behavior leg (previously 2 ET reviews, P-105/P-109), adding an independent experimental cohort; dataset families 2->3.]",
-      "evidence_count": 4,
+      "evidence_count": 6,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 3,
@@ -708,7 +1003,8 @@
         "P958_P967": "+P-966 (oculomotor experiment, GARD Korea); supporters now 5; eye-movement leg gains an independent experimental cohort."
       },
       "rejected_supporters": [
-        "P-109"
+        "P-109",
+        "P-105"
       ],
       "misattached_summary_repoint_2026_09_15": "2026-09-15 block repair: the former block 109 (an eye-tracking review) matched no source document and was withdrawn; P-109 is now the BrainViT sMRI paper and no longer supports an ocular claim. No gate field changed. Supporter P-109 removed; 4 supporters remain (P-5, P-105, P-952, P-966).",
       "second_reader_2026_09_15": {
@@ -718,6 +1014,73 @@
         "confidence": "high",
         "note": "Four independent blocks support the statement as written across both ocular channels: P-5 (\"potential of using retinal imaging as a non-invasive, accessible biomarker for early MCI detection\", fundus+OCT DL, N=390), P-952 (\"fundus-photography-based screening approach for MCI recognition in community and clinical settings\", SVM AUC 0.87, N=86), P-105 (\"ET-based screening could become scalable, low-burden early detection for cognitive decline\", eye-tracking review), and P-966 (\"Supports oculomotor inhibitory-control testing as an objective, low-cost MCI screening channel\", N=249 Korean cohort) - three-plus dataset families and method families, no contradiction. P-109 should be struck from supporting_papers: its block is a paraphrase of P-105 (same metrics/paradigms/\"Published in Information Fusion\") while its own sample field says \"1075 (390 AD/370 MCI/315 HC), sMRI\", so it is misattached or a duplicate and not independent support; the finding stands without it.",
         "action": "no action; readers agree"
+      },
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-5": "yes",
+          "P-105": "no",
+          "P-952": "partly",
+          "P-966": "partly"
+        },
+        "narrowed_wording": "Ocular measures show preliminary, single-centre associations with MCI: retinal imaging (fundus with or without OCT) discriminated MCI in two small Chinese hospital cohorts, one heavily confounded by age and stroke, and saccadic inhibition errors and prosaccade latency differed between MCI and controls at group level in one Korean cohort; neither channel has been externally validated or shown to be scalable.",
+        "file": "logs/round20/convergence_readings/VF-18.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "operator_review_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Kept admitted, not failed",
+        "scope": "the round-20 source reading of this record; the wording the synthesis carries and any change to the supporter list await the round-21 corpus search for further supporters"
+      },
+      "supporter_search_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "model readers (round 21): three finders and a gap-filler searched the corpus, each candidate was read in full from its source document, a skeptic challenged every supporting verdict; second round verified the 32 candidates first capped",
+        "candidates_read": 16,
+        "new_yes_on_statement": [],
+        "new_yes_on_narrowed_wording": [
+          "P-1317",
+          "P-163",
+          "P-933",
+          "P-988"
+        ],
+        "new_partly": [
+          "P-224",
+          "P-255",
+          "P-282",
+          "P-363",
+          "P-688",
+          "P-998"
+        ],
+        "independent_yes_on_statement": [
+          "Daping Hospital Chongqing + WMU Eye Hospital Wenzhou (P-5)"
+        ],
+        "independent_yes_on_narrowed_wording": null,
+        "files": "logs/round21/readings/VF-18/",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_29": "Ocular channels (retinal structure and eye-movement behavior) are repeatedly supported as scalable biomarker directions for early cognitive decline detection",
+      "supporting_papers_pre_2026_09_29": [
+        "P-5",
+        "P-105",
+        "P-952",
+        "P-966"
+      ],
+      "evidence_count_pre_2026_09_29": 4,
+      "family_counts_pre_2026_09_29": {
+        "dataset_families": 3,
+        "method_families": 2,
+        "independence_met": true
+      },
+      "rejected_supporters_note_2026_09_29": "P-105: narrative review with no data of its own; it also cites the P-966 cohort (round-20 source reading, logs/round20/convergence_readings/VF-18.json)",
+      "added_supporters_note_2026_09_29": "Added from the round-21 corpus search after source reading and skeptic challenge (logs/round21/readings): P-933, P-988, P-163",
+      "operator_decision_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Adopted the narrowed statement and supporter changes proposed from the round-20 and round-21 source readings",
+        "scope": "statement, supporting_papers, evidence_count and the family counts of this record; the source readings are logs/round20 and logs/round21"
       }
     },
     {
@@ -761,24 +1124,36 @@
         "grounds": [
           "None of the four supporting models (P-19, P-25, P-27, P-307) entered laboratory biomarkers, so 'out-ranking biological variables' went beyond what they tested; age and pain level top two of the four SHAP rankings, so 'dominant' becomes 'rank among the leading' (manuscript_wording_note_2026_09_24)."
         ]
+      },
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds",
+        "supporters": {
+          "P-19": "partly",
+          "P-25": "yes",
+          "P-27": "yes",
+          "P-307": "yes"
+        },
+        "narrowed_wording": "",
+        "file": "logs/round20/convergence_readings/VF-19.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
       }
     },
     {
       "id": "VF-20",
-      "statement": "Volumetric atrophy (especially hippocampal and whole-brain volume) is a comparatively LATE and insufficient MCI marker: across independent modalities, functional, microstructural, mechanical and metabolic measures detect MCI or predict conversion in the regime where conventional volume is preserved or non-discriminative.",
+      "statement": "Non-volumetric measures (resting-state connectivity, MR elastography, MEG spectral power, cortical diffusion) carry MCI information beyond, or comparable to, hippocampal volume in small single-cohort studies; hippocampal volume itself remained discriminative in most of them.",
       "supporting_papers": [
         "P-518",
         "P-478",
-        "P-432",
-        "P-460",
         "P-584",
         "P-581"
       ],
-      "independence_met": "True",
-      "method_families": "6",
-      "dataset_families": "6",
+      "independence_met": true,
+      "method_families": 4,
+      "dataset_families": 4,
       "notes": "Independent method families (6): P-518 (rs-fMRI ROI connectivity, Australian local - fronto-temporal decoupling separates mdaMCI where hippocampal subvolume AND cortical thickness do not); P-478 (MR elastography, Delaware - low DG-CA3 stiffness predicts aMCI regardless of volume, B=-0.11 p<0.001; combined stiffness+volume AUC 0.85 vs stiffness-alone 0.71 / volume-alone 0.77); P-432 (quantitative T2 relaxometry, Bristol UK - MTL T2 heterogeneity predicts memory decline where absolute T2 did not); P-460 (meta-analysis of 50 studies - whole-brain volume NOT significantly reduced in either aMCI g=-0.22 p=0.095 or naMCI g=-0.17 p=0.24); P-584 (multimodal Cox, PREVENT-AD - hippocampal volume non-predictive for CU-to-MCI; MEG alpha short-term and neocortical amyloid long-term carry the signal); P-581 (cortical minicolumn diffusivity, NACC N=826 - outperforms hippocampal/cortical volume and thickness in survival). Datasets (6): AU local, Delaware, Bristol UK, 50-study synthesis, PREVENT-AD, NACC. SCOPE CAVEAT: qualifies rather than negates volumetric markers - hippocampal volume retains value at the MCI-to-AD stage (P-587) and for AD-vs-control contrasts; the claim is about EARLINESS and sole-sufficiency. Adversarially source-verified; grounding_ok=true.",
-      "evidence_count": 6,
+      "evidence_count": 4,
       "required_modality_family": "neuroimaging",
       "required_design": "any",
       "min_task_hits": 4,
@@ -800,7 +1175,88 @@
         "grounding_ok": true
       },
       "manuscript_status": "include",
-      "g4_delegated_verdict_2026_08_22": "CONFIRM Tier 1. Claude delegated judgment 2026-08-22 (operator-delegated resolution of all pending-review records; every supporter independently re-verified against its summaries.md block by a fresh verification agent this session). All six supporters re-verified: P-518, P-478, P-460, P-584, P-581 fully grounded in measured fields (exact figure matches). AMENDMENT: P-432 demoted to PARTIAL support - its measured dissociation is T2-heterogeneity vs ABSOLUTE T2 (not vs volume), and the same Results sentence shows entorhinal VOLUME also predicting decline; its fit to the volume-non-discriminative headline is interpretive-field only. Nuances: P-581 shows volume OUTPERFORMED (not null); P-584 is a medRxiv preprint (N=102). Net: 5 strong + 1 partial supporters across 5 independent datasets - Tier 1 threshold (>=3 independent, non-ADNI anchored, distinct method families) holds."
+      "g4_delegated_verdict_2026_08_22": "CONFIRM Tier 1. Claude delegated judgment 2026-08-22 (operator-delegated resolution of all pending-review records; every supporter independently re-verified against its summaries.md block by a fresh verification agent this session). All six supporters re-verified: P-518, P-478, P-460, P-584, P-581 fully grounded in measured fields (exact figure matches). AMENDMENT: P-432 demoted to PARTIAL support - its measured dissociation is T2-heterogeneity vs ABSOLUTE T2 (not vs volume), and the same Results sentence shows entorhinal VOLUME also predicting decline; its fit to the volume-non-discriminative headline is interpretive-field only. Nuances: P-581 shows volume OUTPERFORMED (not null); P-584 is a medRxiv preprint (N=102). Net: 5 strong + 1 partial supporters across 5 independent datasets - Tier 1 threshold (>=3 independent, non-ADNI anchored, distinct method families) holds.",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-518": "yes",
+          "P-478": "partly",
+          "P-432": "no",
+          "P-460": "no",
+          "P-584": "partly",
+          "P-581": "partly"
+        },
+        "narrowed_wording": "In small single-cohort studies, non-volumetric measures carried information that volume did not: resting-state connectivity separated confirmed multi-domain amnestic MCI from controls where hippocampal subvolumes did not (P-518), hippocampal-subfield stiffness added to subfield volume in classifying amnestic MCI, including within the higher-volume subgroup (P-478), and in a preprint hippocampal volume did not significantly predict progression from normal cognition to MCI while temporal MEG alpha power carried time-varying risk (P-584); a cortical diffusivity signature predicted MCI-to-dementia conversion at least as well as hippocampal volume (P-581). Hippocampal volume nonetheless remained discriminative for amnestic MCI in most of these samples.",
+        "file": "logs/round20/convergence_readings/VF-20.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "operator_review_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Kept admitted, not failed",
+        "scope": "the round-20 source reading of this record; the wording the synthesis carries and any change to the supporter list await the round-21 corpus search for further supporters"
+      },
+      "supporter_search_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "model readers (round 21): three finders and a gap-filler searched the corpus, each candidate was read in full from its source document, a skeptic challenged every supporting verdict; second round verified the 32 candidates first capped",
+        "candidates_read": 18,
+        "new_yes_on_statement": [],
+        "new_yes_on_narrowed_wording": [
+          "P-1386",
+          "P-488",
+          "P-651"
+        ],
+        "new_partly": [
+          "P-1107",
+          "P-1325",
+          "P-1425",
+          "P-149",
+          "P-44",
+          "P-532",
+          "P-554",
+          "P-592",
+          "P-729"
+        ],
+        "independent_yes_on_statement": [
+          "P-518"
+        ],
+        "independent_yes_on_narrowed_wording": [
+          "P-518",
+          "P-478",
+          "P-584",
+          "P-581"
+        ],
+        "files": "logs/round21/readings/VF-20/",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_29": "Volumetric atrophy (especially hippocampal and whole-brain volume) is a comparatively LATE and insufficient MCI marker: across independent modalities, functional, microstructural, mechanical and metabolic measures detect MCI or predict conversion in the regime where conventional volume is preserved or non-discriminative.",
+      "supporting_papers_pre_2026_09_29": [
+        "P-518",
+        "P-478",
+        "P-432",
+        "P-460",
+        "P-584",
+        "P-581"
+      ],
+      "evidence_count_pre_2026_09_29": 6,
+      "family_counts_pre_2026_09_29": {
+        "dataset_families": "6",
+        "method_families": "6",
+        "independence_met": "True"
+      },
+      "rejected_supporters": [
+        "P-432",
+        "P-460"
+      ],
+      "rejected_supporters_note_2026_09_29": "P-432: compares T2 heterogeneity with absolute T2, not with volume; entorhinal volume predicted decline as well, neither model significant (round-20 source reading); P-460: confirms the whole-brain null but reports medial-temporal atrophy as the largest amnestic-MCI effect (g = -0.84), against the claim (round-20 source reading)",
+      "operator_decision_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Adopted the narrowed statement and supporter changes proposed from the round-20 and round-21 source readings",
+        "scope": "statement, supporting_papers, evidence_count and the family counts of this record; the source readings are logs/round20 and logs/round21"
+      }
     },
     {
       "id": "VF-21",
@@ -942,18 +1398,24 @@
     },
     {
       "id": "VF-23",
-      "statement": "EEG/MEG network, connectivity and complexity measures outperform conventional spectral band-power for discriminating MCI, with several studies reporting spectral power failing where network/graph measures succeed.",
+      "statement": "EEG/MEG connectivity, graph/network and complexity measures discriminate MCI from controls in six independent single-site studies, mostly by group tests or classifiers with optimistic validation, and may reveal alterations that spectral band power misses (one study shows this under matched correction; three show it only in part). The corpus does not establish that these measures outperform spectral band power: the four within-study comparisons that report a discrimination metric find spectral or power-bearing features ahead or about even, none tested. Nor does it show that multi-domain combinations discriminate MCI best: the one test found a spectral-plus-connectivity combination worse than spectral power alone for MCI.",
       "supporting_papers": [
         "P-553",
         "P-501",
         "P-463",
-        "P-480"
+        "P-480",
+        "P-368",
+        "P-592",
+        "P-153",
+        "P-1322",
+        "P-511",
+        "P-488"
       ],
-      "independence_met": "True",
-      "method_families": "4",
-      "dataset_families": "4",
+      "independence_met": true,
+      "method_families": 6,
+      "dataset_families": 10,
       "notes": "Retained after adversarial verification (P-447 DROPPED: PD-MCI-specific population mismatch, and its claim is coupling-beats-either-single-feature, not network-beats-spectral). P-553 (19-ch rsEEG, Korea - spectral power does NOT distinguish MCI from HC, but wPLI connectivity / graph efficiency / complexity do); P-501 (rsEEG, Michigan Black-American cohort - multiscale connectivity ensemble >91% acc, static single-window inadequate); P-463 (source MEG, Japan - frequency-dependent connectivity-structure metrics differentiate HC-MCI, with DoD-SD significant for all three group pairs); P-480 (rsEEG microstates, Florence - temporal-dynamics degradation, not topography, differentiates MCI). 4 distinct method families, 4 distinct datasets. CAVEAT: all single/two-site - ties to open gap ACTOR-G-013 on EEG/MEG cross-site validation.",
-      "evidence_count": 4,
+      "evidence_count": 10,
       "required_modality_family": "eeg_meg",
       "required_design": "any",
       "min_task_hits": 3,
@@ -975,7 +1437,57 @@
         "grounding_ok": true
       },
       "manuscript_status": "include_with_caveat",
-      "g4_delegated_verdict_2026_08_22": "CONFIRM Tier 2 with a mandatory scope softening. Claude delegated judgment 2026-08-22 (operator-delegated resolution of all pending-review records; every supporter independently re-verified against its summaries.md block by a fresh verification agent this session). The spectral-fails/network-succeeds HEAD-TO-HEAD is measured within-study only in P-553 (no spectral difference in any band after FDR; wPLI/graph/complexity succeed) and partially in P-480 (temporal dynamics succeed where topography fails - but delta band power DID reach significance, F=3.29 p=0.041, and connectivity was also largely null there). P-501 and P-463 contain NO within-study band-power comparator - they corroborate 'network succeeds' only. Read the statement's 'outperform' as: 2 head-to-head + 2 success-only corroborations, single/two-site cohorts (open gap ACTOR-G-013)."
+      "g4_delegated_verdict_2026_08_22": "CONFIRM Tier 2 with a mandatory scope softening. Claude delegated judgment 2026-08-22 (operator-delegated resolution of all pending-review records; every supporter independently re-verified against its summaries.md block by a fresh verification agent this session). The spectral-fails/network-succeeds HEAD-TO-HEAD is measured within-study only in P-553 (no spectral difference in any band after FDR; wPLI/graph/complexity succeed) and partially in P-480 (temporal dynamics succeed where topography fails - but delta band power DID reach significance, F=3.29 p=0.041, and connectivity was also largely null there). P-501 and P-463 contain NO within-study band-power comparator - they corroborate 'network succeeds' only. Read the statement's 'outperform' as: 2 head-to-head + 2 success-only corroborations, single/two-site cohorts (open gap ACTOR-G-013).",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "fails",
+        "supporters": {
+          "P-553": "yes",
+          "P-501": "no",
+          "P-463": "no",
+          "P-480": "partly"
+        },
+        "narrowed_wording": "",
+        "file": "logs/round20/convergence_readings/VF-23.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "supporter_search_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "model readers (round 21): three finders and a gap-filler searched the corpus, each candidate was read in full from its source document, a skeptic challenged every supporting verdict; second round verified the 32 candidates first capped",
+        "candidates_read": 5,
+        "new_yes_on_statement": [],
+        "new_yes_on_narrowed_wording": [],
+        "new_partly": [
+          "P-368"
+        ],
+        "independent_yes_on_statement": [
+          "P-553"
+        ],
+        "independent_yes_on_narrowed_wording": [],
+        "files": "logs/round21/readings/VF-23/",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_29": "EEG/MEG network, connectivity and complexity measures outperform conventional spectral band-power for discriminating MCI, with several studies reporting spectral power failing where network/graph measures succeed.",
+      "supporting_papers_pre_2026_09_29": [
+        "P-553",
+        "P-501",
+        "P-463",
+        "P-480"
+      ],
+      "evidence_count_pre_2026_09_29": 4,
+      "family_counts_pre_2026_09_29": {
+        "dataset_families": "4",
+        "method_families": "4",
+        "independence_met": "True"
+      },
+      "added_supporters_note_2026_09_29": "Added after source reading and skeptic challenge (logs/round22): P-368, P-592, P-153, P-1322, P-511, P-488",
+      "operator_decision_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Restate VF-23 using the revised statement the operator supplied. The adopted wording keeps that statement's clauses the corpus supports; its clause that multi-domain combinations discriminate best is not supported in this corpus (the one within-study test runs the other way for MCI), and the two outside syntheses it cited are not corpus papers, so neither enters. The operator has not yet confirmed that change.",
+        "scope": "statement, supporting_papers, evidence_count and family counts of this record; readings in logs/round22"
+      }
     },
     {
       "id": "VF-24",
@@ -1020,24 +1532,40 @@
       "g4_delegated_verdict_2026_08_22": "CONFIRM Tier 2. Claude delegated judgment 2026-08-22 (operator-delegated resolution of all pending-review records; every supporter independently re-verified against its summaries.md block by a fresh verification agent this session). Strong within-study fine-vs-coarse evidence verified for P-177 (92% vs 79%/72% volume baselines), P-245 (fractal dimension top-ranked), P-560 (sulcal width AUC 0.907; measured comparator is cortical THICKNESS - the volumetry comparison is cross-study only), P-581 (survival head-to-head vs volume+thickness). AMENDMENT: P-408 and P-91 demoted to PARTIAL alongside the already-partial P-182 - their beats-whole-structure comparators exist ONLY in interpretive fields (no measured whole-splenium / whole-tract AUC anywhere in their blocks). Net: 4 strong + 3 partial across >=4 truly distinct datasets. Tier 2 stands; do not cite P-408/P-91 as head-to-head evidence in prose.",
       "required_modality_family_previous": "structural_MRI",
       "modality_requirement_note": "The declared requirement was structural_MRI, but the statement explicitly includes 'tract-segment / cortical-microstructure diffusion metrics', and the curation notes enumerate every pruned paper as a deliberate inclusion (P-177 hippocampal surface morphometry, P-245 cortical fractal dimension, P-581 minicolumn diffusivity, P-408 splenium sub-tracts, P-91 tract-segment IFOF). Four of the five also carry the coarse legacy Modality string 'MRI/PET', which no keyword test for structural_MRI can match. All five prunes were false. Widened to any; the statement carries the scope.",
-      "scope_note_2026_09_24": "P-177 studied cognitively unimpaired adults and predicts progression to amnestic MCI within about 2 years (analysed N 158: Arizona 38, ADNI 120); it supports the statement only for conversion from normal cognition to MCI. The finding holds without it (7 other supporters)."
+      "scope_note_2026_09_24": "P-177 studied cognitively unimpaired adults and predicts progression to amnestic MCI within about 2 years (analysed N 158: Arizona 38, ADNI 120); it supports the statement only for conversion from normal cognition to MCI. The finding holds without it (7 other supporters).",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-177": "yes",
+          "P-245": "partly",
+          "P-560": "partly",
+          "P-581": "yes",
+          "P-408": "partly",
+          "P-91": "partly",
+          "P-182": "no",
+          "P-899": "no"
+        },
+        "narrowed_wording": "In three single-cohort or two-cohort studies, a finer-grained structural descriptor outperformed or outranked a whole-structure volume for predicting progression: hippocampal surface morphometry over hippocampal volume for cognitively unimpaired to amnestic MCI (Arizona, ADNI), cortical minicolumn diffusivity over cortical volume fraction for MCI to dementia (NACC; numerically but not significantly over hippocampal volume), and cortical fractal dimension ranking above hippocampal volume as a SHAP predictor of MCI to dementia in vascular MCI (VMCI-Tuscany). Subfield volumetry, sulcal width and tract-segment diffusion have not been compared head-to-head with whole-structure volumetry in this corpus.",
+        "file": "logs/round20/convergence_readings/VF-24.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      }
     },
     {
       "id": "VF-25",
-      "statement": "Measures that load the system - microstructural diffusion parameters, task-evoked electrophysiology, and dual-task performance - separate MCI from its matched non-impaired comparator in the very studies where the corresponding macrostructural volume, static structural index or unloaded behavioural measure does not. The dissociation is reported as a within-study head-to-head in each case, not inferred across papers.",
+      "statement": "Loading the system reveals MCI where the unloaded counterpart does not: within the same study, the same measure taken under a harder condition (dual-task or curved-path walking, peripheral-attention reaction time) separates MCI from cognitively healthy controls while under the simpler condition it does not. Microstructural-against-volume dissociations hold only in part in this corpus.",
       "supporting_papers": [
-        "P-651",
-        "P-661",
-        "P-662",
         "P-665",
-        "P-666",
-        "P-687"
+        "P-687",
+        "P-1082",
+        "P-1163"
       ],
-      "independence_met": "True",
-      "method_families": "5",
-      "dataset_families": "5",
+      "independence_met": true,
+      "method_families": 3,
+      "dataset_families": 3,
       "notes": "Each member runs its OWN comparison between the sensitive and the insensitive measure in the same participants. P-651 (multi-shell NODDI of FreeSurfer hippocampal subfields, Chongqing CSVD cohort, N=169): comparing CSVD-MCI directly with CSVD-without-cognitive-impairment, hippocampal VOLUME did not differ significantly while left CA1-3 FISO and NDI did. P-666 (64-direction DTI with TBSS plus atlas ROI, Wuhan metabolic-syndrome cohort, N=104): between MetS-MCI and MetS-NC, whole-brain skeleton analysis found 6.02% of voxels with raised MD and 4.38% with raised lambda23 but reported no FA difference for that contrast, and the lambda23 extent relative to the same healthy controls was roughly eightfold larger in the MCI arm (34.84%) than the cognitively normal arm (4.56%) while lambda1 extent was comparable (59.95% vs 50.44%) - i.e. the myelin-linked parameter, not the axonal one, tracked cognitive status. P-665 (FreeSurfer surface morphometry plus Timed Up and Go, Guangzhou, N=60): single-task TUG did not differ (17.29 vs 17.60 s, t 0.47, p 0.64) while dual-task TUG (t 2.58, p 0.012) and dual-task cost (t 2.55, p 0.014) did, and on the imaging side cortical SURFACE AREA differed in left superior parietal cortex while cortical THICKNESS differed nowhere. P-661 (64-channel EEG event-related spectral perturbation, UT Dallas/Southwestern, N=35): early versus late amnestic MCI showed no behavioural separation at all (Go RT t 0.607 p .548; accuracy group effect F 0.12 p .730, with Bayes factors of 0.28 and 0.32 supporting the null) while central-cluster theta ERS separated them with d=1.155. P-662 (64-channel ERP reappraisal task, Shanghai Tongji, N=93): the valence difference score did not differ between aMCI and healthy elderly, while the arousal down-regulation difference did (t 3.205, p 0.002) and the late-window (1100-5000 ms) LPP difference did. Method families (5): NODDI multi-compartment diffusion; DTI/TBSS; surface morphometry plus instrumented gait; EEG time-frequency; task ERP with sLORETA. Dataset families (5): Chongqing CSVD, Wuhan MetS, Guangzhou, UT Dallas/Southwestern, Shanghai Tongji - all single-centre, none overlapping. SCOPE: this is a sensitivity claim about which measure detects a group difference, NOT a claim that the loaded measures have better diagnostic accuracy - no member reports an AUC (see ACTOR-G-021). It generalises VF-20 (volumetric atrophy is a late and insufficient marker) from neuroimaging into electrophysiology and behaviour, and it is the P-620+ era's counterpart to VF-24's within-structural-MRI granularity claim. [P938_P947: +P-940 - LASSI-L semantic-interference stress test: intrusion-error (PIE) load measure predicts aMCI-to-dementia (AUC 0.905) - a within-participant sensitive-vs-standard-measure design consistent with this VF.]",
-      "evidence_count": 6,
+      "evidence_count": 4,
       "required_modality_family": "any",
       "required_design": "cross_sectional",
       "min_task_hits": 8,
@@ -1253,7 +1781,11 @@
         "P-595",
         "P-602",
         "P-606",
-        "P-636"
+        "P-636",
+        "P-651",
+        "P-661",
+        "P-662",
+        "P-666"
       ],
       "bulk_append_revert_2026_08_29": "2026-08-29 bulk-append revert (beads PAPERINGO-1ei5/j1uu/c5y, 6th recurrence): supporting_papers restored to the curated list committed at 798e45f (2026-08-28, pre-batch P-1048..P-1057). The removed ids were appended by the legacy Agent 4 run of 2026-08-28 17:04 (log: 'consensus': 629) - one identical block of clinical papers (P-676..P-1053) was added to VF-21/25/27 and VF-29/30/32 alike, including commentaries, abstract-book slices and P-1053 (a duplicate of P-1014). They are recorded in rejected_supporters so the append gate (now content-anchored, A1/A8-blind, registry-aware) never re-adds them; any of them can still be added by a human at G4.",
       "dedup_note_2026_08_29": "rejected_supporters: P-1018 -> P-981; rejected_supporters: P-1053 dropped (duplicate of P-1014, already present)",
@@ -1301,6 +1833,74 @@
           "P-606": "gist versus detail episodic memory in aMCI; both impaired, no loaded-versus-static dissociation; no depression measure",
           "P-636": "occupational PAH exposure and plasma p-tau231; neither statement's measures"
         }
+      },
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "fails",
+        "supporters": {
+          "P-651": "yes",
+          "P-661": "partly",
+          "P-662": "no",
+          "P-665": "yes",
+          "P-666": "no",
+          "P-687": "yes"
+        },
+        "narrowed_wording": "Not a convergence (two independent samples only). What the sources do support: in two independent single-centre samples a loaded measure separated MCI from a matched comparator where the corresponding static measure did not, hippocampal CA1-3 free-water fraction versus subfield volume in small-vessel-disease MCI versus small-vessel disease without impairment (P-651), and dual-task versus single-task Timed Up and Go in MCI versus healthy controls (one Guangzhou sample, reported in both P-665 and P-687). No supporter shows task-evoked electrophysiology separating MCI from a non-impaired comparator where a static measure fails.",
+        "file": "logs/round20/convergence_readings/VF-25.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "operator_note_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Why P-665 and P-687 are both listed",
+        "scope": "P-665 and P-687 report one Guangzhou sample and count once toward independence, as the Table A1 caption states"
+      },
+      "supporter_search_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "model readers (round 21): three finders and a gap-filler searched the corpus, each candidate was read in full from its source document, a skeptic challenged every supporting verdict; second round verified the 32 candidates first capped",
+        "candidates_read": 11,
+        "new_yes_on_statement": [],
+        "new_yes_on_narrowed_wording": [],
+        "new_partly": [
+          "P-1082",
+          "P-1163",
+          "P-1425",
+          "P-566"
+        ],
+        "independent_yes_on_statement": [
+          "P-651",
+          "P-665/P-687"
+        ],
+        "independent_yes_on_narrowed_wording": [
+          "P-651",
+          "P-665/P-687"
+        ],
+        "files": "logs/round21/readings/VF-25/",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_29": "Measures that load the system - microstructural diffusion parameters, task-evoked electrophysiology, and dual-task performance - separate MCI from its matched non-impaired comparator in the very studies where the corresponding macrostructural volume, static structural index or unloaded behavioural measure does not. The dissociation is reported as a within-study head-to-head in each case, not inferred across papers.",
+      "supporting_papers_pre_2026_09_29": [
+        "P-651",
+        "P-661",
+        "P-662",
+        "P-665",
+        "P-666",
+        "P-687"
+      ],
+      "evidence_count_pre_2026_09_29": 6,
+      "family_counts_pre_2026_09_29": {
+        "dataset_families": "5",
+        "method_families": "5",
+        "independence_met": "True"
+      },
+      "rejected_supporters_note_2026_09_29": "P-651: the free-water dissociation holds against the non-impaired small-vessel-disease comparator only by the authors' account (statistics in a supplement not available); subfield volume separates the same patients from healthy controls (round-22 source reading); P-661: compares early with late amnestic MCI, so no non-impaired comparator; the insensitive measure is same-task behaviour (round-20 and round-22 source readings); P-662: late-window ERP effects are difference scores with no failing unloaded counterpart; a behavioural measure also separates the groups (round-20 and round-22 source readings); P-666: no volumetric or macrostructural counterpart analysed; all measures are diffusion-tensor parameters (round-20 and round-22 source readings)",
+      "added_supporters_note_2026_09_29": "Added after source reading and skeptic challenge (logs/round22): P-1082, P-1163",
+      "operator_decision_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Treat the bracketed list in VF-25 as examples and re-check the candidates against the reworded statement. The two walking studies count as distinct method families (instrumented path-geometry gait against a timed cognitive dual task); merging them would leave two.",
+        "scope": "statement, supporting_papers, evidence_count and family counts of this record; readings in logs/round22"
       }
     },
     {
@@ -1339,20 +1939,35 @@
       "rejected_supporters": [
         "P-624"
       ],
-      "rejected_supporters_note_2026_09_28": "P-624 removed: its exposure is social frailty (HALFT) and it contains no measure of depression, so it does not support the statement (found by the risk-of-bias reading of 2026-09-28 and checked against the PDF)."
+      "rejected_supporters_note_2026_09_28": "P-624 removed: its exposure is social frailty (HALFT) and it contains no measure of depression, so it does not support the statement (found by the risk-of-bias reading of 2026-09-28 and checked against the PDF).",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-644": "partly",
+          "P-646": "yes",
+          "P-656": "partly",
+          "P-657": "no",
+          "P-912": "no"
+        },
+        "narrowed_wording": "Depressive symptoms (or major depression) and MCI are associated in three independent samples of different design: longitudinally in the US Health and Retirement Study (P-646), and cross-sectionally in a Chinese community sample (P-644) and in World Trade Center responders, where the association could not be separated from comorbid PTSD (P-656). Direction was tested in only one study, which found both directions at similar magnitude in two separately fitted models that cannot separate reciprocal causation from a shared common cause; the reviewed studies therefore establish neither reciprocity nor that the depression-to-MCI direction is better evidenced.",
+        "file": "logs/round20/convergence_readings/VF-26.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      }
     },
     {
       "id": "VF-27",
-      "statement": "Depression is associated with MCI status, but whether depression SEVERITY grades MCI neurobiology and prognosis is divided in this corpus: within the supporting studies, severity scores did not correlate with structural or functional brain measures, a baseline severity score did not predict five-year conversion (P-647), and where severity strata were separated the milder stratum sometimes carried the worse signal; but in ADNI a 36-month depressive-symptom trajectory predicted conversion in a dose-dependent, monotone way (P-26).",
+      "statement": "Whether depressive-symptom severity grades MCI neurobiology and prognosis is divided in this corpus: in four MCI cohorts, baseline severity scores did not track regional brain measures (one study) or conversion (three studies, each a univariate comparison with 17 to 28 converters), although in one of them major-depression groups had lower functional connectivity than subthreshold-depression groups; one study outside the supporter list finds a graded relation of severity to conversion (P-26), and another a univariate association that its authors' sensitivity analysis did not confirm (P-989).",
       "supporting_papers": [
         "P-643",
         "P-647",
-        "P-662",
-        "P-663"
+        "P-788",
+        "P-974"
       ],
-      "independence_met": "True",
-      "method_families": "4",
-      "dataset_families": "4",
+      "independence_met": true,
+      "method_families": 2,
+      "dataset_families": 4,
       "notes": "P-643 (VBM plus resting-state functional connectivity plus florbetaben amyloid PET, Korea University Guro, N=130): depression severity measured by K-GDS did not correlate significantly with ROI volumes or with functional connectivity in ANY of the four late-life-depression MCI subgroups, and the greatest FC reduction was found in the SUBTHRESHOLD-depression amyloid-positive group rather than the major-depression groups. P-647 (Shanghai Brain Health Cohort, N=1014 with 321 followed 5 years, Cox plus ROC): over five years only baseline MoCA predicted conversion (HR 0.738, 0.627-0.869; AUC 0.798), while GDS, ADL and every lipid marker were non-significant, and GDS's cross-sectional correlations with BDT and ADL were weak at |r| about 0.13. P-663 (FDG-PET plus informant-rated Interpersonal Reactivity Index, Florence, N=111): the Personal Distress regression model - the strongest in the paper at adjusted R-squared 0.379 - retained a NEGATIVE coefficient on diagnosis (B -3.785, beta -0.463, p=0.024) once Category Fluency and Rey-Osterrieth recall were entered, dissociating emotional contagion from cognitive stage, and the authors flag this as potentially contradicting the prior linear-increase account. P-662 (64-channel ERP reappraisal, Shanghai Tongji, N=93): HAMD and HAMA were statistically equivalent between aMCI and healthy elderly controls (5.28 vs 5.26, p 0.97; 7.87 vs 7.19, p 0.42), yet the aMCI group showed a significant reappraisal deficit (arousal down-regulation t 3.205, p 0.002) and a late-window LPP deficit - so the affective-regulation impairment is present at equal depression severity. Method families (4): multimodal MRI/PET group comparison; survival plus ROC in a community cohort; FDG-PET voxelwise regression; task ERP. Dataset families (4): Korea Guro, Shanghai Brain Health, Florence, Shanghai Tongji. SCOPE: this does not contradict VF-26 - depression STATUS is associated with MCI while depression SEVERITY does not grade the biology, which is exactly the pattern that motivates open gap ACTOR-G-018.",
       "evidence_count": 4,
       "required_modality_family": "any",
@@ -1590,7 +2205,9 @@
         "P-595",
         "P-602",
         "P-606",
-        "P-636"
+        "P-636",
+        "P-662",
+        "P-663"
       ],
       "bulk_append_revert_2026_08_29": "2026-08-29 bulk-append revert (beads PAPERINGO-1ei5/j1uu/c5y, 6th recurrence): supporting_papers restored to the curated list committed at 798e45f (2026-08-28, pre-batch P-1048..P-1057). The removed ids were appended by the legacy Agent 4 run of 2026-08-28 17:04 (log: 'consensus': 629) - one identical block of clinical papers (P-676..P-1053) was added to VF-21/25/27 and VF-29/30/32 alike, including commentaries, abstract-book slices and P-1053 (a duplicate of P-1014). They are recorded in rejected_supporters so the append gate (now content-anchored, A1/A8-blind, registry-aware) never re-adds them; any of them can still be added by a human at G4.",
       "dedup_note_2026_08_29": "rejected_supporters: P-1018 -> P-981; rejected_supporters: P-1053 dropped (duplicate of P-1014, already present)",
@@ -1626,6 +2243,72 @@
           "P-606": "gist versus detail episodic memory in aMCI; both impaired, no loaded-versus-static dissociation; no depression measure",
           "P-636": "occupational PAH exposure and plasma p-tau231; neither statement's measures"
         }
+      },
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "fails",
+        "supporters": {
+          "P-643": "yes",
+          "P-647": "yes",
+          "P-662": "no",
+          "P-663": "no"
+        },
+        "narrowed_wording": "",
+        "file": "logs/round20/convergence_readings/VF-27.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "supporter_search_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "model readers (round 21): three finders and a gap-filler searched the corpus, each candidate was read in full from its source document, a skeptic challenged every supporting verdict; second round verified the 32 candidates first capped",
+        "candidates_read": 20,
+        "new_yes_on_statement": [
+          "P-788",
+          "P-974"
+        ],
+        "new_yes_on_narrowed_wording": [],
+        "new_partly": [
+          "P-1157",
+          "P-1326",
+          "P-278",
+          "P-578",
+          "P-646",
+          "P-670",
+          "P-671",
+          "P-720",
+          "P-731",
+          "P-785"
+        ],
+        "independent_yes_on_statement": [
+          "P-643",
+          "P-647",
+          "P-788",
+          "P-974"
+        ],
+        "independent_yes_on_narrowed_wording": [],
+        "files": "logs/round21/readings/VF-27/",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_29": "Depression is associated with MCI status, but whether depression SEVERITY grades MCI neurobiology and prognosis is divided in this corpus: within the supporting studies, severity scores did not correlate with structural or functional brain measures, a baseline severity score did not predict five-year conversion (P-647), and where severity strata were separated the milder stratum sometimes carried the worse signal; but in ADNI a 36-month depressive-symptom trajectory predicted conversion in a dose-dependent, monotone way (P-26).",
+      "supporting_papers_pre_2026_09_29": [
+        "P-643",
+        "P-647",
+        "P-662",
+        "P-663"
+      ],
+      "evidence_count_pre_2026_09_29": 4,
+      "family_counts_pre_2026_09_29": {
+        "dataset_families": "4",
+        "method_families": "4",
+        "independence_met": "True"
+      },
+      "rejected_supporters_note_2026_09_29": "P-662: never relates HAMD or HAMA to any electrophysiological or behavioural measure; equal HAMD scores follow from excluding HAMD >= 14 (round-20 source reading); P-663: empathy study with no depression measure (round-20 source reading)",
+      "added_supporters_note_2026_09_29": "Added from the round-21 corpus search after source reading and skeptic challenge (logs/round21/readings): P-788, P-974",
+      "operator_decision_2026_09_29": {
+        "date": "2026-09-29",
+        "by": "operator",
+        "statement": "Adopted the narrowed statement and supporter changes proposed from the round-20 and round-21 source readings",
+        "scope": "statement, supporting_papers, evidence_count and the family counts of this record; the source readings are logs/round20 and logs/round21"
       }
     },
     {
@@ -1903,6 +2586,28 @@
         "date": "2026-09-26",
         "by": "operator decision in session on 2026-09-26, taken after reviewing the round-14 audit of an external reviewer's 90 comments on v1.3 (each checked against the source PDFs by an auditor agent and an independent challenger)",
         "change": "notes: three phrases corrected against the P-648, P-650, P-657 and P-971 PDFs; supporters, families and admission unchanged"
+      },
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds",
+        "supporters": {
+          "P-654": "partly",
+          "P-657": "partly",
+          "P-648": "no",
+          "P-650": "no",
+          "P-924": "partly",
+          "P-926": "no",
+          "P-937": "partly",
+          "P-955": "yes",
+          "P-962": "partly",
+          "P-971": "yes",
+          "P-982": "no",
+          "P-1046": "yes"
+        },
+        "narrowed_wording": "",
+        "file": "logs/round20/convergence_readings/VF-29.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
       }
     },
     {
@@ -2138,6 +2843,21 @@
         "confidence": "high",
         "note": "None of the seven blocks is a meta-analysis or contains any pooled estimate, I^2, SMD or Hedges g: P-914 \"Best Metric: Qualitative ... no pooled metric\" and \"no pooled estimates\"; P-916 \"Best Metric: ... modest cognitive benefits of 40 Hz interventions; no pooled metric\"; P-921 (n=31 pre-post IVR pilot), P-968 (n=24 magic RCT), P-972 (n=130 probiotic RCT) and P-987 (n=38 pre-post app study) are single primary trials, and P-929 is a retrospective cholinesterase-inhibitor cohort, not one of the four named intervention classes. The record's core numbers (\"I^2 ~ 65-98%\", \"Hedges g ~ 5.6\", unit-free SMDs, cross-intervention rankings) appear in no block, and P-987's only meta-analytic mention (\"Lampit 2020 meta-analysis (90 trials) found small global-cognition effects\") runs against the \"pooled efficacy estimates are large\" premise, so zero of seven listed studies support the statement as written.",
         "action": "supporters restored to the five founding meta-analyses on 2026-09-15 (see founding_supporters_restored_2026_09_15); the reader's rejection was of the seven post-wipe supporters, which are now recorded as non-supporting"
+      },
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-373": "partly",
+          "P-461": "yes",
+          "P-520": "yes",
+          "P-603": "yes",
+          "P-655": "partly"
+        },
+        "narrowed_wording": "In three intervention classes (non-invasive brain stimulation, multicomponent exercise, computerised cognitive training), the meta-analyses reviewed report moderate-to-large pooled effects on cognition in MCI (SMD about 0.8 to 1.5) that rest on few small trials, with substantial heterogeneity where it is reported (I2 about 63 to 93%) and different cognitive scales pooled as SMDs, so none gives a precise, harmonised MCI effect size. The brain-stimulation syntheses share trials; the largest magnitudes (g 4.3 to 5.6) come from two-study pools in non-MCI dementia samples; and one synthesis reports a stable small short-term rTMS effect (g = 0.40) in mixed MCI and dementia samples.",
+        "file": "logs/round20/convergence_readings/VF-30.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
       }
     },
     {
@@ -2177,7 +2897,21 @@
       "method_families": 3,
       "notes": " | EXTENDED 2026-08-26 (P-888..897 batch): P-890 (Nara, Japan; 20 PD-MCI + 10 non-PD MCI) adds a PRIMARY (non-meta) alpha-coherence study in PD-MCI - whole-brain alpha coherence correlates with MMSE (r=0.761) and declines with cognitive severity - corroborating the alpha-reduction signature in the inter-regional synchrony measurement family with an independent PD-MCI cohort (third dataset family beyond P-450/P-398 and P-453's meta).",
       "reader_verdict_2026_09_21": "admit",
-      "reader_review": "Blinded reader admit 2026-09-21, concurs with ledger status."
+      "reader_review": "Blinded reader admit 2026-09-21, concurs with ledger status.",
+      "source_reading_2026_09_28": {
+        "date": "2026-09-28",
+        "by": "model reader (round 20), every supporter's source document read in full, under the operator's delegation of 2026-09-28",
+        "verdict": "holds_narrowed",
+        "supporters": {
+          "P-450": "partly",
+          "P-398": "yes",
+          "P-453": "partly",
+          "P-890": "no"
+        },
+        "narrowed_wording": "At group level, MCI shows reduced resting upper-alpha activity relative to controls in two measurement families: lower high-frequency alpha (alpha2 and alpha3) spectral power in two small EEG studies (P-450, P-398) and weaker alpha-band inter-regional synchrony in a meta-analysis of 12 M/EEG studies (P-453, d about -0.25). The two power studies saw the reduction in MCI of several aetiologies (Alzheimer's, Parkinson's, chronic kidney disease, cerebrovascular), but that breadth rests on those two studies alone and is not itself a convergence; total alpha power was not reduced in P-450.",
+        "file": "logs/round20/convergence_readings/VF-31.json",
+        "review_status": "pending operator review; statement and supporter list unchanged"
+      }
     },
     {
       "id": "VF-32",

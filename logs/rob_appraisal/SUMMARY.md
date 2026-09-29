@@ -57,3 +57,22 @@ risk. The convergences therefore describe where independent studies agree, not a
 
 Readers were asked to flag any way the synthesis's citing sentence misstates the document; each flagged sentence was then
 checked against the source document and corrected where it was wrong (recorded in Supplementary Note S6 of the synthesis).
+
+## Additions of 2026-09-29
+
+The convergence re-reading of 2026-09-28/29 (logs/round20 to round22) newly cited fourteen corpus studies as supporters or
+counter-evidence: P-60, P-153, P-163, P-368, P-488, P-511, P-788, P-933, P-974, P-988, P-989, P-1082, P-1163, P-1322.
+They were appraised by model readers under the operator's instruction of 2026-09-29, with the same brief. These records
+have NOT been reviewed by the operator (review_status on each record). One further appraisal of P-592, for the result that
+supports VF-23, is kept in `additional/P-592_VF-23.json`; the study-level record `P-592.json` is unchanged.
+
+- Tools: PROBAST 6 (all high), JBI analytical cross-sectional 5 (4 some concerns, 1 high), QUIPS 3 (all high).
+- Blinded second reading of four drawn at random (seed 20260929: P-933, P-974 from the first six; P-1163, P-989 from the
+  other eight): the same tool and overall category in all four; 25 of 28 domain judgments agreed.
+- Quotations: 360 of 417 located mechanically in the extracted text (86.3%) after page tags and bracketed notes were
+  stripped; spot checks found the rest to be passages the readers had joined with semicolons or annotated.
+
+Cited set after the additions (Sections 1 to 8, `logs/appraisal_worksheet.csv`): 190 studies, 157 at high risk, 29 with
+some concerns, 4 with no applicable tool, none at low risk. P-663 is no longer cited. Supporters of admitted convergences
+that the text does not cite: P-83, P-337, P-687, P-1046. `scripts/rob_convergence_sensitivity.py`: still only VF-29 keeps
+three or more supporters not at high risk.

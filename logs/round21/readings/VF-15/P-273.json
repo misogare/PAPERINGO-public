@@ -1,0 +1,59 @@
+{
+ "paper": "P-273",
+ "role": "round-2 verifier",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "yes",
+ "supports_narrowed": "yes",
+ "dataset_family": "ADNI (cross-validation set: 238 MCI from ADNI-1 and ADNI-GO/2, 48-month window, plus 45 AD in training; independent test: 14 MCI from ADNI-3)",
+ "method_family": "End-to-end multimodal deep network (DISFC): a 3D separable-convolution CNN for sMRI, MLP branches for 14 clinical features (with second-order interaction terms) and 49 Lasso-selected SNPs, and stepwise fusion with an outer-product imaging-clinical interaction. The same broad family as P-81 (deep fusion of imaging with cognitive data).",
+ "same_sample_or_cohort_as": [
+  "P-211 (ADNI1/GO/2/3 MCI with MRI and cognitive scores; participant overlap likely but not determinable)",
+  "P-81 (ADNI, cognitive scores; participant overlap likely but not determinable)",
+  "P-3 (ADNI1/2; participant overlap likely but not determinable)",
+  "P-104 (ADNI family)"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "Unimodal, bimodal and trimodal versions of the same network were cross-validated with identical settings (10-fold, 238 MCI, 4-year conversion). The tri-modal model is best on every metric. The bimodal MRI + clinical model beats both of its unimodal components. My pixel reading of Fig. 4B is calibrated against the printed values: tri 0.962/92.92/88.89/95.33 read as 0.963/0.930/0.888/0.954; MRI+clinical 0.940/88.6/90.5 implied by the printed differences, read as 0.941/0.885/0.905. By that reading, the AUC is MRI 0.80, clinical 0.91, SNP 0.78, MRI+clinical 0.94, MRI+SNP 0.86, clinical+SNP 0.94, trimodal 0.96. Accuracy is 0.76, 0.83, 0.71, 0.885, 0.81, 0.87 and 0.93 in the same order. Sensitivity for MRI alone is 0.51, against 0.855 with clinical data added. The only significance test reported is tri vs MRI+clinical (AUC +0.022, P = 0.048; accuracy +4.29%, P = 0.03; Wilcoxon over folds).",
+ "why": "IDENTITY. PDF p.1 is Wang, Gao, Wei, Johnston, Yuan, Zhang and Yu, 'Predicting long-term progression of Alzheimer's disease using a multimodal deep learning model incorporating interaction effects', Journal of Translational Medicine (2024) 22:265, doi 10.1186/s12967-024-05025-w. The block (headed by this PDF's filename) describes the same study: DISFC, sMRI + clinical + SNP, 252 MCI. I read the whole extract up to the reference list (12 pages). I rendered Fig. 4 from the PDF (out/VF-15/img/P-273_p7.png, P-273_fig4B_native.png) and measured the bar heights in pixels against the 0.00 and 1.00 ticks.\n\nDESIGN. 238 MCI from ADNI-1/GO/2 for stratified 10-fold CV, with 45 AD added to training for class imbalance. 14 ADNI-3 MCI form the independent test (trimodal model only). Clinical inputs: age, sex, education and cognitive scores (MMSE, CDR-SB, ADAS11/13, RAVLT, mPACC, FAQ, LDELTOTAL). SNPs: 1,023 IGAP gene-wide-significant variants, reduced by Lasso to 49; the paper does not say whether that Lasso step was inside the CV folds. 50 epochs, data augmentation. Improvements from interaction modules and multimodality are tested by Wilcoxon signed-rank over folds.\n\nSTATED FORM: YES. The study runs the head-to-head the stated form needs: 'The unimodal, bimodal, and trimodal models were cross-validated with identical settings' (Fig. 4 caption). It includes a multivariable non-imaging baseline (the 14-feature clinical model) and a non-imaging bimodal (clinical + SNP). The auxiliary-data-aware fusion is ahead of every unimodal baseline on every reported metric. Tri: AUC about 0.96, accuracy 0.93. MRI + clinical: 0.94 and 0.885. Best unimodal (clinical): 0.91 and 0.83. The pair MRI + clinical vs clinical vs MRI involves no SNP selection. On that pair the fusion is ahead of both unimodal arms on AUC, accuracy, sensitivity and F1, and ties on specificity (0.905 vs 0.901 vs 0.907). This is the comparator on which P-81 failed in round 20; here fusion is ahead of it. The authors' text states the result: 'the DISFC model using trimodal data achieved the best performance. We also observed that bimodal models outperformed unimodal models overall'. MRI + SNP falls below clinical-only, but it still beats its own two components on AUC and accuracy, so this does not contradict the claim the way P-23's dual fusions do.\n\nWHAT LIMITS THE YES. (1) The unimodal magnitudes are figure-only. My readings match the printed tri-modal and MRI+clinical values to within 0.002, but they are readings, not printed numbers. (2) The margin over the clinical-only baseline (about +0.03 AUC bimodal, +0.05 trimodal) is not significance-tested; the only test is tri vs MRI+clinical, at P = 0.048. (3) The architecture, fusion scheme, residual-connection number and exclusion of the genetic intra-modal module were chosen on the same CV ablations (Fig. 7B; Figs. S6-S7). That favours the fusion arms. (4) Lasso SNP selection is not described as nested, which could inflate every SNP-containing arm; the MRI+clinical comparison is unaffected. (5) Internal CV only for the modality comparison (the 14-subject ADNI-3 test covers only the trimodal model; 3 pMCI). (6) Clinical inputs include CDR-SB, FAQ, MMSE and ADAS, which partly define AD conversion (circularity, as for P-81). An adjudicator who requires a tested margin over the best unimodal baseline, or printed rather than figure-read unimodal values, should record this as PARTLY; the comparison and its direction are not in doubt.\n\nNARROWED FORM: YES. Adding auxiliary information to the same MRI network improves pMCI prediction over MRI alone (figure-read). Clinical data: AUC 0.80 to 0.94, accuracy 0.76 to 0.885, sensitivity 0.51 to 0.855. SNPs: AUC 0.80 to 0.86. Both together: 0.96 / 0.93. All use identical settings. No test is reported for the MRI-alone comparison itself. Note for the record's wording: P-273 contradicts the narrowed sentence 'The evidence does not show that fusion beats the best unimodal baseline', because here fusion does beat the clinical-only baseline, although not by a tested margin.\n\nINDEPENDENCE. ADNI, so it adds no dataset family. Its method family is the same broad deep-fusion family as P-81. The authors (Shanghai Jiao Tong University: Yifan Wang, Ruitian Gao, Ting Wei, Luke Johnston, Xin Yuan, Yue Zhang, Zhangsheng Yu) are disjoint from P-3, P-104 (Heng Tao Shen, Xiaofeng Zhu, Zheng Zhang, Shui-Hua Wang et al.) and P-81. They are also disjoint from the round-1 candidates' first-page author lists; P-211's Yong Zhang is at Xi'an Jiaotong University. The finder notes P-273 is already a VF-02 supporter; that does not affect VF-15 independence. Not a preprint. Not in registry_duplicates.json.\n\nQuotes are rejoined across line breaks and normalized to ASCII. The Fig. 4B magnitudes above are my pixel measurements, not quotations.",
+ "quotes": [
+  {
+   "page": 2,
+   "quote": "The cross-validation set consisted of 238 MCI subjects from ADNI-1 and ADNI-GO/2 cohorts, with a 48-month follow-up. Additionally, 45 subjects with AD were included in the model training to provide insights into pathological changes and address class imbalance. The independent test set comprised 14 MCI subjects with follow-up durations ranging from 36 to 48 months from the ongoing ADNI-3 cohort, serving as external validation for model generalizability."
+  },
+  {
+   "page": 2,
+   "quote": "For each participant, we considered 14 clinical features at baseline, including demographic data (age, sex, education) and cognitive assessments, as listed in Table 1."
+  },
+  {
+   "page": 3,
+   "quote": "In the first stage, a knowledge-driven approach selected 1023 AD-related SNPs that had achieved gene-wide significance in the IGAP meta-analysis [28]. In the second stage, a data-driven approach with Lasso regression was performed to identify the most important 49 features."
+  },
+  {
+   "page": 5,
+   "quote": "The Wilcoxon signed rank test with continuity correction was employed to assess the improvement by interaction modules and multimodality."
+  },
+  {
+   "page": 6,
+   "quote": "To estimate the influence of multimodality on predictive performance, we compared models based on different combinations of modalities. As shown in Fig. 4B, the DISFC model using trimodal data achieved the best performance. We also observed that bimodal models outperformed unimodal models overall. The trimodal DISFC model was superior to the top-performing bimodal model using MRI and clinical data with a significant increase of 0.022 (P = 0.048) in AUC, 4.29% (P = 0.03) in accuracy, and 4.83% (P = 0.02) in specificity."
+  },
+  {
+   "page": 7,
+   "quote": "B Performance comparison of the models based on different modality combinations. The unimodal, bimodal, and trimodal models were cross-validated with identical settings. Each bar represents the mean value across folds for each metric"
+  },
+  {
+   "page": 6,
+   "quote": "On the cross-validation set, the DISFC model achieved a mean (SD) of 0.962 (0.041) for AUC for predicting MCI conversion over 4 years (Fig. 3A). The average (SD) accuracy, sensitivity and specificity were 92.92% (4.41%), 88.89% (9.07%) and 95.33% (4.50%), respectively (Fig. 3B)."
+  },
+  {
+   "page": 8,
+   "quote": "Furthermore, we compared models using different fusion schemes, including triple outer product fusion and three stepwise fusion approaches, as listed in Fig. 7B. The experimental results demonstrated superior performance of our DISFC model over models with alternative fusion schemes. Details on selecting optimal residual connection number and excluding the genetic intra-modal interaction module can be found in Additional file 1: Figs. S6 and S7."
+  },
+  {
+   "page": 11,
+   "quote": "Firstly, despite utilizing data collected from various centers and devices, this study exclusively included subjects from a single institution, ADNI."
+  }
+ ]
+}

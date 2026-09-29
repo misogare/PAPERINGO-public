@@ -1,0 +1,78 @@
+{
+ "id": "C-219",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-198",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Progression from Mild Cognitive Impairment to Alzheimer's Disease using MRI-based Cortical Features and a Two-State Markov Model (Ficiara et al., Proc IEEE ISBI 2021; PMC author manuscript)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-239",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multimodal multitask learning for predicting MCI to AD conversion using stacked polynomial attention network and adaptive exponential decay (Ho, Jeong, Kim; Scientific Reports (2023) 13:11243)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-198": "721 ADNI-1/2 MCI (533 sMCI, 188 converted to AD by a follow-up about 2 years later). A two-state continuous-time Markov model, followed by logistic regression on the estimated transition probabilities and rates; one cycle of stratified 10-fold CV. Baseline model WITHOUT MRI covariates: AUC 0.56 +/- 0.10, accuracy 0.65. With sulcal-width covariates: AUC 0.71 +/- 0.09, accuracy 0.72. With cortical-thickness covariates: AUC 0.78 +/- 0.08, accuracy 0.75.",
+  "P-239": "676 ADNI baseline MCI (249 eMCI, 427 lMCI); clinical data plus SPM/PyRadiomics features from T1 MRI; 5-fold CV. Two tasks: (1) eMCI vs lMCI stage classification, accuracy 83.19% and AUC 0.91; (2) time-to-AD-conversion prediction, C-index 0.846 (reported as 0.85), Brier score 0.132. The AUC 0.91 belongs to the eMCI/lMCI stage task, not to conversion."
+ },
+ "quantity_a": "As recorded (0.56): ROC AUC of a 2-year MCI->AD prediction from a Markov model with no MRI covariates, i.e. a covariate-free baseline. The paper's MRI-based results are AUC 0.71 (sulcal width) and 0.78 (cortical thickness), 10-fold CV, ADNI MCI.",
+ "quantity_b": "As recorded (0.91): ROC AUC of early-MCI vs late-MCI stage classification at baseline, which is not a conversion task. P-239's conversion result is a survival C-index of 0.846 for time to AD from clinical + radiomics features.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The recorded figures come from a covariate-free baseline model (P-198) and from a stage-classification task (P-239), so neither is the contested MCI->AD conversion quantity. On the nearest real counterparts (P-198 cortical-thickness AUC 0.78 +/- 0.08 for 2-year conversion; P-239 conversion C-index 0.846), the metric types differ (ROC AUC vs survival C-index), and the predictor sets differ (MRI only vs clinical + radiomics).",
+ "gates": {
+  "task": "mismatch as recorded: P-239's 0.91 is eMCI vs lMCI stage classification, not T2 conversion.",
+  "dataset_family": "match: both ADNI (ADNI-1/2 MCI in P-198; ADNI baseline eMCI/lMCI from the TADPOLE data in P-239); subject overlap is likely.",
+  "validation_tier": "match (both internal CV).",
+  "modality_family": "mismatch: P-198's recorded 0.56 uses no imaging at all (baseline Markov model); its MRI models use FreeSurfer thickness and BrainVISA sulcal width. P-239 combines clinical data (cognitive scores, biomarkers) with MRI radiomics."
+ },
+ "endpoint_and_metric": "incompatible: P-198's 0.56 is a 2-year conversion ROC AUC from a no-covariate model; P-239's 0.91 is a stage-classification AUC, and its conversion metric is a survival C-index (not a ROC-AUC).",
+ "performance_validity": "flag does not apply: no value >= 0.97, and neither recorded figure is a conversion-performance estimate of the kind compared.",
+ "independence": "Both draw on ADNI MCI participants and very likely share subjects. Distinct author groups.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "Claim_a misreads P-198: 0.56 is the AUC of the baseline Markov model with no MRI covariates; the MRI models reach 0.71 and 0.78.",
+  "Claim_b misreads P-239: 0.91 is the AUC for early vs late MCI stage classification, not for predicting MCI->AD conversion.",
+  "With both claims corrected, there is no conversion disagreement left to adjudicate: P-198's 2-year ROC AUC of 0.78 and P-239's time-to-conversion C-index of 0.846 are different metric types from different predictor sets, and neither paper disputes the other."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-198",
+   "page": 5,
+   "quote": "showing higher AUC and accuracy for the model incorporating covariates from MRI-based features from sulcal width (AUC=0.71 \u00b1 0.09; Accuracy= 0.72 \u00b1 0.04) and cortical thickness (AUC=0.78 \u00b1 0.08; Accuracy= 0.75 \u00b1 0.02) compared to the baseline model (AUC=0.56 \u00b1 0.10; Accuracy=0.65 \u00b1 0.08)."
+  },
+  {
+   "paper": "P-198",
+   "page": 3,
+   "quote": "using \u03bb to predict whether a test patient will transition to AD within the next two years, given the outcome of the first visit."
+  },
+  {
+   "paper": "P-239",
+   "page": 1,
+   "quote": "The proposed multimodal strategy yielded the best c-index score in time prediction of MCI to AD conversion (0.85) and the best accuracy in MCI-stage categorization ( 83.19% )."
+  },
+  {
+   "paper": "P-239",
+   "page": 5,
+   "quote": "Our approach achieved an accuracy of 83.19% and an AUC of 0.91, demonstrating robust performance in accurately distinguishing between the two classes."
+  },
+  {
+   "paper": "P-239",
+   "page": 4,
+   "quote": "Ours (SPAN-AED) Radiomics (MRI) Clinical 249 eMCI patients - Censoring rate: 92% 427 lMCI patients - Censoring rate: 55.3% 0.846 0.132"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-198: AUC 0.56 on T2' reports the covariate-free baseline model, not P-198's MRI-based result (best AUC 0.78, cortical thickness).",
+  "claim_b 'P-239: AUC 0.91 on T2' is wrong: 0.91 is eMCI vs lMCI stage classification; P-239's conversion result is C-index 0.846.",
+  "modality_family 'structural_mri' is wrong for both recorded figures: P-198's baseline uses no MRI, and P-239's model is clinical + radiomics.",
+  "The registry's study_design_type 'survival_analysis' for P-239 fits its conversion task, but the AUC in Best_Metric comes from its classification task.",
+  "gap_magnitude 0.35 comes from two misread figures."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in the two PDFs. A candidate built on P-239's C-index 0.846 would need a survival-C-index comparator with the same predictor set, and P-198 reports none."
+}

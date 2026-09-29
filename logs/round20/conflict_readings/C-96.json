@@ -1,0 +1,79 @@
+{
+ "id": "C-96",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-173",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A Graph Gaussian Embedding Method for Predicting Alzheimer's Disease Progression with MEG Brain Networks (Xu et al., IEEE Trans Biomed Eng 2021;68(5):1579-1588, author manuscript)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-153",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A tensor decomposition scheme for EEG-based diagnosis of mild cognitive impairment (Faghfouri et al., Heliyon 10 (2024) e26365)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-173": "Resting-state alpha-band MEG networks from 53 NC and 76 MCI patients (Madrid), MCI split after ~3 years into sMCI (48) and pMCI (28); MG2G embeddings + 10 classifiers, 5-fold CV, mean accuracy 78% for sMCI/pMCI (79% NC/sMCI, 82% NC/pMCI, 61% 3-class). AUCs are shown only in supplementary figures; the main text states no AUC value.",
+  "P-153": "EEG spectral tensors (5x5 electrode grid x 60 micro-band powers) with PARAFAC decomposition and RBF-SVM for MCI vs healthy detection. Dataset I (Isfahan Noor hospital, 61 subjects): mean accuracy 93.96% (sensitivity 96.07%, specificity 96.98%) over three random 41/20 subject splits; Dataset II (Emotiv, 40 subjects): 78.65%. No AUC and no conversion analysis."
+ },
+ "quantity_a": "Cross-validated discrimination of MEG network embeddings for sMCI vs pMCI (~3-year conversion to AD), Madrid MEG cohort (record cites an AUC present only in the supplement)",
+ "quantity_b": "Mean accuracy over three random subject-level train/test splits for current MCI vs healthy detection from resting EEG, Isfahan dataset (61 subjects)",
+ "same_quantity": false,
+ "incompatible_if_same": "No comparison arises: P-153's 93.96% is an MCI-vs-healthy detection accuracy and P-173's contested figure is a conversion AUC; different contrast and different metric type.",
+ "gates": {
+  "task": "mismatch: P-153 is current MCI vs healthy detection (T1), not conversion; P-173's contested figure is sMCI vs pMCI (T2). The record's 'Acc 93.96 on T2' and task_equal='Yes' are wrong; no waiver on record",
+  "dataset_family": "mismatch: Madrid San Carlos MEG cohort vs the Isfahan EEG dataset (and an Emotiv dataset); the record's dataset_equal='Yes' is wrong",
+  "validation_tier": "match: both internal only (5-fold CV vs three random subject splits)",
+  "modality_family": "match at family level: resting-state electrophysiology (MEG vs EEG)"
+ },
+ "endpoint_and_metric": "incompatible: different endpoint (3-year conversion vs current MCI status) and different metric types (AUC vs accuracy)",
+ "performance_validity": "flag does not apply: P-153's 93.96% is below 0.97 (one split reached 96.52%); it is not a performance comparison on a shared quantity in any case",
+ "independence": "Independent: different groups and cohorts; no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record misreads P-153's task: it classifies MCI against healthy subjects and contains no conversion analysis, so 'on T2' is wrong.",
+  "A detection accuracy set against a conversion AUC describes no disagreement; the metric types also differ.",
+  "The task and dataset-family gates fail with no waiver on record (Madrid MEG conversion cohort vs Isfahan EEG detection dataset).",
+  "P-173's main text reports only accuracies and places AUCs in the supplement, so the record's 'AUC 0.81' is not verifiable from the extract."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-173",
+   "page": 9,
+   "quote": "MG2G achieved high performance with 61% for NC/sMCI/pMCI classification, 79% for NC/sMCI classification, 78% for sMCI/pMCI classification, and 82% for NC/pMCI classification."
+  },
+  {
+   "paper": "P-173",
+   "page": 9,
+   "quote": "Receiver operating characteristic area-under-the-curve (AUC) plots are shown in Suppl. Figs. 1 and 2."
+  },
+  {
+   "paper": "P-153",
+   "page": 1,
+   "quote": "Then, using parallel factor analysis (PARAFAC) tensor decomposition, the features are extracted, and a support vector machine (SVM) is used to discriminate MCI from normal subjects."
+  },
+  {
+   "paper": "P-153",
+   "page": 1,
+   "quote": "The results showed that the tensor-based method outperformed conventional methods in diagnosing MCI with an average classification accuracy of 93.96% and 78.65% for the first and second datasets, respectively."
+  },
+  {
+   "paper": "P-153",
+   "page": 3,
+   "quote": "The dataset includes 61 people over the age of 55,29 of them had MCI, and 32 of them were healthy."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-153: Acc 93.96 on T2' is wrong on task: P-153 is MCI vs healthy detection (T1); its own registry row codes T1.",
+  "task_equal='Yes' and dataset_equal='Yes' are wrong (conversion vs detection; Madrid MEG vs Isfahan EEG).",
+  "claim_a 'P-173: AUC 0.81' is not stated in the main text of the P-173 extract.",
+  "P-153 registry Method_Architecture holds abstract spillover text; its Dataset 'not reported' is wrong (the paper names the Isfahan Noor hospital dataset of Ref. [24] and an Emotiv dataset).",
+  "The 'bridging evidence' list names no condition separating the two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers: P-153 has no conversion result. A genuine candidate would need another MEG/EEG sMCI-vs-pMCI study over a comparable horizon with an AUC whose interval excludes P-173's."
+}

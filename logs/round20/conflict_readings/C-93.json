@@ -1,0 +1,84 @@
+{
+ "id": "C-93",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-168",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of progression from mild cognitive impairment to Alzheimer's disease with longitudinal and multimodal data (Ding et al., Front. Dement. 2:1271680, 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-156",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of future dementia among patients with mild cognitive impairment (MCI) by integrating multimodal clinical data (Cirincione et al., Heliyon 10 (2024) e36728)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-168": "ADNI-Merge participants with complete NP tests and FreeSurfer MRI volumes at five visits (baseline, 6, 12, 18, 24 months) and MCI at month 24 (index exam); outcome = progression to AD before month 48, i.e. within 2 years of the index exam (n=347, 77 converters). LSTM on the five-visit longitudinal sequence plus demographics, 10-fold CV: AUC 0.93 +/- 0.06. Random forest on the single index exam: AUC 0.90 +/- 0.09 (DeLong P=0.039). MRI-only LSTM AUC 0.86; NP-only 0.89.",
+  "P-156": "TADPOLE (ADNI 1/GO/2) cohort of 841 patients with EMCI or LMCI at baseline; outcome = whether the most recent diagnosis changed to dementia (no fixed horizon; 288 progressed). Ensemble Integration (stacking with random forest) over baseline-only modalities (cognitive tests, MRI volumes and ROIs, CSF, demographics/APOE4), 80/20 split: held-out test AUC 0.81, F-measure 0.68 (XGBoost 0.68, autoencoder 0.79)."
+ },
+ "quantity_a": "ROC-AUC (10-fold CV) for 2-year progression MCI->AD from a month-24 index exam, using five-visit longitudinal NP+MRI sequences plus demographics, in ADNI MCI patients with complete longitudinal data",
+ "quantity_b": "ROC-AUC (20% held-out test) for eventual progression MCI->dementia at the latest recorded diagnosis (open horizon), using baseline-visit data only, in the TADPOLE baseline EMCI/LMCI cohort",
+ "same_quantity": false,
+ "incompatible_if_same": "Possibly, since 0.81 lies about two fold-SDs below 0.93, but no interval is reported for P-156 and P-168's +/-0.06 is a fold standard deviation; in any case the quantities differ in horizon, input representation and cohort construction, so the question does not arise.",
+ "gates": {
+  "task": "match on label: both MCI-to-AD/dementia conversion (T2), but the horizons differ (fixed 2 years vs open-ended latest diagnosis)",
+  "dataset_family": "match: both ADNI (P-156 via the TADPOLE derivative of ADNI 1/GO/2); overlapping participants, recorded as non-independence",
+  "validation_tier": "match: both internal only (10-fold CV vs a random 20% held-out split of the same cohort)",
+  "modality_family": "partial: both multimodal tabular NP + FreeSurfer MRI features; P-156 adds CSF and APOE4. The record's modality_family_equal='No' is itself questionable, but the gate result does not decide the verdict"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different endpoint horizon (2 years from a month-24 index exam vs latest recorded diagnosis), different outcome label (AD vs dementia), and different input representation (five-visit longitudinal sequence vs a single baseline visit)",
+ "performance_validity": "flag does not apply: neither is flagged and neither figure reaches 0.97",
+ "independence": "Shared cohort: both use ADNI 1/GO/2 participants, so the samples overlap; recorded as non-independence. Different author groups (Boston University/UMass vs Mount Sinai/USC).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-168's AUC 0.93 is computed from five visits of longitudinal data before the index exam, while P-156 predicts from baseline data only, so the input representation differs (the same difference recorded for C-127, P-186 x P-156).",
+  "P-168's endpoint is progression within a fixed 2 years after the month-24 exam; P-156's is the latest recorded diagnosis with no fixed horizon, so the endpoint horizon differs.",
+  "P-168's cohort is restricted to participants still MCI at month 24 with complete five-visit data, whereas P-156 takes all baseline EMCI/LMCI patients, so the population behind the label differs.",
+  "P-168 itself reports AUC 0.86 for MRI-only and 0.90 for a single-visit random forest, showing the headline 0.93 is specific to its longitudinal multimodal input."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-168",
+   "page": 1,
+   "quote": "A Long Short-Term Memory (LSTM) model using data collected at five-time points (baseline, 6, 12, 18, and 24-month) was developed to predict the risk of progression from MCI to AD within 2 years from the index exam (the exam at 24-month)."
+  },
+  {
+   "paper": "P-168",
+   "page": 2,
+   "quote": "The index exam is defined as the exam at 24-month, and the outcome is defined as the progression from MCI to AD before 48-month."
+  },
+  {
+   "paper": "P-168",
+   "page": 5,
+   "quote": "significantly higher mean AUC (0.93 \u00b1 0.06) than the random forest model based on the data collected at a single time point (24-month) (0.90 \u00b1 0.09) (DeLong test P = 0.039)."
+  },
+  {
+   "paper": "P-156",
+   "page": 3,
+   "quote": "our target prediction problem was to predict which of these MCI patients' diagnosis changed to dementia, and who stayed as MCI, based only on data collected at baseline when they were diagnosed with MCI."
+  },
+  {
+   "paper": "P-156",
+   "page": 4,
+   "quote": "The most recent diagnosis given to each patient (Final DX) was the outcome predicted (stable MCI or progressed to dementia)."
+  },
+  {
+   "paper": "P-156",
+   "page": 5,
+   "quote": "the EI model maintained relatively high performance on the test set (F-measure = 0.68 and AUC = 0.81)"
+  }
+ ],
+ "record_defects": [
+  "resolution_note says 'Confirmed genuine: Same metric type (AUC)' while resolution says 'Rejected: Task, dataset, or modality mismatch'; the record is internally inconsistent.",
+  "The record does not note that P-168's AUC is from a longitudinal five-visit model with a fixed 2-year horizon while P-156's is baseline-only with an open horizon.",
+  "P-168's '0.93 \u00b1 0.06' is a mean and standard deviation across CV folds, not a confidence interval; the record gives no uncertainty for either figure.",
+  "The long 'bridging evidence' list names no condition separating the two results and mixes accuracy, AUC and C-index figures from other studies; it is not bridging evidence under the rule.",
+  "P-156 registry Method_Architecture holds extract spillover text rather than a method description."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Two ADNI studies predicting conversion over the same fixed horizon from the same input representation (both baseline-only or both longitudinal) with non-overlapping AUC intervals."
+}

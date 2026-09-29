@@ -1,0 +1,78 @@
+{
+ "id": "C-60",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging (Rallabandi & Seetharaman, 2023, doi 10.1016/j.bspc.2022.104312, file S1746809422007662)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-95",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Analysis of neuropsychological and neuroradiological features for diagnosis of Alzheimer's disease and mild cognitive impairment (Kurbalija et al., International Journal of Medical Informatics 178 (2023) 105195)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "The record's P-117 (summaries.md S1746809423005462: resting-state EEG, VMD + NSGA-II, best ~99.8% accuracy, sample not reported) could not be checked; the pack PDF is a different paper (OASIS MRI-PET fusion, 95.5% HC vs MCI, AUC 0.988).",
+  "P-95": "Seven Weka classifiers on 482 neuropsychological + neuroradiological features, 90 Novi Sad participants (30 AD, 30 MCI, 30 controls), THREE-class AD/MCI/control classification, 10x10 stratified CV. Accuracy with all attributes 66.22% (LR) to 81.00% (naive Bayes); weighted AUROC 76.3-95.0%."
+ },
+ "quantity_a": "Record's P-117: EEG classifier accuracy, binary MCI vs healthy, own cohort, internal validation (summary block only).",
+ "quantity_b": "P-95: three-class (AD/MCI/control) accuracy across seven classifiers, 90 participants, neuropsychological + MRI features, 10x10 CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable: a three-class accuracy range across seven classifiers is not the same estimand as a binary accuracy; chance level alone differs (33% vs 50%).",
+ "gates": {
+  "task": "mismatch: P-95 is three-class AD/MCI/control (registry T3), not the binary MCI vs control task the record assigns",
+  "dataset_family": "mismatch: Novi Sad clinical cohort vs P-117's EEG cohort (or OASIS); record's dataset_equal='Yes' unsupported",
+  "validation_tier": "match (both internal, V2)",
+  "modality_family": "mismatch: neuropsychological tests + structural/diffusion MRI vs EEG; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: three-class accuracy range vs binary accuracy",
+ "performance_validity": "Likely applies to P-117 (claimed 99.81% internal) but unconfirmable without the correct PDF; not needed for the verdict.",
+ "independence": "No shared cohort or authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The supplied P-117 PDF is the wrong paper (OASIS MRI-PET fusion), so the 99.81% EEG result cannot be checked from source.",
+  "P-95's 66-81% is a three-class AD/MCI/control accuracy range across seven classifiers, so the task gate fails and the endpoint differs from a binary MCI vs control accuracy.",
+  "The dataset-family and modality-family gates also fail, with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 2,
+   "quote": "taken from Open Access Series of Imaging Studies (OASIS) online dataset"
+  },
+  {
+   "paper": "P-117 (summaries.md block, not the PDF)",
+   "page": null,
+   "quote": "Reported best performance near **99.8%** using optimized subset + ensemble setup."
+  },
+  {
+   "paper": "P-95",
+   "page": 1,
+   "quote": "Results: The accuracy for the whole set of attributes ranged between 66.22 % and 81.00 %, and the weighted average AUROC was between 76.3 % and 95.0 %."
+  },
+  {
+   "paper": "P-95",
+   "page": 7,
+   "quote": "the application of machine learning techniques in AD diagnosis will be directed toward the creation of ML classifiers which will be trained to perform the 3-class classification."
+  },
+  {
+   "paper": "P-95",
+   "page": 4,
+   "quote": "The data includes neuroradiological (NR) and neuropsychological (NP) parameters of 90 people, divided into three different groups of equal sizes (per 30 participants)"
+  }
+ ],
+ "record_defects": [
+  "P-117's paper_pdf_map entry points to the wrong PDF (MRI-PET S1746809422007662 instead of EEG S1746809423005462).",
+  "task_equal='Yes' and claim_b '66-81% on T1' are wrong: P-95's figure is a three-class AD/MCI/control accuracy (registry itself codes T3).",
+  "dataset_equal='Yes' has no basis.",
+  "Registry row P-117: Best_Metric and Dataset 'not reported' despite the 99.81% claim.",
+  "resolution_note's bridging list is boilerplate unrelated to either paper."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing plausible: the three-class endpoint makes P-95 incommensurable with a binary accuracy regardless of the correct P-117 PDF."
+}

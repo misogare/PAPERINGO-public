@@ -1,0 +1,24 @@
+{
+  "paper": "P-1322",
+  "pdf_is_right_paper": true,
+  "preprint": false,
+  "read_in_full": true,
+  "supports_stated": "no",
+  "supports_narrowed": "n/a",
+  "dataset_family": "Shenzhen People's Hospital + Shenzhen BGI Life Sciences Research Institute multimodal cohort (ChiCTR2300074261); 277 participants (168 HC / 30 SCD / 51 MCI / 28 AD), EEG available for a subset (Fig. 1B)",
+  "method_family": "64-channel eyes-closed rsEEG relative PSD (Welch, 7 bands) and debiased wPLI functional connectivity on the Desikan-Killiany atlas; pairwise Wilcoxon group maps (uncorrected p<0.05); random forest per modality (80/20 stratified split, SMOTE, GridSearchCV, RFE) alongside genomics, metagenomics, metabolomics and MRI",
+  "same_sample_or_cohort_as": [],
+  "shared_authors_with": [],
+  "what_it_shows": "The same MCI-vs-HC sample is analysed both as group maps and as a classifier, and the two point in opposite directions. Group maps: there is no MCI-HC relative-PSD difference in any band, while dwPLI shows scattered FC differences (frontal theta reductions, temporal gamma1 enhancement) at uncorrected edge-wise p<0.05. Discrimination (random forest, MCI vs HC): EEG relative PSD AUC 0.76, EEG FC AUC 0.49, PSD+FC 0.59. So band power beats connectivity for MCI discrimination. FC beats PSD only for AD vs HC (0.77 vs 0.68).",
+  "why": "No. This is counter-evidence on the comparative claim. The statement is about MCI discrimination, and the study's own head-to-head discrimination test goes the other way: relative PSD AUC 0.76 against FC AUC 0.49 (at chance), and adding FC lowered the AUC to 0.59 (Table 1, p.14; text p.12). The group-level maps echo the ledger's second clause (PSD null in MCI while some FC edges differ), but this echo carries little weight. Both maps are uncorrected pairwise Wilcoxon tests at p<0.05 (Fig. 5 and 6 captions). The FC map covers about 2,278 region pairs x 7 bands against far fewer region-level PSD cells, so some FC 'significant' edges are expected by chance alone, and the authors describe MCI as showing 'the fewest changes in FC'. The test set is about 20% of the 51 MCI, so the AUCs are unstable. MCI was clinical ('MCI due to AD' criteria, MoCA <= 26) without CSF, and the age inclusion window was 20-70 years. The summary block records neither the PSD/FC group results nor the modality AUCs (a block gap). Independence: no site, cohort or author overlap with P-553, P-501, P-463 or P-480. It shares a funding grant number (MOST 2022ZD0211600) with candidate P-552 (Tongji, Shanghai), with different sites and no shared authors. Not in registry_duplicates.json. PDF title, first author and DOI 10.1002/alz.70182 match the block.",
+  "quotes": [
+    {"page": 9, "quote": "Notably, in MCI subjects, no significant changes in PSD were observed across the examined frequency bands."},
+    {"page": 10, "quote": "The MCI group exhibited the fewest changes in FC among the three cognitive decline groups compared to HC. The widespread theta band connectivity enhancement observed in SCD disappeared in MCI, replaced by significant reductions in FC within the frontal lobe. The most notable changes occurred in the gamma1 band, with significant enhancement concentrated within the temporal lobe and between the temporal lobe and subcortical structures."},
+    {"page": 12, "quote": "EEG features maintained predictive power like that observed in SCD, with EEG relative PSD alone achieving an AUC of 0.76, although adding FC did not improve performance."},
+    {"page": 14, "quote": "MCI versus HC Precision Recall F1-score Specificity AUC ... EEG relative PSD 0.77 0.79 0.78 0.91 0.76 EEG FC 0.67 0.79 0.73 0.97 0.49 EEG combined 0.87 0.85 0.8 1 0.59"},
+    {"page": 12, "quote": "In comparison, the predictive power of EEG features was lower but consistent with their performance in SCD and MCI, with EEG PSD achieving an AUC of 0.68 and FC 0.77."},
+    {"page": 13, "quote": "Significant connections (p < 0.05) from the Wilcoxon rank-sum test are marked by scatter dots"},
+    {"page": 6, "quote": "The dataset was initially split into an 80% training set and a 20% test set using stratified sampling to ensure balanced class labels across splits."},
+    {"page": 15, "quote": "Consequently, EEG alterations in MCI were less pronounced, with significant PSD changes seen in the SCD stage no longer present, and notable FC disruptions reduced"}
+  ]
+}

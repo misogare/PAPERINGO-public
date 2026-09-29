@@ -1,0 +1,145 @@
+{
+  "vf": "VF-27",
+  "role": "skeptic",
+  "status": "model reading, pending operator review (not a gate decision)",
+  "date": "2026-09-29",
+  "statement_tested": "Table A1 row: Depression status is associated with MCI, but whether depression severity grades MCI neurobiology and prognosis is divided in this corpus: within the supporting studies, continuous severity scores fail to track brain measures or conversion, although in one of them major-depression groups had lower functional connectivity than subthreshold-depression groups in frontal, cortical and limbic areas, while a study outside the supporter list finds a monotone, dose-dependent relation of a 36-month depressive-symptom trajectory to conversion in ADNI (P-26).",
+  "narrowed_wording_on_record": "none (round 20 verdict 'fails', round20_narrowed_wording empty)",
+  "method": "Each candidate's verifier verdict was checked against its PDF text (ROOT/pdf/<P-id>.txt). For each one I checked that the comparison was actually run, that the population and exposure are the ones the row names, that the null (or significant) result comes from the paper's own statistics, whether the claim is the authors' interpretation rather than their result, and whether the sample is shared with another supporter or candidate. P-647 was admitted 'yes' in round 20 for showing only the conversion limb, and the same standard is applied here. Only 'yes' counts toward the tally, and each dataset family counts once. Method family is reported as a separate check, because H.1 also requires method families to be distinct.",
+  "verdicts": [
+    {
+      "paper": "P-788",
+      "refuted": false,
+      "final_stated": "yes",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "reason": "Confirmed against the PDF (Molina-Torres et al., Int Psychogeriatr 38 (2026) 100129). Table 1 gives EURO-D '3.0 + /- 2' (sMCI, n 32) and '3.4 + /- 1.9' (pMCI, n 27), and no value is printed in the column headed 'P < 0.05', which prints only significant p values. A t of about 0.8 is consistent with that blank. Above the cut-off: 12 (37.5 %) vs 10 (37 %). Results p.3: 'nor did the EURO-D scale follow the progression towards dementia.' Discussion p.4: 'neither the results of regression models, nor the scores of the proposed natural history of the disease support this conjecture.' Exclusions p.2: 'Chronic depressive disorders were not grounds for exclusion unless patients were experiencing a new active episode', so no range restriction was imposed. This is a converter-versus-stable null on a continuous severity score, the same kind of evidence as P-647. Limits: 27 converters; the regression coefficients are not printed; the outcome is all-cause dementia. No imaging, and all participants have MCI, so it does not test the first clause or the brain limb. Dataset: Hospital Nuestra Senora de Gracia, Zaragoza. No overlap with any supporter or candidate."
+    },
+    {
+      "paper": "P-974",
+      "refuted": false,
+      "final_stated": "yes",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "reason": "Confirmed against the PDF (Choo et al., Psychiatry Investig 2022;19(5):394-400). Table 1 prints 'GDS 10.1+/-7.7 9.7+/-7.3 0.850'. Correction to the verifier: the column order is non-converters (N=58) then converters (N=17), as the sex row and the text both confirm, so 10.1 belongs to the non-converters and 9.7 to the converters. The verdict does not change. Text p.3: 'MCI converters did not show statistically significant differences in terms of ... Geriatric Depression Scale.' The non-converter group contains only stable MCI and reverters, with no non-AD dementia. This is a converter-versus-stable null on a continuous score, on the P-647 standard. Limits: 17 converters; a descriptive t-test only; GDS was not in the Cox models; the GDS version is not stated. Exclusions ('current serious ... psychiatric ... disorder'; 'current use of psychoactive medication') may restrict the range somewhat, although SD 7.5 on a mean of 10 shows wide spread. The outcome is AD only. It does not test the first clause or the brain limb (GDS is never related to SUVR). Dataset: Chosun University Hospital, Gwangju. This is distinct from P-643 (Korea University Guro, Seoul), and no authors are shared."
+    },
+    {
+      "paper": "P-1326",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "reason": "Confirmed against the PDF (Zuliani et al., Aging Clin Exp Res 2021;33:1895-1902). The methods say '15 items geriatric depression scale'; the tables' 'global deterioration scale' footnote is a mislabel. Table 3 univariate Cox by GDS category: 5-10 HR 0.75 (0.50-1.11); >10 HR 0.85 (0.47-1.54), p 0.35. Text: 'further adjustment for ... GDS score did not modify the results (data not shown).' So severity strata did not grade conversion upward. Against the Table A1 wording, the continuous score DID track conversion, inversely: Table 1 GDS 5 (3-7) stable vs 3 (2-6) converters, p 0.007, and the text lists 'less depressive symptoms' among the converter characteristics. That is not a failure to track. It fits the ledger's 'milder stratum carried the worse signal' better than the Table A1 sentence. It may be confounded by MCI type, since aMCI patients had fewer depressive symptoms (p 0.05) and converted more often. 'Partly' stands, and the paper is not a clean supporter of the continuous-score sentence. Dataset: two sites, Ferrara S. Anna and Casa Sollievo della Sofferenza. It shares a family with other corpus papers from these sites, but with no supporter or candidate here."
+    },
+    {
+      "paper": "P-578",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "reason": "Confirmed against the PDF (Echeveste et al., EJNMMI 2025;52:3567-3577). Exclusions p.2 include 'evidence of depression or dysthymia'. Table 1 prints GDS 7.34 (4.62) for converters and 8.80 (5.88) for non-converters, p 0.554. GDS enters no model and is never related to PET. 'Partly' stands on the range-restriction ground applied to depression-excluded samples. NEW DEFECT, not in the verifier note: the Table 1 header and note state converters n = 75 and non-converters n = 41, but every percentage in the table implies 68 and 77 (e.g. Amyloid+ 95.59 % = 65/68 and 42.85 % = 33/77, summing to the 98/145 total; FDG+ 40/63 and 19/70, i.e. 133). So the groups actually compared in Table 1, including GDS, do not match the stated 75/41 split. The null is still printed as a converter-versus-non-converter comparison, but its group composition is uncertain. This weakens it further. Dataset: Clinica Universidad de Navarra, Pamplona. Distinct from P-788's Zaragoza centre."
+    },
+    {
+      "paper": "P-670",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "reason": "Confirmed against the PDF (Muscari et al., Arch Gerontol Geriatr 94 (2021) 104359). Inclusion criteria p.2: 'GDS <5'. Exclusion: 'psychiatric disorders'. Table 1: 'GDS (0-5) 1 [0.5-3] 1 [0-3] 0.63' (non-converters 112, converters 31). Text: 'GDS score ... did not differ between the two groups'. Discussion: 'depressive symptoms are not predictive of conversion'. The test is univariate only, and severity is tested only inside a sub-clinical 0-4 band, so the null is largely built in by the entry criterion. The horizon is one year. GDS is never related to CT or FDG-PET. 'Partly' stands. Dataset: S. Orsola-Malpighi, Bologna. No overlap."
+    },
+    {
+      "paper": "P-731",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "reason": "Confirmed against the PDF (Li et al., risk factors and predictive models MCI to AD, ADNI). Table 1 GDS: overall 1.81 (1.59); sMCI 1.71 (1.57); pMCI 1.96 (1.62); p 0.339. The column order was checked against FAQ (1.35 vs 6.49). The text lists GDS among the variables with no intergroup difference. It is an incidental baseline comparison, and GDS is not in the causal graph or the models. The range is narrow (mean 1.8), consistent with an entry cap, although the PDF does not state one. 'Partly' stands, for the same reason as P-670. Dataset: ADNI, the same family as P-770 (refuted here) and as the counter-evidence study P-26. It would count once with any ADNI paper."
+    },
+    {
+      "paper": "P-720",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "reason": "Confirmed against the PDF (Dintica et al., Neurobiol Aging 158 (2026) 11-17). First clause: Table 1 MCI 459 (19.3) low vs 168 (30.3) high symptoms, p < 0.001. This is unadjusted, and 'high' is a GDS-30 score of 10 or more, a screen rather than a diagnosis. The severity limb goes AGAINST the row's supporter sentence. In the pooled CU+MCI sample, 'each 1-SD higher depressive symptom score ... was associated with higher plasma NfL (beta = 0.008, 0.003-0.014) and p-tau (beta = 0.074, 0.040-0.108), but not with Abeta42/40 ... or AD cortical thickness (beta = -0.024, -0.062-0.014)'. MCI with high symptoms also had thinner AD-signature cortex, against a CU low-symptom reference. As a supporter, P-720 would make 'within the supporting studies, continuous severity scores fail to track brain measures' false for blood tau and NfL. 'Partly' stands for the first clause only. It cannot be a yes. On the rejection ground: the 2026-08 'no severity-vs-brain test' ground is answered, since the paper runs GDS against cortical thickness, but the answer brings positive plasma associations with it. Dataset: HABS-HD. No overlap."
+    },
+    {
+      "paper": "P-785",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "reason": "Confirmed against the PDF (Anita et al., Int Psychogeriatr 37 (2025) 100058). Moderate and high anxious-depression latent classes (STAI-10 plus CESD-10 items) had higher odds of prevalent MCI about seven years later: 'moderate: OR 1.64 [1.25;2.16]; high: OR 1.62 [1.12;2.33]'. The paper has no brain measure ('our study did not include brain imaging') and no conversion outcome. So only the first clause is shown, on a transformed exposure (a pooled anxiety-depression class, not depression status). 'Partly' stands on the source. PROCEDURAL CAVEAT: the brief allows a previously rejected paper to be re-proposed only if its source shows the rejection was wrong. The 2026-08-11 ground ('P-785 has none' of the brain measures) is still factually true, and only the row's wording has changed since. Whether that permits re-proposal is for the operator to decide. The paper cannot count as yes in any case. Dataset: HCHS/SOL, SOL-INCA. No overlap."
+    },
+    {
+      "paper": "P-770",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "n/a",
+      "independent": false,
+      "reason": "REFUTED. The only depression-specific result is one sentence (p.5): 'Spearman's correlation analysis between the most frequent behavioral symptoms in this cohort (depression, irritability, sleep disturbances, apathy, and agitation) and orbitofrontal cortex and bilateral posterior cingulate cortex volumes did not show significant associations (data not shown).' No coefficient, n, subset or variable definition is printed. The paper does not say whether the symptom was entered as presence or as the 0-12 frequency x severity domain score. The authors' own limitations (p.8) then say: 'We did not perform a qualitative analysis of the different types of neuropsychiatric symptoms, but further studies could consider investigating the correlation of regional gray matter volumes with frequency and severity of different clinical signs in MCI.' The source therefore does not show a depression-SEVERITY versus brain test. What it offers is an unreported assertion that the authors' own limitations contradict. So the 2026-08-11 rejection ground (no severity-versus-brain test) is not shown to be wrong. Depression is never related to tau PET, and there is no conversion outcome. The first clause cannot be tested because the healthy adults were selected to be free of NPS. Dataset: ADNI-3. It would share the family with P-731 in any case."
+    },
+    {
+      "paper": "P-989",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "n/a",
+      "independent": false,
+      "reason": "REFUTED. The paper's only test that grades continuous severity against conversion is POSITIVE: 'SGDS scores (HR [95% CI] = 1.040 (1.007-1.075), p = 0.017) were significantly associated with the risk of progression to AD in univariate Cox regression' (p.5), and Table 1 gives converters 6.5 +/- 3.8 vs stable 6.0 +/- 3.4, p 0.038. The row's supporter sentence says continuous severity scores 'fail to track ... conversion', so on that limb P-989 sits with P-26 as counter-evidence. The null results the verifier relies on are presence and profile contrasts, not severity grading. They are the affective-dysregulation cluster vs asymptomatic (HR 1.214, p 0.232) and the SGDS>6 affective vs asymptomatic-without-depressive-symptoms contrast (HR 1.237, p 0.266). The authors' sentence 'the severity of depressive symptoms was not associated with the risk of AD' is their INTERPRETATION of that dichotomous contrast, not a result of a severity-grading analysis. The cortical-thickness comparisons are also cluster contrasts, with no SGDS-thickness correlation. The first clause is not tested (all participants have aMCI). Nothing in the source demonstrates any clause of the row as a supporter would need to. Dataset: SMG-SNU Boramae and Dongjak-Gu, Seoul. It would be independent if it counted."
+    },
+    {
+      "paper": "P-491",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "n/a",
+      "independent": false,
+      "reason": "REFUTED. (1) Population: 114 MCI-AD and 138 AD dementia, pooled, with no MCI-only result. The row concerns MCI neurobiology, and the majority of this sample has dementia. (2) The cross-sectional null ('no significant association between any of the NPS scores (either total scores or subscores) and WMHs (see Table S3)') refers to a supplementary table that is not in the extract. The depression-specific statistic is therefore not available from the source. (3) The paper's own longitudinal model relates the depression severity subscore to a brain measure: 'baseline WMH load was associated with significantly worse future ... depression severity subscore (p = .017)', reported as significant under the paper's convention. The correlation plot (r = 0.087, p = 0.172) is null. A study whose own primary longitudinal analysis links depression severity to WMH does not demonstrate that severity scores fail to track brain measures. At best it is divided, in a non-MCI population. No conversion outcome, and no first-clause comparator. Dataset: NACC. It would be independent if it counted."
+    }
+  ],
+  "tally": {
+    "stated_form": {
+      "current_supporters_round20": {
+        "P-643": "yes (Korea University Guro; imaging correlation; brain limb and 'although' clause)",
+        "P-647": "yes (Shanghai Brain Health Cohort; conversion limb)",
+        "P-662": "no",
+        "P-663": "no"
+      },
+      "surviving_candidate_yes": ["P-788", "P-974"],
+      "surviving_candidate_partly": ["P-1326", "P-578", "P-670", "P-731", "P-720", "P-785"],
+      "refuted_to_no": ["P-770", "P-989", "P-491"],
+      "independent_yes_families": [
+        "Korea University Guro Medical Center (P-643)",
+        "Shanghai Brain Health Cohort (P-647)",
+        "Hospital Nuestra Senora de Gracia geriatric outpatients, Zaragoza (P-788)",
+        "Chosun University Hospital, Gwangju (P-974)"
+      ],
+      "count_by_dataset_family": 4,
+      "reaches_three_by_dataset_family": true,
+      "method_family_check": "Three of the four yes supporters (P-647, P-788, P-974) rest on the same analysis: a univariate converter-versus-stable comparison of a baseline depression-scale score in an MCI cohort. Each has few converters (28, 27 and 17). P-643 is the only imaging-correlation supporter. The yes set therefore spans TWO method families. If H.1's requirement that method families be distinct is applied, the stated form reaches two, not three.",
+      "clause_coverage": "First clause (depression status is associated with MCI): no yes supporter tests it; only partly, from P-720 (unadjusted, GDS-30 score of 10 or more) and P-785 (anxious-depression class). Brain limb (continuous severity fails to track brain measures): P-643 alone; P-720 contradicts it for plasma p-tau181 and NfL. 'Although' clause: P-643 alone. Conversion limb (continuous severity fails to track conversion): P-647, P-788 and P-974 (one method family); range-restricted partly nulls in P-578, P-670 and P-731; counter-evidence in P-989 (HR 1.040 per SGDS point, p 0.017), in P-1326 (a significant inverse association) and in P-26 (not checked)."
+    },
+    "narrowed_wording": {
+      "status": "not applicable: round 20 recorded no narrowed wording for VF-27 (verdict 'fails'), and no candidate was judged against one (all n/a). The empty list and false below mean that no narrowed form exists, NOT that support was counted and fell short.",
+      "note": "Round 20 describes a two-study observation sustained by P-643 and P-647. Its conversion half is extended by P-788 and P-974 on the same standard, so any narrowing to that half would carry the same method-family limit as the stated form."
+    },
+    "stated_independent_yes": ["P-643", "P-647", "P-788", "P-974"],
+    "narrowed_independent_yes": [],
+    "stated_reaches_three": true,
+    "narrowed_reaches_three": false,
+    "dataset_families": [
+      "Korea University Guro (P-643)",
+      "Shanghai Brain Health Cohort (P-647)",
+      "Hospital Nuestra Senora de Gracia, Zaragoza (P-788)",
+      "Chosun University Hospital, Gwangju (P-974)"
+    ]
+  },
+  "consequences_for_wording": "The four-family count is reached only through the conversion limb, and three of those four yes supporters use the same method (univariate, low-powered baseline-score converter comparisons). The union of conditions actually demonstrated is: (a) in three independent MCI cohorts, a baseline depressive-symptom score did not separate later converters from non-converters; (b) in one study (P-643), K-GDS severity did not correlate with ROI volume or FC, while its major-depression groups had lower FC than its subthreshold groups. The row's first clause is demonstrated by no yes supporter. The corpus also holds conversion-limb counter-evidence: P-989's continuous SGDS predicted progression, P-1326's continuous GDS was inversely associated with conversion, and P-26 was not checked. So the 'divided' framing is supported. A statement that severity 'fails to track conversion' as a convergence depends on whether H.1's method-family requirement is enforced. This record takes no position on admission. That is the operator's decision.",
+  "defects_noted": [
+    "P-974 verifier note swaps the GDS column attribution (10.1 is non-converters, 9.7 converters); verdict unaffected.",
+    "P-578 Table 1: header and note state converters 75 / non-converters 41, but every percentage implies 68 / 77 (145 total; FDG 63 / 70). The groups compared in the GDS row are uncertain.",
+    "P-770: the 'data not shown' depression-volume sub-analysis is contradicted by the authors' own limitations paragraph.",
+    "P-1326: the tables' footnote reads 'GDS global deterioration scale', but the methods define GDS as the 15-item geriatric depression scale.",
+    "P-989: the finder note omitted the positive univariate SGDS result (the verifier caught it)."
+  ],
+  "summary": "Of 11 candidates, two survive as yes (P-788 Zaragoza, P-974 Gwangju), both on the conversion limb and both on the P-647 standard. Six stay partly: P-1326, P-578, P-670, P-731, P-720, P-785. Three are refuted to no: P-770 (depression-volume result 'data not shown' and contradicted by the authors' limitations), P-989 (its continuous SGDS predicted progression, HR 1.040 per point, p 0.017; the null contrasts are presence contrasts) and P-491 (pooled MCI plus AD dementia, and its own longitudinal model links depression severity to WMH, p .017). Combined with round 20 (P-643 yes, P-647 yes), the stated form has four independent yes dataset families: Korea University Guro, Shanghai Brain Health, Zaragoza and Chosun. It reaches three on dataset-family counting. However, P-647, P-788 and P-974 are one method family (univariate converter comparisons of a baseline score, 17 to 28 converters each), so under H.1's method-family requirement the yes set spans only two families. No yes supporter tests the row's first clause, and the brain limb rests on P-643 alone. No narrowed wording is on record, so the narrowed tally is not applicable."
+}

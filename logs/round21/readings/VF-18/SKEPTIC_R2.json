@@ -1,0 +1,59 @@
+{
+  "vf": "VF-18",
+  "role": "skeptic, round 21 second round",
+  "status": "candidate / pending_human_review (model reading; not an operator gate)",
+  "date": "2026-09-29",
+  "statement_tested": "Ocular channels (retinal structure and eye-movement behavior) are repeatedly supported as scalable biomarker directions for early cognitive decline detection",
+  "narrowed_wording_on_record": "Ocular measures show preliminary, single-centre associations with MCI: retinal imaging (fundus with or without OCT) discriminated MCI in two small Chinese hospital cohorts, one heavily confounded by age and stroke, and saccadic inhibition errors and prosaccade latency differed between MCI and controls at group level in one Korean cohort; neither channel has been externally validated or shown to be scalable.",
+  "method": "One second-round candidate (P-688) was scored partly/partly by its verifier. I tried to refute that verdict from ROOT/pdf/P-688.txt (already present, 7 pages, read in full to the References). Page 1 gives the title, authors (Ruonan Gao ... Lijing Wang, Libin Liu; Department of Endocrinology, Fujian Medical University Union Hospital, Fuzhou) and DOI 10.1016/j.diabres.2023.111036, matching the summaries.md block (Paper 688) and the registry row. P-688 is not in registry_duplicates.json. I recomputed the DR statistics from the Table 3 counts. I grepped summaries.md for the hospital, the corresponding author and the DOI to check for shared cohorts. I also read the second-round verifier files for P-270 and P-1152 (both scored no) so that the boundary between a graded funduscopy and a record-coded DR field is applied consistently. The round-1 tally is taken from SKEPTIC.json unchanged.",
+  "verdicts": [
+    {
+      "paper": "P-688",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": true,
+      "dataset_family": "Fuzhou community T2DM cohort, Department of Endocrinology, Fujian Medical University Union Hospital (ethics 2023KY165): 328 screened in January 2019, 234 analysed in January 2022 (75 hypoglycaemia / 159 control); the DR analysis is nested in the 75 (44 MCI / 31 NCI)",
+      "method_family": "Retrospective cohort with nested case-control; univariate and multivariable logistic regression of clinical risk factors including a binary ETDRS diabetic-retinopathy grade from funduscopy by a retinal specialist; per-factor ROC. No retinal image analysis, no quantitative retinal measure, no classifier.",
+      "reason": "Survives at partly under both forms; not refuted. (1) The comparison is run within the study. Table 3 (p.5) gives DR in 23/44 MCI vs 7/31 NCI (52.3% vs 22.6%, P = 0.010) among 75 hypoglycaemic T2DM patients, and Table 4 (p.6) keeps DR in the multivariable model (printed aOR 3.078, 1.158-12.358, P = 0.029). The DR grade comes from 'Funduscopic examination ... performed by a retinal specialist to evaluate the presence of retinopathy based on the criteria of Early Treatment Diabetic Retinopathy' (p.2). That is a defined ocular examination in the study protocol, and it is what separates P-688 from P-270 and P-1152, where DR is a record-coded comorbidity field and the verdict is no. Because the design is 'retrospective' (p.2), the paper does not make clear whether the funduscopy was done for this study or taken from the 2019 screening; either way it is a graded retinal examination. (2) The core association holds on the paper's own counts. My arithmetic: the Table 3 counts give chi-square 6.68, p = 0.0097 (the printed P is 0.010) and a crude OR of 3.76 with Wald p = 0.012. That Wald p equals the printed univariate p, so in the Table 4 univariate row it is the OR and CI (2.775, 1.042-7.508, whose own implied p is about 0.04) that fail to match the counts, not the p. The adjusted CI's geometric centre is 3.78, and at 3.78 the CI implies p = 0.028, which matches the printed 0.029; the printed 3.078 is most likely a misprint of 3.78. Taken literally, 3.078 with that CI would imply p of about 0.06, which is not significant. This refines the verifier's arithmetic on those two rows. It does not remove the crude association. The binary-predictor AUC from the counts is 0.65 (sensitivity 23/44 = 0.52, specificity 24/31 = 0.77), against the printed 0.678 (Supplementary Fig. 1, not in the extract). Both fall in the authors' own 'moderate' band (0.64-0.70, p.3), so discrimination is weak either way. (3) The population and comparator are not those the statement names: 75 T2DM patients aged 45-75 with documented hypoglycaemia, MCI vs NCI within that group. That is the brief's 'different population' case, so partly, not yes. (4) Part of the claim is the authors' interpretation, not their result. 'Higher odds of developing MCI 3 years later' (p.4) is a temporal reading the design does not establish. MCI was diagnosed only at the 2022 assessment (p.2). Baseline MCI was not an exclusion; only prevalent dementia was (p.2). The hypoglycaemia group's baseline MoCA median was already 23 [20-25] (Table 1). Baseline MoCA is neither reported by outcome group (Table 3) nor adjusted for (Table 4 footnote). The source therefore shows an association of baseline DR with MCI status at follow-up, not with incident MCI. (5) There is a measurement bias the source does not resolve. Patients with DR who reported difficulty seeing the MoCA figures were given MoCA-B instead (p.2), so the outcome instrument depends on the exposure. Neither the number switched nor the MoCA-B threshold is reported. (6) The multivariable model has about 10 covariates for 31 non-events (Table 4 footnote), so the adjusted estimate is unstable (upper CI bound 12.4). (7) The marker is a diabetic microvascular complication. The authors call DR a 'potential hazard factor' (p.6) and explain the link through shared neuro- and microvascular pathology (p.5). 'Routine grip strength tests and fundoscopic examinations might help identify high-risk patients' (p.6) is their suggestion, not a tested screening result. Scalability is not tested and eye movement is not examined. STATED: partly. A retinal-structure finding is associated with MCI within the study, but in a narrow diabetic population, with weak discrimination and no scalability. NARROWED: partly. It fits the head clause (a single-centre, preliminary, unvalidated association of an ocular measure with MCI; the authors concede 'a single city in China with a relatively small sample size', p.6). It does not fit the retinal sub-clause 'retinal imaging (fundus with or without OCT) discriminated MCI': a binary clinical DR grade with AUC about 0.65 in hypoglycaemic diabetics is not imaging analysed to discriminate MCI. INDEPENDENCE: a single Fuzhou centre. It shares no sample, site or authors with P-5, P-105, P-952 or P-966, with any round-1 candidate, or with P-270 (Xiangya, Changsha) and P-1152 (Casablanca). The only other corpus block from the same hospital is P-621 (a tandospirone RCT in vascular depression), which is neither a VF-18 supporter nor a candidate. P-5's first author is a different Gao (Wenzhou). Not a preprint."
+    }
+  ],
+  "tally": {
+    "stated_form": {
+      "round1_independent_yes_families": [
+        "Daping Hospital Chongqing + WMU Eye Hospital Wenzhou (P-5)"
+      ],
+      "second_round_additions": [],
+      "independent_yes_families": [
+        "Daping Hospital Chongqing + WMU Eye Hospital Wenzhou (P-5)"
+      ],
+      "count": 1,
+      "reaches_three": false,
+      "note": "P-688 survives only at partly, so it adds no yes. The round-1 caveats stand. If P-5's round-20 'yes' was scored without requiring tested scalability, P-163 would qualify on the same terms, giving 2. Under a strict reading that 'scalable' must be shown, the count is 0. Reaching three would need a study to be stretched to fit. P-688 would be such a stretch: it has a clinical DR grade, hypoglycaemic diabetics only and an AUC of about 0.65."
+    },
+    "narrowed_wording": {
+      "round1_independent_yes_families": [
+        "Daping Hospital Chongqing + WMU Eye Hospital Wenzhou (P-5)",
+        "Seventh Affiliated Hospital, Sun Yat-sen University, Shenzhen (P-952)",
+        "KIOM / GARD cohort, Korea (P-966)",
+        "Ruijin Hospital, Shanghai (P-933)",
+        "AXIS Neurociencias, Bahia Blanca, Argentina (P-988)",
+        "Duke iMIND, NCT03233646 / Pro00082598 (P-163; P-1317 and P-363 same family)"
+      ],
+      "second_round_additions": [],
+      "partly_only_not_counted": [
+        "Fuzhou T2DM hypoglycaemia cohort, Fujian Medical University Union Hospital (P-688): head clause only"
+      ],
+      "count": 6,
+      "reaches_three": true,
+      "method_families": "Unchanged from round 1. By channel: 2 (retinal imaging; eye-tracking). By analytic approach: 5 (deep-learning retinal classifiers P-5 and P-163; classical-ML fundus classifier P-952; OCT/ERG group association P-933; saccade-paradigm group comparison P-966; memory-task eye-tracking with a person-level ROC P-988). P-688 would add a sixth analytic family (clinical risk-factor regression on a binary DR grade), but it is not counted."
+    }
+  },
+  "changed_from_round1": "nothing. P-688 survives Step 1 at partly/partly, so neither yes tally changes: stated 1 (does not reach three), narrowed 6 families (reaches three).",
+  "consequences_for_wording": "None required by P-688. If the operator nonetheless wanted the narrowed wording to acknowledge it, the addition would be a separate, weaker clause, not an extension of the 'retinal imaging discriminated MCI' clause. For example: a clinically graded diabetic retinopathy finding was associated with MCI in one small Chinese cohort of hypoglycaemic type 2 diabetes patients (moderate discrimination, AUC about 0.65-0.68, with inconsistent reported statistics and baseline cognition not controlled).",
+  "defects_noted": [
+    "P-688 source: in the Table 4 univariate row for DR, the OR/CI (2.775, 1.042-7.508) do not match the Table 3 counts (crude OR 3.76), although the printed p (0.012) does. The adjusted OR 3.078 is most likely a misprint of 3.78 (the CI's geometric centre, whose implied p of 0.028 matches the printed 0.029).",
+    "P-688 source: other percentage typos show careless tabulation. Table 1 male 72 (54.7) should be 45.3%. Table 3 NCI drinking 7 (25.6) should be 22.6%. Table 3 MCI trembling 23 (75.0) should be 52.3%.",
+    "P-688 source: the printed DR AUC of 0.678 is not reproducible from the binary counts (0.65); the ROC is in Supplementary Fig. 1, which is not in the extract."
+  ]
+}

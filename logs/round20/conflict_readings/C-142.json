@@ -1,0 +1,76 @@
+{
+ "id": "C-142",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-199",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A Two-Stage Model for Predicting Mild Cognitive Impairment to Alzheimer's Disease Conversion (Lu et al., Front Aging Neurosci 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-186",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early MCI-to-AD Conversion Prediction Using Future Value Forecasting of Multimodal Features (Minhas et al., Comput Intell Neurosci 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-199": "3D ResNet-50 (Med3D init + MoCo) on baseline structural MRI only; 577 ADNI MCI (297 sMCI/280 pMCI, 36-month window); random 80/20 split; test Acc 0.819 (95% CI 0.798-0.841), AUC 0.835.",
+  "P-186": "Linear SVM on three-visit trajectories (last visit forecast by weighted gradient offset) of 8 neuropsychological measures + FreeSurfer MRI features; ADNI-1 MCI with complete follow-up; 5-fold CV. 1-year-ahead NM+MRI AUC 95.7% (n=85, 9 features); 6-month-ahead 91.2% (n=119). MRI-only: 88% (6-month) and 90.5% (1-year)."
+ },
+ "quantity_a": "Test-set AUC for 36-month pMCI vs sMCI from one baseline raw T1 MRI image, 577 ADNI MCI, internal held-out split.",
+ "quantity_b": "5-fold CV AUC for MCIp (conversion by month 36) vs MCIs in an 85-subject complete-follow-up ADNI-1 subsample, from three-visit cognitive + FreeSurfer-feature trajectories including a forecast value at the time of conversion.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not established: P-186 gives no AUC interval, and with 85 subjects in 5-fold CV the uncertainty is large; neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: T2 MCI-to-AD conversion, both with a 36-month conversion definition",
+  "dataset_family": "match: ADNI (P-186 ADNI-1 subset; P-199 ADNI MCI baseline); participants likely overlap",
+  "validation_tier": "match: both internal (held-out split vs 5-fold CV)",
+  "modality_family": "mismatch: P-199 structural MRI image only; P-186 neuropsychological tests + tabular FreeSurfer features; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (AUC) but different predictor set (image only vs cognition + MRI features), input representation (single baseline image vs three-visit trajectories with a forecast conversion-time value), and population (577 baseline MCI vs 85 complete-follow-up ADNI-1 MCI)",
+ "performance_validity": "flag does not apply: 0.835 and 0.957 are below 0.97; P-186 normalises before the train-test split and picks the subset size from results, so its 0.957 is optimistic",
+ "independence": "Distinct author groups; both use ADNI (shared cohort, recorded as non-independence).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-186's 0.957 comes from longitudinal trajectories of cognitive tests and MRI features that include a forecast value at the conversion time point, whereas P-199 uses a single baseline MRI image, so predictor set and input representation differ.",
+  "P-186 evaluates 85 ADNI-1 subjects with three consecutive annual visits, a selected complete-follow-up subsample, whereas P-199 evaluates baseline MCI broadly (577), so the population differs.",
+  "P-186 attributes its high AUC to the forecast conversion-time feature, which is a design choice absent from P-199, not a competing estimate of the same quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-199",
+   "page": 2,
+   "quote": "To prevent data leakage, only participants' baseline data were selected in this study."
+  },
+  {
+   "paper": "P-199",
+   "page": 6,
+   "quote": "ResNet-50 achieved the best performance with an accuracy of 0.819 and an AUC of 0.835"
+  },
+  {
+   "paper": "P-186",
+   "page": 3,
+   "quote": "for 1-year-ahead prediction, the dataset contains three consecutive annual readings, resulting in 35 MCIp and 50 MCIs subjects."
+  },
+  {
+   "paper": "P-186",
+   "page": 8,
+   "quote": "The method proposed in this paper has recorded the highest classification AUC of 95.7% predominantly because of involving the forecasted marker value at the time of conversion as a classification feature."
+  },
+  {
+   "paper": "P-186",
+   "page": 4,
+   "quote": "We scale all features to have values between 0 and 1 before the train-test split."
+  }
+ ],
+ "record_defects": [
+  "resolution_note says 'Confirmed genuine' on metric type and gap alone while resolution says 'Rejected: Task, dataset, or modality mismatch'.",
+  "claim_b uses 0.957 (1-year, n=85) while P-186's registry Best_Metric is 'AUC 0.912' (6-month, n=119); the claim states neither horizon nor n.",
+  "The bridging-evidence list names no condition separating the two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A baseline-only, image-only P-186-type result (or a longitudinal cognition-plus-MRI P-199 result) on a comparable ADNI MCI population, with intervals that exclude each other."
+}

@@ -1,0 +1,73 @@
+{
+ "id": "C-173",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-146",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting cognitive decline: Deep-learning reveals subtle brain changes in pre-MCI stage (Yue, Pan, Li et al., J Prev Alz Dis 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-41",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early progression detection from MCI to AD using multi-view MRI for enhanced assisted living (Rahim et al., Image and Vision Computing 2025)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-146": "ROI-based CNN trained on ADNI-1 (AD+pMCI vs NC+sMCI) yields a Progressive Index applied to cognitively normal/SCD people: ADNI-2 NC/SCD-to-MCI within ~3 years AUC 0.7048; CLAS (109 NC/SCD, 7-year follow-up) PI alone AUC 0.711; PI combined with age, gender, education and an associative-learning score in logistic regression AUC 0.812 (95% CI 0.725-0.900).",
+  "P-41": "Multi-plane 2D CNN heterogeneous ensemble with CBAM and multi-head attention, ADNI (192 subjects: 96 sMCI vs 81 pMCI + 15 AD in the positive class), subject-level split 71/10/15 per class; test accuracy 91.77%, sensitivity 87.69%, specificity 88.53%, AUC 92.87%."
+ },
+ "quantity_a": "AUC for predicting conversion from normal cognition or SCD to (amnestic) MCI over 7 years in the CLAS community cohort, from an MRI-derived index plus demographic and neuropsychological variables.",
+ "quantity_b": "AUC for separating stable MCI from progressive MCI (MCI-to-AD within M18-M48) pooled with established AD, from baseline structural MRI slices only, on a 30-subject ADNI test set.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not meaningful: 0.812 (0.725-0.900) vs 0.929 (+/- 3.58) are for different transitions; neither paper claims the ordering the other refutes.",
+ "gates": {
+  "task": "mismatch in substance: both coded T2, but P-146 predicts NC/SCD-to-MCI conversion while P-41 predicts MCI-to-AD (with AD cases in the positive class).",
+  "dataset_family": "mismatch for the cited figure: P-146's 0.812 comes from CLAS (Shanghai), P-41 is ADNI only. P-146's ADNI-2 result (0.7048) is still NC/SCD-to-MCI, not MCI-to-AD.",
+  "validation_tier": "mismatch: P-146's CLAS result is an external application of an ADNI-1-trained network (with the clinical logistic model fitted in CLAS); P-41 is an internal ADNI hold-out.",
+  "modality_family": "partial: both structural MRI, but P-146's 0.812 adds demographics and a neuropsychological score, whereas P-41 is MRI only."
+ },
+ "endpoint_and_metric": "incompatible: both ROC-AUC, but for different endpoints (future MCI in cognitively normal people over 7 years vs future AD in MCI patients, with prevalent AD added) and different populations.",
+ "performance_validity": "flag not tripped (0.929 < 0.97). P-41's test set is 30 subjects and its positive class includes 15 established-AD patients, which inflates discrimination relative to a pure sMCI/pMCI contrast.",
+ "independence": "Distinct studies and authors; both use ADNI data (P-146 for training/ADNI-2 validation, P-41 for everything), so participant overlap is possible for the ADNI components but not for P-146's CLAS figure.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-146's AUC 0.812 is for conversion from normal cognition/SCD to MCI over seven years in CLAS, whereas P-41's AUC 0.929 is for stable vs progressive MCI plus AD in ADNI, so the transition predicted differs.",
+  "P-41's positive class mixes progressive MCI with 15 established AD patients, so its population differs from any conversion-only cohort.",
+  "The cited P-146 figure also adds demographic and neuropsychological predictors to MRI and comes from a different dataset family (CLAS vs ADNI), with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-146",
+   "page": 2,
+   "quote": "Better performance for prediction progression to MCI in CLAS was obtained when the PI score was combined with clinical measures (AUC = 0.812; 95 %CI: 0.725-0.900)."
+  },
+  {
+   "paper": "P-146",
+   "page": 6,
+   "quote": "the PI value combined with a neuropsychological scale score (associative learning) and General demographic information (age, gender and years of education) can effectively predict the conversion of MCI in the CLAS cohort after 7 years, with an AUC of 0.812"
+  },
+  {
+   "paper": "P-41",
+   "page": 8,
+   "quote": "we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously."
+  },
+  {
+   "paper": "P-41",
+   "page": 12,
+   "quote": "The MHA classifier in the same heterogeneous ensemble outperformed the LSTM with an accuracy of 91.77% +/-3.14, sensitivity of 87.69% +/-3.24, specificity of 88.53% +/-3.53, and an impressive AUC of 92.87% +/-3.58."
+  }
+ ],
+ "record_defects": [
+  "dataset_family_equivalence true is wrong for the cited figure: P-146's AUC 0.812 is from CLAS, not ADNI.",
+  "task_equivalence true is wrong in substance: P-146 predicts NC/SCD-to-MCI, P-41 predicts sMCI vs pMCI+AD; the shared 'T2' code hides this.",
+  "claim_a still cites P-310 (repointed to P-146); claim_a omits that 0.812 is an MRI-plus-clinical logistic model, not the MRI network alone (PI alone: 0.711 CLAS, 0.7048 ADNI-2).",
+  "Index registry row for P-146 gives Best_Metric 'not reported' and a truncated abstract fragment as Method_Architecture; the paper reports AUCs 0.7048, 0.711 and 0.812.",
+  "resolution_status 'partially_resolved_candidate' rests on a generic list of ~57 'bridging' papers with no separating condition."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only an MCI-to-AD result from P-146 (it reports none; its ADNI-1 training labels are AD+pMCI vs NC+sMCI but no held-out AUC for that contrast is given) would share P-41's estimand."
+}

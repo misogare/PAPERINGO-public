@@ -1,0 +1,220 @@
+{
+ "paper_id": "P-153",
+ "document_check": {
+  "matches": true,
+  "note": "Faghfouri A, Shalchyan V, Toor HG, Amjad I, Niazi IK. A tensor decomposition scheme for EEG-based diagnosis of mild cognitive impairment. Heliyon 10 (2024) e26365, doi 10.1016/j.heliyon.2024.e26365. Dataset I is the Noor Hospital (Isfahan) resting-state 19-channel EEG set of 61 people over 55 (29 MCI, 32 healthy), taken from Ref. [24] (Kashefpour et al. 2019). Table 5 (p. 11) reports tensor-based accuracies of 82.13 (theta and alpha1), 83.37 (19 spectral features), 93.96 (60 frequency bands), 82.75 (Lempel-Ziv), 83.21 (Shannon entropy) and 68.89 (multi-scale sample entropy). These match the cited result. The block title in summaries.md (Paper 153) is this paper."
+ },
+ "cited_result": "Dataset I (Noor Hospital, Isfahan; 29 MCI / 32 HC), tensor-PARAFAC features with an RBF-kernel SVM, subject-wise random 41/20 train/test splits repeated three times, mean accuracy (Table 5, p. 11). Complexity features: Lempel-Ziv 82.75%, Shannon entropy 83.21%, multi-scale sample entropy 68.89%. Spectral features: theta+alpha1 band power 82.13%, 19 spectral features 83.37%, 60 micro-band power 93.96%.",
+ "tool_reason": "The cited result is the classification accuracy of a machine-learning classifier (tensor features with an SVM) separating MCI from healthy controls, compared across feature sets. That is the performance and ranking of diagnostic prediction models, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "Dataset I is a secondary two-group dataset (29 MCI, 32 healthy) from one hospital, taken from an earlier study. No sampling frame (consecutive or random enrolment) is described, so the design works as a diagnostic case-control comparison. Apart from age over 55 and at least primary education, no inclusion or exclusion criteria are reported, and recruitment details are deferred to Ref. [24].",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably no",
+     "quote": "In this study, the dataset in Ref. [24] has been used, which was recorded in Noor Hospital of Isfahan Province. The dataset includes 61 people over the age of 55,29 of them had MCI, and 32 of them were healthy.",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No information",
+     "quote": "Searched Section 2.1.1 for exclusion criteria (neurological or psychiatric illness, medication, depression, recording-quality exclusions) and for how participants were recruited; none reported. The only stated criteria are age over 55 and 'All participants had primary or higher education.' [p. 3]; recruitment is deferred: 'For more descriptions of the recording details, please see Ref. [24].' [p. 3]",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are features computed algorithmically (band powers, entropies, Lempel-Ziv complexity, then PARAFAC components) from a 30-minute eyes-closed resting EEG recorded under one protocol for everyone. No manual reading is involved, and the EEG would be available at the time of intended use. Preprocessing was only channel normalisation and a 50 Hz notch filter, with no artefact rejection reported, but it was applied identically to all.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "The EEG signals were recorded in the early morning for each person with their eyes closed and in a quiet room for 30 min.",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "we filter the signals using a 4th degree Butterworth band pass filter and perform a Fast Fourier Transform (FFT) on these signals, and then the abs of signal power is calculated.",
+     "page": "6"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "Moreover, a 19-channel EB-Neuro system whose electrodes were arranged according to a 10\u201320 standard was used to record the signal.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "MCI and healthy labels come from a psychiatric interview ('Patterson criteria', as printed), MMSE bands (21 to 26 for MCI, above 26 for healthy) and NUCOG confirmation (75 to 86.5). MMSE banding is crude and prone to misclassification. No functional or clinical-staging criterion is reported, and the interval between cognitive assessment and EEG is not stated. The outcome does not include the EEG predictors, and the test-based labels are unlikely to depend on the EEG.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "According to the psychiatric interview using Patterson criteria, all subjects were scored [p. 3]; (MMSE) score between 21 and 26 were classified as MCI patients. [p. 3]; Furthermore, people who scored above 26 are considered healthy [24]. [p. 3]",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "In addition, to ensure the labeling of individuals, the Neuropsychiatry unit cognitive assessment tool (NUCOG) was used as the MCI diagnosis confirmation test, with scores between 75 and 86.5 being considered as MCI patients.",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "(MMSE) score between 21 and 26 were classified as MCI patients.",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "According to the psychiatric interview using Patterson criteria, all subjects were scored",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "According to the psychiatric interview using Patterson criteria, all subjects were scored",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched Sections 2.1.1 and 2.2 for the timing of the cognitive assessment relative to the EEG recording; not reported (recording details deferred to Ref. [24]).",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 29 MCI cases in total (20 per training set). The SVM is trained on 45 to 85 PARAFAC components, more than the 41 training participants. The configuration was tuned on the same splits used for testing: frequency segmentation, time-patch length and the number of components R were each chosen by best classification accuracy. There are only three random subject-wise hold-out splits, with no nested validation and no external validation for Dataset I. Only accuracy, sensitivity and specificity are reported, with no dispersion, confidence intervals, AUC or calibration, and no statistical comparison between feature sets. The reported metrics contain internal inconsistencies (see notes). The subject-level split, voting across patches, and fitting the PARAFAC decomposition on training data only are appropriate.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "41 subjects (20 MCI and 21 healthy) for training process and 20 subjects (9 MCI and 11 healthy) for test, are randomly selected each time.",
+     "page": "4"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Another approach used in this study is inspired by the filter bank problem, which divides the signal into, for example, 40, 60, or 80 equal frequency bands and uses the power of each micro bands as a feature.",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "each of the 30-min signals will be divided into 20 short signal patch. [p. 10]; 41 subjects (20 MCI and 21 healthy) for training process and 20 subjects (9 MCI and 11 healthy) for test [p. 4]",
+     "page": "4, 10"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched Sections 2.1.1 to 3.3 for missing, short or artefact-contaminated Dataset I recordings; none reported (the removal of short signals concerns Dataset II only).",
+     "page": "3-10"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably yes",
+     "quote": "different features related to different frequency band power, Lempel-Ziv complexity, Shannon\u2019s entropy, and multi-scale sample entropy are stored in the training tensor while retaining spatial information.",
+     "page": "10"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "In each group, the training and testing process is performed separately, and to determine the diagnostic label of the test subjects, voting on the labels of the timepieces of each test subject is used.",
+     "page": "4"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "Evaluation metric, including the average classification accuracy, sensitivity and specificity of each method, are shown in Table (2)",
+     "page": "9"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "No",
+     "quote": "According to the results, the best case was related to the time patch of 1.5 min and equal to 89.54%, which is the same division to continue the steps. [p. 10]; In this table, the value of the variable related to the number of components (R) in the tensor analysis is selected using the classification accuracy assessment and in accordance with the best accuracy in each of the methods. [p. 10]",
+     "page": "10"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for a final model specification (retained components, support vectors, or a model refitted on all data); none reported. Only the kernel is stated: 'In this study, the RBF kernel with a kernel scale of 4 was utilized.' [p. 9]",
+     "page": "9-12"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "41 subjects (20 MCI and 21 healthy) for training process and 20 subjects (9 MCI and 11 healthy) for test, are randomly selected each time.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "No",
+     "quote": "In this table, the value of the variable related to the number of components (R) in the tensor analysis is selected using the classification accuracy assessment and in accordance with the best accuracy in each of the methods. [p. 10]; To divide the data into training and test groups in cross-validation, three distinct groups are randomly formed [p. 4]",
+     "page": "4, 10"
+    },
+    {
+     "question": "AI: Are preprocessing, feature extraction and tuning confined to training folds?",
+     "answer": "Partly: normalisation is within each recording and the PARAFAC decomposition is fitted on training data only, but R, time-patch length and frequency segmentation were chosen by test accuracy",
+     "quote": "For the model evaluation phase, component vector obtained from production of test tensor and pseudo-inverse of the Khatri-rao production of load matrices (first, second, and third matrices) obtained from the tensor decomposition of the training data. [p. 10]; Therefore, the power feature of 60 frequency bands has been selected in both datasets to continue the research. [p. 9]",
+     "page": "9, 10"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "No information (classes nearly balanced, 29 MCI / 32 HC; no handling reported)",
+     "quote": "41 subjects (20 MCI and 21 healthy) for training process and 20 subjects (9 MCI and 11 healthy) for test",
+     "page": "4"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (mean of three random subject-wise hold-out splits within Dataset I; Dataset II is a separately retrained model, not an external validation of the Dataset I model)",
+     "quote": "To increase the stability of the answers, this process is performed on three random groups and the average of the results will be reported as the test result.",
+     "page": "4"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The sample is small, two-group and single-hospital (Isfahan), restricted to over-55s with at least primary education, and has no reported exclusion criteria."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "The predictors come from a standard 19-channel 10-20 resting eyes-closed EEG, which is feasible in practice, although it needs a 30-minute recording (1.5-minute patches)."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "MCI is operationalised mainly by MMSE bands (21 to 26) with NUCOG confirmation. No functional criterion is reported."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 1 is high: a secondary two-group case-control dataset with no reported sampling frame or exclusion criteria. Domain 4 is high: 29 events, more components than training participants, hyperparameters and feature configuration tuned on test accuracy, three random splits only, no external validation, no dispersion or calibration, and internally inconsistent metrics. Domain 3 is unclear because of the MMSE-band outcome and the unstated timing. Any high domain makes the overall rating high.",
+ "confidence": "high",
+ "tool": "PROBAST",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 23,
+  "matched": 18,
+  "annotations_not_checked": 2,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "id": "C-128",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-186",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early MCI-to-AD Conversion Prediction Using Future Value Forecasting of Multimodal Features (Minhas et al., Comput Intell Neurosci 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-174",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "A Graph Gaussian Embedding Method for Predicting Alzheimer's Disease Progression with MEG Brain Networks (Xu et al., IEEE Trans Biomed Eng 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-37",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Transfer learning for predicting conversion from mild cognitive impairment to dementia of Alzheimer's type based on a three-dimensional convolutional neural network (Bae et al., Neurobiol Aging 2021) - read because it is the paper whose figures the P-174 claim quotes",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-186": "SVM on longitudinal 3-visit trajectories (last visit forecast) of 8 neuropsychological measures + FreeSurfer MRI features; ADNI-1 MCI with complete follow-up, 5-fold CV. 1-year-ahead AUC 95.7% (n=85); 6-month-ahead AUC 91.2% (n=119).",
+  "P-174": "The PDF supplied for P-174 is the MEG MG2G paper (Madrid cohort, 76 MCI: 28 pMCI/48 sMCI, 53 NC): mean accuracy across 10 classifiers 78% sMCI vs pMCI, 5-fold CV; AUCs only in supplementary figures. It reports no AUC 0.827. The claim's 'AUC 0.827' is Bae et al. (P-37's paper; P-174's summary block is a stub duplicate of P-171, which describes Bae et al.): baseline single-timepoint sMRI ResNet29 3D-CNN with NC-vs-DAT transfer learning, ADNI MCI converters within 3 years (228) vs non-converters stable >=3 years (222), 70/15/15 split, test accuracy 82.4%, AUC 0.827 (68 test scans)."
+ },
+ "quantity_a": "AUC for MCI progressors (conversion by month 36) vs stables in a complete-follow-up ADNI-1 subsample (n=85), input = longitudinal NM+MRI-feature trajectories including a forecast value at the conversion time point, 5-fold CV.",
+ "quantity_b": "As quoted (Bae et al.): test-set AUC for MCI converting within 3 years vs MCI stable for at least 3 years, input = one baseline raw 3D T1 MRI scan, independent held-out test set of 68 scans. As in the supplied PDF (Xu et al.): mean classification accuracy from MEG alpha-band network embeddings in a Madrid clinic cohort.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Neither study reports an AUC interval; with 68 test scans for 0.827 and 85 CV subjects for 0.957, intervals would likely be wide. Neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: T2 conversion prediction in both P-186 and Bae et al. (and the MEG paper's sMCI/pMCI task)",
+  "dataset_family": "match for Bae et al. (ADNI); mismatch for the supplied P-174 PDF (Hospital Universitario San Carlos, Madrid)",
+  "validation_tier": "match: internal validation in all (CV or random held-out split)",
+  "modality_family": "mismatch: P-186 cognitive tests + tabular FreeSurfer features vs Bae et al. raw structural MRI images only (vs MEG in the supplied PDF); no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (AUC) only for the Bae et al. reading, but the input representation differs (longitudinal cognitive + MRI-feature trajectories with a forecast conversion-time value vs a single baseline image), and the population differs (complete-follow-up ADNI-1 subsample vs ADNI MCI with >=3-year stable non-converters). The supplied PDF reports accuracy, not AUC.",
+ "performance_validity": "flag does not apply: 0.957 and 0.827 are both below 0.97",
+ "independence": "Bae et al. and P-186 are distinct author groups sharing ADNI (possible subject overlap). The MEG paper shares no cohort. Note P-174 is itself a stub duplicate and P-171 is marked duplicate of P-37, so the claim's source is P-37.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The PDF for P-174 is the MEG paper, which reports no AUC 0.827; the claim's figure belongs to Bae et al. (the P-37 PDF), so the record is misattached.",
+  "Read against Bae et al., the AUC 0.827 comes from a single baseline raw MRI image, while P-186's 0.957 comes from longitudinal cognitive-plus-MRI-feature trajectories including a forecast value at the conversion time point, so input representation and modality differ.",
+  "Read against the supplied MEG paper instead, the dataset (Madrid clinic cohort), modality (MEG) and metric (accuracy) all differ from P-186, so the result is incommensurable under either reading."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-186",
+   "page": 8,
+   "quote": "The method proposed in this paper has recorded the highest classification AUC of 95.7% predominantly because of involving the forecasted marker value at the time of conversion as a classification feature."
+  },
+  {
+   "paper": "P-186",
+   "page": 3,
+   "quote": "for 1-year-ahead prediction, the dataset contains three consecutive annual readings, resulting in 35 MCIp and 50 MCIs subjects."
+  },
+  {
+   "paper": "P-174",
+   "page": 3,
+   "quote": "MEG data for this study was collected from 76 MCI patients and 53 age-matched neurotypical controls (NC)"
+  },
+  {
+   "paper": "P-174",
+   "page": 9,
+   "quote": "MG2G achieved high performance with 61% for NC/sMCI/pMCI classification, 79% for NC/sMCI classification, 78% for sMCI/pMCI classification, and 82% for NC/pMCI classification."
+  },
+  {
+   "paper": "P-37",
+   "page": 5,
+   "quote": "It produced a test set classification accuracy of 82.4% and 0.827 area under the curve as well as 0.189 equal error rate value (Fig. 4B)."
+  },
+  {
+   "paper": "P-37",
+   "page": 2,
+   "quote": "Included in the target task is the single time point sMRI scan at which an individual first received a diagnosis of MCI."
+  }
+ ],
+ "record_defects": [
+  "claim_b attributes 'AUC 0.827' to P-174, but P-174's PDF (Xu et al., MEG) does not report it; the figure is from Bae et al. (P-37). P-174's summary block is a [STUB-DEDUP-OF-P-171] that 'must not be cited as evidence', and P-171 is itself marked duplicate of P-37.",
+  "The index registry row for P-174 describes a 3D-CNN transfer-learning study on ADNI (n=450), which is Bae et al., not the PDF mapped to P-174.",
+  "resolution_note says 'Confirmed genuine' on metric type and gap alone while resolution says 'Rejected: Task, dataset, or modality mismatch'.",
+  "The long bridging-evidence list names no condition separating the two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing on these sources: the verdict holds whether the claim is read against the MEG PDF or against Bae et al. Only a same-input, same-population comparison with non-overlapping intervals could make it genuine."
+}

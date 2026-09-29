@@ -1,0 +1,88 @@
+{
+ "id": "C-01",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-50",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Cortical and subcortical gray matter abnormalities in mild cognitive impairment (Wang et al., Neuroscience 557 (2024) 81-88)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-99",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Machine learning approaches to mild cognitive impairment detection based on structural MRI data and morphometric features (Zubrikhina et al., Cognitive Systems Research 78 (2023) 87-95)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-50": "Linear SVM on combined VBM subcortical volume/shape + SBM sulcal depth/gyrification features, LOOCV, 24 MCI vs 22 NC from Nanjing Drum Tower Hospital neurology clinic: accuracy 0.89, sensitivity 0.87, specificity 0.90, AUC 0.89 (subcortical-only 0.78, SBM-only 0.84 accuracy). No confidence interval.",
+  "P-99": "FreeSurfer 906-feature morphometry, chi-squared SelectKBest, best model RBF SVC, 10-fold CV, 145 MCI vs 62 HC from a Moscow memory clinic: accuracy 0.73 +- 0.059, ROC-AUC 0.735 +- 0.076, F1-macro 0.683 +- 0.063 (Table 1)."
+ },
+ "quantity_a": "Cross-validated (LOOCV) accuracy/AUC of a linear SVM on hand-selected group-difference morphometric features for MCI vs NC in a 46-person single-centre Chinese clinic sample (MCI defined by MMSE 25-26, MoCA 19-25, memory complaint), 3T Philips.",
+ "quantity_b": "10-fold CV accuracy/AUC of an RBF SVC on automatically selected FreeSurfer features for MCI (ICD-10 F06.7, age >65) vs HC in a 207-person Moscow memory-clinic sample, 1.5T Toshiba, imbalanced classes.",
+ "same_quantity": false,
+ "incompatible_if_same": "Possibly, if one pooled population and one feature set were at issue: P-50 AUC 0.89 lies outside P-99's AUC 0.735 +- 0.076 (fold SD). But neither paper claims a result about the other's cohort or features, and neither states an ordering (VBM+SBM beats FreeSurfer) that the other refutes.",
+ "gates": {
+  "task": "match: both MCI vs normal-control detection from baseline structural MRI (T1).",
+  "dataset_family": "mismatch: P-50 is a local Nanjing clinic cohort, P-99 a local Moscow clinic cohort; neither uses ADNI or any shared dataset. No waiver on record.",
+  "validation_tier": "match in substance: both internal cross-validation only (LOOCV vs 10-fold); registry V1 vs V2 differ only by CV scheme.",
+  "modality_family": "match: structural MRI (T1)."
+ },
+ "endpoint_and_metric": "compatible metric type (accuracy and ROC-AUC both reported), but the population behind the label 'MCI' differs (P-50 clinic MCI with MMSE 25-26 and memory complaint; P-99 ICD-10 F06.7 memory-clinic patients over 65) and the predictor set differs (group-difference-selected VBM/SBM regional metrics vs 906 FreeSurfer features).",
+ "performance_validity": "flag does not apply: P-50's 0.89 accuracy is below the 0.97 threshold (though N=46 with LOOCV and features selected from group differences in the same sample, which the paper itself lists as a limitation); P-99 is 0.73.",
+ "independence": "Distinct studies: different authors, sites, countries and cohorts. No shared data.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The dataset-family gate fails with no waiver: P-50 recruited 46 participants from a Nanjing neurology clinic, P-99 207 participants from a Moscow memory clinic.",
+  "The population behind the MCI label differs: P-50 used MMSE 25-26 and MoCA 19-25 criteria, P-99 used ICD-10 F06.7 diagnoses in patients over 65.",
+  "The predictor set and input representation differ (VBM/vertex/SBM metrics selected from group-difference regions vs 906 FreeSurfer features with chi-squared selection), the same representation confound that reclassified precedent C-80.",
+  "Neither paper claims an ordering the other refutes; each reports one classifier's CV score on its own cohort."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-50",
+   "page": 2,
+   "quote": "The present study included 24 MCI individuals and 22 normal controls (NCs). All participants were recruited from neurology clinic of Nanjing Drum Tower Hospital."
+  },
+  {
+   "paper": "P-50",
+   "page": 3,
+   "quote": "SVM achieved the best performance when incorporating all cortical and subcortical features with an accuracy of 89 %, sensitivity of 87 %, specificity of 90 %, and AUC of 0.89"
+  },
+  {
+   "paper": "P-50",
+   "page": 3,
+   "quote": "leave-one-out cross-validation (LOOCV) was selected to evaluate the performance of the classification model"
+  },
+  {
+   "paper": "P-50",
+   "page": 6,
+   "quote": "First, the sample size of the study was relatively small, and more subjects should be recruited in the future study to draw more accurate conclusions."
+  },
+  {
+   "paper": "P-99",
+   "page": 1,
+   "quote": "The dataset for the study consists of 62 healthy volunteers and 145 patients with MCI obtained from the \u00abMemory Clinic\u00bb (Moscow, Russia)."
+  },
+  {
+   "paper": "P-99",
+   "page": 3,
+   "quote": "Patients over the age of 65 who had been diagnosed with mild cognitive impairment (F06.7) were eligible."
+  },
+  {
+   "paper": "P-99",
+   "page": 4,
+   "quote": "the best and most stable results were obtained by SVC (0.68 F1, 0.735 ROC -AUC)"
+  }
+ ],
+ "record_defects": [
+  "claim_a says 'N=46 ADNI subset': P-50's 46 participants were recruited from Nanjing Drum Tower Hospital, not ADNI.",
+  "resolution_note attributes the gap to 'ADNI-specificity'; neither paper uses ADNI.",
+  "claim_a labels the method 'VBM + SBM'; the 89% model also includes FIRST vertex-based subcortical shape features.",
+  "The long list of 'bridging evidence' papers are other studies' headline scores; none is shown to identify a condition separating these two results, so the partially_resolved status is not supported by them."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only a shared cohort or a shared feature set evaluated in both populations (e.g., P-50's pipeline applied to P-99's Moscow cohort yielding a significantly different score) would make these the same quantity; nothing in either paper provides that."
+}

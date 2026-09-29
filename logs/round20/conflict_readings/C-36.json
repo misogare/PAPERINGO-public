@@ -1,0 +1,78 @@
+{
+ "id": "C-36",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-114",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack file pdf/P-114.txt is the San-Martin et al. EEG/LORETA paper (BSPC 66 (2021) 102499), P-112's paper. The paper the record means (claim '93% Acc', registry row Kinect/ANFIS gait, summaries.md header 1-s2.0-S1746809421003195) is Seifallahi et al., 'Detection of mild cognitive Impairment from gait using Adaptive Neuro-Fuzzy Inference system', BSPC 71 (2022) 103195, present in the pack as pdf/P-115.txt. Both read in full; verdict uses the gait paper.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-91",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Segmental disturbance of white matter microstructure in predicting mild cognitive impairment in idiopathic Parkinson's disease: An individualized study based on automated fiber quantification tractography (Yu et al., Parkinsonism and Related Disorders 115 (2023) 105802)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-114": "Kinect V2 dual-task gait features, 150 older adults (70 MCI, 80 HC, Tehran), hierarchical ANFIS accuracy 93% (sens 90%, F-score 91.5%); evaluation protocol for ANFIS not stated.",
+  "P-91": "DTI automated fiber quantification in idiopathic Parkinson's disease: 30 IPD-MCI, 40 IPD with normal cognition, 30 HC. SVM (RBF) on pointwise FA/MD plus clinical features, trained on 70% of the IPD group with 10-fold CV and tested on a 30% stratified hold-out, discriminating IPD-MCI from IPD-NCI: validation AUC 0.80, balanced accuracy 0.79, sensitivity 0.78, specificity 0.75 (training AUC 0.82, BA 0.85)."
+ },
+ "quantity_a": "Accuracy of ANFIS on gait features, MCI vs cognitively healthy older adults (general memory-association population), protocol unstated",
+ "quantity_b": "Hold-out ROC-AUC of an SVM on DTI tract-profile features, Parkinson's disease with MCI vs Parkinson's disease with normal cognition",
+ "same_quantity": false,
+ "incompatible_if_same": "No. 93% accuracy and an AUC of 0.80 are different metric types; accuracy at one threshold cannot contradict an area under the ROC curve, and neither study claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch in substance: both are coded T1, but P-91's contrast is PD-MCI vs PD with normal cognition (a within-Parkinson's comparison), not MCI vs healthy controls",
+  "dataset_family": "mismatch: own IDAA Tehran cohort vs own First Hospital of China Medical University cohort; no waiver",
+  "validation_tier": "mismatch/uncertain: P-91 internal 70/30 stratified hold-out; P-114 protocol unstated",
+  "modality_family": "mismatch: gait/motor vs diffusion MRI (DTI tractography); no waiver"
+ },
+ "endpoint_and_metric": "incompatible: accuracy vs ROC-AUC; different population (idiopathic Parkinson's disease) and different comparison class (PD-NCI rather than healthy controls)",
+ "performance_validity": "flag does not apply: neither row flagged; no contested value reaches 0.97.",
+ "independence": "Independent: different groups, countries, cohorts; no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The population behind the shared 'MCI' label differs: P-91 studies MCI in idiopathic Parkinson's disease under MDS Task Force criteria, P-114 studies MCI in general older adults.",
+  "The comparison differs: P-91 separates PD-MCI from PD patients with normal cognition, P-114 separates MCI from healthy controls.",
+  "The metric type differs: P-91's 0.80 is a ROC-AUC, P-114's 93% is accuracy.",
+  "The modality-family gate (gait vs DTI) and dataset-family gate (separate own cohorts) both fail with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-114",
+   "page": 1,
+   "quote": "the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups."
+  },
+  {
+   "paper": "P-91",
+   "page": 1,
+   "quote": "Forty IPD with normal cognition (IPD-NCI), thirty IPD-MCI, and thirty healthy controls were included."
+  },
+  {
+   "paper": "P-91",
+   "page": 4,
+   "quote": "The SVM model with defined hyperparameters (C = 3.175, Gamma = 0.007) showed preferable performance in differentiating IPD-NCI with IPD-MCI based on pointwise analysis results"
+  },
+  {
+   "paper": "P-91",
+   "page": 4,
+   "quote": "validation dataset: balanced accuracy = 0.79; AUC = 0.80; sensitivity = 0.78; specificity = 0.75"
+  },
+  {
+   "paper": "P-91",
+   "page": 3,
+   "quote": "The IPD group was separated into training (70%) and validation (30%) dataset with stratified random sampling."
+  }
+ ],
+ "record_defects": [
+  "The pack's P-114 PDF (paper_pdf_map.json, 'formula-unverified') is P-112's EEG paper, not the gait/ANFIS paper the record means.",
+  "claim_b 'P-91: AUC 0.80 on T1' omits that the contrast is PD-MCI vs PD-NCI in Parkinson's disease, not MCI vs healthy controls.",
+  "dataset_equal='Yes' is wrong; validation_comparable='Yes' is unsupported.",
+  "The resolution note's 14 bridging papers (P-360, P-322, P-416, P-422, P-478, P-333, P-501, P-9, P-538, P-557, P-703, P-795, P-855, P-931) list scores from unrelated modalities and contrasts; none identifies a condition separating these two results, so partially_resolved_candidate is not supported. The P-795 entry is truncated prose."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers; they measure different contrasts in different populations with different metrics."
+}

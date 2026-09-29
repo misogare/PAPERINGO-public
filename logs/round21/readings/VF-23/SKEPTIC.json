@@ -1,0 +1,68 @@
+{
+  "vf": "VF-23",
+  "role": "skeptic",
+  "status": "candidate / pending_human_review (model reading; not an operator gate)",
+  "statement_tested": "EEG/MEG network, connectivity and complexity measures outperform conventional spectral band-power for discriminating MCI, with several studies reporting spectral power failing where network/graph measures succeed.",
+  "narrowed_wording_on_record": "none (round 20 verdict 'fails' with round20_narrowed_wording empty; the descriptive restatement in round20_reasoning is a different statement that needs its own ledger review, so it is not tallied here)",
+  "verdicts": [
+    {
+      "paper": "P-552",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "dataset_family": "Tongji Hospital Department of Neurology / Memory Clinic, Shanghai (single site, 43 HC / 46 MCI / 43 AD)",
+      "reason": "Verifier 'partly' refuted. (1) Wrong measure class: the index is within-electrode phase-amplitude coupling (Tort MI computed 'for each electrode', p.5), averaged over whole head or over 8 regions. The right-temporal region is the single electrode T8. The authors separate it from inter-regional connectivity: 'our study only measured CFC in the same brain areas' (p.15), with cross-region coupling left to future work. It is not a network, graph, connectivity or signal-complexity measure as the statement names them. (2) Even granting the class, the within-study comparison does not show coupling beating power. At the matched whole-head scale, coupling also failed for HC vs MCI ('no discernible difference in the strength of the global-level coupling in the HC and MCI groups', p.7; Table 2 HC-MCI column all p>=0.326). Band power was analysed only whole-head, as a 'prerequisite' check for interpreting CFC (pp.5-7), with no named test and no HC-MCI statistic printed. The HC-MCI power null is inferred from what the results omit plus one discussion sentence ('absence of abnormal power in MCI patients', p.8). The only asymmetry comes from testing coupling in 8 regions x 10 band pairs (80 cells), 4 of them significant for HC-MCI, while power was never tested region by region. (3) No discrimination: 'since no classification was performed, we do not know whether the coupling features described here effectively distinguish among different groups of subjects' (p.15). If an operator nevertheless counts PAC as connectivity, the most it could reach is 'partly', which does not change the yes tally. Independent of all supporters and candidates. It shares a grant number with P-1322, which is not a shared sample. Not a registry duplicate. PDF identity matches Paper 552.",
+      "quotes": [
+        {"page": 5, "quote": "we investigated the PAC mode by computing the MI between the low-frequency phase and the high-frequency amplitude for each electrode."},
+        {"page": 5, "quote": "a clear peak in the power spectrum of the low frequency component is a prerequisite for a meaningful interpretation of any CFC pattern. So before performing the CFC analysis, we calculated the Welch's power"},
+        {"page": 7, "quote": "Furthermore, there was no discernible difference in the strength of the global-level coupling in the HC and MCI groups."},
+        {"page": 7, "quote": "only delta-gamma coupling in the right temporal lobe (p = 0.022) and the parietal lobe (p = 0.005) and theta-gamma coupling in the right temporal lobe (p = 0.049) and the parietal lobe (p = 0.029) showed significant variations between HCs and MCI patients."},
+        {"page": 8, "quote": "the abnormal gamma oscillations power in AD patients and the absence of abnormal power in MCI patients observed in this study may reflect a possible compensatory mechanism"},
+        {"page": 15, "quote": "And since no classification was performed, we do not know whether the coupling features described here effectively distinguish among different groups of subjects"},
+        {"page": 15, "quote": "This suggests that future studies should further investigate this type of coupling since our study only measured CFC in the same brain areas."}
+      ]
+    },
+    {
+      "paper": "P-368",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "n/a",
+      "independent": true,
+      "dataset_family": "ALBION, Cognitive Disorders Clinic, Aiginition Hospital, National and Kapodistrian University of Athens (21 aMCI / 62 CN, N=83)",
+      "reason": "The 'partly' survives but cannot be raised to 'yes'. What holds: in one sample, band-averaged PSD 'did not indicate any significant difference' (p.6), while local partial coherence was higher in aMCI in a multiplicity-controlled cluster permutation test (EC 32-100 Hz p=0.0290; EO 28-100 Hz p=0.0272, p.11). Population (aMCI vs CN) and comparator match the statement. Why it is not a yes: (1) The comparison is not run as a comparison. PSD is descriptive context ('we also use power spectral density to explore the frequency content', p.4). Its null is one sentence, with no test statistic, p-value, correction or spatial level stated, and PSD got no cluster test. (2) At the matched global scale, connectivity was null as well: 'For all metrics and frequency bands ... no statistically significant difference' (p.9). Pairwise and per-electrode results do not survive FDR (minimum adjusted p 0.058 and 0.1429). (3) The conventional connectivity measure, ordinary coherence, failed at every level (local EO cluster p=0.085; regional coherence null). So within this study, connectivity measures as a class did not outperform band power; only partial coherence did, and only at local level. (4) The regional PCOH result uses a region chosen from the significant clusters. The authors say of the regional coherence null that 'the region is mainly selected based on the lPEC and lPEO metrics results' (p.12). (5) No discrimination comparison: 'purely statistical', with a preliminary SVM at 70% on regional PCOH and no band-power comparator (p.14). (6) MCI had 'somewhat higher power at the higher frequency bands' (p.6), the same direction as the gamma PCOH effect. There was no eye-blink removal and the reference was near Fpz. Groups differ in age and education, though the authors report that adjustment did not change results. Independence: ALBION Athens, with no site, cohort or author overlap with P-553, P-501, P-463, P-480 or the other candidates. Not a registry duplicate. PDF identity matches Paper 368. Registry defects confirmed against the PDF: Sample_N_Approx '21' should be 83 (21 aMCI / 62 CN), and Dataset 'not reported' should be ALBION.",
+      "quotes": [
+        {"page": 4, "quote": "Since the connectivity analysis is in the frequency domain, we also use power spectral density to explore the frequency content of the EEG signals."},
+        {"page": 6, "quote": "Comparing between subject groups, it seems that the MCI group has somewhat higher power at the higher frequency bands, especially for the eyes open condition (Fig. 1(b)). The same are more clearly observed in the average PSD (Fig. 1(c-d)). Statistical analysis of the PSD averaged in each band did not indicate any significant difference."},
+        {"page": 9, "quote": "For all metrics and frequency bands the results showed that there is no statistically significant difference between the two groups at a = 0.05."},
+        {"page": 10, "quote": "The above statistical results, unfortunately, do not survive FDR correction (smallest corrected p-value was 0.1429)."},
+        {"page": 11, "quote": "The p-value of this cluster is 0.085 indicating no statistically significant difference. For lPEC (Fig. 9c) there is one cluster corresponding to 32 to 100 Hz and channels C3, P3, O1, P4, Fz, Cz, Pz, for which local connectivity is statistically significant different between the MCI and CN subjects (p = 0.0290)"},
+        {"page": 12, "quote": "The coherence-based results (Figs. 10(a), (b), (e) and (f)) do not show any statistically significant result. This is expected, since the region is mainly selected based on the lPEC and lPEO metrics results."},
+        {"page": 14, "quote": "This study is purely statistical and does not investigate the actual predictive or prognostic capabilities of the metrics."}
+      ]
+    }
+  ],
+  "current_supporters_round20": [
+    {"paper": "P-553", "round20": "yes", "dataset_family": "Hanyang University Hospital memory clinic, Korea (12 MCI / 13 HC)"},
+    {"paper": "P-501", "round20": "no", "dataset_family": "Wayne State / Michigan ADRC, Detroit"},
+    {"paper": "P-463", "round20": "no", "dataset_family": "Hokuto Hospital + Kumagaya General Hospital MEG, Japan"},
+    {"paper": "P-480", "round20": "partly (sustains only a microstate-dynamics-beats-spectral-power form; contradicts the network half)", "dataset_family": "PREVIEW cohort, Florence"}
+  ],
+  "tally": {
+    "stated_independent_yes": ["P-553"],
+    "stated_partly_not_counted": ["P-480", "P-368"],
+    "stated_reaches_three": false,
+    "narrowed_independent_yes": [],
+    "narrowed_reaches_three": false,
+    "narrowed_note": "No narrowed wording exists on record for VF-23 (round 20 verdict 'fails'). Nothing is tallied against the descriptive restatement floated in round20_reasoning: it is a different, non-comparative statement that needs its own ledger review.",
+    "dataset_families": [
+      "Hanyang University Hospital, Korea (P-553)",
+      "Wayne State / MADRC, Detroit (P-501)",
+      "Hokuto + Kumagaya hospitals, Japan (P-463)",
+      "PREVIEW, Florence (P-480)",
+      "ALBION, Athens (P-368)",
+      "Tongji Hospital, Shanghai (P-552)"
+    ]
+  },
+  "summary": "VF-23 stays at one independent yes (P-553) and fails the three-supporter rule. P-552 is refuted: within-electrode phase-amplitude coupling is not a network, connectivity or complexity measure; at matched whole-head scale it also failed HC vs MCI; and no classification was run. P-368 survives only as partly: a stated PSD null (no statistic) alongside a cluster-significant local partial-coherence difference, but ordinary coherence and all global metrics were null too, and no comparison was run. No narrowed wording exists to tally."
+}

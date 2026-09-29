@@ -1,0 +1,57 @@
+{
+ "paper": "P-536",
+ "role": "verifier, round 2",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "no",
+ "dataset_family": "J-ADNI (Japanese ADNI, 38 sites in Japan, NBDC hum0043; 197 MCI). Participants are separate from North American ADNI; whether the review's 'ADNI' family includes J-ADNI is an operator decision",
+ "method_family": "Classical tabular machine learning (logistic regression, random forest, XGBoost, LightGBM) on clinical variables concatenated with visual MRI rating-scale (CVRS) scores; leave-one-out CV",
+ "same_sample_or_cohort_as": [
+  "P-1327 (round-2 candidate): both use J-ADNI MCI participants; overlap likely, not verifiable",
+  "No participant overlap with P-3, P-104, P-81 or the round-1 candidates (all North American ADNI or other cohorts)"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "In 197 J-ADNI MCI patients (108 progressed to dementia within 24 months), adding an MRI visual rating score (CVRS) to a clinical model raised LOOCV AUC in all four algorithms. LR went from 0.753 to 0.772, RF 0.746 to 0.782, XGBoost 0.712 to 0.762, LightGBM 0.713 to 0.792. Accuracy rose in three of the four, with LR identical at 135/197. The CIs overlap in every pair and nothing was tested. Adding FreeSurfer cortical thickness to the clinical model instead lowered AUC in three of the four algorithms. No imaging-only model was fitted.",
+ "why": "IDENTITY. PDF p.1 is Park C, Jang J-W, Joo G, ..., Im H and Kim SY (2022), Front. Neurol. 13:906257, 'Predicting progression to dementia with \"comprehensive visual rating scale\" and machine learning algorithms', for J-ADNI. It matches the P-536 block title. The map entry has doi None, but the title matches and the PDF prints DOI 10.3389/fneur.2022.906257. I read the whole extract up to the reference list.\n\nDESIGN. J-ADNI, 197 MCI patients: 108 progressed to dementia by 24 months and 89 were stable. Validation is LOOCV. Three feature sets were compared:\n- clinical: age, sex, education, APOE4, CDR-SOB, ADAS-Cog11, MMSE;\n- clinical + CVRS: visual MRI ratings of hippocampal, cortical and subcortical atrophy and small vessel disease;\n- clinical + cortical thickness: the FreeSurfer AD signature.\nFour algorithms were run on each set, apparently with default hyperparameters; the authors write that performance 'can be improved further by ... conducting hyperparameter tuning'. No CVRS-only or thickness-only model was fitted.\n\nRESULTS (Table 3).\n- Clinical to clinical + CVRS, AUC: LR 0.753 to 0.772; RF 0.746 to 0.782; XGB 0.712 to 0.762; LGBM 0.713 to 0.792.\n- Same comparison, accuracy: LR 0.685 to 0.685 (the same confusion matrix, 135/197); RF 0.670 to 0.701; XGB 0.660 to 0.706; LGBM 0.655 to 0.711.\n- Every AUC pair has overlapping 95% CIs, and no paired test was run.\n- Clinical to clinical + cortical thickness, AUC: LR 0.753 to 0.767; RF 0.746 to 0.735; XGB 0.712 to 0.704; LGBM 0.713 to 0.705.\n\nNARROWED: NO. The narrowed wording is that adding auxiliary information to an imaging model beats the same imaging model alone. This study never fits an imaging-only model, so it never runs that comparison. What it runs is the reverse: imaging added to a clinical model and compared against the clinical model. That is fusion against a non-imaging baseline, which the narrowed wording expressly says the current evidence does not show. The study therefore bears on the stated form, not the narrowed one.\n\nSTATED: PARTLY. The study does test fusion against a multivariable non-imaging baseline, the comparator P-81 failed on in round 20. Clinical + CVRS beats it on AUC in all four algorithms and on accuracy in three. But four things stop this short of yes:\n(a) With no imaging-alone baseline, fusion is shown to beat only one of the two unimodal baselines.\n(b) The gains sit inside overlapping CIs in 197 patients, with no test.\n(c) The study's second fusion (clinical + cortical thickness) did not improve on clinical alone in three of four algorithms. The gain depends on which imaging representation is used, not on fusion as such.\n(d) The fusion is plain concatenation of a clinical table with a visual rating score in off-the-shelf classifiers. It is not clearly 'auxiliary-data-aware' fusion in the ledger's sense (metadata, source-task attention, side-information).\n\nCAVEATS.\n(1) Internal contradiction. p.9 says 'All tree-based models achieved a better AUC value when clinical data with cortical thickness were used than when clinical data were used, whereas logistic regression showed the opposite result', but Table 3 shows the reverse: tree models lower, LR higher.\n(2) The claim 'Every performance measure of each prediction model was always better' with CVRS fails for LR. Its accuracy, precision, recall and F1 are identical with and without CVRS.\n(3) At baseline the CVRS total did not differ between groups (p = 0.223).\n(4) Dementia diagnosis used CDR and objective cognitive measures, and CDR-SOB, ADAS-Cog and MMSE are inputs. The clinical baseline is therefore partly circular, which also inflates it as a comparator.\n(5) The 2-year conversion rate is 54.8%. The authors attribute this to J-ADNI's sensitive AD cutoff.\n(6) The registry Modality 'MRI/PET' is wrong: no PET was used, and the authors say molecular imaging and CSF 'were not used for the analysis'.\n\nINDEPENDENCE. J-ADNI (38 Japanese sites) has participants distinct from North American ADNI, and so from P-3, P-104 and P-81. Its protocol is harmonized with ADNI, so whether it counts inside the review's 'ADNI' dataset family is for the operator to decide. It shares the J-ADNI cohort with round-2 candidate P-1327, whose J-ADNI arm has 140 pMCI. The authors (Kangwon National University, Seoul National University Bundang Hospital and others) are disjoint from the supporters and from the round-1 candidates whose front matter I checked. The method (tree ensembles on tabular features) overlaps round-2 candidate P-48's family and differs from all three supporters. The paper is not a preprint.\n\nQuotes are rejoined across line breaks, with typographic characters normalized to ASCII. Table cells are joined in reading order; precision, recall and F1 columns are elided.",
+ "quotes": [
+  {
+   "page": 10,
+   "quote": "TABLE 3 The prediction performance of each ML model with leave-one-out cross-validation. Dataset Model AUC Accuracy ... Clinical data Logistic regression 0.753 (0.686-0.820) 0.685 ... Random forest 0.746 (0.678-0.814) 0.670 ... XGBoost 0.712 (0.641-0.783) 0.660 ... LightGBM 0.713 (0.642-0.784) 0.655 ... Clinical data with CVRS Logistic regression 0.772 (0.707-0.837) 0.685 ... Random forest 0.782 (0.719-0.845) 0.701 ... XGBoost 0.762 (0.696-0.828) 0.706 ... LightGBM 0.792 (0.730-0.853) 0.711 ... Clinical data with cortical thickness Logistic regression 0.767 (0.702-0.832) 0.665 ... Random forest 0.735 (0.665-0.805) 0.685 ... XGBoost 0.704 (0.631-0.777) 0.660 ... LightGBM 0.705 (0.633-0.777) 0.650"
+  },
+  {
+   "page": 4,
+   "quote": "To examine the usefulness of the CVRS score compared to cortical thickness, the features selected from the screening data were widely used conventional variables, such as age, sex, duration of education, APOE4 genotype, and the results of cognitive function tests (CDR-SOB, ADAS-Cog11, MMSE). ... We used three datasets that consisted of clinical data, clinical data with CVRS score, and clinical data with cortical thickness to compare the prediction performance of each feature category."
+  },
+  {
+   "page": 4,
+   "quote": "Since the size of the dataset was relatively small, we used the leave-one-out cross-validation (LOOCV) method (29) for the analysis of the 197 patients."
+  },
+  {
+   "page": 9,
+   "quote": "Every performance measure of each prediction model was always better when clinical data and CVRS score were used together than when clinical data were used alone. In contrast, using clinical data together with cortical thickness was often worse than using clinical data alone."
+  },
+  {
+   "page": 9,
+   "quote": "All tree-based models achieved a better AUC value when clinical data with cortical thickness were used than when clinical data were used, whereas logistic regression showed the opposite result."
+  },
+  {
+   "page": 7,
+   "quote": "In the case of logistic regression, clinical data and clinical data with CVRS showed the same numbers, with the number of accurate predictions being 135 (89 + 46), which was 68% of the total data."
+  },
+  {
+   "page": 4,
+   "quote": "CVRS (total) 8.7 +/- 3.2 9.3 +/- 3.9 9.0 +/- 3.7 0.223"
+  },
+  {
+   "page": 3,
+   "quote": "The diagnosis of dementia during the follow-up year was made based on the presence of memory complaints, a CDR score >=0.5, and significant impairments in objective cognitive measures and activities of daily living."
+  },
+  {
+   "page": 11,
+   "quote": "Third, we included subjects with MCI who performed MRI at baseline without pathologic confirmation by either molecular imaging or CSF. Although J-ADNI included these data, they were not used for the analysis because these methods are either expensive or invasive."
+  }
+ ]
+}

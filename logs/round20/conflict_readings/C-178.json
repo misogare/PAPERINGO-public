@@ -1,0 +1,77 @@
+{
+ "id": "C-178",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-334",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Statistical Method for Identification of Alzheimer Disease With Multimodal Predictive Markers Mild Cognitive Impairment (Zarei, Shalbaf & Shalbaf, Basic and Clinical Neuroscience 2025, 16(SI):233-250)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-168",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of progression from mild cognitive impairment to Alzheimer's disease with longitudinal and multimodal data (Ding et al., Frontiers in Dementia 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-334": "ADNI-MERGE, 835 MCI participants (487 sMCI, 348 pMCI), labels applied to individual visit records (pMCI records only within 3 years before conversion). Univariate AUC per single feature, no multivariable model and no validation: florbetaben PET (FBB) AUC 0.84 (highest), mPACCtrailsB and ADAS13 0.83, hippocampus 0.75, FDG 0.75.",
+  "P-168": "ADNI-MERGE, 347 participants with MCI at the 24-month exam (77 converters). LSTM on demographics + 15 NP tests + 7 FreeSurfer MRI volumes at five time points (baseline to 24 months), predicting conversion to AD within 2 years of the index exam, 10-fold CV: AUC 0.93 +/- 0.06; single-time-point random forest 0.90; MRI-only LSTM 0.86; NP-only LSTM 0.89."
+ },
+ "quantity_a": "Univariate record-level ROC-AUC of a single amyloid-PET measure (florbetaben SUVR) for separating stable-MCI visit records from pMCI visit records within 3 years before conversion; no model, no validation",
+ "quantity_b": "Cross-validated participant-level ROC-AUC of a multivariable longitudinal model (five visits of NP tests + structural MRI volumes + demographics) for conversion from MCI to AD within 2 years of the index exam",
+ "same_quantity": false,
+ "incompatible_if_same": "No: a single biomarker's univariate AUC of 0.84 and a multivariable model's AUC of 0.93 (+/- 0.06) do not contradict each other; P-168's own single-modality figures (0.86 MRI, 0.89 NP) sit near P-334's single-feature values (0.83 for mPACCtrailsB/ADAS13).",
+ "gates": {
+  "task": "match: both MCI-to-AD progression (T2), though horizons differ (records within 3 years of conversion vs conversion within 2 years of index exam)",
+  "dataset_family": "match: both ADNI (ADNI-MERGE); overlapping participants likely",
+  "validation_tier": "mismatch: P-334 fits no model and validates nothing (descriptive univariate AUCs); P-168 uses 10-fold CV",
+  "modality_family": "mismatch: P-334's contested 0.84 is amyloid PET (florbetaben); P-168 uses structural MRI volumes + neuropsychological tests, no PET; the record itself has modality_family_equal 'No'"
+ },
+ "endpoint_and_metric": "incompatible: both ROC-AUC, but univariate single-marker record-level discrimination vs multivariable longitudinal participant-level prediction, with different horizons",
+ "performance_validity": "flag does not apply (both < 0.97); P-334 is not a validated classifier at all",
+ "independence": "Distinct author groups; both draw on ADNI-MERGE, so participant overlap is probable (recorded as non-independence)",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-334's 0.84 is the univariate AUC of a single florbetaben PET measure, while P-168's 0.93 is a cross-validated multivariable LSTM on repeated NP tests and MRI volumes, so predictor set and input modality differ.",
+  "P-334 labels individual visit records within a 3-year pre-conversion window and fits no model, while P-168 predicts participant-level conversion within 2 years, so the endpoint definitions and validation tier differ.",
+  "The modality gate fails (amyloid PET vs structural MRI + cognition) with no waiver on record, and on comparable single-modality figures the two papers are close rather than contradictory."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-334",
+   "page": 1,
+   "quote": "Our findings showed the strong predictive potential of PET, particularly florbetaben (FBB), which achieved an AUC of 0.84."
+  },
+  {
+   "paper": "P-334",
+   "page": 8,
+   "quote": "Only records preceding the AD diagnosis and those within the 3-year window before the conversion event receive labels."
+  },
+  {
+   "paper": "P-334",
+   "page": 8,
+   "quote": "Employing the Wilcoxon test (Wilcoxon, 1992) in R version 4, we scrutinized differences in the AUC, setting a stringent significance level (alpha) at 0.005."
+  },
+  {
+   "paper": "P-168",
+   "page": 1,
+   "quote": "The longitudinal LSTM model showed superior prediction performance of MCI-to-AD progression (AUC 0.93 +/- 0.06) compared to the random forest model (AUC 0.90 +/- 0.09)."
+  },
+  {
+   "paper": "P-168",
+   "page": 5,
+   "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures."
+  }
+ ],
+ "record_defects": [
+  "task_equal/dataset_equal/validation_comparable 'Yes': validation is not comparable, since P-334 fits no model.",
+  "P-334 registry Sample_N_Approx '487' is the sMCI group only; the analysed total is 835 (487 sMCI + 348 pMCI).",
+  "P-334 registry Modality 'MRI/PET' hides that the contested 0.84 is a PET-only single feature; P-168 uses no PET.",
+  "resolution_note says 'Confirmed genuine: Same metric type (AUC)' while the resolution field says 'Rejected: Task, dataset, or modality mismatch'; the two fields contradict each other."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "P-334 reporting a validated multivariable model on the same NP + MRI inputs and 2-year horizon, or P-168 reporting a single-feature AUC that conflicted with P-334's."
+}

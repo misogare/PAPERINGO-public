@@ -1,0 +1,73 @@
+{
+ "id": "C-182",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-339",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A prediction nomogram for mild cognitive impairment in type 2 diabetes mellitus based on the Chinese visceral adiposity index (Zhou, Wang, Yu & Niu, Scientific Reports 2025, 15:32393)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-165",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Mild Cognitive Impairment: Data-Driven Prediction, Risk Factors, and Workup (Fouladvand, Noshad, Goldstein, Periyakoil & Chen, Stanford; AMIA proceedings pp. 167-172)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-339": "337 hospitalised T2DM patients aged 40-75, cross-sectional, MCI = MoCA < 26 (158/337). Nomogram (age, gender, education, CVAI): AUC 0.765 (95% CI 0.705-0.826) training (apparent), 0.690 (95% CI 0.588-0.792) random validation split.",
+  "P-165": "Stanford Healthcare OMOP EHR, 531,387 primary-care visits of patients aged 65+ (label: at least one MCI diagnosis code within one year after the visit). 480 structured and clinical-note concepts; temporal split (train through 2019, test 2020+): random forest ROC-AUC 68.2 +/- 0.7, XGBoost 66.8 +/- 0.8, logistic regression 57.0 +/- 1.1."
+ },
+ "quantity_a": "Patient-level ROC-AUC for current MoCA-defined MCI among hospitalised T2DM adults aged 40-75 from a 4-variable nomogram (0.765 apparent training value; 0.690 validation)",
+ "quantity_b": "Visit-level ROC-AUC for a recorded MCI diagnosis code appearing within one year after a primary-care visit among patients aged 65+, from 480 EHR concepts (random forest, temporal hold-out)",
+ "same_quantity": false,
+ "incompatible_if_same": "No: P-339's validation AUC 0.690 (95% CI 0.588-0.792) contains P-165's 0.682; the 0.765 vs 0.682 gap compares an apparent training value with a temporal hold-out value.",
+ "gates": {
+  "task": "mismatch: current MCI detection by psychometric cut-off (P-339) vs prediction of a future recorded diagnosis within one year (P-165); registry codes P-339 T4 and P-165 T2, the record says T1 for both",
+  "dataset_family": "mismatch: single-hospital Chinese T2DM inpatients vs Stanford Healthcare EHR; the record's dataset_equal 'Yes' is wrong",
+  "validation_tier": "mismatch for the contested figures: apparent training AUC vs temporal hold-out test",
+  "modality_family": "partial: both clinical/tabular, but a 4-variable anthropometric-demographic nomogram vs 480 EHR concepts including NLP-derived clinical-note terms"
+ },
+ "endpoint_and_metric": "incompatible: both ROC-AUC, but the endpoint differs (MoCA < 26 at assessment vs an MCI diagnosis code within 12 months) and so does the unit of analysis (patients vs visits)",
+ "performance_validity": "flag does not apply (both < 0.97)",
+ "independence": "Distinct studies, cohorts and author groups",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-339 detects current MoCA-defined MCI in diabetic inpatients, while P-165 predicts a recorded MCI diagnosis code within one year of a primary-care visit, so the endpoints and populations differ.",
+  "The unit of analysis (patients vs visits), predictor sets (4 variables vs 480 EHR concepts) and dataset family differ, with no waiver on record.",
+  "Even numerically there is no disagreement: P-339's validation AUC interval (0.588-0.792) contains P-165's 0.682."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-339",
+   "page": 5,
+   "quote": "with AUC values of 0.765 (95% CI: 0.705-0.826) in the training cohort and 0.690 (95% CI 0.588-0.792) in the validation cohort (Fig. 4C, D)."
+  },
+  {
+   "paper": "P-339",
+   "page": 2,
+   "quote": "Based on their Montreal Cognitive Assessment (MoCA) scores, participants were categorized into two groups: the normal cognition (NC) group (n = 179) and the mild cognitive impairment (MCI) group (n = 158)."
+  },
+  {
+   "paper": "P-165",
+   "page": 2,
+   "quote": "Each primary care visit was assigned with a binary label indicating if the patient has at least one MCI diagnosis code within one year follow up from the time of their primary care visit."
+  },
+  {
+   "paper": "P-165",
+   "page": 4,
+   "quote": "The random forest model has a higher ROC-AUC (68.2%+/-0.7%) than xgboost and logistic regression models on the test set."
+  }
+ ],
+ "record_defects": [
+  "dataset_equal 'Yes' is wrong: Chinese T2DM inpatients vs Stanford EHR primary-care visits.",
+  "claim_b 'AUC 0.682 on T1': P-165 predicts a future diagnosis within one year (registry T2), not current detection.",
+  "P-165 registry Best_Metric 'not reported' although the paper reports ROC-AUC 68.2 +/- 0.7; its Sample_N_Approx '531387' counts visits, not patients (Table 1 lists 7,895 MCI and 146,991 non-MCI).",
+  "claim_a uses P-339's apparent training AUC rather than its validation AUC (0.690).",
+  "The rejection reason recorded ('Same architecture family (A1_classical)') is not a ground under the rule."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing within these two papers; the endpoint, population and unit of analysis differ in kind."
+}

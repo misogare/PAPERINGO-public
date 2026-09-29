@@ -1,0 +1,83 @@
+{
+ "id": "C-189",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-356",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease Using a Vision Transformer and Hippocampal MRI Slices (Seiger and Fierlinger, Bioengineering 2026;13:163)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-273",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting long-term progression of Alzheimer's disease using a multimodal deep learning model incorporating interaction effects (Wang et al., Journal of Translational Medicine 2024;22:265)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-356": "ViT on three axial hippocampal T1 slices, pMCI (conversion within 36 months) vs sMCI (stable >= 3 years), 575 ADNI participants, subject-level split, 10 runs: test AUC 0.74 +/- 0.02; 3D ResNet-18 0.75.",
+  "P-273": "DISFC trimodal network (whole-brain 3D sMRI + 14 clinical features including MMSE, CDRSB, ADAS11/13, RAVLT, FAQ, LDELTOTAL, mPACC + 49 selected SNPs), conversion within 48 months, 238 ADNI-1/GO/2 MCI (+45 AD added to training), stratified tenfold CV: mean AUC 0.962 (SD 0.041); ADNI-3 independent test of 14 subjects AUC 0.939 (95% CI 0.796-1.000)."
+ },
+ "quantity_a": "ROC-AUC of an image-only (three hippocampal slices) classifier for MCI-to-AD conversion within 36 months vs stability >= 3 years, ADNI.",
+ "quantity_b": "ROC-AUC of a trimodal imaging + cognitive-score + genetic classifier for MCI-to-AD conversion within 48 months vs stability over 48 months, ADNI.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-273 itself shows the gap is driven by the non-imaging inputs: its SHAP attribution gives imaging 10.30 against clinical 58.51 and genetic 50.05, and it reports that bimodal and trimodal models beat unimodal ones. Neither paper evaluates the other's input set on the other's horizon, so no ordering claimed by one is refuted by the other.",
+ "gates": {
+  "task": "match: both MCI-to-AD conversion prediction (T2).",
+  "dataset_family": "match: both ADNI (overlapping ADNI-1/GO/2 participants; non-independence).",
+  "validation_tier": "match at tier level for the compared figures (internal: P-356 subject-level split; P-273 tenfold CV). P-273's 14-subject ADNI-3 test is a small additional check.",
+  "modality_family": "mismatch: P-356 structural MRI only; P-273 structural MRI plus neuropsychological scores and SNP genotypes. No waiver on record."
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different horizons (36 vs 48 months, with correspondingly different stable-class definitions) and different predictor sets (image slices vs imaging + cognitive scores + genetics).",
+ "performance_validity": "flag does not apply by the rule's threshold: 0.962 is below 0.97, and there is a small external ADNI-3 test (n = 14, AUC 0.939). Near-ceiling performance on 238 subjects is noted but does not meet the exclusion as written.",
+ "independence": "Shared cohort: both draw MCI participants from ADNI-1/GO/2; recorded as non-independence.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The predictor sets differ: P-356 uses three hippocampal MRI slices alone, while P-273 adds 14 neuropsychological and functional scores and 49 SNPs, and by its own SHAP analysis relies mainly on the non-imaging inputs.",
+  "The horizons and class definitions differ: conversion within 36 months against conversion within 48 months.",
+  "The modality-family gate fails with no waiver on record. As in the C-80 precedent, input representation is confounded with architecture."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-356",
+   "page": 1,
+   "quote": "The cohort comprised 575 individuals (299 stable MCIs; 276 progressive MCIs who converted within 36 months) from whom axial T1-weighted MRI slices covering the hippocampal region were used as model inputs."
+  },
+  {
+   "paper": "P-356",
+   "page": 6,
+   "quote": "On average, the model achieved an AUC-ROC of 0.74 with a standard deviation of 0.02 and a range of 0.72 to 0.78"
+  },
+  {
+   "paper": "P-273",
+   "page": 1,
+   "quote": "On the cross-validation set, our model achieved superior results for predicting MCI conversion within 4 years (AUC, 0.962; accuracy, 92.92%; sensitivity, 88.89%; specificity, 95.33%) compared to all existing studies."
+  },
+  {
+   "paper": "P-273",
+   "page": 2,
+   "quote": "For each participant, we considered 14 clinical features at baseline, including demographic data (age, sex, education) and cognitive assessments, as listed in Table 1."
+  },
+  {
+   "paper": "P-273",
+   "page": 8,
+   "quote": "The aggregated SHAP values for imaging, clinical, genetic, and imaging-clinical interaction terms were 10.30, 58.51, 50.05, and 21.84, respectively."
+  },
+  {
+   "paper": "P-273",
+   "page": 6,
+   "quote": "We also observed that bimodal models outperformed unimodal models overall."
+  }
+ ],
+ "record_defects": [
+  "modality_family 'structural_mri' and modality_family_equal 'Yes' ignore P-273's clinical and genetic inputs.",
+  "The record does not state the horizon difference (36 vs 48 months).",
+  "Registry P-273 Modality 'MRI/PET': P-273 uses no PET.",
+  "Registry P-356 Best_Metric 'not reported' (AUC 0.74 +/- 0.02 is reported) and Modality 'MRI/PET' (no PET).",
+  "resolution_note is a list of unrelated bridging figures (including P-1 at 98.81% accuracy) and gives no reason for the false-positive status."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A reported MRI-only arm of P-273 at a 36-month horizon (its unimodal results appear only in Fig. 4B, without numbers in the text) that diverged incompatibly from P-356; even then the whole-brain vs three-slice input difference would remain."
+}

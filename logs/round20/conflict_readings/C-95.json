@@ -1,0 +1,79 @@
+{
+ "id": "C-95",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-173",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A Graph Gaussian Embedding Method for Predicting Alzheimer's Disease Progression with MEG Brain Networks (Xu et al., IEEE Trans Biomed Eng 2021;68(5):1579-1588, author manuscript)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-129",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "STCWTNet: Spatio-temporal channel-wise transformer network for interpretable cross-subject mild cognitive impairment detection using EEG signals (Liu et al., Biomedical Signal Processing and Control 118 (2026) 109564)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-173": "Resting-state alpha-band MEG functional networks (68 Desikan-Killiany ROIs) from 53 NC and 76 MCI-due-to-AD patients (Hospital Universitario San Carlos, Madrid), MCI followed ~3 years into sMCI (n=48) and pMCI (n=28). MG2G graph embeddings fed to 10 classifiers, 5-fold CV, mean accuracy across classifiers: 61% (3-class), 79% NC/sMCI, 78% sMCI/pMCI, 82% NC/pMCI. AUCs are shown only in supplementary figures; the main text states no AUC value, so the record's 'AUC 0.81' cannot be checked against this extract.",
+  "P-129": "Resting eyes-closed 19-channel EEG from the public Isfahan dataset (32 MCI, 29 HC), STCWTNet transformer, subject-wise 6x5 nested CV repeated 20 times, MCI vs HC detection: accuracy 90.97% \u00b1 0.60, specificity 94.76% \u00b1 0.78, sensitivity 86.87% \u00b1 1.14, AUC 0.950 \u00b1 0.006. It contains no conversion (pMCI vs sMCI) analysis."
+ },
+ "quantity_a": "Cross-validated discrimination (mean accuracy across classifiers; AUC only in supplement) of MEG network embeddings for sMCI vs pMCI (~3-year conversion to AD) and related NC/sMCI/pMCI contrasts, Madrid MEG cohort",
+ "quantity_b": "Subject-wise nested-CV accuracy/specificity/AUC for current MCI vs healthy control detection from resting EEG, Isfahan public dataset",
+ "same_quantity": false,
+ "incompatible_if_same": "No comparison arises: the record's 'Acc 94.76' is P-129's specificity (its accuracy is 90.97%), and it is an MCI-vs-HC detection figure, not a conversion figure; it is also set against an AUC. A specificity and an AUC for different contrasts cannot disagree.",
+ "gates": {
+  "task": "mismatch: P-173's contested figure is conversion prediction (sMCI vs pMCI, T2); P-129 is MCI vs HC detection (T1). The record's 'Acc 94.76 on T2' and task_equal='Yes' are wrong; no waiver on record",
+  "dataset_family": "mismatch: Madrid San Carlos MEG cohort vs the Isfahan (Sina and Nour hospitals) public EEG dataset; the record's dataset_equal='Yes' is wrong",
+  "validation_tier": "match: both internal cross-validation only",
+  "modality_family": "match at family level: electrophysiology (MEG vs EEG, both resting-state)"
+ },
+ "endpoint_and_metric": "incompatible: different endpoint (3-year conversion vs current MCI status) and different metric types (AUC vs a specificity mislabelled as accuracy)",
+ "performance_validity": "flag does not apply to the contested figures: P-129's cross-subject nested-CV AUC is 0.950 (<0.97); its intra-subject 10-fold results on 27/34-subject subsets (AUC 0.979/0.987) are not the figure the record uses",
+ "independence": "Independent: different groups, countries, cohorts and recording modalities; no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record misreads P-129: 94.76% is its specificity, not its accuracy (90.97%).",
+  "The record also misreads P-129's task: it detects current MCI vs healthy controls and has no conversion analysis, so 'on T2' is wrong.",
+  "A detection specificity set against a conversion AUC describes no disagreement; in addition the task and dataset-family gates fail with no waiver on record.",
+  "P-173's main text reports only accuracies (78% sMCI/pMCI) and places AUCs in the supplement, so the record's 'AUC 0.81' is not verifiable from the extract."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-173",
+   "page": 4,
+   "quote": "the stable MCI group (sMCI, n = 48) comprising those patients that still fulfilled the diagnosis criteria of MCI at the end of follow-up, and the progressive MCI group (pMCI, n = 28) comprising those patients that met the criteria for probable AD"
+  },
+  {
+   "paper": "P-173",
+   "page": 9,
+   "quote": "MG2G achieved high performance with 61% for NC/sMCI/pMCI classification, 79% for NC/sMCI classification, 78% for sMCI/pMCI classification, and 82% for NC/pMCI classification."
+  },
+  {
+   "paper": "P-173",
+   "page": 9,
+   "quote": "Receiver operating characteristic area-under-the-curve (AUC) plots are shown in Suppl. Figs. 1 and 2."
+  },
+  {
+   "paper": "P-129",
+   "page": 1,
+   "quote": "STCWTNet achieves 90.97% accuracy, 94.76% specificity, 86.87% sensitivity, and 0.950 AUC, outperforming other state-of-the-art methods."
+  },
+  {
+   "paper": "P-129",
+   "page": 2,
+   "quote": "The dataset comprised 32 subjects diagnosed with MCI and 29 healthy controls, all aged over 55 years with at least an elementary education."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-129: Acc 94.76 on T2' is wrong twice: 94.76% is specificity (accuracy is 90.97%), and the task is MCI vs HC detection (T1), not conversion.",
+  "task_equal='Yes' and dataset_equal='Yes' are wrong (conversion vs detection; Madrid MEG vs Isfahan EEG).",
+  "claim_a 'P-173: AUC 0.81' is not stated in the main text of the P-173 extract, which reports accuracies only and puts AUCs in supplementary figures.",
+  "P-129 registry Best_Metric 'Acc 94.76' repeats the specificity-as-accuracy error; its Method_Architecture field holds abstract spillover text.",
+  "The 'bridging evidence' list (e.g. P-369, whose block is recorded elsewhere as fabricated) names no condition separating the two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers: P-129 has no conversion result. A genuine candidate would need another MEG/EEG study predicting sMCI vs pMCI over a comparable horizon with an AUC whose interval excludes P-173's."
+}

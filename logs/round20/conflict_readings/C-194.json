@@ -1,0 +1,82 @@
+{
+ "id": "C-194",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-14",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multi-scale enhanced graph convolutional network for mild cognitive impairment detection (Lei et al.; Pattern Recognition 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-79",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Regularized spatio-temporal weighted graph convolution network based on multimodal fusion for mild cognitive impairment detection (Wu, Dong, Wu; Expert Syst Appl 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-14": "184 ADNI subjects (77 EMCI, 40 LMCI, 67 NC), rs-fMRI + DTI connectivity (LWCC features), population-graph MSE-GCN, leave-one-out: EMCI vs NC 85.42%, LMCI vs NC 93.46%, LMCI vs EMCI 92.31%, three-class 83.11% (Table 3). The abstract's 'mean classification accuracy of 90.39%' equals the mean of the three binary tasks.",
+  "P-79": "ADNI2 (161 NC, 147 EMCI, 128 LMCI) and ADNI3 (244 NC, 190 MCI), rs-fMRI + T1 gray-matter volume + age/sex population graph (MCRSW-GCN), stratified 5-fold CV: NC vs LMCI 97.44%, EMCI vs LMCI 95.56%, NC vs EMCI 95.39%, three-class 92.55%, ADNI3 NC vs MCI 87.08% (Tables 3-7). The '+8.5%' in the abstract is 'an average improvement of 8.5% in accuracy over baseline models', a relative claim about its own comparison, not an accuracy."
+ },
+ "quantity_a": "Mean of three ADNI binary accuracies (EMCI/NC, LMCI/NC, LMCI/EMCI) from rs-fMRI+DTI connectivity features, LOOCV.",
+ "quantity_b": "As recorded: an average accuracy improvement of P-79's model over its own re-run baselines (a difference in percentage points), not an accuracy of any classifier.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The record's gap of 0.819 is 0.9039 minus 0.085, i.e. an accuracy set against an improvement margin, which is arithmetic on unlike quantities. On the per-task accuracies both papers actually report (for example NC vs LMCI 93.46% vs 97.44%; NC vs EMCI 85.42% vs 95.39%), the two are different methods on different modality pairs (DTI vs T1) and different ADNI subsets with different validation (LOOCV vs 5-fold), and neither paper claims an ordering that the other refutes.",
+ "gates": {
+  "task": "match: both CN/EMCI/LMCI discrimination within the MCI spectrum (T1).",
+  "dataset_family": "match: ADNI for both (different subsets and phases; overlapping subjects possible but not stated).",
+  "validation_tier": "match in tier (internal CV only): LOOCV vs stratified 5-fold.",
+  "modality_family": "partial: both rs-fMRI, but P-14 adds DTI structural connectivity and P-79 adds T1 gray-matter volume and a phenotype graph."
+ },
+ "endpoint_and_metric": "incompatible as recorded (accuracy vs relative improvement); compatible metric type only if P-79's per-task accuracies are substituted, which the record did not do.",
+ "performance_validity": "Not a valid performance comparison as recorded. If P-79's per-task accuracies were used, its NC vs LMCI 97.44% (AUC 99.75%) is at or above 0.97 on internal 5-fold CV with no external MCI cohort (its only external test is an MDD dataset), so the exclusion would apply to that task.",
+ "independence": "Distinct author groups. Both use ADNI; P-79 does not state its subject IDs, so overlap with P-14's 184 subjects cannot be excluded.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim_b misreads P-79: '+8.5% vs baseline' is an average improvement over the paper's own baselines, not a classification accuracy, so there is no second result on the contested quantity.",
+  "P-14's 90.39% is itself a composite, the mean of three different binary tasks, not a single estimand.",
+  "On the task-matched accuracies both papers do report, the results are two different methods' scores on different modality pairs with no refuted ordering, and P-79's NC vs LMCI figure would fall under the performance-validity exclusion."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-79",
+   "page": 1,
+   "quote": "Experiments on the ADNI dataset demonstrate that MCRSW-GCN consistently outperforms existing state-of-the-art methods across multiple metrics, achieving an average improvement of 8.5% in accuracy over baseline models."
+  },
+  {
+   "paper": "P-79",
+   "page": 7,
+   "quote": "MCRSW-GCN, achieves ACC values of 97.44%, 95.56%, 95.39%, 87.08%, and 92.55% in the five tasks (NC vs. LMCI, EMCI vs. LMCI, NC vs. EMCI, NC vs. MCI, and the three-class classification"
+  },
+  {
+   "paper": "P-79",
+   "page": 7,
+   "quote": "We adopted stratified five-fold cross-validation to evaluate model performance."
+  },
+  {
+   "paper": "P-14",
+   "page": 1,
+   "quote": "our method is promising to detect MCI and superior to other competing algorithms, with a mean classification accuracy of 90.39% in the detection tasks."
+  },
+  {
+   "paper": "P-14",
+   "page": 5,
+   "quote": "In the four classification tasks, our proposed method has the best mean accuracy of 85.42%, 93.46%, and 92.31%, 83.11% respectively."
+  },
+  {
+   "paper": "P-14",
+   "page": 5,
+   "quote": "we use a leave one-out (LOO) cross-validation strategy for all experiments"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-79: +8.5% vs baseline' treats a relative improvement as a performance result; gap_magnitude 0.819 is computed from unlike quantities.",
+  "claim_a '90.39%' is P-14's mean over three binary tasks, not the result of any single task.",
+  "modality_family 'functional_mri' omits that P-14 fuses DTI and P-79 fuses T1 structural MRI.",
+  "The pack registry lists P-79 Best_Metric as 'not reported' although the paper reports per-task accuracies (97.44%, 95.56%, 95.39%, 87.08%, 92.55%)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing about the record as written. A new candidate built on task-matched accuracies would still need the same modality pair and a refuted ordering, and P-79's 97.44% NC vs LMCI would first need an external cohort to escape the performance-validity exclusion."
+}

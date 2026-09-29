@@ -1,0 +1,78 @@
+{
+ "id": "C-38",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-114",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack file pdf/P-114.txt is the San-Martin et al. EEG/LORETA paper (BSPC 66 (2021) 102499), P-112's paper. The paper the record means (claim '93% Acc', registry row Kinect/ANFIS gait, summaries.md header 1-s2.0-S1746809421003195) is Seifallahi et al., 'Detection of mild cognitive Impairment from gait using Adaptive Neuro-Fuzzy Inference system', BSPC 71 (2022) 103195, present in the pack as pdf/P-115.txt. Both read in full; verdict uses the gait paper.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-99",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Machine learning approaches to mild cognitive impairment detection based on structural MRI data and morphometric features (Zubrikhina et al., Cognitive Systems Research 78 (2023) 87-95)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-114": "Kinect V2 dual-task gait features, 150 older adults (70 MCI, 80 HC, IDAA Tehran), hierarchical ANFIS binary MCI vs HC accuracy 93% (sens 90%, spec 99%, F-score 91.5%); LR 81.25% and SVM 78.85% on the same features. ANFIS evaluation protocol not stated.",
+  "P-99": "207 participants (145 MCI, 62 HC; Moscow Mental-health clinic No. 1 / Memory Clinic), FreeSurfer morphometric features from T1 MRI, chi-squared SelectKBest plus six classifiers, 10-fold CV. Best: SVC accuracy 0.73 +- 0.059, ROC-AUC 0.735 +- 0.076, F1-macro 0.683 (Table 1)."
+ },
+ "quantity_a": "Accuracy of ANFIS on Kinect dual-task gait features, MCI vs HC, 150 Iranian older adults, protocol unstated",
+ "quantity_b": "10-fold CV accuracy of an RBF SVM on FreeSurfer structural-MRI morphometry, MCI vs HC, 207 Russian memory-clinic patients and volunteers",
+ "same_quantity": false,
+ "incompatible_if_same": "Not as the rule reads incompatibility. Both are MCI-vs-HC accuracies, but they are two different methods on two different input representations, each reporting its own score; neither study claims that gait beats MRI or the reverse, so 93% and 73% do not refute each other.",
+ "gates": {
+  "task": "match: both binary MCI vs healthy controls (T1)",
+  "dataset_family": "mismatch: own IDAA Tehran cohort vs own Moscow memory-clinic cohort; no waiver on record",
+  "validation_tier": "uncertain: P-99 internal 10-fold CV; P-114 states no ANFIS evaluation protocol",
+  "modality_family": "mismatch: gait/motor (Kinect skeletal) vs structural MRI (FreeSurfer morphometry); no waiver on record"
+ },
+ "endpoint_and_metric": "compatible in type (accuracy, MCI vs HC) but on different predictor sets and input representations in different cohorts",
+ "performance_validity": "flag does not apply: P-99 reports 73% accuracy, not 99%; neither row is flagged and no contested value reaches 0.97.",
+ "independence": "Independent: different groups, countries and cohorts; no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The modality-family gate fails: P-114 classifies from Kinect gait parameters and P-99 from FreeSurfer structural-MRI morphometry, with no waiver on record.",
+  "The dataset-family gate fails: P-114's Tehran association cohort vs P-99's Moscow memory-clinic cohort (the same failure recorded for P-50 x P-99 in C-01).",
+  "The gap between 93% and 73% therefore confounds input representation, cohort and method, as in the C-80 precedent, and is not two results disagreeing about one measured quantity.",
+  "The resolution note's stated reason (P-99 'suspect accuracy >=97% (99.0%)') is false: P-99 reports 0.73 accuracy."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-114",
+   "page": 1,
+   "quote": "the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups."
+  },
+  {
+   "paper": "P-114",
+   "page": 2,
+   "quote": "Of 150 selected subjects, 80 subjects were healthy individuals without any cognitive impairments (HC subjects), and 70 subjects were elderly people with MCI."
+  },
+  {
+   "paper": "P-99",
+   "page": 1,
+   "quote": "The dataset for the study consists of 62 healthy volunteers and 145 patients with MCI obtained from the Memory Clinic (Moscow, Russia)."
+  },
+  {
+   "paper": "P-99",
+   "page": 1,
+   "quote": "We propose a machine learning method, which achieved an accuracy of 73%"
+  },
+  {
+   "paper": "P-99",
+   "page": 3,
+   "quote": "Due to an imbalanced dataset, for estimation of model performance, we used 10-fold cross-validation with the F1-metric."
+  }
+ ],
+ "record_defects": [
+  "resolution_note says 'Paper B (P-99) reports suspect accuracy >=97% (99.0%)'; P-99 reports 73% accuracy (SVC 0.73 +- 0.059) and nothing near 99%.",
+  "The pack's P-114 PDF (paper_pdf_map.json, 'formula-unverified') is P-112's EEG paper, not the gait/ANFIS paper the record means.",
+  "dataset_equal='Yes' is wrong; validation_comparable='Yes' is unsupported (P-114 states no ANFIS protocol).",
+  "The 15 bridging papers named in the note (P-360, P-322, P-411, P-416, P-422, P-478, P-333, P-501, P-9, P-538, P-557, P-703, P-795, P-855, P-931) report scores in other modalities and contrasts; none shows a condition separating gait from sMRI accuracy, so partially_resolved_candidate is not supported. The P-795 entry is truncated prose."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A single study running gait and sMRI classifiers on one cohort, or a recorded waiver of the modality and dataset gates with a stated reason; neither exists here."
+}

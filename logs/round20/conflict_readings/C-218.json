@@ -1,0 +1,82 @@
+{
+ "id": "C-218",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-185",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Biomarker Extraction Based on Subspace Learning for the Prediction of Mild Cognitive Impairment Conversion (Li, Fang, Wang, Zhang, Hu; BioMed Research International 2021, 5531940)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-41",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early progression detection from MCI to AD using multi-view MRI for enhanced assisted living (Rahim et al., Image and Vision Computing 157 (2025) 105491)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-185": "ADNI 1.5 T baseline scans, 221 MCI (126 pMCI / 95 sMCI; conversion within 3 years); FreeSurfer regional cortical thickness and volume (78 AAL regions) projected into a subspace learned from 142 AD / 165 NC; 10-fold CV repeated 20 times. Best accuracy 69.37% (linear SVM; SEN 75.39%, SPE 61.23%, AUC 0.6951).",
+  "P-41": "192 ADNI-1/GO/2 subjects with 3 T MPRAGE: 96 sMCI (MCI baseline to M48) vs a positive class of 81 pMCI (progressed between M18 and M48) plus 15 patients who already had AD; 132 2D slices per plane fed to EfficientNet/ConvNeXt/DenseNet with CBAM and a multi-head attention head; 71+71 training, 10+10 validation and 15+15 test subjects. Heterogeneous ensemble: accuracy 91.77 +/- 3.14%, SEN 87.69%, SPE 88.53%, AUC 92.87%."
+ },
+ "quantity_a": "Accuracy of pMCI (conversion within 3 years) vs sMCI from FreeSurfer ROI cortical thickness/volume features, ADNI 1.5 T MCI only, repeated 10-fold CV.",
+ "quantity_b": "Accuracy of sMCI vs a positive class of pMCI (M18-M48 converters) plus established AD patients, from 2D multi-plane image slices through a CNN ensemble, ADNI 3 T, a 30-subject held-out test set.",
+ "same_quantity": false,
+ "incompatible_if_same": "Unclear, and moot. P-185 gives no interval, and P-41's +/-3.14 is a spread over runs on a 30-subject test set. The two accuracies are far apart, but nothing in either paper states an estimate of the same quantity with uncertainty that excludes the other.",
+ "gates": {
+  "task": "nominal match (T2), but P-41's positive class includes 15 subjects who already had AD, so its label is not pure MCI conversion.",
+  "dataset_family": "match: both ADNI (P-185 1.5 T ADNI-1-type scans; P-41 3 T ADNI-1/GO/2 scans).",
+  "validation_tier": "match (both internal): P-185 uses 20x repeated 10-fold CV on 221 MCI; P-41 uses a single 30-subject held-out test.",
+  "modality_family": "match on structural MRI, but the input representation differs: pre-computed FreeSurfer ROI thickness/volume vectors vs 2D image slices. Precedent C-80 treats this as incommensurable representation."
+ },
+ "endpoint_and_metric": "incompatible: both report accuracy, but the endpoints differ. P-185 is conversion within 3 years in MCI only. P-41 is M18-M48 converters plus AD patients against 48-month stables, so the population behind the positive label differs.",
+ "performance_validity": "flag does not apply: 91.77% accuracy and 92.87% AUC are below 0.97 (the 30-subject test set is small, but the automatic flag is not tripped).",
+ "independence": "Both draw on ADNI; subject overlap between the P-185 MCI sample and P-41's ADNI-1/GO/2 sample is possible. Distinct author groups.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-41's positive class mixes 81 pMCI with 15 established AD patients, while P-185's positive class is pMCI only, so the populations behind the 'conversion' label differ.",
+  "The horizons and definitions differ: conversion within 3 years (P-185) vs conversion between M18 and M48 against stables followed to M48 (P-41).",
+  "The input representations differ, as in precedent C-80: regional FreeSurfer thickness/volume features (P-185) vs 2D multi-plane image slices through a CNN ensemble (P-41).",
+  "The validation designs differ in a way that bears on the estimate: 20x10-fold CV on 221 MCI vs a single 30-subject test set."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-185",
+   "page": 2,
+   "quote": "According to whether the MCI subjects will convert to AD or not within a given time period (i.e., 3 years), they are separated into two categories: progressive MCI (pMCI) and stable MCI (sMCI)."
+  },
+  {
+   "paper": "P-185",
+   "page": 2,
+   "quote": "We use baseline MRI scans (1.5 T, 1:25 mm \u00d7 1:25 mm in-plane spatial resolution, 1.2 mm thick slices) of 528 subjects, which include 142 AD subjects, 165 NC subjects, and 221 MCI subjects."
+  },
+  {
+   "paper": "P-185",
+   "page": 6,
+   "quote": "The proposed biomarker achieved highest accuracy of 69.37% when using SVM classi\ufb01er with linear kernel."
+  },
+  {
+   "paper": "P-41",
+   "page": 8,
+   "quote": "Furthermore, we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously."
+  },
+  {
+   "paper": "P-41",
+   "page": 8,
+   "quote": "The second group (pMCI) included 81 participants who were diagnosed with MCI at baseline but progressed to AD within 2.5 years, between month 18 (M18) and M48."
+  },
+  {
+   "paper": "P-41",
+   "page": 12,
+   "quote": "The MHA classifier in the same heterogeneous ensemble outperformed the LSTM with an accuracy of 91.77% \u00b13.14, sensitivity of 87.69% \u00b13.24, specificity of 88.53% \u00b13.53, and an impressive AUC of 92.87% \u00b13.58."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-41: Acc 91 on T2' omits that P-41's positive class includes 15 established AD patients and that the test set is 15 + 15 subjects.",
+  "modality_family 'Neuroimaging' conceals the ROI-feature vs image-slice representation difference (the C-80 incommensurability pattern).",
+  "The P-185 registry row's Sample_N_Approx 528 counts AD and NC auxiliary subjects; the MCI classification sample is 221."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-41 result on MCI-only classes, with the AD patients removed and the same 3-year horizon, from ROI features or with a waiver recorded for representation, together with uncertainty excluding 69.37%. Neither paper provides this."
+}

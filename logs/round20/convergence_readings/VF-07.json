@@ -1,0 +1,49 @@
+{
+ "id": "VF-07",
+ "supporters": [
+  {
+   "paper": "P-58",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Besides an accuracy score of 84.8%, the recall/sensitivity and specificity values were also around 85%. ... Furthermore, the AUC and minCllr values are also quite good (0.932 and 0.305, respectively), indicating that the temporal parameters described in Table 2 allowed accurate MCI detection in this case.",
+   "page": "6-7",
+   "note": "Gosztolya et al. 2021, Computer Speech & Language. Speech temporal parameters (articulation rate, speech tempo, silent/filled pause rates and durations) from ASR phone output, SVM with nested leave-one-speaker-out CV. n=66 (33 English-speaking New York: 19 HC/14 MCI; 33 Hungarian-speaking Szeged: 20 HC/13 MCI). MCI vs HC is a genuine MCI-only contrast (Petersen criteria). Temporal features only; no comparison against accuracy-type scoring. Hungarian arm silence-only features near chance (AUC 0.519), so the discriminative signal is mostly filled-pause related in that arm. Very small samples."
+  },
+  {
+   "paper": "P-59",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Based on our experimental results, this representation allows the automatic detection of MCI and mild AD with the same (or even higher) accuracy as the temporal speech parameters developed earlier. Our best accuracy score was 69.3%, and we achieved an F1 value of 87.5 and a mean AUC score of 0.780.",
+   "page": "11",
+   "note": "Egas-Lopez et al. 2022, same Szeged group and same S-GAP temporal-parameter lineage as P-58 (not an independent method family; Hungarian subjects from the same Szeged Memory Clinic, overlap with P-58's Hungarian arm cannot be excluded from the text). 75 subjects (25 HC/25 MCI/25 mild AD), three-class task. Binary metrics pool MCI with mild AD as the positive class; the MCI-specific AUC is modest (0.709 CD model, all tasks, Table 4; 0.70 CI model). Supports temporal (hesitation/silence) features as MCI-discriminative signals, but MCI-specific discrimination is weak."
+  },
+  {
+   "paper": "P-69",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "Of all the participants, 61 have been diagnosed with cognitive impairment over time. Among these 61 patients, 36 have MCI, 8 Alzheimer's disease, and 17 have other or unspecified dementia. Here, we focus on the binary classification problem ... 1 (dementia, Alzheimer's, or MCI) 0 (healthy). [p.4] Table 3 [p.10]: Driving TSFeatures alone, Interaction-Based ResBlocks F1 0.95, AUC 0.70; Driving TSFeatures + I-score, AUC 0.83.",
+   "page": "4, 10",
+   "note": "Di et al. 2023, LongROAD naturalistic driving (n=2977; 15 positives in the test set). The temporal-dynamic features are tsfeatures (autocorrelation, spikiness, entropy) of monthly aggregated driving variables, not reaction time or processing speed. Outcome merges MCI with dementia and AD (only 36 of 61 positives are MCI), so it does not show an MCI-discriminative signal specifically. Supports only the narrower form: time-series features of driving behaviour discriminate a combined MCI/dementia label (driving-only AUC 0.70 to 0.83)."
+  },
+  {
+   "paper": "P-83",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "Our raw EEG and HRV data are analyzed to extract time, frequency, and non-linear features. [p.1] Searched for reaction time, response latency, processing speed or any isolated contribution of temporal features: none reported; time-domain and frequency-domain features are fused and never compared separately.",
+   "page": "1, 4-7",
+   "note": "Boudaya et al. 2024. 15 subjects (7 HC/8 MCI) after excluding 9 of 24; EEG (Emotiv 14-channel) and HRV during CERAD subtests, 3-second segments with shuffled 75/25 split at segment level, so the same subjects appear in train and test (leakage; the 93.86% accuracy is a segment-level figure). 'Time-domain' here means signal statistics (mean, variance, Hjorth parameters, NN-interval SD), not behavioural or processing-time dynamics; the paper reports no result attributable to temporal features as such. Counting it rests on a label match ('time domain') rather than a reported finding."
+  },
+  {
+   "paper": "P-101",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "The results of the study also showed the importance of time variables for screening MCI. If the variables of time scores had been removed, the accuracy and AUC of MG decreased significantly. The accuracy dropped from 93.75% to 77.50%, and the AUC from 0.923 to 0.835.",
+   "page": "7 (Table 4, p.6)",
+   "note": "Xiao et al. 2022, Memory Guard app, n=333 community adults (Shanghai, Henan). Reading-time and total-time scores (reciprocal durations) alongside option scores. The label is a MoCA cut-off (16-23 'suspected MCI high-risk group' vs >23), not a clinical MCI diagnosis. The within-study increment holds for the Naive Bayes/AdaBoost model only: Random Forest (68.12% with vs 73.12% without time scores), KNN (78.75% vs 79.38%) and logistic regression (73.75% vs 76.25%) did not gain accuracy from time scores (Table 4). Train/test split is temporal (2017-18 vs 2018), a single test set; no confidence intervals."
+  }
+ ],
+ "yes_count": 3,
+ "verdict": "holds_narrowed",
+ "narrowed_wording": "Temporal features are used as MCI-discriminative signals in two modalities: speech timing and hesitation (two studies from one Szeged group sharing a feature lineage and clinic) and response times on a computerised test (one community sample labelled by MoCA cut-off); a naturalistic-driving study supports it only for time-series driving features against a label that merges MCI with dementia, and the EEG+HRV study does not isolate temporal features. The increment beyond accuracy-only scoring rests on one within-study test, and in that study it appears for one classifier only (three comparator models did not gain).",
+ "reasoning": "Three supporters answer yes (P-58, P-59, P-101), from two method families (speech temporal parameters; computerised-test response times) and at least two datasets (New York/Szeged speech; Shanghai/Henan app), so the minimum is met. But the independence is thinner than the record's 3 method families / 3 dataset families: P-58 and P-59 are the same group, the same S-GAP feature lineage and the same Szeged memory clinic, and P-59's MCI-specific AUC is about 0.70 within a three-class task. P-69 counts only partly: its temporal features are month-level driving time-series statistics and its outcome is MCI plus dementia combined. P-83 does not support the statement: 'time-domain' EEG/HRV statistics are fused with frequency features, no temporal-feature result is reported, and the segment-level shuffled split with 15 subjects leaks subjects across train and test. The ledger's 'across modalities (computerized testing, driving, EEG+HRV, speech)' therefore stands for speech and computerised testing, weakly for driving, and not for EEG+HRV. The Table A1 supporter count of 5 should read 3 (plus 1 partial). The parenthetical on the increment is correct as far as it goes, but P-101's increment is model-specific (Naive Bayes/AdaBoost only), which the review should say if it cites the increment at all."
+}

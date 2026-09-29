@@ -1,0 +1,142 @@
+{
+  "vf": "VF-20",
+  "role": "skeptic",
+  "round": "second round of the corpus supporter search (round 21)",
+  "status": "candidate / pending_human_review (model reading; not a gate verdict)",
+  "independence_rule_applied": "Appendix H.1: a supporter counts as independent only if BOTH its dataset family and its method family are distinct from the other counted supporters. The boolean 'independent' uses that rule against the counted supporters (P-518, P-478, P-584, P-581). The reason field says whether a paper is dataset-new but method-duplicate.",
+  "verdicts": [
+    {
+      "paper": "P-1386",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "yes",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": false,
+      "identity_check": "PDF title/authors/DOI (10.1002/acn3.52097, Torso et al. 2024, Ann Clin Transl Neurol 11:1964-1976) match the block title and the registry row (Milan memory-clinic cohort, n=90).",
+      "dataset_family": "Single-centre retrospective memory-clinic series, Fondazione IRCCS Ca' Granda Ospedale Maggiore Policlinico, Milan (2015-2019; 90 with CSF + 3T T1/DTI). New dataset family; not NACC, no participants shared with any counted supporter or round-1 candidate.",
+      "method_family": "Diffusion MRI cortical microstructure using the Oxford Brain Diagnostics proprietary columnar tool (AngleR/ParlPD/PerpPD+; patent WO2016162682A1) vs FreeSurfer hippocampal volume fraction, cortical volume fraction and thickness by ROC. Same tool, same developer and three shared authors (Torso, Ridgway, Chance) as counted supporter P-581.",
+      "refutation_attempt": "(1) Comparison run within the study: yes. All eight micro- and macrostructural measures went into the same ROC analysis, each adjusted for sex, age, acquisition protocol and head motion, against the same reference standard (stable vs converted MCI A-T-). The comparison is like-for-like, so the asymmetry that sank P-592 does not arise. (2) Population/comparator: the comparator is hippocampal volume fraction, as named. The population is narrow: CSF A-T- clinic MCI, n=25, 10 converters, of whom 8 went to non-AD syndromes (30% PCA, 30% DLB, 10% PSP, 10% CBS, 20% AD). Across the AT groups (MCI plus dementia), HVF and cortical volume fraction DID separate A-T- from both A+ groups (p.5), so volume is discriminative along the AD continuum. (3) Volume null by the paper's own statistics: yes within A-T- MCI (HVF AUC 0.607, p=0.375; cortical GM fraction 0.660, p=0.183; thickness 0.440). (4) Result, not interpretation: the AUCs are results. The 'improved NPV +21.25%' is in-sample: the AngleR cutoff was chosen in these same 25 A-T- patients and then reused for the ATN table, so the NPV of 81.25% in Table 5 is Table 4's own NPV. (5) Weak points that stand but do not refute: AngleR was not pre-specified. It is the best of eight uncorrected ROC tests; p=0.013 would not survive Bonferroni x8 (0.104), although the abstract says tests were corrected (that applies to the GLM pairwise tests only). There is no between-AUC test and the CIs overlap (AngleR 0.619-0.981 vs HVF 0.380-0.834). The DTI protocol changed mid-study without harmonisation. The authors state the findings are cross-sectional, so 'late' is untested. P-581's lead diffusivity measure (PerpPD+) was null here as a whole-brain value (AUC 0.587, p=0.471), so the diffusion family's lead metric differs across the two studies. Minus signs: the extract prints 'MCI AT' for MCI A-T-; I restored them from the paper's grouping (A-T-, A+T-, A+T+; A-T+ excluded as SNAP), and no verdict depends on anything else from that decoding.",
+      "reason": "Not refuted. STATED stays 'partly': within CSF-negative MCI a microstructural measure predicted conversion where hippocampal volume, cortical volume and thickness did not. But 'late' is not tested, volume was discriminative along the AD continuum in the same paper, and the regime is a 25-patient CSF-negative subgroup converting mostly to non-AD dementias. NARROWED stays 'yes', thin: at point estimates cortical diffusivity predicted conversion at least as well as hippocampal volume (0.800 vs 0.607), with the same parity-type evidence round 20 accepted for P-581, and here volume was itself non-discriminative. It is the best of eight uncorrected tests, with in-sample cutoffs and overlapping CIs. It is dataset-new (Milan) but NOT independent under H.1: same proprietary tool, same developer, three shared authors and the same commercial COI as P-581. It adds a dataset family, not a method family. The operator may judge it the stronger of the two diffusion-family papers, since in P-581 hippocampal volume was itself prognostic. The family still counts once.",
+      "quotes": [
+        {"page": 6, "quote": "Investigating the additional contribution of neurodegenerative N measure to AT classification in MCI A-T- group, all micro- and macrostructural measures were included in ROC analyses. As summarized in Table 4, AngleR resulted the neurodegenerative measure with the higher area under the curve (0.800) in differentiating MCI A-T- stable and converted. [minus signs restored; extract prints 'MCI AT']"},
+        {"page": 8, "quote": "Table 4 (a): AngleR 0.800 0.092 0.013 0.619 0.981 | PerpPD+ 0.587 0.131 0.471 0.330 0.844 | ParlPD 0.387 0.114 0.346 | FA 0.687 0.120 0.120 | MD 0.573 0.100 0.542 | Cortical GM fr 0.660 0.128 0.183 0.427 0.893 | Cortical thickness 0.440 0.120 0.618 | Hippocampal fr 0.607 0.116 0.375 0.380 0.834"},
+        {"page": 5, "quote": "At the macrostructural level, the GLM showed a significant effect of group on all the measures investigated. Cortical volume fraction and HVF were able to differentiate between A-T- and both A+ groups."},
+        {"page": 6, "quote": "Table 2, Clinical presentation in MCI converted (MCI A-T-): 20% AD 30% PCA 30% DLB 10% PSP 10% CBS"},
+        {"page": 3, "quote": "DTI data were acquired using two protocols ... The protocol change was due to a machine upgrade. The two protocols were not harmonised before and after the upgrade"},
+        {"page": 10, "quote": "The first limitation is the sample size; larger MCI samples may be required to investigate the diagnostic accuracy of cortical diffusivity measures. The findings of the study are cross-sectional"},
+        {"page": 11, "quote": "M. Torso, G.R. Ridgway, and I. Hardingham are currently employed at a company, Oxford Brain Diagnostics; S.A. Chance has a patent (WO2016162682A1) related to the diffusion MRI analysis used in the present study"}
+      ]
+    },
+    {
+      "paper": "P-1325",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "partly",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": false,
+      "identity_check": "PDF title/authors/DOI (10.1021/acschemneuro.2c00565, Wang et al. 2022) match the block. Block defect confirmed: the block says 'left hippocampal formation-right anterior cingulate'; the PDF (Table 2, p.4) has RIGHT HF with LEFT ACG and right MTG.",
+      "dataset_family": "Single-centre cross-sectional early drug-naive PD cohort, Affiliated Brain Hospital of Nanjing Medical University (26 PD-MCI, 23 PD-NC, 20 HC). New dataset family; no shared site or authors with any counted supporter or round-1 candidate.",
+      "method_family": "Resting-state fMRI seed-based DMN connectivity (18 seeds, GRF per seed, GM-volume covariate) with FreeSurfer thickness/hippocampal volume and Simoa plasma. The rs-fMRI family is the same as counted supporter P-518 (and round-1 candidates P-554, P-729, P-44).",
+      "refutation_attempt": "(1) Comparison within the study: partly. Hippocampal volume and FC were both tested in the same three groups, but hippocampal volume was tested only as a 3-group TIV-adjusted omnibus (p=0.464/0.406). It never entered the logistic models, because only 'significantly altered' biomarkers were carried forward, so no model has volume beside FC. (2) Population/comparator: PD-MCI vs PD-NC, not the AD-spectrum MCI the statement implies. The authors themselves say hippocampal atrophy is not the expected PD marker ('Unlike hippocampal atrophy in AD, the atrophy in PD patients was subtle and regionally nonspecific'), so the hippocampal null is the expected finding in this disease and says little about volume as a general MCI marker. (3) Structural atrophy was NOT non-discriminative: right lateral occipital (p=0.010) and frontal-pole (p=0.042) thickness separated PD-MCI from PD-NC, and lateral occipital thickness stayed an independent term in the final model (OR 0.050, p=0.029). (4) The FC evidence is weaker than the AUC suggests. Only 2 of 18 seeds gave PD-MCI vs PD-NC clusters, with GRF correction within each seed but none across seeds; about 0.9 seed-level false positives are expected at 18 x 0.05. The extracted FC values come from clusters defined on the same PD-MCI vs PD-NC contrast, so the AUC 0.920 and OR 53.2 (CI 2.4-1170.9) are circular and unstable. (5) Raw hippocampal means are about 8-10% lower in PD-MCI, with a sex imbalance (23% vs 52% male) absorbed by adjustment. None of this makes the verifier's 'partly' wrong: the paper does report an FC group difference where hippocampal volume showed none. But nothing supports more than 'partly'.",
+      "reason": "Not refuted at 'partly' in either form, but at the weak end. It shows FC separating PD-MCI from PD-NC where TIV-adjusted hippocampal volume did not, the same shape as P-518, but in a different disease where hippocampal sparing is expected. Cortical thinning also discriminated and stayed in the final model, the hippocampal null is omnibus-only, and the FC values are cluster-selected on the target contrast. The dataset is new, but the method family duplicates P-518 (rs-fMRI), so it cannot add under H.1 even if upgraded. Graded consistently with round-1's P-729 (PD, rs-fMRI, partly).",
+      "quotes": [
+        {"page": 4, "quote": "the right HF showed an increased FC pattern with the left anterior cingulate and paracingulate gyri (ACG) and with the right middle temporal gyrus (MTG) in the PD-MCI group compared to the PD-NC group (GRF corrected, voxel p < 0.001, cluster p < 0.05)"},
+        {"page": 6, "quote": "Especially, the right lateral occipital and frontal pole cortices were thinner in the PD-MCI than the PD-NC group. ... The bilateral hippocampal volume was not significantly different among the three groups (Table 3)."},
+        {"page": 6, "quote": "Table 3: R_lateraloccipital 1.89 +/- 0.32 / 2.13 +/- 0.17 / 2.17 +/- 0.14, P 0.004, MCI vs NC 0.010 | R_frontalpole P 0.011, MCI vs NC 0.042 | L_hippocampus 3164.01 +/- 348.69 / 3503.43 +/- 420.25 / 3447.88 +/- 329.23, P 0.464 | R_hippocampus 3341.14 +/- 317.15 / 3608.81 +/- 394.26 / 3614.82 +/- 421.52, P 0.406"},
+        {"page": 6, "quote": "Table 4 multivariate: pCC.L_PHG.L 3.974 53.181 (2.415-1170.921) 0.012 | R_lateraloccipital -2.995 0.050 (0.003-0.735) 0.029"},
+        {"page": 6, "quote": "Unlike hippocampal atrophy in AD, the atrophy in PD patients was subtle and regionally nonspecific, especially in relatively early stage PD."},
+        {"page": 8, "quote": "After that, two-sample T test was used with the mask resulting from ANCOVA ... The FC values of significantly altered regions were extracted by DPABI. ... Each significantly altered biomarker between the PD-MCI and PD-NC groups was used as an independent variable in univariate logistic regression analysis"}
+      ]
+    },
+    {
+      "paper": "P-532",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "partly",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "partly",
+      "independent": true,
+      "identity_check": "PDF title/authors/DOI (10.21037/atm-21-4349, Yang et al. 2022) match the block and registry row (ADNI 355 MCI + 94 HC; Huashan 22 MCI).",
+      "dataset_family": "ADNI (355 MCI; 168 converters / 187 stable) plus Huashan Hospital (Fudan) Department of Neurology, Shanghai (22 MCI). No counted supporter holds ADNI or Huashan. It shares ADNI and the Huashan Neurology recruitment site with round-1 candidate P-554 (Shanghai Memory Study + ADNI). There are no shared authors with P-554, and participant overlap cannot be determined.",
+      "method_family": "FDG-PET metabolism (mean SUVR, plus radiomic texture Cox models) vs global grey-matter volume, by Cox C-index. The metabolic family is new relative to the counted supporters.",
+      "refutation_attempt": "STATED form refuted. The stated claim is that volume is late and insufficient and that other measures predict conversion where volume is preserved or non-discriminative. By the paper's own statistics global GMV was prognostic (C-index 0.749 test, 0.702 external, both above the clinical model's 0.684/0.685) and tied with mean FDG SUVR (0.751 / 0.700). There is no preserved-volume regime, no evidence that volume is insufficient, and 'late' is untested. The authors' own conclusion is redundancy ('a large degree of redundancy, with dual-modality imaging providing only a slight gain in information'), which cuts against 'insufficient'. Parity with an adequate volume measure is not a partial demonstration of volume's insufficiency, so the verifier's stated 'partly' is not shown by the source. This matches round-1's P-554 (stated 'no' where volume matched or beat the functional measure). NARROWED form not refuted at 'partly'. The narrowed wording contains a parity strand ('at least as well as hippocampal volume', P-581), and P-532 shows parity for a metabolic measure. Under the brief, the comparator difference is exactly what 'partly' records: global GMV, not hippocampal volume. Limits: there is no between-model test for SUVR vs GMV; there is no SUVR+GMV model, so no information beyond volume is shown; the dual-modality gain is between radiomic PET and radiomic MRI texture/intensity features, which are not volume; and the cohort-B 'P<0.001' comparisons on n=22 cannot be valid inferential tests of C-index differences of 0.03-0.04 (the authors themselves call cohort-B C-indices uncertain).",
+      "reason": "Stated downgraded partly -> no: global GM volume predicted MCI-to-AD conversion as well as FDG SUVR, and the authors conclude PET and MRI are largely redundant, so nothing in the source shows volume to be late or insufficient. Narrowed stays 'partly' as parity only, against a different comparator (global GMV), with no increment over volume. Dataset (ADNI + Huashan) and method (FDG-PET) are both distinct from the counted supporters, but that is moot at 'partly'. It would share a dataset family with P-554 if both were ever counted.",
+      "quotes": [
+        {"page": 4, "quote": "The traditional PET model was constructed by calculating the average FDG standardized uptake value ratio (SUVR), and the MRI model was constructed by calculating the global gray matter volume (GMV)."},
+        {"page": 7, "quote": "Table 2: Clinical 0.692 / 0.684 / 0.685 | SUVR_PET 0.791 (0.002) / 0.751 (0.007) / 0.700 (0.004) | GMV_MRI 0.803 (0.003) / 0.749 (0.008) / 0.702 (0.007) | Radiomic PET 0.871 / 0.753 / 0.734 | Radiomic MRI 0.807 / 0.741 / 0.760 | Radiomic dual-modality 0.884 / 0.766 / 0.798 (cohort A training / cohort A testing / cohort B)"},
+        {"page": 6, "quote": "Conversely, the GMV_MRI model and SUVR_PET model had similar predictive performances. Similar results were also found in cohort B."},
+        {"page": 9, "quote": "the large degree of overlap identified between the two modalities suggests a large degree of redundancy, with dual-modality imaging providing only a slight gain in information."},
+        {"page": 10, "quote": "the C-index values of cohort B may contain uncertainty in the external test dataset owing to the small sample size."},
+        {"page": 2, "quote": "Cohort B comprised 22 patients with MCI whose data were collected from the Department of Neurology at the Huashan Hospital in Shanghai, China."}
+      ]
+    },
+    {
+      "paper": "P-149",
+      "verifier_stated": "partly",
+      "verifier_narrowed": "partly",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "partly",
+      "independent": false,
+      "identity_check": "PDF (Trauble et al. 2025, eBioMedicine 121:105996) matches the map. The block has a filename header and raw-extract spillover but describes this paper. The registry row is defective: Sample_N_Approx '11' (the AD cohort only) and Dataset 'not reported'.",
+      "dataset_family": "Pooled retrospective MRE data (311 healthy volunteers from five studies). The MCI cohort (n=20, with 68 matched controls) is reference 26, Delgorio et al. 2023, NeuroImage Clin 37:103327, which is counted supporter P-478 (University of Delaware; 20 aMCI / 63 CN). It is not a new dataset family.",
+      "method_family": "MR elastography (stiffness, damping ratio) with a self-supervised contrastive brain-age model; the comparator is a T1-weighted MRI brain-age gap. Same MRE family as P-478, and shared authors (Hiscox, Johnson).",
+      "refutation_attempt": "STATED form refuted. (1) The comparator is not volume. It is a T1 brain-age gap from a model that was itself the weaker age predictor (MAE 4.79 vs 3.51 years) and that placed the MCI group YOUNGER than controls (mean BAG -4.00 years), which points to a calibration problem, not a meaningful structural null. No hippocampal or whole-brain volume is tested. (2) In these same 20 aMCI participants, P-478 reports every hippocampal subfield volume smaller than in controls (DG-CA3 d about 1.01, p=0.001), so the statement's 'where volume is preserved' is contradicted by the published volumetry of this exact cohort. (3) The paper's primary MRE model (combined stiffness + damping) did NOT separate MCI from controls (U=546, p=0.184); stiffness alone was null (p=0.514). Only the damping-ratio-only variant reached significance, one of three MRE variants, uncorrected. (4) The damping-ratio statistic is internally inconsistent: t(86) = -2.95 implies two-sided p of about 0.004, but p=0.044 is printed. It would survive Bonferroni x3 only if the t is right, and the source cannot settle which figure is wrong. (5) The design is cross-sectional; the authors say 'longitudinal data will be required to confirm temporal ordering', so 'late' is untested, and the 'precede structural atrophy' framing in Research in context is literature-cited interpretation. NARROWED stays 'partly' on the brief's 'different comparator' ground: a mechanical measure (damping-ratio BAG) separated aMCI from controls where a T1 structural brain-age model did not. There is no test of information beyond volume. Note also that in the same participants whole-brain stiffness BAG was null, whereas P-478 found hippocampal-subfield stiffness discriminative: different measures, not a contradiction, but no reinforcement either.",
+      "reason": "Stated downgraded partly -> no: no volume comparator, the MCI participants are P-478's 20 aMCI whose hippocampal volumes were clearly reduced, the primary MRE model was null, and the one positive variant carries an unresolved t/p inconsistency. Narrowed 'partly' only: a different comparator (T1 brain age) and no increment over volume. NOT independent: same 20 MCI participants, same MRE family and shared authors with counted supporter P-478. It must never be counted as a separate supporter.",
+      "quotes": [
+        {"page": 3, "quote": "This retrospective, multi-centre study pooled MRE datasets from five healthy-volunteer studies (n = 311; 14-90 years) and two patient cohorts (mild cognitive impairment [MCI], n = 20; Alzheimer's disease [AD], n = 11).16,26"},
+        {"page": 15, "quote": "Ref 26: Delgorio PL, Hiscox LV, McIlvain G, et al. Hippocampal subfield viscoelasticity in amnestic mild cognitive impairment evaluated with MR elastography. NeuroImage Clin. 2023;37:103327."},
+        {"page": 8, "quote": "Applying the MRI-based models to the MCI cohort, the predicted age distribution shows a similar but slightly decreased profile to the healthy samples (mean of BAG: -4.00 years, median of BAG: -6.83 years), and this difference is not statistically significant (t (86) = 1.22, p = 0.225). In contrast, MRE-based predictions show an increase in the brain age gap ... However, this trend does not reach statistical significance (U = 546.0, p = 0.184)."},
+        {"page": 9, "quote": "In the MCI cohort, stiffness exhibits only a minimal increase in median BAG compared to normal controls (from -0.17 to 0.99 years), a non-significant difference (U = 614.0, p = 0.514), while damping ratio shows a statistically significant increase (from 1.70 to 6.33 years; t (86) = -2.95, p = 0.044)"},
+        {"page": 9, "quote": "NMCI = 20; NMCI control = 68; NAD = 11; NAD control = 12."},
+        {"page": 13, "quote": "with damping ratio changes more prominent in earlier stages (MCI) and stiffness reductions more pronounced in later stages (AD), although longitudinal data will be required to confirm temporal ordering."}
+      ]
+    }
+  ],
+  "tally": {
+    "round1_baseline": {
+      "stated_independent_yes": ["P-518"],
+      "narrowed_independent_yes": ["P-518", "P-478", "P-584", "P-581"],
+      "narrowed_dataset_family_only_count": 6
+    },
+    "round2_candidates_after_step1": {
+      "narrowed_yes": ["P-1386"],
+      "narrowed_partly": ["P-1325", "P-532", "P-149"],
+      "stated_yes": [],
+      "refuted": ["P-532 (stated partly -> no)", "P-149 (stated partly -> no)"]
+    },
+    "stated_independent_yes": ["P-518"],
+    "stated_reaches_three": false,
+    "narrowed_independent_yes": ["P-518", "P-478", "P-584", "P-581"],
+    "narrowed_reaches_three": true,
+    "narrowed_dataset_family_only_count": {
+      "papers": ["P-518", "P-478", "P-584", "P-581", "P-651", "P-488", "P-1386"],
+      "count": 7,
+      "note": "By dataset family alone. Under H.1 (method family must also differ), P-651 and P-1386 duplicate P-581 (diffusion MRI; P-1386 is the same proprietary tool and developer), and P-488 duplicates P-584 (resting MEG spectral). None raises the H.1 count."
+    },
+    "dataset_families": [
+      "Sunshine Coast local cohort, Australia (P-518)",
+      "University of Delaware single-site cohort (P-478; P-149 re-reports its 20 aMCI and adds nothing)",
+      "PREVENT-AD (P-584, medRxiv preprint)",
+      "NACC (P-581)",
+      "Chongqing Medical University First Affiliated Hospital CSVD cohort (P-651; dataset-new, diffusion family)",
+      "BioFIND, Cambridge + Madrid (P-488; dataset-new, MEG family; P-577 is its duplicate stub)",
+      "Fondazione IRCCS Ca' Granda Policlinico, Milan memory clinic (P-1386; dataset-new, diffusion family, same tool/developer as P-581)"
+    ],
+    "method_families": [
+      "Resting-state fMRI connectivity (P-518; P-1325, P-554, P-729, P-44 are partly-only in the same family)",
+      "MR elastography (P-478; P-149 same family and same participants)",
+      "Resting-state MEG spectral power (P-584; P-488 same family)",
+      "Cortical diffusion MRI microstructure (P-581; P-1386 same tool and developer, P-651 hippocampal NODDI)"
+    ],
+    "changed_from_round1": "The H.1 tally does not change. Stated form: still P-518 alone, so it fails. Narrowed form: still P-518, P-478, P-584, P-581, four dataset families and four method families, so it clears three. Second-round changes: (1) P-1386 survives as a new narrowed 'yes' (stated 'partly'). It adds the Milan dataset family, raising the dataset-only narrowed count from 6 to 7, but not a method family (same Oxford Brain Diagnostics diffusivity tool, three shared authors and COI as P-581). (2) P-532 stated downgraded partly -> no (volume prognostic and tied with FDG SUVR; the authors conclude redundancy); narrowed stays partly (parity on global GMV). (3) P-149 stated downgraded partly -> no (no volume comparator; same 20 aMCI as P-478, whose volumes were reduced; primary MRE model null; t/p inconsistency); narrowed stays partly; not independent of P-478. (4) P-1325 unchanged at partly/partly (PD, rs-fMRI family as P-518). New metabolic-family candidate: none reaches yes (P-532 partly, and round-1's P-1107 SPECT partly), so no fifth method family is established."
+  },
+  "defects_for_operator": [
+    "P-1325 block: hippocampal-formation side and ACG side are swapped (block 'left HF-right ACG'; PDF Table 2 'right HF-left ACG').",
+    "P-149 registry row: Sample_N_Approx '11' is the AD cohort only (311 healthy + 20 MCI/68 controls + 11 AD/12 controls); Dataset 'not reported' although the MCI cohort is the Delaware sample of P-478.",
+    "P-149 source: t(86) = -2.95 is inconsistent with the printed p = 0.044 (implied p about 0.004)."
+  ],
+  "summary": "Skeptic, VF-20, round 2. I re-read all four second-round candidates from their PDF extracts. P-1386 (Torso 2024, Milan): not refuted. In CSF A-T- MCI, whole-brain AngleR AUC 0.800 (p=0.013) beat hippocampal volume fraction 0.607 (p=0.375), cortical volume and thickness in one like-for-like ROC. It stays a thin narrowed 'yes' (best of eight uncorrected tests, in-sample cutoff, n=25 with 10 converters, overlapping CIs) and a stated 'partly' (late untested; volume discriminated along the AD continuum; the regime is CSF-negative MCI converting mostly to non-AD dementias). It is dataset-new but shares the proprietary tool, developer, three authors and COI with P-581, so it adds no method family. P-1325 (Wang 2022, Nanjing PD): partly/partly, not refuted. FC separated PD-MCI where omnibus hippocampal volume did not, but cortical thinning also discriminated and stayed in the model; the population is PD, the FC values are cluster-selected on the same contrast, and the method family duplicates P-518. P-532 (Yang 2022, ADNI + Huashan): stated refuted partly -> no. Global GMV tied with FDG SUVR (C-index 0.749 vs 0.751 test) and the authors conclude redundancy. Narrowed partly as parity on a different comparator. P-149 (Trauble 2025): stated refuted partly -> no. The comparator is a T1 brain-age gap, not volume; the MCI group is P-478's 20 aMCI with reduced hippocampal volumes; the primary MRE model was null; the damping-ratio t/p pair is inconsistent. Narrowed partly; NOT independent of P-478. Tally under H.1 is unchanged from round 1: the stated form has P-518 only and fails; the narrowed form has P-518, P-478, P-584 and P-581 (four dataset and four method families) and clears three. The dataset-only narrowed count rises from 6 to 7 with P-1386. All verdicts are model readings, pending operator review."
+}

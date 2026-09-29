@@ -1,0 +1,67 @@
+{
+ "id": "C-29",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-114",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack file pdf/P-114.txt is the San-Martin et al. EEG/LORETA paper (BSPC 66 (2021) 102499), P-112's paper. The paper the record means (claim '93% Acc', registry row Kinect/ANFIS gait, summaries.md header 1-s2.0-S1746809421003195) is 'Detection of mild cognitive Impairment from gait using Adaptive Neuro-Fuzzy Inference system' (Seifallahi et al., BSPC 71 (2022) 103195), present in the pack as pdf/P-115.txt. Both read in full; the verdict uses the gait paper.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-5",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Using a dual-stream attention neural network to characterize mild cognitive impairment based on retinal images (Gao et al., Computers in Biology and Medicine 166 (2023) 107411). claim_b names P-10, which is the dedup stub of P-5 (same PDF, 1-s2.0-S0010482523008764).",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-114": "Kinect V2 dual-task gait features, 150 participants (70 MCI, 80 HC, IDAA Tehran), hierarchical ANFIS: accuracy 93%, sensitivity 90%, precision 98.66%, specificity 99%, F-score 91.5% on all 26 dual-task features (Table 6). ANFIS evaluation protocol not stated.",
+  "P-5": "DuCAN on fundus + OCT images; first dataset (29 MCI, 50 CN, 38 AD; image-level 5-fold CV) three-class accuracy 91.64%, AUC 96.78%; MCI-class precision 84.96%, recall 88.08%, specificity 95.46%, F1 85.68% (Table 2)."
+ },
+ "quantity_a": "Accuracy of ANFIS on Kinect dual-task gait features, binary MCI vs HC, 150 Iranian participants, protocol unstated",
+ "quantity_b": "Per-class precision for MCI within a three-class AD/MCI/CN retinal-image deep-learning model, image-level 5-fold CV",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Accuracy and class-specific precision are different statistics; 93% and 84.96% cannot contradict each other, and neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch: binary MCI vs HC vs a per-class figure of a three-class AD/MCI/CN model",
+  "dataset_family": "mismatch: own IDAA Tehran cohort vs own Daping/Wenzhou cohort; no waiver",
+  "validation_tier": "uncertain/mismatch: P-5 image-level 5-fold CV; P-114 protocol unstated",
+  "modality_family": "mismatch: gait/motor vs retinal imaging; no waiver"
+ },
+ "endpoint_and_metric": "incompatible: accuracy vs MCI-class precision",
+ "performance_validity": "flag does not apply: no contested figure reaches 0.97 and neither row is flagged.",
+ "independence": "Independent studies; no shared authors or cohort.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "This record is the same pair as C-26 (P-114 x P-5) after the 2026-08-29 repoint of paper_b from the P-10 stub to P-5, and the same reading applies.",
+  "P-5's 84.96% is MCI-class precision in a three-class retinal model while P-114's 93% is binary gait accuracy, so metric type and class contrast differ.",
+  "The modality-family and dataset-family gates both fail with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-114",
+   "page": 1,
+   "quote": "the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups."
+  },
+  {
+   "paper": "P-5",
+   "page": 1,
+   "quote": "The proposed method achieved high precision rates of 84.96% and 80.90% in classifying MCI and positive test scores for cognitive impairment, respectively."
+  },
+  {
+   "paper": "P-5",
+   "page": 7,
+   "quote": "The neural network was applied to classify individuals with MCI, Alzheimer's disease, and control participants with normal cognition."
+  }
+ ],
+ "record_defects": [
+  "Duplicate of C-26: same paper_a, same paper_b (after repoint), same claims and resolution; the ledger counts one pair twice.",
+  "claim_b still names P-10 (a dedup stub of P-5) and mislabels the task as T1.",
+  "The pack's P-114 PDF (paper_pdf_map.json, 'formula-unverified') is P-112's EEG paper, not the gait/ANFIS paper the record means.",
+  "dataset_equal and validation_comparable 'Yes' are wrong; the bridging list is generic."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these papers; the record should probably be merged into C-26 rather than re-adjudicated."
+}

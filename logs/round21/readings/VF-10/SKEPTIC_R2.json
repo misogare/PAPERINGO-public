@@ -1,0 +1,56 @@
+{
+ "vf": "VF-10",
+ "role": "skeptic",
+ "round": 2,
+ "status": "candidate / pending_human_review (model reading; no gate is claimed)",
+ "date": "2026-09-29",
+ "method": "Tried to refute the second-round verdict on P-150 against its own source text, ROOT/pdf/P-150.txt, read in full (pp.1-7 up to the References, plus the reference list). Identity was checked: the PDF title, DOI 10.1016/j.imu.2022.101120 and authors match the data/paper_pdf_map.json entry for P-150 (verified, score 1.0). The summaries.md block '## Paper 150' is headed by the filename 1-s2.0-S235291482200257X-main.pdf. Independence was checked with a grep of summaries.md for NIMHNN, Precognize, Kamondi, Cursor Insight, AlzEpi, Hanczar and 'mouse movement'. Every hit maps to the P-150 block. The round-1 tally was taken from SKEPTIC.json unchanged.",
+ "verdicts": [
+  {
+   "paper": "P-150",
+   "refuted": false,
+   "final_stated": "no",
+   "final_narrowed": "partly",
+   "independent": true,
+   "dataset_family": "NIMHNN Precognize Pilot Study (PPS), Neurocognitive Research Center, Budapest, 2017-2021, recruited from the AlzEpi Cohort Observational Library (ACOL / Euro-Fingers); 70 participants (22 MCI / 48 HC)",
+   "method_family": "Computer-mouse kinematics from one right-hand stroke (about 2 s) of a browser-based digitised TMT-A; 3 features selected from a proprietary 441-feature set (plus a 66-feature statistical baseline); convex-combination augmentation; depth-2 decision tree (the Results say random forests); one hand-picked held-out test set of 14 people",
+   "reason": "Not refuted. The verdict stays no on the stated form and partly on the narrowed wording. This candidate adds nothing to either count.\n\nWhat the source shows:\n- Low-cost capture is shown by the method description, not only argued. 'a browser-based testing programme developed specifically for PPS. The tests were conducted on a single computer using the same mouse and mouse pad' (p.2). 'no special hardware is required ... A computer with a mouse is sufficient' (p.2) is the authors' framing of that fact. 'cost-efficient screening method' (p.1, p.6) is interpretation only.\n- The reference standard is clinical MCI: revised Petersen criteria, plus 'cortical thinning of the entorhinal cortex, and the reduction of total grey matter volume confirmed by MRI' (p.2). Controls required the absence of atrophy, which restricts the spectrum.\n- Best reported accuracy is 79.8% (Table 5 p.6: sensitivity 83.6%, specificity 76%, F1 80.5%). The baseline gives 64.4%, with specificity 43.1%: 'healthy participants seem to be classified randomly' (p.5).\n- The authors call the result 'approximately 80% accuracy, even with a fairly low confidence' (p.6). No confidence interval or significance test is reported.\n- No head-to-head. MMSE, ACE, RAVLT and TMT only characterise the sample. RAVLT-sum5 guides the choice of test set and is 'not used directly during the model training and evaluation phases' (p.2).\n\nStated form: NO.\n- High accuracy of about 88-94% is not shown: 79.8% is below the band.\n- Self-administration is not stated. The mouse task ran inside a clinical observation study on one clinic computer. Supervision is not described either way, and the tool is never described as self-administered.\n- Only the hardware component holds. That matches round-1 P-604 (83.1%) and P-2 (0.785-0.835), both 'no' on the stated form.\n\nNarrowed wording: PARTLY, kept. The parts it shows are:\n- low-cost behavioural data captured without specialist hardware;\n- a small sample with a held-out split;\n- no external validation;\n- no head-to-head.\nThe wording's quantitative core, 'best-case standalone accuracies of about 88-94%', is not met: 79.8% is this study's best case. The wording's '61-90%' parenthetical covers the other themes and repeated splits of studies whose best case is in the band. It is not a floor that admits a study whose best case is 80%. Upgrading P-150 would mean lowering the best-case band to about 80% to fit this study. The neutrality rule forbids that stretch.\n\nThe 'internally validated' part is weaker than the verifier's summary implies:\n(a) One test split of 14 people (7 MCI / 7 HC), chosen by hand to match RAVLT-sum5% (p.4) and balanced 7/7 against a 22/48 population. The 200 iterations vary only the augmentation. The paper's 'cross-validation (via repeated randomised data augmentation)' (p.4) is not cross-validation over participants. 'proper N-fold cross-validation' is listed as future work (p.6).\n(b) The 3 features were 'chosen by their performance in the classification' in 'preliminary experiments' (p.4). The paper does not say the 14 test people were excluded from that selection.\n(c) Augmentation size and repeat count were grid-searched. The reported configuration (5000 samples, 200 repeats) was picked because it 'produced the least variance in the results' (p.5), so the configuration was chosen on the results.\n(d) The paper contradicts itself on the classifier and the test data:\n- The classifier is 'a decision tree ... with a maximum depth of 2', and forests 'would result in overfitting' (p.5). Yet the Results say 'both feature sets were evaluated ... using random forests' (p.5).\n- 'an equal number of test samples per class ... were generated with randomised data augmentation' (p.5), yet Tables 3-4 each sum to 14.0 people. It is unclear what exactly was tested.\n(e) The MCI group is older (71.18 vs 66.88 years; 'significantly higher', Table 1 p.2), with no adjustment for age.\n(f) Commercial interest. Six of the nine authors declare employment or board roles at Cursor Insight / Patient Record, which have a declared 'financial interest in movement analysis, mouse movement in particular' (p.7). A seventh author, Vertes, founded Precognize 'to research the possibility of early detection of Alzheimer's Disease via hand movements' (p.7). The feature space is proprietary.\n\nThe verifier's other factual claims check out against the text: peer-reviewed (received, revised and accepted dates, p.1); 70 = 22/48; DTMT-1 right hand, circles 4 to 5; 441 CI features reduced to 3; 66 = 6 x 11 baseline features.\n\nIndependence: distinct from I-CONECT (P-76, P-77, P-9, P-6), from Memory Guard (P-101) and from every round-1 candidate. P-58's Hungarian arm is the University of Szeged, a different city and institution with no shared authors. Seelye et al. (ref. 17, which includes Dodge) is only cited, with no shared sample.\n\nRegistry defects, unchanged from the verifier's note: Best_Metric and primary_metric_type are 'not reported' although Acc 79.8% is printed; Dataset is 'not reported'; Method_Architecture and Journal hold extract spillover."
+  }
+ ],
+ "tally": {
+  "stated_independent_yes": [
+   "P-60 (Tsukuba speech-app sample)"
+  ],
+  "narrowed_independent_yes": [
+   "I-CONECT (P-76, P-77; P-9 same family)",
+   "Memory Guard Shanghai/Henan community sample (P-101)",
+   "Tsukuba speech-app sample (P-60)",
+   "Szeged-Columbia telephone speech sample (P-58)"
+  ],
+  "stated_reaches_three": false,
+  "narrowed_reaches_three": true,
+  "dataset_families": [
+   "I-CONECT (P-76, P-77; P-9 and P-6 same family, not additional)",
+   "Memory Guard Shanghai/Henan community sample (P-101)",
+   "Tsukuba speech-app sample (P-60)",
+   "Szeged-Columbia telephone speech sample (P-58)",
+   "Not counted: NIMHNN Budapest Precognize Pilot Study (P-150), partly only"
+  ],
+  "method_families": [
+   "Deep-learning facial-video analysis of interviewer-led video chats (I-CONECT: P-76, P-77)",
+   "Self-administered touchscreen computerised cognitive test (Memory Guard: P-101)",
+   "ASR-derived speech features + SVM (P-60 and P-58 share this family; if method family must also be distinct they count once)",
+   "Not counted: computer-mouse kinematics + decision tree (P-150), partly only"
+  ],
+  "counts": {
+   "stated_form": 1,
+   "narrowed_dataset_families": 4,
+   "narrowed_if_method_family_must_also_be_distinct": 3
+  },
+  "changed_from_round1": "Nothing. The one second-round candidate, P-150, survives the refutation attempt as stated 'no' / narrowed 'partly'. A partly does not enter the yes tally. The stated form stays at one independent yes (P-60) and does not reach three. The narrowed wording stays at four dataset families (three if P-60 and P-58 must count once as one method family) and reaches three under either reading, as in round 1. The round-1 condition still applies: the narrowed count of three or more relies on admitting P-60 and/or P-58, which requires rewording the round-20 text ('only two cohorts' no longer holds; the parenthetical and 'other' range change). P-150 would add a fifth dataset family and a fourth method family only if the best-case band were lowered to about 80%. That change is not supported, because it would be made to fit this study."
+ },
+ "defects_noted": [
+  "Registry P-150: Best_Metric and primary_metric_type 'not reported' although Table 5 prints Acc 79.8% (sens 83.6%, spec 76%); Dataset 'not reported' (should name NIMHNN Precognize Pilot Study); Method_Architecture and Journal hold extract spillover.",
+  "summaries.md P-150 block is headed by the PDF filename (1-s2.0-S235291482200257X-main.pdf) rather than the paper title, and consists of raw extract spillover; it needs re-summarisation."
+ ]
+}

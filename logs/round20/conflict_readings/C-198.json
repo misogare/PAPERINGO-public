@@ -1,0 +1,77 @@
+{
+ "id": "C-198",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-190",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Deep-Learning Radiomics for Discrimination Conversion of Alzheimer's Disease in Patients With Mild Cognitive Impairment: A Study Based on 18F-FDG PET Imaging (Zhou et al.; Front Aging Neurosci 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-192",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predictive value of ATN biomarker profiles in estimating disease progression in Alzheimer's disease dementia (Ezzati et al.; Alzheimers Dement 2021, author manuscript)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-190": "355 ADNI-1/2/GO MCI patients selected as 168 converters to AD within 3 years and 187 non-converters followed at least 3 years (bidirectional changers excluded); FDG-PET deep-learning radiomics features (ZF-Net) + clinical parameters (CDRSB, MMSE, age, APOE e4, etc.), linear SVM: accuracy 90.62 +/- 1.16%, sensitivity 87.50%, specificity 93.39%, AUC 0.90 in the 34-subject independent test group (Table 3).",
+  "P-192": "415 ADNI-GO/2 amnestic MCI participants (natural 4-year conversion 22.2%); models trained on CN vs dementia and applied to MCI: RUSBoost biomarker-set PPV 68% at 4 years (sensitivity 61.5%, specificity 91.7%); clinical-set PPV 67.3%."
+ },
+ "quantity_a": "Accuracy of classifying MCI converters (within 3 years) vs non-converters in a near-balanced, case-selected sample (168 vs 187), from FDG-PET deep features plus clinical scores.",
+ "quantity_b": "Positive predictive value for MCI-to-dementia conversion by 4 years in an unselected amnestic MCI cohort at 22.2% conversion, from CSF/PET biomarker features.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Accuracy on a near-balanced sample and PPV at a 22% base rate are different functions of the confusion matrix; P-192's own sensitivity/specificity (61.5%/91.7%) would give a balanced accuracy near 77%, and neither paper claims anything about the other's model. The 0.226 'gap' is arithmetic on unlike metrics.",
+ "gates": {
+  "task": "match in broad class: both MCI-to-AD/dementia conversion prediction (T2), but with different horizons (3 years vs 4 years).",
+  "dataset_family": "match: ADNI (P-190 ADNI-1/2/GO; P-192 ADNI-GO/2), overlapping subjects likely.",
+  "validation_tier": "match: internal only (P-190 random 10% hold-out of 34 subjects plus repeated 10-fold CV; P-192 CV on CN/dementia then application to MCI).",
+  "modality_family": "mismatch: P-190 is FDG-PET deep features + clinical scores; P-192's 68% is from CSF + amyloid PET + regional FDG biomarkers. Neither is the record's 'clinical_survey'."
+ },
+ "endpoint_and_metric": "incompatible: accuracy vs PPV (metric type), 3-year vs 4-year horizon, case-selected balanced sample vs unselected cohort at natural prevalence.",
+ "performance_validity": "flag does not apply: 90.62% is below 0.97 and the comparison is not a like-for-like performance comparison. P-190's inputs include CDRSB and MMSE, which also enter the clinical diagnosis of conversion.",
+ "independence": "Both ADNI; P-190's ADNI-GO/2 MCI subjects with FDG-PET probably overlap with P-192's ADNI-GO/2 aMCI sample. Distinct authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The metric types differ: P-190 reports accuracy on a near-balanced, case-selected sample, P-192 reports a prevalence-dependent PPV at a 22.2% base rate.",
+  "The horizons differ (conversion within 3 years vs by 4 years), as do the sampling frames (converters vs non-converters followed at least 3 years, against all eligible aMCI).",
+  "The predictor families differ (FDG-PET deep features plus clinical scores vs CSF/PET biomarker set), so the modality gate fails with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-190",
+   "page": 1,
+   "quote": "including 168 patients with MCI who converted to AD within 3 years and 187 patients with MCI without conversion within 3 years."
+  },
+  {
+   "paper": "P-190",
+   "page": 6,
+   "quote": "the DLR+C method showed the best performance with accuracy of 90.62 +/- 1.16%, sensibility of 87.50 +/- 0.00%, and specificity of 93.39 +/- 2.19% in the independent test group."
+  },
+  {
+   "paper": "P-190",
+   "page": 3,
+   "quote": "Our test group consisted of 16 MCI-c subjects and 18 MCI-nc subjects"
+  },
+  {
+   "paper": "P-192",
+   "page": 4,
+   "quote": "> 45% over 4 years (model's PPV = 68% vs. observed rate of dementia onset = 22.2%)."
+  },
+  {
+   "paper": "P-192",
+   "page": 12,
+   "quote": "For the RUSBoost model the sensitivity declined from 73.6% at 6 months to 61.5% at 4 years, and the specificity increased from 75.1% to 91.7% at 4 years."
+  }
+ ],
+ "record_defects": [
+  "modality_family 'clinical_survey' fits neither paper's contested figure (FDG-PET deep features + clinical for P-190; CSF/PET biomarkers for P-192).",
+  "gap_magnitude 0.226 subtracts a PPV from an accuracy.",
+  "The pack registry codes P-190 study_design_type 'cross_sectional' although the label is 3-year conversion, and P-192 Best_Metric 'not reported' although PPV/sensitivity/specificity are printed.",
+  "The second-reader note of 2026-09-15 is consistent with the sources on metric type, horizon and modality."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A shared metric (e.g. AUC or balanced accuracy) at the same horizon in comparable ADNI MCI samples from both papers; these two papers do not provide it."
+}

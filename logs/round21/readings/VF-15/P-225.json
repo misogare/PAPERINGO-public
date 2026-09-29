@@ -1,0 +1,50 @@
+{
+ "paper": "P-225",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "yes",
+ "dataset_family": "ADNI",
+ "method_family": "Whole-brain T1 GM/WM radiomics signature (mRMR plus gradient-boosting selection, logistic Rad-score) combined with CDR and ADAS in a decision tree; same method family as P-512",
+ "same_sample_or_cohort_as": [
+  "P-512",
+  "P-3",
+  "P-104",
+  "P-81",
+  "P-195"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "In an ADNI MCI sample split 7:3, the model combining radiomics, CDR and ADAS reached validation AUC 0.882. The whole-brain radiomics signature alone reached 0.784, CDR alone 0.632 and ADAS alone 0.695, and DeLong tests put the integrated model significantly above each (validation p = 0.0044, 0.0001, 0.0004). So adding clinical scales to the imaging-only model improves on it significantly. No multivariable clinical-only model (CDR + ADAS) was tested.",
+ "why": "IDENTITY. The PDF is Li Y, Yi P, Jin M, Li Y, Chen W. Sci Rep 2025;15:35679 (doi 10.1038/s41598-025-19586-3). Its title and author list match the block. The block's sample-size field ('11 experts - EXPERT ELICITATION') belongs to another paper. The PDF has 343 MCI, and the registry Sample_N_Approx carries the same wrong '11 experts'. I read the whole extract up to the references.\n\nDESIGN. ADNI MCI, training n = 240, validation n = 103. A whole-brain GM/WM radiomics signature was built by logistic regression (the Rad-score). Stepwise logistic regression kept CDR, ADAS and the Rad-score, which were combined in a decision tree (SMOTE, 10-fold CV for tuning). The integrated model was compared by ROC against each single predictor, with DeLong tests.\n\nNARROWED FORM: YES. Adding CDR and ADAS to the imaging-only radiomics signature raises validation AUC from 0.784 to 0.882, DeLong p = 0.0044 (Table 4). In the training-set multivariable logistic model, the radiomics signature also stays an independent predictor after adjusting for CDR, ADAS and MMSE (OR 10.05).\n\nSTATED FORM: PARTLY. The integrated model significantly beats the imaging-only model and each single clinical score (CDR 0.632, ADAS 0.695). But the study never evaluates a clinical-only model with CDR and ADAS together. It therefore does not show that fusion beats the best non-imaging baseline, which is the test P-81 failed.\n\nRELIABILITY DEFECTS IN THE PDF. (1) Follow-up and counts conflict: the abstract says 154 of 343 progressed over 48 months, the methods say 3-year follow-up, and the Table 2 group sizes sum to 148 progressors (104 + 44) and 195 stable, not 154. (2) The results give 'accuracy 0.895, sensitivity 0.669, specificity 0.933', while the abstract gives sensitivity 0.933 and specificity 0.669. The 0.895/0.882 values are AUCs. (3) CDR and ADAS partly determine the ADNI AD diagnosis, and this circularity favours the clinical terms. (4) Internal split only, with no external test.\n\nOVERLAP WITH P-512 (Shu et al. 2021). P-225 very likely analyses the same ADNI participant subset. Both studies report:\n- 154 progressors over 48 months and a 7:3 split;\n- SPM12 segmentation with ITK-SNAP manual correction by two radiologists, then a GE analysis kit;\n- 378 radiomics features per tissue and 32 grey levels;\n- a Spearman r > 0.8 robustness filter and mRMR selection;\n- stepwise logistic regression that keeps CDR and ADAS;\n- near-identical training-set demographics: 156 males in both, ADAS 11.49 +/- 4.44 vs 11.5 (4.3), CDR 1.54 +/- 0.87 vs 1.6 (0.9), education 15.72 vs 15.7, age 74.41 vs 74.2.\nSeveral discussion sentences closely paraphrase P-512: RLM features and white-matter damage, GLCM complexity/coarseness, and the CARE index AUC 0.861. P-225 does not cite P-512. The author teams differ (Zhejiang University Sir Run Run Shaw Hospital vs Zhejiang Provincial People's Hospital, both in Hangzhou). Treat P-225 and P-512 as one sample and one method family, so at most one supporter between them.\n\nINDEPENDENCE FROM CURRENT SUPPORTERS. ADNI, so no new dataset family. Author-disjoint from P-3, P-104 and P-81. Its method family (hand-crafted whole-brain radiomics plus clinical scales in a decision tree) differs from the supporters' families. Not a preprint.\n\nQuotes are rejoined across line breaks and normalized to ASCII.",
+ "quotes": [
+  {
+   "page": 7,
+   "quote": "Table 4. The diagnostic effectiveness between the integrated model and independent predictors in the training set and validation sets. [columns: The integrated model (95% CI) | Radiomics signature (95% CI) | CDR (95% CI) | ADAS (95% CI)] validation set 0.882(0.804-, 0.937) 0.784(0.692-0.859) 0.632 (0.531-0.724) 0.695(0.596-0.782) P-value 0.0044* 0.0001* 0.0004*"
+  },
+  {
+   "page": 4,
+   "quote": "Moreover, the DeLong test showed that the diagnostic efficacy of the decision tree integrated model was significantly different when compared with the imaging histology label, CDR score and ADAS score, which suggested that the integrated model had superior performance to the individual predictors (Fig. 3; Table 4)."
+  },
+  {
+   "page": 3,
+   "quote": "The AUCs of the training and validation set were 0.796 and 0.784, the specificities were 0.636 and 0.676, and the sensitivities were 0.865 and 0.863, respectively."
+  },
+  {
+   "page": 1,
+   "quote": "A total of 343 patients with MCI were selected from the Alzheimer's Disease Neuroimaging Initiative (ADNI) database as study subjects. Among them, 154 patients progressed to AD during the 48-month follow-up. All subjects were randomly divided into a training set (n = 240) and a validation set (n = 103) in a 7:3 ratio according to enrollment time."
+  },
+  {
+   "page": 2,
+   "quote": "Among them, 154 converted to AD during the 3-year follow-up period."
+  },
+  {
+   "page": 4,
+   "quote": "Training set (n = 240) validation set (n = 103) Stable group (n = 136) Progressive group (n = 104) ... Stable group (n = 59) Progressive group (n = 44)"
+  },
+  {
+   "page": 5,
+   "quote": "Radiomics signature 9.368 (4.903,17.900) < 0.001* 10.054(4.912,20.579) < 0.001* 1.141"
+  }
+ ]
+}

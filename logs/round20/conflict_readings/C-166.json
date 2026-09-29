@@ -1,0 +1,77 @@
+{
+ "id": "C-166",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-274",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Comparing a pre-defined versus deep learning approach for extracting brain atrophy patterns to predict cognitive decline due to Alzheimer's disease in patients with mild cognitive symptoms (Arvidsson et al., Alzheimer's Research & Therapy 2024)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-33",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Benchmarking parametric models of disease progression for early detection of cognitive decline (Platero & Bengoa, Computer Methods and Programs in Biomedicine 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-274": "Four-year progression from SCD/MCI to AD dementia (CSF-confirmed) in 332 BioFINDER-1 patients, double cross-validation: clinical-data model AUC 0.850, clinical + hippocampal volume AUC 0.862 (CI 0.728-0.960), FreeSurfer model 0.832, DL model 0.840; external ADNI MCI subset (n=108): FreeSurfer 0.688, DL 0.799, others not significantly different from BioFINDER test.",
+  "P-33": "Per-visit AUC of a Bayesian-KDE classifier assigning clinical status (CU vs MCI) from the disease progression score of parametric DPMs trained on neuropsychological scores only, ADNI (536 sCU, 114 pCU, 513 sMCI), 20% test split: Leaspy AUC 0.96 (0.006), RPDPM 0.94, GRACE 0.92-0.93."
+ },
+ "quantity_a": "AUC for predicting conversion from SCD/MCI to AD dementia within four years; memory-clinic SCD+MCI population (BioFINDER-1); predictors = demographics, MMSE, ADAS delayed recall, APOE plus hippocampal volume (structural MRI).",
+ "quantity_b": "AUC for classifying the current clinical status (cognitively unimpaired vs MCI) at each visit from a latent disease-progression score fitted to longitudinal neuropsychological scores; ADNI CU and stable-MCI participants (MCI converters to dementia excluded).",
+ "same_quantity": false,
+ "incompatible_if_same": "Only in a weak sense: 0.862 (CI 0.728-0.960) vs 0.96 (SD 0.006 across bootstraps); the P-274 interval nearly reaches 0.96, and neither paper claims an ordering the other refutes. The question does not arise because the estimands differ.",
+ "gates": {
+  "task": "mismatch: P-274 is prognostic MCI/SCD-to-AD-dementia conversion; P-33's AUC is diagnostic CU-vs-MCI status classification per visit (its prognostic analysis concerns CU-to-MCI conversion, not MCI-to-dementia).",
+  "dataset_family": "mismatch: P-274 develops and tests on BioFINDER-1 (ADNI only as a 108-patient external check); P-33 is ADNI-1/2/3 only.",
+  "validation_tier": "mismatch: P-274 internal double CV plus external ADNI evaluation; P-33 internal bootstrap train/test split within ADNI.",
+  "modality_family": "mismatch: P-274 best model uses clinical data plus structural MRI hippocampal volume; P-33 uses neuropsychological tests only."
+ },
+ "endpoint_and_metric": "incompatible: both are ROC-AUC, but for different endpoints (future AD dementia within 4 years vs present CU/MCI status) and different populations.",
+ "performance_validity": "not a performance comparison in the excluded sense; flag not tripped by either value (0.862, 0.96 with n=1163 and a held-out test split).",
+ "independence": "Distinct studies and authors; P-274's external ADNI subset could overlap ADNI participants in P-33, but P-274's headline estimate is from BioFINDER.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-274's AUC is for four-year progression from SCD/MCI to AD dementia in BioFINDER, whereas P-33's AUC is for classifying CU vs MCI status at each visit in ADNI, so the endpoints differ.",
+  "P-33 explicitly excluded MCI participants who progressed to dementia, so its population contains no instance of P-274's outcome.",
+  "The predictor sets differ (clinical + hippocampal MRI volume vs neuropsychological scores only) and the dataset families differ (BioFINDER vs ADNI), with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-274",
+   "page": 3,
+   "quote": "The primary binary outcome was four-year progression to AD dementia, where a clinical diagnosis of AD dementia during the four years follow-up was considered as a progression."
+  },
+  {
+   "paper": "P-274",
+   "page": 6,
+   "quote": "Adding intracranial and hippocampal volume to the clinical data model increased the test AUC to 0.862 (CI 0.728-0.960)"
+  },
+  {
+   "paper": "P-33",
+   "page": 2,
+   "quote": "MCI participants whose last visit indicated either reversion to CU or progression to dementia were excluded from the analysis to specifically characterize the transition from normal cognition to MCI."
+  },
+  {
+   "paper": "P-33",
+   "page": 4,
+   "quote": "Area Under the Curve (AUC) of the Bayesian-KDE classifier at each visit, based on clinical diagnoses."
+  },
+  {
+   "paper": "P-33",
+   "page": 6,
+   "quote": "The results show that Leaspy achieved the highest overall performance, with a top AUC of 0.96"
+  }
+ ],
+ "record_defects": [
+  "dataset_equal 'Yes' is wrong: P-274's development and test cohort is BioFINDER-1, not ADNI (ADNI is a 108-patient external check); the index registry row also lists P-274 Dataset as ADNI.",
+  "modality_family 'clinical_survey' with modality_family_equal 'Yes' contradicts the record's own resolution_note ('Modality mismatch: P-274=structural_MRI vs P-33=clinical_survey'); P-274's best model uses structural MRI hippocampal volume.",
+  "Both claims labelled 'T2', but P-33's AUC 0.96 is a diagnostic CU-vs-MCI status AUC, not an MCI-progression AUC.",
+  "resolution_status 'partially_resolved_candidate' rests on a list of ~45 'bridging' papers that report assorted metrics with no stated separating condition; this is not bridging evidence under the rule."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only a P-33 result for MCI-to-AD-dementia conversion (it reports none) or a P-274 result for CU-vs-MCI classification would put the two on one estimand."
+}

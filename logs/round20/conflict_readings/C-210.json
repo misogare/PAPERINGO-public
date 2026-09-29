@@ -1,0 +1,78 @@
+{
+ "id": "C-210",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-152",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Features of the superficial white matter as biomarkers for the detection of Alzheimer's disease and mild cognitive impairment: A diffusion tensor imaging study (Bigham, Zamanpour, Zare; Heliyon 8 (2022) e08725)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-63",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Inspired by pathogenic mechanisms: A novel gradual multi-modal fusion framework for mild cognitive impairment diagnosis (Tian et al., Neural Networks 187 (2025) 107343)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-152": "ADNI2 diffusion tensor imaging, 72 subjects (24 HC, 24 MCI, 24 AD); 1782 superficial-white-matter DTI/QSDR/tractography/network features, FCBF feature selection, SVM with internal 5-fold CV, three pairwise tasks. AD vs HC: accuracy 95.8%, sensitivity 95.8%, specificity 95.8%, AUC 0.99 (linear SVM). MCI vs HC: accuracy 83.3% (Table 3 also has a 'Correction' column reading 70.3), AUC 0.88. AD vs MCI: accuracy 83.3%, AUC 0.93. No uncertainty intervals.",
+  "P-63": "ADNI, 549 subjects with complete SNP, blood miRNA gene expression and T1 MRI (158 CN, 128 MCI, 42 AD, 140 EMCI, 86 LMCI); gradual multi-modal fusion network, 10-fold CV. CN vs MCI: ACC 76.88 +/- 2.64%, AUC 87.31%. EMCI vs LMCI: 72.84%. MCI vs AD: 87.72%. CN vs AD: ACC 95.00 +/- 1.16%, AUC 96.15%. The MRI-only single-modality branch gives CN vs MCI 70.08% and CN vs AD 90.43%."
+ },
+ "quantity_a": "P-152's recorded figure: accuracy for AD vs healthy controls (n=48), superficial white-matter diffusion MRI features, internal 5-fold CV",
+ "quantity_b": "P-63's recorded figure: accuracy for cognitively normal vs MCI (n=286), fused SNP + blood miRNA + T1 MRI, 10-fold CV",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Comparing like with like, the two papers agree. On AD vs CN, P-152 reports 95.8% and P-63 reports 95.00 +/- 1.16%. On MCI vs HC, P-152 reports 83.3% (or 70.3 corrected) and P-63 reports 76.88 +/- 2.64%, so the two are close, P-152 gives no interval, and it used a different modality.",
+ "gates": {
+  "task": "mismatch: the recorded P-152 figure is AD vs HC, the recorded P-63 figure is CN vs MCI; the shared 'T3' label hides two different class contrasts",
+  "dataset_family": "match: both ADNI (P-152 ADNI2 DTI subset; P-63 ADNI subjects with SNP+GE+MRI)",
+  "validation_tier": "match: both internal cross-validation only (V2)",
+  "modality_family": "mismatch: P-152 is diffusion MRI (DTI/QSDR tractography and connectivity); P-63 is T1 structural MRI fused with SNP genotypes and blood miRNA expression"
+ },
+ "endpoint_and_metric": "incompatible: accuracy in both, but for different class contrasts (AD/HC vs CN/MCI) and different input modalities",
+ "performance_validity": "flag applies to P-152's recorded figure: AD vs HC with AUC 0.99 on 48 subjects under internal 5-fold CV, with no external cohort, meets the near-ceiling small-sample exclusion (registry flag false only because Best_Metric records accuracy 95.8 rather than the AUC). P-63's CN vs AD AUC 96.15 is below 0.97.",
+ "independence": "Distinct author groups; both use ADNI, possibly with overlapping participants",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The 95.8% in P-152 is the AD vs HC contrast, while the 76.88% in P-63 is CN vs MCI, so the record sets two different class contrasts against each other.",
+  "The modalities differ: diffusion-MRI superficial white-matter features in P-152 against SNP, blood miRNA and T1-MRI fusion in P-63.",
+  "On the contrasts the two papers share, their results agree (AD vs CN 95.8% vs 95.00%), so there is no disagreement to explain.",
+  "P-152's AD vs HC result (AUC 0.99, n=48, internal CV) meets the performance-validity exclusion, so it could not anchor a genuine performance conflict in any case."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-152",
+   "page": 1,
+   "quote": "The linear kernel of SVM was the best classifier, with an accuracy of 95.8% between the AD and HC groups, followed by the quadratic kernel of SVM with an accuracy of 83.3% between the MCI and HC groups"
+  },
+  {
+   "paper": "P-152",
+   "page": 6,
+   "quote": "HC-AD 95.8 95.8 95.8 95.8 .99 (Table 3: Correction, Accuracy, Sensitivity, Specificity, AUC)"
+  },
+  {
+   "paper": "P-152",
+   "page": 5,
+   "quote": "we performed an internal 5-fold cross-validation for the training data and applied the SVM algorithm using binary classification between the three groups."
+  },
+  {
+   "paper": "P-63",
+   "page": 1,
+   "quote": "achieved diagnosis accuracy of 76.88%, 72.84%, 87.72%, and 95.00% for distinguishing MCI from control normal, lately MCI from early MCI, MCI from AD, and AD from control normal, respectively."
+  },
+  {
+   "paper": "P-63",
+   "page": 7,
+   "quote": "We performed a 10-fold cross-validation on these three tasks."
+  }
+ ],
+ "record_defects": [
+  "task_equal 'Yes' is wrong: the P-152 figure is AD vs HC and the P-63 figure is CN vs MCI.",
+  "modality_family_equal 'Yes' (Neuroimaging) hides a real mismatch: diffusion MRI vs T1 MRI fused with genetic and blood-expression data.",
+  "Registry Modality 'MRI/PET' is wrong for both: P-152 is DTI, P-63 is T1 MRI + SNP + miRNA; neither uses PET.",
+  "performance_suspect false for P-152 misses that its AD vs HC AUC is 0.99 on n=48 with internal CV only."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers: even on matched contrasts the figures agree or overlap, and P-152's headline contrast falls under the performance-validity exclusion."
+}

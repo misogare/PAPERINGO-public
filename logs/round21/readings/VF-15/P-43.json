@@ -1,0 +1,40 @@
+{
+ "paper": "P-43",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "yes",
+ "dataset_family": "Innsbruck memory clinic (Department of Psychiatry, Medical University of Innsbruck), retrospective 2013-2023; non-ADNI",
+ "method_family": "Stepwise linear discriminant analysis on FreeSurfer ROI atrophy factor scores plus neuropsychological test z-scores (classical statistical feature combination)",
+ "same_sample_or_cohort_as": [],
+ "shared_authors_with": [],
+ "what_it_shows": "Within one sample of 62 MCI patients (21 converters), stepwise LDA was run three ways. MRI factors alone: 75.8% correct under leave-one-out CV, converters 52.4%, AUC 0.79. Neuropsychology alone: 85.5% correct, converters 81.0%, stable 87.8%. MRI plus neuropsychology: 85.5% correct, converters 71.4%, stable 92.7%, AUC 0.94. So adding cognitive tests to the MRI model improves on MRI alone. The fused model only ties the cognitive model on accuracy. It gains specificity and, by the authors' statement, AUC, but it identifies fewer converters.",
+ "why": "IDENTITY. PDF p.1 is Defrancesco et al. 2025, Prog Neuropsychopharmacol Biol Psychiatry 136:111157, 'Combined cognitive assessment and automated MRI volumetry improves the diagnostic accuracy of detecting MCI due to Alzheimer's disease'. The block (its header is this PDF's filename) describes the same study: 62 patients, FreeSurfer plus LDA, 71.4%/92.7%. I read the whole extract up to the reference list.\n\nDESIGN. Retrospective, one memory clinic, 62 amnestic MCI (21 converters, 41 stable), follow-up 12-130 months. Three stepwise LDA models were fitted on the same patients: MRI factors only; neuropsychology only (word list learning, animal fluency, CLOX 1); and the two combined. Accuracy uses leave-one-out CV. The AUCs come from ROC curves of the discriminant function, and the paper does not say they are cross-validated. No model difference is significance-tested.\n\nNARROWED FORM: YES. The narrowed wording is that adding auxiliary information to an imaging model improves pMCI prediction over the same imaging model alone. Here, MRI only gave 75.8% correct (converters 52.4%) and AUC 0.79. MRI plus neuropsychology gave 85.5% correct (converters 71.4%, stable 92.7%) and AUC 0.94. The auxiliary information is cognitive test scores, the kind the narrowed wording already lists for P-81. The study is not ADNI. Admitting it would make the wording's 'In three ADNI studies' inaccurate, and it would add a second dataset family.\n\nSTATED FORM: PARTLY. Fusion beats the MRI baseline but not clearly the cognitive baseline. Neuropsychology alone also reaches 85.5% cross-validated accuracy and identifies more converters (17/21 = 81.0% vs 15/21 = 71.4%). Fusion gains only specificity (87.8% to 92.7%) and AUC. The authors write 'a higher AUC for the combined model', but the cognition-only AUC appears only in Fig. 1, not in the text. This is the pattern that made P-81 fail the stated form, except that here the fused AUC is reported as higher.\n\nCAVEATS. (1) Very small: 21 events. (2) Stepwise variable selection appears to be done on the full sample, which is optimistic. (3) The AUCs are not stated to be cross-validated, and there is no significance testing or external validation. (4) The MRI factors come from a PCA in an earlier AD cohort (Lenhart et al. 2021). (5) Minor internal inconsistency: the text says '37 out 41' non-converters, but Table 5a gives 38 (92.7%). (6) The block's 'Multimodal combination outperformed single-domain assessment' overstates the comparison with cognition. (7) The registry Dataset for P-43 is 'not reported', although the PDF names the Innsbruck memory clinic.\n\nINDEPENDENCE. Author-disjoint from P-3 (Luo, He, Cui, Chen, Ward), P-104 (Shen, Zhu, Zhang, Wang et al.) and P-81 (Cao, Ma, Nayak, Duong). It shares no sample with any supporter or with the other candidates. Its method family (classical LDA on ROI factor scores plus test scores) differs from all three supporters. Not a preprint.\n\nQuotes are rejoined across line breaks, with typographic quotes normalized to ASCII.",
+ "quotes": [
+  {
+   "page": 5,
+   "quote": "LDA solely including MRI factor measures revealed that volume loss in brain regions of the MRI factor \"hippocampus\" and \" temporal lobe regions\" predicted 11 out of 21 MCI converters (52.4 %) and 36 out of 41 MCI non-converters (87.8 %) correctly, resulting in an overall correct classification of 75.8 % and the lowest areas under the curve (AUC: 0.79). The sole use of distinct neuropsychological measures, namely word list learning (z-score), verbal fluency animals (z-score), and CLOX 1 classified 85.5 % of all subjects correctly. When combining neuropsychological measures and MRI factors of hippocampus and temporal lobe the overall diagnostic accuracy was again 85.5 % but the correct classification of MCI non-converters improved from 87.8 % to 92.7 % (37 out 41 MCI non-converters). The classification matrix of combined MRI and neuropsychological measures was the most accurate model to correctly classify MCI converters and MCI non-converters (AUC:0.94)."
+  },
+  {
+   "page": 5,
+   "quote": "The diagnostic accuracy of neuropsychological measures alone as well as combined with MRI parameters was 85.5 % to predict MCI conversion to AD dementia with a higher AUC for the combined model."
+  },
+  {
+   "page": 7,
+   "quote": "Table 5 (a-c): 5 a) Diagnostic classification matrix based on both volumetric MRI segmentation and selected neuropsychological measures ... Converters (n = 21) 15 (71.4 %) 6 (28.6 %) Non-converters (n = 41) 3(7.3 %) 38 (92.7 %) 5 b) Diagnostic classification matrix based on selected neuropsychological measures ... Converters (n = 21) 17 (81.0 %) 4 (19.0 %) Non-converters (n = 41) 5 (12.2 %) 36 (87.8 %) 5 c) Diagnostic classification matrix based on volumetric MRI (Factor hippocampus, Factor temporal lobe) ... Converters (n = 21) 11 (52.4 %) 10 (47.6 %) Non-converters (n = 41) 5 (12.2 %) 36 (87.8 %) ... Panel a,b: 85.5 % of cross-validated grouped cases were correctly classified. Panel c: 75.8 % of cross-validated grouped cases were correctly classified."
+  },
+  {
+   "page": 7,
+   "quote": "Evaluation of the use of MRI parameters alone to classify MCI due to AD was inferior (i.e., 75.8.%) to neuropsychological assessment alone (i.e., 85.5 %), which is consistent with previous work"
+  },
+  {
+   "page": 3,
+   "quote": "To discriminate among groups, we applied a stepwise linear discriminant analysis (LDA) ... We applied a leave-one-out cross validation procedure for computing the accuracy rate of the model."
+  },
+  {
+   "page": 2,
+   "quote": "Data for this study were retrospectively collected from the files and MRI scans of individuals diagnosed with MCI at the Memory Clinic within the Department of Psychiatry at the Medical University of Innsbruck; Austria between 2013 and 2023."
+  }
+ ]
+}

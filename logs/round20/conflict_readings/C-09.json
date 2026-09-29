@@ -1,0 +1,87 @@
+{
+ "id": "C-09",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-1",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multimodal ensemble model for Alzheimer's disease conversion prediction from Early Mild Cognitive Impairment subjects (Velazquez & Lee, Computers in Biology and Medicine 151 (2022) 106201)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-3",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Class activation attention transfer neural networks for MCI conversion prediction (Luo et al., Computers in Biology and Medicine 156 (2023) 106700)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-1": "ADNI EMCI only (383 patients: 49 converters, 335 non-converters; conversion by the diagnosis at the last exam, described as within five years). Ensemble of a random forest on nine clinical/biomarker features (age, race, APOE4, hippocampal and ventricular volume, ADAS11, ADAS13, FAQ, MMSE) and a NASNet CNN on single-slice DTI ADC images from 90 patients; exam-visit oversampling; held-out test split: accuracy 98.81%, AUC 0.992; clinical-only RF 92.86%, DTI-only CNN 96.43% (Tables 5, 6, 8). No external cohort.",
+  "P-3": "ADNI-1/2 all MCI (298 sMCI, 295 pMCI; pMCI = dementia within 36 months), single baseline T1 MRI only, 5-layer 3D CNN with class-activation attention transfer, 5-fold CV on Wen et al.'s splits: CAAT ensemble accuracy 74.61%, AUC 0.780, sensitivity/specificity 0.75/0.75 (Table 3). Authors note 5-fold CV was used for tuning and selection and may be optimistically biased."
+ },
+ "quantity_a": "Held-out accuracy of a clinical-feature + DTI ensemble for eventual conversion to AD (roughly 5-year horizon) among ADNI early-MCI patients.",
+ "quantity_b": "5-fold CV accuracy of a T1-MRI-only 3D CNN for conversion to dementia within 36 months among all ADNI MCI (EMCI, LMCI, MCI) patients.",
+ "same_quantity": false,
+ "incompatible_if_same": "If the quantity were the same, 98.81% vs 74.61% (fold variance 0.002) could not both hold. But the population, horizon, and predictor set all differ, and neither paper states a result about the other's setting.",
+ "gates": {
+  "task": "match in outline (T2 MCI-to-AD conversion), but the population behind the label differs (EMCI only vs all MCI) and the horizon differs (last available exam, stated as within five years, vs 36 months).",
+  "dataset_family": "match: both ADNI.",
+  "validation_tier": "mismatch in form: P-1 a single random held-out split (plus unspecified cross-validation), P-3 5-fold CV on published benchmark splits; both internal only.",
+  "modality_family": "mismatch: P-1 clinical scores, APOE4 and volumetrics plus DTI; P-3 structural T1 MRI only."
+ },
+ "endpoint_and_metric": "incompatible endpoint: different horizon (about 5 years vs 36 months) and different source population (EMCI vs mixed MCI). Metric type (accuracy) matches.",
+ "performance_validity": "flag applies to P-1: 98.81% accuracy (AUC 0.992) on internal validation only, with the imaging arm resting on 90 patients (16 converters), exam-visit oversampling for the clinical arm, and repeated tuning ('the experiment was repeated several dozen times per model'). A performance comparison resting on P-1 cannot be genuine.",
+ "independence": "Distinct author groups; both draw on ADNI MCI participants, so EMCI subjects may overlap; not determinable.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The population behind the label differs: P-1 is restricted to early MCI, P-3 pools EMCI, LMCI and MCI.",
+  "The endpoint horizon differs: P-1 uses conversion at the last exam (stated as within five years), P-3 conversion within 36 months.",
+  "The predictor set and modality differ: P-1 combines clinical scores, APOE4, volumetrics and DTI; P-3 uses one baseline T1 image only.",
+  "Independently, P-1 meets the performance-validity exclusion (98.81% on internal validation only, imaging arm N=90), so no performance contradiction resting on it could be genuine."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-1",
+   "page": 1,
+   "quote": "383 Early Mild Cognitive Impairment (EMCI) patients were collected from the Alzheimer's Disease Neuroimaging Initiative (ADNI). Within this set, 49 patients would eventually convert to AD"
+  },
+  {
+   "paper": "P-1",
+   "page": 6,
+   "quote": "When both modalities (clinical data and DTI scans) are provided, our weighted ensemble model achieves an EMCI-to-AD conversion prediction accuracy of 98.81%."
+  },
+  {
+   "paper": "P-1",
+   "page": 3,
+   "quote": "These were then grouped into 90 unique EMCI patients, where 16 would convert to AD (EMCI_C) and 74 would not (EMCI_NC)."
+  },
+  {
+   "paper": "P-1",
+   "page": 11,
+   "quote": "With this approach, our model achieves an accuracy of 98.8% on EMCI to AD conversion prediction within five years."
+  },
+  {
+   "paper": "P-3",
+   "page": 1,
+   "quote": "we take a single MRI image of a patient diagnosed with MCI at a given time and accurately predict whether they will be diagnosed with AD within 3 years."
+  },
+  {
+   "paper": "P-3",
+   "page": 3,
+   "quote": "At the start (baseline time), all selected subjects were diagnosed with MCI, early MCI (EMCI), or late MCI (LMCI)."
+  },
+  {
+   "paper": "P-3",
+   "page": 7,
+   "quote": "CAAT ensemble 0.75 (0.004) 0.75 (0.006) 0.75 (0.002) 74.61 (0.002) 0.780 (0.003)"
+  }
+ ],
+ "record_defects": [
+  "task_equivalence true / dataset_family_equivalence true treat the two as the same task; the population (EMCI vs all MCI) and horizon (about 5 years vs 36 months) differ.",
+  "registry Sample_N_Approx for P-3 is 1587, which is the source-task pool; the conversion analysis uses 593 MCI subjects.",
+  "The long bridging-evidence list consists of other papers' headline scores and does not identify a separating condition for this pair; the gap is explained by the pair's own design differences and by P-1's near-ceiling internal result."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing short of both models evaluated on the same MCI population, horizon and inputs; even then P-1's result would stay excluded by the performance-validity rule unless replicated externally."
+}

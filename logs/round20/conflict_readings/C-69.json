@@ -1,0 +1,82 @@
+{
+ "id": "C-69",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-37",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Transfer learning for predicting conversion from mild cognitive impairment to dementia of Alzheimer's type based on a three-dimensional convolutional neural network (Bae et al., Neurobiology of Aging 99 (2021) 53-64)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-72",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "An end-to-end multimodal 3D CNN framework with multi-level features for the prediction of mild cognitive impairment (Zhang et al., Knowledge-Based Systems 281 (2023) 111064)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-37": "ResNet29 3D CNN on whole-brain baseline sMRI, pretrained on NC vs DAT (transfer learning), ADNI; 228 MCI converters within 3 years vs 222 MCI non-converters who remained MCI for at least 3 years (shorter-follow-up non-converters excluded); single 70/15/15 split, 68 test scans: accuracy 82.4% (56/68 correct across 1.5T and 3T), AUC 0.827, EER 0.189.",
+  "P-72": "Twin 3D ResNet18 on sMRI grey matter + FDG-PET, ADNI (151 pMCI converting within 3 years, 238 sMCI 'did not convert'), 70/15/15 split averaged over three test subsets. AD vs NC accuracy 94.61%; sMCI vs pMCI accuracy 77.19% (AUC 0.755). Its sMRI-only MAResNet18 gives 73.68% for sMCI vs pMCI."
+ },
+ "quantity_a": "Held-out accuracy (68 test scans) for MCI-to-DAT conversion within 3 years vs MCI stable for at least 3 years, ADNI, whole-brain structural MRI only.",
+ "quantity_b": "As recorded: 94.61%, which is P-72's AD vs NC diagnostic accuracy (sMRI+PET), not a conversion result. P-72's conversion figure is 77.19% (sMRI+PET) or 73.68% (sMRI only).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. As recorded the numbers are on different tasks. On the conversion task, P-37's 82.4% (56/68; Wilson 95% interval roughly 72-90%) contains P-72's sMRI-only 73.68% and multimodal 77.19%, and neither paper claims the other's method fails on the same data.",
+ "gates": {
+  "task": "mismatch as recorded (T2 conversion vs AD-vs-NC diagnosis); match (T2, 3-year horizon) only if P-72's 77.19%/73.68% is substituted, and even then P-37 excludes non-converters followed for under 3 years while P-72 does not state that restriction.",
+  "dataset_family": "match: ADNI in both.",
+  "validation_tier": "match in tier: internal held-out splits in both (P-37 one split of 68; P-72 three splits averaged).",
+  "modality_family": "mismatch for P-72's reported model: P-72 fuses sMRI with FDG-PET; P-37 uses sMRI only. The record's 'structural_mri' for both is wrong."
+ },
+ "endpoint_and_metric": "incompatible as recorded (conversion endpoint vs AD-vs-NC diagnosis); both are accuracy.",
+ "performance_validity": "flag does not apply: 82.4% and 94.61% are below 0.97.",
+ "independence": "Distinct studies and author groups; both draw on ADNI MCI participants, so overlap is likely but not disqualifying.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record misreads P-72: 94.61% is its AD-vs-NC accuracy, and its sMCI-vs-pMCI accuracy is 77.19%.",
+  "On the conversion task the two results overlap: P-37's 82.4% on 68 test scans cannot exclude P-72's 77.19% (or its sMRI-only 73.68%).",
+  "Neither paper claims an ordering the other refutes; each reports its own model's score on its own ADNI selection."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-37",
+   "page": 6,
+   "quote": "Our model achieved this with a 82.4% accuracy"
+  },
+  {
+   "paper": "P-37",
+   "page": 2,
+   "quote": "MCI-NC patients with a clinical diagnosis that remains MCI for a duration of at least 3 years."
+  },
+  {
+   "paper": "P-37",
+   "page": 2,
+   "quote": "into training, validation, and test sets by following the conventional ratio of 70% versus 15% versus 15% (314, 68, and 68 scans, respectively)."
+  },
+  {
+   "paper": "P-72",
+   "page": 7,
+   "quote": "The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 % respectively"
+  },
+  {
+   "paper": "P-72",
+   "page": 6,
+   "quote": "For the classification of sMCI vs. pMCI, the accuracy based on sMRI and PET was 73.68 % and 75.44 %, respectively."
+  },
+  {
+   "paper": "P-72",
+   "page": 3,
+   "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI."
+  }
+ ],
+ "record_defects": [
+  "claim_b '94.61% AD on T2' is P-72's AD vs NC accuracy; P-72's T2 accuracy is 77.19%. task_equal 'Yes' is wrong as recorded.",
+  "modality_family 'structural_mri' is wrong for P-72, which fuses sMRI grey matter with FDG-PET.",
+  "The rejection reason 'Metric type unclear: Acc / Unknown' is wrong: 94.61% is an accuracy.",
+  "The bridging-evidence list names no separating condition; 'partially resolved' is unsupported."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers; a like-for-like sMRI-only conversion comparison whose intervals did not overlap, with matching stable-MCI definitions, would be needed."
+}

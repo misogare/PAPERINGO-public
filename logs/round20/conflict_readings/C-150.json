@@ -1,0 +1,77 @@
+{
+ "id": "C-150",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-211",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable Machine Learning with Pairwise Interactions for Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease Utilizing Multi-Modalities Data (Cai et al.; Brain Sci. 2023, 13, 1535)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-179",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Conversion from MCI to AD Combining Multi-Modality Data and Based on Molecular Subtype (Li, Yuan, Wu, Gu, Sun; Brain Sci. 2021, 11, 674)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-211": "ADNI 1/2/3/GO amnestic MCI (1042 at baseline); Explainable Boosting Machine on tabular features (FreeSurfer regional volumes/thickness, ADAS13, MMSE, FAQ, CDR-SB, demographics, baseline EMCI/LMCI, APOE4); 5-fold CV. Five-year conversion: accuracy 85%, AUC 0.92 (MRI + cognitive scores; 225 participants remaining). Three-year comb-a model with interactions: accuracy 0.75, AUC 0.81 (test data).",
+  "P-179": "ADNI-1 (125 MCI) for training/internal validation and ADNI-GO/2 (98 MCI) as external test; conversion to AD within three years; FreeSurfer ROI volumes plus peripheral-blood SNP genotypes and mRNA expression; molecular subtyping (SNF + label propagation), Lasso feature selection, variational Bayes multiple-kernel classifier. Internal 5-fold CV: AUC 0.826 (acc 79.20%); no-subtyping classifier AUC 0.785; external ADNI-GO/2 test AUC 0.781."
+ },
+ "quantity_a": "AUC for MCI-to-AD conversion within 5 years, ADNI amnestic MCI, cognitive scores + regional MRI volumes + demographics/APOE4, 5-fold CV.",
+ "quantity_b": "AUC for MCI-to-AD conversion within 3 years, ADNI-1 MCI (n=125), regional MRI volumes + blood SNP + blood mRNA expression with molecular subtyping, 5-fold CV (external ADNI-GO/2 AUC 0.78).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. At the matched three-year horizon P-211 reports AUC 0.81, against P-179's 0.83 internal and 0.78 external; these overlap. Neither paper evaluates the other's model or claims an ordering the other refutes.",
+ "gates": {
+  "task": "match in label (T2) but the horizons differ (5 years vs 3 years)",
+  "dataset_family": "match: both ADNI (P-211 ADNI 1/2/3/GO; P-179 ADNI-1 with ADNI-GO/2 external)",
+  "validation_tier": "match for the compared figures (both internal 5-fold CV); P-179 additionally reports a temporally/phase-separate ADNI-GO/2 test",
+  "modality_family": "mismatch: P-211 combines neuropsychological scores and APOE4 with MRI volumes; P-179 combines MRI volumes with blood genomics and transcriptomics (no cognitive scores); the record sets modality_family_equal 'No'"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC AUC) but different horizons (5-year vs 3-year conversion) and different predictor sets (cognitive scores vs blood omics alongside MRI).",
+ "performance_validity": "flag does not apply: 0.92 and 0.83 are below 0.97.",
+ "independence": "Distinct author groups (Xi'an Jiaotong vs Southeast University Nanjing); both draw on ADNI MCI participants and may overlap.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-211's AUC 0.92 is for conversion within five years, whereas P-179's AUC 0.83 is for conversion within three years.",
+  "P-211 predicts from cognitive scores, demographics, APOE4 and MRI volumes, whereas P-179 predicts from MRI volumes plus blood SNP and mRNA data, so the predictor sets differ.",
+  "At the matched three-year horizon P-211 reports AUC 0.81, which sits with P-179's 0.83 (internal) and 0.78 (external), so no disagreement survives alignment."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-211",
+   "page": 1,
+   "quote": "The five-years prediction accuracy reached 85% (AUC = 0.92) using both cognitive scores and MRI markers."
+  },
+  {
+   "paper": "P-211",
+   "page": 12,
+   "quote": "The main performance indicators, accuracy, sensitivity, specificity, and AUC, were 0.75, 0.78, 0.73, and 0.81 (with interaction effects)"
+  },
+  {
+   "paper": "P-179",
+   "page": 1,
+   "quote": "we propose a subtyping-based prediction strategy to predict the conversion from MCI to AD in three years according to MCI patient subtypes."
+  },
+  {
+   "paper": "P-179",
+   "page": 1,
+   "quote": "In internal fivefold cross-validation within ADNI-1, we achieved an overall AUC of 0.83 (79.20% accuracy, 81.25% sensitivity, 77.92% specificity)"
+  },
+  {
+   "paper": "P-179",
+   "page": 1,
+   "quote": "In external validation using ADNI-1 as a training set and ADNI-GO/2 as an independent test set, we attained an AUC of 0.78"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'AUC 0.92 on T2' omits that 0.92 is the five-year horizon; the three-year AUC in P-211 is 0.81.",
+  "Registry Sample_N_Approx '242804' for P-211 is impossible (1042 MCI participants).",
+  "P-179's own text is internally inconsistent (Section 3.2 gives MCI-CPS 5-fold 80.00% accuracy with 81.82%/77.08% sens/spec; Table 1 and the abstract give 79.20%/81.25%/77.92%); the AUC 0.826 is consistent.",
+  "resolution_note says 'Confirmed genuine' while resolution says 'Rejected: Task, dataset, or modality mismatch' and the status is partially_resolved_candidate: internally inconsistent."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A three-year P-211 AUC with a matched predictor set whose uncertainty excluded P-179's 0.83; P-211's own three-year figure (0.81) does not."
+}

@@ -1,0 +1,81 @@
+{
+ "id": "C-226",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-516",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Brain Function Network: Higher Order vs. More Discrimination (Guo et al., Front. Neurosci. 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-523",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multiple Connection Pattern Combination From Single-Mode Data for Mild Cognitive Impairment Identification (Li et al., Front. Cell Dev. Biol. 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-516": "MCI vs HC from ADNI rs-fMRI (143 participants, 299 scans), linear SVM on t-test-selected edges, subject-level 5-fold CV. Accuracy of PCn networks falls as order n rises and approaches 50% when the iterated network converges; PC1 (ordinary Pearson) is best; all numeric values appear only in figures. Fusing PCn with PC1 raises sensitivity but not accuracy.",
+  "P-523": "MCI vs NC from ADNI rs-fMRI (63 MCI, 64 NC), nested LOOCV. Single first-order patterns: PC 77.95%, SR 81.10%, GCM 72.44%; the multi-kernel combination (MCPC) of PC, SR and GCM reaches 87.40% accuracy (sens 90.48%, spec 84.38%, AUC 0.922)."
+ },
+ "quantity_a": "Accuracy of a deliberately degraded, iterated correlation-of-correlation (PCconv) network in MCI vs HC; the ~50% figure is the end point of an ablation, not the paper's best classifier.",
+ "quantity_b": "Accuracy of a multi-kernel combination of three first-order connectivity estimators (Pearson, sparse partial correlation, Granger causality) in MCI vs NC.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-516's claim is that higher-order PCn networks discriminate worse than first-order PC1; P-523 uses only first-order estimators and reports nothing about higher-order networks, so neither result contradicts the other. Their first-order baselines (P-516 PC1, figure only; P-523 PC 77.95%) are not in conflict.",
+ "gates": {
+  "task": "match: both T1 MCI vs controls.",
+  "dataset_family": "match: both ADNI rs-fMRI, 116-ROI AAL.",
+  "validation_tier": "match at internal CV (V3 in registry), but different schemes: subject-level 5-fold CV vs nested LOOCV.",
+  "modality_family": "match: resting-state fMRI; different feature constructions (higher-order PCn vs combined first-order patterns)."
+ },
+ "endpoint_and_metric": "compatible metric (accuracy) but the P-516 value is an ablation asymptote, not a performance claim for a comparable model.",
+ "performance_validity": "not a comparison of best performances; flag not triggered (P-523 87.4% is below the ceiling test; P-516's value is ~50%).",
+ "independence": "Both draw on ADNI rs-fMRI; participant overlap is possible but not stated (shared cohort recorded as non-independence).",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim for P-516 misreads its paper: ~50% is where accuracy lands when the PCn network is iterated to convergence, the degradation end point P-516 demonstrates, not its result for a usable network.",
+  "P-516 concludes that higher order does not help discrimination; P-523's MCPC contains no higher-order network, so P-523's 87.40% cannot refute or be refuted by P-516.",
+  "The two papers say compatible things: first-order connectivity carries the discriminative information, and combining views can add some (P-516 sensitivity, P-523 accuracy)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-516",
+   "page": 8,
+   "quote": "Especially when the BFN converges with a big n, the ACC approaches 50%, meaning that its discrimination almost disappears since our task is a binary classification."
+  },
+  {
+   "paper": "P-516",
+   "page": 1,
+   "quote": "with the increase of n, the discriminative ability of PCn-based BFNs tends to decrease"
+  },
+  {
+   "paper": "P-516",
+   "page": 6,
+   "quote": "The PCconv-based BFN is the empirically convergent adjacency matrix through thirty iterations."
+  },
+  {
+   "paper": "P-523",
+   "page": 2,
+   "quote": "including Pearson's correlation (PC), sparse representation (SR) and Granger causality mapping (GCM)."
+  },
+  {
+   "paper": "P-523",
+   "page": 4,
+   "quote": "MCPC 87.40 90.48 84.38 0.922"
+  },
+  {
+   "paper": "P-523",
+   "page": 3,
+   "quote": "Due to the limited sample size, we adopt the nest LOOCV strategy for evaluating the performance of the MCI classification."
+  }
+ ],
+ "record_defects": [
+  "claim_a and P-516's registry Best_Metric 'Acc ~50% at convergence' report an ablation end point as the paper's result; P-516 reports its accuracies only in figures and its best network is PC1.",
+  "validation_comparable 'Yes' glosses a difference in schemes (subject-level 5-fold CV on 143 participants with repeated scans vs nested LOOCV on 127).",
+  "The status 'partially_resolved_candidate' conflicts with the record's own G4 note, which found a non-contradiction; P-822's 'AUC 0.71' in the bridging list does not bear on the pair."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A higher-order-network result in P-523, or a P-516 claim that combined first-order patterns cannot exceed PC1; neither paper contains one."
+}

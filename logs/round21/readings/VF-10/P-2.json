@@ -1,0 +1,27 @@
+{
+ "paper": "P-2",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "no",
+ "supports_narrowed": "partly",
+ "dataset_family": "Taiyuan (Shanxi) volunteer sample, 40 MCI / 39 HC, MoCA-defined labels (Taiyuan University of Technology)",
+ "method_family": "Tablet (iPad + Apple Pencil) handwriting kinematics fused with consumer MUSE 2 four-channel EEG; RFE feature selection; SVM/RF/XGBoost with feature-level and weighted-vote decision fusion",
+ "same_sample_or_cohort_as": [],
+ "shared_authors_with": [],
+ "what_it_shows": "Fusing tablet handwriting kinematics with consumer MUSE EEG classified 40 MCI vs 39 MoCA-defined controls at 93.7% (feature fusion, RBF-SVM, 10-fold CV) and 96.3% (decision fusion). Handwriting alone reached 78.5-83.5% and EEG alone 79.7-86.1%.",
+ "why": "The PDF matches the block: Chai et al., Comput Biol Med 152 (2023) 106418; 40 MCI/39 HC; iPad handwriting + MUSE EEG; 96.3%. Read in full. HARDWARE is consumer-grade throughout: an iPad 2020 with Apple Pencil, and a MUSE 2 dry-electrode EEG headband that the authors call low-cost. THE BEHAVIOURAL CHANNEL ALONE DOES NOT REACH THE STATED BAND. The statement is about behavioural instruments. Handwriting-only accuracy under 10-fold CV is 0.785 (RF), 0.810 (XGBoost) and 0.835 (RBF-SVM) (Table 3). The headline figures need the physiological EEG channel: 93.7% with feature fusion, and 96.3% with weighted-vote decision fusion (the text says 96.3%, Table 4 prints 96.73%). EEG alone reaches up to 0.861. OTHER CONDITIONS. Testing was supervised, not self-administered: participants sat in a quiet room, with a practice board and a reference image. The label is MoCA-based (healthy = MoCA > 26; all MMSE >= 24). Like P-101's label, it is a screening-score proxy, not a clinical diagnosis. OPTIMISM RISKS. Band selection and recursive feature elimination are described without being nested inside the CV. The authors concede 'better classification performance may not exclude the presence of overfitting factors'. There is no external validation. There is no head-to-head against a specialist instrument, which is consistent with the statement's caveat. AGAINST TABLE A1: consumer-grade yes; self-administered no; a behavioural instrument at ~88-94% no, since the band is reached only with EEG. Verdict: no. This is the ground on which P-83 (Emotiv EEG + HRV recorded during a clinician-administered CERAD) was removed in the 2026-06-27 audit. AGAINST THE NARROWED WORDING: handwriting on a tablet is 'low-cost behavioural data captured without specialist hardware'; the paper itself says no Livescribe Echo Pen is needed. Its best standalone accuracy (83.5%) is below 'about 88-94%', and the band is reached only when consumer EEG is fused in. Verdict: partly, on the low-cost, no-specialist-hardware element only, not the accuracy band. INDEPENDENCE: a Shanxi sample, distinct from I-CONECT (P-76/P-77) and from the Shanghai/Henan Memory Guard sample (P-101). No authors are shared with the supporters or with the other candidates. The registry codes P-2's Modality as EEG/MEG. VF-10's record_notes list 'EEG+handwriting' among the originally considered sources, but P-2 is neither a current supporter nor in rejected_supporters.",
+ "quotes": [
+  {"page": 1, "quote": "Seventy-nine volunteers (39 healthy elderly controls and 40 patients with mild cognitive impairment) were recruited for this study, and the handwritten data and the EEG signals were performed using a tablet and MUSE under four designed handwriting tasks."},
+  {"page": 4, "quote": "The handwriting task was then completed using an electronic pen (apple pencile) and a tablet (iPad 2020)"},
+  {"page": 4, "quote": "hence we used the low-cost MUSE headband (version 2) to acquire EEG signals in this study."},
+  {"page": 4, "quote": "The data was obtained by testing participants in a comfortable chair in a quiet environment"},
+  {"page": 3, "quote": "subjects who scored above 26 on the Moca test were included in the healthy group according to the Moca criteria"},
+  {"page": 8, "quote": "fusion features to classify the two categories separately, using 10-fold cross-validation to measure the performance of the classifier."},
+  {"page": 8, "quote": "Table 3 [columns: EEG Acc Fm K | Handwriting Acc Fm K | EEG + Handwriting Acc Fm K] RBF SVM 0.861 0.857 0.721 0.835 0.831 0.671 0.937 0.935 0.873"},
+  {"page": 8, "quote": "Furthermore, of all the classification accuracies obtained using the fused features, the SVM classifier with an RBF kernel achieved the best accuracy of 93.7% with an f-measure value of 0.935 and a kappa statistic value of 0.873."},
+  {"page": 9, "quote": "the weighted voting classification model with the RBF-SVM as the base classifier could achieve the highest accuracy of 96.3%"},
+  {"page": 8, "quote": "Without the use of specialist equipment such as a Livescribe Echo Pen, we can still observe slower writing and longer pauses and less fine motor control in the MCI group by simply using a tablet with a digital pen."},
+  {"page": 8, "quote": "better classification performance may not exclude the presence of overfitting factors."}
+ ]
+}

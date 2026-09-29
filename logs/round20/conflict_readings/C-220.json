@@ -1,0 +1,76 @@
+{
+ "id": "C-220",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-199",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A Two-Stage Model for Predicting Mild Cognitive Impairment to Alzheimer's Disease Conversion (Lu et al., Front. Aging Neurosci. 2022, 14:826622)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-211",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable Machine Learning with Pairwise Interactions for Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease Utilizing Multi-Modalities Data (Cai et al., Brain Sci. 2023, 13, 1535)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-199": "577 ADNI baseline MCI (280 pMCI converting within 3 years, 297 sMCI); whole-brain 3D T1 MRI only, 3D ResNet-50 initialised from Med3D and pretrained with MoCo contrastive learning; random 80/20 split, test set with bootstrap CIs. Accuracy 0.819 (95% CI 0.798-0.841), SEN 0.786, SPE 0.850, AUC 0.835.",
+  "P-211": "1042 ADNI-1/2/3/GO amnestic MCI; Explainable Boosting Machine on cognitive scores (ADAS13, MMSE, FAQ, CDR-SB), FreeSurfer volumes/thicknesses, demographics, baseline EMCI/LMCI diagnosis and APOE4; 90/10 split with SMOTE and 5-fold CV. Separate models for conversion within 1, 2, 3, 4 and 5 years. The AUC 0.92 (accuracy 85%) is the 5-year model on cognitive + MRI features. The 3-year model (test set, with interactions) gives accuracy 0.75 and AUC 0.81."
+ },
+ "quantity_a": "ROC AUC for MCI->AD conversion within 3 years, from whole-brain T1 MRI alone (3D CNN), ADNI, internal 80/20 test.",
+ "quantity_b": "ROC AUC for MCI->AD conversion within 5 years, from cognitive scores, FreeSurfer regional measures, demographics, baseline MCI subtype and APOE4 (EBM), ADNI aMCI, internal 90/10 split / 5-fold CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. On the matching 3-year horizon, P-211's own figure (AUC 0.81 on its test set) sits slightly below P-199's 0.835, and neither paper gives an AUC interval that excludes the other. The recorded 0.835 vs 0.92 gap is a 3-year vs 5-year and MRI-only vs multimodal difference.",
+ "gates": {
+  "task": "nominal match (T2), but the horizons differ: 3 years (P-199) vs 5 years (P-211's 0.92).",
+  "dataset_family": "match: both ADNI (P-211 spans ADNI-1/2/3/GO); substantial subject overlap is likely.",
+  "validation_tier": "match (both internal holdout/CV).",
+  "modality_family": "mismatch: P-199 uses T1 MRI only; P-211's 0.92 model combines cognitive test scores, clinical/genetic data and FreeSurfer volumes."
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC AUC), but different endpoint horizon (3 vs 5 years) and different predictor set; cognitive scores such as CDR-SB and MMSE also enter the clinical diagnosis that defines P-211's outcome.",
+ "performance_validity": "flag does not apply: no value >= 0.97.",
+ "independence": "Both draw on ADNI MCI participants and very likely share subjects. Distinct author groups.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-211's AUC 0.92 is its 5-year conversion model, while P-199's 0.835 is for conversion within 3 years; the endpoint horizons differ.",
+  "P-211's model uses cognitive scores, APOE4, demographics and baseline MCI subtype on top of MRI regional measures, while P-199 uses T1 MRI images alone; the predictor sets differ and no modality waiver is on record.",
+  "At the one shared horizon (3 years), P-211 reports AUC 0.81, close to P-199's 0.835, so there is no indication that the two studies disagree about any single quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-199",
+   "page": 2,
+   "quote": "As de\ufb01ned in this study, participants with MCI at baseline who developed or did not develop AD within 3 years were referred to as pMCI and sMCI, respectively."
+  },
+  {
+   "paper": "P-199",
+   "page": 6,
+   "quote": "ResNet-50 achieved the best performance with an accuracy of 0.819 and an AUC of 0.835"
+  },
+  {
+   "paper": "P-211",
+   "page": 1,
+   "quote": "The \ufb01ve-years prediction accuracy reached 85% (AUC = 0.92) using both cognitive scores and MRI markers."
+  },
+  {
+   "paper": "P-211",
+   "page": 6,
+   "quote": "Comb. (a) both MRI-driven biomarkers and cognitive test scores, plus age, gender, education, diagnose at baseline, and APOE4."
+  },
+  {
+   "paper": "P-211",
+   "page": 12,
+   "quote": "The main performance indicators, accuracy, sensitivity, speci\ufb01city, and AUC, were 0.75, 0.78, 0.73, and 0.81 (with interaction effects)"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-211: AUC 0.92 on T2' omits that 0.92 is the 5-year horizon model with cognitive + MRI + clinical features; P-211's 3-year AUC is 0.81.",
+  "modality_family 'Neuroimaging' is wrong for P-211's model, which is multimodal and dominated by cognitive/clinical features at mid-term horizons.",
+  "The P-211 registry row's Sample_N_Approx '242804' is wrong; the paper includes 1042 MCI patients."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-211 3-year, MRI-only result (its Comb. c) with a reported interval excluding 0.835. The paper shows Comb. c only graphically, without numbers usable for this, so it cannot be established from the PDF."
+}

@@ -1,0 +1,82 @@
+{
+ "id": "C-07",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-81",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Deep learning combining FDG-PET and neurocognitive data accurately predicts MCI conversion to Alzheimer's dementia 3-year post MCI diagnosis (Cao et al., Neurobiology of Disease 187 (2023) 106310)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-88",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "18F-FDG-PET Radiomics Based on White Matter Predicts The Progression of Mild Cognitive Impairment to Alzheimer Disease: A Machine Learning Study (Peng et al., Acad Radiol 2023; 30:1874-1884)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-81": "ADNI 164 sMCI / 93 pMCI, conversion within 3 years of MCI diagnosis, 5-fold CV (Table 3): whole-brain FDG-PET 3D CNN alone AUC 0.6102 +- 0.0231 (BA 0.5651); five cognitive scores (CDRSB, LDEL, MMSE, mPACCdigit, mPACCtrailsB) alone AUC 0.7496 +- 0.0683 (BA 0.7130); PET+Age+CS AUC 0.7849 +- 0.0963 (BA 0.7326). Authors: 'neurocognitive scores predict better than PET per se', noting some scores were used in the AD diagnosis.",
+  "P-88": "ADNI-2/GO 341 MCI (102 progressed during up to 8-year follow-up), time-ordered split 238/103 (Table 3): white-matter FDG-PET radiomics signature AUC 0.747 train / 0.719 test; ADAS 0.755 / 0.742; CDR 0.683 / 0.737; SVM integrated model 0.868 / 0.865. Mean FDG SUV was not an independent predictor on multivariate regression. Authors state the rad-score was superior to clinical scale scores, but their Table 3 shows ADAS AUC at or above the signature in both groups; DeLong testing is reported only for the integrated model."
+ },
+ "quantity_a": "3-year MCI-to-AD conversion discrimination (ROC-AUC, 5-fold CV) of (i) a 3D CNN on whole-brain FDG-PET and (ii) a network on a 5-score cognitive composite, ADNI-1/2/GO.",
+ "quantity_b": "MCI-to-AD progression over follow-up of up to 8 years, discrimination (ROC-AUC, time-split test set) of (i) a 10-feature white-matter FDG-PET radiomics signature and (ii) single clinical scales (ADAS, CDR), ADNI-2/GO.",
+ "same_quantity": false,
+ "incompatible_if_same": "Weakly at most. The contested ordering is 'cognitive scores vs FDG-PET alone'. P-81 finds cognition clearly ahead (0.75 vs 0.61). P-88's own numbers put ADAS slightly ahead of or level with the PET signature (0.742 vs 0.719 test; 0.755 vs 0.747 train), with no test of that difference. So on the printed numbers both studies lean the same way, and only P-88's verbal claim of PET superiority, unsupported by its table, points the other way.",
+ "gates": {
+  "task": "match in outline: MCI-to-AD conversion prediction (T2), but horizons differ (fixed 3 years vs progression at any point in up to 8 years).",
+  "dataset_family": "match: both ADNI (P-81 ADNI-1/2/GO, P-88 ADNI-2/GO); participants likely overlap in part.",
+  "validation_tier": "match: both internal only (5-fold CV vs a time-ordered internal split); neither external.",
+  "modality_family": "match on the imaging arm (FDG-PET) and the cognitive arm (clinical/neuropsychological scores), but the PET input representation (whole-brain voxels in a CNN vs white-matter radiomics texture features) and the cognitive predictor set (5-score composite vs single ADAS or CDR) differ."
+ },
+ "endpoint_and_metric": "incompatible endpoint: P-81 uses conversion within 3 years; P-88 uses conversion at any time during an 8-year follow-up. Metric type (ROC-AUC) matches. Predictor sets differ on both arms.",
+ "performance_validity": "flag does not apply: no value near 0.97 in the conversion task (P-81's 1.0 values are its CN vs AD pretraining, which the authors attribute to circularity, and are not part of this comparison).",
+ "independence": "Distinct author groups; both use ADNI MCI participants, so the cohorts partly overlap (not quantifiable from the papers).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The endpoint horizon differs: P-81 predicts conversion within three years, P-88 progression during an eight-year follow-up.",
+  "The FDG-PET predictor differs in representation (whole-brain voxel CNN vs a white-matter radiomics signature) and the cognitive predictor differs in content (a five-score composite vs single ADAS or CDR scales).",
+  "On the numbers actually printed, both studies put cognitive scores at or above PET alone; the only opposing element is P-88's verbal claim of radiomics superiority, which its own Table 3 does not bear out and which was not tested."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-81",
+   "page": 1,
+   "quote": "FDG-PET and CS were obtained at MCI diagnosis to predict AD conversion within three years of MCI diagnosis using convolutional neural networks."
+  },
+  {
+   "paper": "P-81",
+   "page": 4,
+   "quote": "PET ONLY 0.5651 \u00b1 0.0490 0.6921 \u00b1 0.0384 0.4380 \u00b1 0.0651 0.6102 \u00b1 0.0231"
+  },
+  {
+   "paper": "P-81",
+   "page": 4,
+   "quote": "It is not surprising that the neurocognitive data together predicted better than FDG-PET per se because some of the neurocognitive data were used in the diagnosis of AD."
+  },
+  {
+   "paper": "P-88",
+   "page": 1,
+   "quote": "We analyzed the data of 341 MCI patients from the Alzheimer's Disease Neuroimaging Initiative, of whom 102 progressed to AD during an 8-year follow-up."
+  },
+  {
+   "paper": "P-88",
+   "page": 8,
+   "quote": "Psychoradiomics signature 0.747 0.831 0.581 0.719 0.613 0.778 ADAS score 0.755 0.606 0.761 0.742 0.645 0.75"
+  },
+  {
+   "paper": "P-88",
+   "page": 5,
+   "quote": "We also found that the rad-score was superior to clinical scale scores (Fig 5C, 5D)"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'FDG-PET hypometabolism alone achieves AUC 0.79': P-88's PET-only signature has AUC 0.747 (train) / 0.719 (test), and it is a white-matter radiomics texture signature, not hypometabolism; mean FDG SUV was not an independent predictor (multivariate NA).",
+  "claim_a 'AUC 0.77' for cognitive scores: P-81 reports 0.7496 for cognitive scores alone and 0.7849 for PET+Age+CS.",
+  "resolution_note 'overlap in cohort (N=89) but different evaluation periods': neither paper reports an N of 89 or a shared subset; the difference is the prediction horizon (3 years vs up to 8 years).",
+  "The listed 'bridging evidence' papers are unrelated headline scores and do not explain the pair."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "A same-horizon comparison in which P-88's PET signature significantly outperformed the same cognitive composite P-81 used (or vice versa by a margin excluding the other's estimate) would make this a comparable ordering claim; with the printed numbers it would then still lean to false_positive, since both studies show cognition at or above PET alone."
+}

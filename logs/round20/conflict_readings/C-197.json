@@ -1,0 +1,78 @@
+{
+ "id": "C-197",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-72",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "An end-to-end multimodal 3D CNN framework with multi-level features for the prediction of mild cognitive impairment (Zhang et al.; Knowledge-Based Systems 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-182",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Differential Role for Hippocampal Subfields in Alzheimer's Disease Progression Revealed with Deep Learning (Kwak et al.; Cerebral Cortex 2022)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-72": "850 ADNI baseline subjects (215 AD, 246 NC, 151 pMCI converting within 3 years, 238 sMCI), sMRI gray matter + FDG-PET twin 3D ResNet, subject-level 70/15/15 split averaged over three test subsets: AD vs NC accuracy 94.61% (AUC 0.947); sMCI vs pMCI accuracy 77.19% (AUC 0.755) (Table 5). Single-modality sMRI sMCI vs pMCI 73.68%.",
+  "P-182": "Hippocampal-region T1 MRI DenseNet trained on AD vs CN (ADNI-2/GO, 349 subjects), validated on AD vs CN in ADNI-1 (accuracy 86.20%, AUC 0.937), then applied to 381 ADNI-2/GO MCI subjects (118 pMCI, 263 sMCI; follow-up at least 18 months, reverters excluded): pMCI vs sMCI accuracy 75.85%, AUC 0.777, sensitivity 0.66, specificity 0.80."
+ },
+ "quantity_a": "As recorded: P-72's AD vs NC diagnostic accuracy (94.61%), a dementia-vs-healthy classification, not an MCI-conversion result.",
+ "quantity_b": "Accuracy of classifying progressive vs stable MCI (conversion to AD over follow-up of at least 18 months) from hippocampal structural MRI in ADNI-2/GO.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The record sets an AD-vs-NC accuracy against a pMCI-vs-sMCI accuracy. On the task-matched quantity P-72 does report, sMCI vs pMCI 77.19% (AUC 0.755), the two studies agree closely with P-182's 75.85% (AUC 0.777), and P-182 itself notes that its figure is on par with earlier sMCI/pMCI results of 72-76%. On AD vs CN, P-182's external-cohort 86.20% vs P-72's internal 94.61% is again two methods on different inputs and validation, with no refuted ordering.",
+ "gates": {
+  "task": "mismatch as recorded: P-72's 94.61% is AD vs NC diagnosis, P-182's 75.85% is MCI-conversion prognosis (T2). On the task-matched figures (77.19% vs 75.85%) the task gate matches.",
+  "dataset_family": "match: ADNI for both; overlapping subjects likely.",
+  "validation_tier": "match: internal (P-72 subject-level split; P-182 AD/CN-trained model applied to held-out MCI subjects, plus ADNI-1 AD/CN validation).",
+  "modality_family": "partial: P-72 fuses sMRI gray matter with FDG-PET; P-182 uses hippocampal-region T1 MRI only. The record's 'structural_mri' fits P-182 only."
+ },
+ "endpoint_and_metric": "incompatible as recorded (AD vs NC vs pMCI vs sMCI). On the task-matched pair the metric is the same (accuracy) but horizons differ (3 years vs at least 18 months) and inputs differ (MRI+PET vs hippocampal MRI); the values nevertheless agree.",
+ "performance_validity": "flag does not apply: 94.61% is below 0.97 on an 850-subject cohort, and the record's comparison is not a like-for-like performance comparison.",
+ "independence": "Distinct author groups; both ADNI with likely subject overlap.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record misreads P-72: its 94.61% is AD vs NC accuracy, not a result on the T2 (MCI-conversion) task it is filed under, so there is no disagreement on P-182's quantity.",
+  "On the quantity both papers actually report, sMCI vs pMCI, the results agree (77.19% vs 75.85%; AUC 0.755 vs 0.777).",
+  "The record's 'partially resolved by bridging evidence' status rests on third papers that merely report other accuracies; no bridging is needed because there is no disagreement."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-72",
+   "page": 1,
+   "quote": "Especially in AD diagnosis achieved an average accuracy of 94.61 %, which provides a more feasible technology for diagnostic assessment of patients with AD."
+  },
+  {
+   "paper": "P-72",
+   "page": 8,
+   "quote": "our proposed method achieves 94.61 % and 77.19 % accuracy in the classification of AD vs. NC and sMCI vs. pMCI, respectively"
+  },
+  {
+   "paper": "P-72",
+   "page": 3,
+   "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI."
+  },
+  {
+   "paper": "P-182",
+   "page": 6,
+   "quote": "In this task, the model achieved an accuracy of 75.85% and an AUC of 0.777 (Fig. 2B), with a sensitivity of 0.66 and a specificity of 0.8 (Fig. 2C)."
+  },
+  {
+   "paper": "P-182",
+   "page": 8,
+   "quote": "This classification performance is on par with earlier deep learning models developed to classify pMCI versus sMCI based on whole hippocampus structural features or multimodel features (e.g., Li et al. 2014; Suk et al. 2014), which ranged from 72% to 76%."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-72: 94.61% AD on T2' files an AD-vs-NC diagnostic accuracy under the MCI-conversion task; P-72's T2 result is 77.19%.",
+  "gap_magnitude 0.188 is computed across two different classification tasks.",
+  "modality_family 'structural_mri' omits P-72's FDG-PET input.",
+  "resolution_status 'partially_resolved_candidate' is unsupported: the listed third papers show no condition separating the two results, and on the matched task there is nothing to separate.",
+  "The pack registry codes P-72 Best_Metric 'Acc 94.61' under Task_Type T2, repeating the same task misattribution."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing within these papers: the only task-matched figures agree. A disagreement would require P-72's sMCI vs pMCI estimate to differ from P-182's beyond their reported variability, which it does not."
+}

@@ -1,0 +1,77 @@
+{
+ "id": "C-196",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-71",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Longitudinal study of early mild cognitive impairment via similarity-constrained group learning and self-attention based SBi-LSTM (Lei et al.; Knowledge-Based Systems 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-79",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Regularized spatio-temporal weighted graph convolution network based on multimodal fusion for mild cognitive impairment detection (Wu, Dong, Wu; Expert Syst Appl 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-71": "ADNI-2 (33 NC, 39 EMCI, 30 LMCI) and ADNI-3 (16 NC, 25 EMCI, 10 LMCI), each subject with baseline and year-1 rs-fMRI; similarity-constrained group sparse networks + self-attention SBi-LSTM, LOOCV. LMCI vs NC on the pooled ADNI-2&3 set, fusion of the two time points: ACC 91.42%, AUC 96.43% (Table 4); 92.06% on ADNI-2 alone (Table 2).",
+  "P-79": "ADNI2 (161 NC, 147 EMCI, 128 LMCI), single time point rs-fMRI + T1 gray-matter volume + age/sex population graph, stratified 5-fold CV: NC vs LMCI 97.44% (AUC 99.75%); other tasks 95.39-95.56%, ADNI3 NC vs MCI 87.08%. The '+8.5%' in the abstract is 'an average improvement of 8.5% in accuracy over baseline models'."
+ },
+ "quantity_a": "LOOCV accuracy of LMCI vs NC from two-time-point (baseline + year 1) rs-fMRI connectivity in 89 pooled ADNI-2/3 subjects.",
+ "quantity_b": "As recorded: P-79's average accuracy improvement over its own baselines (a margin in percentage points), not an accuracy.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The record's gap of 0.829 is 0.9142 minus 0.085, an accuracy set against an improvement margin. On the task-matched figure P-79 does report (NC vs LMCI 97.44%), the two are different methods with different inputs (longitudinal rs-fMRI only vs cross-sectional rs-fMRI + T1 + phenotype) and different validation, and neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: LMCI vs NC within MCI-spectrum detection (T1).",
+  "dataset_family": "match: ADNI (P-71 ADNI-2/3 with year-1 follow-up; P-79 ADNI2 cross-sectional).",
+  "validation_tier": "match in tier (internal only): LOOCV vs stratified 5-fold.",
+  "modality_family": "partial: both rs-fMRI; P-79 adds T1 structural MRI and a demographic population graph; P-71 adds a second time point."
+ },
+ "endpoint_and_metric": "incompatible as recorded (accuracy vs relative improvement). Even substituting P-79's 97.44%, the input representation differs (two-time-point functional networks vs single-time-point structure-function fusion).",
+ "performance_validity": "Not a valid performance comparison as recorded. P-79's NC vs LMCI 97.44% is at or above 0.97 on internal 5-fold CV with no external MCI cohort, so the exclusion would apply if that figure were used.",
+ "independence": "Distinct author groups; both ADNI, possible subject overlap not stated. (P-71 shares senior authors with P-14, which is not part of this pair.)",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim_b misreads P-79: '+8.5% vs baseline' is an average improvement over its own baselines, not a classification accuracy, so there is no second result on P-71's quantity.",
+  "On the task-matched accuracy P-79 does report (NC vs LMCI 97.44%), the two are different methods on different inputs with no refuted ordering.",
+  "That 97.44% would in any case fall under the performance-validity exclusion (at or above 0.97, internal CV only)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-79",
+   "page": 1,
+   "quote": "achieving an average improvement of 8.5% in accuracy over baseline models."
+  },
+  {
+   "paper": "P-79",
+   "page": 9,
+   "quote": "Taking the representative NC vs. LMCI task as an example, the multimodal model achieved an ACC of 97.44%, an AUC of 99.75%, and an F1-score of 97.22%"
+  },
+  {
+   "paper": "P-71",
+   "page": 3,
+   "quote": "All subjects have two time-point (baseline and year1) rs-fMRI data with different scan parameters."
+  },
+  {
+   "paper": "P-71",
+   "page": 5,
+   "quote": "Due to the small dataset, the leave one out cross validation (LOOCV) is used in the experiments."
+  },
+  {
+   "paper": "P-71",
+   "page": 7,
+   "quote": "which are from 87.50% to 86.11%, 91.30% to 89.42% and 92.06% to 91.42% in the three detection tasks of EMCI vs. NC, EMCI vs. LMCI and LMCI vs. NC, respectively."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-79: +8.5% vs baseline' treats a relative improvement as a performance result; gap_magnitude 0.829 is computed from unlike quantities.",
+  "modality_family 'functional_mri' omits P-79's T1 structural input.",
+  "The pack registry lists P-79 Best_Metric 'not reported' although per-task accuracies are printed; P-71's registry Best_Metric 'AUC 0.9261' is the EMCI vs NC fusion AUC on ADNI-2 (Table 2, 92.61), a different task from the LMCI vs NC accuracy the record's claim_a uses.",
+  "P-71's 91.42% is the pooled ADNI-2&3 figure (40 LMCI + 49 NC per Table 6), not a single-cohort result; the record does not say so."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing about the record as written; a new candidate on task-matched accuracies would need matched inputs, a refuted ordering, and an external cohort for P-79."
+}

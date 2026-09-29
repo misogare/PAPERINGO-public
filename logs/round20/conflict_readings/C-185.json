@@ -1,0 +1,74 @@
+{
+ "id": "C-185",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-343",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Mild Cognitive Impairment in Type 2 Diabetes: A Machine Learning Approach (Li et al., Journal of Diabetes Research 2025, Article ID 7304414)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-20",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction and validation of mild cognitive impairment in occupational dust exposure population based on machine learning (Cai et al., Ecotoxicology and Environmental Safety 2024;285:117111) - the same paper as P-19; the P-20 and P-19 extracts are byte-identical",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-343": "SVC on seven routine variables for clinically diagnosed MCI (AAN 2018 criteria, Beijing MoCA < 26) in 2074 T2DM inpatients: internal cross-validated AUC 0.74 +/- 0.04 (extract prints '0 74 \u00b1 0 04', decimal points dropped; decoded from the paper's tables); external DECODE-cohort AUC 0.80.",
+  "P-20": "Same paper as P-19: XGBoost for MoCA-screened MCI (MoCA <= 26) in 1938 dust-exposed coal miners; training AUC 0.959, internal validation AUC 0.795, additional 351-miner test set AUC 0.913."
+ },
+ "quantity_a": "ROC-AUC of a routine-clinical-variable SVC for clinically diagnosed MCI vs normal cognition in hospitalised Chinese T2DM patients (quoted 0.80 = external DECODE figure; internal 0.74).",
+ "quantity_b": "ROC-AUC of an XGBoost model on occupational, psychological and demographic variables for MoCA-screened MCI in working-age dust-exposed coal miners (quoted 0.913 = additional test set; internal validation 0.795).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-20's internal validation AUC (0.795) equals P-343's external AUC (0.80) to two decimals; the recorded gap arises only from pairing unlike splits, and neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match in the broad sense (cross-sectional MCI detection, T1).",
+  "dataset_family": "mismatch: Nanjing T2DM inpatient cohort vs a Huainan coal-mine occupational cohort; the record says dataset_equal 'No'; no waiver on record.",
+  "validation_tier": "match at the tier level (each reports a held-out cohort beyond the internal split); the registry codes P-20 as V4 and P-19 as V3 for the same paper.",
+  "modality_family": "match in family (clinical/tabular); predictor sets disjoint apart from age and education."
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different populations behind the MCI label, different MCI definitions (clinical AAN criteria vs MoCA screen) and different predictor sets.",
+ "performance_validity": "flag does not apply: compared figures 0.80 and 0.913, both below 0.97.",
+ "independence": "P-20 is a duplicate of P-19 (identical extract; summaries.md Paper 19 = '1-s2.0-S0147651324011874-main (1).pdf', Paper 20 = '1-s2.0-S0147651324011874-main.pdf'). This record is the same comparison as C-184 and should be counted once.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-20 is the same paper as P-19, so this record repeats C-184 and carries the same verdict.",
+  "The populations differ (older T2DM inpatients vs working-age coal miners), and so do the MCI definitions (AAN 2018 clinical criteria vs MoCA <= 26 screen).",
+  "The predictor sets differ apart from age and education; the dataset-family gate fails with no waiver on record.",
+  "Like-for-like splits agree: P-20's internal validation AUC 0.795 against P-343's external AUC 0.80."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-343",
+   "page": 1,
+   "quote": "External validation with the DECODE cohort yielded an AUC of 0.80, an F1 score of 0.80, and a recall of 0.89."
+  },
+  {
+   "paper": "P-343",
+   "page": 2,
+   "quote": "This cross-sectional study prospectively enrolled adult inpatients diagnosed with T2DM from the Department of Endocrinology at Nanjing Drum Tower Hospital over the period from January 2016 to December 2023."
+  },
+  {
+   "paper": "P-20",
+   "page": 1,
+   "quote": "XGBoost (training set: AUC=0.959, validation set: AUC=0.795) and Logistic Regression (training set: AUC=0.818, validation set: AUC=0.816) models exhibited superior predictive performance. Results from the test set showed that the AUC of the XGBoost model (AUC=0.913) outperformed the Logistic Regression model (AUC=0.778)."
+  },
+  {
+   "paper": "P-20",
+   "page": 2,
+   "quote": "A total score of \u226426 is considered to indicate that there may be mild cognitive impairment (MCI), and a total score of > 26 is defined as a normal population."
+  }
+ ],
+ "record_defects": [
+  "The record treats P-20 as a distinct study from P-19 (C-184); they are the same paper, so the comparison is double-counted.",
+  "resolution 'Rejected: Task, dataset, or modality mismatch' contradicts resolution_note 'Confirmed genuine'.",
+  "resolution_status partially_resolved_candidate is not supported by any named third study showing a separating condition.",
+  "claim_a (0.80) is P-343's external figure, internal 0.74 omitted; claim_b (0.913) is P-20's additional test-set figure, internal validation 0.795 omitted.",
+  "Registry codes the same paper differently: P-19 Task T2 / Validation V3, P-20 Task T1 / Validation V4."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing short of both models being evaluated on one population with one MCI definition; the duplicate status of P-20 does not change with further reading."
+}

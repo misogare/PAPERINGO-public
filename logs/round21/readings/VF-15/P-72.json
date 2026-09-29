@@ -1,0 +1,49 @@
+{
+ "paper": "P-72",
+ "role": "verifier, round 2",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "ADNI (baseline sMRI + FDG-PET; 850 subjects including 151 pMCI / 238 sMCI)",
+ "method_family": "Twin-branch (non-shared) 3D ResNet18 with attention and multi-level features, spatial-pyramid-pooled feature combination plus weighted decision fusion of sMRI GM and FDG-PET (multimodal imaging fusion)",
+ "same_sample_or_cohort_as": [
+  "P-3, P-104, P-81 (ADNI family; baseline MRI/FDG-PET MCI participant overlap likely, not verified)",
+  "Round-1 ADNI candidates P-190, P-211, P-1128, P-88, P-512, P-225, P-195, P-186, P-1 (ADNI family)"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "In ADNI sMCI vs pMCI, averaged over three test sets of about 57 MCI, the fused sMRI+PET network beats the same MAResNet18 backbone on each modality alone. Accuracy: sMRI 73.68, PET 75.44, fused 76.61-77.19. AUC: 0.721, 0.724, fused 0.736-0.755. The gain over PET-only is 1.75 accuracy points, one subject per test set, with no significance test. Also, the PET row's own sensitivity and specificity imply the same 77.19% accuracy as the fused model. The added input is a second, co-equal imaging modality, not auxiliary data.",
+ "why": "IDENTITY. PDF p.1 is Zhang Y, He X, Liu Y, Ong CZL, Liu Y and Teng Q (2023), Knowledge-Based Systems 281:111064, 'An end-to-end multimodal 3D CNN framework with multi-level features for the prediction of mild cognitive impairment' (Sichuan University). Block P-72 is headed by this PDF's filename and describes the same method and results (sMRI + FDG-PET 3D ResNet, '+3.51%' in MCI conversion). I read the whole extract; the extractor omitted the reference list.\n\nDESIGN. ADNI baseline data: 850 subjects (215 AD, 246 NC, 151 pMCI, 238 sMCI). pMCI means conversion to AD within 3 years. The split is subject-level 70/15/15, and results are averaged over three subsets with different test sets. The sMCI-vs-pMCI networks are initialized from the AD-vs-NC networks. 'the training hyperparameters are same in each model'. The single-modality arms use the same MAResNet18 as each branch of the fused twin network.\n\nHEAD-TO-HEAD (sMCI vs pMCI, Tables 2, 3 and 5):\n- sMRI MAResNet18: ACC 73.68, AUC 0.721.\n- PET MAResNet18: ACC 75.44, AUC 0.724.\n- Fused SPFC: 76.61, AUC 0.75.\n- Fused SPDFC(0.5): 76.61, AUC 0.736.\n- Fused SPDFC(0.6): 77.19 (SD 1.01), AUC 0.755.\nAll three fused variants beat both single-modality arms on ACC and AUC. So the choice of c = 0.6, made on test-set SD ('the model is more stable when the weight is 0.6'), does not create the gain. The margin over PET-only is 1.75 points, which is 1/57, one subject per test set, and +0.03 AUC. The text's 'significant improvements' is not backed by any test, and the single-modality arms have no CIs.\n\nWHAT IS ADDED. The added input is a full FDG-PET CNN branch used at inference, a second co-equal imaging modality. It is not metadata, source-task attention, or training-time side-information. That makes this multimodal imaging fusion, the claim of VF-02 ('Multimodal fusion outperforms single-modality models ...'), not VF-15's auxiliary-data claim. In P-104, PET is side-information used for feature selection while MRI stays the predictor; here PET is itself a predictor. The round-1 skeptic did not count a second primary brain modality (MEG in P-488) as auxiliary data. Applied consistently, PET here is not auxiliary either.\n\nNARROWED: PARTLY. The comparison has the right shape: the same backbone on one imaging modality, alone vs with an added input, and a small untested pMCI gain. But the added input is not auxiliary information. If the operator reads 'PET side-information' in the narrowed wording to include a full PET input branch, the verdict would be yes, on a one-subject margin that caveat (1) puts in doubt.\n\nSTATED: PARTLY. Fusion beats both unimodal baselines head-to-head on ACC and AUC. But the fusion is not auxiliary-data-aware, the study uses no non-imaging data, and the margins are within about one test subject.\n\nCAVEATS.\n(1) The PET MAResNet18 row gives SEN 63.64 and SPE 85.71. Six of the nine sMCI-vs-pMCI rows in Tables 2, 3 and 5 reconcile exactly with test sets of 22 pMCI and 35 sMCI. On that split the PET row implies (14 + 30)/57 = 77.19% accuracy, the same as the fused SPDFC(0.6), not the 75.44% printed. PET alone may therefore tie fusion on accuracy. This is my reconstruction; the paper does not state per-class test counts.\n(2) PET-only specificity (85.71) exceeds SPFC (81.90) and SPDFC(0.6) (82.86). SPDFC(0.5) sensitivity (60.61) is below both single arms (65.91, 63.64).\n(3) The five-fold CV check (ACC 77.19, AUC 0.762) was run for the fused model only.\n(4) Test sets are small and there is no external validation. The authors say baseline imaging makes MCI prediction 'very difficult ... without adding more a priori knowledge'.\n\nINDEPENDENCE. ADNI family, with likely participant overlap with P-3, P-104 and P-81. The authors (Sichuan University, West China Hospital, NTU Singapore, Third People's Hospital of Chengdu) are disjoint from the supporters. P-3's 'He' is Zhen He of La Trobe University, not Xiaohai He. P-104's Chengdu authors are at UESTC and are different people. P-81 is Cao/Ma/Nayak/Duong. No author overlap with the round-1 candidates whose front matter I checked. The method (a deep 3D CNN) is in the same broad family as P-3 and P-81. The paper is not a preprint.\n\nQuotes are rejoined across line breaks, with typographic characters normalized to ASCII. Table cells are joined in reading order.",
+ "quotes": [
+  {
+   "page": 3,
+   "quote": "In total, our dataset has 850 subjects including 215 AD, 246 NC (Normal Contral) and 389 MCI. We further divided the acquired MCI category into 151 pMCI (progressive MCI) and 238 sMCI (stable MCI), MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI. ... We divided the dataset by subject-level split way according to the number of subjects in the ratio of 70 %, 15 % and 15 %"
+  },
+  {
+   "page": 6,
+   "quote": "Table 2 The classification results of ResNet architecture based on single-modality sMRI image. Methods AD vs. NC sMCI vs. pMCI ACC SEN SPE AUC ACC SEN SPE AUC ... MAResNet18 88.24 85.42 90.74 0.881 73.68 65.91 79.05 0.721"
+  },
+  {
+   "page": 7,
+   "quote": "Table 3 The classification results of ResNet architecture based on single-modality PET image. ... MAResNet18 90.69 87.5 93.52 0.905 75.44 63.64 85.71 0.724"
+  },
+  {
+   "page": 7,
+   "quote": "Table 5 The classification results of our multimodal methods based on sMRI and PET images. Methods AD vs. NC sMCI vs. pMCI ACC SEN SPE AUC ACC SEN SPE AUC SPFC 93.38(0.85) 89.06 97.22 0.931 76.61(1.76) 68.18 81.90 0.75 SPDFC (0.5) 94.12(2.08) 92.19 95.83 0.933 76.61(3.65) 60.61 86.67 0.736 SPDFC (0.6) 94.61(0.85) 92.19 97.22 0.947 77.19(1.01) 68.18 82.86 0.755"
+  },
+  {
+   "page": 7,
+   "quote": "The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 % respectively, and there were significant improvements compared to previous single-modality methods. ... We also compared the weight parameters of the multimodal method, in the formula (2), c was assigned weighting values of 0.5 and 0.6, respectively. From the standard deviation, it can be seen that the model is more stable when the weight is 0.6."
+  },
+  {
+   "page": 6,
+   "quote": "We followed the same data split strategy to construct three different subsets with different test sets, the average of three classification accuracies is used as the final result. ... To compare all methods in this work, the training hyperparameters are same in each model. ... The convolution kernel is initialized randomly in AD vs. NC task and then we use the network parameters learned to initialize the training network for sMCI vs. pMCI task."
+  },
+  {
+   "page": 10,
+   "quote": "the present work used brain imaging data at the baseline time, and converters need 36 months to determine whether they are converted to AD patients. ... it is very difficult to improve the prediction performance for the baseline imaging data without adding more a priori knowledge."
+  }
+ ]
+}

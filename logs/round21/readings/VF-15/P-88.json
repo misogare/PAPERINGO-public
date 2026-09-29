@@ -1,0 +1,48 @@
+{
+ "paper": "P-88",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "yes",
+ "supports_narrowed": "yes",
+ "dataset_family": "ADNI (ADNI-2 and ADNI-GO; 341 MCI, 102 progressed over up to 8 years; 238 training / 103 test split by ADNI entry number)",
+ "method_family": "FDG-PET white-matter radiomics signature (Pyradiomics, mRMR + GBDT, logistic rad-score) combined with CDR and ADAS scores in an SVM (classifier chosen from SVM, naive Bayes, random forest, kNN)",
+ "same_sample_or_cohort_as": [
+  "P-3, P-104, P-81 (all ADNI: same dataset family)",
+  "P-190 (candidate; ADNI FDG-PET MCI including ADNI-GO/2; participant overlap likely)",
+  "P-1128 (candidate; ADNI-GO/2 MCI; participant overlap possible)",
+  "P-186 (candidate; ADNI-1 only, overlap unlikely)"
+ ],
+ "shared_authors_with": [
+  "No author shared with the current supporters P-3, P-104 or P-81, or with the other candidates",
+  "Outside this record: the senior author Zhenyu Shu is reported by the finder as first author of P-512 (not checked here; not a supporter or candidate for VF-15)"
+ ],
+ "what_it_shows": "Within one study, on the held-out test group (103), the integrated SVM (PET white-matter radiomics signature + CDR + ADAS) reached AUC 0.865, against 0.719 for the radiomics signature alone, 0.742 for ADAS alone and 0.737 for CDR alone. DeLong tests show the integrated AUC differing from every single predictor at p < 0.05, in both training and test groups. Test accuracy was 0.819 (integrated) vs 0.741 (signature), 0.669 (CDR) and 0.551 (ADAS).",
+ "why": "STATED: yes. The study fuses a PET imaging signature with auxiliary clinical-scale data and tests the fused model head-to-head against each unimodal predictor on the same test group, with a significance test (DeLong p < 0.05). The fused model is best on AUC and accuracy. NARROWED: yes. Adding cognitive and clinical scores to the imaging signature improved on the signature alone (test AUC 0.719 to 0.865), and here the gain is significance-tested, unlike two of the three current supporters. CAVEATS: (1) The non-imaging comparators are single scores (CDR alone, ADAS alone). No multivariable clinical-only (CDR + ADAS) model was fitted, so beating the best possible non-imaging baseline is not shown. (2) DeLong on nested models is known to be problematic, and the paper itself cites Demler et al. on this misuse (ref 18). (3) Circularity: CDR and ADAS partly define progression to AD. (4) The split by ADNI entry number may introduce time-based bias (p.10), and there is no external validation (p.9). (5) The signature-alone AUC comes from the logistic rad-score and the integrated model from an SVM, so the classifiers differ. (6) Minor: ADAS test AUC is 0.743 in the abstract and 0.742 in Table 3. INDEPENDENCE: ADNI, no new dataset family. The method family (PET radiomics plus clinical scores, SVM) differs from P-3, P-104 and P-81 but is close to P-190's (PET-derived features plus clinical scores, SVM). Already a VF-02 supporter; that does not bear on VF-15 independence.",
+ "quotes": [
+  {
+   "page": 1,
+   "quote": "The areas under the curve (AUCs) of the CDR, ADAS and PS in the training and test groups were 0.683, 0.755, 0.747 and 0.737, 0.743, 0.719 respectively, and were combined using a support vector machine to construct an integrated model. The AUC of the integrated model in the training and test groups was 0.868 and 0.865, respectively (sensitivity, 0.873 and 0.839, respectively; specificity, 0.784 and 0.806, respectively). The AUCs of the integrated model significantly differed from those of other predictors in both groups (p < 0.05, Delong test)."
+  },
+  {
+   "page": 8,
+   "quote": "TABLE 3. Diagnostic Performance of Each Model in the Training and Test Groups ... Integrated model 0.868 0.873 0.784 0.865 0.839 0.806 Psychoradiomics signature 0.747 0.831 0.581 0.719 0.613 0.778 ADAS score 0.755 0.606 0.761 0.742 0.645 0.75 CDR score 0.683 0.732 0.539 0.737 0.807 0.569 [columns: training AUC, sensitivity, specificity; test AUC, sensitivity, specificity]"
+  },
+  {
+   "page": 4,
+   "quote": "The accuracy of the Integrated model, psychoradiomics signature, CDR score and ADAS score in the training and test groups were 0.868 and 0.819, 0.755 and 0.741, 0.626 and 0.669, 0.596 and 0.551, respectively. In addition, the AUC of the integrated model significantly differed from those of other predictors in the training and test groups (p < 0.05, Delong test)."
+  },
+  {
+   "page": 4,
+   "quote": "The CDR score, ADAS score, and psychoradiomics signature were identified as independent predictors of MCI progression to AD on multivariate logistic regression analysis, and used to build an integrated model (Table 2)."
+  },
+  {
+   "page": 9,
+   "quote": "Second, this study is a retrospective analysis of publicly available datasets, and requires validation using external datasets."
+  },
+  {
+   "page": 10,
+   "quote": "the study population was divided into training and test groups according to the entry numbers of ANDI database, and the entry numbers were arranged according to the time when patients were recruited into the ANDI database. However, that absolutely can introduce a time-based bias as equipment and imaging processing methods have changed with time."
+  }
+ ]
+}

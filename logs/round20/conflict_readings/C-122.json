@@ -1,0 +1,79 @@
+{
+ "id": "C-122",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-185",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Biomarker Extraction Based on Subspace Learning for the Prediction of Mild Cognitive Impairment Conversion (Li et al., BioMed Res. Int. 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-152",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Features of the superficial white matter as biomarkers for the detection of Alzheimer's disease and mild cognitive impairment: A diffusion tensor imaging study (Bigham et al., Heliyon 2022)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-185": "pMCI vs sMCI (3-year window) from baseline 1.5T cortical thickness and volume projected through a subspace learned on AD/NC; 221 ADNI MCI (126 pMCI, 95 sMCI); 20 x 10-fold CV; best Acc 69.37% (linear SVM), AUC 0.6951.",
+  "P-152": "Cross-sectional diagnostic classification from DTI features of the superficial white matter, ADNI2, 72 subjects (24 HC, 24 MCI, 24 AD), 5-fold CV. The 95.8% is AD vs HC (AUC 0.99); MCI vs HC 83.3% (AUC 0.88); AD vs MCI 83.3% (AUC 0.93). There is no MCI-conversion analysis."
+ },
+ "quantity_a": "Accuracy for MCI-to-AD conversion within 3 years (pMCI vs sMCI) from baseline structural MRI morphometry.",
+ "quantity_b": "Accuracy for cross-sectional AD vs healthy-control diagnosis from diffusion MRI features.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable: P-152 reports no conversion result, so there is nothing to set against P-185's 69.37%.",
+ "gates": {
+  "task": "mismatch: T2 conversion (P-185) vs AD-vs-HC diagnosis (P-152; registry Task_Type T3). The record's 'Yes' is wrong.",
+  "dataset_family": "match: ADNI (ADNI-1 1.5T vs ADNI2).",
+  "validation_tier": "match: both internal cross-validation.",
+  "modality_family": "mismatch: T1 cortical thickness/volume vs diffusion tensor imaging of superficial white matter."
+ },
+ "endpoint_and_metric": "incompatible: different comparison (pMCI vs sMCI vs AD vs HC) and different modality; only the metric name (accuracy) is shared.",
+ "performance_validity": "flag applies to P-152 had this been a performance comparison: its AD-vs-HC result is AUC 0.99 (accuracy 95.8%) on 48 subjects with internal 5-fold CV and no external cohort.",
+ "independence": "Distinct author groups and ADNI phases; no shared cohort evident.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim 'P-152: Acc 95.8 on T2' misreads P-152: the 95.8% separates AD from healthy controls, and the paper reports no conversion analysis.",
+  "With that misreading removed there is no disagreement: P-185 reports conversion prediction and P-152 reports cross-sectional diagnosis (task and modality gates both fail).",
+  "P-152's figure would in any case fall under the performance-validity exclusion (AUC 0.99, n=48, internal CV only)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-185",
+   "page": 6,
+   "quote": "The pro-posed biomarker achieved highest accuracy of 69.37% when using SVM classi\ufb01er with linear kernel."
+  },
+  {
+   "paper": "P-185",
+   "page": 2,
+   "quote": "Moreover, the 221 MCI subjects contain 126 pMCI and 95 sMCI subjects."
+  },
+  {
+   "paper": "P-152",
+   "page": 1,
+   "quote": "The linear kernel of SVM was the best classi\ufb01er, with an accuracy of 95.8% between the AD and HC groups"
+  },
+  {
+   "paper": "P-152",
+   "page": 1,
+   "quote": "This method employed DTI data from 72 subjects: 24 subjects as HC, 24 subjects with MCI, and 24 subjects with AD."
+  },
+  {
+   "paper": "P-152",
+   "page": 6,
+   "quote": "HC-AD 95.8 95.8 95.8 95.8 .99"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-152: Acc 95.8 on T2' is wrong: 95.8% is AD vs HC; P-152 has no T2 result.",
+  "task_equal 'Yes' is wrong (the registry itself codes P-152 as T3).",
+  "resolution_note's 'Task mismatch from summaries: T2_conversion vs T1_mci_vs_hc' misidentifies the cited figure, which is AD vs HC, not MCI vs HC.",
+  "modality_family_equal 'Yes' is wrong: DTI vs T1 morphometry.",
+  "The registry Sample_N_Approx 528 for P-185 counts AD and NC auxiliary subjects; the conversion analysis uses 221 MCI.",
+  "The registry Modality 'MRI/PET' is wrong for both (T1 sMRI; DTI)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in P-152 as published: it would take a pMCI-vs-sMCI result from P-152, which the paper does not contain."
+}

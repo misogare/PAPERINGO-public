@@ -1,0 +1,84 @@
+{
+ "id": "C-188",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-356",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease Using a Vision Transformer and Hippocampal MRI Slices (Seiger and Fierlinger, Bioengineering 2026;13:163)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-244",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Identifying underlying patterns in Alzheimer's disease trajectory: a deep learning approach and Mendelian randomization analysis (Yi et al., eClinicalMedicine 2023;64:102247)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-356": "Pretrained ViT fine-tuned on three axial T1-weighted MRI slices through the hippocampus, sMCI (stable >= 3 years) vs pMCI (converted to AD within 36 months), 575 ADNI participants, subject-level 70/15/15 split, 10 runs: test AUC 0.74 +/- 0.02 (range 0.72-0.78), accuracy 0.69; a 3D ResNet-18 on the same task 0.75.",
+  "P-244": "Deep survival-clustering model (VAE with transformer encoder, CIF survival module) on baseline clinical features (CDRSB, ADAS, MMSE, APOE4 and others) plus FreeSurfer regional surface area, volume and thickness, 783 ADNI MCI participants (348 converters, rest censored), five-fold cross-validation: time-dependent AUC for MCI->AD 0.914 at 3 years and 0.957 at 5 years; C-index 0.718; AIBL external C-index 0.752."
+ },
+ "quantity_a": "ROC-AUC of an image-only classifier (three hippocampal MRI slices) separating MCI converters within 36 months from MCI participants stable for at least 3 years, in ADNI, with reverters excluded.",
+ "quantity_b": "Time-dependent ROC-AUC at a 5-year horizon from a survival model on clinical scores plus FreeSurfer regional features, for time to AD among all ADNI MCI participants with at least two MRI scans, censored participants included.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not as recorded. Each paper's own like-for-like baseline agrees with the other: P-356 reports that CNN studies with strict validation reach balanced accuracy 0.69-0.74, and P-244's MMSE-only and APOE4-only survival models reach AUC 0.537-0.681. Neither paper evaluates the other's input set, and neither claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: both predict MCI-to-AD progression (T2).",
+  "dataset_family": "match: both ADNI (overlapping participants; non-independence).",
+  "validation_tier": "match: both internal (P-356 subject-level split repeated 10 times; P-244 five-fold CV, plus an AIBL external check reported as C-index, not the compared AUC).",
+  "modality_family": "mismatch: P-356 is structural MRI image slices only; P-244's model combines cognitive/clinical scores and APOE4 with FreeSurfer-derived tabular MRI features. No waiver on record."
+ },
+ "endpoint_and_metric": "incompatible: horizons differ (36 months vs 5 years); the metric differs (binary-classification ROC-AUC on a cleaned sMCI/pMCI dichotomy vs a time-dependent AUC from a survival model including censored participants); the predictor sets differ (image slices vs clinical scores plus FreeSurfer features).",
+ "performance_validity": "flag does not apply to the compared figures: 0.957 is below 0.97 and P-244 has an external AIBL check; P-244's 10-year AUC range reaches 0.979, but that is not the compared figure.",
+ "independence": "Shared cohort: both use ADNI MCI participants (ADNI1/GO/2/3 in both); recorded as non-independence.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The horizons differ: conversion within 36 months in P-356 against a 5-year time-dependent AUC in P-244.",
+  "The metrics differ: a binary ROC-AUC on a cleaned stable/progressive dichotomy against a time-dependent AUC from a survival model that includes censored participants.",
+  "The predictor sets differ: three hippocampal T1 slices alone against clinical cognitive scores and APOE4 combined with FreeSurfer regional features. This is the input-representation difference that decided the C-80 precedent.",
+  "The modality-family gate fails with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-356",
+   "page": 1,
+   "quote": "The cohort comprised 575 individuals (299 stable MCIs; 276 progressive MCIs who converted within 36 months) from whom axial T1-weighted MRI slices covering the hippocampal region were used as model inputs."
+  },
+  {
+   "paper": "P-356",
+   "page": 1,
+   "quote": "Results showed an average area under the receiver operating characteristic curve (AUC-ROC) on the test set of 0.74 \u00b1 0.02 (mean \u00b1 SD)"
+  },
+  {
+   "paper": "P-244",
+   "page": 1,
+   "quote": "AUC (CN\u2192MCI, 3 years 0.802, 5 years 0.876; MCI\u2192AD, 3 years 0.914, 5 years 0.957)."
+  },
+  {
+   "paper": "P-244",
+   "page": 3,
+   "quote": "we concatenated the baseline clinical features and neuroimaging features extracted from the MRI scans, embedded with t through a transformer encoder, to map to z."
+  },
+  {
+   "paper": "P-244",
+   "page": 3,
+   "quote": "For each brain region, we extracted cortical surface area, gray matter volume, and average cortical thickness as neuroimaging features from both hemispheres."
+  },
+  {
+   "paper": "P-244",
+   "page": 12,
+   "quote": "our model achieved consistently impressive performance on predicting the progression time of AD dementia/MCI onset with an AUC of 0.708\u20130.886 and 0.810\u20130.979 on the CN\u2192MCI and MCI\u2192AD cohorts, respectively."
+  }
+ ],
+ "record_defects": [
+  "modality_family 'structural_mri' and modality_family_equal 'Yes' ignore that P-244's model inputs include clinical cognitive scores and APOE4 alongside FreeSurfer features.",
+  "The record does not state that P-244's 0.957 is a 5-year time-dependent AUC and P-356's 0.74 a 36-month binary AUC.",
+  "Registry P-356: Best_Metric 'not reported' (the paper reports AUC 0.74 +/- 0.02) and Modality 'MRI/PET' (no PET used).",
+  "Registry P-244 Best_Metric 'AUC 0.802' is the CN->MCI 3-year figure, not an MCI->AD figure.",
+  "resolution_note is a list of unrelated bridging figures and gives no reason for the false-positive status."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An image-only model and a clinical+FreeSurfer model evaluated at the same horizon on the same ADNI MCI subset with the same metric, with results that cannot both hold; neither paper provides this."
+}

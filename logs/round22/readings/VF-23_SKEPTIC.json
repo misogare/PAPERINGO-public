@@ -1,0 +1,257 @@
+{
+  "vf": "VF-23",
+  "role": "skeptic",
+  "round": 22,
+  "date": "2026-09-29",
+  "status": "candidate / pending_human_review (model reading of the source texts under BRIEF_R22.md and the operator's instruction of 2026-09-29; not a gate decision; no review or acceptance field is written)",
+  "statement_tested": "Operator-supplied revised VF-23 (BRIEF_R22.md): EEG/MEG connectivity, graph/network, and complexity measures show promising potential for discriminating MCI and may reveal disease-related alterations that are not consistently detected by conventional spectral band-power measures. However, the current evidence does not establish that these measures universally outperform spectral band-power; rather, studies suggest that network- and complexity-based features can provide complementary information, with multi-domain combinations of spectral, complexity, and connectivity features often showing the strongest discrimination.",
+  "clauses": {
+    "C1": "Connectivity, graph/network or complexity measures discriminate MCI from controls (group difference or classification) in the study's own data.",
+    "C2": "Within the same study, such a measure separates MCI where spectral band-power does not.",
+    "C3": "No corpus study establishes that these measures outperform spectral band-power (every within-study, same-participant head-to-head of discrimination reported with its direction).",
+    "C4": "Within the same study, a multi-domain combination (spectral plus complexity and/or connectivity) discriminates MCI better than any single domain."
+  },
+  "refuted_semantics": "refuted = true when a reader/verifier 'yes' or 'partly' on C2 or C4, or a reported head-to-head, does not survive the skeptic's reading of the source text (it is downgraded). refuted = false means the reading stands (possibly with added caveats), or that the paper carries no C2/C4 yes/partly and no head-to-head to test. Pages are the '=== page N ===' markers of R21/pdf/<P-id>.txt. Only 'yes' counts toward the three independent studies; 'partly' does not (same convention as the round-22 VF-25 skeptic).",
+  "verdicts": [
+    {
+      "paper": "P-553",
+      "tested": "C2 yes",
+      "refuted": false,
+      "final": "C1 yes; C2 yes; C3 none (group tests only); C4 not_tested",
+      "independent": true,
+      "dataset_family": "Hanyang University Hospital memory clinic, Seoul/Guri, Korea (13 HC / 12 MCI)",
+      "reason": "C2 yes upheld from the PDF. PSD: 'no significant differences were found between the HC and MCI groups in any of the frequency bands and channels after FDR correction' (p.7). Multiscale sample entropy at C4: 'p=0.0019, pFDR = 0.037' (p.8). Theta nodal efficiency: 'Fz (p = 0.004, pFDR = 0.039) and Fp2 (p = 0.002, pFDR = 0.039)' (p.11). Both went through the same correction as PSD: 'For the analyses of PSD, complexity, and nodal efficiency, the FDR approach was applied separately within each frequency band across all nineteen electrodes' (p.7). The refutation tests fail on the core claim: the PSD null and the entropy and nodal-efficiency separations are the paper's own statistics in the same 25 participants. Caveats that narrow what carries C2: (1) wPLI was corrected only across the five bands at each connection, not across the 171 connections ('the FDR approach was applied to the set of p-values from five frequency bands, separately at each connection', p.7), so the wPLI edge results are not like for like with PSD and should not carry C2; (2) the entropy scale (4) was picked because the channel-averaged curve differed there, from scale factors scanned from 0 to 30 without correction across scales (p.7-8); (3) nodal efficiency is reported at the threshold with 'the most significant difference' among thresholds scanned from 10% to 70% (p.11); (4) global efficiency, local efficiency and small-world were excluded from FDR ('excluding network efficiency and small world', p.7) although the Fig. 5 and Fig. 7 captions say FDR-corrected; (5) n = 25 and the authors flag low power (p.13); (6) no classifier, so it is not a discrimination head-to-head for C3."
+    },
+    {
+      "paper": "P-480",
+      "tested": "C2 partly",
+      "refuted": false,
+      "final": "C1 partly; C2 partly (SCD comparator only; reversed against HC); C3 none; C4 not_tested",
+      "independent": true,
+      "dataset_family": "PREVIEW cohort, Careggi University Hospital / IRCCS Don Gnocchi, Florence (19 HC / 57 SCD / 46 MCI)",
+      "reason": "C2 partly upheld, on the SCD comparator only; not raised. Against HC the pattern is reversed: relative delta power in the left central ROI separates MCI from HC ('p = 0.047, Cohen's d = 0.645', p.7), while no connectivity, graph or complexity measure is shown to separate MCI from HC: small-worldness was 'significantly higher compared to MCI but not to HC' for SCD (p.7), and LZ complexity differs only SCD vs MCI ('post-hoc SCD vs MCI: p = 0.026', p.7). Against SCD, band power does not separate MCI (average delta 'SCD vs. MCI: p = 0.163', p.6; the ROI post hoc result is MCI vs HC only, p.7), while LZ complexity, the Hurst exponent and delta small-worldness (p = 0.012) do. Further caveats: LZ complexity and the Hurst exponent are computed on the microstate label sequence, not on the EEG signal (p.6); the Hurst sentence says SCD and MCI are both closer to a random walk than HC, yet prints 'SCD vs MCI: p = 0.002 8, Cohen's d = 0.87' and no HC vs MCI value (p.7), an internal inconsistency; SCD is a self-referred patient group, not a non-impaired comparator. C3: the printed MCI-HC effect sizes are about equal across domains (delta power d = 0.645, microstate C duration d = 0.65, p.7); group tests only, so no discrimination head-to-head."
+    },
+    {
+      "paper": "P-368",
+      "tested": "C2 partly",
+      "refuted": false,
+      "final": "C1 yes; C2 partly (different analysis levels); C3 none; C4 not_tested",
+      "independent": true,
+      "dataset_family": "ALBION, Cognitive Disorders Clinic, Aiginition Hospital, Athens (21 aMCI / 62 CN)",
+      "reason": "C2 partly upheld; not raised. The band-power comparator is one sentence: 'Statistical analysis of the PSD averaged in each band did not indicate any significant difference' (p.6), with no statistic, spatial level or correction, and PSD received no cluster test. Local partial coherence separated aMCI from CN in multiplicity-controlled cluster permutation tests ('p = 0.0290' eyes closed, 32 to 100 Hz; 'p = 0.0272' eyes open, 28 to 100 Hz; p.11). At the matched whole-head level connectivity was null too ('For all metrics and frequency bands the results showed that there is no statistically significant difference between the two groups at a = 0.05', p.9); ordinary coherence failed at every level ('The p-value of this cluster is 0.085', p.11); and the uncorrected pairwise approach was used for connectivity by design ('we initially treat our study as exploratory, keep the uncorrected p-values', p.6). Descriptively MCI had 'somewhat higher power at the higher frequency bands' (p.6), the same direction as the gamma partial-coherence effect. Band power and connectivity were never tested at the same level, so the pattern holds only in part. C3: the preliminary SVM on regional partial coherence (70%, p.14) has no spectral comparator."
+    },
+    {
+      "paper": "P-552",
+      "tested": "C2 partly",
+      "refuted": true,
+      "final": "C1 no (measure outside the named classes; partly at most if counted); C2 no; C3 none; C4 not_tested",
+      "independent": true,
+      "dataset_family": "Tongji Hospital memory clinic, Shanghai (43 HC / 46 MCI / 43 AD)",
+      "reason": "C2 partly refuted, as in round 21. (1) Measure class: phase-amplitude coupling is computed within each electrode ('computing the MI between the low-frequency phase and the high-frequency amplitude for each electrode', p.5), and the authors say 'our study only measured CFC in the same brain areas' (p.15). It is not inter-regional connectivity, a graph metric or a signal-complexity measure as the statement names them. (2) Even if counted, the matched whole-head comparison is null for coupling as well ('there was no discernible difference in the strength of the global-level coupling in the HC and MCI groups', p.7). Power was analysed only whole-head, as a prerequisite check for interpreting CFC (p.5), no HC-MCI power statistic is printed, and the HC-MCI power null rests on a Discussion sentence ('the absence of abnormal power in MCI patients', p.8). The four significant HC-MCI cells (p = 0.022, 0.005, 0.049, 0.029, p.7) come from 8 regions x 10 band pairs, and 'right temporal' is the single electrode T8 (p.5). (3) No discrimination: 'since no classification was performed, we do not know whether the coupling features described here effectively distinguish among different groups' (p.15). If the operator counts PAC in the class, it reaches partly at most, which changes no tally. Proposed for removal from the VF-23 supporter list."
+    },
+    {
+      "paper": "P-1322",
+      "tested": "C2 partly; C3 head-to-head; C4 no",
+      "refuted": true,
+      "final": "C1 partly (uncorrected edge maps; FC classifier at chance); C2 no; C3 head-to-head: spectral beats connectivity for MCI vs HC (untested); C4 no for MCI",
+      "independent": true,
+      "dataset_family": "Shenzhen People's Hospital + BGI multimodal cohort, ChiCTR2300074261 (168 HC / 30 SCD / 51 MCI / 28 AD; EEG in a subset). Shares a grant number, not a site or authors, with P-552.",
+      "reason": "C2 partly refuted. The connectivity separation of MCI from HC consists of edge-wise Wilcoxon tests at uncorrected p < 0.05 ('Significant connections (p < 0.05) from the Wilcoxon rank-sum test are marked by scatter dots', Fig. 6 caption, p.13; no multiplicity correction is described in the EEG methods, p.6) across Desikan-Killiany region pairs plus subcortical structures in seven bands, thousands of tests in which chance alone yields many hits; the authors call MCI the group with 'the fewest changes in FC' (p.10). The study's only discrimination metric reverses the pattern: MCI vs HC AUC 'EEG relative PSD ... 0.76 / EEG FC ... 0.49 / EEG combined ... 0.59' (Table 1, p.14); 'EEG relative PSD alone achieving an AUC of 0.76, although adding FC did not improve performance' (p.12). The source therefore does not show connectivity separating MCI where band power does not. The C3 head-to-head is upheld: spectral 0.76 vs connectivity 0.49 in the same participants and pipeline, no test of the difference, one stratified 80/20 split (p.6), so at most about ten MCI in the test set. For AD vs HC the direction flips ('EEG PSD achieving an AUC of 0.68 and FC 0.77', p.12). C4 'no' upheld for MCI (combined 0.59 < PSD 0.76); the EEG combination beats each EEG domain only for SCD (0.78 vs 0.69 and 0.68) and AD (0.84 vs 0.68 and 0.77) (p.12)."
+    },
+    {
+      "paper": "P-592",
+      "tested": "C2 partly",
+      "refuted": false,
+      "final": "C1 yes; C2 partly (band-matched only); C3 none; C4 not_tested",
+      "independent": true,
+      "dataset_family": "INTERCEPTOR (Italian multicentre, high-risk MCI: 60 sMCI-resilient / 56 cMCI) plus 50 HC recruited outside the project",
+      "reason": "C2 partly upheld, band by band only; not raised. Beta 2: the small-world index is higher in HC than in sMCI-resilient (p = 0.0033) and cMCI (p = 0.0099) (Duncan post hoc, p.8), while relative beta power shows no difference ('No significant differences emerged in the theta, beta, or gamma bands', p.9; the Results sentence 'no significant differences emerged between the two groups', p.5, does not say which groups). Delta: SW separates sMCI-resilient from HC (p = 0.0038, p.8) where relative delta power does not ('no difference was observed between sMCI-resilient and healthy groups', p.5). What stops a yes: band power does separate each MCI group from HC in this sample (cMCI by delta, 'FDR threshold = 0.009'; sMCI-resilient by alpha 1, alpha 2 and the delta/alpha ratio, p.5), so band power does not fail to detect MCI; and the two domains were tested differently (electrode-wise t-tests with FDR for power; a global SW index by mixed ANOVA with Duncan post hoc tests, a liberal procedure, p.4). Both MCI groups are biomarker-selected high-risk MCI. No classifier, so no head-to-head. The existing logs/rob_appraisal/P-592.json appraises a different result (sMCI-resilient vs cMCI, QUIPS)."
+    },
+    {
+      "paper": "P-153",
+      "tested": "C3 head-to-head",
+      "refuted": false,
+      "final": "C1 yes; C2 no; C3 head-to-head: spectral at least as good as complexity (untested); C4 not_tested",
+      "independent": true,
+      "dataset_family": "Noor Hospital, Isfahan rsEEG set (29 MCI / 32 HC); Emotiv set used for spectral features only",
+      "reason": "Head-to-head upheld from Table 5 (p.11), accuracy %: 'Band power of theta and alpha1 82.13 ... 19 Spectral features 83.37 ... Power of 60 frequency bands 93.96 ... Lempel-Ziv 82.75 ... Shannon's entropy 83.21 ... Multi-scale sample entropy 68.89'. Complexity does not outperform spectral: fine-band power leads by about 11 points; against conventional two-band power, LZ and Shannon entropy lead by 0.6 and 1.1 points, less than one subject in a 20-subject test split ('20 subjects (9 MCI and 11 healthy) for test', p.4), so that pairing is a tie. No test of any difference. The comparison leans toward spectral: the number of components was selected 'in accordance with the best accuracy in each of the methods' (p.10), and the time patch and band segmentation were tuned on power features in the same data (Tables 2-3, p.10). C1 yes stands (LZ and Shannon entropy classify held-out MCI vs HC above chance, optimistically). C2 no: every spectral set classifies at least as well."
+    },
+    {
+      "paper": "P-511",
+      "tested": "C4 partly; C3 head-to-head",
+      "refuted": true,
+      "final": "C1 partly (prognostic comparator); C2 no; C3 head-to-head: spectral beats synchronisation (prognostic, in-sample, untested); C4 no",
+      "independent": true,
+      "dataset_family": "Karolinska University Hospital-Huddinge memory clinic, Stockholm (72 MCI with 2-year follow-up: 41 stable / 31 progressive)",
+      "reason": "Head-to-head upheld: 'GFP theta as a single predictor demonstrated the highest classification accuracy (74.6%) compared to CSF neurogranin (70.0%) and GFS beta alone (67.6%)' (PDF p.6 = JAD p.360). The comparator is progressive vs stable MCI; logistic regression adjusted for age, sex and MMSE; accuracy at a 50% threshold on the fitting data, no cross-validation; the difference is not tested. Group tests point the same way: 'There were no statistically significant differences in GFS measures between stable and progressive MCI groups' while GFP delta and theta differed (p.5). C4 partly refuted: every combination in Table 5 (PDF p.7) contains CSF neurogranin ('CSF Ng & GFP theta & GFS beta ... 81.4%'); no spectral-plus-synchronisation EEG model without CSF is reported, so the table cannot show a multi-domain EEG combination beating single domains; the accuracies are apparent (in-sample); and the comparator is prognostic, not MCI vs controls. What it does show, relevant to the complementarity wording: GFS beta stayed a significant predictor alongside CSF neurogranin and GFP theta ('p = 0.019 for GFP theta, p = 0.039 for GFS beta', PDF p.8), and adding it raised apparent accuracy from 74.3% to 81.4%."
+    },
+    {
+      "paper": "P-488",
+      "tested": "C3 head-to-head; C4 no",
+      "refuted": false,
+      "final": "C1 partly (prognostic comparator); C2 no; C3 head-to-head: power-bearing covariance at least as good as coupling measures (prognostic, untested); C4 no",
+      "independent": true,
+      "dataset_family": "BioFIND MEG (MRC CBU Cambridge + CTB Madrid; 64 progressive / 53 stable MCI). P-577 is its registry duplicate stub.",
+      "reason": "Head-to-head upheld with its limits: 'MEG dwPLI was the weakest among the brain models (AUC = 0.67, SD = 0.15). MEG power envelopes showed improvements but higher variance (AUC = 0.71, SD = 0.15). The best marginal performance was observed for MEG covariances (AUC = 0.74, SD = 0.13)' (p.13). Covariance 'includes the power spectrum (diagonal term of covariance)' (p.5), so the best model is power-bearing, not pure spectral; there is no stand-alone pure-power model and no difference test, and the SDs overlap widely. Univariately, power differs at 16 to 40 Hz (p.10) while AEC and dwPLI 'were not statistically significant following permutation F-test [T2] with multiple-comparison correction' (p.12). The authors decline to interpret AEC and dwPLI as functional connectivity (p.6). Comparator: progressive vs stable MCI (p.4). C4 'no' upheld: the only combination is all inputs (MEG, MRI, clinical, site; AUC 0.81), and 'the model did not gain added information from dwPLI and power envelopes' (p.16)."
+    },
+    {
+      "paper": "P-447",
+      "tested": "C4 partly",
+      "refuted": true,
+      "final": "C1 no; C2 no; C3 none; C4 no (partly at most, on a PD population, if the coupling index is read as a combination)",
+      "independent": true,
+      "dataset_family": "University Hospital Basel Parkinson's disease cohort (30 PD-NC / 9 PD-MCI); conference abstract P38, Clin Neurophysiol 132 (2021) e17",
+      "reason": "C4 partly refuted. The separating quantity is a per-subject Pearson correlation between Tsallis entropy and relative band power ('For all bands and conditions, the Pearson correlation between TE and rBP was calculated for each individual', p.1): one derived coupling index compared across groups, not a combination of spectral and complexity features whose discrimination is compared with each domain's. It holds in 2 of 10 band-by-condition cells, with the correction method unnamed ('The corrected p-values in both cases were p<0.05', p.1); no discrimination metric is reported; and the direction statement ('significantly higher correlation') conflicts with the printed medians (PD-MCI -0.33 and -0.50 vs PD-NC 0.11 and 0.09, p.1). The population is PD-MCI (n = 9) against cognitively normal PD. If the operator reads the coupling index as a multi-domain combination, it is at most partly (different population and comparator) and does not count."
+    },
+    {
+      "paper": "P-39",
+      "tested": "no C2/C4 yes or partly and no head-to-head",
+      "refuted": false,
+      "final": "C1 yes by a model reading of Fig. 5 only; C2 no (counter-example); C3 none; C4 not_tested",
+      "independent": "EEG1 and EEG2 arms yes; the MEG arm is P-463's Hokuto/Kumagaya cohort with shared authors",
+      "dataset_family": "MEG Hokuto/Kumagaya (= P-463 family); EEG1 North Portugal + Castile and Leon (51 HC / 51 MCI); EEG2 Hospital Universitario Rio Hortega, Valladolid (45 HC / 69 MCI)",
+      "reason": "Nothing to refute on C2 to C4. C2 no: relative theta power also separates HC from MCI in all three datasets (model reading of Fig. 5), a counter-example to C2. C3 none: the only cross-domain comparison is SHAP relevance inside one fused model, not a discrimination head-to-head. C4 not tested: no single-family model is trained. Its C1 yes rests on the rendered Fig. 5 (p.9), which did not survive text extraction; in the text, the explicit HC-MCI statements concern second-derivative kurtosis ('the only morphology parameter that presented statistically significant differences between HC and MCI in all three databases', p.10) and SHAP relevance of PLI-derived participation for 'identifying HC and MCI' in EEG2 (p.6). Not proposed as a supporter because its connectivity HC-MCI result exists only in that figure reading; the operator may add it as a further C1 study through its EEG1 and EEG2 arms."
+    },
+    {
+      "paper": "P-501",
+      "tested": "no C2/C4 yes or partly and no head-to-head",
+      "refuted": false,
+      "final": "C1 yes (optimistic classifier); C2, C4 not_tested; C3 none",
+      "independent": true,
+      "dataset_family": "Wayne State University / Michigan ADRC, community-dwelling Black Americans, Detroit (84 HC / 53 MCI)",
+      "reason": "Nothing to refute on C2 to C4: only connectivity-dynamics features are computed. C1 yes stands with the verifier's caveat: features were screened by t-test on all 137 participants before cross-validation and the 21 voters were chosen by leave-one-out accuracy, so the 91.97% LOO accuracy is optimistic."
+    },
+    {
+      "paper": "P-463",
+      "tested": "no C2/C4 yes or partly and no head-to-head",
+      "refuted": false,
+      "final": "C1 yes (significance shown only as figure bars); C2, C4 not_tested; C3 none",
+      "independent": true,
+      "dataset_family": "Hokuto Hospital and Kumagaya General Hospital resting MEG, Japan, analysed by the Valladolid group (30 HCtest / 44 MCI)",
+      "reason": "Nothing to refute on C2 to C4: no band-power comparator is computed. C1 yes stands: topological adaptation for meta-band-1 matrices and the SD of the degree of dominance separate HC from MCI (bootstrap, BH-FDR), with no p-values or effect sizes printed; band Lempel-Ziv complexity separates only HC from AD."
+    },
+    {
+      "paper": "P-453",
+      "tested": "synthesis",
+      "refuted": false,
+      "final": "synthesis; not a primary supporter",
+      "independent": "n/a",
+      "dataset_family": "MetaNSUE meta-analysis of 12 resting M/EEG connectivity studies (HC 327 / MCI 379)",
+      "reason": "Synthesis: cannot be a primary supporter under Appendix H.1. Synthesis-level only: a small alpha-coupling decrease in MCI, robust to leave-one-out for temporo-parietal pairs but not fronto-parietal; delta, theta and beta null. No band-power comparison. A 2023 meta-analysis of 12 studies, so neither of the evaluator's outside syntheses."
+    },
+    {
+      "paper": "P-484",
+      "tested": "synthesis",
+      "refuted": false,
+      "final": "synthesis; not a primary supporter",
+      "independent": "no (its MCI pool includes Lassi 2023 = P-480)",
+      "dataset_family": "Meta-analysis of EEG microstate parameters; MCI arm of 6 studies (293 MCI / 324 HC)",
+      "reason": "Synthesis of microstate temporal parameters (not connectivity, graph or complexity strictly); its MCI pool re-reports P-480's Florence sample. Cannot count for any clause."
+    },
+    {
+      "paper": "P-580",
+      "tested": "synthesis",
+      "refuted": false,
+      "final": "narrative review; not_tested on every clause",
+      "independent": "n/a",
+      "dataset_family": "None of its own",
+      "reason": "Narrative review with no search, study count or analysis; never supports a primary-evidence statement. Its lead (Jiao et al. 2023 = P-499) was read by the skeptic: a multi-domain classifier with no single-domain comparator (C4 not tested). It is not the evaluator's 2025 review of 124 connectivity studies."
+    },
+    {
+      "paper": "P-548",
+      "tested": "synthesis",
+      "refuted": false,
+      "final": "systematic review with narrative synthesis; not_tested on every clause",
+      "independent": "n/a",
+      "dataset_family": "None of its own (30 SCD EEG/ERP studies)",
+      "reason": "Narrative synthesis, SCD population, no pooling and no cross-domain comparison. It is not the evaluator's 2026 review of 21 wearable-EEG studies."
+    }
+  ],
+  "leads_checked_by_skeptic": [
+    "P-499 (Jiao et al., Alzheimers Res Ther 2023;15:32; lead named in P-580): six EEG feature types (absolute and relative PSD, Hjorth, STFT, sample entropy, microstates) fed jointly to LDA/SVM; HC vs MCI accuracy 76.7% (SVM) and 79.8% (LDA) (Table 2, p.7). No single-domain model is reported, so C4 and C3 are not tested; the 80/20 split is of 'samples' drawn from 38,925 epochs (p.3-4), so participant-level separation is not stated. Not a supporter.",
+    "P-201 (Geng et al., Front Aging Neurosci 2022): compares sleep-EEG and awake-EEG feature sets (Table 3, p.8), not spectral against complexity or connectivity domains; relative power itself separates MCI from HC in theta and alpha (p.8-9). C4 not tested; C2 no. Not a supporter.",
+    "P-112: its block reports only a combined wavelet-PSD plus coherence classifier (3-class, n = 35) with no single-domain comparator; the PDF map is wrong for P-112, so the source cannot be checked. Not usable."
+  ],
+  "clause_support": {
+    "C1": [
+      "P-553 yes (Hanyang, Korea): sample entropy at C4 and theta nodal efficiency survive per-band FDR",
+      "P-501 yes (Wayne State / Michigan ADRC, Detroit): connectivity-dynamics classifier, accuracy optimistic",
+      "P-463 yes (Hokuto/Kumagaya MEG, Japan): meta-band connectivity metrics, bootstrap FDR, significance shown only in figures",
+      "P-368 yes (ALBION, Athens): local partial coherence, cluster permutation p = 0.029 / 0.027",
+      "P-592 yes (INTERCEPTOR, Italy): small-world index vs HC in delta and beta 2, biomarker-selected high-risk MCI",
+      "P-153 yes (Noor Hospital, Isfahan): LZ and Shannon entropy classify held-out MCI vs HC at 82.75% / 83.21%, tuned on the same data",
+      "Optional: P-39 yes by a model reading of Fig. 5 only (EEG1 Portugal/Castile and Leon; EEG2 Rio Hortega, Valladolid); MEG arm is P-463's cohort",
+      "Not counted: P-480 partly (no in-class measure separates MCI from HC), P-1322 partly (uncorrected edge maps, FC classifier at chance), P-511 and P-488 partly (progressive vs stable MCI), P-552 no (PAC outside the named classes), P-447 no; P-453 and P-484 synthesis level only",
+      "Independent yes: 6 dataset families. Rule met."
+    ],
+    "C2": [
+      "P-553 yes (Hanyang): PSD null in every band and channel after the same per-band 19-electrode FDR that sample entropy (C4) and theta nodal efficiency survive; wPLI edges not like for like (corrected across bands only)",
+      "P-368 partly (ALBION): band-averaged PSD null (no statistic) vs local partial-coherence clusters; connectivity also null at the whole-head level",
+      "P-480 partly (PREVIEW): holds against SCD only; against HC left-central delta power separates MCI and no in-class measure does",
+      "P-592 partly (INTERCEPTOR): beta-2 and delta small-world separate MCI groups where same-band power does not, but band power separates each MCI group from HC in other bands",
+      "Refuted to no: P-552 (PAC outside the classes; HC-MCI power null not shown), P-1322 (FC separation uncorrected over thousands of edges; FC classifier AUC 0.49 vs PSD 0.76)",
+      "No: P-153, P-39, P-511, P-488, P-447. Not tested: P-501, P-463",
+      "Independent yes: 1 (Hanyang). Rule not met; 4 families if partly verdicts were counted."
+    ],
+    "C3_head_to_heads": [
+      "P-1322 (Shenzhen), MCI vs HC, random forest, one 80/20 split, AUC: relative PSD 0.76 > dwPLI FC 0.49; PSD+FC 0.59. Spectral ahead; untested; at most about ten MCI in the test set. (AD vs HC flips: FC 0.77 > PSD 0.68.)",
+      "P-153 (Isfahan), MCI vs HC, tensor-PARAFAC + SVM, 3 random subject-wise splits, accuracy: 60-band power 93.96% > Shannon entropy 83.21% ~ 19 spectral features 83.37% ~ LZ 82.75% ~ theta+alpha1 power 82.13% > multiscale sample entropy 68.89%. Spectral ahead or tied; untested; tuning favours power features.",
+      "P-511 (Karolinska), progressive vs stable MCI (prognostic), in-sample logistic regression, accuracy: GFP theta 74.6% > GFS beta 67.6%. Spectral ahead; untested.",
+      "P-488 (BioFIND), progressive vs stable MCI (prognostic), 10x10-fold CV, AUC: covariance (contains power) 0.74 > power-envelope correlation 0.71 > dwPLI 0.67; no pure-power model; SDs 0.13 to 0.15; untested. Coupling measures not ahead.",
+      "Group-test contrasts only, not discrimination head-to-heads: P-553 (complexity/graph significant, PSD not), P-368, P-592, P-480 (MCI-HC d = 0.645 for delta power vs 0.65 for microstate C duration)",
+      "P-39: SHAP relevance inside one fused model, not a head-to-head (relative theta power ranked top in MEG and EEG2)",
+      "No corpus head-to-head establishes that connectivity, graph or complexity measures outperform band power; where the reported metrics differ, spectral or power-bearing features come out ahead. Rule met."
+    ],
+    "C4": [
+      "No supporter.",
+      "P-1322 no for MCI: PSD+FC AUC 0.59 < PSD 0.76; the EEG combination beats each EEG domain only for SCD (0.78 vs 0.69 / 0.68) and AD (0.84 vs 0.68 / 0.77)",
+      "P-511 partly refuted to no: CSF neurogranin in every combination, apparent accuracy, prognostic comparator; GFS beta remained an independent predictor alongside GFP theta and CSF (81.4% vs 74.3%)",
+      "P-447 partly refuted to no: a single TE-rBP coupling index in PD-MCI (n = 9), 2 of 10 cells, no discrimination metric",
+      "P-488 no: only an all-input multimodal model (MEG + MRI + clinical + site), and no gain from dwPLI or power envelopes",
+      "Not tested (combined model, no single-domain comparator): P-39, P-499; P-201 compares sleep vs awake feature sets; P-112 unusable (wrong PDF map)",
+      "Independent yes: 0. Rule not met."
+    ]
+  },
+  "clauses_meeting_rule": ["C1", "C3"],
+  "external_reviews_in_corpus": "Neither outside synthesis is a corpus paper. Skeptic's own check: the summaries.md headers matching connectivity/connectome/wearable/portable together with review/meta are only Paper 453 (2023 MetaNSUE meta-analysis of 12 M/EEG connectivity studies) and Paper 905 (2022 systematic review of 39 fMRI effective-connectivity studies); a pattern for '124' or '21' studies/articles/papers within 200 characters of EEG, connectivity or wearable returned no match. This agrees with both finder searches (count, topic, year, PDF-map titles, registry review rows, paper_kb). The corpus EEG/MEG syntheses are P-453, P-484, P-548, P-558, P-555, P-580, P-916, P-658, P-389 and P-526; none is a 2025 review of 124 EEG connectivity studies or a 2026 review of 21 wearable-EEG MCI studies. Under the corpus-scoped house rule neither citation can enter the statement, including the 46-95% accuracy range and the 'connectivity more accurate than spectral' finding attributed to the wearable-EEG review.",
+  "adopted_wording": "EEG/MEG connectivity, graph/network and complexity measures show promise for discriminating MCI: in six independent corpus studies such measures separate MCI from controls in the study's own data, mostly in small single-site samples and by group tests or classifiers with optimistic validation. They may reveal alterations that conventional spectral band power misses, but the within-study evidence for this is thin: in one study band power separated MCI from controls in no band or channel while complexity and graph measures did, and in three more the pattern held only in part (at a different level of analysis, against subjective cognitive decline rather than controls, or band by band while band power separated MCI from controls in other bands). The corpus does not establish that these measures outperform spectral band power. In the four within-study comparisons that report a discrimination metric, spectral or power-bearing features come out ahead or about even; none tests the difference, and two compare progressive with stable MCI rather than MCI with controls. Nor does the corpus show that multi-domain combinations discriminate MCI best. The one study that compared a spectral-plus-connectivity combination with each domain alone, for MCI against controls, found the combination worse than spectral power alone, although in the same study the combination beat either domain alone for subjective cognitive decline and for Alzheimer's disease. Evidence that these measures add complementary information in MCI is limited to one prognostic model fitted without validation, in which a synchronisation measure remained an independent predictor of progression alongside spectral power and a CSF marker.",
+  "adopted_wording_map": {
+    "six independent corpus studies (C1)": ["P-553", "P-501", "P-463", "P-368", "P-592", "P-153"],
+    "one study, band power null (C2 yes)": ["P-553"],
+    "three more, in part (C2 partly)": ["P-368 (level of analysis)", "P-480 (SCD comparator)", "P-592 (band by band)"],
+    "four within-study comparisons with a discrimination metric (C3)": ["P-1322", "P-153", "P-511 (prognostic)", "P-488 (prognostic)"],
+    "one study that compared the combination with each domain (C4)": ["P-1322"],
+    "complementary information, prognostic model": ["P-511"]
+  },
+  "proposed_supporter_list": ["P-553", "P-501", "P-463", "P-480", "P-368", "P-592", "P-153", "P-1322", "P-511", "P-488"],
+  "proposed_supporter_note": "Each listed study supports the sentence of the adopted wording named in adopted_wording_map, not the operator-supplied statement as written. Ten dataset families, all distinct (P-39's MEG arm would duplicate P-463). P-480 supports only the hedged C2 sentence (SCD comparator). P-1322, P-511 and P-488 support the no-outperformance and combination sentences as counter-evidence to the supplied C3/C4 wording. P-39 is optional (C1 by figure reading only).",
+  "supporters_to_remove": ["P-552"],
+  "supporters_to_remove_note": "P-552 (within-electrode phase-amplitude coupling) is outside the named measure classes and does not show an HC-MCI band-power null with a statistic; refuted here and in round 21.",
+  "new_supporters_for_rob": [
+    {
+      "paper": "P-368",
+      "cited_result": "Local partial coherence higher in 21 amnestic MCI than 62 cognitively normal (ALBION) in cluster-based permutation tests: eyes closed, 32 to 100 Hz, channels C3, P3, O1, P4, Fz, Cz, Pz, p = 0.0290; eyes open, 28 to 100 Hz, p = 0.0272 (p.11). Comparator within the same participants: band-averaged PSD 'did not indicate any significant difference' (p.6); ordinary coherence null (cluster p = 0.085, p.11). Suggested tool: JBI analytical cross-sectional checklist."
+    },
+    {
+      "paper": "P-592",
+      "cited_result": "Small-world index vs 50 HC in biomarker-selected high-risk MCI (60 sMCI-resilient, 56 cMCI; INTERCEPTOR), mixed ANOVA with Duncan post hoc tests (p.8): delta, HC lower than sMCI-resilient (p = 0.0038) and cMCI (p = 0.0008); beta 2, HC higher than sMCI-resilient (p = 0.0033) and cMCI (p = 0.0099); set against relative beta power with no group difference (p.5, p.9) and relative delta power not separating sMCI-resilient from HC (p.5). Suggested tool: JBI analytical cross-sectional checklist. The existing logs/rob_appraisal/P-592.json appraises a different result (sMCI-resilient vs cMCI, QUIPS)."
+    },
+    {
+      "paper": "P-153",
+      "cited_result": "Dataset I (Noor Hospital, Isfahan; 29 MCI / 32 HC), tensor-PARAFAC + RBF-SVM, subject-wise random 41/20 train/test splits repeated 3 times, accuracy (Table 5, p.11): Lempel-Ziv 82.75%, Shannon entropy 83.21%, multiscale sample entropy 68.89%, against theta+alpha1 band power 82.13%, 19 spectral features 83.37% and 60 micro-band power 93.96%. Suggested tool: PROBAST with the PROBAST+AI considerations."
+    },
+    {
+      "paper": "P-1322",
+      "cited_result": "MCI vs HC random-forest classification from resting EEG in the same participants, one stratified 80/20 split with SMOTE and GridSearchCV (p.6), AUC (Table 1, p.14): relative PSD 0.76, dwPLI functional connectivity 0.49, PSD+FC 0.59; with the same pipeline SCD vs HC 0.69 / 0.68 / 0.78 and AD vs HC 0.68 / 0.77 / 0.84 (p.12). Suggested tool: PROBAST with the PROBAST+AI considerations."
+    },
+    {
+      "paper": "P-511",
+      "cited_result": "Progressive (31) vs stable (41) MCI at two years (Karolinska Huddinge), logistic regression adjusted for age, sex and MMSE, accuracy at a 50% threshold on the fitting data (Table 5, PDF p.7 = JAD p.361): GFP theta 74.6% vs GFS beta 67.6% (CSF neurogranin 70.0%; CSF neurogranin + GFP theta 74.3%; CSF neurogranin + GFP theta + GFS beta 81.4%, GFS beta p = 0.039). Suggested tool: PROBAST (prognostic model)."
+    },
+    {
+      "paper": "P-488",
+      "cited_result": "Progressive (64) vs stable (53) MCI in BioFIND resting MEG, stand-alone stacked models with 10x repeated 10-fold CV, AUC (p.13): sensor covariance 0.74 (SD 0.13), power-envelope correlation 0.71 (SD 0.15), dwPLI 0.67 (SD 0.15); all inputs (MEG, MRI, clinical, site) 0.81 (SD 0.12). Suggested tool: PROBAST with the PROBAST+AI considerations."
+    }
+  ],
+  "summary": "Of the nine C2/C4 yes/partly verdicts and four discrimination head-to-heads tested against the source texts, four verdicts are refuted: P-552 C2 (PAC outside the named classes; no HC-MCI power statistic), P-1322 C2 (connectivity 'separation' is uncorrected edge-wise testing and the study's own FC classifier is at chance), P-511 C4 (CSF in every combination, apparent accuracy, prognostic) and P-447 C4 (a single coupling index in PD-MCI, 2 of 10 cells). P-553 C2 yes stands, carried by sample entropy and nodal efficiency under the same FDR as PSD (wPLI is not like for like). P-368, P-480 and P-592 stay partly. All four head-to-heads (P-1322, P-153, P-511, P-488) stand and none favours connectivity or complexity. C1 meets the rule (six independent families: Hanyang, Wayne State/MADRC, Hokuto/Kumagaya MEG, ALBION, INTERCEPTOR, Isfahan). C3 meets the rule (no head-to-head establishes outperformance; the reported ones favour spectral or tie). C2 has one independent yes and C4 none, so both are hedged. Neither outside synthesis (124 EEG connectivity studies, 2025; 21 wearable-EEG studies, 2026) is a corpus paper, so neither enters the wording. Proposed supporters: P-553, P-501, P-463, P-480, P-368, P-592, P-153, P-1322, P-511, P-488; remove P-552; risk-of-bias records needed for P-368, P-592 (new result), P-153, P-1322, P-511 and P-488."
+}

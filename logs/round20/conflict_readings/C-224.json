@@ -1,0 +1,89 @@
+{
+ "id": "C-224",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-243",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Investigating predictors of progression from mild cognitive impairment to Alzheimer's disease based on different time intervals (Wu et al., Age and Ageing 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-81",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Deep learning combining FDG-PET and neurocognitive data accurately predicts MCI conversion to Alzheimer's dementia 3-year post MCI diagnosis (Cao et al., Neurobiology of Disease 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-243": "AdaBoost (logistic-regression base) on 8 LASSO-selected tabular variables (ADAS11, RAVLT immediate/learning, FAQ, fusiform, middle temporal and ICV volumes, mPACCtrailsB) predicting MCI-to-AD within 3 years, 627 ADNI MCI (269 converters): held-out 30% test-set AUC 0.89 (accuracy 0.83); 5-fold validation AUC 0.91 +/- 0.03.",
+  "P-81": "3D CNN on whole-brain FDG-PET images plus age and five cognitive scores (CDRSB, LDEL, MMSE, mPACCdigit, mPACCtrailsB), transfer-learned from a CN-vs-AD classifier, predicting MCI-to-AD within 3 years in 257 ADNI MCI (93 converters): 5-fold cross-validation AUC 0.785 +/- 0.096, balanced accuracy 0.733; cognitive-score-only network AUC 0.750, PET-only 0.610."
+ },
+ "quantity_a": "ROC-AUC for 3-year MCI-to-AD conversion in ADNI MCI, from a tabular model on neuropsychological scores plus FreeSurfer-type MRI volumes, evaluated on a single held-out test split.",
+ "quantity_b": "ROC-AUC for 3-year MCI-to-AD conversion in the ADNI subset with baseline FDG-PET, from an image-level 3D CNN on whole-brain FDG-PET plus five cognitive scores and age, evaluated by 5-fold cross-validation.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even on a common estimand the two are single model-performance figures from different models; neither paper evaluates the other's method or claims an ordering the other refutes, and P-81's own SD (0.096) spans 0.69-0.88, overlapping P-243's value.",
+ "gates": {
+  "task": "match: both T2, MCI-to-AD within 3 years.",
+  "dataset_family": "match: both ADNI (P-243 ADNI-1/GO/2/3; P-81 ADNI-1/2/GO restricted to participants with FDG-PET within two months of baseline).",
+  "validation_tier": "match at V2 (both internal), but evaluation differs: held-out test split vs 5-fold cross-validation.",
+  "modality_family": "mismatch: P-243 uses structural-MRI volumes plus neuropsychological tests and states it did not use PET; P-81's input is whole-brain FDG-PET imaging plus cognitive scores. The record's 'clinical_survey' family label fits neither paper. No waiver on record."
+ },
+ "endpoint_and_metric": "compatible on endpoint and metric type (3-year conversion, ROC-AUC), incompatible on predictor set and input representation (tabular sMRI volumes + 8 neuropsychological variables vs image-level FDG-PET CNN + 5 cognitive scores).",
+ "performance_validity": "flag does not apply: neither contested figure is near ceiling (0.89 and 0.785) and P-243 used a held-out test set; P-243's 0.98 is a 0-6 month sub-interval not used in this record.",
+ "independence": "Shared cohort: both draw MCI participants from ADNI, so their samples overlap (non-independence recorded); no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two AUCs come from different predictor sets and input representations (tabular sMRI volumes plus neuropsychological tests vs whole-brain FDG-PET images plus five cognitive scores), the same substrate difference that reclassified C-80 and C-232.",
+  "The modality-family gate fails on the source documents (structural MRI vs FDG-PET) and no waiver is on record.",
+  "The evaluations differ (single held-out split vs 5-fold cross-validation on a smaller FDG-PET subset), and P-81 itself warns that performance comparisons across such differences need caution.",
+  "Neither paper claims a ranking the other contradicts, so the 0.105 gap is a spread between different models, not two results disagreeing about one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-243",
+   "page": 1,
+   "quote": "Machine learning models were applied to predict the progression from MCI to AD, using demographic, neuropsychological test and MRI-related biomarkers."
+  },
+  {
+   "paper": "P-243",
+   "page": 3,
+   "quote": "the accuracy, precision, recall, F1-score and AUC of the final model on the test set are 0.83, 0.82, 0.71, 0.76 and 0.89, respectively."
+  },
+  {
+   "paper": "P-243",
+   "page": 6,
+   "quote": "we also didn't introduce more variables such as genes and PET-CT images, which are expensive and invasive"
+  },
+  {
+   "paper": "P-81",
+   "page": 1,
+   "quote": "the best model was a combination of FDG-PET, age, and neurocognitive data, yielding an AUC of 0.785 \u00b1 0.096 and a balanced accuracy of 0.733 \u00b1 0.098."
+  },
+  {
+   "paper": "P-81",
+   "page": 2,
+   "quote": "FDG-PET whole-brain images were used without a priori regional brain segmentation."
+  },
+  {
+   "paper": "P-81",
+   "page": 4,
+   "quote": "Balanced accuracy (BA), specificity, sensitivity, and AUC of the validation sets were obtained using 5-fold cross validation."
+  },
+  {
+   "paper": "P-81",
+   "page": 6,
+   "quote": "However, interpretation of performance metrics needs to be made with caution. Differences in performance could be due to differences many factors."
+  }
+ ],
+ "record_defects": [
+  "claim_b still names P-320 ('P-320: AUC 0.785'); the paper is P-81 after the 2026-08-30 repoint.",
+  "modality_family 'clinical_survey' with modality_family_equal 'Yes' is wrong: P-81 is an FDG-PET imaging model and P-243 a structural-MRI-volume plus neuropsychological model.",
+  "P-243's registry Modality 'MRI/PET' is wrong: the paper uses no PET and says so.",
+  "P-81's registry Sample_N_Approx 612 is the whole cohort (205 AD, 150 CN, 257 MCI); the conversion AUC rests on the 257 MCI participants.",
+  "The resolution_note's bridging list (P-244, P-308, P-353, P-731, P-764, P-876) documents score variance and does not bear on this pair; P-764's entry is a C-index recorded under an AUC label."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only a study that evaluates both input representations on a common ADNI split and finds an ordering opposite to one either paper claims; neither paper claims any cross-method ordering."
+}

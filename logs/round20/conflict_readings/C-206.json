@@ -1,0 +1,78 @@
+{
+ "id": "C-206",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-75",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Identification of Mild cognitive impairment based on quadruple GCN model constructed with multiple features from higher-order brain connectivity (Li et al., Expert Syst Appl 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-194",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Optimal transport- and kernel-based early detection of mild cognitive impairment patients based on magnetic resonance and positron emission tomography images (Liu et al., Alzheimer's Res Ther 2022)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-75": "MCI (117) vs normal control (113) from ADNI using tau PET (18F-AV-1451) and amyloid PET (18F-AV-45) regional protein features, higher-order sparse-regression networks, self-attention GCN pooling and a quadruple Siamese network: ACC 0.935 +/- 0.022, SEN 0.903, SPE 0.895, AUC 0.922 (MPHN(H++)-SAGCN). The validation scheme is not specified beyond reported mean +/- SD.",
+  "P-194": "Early MCI (273) vs late MCI (187) from ADNI using FDG-PET and VBM-MRI ROI features (116 each), optimal-transport transfer learning from AD vs NC, bootstrap aggregation. Ten-fold CV best ACC 68.76 +/- 7.53% (FDG, AUC 0.66); held-out 20% test after bagging: best ACC 75.00% (FDG, SD L1l2/linear, AUC 0.77), best AUC 0.79; baselines 52.4-64.7%."
+ },
+ "quantity_a": "Accuracy for MCI vs cognitively normal classification from tau and amyloid PET in ADNI (n = 230).",
+ "quantity_b": "Accuracy for early-MCI vs late-MCI stratification from FDG-PET and structural MRI VBM features in ADNI (n = 460 target subjects).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The comparisons differ (MCI vs NC against EMCI vs LMCI, the latter a much subtler within-MCI split that P-194 itself says has a small effect size), so a lower accuracy for EMCI vs LMCI does not refute a higher accuracy for MCI vs NC. Neither paper claims a result about the other's task.",
+ "gates": {
+  "task": "mismatch at the comparison level: P-75 MCI vs NC; P-194 EMCI vs LMCI (both coded T1 in the registry, but the classes differ)",
+  "dataset_family": "match: ADNI (possible participant overlap, not quantified)",
+  "validation_tier": "nominally V2 in both; P-75 does not state its split/CV scheme, P-194 uses 10-fold CV plus an 80/20 hold-out",
+  "modality_family": "mismatch: tau and amyloid PET (molecular PET) in P-75 vs FDG-PET plus structural MRI VBM in P-194; the record's 'Neuroimaging' bucket hides this"
+ },
+ "endpoint_and_metric": "incompatible: both report accuracy, but on different class pairs (MCI vs NC vs EMCI vs LMCI) and different input modalities",
+ "performance_validity": "flag does not apply: P-75 reports 93.5% accuracy (below 0.97) and P-194 at most 75%; the comparison is a performance comparison on different tasks",
+ "independence": "Distinct studies, different authors; both draw on ADNI.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-75's 93.5% is accuracy for MCI vs normal controls from tau and amyloid PET networks.",
+  "P-194 classifies early vs late MCI, not MCI vs controls, from FDG-PET and VBM features, and its reported accuracies are 56.8-75.0%; no 53% figure is its headline result.",
+  "Different class pair and different modality families mean the 93.5 vs 53 gap is not a disagreement on one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-75",
+   "page": 1,
+   "quote": "Our proposed MCI identification method was evaluated on 230 subjects (including 117 MCI subjects, 113 normal control subjects) with both 18F-AV-1451 PET and 18F-AV-45 PET data"
+  },
+  {
+   "paper": "P-75",
+   "page": 8,
+   "quote": "MPHN(H++)- SAGCN 0.935 \u00b1 0.022 0.903 \u00b1 0.025 0.895 \u00b1 0.032 0.922 \u00b1 0.021"
+  },
+  {
+   "paper": "P-194",
+   "page": 1,
+   "quote": "We have developed an optimal transport based transfer learning model to discriminate between early and late MCI."
+  },
+  {
+   "paper": "P-194",
+   "page": 6,
+   "quote": "Based on FDG features, our model achieved 68.76 \u00b1 7.53% accuracy and 0.66 \u00b1 0.08 AUC score across ten-fold cross-validation."
+  },
+  {
+   "paper": "P-194",
+   "page": 9,
+   "quote": "SD L1l2/l 75.00 0.77"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-194: Acc 53 on T1' does not match the paper: P-194's own method reports 56.79-75.00% accuracy; the nearest figure, 52.44%, is the SUBA benchmark on VBM, a comparator, not P-194's result.",
+  "The record treats both as the same T1 comparison, but P-194 is EMCI vs LMCI, not MCI vs NC.",
+  "modality_family 'Neuroimaging' conflates molecular PET (tau/amyloid) with FDG-PET plus structural MRI; the registry lists P-75 modality_subtype as PET and P-194 as MRI/PET.",
+  "The G4 note describes P-194 as an 'auxiliary-task transfer model' on the same task; it is transfer learning from AD vs NC to a different target task (EMCI vs LMCI).",
+  "resolution_status 'partially_resolved_candidate' cites a list of other papers' scores, which explains no specific condition separating these two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A second study of MCI vs NC from tau/amyloid PET in ADNI with an accuracy whose uncertainty excludes 93.5%, or of EMCI vs LMCI with FDG/VBM features excluding P-194's range."
+}

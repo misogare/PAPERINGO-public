@@ -1,0 +1,82 @@
+{
+ "id": "C-86",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-145",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Sequential patterning of dynamic brain states distinguish Parkinson's disease patients with mild cognitive impairments (Kemp et al., NeuroImage: Clinical 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-44",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Identification of amnestic mild cognitive impairment by structural and functional MRI using a machine-learning approach (Hwang et al., Clinical Neurology and Neurosurgery 2024)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-145": "Resting-state fMRI dFNC sequential-pattern classifiers (RF/LDA) in 22 HC, 18 PD-NC and 15 PD-MCI. The 0.80 is the upper end for HC vs PD (all Parkinson's patients regardless of cognition). PD-NC vs PD-MCI reaches 'up to 72%'. Moderate accuracies range from 0.53 to 0.80. Table 2 values are not recoverable from the extract (the table is rendered as an image).",
+  "P-44": "Amnestic MCI (n=50) vs cognitively unimpaired (n=26), single Korean hospital, linear SVM on FreeSurfer volumes (88.9%) and on volumes plus rs-fMRI graph metrics: accuracy 92.9%, AUC 0.929. 80/20 hold-out with 10-fold CV within training."
+ },
+ "quantity_a": "As cited: accuracy for healthy controls vs Parkinson's disease (any cognition) from rs-fMRI dFNC state sequences. Nearest MCI quantity: PD-MCI vs PD-NC within Parkinson's, up to 72%",
+ "quantity_b": "Accuracy for amnestic MCI vs cognitively unimpaired memory-clinic patients from sMRI volumes + rs-fMRI graph metrics",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The cited 0.80 is a Parkinson's-vs-control accuracy, not MCI detection. P-145's MCI comparison (PD-MCI vs PD-NC, up to 72%) is within Parkinson's patients, whereas P-44 compares aMCI with cognitively unimpaired people. These are different comparisons in different populations, and neither study claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch: the cited value is HC vs PD (disease detection, registry T4). PD-MCI vs PD-NC is a within-disease cognitive split, not the aMCI vs CU comparison of P-44.",
+  "dataset_family": "mismatch: NYU Parkinson's cohort (OpenNeuro ds005892) vs Haeundae Paik Hospital, Busan",
+  "validation_tier": "match: both internal CV only (V2)",
+  "modality_family": "partial: P-145 rs-fMRI only; P-44's 92.9% combines structural volumes with rs-fMRI graph metrics (its sMRI-only result is 88.9%)"
+ },
+ "endpoint_and_metric": "incompatible endpoint (PD vs HC, or PD-MCI vs PD-NC, vs aMCI vs CU). Both report accuracy.",
+ "performance_validity": "flag does not apply (no value at or above 0.97)",
+ "independence": "Independent cohorts and authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim_a misreads P-145: its 0.80 accuracy separates Parkinson's patients from healthy controls, not MCI from controls.",
+  "P-145's only MCI comparison is PD-MCI vs PD-NC within Parkinson's (up to 72%), a different population and comparison from P-44's aMCI vs cognitively unimpaired (92.9%), so there is no disagreement on a shared quantity.",
+  "The dataset gate fails and the modality gate is only partially met, with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-145",
+   "page": 1,
+   "quote": "A machine-learning method using sequential pattern mining was also found to distinguish among the groups with moderate accuracies ranging from 0.53 to 0.80"
+  },
+  {
+   "paper": "P-145",
+   "page": 7,
+   "quote": "distinguished people with PD from HC individuals with up to 80 %"
+  },
+  {
+   "paper": "P-145",
+   "page": 7,
+   "quote": "as well as distinguishing PD-NC individuals from those with PD- MCI with up to 72 % accuracy"
+  },
+  {
+   "paper": "P-145",
+   "page": 2,
+   "quote": "a total of 55 participants (all right- handed) were included in the current investigation: 22 in the HC group, 18 in the PD-NC group, and 15 in the PD-MCI group."
+  },
+  {
+   "paper": "P-44",
+   "page": 1,
+   "quote": "However, when the structural volumes and functional connectomic profiles were combined, the accuracy increased to 92.9%."
+  },
+  {
+   "paper": "P-44",
+   "page": 1,
+   "quote": "In addition, 26 CU patients were enrolled in the control group."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-145: Acc 0.80 on T1' is wrong: 0.80 is HC vs PD. P-145's registry row codes T4 with Best_Metric 'not reported'.",
+  "task_equal 'Yes' and dataset_equal 'Yes' are wrong: different comparisons and different cohorts.",
+  "resolution_note 'Same architecture family (A4_transformer)' is wrong: P-145 uses RF/LDA on sequential-pattern encodings and P-44 a linear SVM. Neither uses a transformer.",
+  "The bridging evidence (P-360, P-322) is generic."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these documents. A PD-MCI vs PD-NC result would still not be the aMCI vs CU quantity."
+}

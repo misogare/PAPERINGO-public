@@ -1,0 +1,56 @@
+{
+ "paper": "P-1325",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "Single-centre cross-sectional cohort of early drug-naive Parkinson's disease, Affiliated Brain Hospital of Nanjing Medical University, Nanjing, China (49 PD: 26 PD-MCI, 23 PD-NC; 20 HC; not public). New dataset family; no shared site with any current supporter or round-1 candidate.",
+ "method_family": "Resting-state fMRI seed-based default-mode-network functional connectivity (18 seeds, GRF-corrected voxelwise ANCOVA with GM-volume covariate), alongside FreeSurfer cortical thickness and hippocampal volume and Simoa plasma markers. Same method family (rs-fMRI connectivity) as current supporter P-518 and round-1 candidates P-554, P-729 and P-44.",
+ "same_sample_or_cohort_as": [],
+ "shared_authors_with": [],
+ "what_it_shows": "Wang Y, Ning H, Ren J, Pan C, Yu M, Xue C, Wang X, Zhou G, Chen Y, Liu W (2022), ACS Chem Neurosci 13:3523-3533, doi 10.1021/acschemneuro.2c00565. Cross-sectional: 26 PD-MCI (MDS level II criteria), 23 PD-NC and 20 HC. PD-MCI vs PD-NC: increased FC between left pCC and left PHG, and between right hippocampal formation and left ACG / right MTG (GRF corrected; age, sex, education and GM volume covariates). Cortical thickness was thinner in PD-MCI than PD-NC in the right lateral occipital (post hoc p = 0.010) and frontal pole (p = 0.042) cortex. Bilateral hippocampal volume did not differ across the three groups (GLM with age, sex, education, TIV; left p = 0.464, right p = 0.406; omnibus only). Logistic models vs age+sex (AUC 0.753): + pCC-PHG FC AUC 0.920 (p = 0.03), + right lateral occipital thickness 0.828 (p = 0.19), + plasma 0.849 (p = 0.13). In the final model FC (OR 53.2, 95% CI 2.4-1170.9, p = 0.012), lateral occipital thickness (OR 0.050, p = 0.029) and Abeta42/40 (p = 0.047) were independent terms; the final AUC was 0.987. Hippocampal volume was never entered in a model because it did not differ between groups.",
+ "why": "Identity: the PDF title, authors (Wang ... Liu W), journal, DOI 10.1021/acschemneuro.2c00565 and group sizes (26/23/20) match the summaries.md block and the map entry. I read the whole extract to the References. Unicode symbols are transliterated to ASCII in this file. STATED (Table A1) = partly. Shown: a functional measure (DMN resting-state FC) separated PD-MCI from PD-NC while bilateral hippocampal volume did not differ (TIV-adjusted), and the FC group tests were adjusted for grey-matter volume. Not shown: (1) volume or structure preserved. Cortical thinning (right lateral occipital, frontal pole) separated PD-MCI from PD-NC and remained an independent term in the final model, so structural atrophy was discriminative; only hippocampal volume was null. (2) 'Late': the design is cross-sectional with no conversion analysis. (3) The population is early drug-naive Parkinson's disease, where the authors themselves say hippocampal atrophy is not the expected marker (p.6). The hippocampal null therefore does not bear on volume as a marker of MCI in the sense the statement uses. NARROWED (round 20) = partly. The hippocampal strand has the same shape as P-518: FC differs where hippocampal volume does not. It falls short of 'yes' for four reasons. (a) The population differs: PD-MCI vs PD-NC, not amnestic or AD-spectrum MCI. (b) The hippocampal null is a three-group omnibus test only; no pairwise PD-MCI vs PD-NC volume test is reported. Raw means are about 10% lower in PD-MCI (left 3164 vs 3503 mm3), with a sex imbalance (23% vs 52% male) absorbed by the TIV/sex adjustment. (c) Structural atrophy (thickness) did carry information, so 'volume did not' holds for hippocampal volume only. In P-518, by contrast, both hippocampal volume and cortical thickness were null. (d) The FC values entered in the logistic models were extracted from clusters defined by the same PD-MCI vs PD-NC contrast, searched across 18 seeds with no correction across seeds. The AUC 0.920 and OR 53.2 (CI 2.4-1170.9) are therefore optimistic by construction, and no model offers hippocampal volume beside FC. Stated precisely, it shows this: in one small single-centre PD cohort, DMN FC differed between PD-MCI and PD-NC where hippocampal volume did not, alongside discriminative cortical thinning. Independence: the dataset is new (Nanjing Brain Hospital; no shared site or authors with any current supporter or round-1 candidate). The method family is rs-fMRI connectivity, the same as P-518, so under H.1 it adds no method family. Block defect: the block says 'left hippocampal formation'; the PDF says right HF to left ACG and right MTG (Table 2, p.4). Not a preprint. Model reading, pending operator review.",
+ "quotes": [
+  {
+   "page": 6,
+   "quote": "All results were acquired after adjusting for age, sex, years of education, and total intracranial volume (TIV) (Bonferroni test for post hoc comparison, p < 0.05). The bilateral hippocampal volume was not significantly different among the three groups (Table 3)."
+  },
+  {
+   "page": 6,
+   "quote": "Table 3 ... L_hippocampus 3164.01 +/- 348.69 3503.43 +/- 420.25 3447.88 +/- 329.23 0.464 R_hippocampus 3341.14 +/- 317.15 3608.81 +/- 394.26 3614.82 +/- 421.52 0.406 [columns: PD-MCI n = 26, PD-NC n = 23, HC n = 20, P-value]"
+  },
+  {
+   "page": 4,
+   "quote": "Compared to the PD-NC group, the PD-MCI group exhibited a significant increase in the FC of the cortical regions comprising the DMN. Specifically, the left pCC showed a pattern of increased FC with the left PHG. In addition, the right HF showed an increased FC pattern with the left anterior cingulate and paracingulate gyri (ACG) and with the right middle temporal gyrus (MTG) in the PD-MCI group compared to the PD-NC group"
+  },
+  {
+   "page": 5,
+   "quote": "All results were obtained with age, sex, education, and gray matter (GM) volume covariates (Table 2 and Figure 3)."
+  },
+  {
+   "page": 6,
+   "quote": "Especially, the right lateral occipital and frontal pole cortices were thinner in the PD-MCI than the PD-NC group."
+  },
+  {
+   "page": 6,
+   "quote": "Unlike hippocampal atrophy in AD, the atrophy in PD patients was subtle and regionally nonspecific, especially in relatively early stage PD."
+  },
+  {
+   "page": 7,
+   "quote": "similarly, combining the basic variables with FC value between the left pCC and left PHG (AUC = 0.920, 95% CI 0.806-0.978, p = 0.03), or the right lateral occipital CTh (AUC = 0.828, 95% CI 0.693-0.921, p = 0.19), all increased the diagnostic accuracy compared to basic variables alone (AUC = 0.753, 95% CI 0.608-0.865)."
+  },
+  {
+   "page": 6,
+   "quote": "Table 4 ... pCC.L_PHG.L 1.765 5.843 (2.231-15.301) <0.001 3.974 53.181 (2.415-1170.921) 0.012 ... R_lateraloccipital -2.043 0.130 (0.025-0.674) 0.015 -2.995 0.050 (0.003-0.735) 0.029"
+  },
+  {
+   "page": 4,
+   "quote": "We selected 18 seed regions as representatives of the DMN to characterize the abnormal FC."
+  },
+  {
+   "page": 7,
+   "quote": "First, the cross-sectional design and small sample size may limit data extrapolation and subsequent application to all PD patients, and further sample size expansion and longitudinal research were needed."
+  }
+ ]
+}

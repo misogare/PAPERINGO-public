@@ -1,0 +1,153 @@
+{
+  "vf": "VF-18",
+  "role": "skeptic",
+  "status": "candidate / pending_human_review (model reading; not an operator gate)",
+  "date": "2026-09-29",
+  "statement_tested": "Ocular channels (retinal structure and eye-movement behavior) are repeatedly supported as scalable biomarker directions for early cognitive decline detection",
+  "narrowed_wording_on_record": "Ocular measures show preliminary, single-centre associations with MCI: retinal imaging (fundus with or without OCT) discriminated MCI in two small Chinese hospital cohorts, one heavily confounded by age and stroke, and saccadic inhibition errors and prosaccade latency differed between MCI and controls at group level in one Korean cohort; neither channel has been externally validated or shown to be scalable.",
+  "method": "For each of the ten candidates the verifiers scored yes or partly, I tried to refute the verdict from the candidate's own source text in ROOT/pdf/<P-id>.txt. All ten extracts were already present, and the title and authors on page 1 match the verifier's identity check in each case. The Duke study identifiers were re-checked in the PDFs: P-163 prints NCT03233646, P-1317 prints Duke IRB Pro00082598, and P-363 prints both together (p.2). None of the ten is in registry_duplicates.json; P-1026, P-246 and P-247 are. I did not re-read the round-20 readings of P-5, P-105, P-952 and P-966; they are taken from the packet. For the narrowed tally, the current supporters that sustain the narrowed wording are those the round-20 reasoning names: P-5, P-952 and P-966.",
+  "verdicts": [
+    {
+      "paper": "P-933",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": true,
+      "dataset_family": "Ruijin Hospital neurology clinic, Shanghai Jiao Tong University, 2016-2020: 19 NC / 23 MCI (Mayo criteria) / 17 AD",
+      "reason": "Survives. The MCI-vs-NC comparison is run within the study. Table 2 gives m-RNFL 96.76 (7.30) um in NC against 88.65 (9.81) in MCI, marked '#MCI vs. NC, P < 0.017'. The text says 'MCI patients showed significantly thinner m-RNFL compared to normal individuals (P = 0.011)' (p.5), and rod-cone response latency is 41.36 vs 50.50 ms, 'MCI (P = 0.003)' (p.4). The groups do not differ in age (P = 0.251, Table 1). The MCI group is slightly MORE educated (12.78 vs 10.74 y, P = 0.057), which works against the finding, not for it. Both eyes are averaged per subject ('the average of these measurements was taken for the both eyes', p.4), so there is no per-eye inflation. The limits are real, but they do not refute the result. It is association only: there is no AUC or classifier, so it cannot join the 'discriminated MCI' sub-clause. It has 23 MCI. m-RNFL is not associated with MMSE or MoCA (Tables 5-6). The authors concede that 'the present findings cannot directly confirm whether the alterations ... are specific to AD' (p.7). They assert that screening would be cost-effective but do not test it, so the stated form stays partly. For the narrowed wording, it fits the head clause (a preliminary, single-centre association of an ocular measure with MCI, not validated) and would add a third Chinese hospital cohort. The verifier is right that the block's 'P<0.001, eta2p=0.393' is the three-group omnibus test."
+    },
+    {
+      "paper": "P-988",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": true,
+      "dataset_family": "AXIS Neurociencias, Bahia Blanca, Argentina (ViewMind): 65 MCI + 42 controls, followed 2017-2020 (stub P-1026 excluded)",
+      "reason": "Survives with a serious statistical caveat. The MCI-vs-control comparison is run within the study ('we ran our first linear model comprising a between-subjects factor Group (Controls vs MCI patients)', p.3), with age-matched groups (73 vs 72 y, 12 y education each, p.2). Table 1 shows shorter log fixation duration in MCI (for example -0.33 in BC encoding) and larger saccades (+1.09 deg). Those statistics are almost certainly pseudo-replicated. SE '0.00' and t = -42.11 for n = 107 imply a between-subject SD of about 0.04 log units, which is implausible, so the observations are fixations rather than people. The paper therefore does not show significance at the level of the person for the MCI-vs-control contrast. What rests at the person level is the ROC on 'aggregate subject-based summaries' (p.7): MCI converters vs stable MCI gave AUC 0.95, and MCI-other vs stable gave AUC 0.60. That ROC is in-sample, uses groups defined by later clinical follow-up, and has no MCI-vs-control ROC. I keep the narrowed verdict at yes because the head clause asks only for a preliminary, single-centre association of an eye-movement measure with early cognitive decline, unvalidated. The ROC at the person level supplies that, and the fixation-duration gap (about 28 percent shorter) is too large to plausibly vanish at the person level. That last point is my inference, not a statistic in the paper. Further caveats: the prediction model is not specified; conversion is clinical, without AD biomarkers (p.8); the equipment is a research tracker with a chin rest in a 1.5 h session; two of the three authors are ViewMind officers (p.10). The stated form stays partly, because 'affordable', 'non-invasive' and suitable for 'underserved countries' (p.9) are asserted, not tested. Its measures (fixation duration and saccade amplitude during a memory-binding task) differ from P-966's saccadic inhibition, so admitting it would widen the eye-movement clause to a second cohort."
+    },
+    {
+      "paper": "P-163",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": true,
+      "dataset_family": "Duke University iMIND study, NCT03233646 = Duke IRB Pro00082598 (P-163 counted as the family's one representative; P-1317 and P-363 are the same family)",
+      "reason": "Survives. The within-study discrimination is real and uses a test set with no subject overlap: 'There was no patient overlap between the training, validation, and test groups' (p.4). The full model, GC-IPL maps + OCTA + image-based quantitative data, has 'AUC ... 0.809 (95% CI: 0.681-0.937)', sensitivity 79% and specificity 83% (abstract; Table 4). The Table 4 footnote confirms that the reference model 'excludes demographic data', so age and education do not leak into it. The test set is age-matched by resampling (p.2). This is a primary retinal-structure classifier for MCI, and on leakage it is at least as clean as P-5. Its weaknesses: the test set is small (30 MCI eyes and 60 CN eyes, then subsampled by age-matching), eyes are the unit, and there is no external validation. The quantitative-only model reaches 0.960, above the full model, while GC-IPL and RNFL show no group difference (P = 0.778, 0.731, Table 3) and the authors describe the quantitative parameters as similar between groups (p.6). This leaves the model's signal unexplained. The one strong parameter in the tables, PD 3-mm ring (0.30 vs 0.39, P < 0.001, MCI SD three times the control SD), may carry it. Scalability is not tested: the imaging is specialist Zeiss OCT/OCTA with manual quality exclusion. The stated form is therefore partly. If P-5's round-20 'yes' was scored without requiring tested scalability, P-163 would qualify on the same terms; see the tally note. For the narrowed wording, it would add a US OCT/OCTA cohort to the 'retinal imaging discriminated MCI' clause."
+    },
+    {
+      "paper": "P-1317",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": false,
+      "dataset_family": "Duke University iMIND (Duke IRB Pro00082598, p.2 and p.9); same family as P-163 and P-363",
+      "reason": "The finding survives, but the paper is not independent. The MCI-vs-CN GEE comparison, adjusted for age and sex, is run within the study. Age is similar (P = 0.155, p.3). Arterial and venous width gradients are less negative in MCI (P < 0.001; P = 0.027), and the width intercepts are smaller (P < 0.001; P = 0.017) (p.3). It is association only, and the authors state that correction 'for multiple associations was not performed' (p.8). Optos loaned the device and part-funded the study (pp.8-9). It fits the head clause of the narrowed wording. However, P-363 prints NCT03233646 and Pro00082598 together, so this is the same Duke study as P-163. It adds no dataset family and is not counted."
+    },
+    {
+      "paper": "P-169",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "no",
+      "independent": true,
+      "dataset_family": "Hanyang University Hospitals (Seoul and Guri) VR-kiosk + MRI cohort, Korea, 2022-2023: 32 MCI / 22 HC",
+      "reason": "Refuted. The paper does not show that the eye-movement result is about eye movements. 'Scanpath length ... reflects the distance traveled by participants' gaze during the test' (p.3) is a total over the whole test and is not normalised for time. Table 3 (p.8) gives scanpath 60.36 m in MCI vs 23.66 m in HC, and time to completion 105.39 s vs 39.48 s. Dividing the group means gives almost the same gaze travel per second in both groups (0.57 vs 0.60 m/s). The longer scanpath is therefore what slower task completion alone would produce. The paper never separates the two, and time to completion is itself one of its four 'VR-derived biomarkers'. This is a ratio of group means that I computed, not a per-subject analysis. But the burden is on the source, and the source does not show an oculomotor difference beyond duration. No eye-only classifier exists: scanpath is pooled with hand speed and errors in a VR SVM. The test set is internally inconsistent: '30% (16/54)' (p.6), while the printed metrics imply 18. The paper also calls a 7:3 internal split 'external validation' (p.6). Stated form: no. Narrowed form: no. The ocular measure's association with MCI is not shown to be ocular. Even if an operator accepted untimed scanpath as an ocular measure, the verdict could reach only partly, and the tally would not change. The block and registry give N as 22, but the PDF gives 54 (Table 2)."
+    },
+    {
+      "paper": "P-998",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": true,
+      "dataset_family": "Tehran Geriatric Eye Study (population-based cluster sample, Tehran, 2019): 1,190 analysed (299 MMSE-defined MCI / 891 normal)",
+      "reason": "Not refuted at partly, which is conditional on how the operator reads the scope. The comparison is run within the study: NPC 10.89 vs 7.76 cm (P < 0.001), adjusted OR 1.334 (1.263-1.410), and an in-sample AUC of 0.764 at > 8.5 cm (Table 3; p.4). The population is not the named one. 'MCI' is 'an MMSE score between 18 and 23' (p.3), with no clinical adjudication, and the MCI group had half the schooling (5.15 vs 10.26 y, Table 1). The NPC odds ratio barely moved after adjustment for education (1.352 to 1.334), so education as measured does not explain it. The push-up NPC depends on the participant reporting 'sustainably double' vision (p.3), which is a cooperative, subjective response. Cognitive status could affect it, and the paper does not address this. This is my observation, not a limitation the authors list. The channel is vergence, which is neither retinal structure nor recorded eye-movement behaviour. If the operator reads the parenthesis strictly, both verdicts are 'no'. Scalability is asserted in the referral recommendation, not tested. For the narrowed wording it would add a third channel and a population-based design. It does not reach yes under either form."
+    },
+    {
+      "paper": "P-282",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": true,
+      "dataset_family": "Arizona APOE Cohort, Mayo Clinic Arizona Department of Neurology: 206 analysed (166 CN / 40 DRS<140 'possible MCI')",
+      "reason": "Not refuted at partly. An eye-only model is trained and tested within the study. On a held-out 31 CN / 11 PMCI (Table 3), LR-SMOTE reaches accuracy 0.90-0.91 and recall 0.89-0.90 (Table 6). The outcome is not clinical MCI: PMCI means DRS < 140, 'including those with mild dementia' (p.4). The authors say it 'likely captures earlier or subtler impairment rather than definitive MCI' (p.12). Age enters every model as a feature (p.5). Time-only features do as well as eye-only features (Table 7). The paper does not state that the correlation-filter and univariate-AUC feature selection (section 2.4) was confined to the training split, so selection leakage cannot be excluded. With 11 test positives, each misclassified case moves recall by about 0.09. The authors call the results 'preliminary', from a single cohort without external validation (pp.11-12). 44 of 250 people (17.6%) were excluded for inadequate tracking, and the authors hold a patent (p.14). Scalability is the authors' aspiration. For the narrowed wording, the label and the measures (fixation, saccade, blink and pupil features during arithmetic) would both need new scope. Partly under both forms."
+    },
+    {
+      "paper": "P-363",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "partly",
+      "independent": false,
+      "dataset_family": "Duke 'OCTA in MCI and AD' study, NCT03233646 / Duke IRB Pro00082598 (p.2); same family as P-163 and P-1317",
+      "reason": "Stated verdict refuted, and the paper is not independent in any case. The measures are choroidal (TCA, LA, CVI and SFCT from EDI-OCT), not retinal structure. The authors themselves decline the biomarker reading: 'Differences in choroidal parameters between diagnostic groups were small, and measurement overlap did exist ... it was unclear whether these parameters might serve as discriminative, objective biomarkers of disease presence' (pp.4, 6). Nothing tracks cognition: there was 'No statistically significant correlation ... between any choroidal structural parameter ... and MMSE score' (p.4). The pattern is not monotonic along the continuum: TCA is lower in AD than in MCI, CVI is lower only in MCI, and SFCT does not differ between MCI and controls (pp.3-4). Education differed between MCI and controls (p < .001) and was not a covariate. So the paper does not show a biomarker direction for early cognitive decline, and the stated verdict is 'no'. For the narrowed head clause, group-level choroidal associations with MCI adjusted for age, sex and VA exist, which makes it partly at most. It is the same Duke study as P-163 and counts for nothing extra. The block's sample size ('150 (target)') is wrong: the PDF gives 67 AD / 74 MCI / 137 controls (p.1)."
+    },
+    {
+      "paper": "P-255",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": true,
+      "dataset_family": "RECOGNISED (EU H2020 multicentre, NCT04281186), adults 65+ with type 2 diabetes: 307 people (182 MCI / 125 normal)",
+      "reason": "Not refuted at partly, but it is weak. Of eight retinal parameters, only arteriolar tortuosity survives adjustment (OR 1.44 per SD, 1.08-1.92). The paper states the direction as 'the less the tortuosity the higher the risk' (abstract; p.3), which contradicts an OR above 1 per SD increment. The crude AUC for tortuosity is 0.48, and only 315 of 578 eyes enter that row (Table 2), so even the direction of the one finding is not coherent in the source. The retinal-only combined model has AUC 0.62. The reference AUC with covariates alone is 0.66 and rises to 0.73 when retinal parameters are added, but the combined row has n = 308 eyes, so the increment is not computed on a like-for-like sample. The authors warn of 'a potential for spurious associations due to multiple testing'. They require full automation and 'at least an AUC of 0.80' before the measure could be valid, and they say it 'still falls short of strong discriminative accuracy' (pp.4-5). It is partly because a retinal-structure measure is tested within the study for MCI detection and one weak association appears. It does not show scalability, useful detection by the retina alone, or robustness. It is multicentre and limited to type 2 diabetes, so for the narrowed wording it is partly."
+    },
+    {
+      "paper": "P-224",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "partly",
+      "independent": true,
+      "dataset_family": "Rumailah Hospital geriatric/memory clinic (Hamad Medical Corporation / WCM-Qatar), Doha, 2016-2020: 107 MCI (33 progressed) + 12 NCI",
+      "reason": "Stated verdict refuted. The channel is corneal nerve morphology from confocal microscopy, which the authors describe as a surrogate marker for 'peripheral neuropathies' and central neurodegeneration (p.2). It is neither retinal structure nor eye-movement behaviour, the two channels the statement names. The cross-sectional MCI-vs-NCI contrast does not reflect cognitive status. It rests on 12 controls, and 'participants with MCI who reverted to NCI had significantly lower CNFD (p < 0.05), CNBD (p < 0.05) and CNFL (p < 0.01)' than those controls (p.4). The corneal deficit is therefore present in people whose cognition returned to normal, and diabetes (51% of MCI, 'a risk factor for corneal nerve degeneration', p.7) is not excluded. Stated form: no. The paper's genuine result is prognostic within MCI: CNFD AUC 74% (64-85%) for progression, diabetes balanced between progressors and non-progressors (51.5% vs 51.4%), and adjusted OR 6.1 for abnormal CNFD. Under the head clause of the narrowed wording this is a preliminary, single-centre association of an ocular measure with progression, but it adds a third channel the wording does not name. Narrowed: partly. The registry codes Modality as 'Retinal imaging' and the design as cross_sectional; the paper is corneal and longitudinal."
+    }
+  ],
+  "tally": {
+    "stated_form": {
+      "current_supporters_round20": {
+        "P-5": "yes",
+        "P-105": "no",
+        "P-952": "partly",
+        "P-966": "partly"
+      },
+      "surviving_candidate_yes": [],
+      "independent_yes_families": [
+        "Daping Hospital Chongqing + WMU Eye Hospital Wenzhou (P-5)"
+      ],
+      "count": 1,
+      "reaches_three": false,
+      "note": "No candidate tests scalability, and every candidate is partly or no on the stated form. If P-5's round-20 'yes' was scored without requiring tested scalability, P-163 would qualify on the same terms, which gives 2. The only route to 3 would also require P-282 (the label is DRS<140 including mild dementia, not MCI) or P-998 (a vergence channel outside the parenthesis, with MCI defined by MMSE alone) to be stretched to yes. That would be stretching a study to fit. Under a strict reading that 'scalable' must be shown, even P-5 falls to partly and the count is 0. The stated form does not reach three under any defensible reading."
+    },
+    "narrowed_wording": {
+      "current_supporters_sustaining_per_round20": [
+        "P-5",
+        "P-952",
+        "P-966"
+      ],
+      "surviving_candidate_yes": [
+        "P-933",
+        "P-988",
+        "P-163",
+        "P-1317 (Duke; not independent of P-163)"
+      ],
+      "independent_yes_families": [
+        "Daping Hospital Chongqing + WMU Eye Hospital Wenzhou (P-5)",
+        "Seventh Affiliated Hospital, Sun Yat-sen University, Shenzhen (P-952)",
+        "KIOM / GARD cohort, Korea (P-966)",
+        "Ruijin Hospital, Shanghai (P-933)",
+        "AXIS Neurociencias, Bahia Blanca, Argentina (P-988)",
+        "Duke iMIND, NCT03233646 / Pro00082598 (P-163; P-1317 and P-363 same family)"
+      ],
+      "count": 6,
+      "reaches_three": true,
+      "robustness": "The count does not depend on the weakest current supporters. Dropping P-952 (normal group about 20 years younger, MCI mostly post-stroke) and P-5 (subject-level leakage not excluded) still leaves 4 families: P-966, P-933, P-988 and P-163. The eye-movement leg has 2 primary cohorts (P-966, P-988), and the P-988 statistics are pseudo-replicated at group level. The retinal leg has 4 (P-5, P-952, P-933, P-163).",
+      "method_family_check": "If method family means channel, the set has 2 method families (retinal imaging; eye-tracking), the same as method_families_on_record = 2 when the record was admitted. If it means the analytic approach, there are 5: deep-learning retinal classifiers (P-5, P-163), classical-ML fundus classifier (P-952), OCT/ERG group association (P-933), saccade-paradigm group comparison (P-966) and memory-task eye-tracking with an ROC at the person level (P-988)."
+    }
+  },
+  "consequences_for_wording": "If the operator admits P-933, P-988 and P-163, the round-20 narrowed wording must be rewritten as the union of what was shown. Retinal leg: retinal imaging discriminated MCI in two small Chinese hospital cohorts (fundus with or without OCT; one heavily confounded by age and stroke) and in one US cohort (a CNN on OCT/OCTA, AUC 0.81 on a small internal test set with no subject overlap), and macular RNFL was thinner in MCI than in age-matched controls in a third Chinese cohort (association only, 23 MCI). Eye-movement leg: saccadic inhibition errors and prosaccade latency in one Korean cohort, and shorter fixations and larger saccades during a memory-binding task in one Argentine cohort. The Argentine study was run by the device developer; its group statistics are pseudo-replicated, and its ROC at the person level separates converters from stable MCI in-sample. 'Single-centre', 'preliminary', 'not externally validated' and 'not shown to be scalable' remain true of all six. The stated Table A1 form ('repeatedly supported as scalable') still has at most one independent yes and does not reach three.",
+  "defects_noted": [
+    "P-169: the block's sample-size field and registry Sample_N_Approx read 22; the PDF gives N = 54 (32 MCI + 22 HC, Table 2). The paper calls a 7:3 internal split 'external validation', and its test-set size (16) does not match its metrics (which imply 18).",
+    "P-363: the block's sample-size field and registry Sample_N_Approx read '150 (target)'; the PDF gives 67 AD / 74 MCI / 137 controls.",
+    "P-282: the block's sample-size field reads 250 (enrolled); 206 were analysed. The block copies the abstract's figures, which exceed Tables 5-6.",
+    "P-224: registry Modality 'Retinal imaging' should be corneal confocal microscopy; study_design_type cross_sectional should be longitudinal.",
+    "P-255: the Table 2 tortuosity row is internally inconsistent (OR > 1 per SD, crude AUC 0.48, text says lower tortuosity means higher risk). The verifier reports fabricated OCTA / single-centre text in the block's Problems/Improvements/Gaps fields; I did not re-check the block.",
+    "P-246 / P-247: the verifier reports misattached stub pointers (P-247's block describes P-163 but points to P-146); I did not re-check them.",
+    "P-933: per the verifier, the block quotes the three-group omnibus (P < 0.001, eta2p 0.393) as the MCI-vs-NC result; the PDF gives P = 0.011 for MCI vs NC."
+  ]
+}

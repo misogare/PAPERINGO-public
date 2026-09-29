@@ -1,0 +1,77 @@
+{
+ "id": "C-167",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-274",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Comparing a pre-defined versus deep learning approach for extracting brain atrophy patterns to predict cognitive decline due to Alzheimer's disease in patients with mild cognitive symptoms (Arvidsson et al., 2024)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-192",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predictive value of ATN biomarker profiles in estimating disease progression in Alzheimer's disease dementia (Ezzati et al., Alzheimers Dement 2021, author manuscript)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-274": "AUC 0.862 (CI 0.728-0.960) for four-year SCD/MCI-to-AD-dementia progression, clinical + hippocampal volume logistic model, BioFINDER-1 double CV (n=332); clinical-only 0.850; ADNI external subset similar except FreeSurfer (0.688) and DL (0.799).",
+  "P-192": "No AUC. For aMCI-to-dementia conversion in ADNI (n=415), CN-vs-dementia classifiers applied to MCI give sensitivity/specificity/PPV per horizon; RUSBoost biomarker model PPV 68% at 4 years vs observed 4-year incidence 22.2% (clinical feature set PPV 67.3%); sensitivity 61.5% and specificity 91.7% at 4 years."
+ },
+ "quantity_a": "Threshold-free ROC-AUC for four-year progression to CSF-confirmed AD dementia in memory-clinic SCD+MCI patients (BioFINDER-1), predictors clinical + hippocampal volume.",
+ "quantity_b": "Positive predictive value at a fixed 0.5 cut-off of a CN-vs-dementia classifier applied to ADNI amnestic MCI, for all-cause clinical dementia diagnosis by 4 years (prevalence-dependent), predictors ATN biomarkers (CSF, amyloid PET, FDG PET) or clinical features.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable: an AUC of 0.86 and a PPV of 68% at 22% incidence are not on a common scale; PPV depends on prevalence and threshold, AUC on neither, so no value of one excludes a value of the other.",
+ "gates": {
+  "task": "match in broad class (MCI-stage progression to dementia) but the outcome definitions differ (CSF-confirmed AD dementia vs clinical dementia not necessarily due to AD).",
+  "dataset_family": "mismatch: BioFINDER-1 (P-274) vs ADNI-GO/2 (P-192).",
+  "validation_tier": "mismatch: P-274 internal double CV with external ADNI check; P-192 cross-validated CN/dementia training then application to the MCI set within ADNI.",
+  "modality_family": "mismatch: clinical + structural MRI volume (P-274) vs PET/CSF biomarkers or clinical tests (P-192)."
+ },
+ "endpoint_and_metric": "incompatible: AUC vs PPV (different metric types); AD dementia with CSF confirmation vs all-cause dementia.",
+ "performance_validity": "not a performance comparison that can be made; flag not tripped.",
+ "independence": "Distinct studies and authors; P-274's small ADNI external subset may share participants with P-192, but P-274's headline estimate is BioFINDER.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-274 reports a ROC-AUC while P-192 reports no AUC at all, only threshold-dependent sensitivity, specificity and PPV, so the metric types differ.",
+  "P-192's outcome is clinical dementia not necessarily due to AD in ADNI aMCI, whereas P-274's is CSF-confirmed AD dementia in BioFINDER SCD/MCI, so the endpoint and population differ.",
+  "Dataset family and modality gates both fail with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-274",
+   "page": 6,
+   "quote": "Adding intracranial and hippocampal volume to the clinical data model increased the test AUC to 0.862 (CI 0.728-0.960)"
+  },
+  {
+   "paper": "P-274",
+   "page": 4,
+   "quote": "diagnosis of AD dementia was only used if the participant had an abnormal cerebrospinal fluid profile consistent with AD pathological change."
+  },
+  {
+   "paper": "P-192",
+   "page": 4,
+   "quote": "> 45% over 4 years (model's PPV = 68% vs. observed rate of dementia onset = 22.2%)"
+  },
+  {
+   "paper": "P-192",
+   "page": 11,
+   "quote": "Sensitivity, specificity, PPV, and negative predictive value (NPV) for each model were calculated."
+  },
+  {
+   "paper": "P-192",
+   "page": 6,
+   "quote": "In the ADNI sample, MCI and dementia diagnosis was not necessarily due to AD"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-192: PPV 68.0 on T2' is set against an AUC; the record's own resolution_note concedes 'Metric type unclear: AUC / Unknown'.",
+  "dataset_equal 'Yes' is wrong: P-274's cohort is BioFINDER-1; P-192's is ADNI.",
+  "modality_family 'clinical_survey' / modality_family_equal 'Yes' is wrong: P-274 uses structural MRI volume, P-192's headline PPV comes from the ATN biomarker feature set (PET/CSF).",
+  "gap_magnitude 0.18 subtracts a PPV from an AUC, which is meaningless."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An AUC from P-192 for the same four-year AD-dementia endpoint (it reports none) would be needed even to begin a comparison; dataset and modality would still differ."
+}

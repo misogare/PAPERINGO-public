@@ -1,0 +1,72 @@
+{
+ "id": "C-202",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-259",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Psychosocial profiles within community-dwelling older adults with Mild Cognitive Impairment: A prevalence and latent profile analysis study (Siew et al., Asian J Psychiatry 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-261",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Association of Qi-stagnation constitution and subjective sleep characteristics with mild cognitive impairment among elderly in community: A cross-sectional study (Liu et al., Eur J Integr Med 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-259": "Singapore CHI study, 902 community-dwelling adults aged 60-99; Petersen-criteria MCI by consensus panel after a nine-subdomain battery; MCI prevalence 21.5% (194 MCI, 696 normal, 12 dementia). MCI group had fewer years of education, lower perceived social support and higher GDS scores (small effects). Latent profile analysis on 166 MCI: positive 45.2%, neutral 38.5%, negative 16.3%.",
+  "P-261": "Fuzhou, 1,071 non-depressed adults aged 55-75 (GDS-15 > 8 excluded); MoCA-based MCI prevalence 29.3%. Adjusted OR 2.581 (1.706-3.907) for MCI with joint sleep disturbance and Qi-stagnation vs neither."
+ },
+ "quantity_a": "Point prevalence of Petersen/DSM-5 mild NCD in Singapore community adults 60-99 (and group differences in psychosocial scores).",
+ "quantity_b": "Adjusted odds ratio of MoCA-defined MCI for joint sleep disturbance and Qi-stagnation vs neither, in non-depressed Fuzhou adults 55-75.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable: a prevalence and an odds ratio are different quantities. On the constructs both touch, they agree: both find lower education in MCI (P-259 t = 2.04, p = .038; P-261 education median 9 vs 11 years, p < 0.001). The prevalence figures (21.5% vs 29.3%) are from different age bands, countries and diagnostic procedures, and neither paper claims the other's population rate.",
+ "gates": {
+  "task": "nominal match (T6, association/epidemiology)",
+  "dataset_family": "mismatch: Singapore CHI vs Fuzhou community day-care centres; the record itself sets dataset_equal = No",
+  "validation_tier": "n/a (neither validates a model)",
+  "modality_family": "match: questionnaire/neuropsychological tabular data"
+ },
+ "endpoint_and_metric": "incompatible: prevalence proportion vs odds ratio for an exposure; MCI defined by Petersen criteria and consensus (P-259) vs MoCA cut-offs plus clinical criteria (P-261)",
+ "performance_validity": "not a performance comparison",
+ "independence": "Distinct studies, different countries and authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-259's figure is a prevalence (21.5%) of consensus-diagnosed MCI in Singaporeans aged 60-99.",
+  "P-261's figure is an adjusted odds ratio (2.581) for a joint sleep and TCM-constitution exposure in Fuzhou adults aged 55-75.",
+  "A prevalence and an odds ratio are different metric types; population, diagnostic procedure and exposure also differ, and the record already fails its own dataset gate.",
+  "Where the two papers address the same construct (education), their results point the same way."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-259",
+   "page": 1,
+   "quote": "The prevalence of MCI in our sample was 21.5%. They had significantly lower years of education and perceived social support and higher depressive symptoms than the normal ageing group."
+  },
+  {
+   "paper": "P-259",
+   "page": 2,
+   "quote": "Objective cognitive impairment criterion was operationalized as scoring 1.5 standard deviations below the age and education appropriate norms in any of the tests in the neurocognitive battery"
+  },
+  {
+   "paper": "P-261",
+   "page": 5,
+   "quote": "the risk of suffering from MCI for older adults with sleep disturbance and Qi-stagnation was 2.581 times higher than that for those without sleep disturbance or Qi-stagnation"
+  },
+  {
+   "paper": "P-261",
+   "page": 3,
+   "quote": "Among the 1071 study subjects, 314 suffered from MCI, with a prevalence rate of 29.3%."
+  }
+ ],
+ "record_defects": [
+  "gap_magnitude 0.189 is computed between a percentage (21.5%) and an odds ratio (2.581), which is meaningless.",
+  "The PDF map titles P-261 as a speech-analysis paper; the PDF text is the Liu et al. Qi-stagnation/sleep study the record means.",
+  "resolution_status 'partially_resolved_candidate' implies a disagreement bridged by third studies; there is no disagreement, and the 'bridging' papers (P-262 HR 8.52) explain nothing."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers; a comparison would need the same metric (e.g. two prevalences under the same MCI criteria and age band with non-overlapping CIs)."
+}

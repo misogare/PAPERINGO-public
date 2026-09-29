@@ -1,0 +1,77 @@
+{
+ "id": "C-116",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-182",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Differential Role for Hippocampal Subfields in Alzheimer's Disease Progression Revealed with Deep Learning (Kwak et al., Cerebral Cortex 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-78",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A dynamic time series inference learning framework for individualized prediction of mild cognitive impairment progression (Xu et al., Expert Syst. Appl. 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-182": "Hippocampal-box DenseNet trained on AD vs CN, applied to baseline sMRI of 381 ADNI-2/GO MCI (follow-up at least 18 months); Acc 75.85%, AUC 0.777.",
+  "P-78": "Transformer time-series model (CDR-SB-pretrained DenseNet encoder) predicting 36-month status from sMRI. The 90.7% is the quadruple-time-point (QTP) configuration on internal Dataset B (101 ADNI subjects, 304 images): Acc 0.907 (0.870-0.944), AUC 0.871. The single-time-point (STP) configuration on the same Dataset B gives Acc 0.763 (0.711-0.816), AUC 0.832. On the external Dataset A (ADNI-3 + OASIS-3, single visit) Acc 0.827, AUC 0.858."
+ },
+ "quantity_a": "Accuracy from a single baseline T1 hippocampal region, AD/CN-transfer model, 381 ADNI-2/GO MCI, progression across a follow-up of at least 18 months.",
+ "quantity_b": "Accuracy from four longitudinal whole-brain sMRI scans within a 3-year window (QTP), predicting status 36 months after the first MCI scan, 101 held-out ADNI subjects.",
+ "same_quantity": false,
+ "incompatible_if_same": "No contradiction on the comparable quantity: P-78's own single-time-point accuracy on Dataset B, 0.763 (95% CI 0.711-0.816), contains P-182's 75.85%. The 90.7% applies only when three further follow-up scans are added.",
+ "gates": {
+  "task": "match nominally (T2), but the horizon differs (36 months vs at least 18 months) and the QTP input includes scans taken later in the window.",
+  "dataset_family": "match: ADNI (P-78 also uses OASIS-3 externally); overlap possible.",
+  "validation_tier": "match for the cited figures: both are internal ADNI held-out tests (P-78's 90.7% is Dataset B, not the external Dataset A).",
+  "modality_family": "match: structural MRI in both (P-78 also uses CDR-SB as a training target, not as an input)."
+ },
+ "endpoint_and_metric": "incompatible: same metric (accuracy) and modality, but a different input representation (four longitudinal scans vs one baseline scan) and horizon.",
+ "performance_validity": "flag does not apply: 0.907 is below 0.97; both flags false.",
+ "independence": "Distinct author groups; both ADNI (ADNI-2/GO MCI could appear in P-78's Dataset B).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-78's 90.7% needs four longitudinal sMRI time points (QTP) while P-182 uses one baseline scan; the input representation differs (the C-80 precedent).",
+  "On the like-for-like single-time-point input, P-78 reports 76.3% (71.1-81.6%), which agrees with P-182's 75.85%, so the recorded gap dissolves.",
+  "The horizons also differ (36 months vs a follow-up of at least 18 months)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-182",
+   "page": 6,
+   "quote": "In this task, the model achieved an accuracy of 75.85% and an AUC of 0.777 (Fig. 2B)"
+  },
+  {
+   "paper": "P-78",
+   "page": 9,
+   "quote": "The model achieved peak performance with QTP, recording an AUC of 87.1 % and an ACC of 90.7 %."
+  },
+  {
+   "paper": "P-78",
+   "page": 10,
+   "quote": "STP 0.832 (0.783-0.874) 0.763 (0.711-0.816)"
+  },
+  {
+   "paper": "P-78",
+   "page": 9,
+   "quote": "Using these varying time points, we predicted patients\u2019 clinical status 36 months after the initial STP"
+  },
+  {
+   "paper": "P-78",
+   "page": 3,
+   "quote": "Ultimately, 101 sub-jects who met the above longitudinal criteria were selected from a total of 486 subjects, and 304 sMRI images were obtained, forming Dataset B."
+  }
+ ],
+ "record_defects": [
+  "The registry Validation_Type V4 for P-78 attaches to a 90.7% that comes from internal Dataset B; the external (ADNI-3/OASIS-3) figure is Acc 82.7%.",
+  "The registry Sample_N_Approx 1393 for P-78 is the pretraining set; the 90.7% test set is 101 subjects.",
+  "The registry Modality 'MRI/PET' is wrong for both papers (sMRI only).",
+  "resolution_note says 'Confirmed genuine' on a 0.149 gap without noting that P-78's single-visit accuracy matches P-182."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A single-visit result from P-78 whose interval excludes 75.85% on the same horizon (its reported STP interval does not)."
+}

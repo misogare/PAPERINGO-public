@@ -1,0 +1,37 @@
+{
+ "paper": "P-532",
+ "round": "21 (round-2 verifier)",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "Cohort A, ADNI: 355 MCI (168 MCI-c / 187 MCI-nc, 3-year window), plus 94 healthy controls used only for feature stability. Cohort B, Huashan Hospital, Fudan University: 22 MCI (10 MCI-c / 12 MCI-nc), an external test of the ADNI-trained models.",
+ "method_family": "Radiomics: 430 features in each of 80 AAL ROIs, from FDG-PET and T1 MRI. Features were concatenated, filtered for stability, screened by t-test and entered into a LASSO-penalised Cox regression. Performance is Harrell's C-index under repeated 10-fold CV, plus the external test.",
+ "same_sample_or_cohort_as": [
+  "P-190 (round-1 candidate): the same 168 MCI-c / 187 MCI-nc ADNI sample, confirmed in the P-190 extract. Jiehui Jiang, P-532's corresponding author, is listed as a reviewer of P-190, not as an author.",
+  "P-554 (round-1 candidate): cohort B was recruited at the Department of Neurology, Huashan Hospital, Fudan University. That is the institution of P-554's Shanghai Memory Study. Participant overlap is possible but cannot be checked from either PDF.",
+  "P-3, P-104, P-81 (current supporters): the ADNI dataset family. P-81 (ADNI FDG-PET MCI, 3-year window) and P-104 (ADNI MRI/PET MCI) probably overlap participants. Not checked."
+ ],
+ "shared_authors_with": [
+  "No author is shared with P-3, P-104, P-81, P-190 or P-554. Chuantao Zuo (PET Center, Huashan Hospital) provided the cohort B patients. P-554's authors are from Huashan's Departments of Radiology and Neurology, so the two share an institution but no author."
+ ],
+ "what_it_shows": "Test C-indices, cohort A / cohort B. Cohort A figures are means of repeated 10-fold CV; cohort B is the external test.\n- Dual-modality radiomic: 0.766 / 0.798.\n- Radiomic PET: 0.753 / 0.734.\n- Radiomic MRI: 0.741 / 0.760.\n- SUVR_PET: 0.751 / 0.700.\n- GMV_MRI: 0.749 / 0.702.\n- Clinical (age, sex, education, MMSE): 0.684 / 0.685.\nAIC favoured the dual model. The authors conclude that the incremental benefit of combining FDG-PET and MRI is limited.",
+ "why": "STATED: partly. In both cohorts the dual-modality model is numerically best, above every single-modality imaging model and above a multivariable clinical Cox model. Three points limit it:\n(1) The fusion joins two primary imaging modalities. It has no metadata or side information, so it is not auxiliary-data-aware fusion.\n(2) In the ADNI test the margin over the best single model is 0.013 (0.766 vs 0.753). That is comparable to the CV SDs (0.008-0.009).\n(3) The authors conclude that the benefit is 'limited' and that single-modality imaging may suffice (p.1, p.10). The record already counts P-532 as a supporter of VF-22 (modest-to-negligible incremental prognostic value from adding PET to MRI).\n\nNARROWED: partly. Adding FDG-PET radiomics to the MRI radiomic model raised the C-index from 0.741 to 0.766 in the ADNI test and from 0.760 to 0.798 in Huashan. The narrowed wording accepts modest untested margins. But what is added is a second primary imaging modality, which I do not count as auxiliary information. That is the same line as for P-1214 and in the round-1 P-488 verdict. If the adjudicator counts PET added to MRI as auxiliary, the ADNI arm fits by a small margin. The Huashan arm would still not add an independent dataset family on its own:\n- It has 22 patients, 10 of them converters.\n- The models were trained on ADNI (p.10).\n- The 'P<0.001' for the cohort B comparisons (p.9) comes with no test described. The methods name only t-tests, chi-squared tests, partial correlation and log-rank tests (p.5).\n- The Table 2 SDs come from repeated CV runs, so a test on them would reflect variation in model fitting, not in patients.\n\nCAVEATS: The metric is a C-index for time to conversion, not a classifier AUC. The gap between training and test is large (dual model 0.884 vs 0.766).\n\nINDEPENDENCE: ADNI plus a small Huashan external test. The ADNI sample is the same as P-190's, and the site may be shared with P-554. The method family (radiomics with LASSO Cox) is distinct from those of P-3, P-104 and P-81. Cross-record tension: counting P-532 as VF-15 support while it supports VF-22 is consistent only if 'improves' is read as a modest gain.",
+ "quotes": [
+  {"page": 7, "quote": "Table 2 Predictive performance of each model [Model, Cohort A training, Cohort A testing, Cohort B] Clinical 0.692 (0.0004) 0.684 (0.006) 0.685 (0.006); SUVR_PET 0.791 (0.002) 0.751 (0.007) 0.700 (0.004); GMV_MRI 0.803 (0.003) 0.749 (0.008) 0.702 (0.007); Radiomic PET 0.871 (0.004) 0.753 (0.008) 0.734 (0.011); Radiomic MRI 0.807 (0.004) 0.741 (0.007) 0.760 (0.009); Radiomic dual-modality 0.884 (0.004) 0.766 (0.009) 0.798 (0.008)"},
+  {"page": 7, "quote": "C-indices are expressed as the mean (standard deviation) as derived from multiple 10-fold cross-validation in each model."},
+  {"page": 9, "quote": "comparison of the single- and dual-modality MRI and PET models revealed that MRI outperformed PET in cohort B (C-indices of 0.760 and 0.734, respectively; P<0.001), while the dual-modality model resulted in only a modest improvement over the single-modality models (C-index of 0.798 for dual-modality vs. 0.760 for MRI, and 0.734 for PET; both P<0.001)."},
+  {"page": 6, "quote": "Overall, in cohort A, image-based models (SUVR_PET, GMV_MRI, and the radiomic single- and dual-modality models) were superior to the clinical model, while the radiomic dual-modality model was superior to the radiomic single-modality imaging models."},
+  {"page": 7, "quote": "The Akaike information criterion (AIC) test was used to evaluate the quality of the Cox models (radiomic PET: 1,584.59; radiomic MRI: 1,603.48; dual-modality: 1,572.27)."},
+  {"page": 4, "quote": "a single-modality Cox model was constructed using features solely from the MRI or 18F-FDG PET scans, while a dual-modality Cox model was constructed using their combined features."},
+  {"page": 5, "quote": "the participants’ demographic information (age, sex, number of years of education) and MMSE scores to construct a clinical Cox model"},
+  {"page": 5, "quote": "Survival differences in the different risk groups were evaluated using a log-rank test. P values were 2-tailed, and statistical significance was set at P<0.01."},
+  {"page": 1, "quote": "However, the incremental benefit of combining 18F-FDG PET and MRI is limited, and radiomic analysis of a single modality may yield acceptable predictive results."},
+  {"page": 9, "quote": "However, the large degree of overlap identified between the two modalities suggests a large degree of redundancy, with dual-modality imaging providing only a slight gain in information."},
+  {"page": 2, "quote": "Cohort B comprised 22 patients with MCI whose data were collected from the Department of Neurology at the Huashan Hospital in Shanghai, China."},
+  {"page": 3, "quote": "an MCI converter (MCI-c) group (n=168), which included those whose MCI converted to AD within the 3-year follow-up."},
+  {"page": 10, "quote": "considering that the ADNI data were used as the training dataset, differences in ethnicity between the training and testing groups should not be ignored."}
+ ]
+}

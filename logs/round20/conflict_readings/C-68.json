@@ -1,0 +1,86 @@
+{
+ "id": "C-68",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-30",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Spatio-temporal convolution for classification of alzheimer disease and mild cognitive impairment (Turhan, Kucuk, Ozturk Isik; Computer Methods and Programs in Biomedicine 221 (2022) 106825)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-109",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multiscale convolution-attention model for efficient Alzheimer's disease and mild cognitive impairment diagnosis approach using sMRI (Khatri, Kim, Kwon; Applied Soft Computing 184 (2025) 113693) - BrainViT, matching the 2026-09-15 repoint",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-30": "(2+1)D CNN, whole-brain T1 MRI at 32x32x32, ADNI, binary AD vs MCI (507 scans/223 AD, 507 scans/204 MCI), 5-fold CV: AUC 0.85 +/- 0.046, validation accuracy 0.78 +/- 0.032.",
+  "P-109": "BrainViT hybrid CNN-transformer on 2D slices (about 50 axial/coronal/sagittal slices per subject, 54,300 slices) from 1075 ADNI subjects (390 AD, 370 MCI, 315 HC), images shuffled randomly and split 90/10: three-class AD/MCI/HC accuracy 96.81%, AUC 98.05 (BrainViT-L). Binary results are reported only for AD/HC (97.13%, AUC 98.52) and MCI/HC (94.23%, AUC 97.15); no binary AD vs MCI result."
+ },
+ "quantity_a": "Cross-validated ROC-AUC for binary AD vs MCI discrimination, ADNI, whole-brain structural MRI (subject-level split).",
+ "quantity_b": "Held-out accuracy for three-class AD vs MCI vs HC classification, ADNI, 2D sMRI slices with a random slice-level split.",
+ "same_quantity": false,
+ "incompatible_if_same": "Cannot be assessed: P-109 reports no binary AD vs MCI figure, and a three-class accuracy is not an estimate of a binary AUC. Neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch: binary AD vs MCI (P-30, registry T2) vs three-class AD/MCI/HC (P-109, registry T3). The record's 'T1' for both and 'task_equal: Yes' are wrong.",
+  "dataset_family": "match: ADNI in both.",
+  "validation_tier": "match in tier (internal only), but P-109's split is over shuffled 2D slices from the same subjects, a leakage-prone design P-30 does not share.",
+  "modality_family": "match: structural T1 MRI in both."
+ },
+ "endpoint_and_metric": "incompatible: different classification problem (binary vs three-class) and metric type (ROC-AUC vs accuracy).",
+ "performance_validity": "flag plausibly applies to P-109 though the automatic test was not tripped: its 96.81% is just under 0.97, but its three-class AUC 98.05 and AD/HC accuracy 97.13% are at or above 0.97 on internal validation only, with no external cohort and a random slice-level split. The verdict does not rest on this.",
+ "independence": "Distinct studies and author groups; both sample ADNI.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-30's 0.85 is a binary AD-vs-MCI ROC-AUC; P-109's 96.81% is a three-class AD/MCI/HC accuracy, so task and metric type both differ.",
+  "P-109 reports no binary AD-vs-MCI result that could be set against P-30.",
+  "P-109's evaluation shuffles 2D slices from the same subjects into train and test, a different validation design from P-30's cross-validation, and its near-ceiling internal figures would in any case bar it from a performance conflict."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-30",
+   "page": 4,
+   "quote": "and in 0.85 + /-0.046 average auc score, (auc score per fold: [0.86,0.94,0.86,0.80.,0.83])."
+  },
+  {
+   "paper": "P-30",
+   "page": 1,
+   "quote": "507 scans of 223 AD patients and 507 scans of 204 MCI patients were obtained for the computational experiments."
+  },
+  {
+   "paper": "P-109",
+   "page": 3,
+   "quote": "with a multiclass classification accuracy of 96.81 % on larger models, 95.43 % on big models, and 93.06 % on smaller models, using the ADNI dataset"
+  },
+  {
+   "paper": "P-109",
+   "page": 8,
+   "quote": "The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training."
+  },
+  {
+   "paper": "P-109",
+   "page": 8,
+   "quote": "For training and testing, around 50 brain fields\u2014axial, coronal, and sagittal\u2014were created from each subject\u2019s anatomy."
+  },
+  {
+   "paper": "P-109",
+   "page": 10,
+   "quote": "with rates of 97.13 % with 98.52 % AUC for AD/HC and 94.23 % with 97.15 % for MCI/HC classifications"
+  },
+  {
+   "paper": "P-109",
+   "page": 15,
+   "quote": "Our evaluation was based on a specific ADNI dataset"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-30: AUC ~0.85 on T1': P-30 is AD vs MCI (registry T2), not T1.",
+  "claim_b 'P-109: 96.81% Acc on T1': the figure is a three-class AD/MCI/HC accuracy (registry T3).",
+  "task_equal 'Yes' is wrong."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-109 binary AD-vs-MCI AUC from a subject-level split with an external cohort that excluded P-30's 0.85, on the same input representation; nothing of the kind is in P-109."
+}

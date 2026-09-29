@@ -1,0 +1,189 @@
+{
+  "vf": "VF-15",
+  "role": "skeptic",
+  "date": "2026-09-29",
+  "status": "candidate / pending_human_review (model reading; not a gate action)",
+  "sources_read": "ROOT/pdf/<P-id>.txt for P-43, P-225, P-512, P-195, P-190, P-186, P-1128, P-88, P-1, P-211, P-554, P-488; Fig. 2 render out/VF-15/img/P-211_p7.png; registry rows; registry_duplicates.json; summaries.md block titles (all twelve PDFs match their block filename or title).",
+  "decision_rule_applied": {
+    "stated_form": "YES needs all four. (i) Fusion beats every unimodal baseline the study itself ran, on the declared metric. (ii) The study ran a multivariable non-imaging baseline, the comparator P-81 failed on in round 20. (iii) The favourable comparison was not produced by selection on the evaluation data. (iv) The study's other metrics do not contradict the gain. Otherwise PARTLY, or NO if nothing survives.",
+    "narrowed_form": "YES needs a within-study comparison showing auxiliary (non-imaging or side) information added to an imaging model beats the same imaging model alone, in pMCI prediction. Modest untested margins are accepted, as round 20 accepted them for P-3 and P-81.",
+    "independence": "Each dataset family counts once (ADNI once). The operator's view that the statement makes sense was not used as evidence. The operator's note about a paper being added twice concerns VF-25, not VF-15. No sample is counted twice here."
+  },
+  "verdicts": [
+    {
+      "paper": "P-43",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": true,
+      "dataset_family": "Innsbruck memory clinic (Medical University of Innsbruck), non-ADNI",
+      "quote": "LDA solely including MRI factor measures ... resulting in an overall correct classification of 75.8 % and the lowest areas under the curve (AUC: 0.79). The sole use of distinct neuropsychological measures ... classified 85.5 % of all subjects correctly. When combining neuropsychological measures and MRI factors of hippocampus and temporal lobe the overall diagnostic accuracy was again 85.5 % ... (AUC:0.94).",
+      "page": "5 (Results 3.5); Table 5a-c p.7 ('Panel a,b: 85.5 % of cross-validated grouped cases were correctly classified. Panel c: 75.8 %')",
+      "refutation_attempt": "Comparison run within study: yes, three stepwise LDA models on the same 62 MCI patients (21 converters), leave-one-out CV. Population and comparator: MCI conversion from baseline data; the comparator is the MRI-only LDA, as the narrowed wording needs. MRI-only inferior by the paper's own numbers: 47 vs 53 of 62 correct under LOOCV, AUC 0.79 vs 0.94. There is no significance test, and the AUCs are probably not cross-validated. Not only the authors' interpretation: the numbers are in Table 5. The authors' 'significantly increase' (p.7) is untested, and I do not rely on it. No shared sample with any supporter or candidate. Stated form fails the best-baseline test. Cognition alone also gets 85.5% and finds more converters (81.0% vs 71.4%). Fusion gains only specificity, plus an AUC edge whose cognition-only value appears only in Fig. 1.",
+      "caveats": "21 events. Stepwise selection used the full sample, so LOOCV covers only the final LDA fit, and this applies to every arm. Internal inconsistency in the fused arm: the text gives non-converters '37 out 41' against 38 in Table 5a, and says 'overall classification error was 12.9 %' against 85.5% correct. The fused arm's accuracy is therefore 83.9%, 85.5% or 87.1%, all above the MRI-only 75.8%, so the narrowed verdict holds either way. The registry Dataset for P-43 reads 'not reported' but should name the Innsbruck clinic. If P-43 is admitted, the wording 'In three ADNI studies' becomes wrong."
+    },
+    {
+      "paper": "P-225",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": false,
+      "dataset_family": "ADNI (very probably the same participant subset as P-512)",
+      "quote": "Table 4, validation set: integrated model 0.882 (0.804-0.937); radiomics signature 0.784 (0.692-0.859); CDR 0.632; ADAS 0.695; P-value 0.0044*, 0.0001*, 0.0004*.",
+      "page": "7 (Table 4); integrated-model text p.4",
+      "refutation_attempt": "The comparison is run: a decision tree on Rad-score + CDR + ADAS against the Rad-score alone, with DeLong on the held-out set. That shows the narrowed form. The stated form fails criterion (ii): no CDR+ADAS clinical-only model was fitted. I could not refute the narrowed verdict from the source, but its reliability is poor. (1) The abstract says 154 progressors 'during the 48-month follow-up', while the methods say 3 years, and the training/validation progressive groups are 104 + 44 = 148. (2) The split is described as 'randomly divided ... according to enrollment time'. (3) The abstract gives DeLong P = 0.023, which appears nowhere in Table 4. (4) Sensitivity and specificity are swapped between abstract and results, and the AUCs are called 'accuracy'. (5) The training-set male count is 156 of 240 (65%). P-512's is 156 of 249 (62.7%): the same count on a different denominator. Together with ADAS 11.49 vs 11.5, education 15.72 vs 15.7, CDR 1.54 vs 1.6, the same 154 progressors, 7:3 split and pipeline, P-225 and P-512 are one sample. If either is admitted, prefer P-512, the earlier paper and internally consistent.",
+      "caveats": "CDR and ADAS partly define the ADNI AD label (circularity). Internal validation only. The registry Sample_N_Approx ('11 experts') and the block's sample field belong to another paper; the PDF says 343 MCI."
+    },
+    {
+      "paper": "P-512",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": false,
+      "dataset_family": "ADNI (same subset as P-225)",
+      "quote": "The ROC curve showed that the accuracy of the integrated model, radiomics signature, ADAS scores, CDR scores, and APOE4 in the test set was 0.807, 0.692, 0.695, 0.599, and 0.592 ... the Delong test demonstrated that the performance of the integrated model was significantly higher compared to the other independent predictors in the training and test sets (p < 0.05).",
+      "page": "6-7",
+      "refutation_attempt": "The comparison is run: an SVM on radiomics + APOE4 + CDR + ADAS against the radiomics signature alone, on the held-out test set (n = 108), with DeLong. The 'accuracy' labels are ROC areas: Figure 3 shows ROC curves and Table 4 labels the same metric AUC. The narrowed form survives. The stated form fails criterion (ii): no multivariable non-imaging model, and imaging alone (0.692) is no better than ADAS alone (0.695).",
+      "caveats": "Per-comparison p-values are not printed. DeLong on nested predictors is contested; the sister paper P-88 itself cites Demler et al. on that misuse. Circularity of CDR and ADAS. Internal split by ADNI participant number. Shares senior author Zhenyu Shu and the whole radiomics pipeline with P-88, so P-88, P-512 and P-225 are one method family."
+    },
+    {
+      "paper": "P-195",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": false,
+      "dataset_family": "ADNI",
+      "quote": "Table 2: (1) Clinical variables only BA 75.5 / AUC 80.6; (2) T1-weighted MRI only 73.2 / 79; (3) Clinical + T1 75.4 / 82.2; (4) pre-trained, no frozen layers 78.2 / 84.1; (5) pre-trained, frozen layers 77.8 / 84.7.",
+      "page": "7 (Table 2); task definition pp.3-4; discussion p.11",
+      "refutation_attempt": "The task is not pMCI prediction. 'cMCI subjects' session one was before conversion, and session two was the imaging session at the clinically deemed conversion date' (p.4). The authors themselves contrast their work with models that 'focus on the prediction of future AD rather than an actual diagnosis of the AD conversion' (p.11). Second-session clinical scores partly encode the label. Only the frozen pre-trained fusion was significantly above clinical-only, and plain fusion ties clinical on BA (75.4 vs 75.5). The MRI-only arm was not pre-trained, and no test against MRI-only is reported. PARTLY on both forms, for a different task (conversion diagnosis). Not upgraded.",
+      "caveats": "Method family overlaps P-81 (CNN late fusion) and P-3 (source-task transfer)."
+    },
+    {
+      "paper": "P-190",
+      "refuted": false,
+      "final_stated": "yes",
+      "final_narrowed": "yes",
+      "independent": false,
+      "dataset_family": "ADNI (same 168 MCI-c / 187 MCI-nc sample as P-532; participant overlap with P-81 likely)",
+      "quote": "Table 3: SUVR method AUC 0.68 +/- 0.01 (acc 68.38%); Clinical method 0.81 +/- 0.02 (81.09%); SUVR+Clinical 0.85 +/- 0.01 (85.35%); Our proposed DLR+C 0.90 +/- 0.01 (90.62%).",
+      "page": "8 (Table 3); results text p.6",
+      "refutation_attempt": "The comparison is run on the same 34-subject independent test group. It includes a multivariable clinical-only SVM (demographics, cognitive tests, APOE4), so criterion (ii) is met. The headline DLR+C arm is contaminated by selection: ZF-Net was chosen because it 'had the best classification performance in the independent test group' (p.6). But the SUVR vs SUVR+Clinical pair is untouched by that choice. There, fusion (0.85) beats both clinical-only (0.81) and SUVR-only (0.68) on every metric, so the stated form survives on criteria (i)-(iv), though with a small margin over clinical. The narrowed form survives clearly: SUVR 0.68 to SUVR+Clinical 0.85, same classifier and test group.",
+      "caveats": "No between-model significance test; 'significant superiority' rests on a decision-score t-test between groups. The test group is 16 + 18 = 34, although the Table 1 header says n = 48. The Table 3 footnote says cross-validation, while the text says independent test. 'Scan data for MCI-c were not all collected at the baseline' (p.3), so for some converters the task leans toward near-conversion classification. CDR-SB and MMSE partly define conversion."
+    },
+    {
+      "paper": "P-186",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": false,
+      "dataset_family": "ADNI (ADNI-1)",
+      "quote": "Table 5 (proposed AUC): NM 87.1% / MRI 88% / NM+MRI 91.2% at 6 months; NM 91.5% / MRI 90.5% / NM+MRI 95.7% at 1 year. Table 6 (1 year ahead): accuracy NM 84.7, MRI 83.5, NM+MRI 81; specificity NM 86, MRI 90, NM+MRI 70.",
+      "page": "9-10 (Tables 5 and 6)",
+      "refutation_attempt": "On AUC, fusion beats both unimodal models at both horizons. On accuracy and specificity it is worst at 1 year, contradicting the text's 'bimodal setup delivers improved sensitivity and specificity'. So criterion (iv) fails, and it also fails for the narrowed form (MRI accuracy 83.5 to fused 81.0). The inputs are longitudinal: at least two follow-up visits plus a forecast value, and the authors attribute the 95.7% AUC 'predominantly' to 'the forecasted marker value at the time of conversion' (p.8). The marker-set size per modality was chosen at maximum AUC on the CV results, and the fused arm has the largest pool (19 or 9 of NM+MRI), so its maximum carries the most selection optimism. PARTLY on both forms.",
+      "caveats": "Published in Hindawi Computational Intelligence and Neuroscience (doi 10.1155/2021/6628036). Its retraction or expression-of-concern status is STILL UNCHECKED: the Scite tool hit its monthly limit again today. Check it before any admission. The p-values reported are against chance, not between models."
+    },
+    {
+      "paper": "P-1128",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": false,
+      "dataset_family": "ADNI (ADNI-GO/2; the same 162 MCI as P-731, shared co-author Lin Tang)",
+      "quote": "Table 2, test set C-index: Network 0.765; Morphology 0.784; Morphology-Clinical 0.877; Network-Clinical 0.849; Network-Morphology 0.844; Network-Morphology-Clinical 0.880.",
+      "page": "5 (Table 2); abstract and results text give Network-Morphology as 0.884",
+      "refutation_attempt": "Within-study, same 50-patient validation split. Adding clinical covariates to each MRI-only Cox model raises the C-index in two clean pairs (0.784 to 0.877; 0.765 to 0.849). The third pair depends on the table-vs-text inconsistency (0.844 vs 0.884). The narrowed form survives on the two clean pairs. Stated: no clinical-only model, so criterion (ii) fails. PARTLY.",
+      "caveats": "Time-to-conversion discrimination (C-index), not a classifier AUC. Single random internal split, n = 50, with widely overlapping CIs and no between-model test. Which clinical variables enter each model is not listed, and the nomogram keeps FAQ, which partly defines dementia. Count P-1128 and P-731 once at most."
+    },
+    {
+      "paper": "P-88",
+      "refuted": true,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": false,
+      "dataset_family": "ADNI (ADNI-2/GO)",
+      "quote": "Table 3, test cohort AUC: Integrated model 0.865; Psychoradiomics signature 0.719; ADAS score 0.742; CDR score 0.737. 'the AUC of the integrated model significantly differed from those of other predictors in the training and test groups (p < 0.05, Delong test)'.",
+      "page": "8 (Table 3); results p.4 (journal p.1877)",
+      "refutation_attempt": "The narrowed form survives: signature 0.719 to integrated 0.865 on the held-out 103, with DeLong. The stated YES is refuted to PARTLY, because criterion (ii) fails. The only non-imaging comparators are single scales (ADAS, CDR). No multivariable CDR+ADAS model was fitted, and that is exactly the comparator on which P-81 failed in round 20. This paper has the same design as P-225 and P-512, which the verifiers graded PARTLY. Applied consistently, all three are PARTLY on the stated form.",
+      "caveats": "DeLong on nested models, the misuse flagged by Demler et al., whom the paper itself cites (ref 18). Circularity of CDR and ADAS. Split by ADNI entry number; no external test. The signature alone is scored by logistic rad-score and the integrated model by SVM. Senior author Zhenyu Shu is first author of P-512 and the pipeline is the same, so P-88, P-512 and P-225 are one method family."
+    },
+    {
+      "paper": "P-1",
+      "refuted": true,
+      "final_stated": "no",
+      "final_narrowed": "no",
+      "independent": false,
+      "dataset_family": "ADNI (EMCI subset)",
+      "quote": "Table 5: CNN/RF weights .55/.45 98.81%; .60/.40 97.62%; .40/.60 94.05%; .70/.30 96.43%; .65/.35 96.43%; .50/.50 95.24%; 0/1 (clinical only) 92.86%; 1/0 (DTI only) 96.43%. 'the weights of the highest accuracy run (0.55 CNN, 0.45 RF) are captured and used for the final ensemble model'.",
+      "page": "5 (Section 3.5); 6 (Tables 4 and 5)",
+      "refutation_attempt": "The only favourable comparison comes from selection on the evaluation data, so criterion (iii) fails for both forms. The ensemble weight is 'the highest accuracy run' of the grid; no separate validation set is described. The paper's own Table 5 shows the ensemble beating DTI-only at 2 of 6 mixed weights, tying at 2 and losing at 2, including the equal 0.50/0.50 weighting (95.24 vs 96.43). The evaluation also appears contaminated. Table 4 lists 'Testing Data' drawn from records after oversampling and augmentation (402/402 clinical records from 1,608/1,608 oversampled; 144,000/666,000 augmented images from 72/333 original images of 16/74 subjects), so copies of training subjects likely sit in the test data. The 'clinical' branch also includes MRI-derived hippocampal and ventricular volumes, so it is not purely auxiliary data. The source does not show that adding clinical data improves on DTI alone. Verifier PARTLY refuted to NO on both forms.",
+      "caveats": "Margins are 2 of 84 cases. The origin of the 84-case ensemble evaluation set is undescribed. Accuracy only; no significance test or external test."
+    },
+    {
+      "paper": "P-211",
+      "refuted": true,
+      "final_stated": "partly",
+      "final_narrowed": "yes",
+      "independent": false,
+      "dataset_family": "ADNI (ADNI1/GO/2/3, 1,042 amnestic MCI)",
+      "quote": "'According to the AUC value, the Comb (a) outperformed the other feature combinations' performances in all periods (Figure 2d).' Fig. 2d, my reading of the render (a/c/b): 1y 0.90/0.89/0.78; 2y 0.81/0.77/0.70; 3y 0.755/0.70/0.745; 4y 0.87/0.85/0.82; 5y 0.92/0.905/0.85.",
+      "page": "7 (Figure 2 and text)",
+      "refutation_attempt": "Narrowed survives. Comb (a) against Comb (c) adds cognitive scores to an otherwise identical MRI + covariates EBM, and the AUC point estimate is higher at every horizon: clearly at 2 and 3 years, within the SD bars at 1, 4 and 5 years. The stated YES is refuted to PARTLY. (1) Over the best unimodal arm, fusion is clearly separated only at 2 years. At 1y (vs c), 3y (vs b), 4y and 5y (vs c) the gap is 0.01-0.02, inside or touching the SD bars. (2) 'Significantly higher' (p.7) is asserted with no test described anywhere in the methods: an interpretation, not a result. (3) On accuracy, Fig. 2a shows (a) tying (c) at 1, 4 and 5 years and tying (b) at 3 years. At the long horizon (b) has the best specificity and (c) the best sensitivity, so criterion (iv) fails. (4) The authors themselves recommend 'using MRI for predicting dementia status' for short- and long-term prediction and 'cognitive measures for mid-term prediction' (p.12). This matches the P-186 and P-81 pattern (fusion ahead only on one metric, within noise): PARTLY.",
+      "caveats": "Magnitudes are figure-only. Internal validation (90/10 split, 5-fold CV, SMOTE; the order of SMOTE and splitting is not stated). Circularity of CDR-SB, FAQ, MMSE and ADAS13. The block's and registry's sample size (242804) is wrong; the PDF says 1,042."
+    },
+    {
+      "paper": "P-554",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": true,
+      "dataset_family": "Shanghai Memory Study (Huashan Hospital, Fudan) for the arm that supports; ADNI for the arm that does not",
+      "quote": "Table 2, SMS: sMRI+fMRI AUC 0.91 / ACC 82.7; Clinical 0.85 / 77.4; MRI+clinical 0.93 / 88.7. ADNI: sMRI+fMRI 0.86 / 81.6; Clinical 0.62 / 71.8; MRI+clinical 0.86 / 79.0. Discussion: 'the imaging-clinical model obtained an improved prediction capability than imaging model on SMS ... but unimproved results on ADNI with even lower sensitivity.'",
+      "page": "10 (Table 2); 12 (discussion)",
+      "refutation_attempt": "Both comparisons are run within the study. The SMS arm shows the narrowed form (0.91 to 0.93) and the stated form (fused 0.93 above the multivariable clinical 0.85 and every imaging arm). But the gain is +0.02 AUC in 116 patients (41 converters), with no test. The imaging features were chosen by t-tests on the whole SMS cohort before CV (p.6). The study's own second cohort does not reproduce the gain: AUC unchanged, ACC and sensitivity down. The authors cannot say whether the SMS difference is 'occasional or due to population variations'. A study whose replication arm contradicts the effect does not demonstrate it. It shows only one arm, so PARTLY on both forms. Not upgraded.",
+      "caveats": "The ADNI 'external validation' re-trains within ADNI on SMS-selected features, so it is a second internal CV. Plain SVM concatenation. SMS converters had lower MMSE and more APOE4, a difference absent in ADNI. The recruitment site may be shared with P-532's 22-patient Huashan external cohort; this is not verified."
+    },
+    {
+      "paper": "P-488",
+      "refuted": false,
+      "final_stated": "partly",
+      "final_narrowed": "partly",
+      "independent": true,
+      "dataset_family": "BioFIND (MRC CBU Cambridge + CTB Madrid); P-577 is its registry duplicate",
+      "quote": "'The best marginal performance was observed for MEG covariances (AUC = 0.74, SD = 0.13) and MRI cortical volumes (AUC = 0.77, SD = 0.14). Combining all inputs led to markedly improved classification scores (AUC = 0.81, SD = 0.12)'; logistic models: Model 2 (age, education, MMSE, hippocampus ratio) AUC 0.75; Model 4 (+ MEG power) 0.84; bootstrap CI for the difference 0.026-0.179.",
+      "page": "13 (stacking results, Fig. 5 p.15); 11 (logistic models)",
+      "refutation_attempt": "Narrowed: no analysis isolates auxiliary data added to an imaging model. The stacked full model adds MEG (a second primary brain modality) together with MMSE, demographics and site, and no MRI+clinical or MRI+MEG stacked model is reported. The only tested gain (Model 2 to Model 4) adds MEG to a model already holding the clinical variables. There is no MRI-only logistic model. The 0.77 to 0.81 stacked gain is within the fold SDs, and the CPI shows site, which the authors call collinear with progression, among the contributors. Conditional permutation importance does show MMSE carrying information not shared with the brain inputs; that is the part shown. Stated: the full model is the best on point estimate, but with no test against the best marginal model, and partly on a site proxy. PARTLY on both forms. Not upgraded, and not refuted to NO, because of the MMSE CPI result.",
+      "caveats": "CV only. The MEG feature for the logistic models was chosen by exploration, a circularity the authors flag. Clinical AD diagnosis without CSF or PET. The Madrid portion may overlap P-173's Madrid MEG cohort; not verified."
+    }
+  ],
+  "round20_current_supporters": {
+    "P-3": {"stated": "partly", "narrowed": "yes (per round20_reasoning: all three sustain the narrower claim)", "family": "ADNI"},
+    "P-104": {"stated": "yes", "narrowed": "yes", "family": "ADNI"},
+    "P-81": {"stated": "partly", "narrowed": "yes", "family": "ADNI"}
+  },
+  "tally": {
+    "dataset_families": [
+      "ADNI",
+      "Innsbruck memory clinic (Medical University of Innsbruck)",
+      "Shanghai Memory Study (Huashan Hospital, Fudan University)",
+      "BioFIND (MRC CBU Cambridge + CTB Madrid)"
+    ],
+    "stated_independent_yes": [
+      "ADNI (P-104 from round 20; candidate P-190 also yes; one family however many papers)"
+    ],
+    "narrowed_independent_yes": [
+      "ADNI (P-3, P-104, P-81 from round 20; candidates P-512 or P-225 (one sample), P-88, P-190, P-211, P-1128; one family)",
+      "Innsbruck memory clinic (P-43)"
+    ],
+    "stated_reaches_three": false,
+    "narrowed_reaches_three": false,
+    "note": "The non-ADNI families that could lift the count are SMS (P-554) and BioFIND (P-488). Both are PARTLY. P-554's own ADNI arm fails to reproduce the gain. P-488 never separates auxiliary data from MEG. P-43 is the only non-ADNI YES, and only on the narrowed wording. Result: stated form, 1 independent family; narrowed form, 2 families (ADNI + Innsbruck). Both fall short of three."
+  },
+  "record_consequences_for_operator": [
+    "If P-43 is admitted to the narrowed record, the wording 'In three ADNI studies' must change, and the dataset-family count becomes 2 (ADNI + Innsbruck). That is still below the three distinct families Appendix H.1 requires, so an exception must still be declared.",
+    "At most one of P-225 and P-512 may be counted (one ADNI sample). Prefer P-512: P-225 has unreconciled sample counts, a p-value that does not match its own Table 4, and demographics apparently shared with P-512.",
+    "P-88, P-512 and P-225 are one method family (the same radiomics + mRMR/GBDT + stepwise logistic + SVM/tree + DeLong pipeline; P-88 and P-512 share Zhenyu Shu).",
+    "P-1 should not be admitted in either form (test-set-selected ensemble weight; likely pre-split oversampling leakage).",
+    "P-186: Hindawi CIN retraction status still unchecked (Scite limit reached).",
+    "Registry repairs to route through the normal patch path (not done here): P-43 Dataset 'not reported' should name the Innsbruck clinic. P-225 Sample_N_Approx '11 experts' should be 343. P-211 Sample_N_Approx '242804' should be 1042."
+  ]
+}

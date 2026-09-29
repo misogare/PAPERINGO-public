@@ -1,0 +1,84 @@
+{
+ "id": "C-154",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-229",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Attention-Guided Autoencoder for Automated Progression Prediction of Subjective Cognitive Decline with Structural MRI (Guan, Yue, Yap, Xiao, Bozoki, Liu; IEEE J Biomed Health Inform 2023, 27(6):2980-2989; author manuscript)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-178",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Random forest model for feature-based Alzheimer's disease conversion prediction from early mild cognitive impairment subjects (Velazquez, Lee; PLoS ONE 16(4): e0244773, 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-229": "Primary task: progressive vs stable subjective cognitive decline (SCD converting to MCI within 84 months) in the private CLAS cohort (24 pSCD / 52 sSCD), 90 AAL grey-matter ROI volumes from T1 MRI, domain-transfer autoencoder trained on ADNI AD (159) / NC (201) with unlabelled CLAS SCD. IADT: accuracy 71.05%, balanced accuracy 69.87%, specificity 73.08%. A secondary MCI-conversion experiment (393 ADNI MCI, 167 pMCI / 226 sMCI, 36 months) is reported in Table IV, whose numbers do not survive in the text extract.",
+  "P-178": "Early MCI (EMCI) only, ADNI-1/2/GO: 49 eventual converters (mean time to AD 5.02 years, up to 12 years in study) vs 334 non-converters; nine features (age, race, APOE4, hippocampal and ventricular volume, ADAS13, ADAS11, FAQ, MMSE); visit-level records (1806 visits) randomly oversampled to 1608 per class and split 1206/402 per class; 1000-tree random forest. Accuracy 93.6%, AUC 0.96 (9 features). SVC on the same data reaches 90.0% accuracy with AUC 0.54, i.e. majority-class performance."
+ },
+ "quantity_a": "Accuracy of classifying progressive vs stable SCD (conversion to MCI within 7 years) in a 76-person Chinese community cohort, from MRI grey-matter ROI volumes, with the classifier trained on ADNI AD vs NC (cross-domain transfer, CLAS labels unseen in training).",
+ "quantity_b": "Accuracy of classifying ADNI early-MCI visits as eventual AD converters vs non-converters (no fixed horizon; mean 5 years), from demographics, APOE4, cognitive scores and two MRI volumes, random split of oversampled visit records.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable as the same quantity. Even on a shared task, a 71% and a 94% accuracy from different methods, with neither study testing the other's method or claiming an ordering the other refutes, would not be incompatible.",
+ "gates": {
+  "task": "mismatch: P-229's 71.05% is SCD-to-MCI progression (a preclinical transition), not MCI-to-AD conversion; P-178 is EMCI-to-AD conversion. The record's T2 for P-229 is wrong for the figure it quotes",
+  "dataset_family": "mismatch for the quoted figures: P-229's 71.05% is tested on CLAS (a private Shanghai cohort; ADNI only supplies the AD/NC training data), P-178 is ADNI",
+  "validation_tier": "mismatch: P-229 is a cross-cohort transfer test (trained on ADNI, tested on CLAS); P-178 is a random split within ADNI visit records",
+  "modality_family": "mismatch: P-229 uses MRI ROI volumes only; P-178 uses mainly clinical/cognitive features plus two MRI volumes; the record sets modality_family_equal 'No'"
+ },
+ "endpoint_and_metric": "incompatible: both report accuracy, but on different transitions (SCD to MCI within 84 months vs EMCI to AD at any time), different populations and different units of analysis (P-178 splits oversampled visit records, not subjects, so the same person's visits and their duplicates can appear in training and test sets).",
+ "performance_validity": "The automatic flag is not tripped (93.6% accuracy, AUC 0.96, both below 0.97; pack: performance_suspect false). But P-178's accuracy sits against an 87% majority-class baseline (its SVC reaches 90.0% with AUC 0.54), and it has no external cohort. Not decisive here because the quantities differ.",
+ "independence": "Distinct author groups (UNC/Shanghai Mental Health Center vs University of Missouri-Kansas City); P-229's training data and P-178 both come from ADNI.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-229's 71.05% is the accuracy for predicting which people with subjective cognitive decline progress to MCI within 84 months in the CLAS cohort, whereas P-178's 93.6% is for predicting which ADNI early-MCI patients eventually convert to AD, so the transitions, populations and horizons differ.",
+  "The predictor sets differ (MRI grey-matter ROI volumes only vs a clinical/cognitive feature set with two MRI volumes), and so does the evaluation (a cross-cohort transfer test vs a random split of oversampled visit records).",
+  "The dataset-family, task and modality gates all fail for the figures quoted, and no waiver is on record.",
+  "P-229's own MCI-conversion result (Table IV) cannot be read from the extract, so no like-for-like MCI-to-AD comparison is available from P-229."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-229",
+   "page": 4,
+   "quote": "This dataset includes 76 SCD subjects with 3T T1-weighted structural MRIs. There are 24 progressive SCD (pSCD) and 52 stable SCD (sSCD) subjects. These pSCD subjects have evolved to MCI within the next 84 months"
+  },
+  {
+   "paper": "P-229",
+   "page": 10,
+   "quote": "our model achieves higher accuracy, balanced accuracy (i.e., 71.05%, 69.87%) and specificity (i.e., 73.08%) which are much better than the other three state-of-the-art methods"
+  },
+  {
+   "paper": "P-229",
+   "page": 7,
+   "quote": "In our experiment, we use the ADNI dataset as the source domain, while the CLAS dataset is used as the target domain."
+  },
+  {
+   "paper": "P-178",
+   "page": 1,
+   "quote": "383 Early Mild Cognitive Impairment (EMCI) patients were gathered from the Alzheimer's Disease Neuroimaging Initiative (ADNI). Of these patients, 49 would eventually convert to AD (EMCI_C), whereas the remaining 334 did not convert (EMCI_NC)."
+  },
+  {
+   "paper": "P-178",
+   "page": 8,
+   "quote": "our 9-feature random forest implementation with an accuracy of 93.6% and an AUC of 96% against a 383-patient data set represents our best model."
+  },
+  {
+   "paper": "P-178",
+   "page": 4,
+   "quote": "Record# after Oversampling 1608 1608 Training Data 1206 1206 Testing Data 402 402 (Table 1)"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-229: Acc 71.05 on T2' mislabels the task: 71.05% is the pSCD vs sSCD (SCD-to-MCI, CLAS) accuracy, not an MCI-to-AD conversion result.",
+  "dataset_equal 'Yes' is wrong for the quoted figures: P-229's 71.05% is measured on CLAS, not ADNI.",
+  "claim_b 'Acc 93.6 on T2' omits that it is an EMCI-only cohort with no fixed horizon (mean 5.02 years to conversion), evaluated on oversampled visit records, not subjects.",
+  "Registry Sample_N_Approx '393' for P-229 corresponds to its secondary MCI experiment; the quoted accuracy comes from the 76-subject CLAS test (with 360 ADNI AD/NC used for training).",
+  "resolution says 'Rejected: Task, dataset, or modality mismatch' while resolution_status is partially_resolved_candidate, and the note is a list of intermediate scores naming no separating condition."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "P-229's Table IV (MCI-to-AD, 36 months, ADNI) set against a P-178 result at a matched horizon and on a subject-level split; even then the populations (all MCI vs EMCI only) and predictor sets would differ."
+}

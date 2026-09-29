@@ -1,0 +1,78 @@
+{
+ "id": "C-163",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-269",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Artificial intelligence approaches for early detection of neurocognitive disorders among older adults (AlHarkan et al., Front Comput Neurosci 2024)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-95",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Analysis of neuropsychological and neuroradiological features for diagnosis of Alzheimer's disease and mild cognitive impairment (Kurbalija et al., Int J Med Inform 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-269": "343 Saudi adults aged 60+ recruited at COVID-19 vaccine centres; three classes (normal / MCI / dementia) defined by SLUMS screening-score cut-offs (25-30 / 20-24 / 0-19), not by clinical diagnosis; predictors are demographics, sleep habits and medical history (no imaging, no cognitive tests); 80/20 train-test split. SVM accuracy 93.3% (all), 94.4% (males, n=233), 95.5% (females, n=110); logistic regression 71.4% (all), 73.8% (males), 100% (females).",
+  "P-95": "90 Serbian clinic participants (30 AD by NINCDS-ADRDA, 30 MCI by Petersen/NIA-AA, 30 matched healthy controls), 482 neuropsychological and neuroradiological (visual rating, DTI, FSL volumes) features, 10x10 stratified CV, seven Weka classifiers with default settings. Three-class accuracy with all attributes 66.22% (LR) to 81.00% (naive Bayes); weighted AUROC 76.3-95.0%; best NP combination with SVM 79.78%."
+ },
+ "quantity_a": "Three-class accuracy (SLUMS-defined normal / MCI / all-cause dementia) from survey risk-factor features, Saudi community screening sample, female subgroup (95.5%) or all (93.3%)",
+ "quantity_b": "Three-class accuracy (clinically diagnosed AD / MCI / healthy control) from neuropsychological + MRI features, Serbian clinic sample; range 66-81% across seven classifiers",
+ "same_quantity": false,
+ "incompatible_if_same": "Not settled even if the labels matched: P-95's figure is a spread across seven default classifiers on 90 people with per-classifier SDs of 11-17 points, and neither paper claims an ordering the other refutes. Two different pipelines each reporting their own accuracy is not an incompatibility under the rule.",
+ "gates": {
+  "task": "nominal match (three-class normal/MCI/impaired) but the endpoint definition differs: P-269's classes are SLUMS score bands including all-cause dementia; P-95's are clinical diagnoses of AD and MCI.",
+  "dataset_family": "mismatch: Saudi Eastern Province community sample vs Novi Sad (Serbia) clinic sample.",
+  "validation_tier": "match: both internal validation only (single 80/20 split vs repeated 10-fold CV).",
+  "modality_family": "mismatch: P-269 uses questionnaire risk factors only (demographics, sleep, comorbidities; no imaging); P-95 uses neuropsychological test batteries plus MRI (visual ratings, DTI, volumetry). The registry's 'MRI/PET' for P-269 is wrong."
+ },
+ "endpoint_and_metric": "incompatible: both multiclass accuracy, but different class definitions (screening-score bands vs clinical diagnoses) and different predictor sets.",
+ "performance_validity": "flag does not apply by the threshold (0.955 < 0.97), but the P-269 figures are internal, on small subgroups (110 females), and the same paper reports 100% for the female logistic model; the reported confusion matrices sum to the full sample (343), which suggests they are not held-out test counts. A caution, not the exclusion criterion.",
+ "independence": "Distinct groups and cohorts (Imam Abdulrahman Bin Faisal University vs Novi Sad/Ljubljana/Belgrade); no shared data or authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-269's classes are bands of the SLUMS screening score in a community sample, while P-95's are clinical diagnoses of AD, MCI and healthy control in a clinic sample, so the populations behind the shared labels differ.",
+  "P-269 predicts from demographic, sleep and comorbidity survey items, while P-95 uses neuropsychological batteries and MRI measures, so the predictor sets differ.",
+  "The dataset and modality gates fail with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-269",
+   "page": 3,
+   "quote": "Based on the SLUMS Examination scores out of 30, the level of the patient's cognitive problems was categorized as (i) Normal (score 25\u201330), (ii) MCI (Mild Cognitive Impairment) (score 20\u201324), (iii) dementia (score 0\u201319)."
+  },
+  {
+   "paper": "P-269",
+   "page": 3,
+   "quote": "This research conducted a cross-sectional study using in-person interviews with participants recruited from COVID vaccine centers in the Eastern Province of Saudi Arabia."
+  },
+  {
+   "paper": "P-269",
+   "page": 1,
+   "quote": "the developed SVM models performed the best, with an accuracy of 93.3% for all patients, 94.4% for males only, and 95.5% for females only."
+  },
+  {
+   "paper": "P-95",
+   "page": 6,
+   "quote": "patients diagnosed with AD due to the NINCDS-ADRDA criteria [23]; patients diagnosed with MCI based upon the Peterson's criteria"
+  },
+  {
+   "paper": "P-95",
+   "page": 1,
+   "quote": "The accuracy for the whole set of attributes ranged between 66.22 % and 81.00 %, and the weighted average AUROC was between 76.3 % and 95.0 %."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-269: Acc 95.5% on T1' reports the female-only subgroup; the all-patient SVM accuracy is 93.3%.",
+  "claim_b 'P-95: 66-81%' is a range across seven classifiers, not a single estimate.",
+  "dataset_equal and modality_family_equal 'Yes' are wrong: different countries and cohorts; survey risk factors vs neuropsychology plus MRI.",
+  "modality_family 'clinical_survey' fits P-269 but not P-95, whose features include MRI measures; P-269's registry Modality 'MRI/PET' is wrong (no imaging used).",
+  "Both are three-class tasks coded T1/T3; neither is a binary MCI vs control comparison."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in the two documents: the class definitions, populations and predictors all differ. A study using clinically diagnosed classes with survey-only predictors would be needed to bridge them."
+}

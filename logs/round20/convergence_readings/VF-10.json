@@ -1,0 +1,33 @@
+{
+ "id": "VF-10",
+ "supporters": [
+  {
+   "paper": "P-76",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "MC-ViViT achieves over 85% accuracy on all four themes. For example, MC-ViViT predicts 29 out of 32 subjects correctly on the theme Crafts Hobbies, which reaches the highest accuracy, 90.63%. [...] The average AUC of all four themes is 0.56.",
+   "page": "7",
+   "note": "Sun, Dodge and Mahoor 2024, MC-ViViT on I-CONECT facial video. Accuracy 85.4-90.6% per theme (Table 2) in 32-41 participants per theme, but the AUCs on the same folds are 0.4952-0.6122 (cross-theme 0.48-0.75), i.e. near chance ranking; the authors attribute this to clip-level scoring. No separate validation set: 'we use the test set as the validation one during the training process' (p. 6). Videos are interviewer-led semi-structured video chats on study-provided devices, not a self-administered instrument; the paper argues only that a tablet or phone could collect them (p. 9). Supports high reported standalone accuracy on consumer-grade video, not 'self-administered', and the accuracy is undercut by the AUC."
+  },
+  {
+   "paper": "P-77",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "The detection accuracy using this combined method reached 88%, whereas the accuracy without applying the segments and sequences information of the facial features within a video on a certain theme was 84%.",
+   "page": "1",
+   "note": "Alsuhaibani, Dodge and Mahoor 2024, STAM on I-CONECT facial video; SAME cohort and research group as P-76 (not an independent dataset). The 88% (87.5%, AUC 0.87) is the best of four themes; the others are 83.3%, 79.5% and 66.7% (Table 4), and five repeated fold assignments give theme means of 61.3-84.4% (Table 7). 30-39 videos per theme after manual quality exclusion. Interviewer-led conversations, not self-administered. Supports roughly 80-88% accuracy on the better themes in one cohort."
+  },
+  {
+   "paper": "P-101",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "The results showed that MG had an accuracy of 93.75% and AUC of 0.923, with a sensitivity of 91.67% and a specificity of 95.45%.",
+   "page": "1",
+   "note": "Xiao et al. 2022, Memory Guard smartphone/tablet app (Android or iOS, touch-screen, about 20 min, designed for possible self-administration), 333 community participants in Shanghai and Henan, single temporal train/test split (about 7:3). The reference label is not a clinical MCI diagnosis but a MoCA (Beijing) score of 16-23, termed a 'suspected MCI high-risk group' (p. 4-5). Supports high standalone accuracy of a self-administered consumer-device test against a MoCA-defined proxy for MCI, not against diagnosed MCI; no external validation."
+  }
+ ],
+ "yes_count": 0,
+ "verdict": "holds_narrowed",
+ "narrowed_wording": "Low-cost behavioural data captured without specialist hardware (facial video from home video-chat interviews in one US trial cohort, two analyses; a self-administered smartphone test in one Chinese community sample scored against a MoCA-defined proxy) reported best-case standalone accuracies of about 88-94% in small internally validated samples (other themes and repeated splits 61-90%); only two cohorts, one analysis with AUC near chance, no external validation and no head-to-head against a specialist instrument.",
+ "reasoning": "All three documents are the studies the ledger means and all report high standalone accuracy, but none answers 'yes' to the statement as the review states it. (1) 'Self-administered' holds only for P-101; P-76 and P-77 analyse interviewer-led video conversations. (2) P-76 and P-77 are the same I-CONECT cohort from the same group, so the convergence rests on two datasets, the minimum the criterion allows. (3) P-76's 85-91% accuracy is accompanied by AUCs of 0.50-0.61 and no held-out validation set; P-77 reaches 88% on one of four themes only; P-101's target is a MoCA cut-off, not diagnosed MCI. The three partly-supporters together sustain the narrower wording above (reported accuracy on non-specialist devices in two small cohorts), which keeps the review's own caveat about no head-to-head comparison. If the operator requires three independent cohorts, the convergence fails, since only two cohorts underlie it."
+}

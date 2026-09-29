@@ -1,0 +1,80 @@
+{
+ "vf": "VF-23",
+ "role": "verifier_3",
+ "date": "2026-09-29",
+ "status": "candidate / pending_human_review (model reading of source PDFs against the operator-supplied revised VF-23 statement, BRIEF_R22.md; not a gate decision)",
+ "clauses": {
+  "C1": "Connectivity, graph/network or complexity measures discriminate MCI from controls (group difference or classification) in the study's own data.",
+  "C2": "Within the same study, such a measure separates MCI where spectral band-power does not.",
+  "C3": "Report any within-study, same-participant head-to-head of discrimination between feature domains (metric and direction).",
+  "C4": "Within the same study, a multi-domain combination (spectral plus complexity and/or connectivity) discriminates MCI better than any single domain."
+ },
+ "summary": "All three candidates are syntheses, and none can be a primary supporter of any VF-23 clause under Appendix H.1. P-484 is a random-effects meta-analysis of EEG microstate temporal parameters. Its MCI pool re-uses the existing supporter P-480 (Lassi et al. 2023, Florence, 46 MCI / 19 HC). It computes no spectral or connectivity measure. P-580 is a narrative review with no study count or analysis of its own. P-548 is a PRISMA systematic review of 30 SCD EEG/ERP studies with narrative synthesis only, no pooled statistics and an SCD, not MCI, population. None of the three runs a head-to-head between feature domains. Neither P-580 nor P-548 is one of the two outside syntheses the evaluator cited: they are not the 2025 review of 124 connectivity studies and not the 2026 review of 21 wearable-EEG studies.",
+ "results": [
+  {
+   "paper": "P-484",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "is_synthesis": true,
+   "C1": "partly",
+   "C2": "not_tested",
+   "C3_head_to_head": "none. The meta-analysis pools only microstate temporal parameters (duration, occurrence, coverage of maps A-D). It computes no spectral band-power, connectivity, graph or complexity measure, so no between-domain comparison exists.",
+   "C4": "not_tested",
+   "dataset_family": "Pooled published data. MCI vs HC arm: 6 studies, 293 MCI / 324 HC (Musaeus 2019; Musaeus 2020; Lian 2021; Lassi 2023; Li 2024; Tarailis 2025). The arm includes Lassi et al. 2023 (46 MCI / 19 HC), which is the existing VF-23 supporter P-480 (Florence PREVIEW cohort), so the pool re-reports P-480's participants and adds no independent dataset for that sample.",
+   "method_family": "Random-effects (two-level mixed-effects) meta-analysis, Hedges' g, of resting-state eyes-closed EEG microstate temporal parameters",
+   "quotes": [
+    {"page": 6, "quote": "We applied the random effects model estimate that indicated a significantly larger mean duration of microstate A in the MCI patients compared with the healthy controls (g = 0.398, 95 % CI = [0.163; 0.632], PI = [0.119; 0.676], z|t = 4.35, p = 0.007)."},
+    {"page": 6, "quote": "The SMD estimate of microstate D was significant (g = -0.306, 95 % CI = [-0.500, -0.111], z|t = -4.04, p = 0.010), indicating shorter duration in MCI patients compared to healthy controls."},
+    {"page": 6, "quote": "We fitted the random effects model to the occurrence rate data of microstate A and obtained an effect size estimate of g = 0.369 (95 % CI = [0.152; 0.586], PI = [0.138; 0.600], z|t = 4.37, p = 0.007)"},
+    {"page": 6, "quote": "We found a significant SMD estimate of microstate D (g = -0.190, 95 % CI = [-0.500, -0.111], z|t = -4.04, p = 0.010), pointing out significantly lower occurrence rates of microstate D in MCI patients"},
+    {"page": 6, "quote": "We applied the random effects model that we fitted to the coverage data of microstate A and found a significant effect size estimate of g = 0.462 (95 % CI = [0.262; 0.662], PI = [0.231; 0.694], z|t = 5.95, p = 0.002)."},
+    {"page": 6, "quote": "The fitted random effects model's time coverage SMD estimate of microstate D was significant (g = -0.319, 95 % CI = [-0.454, -0.184], z|t = -6.07, p = 0.002)"},
+    {"page": 3, "quote": "Six studies (Lassi, 2023; Li, 2024; Lian et al., 2021; Musaeus, 2020; Musaeus et al., 2019; Tarailis et al., 2025) included in this meta-analysis compared MCI patients (k = 293) to healthy older adults (k = 324), including a total of 617 participants."},
+    {"page": 4, "quote": "[4] Lassi et al. (2023) 46 MCI 19 HC ... down-arrow duration & coverage of microstate C in MCI (Table 1)"},
+    {"page": 1, "quote": "We included 12 experimental studies that examined resting-state, eyes-closed EEG microstate parameters in 1347 participants (448 MCI patients, 514 AD patients, and 385 healthy controls)."},
+    {"page": 4, "quote": "In total, 1073 participants were included in this meta-analysis (including 293 MCI patients, 346 AD patients, and 434 healthy older adults)."},
+    {"page": 9, "quote": "the current evidence does not yet allow their direct application as reliable diagnostic biomarkers. The small to medium effect sizes and methodological heterogeneity across studies indicate that these findings should be viewed as an essential step toward identifying candidate microstate features"}
+   ],
+   "why": "Right paper: Piton, Smailovic, Jelic, Koenig, Unschuld and Brechet, NeuroImage: Clinical 49 (2026) 103929 (online December 2025), which matches the block title. C1 is 'partly' only at the synthesis level. The pooled MCI-vs-HC estimates show small but significant increases in microstate A duration, occurrence and coverage and decreases in microstate D (g about 0.19 to 0.46). Microstates B and C are null for MCI. Three reasons stop this counting toward VF-23. (1) It is a meta-analysis, and under H.1 a synthesis cannot support a primary-evidence convergence. (2) Microstate temporal parameters are a network-dynamics measure, not connectivity, graph or complexity in the strict sense. P-580 treats microstates as a separate qEEG domain. (3) The MCI pool includes P-480's own Florence sample (Lassi 2023), so it would double-count an existing supporter. C2, C3 and C4 cannot be judged: there is no spectral, connectivity or combination analysis. Data-quality flags: the pooled N is internally inconsistent (abstract 1,347 = 448 MCI / 514 AD / 385 HC; Results 1,073 = 293 MCI / 346 AD / 434 HC). The microstate-D occurrence estimate (g = -0.190) prints the same CI [-0.500, -0.111], z = -4.04 and p = 0.010 as the microstate-D duration estimate, which looks like a copy error, so that line's CI and test statistic are unreliable. The authors themselves say the effects do not yet support diagnostic use. Not preregistered (p.10)."
+  },
+  {
+   "paper": "P-580",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "is_synthesis": true,
+   "C1": "not_tested",
+   "C2": "not_tested",
+   "C3_head_to_head": "none of its own; it is a narrative review with no analysis. It reports only secondhand, uncorroborated results. (a) Farina et al. 2020, tabulated: aMCI vs NC, wPLI AUC = 0.61 vs 'MMSE+global theta' AUC = 0.80, so spectral plus MMSE beat connectivity, but the spectral arm includes a cognitive score. (b) Tao et al. 2024: SampEn declines AD < MCI < HC while relative power 'often fails' to detect MCI abnormalities. Neither is found in summaries.md headers by title search. Leads only, not evidence.",
+   "C4": "not_tested",
+   "dataset_family": "None of its own. Narrative review of published qEEG studies in AD/MCI; no search strategy, no study count, no inclusion criteria.",
+   "method_family": "Narrative review (qEEG power spectrum, GFP, functional and effective connectivity, source localisation, microstates, entropy / higher-order spectra, ML/DL, multimodal fusion)",
+   "quotes": [
+    {"page": 1, "quote": "It has been shown that decreased alpha power and increased theta power within the qEEG spectrum correlate with enhanced AD severity. Data from microstate analysis have demonstrated significant variations in temporal dynamics in patients with AD. Non-linear measures, such as entropy, have identified marked reductions in neural complexity in AD and MCI patients, indicating that they may serve as early diagnostic markers."},
+    {"page": 5, "quote": "EEG studies have shown a progressive decline in SampEn values with cognitive impairment (AD < MCI < HC). In contrast, relative power spectral analysis often fails to detect significant abnormalities in MCI (Tao et al., 2024), underscoring SampEn's unique ability to capture non-linear dynamics that conventional spectral metrics miss. [SECONDHAND - context only]"},
+    {"page": 10, "quote": "aMCI 60, NC 60 ... MRI aMCI vs. NC: AUC = 0.72 ... wPLI aMCI vs. NC: AUC = 0.61 ... MMSE+global theta aMCI vs. NC: AUC = 0.80 (Farina et al., 2020) [Table 2, SECONDHAND - context only]"},
+    {"page": 8, "quote": "MCI 189, NC 246 ... Spectral features, Hjorth parameters, sample entropy, microstates ... LDA, SVM ... MCI vs. NC: Acc = 80% (Jiao et al., 2023) [Table 1, SECONDHAND - context only; Jiao et al. 2023 is corpus P-499]"}
+   ],
+   "why": "Right paper: Yuan and Zhao, Front. Aging Neurosci. 17:1522552 (2025), which matches the block. It is a narrative review with no methods section, no search, no study count and no data or analysis of its own. Under H.1 a narrative review never supports a primary-evidence statement, so every clause is not_tested. It argues for integrating qEEG domains and modalities, but it pools nothing and runs no head-to-head. Two cited items are worth checking as leads, not as evidence. (1) Jiao et al. 2023, a multi-domain EEG classifier with spectral, Hjorth, sample entropy and microstate features (MCI vs NC Acc = 80%). It is in the corpus as P-499 and could be read directly for C4/C3. (2) Tao et al. 2024 and Farina et al. 2020, both relevant to C2/C3, which a title grep did not find in the summaries.md headers. It is not the evaluator's '2025 systematic review covering 124 EEG connectivity studies'."
+  },
+  {
+   "paper": "P-548",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "is_synthesis": true,
+   "C1": "not_tested",
+   "C2": "not_tested",
+   "C3_head_to_head": "none. Narrative synthesis of 30 SCD EEG/ERP studies with no pooling. It reports no spectral-vs-connectivity/complexity comparison in the same participants, its own or secondhand. Its secondhand items are single-domain (e.g. Sibilano 2023: delta band 'most discriminative for SCD and MCI'; Abazid 2022: EpEn and clustering coefficient differences across SCD/MCI/AD).",
+   "C4": "not_tested",
+   "dataset_family": "None of its own. 30 published EEG/ERP studies of SCD (PubMed and Web of Science, Jan 2011 to Mar 2023). The population is SCD, compared mostly with MCI/AD; only ten studies had non-SCD controls.",
+   "method_family": "PRISMA systematic review with narrative (tabular) synthesis, no meta-analysis",
+   "quotes": [
+    {"page": 1, "quote": "We analysed 30 studies that met our criteria, with 17 focusing on resting-state or cognitive task EEG, 11 on ERPs, and two on both EEG and ERP parameters. Typical spectral changes were indicative of EEG rhythm slowing and were associated with faster clinical progression, lower education levels, and abnormal cerebrospinal fluid biomarkers profiles."},
+    {"page": 7, "quote": "Functional connectivity (FC) is an essential aspect of the analysis of resting-state EEG data, which has been investigated in eight out of 30 reviewed studies (Table 2)."},
+    {"page": 7, "quote": "Several studies [23,29,33,38] have reported higher values of FC measures in alpha and beta frequency bands and lower values in theta and delta frequency bands when comparing subjects with SCD to AD patients (Table 2)."},
+    {"page": 8, "quote": "These findings suggest that subtle alterations in brain FC networks may already exist at the very early stages of cognitive decline and may also have a prognostic value."},
+    {"page": 14, "quote": "Most studies used SCD subjects as a control group compared to patients with either MCI, AD, or other types of dementia. Only ten studies contrasted EEG and ERP biomarkers in SCD participants with control subjects without SCD; only 4 out of 30 analysed studies were longitudinal."}
+   ],
+   "why": "Right paper: Ulbl and Rakusa, Int. J. Mol. Sci. 24:10158 (2023), which matches the block. It is a systematic review with narrative synthesis only: no effect sizes, no pooling and no analysis of its own. The target population is SCD, and most of its connectivity comparisons are SCD vs AD (and SCD vs MCI/AD in two studies), not MCI vs healthy controls. It therefore cannot inform C1 even at the synthesis level for the MCI-vs-control contrast, and all clauses are not_tested. The finder's block quote paraphrases the source. The source's own wording is 'subtle alterations in brain FC networks may already exist at the very early stages of cognitive decline and may also have a prognostic value' (p.8), a hedged inference from the SCD/MCI/AD staging studies, not a pooled finding. It is not the evaluator's '2026 systematic review of 21 wearable-EEG MCI studies'."
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "paper": "P-149",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "Pooled retrospective MRE data: 311 healthy volunteers from five studies (largely the Johnson lab, University of Delaware, plus Hiscox studies), an MCI cohort of 20 with 68 study-specific controls, and an AD cohort of 11 with 12 controls. The MCI cohort is Delgorio et al. 2023 (ref 26), i.e. current supporter P-478's University of Delaware aMCI sample. It is not a new dataset family for the MCI analysis.",
+ "method_family": "Magnetic resonance elastography (stiffness and damping ratio maps) analysed with a self-supervised contrastive brain-age model; the comparator is the same framework trained on T1-weighted MRI (brain-age gap). Same method family (MRE) as current supporter P-478.",
+ "same_sample_or_cohort_as": [
+  "P-478 (the 20 MCI are the Delgorio et al. 2023 aMCI cohort, ref 26)"
+ ],
+ "shared_authors_with": [
+  "P-478 (Lucy V. Hiscox, Curtis L. Johnson)"
+ ],
+ "what_it_shows": "Trauble J, Hiscox LV, Johnson CL, Aviles-Rivero A, Schonlieb CB, Kaminski Schierle GS (2025), eBioMedicine 121:105996, doi 10.1016/j.ebiom.2025.105996. Brain-age models were trained on 311 healthy volunteers (MRE test MAE 3.51 years vs T1 MRI 4.79 years) and applied to 20 MCI (vs 68 controls) and 11 AD (vs 12 controls). In MCI: the T1 brain-age gap did not differ (t(86) = 1.22, p = 0.225); the combined MRE gap did not differ (U = 546, p = 0.184); stiffness alone did not differ (p = 0.514); the damping-ratio gap was higher in MCI (median 1.70 -> 6.33 years; t(86) = -2.95, p = 0.044). In AD, combined MRE and stiffness gaps were significant and MRI was not. No volume measure is tested for MCI.",
+ "why": "Identity: the PDF title, authors and journal match the map entry. The summaries.md block has a filename header ('1-s2.0-S2352396425004402-main.pdf') and raw-extract spillover, but its fragments are this paper's text, so the PDF is the paper the block describes. The block's sample-size field ('11') is wrong: 11 is the AD n only, and the study has 311 healthy, 20 MCI and 11 AD. I read the whole extract to the References. Unicode symbols are transliterated to ASCII in this file. STATED (Table A1) = partly. Shown: a mechanical measure (the MRE damping-ratio brain-age gap) separated aMCI from controls where a T1-weighted structural brain-age model did not. Not shown: (1) Volume. The comparator is a deep-learning T1 brain-age model, not a volume measure. The authors attribute the MRI nulls partly to training-set size (p.13). In the same 20 aMCI participants, P-478 reports every hippocampal subfield volume smaller than in controls (Cohen's d 1.01 per the round-20 reading in the packet), so volume was not preserved in this sample. (2) The MRE result is fragile. In MCI the combined MRE model (U = 546, p = 0.184) and stiffness (p = 0.514) were not significant; only damping ratio, one of three MRE variants, reached p = 0.044, with no multiplicity correction. The printed t(86) = -2.95 corresponds to a two-sided p of about 0.004, not 0.044 (t(86) = 1.22 does match p = 0.225), so one of the two printed values is wrong; either way the result is below 0.05. (3) 'Late' is not tested; the design is cross-sectional. NARROWED (round 20) = partly. The damping ratio carried group-level information that a T1 brain-age model did not, but that comparator is not volume, and no model tests MRE beyond volume. Independence: NOT independent. The 20 MCI are the Delgorio et al. 2023 cohort (ref 26, p.15), which is current supporter P-478 (Delaware, 20 aMCI). Hiscox and Johnson are authors of both papers, and Delaware healthy-volunteer studies (refs 28, 29) also feed the normative model. At most it corroborates P-478 within the same dataset family and the same method family (MRE), and it must not be counted as an extra supporter. Not a preprint (peer-reviewed, eBioMedicine). Model reading, pending operator review.",
+ "quotes": [
+  {
+   "page": 8,
+   "quote": "Applying the MRI-based models to the MCI cohort, the predicted age distribution shows a similar but slightly decreased profile to the healthy samples (mean of BAG: -4.00 years, median of BAG: -6.83 years), and this difference is not statistically significant (t (86) = 1.22, p = 0.225). In contrast, MRE-based predictions show an increase in the brain age gap, with the median shifting from 0.04 years in healthy samples to 4.37 years in MCI samples, thus, observing an increase in the brain age gap. However, this trend does not reach statistical significance (U = 546.0, p = 0.184)."
+  },
+  {
+   "page": 9,
+   "quote": "In the MCI cohort, stiffness exhibits only a minimal increase in median BAG compared to normal controls (from -0.17 to 0.99 years), a non-significant difference (U = 614.0, p = 0.514), while damping ratio shows a statistically significant increase (from 1.70 to 6.33 years; t (86) = -2.95, p = 0.044), indicating BAG elevation in MCI was most strongly associated with changes in damping ratio."
+  },
+  {
+   "page": 9,
+   "quote": "NMCI = 20; NMCI control = 68; NAD = 11; NAD control = 12."
+  },
+  {
+   "page": 3,
+   "quote": "This retrospective, multi-centre study pooled MRE datasets from five healthy-volunteer studies (n = 311; 14-90 years)11,16,26-29 and two patient cohorts (mild cognitive impairment [MCI], n = 20; Alzheimer's disease [AD], n = 11).16,26"
+  },
+  {
+   "page": 15,
+   "quote": "26 Delgorio PL, Hiscox LV, McIlvain G, et al. Hippocampal subfield viscoelasticity in amnestic mild cognitive impairment evaluated with MR elastography. NeuroImage Clin. 2023;37:103327."
+  },
+  {
+   "page": 13,
+   "quote": "Although our dataset is relatively large for MRE studies, it is still smaller than typical MRI-based datasets,52 which may partly explain the lack of statistical significance in MRI-based models for AD detection."
+  },
+  {
+   "page": 13,
+   "quote": "Nonetheless, the modest size of our clinical cohorts is a limitation inherent to this emerging modality, and the clinical findings should therefore be interpreted with caution."
+  }
+ ]
+}

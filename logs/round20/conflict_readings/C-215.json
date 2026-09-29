@@ -1,0 +1,78 @@
+{
+ "id": "C-215",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-178",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Random forest model for feature-based Alzheimer's disease conversion prediction from early mild cognitive impairment subjects (Velazquez & Lee, PLoS ONE 16(4): e0244773, 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-308",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting conversion in cognitively normal and mild cognitive impairment individuals with machine learning: Is the CSF status still relevant? (Russo et al., Alzheimer's Dement. 2025;21:e14398)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-178": "ADNI 1/2/GO early-MCI only: 383 patients (49 eventual AD converters, mean 5.02 years; 334 non-converters), 1806 visits with minority oversampling; 9 features (age, race, APOE4, hippocampal and ventricular volume, ADAS13, ADAS11, FAQ, MMSE); random forest. Test accuracy 0.936, AUC 0.96; majority-class baseline on the same test 0.900.",
+  "P-308": "ADNI cognitively normal plus MCI participants with baseline CSF, medication and neuropsychology data and 3-year follow-up: 648 participants, 90 converters within 3 years (CN to MCI, or MCI to AD). Non-converters undersampled, leaving 409 participants (22% converters). Gradient boosting with random-forest feature selection on standard clinical data, with no MRI. Whole cohort: training accuracy 91%, test accuracy 84% (specificity 96%, sensitivity 43%). CSF-positive sub-cohort test 88%, CSF-negative 86%. Logistic-regression models: AUC 0.85/0.87, accuracy 79%/78%."
+ },
+ "quantity_a": "Accuracy for eventual AD conversion (mean ~5 years) among early-MCI patients, visit-level oversampled, clinical scales plus hippocampal/ventricular MRI volumes",
+ "quantity_b": "Accuracy for any one-step cognitive conversion within 3 years (CN to MCI, or MCI to AD) in a mixed CN+MCI cohort, subject-level, 22% converters after undersampling, standard clinical data and CSF without imaging",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Both accuracies are on imbalanced test sets with different majority rates, roughly 0.90 for P-178 and 0.78 for P-308, so each sits a similar distance above its own no-information rate. Neither gives an interval, and neither paper claims an ordering that the other refutes.",
+ "gates": {
+  "task": "mismatch: P-178 predicts EMCI-to-AD conversion; P-308 pools CN-to-MCI and MCI-to-AD conversion within 3 years (about 23% of its converters are CN-to-MCI)",
+  "dataset_family": "match: both ADNI; participants may overlap",
+  "validation_tier": "match: both internal only (V2)",
+  "modality_family": "mismatch: P-178 includes MRI volumes (hippocampus, ventricles) with clinical scales; P-308 uses no imaging (demographics, medications, neuropsychology, CSF t-tau/Abeta42)"
+ },
+ "endpoint_and_metric": "incompatible: accuracy in both, but endpoints differ (eventual AD in EMCI vs any 3-year one-step conversion in CN+MCI), as do class prevalence (~10-13% vs 22%) and sampling (oversampled visits vs undersampled subjects)",
+ "performance_validity": "flag does not apply: 0.936 and 0.84 are below 0.97; P-308's 96% specificity is not an accuracy/AUC figure",
+ "independence": "Distinct author groups; both ADNI, participants may overlap",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-178's outcome is eventual AD among early-MCI patients, whereas P-308's is any one-step conversion within 3 years in a mixed cognitively normal and MCI cohort, so the endpoint and population differ.",
+  "P-308 uses no MRI features and includes CSF, while P-178 includes MRI volumes and no CSF, so the predictor sets and modality families differ.",
+  "Both accuracies are on imbalanced test sets with different majority rates (0.900 vs about 0.78), so the raw 9.6-point gap does not compare like with like.",
+  "Neither paper reports uncertainty that would make the two figures mutually exclusive."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-178",
+   "page": 1,
+   "quote": "383 Early Mild Cognitive Impairment (EMCI) patients were gathered from the Alzheimer's Disease Neuroimaging Initiative (ADNI). Of these patients, 49 would eventually convert to AD (EMCI_C)"
+  },
+  {
+   "paper": "P-178",
+   "page": 8,
+   "quote": "Support Vector 9-Features 0.900 0.900 1 0.948 0.54 (Table 4: Accuracy, Precision, Recall, F1, AUC)"
+  },
+  {
+   "paper": "P-308",
+   "page": 3,
+   "quote": "The participants were labeled as \"converters\" depending on whether their cognitive status progressed within 3 years, that is, (1) from CN to MCI; (2) from MCI to AD."
+  },
+  {
+   "paper": "P-308",
+   "page": 5,
+   "quote": "After undersampling, the model was applied to 409 participants (22% converters). With the optimal cut-off, the model's accuracy was 91% in the training set and 84% in the test set. The algorithm showed high specificity (96%) but low sensitivity (43%)."
+  },
+  {
+   "paper": "P-308",
+   "page": 3,
+   "quote": "we explored the accuracy and performance of ML algorithms in identifying individuals at risk for progression to AD."
+  }
+ ],
+ "record_defects": [
+  "task_equal 'Yes' is wrong: P-308's endpoint pools CN-to-MCI and MCI-to-AD conversion within 3 years; P-178's is eventual EMCI-to-AD.",
+  "modality_family_equal 'Yes' is wrong: P-308 uses no imaging at all (standard clinical data and CSF).",
+  "Registry Modality 'MRI/PET' for P-308 is wrong (no MRI or PET); for P-178 it is also inaccurate (no PET).",
+  "Registry Sample_N_Approx 409 for P-308 is the undersampled modelling set; the eligible cohort is 648."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An MCI-to-AD-only result from P-308 at a horizon matched to P-178's population, reported with a prevalence-independent metric and intervals that exclude P-178's estimate."
+}

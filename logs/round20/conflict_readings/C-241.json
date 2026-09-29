@@ -1,0 +1,88 @@
+{
+ "id": "C-241",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-687",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Associations between brain structures, cognition and dual-task performance in patients with mild cognitive impairment: A study based on voxel-based morphology (Cheng et al., Human Movement Science 97 (2024) 103257)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-1082",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Curve Walking Reveals More Gait Impairments in Older Adults with Mild Cognitive Impairment than Straight Walking: A Kinect Camera-Based Study (Seifallahi, Galvin, Ghoraani; J Alzheimers Dis Rep 8 (2024) 423-435)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-687": "30 MCI vs 30 HC (Guangzhou). Single-task TUG (10 m to a table and back) 17.29 +/- 2.34 vs 17.60 +/- 2.89 s, p = 0.643; dual-task TUG (dialling an 11-digit number while walking back) 29.23 +/- 8.02 vs 24.92 +/- 4.42 s, p = 0.012; dialling accuracy 70.0% vs 86.7%, p = 0.117. Right cerebellar anterior lobe GMV correlates with dual-task time r = -0.32, p = 0.012.",
+  "P-1082": "25 MCI vs 30 HC (IDAA, Semnan, Iran), Kinect v.2, single-task 10 m straight and oval-path walking, 50 markers, ANCOVA-adjusted. Straight: velocity 47.39 vs 50.13 cm/s, p = 0.780; cadence p = 0.247; 20/50 markers significant (none macro). Curve: velocity 39.27 vs 45.90 cm/s, p = 0.007; cadence p = 0.018; 27/50 significant. ROC AUC 0.83 (curve) vs 0.78 (straight) using significant markers."
+ },
+ "quantity_a": "Group difference in TUG completion time, MCI vs HC, single-task vs cognitive dual-task (phone dialling), Chinese clinic/community sample.",
+ "quantity_b": "Group differences in Kinect gait markers (velocity, cadence, micro markers), MCI vs HC, single-task straight vs single-task curved-path walking, Iranian sample.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The two papers point the same way: in each, the simpler condition shows no MCI-HC difference on the macro time/speed measure (TUG time p = 0.643; straight velocity p = 0.780) and the more demanding condition does (dual-task TUG p = 0.012; curve velocity p = 0.007). There is no disagreement between them to resolve.",
+ "gates": {
+  "task": "registry mismatch (T4 vs T1); both are case-control group comparisons, P-1082 adds a descriptive ROC analysis.",
+  "dataset_family": "mismatch: Sun Yat-sen University clinic/community (China) vs IDAA clients (Iran).",
+  "validation_tier": "n/a for P-687 (no model); P-1082's ROC is in-sample. Counted as not decisive.",
+  "modality_family": "both gait/mobility, but instruments differ (stopwatch TUG time vs Kinect joint tracking) and the added demand differs (secondary cognitive task vs curved path, still single-task)."
+ },
+ "endpoint_and_metric": "compatible in direction, not in estimand: TUG completion time vs walking velocity/cadence and micro markers; the 'loaded' condition is a cognitive dual task in P-687 and a curved path without a secondary task in P-1082.",
+ "performance_validity": "not a performance comparison between the pair (P-687 reports no discrimination metric; P-1082's AUC 0.83/0.78 is not set against anything in P-687).",
+ "independence": "Distinct cohorts, countries and author teams; independent.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record labels both P-687 and P-1082 as the same 'load-necessary arm', so it describes no disagreement between the two papers of the pair.",
+  "On the PDFs the two results agree in direction: no MCI-HC difference in the simpler condition and a significant difference under the more demanding condition in each study.",
+  "The contradiction the record actually discusses is between these two studies and P-761/P-695 (unloaded gait positives), which are not this pair and are described in the record itself as failing every gate.",
+  "P-1082's added demand is a curved path during single-task walking, not a cognitive dual task, so even the shared 'loading' label overstates the overlap with P-687."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-687",
+   "page": 4,
+   "quote": "There was no significant difference in the single task execution time between the MCI and HC groups (MCI: 17.29 \u00b1 2.34 s, HC: 17.60 \u00b1 2.89 s, t = 0.47, p = 0.643)."
+  },
+  {
+   "paper": "P-687",
+   "page": 4,
+   "quote": "However, a significant difference in the execution time of the dual-task paradigm was observed between the two groups (MCI: 29.23 \u00b1 8.02 s, HC: 24.92 \u00b1 4.42 s, t = \u22122.58, p = 0.012)."
+  },
+  {
+   "paper": "P-687",
+   "page": 7,
+   "quote": "Individuals with MCI showed impaired cognition and dual-task performance. This study may give more evidence for the relationship between the dual-task paradigm and the gray matter volume of the cerebellum."
+  },
+  {
+   "paper": "P-1082",
+   "page": 1,
+   "quote": "We employed a Kinect v.2 camera to record the gait of 55 older adults (30 healthy controls, 25 with MCI) during single-task straight and curve walking tests."
+  },
+  {
+   "paper": "P-1082",
+   "page": 6,
+   "quote": "Velocity (cm/s) 50.13 \u00b1 27.92 47.39 \u00b1 9.80 0.780 45.90 \u00b1 8.89 39.27 \u00b1 10.09 0.007\u2217"
+  },
+  {
+   "paper": "P-1082",
+   "page": 5,
+   "quote": "Conversely, the SW test revealed significant differences in 20 out of the 50 extracted markers. None of these markers were macro markers"
+  },
+  {
+   "paper": "P-1082",
+   "page": 10,
+   "quote": "the area under the curve (AUC) for curved path walking (0.83) was significantly higher than for straight path walking (0.78)"
+  }
+ ],
+ "record_defects": [
+  "The record frames P-1082 as 'cognitive-motor LOADING'; the PDF states both conditions were single-task walking, the difference being path shape (straight vs oval).",
+  "The record is filed as a conflict between P-687 and P-1082 but argues against a generalisation drawn from both of them jointly, with P-761 and P-695 as the opposing side; the pair itself contains no disagreement.",
+  "The record omits that P-1082 reports ROC AUC 0.83 (curve) vs 0.78 (straight), so straight walking still discriminated in-sample; this supports the record's own caution about 'straight walking misses' but is not cited.",
+  "The sample-size explanation ('the pattern tracks sample size') is the record's inference; neither PDF tests it."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing within this pair: a genuine candidate would require pairing P-687 or P-1082 with an unloaded-gait study reporting a significant MCI-HC difference on the same measure (e.g. single-task TUG time or straight-walk velocity under a comparable protocol) whose estimate excludes the null in P-687/P-1082; that is a different record."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "C-214",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-178",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Random forest model for feature-based Alzheimer's disease conversion prediction from early mild cognitive impairment subjects (Velazquez & Lee, PLoS ONE 16(4): e0244773, 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-212",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting conversion to Alzheimer's disease in individuals with Mild Cognitive Impairment using clinically transferable features (Rye, Vik, Kocinski, Lundervold & Lundervold, Scientific Reports (2022) 12:15566)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-178": "ADNI 1/2/GO early-MCI only: 383 patients (49 eventual converters, mean 5.02 years to conversion; 334 non-converters), analysed as 1806 visits with random minority oversampling; 9 features including ADAS13, ADAS11, FAQ and MMSE plus age, race, APOE4, hippocampal and ventricular volume; random forest. Test accuracy 0.936, AUC 0.96; a majority-class SVC scores 0.900 on the same test.",
+  "P-212": "ADNI all four phases, all MCI at baseline with at least three visits and three MRIs: 678 subjects (357 stable MCI, 321 converters to AD at any later visit), subject-level, near-balanced. 12 features chosen to avoid the tests that define diagnosis (RAVLT, TMT-A/B, category fluency, GDS, ANART, eTIV-normalised hippocampal volume, binary APOE, age, gender); RF and PyCaret ensemble, 50-fold CV then a held-out 21% test set (n=139). RF: CV 74.6%, test 66.2% (specificity 70.3%, sensitivity 61.5%); ensemble: CV 74.9%, test 68.3%."
+ },
+ "quantity_a": "Accuracy for eventual AD conversion among early-MCI patients, visit-level with oversampling, test prevalence ~10-13% converters, predictors including the MMSE/ADAS/FAQ scales used in ADNI diagnosis",
+ "quantity_b": "Accuracy for eventual AD conversion among all ADNI MCI (early and late), subject-level, near-balanced (47% converters), predictors deliberately excluding the scales used to define the diagnostic labels",
+ "same_quantity": false,
+ "incompatible_if_same": "Not as reported. P-178's 0.936 sits 3.6 points above a 0.900 majority-class baseline on an imbalanced test set. P-212's 0.662 is on near-balanced classes, where the no-information rate is about 0.53. Neither gives an interval. Each accuracy is measured against a different chance level, so the gap does not show that the two results cannot both be true.",
+ "gates": {
+  "task": "match in class (MCI-to-AD prognosis, T2) but the populations differ: EMCI only (P-178) vs all MCI, 64% or so late MCI in ADNI (P-212)",
+  "dataset_family": "match: both ADNI (overlapping phases 1/2/GO; P-212 adds ADNI3), so participants overlap",
+  "validation_tier": "match: both internal only (V2)",
+  "modality_family": "match in broad terms: clinical/cognitive tabular data with FreeSurfer hippocampal volume in both (P-178 adds ventricular volume)"
+ },
+ "endpoint_and_metric": "incompatible: nominal accuracy in both, but class prevalence (~12.8% vs 47% converters), unit of analysis (visits with oversampling vs subjects) and predictor set (diagnosis-defining scales included vs excluded) differ",
+ "performance_validity": "flag does not apply formally (P-178: accuracy 0.936, AUC 0.96, both below 0.97). P-178's visit-level oversampling design (Table 1 lists oversampled testing records) is a leakage concern, but it does not meet the automatic test.",
+ "independence": "Not independent in data: both use overlapping ADNI MCI participants; distinct author groups",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-178 restricts to early-MCI patients and analyses oversampled visits, while P-212 analyses all MCI subjects once each; population and unit of analysis differ.",
+  "P-178's 0.936 is measured where a majority-class classifier already reaches 0.900, whereas P-212's 0.662 is on near-balanced classes, so the accuracies are on different scales.",
+  "P-212 deliberately excludes the neuropsychological tests used to assign diagnoses because of circularity, while P-178 includes MMSE, ADAS and FAQ, so the predictor sets differ in exactly the way P-212 identifies as inflating performance.",
+  "The gap therefore reflects different estimands, not two results about one quantity that cannot both hold."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-178",
+   "page": 3,
+   "quote": "Early Mild Cognitive Impairment (EMCI) patients were eligible for our study as long as they had follow-up appointments for greater than a year."
+  },
+  {
+   "paper": "P-178",
+   "page": 8,
+   "quote": "our 9-feature random forest implementation with an accuracy of 93.6% and an AUC of 96% against a 383-patient data set represents our best model."
+  },
+  {
+   "paper": "P-178",
+   "page": 8,
+   "quote": "Support Vector 9-Features 0.900 0.900 1 0.948 0.54 (Table 4: Accuracy, Precision, Recall, F1, AUC)"
+  },
+  {
+   "paper": "P-212",
+   "page": 2,
+   "quote": "Our top performing RF classification had an average accuracy of 74.6% (mean across 50 cross-validation folds). When the model was evaluated on our unseen test set, the overall classification accuracy was 66.2%."
+  },
+  {
+   "paper": "P-212",
+   "page": 2,
+   "quote": "scores from the neuropsychological tests used to define \"ground truth\" labels (i.e. stable or converters) were also included as predictors, which potentially could lead to inflated predictive performance due to circularity."
+  },
+  {
+   "paper": "P-212",
+   "page": 6,
+   "quote": "Although we ensured complete independence between features used to define outcome and features used to train the classification model"
+  }
+ ],
+ "record_defects": [
+  "Registry Modality 'MRI/PET' is wrong for both: no PET; both are mainly clinical/cognitive features plus FreeSurfer volumes.",
+  "task_equal 'Yes' ignores the EMCI-only restriction of P-178 against the all-MCI cohort of P-212.",
+  "The claims compare P-178's test accuracy with P-212's test accuracy without noting the different class prevalence (the 0.274 gap is partly a prevalence effect).",
+  "The resolution_note bridging list (P-183, P-185, P-199, and others) is a list of scores and names no separating condition."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Both studies reporting a prevalence-independent metric (AUC or balanced accuracy with intervals) on the same MCI population with the same predictor policy, with intervals that exclude each other."
+}

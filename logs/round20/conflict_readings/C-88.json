@@ -1,0 +1,84 @@
+{
+ "id": "C-88",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-133",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early diagnosis of mild cognitive impairment and Alzheimer's disease using multimodal feature-based deep learning models in a Chinese elderly population (Wang et al., Asian Journal of Psychiatry 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-114",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "A method for diagnosis support of mild cognitive impairment through EEG rhythms source location during working memory tasks (San-Martin et al., Biomed Signal Process Control 66 (2021) 102499)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-133": "The 72.67 +/-1.89% the record cites is THREE-CLASS HC/MCI/AD accuracy (GCN, Neutral stimulus; ERP differential entropy + TCM questionnaire features; 30/30/30; cross-subject 10-fold). The binary result nearest to T1 is HC vs MCI+AD pooled: 89.22 +/-1.90% in Table 2 (the abstract says 90.17 +/-5.58%, an inconsistency within the paper). No HC-vs-MCI-only task is reported.",
+  "P-114": "The record's claim (93% accuracy, T1) and the P-114 summary block describe a Kinect V2 gait + ANFIS study (block header file 1-s2.0-S1746809421003195-main.pdf). That PDF is not in downloads/. The PDF supplied as P-114 (map entry, DOI 10.1016/j.bspc.2021.102499) is a different paper: EEG LORETA source CSD during an N-back task, 19 MCI vs 22 HE, SVM 96% epoch-level accuracy (WME alone 0.93)."
+ },
+ "quantity_a": "As cited: three-class HC/MCI/AD accuracy from ERP+TCM features. Nearest binary: HC vs pooled MCI+AD",
+ "quantity_b": "As recorded: MCI vs healthy elderly accuracy from Kinect gait features (source document unavailable). Supplied PDF: epoch-level MCI vs HE accuracy from task-EEG source features",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable as a contradiction. P-133's cited value is three-class, and its binary value pools MCI with AD against controls, so neither is an MCI-vs-control accuracy. Whichever P-114 paper is meant, the comparison class differs.",
+ "gates": {
+  "task": "mismatch: the cited P-133 value is ternary. Its binary task is HC vs MCI+AD, not MCI vs HC.",
+  "dataset_family": "mismatch: Zhejiang clinic/community cohort vs a separate clinical cohort (Kinect study per block; Montreal JGH/Concordia in the supplied PDF)",
+  "validation_tier": "match: both internal CV only",
+  "modality_family": "mismatch: ERP + TCM questionnaires vs gait kinematics (per block). The supplied PDF is task EEG, which is closer in modality but still a different quantity."
+ },
+ "endpoint_and_metric": "incompatible: three-class accuracy (or HC vs pooled impaired) vs binary MCI-vs-control accuracy",
+ "performance_validity": "flag does not apply to P-133. The supplied P-114 PDF reports 96% epoch-level accuracy (below 0.97, but classified per epoch, not per patient). The Kinect paper cannot be checked.",
+ "independence": "Independent authors and cohorts.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim_a misreads P-133: 72.67% is three-class HC/MCI/AD accuracy, not a T1 (MCI vs controls) result.",
+  "P-133's binary result pools MCI with AD against controls, so no P-133 figure estimates MCI-vs-control accuracy. The pair therefore has no shared quantity whatever P-114's value is.",
+  "The PDF supplied for P-114 is the wrong paper: the record and summary block describe a Kinect gait/ANFIS study not held in downloads/. This does not affect the verdict, which rests on P-133's side."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-133",
+   "page": 1,
+   "quote": "Similarly, in ternary classification of HC, MCI, and AD, GCN reached the highest accuracy of 72.67 \u00b1 1.89 % under Neutral stimulus."
+  },
+  {
+   "paper": "P-133",
+   "page": 1,
+   "quote": "In binary classification tasks distinguishing HC from MCI and AD, GCN achieved accuracies of 90.17 \u00b1 5.58 %"
+  },
+  {
+   "paper": "P-133",
+   "page": 5,
+   "quote": "GCN 89.22 \u00b1 1.90 88.89 \u00b1 3.94 86.50 \u00b1 2.76 (Table 2, Neutral, HC vs MCI+AD; cells joined by the reader)"
+  },
+  {
+   "paper": "P-133",
+   "page": 7,
+   "quote": "the lack of external validation limits the generalizability and robustness of our findings"
+  },
+  {
+   "paper": "P-114",
+   "page": 1,
+   "quote": "EEG was recorded during N-back WM tasks in 41 age-, sex- and education-matched participants divided into MCI (N = 19) and HE (N = 22) groups."
+  },
+  {
+   "paper": "P-114",
+   "page": 7,
+   "quote": "the current SVM classifier did not predicted directly the patient group, but only if an epoch was originated from a MCI patient or a HE."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-133: Acc 72.67 on T1' is wrong: 72.67% is ternary HC/MCI/AD accuracy.",
+  "claim_b 'P-114: 93% Acc on T1' comes from a summary block (summaries.md, '## Paper 114: 1-s2.0-S1746809421003195-main.pdf') describing a Kinect gait/ANFIS study. data/paper_pdf_map.json points P-114 to a different paper (1-s2.0-S1746809421000963, EEG LORETA, DOI 10.1016/j.bspc.2021.102499; 'formula-unverified'). The Kinect PDF is not in downloads/. This is a block/PDF misattachment to flag for repair.",
+  "modality_family 'unknown' and modality_family_equal 'Yes' are unsupported: ERP+TCM vs gait kinematics.",
+  "resolution_note 'Task mismatch from summaries: T1_mci_vs_hc vs T2_conversion' fits neither paper: neither P-133 nor either P-114 candidate is a conversion study.",
+  "P-133 reports its HC vs MCI+AD accuracy inconsistently: 90.17 +/-5.58 in the abstract vs 89.22 +/-1.90 in Table 2.",
+  "The bridging-evidence list (15 papers) is generic and names no separating condition."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "Nothing on P-133's side, since no MCI-vs-control accuracy exists in it. Recovering the Kinect PDF would settle the P-114 value but could not create a shared quantity."
+}

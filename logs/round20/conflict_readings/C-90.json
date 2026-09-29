@@ -1,0 +1,88 @@
+{
+ "id": "C-90",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-27",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A machine learning-based discriminative framework for mild cognitive impairment risk in middle-aged and elderly Chinese patients with depression: evidence from CHARLS and CLHLS (Yao et al., Journal of Affective Disorders 2026)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-166",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A prediction model for the risk of developing mild cognitive impairment in older adults with sarcopenia: evidence from the CHARLS (Liu et al., Aging Clinical and Experimental Research 2025)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-27": "Cross-sectional discrimination of prevalent MCI (AACD: at least 1 SD below the age-band mean) among adults 60 and over with depression (CESD-10 >= 10), CHARLS 2018 wave, n=1964. The predictors are sociodemographic and health variables (education, household registration, loneliness, IADL, dyslipidaemia, diabetes, hypertension, exercise). RF AUC 0.826 in training, 0.801 (95% CI 0.760-0.841) internal validation, 5-fold CV mean 0.791 (0.771-0.810), and external CLHLS 0.653 (0.636-0.670).",
+  "P-166": "Prediction of incident MCI over the next four years (AACD plus no IADL disability) among cognitively normal older adults with sarcopenia, CHARLS 2011-2015 (n=414), from 8 anthropometric/functional variables (ASM, SMI, BMI, grip, walk time, depression, SPPB, sleep) with a feed-forward neural network. Test AUC 0.708 (0.544-0.844); temporal validation on CHARLS 2015-2018 (n=156) AUC 0.711 (0.588-0.823)."
+ },
+ "quantity_a": "AUC for prevalent (cross-sectional) MCI among depressed adults 60 and over, CHARLS 2018, sociodemographic/health predictors",
+ "quantity_b": "AUC for 4-year incident MCI among cognitively normal sarcopenic adults, CHARLS 2011-2018, anthropometric/physical-function predictors",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even as one quantity the intervals overlap: P-27's internal validation AUC 0.801 (0.760-0.841) against P-166's 0.708 (0.544-0.844) test and 0.711 (0.588-0.823) validation. P-27's own external AUC is 0.653, below P-166's.",
+ "gates": {
+  "task": "mismatch: cross-sectional MCI discrimination (P-27 authors call it 'discriminative', not predictive) vs 4-year incident MCI prediction",
+  "dataset_family": "match: both CHARLS. The waves differ (2018 vs 2011-2015/2015-2018), and overlapping respondents are possible, which is recorded as non-independence.",
+  "validation_tier": "mismatch: P-27 has an external CLHLS cohort (V4); P-166 has only internal test plus a temporal CHARLS split (V3). The record's 0.826 is P-27's training AUC.",
+  "modality_family": "match: clinical/tabular survey data"
+ },
+ "endpoint_and_metric": "incompatible endpoint: prevalent MCI (AACD on the 31-point CHARLS battery, depressed population) vs incident MCI within 4 years (AACD on a 21-point battery plus no IADL disability, sarcopenic, cognitively normal at baseline). The metric (AUC) matches.",
+ "performance_validity": "flag does not apply (no AUC at or above 0.97)",
+ "independence": "Shared cohort family (CHARLS), so participants may overlap across waves. Different authors (Chengdu vs Nanjing).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The endpoint differs: P-27 discriminates prevalent MCI cross-sectionally in 2018, while P-166 predicts MCI incidence over the next four years in people cognitively normal at baseline.",
+  "The population behind the label differs (depressed adults vs sarcopenic adults), and so do the predictor sets (sociodemographic/psychosocial vs anthropometric/physical function) and the MCI definition (P-166 adds no IADL disability).",
+  "The task and validation-tier gates fail with no waiver, and the reported intervals overlap in any case."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-27",
+   "page": 1,
+   "quote": "In internal testing, the random forest (RF) achieved the best predictive performance (AUC = 0.826 in training and 0.801 in internal validation)"
+  },
+  {
+   "paper": "P-27",
+   "page": 4,
+   "quote": "In the validation set, RF (0.801, 95 % CI: 0.760\u20130.841) showed a higher AUC value compared to other ML models"
+  },
+  {
+   "paper": "P-27",
+   "page": 6,
+   "quote": "Using the cohort from CLHLS for external validation, the AUC (0.653, 95 % CI: 0.636\u20130.670) of RF did not reach the level of the validation set"
+  },
+  {
+   "paper": "P-27",
+   "page": 8,
+   "quote": "we limited the analysis to the dataset of 2018 instead of conducting a longitudinal analysis"
+  },
+  {
+   "paper": "P-166",
+   "page": 1,
+   "quote": "Our model forecasts MCI incidence over the next four years, categorizing patients into low and high-risk groups based on their risk levels."
+  },
+  {
+   "paper": "P-166",
+   "page": 1,
+   "quote": "Independent validation using 2015\u20132018 CHARLS data confirmed the model\u2019s efficacy, with an AUC of 0.711 (0.95 CI, 0.588\u20130.823)."
+  },
+  {
+   "paper": "P-166",
+   "page": 2,
+   "quote": "Only longitudinal data with normal cognitive function at baseline measurement and with indicators of cognitive and activities of daily living (ADL) outcomes were included."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-27: AUC 0.826' is the training-set AUC. The internal-validation AUC is 0.801 (the registry Best_Metric) and the external one is 0.653.",
+  "claim_a/claim_b 'on T1': P-166 is incident-MCI prediction, and P-27 is cross-sectional discrimination of prevalent MCI in a depressed population. Neither is a general MCI-vs-control detection task, and the two differ from each other.",
+  "task_equal 'Yes' and validation_comparable 'Yes' are wrong: prevalent vs incident endpoint; V4 vs V3.",
+  "resolution_note 'Same architecture family (A1_classical)' is wrong for P-166, whose model is a 4-layer feed-forward neural network (logistic regression only as comparator).",
+  "The bridging evidence (P-25 AUC 0.77, P-323 AUC 0.80) is generic and identifies no separating condition, so the partially_resolved status is not supported."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only if both studies estimated the same endpoint (same horizon, same MCI definition) in the same population with the same predictors and non-overlapping uncertainty. They do not."
+}

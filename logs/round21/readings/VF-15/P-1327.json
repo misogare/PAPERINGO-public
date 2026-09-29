@@ -1,0 +1,50 @@
+{
+ "paper": "P-1327",
+ "role": "verifier, round 2",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "ADNI (North American ADNI, ADNI1/GO/2) for the pMCI-vs-sMCI result; J-ADNI appears only in a pMCI-vs-normal arm",
+ "method_family": "VBM ROI z-scores (AAL, Brodmann, LPBA40) into an RBF-kernel SVM; MMSE appended as one extra feature (early feature concatenation)",
+ "same_sample_or_cohort_as": [
+  "P-3, P-104, P-81 (ADNI family; participant overlap likely, not verified)",
+  "Round-1 ADNI candidates P-190, P-211, P-1128, P-88, P-512, P-225, P-195, P-186, P-1 (ADNI family)",
+  "P-536 (round-2 candidate): both use J-ADNI MCI participants; overlap likely, not verifiable"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "In the NA-ADNI validation half (142 pMCI, 64 sMCI), adding MMSE to the same VBM-SVM raised accuracy at the fixed 0.5 cutoff from 83.0% to 85.0%. From the printed sensitivities and specificities that is 4 more correct out of 206 (3 pMCI, 1 sMCI). AUC fell slightly, from 0.9064 to 0.9019. No MMSE-only model was fitted and no significance test was run. The larger gains (AUC 0.940 to 0.963 in NA-ADNI, 0.924 to 0.970 in J-ADNI) are for pMCI versus cognitively normal subjects, not progressive-MCI prediction.",
+ "why": "IDENTITY. PDF p.1 is Syaifullah AH, Shiino A, Kitahara H, Ito R, Ishida M and Tanigaki K (2021), Front. Neurol. 11:576029, 'Machine Learning for Diagnosis of AD and Prediction of MCI Progression From Brain MRI Using Brain Anatomical Analysis Using Diffeomorphic Deformation'. This matches the P-1327 block header and the map DOI. I read the whole extract up to the reference list.\n\nDESIGN. BAAD feeds VBM ROI z-scores into an RBF SVM. Training labels are 'AD spectrum' (AD + pMCI) against 'non-AD spectrum' (NL + sMCI), trained on a random half of NA-ADNI (179 AD, 142 pMCI, 271 NL, 64 sMCI). SVMst uses brain structure only. SVMcog is the same SVM with the MMSE score added. The other half was 'used as validation set to fine-tune the hyperparameters', and the pMCI-vs-sMCI result is reported on that same half. sMCI means stable for 4 years or more; pMCI conversion came 6-108 months after baseline.\n\nHEAD-TO-HEAD. Table 5 reports NA-ADNI pMCI vs sMCI at a fixed ADLS cutoff of 0.5:\n- SVMst: ACC 83.0, SEN 81.7, SPE 85.9, MCC 64.1, AUC 0.9064.\n- SVMcog: ACC 85.0, SEN 83.8, SPE 87.5, MCC 67.9, AUC 0.9019.\nMy reconstruction from SEN and SPE on 142/64: 116+55 = 171 vs 119+56 = 175 correct, a gain of 4 of 206. The threshold-free AUC is slightly lower with MMSE. No between-model test was run.\n\nNARROWED: PARTLY. The comparison has exactly the narrowed shape: the same classifier, imaging alone vs imaging plus a cognitive score, pMCI vs sMCI. At the operating point every threshold metric improves slightly. But the only threshold-free metric, AUC, does not improve (0.9064 vs 0.9019). So the study shows a small shift at one cutoff, not better discrimination. This is the P-81/P-186 pattern: a gain on one metric family, not the other. Round 20 accepted modest untested margins, but here the second metric goes the other way.\n\nSTATED: PARTLY. No MMSE-only (non-imaging) model was fitted, so the fused model is never compared with a non-imaging baseline, the comparator P-81 failed on in round 20. The AUC contradicts the accuracy gain. The bigger SVMcog gains in Table 5 (NA-ADNI* and JADNI*) are footnoted as 'discrimination between pMCI and cognitively normal subject'. The authors say the J-ADNI sMCI were replaced by NL, so those arms are not progressive-MCI prediction.\n\nCAVEATS.\n(1) The results text (p.10) gives 'prediction accuracy was 85.4% in SVMst and 87.9% in SVMcog', while the abstract and Table 5 give 83.0% and 85.0%.\n(2) Table 1 shows the 128 sMCI split 64/64, while the text says '65 were grouped for training and 63 for evaluation'.\n(3) The evaluation half was also used to tune hyperparameters, which is optimistic for both arms.\n(4) In ADNI, MMSE is one of the scales used in clinical diagnosis. That is general ADNI knowledge, not stated in this paper, so adding MMSE may carry some label circularity.\n(5) The registry Dataset lists 'MIDIAD' where the paper has MIRIAD, and its Task_Type is T1, although the paper also reports conversion prediction.\n\nINDEPENDENCE. The pMCI-vs-sMCI result comes from ADNI, so it adds no dataset family, and participant overlap with P-3, P-104 and P-81 is likely. J-ADNI appears only in the pMCI-vs-NL arm; round-2 candidate P-536 also uses J-ADNI MCI, so the two share a cohort. The authors (Shiga University of Medical Science, Shimane University, Shiga Medical Center) are disjoint from the supporters (Luo/He/Cui/Chen/Ward; Shen/Zhu/Zhang/Wang et al.; Cao/Ma/Nayak/Duong). They are also disjoint from the round-1 candidates whose front matter I checked. The method (VBM-SVM with MMSE concatenated) is close to P-104's SVM stage, without P-104's side-information feature selection. The paper is not a preprint.\n\nQuotes are rejoined across line breaks, with typographic characters normalized to ASCII. Table cells are joined in reading order.",
+ "quotes": [
+  {
+   "page": 9,
+   "quote": "TABLE 5 | Prediction of MCI conversion. NA-ADNI NA-ADNI* JADNI* SVMst SVMcog VSRAD SVMst SVMcog SVMst SVMcog AUC 0.9064 0.9019 0.7407 0.9400 0.9632 0.9240 0.9697 Accuracy (%) 83.0 85.0 62.1 87.2 90.6 86.4 91.2 Sensitivity (%) 81.7 83.8 54.2 81.7 83.8 81.0 86.0 Specificity (%) 85.9 87.5 79.7 90.1 94.1 90.8 95.4 ... MCC 64.1 67.9 31.6 71.6 78.9 72.5 82.3 The subjects of the NA-ADNI were selected as validation set. The cut-off values of SVMst and SVMcog were set as ADLS > 0.5. *, discrimination between pMCI and cognitively normal subject."
+  },
+  {
+   "page": 9,
+   "quote": "To assess the ability of the ML to predict MCI progression, we analyzed data from 142 pMCI and 64 sMCI subjects from the NA-ADNI validation set, and the results are summarized in Table 5. The cutoff values were set ADLS > 0.5 for SVMs."
+  },
+  {
+   "page": 10,
+   "quote": "The prediction accuracy was 85.4% in SVMst and 87.9% in SVMcog. We also investigated the SVM performance in JADNI. Unfortunately, none of the sMCI met our criteria due to the short follow-up period, therefore, we substituted NL for sMCI. The accuracy of SVMst and SVMcog for classification between normal and pMCI in JADNI were 86.4 and 91.2%, respectively."
+  },
+  {
+   "page": 1,
+   "quote": "The prediction accuracy for MCI progression was 83.0% in SVMst and 85.0% in SVMcog."
+  },
+  {
+   "page": 9,
+   "quote": "(Table 1), and used this dataset to train the SVM, named SVMst. A Mini-Mental State Exam (MMSE) score was added for SVM learning, named SVMcog, because the assessment of cognitive ability was important for the diagnosis of dementia. The rest of 322 AD spectrum and 336 non-AD spectrum images were used as validation set to fine-tune the hyperparameters."
+  },
+  {
+   "page": 8,
+   "quote": "Of the 260 sMCI subjects initially selected, 132 with <4 years of follow-up were excluded, and of the remaining 128 sMCI subjects, 65 were grouped for training and 63 for evaluation (Table 1)."
+  },
+  {
+   "page": 12,
+   "quote": "The accuracy of the pMCI prediction in JADNI was the result of replacing sMCI with NL; therefore, a future goal is to accumulate observed data on sMCI over a long period."
+  }
+ ]
+}

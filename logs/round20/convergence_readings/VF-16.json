@@ -1,0 +1,49 @@
+{
+ "id": "VF-16",
+ "supporters": [
+  {
+   "paper": "P-2",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "the hand-written data and the EEG signals were performed using a tablet and MUSE under four designed handwriting tasks ... the best classification result of 96.3% using SVM with RBF kernel as the base classifier. In addition, this not only supports the greater significance of multimodal data for differentiating MCI, but also tests the feasibility of using the portable EEG headband as a measure of EEG in patients with cognitive impairment.",
+   "page": "1 (abstract); Table 3 p.8 (EEG alone RBF-SVM Acc 0.861; handwriting alone 0.835; fused 0.937)",
+   "note": "Chai et al. 2023, handwriting dynamics plus 4-channel consumer MUSE headband. N=79 (40 MCI, 39 HC), single site in Shanxi, labels by MoCA/MMSE; 10-fold cross-validation only, no external test; authors concede small sample and possible overfitting (p.8). The 96.3% is the fused handwriting+EEG model; portable EEG alone reached 86.1%. Supports the portable-EEG leg, but it is one small internally validated study and the headline figure depends on handwriting as well as EEG."
+  },
+  {
+   "paper": "P-12",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "In the evaluation of the CAUEEG-MCI task, average test accuracies of 70% were achieved ... their test accuracies which hover around 56%, remain only slightly above chance level for a binary classification problem.",
+   "page": "9-10 (Discussion); Table 1 p.6",
+   "note": "Grillenberger et al. 2026, attention DL on the public CAUEEG resting-state EEG (1,155 subjects, Chung-Ang University Hospital), subject-level 5-fold CV. This is clinical 19-channel 10-20 hospital EEG, not portable EEG; performance for normal vs MCI is modest (test accuracy 70.1% / 68.6%, sensitivity about 69-70%). The preclinical CESA task (64-channel lab EEG) is near chance. Supports only a weaker form: resting-state EEG, a non-invasive non-imaging channel, discriminates MCI at modest accuracy. It does not show 'viable' detection or a low-cost/portable device."
+  },
+  {
+   "paper": "P-96",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Seven key variables (education, grip strength, height, weight, creatinine, mean corpuscular volume, and platelet count) were selected ... The area under the receiver operating characteristic curve (AUROC) was 0.93 ... In the external validation, AUROCs of 0.83 and 0.87 were achieved.",
+   "page": "1 (abstract); Table 3 p.6",
+   "note": "Wu et al. 2025, CHARLS 2015 (n=2,932) for development, external validation on Yiwu 2021 (n=4,140) and CHARLS 2011 (n=1,782; possible individual overlap with 2015, conceded p.10). Strongest supporter: routine physical-exam and blood data with external validation. Limits: the outcome is not clinical MCI but MMSE at least 1 SD below the age-stratum mean (AACD definition, p.2), with no education adjustment (p.10) while education is the top SHAP predictor, so part of the signal may be the education dependence of the MMSE label; Chinese populations only; cross-sectional."
+  },
+  {
+   "paper": "P-69",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "Of all the participants, 61 have been diagnosed with cognitive impairment over time. Among these 61 patients, 36 have MCI, 8 Alzheimer's disease, and 17 have other or unspecified dementia. Here, we focus on the binary classification problem ... Interaction-Based ResBlock achieves 96% on accuracy, 98% on F1 Score, and 87% on AUC",
+   "page": "4 (Response variable); 10-11 (Performance); Tables 3 and A.8",
+   "note": "Di et al. 2023, LongROAD naturalistic driving (n=2,977, US). The target class pools MCI with AD and other dementia (label = most severe diagnosis ever), so it is not MCI detection. Test set holds only 15 impaired cases; the 98% F1 and sensitivity 1.0 are computed with the healthy class as positive (Table A.8), and 4 of 15 impaired drivers were missed (11/15 = 73%). Demographics alone gave AUC 0.74 and driving features alone 0.70 without I-score selection. Supports a weaker form: driving telemetry plus demographics discriminates MCI-or-dementia combined (AUC 0.87 on a single small held-out split)."
+  },
+  {
+   "paper": "P-604",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "The DT gait test incorporating serial subtractions 7 as the cognitive task demonstrated the highest efficacy with the AUC of 0.906 ... In external validation, the model displayed robust discrimination (AUC=0.913) ... our test does not require professional equipment, only a 10-meter walkway and a mobile phone for video recording are necessary.",
+   "page": "1 (abstract); 6 (Discussion)",
+   "note": "Yang et al. 2024, dual-task gait in Wuhan community older adults: derivation 124 analysed (62 MCI/62 CN, clinician diagnosis to NIA-AA criteria), external validation 65 (19 MCI) recruited a year later from the same programme. Model includes years of education; MoCA alone outperformed it (AUC 0.989 vs 0.906, p.7). Supports the general claim of a low-cost non-invasive channel, but gait is not one of the three channels named in the Table A1 row, and the ledger note omits this supporter."
+  }
+ ],
+ "yes_count": 3,
+ "verdict": "holds_narrowed",
+ "narrowed_wording": "Low-cost, non-invasive channels (routine physical-examination and blood data, dual-task gait, and a consumer EEG headband combined with tablet handwriting) discriminate MCI from normal cognition without specialist imaging in single-country cohorts, with external validation for the routine-data and gait models only; clinical resting-state EEG reaches modest accuracy (about 70%), and naturalistic driving telemetry discriminates MCI and dementia combined rather than MCI.",
+ "reasoning": "Three supporters report the result themselves (P-2 portable EEG plus handwriting, P-96 routine physical and blood data with two external cohorts, P-604 phone-recorded dual-task gait with a small external sample), from three distinct datasets, so the numerical threshold is met. But the review states the convergence through a named channel list, and two of the three named channels are weaker than stated. Driving telemetry (P-69) never isolates MCI: the positive class pools 36 MCI with 25 dementia cases, only 15 impaired cases were tested, and the headline F1 treats healthy as positive. The EEG evidence is one small internally validated consumer-headband study (P-2, n=79, 86% for EEG alone) plus P-12, which uses hospital 19-channel EEG and reaches only about 70% for MCI, which is hardly 'viable'. The one supporter that is clearly 'yes' outside those two (P-604 gait) is not in the review's channel list. The routine-data leg (P-96) is the best evidenced, although its outcome is an MMSE-based cut-off rather than clinical MCI. The record's dataset-independence note describes P-2 as a MUSE headband study and P-12 as EEG deep learning without saying that P-2's result is a fused handwriting model and that P-12 is non-portable clinical EEG; it also leaves out P-604. The statement survives only with the channel list corrected and the driving leg re-scoped to MCI-or-dementia."
+}

@@ -1,0 +1,77 @@
+{
+ "id": "C-221",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-203",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Alzheimer's Disease Diagnosis With Brain Structural MRI Using Multiview-Slice Attention and 3D Convolution Neural Network (Chen, Qiao, Zhu, Front. Aging Neurosci. 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-212",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting conversion to Alzheimer's disease in individuals with Mild Cognitive Impairment using clinically transferable features (Rye et al., Scientific Reports (2022) 12:15566)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-203": "The 91.1% accuracy is AD vs CN (trained on ADNI-1, tested on ADNI-2). For pMCI (conversion within 0-36 months) vs sMCI (stable 0-90 months), whole-brain T1 sMRI, trained on ADNI-1 and tested on ADNI-2: ACC 0.801, SEN 0.520, SPE 0.856, AUC 0.789.",
+  "P-212": "678 ADNI MCI across all four phases, each with at least 3 visits and 3 MRIs (321 converted to probable AD at any later visit, 357 stable across all visits); features are demographics, neuropsychological tests (RAVLT, TMT, CFT, GDS, ANART), FreeSurfer total hippocampal volume and binary APOE. Random forest: mean CV accuracy 74.6%, held-out test (n = 139) accuracy 66.2% (SPE 70.3%, SEN 61.5%). Ensemble: CV 74.9%, test 68.3%."
+ },
+ "quantity_a": "As recorded (91.1): AD vs CN accuracy from T1 sMRI (task T1, not T2). The paper's T2 figure: accuracy 0.801 for pMCI (<= 36 months) vs sMCI from whole-brain T1 images, ADNI-1 -> ADNI-2 cross-phase test.",
+ "quantity_b": "Accuracy of MCI converting to AD at any later ADNI visit (no fixed horizon) vs MCI stable at all visits, from neuropsychological tests, hippocampal volume, APOE and demographics, internal 21% held-out test.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable as recorded, because the 91.1 is an AD vs CN result. On the corrected figures (0.801 vs 0.662/0.683), neither paper gives an accuracy interval, and the endpoints and predictors differ, so incompatibility cannot be established.",
+ "gates": {
+  "task": "mismatch as recorded: P-203's 91.1 is AD vs CN (T1). After correction both are T2, but P-203 uses a 36-month horizon and P-212 has no fixed horizon (conversion at any subsequent visit).",
+  "dataset_family": "match: both ADNI (P-212 all phases; P-203 ADNI-1 and ADNI-2); subject overlap is likely.",
+  "validation_tier": "P-203's MCI result is a train-on-ADNI-1 / test-on-ADNI-2 cross-phase evaluation within the same family; P-212 uses a stratified internal 79/21 holdout.",
+  "modality_family": "mismatch: P-203 uses T1 sMRI images only; P-212 is predominantly neuropsychological/clinical with one MRI-derived scalar (hippocampal volume) plus APOE."
+ },
+ "endpoint_and_metric": "incompatible as recorded: claim_a's figure belongs to a different task. After correction the metric types match (accuracy), but the endpoint horizon and predictor set differ.",
+ "performance_validity": "flag does not apply: no value >= 0.97.",
+ "independence": "Both draw on ADNI; overlapping MCI subjects are likely. Distinct author groups.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "Claim_a misreads P-203: 91.1% is its AD vs CN accuracy, and its MCI-conversion accuracy is 80.1%.",
+  "With claim_a corrected, what remains is a pair of accuracies for different quantities: 36-month conversion from T1 images vs unbounded-horizon conversion from cognitive tests + hippocampal volume + APOE. It is not a disagreement about one quantity.",
+  "Neither study claims an ordering the other refutes. P-212 itself calls its accuracy 'modest' and does not compare itself with image-based deep models."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-203",
+   "page": 1,
+   "quote": "our model achieves accuracy values of 91.1 and 80.1% on ADNI-1 for AD diagnosis and mild cognitive impairment (MCI) convention prediction, respectively."
+  },
+  {
+   "paper": "P-203",
+   "page": 6,
+   "quote": "MSA3D 0.911 0.888 0.914 0.950 0.898 0.801 0.520 0.856 0.789 0.553 All the models are trained on ADNI-1."
+  },
+  {
+   "paper": "P-212",
+   "page": 2,
+   "quote": "Our top performing RF classification had an average accuracy of 74.6% (mean across 50 cross-validation folds). When the model was evaluated on our unseen test set, the overall classification accuracy was 66.2%."
+  },
+  {
+   "paper": "P-212",
+   "page": 7,
+   "quote": "The other diagnostic group was defined as converters to AD (cAD; n = 321, 47.3%), and included subjects who were diagnosed with MCI at their first study visit, but met the criteria for probable AD on a subsequent assessment"
+  },
+  {
+   "paper": "P-212",
+   "page": 1,
+   "quote": "with cognitive function, hippocampal volume and genetic APOE status as features, we obtained a cross-validation classification accuracy of about 70%."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-203: Acc 91.1 on T2' is wrong: 91.1% is AD vs CN; P-203's pMCI vs sMCI accuracy is 80.1% (AUC 0.789).",
+  "modality_family 'Neuroimaging' is wrong for P-212, whose features are mainly neuropsychological, with one hippocampal volume and APOE status.",
+  "claim_b 'P-212: Acc 66.2' is the random-forest test accuracy; the paper's best test accuracy is the ensemble's 68.3%, and its CV accuracy is 74.6-74.9%. This is not a misreading, but the record does not mention it.",
+  "The resolution note's 'bridging evidence' lists scores; it does not bridge anything."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in the two PDFs for this record as written. Setting P-203's corrected 0.801 against P-212 would at most be documented incommensurability, because horizon and predictor set differ; that is not a genuine contradiction."
+}

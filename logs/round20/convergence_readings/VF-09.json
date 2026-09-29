@@ -1,0 +1,41 @@
+{
+ "id": "VF-09",
+ "supporters": [
+  {
+   "paper": "P-19",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Results from the test set showed that the AUC of the XGBoost model (AUC=0.913) outperformed the Logistic Regression model (AUC=0.778). ... Conclusion: Machine learning algorithms can predict the risk of cognitive impairment in this population, with the XGBoost algorithm showing the best performance.",
+   "page": "1 (Table 6, p.7)",
+   "note": "Cai et al. 2024, coal miners exposed to dust, single mine (authors' own limitation). n=1938 (80/20 train/validation) plus an additional 351-miner test set. The outcome is a MoCA screening cut-off (total <=26 = possible MCI) in a cohort of mean age about 43 to 49, not a clinical MCI diagnosis. Validation-set AUC was 0.79 (XGBoost) to 0.81 (logistic). Reported logistic test metrics disagree between text (sensitivity 0.96, specificity 0.761) and Table 6 (0.86, 0.63). No comparison with a general-population model."
+  },
+  {
+   "paper": "P-35",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Among all models, eXtreme Gradient Boosting (XGBoost) with an AUC of 0.940 performed the best in predicting the risk of MCI in CHF patients.",
+   "page": "1 (Table 3, p.8)",
+   "note": "Yang et al. 2025, chronic heart failure inpatients, two tertiary hospitals in Mianyang, cross-sectional, n=602 (302 MCI). MCI assessed by MoCA-B education-adjusted cut-offs after MMSE exclusion of dementia (screening instrument, not a clinical diagnosis). Internal validation only (1000 bootstrap resamples); no external or held-out test set; the authors flag single-sample limits. Predictors include heart-failure-specific psychological and social adaptation management scores. No comparison with a general-population model."
+  },
+  {
+   "paper": "P-46",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "The 27 participants were divided into amnesic mild cognitive impairment (aMCI) group (17 case) and control group (10 cases with age and education matched). The CPR values in two groups were statistically analyzed by Mann-Whitney U test.",
+   "page": "25",
+   "note": "Lu et al. 2021, Neuroscience. EEG phase synchronisation (CPR) in 27 T2DM patients; group comparison and Spearman correlation only. Searched for any classifier, prediction model, AUC or accuracy: none. Supports that EEG synchronisation differs between aMCI and cognitively normal T2DM patients, not that population-specific MCI prediction is feasible. Correctly excluded by the Table A1 parenthetical; it should not be counted as a supporter."
+  },
+  {
+   "paper": "P-91",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "The SVM model with defined hyperparameters (C = 3.175, Gamma = 0.007) showed preferable performance in differentiating IPD-NCI with IPD-MCI based on pointwise analysis results (training dataset: balanced accuracy = 0.85; AUC = 0.82; sensitivity = 0.75; specificity = 0.77; validation dataset: balanced accuracy = 0.79; AUC = 0.80; sensitivity = 0.78; specificity = 0.75).",
+   "page": "4",
+   "note": "Yu et al. 2023, idiopathic Parkinson's disease, single hospital, 70 patients (30 PD-MCI by MDS Task Force criteria, 40 PD-NCI). DTI automated fibre quantification features with SVM; 70/30 stratified split, so the validation set is about 21 patients. The input features were those DTI measures that differed between PD-MCI and PD-NCI in pointwise comparisons run on the whole sample before the split, which is a feature-selection leakage risk for the validation AUC. The HC count is inconsistent (20 in Table 1, 30 elsewhere). No comparison with a general-population model."
+  }
+ ],
+ "yes_count": 3,
+ "verdict": "holds",
+ "narrowed_wording": "",
+ "reasoning": "Three supporters answer yes (P-19 miners, P-35 chronic heart failure, P-91 Parkinson's disease), from three distinct datasets and two method families (tabular clinical/psychosocial ML in P-19 and P-35; diffusion-imaging ML in P-91), which meets the threshold for the statement as Table A1 states it; the row already concedes that the type 2 diabetes supporter (P-46) fits no predictive model, and the PDF confirms that: P-46 is a 27-patient group comparison and should be moved out of the supporter list, so the Table A1 count of 4 should read 3. None of the three yes supporters compares against a general-population model, which is consistent with the second clause, though that clause is a corpus-level absence claim that the supporters themselves cannot establish. Caveats the review should keep in view when citing 'feasible': in two of the three the outcome is a MoCA screening cut-off rather than a clinical MCI diagnosis (P-19 MoCA <=26 in a working-age cohort; P-35 MoCA-B); all three are single-site Chinese cohorts; P-35 has bootstrap internal validation only; P-91's validation set is about 21 patients with features selected on the full sample before the split. A more exact wording would be: population-specific prediction of MCI (screen-positive by MoCA cut-offs in the heart failure and miner cohorts; MDS criteria in Parkinson's disease) has been reported with internal validation in three single-centre cohorts; none compares against a general-population model."
+}

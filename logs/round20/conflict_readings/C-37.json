@@ -1,0 +1,72 @@
+{
+ "id": "C-37",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-114",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack file pdf/P-114.txt is the San-Martin et al. EEG/LORETA paper (BSPC 66 (2021) 102499), P-112's paper. The paper the record means (claim '93% Acc', registry row Kinect/ANFIS gait, summaries.md header 1-s2.0-S1746809421003195) is Seifallahi et al., 'Detection of mild cognitive Impairment from gait using Adaptive Neuro-Fuzzy Inference system', BSPC 71 (2022) 103195, present in the pack as pdf/P-115.txt. Both read in full; verdict uses the gait paper.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-95",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Analysis of neuropsychological and neuroradiological features for diagnosis of Alzheimer's disease and mild cognitive impairment (Kurbalija et al., International Journal of Medical Informatics 178 (2023) 105195)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-114": "Kinect V2 dual-task gait features, 150 older adults (70 MCI, 80 HC, Tehran), hierarchical ANFIS binary MCI vs HC accuracy 93%; evaluation protocol for ANFIS not stated.",
+  "P-95": "90 participants (30 AD, 30 MCI, 30 healthy; Novi Sad), 482 neuropsychological and neuroradiological features, seven Weka classifiers with default settings, 10x10 stratified CV, THREE-CLASS AD/MCI/control classification. All-attribute accuracy ranged 66.22% (LR) to 81.00% (naive Bayes); weighted-average AUROC 76.3% to 95.0%. Best expert-selected NP combination 79.78% (SVM, A3). NR-only feature groups mostly below 50% accuracy."
+ },
+ "quantity_a": "Accuracy of ANFIS on gait features, binary MCI vs healthy controls, protocol unstated",
+ "quantity_b": "Accuracy (range across seven classifiers) of three-class AD vs MCI vs control classification from neuropsychological tests plus MRI/DTI measures, 10x10 stratified CV",
+ "same_quantity": false,
+ "incompatible_if_same": "No. A three-class accuracy is bounded differently from a binary one (chance 33% vs 50%), and P-95's figure is a range across classifiers, not one estimate; neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch: P-114 binary MCI vs HC (T1); P-95 three-class AD/MCI/control (the registry codes P-95 as T3)",
+  "dataset_family": "mismatch: own IDAA Tehran cohort vs own University Clinical Centre of Vojvodina cohort; no waiver",
+  "validation_tier": "uncertain: P-95 internal 10x10 stratified CV; P-114 protocol unstated",
+  "modality_family": "mismatch: gait/motor vs neuropsychological test battery plus structural/diffusion MRI; no waiver"
+ },
+ "endpoint_and_metric": "incompatible: binary accuracy vs three-class accuracy range",
+ "performance_validity": "flag does not apply: neither row flagged; P-95's 95.0% weighted AUROC is below 0.97 and is not the contested figure.",
+ "independence": "Independent: different groups and cohorts; no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-95's 66-81% is the accuracy range of seven classifiers on a three-class AD/MCI/control task, while P-114's 93% is a binary MCI-vs-HC accuracy, so the class contrast and endpoint differ.",
+  "The predictor sets differ entirely: P-95 uses 482 neuropsychological and neuroradiological attributes (including MMSE and ACE III, which enter the diagnosis), P-114 uses Kinect gait parameters.",
+  "The task gate, modality-family gate and dataset-family gate all fail with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-114",
+   "page": 1,
+   "quote": "the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups."
+  },
+  {
+   "paper": "P-95",
+   "page": 1,
+   "quote": "The accuracy for the whole set of attributes ranged between 66.22 % and 81.00 %, and the weighted average AUROC was between 76.3 % and 95.0 %."
+  },
+  {
+   "paper": "P-95",
+   "page": 7,
+   "quote": "the application of machine learning techniques in AD diagnosis will be directed toward the creation of ML classifiers which will be trained to perform the 3-class classification."
+  },
+  {
+   "paper": "P-95",
+   "page": 7,
+   "quote": "The data for this study consists of NP and NR features (as explained in Section 3) for 30 patients with AD, 30 patients with MCI and 30 healthy individuals"
+  }
+ ],
+ "record_defects": [
+  "The pack's P-114 PDF (paper_pdf_map.json, 'formula-unverified') is P-112's EEG paper, not the gait/ANFIS paper the record means.",
+  "claim_b 'P-95: 66-81% on T1' mislabels a three-class AD/MCI/control accuracy range as a T1 result.",
+  "task_equal, dataset_equal and validation_comparable 'Yes' are wrong or unsupported.",
+  "The resolution note's reason ('Metric type unclear') is incomplete: P-95 states the metric (accuracy) clearly; the pair fails on task, modality and cohort."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these papers: P-95 reports no binary MCI-vs-control accuracy."
+}

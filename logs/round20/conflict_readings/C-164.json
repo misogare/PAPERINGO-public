@@ -1,0 +1,77 @@
+{
+ "id": "C-164",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-273",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting long-term progression of Alzheimer's disease using a multimodal deep learning model incorporating interaction effects (Wang et al., J Transl Med 2024)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-65",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Leveraging hemispheric asymmetry in structural MRI with an attention-guided 3D CNN for early prediction of Alzheimer's conversion (Liu et al., Neural Networks 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-273": "DISFC trimodal deep model (3D sMRI + 14 demographic/cognitive features incl. MMSE, CDRSB, ADAS11/13, RAVLT, FAQ, mPACC + 49 selected SNPs), 238 ADNI-1/GO/2 MCI (plus 45 AD added to training), conversion within 48 months, stratified 10-fold CV: AUC 0.962 (SD 0.041), accuracy 92.92%; ADNI-3 independent test (n=14, 3 pMCI) AUC 0.939 (95% CI 0.796-1.000). Unimodal/bimodal results are shown only in Fig. 4B (values not in the extract).",
+  "P-65": "HemiNet 3D CNN on single-time-point structural MRI only, 573 right-handed ADNI MCI (300 pMCI, 273 sMCI), conversion within 36 months, 5-fold stratified CV repeated 5 times: AUC 0.8401 +/- 0.0297, accuracy 0.7819; external OASIS-3 (n=144) AUC 0.8137 +/- 0.0351."
+ },
+ "quantity_a": "ROC-AUC for MCI-to-AD conversion within 48 months, ADNI, predictors = sMRI + cognitive/clinical scores + SNPs (trimodal), 10-fold CV",
+ "quantity_b": "ROC-AUC for MCI-to-AD conversion within 36 months, ADNI, predictor = structural MRI only, repeated 5-fold CV",
+ "same_quantity": false,
+ "incompatible_if_same": "Not incompatible in kind: a model given cognitive scores and genotypes outscoring an MRI-only model is the expected ordering, and P-273 itself reports that removing modalities lowers performance. Neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match in label (T2) but horizon differs: 48 months vs 36 months.",
+  "dataset_family": "match: both ADNI (overlapping ADNI-1/GO/2 participants likely).",
+  "validation_tier": "match for the quoted figures: both internal cross-validation (each also has a small or separate external test: ADNI-3 n=14; OASIS-3 n=144).",
+  "modality_family": "mismatch in predictor set: P-273 trimodal (MRI + neuropsychological scores + SNPs); P-65 structural MRI only."
+ },
+ "endpoint_and_metric": "partly compatible: both ROC-AUC, but different conversion horizons (48 vs 36 months) and different predictor sets.",
+ "performance_validity": "flag does not apply by the rule: 0.962 is below 0.97 and there is an (n=14) independent test; the external test is too small to be informative (95% CI 0.796-1.000), which is a caution but not the exclusion criterion.",
+ "independence": "Distinct groups (Shanghai Jiao Tong vs Chongqing Normal/Chongqing Medical University); both use ADNI MCI participants, so cohort overlap is likely (non-independence).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-273's 0.962 comes from a trimodal model that includes cognitive test scores and genotypes, while P-65's 0.8401 comes from structural MRI alone, so the predictor sets differ.",
+  "The conversion horizons differ (48 months vs 36 months).",
+  "With predictor set and horizon both different and no waiver on record, the two AUCs are not the same quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-273",
+   "page": 1,
+   "quote": "On the cross-validation set, our model achieved superior results for predicting MCI conversion within 4 years (AUC, 0.962; accuracy, 92.92%; sensitivity, 88.89%; specificity, 95.33%)"
+  },
+  {
+   "paper": "P-273",
+   "page": 3,
+   "quote": "a multimodal deep learning model based on 3D sMRI scans, demographic and neuropsychological assessments, and genetic polymorphism data to predict the risk of MCI progression to AD at baseline."
+  },
+  {
+   "paper": "P-273",
+   "page": 6,
+   "quote": "The trimodal DISFC model was superior to the top-performing bimodal model using MRI and clinical data with a significant increase of 0.022 (P = 0.048) in AUC"
+  },
+  {
+   "paper": "P-65",
+   "page": 3,
+   "quote": "participants in the pMCI group were initially diagnosed with MCI at baseline and converted to AD within 36 months of follow-up"
+  },
+  {
+   "paper": "P-65",
+   "page": 1,
+   "quote": "Extensive experiments and cross-validation on the ADNI dataset demonstrate that HemiNet achieves an AUC of 84.01% and an accuracy of 78.19% for MCI prediction."
+  }
+ ],
+ "record_defects": [
+  "resolution_note 'Same architecture family (A4_transformer)' is wrong: neither model is a transformer (P-273 is a separable-convolution/residual CNN with FC fusion; P-65 is a 3D DenseNet-121 CNN with SE-style attention).",
+  "claim_b 'AUC 84.01%' mixes percent and proportion notation; the paper's value is 0.8401.",
+  "The record treats the pair as same-modality (structural_mri) although P-273's figure depends on cognitive scores and SNPs as well as MRI.",
+  "P-273 registry Validation_Type V3 rests on a 14-subject ADNI-3 test; the quoted 0.962 is the internal CV figure."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "P-273's MRI-only unimodal AUC at 48 months (Fig. 4B; not in the extract) compared with an MRI-only P-65 AUC at the same horizon with non-overlapping uncertainty; even then the horizons differ by a year."
+}

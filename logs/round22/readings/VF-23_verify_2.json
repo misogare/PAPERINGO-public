@@ -1,0 +1,184 @@
+{
+ "vf": "VF-23",
+ "role": "verifier_2",
+ "date": "2026-09-29",
+ "status": "candidate / pending_human_review (model reading of source documents under BRIEF_R22.md; not a gate decision)",
+ "statement_tested": "VF-23 revised statement (BRIEF_R22.md), judged clause by clause: C1 connectivity/graph/complexity measures discriminate MCI from controls in the study's own data; C2 within-study such a measure separates MCI where spectral band power does not; C3 any within-study same-participant head-to-head of discrimination between feature domains; C4 within-study multi-domain combination discriminates MCI better than any single domain.",
+ "current_supporters_for_independence_check": [
+  "P-553 (Hanyang, Korea)",
+  "P-501 (Wayne State / MADRC, Detroit)",
+  "P-463 (Hokuto + Kumagaya MEG, Japan)",
+  "P-480 (PREVIEW, Florence)"
+ ],
+ "page_convention": "Pages are the === page N === markers of R21/pdf/<P-id>.txt (PDF page order). For P-39, PDF page 1 = journal page 438.",
+ "results": [
+  {
+   "paper": "P-39",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "is_synthesis": false,
+   "C1": "yes",
+   "C2": "no",
+   "C3_head_to_head": "none. No single-family model is trained: Table 2 (p.6) reports only models fed the FCBF-selected mix of all families. The only cross-domain comparison is SHAP relevance inside one fused Gradient Boosting model, which is not a head-to-head of discrimination. For information only, the relevance ran towards spectral power: RP theta was the top feature in MEG and EEG2 and second in EEG1 (PLI theta top in EEG1), and the authors conclude that global synchronisation may play a less relevant role than local activation.",
+   "C4": "not_tested",
+   "dataset_family": "Three datasets. (1) MEG from Hokuto Hospital (Obihiro) and Kumagaya General Hospital, Japan: 55 HC / 42 MCI / 86 AD. This is the cohort family of current supporter P-463 (cited here as ref [23]), with shared authors (Rodriguez-Gonzalez, Poza, Gomez, Hornero, Hoshi, Shigihara), so this arm is NOT independent of P-463. (2) EEG1 from North Portugal and Castile and Leon: 51 HC / 51 MCI / 100 AD (the abstract says 52 MCI; Section 2.1 and Table 1 say 51, total 202). (3) EEG2 from the Department of Clinical Neurophysiology, Hospital Universitario Rio Hortega, Valladolid: 45 HC / 69 MCI / 82 AD. EEG1 and EEG2 are distinct from all four current supporters.",
+   "method_family": "Source-level (sLORETA, 68 Desikan-Killiany ROIs) eyes-closed resting-state MEG/19-channel EEG. 89 features in six families: spectral (RP, MF, IAF, TF, SEF95, spectral entropies), non-linear (LZC, HFD, KFD, CTM, AMI, ApEn, SampEn, FuzzyEn), morphology (Hjorth, statistical moments), FC (PLI, AEC), network (PL, ClC, CC) and multiplex (P, OWD). FCBF selection, six classifiers with nested 10-fold CV, SHAP TreeExplainer, and Mann-Whitney tests with FDR correction on the SHAP-selected features.",
+   "same_sample_or_cohort_as": [
+    "P-463 (MEG arm only)"
+   ],
+   "figure_reading": "Model reading of Fig. 5 (p.9), which did not survive text extraction. The PDF page was rendered at 400-500 dpi and the colour of each asterisk read (black = HC vs MCI). HC vs MCI significant: MEG - RP theta, AMI, second-derivative kurtosis, PLI beta 2, PLI-CC beta 1, PLI-ClC delta, PLI-PL gamma, PLI-OWD (IAF, PLI-P and PLI theta not). EEG1 - RP theta, IAF, AMI, second-derivative kurtosis, PLI theta. EEG2 - RP theta, IAF, spectral skewness, second-derivative kurtosis, PLI theta, PLI-P, PLI-OWD (AMI not). The reading agrees with the text at every point the text states: kurtosis HC-MCI in all three (p.10), skewness HC-AD in EEG1 and HC-MCI in EEG2 (p.10), HjA MCI-AD in EEG1 only (p.10).",
+   "quotes": [
+    {
+     "page": 9,
+     "quote": "Asterisks represent statistically significant differences between: In black, HC and MCI comparison; in green, HC and AD differences; and in magenta, MCI and AD differentiation (p < 0.05, Mann\u2013Whitney U-test, FDR corrected)"
+    },
+    {
+     "page": 8,
+     "quote": "Shared differences among the three databases were found in spectral, morphology, FC, and multiplex organisation parameters (p< 0.05, Mann\u2013Whitney U-tests, FDR corrected)."
+    },
+    {
+     "page": 6,
+     "quote": "For the EEG2 database, the two most relevant features were RP in theta frequency band and P derived from PLI. Concretely, RP in theta is relevant to classify HC and AD, and P derived from PLI presents a key role in identifying HC and MCI."
+    },
+    {
+     "page": 10,
+     "quote": "second derivative's kurtosis was the only morphology parameter that presented statistically significant differences between HC and MCI in all three databases"
+    },
+    {
+     "page": 10,
+     "quote": "The only parameters that presented consistent statistically significant differences among all three databases were PLI in theta frequency band and P derived from the PLI for the HC and AD comparison."
+    },
+    {
+     "page": 10,
+     "quote": "To sum up, it can be suggested that spectral and non-linear parameters are the most relevant metrics to discriminate pathological and non-pathological states."
+    },
+    {
+     "page": 10,
+     "quote": "it can be hypothesised that global synchronisation may play a less relevant role, compared to local activation, to discriminate between HC, MCI, and AD."
+    },
+    {
+     "page": 6,
+     "quote": "Table 2 ... Gradient Boosting Accuracy 86.49 % 83.57 % 77.63 % [HC vs. all: MEG, EEG1, EEG2] ... 72.63 % 67.33 % 53.76 % [three-class]"
+    }
+   ],
+   "why": "Identity: the PDF title, authors (Gutierrez-de Pablo, ... Hoshi, Shigihara, Hornero, Gomez), journal and DOI 10.1016/j.bbe.2025.05.011 match the Paper 39 block (whose header is the file name) and the PDF map. The registry row is not a duplicate stub. I read the whole extract, and read Fig. 5 from the rendered PDF because its asterisks are not in the text. C1 yes: under Mann-Whitney tests with FDR correction, several connectivity, network, multiplex and non-linear features separate HC from MCI. MEG: PLI beta 2, PLI-CC beta 1, PLI-ClC delta, PLI-PL gamma, PLI-OWD and AMI. EEG1: PLI theta and AMI. EEG2: PLI theta, PLI-P and PLI-OWD. The two EEG datasets give this independently of P-463. Caveats: (a) these are group differences on a feature subset chosen by SHAP relevance from models trained on the same data; (b) the per-feature HC-MCI evidence is a figure reading with no printed p-values or effect sizes; (c) the classifiers are three-class and HC-vs-all, with AD included, so no MCI-vs-HC classification metric exists. C2 no: spectral RP theta separates HC from MCI in all three databases (a black asterisk in every panel), so no database shows a connectivity or complexity measure separating MCI where band power fails. The authors' own reading runs the other way (quotes p.10). C3: none (see field). C4 not tested: no single-domain model and no ablation. The block line 'Integrative features outperform narrow single-family approaches' has no within-study support; the only accuracy comparisons are against other studies (pp.8-9). Both finders reached the same verdict on C3 and C4. I differ from them on C1: the text alone gives only the SHAP statement for PLI-P, but the figure shows FDR-corrected HC-MCI differences for connectivity and network features."
+  },
+  {
+   "paper": "P-447",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "is_synthesis": false,
+   "C1": "no",
+   "C2": "no",
+   "C3_head_to_head": "none. Tsallis entropy and relative band power were each null between PD-MCI and PD-NC, and no discrimination metric (accuracy, AUC) is reported for any feature, so no domain beats another.",
+   "C4": "partly",
+   "dataset_family": "University Hospital Basel Parkinson's disease cohort (Basel, Switzerland): 30 PD-NC vs 9 PD-MCI, matched for age, sex and education. Independent of all four current supporters.",
+   "method_family": "Conference abstract (Clin Neurophysiol 132 (2021) e17, abstract P38; doi 10.1016/j.clinph.2021.02.357). High-density resting EEG, eyes open and eyes closed. Tsallis entropy (complexity) and relative band power in five bands; per-subject Pearson correlation between the two, compared across diagnostic groups with corrected p-values. Group statistics only, no classifier.",
+   "same_sample_or_cohort_as": [],
+   "quotes": [
+    {
+     "page": 1,
+     "quote": "30 PD-NC individuals (13 females, medians: age 67.5 yrs., edu. 14 yrs., UPDRS 16, LED 507.5, disease duration 33 mos.) were compared with 9 individuals diagnosed with PD-MCI matched for age, sex and education"
+    },
+    {
+     "page": 1,
+     "quote": "TE and rBP analyzed independently, showed no significant differences between PD-NC and PD-MCI. However, in combination, significant differences were observed: Compared to PD-NC, most patients with PD-MCI showed significantly higher correlation of TE and rBP in both the alpha band (8-13Hz) in EO condition as well as the beta band (13-30Hz) in EC condition. The corrected p-values in both cases were p<0.05."
+    },
+    {
+     "page": 1,
+     "quote": "in case of PD-MCI, the median correlation was negative: -0.33 (alpha band, EO) and -0.50 (beta band, EC). For PD-NC individuals, median correlation was positive: 0.11 (alpha band, EO) and 0.09 (beta band, EC). Other bands, in either condition, showed no significant group differences in correlation between TE and Rbp."
+    },
+    {
+     "page": 1,
+     "quote": "The results apply to groups, and may help to define study populations for clinical trials, but cannot be applied in their present form for individual treatment decisions or counselling."
+    }
+   ],
+   "why": "Identity: the PDF is an abstract-book page (Clin Neurophysiol 132 (2021) e1-e36, page e17) carrying abstracts P37, P38 and P39 from the same Basel group. Abstract P38 (Keller, Beltrani, Gschwandtner, Meyer, Toloraia, Fuhr) matches the Paper 447 block title, and its DOI 10.1016/j.clinph.2021.02.357 is printed beneath it. P37 and P39 are different abstracts and were not used. It has analysable group results, so the exclusion for abstracts without results does not apply, but it is very thin: n=9 PD-MCI, no discrimination metric, correction method unnamed. C1 no: the complexity measure (TE) alone did not separate the groups. The separating quantity is the complexity-power coupling, which the authors present as a combination ('signal complexity and relative band power provide, in combination, a candidate diagnostic biomarker'), so I scored it under C4 rather than counting it twice. C2 no: complexity failed alongside band power; it did not succeed where band power failed. C4 partly: the combination (per-subject TE-rBP correlation) separates the groups where neither domain does alone, but (a) it is a coupling statistic, not a multi-domain classifier compared against single-domain classifiers; (b) it holds in two of ten band-by-condition cells; (c) the comparator is cognitively normal PD, not healthy controls, and the population is PD-MCI. Wording ambiguity: the abstract says PD-MCI had 'higher correlation', yet the PD-MCI medians are negative and the PD-NC medians positive, so 'higher' can only mean greater magnitude. The block's 'higher (more negative)' is an interpretation. Previous rejection (record_notes): P-447 was dropped from VF-23 because (i) its PD-MCI population did not match and (ii) its claim was coupling-beats-either-single-feature, not network-beats-spectral. Under the revised statement, ground (ii) no longer bars it from C4, which is about combinations. Ground (i) still stands, which is why C4 is partly rather than yes. Whether PD-MCI vs PD-NC may count toward an MCI convergence is a scope question for the operator."
+  },
+  {
+   "paper": "P-592",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "is_synthesis": false,
+   "C1": "yes",
+   "C2": "partly",
+   "C3_head_to_head": "none. No classifier, AUC or accuracy is reported. Band power (electrode-wise t-tests with FDR) and connectivity/SW (pairwise electrode t-tests; mixed ANOVA with Duncan post hoc) were tested with different procedures, so this is not a head-to-head of discrimination.",
+   "C4": "not_tested",
+   "dataset_family": "INTERCEPTOR project (Italian multicentre MCI cohort, AIFA-funded): 60 sMCI-resilient and 56 cMCI, both from the high-risk subgroup (hippocampal atrophy plus AD-like FDG-PET, n=116), plus 50 cognitively healthy controls recruited outside INTERCEPTOR. Independent of all four current supporters (not PREVIEW; no shared authors with P-553/P-501/P-463/P-480).",
+   "method_family": "19-channel eyes-closed resting scalp EEG. Relative PSD and delta/alpha ratio (electrode-wise t-tests, FDR), magnitude-squared coherence (pairwise electrode t-tests), and a graph small-world index per band (mixed ANOVA, Duncan post hoc). Group comparisons only.",
+   "same_sample_or_cohort_as": [],
+   "quotes": [
+    {
+     "page": 8,
+     "quote": "Post hoc Duncan's test further confirmed that in the Delta, the HC have lower SW values compared to both sMCI-resilient (p = 0.0038) and cMCI (p = 0.0008), as well as higher Beta 2 SW respect to the other groups (sMCI-resilient [p = 0.0033], cMCI [p = 0.0099]). In the alpha 2 band, the SW index was significantly higher in the sMCI-resilient group compared to both healthy (p = 0.025) and cMCI group (p = 0.0059)."
+    },
+    {
+     "page": 8,
+     "quote": "The results revealed a significant interaction effect between all factors (F[6, 672] = 2.3572, p = 0.00001)"
+    },
+    {
+     "page": 6,
+     "quote": "In stark contrast, sMCI-resilient individuals exhibited a pronounced and statistically robust enhancement of anterior connectivity that set them apart from both HC and cMCI groups."
+    },
+    {
+     "page": 5,
+     "quote": "Crucially, no difference was observed between sMCI-resilient and healthy groups, confirming that resilience is characterized by the preservation of a \"healthy-like\" delta profile. Conversely, converters diverged markedly from HC (FDR threshold = 0.009), with the largest delta elevations in posterior brain regions"
+    },
+    {
+     "page": 5,
+     "quote": "In the alpha 1 and alpha 2 bands, sMCI-resilient individuals stood apart from both HC (alpha 1: FDR threshold = 0.0045; alpha 2 = 0.0225) and cMCI (alpha 1: FDR threshold = 0.0155; alpha 2 = 0.0155) converters by exhibiting a pronounced frontal alpha enhancement"
+    },
+    {
+     "page": 5,
+     "quote": "In the theta, beta 1, beta 2, and gamma bands, no significant differences emerged between the two groups."
+    },
+    {
+     "page": 9,
+     "quote": "No significant differences emerged in the theta, beta, or gamma bands."
+    },
+    {
+     "page": 5,
+     "quote": "In the delta/alpha ratio, sMCI-resilient exhibit significantly lower delta/alpha ratio in frontal regions than HC (FDR threshold = 0.003)"
+    }
+   ],
+   "why": "Identity: the PDF title, authors (Pappalettera, ..., Rossini), journal (Alzheimer's Dement TRCI 2025;11:e70194) and DOI 10.1002/trc2.70194 match the Paper 592 block and its registry row (not a duplicate stub). I read the whole extract. C1 yes: the small-world index separates both MCI groups from HC in delta (p = 0.0038, 0.0008) and beta 2 (p = 0.0033, 0.0099), and separates sMCI-resilient from HC in alpha 2 (p = 0.025). Coherence also sets sMCI-resilient apart from HC, but only significance maps are reported, with no statistic in the text. Scope: both MCI groups are biomarker-selected high-risk MCI, and the study's focus is sMCI vs cMCI. C2 partly, band-specific only. In beta 2, SW separates both MCI groups from HC while relative beta power shows no group difference (p.5, p.9). In delta, SW separates sMCI-resilient from HC while relative delta power does not (p.5). At group level, however, spectral measures do separate each MCI group from HC in this sample: cMCI by delta power (FDR threshold 0.009), sMCI-resilient by alpha 1/alpha 2 power and the delta/alpha ratio. So band power does not fail to detect MCI; it misses only the particular beta-2 and delta network alterations. If C2 requires band power to fail for the group, this is 'no'. I differ from the finder (who said no) only in recording this band-matched dissociation as partial support for 'alterations not consistently detected by band power'. Caveats that weaken it: (a) the null PSD sentence says 'between the two groups' although three groups were compared (p.9 restates it as a plain null for theta, beta and gamma); (b) the SW contrasts use Duncan post hoc tests without family-wise control across seven bands, while PSD used FDR, so SW had the easier threshold; (c) the reported interaction F(6, 672) = 2.3572 corresponds to p of about 0.029, not 0.00001, and 672 error df does not fit 166 participants x 7 bands (expected about 978), so the SW statistics carry a reporting inconsistency; (d) band edges differ between sections (delta 2-4 Hz in methods, 1-4 Hz in results). C3 none; C4 not tested."
+  },
+  {
+   "paper": "P-453",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "is_synthesis": true,
+   "C1": "partly",
+   "C2": "not_tested",
+   "C3_head_to_head": "none. The meta-analysis pools only functional-connectivity effect sizes (HC > MCI contrast). No spectral band-power effect is pooled or compared.",
+   "C4": "not_tested",
+   "dataset_family": "Synthesis: random-effects MetaNSUE meta-analysis of 12 resting-state sensor-space M/EEG functional-connectivity studies (11 EEG, 1 MEG), pooled HC N=327 and MCI N=379, searched to June 2023 (3,852 records screened). Its included primary studies (e.g. Nunez 2019, Youssef 2021, Gonzalez-Escamilla 2015) were not checked against the corpus or the supporters.",
+   "method_family": "Systematic review and meta-analysis (SMD per region pair and band, MetaNSUE imputation of non-significant unreported effects, leave-one-out, metabias).",
+   "same_sample_or_cohort_as": [],
+   "quotes": [
+    {
+     "page": 7,
+     "quote": "The analysis showed a negative value in the comparison between the temporal and parietal (Fig. 2) and between the frontal and parietal (Fig. 3) areas (k = 11, of which 7 NSUEs, respectively, d = [-]0.250, I2= 1.11%, C.I. [-0.4317;-0.0749], p < 0.01 and d = -0.260, I2= 34.54%, C.I. [-0.489;-0.0391], p < 0.05), thus indicating a decrease of alpha coupling between these areas in the MCI group compared to their healthy counterpart."
+    },
+    {
+     "page": 7,
+     "quote": "Leave-One-Out analyses replicated the results in all of the cases except for 3 studies ... considering the fronto-parietal areas (Fig. 4), suggesting that these three studies could have driven the outcome. On the contrary, the results were replicated in all the cases for the temporo-parietal coupling (Fig. 5)"
+    },
+    {
+     "page": 7,
+     "quote": "No delta synchrony alterations were found in any of the areas studied by summarizing the evidence of 8 studies"
+    },
+    {
+     "page": 7,
+     "quote": "No significant differences in beta synchrony were observed in the 7 studies considered of MCI subjects compared to HC in any pair of regions"
+    },
+    {
+     "page": 1,
+     "quote": "Of the 3852 articles extracted, we analyzed 12 papers, and we found an alpha synchrony decrease in MCI compared to HC, specifically between temporal-parietal (d = -0.26) and frontal-parietal areas (d = -0.25)."
+    }
+   ],
+   "why": "Identity: the PDF title, authors (Buzi, Fornari, Perinelli, Mazza), journal (Clin Neurophysiol 156 (2023) 183-195) and DOI 10.1016/j.clinph.2023.10.011 match the Paper 453 block. The registry codes it review_meta_analysis, not a duplicate stub. I read the whole extract (the reference list is omitted by the extractor). It is a synthesis, so under Appendix H.1 it cannot count as one of the three primary supporters for any clause. C1 partly means synthesis-level only: a small pooled alpha-synchrony decrease in MCI vs HC, temporo-parietal (robust to leave-one-out) and fronto-parietal (not robust: 3 of 11 leave-one-out runs lose significance). Theta, delta and beta were null, and theta fronto-parietal was borderline (p = 0.053). It can inform wording that connectivity changes at the MCI stage are small and band-limited. It says nothing on C2, C3 or C4, because band power is never analysed. Extract notes: the Elsevier extract dropped the minus sign of the temporo-parietal d ('d =  0.250'), restored as negative from its CI [-0.4317; -0.0749] and the sentence 'a negative value'. The abstract gives TP d = -0.26 / FP d = -0.25, while the results give TP -0.250 / FP -0.260, an internal swap that does not change the verdict. It is neither of the evaluator's two outside syntheses (a 2025 review of 124 connectivity studies; a 2026 review of 21 wearable-EEG studies): this is a 2023 meta-analysis of 12 studies."
+  }
+ ],
+ "summary_for_orchestrator": "P-39: C1 yes (EEG1 and EEG2 independent of P-463; MEG arm shares P-463's cohort), C2 no (RP theta also separates HC-MCI in all three datasets), C3 none, C4 not tested. P-447: C1 no, C2 no, C3 none, C4 partly (TE-rBP coupling separates PD-MCI from PD-NC where neither domain alone does; PD population, n=9, abstract). P-592: C1 yes, C2 partly (band-matched only: beta-2 and delta SW; spectral power separates both MCI groups from HC in other bands), C3 none, C4 not tested. P-453: synthesis, C1 partly at synthesis level only, cannot count as a primary supporter. None of the four runs a within-study head-to-head of discrimination between feature domains."
+}

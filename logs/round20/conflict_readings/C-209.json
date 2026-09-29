@@ -1,0 +1,83 @@
+{
+ "id": "C-209",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-132",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Machine learning prediction prior to onset of mild cognitive impairment using T1-weighted magnetic resonance imaging radiomic of the hippocampus (Zhan et al., Asian Journal of Psychiatry 108 (2025) 104532)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-177",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Improved prediction of imminent progression to clinically significant memory decline using surface multivariate morphometry statistics and sparse coding (Stonnington et al., J Alzheimers Dis 2021;81(1):209-220)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-132": "All ADNI cognitively normal (NC) people with baseline MRI and 7-year follow-up (n=175; 125 stable NC, 50 progressed to MCI within seven years). 14 LASSO-selected hippocampal radiomic features plus ADAS-Cog11/13 scores; 80/20 stratified split, 5-fold CV. Training accuracy 0.79-0.81 (LightGBM 0.79, AUC 0.89); held-out test accuracy 0.73-0.77 (LightGBM 0.74, AUC 0.80).",
+  "P-177": "Cognitively unimpaired people who progressed to amnestic MCI in about 2 years vs age/sex/education/APOE4-matched nonprogressors who stayed unimpaired for at least 4 years; ADNI 60 vs 60, Arizona 18 vs 20, combined 78 vs 80. Hippocampal surface multivariate morphometry with patch-based sparse coding and random forest, k-fold cross-validation (no held-out test). Accuracy 92% ADNI (88% sens, 97% spec), 92% Arizona, 90% combined; hippocampal volume alone 72% (ADNI) and 79% (Arizona)."
+ },
+ "quantity_a": "Accuracy for predicting NC-to-MCI conversion within 7 years in an unselected, imbalanced (1:2.5) ADNI NC cohort, radiomics plus ADAS-Cog scores, held-out 20% test set (training/CV 0.79)",
+ "quantity_b": "Accuracy for predicting progression from unimpaired to amnestic MCI within about 2 years, in a balanced, matched extreme-group design (nonprogressors stable at least 4 years), hippocampal surface morphometry only, cross-validated",
+ "same_quantity": false,
+ "incompatible_if_same": "No. These are different feature sets and models each reporting their own accuracy. P-177 itself shows a simpler hippocampal feature giving 72% in ADNI, which is in P-132's range, and neither paper claims an ordering that the other refutes.",
+ "gates": {
+  "task": "match in class: both predict conversion from normal cognition to MCI (the registry's T2), but the horizons differ (7 years vs about 2 years), as do the outcome definitions (any MCI vs amnestic MCI)",
+  "dataset_family": "match: both ADNI (P-177 also has an independent Arizona cohort; the 92% figure is reported for each cohort separately)",
+  "validation_tier": "match: both internal only (V2); P-132 uses a held-out split, P-177 uses k-fold CV",
+  "modality_family": "match: structural T1 MRI of the hippocampus (P-132 adds ADAS-Cog scores to the model)"
+ },
+ "endpoint_and_metric": "incompatible: accuracy in both, but conversion horizon (7 y vs ~2 y), case definition (any MCI vs amnestic MCI), control definition (all non-converters at 7 y vs matched nonprogressors stable >=4 y) and class balance (125:50 vs 60:60) differ, so the accuracies estimate different quantities",
+ "performance_validity": "flag does not apply: P-177's 92% accuracy is below 0.97 (only its ADNI specificity reaches 97%); P-132 is 0.74-0.79",
+ "independence": "Distinct author groups; both draw on ADNI normal-cognition participants, so subjects may overlap",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-132 predicts conversion to MCI within seven years in all eligible NC participants, while P-177 predicts amnestic MCI in about two years against matched nonprogressors stable for at least four years; horizon and population construction differ.",
+  "P-132's classes are imbalanced (125/50) and its headline figure is a held-out test accuracy; P-177's are balanced (60/60) with cross-validated accuracy, so the accuracy values are not on the same footing.",
+  "The predictor sets differ: radiomic texture/shape features plus ADAS-Cog in P-132, surface tensor-based morphometry with sparse coding in P-177.",
+  "Neither paper refutes the other: P-177's own hippocampal-volume baseline (72% in ADNI) sits within P-132's range, which is consistent with a feature-representation difference rather than conflicting data."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-132",
+   "page": 1,
+   "quote": "We utilized the Alzheimer's Disease Neuroimaging Initiative (ADNI) database to study 175 NC individuals, identifying 50 who progressed to MCI within seven years."
+  },
+  {
+   "paper": "P-132",
+   "page": 1,
+   "quote": "the LightGBM model achieved an area under the receiver operating characteristic (ROC) curve (AUC) value of 0.89 and an accuracy of 0.79 in the training set, and an AUC value of 0.80 and an accuracy of 0.74 in the test set."
+  },
+  {
+   "paper": "P-132",
+   "page": 2,
+   "quote": "we incorporated the scores of the ADAS-cog11 and ADAS-cog13 scales, which showed substantial group disparities at baseline, as crucial elements in the final set of modeling features."
+  },
+  {
+   "paper": "P-177",
+   "page": 1,
+   "quote": "78 CU adults who subsequently progressed to amnestic MCI in approximately 2 years (\"progessors\") and 80 matched adults who remained CU for at least 4 years (\"nonprogressors\")."
+  },
+  {
+   "paper": "P-177",
+   "page": 6,
+   "quote": "The same method with the ADNI cohort achieved 92% accuracy, 88% sensitivity, and 97% specificity."
+  },
+  {
+   "paper": "P-177",
+   "page": 7,
+   "quote": "random forest classification with leave-one-out cross-validation in the same data sets yielded only 79% prediction accuracy in the Arizona cohort and 72% in the ADNI cohort (Table 4)."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-132: Acc 79' is the training-set accuracy of LightGBM; the held-out test accuracy is 0.74 (range 0.73-0.77 across models).",
+  "Registry Modality 'MRI/PET' for both papers is wrong: both use T1 MRI only (P-132 adds neuropsychological scores).",
+  "Registry Sample_N_Approx 158 for P-177 is the two-cohort total; the ADNI cohort is 120 (60/60), and the 92% figure is reported separately for each cohort.",
+  "The resolution_note bridging list (P-156, P-178, P-199, and others) gives scores for other studies and tasks, mostly MCI-to-AD conversion; it names no condition that separates these two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Two studies predicting the same NC-to-MCI horizon with the same case/control construction and comparable validation reporting accuracies whose uncertainty excludes each other; these two differ on horizon, sampling design and validation, and report no intervals."
+}

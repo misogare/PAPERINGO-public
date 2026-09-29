@@ -1,0 +1,33 @@
+{
+ "id": "VF-15",
+ "supporters": [
+  {
+   "paper": "P-3",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "Experimental results on the ADNI dataset show that CAAT achieves accuracy of 74.61 for classifying between pMCI and sMCI using only whole 3D images of the brain and no other ancillary information. Traditional transfer learning performs worse than CAAT by achieving 73.03 classification accuracy. Finally, a baseline method [11] that only uses whole 3D brain scans without using transfer learning or attention only achieved an accuracy of 70.84 in our experiments.",
+   "page": "2 (also Table 3 p.7 and Table 4 p.8)",
+   "note": "Luo et al. 2023, Comput Biol Med (CAAT). ADNI1/2, 298 sMCI / 295 pMCI, 36-month window, 5-fold CV (Wen et al. splits). NOT a fusion study: input at inference is baseline T1 MRI only; the 'auxiliary' element is class-activation attention transferred from source tasks trained on AD/CN and ADAS-cog/CDR-SB labels. The comparison is with versus without attention transfer on the same single modality (ACC 70.84 to 74.61, AUC 0.758 to 0.780), not fusion versus a unimodal baseline. The 6-Conv transfer-learning ensemble reaches AUC 0.782, above CAAT ensemble 0.780 (Table 4). No significance tests; the authors say CV used for both tuning and selection 'may lead to an optimistically biased evaluation' (p.9)."
+  },
+  {
+   "paper": "P-104",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "our proposed methods (i.e., ProAuto-noAge and Pro-noAge) achieved the best performance, followed by DTL, SSL, GSR-Aux, GRS-Pre, and Original. ... ProAuto-noAge improved on averages by 13.11%, compared to the worst comparison method, i.e., Original ... GSR-Aux consistently outperformed its counterpart GSR-Pre in all experiments.",
+   "page": "6 (Table 1 and Section 3.4); 8 (age: 'Pro-Age statistically outperforms Pro-noAge')",
+   "note": "Shen et al. 2021, Information Fusion. ADNI, 24-month conversion; very small MCI samples (Data1 55 pMCI/59 sMCI; Data2 31/30) with auxiliary 93 AD/99 NC and 50/51. Sparse regression that uses AD/NC MRI, MCI PET and age as side-information for feature selection, then a linear SVM. Head-to-head against predictor-only baselines on the same data: Data1 MRI accuracy 53.4 (Original) / 55.6 (GSR-Pre) vs 65.7 (ProAuto-noAge); AUC 59.6 / 64.2 vs 69.6. Adding age was statistically significant on paired t-tests but small. Repeated 10-fold CV with nested model selection; no external test set."
+  },
+  {
+   "paper": "P-81",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "Table 3 (5-fold CV, mean): PET ONLY BA 0.5651, AUC 0.6102; PET + CS BA 0.7075, AUC 0.7983; CS + AGE BA 0.7107, AUC 0.8004; CS BA 0.7130, AUC 0.7496; PET + AGE + CS BA 0.7326, AUC 0.7849.",
+   "page": "4 (Table 3); abstract p.1 claims 'the best model was a combination of FDG-PET, age, and neurocognitive data, yielding an AUC of 0.785'",
+   "note": "Cao et al. 2023, Neurobiol Dis. ADNI, 612 subjects of whom 257 MCI (164 sMCI / 93 pMCI), 3-year window, 5-fold CV. It is a within-study head-to-head, and fusion clearly beats the PET-only model (AUC 0.61 to 0.78-0.80). It does NOT consistently beat the cognitive-score baseline: cognitive scores plus age (no imaging) have the highest AUC (0.8004), above the reported 'best' PET+Age+CS model (0.7849), and PET+CS has a lower BA than CS alone (0.7075 vs 0.7130). All differences sit within the fold SDs (about 0.06-0.10), with no significance tests. The results prose (p.4) lists five AUCs for six models, so its alignment is off. The ledger note 'fusion best (AUC 0.785)' is therefore incorrect for AUC; fusion is best only on balanced accuracy (0.733). The authors note cognitive scores partly define the AD label."
+  }
+ ],
+ "yes_count": 1,
+ "verdict": "holds_narrowed",
+ "narrowed_wording": "In three ADNI studies, adding auxiliary information to an imaging model (source-task attention maps, AD/NC and PET side-information with age, or cognitive scores) improved progressive-MCI prediction over the same imaging model alone, by modest margins without significance testing in two of the three. The evidence does not show that fusion beats the best unimodal baseline: in P-81, cognitive scores plus age matched or exceeded the fused model on AUC.",
+ "reasoning": "As the review states it ('auxiliary-data-aware fusion improves progressive-MCI prediction over unimodal baselines in head-to-head tests'), only P-104 answers yes, so the stated form fails the three-supporter bar. P-3 is not fusion. It stays MRI-only at inference and compares attention transfer against a no-transfer MRI baseline; traditional transfer learning reaches nearly the same AUC. P-81 is a genuine head-to-head fusion study, but its own Table 3 shows the non-imaging baseline (cognitive scores plus age) with the highest AUC. Its claim that fusion is best holds only for balanced accuracy, within overlapping SDs. All three do sustain a narrower claim: auxiliary information improves on an imaging-only model of the same modality. That claim spans at least two method families (3D CNN attention transfer, sparse regression plus SVM, CNN late-fusion) but only one dataset family (ADNI, so the independence flag stays false). It rests on small samples (P-104: 61-114 MCI) and internal cross-validation only. The ledger note for P-81 ('fusion best (AUC 0.785)') should be corrected. Recommend that the review either reword to the narrower form with these caveats or demote the record."
+}

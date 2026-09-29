@@ -1,0 +1,78 @@
+{
+ "id": "C-107",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-179",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Conversion from MCI to AD Combining Multi-Modality Data and Based on Molecular Subtype (Li et al., Brain Sci. 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-186",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early MCI-to-AD Conversion Prediction Using Future Value Forecasting of Multimodal Features (Minhas et al., Comput. Intell. Neurosci. 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-179": "MCI-CPS (subtype-specific VBpMKL) on baseline sMRI ROI volumes + blood SNP + blood mRNA; 3-year conversion; ADNI-1 MCI n=125, 5-fold CV AUC 0.8260; external ADNI-GO/2 AUC 0.7809.",
+  "P-186": "Linear SVM on longitudinal trajectories of neuropsychological measures + MRI morphometry, where two observed visits are extended by a forecast third value; MCIp = conversion before month 36, ADNI-1. 6-month-ahead AUC 91.2% (n=119, 19 markers); 1-year-ahead AUC 95.7% (n=85, 9 markers); 5-fold CV. MRI-only 1-year AUC 90.5%, 6-month 88%."
+ },
+ "quantity_a": "ROC-AUC for 3-year MCI-to-AD conversion from a single baseline visit; predictors = sMRI ROI volumes + blood genomics/transcriptomics; ADNI-1 MCI n=125; 5-fold CV.",
+ "quantity_b": "ROC-AUC for conversion before month 36 using three-point trajectories (two observed visits 6 or 12 months apart + one forecast value) of neuropsychological and MRI markers; ADNI-1 MCI with complete consecutive visits (n=85 for the 0.957 figure); 5-fold CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Neither paper evaluates the other's input, neither reports an interval excluding the other's value, and P-186's own authors attribute the 0.957 to including 'the forecasted marker value at the time of conversion as a classification feature', a feature P-179 cannot have.",
+ "gates": {
+  "task": "match: both T2 with a roughly 3-year window, but P-186 requires two or three longitudinal visits and scores trajectories, not a baseline visit.",
+  "dataset_family": "match: ADNI-1 MCI in both; participant overlap likely.",
+  "validation_tier": "match: both internal 5-fold CV for the cited figures.",
+  "modality_family": "mismatch, not waived: P-179 = sMRI + blood SNP/mRNA; P-186 = neuropsychological measures + sMRI morphometry. No PET in either."
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) and similar outcome window, but a different input representation (single baseline visit vs forecast longitudinal trajectories), different predictor sets and a different eligible population (complete 6- or 12-monthly visit sequences).",
+ "performance_validity": "flag does not apply: 0.957 is below 0.97 and the pack marks both false. P-186's 'ground truth' benchmark reaches 98% but that is not the proposed method's figure; the internal-only, n=85 design is noted as a caution.",
+ "independence": "Distinct author groups; both samples are drawn from ADNI-1 MCI, so shared participants are likely (non-independence noted, not disqualifying).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "Different input representation: P-186 classifies longitudinal marker trajectories that include a forecast value at the time of conversion, while P-179 uses a single baseline visit.",
+  "Different predictor sets: neuropsychological tests + MRI (P-186) against sMRI + blood SNP/mRNA (P-179); the modality-family gate fails with no waiver on record.",
+  "Different eligible populations and sample sizes (n=85 with three annual readings vs n=125 ADNI-1 MCI at baseline).",
+  "No result would be incompatible even on a shared quantity: neither study claims an ordering the other refutes."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-179",
+   "page": 7,
+   "quote": "The results show that the AUC of MCI-CPS (5-fold) was 0.8260 (81.82% sensitivity, 77.08% speci\ufb01city, 80.00% accuracy)."
+  },
+  {
+   "paper": "P-179",
+   "page": 1,
+   "quote": "a subtyping-based prediction strategy to predict the conversion from MCI to AD in three years according to MCI patient subtypes."
+  },
+  {
+   "paper": "P-186",
+   "page": 1,
+   "quote": "Te proposed technique resulted in a high classi\ufb01cation AUC of 91.2% and 95.7% for 6-month- and 1-year-ahead AD prediction, respectively, using multimodal markers."
+  },
+  {
+   "paper": "P-186",
+   "page": 3,
+   "quote": "for 1-year-ahead prediction, the dataset contains three consecutive annual readings, resulting in 35 MCIp and 50 MCIs subjects."
+  },
+  {
+   "paper": "P-186",
+   "page": 8,
+   "quote": "Te method proposed in this paper has recorded the highest classi\ufb01cation AUC of 95.7% predominantly because of involving the forecasted marker value at the time of conversion as a classi\ufb01cation feature."
+  }
+ ],
+ "record_defects": [
+  "claim_b gives P-186 'AUC 0.957' while the registry row gives 'AUC 0.912'; these are two different analyses (1-year-ahead, n=85 vs 6-month-ahead, n=119), and the record does not say which it means.",
+  "The registry labels both papers' Modality 'MRI/PET'; neither uses PET.",
+  "resolution_note says 'Confirmed genuine' on a gap test while the resolution field says 'Rejected: Task, dataset, or modality mismatch'.",
+  "The bridging-evidence list is a generic dump of T2 ADNI papers with no stated separating condition."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Both studies scoring the same input representation (baseline-only or the same longitudinal design) with the same predictor families, with non-overlapping uncertainty."
+}

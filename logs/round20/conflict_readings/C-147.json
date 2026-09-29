@@ -1,0 +1,82 @@
+{
+ "id": "C-147",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-207",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "The Coupled Representation of Hierarchical Features for Mild Cognitive Impairment and Alzheimer's Disease Classification (Liu, Li, Yao, Guo; Front. Neurosci. 2022, 16:902528)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-185",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Biomarker Extraction Based on Subspace Learning for the Prediction of Mild Cognitive Impairment Conversion (Li, Fang, Wang, Zhang, Hu; BioMed Research International 2021, 5531940)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-207": "ADNI baseline structural MRI (VBM grey-matter volume, ICA-derived networks, two-level coupled features, AdaBoost with linear-SVM base learners, 10-fold CV). AD vs NC (121/120): best accuracy 90.44% (sens 88.5, spec 93.67). MCI-c vs MCI-nc (126/108, conversion within 3 years): best accuracy 87.72% (sens 84.16, spec 91.64). The 90.44% is the AD vs NC figure, not a conversion result. No AUC reported.",
+  "P-185": "ADNI baseline 1.5T structural MRI (FreeSurfer regional cortical thickness and volume, subspace projection learned on 142 AD / 165 NC, applied to 126 pMCI / 95 sMCI with a 3-year conversion window), 10-fold CV repeated 20 times. Best pMCI vs sMCI accuracy 69.37% (linear SVM; sens 75.39, spec 61.23, AUC 0.6951)."
+ },
+ "quantity_a": "As recorded: accuracy for AD vs NC (90.44%). The paper's own conversion figure is accuracy for MCI-c vs MCI-nc (3-year window), ADNI baseline sMRI, ICA-network coupled GMV features, 10-fold CV: 87.72%.",
+ "quantity_b": "Accuracy for pMCI vs sMCI (3-year window), ADNI baseline sMRI, FreeSurfer cortical thickness/volume subspace biomarkers, 20 x 10-fold CV: 69.37%.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even taking P-207's genuine conversion figure (87.72%) against P-185's 69.37% on the same nominal task, these are two different feature pipelines each reporting its own cross-validated accuracy; neither study evaluates the other's method or claims an ordering that the other refutes, so both results can be true.",
+ "gates": {
+  "task": "mismatch as recorded (P-207's 90.44% is AD vs NC, not T2); match if P-207's MCI-c vs MCI-nc 87.72% is substituted (both 3-year pMCI vs sMCI)",
+  "dataset_family": "match: both ADNI baseline MRI (different, possibly overlapping subject subsets)",
+  "validation_tier": "match: both internal cross-validation only (V2)",
+  "modality_family": "match: both structural MRI (the registry's 'EEG/MEG' for P-207 is wrong; the paper uses T1 MPRAGE sMRI only)"
+ },
+ "endpoint_and_metric": "incompatible as recorded: the claim sets an AD vs NC accuracy against a pMCI vs sMCI accuracy. Same metric type (accuracy) and same 3-year conversion endpoint only once P-207's 87.72% is used, but input representations differ (ICA-network coupled GMV features vs FreeSurfer thickness/volume subspace features).",
+ "performance_validity": "flag does not apply: neither study reaches 0.97 (P-207 max 90.44%, P-185 69.37%); this is a between-method performance comparison, not one resting on a near-ceiling study.",
+ "independence": "Distinct author groups (Beijing Normal University vs Shandong/Lanzhou); both draw on ADNI and may share subjects; no shared authorship.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's P-207 figure (90.44%) is its AD vs NC accuracy, so the claim misreads the paper as a conversion (T2) result.",
+  "P-207's actual conversion accuracy (87.72%) and P-185's 69.37% are scores of two different feature pipelines, and neither paper claims an ordering the other refutes, so the two results are compatible.",
+  "The two studies also differ in input representation (ICA-network coupled GMV vs FreeSurfer cortical thickness/volume), which is why their accuracies are not a measurement disagreement about one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-207",
+   "page": 6,
+   "quote": "the best prediction accuracy is 90.44%, sensitivity is 88.5%, and specificity is 93.67% for AD and NC groups and the best prediction accuracy is 87.72%, sensitivity is 84.16%, and specificity is 91.64% for the MCI-c and MCI-nc groups."
+  },
+  {
+   "paper": "P-207",
+   "page": 3,
+   "quote": "The patients with MCI who converted to AD within 3-year follow-up were classified into the MCI-c group; otherwise, they were classified into the MCI-nc group."
+  },
+  {
+   "paper": "P-207",
+   "page": 6,
+   "quote": "The 10-fold cross-validation was applied to evaluate the performance, and the average results were reported."
+  },
+  {
+   "paper": "P-185",
+   "page": 6,
+   "quote": "The proposed biomarker achieved highest accuracy of 69.37% when using SVM classifier with linear kernel."
+  },
+  {
+   "paper": "P-185",
+   "page": 2,
+   "quote": "We use baseline MRI scans (1.5 T ...) of 528 subjects, which include 142 AD subjects, 165 NC subjects, and 221 MCI subjects. Moreover, the 221 MCI subjects contain 126 pMCI and 95 sMCI subjects."
+  },
+  {
+   "paper": "P-185",
+   "page": 5,
+   "quote": "we repeated 10-fold cross-validation 20 times to report the average results for each method."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-207: Acc 90.44 on T2' is wrong: 90.44% is P-207's AD vs NC accuracy; its MCI-c vs MCI-nc (T2) accuracy is 87.72%.",
+  "The pack's registry row gives P-207 Modality 'EEG/MEG' and Task_Type 'T4'; the paper is structural MRI only and reports AD vs NC plus MCI-c vs MCI-nc classification.",
+  "gap_magnitude 0.211 is computed from the misread AD vs NC figure; the like-for-like conversion gap is 0.184 (87.72 vs 69.37).",
+  "resolution_note's rejection ground 'Modality mismatch: P-207=EEG vs P-185=structural_MRI' is false; both are structural MRI (the verdict stands on other grounds)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only a paper in which one group evaluated the other's method (or both methods on a common split) and reported an ordering opposite to the other's; neither PDF contains such a comparison."
+}

@@ -1,0 +1,72 @@
+{
+ "id": "C-169",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-158",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Machine Learning-Based Prediction Models for Cognitive Decline Progression: A Comparative Study in Multilingual Settings Using Speech Analysis (Ceyhan, Bek, Onal-Suzek, 2024)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-6",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Linguistic-based Mild Cognitive Impairment detection using Informative Loss (Pourramezan Fard et al., 2024)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-158": "ADReSS AD vs non-AD, acoustic features: random forest 95% accuracy in 10-fold CV over speed-augmented 20-s segments; 73% on the ADReSS held-out test set; MUDC Turkish MCI-clinic set 94% (MLP).",
+  "P-6": "I-CONECT MCI vs NC (68 subjects), transcript-based transformer, subject-level 5-fold CV: accuracy 85.16%, AUC 84.75%; repeated configurations mean AUC 79.94%."
+ },
+ "quantity_a": "Accuracy for Alzheimer's dementia vs non-AD from acoustic speech features (ADReSS), segment-augmented 10-fold CV.",
+ "quantity_b": "Subject-level accuracy for MCI vs normal cognition from interview transcripts (I-CONECT).",
+ "same_quantity": false,
+ "incompatible_if_same": "Not shown: P-158's held-out test accuracy (73%) lies below P-6's 85.16%, so the pair does not establish that either value excludes the other even ignoring the estimand difference.",
+ "gates": {
+  "task": "mismatch: AD vs non-AD (P-158 95%) vs MCI vs NC (P-6).",
+  "dataset_family": "mismatch: ADReSS/Pitt vs I-CONECT.",
+  "validation_tier": "nominally internal CV for both; P-158's is segment-level over augmented copies, P-6's subject-level.",
+  "modality_family": "speech/language family for both, but acoustic features vs transcript embeddings."
+ },
+ "endpoint_and_metric": "incompatible: accuracy on different diagnostic contrasts.",
+ "performance_validity": "flag not tripped (95% < 0.97); P-158's figure is nonetheless a weak estimate (augmented-segment CV, 73% on held-out test).",
+ "independence": "Distinct studies and authors. This record duplicates C-168: paper_b was repointed from P-11 to P-6 (P-11 is a duplicate of P-6) on 2026-08-29.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "This is the same pair as C-168 after the P-11 -> P-6 deduplication, and the same reading applies.",
+  "P-158's 95% concerns Alzheimer's dementia vs non-AD speakers while P-6's 85.16% concerns MCI vs normal cognition, so the population behind the label differs.",
+  "Dataset family (ADReSS vs I-CONECT) and input representation (acoustic vs transcript) differ, with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-158",
+   "page": 2,
+   "quote": "it is a balanced dataset composed of cognitively normal (CN) patients and those suffering from Alzheimer's disease (AD)"
+  },
+  {
+   "paper": "P-158",
+   "page": 5,
+   "quote": "We achieved 73% accuracy for the labels (dementia or not)"
+  },
+  {
+   "paper": "P-6",
+   "page": 1,
+   "quote": "to distinguish between Mild Cognitive Impairment (MCI) and Normal Cognitive (NC) conditions in older adults."
+  },
+  {
+   "paper": "P-6",
+   "page": 7,
+   "quote": "the framework achieves an overall accuracy of 85.16% and an AUC of 84.75%"
+  }
+ ],
+ "record_defects": [
+  "Duplicate of C-168: identical paper_a/paper_b after the 2026-08-29 repoint (paper_b P-11 -> P-6) and the 2026-09-16 repoint (paper_a P-276 -> P-158); it should be merged or withdrawn rather than counted as a separate candidate.",
+  "claim_a and claim_b still cite P-276 and P-11.",
+  "Both claims labelled 'T1'; P-158's 95% is AD vs non-AD.",
+  "resolution_note 'Confirmed genuine: Same metric type (Acc)' contradicts resolution 'Rejected: Task, dataset, or modality mismatch'."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing short of a P-158 subject-level MCI-vs-NC result; separately, the record should be deduplicated against C-168."
+}

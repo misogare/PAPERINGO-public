@@ -1,0 +1,83 @@
+{
+ "id": "C-84",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-125",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Tortuosity and discrete compactness biomarkers for machine learning-based classification of mild cognitive impairment (Torres Guzman et al., 2026)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-109",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multiscale convolution-attention model for efficient Alzheimer's disease and mild cognitive impairment diagnosis approach using sMRI (Khatri, Kim, Kwon, Applied Soft Computing 2025)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-125": "MCI vs HC, ADNI, n=74, 8 amygdala morphometric features: mean test accuracy 80.00% (RF/ANN; abstract 82.14%), test AUC up to 90.31%.",
+  "P-109": "The 96.81% is THREE-CLASS AD/MCI/HC accuracy for BrainViT-L (AUC 98.05). Binary MCI/HC: 94.23% accuracy, AUC 97.15 (Table 4). 2D slices from 1075 subjects (about 54,300 slices), images shuffled randomly and split 90/10. No external cohort."
+ },
+ "quantity_a": "Subject-level test accuracy for MCI vs HC from 8 amygdala shape/volume features (n=74)",
+ "quantity_b": "As cited: three-class AD/MCI/HC accuracy. Binary equivalent: MCI vs HC accuracy from a hybrid CNN-transformer on 2D sMRI slices with a random image-level split",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable as a contradiction. The cited value is three-class. On the binary MCI/HC value (94.23%) the two are different methods reporting different scores, and neither claims an ordering the other refutes. P-109's value also comes from a random slice-level split, which is prone to subject leakage.",
+ "gates": {
+  "task": "mismatch for the cited value (three-class vs binary MCI vs HC). The binary MCI/HC figure would match T1.",
+  "dataset_family": "match: both ADNI",
+  "validation_tier": "match nominally (both internal). P-109's registry V3 is not supported: it has no external cohort. P-109 shuffles slices while P-125 splits by subject.",
+  "modality_family": "match: T1 structural MRI"
+ },
+ "endpoint_and_metric": "incompatible for the cited pair (3-class accuracy vs binary accuracy). For the binary pair the metric matches, but the input representation differs (8 morphometric scalars vs whole 2D slices) and so does the split unit.",
+ "performance_validity": "The flag's discrimination criterion is met for P-109: AUC 97.15 for MCI/HC and 98.05 for 3-class, on internal validation with no external cohort. The sample is not small (1075 subjects), but the random slice-level shuffle is the leakage the exclusion targets. A performance comparison resting on this figure could not be genuine.",
+ "independence": "Both use ADNI, so overlap is possible. No shared authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim_b misreads P-109: 96.81% is three-class AD/MCI/HC accuracy, not an MCI-vs-HC (T1) result.",
+  "The corrected binary pair (80.00% vs 94.23%) compares different input representations and split units (subject-level hold-out vs randomly shuffled slices).",
+  "P-109's MCI/HC result has AUC 0.97 or above on internal validation only, so the performance-validity exclusion bars it from a genuine performance conflict."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-109",
+   "page": 3,
+   "quote": "classification accuracy of 96.81 % on larger models"
+  },
+  {
+   "paper": "P-109",
+   "page": 11,
+   "quote": "exhibited higher accuracy, surpassing other models, with rates of 97.13 % with 98.52 % AUC for AD/HC and 94.23 % with 97.15 % for MCI/HC classifications"
+  },
+  {
+   "paper": "P-109",
+   "page": 8,
+   "quote": "The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training."
+  },
+  {
+   "paper": "P-109",
+   "page": 15,
+   "quote": "Our evaluation was based on a specific ADNI dataset; however, it is crucial to verify that the model performs consistently across datasets with diverse characteristics."
+  },
+  {
+   "paper": "P-125",
+   "page": 9,
+   "quote": "The mean test accuracy was 80.00 \u00b1 2.43 %, 79.29 \u00b1 5.78 %, 77.86 \u00b1 3.71 % and 80.00 \u00b1 3.97 % for the RF, SVM, KNN and ANN models respectively."
+  },
+  {
+   "paper": "P-125",
+   "page": 8,
+   "quote": "used for training were V, VN, DC, and TR for both hemispheres of the amygdala, for a total of 8 features."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-109: 96.81% Acc on T1' is wrong: 96.81% is three-class accuracy. MCI vs HC is 94.23% (AUC 97.15).",
+  "claim_a 82.14% is the abstract figure. The results give a best mean test accuracy of 80.00%.",
+  "resolution_note 'Same architecture family (A4_transformer)' is wrong: P-125 uses RF/SVM/KNN/ANN on 8 scalar features, and only P-109 is a CNN-transformer hybrid.",
+  "validation_comparable 'Yes' conceals P-109's random slice-level split. P-109's registry V3 is unsupported (no external cohort).",
+  "The bridging evidence (P-359 96.3% Acc) is generic and explains nothing."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A subject-level, externally validated MCI-vs-HC result from P-109 set against P-125 with the same features. The documents contain neither."
+}

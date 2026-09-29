@@ -1,0 +1,78 @@
+{
+ "id": "C-33",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-114",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack file pdf/P-114.txt is the San-Martin et al. EEG/LORETA paper (BSPC 66 (2021) 102499), P-112's paper. The paper the record means (claim '93% Acc', registry row Kinect/ANFIS gait, summaries.md header 1-s2.0-S1746809421003195) is Seifallahi et al., 'Detection of mild cognitive Impairment from gait using Adaptive Neuro-Fuzzy Inference system', BSPC 71 (2022) 103195, present in the pack as pdf/P-115.txt. Both read in full; verdict uses the gait paper.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-58",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Cross-lingual detection of mild cognitive impairment based on temporal parameters of spontaneous speech (Gosztolya et al., Computer Speech & Language 69 (2021) 101215)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-114": "Kinect V2 dual-task gait features, 150 participants (70 MCI, 80 HC, Tehran), hierarchical ANFIS accuracy 93% (sens 90%, F-score 91.5%) on all dual-task features; evaluation protocol for ANFIS not stated.",
+  "P-58": "SVM on 15 ASR-derived temporal speech parameters from a telephone 'previous day' monologue, speaker-wise nested leave-one-out CV, MCI vs HC in an English-speaking (n=33; 14 MCI/19 HC) and a Hungarian-speaking (n=33; 13 MCI/20 HC) sample. All-features monolingual accuracy 84.8% (AUC 0.932) English and 75.8% (AUC 0.727) Hungarian; best subset (filler-related, Hungarian) accuracy 90.9%. The abstract's '67-92%' is a range across metrics (accuracy, precision, recall, specificity, F1) and feature subsets, not an accuracy estimate."
+ },
+ "quantity_a": "Accuracy of ANFIS on Kinect dual-task gait features, binary MCI vs HC, 150 Iranian older adults, protocol unstated",
+ "quantity_b": "EER-threshold metrics (accuracy among them) of an SVM on ASR temporal speech parameters, MCI vs HC, 33 English and 33 Hungarian speakers, nested leave-one-out CV",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-58's best accuracy (90.9% in n=33) and all-features English accuracy (84.8%) are not excluded by P-114's 93%: P-58 reports no confidence intervals and with 33 subjects one extra correct MCI subject moves recall by about 7% (the authors' own caveat). Neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: both binary MCI vs healthy controls (T1)",
+  "dataset_family": "mismatch: own IDAA Tehran cohort vs own New York (Columbia) and Szeged cohorts; no waiver on record",
+  "validation_tier": "uncertain: P-58 internal nested leave-one-out CV; P-114 states no ANFIS evaluation protocol",
+  "modality_family": "mismatch: gait/motor (Kinect skeletal) vs speech/language (ASR temporal parameters); no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible as recorded: a single accuracy vs a multi-metric range; compatible only if P-58's accuracies are extracted, and then across different modalities and cohorts",
+ "performance_validity": "flag does not apply: neither row flagged; no contested value reaches 0.97.",
+ "independence": "Independent: different groups and cohorts in three countries; no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The modality-family gate fails: P-114 classifies from Kinect gait parameters and P-58 from ASR-derived speech tempo and pause parameters, with no waiver on record.",
+  "The dataset-family gate fails: P-114's Tehran association cohort vs P-58's New York and Szeged memory-clinic cohorts.",
+  "The record's 'P-58: 67-92% range' mixes accuracy, precision, recall, specificity and F1 across feature subsets, so it is not one estimate that could be set against 93% accuracy.",
+  "Even the closest pairing (93% vs P-58's 90.9% or 84.8% accuracy) is two different methods each reporting a score in its own small cohort, which the rule reads as not incompatible."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-114",
+   "page": 1,
+   "quote": "the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups."
+  },
+  {
+   "paper": "P-114",
+   "page": 2,
+   "quote": "The MCI subjects of the present study were selected through clients of the Iran dementia and Alzheimer's Association (IDAA) in Tehran city of Iran"
+  },
+  {
+   "paper": "P-58",
+   "page": 1,
+   "quote": "the language on which the ASR system was trained only slightly affects the MCI classification performance, because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."
+  },
+  {
+   "paper": "P-58",
+   "page": 3,
+   "quote": "Both the English-speaking (n = 33; New York, NY, USA) and the Hungarian-speaking (n = 33; Szeged, Hungary) participants were diagnosed as MCI or HC."
+  },
+  {
+   "paper": "P-58",
+   "page": 6,
+   "quote": "recall can take only one of 15 and 14 values (since we had 14 and 13 MCI subjects for English and Hungarian, respectively), therefore classifying one further MCI subject correctly leads to an increase of about 7%."
+  }
+ ],
+ "record_defects": [
+  "The pack's P-114 PDF (paper_pdf_map.json, 'formula-unverified') is P-112's EEG paper, not the gait/ANFIS paper the record means.",
+  "claim_b '67-92% range on T1' presents a mixed-metric range as if it were an accuracy result.",
+  "dataset_equal='Yes' is wrong (separate own cohorts); validation_comparable='Yes' is unsupported (P-114 states no ANFIS protocol).",
+  "The resolution note's bridging evidence (P-360, P-322, P-422, P-501, P-557, P-795) reports scores in other modalities and cohorts; none shows a condition separating P-114 from P-58, so partially_resolved_candidate is not supported. The P-795 entry is truncated prose ('It is the metric the abstract, the contributi')."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A waiver of the modality and dataset gates on record, plus confidence intervals showing P-58's accuracy excludes 93%; neither exists."
+}

@@ -1,0 +1,77 @@
+{
+ "id": "C-179",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-334",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Statistical Method for Identification of Alzheimer Disease With Multimodal Predictive Markers Mild Cognitive Impairment (Zarei, Shalbaf & Shalbaf, Basic and Clinical Neuroscience 2025, 16(SI):233-250)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-211",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable Machine Learning with Pairwise Interactions for Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease Utilizing Multi-Modalities Data (Cai et al., Brain Sci. 2023, 13, 1535)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-334": "ADNI-MERGE, 835 MCI participants (487 sMCI, 348 pMCI), visit records labelled (pMCI records only within 3 years before conversion). Univariate AUC per single feature, no model, no validation: florbetaben PET AUC 0.84 (highest), ADAS13/mPACCtrailsB 0.83, hippocampus 0.75.",
+  "P-211": "ADNI, 1042 amnestic MCI patients at baseline. Explainable Boosting Machine with pairwise interactions on baseline MRI volumes/thickness + ADAS13/MMSE/FAQ/CDR-SB + age, sex, education, baseline diagnosis, APOE4; 90/10 split, SMOTE, 5-fold CV, separate models for conversion within 1-5 years: 5-year accuracy 85%, AUC 0.92; AUC about 0.9 at 1 year, lowest at 3 years (test-set 0.81 with interactions)."
+ },
+ "quantity_a": "Univariate record-level ROC-AUC of a single amyloid-PET measure (florbetaben) separating sMCI records from pMCI records within 3 years before conversion; no model, no validation",
+ "quantity_b": "Cross-validated participant-level ROC-AUC of a multivariable EBM (baseline structural MRI + cognitive scores + demographics + APOE4, no PET) for conversion from aMCI to AD within 5 years",
+ "same_quantity": false,
+ "incompatible_if_same": "No: a single biomarker's univariate AUC (0.84) being lower than a multivariable model's AUC (0.92) is expected and not a contradiction; neither paper claims an ordering the other refutes. P-211's 3-year model (test AUC 0.81) is close to P-334's best univariate values.",
+ "gates": {
+  "task": "match in type (MCI-to-AD progression, T2) but horizons differ: records within 3 years of conversion vs conversion within 5 years (the contested 0.92)",
+  "dataset_family": "match: both ADNI; participant overlap probable",
+  "validation_tier": "mismatch: P-334 fits and validates no model; P-211 uses hold-out + 5-fold CV",
+  "modality_family": "mismatch: P-334's 0.84 is amyloid PET; P-211 uses structural MRI + cognition + APOE4, no PET; the record has modality_family_equal 'No'"
+ },
+ "endpoint_and_metric": "incompatible: both ROC-AUC, but single-marker univariate record-level discrimination vs multivariable participant-level prediction at a different horizon",
+ "performance_validity": "flag does not apply (both < 0.97)",
+ "independence": "Distinct author groups; both use ADNI, so participant overlap is probable (recorded as non-independence)",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-334's 0.84 is the univariate AUC of one florbetaben PET measure with no fitted model, while P-211's 0.92 is a cross-validated multivariable EBM on MRI, cognitive and clinical features, so the predictor sets and modalities differ.",
+  "P-211's 0.92 refers to conversion within 5 years, whereas P-334's labels cover records up to 3 years before conversion, so the horizons differ.",
+  "The modality and validation-tier gates fail with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-334",
+   "page": 1,
+   "quote": "Our findings showed the strong predictive potential of PET, particularly florbetaben (FBB), which achieved an AUC of 0.84."
+  },
+  {
+   "paper": "P-334",
+   "page": 8,
+   "quote": "Only records preceding the AD diagnosis and those within the 3-year window before the conversion event receive labels."
+  },
+  {
+   "paper": "P-211",
+   "page": 1,
+   "quote": "The five-years prediction accuracy reached 85% (AUC = 0.92) using both cognitive scores and MRI markers."
+  },
+  {
+   "paper": "P-211",
+   "page": 5,
+   "quote": "Comb. (a) both MRI-driven biomarkers and cognitive test scores, plus age, gender, education, diagnose at baseline, and APOE4."
+  },
+  {
+   "paper": "P-211",
+   "page": 12,
+   "quote": "The main performance indicators, accuracy, sensitivity, specificity, and AUC, were 0.75, 0.78, 0.73, and 0.81 (with interaction effects)"
+  }
+ ],
+ "record_defects": [
+  "P-211 registry Sample_N_Approx '242804' is wrong; the paper includes 1042 aMCI patients.",
+  "P-334 registry Sample_N_Approx '487' is the sMCI group only; the analysed total is 835.",
+  "validation_comparable 'Yes' is wrong: P-334 fits no model.",
+  "resolution_note says 'Confirmed genuine' while resolution says 'Rejected: Task, dataset, or modality mismatch'; the fields contradict each other."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "P-334 reporting a validated multivariable MRI + cognition model at a matching horizon whose AUC excluded P-211's, or P-211 reporting a PET-only model."
+}

@@ -1,0 +1,73 @@
+{
+ "id": "C-162",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-263",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Classification accuracy of TMS for the diagnosis of mild cognitive impairment (Benussi et al., Brain Stimulation 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-133",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early diagnosis of mild cognitive impairment and Alzheimer's disease using multimodal feature-based deep learning models in a Chinese elderly population (Wang et al., Asian J Psychiatry 2025)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-263": "Random Forest on TMS intracortical-excitability measures (SICI, ICF, LICI, SAI), 4 Italian centres, 153 analysed (64 MCI-AD, 28 MCI-FTD, 14 MCI-DLB, 47 HC), 5-fold CV. New classifier: MCI vs HC accuracy 0.84; MCI-FTD vs MCI-non-FTD 0.93; MCI-AD vs MCI-DLB 0.90. Previously published classifier: 0.73 / 0.88 / 0.86. The 93% is the MCI-FTD vs MCI-non-FTD etiological classifier.",
+  "P-133": "Visual-oddball ERP differential-entropy features fused with TCM constitution questionnaires, 90 Chinese participants (30 HC, 30 MCI, 30 AD), cross-subject 10-fold CV repeated 8 times. Best (GCN, Neutral): HC vs MCI+AD 89.22 +/- 1.90% (abstract: 90.17 +/- 5.58%); MCI vs AD 85.14%; ternary HC/MCI/AD 72.67 +/- 1.89%. The 72.67% is the three-class accuracy."
+ },
+ "quantity_a": "Accuracy of a TMS Random Forest separating MCI-FTD from MCI-AD/MCI-DLB (etiological subtype classification within MCI), Italian multicentre cohort",
+ "quantity_b": "Three-class accuracy (HC vs MCI vs AD dementia) of a GCN on ERP + TCM questionnaire features, Chinese cohort",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The quoted numbers are for different tasks (a two-class etiological split within MCI vs a three-class HC/MCI/AD problem, where chance is 33%). The nearest pair, P-263 MCI vs HC 0.84 against P-133 HC vs MCI+AD 0.89, is still a different comparison (P-133's positive class includes AD dementia) and the two values are close anyway.",
+ "gates": {
+  "task": "mismatch: P-263's 93% is MCI-FTD vs MCI-non-FTD (etiological differential diagnosis); P-133's 72.67% is three-class HC/MCI/AD. Neither is a binary MCI vs controls figure.",
+  "dataset_family": "mismatch: Italian four-centre TMS cohort vs Zhejiang (China) clinic/community cohort.",
+  "validation_tier": "match: both internal cross-validation only (P-263 also applies a classifier trained on a separate dementia cohort, reported separately).",
+  "modality_family": "mismatch: TMS motor-cortex excitability measures vs ERP/EEG differential entropy plus TCM questionnaire features."
+ },
+ "endpoint_and_metric": "incompatible: both 'accuracy' but of different classification problems (binary vs three-class; different class definitions).",
+ "performance_validity": "flag does not apply: no value at or above 0.97; not a performance comparison on a shared task.",
+ "independence": "Distinct groups and cohorts (Brescia/Italian consortium vs Zhejiang Chinese Medical University/Hangzhou Dianzi); no shared data or authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-263's 93% is the accuracy of the MCI-FTD vs MCI-non-FTD classifier, not an MCI vs controls figure (its MCI vs HC accuracy is 0.84).",
+  "P-133's 72.67% is a three-class HC/MCI/AD accuracy, not a binary MCI vs controls figure.",
+  "Task, dataset family and modality all differ with no waiver on record, so the two accuracies are on different quantities."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-263",
+   "page": 7,
+   "quote": "b) Present sample classifier (adjusted) Accuracy 0.84 0.93 0.90"
+  },
+  {
+   "paper": "P-263",
+   "page": 5,
+   "quote": "a hierarchical series of subsequent 3 binary (two-groups) and independent classifiers were employed: i) MCI vs HC; ii) MCI-FTD vs MCI-non-FTD (MCI-AD or MCI-DLB), iii) MCI-AD vs MCI-DLB."
+  },
+  {
+   "paper": "P-133",
+   "page": 1,
+   "quote": "Similarly, in ternary classification of HC, MCI, and AD, GCN reached the highest accuracy of 72.67 \u00b1 1.89 % under Neutral stimulus."
+  },
+  {
+   "paper": "P-133",
+   "page": 4,
+   "quote": "3) ternary classification involving HC, MCI, and AD to differentiate healthy individuals from patients with different levels of cognitive impairment."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-263: Acc 93% on T1' is wrong: 93% is the MCI-FTD vs MCI-non-FTD classifier; the MCI vs HC accuracy is 0.84 (new classifier) or 0.73 (published classifier).",
+  "claim_b 'P-133: Acc 72.67 on T1' is wrong: 72.67% is the three-class HC/MCI/AD accuracy; P-133 reports no binary MCI vs HC task.",
+  "dataset_equal and modality_family_equal 'Yes' are wrong (Italian TMS cohort vs Chinese ERP/TCM cohort; TMS vs ERP).",
+  "Pack metadata: the pdf_title_in_map for P-263 ('Personalized modeling of Alzheimer's disease progression estimates neurodegeneration severity from EEG recordings') does not match the PDF, the summary block or the registry row, all of which describe the Benussi 2021 TMS paper.",
+  "P-263 registry Task_Type T3 and Best_Metric 'Acc 72' are loose: 0.72 is the lower bound of the published-classifier range; P-133 registry Best_Metric 'Acc 72.67' is the ternary figure."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in the two documents: neither reports the other's task. A binary MCI vs HC accuracy from P-133 with uncertainty excluding P-263's 0.84 would still face dataset and modality gate failures."
+}

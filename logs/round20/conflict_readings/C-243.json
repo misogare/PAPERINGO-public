@@ -1,0 +1,84 @@
+{
+ "id": "C-243",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-834",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Effects of exercise interventions on executive function in old adults with mild cognitive impairment: A systematic review and meta-analysis of randomized controlled trials (Lin et al., Ageing Research Reviews 82 (2022) 101776)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-833",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Effects of virtual reality combined cognitive and physical interventions on cognitive function in older adults with mild cognitive impairment: A systematic review and meta-analysis (Yan et al., Ageing Research Reviews 81 (2022) 101708)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-834": "24 RCTs, 2278 MCI participants; structured exercise (AE, RT, MBE, MT) vs non-exercise controls (no contact, stretching/toning, education, social). Pooled by test because tools differed: working memory DSF MD 0.37 [0.18-0.56], DSB MD 0.21 [0.03-0.39], VLT MD 1.06, VFT MD 1.60, DR MD 0.61 [0.33-0.90] (n = 1205); switching TMT-A SMD -0.24 [-0.36 to -0.12], TMT-B SMD -0.28 [-0.42 to -0.15]; DSST/DSCT and spatial working memory not significant; inhibition SCWT reaction time SMD -0.31 [-0.55 to -0.08]. Eligibility excluded exercise combined with cognitive training or virtual games.",
+  "P-833": "7 RCTs (8 articles), 188 MCI participants; VR-based combined cognitive-plus-physical interventions vs mixed controls (no treatment, cognitive-only, physical-only, or non-VR combined cognitive-physical training). Global cognition MD 2.66 [1.79-3.54] (4 studies); memory SMD -0.03 [-0.60 to 0.55] (2 studies, 47 participants); executive function/attention SMD -0.19 [-0.74 to 0.36] (4 studies), not significant. Authors: few RCTs, results to be interpreted with caution."
+ },
+ "quantity_a": "Effect of structured exercise versus non-exercise control on individual executive-function tests (digit span, delayed recall, TMT-A/B, Stroop) in older adults with MCI, pooled per test (MD/SMD).",
+ "quantity_b": "Effect of VR-delivered combined cognitive and physical training versus heterogeneous controls (several of which themselves received cognitive and/or physical training) on a pooled executive-function/attention composite across tests (SMD).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-833's executive-function/attention interval (SMD -0.19, 95% CI -0.74 to 0.36) contains P-834's switching and inhibition estimates (SMD about -0.24 to -0.31) and its point estimate is in the range of P-834's. The difference is significance only, driven by 4 small trials versus up to 1104 participants per P-834 pool; under Section 5.2 that is not a data conflict.",
+ "gates": {
+  "task": "match: both T6 intervention evidence syntheses.",
+  "dataset_family": "mismatch: the primary literatures are disjoint by design; P-834 excluded 'exercise training combined with other non-exercise activities such as cognitive training, drugs supplementation, or virtual games', which is exactly P-833's intervention class.",
+  "validation_tier": "n/a: two evidence syntheses (counted as matched).",
+  "modality_family": "mismatch: intervention differs (exercise alone vs VR combined cognitive-physical training), and the comparator differs (non-exercise controls vs controls that in 5 of 7 trials received cognitive and/or physical training)."
+ },
+ "endpoint_and_metric": "incompatible: P-834 pools per instrument (MD on DSF, DR, VFT; SMD on TMT, Stroop), P-833 pools a mixed executive-function/attention composite (TMT, Stroop, digit span, EXIT-25) as SMD; comparators differ.",
+ "performance_validity": "not a performance comparison.",
+ "independence": "Distinct author teams; trial overlap is excluded by P-834's eligibility criteria (no virtual games or cognitive-training combinations). Separately, P-834 appears to count some trials more than once (see record_defects).",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "P-833's executive-function/attention estimate has an interval (-0.74 to 0.36) that contains P-834's pooled switching and inhibition effects, so the 'opposite directions' reading is a difference in statistical significance, which Section 5.2 says is not a data conflict.",
+  "P-833's authors present their null as underpowered, not as evidence of no effect, so there is no claim of absence for P-834 to contradict.",
+  "The quantities also differ: exercise alone vs non-exercise control in P-834, against VR combined cognitive-physical training vs controls that often trained cognitively or physically in P-833, so even a real difference would be incommensurable rather than a conflict.",
+  "The record's own claim of possible trial overlap between the syntheses is ruled out by P-834's eligibility criteria, which exclude virtual-game and cognitive-training combinations."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-834",
+   "page": 3,
+   "quote": "studies involving exercise training combined with other non-exercise activities such as cognitive training, drugs supplementation, or virtual games and interventions that without supervised training sessions were excluded."
+  },
+  {
+   "paper": "P-834",
+   "page": 7,
+   "quote": "exercise had a positive effect on switching by significantly improving TMT A (n = 1104, SMD=\u22120.24, 95% CI \u22120.36 to \u22120.12, p = 0.0001, I2 = 0%) and TMT B (n = 913, SMD=\u22120.28, 95% CI \u22120.42 to \u22120.15, p < 0.0001, I2 = 20%)"
+  },
+  {
+   "paper": "P-834",
+   "page": 7,
+   "quote": "DR score (n = 1205, MD=0.61, 95% CI 0.33\u20130.90, p < 0.0001)"
+  },
+  {
+   "paper": "P-833",
+   "page": 5,
+   "quote": "the VR combined intervention had no significant effect on executive function/attention, with moderate heterogeneity (SMD = \u22120.19, 95% CI = \u22120.74 to 0.36, 4 studies; I 2 = 53%, Fig. 4)."
+  },
+  {
+   "paper": "P-833",
+   "page": 2,
+   "quote": "control group with only cognitive intervention or with only physical exercise or combined with cognitive and physical intervention, without cognitive or physical intervention"
+  },
+  {
+   "paper": "P-833",
+   "page": 8,
+   "quote": "there are few studies on the cognitive function of the older adults with MCI based on VR combined intervention, and our study did not show the positive impact of VR combined intervention on memory and executive function/attention. Therefore, we need to interpret the results of this study with caution"
+  }
+ ],
+ "record_defects": [
+  "The record says the three pools 'plausibly share primary trials'; for P-834 vs P-833 this is excluded by P-834's eligibility criteria (no virtual-game or cognitive-training combinations).",
+  "The record treats P-834's 'headline defensible value' as the delayed-recall MD 0.61; delayed recall is coded by P-834 as a working-memory measure, not the executive-function composite P-833 pools, so it is not the number to set against P-833's EF/attention null.",
+  "The record does not report P-833's interval (SMD -0.19, -0.74 to 0.36), which overlaps P-834's estimates and settles the pair as a significance-only difference.",
+  "Double counting in P-834 is broader than the record states: besides Lam 2010/Lam 2012 (identical 171/218 arms) and Davis 2013/Nagamatsu 2013/Brydges 2020, Wang 2016 and Zhang 2020 list identical arms (E 43 (19/24), C 49 (13/36)), which suggests a third duplicated trial.",
+  "P-833's registry Best_Metric 'MD 2.66' is its global-cognition result, not an executive-function estimate; the gate line compares it with P-834's delayed-recall MD, which are different outcomes."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A synthesis of the same intervention class and comparator as P-834 (exercise vs non-exercise control in MCI) reporting an executive-function estimate whose interval excludes P-834's effect; P-833 cannot serve because its interval is wide and its intervention and comparators differ."
+}

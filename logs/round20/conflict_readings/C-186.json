@@ -1,0 +1,79 @@
+{
+ "id": "C-186",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-343",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Mild Cognitive Impairment in Type 2 Diabetes: A Machine Learning Approach (Li et al., Journal of Diabetes Research 2025, Article ID 7304414)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-307",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable machine learning models for identifying mild cognitive impairment in older patients with chronic pain (Zhang et al., BMC Nursing 2025;24:72)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-343": "SVC on seven routine variables (age, education, eGFR, SBP, BMI, T2DM duration, GCA glucolipid index) for clinically diagnosed MCI in 2074 T2DM inpatients: internal cross-validated AUC 0.74 +/- 0.04 (extract '0 74 \u00b1 0 04', decimal points dropped; decoded from the paper's tables), external DECODE AUC 0.80.",
+  "P-307": "XGBoost on seven variables (age, education, pain duration, pain sites, VAS pain level, GDS-15, PSQI) for MCI in 612 chronic-pain patients aged >= 60: test-set AUC 0.925 (95% CI 0.863-0.995), internal random 30% split after SMOTETomek balancing of the training set."
+ },
+ "quantity_a": "ROC-AUC of a routine-clinical-variable SVC for clinically diagnosed MCI vs normal cognition in hospitalised Chinese T2DM patients aged >= 40 (quoted 0.80 = external DECODE figure).",
+ "quantity_b": "ROC-AUC of an XGBoost model on pain, depression, sleep and demographic variables for MCI vs non-MCI in Chinese chronic-pain patients aged >= 60 (internal test split).",
+ "same_quantity": false,
+ "incompatible_if_same": "No ordering claimed by either paper is refuted by the other. The figures also come from unlike validation splits (an external cohort for P-343, an internal random split for P-307), which usually lowers the external figure.",
+ "gates": {
+  "task": "match in the broad sense (cross-sectional MCI detection, T1).",
+  "dataset_family": "mismatch: Nanjing Drum Tower T2DM inpatients vs a Nanchang pain-department cohort; the record's dataset_equal 'Yes' is wrong; no waiver on record.",
+  "validation_tier": "mismatch: the compared P-343 figure is an external-cohort AUC; P-307's is an internal random-split AUC (V2).",
+  "modality_family": "match in family (clinical/tabular) but predictor sets disjoint apart from age and education. The record's 'P-307=retinal' is wrong."
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different populations behind the MCI label (T2DM inpatients vs chronic-pain patients), different predictor sets, and different validation settings (external vs internal).",
+ "performance_validity": "flag does not apply: 0.925 and 0.80 are below 0.97.",
+ "independence": "Independent: different authors, institutions and cohorts.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The populations behind the shared MCI label differ: hospitalised T2DM patients in P-343 against older chronic-pain patients in P-307.",
+  "The predictor sets differ (renal, blood-pressure and glucolipid variables vs pain, depression and sleep scales), so the two AUCs describe different models.",
+  "The dataset-family and validation-tier gates both fail (unrelated cohorts; an external AUC against an internal-split AUC), and no waiver is recorded.",
+  "Neither paper makes a claim about the other's model or population."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-343",
+   "page": 1,
+   "quote": "External validation with the DECODE cohort yielded an AUC of 0.80, an F1 score of 0.80, and a recall of 0.89."
+  },
+  {
+   "paper": "P-343",
+   "page": 4,
+   "quote": "Ultimately, variables including age, education, eGFR, SBP, BMI, T2DM duration, and the previously derived representation index were incorporated into model development."
+  },
+  {
+   "paper": "P-307",
+   "page": 1,
+   "quote": "A total of 612 older patients with chronic pain were recruited between October 2023 and July 2024."
+  },
+  {
+   "paper": "P-307",
+   "page": 7,
+   "quote": "the final selected variables were: age, education level, pain duration, number of pain sites, pain level, depression, sleep quality"
+  },
+  {
+   "paper": "P-307",
+   "page": 7,
+   "quote": "the XGBoost model performed best, achieving an accuracy of 0.883 and an AUC of 0.925 (95% CI 0.863\u20130.995)."
+  }
+ ],
+ "record_defects": [
+  "resolution_note states 'Modality mismatch: P-343=clinical_survey vs P-307=retinal'; P-307 uses no retinal or imaging data.",
+  "dataset_equal is 'Yes'; the two studies use unrelated hospital cohorts in different cities and populations.",
+  "resolution 'Rejected - false positive' coexists with resolution_status partially_resolved_candidate, and no named third study showing a separating condition is recorded.",
+  "claim_a's 'AUC 0.80' is P-343's external figure; its internal AUC is 0.74 +/- 0.04.",
+  "Registry P-343: Sample_N_Approx '074' (paper: 2074), Dataset 'NHANES', Validation_Type 'not reported' (external validation performed)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A common evaluation of both models in one population with one MCI definition; neither paper provides it."
+}

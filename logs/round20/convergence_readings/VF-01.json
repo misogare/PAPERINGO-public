@@ -1,0 +1,41 @@
+{
+ "id": "VF-01",
+ "supporters": [
+  {
+   "paper": "P-50",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "After adjusting for age, sex, education level and TIV, the MCI group showed decreased volumes of left thalamus (p = 0.011, FDR-corrected), left hippocampus (p = 0.006, FDR-corrected), left amygdala (p = 0.031, uncorrected), right pallidum (p = 0.009, FDR-corrected) and right hippocampus (p = 0.008, FDR-corrected) compared to the NC group (Table 2).  Against primacy: 'Sulci depth and gyrification index derived from SBM outperformed the subcortical structural features in MCI identification.' (Table 5: subcortical volume and shape Acc 0.78 vs SBM 0.84)",
+   "page": "3 (volumes, SVM result); 6 (Table 5, discussion)",
+   "note": "Wang et al. 2024, Neuroscience; single centre (Nanjing Drum Tower), 24 MCI / 22 NC, VBM + FSL-FIRST + CAT12 SBM, LOOCV SVM. Reports bilateral hippocampal atrophy (FDR-corrected) and left amygdala atrophy (uncorrected) in MCI, plus thalamus and pallidum atrophy, so it supports the existence of hippocampal/MTL atrophy in MCI. It does not support the superlative: in its own classifier cortical sulcal depth/gyrification beat the subcortical (hippocampal) features, and the authors conclude cortical structures 'might serve as a more sensitive indicator'. No cortical thickness difference was found. Very small sample; groups differed in age (adjusted for in volumetry)."
+  },
+  {
+   "paper": "P-52",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "The seven radiomic features incorporated in the final predictive model ... Radscore = 0.698*wavelet_LLH_firstorder_Mean.L + 0.11*wavelet_LLH_glszm_GrayLevelVariance.L + 0.046*log_sigma_5_0_mm_3D_glcm_InverseVariance.R + ... + 0.26*wavelet_LLL_glszm_ZoneVariance.L.  Also: 'Hippocampal radiomic features demonstrate enhanced capacity over volumetric metrics to capture nuanced imaging signatures' (citing Sorensen et al. for 'structural hippocampal anomalies in MCI patients despite preserved volumetric integrity'). Searched for any hippocampal volume, atrophy or group-difference result: none reported.",
+   "page": "3 (Rad-score), 5 (discussion)",
+   "note": "Hu et al. 2025, Neuroscience; single centre (Wenzhou), 105 MCI / 45 NC, CNN hippocampal auto-segmentation, 1183 radiomic features, LASSO, XGBoost (test AUC 0.864, internal 7:3 split, no external validation). The model uses hippocampal texture/wavelet features only; no volume or atrophy measure is selected or reported, no other region is compared, so it cannot speak to atrophy or to the hippocampus being the most replicated marker. It shows only that hippocampal texture carries MCI-vs-NC signal. Oddity: Table 1 reports no significant MoCA or MMSE difference between the MCI and NC groups (p = 0.17, 0.09) despite MoCA-based group definition."
+  },
+  {
+   "paper": "P-99",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "As we can see, Lateral Ventricle, Inferior Lateral Ventricle and Cerebrospinal fluid volumes are increased in the MCI group, while the number of voxels of Amygdala, Right Hippocampus and Right Accumbens are reduced. A gray volume in the left hemisphere of the precentral, caudal middle frontal, isthmus of the cingulate gyrus, and a gray volume in the right hemisphere of the postcentral gyrus are also reduced.  Table 3: Left-Hippocampus_NVoxels <0,05 reduce.  Also: 'Both models select the Left Lateral Ventricle and Frontal Pole as important brain structures for MCI prediction'.",
+   "page": "5 (post-hoc tests, feature importance); 5-7 (Tables 2-3)",
+   "note": "Zubrikhina et al. 2023, Cognitive Systems Research; Moscow memory clinic, 145 MCI / 62 HC, FreeSurfer 6 morphometry, SVC best (Acc 0.73, ROC-AUC 0.735, 10-fold CV). Reports reduced hippocampal (right p<0.001, left p<0.05) and amygdala volumes in MCI, so supports MTL atrophy in MCI. Hippocampus is one of many altered structures and not the top-ranked feature (lateral ventricle, caudal anterior cingulate thickness, cerebellum and CSF rank higher in selection frequency); no primacy claim. MCI group was about five years older (73.9 vs 68.9) and the post-hoc volume tests report no age adjustment, so the hippocampal difference may be partly age-confounded."
+  },
+  {
+   "paper": "P-595",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "Both MCI A+ and AD A+ groups displayed reduced SRLM integrity score, increased visual hippocampal atrophy score, and decreased hippocampal volume compared to CU A-.  Also: 'Our findings confirm pronounced hippocampal atrophy in MCI A+ and AD A+ groups, correlating with cognitive decline and AD pathology, but no significant differences were observed between CU A+ and CU A- groups, indicating limited sensitivity for detecting preclinical AD changes.' and 'the limited sample size precluded formal comparisons between them.'",
+   "page": "1 (abstract); 4-5 (Table 2); 7 (discussion); 8 (limitations)",
+   "note": "Wang et al. 2026, Scientific Reports; ADNI, 178 CU A- / 91 CU A+ / 90 MCI A+ / 14 AD A+, FreeSurfer hippocampal volume, visual MTA rating, ASHS subfields on T2. Supports hippocampal and MTL (CA1, DG, subiculum, ERC, BA35, PHC) atrophy in amyloid-positive MCI vs amyloid-negative controls. Scope limited to amyloid-positive MCI. The paper's own thrust runs against primacy: SRLM integrity and right DG volume were more sensitive (already reduced in CU A+), conventional hippocampal metrics were not, and metrics were not formally compared. Cross-sectional group contrast, no classifier."
+  }
+ ],
+ "yes_count": 0,
+ "verdict": "holds_narrowed",
+ "narrowed_wording": "Reduced hippocampal and medial temporal volume in MCI relative to cognitively normal controls was reported in three independent cohorts using different pipelines (single-centre Nanjing, VBM/FSL-FIRST; Moscow memory clinic, FreeSurfer; ADNI amyloid-positive MCI, FreeSurfer/visual MTA/ASHS). These studies do not establish it as the most consistently replicated structural marker: two of them found other structural measures (cortical sulcal depth and gyrification; SRLM integrity, dentate gyrus volume) as or more discriminative.",
+ "reasoning": "The Table A1 wording is a superlative, cross-study claim ('the most consistently replicated structural MCI biomarker'); no single supporter can report a result of that form, and none claims it. Judged on what each source itself reports: P-50, P-99 and P-595 each report hippocampal (and amygdala or wider MTL) volume reduction in MCI versus controls, so each answers 'partly' (supports the existence and replication of MTL atrophy, not its primacy). P-52 answers 'no': it models hippocampal texture/wavelet radiomics and reports no volume or atrophy result at all; its admission reflects the hippocampus being the region of interest, not atrophy being found. Within the three partial supporters there is counter-evidence to primacy (P-50: cortical SBM features outperformed subcortical volumes, Acc 0.84 vs 0.78; P-595: SRLM and DG more sensitive than hippocampal volume; P-99: ventricular and cingulate features ranked above the hippocampus), and P-99's hippocampal contrast is not age-adjusted despite a five-year age gap. The three partial supporters come from three distinct datasets (Nanjing, Moscow, ADNI) and at least two method families (VBM/FSL, FreeSurfer), so the narrower statement that MTL atrophy in MCI replicates across independent cohorts is sustained; the superlative is not. The record's 'FreeSurfer, VBM, radiomics' method-family count relies on P-52 (radiomics), which does not measure atrophy. yes_count is 0; partly_count is 3; no_count is 1."
+}

@@ -1,0 +1,56 @@
+{
+ "paper": "P-169",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "Hanyang University Hospitals (Seoul and Guri) VR-kiosk + MRI cohort, Korea, recruited Jan 2022 - Jul 2023; N=54 (32 MCI, 22 HC); MCI by two neurologists on Albert criteria with SNSB-C",
+ "method_family": "Consumer VR head-mounted display with integrated eye tracking (HTC VIVE Pro Eye) during an IADL virtual-kiosk ordering task; total gaze scanpath length as one of four VR features; age-adjusted ANCOVA plus RBF-SVM (VR-only, MRI-only, VR+MRI)",
+ "same_sample_or_cohort_as": [],
+ "shared_authors_with": [],
+ "what_it_shows": "In its own age-adjusted ANCOVA, one eye-movement feature (total gaze scanpath length over a VR kiosk task) was longer in clinically diagnosed MCI than in controls (60.36 vs 23.66 m; F1,51=7.108, P=.01, partial eta2=0.122) and correlated weakly with left hippocampal volume (r=-0.28, P=.04). There is no eye-only classifier: scanpath length is pooled with hand speed and errors in a VR-only SVM (accuracy 88.9%, sensitivity 87.5%, specificity 90%) tested on a small hold-out.",
+ "why": "PDF identity confirmed: page-1 title and the seven authors (Park, Kim, Park, Choi, Kim, Ryu, Seo; JMIR 2024;26:e54538) match the block's Full paper title and Author list. STATED FORM: partly. The study's own comparison shows an eye-movement-behaviour measure differing between MCI and controls, so it supports eye-movement behaviour as a biomarker direction at group level, the same level as P-966. It does not show (a) detection accuracy for the ocular channel alone, because the eye feature is only ever used inside a pooled VR model, or (b) scalability. The authors propose the <5 min VR test as a screening step, but nothing is deployed or tested at scale. Two caveats bear directly on attributing the result to eye movements. (1) Scanpath length is the total distance the gaze travelled during the whole test (p.3), and it was not normalised for time, while MCI participants took 105.39 s against 39.48 s (Table 3, p.8). The longer scanpath may therefore largely track slower task completion rather than a distinct oculomotor abnormality, and the paper does not separate the two. (2) The classification figures are internally inconsistent. The paper states a 16-person test set (p.6), but the reported metrics (88.9%, 94.4%, 87.5%/90%, 90.9%/71.4%) imply 18 test participants, with class compositions that differ between models: about 8 MCI/10 HC for VR-only and about 11 MCI/7 HC for MRI-only. The paper also calls this internal 7:3 split 'external validation'. The group comparison is the usable result; the SVM numbers are not. NARROWED FORM: partly. It is a preliminary, group-level association with MCI and is not externally validated, which fits the register of the narrowed wording. However, its measure is gaze scanpath length during an everyday task, not saccadic inhibition errors or prosaccade latency, and it comes from two sites (Seoul, Guri) of one hospital system. Admitting it would require the narrowed wording to add something like 'VR-task gaze scanpath length in a second Korean cohort'. INDEPENDENCE: The Hanyang Seoul/Guri recruitment and author list share nothing with P-5 (Daping Hospital / WMU Eye Hospital, China), P-952 (Seventh Affiliated Hospital of Sun Yat-sen University, Shenzhen), P-966 (KIOM/GARD, Opwonya et al.) or P-105 (review). Reference 1 is the Opwonya 2022 saccade meta-analysis, cited only, with no shared data. It shares no cohort with the other candidates (P-998 Tehran, P-282 Mayo Arizona, P-363 Duke). Not a preprint. BLOCK/REGISTRY DEFECTS: the block's 'What is the sample size?' reads '22' (true N=54, 32 MCI + 22 HC), and so does registry Sample_N_Approx. Registry Modality 'MRI/PET' omits the eye-tracking channel.",
+ "quotes": [
+  {
+   "page": 3,
+   "quote": "This study involved a total of 54 participants recruited from Hanyang University Hospitals in Seoul and Guri between January 2022 and July 2023."
+  },
+  {
+   "page": 3,
+   "quote": "participants wore a head-mounted display with integrated eye-tracking capabilities (HTC VIVE Pro Eye)"
+  },
+  {
+   "page": 3,
+   "quote": "Scanpath length, the second VR-derived biomarker, reflects the distance traveled by participants\u2019 gaze during the test"
+  },
+  {
+   "page": 5,
+   "quote": "Scanpath length is derived from the eye movement data."
+  },
+  {
+   "page": 7,
+   "quote": "patients with MCI demonstrated slower hand movement speed (F1,51=13.426; P=.001; \u03b7p2=0), longer scanpath length (F1,51=7.108; P=.01; \u03b7p2=0.122), prolonged time to completion (F1,51=9.447; P=.003; \u03b7p2=0.156), and a greater number of errors (F1,51=9.438; P=.003; \u03b7p2=0.156) during the execution of the virtual kiosk test, as compared to healthy controls. [superscript 2 of eta-p reconstructed from the split extract lines]"
+  },
+  {
+   "page": 8,
+   "quote": "Table 3 ... Eye movement feature | Scanpath length (m) | Patients with MCI (n=32) 60.36 (54.58) | Healthy controls (n=22) 23.66 (14.29) | P=.01 ... Time to completion (s) | 105.39 (86.35) | 39.48 (18.96) | .003 [table cells re-assembled from the extract; ANCOVA with age as covariate]"
+  },
+  {
+   "page": 9,
+   "quote": "Scanpath length correlated significantly with the left hippocampus (r=\u22120.28; P=.04)."
+  },
+  {
+   "page": 6,
+   "quote": "For external validation and to prevent overfitting, we used a train and test split with a ratio of 7:3, where 70% (38/54) of the participants were assigned to the train subcohort and the remaining 30% (16/54) of the participants were allocated to the test subcohort."
+  },
+  {
+   "page": 10,
+   "quote": "The best-performing SVM model using only VR-derived biomarkers, including hand movement speed, scanpath length, and the number of errors, achieved an accuracy of 88.9%, a sensitivity of 87.5%, a specificity of 90%, a precision of 87.5%, an F1-score of 87.5%, and an AUC of 0.84"
+  },
+  {
+   "page": 12,
+   "quote": "VR-derived biomarkers align well with the requirements for a rapid screening tool in this phase, offering a brief testing duration (<5 min) with high specificity."
+  }
+ ]
+}

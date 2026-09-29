@@ -1,0 +1,265 @@
+{
+ "paper_id": "P-989",
+ "document_check": {
+  "matches": true,
+  "note": "Yoon EJ, Lee J-Y, Kwak S, Kim YK (2023) 'Mild behavioral impairment linked to progression to Alzheimer's disease and cortical thinning in amnestic mild cognitive impairment', Front. Aging Neurosci. 14:1051621, doi:10.3389/fnagi.2022.1051621, published 4 January 2023. It is a clinic cohort of 1,184 amnestic MCI patients who visited two Seoul centres between 2012 and 2020 (whether prospective or retrospective is not stated), of whom 284 progressed to AD over a mean 3.1 years. Page 5 reports the univariate Cox HR for SGDS of 1.040 (1.007 to 1.075), p = 0.017, as cited."
+ },
+ "cited_result": "Univariable (unadjusted) Cox regression association of the baseline short-form Geriatric Depression Scale (SGDS) score with progression from amnestic MCI to Alzheimer's disease in 1,184 patients (284 progressed): HR 1.040 (95% CI 1.007 to 1.075), p = 0.017. The SGDS is scored 0 to 15 and was entered as a continuous score; the unit of the HR is not stated.",
+ "tool": "QUIPS",
+ "tool_reason": "The cited result is the association of one baseline prognostic factor (SGDS score) with later progression to AD, estimated as a hazard ratio in a longitudinal clinic cohort; it is not the performance of a prediction model, not a diagnostic accuracy estimate and not framed as a causal exposure effect, so QUIPS applies.",
+ "domains": [
+  {
+   "domain": "1. Study participation",
+   "judgment": "moderate",
+   "rationale": "The setting, period, inclusion and exclusion criteria and baseline characteristics are reported. The sampling method (consecutive or otherwise) and the number of aMCI patients screened or excluded are not. Eligibility required at least one follow-up visit and more than one year of follow-up, and excluded anyone who progressed to a non-AD dementia, so the cohort was partly defined by events after baseline; severe psychiatric illness affecting cognition was also excluded, which may truncate the range of depressive symptoms. Whether these selections relate to both SGDS and progression cannot be assessed from the report.",
+   "signalling": [
+    {
+     "question": "Are the source population, place and period of recruitment described?",
+     "answer": "Yes",
+     "quote": "A total 1,184 individuals with aMCI who visited SMG-SNU Boramae Medical Center or Dongjak-Gu Center for Dementia between 2012 and 2020 were included in the present study.",
+     "page": "3"
+    },
+    {
+     "question": "Is the method of sampling and recruitment (for example consecutive) described?",
+     "answer": "No information",
+     "quote": "Searched the Participants section and Results for consecutive, random or registry-based sampling; the paper states only that patients who visited the two centres between 2012 and 2020 were included.",
+     "page": "3-4"
+    },
+    {
+     "question": "Are inclusion and exclusion criteria adequately described?",
+     "answer": "Yes",
+     "quote": "inclusion criteria were: (1) 60 to 85 years of age at baseline; (2) at least one follow-up; (3) more than 1 year of a follow-up time; and (4) administration of neuropsychiatric inventory questionnaire (NPI-Q) at their basal visit.",
+     "page": "3"
+    },
+    {
+     "question": "Were eligibility criteria defined only on information available at baseline?",
+     "answer": "No",
+     "quote": "(3) progression to dementia other than AD such as dementia with Lewy body, vascular dementia, and frontotemporal lobe dementia.",
+     "page": "3"
+    },
+    {
+     "question": "Was there adequate participation by eligible persons (is the proportion participating reported)?",
+     "answer": "No information",
+     "quote": "Searched Methods, Results and Tables 1 to 3 for the number of aMCI patients screened, eligible or excluded, or a flow diagram; none reported.",
+     "page": "3-5"
+    },
+    {
+     "question": "Is the baseline study sample adequately described?",
+     "answer": "Yes",
+     "quote": "The demographic and clinical characteristics of the participants at baseline are presented in Table 1.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study attrition",
+   "judgment": "moderate",
+   "rationale": "Loss before one year was turned into an eligibility criterion, so the analysed cohort has no reported losses, but the number of patients excluded for lack of follow-up is not given. Stable patients were censored at their last assessment, with no reasons for ending follow-up, no mention of deaths and no comparison of patients with short and long follow-up. Progressors to non-AD dementias were removed from the cohort rather than treated as a competing event.",
+   "signalling": [
+    {
+     "question": "Is the proportion of the eligible baseline sample lost to follow-up reported?",
+     "answer": "No",
+     "quote": "(2) at least one follow-up; (3) more than 1 year of a follow-up time",
+     "page": "3"
+    },
+    {
+     "question": "Are reasons for loss to follow-up or end of follow-up provided?",
+     "answer": "No information",
+     "quote": "Time from baseline to last assessment for the stable aMCI group and conversion time from aMCI to AD for the aMCI-AD group.",
+     "page": "4"
+    },
+    {
+     "question": "Are participants lost to follow-up described and compared with those who completed follow-up?",
+     "answer": "No information",
+     "quote": "Searched Methods, Results and the limitations paragraph for dropouts, deaths, withdrawals or a comparison of completers with non-completers; none reported.",
+     "page": "3-10"
+    },
+    {
+     "question": "Were other outcomes that end follow-up (non-AD dementia, death) handled so as not to bias the association?",
+     "answer": "Probably no",
+     "quote": "Exclusion criteria were: (1) history of head trauma, brain tumor, stroke, intellectual disability, or any severe medical, neurological, or psychiatric illness affecting cognitive function; (2) a history of alcohol or drug abuse; and (3) progression to dementia other than AD",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Prognostic factor measurement",
+   "judgment": "low",
+   "rationale": "The SGDS is a standard instrument measured at baseline, before the outcome, so its measurement cannot be influenced by outcome status. The paper does not describe who administered it or which Korean version was used, does not report whether any scores were missing, and does not state the unit of the HR; these are reporting gaps rather than likely sources of differential bias.",
+   "signalling": [
+    {
+     "question": "Is a clear definition of the prognostic factor provided?",
+     "answer": "Probably yes",
+     "quote": "short form of geriatric depression scale (SGDS) at baseline",
+     "page": "3"
+    },
+    {
+     "question": "Is the method of prognostic factor measurement adequately valid and reliable?",
+     "answer": "Probably yes",
+     "quote": "SGDS, short form of geriatric depression scale",
+     "page": "4"
+    },
+    {
+     "question": "Are continuous variables reported or appropriate cut-points used?",
+     "answer": "Probably yes",
+     "quote": "SGDS scores (HR [95% CI] = 1.040 (1.007\u20131.075), p = 0.017)",
+     "page": "5"
+    },
+    {
+     "question": "Is the method and setting of measurement the same for all participants?",
+     "answer": "Probably yes",
+     "quote": "All participants were administered the Korean mini-mental state examination (MMSE), the clinical dementia rating (CDR), and the Consortium to Establish a Registry for AD for Koreans (CERAD-K) neuropsychological battery (Lee et al., 2002) by the trained clinical psychologists at baseline and subsequent follow-ups.",
+     "page": "3"
+    },
+    {
+     "question": "Is there an adequate proportion of the sample with complete prognostic factor data, and are missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched Methods and Tables 1 to 3 for missing SGDS scores or imputation; Table 1 gives the SGDS for the 1,184 participants without stating any missing values.",
+     "page": "3-5"
+    },
+    {
+     "question": "Was the prognostic factor measured without knowledge of the outcome?",
+     "answer": "Yes",
+     "quote": "short form of geriatric depression scale (SGDS) at baseline",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "4. Outcome measurement",
+   "judgment": "moderate",
+   "rationale": "AD was diagnosed clinically by NINCDS-ADRDA criteria at consensus conferences, with a standard battery at each visit, which is appropriate, but without biomarker or neuropathological confirmation. Visit intervals varied, so the timing of detection differed between patients, and there is no statement that the consensus diagnosis was made without knowledge of the baseline SGDS or NPI-Q.",
+   "signalling": [
+    {
+     "question": "Is a clear definition of the outcome provided?",
+     "answer": "Yes",
+     "quote": "The diagnosis of the AD and aMCI were based on the criteria of the National Institute of Neurological and Communicative Disorders and Stroke and AD and Related Disorders Association (NINCDS-ADRDA) and Petersen\u2019s criteria, respectively",
+     "page": "3"
+    },
+    {
+     "question": "Is the method of outcome measurement adequately valid and reliable?",
+     "answer": "Probably yes",
+     "quote": "although we adopted the standardized clinical diagnostic criteria and diagnosis was made at consensus conferences attended by psychiatrists and neuropsychologists, the diagnosis of AD was not confirmed neuropathologically.",
+     "page": "10"
+    },
+    {
+     "question": "Is the method and setting of outcome measurement the same for all participants?",
+     "answer": "Probably yes",
+     "quote": "by the trained clinical psychologists at baseline and subsequent follow-ups",
+     "page": "3"
+    },
+    {
+     "question": "Is the timing of outcome ascertainment the same for all participants?",
+     "answer": "Probably no",
+     "quote": "Although we evaluated NPI-Q at every visit during the follow-up period, it was difficult to consider the chronicity of symptoms due to the varying visit interval and follow-up time.",
+     "page": "8"
+    },
+    {
+     "question": "Was the outcome assessed without knowledge of the prognostic factor?",
+     "answer": "No information",
+     "quote": "Searched Methods and the limitations paragraph for any statement that the consensus diagnosis of AD was made blind to baseline SGDS or NPI-Q; none reported.",
+     "page": "3-10"
+    }
+   ]
+  },
+  {
+   "domain": "5. Study confounding",
+   "judgment": "high",
+   "rationale": "The cited HR is unadjusted. Patients who progressed were older, less educated and had lower baseline MMSE, and the SGDS differed strongly by MBI group (Table 3: 4.5, 7.8 and 7.3 in the asymptomatic, affective dysregulation and complex groups), yet none of these was adjusted for in this estimate; APOE and cardiovascular disease were not considered in the survival analyses at all. The SGDS entered the MBI models only as a covariate and its adjusted HR is not reported, so whether the association is independent cannot be judged.",
+   "signalling": [
+    {
+     "question": "Are all important confounders measured?",
+     "answer": "No",
+     "quote": "Other important risk factors of progression to AD, such as APOE genotypes and cardiovascular disease, were not considered for survival analyses.",
+     "page": "10"
+    },
+    {
+     "question": "Are clear definitions of the measured confounders provided?",
+     "answer": "Probably yes",
+     "quote": "A positive family history was defined as one or more first-degree relatives with documented dementia.",
+     "page": "4"
+    },
+    {
+     "question": "Are the measured confounders associated with the outcome or the prognostic factor in this sample?",
+     "answer": "Yes",
+     "quote": "Patients with aMCI who progressed to AD had older age, lower MMSE and higher SGDS at baseline and shorter years of education compared with those who did not progress to AD or other dementias. [p. 4]; Two symptomatic groups had higher SGDS scores than the asymptomatic group. [p. 5]",
+     "page": "4-5"
+    },
+    {
+     "question": "Are important confounders accounted for in the analysis that produced the cited estimate?",
+     "answer": "No",
+     "quote": "Univariate Cox regression analyses were conducted with age at baseline, gender, years of education, MMSE at baseline, short form of geriatric depression scale (SGDS) at baseline and presence of family history of dementia to identify predictors associated with a risk of progression to AD.",
+     "page": "3-4"
+    },
+    {
+     "question": "Is an adjusted estimate for the prognostic factor reported?",
+     "answer": "No",
+     "quote": "In the present study, because we focused on the presence of MBI domains, the SGDS score was adjusted for multivariate Cox regression analyses.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "6. Statistical analysis and reporting",
+   "judgment": "moderate",
+   "rationale": "Cox regression suits the time-to-event design and 284 events are ample for a single-factor model. No check of proportional hazards or of the linearity of the per-unit SGDS effect is reported, and the unit of the HR is not stated. Univariable HRs are given only for the factors that reached significance (none for gender or family history), and the cited estimate is the screening step of a strategy that chose covariates on univariable significance.",
+   "signalling": [
+    {
+     "question": "Is there sufficient presentation of data to assess the adequacy of the analysis?",
+     "answer": "Probably yes",
+     "quote": "During follow-ups, total 284 participants developed AD (24%).",
+     "page": "4"
+    },
+    {
+     "question": "Is the statistical model appropriate for the design?",
+     "answer": "Probably yes",
+     "quote": "were significantly associated with the risk of progression to AD in univariate Cox regression analyses",
+     "page": "5"
+    },
+    {
+     "question": "Were the model assumptions (proportional hazards, linearity of the continuous score) checked?",
+     "answer": "No information",
+     "quote": "Searched the Statistical analysis section and Results for a proportional-hazards test, residual checks or assessment of the SGDS functional form; none reported.",
+     "page": "3-5"
+    },
+    {
+     "question": "Is the model-building strategy adequate?",
+     "answer": "Probably no",
+     "quote": "Significant predictors from univariate analyses were included as covariates in subsequent multivariate Cox regression analyses to evaluate the differences in the risk of progression to AD between resulting subgroups of aMCI patients.",
+     "page": "4"
+    },
+    {
+     "question": "Is there evidence of selective reporting?",
+     "answer": "Probably yes",
+     "quote": "SGDS scores (HR [95% CI] = 1.040 (1.007\u20131.075), p = 0.017) were significantly associated with the risk of progression to AD in univariate Cox regression analyses",
+     "page": "5"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "moderate",
+   "rationale": "Amnestic MCI only, aged 60 to 85, from one medical centre and one district dementia centre in Seoul, with low mean education (8.4 years) and mean MMSE 22.8; the cohort required NPI-Q at baseline and more than one year of follow-up and excluded severe psychiatric illness affecting cognition."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "moderate",
+   "rationale": "AD is a clinical NINCDS-ADRDA diagnosis without amyloid, tau or neuropathological confirmation."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Study confounding is high: the cited SGDS hazard ratio is a crude univariable estimate with no adjustment for age, education, baseline MMSE or MBI status, each of which differs by outcome or by SGDS level, and no adjusted SGDS estimate is reported. Participation, attrition, outcome measurement and statistical analysis each carry moderate concerns (eligibility dependent on follow-up with unreported exclusions, no attrition reporting, clinical diagnosis at varying visit intervals with no stated blinding, unchecked model assumptions and partial reporting). Under the review's QUIPS rule, any high domain, or three or more moderate domains, makes the overall rating high.",
+ "confidence": "high",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 25,
+  "matched": 23,
+  "annotations_not_checked": 6,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "id": "C-187",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-344",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Assessing the accuracy of survival machine learning and traditional statistical models for Alzheimer's disease prediction over time: a study on the ADNI cohort (Jahani et al., BMC Medical Research Methodology 2025;25:250)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-192",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predictive value of ATN biomarker profiles in estimating disease progression in Alzheimer's disease dementia (Ezzati et al., Alzheimers Dement 2021;17(11):1855-1867, author manuscript)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-344": "Random survival forest on 14 baseline features (cognitive tests, FDG-PET, four MRI volumes, APOE e4) for time from MCI to AD in 902 ADNI MCI participants (follow-up up to 16 years, median time to progression 6 years): Harrell's C-index 0.878 (95% CI 0.877-0.879) on a 30% test split; CoxPH 0.863, GBSA 0.803.",
+  "P-192": "LR and RUSBoost classifiers trained on ADNI CN vs dementia (biomarker set: CSF, regional florbetapir PET, regional FDG-PET; or clinical set) and applied to 415 ADNI aMCI participants, scored against incident dementia at 6-48 months: RUSBoost biomarker-set PPV 68% at 4 years (observed dementia rate 22.2%), sensitivity 61.5% and specificity 91.7% at 4 years; no AUC or C-index."
+ },
+ "quantity_a": "Harrell's concordance index for ranking time to AD conversion among ADNI MCI participants over follow-up of up to 16 years (a discrimination statistic, threshold-free).",
+ "quantity_b": "Positive predictive value at a fixed 0.5 probability cut-off of a CN-vs-dementia classifier applied to ADNI aMCI participants for incident dementia within 4 years (a threshold-dependent, prevalence-dependent statistic).",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable: a C-index of 0.878 and a PPV of 68% are on different scales and neither implies a value for the other; neither paper claims anything about the other's model.",
+ "gates": {
+  "task": "match: both predict progression from MCI (T2).",
+  "dataset_family": "match: both ADNI (P-344 ADNIMERGE all phases; P-192 ADNI-GO/2), with overlapping participants recorded as non-independence.",
+  "validation_tier": "match at tier level (internal only, V2): P-344 a random 70/30 split; P-192 10-fold cross-validation on CN/dementia and application to aMCI.",
+  "modality_family": "mismatch: P-344's final model is mostly cognitive/functional scores plus FDG-PET, MRI volumes and APOE; P-192's quoted PPV comes from the biomarker set (CSF, amyloid PET, FDG-PET) without cognitive scores. The record's 'clinical_survey' for both is wrong."
+ },
+ "endpoint_and_metric": "incompatible: C-index vs PPV are different metric types; endpoints also differ (time to clinically diagnosed AD over up to 16 years vs dementia of any cause within fixed horizons of 6-48 months).",
+ "performance_validity": "not a performance comparison that can be made: the two statistics are not on a common scale; neither value approaches the 0.97 threshold.",
+ "independence": "Shared cohort: both draw MCI participants from ADNI (P-192's ADNI-GO/2 aMCI sample is contained in the ADNIMERGE MCI pool used by P-344); recorded as non-independence.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The metric types differ: P-344 reports Harrell's C-index for time-to-event ranking, and P-192 reports a threshold-dependent PPV at fixed horizons.",
+  "The endpoints differ: AD conversion over up to 16 years in P-344, dementia not necessarily due to AD within 6-48 months in P-192.",
+  "The predictor set behind P-192's quoted PPV (CSF and PET biomarkers) differs from P-344's cognitive-dominated feature set.",
+  "The record's own evaluator note already found that metric type prevented comparison."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-344",
+   "page": 5,
+   "quote": "Based on the C-index, RSF achieved the best performance with a score of 0.878 (95% CI: 0.877\u20130.879), followed by CoxPH with 0.863 (95% CI: 0.862\u20130.864)"
+  },
+  {
+   "paper": "P-344",
+   "page": 5,
+   "quote": "The median time to progression was 6 years (95% CI: 5\u20137 years), as shown in Fig. 2."
+  },
+  {
+   "paper": "P-192",
+   "page": 4,
+   "quote": "RUSBoost models applied to biomarker feature set provided > 35% improvement in the prediction of dementia over 2 years (model\u2019s PPV = 53.6 vs. observed rate of dementia onset = 18.0%) and > 45% over 4 years (model\u2019s PPV = 68% vs. observed rate of dementia onset = 22.2%)."
+  },
+  {
+   "paper": "P-192",
+   "page": 7,
+   "quote": "Using baseline data from CN and dementia participants, LR or RUSBoost models were trained to differentiate CN participants from individuals diagnosed with dementia. Subsequently, the trained model was applied to aMCI participants"
+  },
+  {
+   "paper": "P-192",
+   "page": 5,
+   "quote": "In the ADNI sample, MCI and dementia diagnosis was not necessarily due to AD"
+  }
+ ],
+ "record_defects": [
+  "gap_magnitude 0.198 is computed between a C-index (0.878) and a PPV (0.68), which are not on a common scale.",
+  "resolution_note says 'Metric type unclear: Unknown / Unknown'; both papers state their metrics explicitly (Harrell's C-index; PPV, sensitivity, specificity).",
+  "modality_family 'clinical_survey' and modality_family_equal 'Yes' are wrong: P-192's quoted PPV comes from a CSF/amyloid-PET/FDG-PET biomarker feature set, and P-344 includes FDG-PET and MRI volumes.",
+  "Registry P-192 Best_Metric 'not reported'; the paper reports sensitivity, specificity, PPV and NPV at five horizons."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "The two studies reporting the same discrimination statistic (e.g. a time-dependent AUC or C-index at a common horizon) on a common feature set; neither does."
+}

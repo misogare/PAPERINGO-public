@@ -1,0 +1,83 @@
+{
+ "id": "C-81",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-122",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting the progression of mild cognitive impairment based on fine-grained and spatiotemporal features of MRI (Hu et al., Biomedical Signal Processing and Control 108 (2025) 107895)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-3",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Class activation attention transfer neural networks for MCI conversion prediction (Luo et al., Computers in Biology and Medicine 156 (2023) 106700)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-122": "MMS-TransENet (EfficientNet-style CNN with global-context attention + multi-scale spatiotemporal transformer attention) on PAIRS of longitudinal sMRI from two time points (axial 2D slice sequences), ADNI 1/GO/2/3, 275 subjects (121 pMCI/154 sMCI) yielding 823 longitudinal samples, with mirroring/rotation augmentation. pMCI vs sMCI accuracy 84.74% (AUC 0.8587, sens 83.33%, spec 82.27%) on a 124-sample test set; six-fold CV mean 84.28% (SD 1.65), AUC 0.8599. Split said to keep subjects separate across subsets.",
+  "P-3": "CAAT 3D CNN ensemble on a single BASELINE T1 MRI per subject, ADNI1/2, 298 sMCI/295 pMCI (conversion within 36 months), Wen et al. splits, 5-fold CV: accuracy 74.61% (variance 0.002), AUC 0.780."
+ },
+ "quantity_a": "Sample-level accuracy for pMCI vs sMCI from two-time-point longitudinal sMRI (a follow-up scan is part of the input), ADNI 1/GO/2/3, 823 samples from 275 subjects",
+ "quantity_b": "Subject-level accuracy for pMCI vs sMCI (36-month conversion) from one baseline T1 MRI, ADNI1/2, 593 subjects",
+ "same_quantity": false,
+ "incompatible_if_same": "Possibly: P-122's six-fold mean 84.28% (SD 1.65) and P-3's 74.61% (fold SD about 4.5) differ by about 10 points, more than twice either spread. That is why the quantity question decides the pair: the two models do not answer the same prediction question.",
+ "gates": {
+  "task": "match at label level (pMCI vs sMCI, T2), but P-122 predicts from a baseline-plus-follow-up pair, so part of the interval to conversion is already observed in its input; P-3 predicts from baseline alone",
+  "dataset_family": "match: both ADNI (P-122 adds ADNI-GO/3)",
+  "validation_tier": "match: both internal (P-122 hold-out + six-fold CV; P-3 5-fold CV)",
+  "modality_family": "match: structural MRI"
+ },
+ "endpoint_and_metric": "incompatible: same metric name (accuracy) but different predictor set (longitudinal two-visit sMRI vs single baseline scan) and different unit of analysis (823 longitudinal samples, several per subject, vs one scan per subject), so the accuracies estimate different things",
+ "performance_validity": "flag does not apply: 84.74% and 74.61% are below 0.97 and P-122's test set is not tiny (124 samples).",
+ "independence": "Both use ADNI; MCI subjects likely overlap in part. Different groups (Henan University; La Trobe/Monash), no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-122's input is two longitudinal sMRI scans per sample, so its model sees atrophy change after baseline, while P-3 predicts conversion from a single baseline scan; these are different predictor sets for the same label.",
+  "P-122 reports accuracy over 823 longitudinal samples drawn from 275 subjects (with augmentation), while P-3 reports one prediction per subject, so the denominators differ.",
+  "With predictor set and unit of analysis different, the roughly 10-point accuracy gap cannot be read as two studies disagreeing about one quantity.",
+  "The record's own stated reason for rejection ('Same architecture family (A4_transformer)') is not supported: P-3 is a plain 3D CNN with attention transfer, not a transformer."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-122",
+   "page": 1,
+   "quote": "The architecture synthesizes longitudinal sMRI data from dual temporal points and integrates three novel components"
+  },
+  {
+   "paper": "P-122",
+   "page": 4,
+   "quote": "the two longitudinal samples of T1 slice sequences and T2 slice sequences for each patient were employed as two complete sequences within the input model, with the number of slices serving as the number of channels."
+  },
+  {
+   "paper": "P-122",
+   "page": 5,
+   "quote": "For the sMCI group, we gathered 449 longitudinal samples from 154 subjects diagnosed with sMCI. Similarly, the pMCI group consisted of 374 longitudinal samples from 121 subjects"
+  },
+  {
+   "paper": "P-122",
+   "page": 6,
+   "quote": "the proposed framework achieved mean ACC and AUC of 84.28% and 0.8599 with standard deviations of 1.65 and 0.0167, respectively, in predicting the progression of MCI."
+  },
+  {
+   "paper": "P-3",
+   "page": 1,
+   "quote": "our goal is to take a single MRI image of a patient diagnosed with MCI at a given time and accurately predict whether they will be diagnosed with AD within 3 years."
+  },
+  {
+   "paper": "P-3",
+   "page": 2,
+   "quote": "Experimental results on the ADNI dataset show that CAAT achieves accuracy of 74.61 for classifying between pMCI and sMCI using only whole 3D images of the brain and no other ancillary information."
+  }
+ ],
+ "record_defects": [
+  "resolution_note 'Same architecture family (A4_transformer)' is wrong for P-3, a 5-layer 3D CNN with class-activation attention transfer; P-122 is a CNN-transformer hybrid.",
+  "The record does not note that P-122 uses two-time-point longitudinal input while P-3 uses baseline only, which is the difference that separates the quantities.",
+  "Sample_N 275 is the subject count; P-122's accuracy is computed over 823 longitudinal samples.",
+  "The bridging list (C-index, nomogram, clinical-tabular papers) is not apt for this pair."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-122 result from baseline scans alone, at subject level, whose interval excludes P-3's 74.61%; that would make the quantities comparable and would then have to be judged as a possible genuine disagreement."
+}

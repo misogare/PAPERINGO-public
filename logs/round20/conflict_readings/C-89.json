@@ -1,0 +1,84 @@
+{
+ "id": "C-89",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-152",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Features of the superficial white matter as biomarkers for the detection of Alzheimer's disease and mild cognitive impairment: A diffusion tensor imaging study (Bigham et al., Heliyon 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-156",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of future dementia among patients with mild cognitive impairment (MCI) by integrating multimodal clinical data (Cirincione et al., Heliyon 2024)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-152": "The 95.8% the record cites is AD vs HC (24 vs 24, ADNI2 DTI superficial white matter features, linear SVM, internal 5-fold CV), with AUC 0.99. MCI vs HC is 83.3% (AUC 0.88) and AD vs MCI is 83.3% (AUC 0.93). No progression task.",
+  "P-156": "Prediction of which baseline MCI patients (n=841, TADPOLE/ADNI 1/2/GO) progress to dementia by their most recent diagnosis, using multimodal tabular data (cognitive tests, MRI ROI, CSF, demographics/APOE4), with Ensemble Integration: held-out test AUC 0.81, F-measure 0.68."
+ },
+ "quantity_a": "Accuracy for AD vs HC (cross-sectional diagnosis) from DTI superficial-white-matter features, n=48",
+ "quantity_b": "AUC for MCI-to-dementia progression (open horizon to last diagnosis) from multimodal clinical, imaging and CSF data, n=841",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable. The comparison (AD vs HC vs MCI progression), the predictors and the metric (accuracy vs AUC) all differ.",
+ "gates": {
+  "task": "mismatch: AD vs HC diagnosis (P-152 registry T3) vs MCI progression (T2)",
+  "dataset_family": "match: both ADNI-derived (ADNI2 DTI; TADPOLE from ADNI 1/2/GO)",
+  "validation_tier": "match: both internal (5-fold CV; random 80/20 hold-out)",
+  "modality_family": "mismatch: diffusion MRI only vs multimodal tabular data (cognitive tests, MRI ROI, CSF, demographics). No waiver on record."
+ },
+ "endpoint_and_metric": "incompatible: diagnostic separation of established AD vs future dementia among MCI; accuracy vs AUC",
+ "performance_validity": "The flag applies to the cited P-152 value: AD vs HC accuracy 95.8% with AUC 0.99, on 48 subjects, internal CV only, no external cohort. The pack's performance_suspect=false is a miss, because the registry tests accuracy (95.8) rather than the printed AUC (.99).",
+ "independence": "Both use ADNI, so participant overlap is possible. Different authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim_a misreads P-152: 95.8% is AD vs HC accuracy, not a T2 (MCI progression) result, and P-152 reports no progression task at all.",
+  "P-156's AUC 0.81 is for future dementia among MCI patients, a different endpoint, predictor set and metric, so the two results cannot be set against each other.",
+  "The cited P-152 value also meets the performance-validity exclusion (AUC 0.99, n=48, internal CV)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-152",
+   "page": 1,
+   "quote": "The linear kernel of SVM was the best classi\ufb01er, with an accuracy of 95.8% between the AD and HC groups, followed by the quadratic kernel of SVM with an accuracy of 83.3% between the MCI and HC groups"
+  },
+  {
+   "paper": "P-152",
+   "page": 1,
+   "quote": "This method employed DTI data from 72 subjects: 24 subjects as HC, 24 subjects with MCI, and 24 subjects with AD."
+  },
+  {
+   "paper": "P-152",
+   "page": 6,
+   "quote": "HC-AD 95.8 95.8 95.8 95.8 .99 (Table 3 row; cells joined by the reader)"
+  },
+  {
+   "paper": "P-152",
+   "page": 5,
+   "quote": "we performed an internal 5-fold cross- validation for the training data"
+  },
+  {
+   "paper": "P-156",
+   "page": 1,
+   "quote": "on a held out test set, the EI-based model performed better (AUC = 0.81, F-measure = 0.68)"
+  },
+  {
+   "paper": "P-156",
+   "page": 3,
+   "quote": "our target prediction problem was to predict which of these MCI patients\u2019 diagnosis changed to dementia, and who stayed as MCI, based only on data collected at baseline"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-152: Acc 95.8 on T2' is wrong: 95.8% is AD vs HC. P-152's registry row codes T3.",
+  "task_equal 'Yes' is wrong: diagnosis vs progression.",
+  "modality_family 'Neuroimaging' does not describe P-156, whose model integrates cognitive tests, CSF and demographics with MRI.",
+  "P-152's performance_suspect flag should be true for the AD-vs-HC result (AUC .99, n=48, internal only).",
+  "P-156 reports its progressor count inconsistently (288/553 in the text vs 286/555 in Table 2); not material.",
+  "The bridging evidence (P-353, P-81, P-88, P-385) is generic."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing on these documents: P-152 has no progression result."
+}

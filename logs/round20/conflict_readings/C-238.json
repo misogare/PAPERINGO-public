@@ -1,0 +1,88 @@
+{
+ "id": "C-238",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-747",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Gestures analysis during a picture description task: Capacity to discriminate between healthy controls, mild cognitive impairment, and Alzheimer's disease (Gelado, Gomez-Ruiz, Dieguez-Vide; Journal of Neurolinguistics 61 (2022) 101038)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-748",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A finer-grained linguistic profile of Alzheimer's disease and Mild Cognitive Impairment (Chapin, Clarke, Garrard, Hinzen; Journal of Neurolinguistics 63 (2022) 101069)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-747": "52 participants (10 HC, 11 ex-MCI, 10 tm-MCI, 11 mild AD, 10 moderate AD), Spanish clinic, four comic strips described on video; 14 ELAN-coded gesture rates (per minute, per word, iconic for retrieval/substitution). No gestural variable reached p < 0.05 on Kruskal-Wallis; trends for iconic per minute (p = 0.088), iconic per word (p = 0.060), iconic word substitution (p = 0.088); tm-MCI higher iconic rates than ex-MCI and mild AD on pairwise tests. Seconds/minutes of speech differed (p = 0.048; controls spoke less). Type/token ratio null (p = 0.843). No correlation between gestures and MMSE or group.",
+  "P-748": "105 participants (35 HC, 35 MCI, 35 AD) pooled from SGUL, OPTIMA and DementiaBank Pitt; Cookie Theft transcripts coded for fine-grained grammar. Generic measures null (utterances p = .788, MLU p = .063, TTR p = .252, formal errors). Adjunct clause ratio lower in MCI vs HC (p = .003, d = .93) and AD vs HC (p = .004, d = .78); adverbial adjuncts lower in MCI vs HC (p = .020, d = .70); AD vs HC differences in definite/indefinite NPs, pronoun ratio, NP anomalies, Aspect. Bonferroni-corrected. No classifier, no discrimination metric."
+ },
+ "quantity_a": "Group differences in rates of co-speech hand gestures (by gesture type) during description of comic strips, across HC / ex-MCI / tm-MCI / mild AD / moderate AD, Spanish speakers, Kruskal-Wallis p-values.",
+ "quantity_b": "Group differences in transcript-level grammatical variables (NP definiteness, Aspect, adjunct clauses etc.) in Cookie Theft descriptions, HC / MCI / AD, English speakers, corrected p and Cohen's d.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable for the headline contrast: gesture rates and grammatical ratios are different variables, so P-747's null on gestures and P-748's effects on adjunct clauses cannot both be read as answers to one quantity. On the one variable both measure, type/token ratio, both report a null (P-747 p = 0.843; P-748 p = .252), so they agree.",
+ "gates": {
+  "task": "match: both T4 cross-sectional group comparisons, no classifier.",
+  "dataset_family": "mismatch: single-centre Spanish clinic cohort (L'Hospitalet de Llobregat) vs pooled English SGUL/OPTIMA/DementiaBank Pitt samples; no waiver on record.",
+  "validation_tier": "n/a: association studies validating no model (counted as matched).",
+  "modality_family": "mismatch at the level that matters: video-annotated co-speech gesture vs transcribed grammar; the shared picture-description elicitation does not make the measured channel the same."
+ },
+ "endpoint_and_metric": "incompatible: different measured variables (gesture rates vs grammatical ratios), different group definitions (amnestic MCI split into ex-MCI and tm-MCI, AD split mild/moderate, vs single MCI and mild-to-moderate AD groups), and different elicitation stimuli (four comic strips vs Cookie Theft).",
+ "performance_validity": "not a performance comparison: neither paper computes accuracy, AUC or any discrimination statistic.",
+ "independence": "Distinct cohorts, languages and author teams; independent (both Barcelona-affiliated first authors but no shared data).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-747 measures co-speech gesture rates coded from video, whereas P-748 measures grammatical variables coded from transcripts, so the apparent null-vs-positive contrast sets a claim about one variable against a claim about another.",
+  "The only quantity both papers measure, type/token ratio, is null in both, so there is no disagreement where the studies are commensurable.",
+  "The dataset-family gate fails (Spanish clinic vs pooled English corpora) and group definitions differ (ex-MCI/tm-MCI and mild/moderate AD vs single MCI and AD groups), with no waiver on record.",
+  "Neither paper reports a discrimination metric, so no performance gap exists to compare."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-747",
+   "page": 5,
+   "quote": "the variables used were the counting of every type of gesture per minute of speech and the counting of every type of gesture per word."
+  },
+  {
+   "paper": "P-747",
+   "page": 8,
+   "quote": "Although no gestural variables did obtain sufficient statistical significance in terms of the five study groups distinction, it should be noted that three variables involving iconic gestures were found to have a tendency towards significance"
+  },
+  {
+   "paper": "P-747",
+   "page": 6,
+   "quote": "Results showed no significant correlation between gesture production and MMSE punctuation or between gestures and the study group."
+  },
+  {
+   "paper": "P-747",
+   "page": 7,
+   "quote": "Type/Token Ratio 0.39 (0.06) 0.36 (0.08) 0.38 (0.08) 0.38 (0.09) 0.36 (0.06) 0.843"
+  },
+  {
+   "paper": "P-748",
+   "page": 4,
+   "quote": "Global measures of language (number of utterances, mean length of utterance (MLU), type-token ratio, and formal grammatical errors) did not distinguish groups."
+  },
+  {
+   "paper": "P-748",
+   "page": 5,
+   "quote": "Adjunct clause ratio HC 30.2 \u00b1 1.828 Kruskal-Wallis H .001* .003* .93 .004* .78 1 .02"
+  },
+  {
+   "paper": "P-748",
+   "page": 3,
+   "quote": "Data consisted of picture description speech sample transcriptions chosen from three separate previous studies, which were combined to create a larger sample"
+  }
+ ],
+ "record_defects": [
+  "conflict_statement says both papers share the 'same diagnostic groups (HC / amnestic MCI / AD)': P-748 does not restrict MCI to amnestic MCI (Petersen 2004, CERAD and Pitt diagnoses) and does not split AD into mild and moderate; P-747 uses five groups.",
+  "conflict_statement lists 'same elicitation paradigm (picture description)': P-747 used four comic strips held in view; P-748 used the Cookie Theft picture (novel version for SGUL), so stimuli differ.",
+  "claim_a calls the cohort a 'Barcelona neurology clinic': it is the Neurology Unit of the Hospital General de L'Hospitalet de Llobregat (Barcelona area); minor.",
+  "The resolution_note's gate diagnostics rest on a registry miscode (population_specificity 'occupational_exposure' for P-747), which the PDF does not support; the cohort is a general clinic sample."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A second study in the corpus measuring co-speech gesture rates in MCI vs controls with a significant opposite result, or P-748 reporting gesture data; neither is in these two documents."
+}

@@ -1,0 +1,84 @@
+{
+ "id": "C-190",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-359",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multimodal Convolutional Mixer for Mild Cognitive Impairment Detection (Grigas, Damasevicius and Maskeliunas, Comput Mater Contin 2025;84(1), doi 10.32604/cmc.2025.064354)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-66",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Automated classification of Alzheimer's disease, mild cognitive impairment, and cognitively normal patients using 3D convolutional neural network and radiomic features from T1-weighted brain MRI: A comparative study on detection accuracy (Zarei et al., Clinical Imaging 2024;115:110301)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-359": "Multimodal ConvMixer (MCM-768) on fused mid-slice T1w MRI + PiB-PET images concatenated with MMSE, CDR and FAQ scores, education, gender and blood pressure, MCI vs CN: accuracy 96.39% (sensitivity 96.90%, specificity 95.87%) on the MCSA dataset alone (412/412), sagittal plane, random 85/15 split; 94.92% on the pooled ADNI (27/27) + MCSA + OASIS3 (134/134) dataset. Removing the cognitive-test features gives the largest accuracy drop.",
+  "P-66": "3D CNN + radiomic features from bilateral hippocampus and amygdala (FSL-FIRST ROIs) of T1-weighted ADNI MRI, with age and sex, MCI vs CN: fusion accuracy 72.7% (AUC 0.80), radiomics alone 71.6%, CNN alone 69.0%; 200 MCI and 200 CN subjects (948 and 853 images), 5-fold cross-validation with an 80/20 split of images."
+ },
+ "quantity_a": "Accuracy of MCI vs CN classification in the Mayo Clinic Study of Aging using fused structural MRI + amyloid PiB-PET together with MMSE, CDR and FAQ scores (the tests that enter the clinical diagnosis), on a random internal split.",
+ "quantity_b": "Accuracy of MCI vs CN classification in ADNI using hippocampal and amygdala ROI images and radiomic features of T1-weighted MRI plus age and sex only.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-359 itself shows that without its non-imaging and attention components performance drops to the same range: its MCM models without multi-head self-attention reach 66-80% on MCSA, and its image-based baselines (ResNet, ViT, DenseNet, MobileNet) reach about 65-75% on MCSA, in line with P-66's 69-72.7%. Neither paper claims an ordering on the other's input set.",
+ "gates": {
+  "task": "match in the broad sense (MCI vs CN detection, T1); the registry codes P-66 as T3.",
+  "dataset_family": "mismatch: the quoted 96.3% is from the Mayo Clinic Study of Aging only; P-66 is ADNI. ADNI contributes only 27/27 subjects to P-359's pooled set. The record's dataset_equal 'Yes' is wrong; no waiver on record.",
+  "validation_tier": "match: both internal (P-359 random 85/15 split for the quoted figure; P-66 five-fold CV).",
+  "modality_family": "mismatch: P-359 fuses structural MRI with amyloid PET (PiB) and adds cognitive/functional test scores; P-66 is structural MRI only. The record's 'structural_mri' for both is wrong; no waiver on record."
+ },
+ "endpoint_and_metric": "incompatible: same metric type (accuracy) but different cohorts (MCSA vs ADNI) and different predictor sets. P-359 includes MMSE, CDR and FAQ, which are part of how MCI is defined, so its accuracy partly measures agreement with its own diagnostic inputs; P-66 uses no cognitive scores.",
+ "performance_validity": "The flag's numeric threshold is not reached (0.963 < 0.97), but the figure is near-ceiling from a single random internal split, with diagnostic cognitive scores among the inputs; P-359 reports LODO and 5-fold CV only as plane-averaged figures. P-66 splits by image rather than subject (2403 images of 599 subjects), so subject-level leakage cannot be ruled out; this would inflate, not lower, P-66's figure.",
+ "independence": "Independent: different authors and, for the compared figure, different cohorts (MCSA vs ADNI).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The dataset-family gate fails: P-359's 96.3% comes from the Mayo Clinic Study of Aging, and P-66's 72.7% from ADNI.",
+  "The modality family and predictor sets differ: fused T1 MRI plus amyloid PiB-PET plus MMSE/CDR/FAQ in P-359, against hippocampal and amygdala T1 ROIs plus age and sex in P-66.",
+  "P-359's own ablations show that the cognitive-test features drive its accuracy; its imaging-only baselines perform in P-66's range.",
+  "No waiver of either failed gate is recorded."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-359",
+   "page": 1,
+   "quote": "This study integrates multiple data modalities\u2014T1-weighted MRI, Pittsburgh Compound B (PiB) PET scans, cognitive assessments such as Mini-Mental State Examination (MMSE), Clinical Dementia Rating (CDR) and Functional Activities Questionnaire (FAQ), blood pressure parameters, and demographic data\u2014to improve MCI detection."
+  },
+  {
+   "paper": "P-359",
+   "page": 1,
+   "quote": "achieves a classification accuracy of 96.3% on the Mayo Clinic Study of Aging (MCSA) dataset (sagittal plane)"
+  },
+  {
+   "paper": "P-359",
+   "page": 7,
+   "quote": "The dataset was divided into training and validation sets with a ratio of 85/15."
+  },
+  {
+   "paper": "P-359",
+   "page": 27,
+   "quote": "Removing cognitive test features (MMSE, CDR, and FAQ) results in the highest drop in accuracy (except for omitting motion correction and PVC in PiB-PET preprocessing)"
+  },
+  {
+   "paper": "P-66",
+   "page": 1,
+   "quote": "In the term of MCI vs CN, radiomic-based algorithm alone obtained ACC of 71.6 % and AUC of 77.8, CNN-based algorithm obtained ACC of 69 % and AUC of 75 and their fusion showed ACC of 72.7 % and AUC of 80."
+  },
+  {
+   "paper": "P-66",
+   "page": 5,
+   "quote": "The initial step involved randomly dividing the MRI data for each classification dataset into a sizeable training and validation set (80 % of images) and a testing set (20 % of images)."
+  }
+ ],
+ "record_defects": [
+  "dataset_equal 'Yes': the quoted P-359 figure (96.3%) is from MCSA only, not ADNI.",
+  "modality_family 'structural_mri' for both: P-359 fuses T1 MRI with PiB amyloid PET and adds cognitive, clinical and demographic features.",
+  "Registry P-359 Best_Metric 'Acc 89.1': 89.1% is the full-dataset sensitivity; full-dataset accuracy is 94.9% and MCSA sagittal accuracy 96.3%. Registry Dataset 'ADNI' misstates the main source (MCSA 412/412; ADNI 27/27).",
+  "Registry P-66 Task_Type 'T3' while the record treats it as T1 (the compared result is MCI vs CN detection).",
+  "resolution_note is a list of unrelated bridging figures and gives no reason for the false-positive status."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An imaging-only P-359 result on ADNI MCI vs CN that was incompatible with P-66's 69-72.7%; P-359 reports no such figure, and its imaging-only baselines agree with P-66."
+}

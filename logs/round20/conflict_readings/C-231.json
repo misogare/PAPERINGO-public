@@ -1,0 +1,83 @@
+{
+ "id": "C-231",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-645",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Brain amyloid accumulation possibly exacerbates concurrent mild cognitive impairment with subthreshold depression in older adults: A 1-year follow-up study (Youn et al., Journal of Affective Disorders 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-646",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Bidirectional association between depressive symptoms and mild cognitive impairment over 20 years: Evidence from the Health and Retirement Study in the United States (Guo et al., Journal of Affective Disorders 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-645": "59 older adults with both MCI and DSM-5 depression (MDD or subthreshold), Korea University Guro, all on antidepressants; within-group paired baseline-to-1-year changes. STD-MCI-A(+) (n = 15): word list recall 1.13 to 0.40 (p = 0.020), recognition 5.47 to 3.47 (p = 0.012), MMSE 21.93 to 19.20 (p = 0.049). MDD-MCI-A(+) (n = 20): no significant change. MDD-MCI-A(-) (n = 16): word list memory and recall Z-scores improved, though MMSE fell 22.81 to 20.94 (p = 0.042). No between-subgroup test is reported.",
+  "P-646": "HRS 1998-2018, 9317 adults aged 50+ free of MCI/dementia at baseline; binary high-risk depressive symptoms (8-item CES-D >= 4) predict incident MCI (HRS composite score 7-11) by competing-risks regression: fully adjusted SHR 1.20 (1.08-1.34); continuous CES-D sensitivity analysis gives the same direction."
+ },
+ "quantity_a": "One-year within-group change in neuropsychological scores among clinic patients who already have MCI and depression, stratified by depression severity (MDD vs subthreshold) and amyloid status.",
+ "quantity_b": "Sub-distribution hazard of incident MCI over up to 20 years in a cognitively unimpaired community sample, for high vs low CES-D depressive-symptom burden.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-645 never tests whether decline differs between subthreshold and major depression (it reports separate within-group tests on n = 15 and n = 20), so its 'milder stratum declines faster' is a significance-only contrast; P-646 estimates a different outcome (incidence) in a different population. Neither result denies the other.",
+ "gates": {
+  "task": "match at T-level (both T4) but different substage: incident MCI in cognitively unimpaired adults vs trajectory within established MCI.",
+  "dataset_family": "mismatch: Korea University Guro clinic cohort vs US Health and Retirement Study; no waiver.",
+  "validation_tier": "n/a: association studies (counted as matched).",
+  "modality_family": "mismatch on measurement: exposure by DSM-5 clinical stratification vs binary CES-D survey cut-off; outcome by CERAD-K battery vs HRS telephone composite; P-645 adds amyloid PET stratification."
+ },
+ "endpoint_and_metric": "incompatible: within-person 1-year score change (paired tests) vs incidence SHR over up to 20 years.",
+ "performance_validity": "not a performance comparison.",
+ "independence": "Distinct cohorts and authors; independent.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two estimands differ: P-646 measures incident MCI risk in adults without MCI, P-645 measures one-year cognitive change in patients who already have MCI and clinical depression.",
+  "The populations and measurements behind the shared labels differ (community survey cut-offs vs DSM-5 diagnosis and clinical neuropsychology in a tertiary clinic), and the dataset gate fails with no waiver.",
+  "The 'severity inversion' rests on within-group significance in one small subgroup and not another, with no between-subgroup test, which is a significance difference, not a measured gradient."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-645",
+   "page": 5,
+   "quote": "The paired t-test and Wilcoxon signed-rank test were used to assess changes in neuropsychological test results during the 1-year follow-up period."
+  },
+  {
+   "paper": "P-645",
+   "page": 5,
+   "quote": "cognitive deterioration was more pronounced in the STD-MCI-A(+) group than the MDD-MCI-A(+) group."
+  },
+  {
+   "paper": "P-645",
+   "page": 5,
+   "quote": "the MDD-MCI-A(-), STD-MCI-A(-), MDD-MCI-A(+), and STD-MCI-A(+) groups included 16, 8, 20, and 15 patients, respectively."
+  },
+  {
+   "paper": "P-646",
+   "page": 1,
+   "quote": "baseline high-risk depressive symptoms were significantly associated with subsequent MCI (SHR = 1.20, 95%CI 1.08\u20131.34)."
+  },
+  {
+   "paper": "P-646",
+   "page": 3,
+   "quote": "High-risk depressive symptoms are indicated when the total score is \u22654"
+  },
+  {
+   "paper": "P-646",
+   "page": 3,
+   "quote": "When the total scores were between 0\u20136, 7\u201311 and 12\u201327, participants were considered to have dementia, MCI without dementia, and normal respectively"
+  }
+ ],
+ "record_defects": [
+  "claim_a says the amyloid-negative major-depression subgroup improved; it improved on word list memory and recall Z-scores, but its MMSE fell (22.81 to 20.94, p = 0.042).",
+  "The record treats P-645 as showing the milder stratum declining faster; P-645 reports no between-subgroup test, only separate within-group paired tests.",
+  "modality_family_equal 'Yes' ('clinical_affective') overlooks that exposure and outcome are measured differently (DSM-5 plus CERAD-K vs CES-D cut-off plus HRS composite).",
+  "HRS 'MCI' in P-646 is a composite-score band (7-11), not a clinical MCI diagnosis; the record does not note this.",
+  "Status 'false_positive' fits less well than documented incommensurability: the record's own blocking reasons (task substage, population) are differences in quantity."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A study in one population that measures the same outcome across a graded depression-severity exposure and reports a non-monotone relation with a formal test; neither paper does this."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "C-193",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-83",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Mild Cognitive Impairment detection based on EEG and HRV data (Boudaya, Chaabene, Bouaziz, Hoekelmann, Chaari; Digit Signal Process 2024)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-214",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Development of a Machine Learning Model to Discriminate Mild Cognitive Impairment Subjects from Normal Controls in Community Screening (Jiang et al.; Brain Sci 2022)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-83": "15 participants (Magdeburg; 8 MCI, 7 HC after excluding 9 of 24), 14-channel Emotiv EEG + Polar HRV recorded during CERAD sub-tests, features from 3-s signal windows, 75/25 shuffled split of windows; hybrid SVM/GB/RF voting: average accuracy over seven CERAD tests 93.86% (sens 93.87%, spec 93.53%), best test T1 97.43%; 10-fold 95.23% and LOOCV 96.14% for T1 (Tables 7-8). Re-implementing Jiang et al. [93] (= P-214) on its own data gives 87.68% average (Table 9).",
+  "P-214": "Shanghai community screening: Cohort 1 (336 subjects) for training with 5-fold CV and Cohort 2 (92 subjects, another district) as an independent test; features = 1-electrode EEG + eye tracking + 20-subtest neuropsychological battery + demographics, MRMR selection, RBF SVM: accuracy 84.5 +/- 4.43% (AUC 0.942) in Cohort 1 and 88.8 +/- 3.59% (AUC 0.966) in Cohort 2 (Tables 3-4)."
+ },
+ "quantity_a": "Accuracy of classifying 3-second EEG+HRV signal windows (window level, windows of the same 15 people shuffled across train and test) as MCI vs HC during a CERAD cognitive task, averaged over seven sub-tests.",
+ "quantity_b": "Subject-level accuracy of classifying community-dwelling older adults as MCI vs NC from EEG, eye tracking and neuropsychological test scores, in 5-fold CV on 336 subjects (84.5%) and on an independent 92-subject cohort (88.8%).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Each paper reports its own method's score. The only ordering claim is P-83's, that its hybrid model beats a re-implementation of P-214's pipeline on P-83's 15-subject data (93.86% vs 87.68%); P-214 makes no claim about P-83's method or data, so nothing is refuted.",
+ "gates": {
+  "task": "match: MCI vs healthy controls detection (T1).",
+  "dataset_family": "mismatch: German 15-subject lab sample vs two Shanghai community cohorts; the record's dataset_equal 'Yes' reflects both registry rows being 'not reported', not a shared dataset. No waiver.",
+  "validation_tier": "mismatch: P-83 uses window-level random splits and CV within 15 people; P-214 adds a subject-disjoint independent cohort from a different district (Cohort 2).",
+  "modality_family": "mismatch in part: both use EEG, but P-83 adds heart-rate variability while P-214 adds eye tracking and a 20-subtest neuropsychological battery, which on its own reaches 75% accuracy."
+ },
+ "endpoint_and_metric": "incompatible: P-83's accuracy is over signal windows (its T1 confusion matrix counts 34 TP and 39 TN from a 25% split of windows of 15 people), P-214's is over subjects. A window-level accuracy with the same person on both sides of the split is not the same estimand as subject-level accuracy.",
+ "performance_validity": "The automatic test is not tripped by the 93.86% average, but P-83 meets the substance of the exclusion: 15 subjects, internal validation only with window-level shuffling, best sub-test 97.43% and LOOCV 96.14%. A performance comparison resting on it could not be genuine in any case.",
+ "independence": "Distinct studies, cohorts and authors. P-83 cites and re-implements P-214 ([93]).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The estimands differ: P-83 reports window-level accuracy with windows from the same 15 people in training and test, whereas P-214 reports subject-level accuracy, including on an independent cohort.",
+  "The dataset-family and validation-tier gates fail and the predictor sets differ (EEG+HRV vs EEG+eye tracking+neuropsychological battery), with no waiver on record.",
+  "The only cross-study ordering, P-83's re-implementation of P-214's method on P-83's data, is not contradicted by anything P-214 reports; and P-83's 15-subject, internally validated, near-ceiling result falls under the performance-validity exclusion in substance."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-83",
+   "page": 1,
+   "quote": "Our dataset includes 15 subjects who were randomly assigned to training and testing groups of 7 HC and 8 MCI, respectively."
+  },
+  {
+   "paper": "P-83",
+   "page": 6,
+   "quote": "For each test, we separated our data into 75% for the training set and 25% for the testing set. To boost the effectiveness of ML model accuracy and to reduce the rate of overfitting, we applied the shuffling strategy throughout the data partitioning process."
+  },
+  {
+   "paper": "P-83",
+   "page": 7,
+   "quote": "Based on the first test, Fig. 5 presents the confusion matrix results using the hybrid ML model, where the corresponding TP and TN classified sets are 34 and 39."
+  },
+  {
+   "paper": "P-83",
+   "page": 8,
+   "quote": "With our dataset, we put these methods into practice. For each CERAD test, the comparison between our suggested method and these works is shown in Table 9."
+  },
+  {
+   "paper": "P-214",
+   "page": 1,
+   "quote": "We found that the classification accuracy of the proposed model achieved 84.5 +/- 4.43% and 88.8 +/- 3.59% in Cohort 1 and Cohort 2, respectively."
+  },
+  {
+   "paper": "P-214",
+   "page": 6,
+   "quote": "Cohort 2 was used as an independent test group to verify the robustness of the classification results."
+  }
+ ],
+ "record_defects": [
+  "claim_a still reads 'P-322: Acc 93.87'; after the 2026-08-30 repoint the paper is P-83, whose accuracy is 93.86% (93.87% is its sensitivity).",
+  "dataset_equal 'Yes' is wrong: the two studies use unrelated cohorts (Magdeburg lab sample vs Shanghai communities).",
+  "modality_family 'eeg_meg' omits that P-83 adds HRV and P-214 adds eye tracking and neuropsychological test scores.",
+  "The record does not note that P-214 also reports 88.8% on an independent cohort, or that P-83 re-implemented P-214's method on its own data (87.68%).",
+  "P-214 itself is internally inconsistent on cohort composition (abstract '184 MCI patients and 152 NC'; Section 3.1 '152 MCI patients and 184 normal controls')."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Subject-level, subject-disjoint accuracy from P-83 on a cohort of comparable size and the same feature family would be needed to set the two against each other; even then, differing method scores without a refuted ordering would be a false positive."
+}

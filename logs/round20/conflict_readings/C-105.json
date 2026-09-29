@@ -1,0 +1,83 @@
+{
+ "id": "C-105",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-179",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Conversion from MCI to AD Combining Multi-Modality Data and Based on Molecular Subtype (Li et al., Brain Sci. 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-168",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of progression from mild cognitive impairment to Alzheimer's disease with longitudinal and multimodal data (Ding et al., Front. Dement. 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-179": "Subtype-based VBpMKL classifier (MCI-CPS) on baseline FreeSurfer sMRI ROI volumes plus blood SNP and blood mRNA expression, predicting MCI-to-AD conversion within 3 years; ADNI-1 MCI n=125, 5-fold CV AUC 0.8260 (Acc 79.20%); external test on ADNI-GO/2 (n=98) AUC 0.7809. Raw classifier without subtyping 0.7849 (CV).",
+  "P-168": "LSTM on five visits (baseline to 24 months) of 15 neuropsychological tests plus 7 FreeSurfer MRI volumes plus demographics, predicting progression within 2 years of the 24-month index exam; ADNI-1/GO/2 participants still MCI at 24 months, n=347 (77 converters); 10-fold CV AUC 0.93 +/- 0.06. Single-visit random forest 0.90; MRI-only LSTM 0.86, MRI-only RF 0.85."
+ },
+ "quantity_a": "ROC-AUC for 3-year MCI-to-AD conversion from baseline, ADNI-1 MCI at baseline, predictors = baseline sMRI ROI volumes + peripheral-blood SNP + blood mRNA, 5-fold CV.",
+ "quantity_b": "ROC-AUC for 2-year progression from a 24-month index exam, among participants still MCI at month 24 (ADNI-1/GO/2), predictors = five-visit trajectories of neuropsychological tests + MRI volumes + demographics, 10-fold CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Neither study reports an interval that excludes the other's estimate (P-179 gives no interval; P-168's +/-0.06 is a fold SD), neither evaluates the other's method, and neither claims an ordering the other refutes. P-168's MRI-only models (0.85-0.86) sit close to P-179's 0.83, so the gap tracks the added longitudinal neuropsychological input.",
+ "gates": {
+  "task": "match: both T2 (MCI-to-AD conversion), but the horizons and index points differ (3 years from baseline vs 2 years from month 24).",
+  "dataset_family": "match: ADNI in both; partial participant overlap possible (ADNI-1 MCI).",
+  "validation_tier": "match: both internal cross-validation for the cited figures (P-179 also reports an ADNI-GO/2 external test at 0.78).",
+  "modality_family": "mismatch, not waived: P-179 = structural MRI + blood genomics/transcriptomics; P-168 = neuropsychological tests + structural MRI volumes over five visits. Neither uses PET, despite the registry's MRI/PET label."
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different endpoint horizon (3-year vs 2-year), different index point and population (baseline MCI vs participants still MCI after 24 months), and different predictor sets.",
+ "performance_validity": "flag does not apply: neither figure reaches 0.97 (0.826 and 0.93), both flags false in the pack.",
+ "independence": "Distinct author groups; both draw on ADNI, and ADNI-1 MCI participants may appear in both samples.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The predictor sets differ: P-179 uses baseline sMRI plus blood SNP and mRNA, P-168 uses five visits of neuropsychological tests plus MRI volumes, so the AUC gap confounds input with method (the C-80 precedent).",
+  "The endpoints differ: conversion within three years of baseline (P-179) against progression within two years of a 24-month index exam among those still MCI (P-168).",
+  "The modality-family gate fails (genomics vs neuropsychology added to sMRI) and no waiver is on record.",
+  "Even read as one quantity the results are not incompatible: no reported uncertainty excludes the other, and P-168's MRI-only AUC (0.86) is close to P-179's 0.83."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-179",
+   "page": 1,
+   "quote": "In internal \ufb01vefold cross-validation within ADNI-1, we achieved an overall AUC of 0.83 (79.20% accuracy, 81.25% sensitivity, 77.92% speci\ufb01city)"
+  },
+  {
+   "paper": "P-179",
+   "page": 1,
+   "quote": "Structural magnetic resonance imaging (sMRI) data and multi-omics data, including genotype data and gene expression pro\ufb01ling derived from peripheral blood samples, from 125 MCI patients"
+  },
+  {
+   "paper": "P-179",
+   "page": 2,
+   "quote": "If conversion happens within three years, we de\ufb01ne these MCI patients as having progressive MCI (P-MCI)"
+  },
+  {
+   "paper": "P-168",
+   "page": 1,
+   "quote": "was developed to predict the risk of progression from MCI to AD within 2 years from the index exam (the exam at 24-month)."
+  },
+  {
+   "paper": "P-168",
+   "page": 1,
+   "quote": "The longitudinal LSTM model showed superior prediction performance of MCI-to-AD progression (AUC 0.93 \u00b1 0.06) compared to the random forest model (AUC 0.90 \u00b1 0.09)."
+  },
+  {
+   "paper": "P-168",
+   "page": 5,
+   "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures."
+  }
+ ],
+ "record_defects": [
+  "The registry labels both papers' Modality 'MRI/PET'; neither uses PET (P-179: sMRI + blood SNP + blood mRNA; P-168: neuropsychological tests + MRI volumes + demographics).",
+  "resolution_note says 'Confirmed genuine: Same metric type (AUC); Gap magnitude 0.100 exceeds threshold', which contradicts the record's own resolution 'Rejected: Task, dataset, or modality mismatch'; the gap test ignores the horizon and predictor differences.",
+  "The bridging-evidence list is a generic dump of T2 ADNI papers; none is shown to identify a condition that separates these two results, so 'partially_resolved_candidate' is not supported by the note.",
+  "task_equal 'Yes' does not record that the horizons differ (3 years from baseline vs 2 years from month 24)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A comparison of the same predictor set at the same horizon and index point in both studies, with the two AUCs' uncertainty excluding each other."
+}

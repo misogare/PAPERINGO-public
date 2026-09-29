@@ -1,0 +1,82 @@
+{
+ "id": "C-80",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-82",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A transformer-based multi-features fusion model for prediction of conversion in mild cognitive impairment (Zheng et al., Methods 204 (2022) 241-248)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-3",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Class activation attention transfer neural networks for MCI conversion prediction (Luo et al., Computers in Biology and Medicine 156 (2023) 106700)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-82": "Transformer fusion on FreeSurfer DKT cortical features (5 measures x 62 regions) from baseline T1 MRI, 249 ADNI MCI (104 sMCI/145 pMCI, 3-year conversion; MCI-to-CN reverters counted as sMCI). One random split 200/25/24: test accuracy 83.3% (20/24), AUC 0.888, sensitivity 0.727, specificity 0.923. No confidence interval; 10-fold CV reported only in Supplementary Table S2 (not in the extract).",
+  "P-3": "3D CNN ensemble with class-activation attention transfer on whole baseline T1 MRI volumes, ADNI1/2, 298 sMCI/295 pMCI (36-month conversion), Wen et al. benchmark splits, 5-fold CV: accuracy 74.61% (variance 0.002, i.e. SD about 4.5 points across folds), AUC 0.780, sensitivity/specificity 0.75/0.75. The authors note that tuning and selecting on the same 5-fold CV may bias the estimate upward."
+ },
+ "quantity_a": "sMCI vs pMCI (3-year) accuracy from 310 FreeSurfer ROI features of baseline T1 MRI, ADNI subset of 249 (58% pMCI, reverters in sMCI), single 24-subject test set",
+ "quantity_b": "sMCI vs pMCI (36-month) accuracy from whole-volume baseline T1 MRI, ADNI1/2 subset of 593 (50% pMCI), 5-fold CV",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even treating them as the same quantity, 83.3% on 24 test subjects (binomial 95% interval roughly 64-93%, computed here) contains 74.61%, and P-3's fold-to-fold SD of about 4.5 points does not exclude 83%. P-82 claims to beat earlier MRI deep-learning models 'from 73.95% to 78.79%', but P-3 makes no claim about P-82's method, so no ordering is refuted.",
+ "gates": {
+  "task": "match: both 3-year sMCI vs pMCI (T2)",
+  "dataset_family": "match: both ADNI (different, partly overlapping MCI subsets)",
+  "validation_tier": "match: both internal, no external cohort",
+  "modality_family": "match at family level (structural MRI), but the input representation differs: tabular FreeSurfer ROI measures vs voxel-level whole-brain images"
+ },
+ "endpoint_and_metric": "compatible in type (accuracy, 3-year conversion) with differences in label definition (P-82 counts reverters as sMCI) and class balance (58% vs 50% pMCI), which move accuracy without any change in discrimination",
+ "performance_validity": "flag does not apply: 83.3% and 74.61% are below 0.97. P-82's test set of 24 makes its point estimate imprecise.",
+ "independence": "Both use ADNI; MCI cohorts likely overlap in part. Different groups (Lanzhou/Cardiff; La Trobe/Monash), no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The two accuracies are statistically compatible: P-82's 83.3% rests on 20 of 24 test subjects, an estimate that cannot exclude P-3's 74.61%, and neither paper reports uncertainty that excludes the other.",
+  "Two different methods each report a score on their own ADNI subset, and neither study claims an ordering the other refutes, which the rule reads as not incompatible.",
+  "The quantities also differ (FreeSurfer tabular features vs image-level input; reverters counted as sMCI and 58% pMCI in P-82 against 50% in P-3), which is why the 2026-09-19 human reading recorded documented incommensurability; under the ordered outcome list, compatibility is decided first."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-82",
+   "page": 3,
+   "quote": "we split our 249 subjects randomly into three groups, including the training dataset (n = 200), the validation dataset (n = 25), and the testing dataset (n = 24)."
+  },
+  {
+   "paper": "P-82",
+   "page": 4,
+   "quote": "The proposed model achieved 83.3% accuracy and an AUC of 0.888 (Fig. 2), with a sensitivity of 0.727 and a specificity of 0.923"
+  },
+  {
+   "paper": "P-82",
+   "page": 2,
+   "quote": "Finally, we extracted multiple cortical measurements including volume (VOL), cortical thickness (CT), curvature index (CD), folding index (FD), and surface area (SA) for 62 brain regions"
+  },
+  {
+   "paper": "P-82",
+   "page": 6,
+   "quote": "the classification performance of the proposed model also outperformed previously developed deep learning models for classifying pMCI versus sMCI based on MRI data [22,53-55], which ranged from 73.95% to 78.79%."
+  },
+  {
+   "paper": "P-3",
+   "page": 7,
+   "quote": "CAAT ensemble 0.75 (0.004) 0.75 (0.006) 0.75 (0.002) 74.61 (0.002) 0.780 (0.003)"
+  },
+  {
+   "paper": "P-3",
+   "page": 9,
+   "quote": "A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models. This may lead to an optimistically biased evaluation of the model performance."
+  }
+ ],
+ "record_defects": [
+  "resolution_note 'Genuine architectural conflict ... gap 8.7%' treats a point-estimate gap as a conflict; the 24-subject test set in P-82 cannot support it.",
+  "interpretation 'Pre-computed anatomical ROIs (FreeSurfer) beat end-to-end voxel learning (CNN) on small datasets' is not a claim either paper tests; neither compares the two input types on a shared split.",
+  "genuine=true and genuine_conflict=true remain in the record alongside resolution_status documented_incommensurability and status rejected; the flags contradict the status.",
+  "The bridging list (C-index and other-task papers) is not apt for this pair."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "Toward documented_incommensurability rather than false_positive: an adjudicator who weighs the input-representation and label-definition differences before compatibility. Toward a real disagreement: P-82's supplementary 10-fold CV showing an accuracy whose interval excludes P-3's on a comparable label definition, which would still leave the representation difference."
+}

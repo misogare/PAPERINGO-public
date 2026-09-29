@@ -1,0 +1,89 @@
+{
+ "id": "C-74",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-62",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A deep learning model for the detection of various dementia and MCI pathologies based on resting-state electroencephalography data: A retrospective multicentre study (Watanabe et al., Neural Networks 171 (2024) 242-250)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-83",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Mild Cognitive Impairment detection based on EEG and HRV data (Boudaya et al., Digital Signal Processing 147 (2024) 104399)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-62": "MNet deep CNN on 19-channel resting eyes-closed clinical EEG, trained at Osaka University Hospital only. Healthy volunteers vs DEMENTIA (AD+DLB+iNPH): bACC 0.927 +/- 0.015 internal (5-fold CV), external bACC 0.805 at Hospital K and 0.920 at Hospital N (ensemble). No healthy-vs-MCI classification is reported: the only MCI result is pathology subtyping WITHIN MCI (AD vs DLB vs iNPH), bACC 0.715, ROC AUC 0.847, Hospital O.",
+  "P-83": "Hybrid voting ML (SVM+GB+RF) on EEG (Emotiv 14-channel) plus HRV (Polar H10) features recorded during CERAD sub-tests, 15 participants (8 MCI/7 HC per the abstract), segment-level 75/25 shuffled split. MCI vs HC average accuracy across CERAD tests 93.86% (sens 93.87%, spec 93.53%); best test T1 97.43% (AUC 94.91%); LOOCV T1 96.14%."
+ },
+ "quantity_a": "Balanced accuracy of a resting-state EEG CNN for healthy volunteers vs overt dementia (AD, DLB, iNPH) in external Japanese hospital cohorts; MCI appears only as a within-MCI pathology subtyping task",
+ "quantity_b": "Segment-level accuracy of an EEG+HRV feature ensemble for MCI (amnestic and non-amnestic) vs healthy controls during CERAD cognitive tasks, 15 German participants, internal shuffled split",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable as a conflict: the 0.805-0.920 range belongs to the dementia-vs-healthy comparison, which P-83 never studies, and P-83's MCI-vs-HC comparison is never studied by P-62. Even as raw numbers, 0.920 bACC and 93.86% accuracy are close, and neither paper claims a value the other refutes.",
+ "gates": {
+  "task": "mismatch: P-62's 0.805-0.920 is healthy vs dementia (not T1 MCI detection); P-83 is MCI vs HC (T1)",
+  "dataset_family": "mismatch: P-62 Osaka/Kochi/Nippon Life hospital EEG archives; P-83 own Magdeburg cohort of 15. The record itself has dataset_equal='No'",
+  "validation_tier": "mismatch: the claimed P-62 values are external-hospital tests (V4); P-83 uses a shuffled 75/25 split of EEG segments from 15 people (internal, with subject overlap between train and test not excluded)",
+  "modality_family": "partial: both EEG, but P-83 fuses EEG with HRV and records during cognitive tasks, P-62 resting clinical EEG"
+ },
+ "endpoint_and_metric": "incompatible: different comparison (dementia vs healthy against MCI vs healthy) and different metric (balanced accuracy vs accuracy at segment level)",
+ "performance_validity": "flag applies to P-83 in part: its best result is 97.43% accuracy on internal validation with n=15 and no external cohort, and the 93.86% quoted in the record is the average of the same internal segment-level evaluation. The registry did not trip the automatic test because it recorded the average. Any performance comparison resting on P-83 is excluded under Section 2.",
+ "independence": "Independent: different groups (Osaka University; Sfax/Magdeburg/Toulouse), different cohorts.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-62's 0.805 and 0.920 are balanced accuracies for healthy volunteers vs dementia patients at the external hospitals, not for MCI detection, so the record's 'on T1' label is wrong.",
+  "P-62 reports no healthy-vs-MCI result; its MCI figure (bACC 0.715) is AD vs DLB vs iNPH subtyping within MCI.",
+  "P-83 reports MCI vs HC accuracy in 15 participants, so the two papers report on different comparisons, populations and metrics.",
+  "The dataset-family and validation-tier gates also fail with no waiver on record, and P-83's own best result (97.43%, n=15, internal) meets the performance-validity exclusion."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-62",
+   "page": 1,
+   "quote": "the DCNN achieved a balanced accuracy (bACC) of 0.927 in classifying individuals as healthy (n = 69) or as having AD, DLB, or iNPH (n = 188). The model demonstrated robustness across institutions, maintaining bACCs of 0.805 for data from Hospital #2 (n = 73) and 0.920 at Hospital #3 (n = 139)."
+  },
+  {
+   "paper": "P-62",
+   "page": 1,
+   "quote": "Notably, it also identified MCI pathologies with a bACC of 0.715 for Hospital #1 (n = 83), despite being trained on overt dementia cases instead of MCI cases."
+  },
+  {
+   "paper": "P-62",
+   "page": 3,
+   "quote": "Importantly, data obtained from individuals with MCI and data collected at Hospital K and Hospital N were not used for training and were included only in the test sets."
+  },
+  {
+   "paper": "P-83",
+   "page": 1,
+   "quote": "Our dataset includes 15 subjects who were randomly assigned to training and testing groups of 7 HC and 8 MCI, respectively."
+  },
+  {
+   "paper": "P-83",
+   "page": 1,
+   "quote": "An average accuracy of 93.86%, a sensitivity of 93.87%, and a specificity of 93.53% are achieved."
+  },
+  {
+   "paper": "P-83",
+   "page": 6,
+   "quote": "For each test, we separated our data into 75% for the training set and 25% for the testing set. To boost the effectiveness of ML model accuracy and to reduce the rate of overfitting, we applied the shuffling strategy throughout the data partitioning process."
+  },
+  {
+   "paper": "P-83",
+   "page": 7,
+   "quote": "the first test called \"Verbal fluency\" related to the executive function had the highest accuracy (97.43%)."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-62: bACC 0.805-0.920 on T1' mislabels the task: these are healthy vs dementia (AD+DLB+iNPH) external-hospital balanced accuracies, not MCI detection.",
+  "validation_comparable='Yes' is wrong: P-62's quoted values are external-site tests; P-83 is a shuffled internal split of segments from 15 people.",
+  "The earlier note 'Confirmed genuine: Same metric type (Acc)' is wrong: P-62 reports balanced accuracy, P-83 accuracy.",
+  "The bridging-evidence list consists of papers from other modalities and tasks (e.g. MRS, MR elastography, nomograms) described as 'comparable task/dataset family'; none bears on this pair.",
+  "The registry's Best_Metric for P-83 (Acc 93.86) is the cross-test average; the paper's reported best is 97.43%, which would trip the performance-validity test."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only a P-62 healthy-vs-MCI classification result (not present in the article; supplementary tables were not in the extract) set against P-83 on a comparable validation tier, and P-83 would still fall under the performance-validity exclusion."
+}

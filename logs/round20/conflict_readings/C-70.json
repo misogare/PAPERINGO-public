@@ -1,0 +1,87 @@
+{
+ "id": "C-70",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-52",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Hippocampal auto-segmentation based on deep learning for identifying magnetic resonance imaging biomarkers of early mild cognitive impairment (Hu, Ma, Zheng, Ma, Xia; Neuroscience 591 (2025) 76-82)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-99",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Machine learning approaches to mild cognitive impairment detection based on structural MRI data and morphometric features (Zubrikhina et al., Cognitive Systems Research 78 (2023) 87-95)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-52": "Deep-learning (U-Net/CNN) hippocampal auto-segmentation, 1183 radiomic features reduced to 7 (Spearman filter + LASSO), XGBoost; single-centre Wenzhou Seventh People's Hospital cohort, 105 MCI vs 45 NC (MoCA/MMSE education-adjusted cut-offs), random 7:3 split: training AUC 0.935 (95% CI 0.83-0.97), test set (30 MCI, 15 NC) AUC 0.864 (95% CI 0.73-0.89). No accuracy reported in the text.",
+  "P-99": "FreeSurfer 6.0.1 morphometry (906 features), chi-squared SelectKBest, RBF SVC; Moscow memory-clinic cohort, 145 MCI (ICD-10 F06.7, over 65) vs 62 healthy volunteers, 10-fold CV: accuracy 0.73 +/- 0.059, ROC-AUC 0.735 +/- 0.076, F1-macro 0.683 (Table 1)."
+ },
+ "quantity_a": "Held-out test ROC-AUC (45 subjects) of an XGBoost classifier on seven hippocampal radiomic features, MCI vs NC, single Chinese hospital cohort, 3D T1.",
+ "quantity_b": "10-fold CV accuracy (recorded) / ROC-AUC of an RBF SVC on FreeSurfer whole-brain morphometry, MCI vs HC, single Moscow memory-clinic cohort, 1.5T T1.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The record sets an AUC against an accuracy. Comparing AUC with AUC, P-99's 0.735 +/- 0.076 sits at the lower bound of P-52's printed test interval (0.73-0.89), so the uncertainty does not exclude it; neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: both MCI vs normal controls from baseline T1 MRI (T1).",
+  "dataset_family": "mismatch: P-52 is a Wenzhou hospital cohort, P-99 a Moscow memory-clinic cohort; no shared dataset. The record's 'dataset_equal: Yes' matched the registry placeholder 'not reported' held by both rows. No waiver on record.",
+  "validation_tier": "match in tier: internal validation only in both (random held-out split vs 10-fold CV).",
+  "modality_family": "match: structural MRI."
+ },
+ "endpoint_and_metric": "incompatible as recorded (AUC vs accuracy); the populations behind 'MCI' differ (MoCA/MMSE cut-offs in a Chinese hospital vs ICD-10 F06.7 diagnoses over age 65), and so do the predictors (seven hippocampal radiomic texture features vs 906 FreeSurfer morphometric features).",
+ "performance_validity": "flag does not apply: 0.864 and 0.73 are well below 0.97.",
+ "independence": "Distinct studies, sites, countries and authors; no shared data.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The dataset-family gate fails with no waiver: P-52 is a Wenzhou hospital cohort and P-99 a Moscow memory-clinic cohort, and the recorded 'Yes' matched only the shared registry placeholder 'not reported'.",
+  "The recorded claims are on different metric types (P-52 AUC 0.864 vs P-99 accuracy 73%).",
+  "Predictors and MCI definitions differ (hippocampal radiomics vs FreeSurfer morphometry; cut-off-defined MCI vs ICD-10 F06.7), the representation confound of precedents C-80 and C-01.",
+  "Even on a common AUC scale the results overlap: P-99's 0.735 lies at the lower edge of P-52's printed 0.73-0.89 test interval."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-52",
+   "page": 1,
+   "quote": "The XGBoost model, utilizing the seven selected features, achieved the highest AUC in the test set (AUC = 0.864, 95 %CI:0.73\u20130.89)."
+  },
+  {
+   "paper": "P-52",
+   "page": 2,
+   "quote": "This study was conducted at Wenzhou Seventh People\u2019s Hospital, between May 2020 and June 2024."
+  },
+  {
+   "paper": "P-52",
+   "page": 2,
+   "quote": "an independent test set that contained 30 MCI patients and 15 NC subjects."
+  },
+  {
+   "paper": "P-52",
+   "page": 6,
+   "quote": "First, the relatively small sample size and lack of external validation may constrain the generalizability of our findings."
+  },
+  {
+   "paper": "P-99",
+   "page": 1,
+   "quote": "The dataset for the study consists of 62 healthy volunteers and 145 patients with MCI obtained from the \u00abMemory Clinic\u00bb (Moscow, Russia)."
+  },
+  {
+   "paper": "P-99",
+   "page": 3,
+   "quote": "Patients over the age of 65 who had been diagnosed with mild cognitive impairment (F06.7) were eligible."
+  },
+  {
+   "paper": "P-99",
+   "page": 4,
+   "quote": "the best and most stable results were obtained by SVC (0.68 F1, 0.735 ROC -AUC)"
+  }
+ ],
+ "record_defects": [
+  "dataset_equal 'Yes' is wrong: the two cohorts are separate single-site clinical samples in China and Russia; the match came from both registry rows holding 'not reported'.",
+  "The resolution-evidence list mixes metrics and tasks (e.g. P-411 PD-MCI accuracy, P-416 precision, P-538 three-class qEEG/ERP AUC) and names no separating condition; 'partially resolved' is unsupported.",
+  "P-52 note (not in the record): its NC group is described as MoCA >=27 yet Table 1 gives NC MoCA 22.53 +/- 2.91 with no significant MCI/NC MoCA difference (p = 0.17), and its printed test CI (0.73-0.89) is asymmetric about 0.864; these internal inconsistencies weaken P-52's estimate further."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "The two feature sets evaluated on one shared cohort, or the same pipeline evaluated on both cohorts, with non-overlapping AUC intervals."
+}

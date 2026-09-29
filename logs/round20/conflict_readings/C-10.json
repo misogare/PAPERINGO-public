@@ -1,0 +1,82 @@
+{
+ "id": "C-10",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-76",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "MC-ViViT: Multi-branch Classifier-ViViT to detect Mild Cognitive Impairment in older adults using facial videos (Sun, Dodge & Mahoor, Expert Systems With Applications 238 (2024) 121929)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-77",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Mild cognitive impairment detection from facial video interviews by applying spatial-to-temporal attention module (Alsuhaibani, Dodge & Mahoor, Expert Systems With Applications 252 (2024) 124185)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-76": "I-CONECT facial videos, four themes (Crafts Hobbies 32 videos, Day Time TV Shows 41, Movie Genres 35, School Subjects 39), subject-disjoint K-fold (3 videos per fold): accuracy 90.63% (29/32) / 85.37% / 85.71% / 89.74%, AUC 0.60 / 0.50 / 0.61 / 0.53 (Table 2); cross-theme 80.5-85.7%.",
+  "P-77": "I-CONECT facial videos from the intervention arm, four different themes (Summertime 30 videos, Self-Care 30, Halloween 32, Cities and Towns 39), 10-fold subject CV: accuracy 83.3% / 66.7% / 87.5% (28/32) / 79.5%, AUC 0.83 / 0.66 / 0.87 / 0.80 (Table 4); five reshuffles give means 74.6 / 61.3 / 84.4 / 78.0%. Table 5 lists P-76 (Sun et al. 2024) at 90.6% accuracy, AUC 0.6, and the text concedes 'other models have achieved better accuracy and F1 score'."
+ },
+ "quantity_a": "Video-level accuracy/AUC of MC-ViViT for MCI vs NC on four I-CONECT conversation themes (32-41 videos each), subject-disjoint K-fold.",
+ "quantity_b": "Video-level accuracy/AUC of CAE+STAM for MCI vs NC on four other I-CONECT themes (30-39 quality-screened videos each), 10-fold CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Best-theme accuracies are 29/32 (90.63%) vs 28/32 (87.5%), a one-video difference on about 32 videos, well within sampling noise; both papers conclude facial video discriminates MCI. P-77 explicitly accepts P-76's higher accuracy and claims only a higher AUC, which P-76's own table (AUC 0.50-0.61) does not dispute.",
+ "gates": {
+  "task": "match: MCI vs NC detection (T1).",
+  "dataset_family": "match: I-CONECT, but different conversation themes and different (overlapping) participant subsets per theme.",
+  "validation_tier": "match: both internal subject-disjoint cross-validation, no external cohort.",
+  "modality_family": "match: facial video (digital behaviour)."
+ },
+ "endpoint_and_metric": "compatible metric types (accuracy, AUC), but the video sets differ by theme and by quality screening, so the per-theme accuracies are estimates on different samples.",
+ "performance_validity": "not a performance disagreement; neither value reaches 0.97.",
+ "independence": "Not independent: same senior authors (H. H. Dodge, M. H. Mahoor), same laboratory, same trial (I-CONECT) with overlapping participants.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The two results agree in direction: both papers conclude that facial video discriminates MCI from normal cognition.",
+  "The accuracy gap (29/32 vs 28/32 on about 32 videos per theme) is within sampling noise, and the videos come from different themes.",
+  "P-77 itself cites P-76's 90.6% accuracy and concedes it, claiming superiority only in AUC; neither paper refutes a claim of the other.",
+  "The papers share senior authors and the trial dataset, so they are not independent in any case."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-76",
+   "page": 1,
+   "quote": "Our experimental results on the I-CONECT dataset show the great potential of MC-ViViT in predicting MCI with a high accuracy of 90.63% accuracy on some of the interview videos."
+  },
+  {
+   "paper": "P-76",
+   "page": 7,
+   "quote": "MC-ViViT predicts 29 out of 32 subjects correctly on the theme Crafts Hobbies, which reaches the highest accuracy, 90.63%."
+  },
+  {
+   "paper": "P-76",
+   "page": 7,
+   "quote": "The average AUC of all four themes is 0.56."
+  },
+  {
+   "paper": "P-77",
+   "page": 1,
+   "quote": "The detection accuracy using this combined method reached 88%, whereas the accuracy without applying the segments and sequences information of the facial features within a video on a certain theme was 84%."
+  },
+  {
+   "paper": "P-77",
+   "page": 7,
+   "quote": "Sun et al. (2024) Visual 90.6% 0.93 0.6 Ours Visual 87.5% 0.89 0.87"
+  },
+  {
+   "paper": "P-77",
+   "page": 8,
+   "quote": "Although other models have achieved better accuracy and F1 score, our proposed framework achieved the highest AUC on the I-CONECT dataset."
+  }
+ ],
+ "record_defects": [
+  "dataset_family_equivalence true without noting the shared authorship and the use of different conversation themes; the record does not record the non-independence.",
+  "registry Sample_N_Approx for P-77 is 68 (intervention-arm participants); the analysed samples are 30-39 quality-screened videos per theme.",
+  "resolution_status 'partially_resolved_candidate' is not supported: the bridging-evidence list is unrelated headline scores, and there is no disagreement to resolve."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only if the two models were run on the same theme and videos and one paper's result excluded the other's; no such evaluation exists in either paper."
+}

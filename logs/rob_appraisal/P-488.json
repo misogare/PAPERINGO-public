@@ -1,0 +1,220 @@
+{
+ "paper_id": "P-488",
+ "document_check": {
+  "matches": true,
+  "note": "Gaubert S, Garces P, Hipp J, Bru\u00f1a R, Lop\u00e9z ME, Maestu F, Vaghari D, Henson R, Paquet C, Engemann D-A. Exploring the neuromagnetic signatures of cognitive decline from mild cognitive impairment to Alzheimer's disease dementia. eBioMedicine 2025;114:105659. The study analyses resting-state MEG from BioFIND in 117 MCI patients (64 progressed to AD dementia, 53 stayed stable), using stacked regularised classifiers with 10 x repeated 10-fold CV. Page 13 gives the stand-alone AUCs (dwPLI 0.67, SD 0.15; power envelope 0.71, SD 0.15; covariance 0.74, SD 0.13) and the all-inputs AUC of 0.81 (SD 0.12). This matches the cited result. The title also matches the summaries.md header for Paper 488."
+ },
+ "cited_result": "Progressive (64) vs stable (53) MCI, BioFIND resting MEG, stand-alone models with 10x repeated 10-fold CV, AUC (p.13): covariance 0.74 (SD 0.13), power-envelope correlation 0.71 (SD 0.15), dwPLI 0.67 (SD 0.15); all inputs 0.81 (SD 0.12). Principal result appraised: the cross-validated stand-alone MEG classifiers and the stacked all-inputs model (Fig. 5a), on all 117 cases.",
+ "tool_reason": "The cited result is the cross-validated discrimination (AUC) of regularised machine-learning classifiers that predict progression from MCI to AD dementia. That is a prognostic prediction-model question, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The data come from an existing research dataset pooled from several projects at two sites, which is an acceptable source for a prognostic model. But only patients with follow-up data were analysed: 117 of the 158 BioFIND MCI patients. From the Methods (90 Madrid and 68 Cambridge patients) and Table 3, all 90 Madrid patients were analysed but only 27 of the 68 Cambridge patients, and 23 of those 27 progressed (85%, against 41 of 90 at Madrid). Inclusion in the analysed sample therefore appears to depend on site and on outcome. The MCI criteria also differed between sites: objective memory impairment was required at Cambridge, while memory or other domains sufficed at Madrid.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "This study performed a reanalysis of anonymised data shared via controlled access to the BioFIND58 database ... The participants were pooled over a number of different projects",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "We used a subset of 117 of the patients with MCI in BioFIND who had follow-up data. ... AD-progressors were overrepresented in the CBU site as compared to the CTB site. ... Yes: 41, No: 49 Yes: 23, No: 4 ... In Cambridge, participants were required to present an objective deficit specifically in memory domain tests, whereas in Madrid, the diagnosis required objective impairment in either the memory domain or other cognitive functions.",
+     "page": "4; 4; 5 (Table 3); 3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The MEG predictors were recorded at baseline (2009 to 2016) on identical systems with identical parameters at both sites. They were derived by an automated pipeline from the first 2 minutes of each recording, well before the progression outcome was known. All inputs, including MRI, MMSE and demographics, exist at baseline. Site is also an input to the full model: it is available, but its predictive value is specific to this dataset (addressed in domain 4).",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "MEG systems and scanning parameters were identical between sites, including continuous head position tracking and seating position of participants. ... We analysed the first 2 min of resting-state eyes-closed MEG data for each patient.",
+     "page": "4; 5"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Since the MEG recordings in our study were conducted between 2009 and 2016 ... the autoreject algorithm was used to exclude noisy epochs",
+     "page": "19; 5"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "We were in particular interested in studying metrics that can be defined in sensor space to assess their potential as biomarkers in clinical settings where an MRI may not be available",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "Progression was a clinical diagnosis of probable AD dementia under the McKhann 2011 criteria, made without CSF or PET biomarkers; the authors put the misdiagnosis risk at about 30%. Follow-up length was not recorded for each patient. It differed by site (about five years at Madrid, three at Cambridge) and was incomplete for some patients. Anyone not seen to progress was labelled stable, so the stable group may include later progressors. The paper does not say whether the diagnosing clinicians were blind to the predictors. The clinical work-up used MRI and neuropsychological evaluation, which overlaps with the MRI and MMSE inputs of the full model, though not with MEG.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "Even if the clinical diagnosis of AD dementia was done by neurologists in specialised memory clinics, the lack of CSF or amyloid PET biomarkers introduces a risk of misdiagnosis approximating 30%.",
+     "page": "19"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "Of these, 64 subsequently progressed to probable AD dementia based on clinical criteria according to McKhann et al. (2011)60",
+     "page": "4"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes for the MEG models; probably no for the all-inputs model (MRI and cognitive evaluation are part of the diagnostic work-up)",
+     "quote": "involving clinical and neuropsychological evaluation in addition to brain MRI but not biological biomarkers or amyloid/tau PET-scans",
+     "page": "19"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably no",
+     "quote": "period spanned approximately five years for the Madrid site and three years for the Cambridge site, although follow-up data for some participants could not be maintained throughout this period.",
+     "page": "4"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched the Participants section, the Ethics section and the limitations paragraphs for any statement that the clinicians who diagnosed progression were blind to baseline MEG, MRI or MMSE. None found.",
+     "page": "3-4, 19-20"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No",
+     "quote": "Precise follow-up times were not documented on a patient-by-patient basis. ... During these follow-ups, participants who did not show progression were considered to have stable MCI.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 53 stable and 64 progressive participants against 322,524 inputs per MEG metric (64,480 to 159,681 first-layer parameters); the authors themselves call the sample limited for developing prediction models. Several design choices are sound: regularised linear models with internally tuned penalties, 10 x repeated 10-fold CV with participant-level folds, imputation and scaling fitted inside the folds, and no univariable selection. Against that, site is collinear with progression, and the stand-alone MEG models neither hold it out nor adjust for it. The full model relied on site, and the group-level power difference lost significance after adjustment for site. Only AUC is reported for the classifiers: no calibration and no sensitivity or specificity. No test compares the AUCs of the stand-alone models with each other or with the full model. The dwPLI representation was chosen because it gave better results. Validation is internal only.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Our study\u2019s sample size is relatively large compared to other MEG or EEG studies on MCI progression (n = 117), however it is still limited for developing prediction models. ... 102 \u00d7 102 x 31 = 322,524",
+     "page": "19; 10 (Table 5)"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "standard scaling was used to enforce comparable value ranges",
+     "page": "10"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "This approach ensured that no participant was excluded in the final model. ... Analysis was based on all n = 117 cases.",
+     "page": "6; 15 (Fig. 5)"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Yes",
+     "quote": "we used an iterative imputer (scikit-learn default of Bayesian ridge regression) inside the CV pipeline (fitted on training, applied on testing data)",
+     "page": "10"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "for all sensors and all frequencies without pre-specified averaging or selection of individual features",
+     "page": "9"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "site is, to a certain extent, collinear with progression risk ... the full model relied on MEG covariances, MMSE, MRI and site ... we found no statistically significant differences between groups after adjustment on site",
+     "page": "4; 13; 12"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "providing calibrated probability outputs ... Combining all inputs led to markedly improved classification scores (AUC = 0.81, SD = 0.12)",
+     "page": "9; 13"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably yes",
+     "quote": "we employed a 10 x repeated 10-fold cross-validation (CV) scheme, leading to 100 CV splits in total ... As the sample size was small, we preferred linear methods trading bias for variance.",
+     "page": "9"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched the Methods, Results and Table 5 for final model coefficients or a final fitted model. Only conditional permutation importance scores are reported; the analysis code is said to be on GitHub.",
+     "page": "9-10, 13, 20"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "For every repetition, CV folds were propagated as groups for ... leave-one-group-out cross-validation in the second layer, which avoided sample leakage.",
+     "page": "9-10"
+    },
+    {
+     "question": "AI: Are preprocessing steps confined to training folds?",
+     "answer": "Probably yes (imputation and scaling inside the folds; the unsupervised Riemannian subspace projection may have been fitted on all data)",
+     "quote": "inside the CV pipeline (fitted on training, applied on testing data) and standard scaling was used to enforce comparable value ranges ... For MEG features, the same preprocessing was applied as described above for Riemannian-stance MANOVA.",
+     "page": "10"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Probably yes for covariance and power envelope (penalties tuned within training by the CV estimators); probably no for dwPLI, whose representation was chosen on results",
+     "quote": "CV splits were fixed and reused across all models to ensure strict comparability. ... we vectorized using the upper triangle of the matrix, which led to better results than the low-rank (rank = 5) SPD manifold",
+     "page": "10"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Probably yes (imbalance is mild, 64 versus 53, and AUC is threshold-free; no specific handling described)",
+     "quote": "AD progression (n = 64) Stable MCI (n = 53)",
+     "page": "4 (Table 2)"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (10 x repeated 10-fold CV; no external or leave-site-out validation)",
+     "quote": "Taken together, these results add complementary validation to the findings from the previous statistical analysis with logistic regression (Fig. 2) by applying more conservative cross-validation rather than comparisons of in-sample discrimination",
+     "page": "13"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "some concerns",
+   "rationale": "Patients come from two specialist research sites, pooled from several projects and restricted to those with follow-up. Progressors already had a lower baseline MMSE (25.5 against 27.2). The question is prognostic (progressive against stable MCI), not MCI against cognitively unimpaired people."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "The predictors come from research-grade 306-channel MEG recorded in a shielded room. The all-inputs model also uses site as an input, and site has no meaning outside this dataset."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "The outcome is clinical probable AD dementia without biomarkers. Stable MCI is defined as no observed progression over follow-up that was undocumented and differed by site."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Three domains are high. Domain 1: inclusion depended on follow-up being available, and 23 of the 27 Cambridge patients included were progressors. Domain 3: the outcome was a biomarker-free clinical diagnosis with undocumented, site-dependent follow-up, and stable status was assigned by absence of observed progression. Domain 4: there are very few events for the dimensionality, the stand-alone models do not address site confounding, only AUC is reported with no calibration, and validation is internal only. Domain 2 is low. Under PROBAST any high domain makes the overall rating high.",
+ "confidence": "high",
+ "tool": "PROBAST",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 23,
+  "matched": 23,
+  "annotations_not_checked": 2,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
+ }
+}

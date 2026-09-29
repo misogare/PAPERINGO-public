@@ -1,0 +1,87 @@
+{
+ "id": "C-112",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-182",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Differential Role for Hippocampal Subfields in Alzheimer's Disease Progression Revealed with Deep Learning (Kwak et al., Cerebral Cortex 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-23",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "TASNet: A tri-modal attentive scale robust adaptive fusion framework for progressive mild cognitive impairment classification (Zhu et al., J. Neurosci. Methods 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-182": "DenseNet on a 3D bounding box of baseline T1 hippocampal voxels, trained only on AD vs CN (ADNI-2/GO) and applied without retraining to MCI; test set 381 ADNI-2/GO MCI (118 pMCI, 263 sMCI) labelled on diagnoses at least 18 months apart; Acc 75.85%, AUC 0.777, sens 0.66, spec 0.80.",
+  "P-23": "TASNet trained end-to-end on sMCI vs pMCI from baseline sMRI + FDG-PET + CSF (Abeta42, tau, p-tau), 36-month criterion, ADNI1/ADNI2; 8:1:1 split of 200 MCI, so the test set is about 20 subjects (sens 83.33% = 10/12, spec 87.50% = 7/8); Acc 85.00%, AUC 0.9167. Its own sMRI-only ablation: Acc 65.00%, AUC 0.6667."
+ },
+ "quantity_a": "Accuracy of a hippocampus-only sMRI model transferred from AD/CN training, on 381 MCI (progression across a follow-up of at least 18 months), single held-out cohort.",
+ "quantity_b": "Accuracy of a tri-modal (sMRI + FDG-PET + CSF) model trained on MCI labels (36-month criterion), on a held-out test split of about 20 MCI subjects.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. On about 20 test subjects, 17/20 = 85% has a binomial 95% interval of roughly 62-97%, which contains 75.85%. P-23's own sMRI-only configuration scores 65%, below P-182, so no ordering in favour of either input is contradicted.",
+ "gates": {
+  "task": "match nominally (T2), but the horizons differ (at least 18 months vs 36 months).",
+  "dataset_family": "match: ADNI in both (ADNI-2/GO vs ADNI1+ADNI2); overlap possible.",
+  "validation_tier": "match: both internal ADNI held-out testing.",
+  "modality_family": "mismatch, not waived: P-182 is structural MRI only; P-23 adds FDG-PET and CSF fluid biomarkers. The record's 'Yes / structural_mri' is wrong for P-23."
+ },
+ "endpoint_and_metric": "incompatible: same metric (accuracy) but different predictor set (sMRI vs sMRI+PET+CSF), different training target (AD/CN transfer vs direct pMCI/sMCI), different horizon, and test sets differing twentyfold in size.",
+ "performance_validity": "flag does not apply: 0.85 and 0.7585 are below 0.97. P-23's test set of about 20 subjects makes its point estimate imprecise.",
+ "independence": "Distinct author groups; both ADNI (ADNI-2 MCI may appear in both).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The predictor sets differ: P-23's 85% needs FDG-PET and CSF alongside sMRI, and its sMRI-only arm reaches 65%; P-182 uses only hippocampal sMRI. The modality gate fails and is not waived.",
+  "The endpoints differ (progression over a follow-up of at least 18 months vs a 36-month criterion), and P-182's model never saw MCI labels in training.",
+  "The two accuracies are compatible in any case: P-23's roughly 20-subject test set gives an interval that contains 75.85%."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-182",
+   "page": 6,
+   "quote": "In this task, the model achieved an accuracy of 75.85% and an AUC of 0.777 (Fig. 2B), with a sensitivity of 0.66 and a specificity of 0.8"
+  },
+  {
+   "paper": "P-182",
+   "page": 2,
+   "quote": "This dataset was labeled as either stable MCI (sMCI) or progressive MCI (pMCI) based on longitudinal diagnostic evaluations obtained at least 18 months apart."
+  },
+  {
+   "paper": "P-182",
+   "page": 5,
+   "quote": "we used a classification framework in which MCI progression is predicted based on a model that trains to differentiate AD versus CN data."
+  },
+  {
+   "paper": "P-23",
+   "page": 1,
+   "quote": "Experiments on the ADNI dataset resulted in an accuracy of 85.00% and an AUC of 91.67% in pMCI/sMCI classification."
+  },
+  {
+   "paper": "P-23",
+   "page": 6,
+   "quote": "based on a 36-month follow-up criterion"
+  },
+  {
+   "paper": "P-23",
+   "page": 6,
+   "quote": "The final cohort (N= 552) was stratified into training, validation, and test sets (8:1:1)."
+  },
+  {
+   "paper": "P-23",
+   "page": 8,
+   "quote": "sMCI vs. pMCI A1 sMRI only 66.67 62.50 65.00 69.57 66.67"
+  }
+ ],
+ "record_defects": [
+  "modality_family_equal 'Yes' with 'structural_mri' is wrong: P-23 is sMRI + FDG-PET + CSF.",
+  "The registry Sample_N_Approx for P-23 is '119'; the PDF gives 552 in total, 200 MCI (82 pMCI, 118 sMCI), with a test split of about 20.",
+  "The registry Modality 'MRI/PET' for P-23 omits CSF; for P-182 'MRI/PET' is wrong (sMRI only).",
+  "resolution_note says 'Confirmed genuine: Same metric type (Acc); Gap magnitude 0.092 exceeds threshold' without regard to predictor set or test-set size; the resolution field says 'Rejected - false positive' while the status is partially_resolved_candidate."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Both studies reporting the same predictor set (for example sMRI only) on the same horizon, with test sets large enough that the intervals exclude each other."
+}

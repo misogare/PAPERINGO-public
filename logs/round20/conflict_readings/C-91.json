@@ -1,0 +1,84 @@
+{
+ "id": "C-91",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-58",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Cross-lingual detection of mild cognitive impairment based on temporal parameters of spontaneous speech (Gosztolya et al., Computer Speech & Language 69 (2021) 101215)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-167",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Detection of Mild Cognitive Impairment From Non-Semantic, Acoustic Voice Features: The Framingham Heart Study (Ding et al., JMIR Aging 2024;7:e55126)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-58": "SVM on 15 ASR-derived temporal/pause parameters from a telephone 'previous day' monologue, speaker-wise nested leave-one-out CV, MCI vs HC in two separate samples of 33 (English: 14 MCI/19 HC, New York; Hungarian: 13 MCI/20 HC, Szeged). All-features monolingual: English accuracy 84.8%, AUC 0.932; Hungarian accuracy 75.8%, AUC 0.727. Best subset (filler-related, Hungarian) accuracy 90.9%, AUC 0.912 (0.923 with English ASR). Across all feature subsets AUC ranges 0.519-0.932. The abstract's '67-92%' is a range over several metrics (accuracy, precision, recall, specificity) across subsets, not an accuracy range. No confidence intervals.",
+  "P-167": "Random forest on 29 selected OpenSMILE/Praat acoustic features from diarized participant speech during Framingham Heart Study neuropsychological testing, 10-fold CV, 100 MCI vs 100 age/sex/education-matched CN: AUC 0.87 (95% CI 0.81-0.94); shorter recordings AUC 0.79-0.82."
+ },
+ "quantity_a": "Cross-validated discrimination (accuracy and other EER-threshold metrics, AUC) of an SVM on temporal speech parameters for Petersen-criteria MCI vs HC, two memory-clinic samples of 33 (English, Hungarian), telephone spontaneous monologue",
+ "quantity_b": "10-fold cross-validated ROC-AUC of a random forest on 29 non-semantic acoustic features for DSM-IV/NINCDS-ADRDA panel-diagnosed MCI vs CN, 200 community-cohort (FHS) participants, speech recorded during NP testing",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-167's AUC 0.87 (95% CI 0.81-0.94) lies inside P-58's own range of AUCs across feature sets (0.727-0.932 for the all-feature models) and its CI includes P-58's English all-feature AUC 0.932. The record's claim_a is a mixed-metric range, not a single estimate, and neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: both MCI vs cognitively normal detection (T1)",
+  "dataset_family": "mismatch: P-58 uses its own New York (Columbia) and Szeged memory-clinic cohorts; P-167 uses the Framingham Heart Study community cohort. The record's dataset_equal='Yes' is wrong; no waiver on record",
+  "validation_tier": "match: both internal cross-validation only (nested LOO vs 10-fold), no external cohort",
+  "modality_family": "match: speech/voice"
+ },
+ "endpoint_and_metric": "incompatible as recorded: claim_a is a range over several metric types (accuracy, precision, recall, specificity), claim_b is a ROC-AUC. On AUC alone the two overlap.",
+ "performance_validity": "flag does not apply: neither paper is flagged and no figure reaches 0.97; it is a cross-cohort performance comparison",
+ "independence": "Independent studies: different groups (Szeged/Columbia vs Boston University/FHS), different cohorts, no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "P-58's '67-92%' is a range of several metrics across feature subsets, not a single estimate, so it cannot contradict one AUC.",
+  "P-167's AUC 0.87 (95% CI 0.81-0.94) overlaps P-58's reported AUCs (0.727 Hungarian, 0.932 English all-feature models), so the results are compatible.",
+  "Two methods on two cohorts each report a score and neither claims an ordering the other refutes, which the rule reads as not incompatible.",
+  "Independently of this, the dataset-family gate fails (memory-clinic samples in New York/Szeged vs the Framingham community cohort) with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-58",
+   "page": 1,
+   "quote": "the language on which the ASR system was trained only slightly affects the MCI classification performance, because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."
+  },
+  {
+   "paper": "P-58",
+   "page": 3,
+   "quote": "Both the English-speaking (n = 33; New York, NY, USA) and the Hungarian-speaking (n = 33; Szeged, Hungary) participants were diagnosed as MCI or HC."
+  },
+  {
+   "paper": "P-58",
+   "page": 7,
+   "quote": "the AUC and minCllr values are also quite good (0.932 and 0.305, respectively)"
+  },
+  {
+   "paper": "P-58",
+   "page": 11,
+   "quote": "for Hungarian, the classification performance was acceptable (with classification metrics falling into the range 66.776.9% and with an AUC value of 0.727). [extract drops the dash: read 66.7-76.9%]"
+  },
+  {
+   "paper": "P-167",
+   "page": 1,
+   "quote": "An optimal subset of 29 features was identified that resulted in an area under the receiver operating characteristic curve of 0.87, with a 95% CI of 0.81-0.94."
+  },
+  {
+   "paper": "P-167",
+   "page": 2,
+   "quote": "a case-control data set was created consisting of 100 MCI cases and 100 cognitively normal (CN) controls and matched on age, sex, and education"
+  }
+ ],
+ "record_defects": [
+  "dataset_equal='Yes' is wrong: P-58 uses its own New York and Szeged cohorts, P-167 the Framingham Heart Study.",
+  "claim_a 'P-58: 67-92% range on T1' presents a mixed-metric range across feature subsets as a performance result; it is not an accuracy range.",
+  "P-58 registry Best_Metric 'Acc 92' is not an accuracy the paper reports: the highest accuracy is 90.9% (filler-related, Hungarian); 92.3% is a recall value.",
+  "P-167 registry Dataset 'not reported' is wrong: the paper names the Framingham Heart Study.",
+  "resolution 'Rejected - false positive' conflicts with resolution_status 'partially_resolved_candidate'; the 'bridging evidence' list (e.g. P-422, P-478, P-538) cites non-speech studies and names no condition separating the two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only a restatement of the pair as a single matched quantity (e.g. P-58's all-feature English AUC 0.932 vs P-167's 0.87) with a waiver of the dataset-family gate; even then the P-167 confidence interval (0.81-0.94) includes 0.932, so the results would remain compatible."
+}

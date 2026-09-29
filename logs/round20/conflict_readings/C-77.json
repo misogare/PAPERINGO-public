@@ -1,0 +1,78 @@
+{
+ "id": "C-77",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-72",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "An end-to-end multimodal 3D CNN framework with multi-level features for the prediction of mild cognitive impairment (Zhang et al., Knowledge-Based Systems 281 (2023) 111064)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-82",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A transformer-based multi-features fusion model for prediction of conversion in mild cognitive impairment (Zheng et al., Methods 204 (2022) 241-248)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-72": "The 94.61% is AD vs NC accuracy from fused sMRI grey matter + FDG-PET (215 AD/246 NC, ADNI). On sMCI vs pMCI (conversion within 3 years; 238 sMCI/151 pMCI) the multimodal model reports 77.19% accuracy (AUC 0.755); sMRI-only MAResNet18 reports 73.68% (AUC 0.721). Subject-level 70/15/15 split, averaged over three test subsets; five-fold on a fixed subset 77.19 +/- 1.24.",
+  "P-82": "Transformer fusion block + MLP on FreeSurfer DKT cortical features (volume, thickness, curvature, folding, surface area; 62 regions) from baseline T1 MRI of 249 ADNI MCI (104 sMCI/145 pMCI; 3-year conversion; reverters to CN counted as sMCI). Single random split 200/25/24; test accuracy 83.3% (i.e. 20 of 24), AUC 0.888, sensitivity 0.727, specificity 0.923."
+ },
+ "quantity_a": "As claimed: AD vs NC accuracy (94.61%). P-72's own T2 quantity: sMCI vs pMCI 3-year accuracy from sMRI+FDG-PET (77.19%) or sMRI alone (73.68%), ADNI",
+ "quantity_b": "sMCI vs pMCI 3-year accuracy from FreeSurfer cortical features of baseline T1 MRI, ADNI, 24-subject test set",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The claimed 94.61% is not a conversion result. On the conversion task, P-72's 77.19% (or 73.68% MRI-only) and P-82's 83.3% on 24 test subjects (binomial 95% interval roughly 64-93%, computed here; the paper prints none) overlap; neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch as claimed (94.61% is AD vs NC); match for P-72's own sMCI vs pMCI result",
+  "dataset_family": "match: both ADNI",
+  "validation_tier": "match: both internal hold-out, no external cohort",
+  "modality_family": "partial: P-72's headline results fuse sMRI with FDG-PET; P-82 uses structural MRI only, as FreeSurfer tabular ROI features rather than image input"
+ },
+ "endpoint_and_metric": "incompatible as claimed (AD vs NC vs MCI conversion); compatible in type when P-72's conversion result is used (accuracy, 3-year horizon), though P-82 counts reverters as sMCI and has a different class balance (58% pMCI vs 39% in P-72)",
+ "performance_validity": "flag does not apply: neither conversion result is near ceiling; P-72's 94.61% is AD vs NC and not a small-sample result. P-82's 24-subject test set makes its estimate imprecise but it is below 0.97.",
+ "independence": "Both use ADNI, so the MCI cohorts may overlap in part; different groups (Sichuan University; Lanzhou/Cardiff), no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim 'P-72: 94.61% AD on T2' misreads P-72: 94.61% is AD vs NC accuracy.",
+  "P-72's actual conversion accuracy (77.19%) and P-82's (83.3% on 24 test subjects) are compatible estimates, since P-82's single small test set cannot exclude 77%.",
+  "The two papers use different inputs (image-level sMRI+PET vs FreeSurfer tabular features) and neither claims a result on the other's method that the other refutes."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-72",
+   "page": 1,
+   "quote": "Especially in AD diagnosis achieved an average accuracy of 94.61 %, which provides a more feasible technology for diagnostic assessment of patients with AD."
+  },
+  {
+   "paper": "P-72",
+   "page": 7,
+   "quote": "The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 % respectively"
+  },
+  {
+   "paper": "P-82",
+   "page": 3,
+   "quote": "we split our 249 subjects randomly into three groups, including the training dataset (n = 200), the validation dataset (n = 25), and the testing dataset (n = 24)."
+  },
+  {
+   "paper": "P-82",
+   "page": 4,
+   "quote": "The proposed model achieved 83.3% accuracy and an AUC of 0.888 (Fig. 2), with a sensitivity of 0.727 and a specificity of 0.923"
+  },
+  {
+   "paper": "P-82",
+   "page": 2,
+   "quote": "In addition, the subjects who were diagnosed as MCI at least twice, but reverse to a standard control, at last, are also considered as sMCI"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-72: 94.61% AD on T2' attaches P-72's AD vs NC accuracy to the conversion task; P-72's T2 accuracy is 77.19% (multimodal) or 73.68% (sMRI only).",
+  "gap_magnitude 0.113 is computed from the wrong P-72 figure; like for like, P-82 is about 6 points above P-72's multimodal result, on a 24-subject test set.",
+  "modality_family 'structural_mri' ignores that P-72's headline result fuses FDG-PET.",
+  "The earlier note 'Metric type unclear: Unknown / Acc' is resolvable: P-72 reports accuracy.",
+  "The bridging list (C-index, nomogram and other-task papers) is not apt for this pair."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in the two documents; P-82's 10-fold cross-validation (Supplementary Table S2, not in the extract) could narrow its estimate, but would not turn P-72's AD vs NC figure into a conversion result."
+}

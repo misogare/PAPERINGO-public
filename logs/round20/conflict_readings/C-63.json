@@ -1,0 +1,87 @@
+{
+ "id": "C-63",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-27",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A machine learning-based discriminative framework for mild cognitive impairment risk in middle-aged and elderly Chinese patients with depression: evidence from CHARLS and CLHLS (Yao et al., Journal of Affective Disorders 394 (2026) 120701)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-96",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Development and validation of a machine learning model for early screening of high-risk mild cognitive impairment from the multi-cohort data (Wu et al., International Journal of Medical Informatics 203 (2025) 106030)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-27": "Random forest on 8 sociodemographic/health predictors (education, household registration, loneliness, IADL, diabetes, hypertension, exercise...) in CHARLS 2018 participants aged >=60 WITH DEPRESSION (CESD-10 >= 10), n=1964; MCI = AACD on the CHARLS HRS-style cognition battery. AUC 0.826 training, 0.801 (95% CI 0.760-0.841) internal validation, 5-fold CV mean 0.791; external CLHLS AUC 0.653.",
+  "P-96": "Random forest on 7 physical-examination and blood variables (education, grip strength, height, weight, creatinine, MCV, platelets) in general older CHARLS 2015 participants, n=2932; MCI = AACD on an MMSE-based score. AUROC 0.93 (95% CI 0.91-0.95) reported for the training set with stratified 5-fold CV, accuracy 85.5%; external AUROC 0.83 (Yiwu 2021) and 0.87 (CHARLS 2011)."
+ },
+ "quantity_a": "P-27: ROC-AUC of a questionnaire-feature RF for AACD-defined MCI among depressed Chinese adults >=60 (CHARLS 2018); 0.826 is the training-set value, 0.801 the internal hold-out.",
+ "quantity_b": "P-96: ROC-AUC of a physical-exam/blood-feature RF for AACD-defined MCI among general Chinese older adults (CHARLS 2015), estimated on the training set via 5-fold CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "If the quantities were the same the intervals would not overlap (P-27 validation 0.760-0.841 vs P-96 0.91-0.95), but they are not: population (depressed subgroup vs general older adults), predictor set (questionnaire vs physical exam and blood tests), survey wave and cognition instrument all differ, and neither paper claims the ordering the other refutes.",
+ "gates": {
+  "task": "match in substance (both cross-sectional MCI discrimination), though the registry codes P-27 T2 and P-96 T1",
+  "dataset_family": "match: both CHARLS (different waves, 2018 vs 2015; individual overlap between waves likely)",
+  "validation_tier": "match (both report external validation, V4), though the contested figures are internal/training values",
+  "modality_family": "partial: both tabular, but P-27 uses questionnaire/self-report variables while P-96 uses physical examination and blood assays"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different populations behind the label 'MCI' (depressed vs general older adults), different predictor sets, and different cognition instruments defining the AACD outcome",
+ "performance_validity": "not triggered: neither value reaches 0.97 and both papers report external validation",
+ "independence": "Both draw on CHARLS (2018 and 2015 waves); longitudinal re-interviews mean participant overlap is likely, recorded as non-independence. No shared authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-27's population is restricted to depressed adults (CESD-10 >= 10), while P-96 screens general older adults; the population behind the MCI label differs.",
+  "The two models use different predictor sets (loneliness, IADL, household registration vs grip strength, height, weight, creatinine, MCV, platelets), so their AUCs are properties of different models, not rival estimates of one quantity.",
+  "The contested numbers are not like for like: P-27's 0.826 is a training-set AUC (hold-out 0.801) and P-96's 0.93 is a training-set cross-validated AUC.",
+  "Neither paper claims a result about the other's model, so no ordering is refuted."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-27",
+   "page": 1,
+   "quote": "In internal testing, the random forest (RF) achieved the best predictive performance (AUC = 0.826 in training and 0.801 in internal validation)"
+  },
+  {
+   "paper": "P-27",
+   "page": 2,
+   "quote": "The inclusion criteria for participants in both datasets were consis tent: 1. Age \u226560 years; 2. Complete cognitive dimension-related data; 3. Complete depression scale responses; 4. Patients with depression."
+  },
+  {
+   "paper": "P-27",
+   "page": 4,
+   "quote": "Ultimately, eight discriminative variables were identified: education, household registration, loneliness, IADL, diabetes, hypertension, and exercise."
+  },
+  {
+   "paper": "P-96",
+   "page": 1,
+   "quote": "Seven key variables (education, grip strength, height, weight, creatinine, mean corpuscular volume, and platelet count) were selected through majority voting."
+  },
+  {
+   "paper": "P-96",
+   "page": 5,
+   "quote": "the RF model showed the best performance, with an AUROC of 0.93[95 %CI, 0.91\u20130.95] and an AUPRC of 0.93 [95 %CI, 0.91\u20130.95]."
+  },
+  {
+   "paper": "P-96",
+   "page": 6,
+   "quote": "AUROC (95 %CI) 0.93(0.91\u20130.95) 0.83(0.82\u20130.84) 0.87(0.86\u20130.88)"
+  }
+ ],
+ "record_defects": [
+  "resolution_note says 'Confirmed genuine' while resolution/resolution_status say 'Rejected - false positive': the record contradicts itself.",
+  "claim_a 'AUC 0.826' is P-27's training-set AUC; the internal-validation AUC is 0.801 (the registry correctly records 0.801).",
+  "claim_a 'on T1' conflicts with the registry's T2 coding of P-27.",
+  "claim_b 'AUC 0.93' is a training-set (cross-validated) figure; P-96's registry Best_Metric is 'Acc 85.5', not an AUC.",
+  "modality_family 'clinical_survey' does not describe P-96, whose predictors are physical measurements and blood assays.",
+  "The record omits that P-27's population is restricted to depressed older adults.",
+  "Registry P-96 Sample_N_Approx 'not reported' although the PDF gives 2,932 (training), 4,140 and 1,782 (external).",
+  "P-96 is internally inconsistent on specificity (text 0.786, Table 3 0.85); this does not affect the verdict."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Two studies that report AUCs for the same predictor set in the same population class (e.g. both in general CHARLS older adults with the same cognition-derived outcome), with non-overlapping intervals and each asserting its own figure, would be needed to consider genuine."
+}

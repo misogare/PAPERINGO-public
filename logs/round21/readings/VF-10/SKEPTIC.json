@@ -1,0 +1,139 @@
+{
+ "vf": "VF-10",
+ "role": "skeptic",
+ "status": "candidate / pending_human_review (model reading; no gate is claimed)",
+ "date": "2026-09-29",
+ "method": "Tried to refute every yes/partly verdict against the candidate's own source text in ROOT/pdf/<P-id>.txt. P-114 was read from ROOT/pdf/P-115.txt: that file is the Seifallahi et al. Kinect/ANFIS paper the P-114 block describes; the P-114 map entry points to an unrelated EEG paper. Round-20 readings of P-76, P-77 and P-101 were taken from the packet, not re-read.",
+ "verdicts": [
+  {
+   "paper": "P-60",
+   "refuted": false,
+   "final_stated": "yes",
+   "final_narrowed": "yes",
+   "independent": true,
+   "dataset_family": "Tsukuba speech-app sample (University of Tsukuba Hospital psychiatry outpatients, spouses, Ibaraki community), Japan, n=114 (43 CN / 46 MCI / 25 AD)",
+   "reason": "Survives. Consumer device, self-administered presentation, clinical diagnosis: 'The participants sat in front of an iPad Air 2 tablet and answered questions presented by a voice-based application ... An experimenter sat behind a partition to remain hidden ... The questions were presented by playing prerecorded audio from the tablet ... recorded ... with the iPad's internal microphone' (p.3). Diagnoses 'confirmed by two psychiatrists ... blind to the results of the speech data analysis', NIA-AA criteria (p.2-3). Result: 'discriminating MCI from CN achieved an accuracy of 87.6% (sensitivity: 88.1%; specificity: 87.2%...)' under nested leave-one-out CV (p.8, Table 6 p.10). The neuropsychological tests only characterise the sample, so there is no head-to-head. Caveats for the record: (a) 87.6% sits at the bottom edge of ~88-94%; (b) SVM-RBF is the best of six algorithms compared on the same outer-loop results (others 49.4-85.4%), so the choice of algorithm is not nested; (c) lab room, not home, which the authors list as a limitation (p.13); the experimenter restarted a task if a participant could not follow (p.3); (d) one site, internal validation only. Its method family (automatic speech analysis + SVM) is the same broad family as P-58. Registry row codes the three-class 'Acc 78.6' / T3, so the MCI-vs-CN figure is not in the registry."
+  },
+  {
+   "paper": "P-58",
+   "refuted": false,
+   "final_stated": "partly",
+   "final_narrowed": "yes",
+   "independent": true,
+   "dataset_family": "Szeged-Columbia bilingual telephone speech sample (University of Szeged Memory Clinic, n=33; NYSPI/Columbia Memory Disorders Center, n=33); the Szeged recordings share a corpus family with P-59, which is neither a supporter nor a candidate",
+   "reason": "Not refuted, but the in-band figure is weak. Low-cost capture without specialist hardware: 'a second investigator called the subject on a mobile phone ... Each participant's monologue was recorded by a call recorder application installed on the mobile phone device' (p.4). Not self-administered, so the stated form stays partly. Result (Table 3, p.7): Hungarian filler-related subset 'Acc 90.9%, AUC 0.912'; English all features 84.8% (AUC 0.932); Hungarian all features 75.8% (AUC 0.727); silence subsets near chance (AUC 0.519-0.531). Speaker-wise nested LOO-CV for the SVM meta-parameters (p.6). No external validation, no specialist comparator. Why this is not refuted on the narrowed wording: that wording counts reported best-case figures (P-77 is its best of four themes), and P-58's 90.9% is a reported figure under nested CV. Caveats that must travel with it: (a) 90.9% is one of seven feature subsets in one language, chosen after the fact; the pre-specified full set gives 75.8% / 84.8%. (b) Accuracy is taken at the equal error rate, a threshold chosen on the pooled CV outputs (p.6). The authors say the actual decision threshold 'was usually not set reliably' (Cllr 0.947 for this subset, p.7). (c) In the Hungarian arm the MMSE band defines objective impairment ('30-28 points: HC; 27-24 points: MCI', p.3), so the label there is partly a screening-score proxy, like P-101's. Admitting it requires the narrowed wording's parenthetical to name telephone-recorded speech in two memory-clinic samples, and its 'other' range to widen to 39-85%."
+  },
+  {
+   "paper": "P-294",
+   "refuted": true,
+   "final_stated": "partly",
+   "final_narrowed": "partly",
+   "independent": true,
+   "dataset_family": "Far Eastern Memorial Hospital / National Yang-Ming University MMSE facial-video sample, Taiwan, 45 participants (32 CN / 13 MCI), 48 videos",
+   "reason": "The narrowed 'yes' is refuted and becomes partly. (1) The hardware clause is not shown. The paper names no capture device anywhere, only resolutions ('1920 x 1080, 1280 x 720, and 640 x 480', p.4). 'Inexpensive' / 'cost-effective' appears only as the authors' interpretation in the abstract and conclusions (p.1, p.14), not as a result. The videos were 'recorded ... while participating in the MMSE' (p.4), so the data depend on an interviewer-administered paper-and-pencil test. (2) There is no internally validated estimate. The only evaluation set is 9 participants (6 CN / 3 MCI, Table 2 p.9), and it is also the model-selection set: 'we do not have a separate test set. The verification set will be used in the model testing phase' (p.8-9); 'The best mode during the training will be stored and used for testing' (p.10). Twenty-seven configurations are compared on those 9 people. Participant-level 0.89 is 8/9 and 1.00 is 9/9 (Table 3 p.12); there is no cross-validation over the other 36 participants. This is thinner than P-76, where every participant was scored. What it does show: reported standalone facial-video accuracy (segment level 0.87-0.90, participant level 0.89-1.00, ResNet-34 0.56-0.61), no external validation and no head-to-head. That is partly on both forms. MCI diagnostic criteria are not stated. The running header reads '(2021) 22:638', which conflicts with the 2024 DOI the verifier cites; no verdict depends on it."
+  },
+  {
+   "paper": "P-795",
+   "refuted": false,
+   "final_stated": "partly",
+   "final_narrowed": "partly",
+   "independent": true,
+   "dataset_family": "cogSYS user-study-1 sample, Beijing (NRCRTA / ICT-CAS), n=61 (20 'MCI' / 41 controls)",
+   "reason": "Partly is kept and cannot be upgraded. The positive class is not MCI: '20 subjects were diagnosed with MCI (with MoCA scores lower than 25 or an Apolipoprotein E gene type of e4)' (p.7). 70% carry e4 and controls have no printed cognitive score (Table 2 p.8), so some cases may be positive on genotype alone. Best single task 89.5% and seven-task majority vote 90.1% are in the band, but the headline is the mean of 82.4% (p.10, p.15). Single tasks at 73.4% / 75.4% barely beat the 67.2% majority-class baseline (41/61). The best task is chosen on the same LOOCV results. Setting: a lab 'in the presence of experimenters' who 'cannot interfere' (p.8); independent use is argued, not tested (p.15-16). The comparison with BBT/DBBT/66nao is a usability questionnaire (p.14), not an accuracy head-to-head. Consumer tablet (Huawei M5) and the reported accuracy are the parts it shows."
+  },
+  {
+   "paper": "P-1100",
+   "refuted": false,
+   "final_stated": "partly",
+   "final_narrowed": "partly",
+   "independent": true,
+   "dataset_family": "UTHealth Houston Neurocognitive Disorders Center Fitbit pilot, 12 cases (11 aMCI + 1 early AD) / 8 spouse controls",
+   "reason": "Partly is kept. Consumer Fitbit and neurologist diagnosis, but the article body reports AUC, not accuracy. Perfect separation (AUC 1.0) needs heart rate, which is physiological. Activity and sleep alone reach 0.58-0.87 (Table 2). Feature selection pooled across folds and the model and modality choice were made on the same CV results. It is passive capture, not a behavioural instrument, and n=20."
+  },
+  {
+   "paper": "P-114",
+   "refuted": false,
+   "final_stated": "partly",
+   "final_narrowed": "partly",
+   "independent": true,
+   "dataset_family": "Iran Dementia and Alzheimer's Association (IDAA, Tehran) Kinect gait sample, 70 MCI / 80 HC; possible participant overlap with P-1082 (same lead author, device, organisation), which is neither a supporter nor a candidate",
+   "reason": "Source is the PDF mapped to P-115 (Seifallahi et al., BSPC 71 (2022) 103195); the P-114 map entry is the San-Martin EEG paper and needs repair. Partly is kept but cannot be upgraded. The 93% ANFIS figure has no stated validation scheme. The only validation text is SVM tuning 'based on the five-fold validation of training data' (p.6) and 'the classifiers were trained and tested using each set of databases separately' (p.8), so it may not be a held-out estimate. Not self-administered: 'enough information about the tests was given to the subjects by recorders ... performed the tests as the train stages several times' (p.3), with Kinect tethered to a computer running a MATLAB GUI. It shows consumer-grade capture (Kinect V2) and a reported 93%."
+  },
+  {
+   "paper": "P-2",
+   "refuted": false,
+   "final_stated": "no",
+   "final_narrowed": "partly",
+   "independent": true,
+   "dataset_family": "Taiyuan (Shanxi) volunteer sample, 40 MCI / 39 HC, MoCA-defined labels",
+   "reason": "Kept. The behavioural channel alone (tablet handwriting) reaches 0.785-0.835 (Table 3). The 93.7% / 96.3% figures need consumer EEG fusion. Testing was supervised and the labels are MoCA-defined. Partly on the narrowed wording, for low-cost capture only."
+  },
+  {
+   "paper": "P-169",
+   "refuted": false,
+   "final_stated": "partly",
+   "final_narrowed": "partly",
+   "independent": true,
+   "dataset_family": "Hanyang University Hospitals (Seoul and Guri) sample, 32 MCI / 22 HC",
+   "reason": "Kept. VR alone reaches 88.9% on a single 7:3 split with features pre-selected on all 54 participants. The neurologists administered it on an HTC VIVE Pro Eye plus an RTX laptop, so 'consumer-grade' is arguable. It runs a within-study comparison against SNSB-C ('gold standard'), and SNSB-C does better: 94.4% vs 88.9% (Table 5). That contradicts the 'no head-to-head' clause and shows the behavioural tool is inferior."
+  },
+  {
+   "paper": "P-604",
+   "refuted": false,
+   "final_stated": "no",
+   "final_narrowed": "partly",
+   "independent": true,
+   "dataset_family": "Wuhan community sample (five residential communities; derivation 2020-21, external validation 2022)",
+   "reason": "Kept. Derivation accuracy is 83.10%, below the band; AUC is 0.906 in derivation and 0.913 on external validation. A tester runs the walk, timed from phone video ('does not require professional equipment', p.6). The within-study MoCA comparison favours MoCA (AUC 0.989 vs 0.906). Partly on the narrowed wording, for low-cost behavioural capture only."
+  },
+  {
+   "paper": "P-9",
+   "refuted": false,
+   "final_stated": "partly",
+   "final_narrowed": "yes",
+   "independent": false,
+   "dataset_family": "I-CONECT (same family as supporters P-76 and P-77 and candidate P-6)",
+   "reason": "The verdict stands on content: fused video, audio and transcript reach 84.2-89.3% per theme (Table 2 p.8); the interviews are interviewer-led (p.5). It adds no dataset family: it is the same I-CONECT cohort, shares authors Dodge and Mahoor, and reuses Sun et al.'s frame pipeline (p.5, p.10). At most it could replace P-76 or P-77 as the I-CONECT representative; it cannot raise the count."
+  },
+  {
+   "paper": "P-6",
+   "refuted": false,
+   "final_stated": "partly",
+   "final_narrowed": "partly",
+   "independent": false,
+   "dataset_family": "I-CONECT (68 experimental-arm participants)",
+   "reason": "Kept. The figures are confirmed: accuracy 85.16%, AUC 84.75% (the best of five fold configurations), and a mean AUC of 79.94% over 25 runs (p.8-9); interviews are with 'standardized interviewers' (p.6). It is below the band and in the same I-CONECT family, so it adds nothing to the count."
+  }
+ ],
+ "tally": {
+  "stated_form": {
+   "current_supporters_round20": {"P-76": "partly", "P-77": "partly", "P-101": "partly"},
+   "surviving_candidate_yes": ["P-60"],
+   "independent_yes_families": ["Tsukuba speech-app sample (P-60)"],
+   "count": 1,
+   "reaches_three": false
+  },
+  "narrowed_wording": {
+   "current_supporters_sustaining_per_round20": ["P-76", "P-77", "P-101"],
+   "surviving_candidate_yes": ["P-60", "P-58", "P-9 (I-CONECT; not independent)"],
+   "independent_yes_families": [
+    "I-CONECT (P-76, P-77; P-9 same family)",
+    "Memory Guard Shanghai/Henan community sample (P-101)",
+    "Tsukuba speech-app sample (P-60)",
+    "Szeged-Columbia telephone speech sample (P-58)"
+   ],
+   "count": 4,
+   "reaches_three": true,
+   "method_family_check": "P-60 and P-58 are both ASR-derived speech features with an SVM. If method family must also be distinct, they count as one method family. The set then has three distinct method families (facial video, touchscreen cognitive test, automatic speech analysis) over four dataset families, so the narrowed form reaches three under either reading."
+  }
+ },
+ "consequences_for_wording": "If the operator admits P-60 and/or P-58, the round-20 narrowed wording must change. 'only two cohorts' no longer holds. The parenthetical must add a self-administered iPad speech app in a Japanese memory-clinic/community sample scored against clinical NIA-AA diagnosis (P-60), and/or telephone-recorded monologues in Hungarian and US memory clinics (P-58). The 'other' range must widen to about 39-90%. The caveats that best-case figures are chosen after the fact (P-60 best of six algorithms; P-58 best of seven subsets at an EER threshold) and that no external validation or head-to-head exists still apply. The stated Table A1 form still has only one independent yes (P-60) and does not reach three.",
+ "defects_noted": [
+  "PDF map: P-114 entry (S1746809421000963) is San-Martin et al. EEG paper; the P-114 block's paper is the file mapped to P-115 (S1746809421007928, Seifallahi et al.). Map repair needed (verifier finding, confirmed by reading both extracts' page 1).",
+  "Registry P-60: Best_Metric 'Acc 78.6' / T3 is the three-class figure; the MCI-vs-CN accuracy is 87.6%.",
+  "Registry P-58: Best_Metric 'Acc 92' is not a printed accuracy (max 90.9%; 92.3% is recall).",
+  "Registry P-6: Sample_N_Approx 151 comes from a related-work description (Colla et al., p.2); the analysed sample is 68. Task_Type T2 vs T1 for the same task in P-9/P-76/P-77.",
+  "Registry P-9: Sample_N_Approx 155 is the trial arm count; the analysed samples are 29-36 per theme (verifier finding, not re-checked).",
+  "Registry P-169: Sample_N_Approx 22 (should be 54) and Modality MRI/PET (verifier finding, not re-checked)."
+ ]
+}

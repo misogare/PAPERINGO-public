@@ -1,0 +1,88 @@
+{
+ "id": "C-82",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-122",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting the progression of mild cognitive impairment based on fine-grained and spatiotemporal features of MRI (Hu et al., Biomed Signal Process Control 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-72",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "An end-to-end multimodal 3D CNN framework with multi-level features for the prediction of mild cognitive impairment (Zhang et al., Knowledge-Based Systems 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-122": "pMCI vs sMCI (MCI progression) from two-time-point longitudinal structural MRI, ADNI, 275 subjects / 823 longitudinal samples: accuracy 84.74%, AUC 0.8587, sens 83.33%, spec 82.27% (Table 3/5); six-fold CV mean ACC 84.28% (+/-1.65), AUC 0.8599 (Table 2). Internal validation only.",
+  "P-72": "The 94.61% the record cites is AD vs NC (215 AD + 246 NC) from baseline sMRI grey matter + FDG-PET. Its sMCI vs pMCI (3-year conversion) result is 77.19% accuracy, AUC 0.755 (Table 5) / 75.56 (Table 7), sens 68.18%. Internal validation only."
+ },
+ "quantity_a": "Accuracy for pMCI vs sMCI, ADNI, longitudinal (two time points) structural MRI only, internal subject-independent split plus six-fold CV",
+ "quantity_b": "As cited by the record: accuracy for AD vs NC, ADNI, baseline sMRI GM + FDG-PET. P-72's actual T2 quantity: accuracy for sMCI vs pMCI (3-year conversion) from baseline sMRI + FDG-PET",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The record's pair sets an AD-vs-NC accuracy against a pMCI-vs-sMCI accuracy, so these are different comparisons. Even on the matching T2 task (84.74% vs 77.19%) the results are two methods reporting different scores. Neither paper claims an ordering the other refutes. In fact P-122 lists P-72's own sMCI/pMCI row (Zhang et al. [21] 2023: 77.19 / 68.18 / 81.86 / 0.7556) in its comparison table and says it improves on it, so both results are presented as true.",
+ "gates": {
+  "task": "mismatch for the cited value: P-72's 94.61% is AD vs NC, not T2. The T2 results of the two papers do match as a task.",
+  "dataset_family": "match: both ADNI (possible subject overlap, recorded as non-independence)",
+  "validation_tier": "match: both internal only (V2)",
+  "modality_family": "mismatch: P-122 is longitudinal structural MRI only; P-72 is multimodal sMRI grey matter + FDG-PET. No waiver on record."
+ },
+ "endpoint_and_metric": "incompatible for the cited pair: AD-vs-NC diagnosis vs MCI progression. Both report accuracy. P-72 defines conversion at 3 years; P-122 cites a three-year pMCI horizon but gives no explicit conversion window for its own labels.",
+ "performance_validity": "flag does not apply: no result reaches 0.97 (P-72 AD vs NC AUC 0.947; P-122 AUC 0.8587)",
+ "independence": "Both draw on ADNI, so subject overlap is possible. No shared authors (Henan University vs Sichuan University groups).",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim_b misreads P-72: 94.61% is its AD vs NC accuracy, not a T2 (MCI progression) result.",
+  "On the matching T2 task, P-72 reports 77.19% and P-122 reports 84.74%. P-122 tabulates P-72's 77.19% row as prior work it improves on, so the two papers do not disagree.",
+  "The modality gate also fails (sMRI-only longitudinal vs sMRI+FDG-PET), and there is no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-72",
+   "page": 1,
+   "quote": "Especially in AD diagnosis achieved an average accuracy of 94.61 %"
+  },
+  {
+   "paper": "P-72",
+   "page": 7,
+   "quote": "The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 % respectively"
+  },
+  {
+   "paper": "P-72",
+   "page": 3,
+   "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI."
+  },
+  {
+   "paper": "P-72",
+   "page": 3,
+   "quote": "18-fluorodeoxyglucose PET (FDG-PET) image (six 5-min frames 30\u201360 min post injection) data from the ADNI baseline"
+  },
+  {
+   "paper": "P-122",
+   "page": 1,
+   "quote": "Evaluated on the ADNI dataset, MME-TransENet achieves state-of-the-art performance (84.74% accuracy, 0.8587 AUC)"
+  },
+  {
+   "paper": "P-122",
+   "page": 5,
+   "quote": "For the sMCI group, we gathered 449 longitudinal samples from 154 subjects diagnosed with sMCI."
+  },
+  {
+   "paper": "P-122",
+   "page": 7,
+   "quote": "Zhang et al. [21] [2023] | CNN+Attention | 77.19 | 68.18 | 81.86 | 0.7556 (Table 5 row; cells joined by the reader)"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-72: 94.61% AD on T2' is wrong: 94.61% is AD vs NC. P-72's T2 (sMCI vs pMCI) accuracy is 77.19%.",
+  "modality_family 'structural_mri' / modality_family_equal 'Yes' is wrong: P-72 is sMRI grey matter + FDG-PET.",
+  "task_equal 'Yes' holds only if P-72's T2 result is used, but the record cites the AD-vs-NC figure.",
+  "resolution_note 'Metric type unclear: Acc / Unknown' is wrong: both values are plainly accuracy.",
+  "The bridging-evidence list is generic ('comparable task/dataset family') and names no condition that separates the two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing on these two documents. Even the corrected T2 pair is sMRI-only longitudinal vs sMRI+PET baseline, and P-122 itself reports P-72's number as a lower prior result rather than as a contradiction."
+}

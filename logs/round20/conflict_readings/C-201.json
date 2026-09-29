@@ -1,0 +1,78 @@
+{
+ "id": "C-201",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-258",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Development and validation of a nomogram for predicting mild cognitive impairment in middle-aged and elderly people (Huang et al., Asian J Psychiatry 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-261",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Association of Qi-stagnation constitution and subjective sleep characteristics with mild cognitive impairment among elderly in community: A cross-sectional study (Liu et al., Eur J Integr Med 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-258": "Cross-sectional Rugao (Jiangsu) sample of 478 adults aged 48-85 (387 MoCA-defined MCI, 91 without; MCI = MoCA < 25). A LASSO + stepwise logistic nomogram with age, gender, residence, education and reading has apparent AUC 0.8704 and mean 10-fold CV AUC 0.8353. Sleep quality and insomnia were among 42 candidate predictors but were not among the univariately significant factors.",
+  "P-261": "Cross-sectional Fuzhou (Fujian) sample of 1,071 adults aged 55-75 without depression (314 MCI, 29.3%; MoCA-based). After adjustment for age, sex and education, the joint exposure sleep disturbance (PSQI >= 6) plus Qi-stagnation constitution has OR 2.581 (95% CI 1.706-3.907) for MCI vs neither; no additive interaction (RERI 0.167, CI -1.154 to 1.488). Its own logistic models of Qi-stagnation, sleep latency and daytime dysfunction have AUC 0.602-0.683."
+ },
+ "quantity_a": "Discrimination (ROC-AUC) of a five-predictor demographic/lifestyle nomogram for concurrent MoCA-defined MCI in Rugao adults 48-85.",
+ "quantity_b": "Adjusted odds ratio of MCI for the joint exposure 'sleep disturbance and Qi-stagnation' vs neither, in non-depressed Fuzhou adults 55-75.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable: an AUC of a prediction model and an odds ratio for one exposure are different metric types on different predictor sets. The only overlapping construct (sleep and MCI) is significant in P-261 and non-significant in P-258's univariate screen, which is a significance-only difference under Section 5.2 and not a data conflict; the exposure definitions also differ (P-258 dichotomous self-reported sleep quality/insomnia; P-261 PSQI total >= 6 and PSQI components).",
+ "gates": {
+  "task": "nominal match only (record says T6 for both; the registry codes P-258 as T1 risk prediction and P-261 as T6 association)",
+  "dataset_family": "mismatch: separate Chinese community samples (MPLC Rugao vs Fuzhou day-care centres); the record itself sets dataset_equal = No",
+  "validation_tier": "n/a for P-261 (association study, no model validated); P-258 is internally cross-validated (V2)",
+  "modality_family": "match: questionnaire/clinical tabular data in both"
+ },
+ "endpoint_and_metric": "incompatible: ROC-AUC vs odds ratio; different predictor sets; MCI operationalised differently (MoCA < 25 with education correction in P-258; MoCA with education-dependent cut-offs plus clinical criteria in P-261)",
+ "performance_validity": "not a performance comparison (one side is an odds ratio); P-258 AUC 0.8704 is below the 0.97 threshold in any case",
+ "independence": "Distinct studies, different cohorts and authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-258's figure is the ROC-AUC of a nomogram built from age, gender, residence, education and reading.",
+  "P-261's figure is an adjusted odds ratio for a joint sleep-disturbance and Qi-stagnation exposure.",
+  "The two are different metric types on different predictors in different cohorts, and the record already fails its own dataset gate.",
+  "The one shared construct (sleep and MCI) differs only in statistical significance, which Section 5.2 says is not a data conflict."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-258",
+   "page": 1,
+   "quote": "The model showed good discrimination power (area under receiver-operating characteristic (ROC) curve was 0.8704) and good calibration."
+  },
+  {
+   "paper": "P-258",
+   "page": 3,
+   "quote": "A total of 478 participants, including 270 males and 208 females in our study, were composed of 387 with MCI and 91 without MCI."
+  },
+  {
+   "paper": "P-258",
+   "page": 2,
+   "quote": "If the score was less than 25 points, it was defined as MCI."
+  },
+  {
+   "paper": "P-261",
+   "page": 5,
+   "quote": "the risk of suffering from MCI for older adults with sleep disturbance and Qi-stagnation was 2.581 times higher than that for those without sleep disturbance or Qi-stagnation"
+  },
+  {
+   "paper": "P-261",
+   "page": 6,
+   "quote": "Yes Yes 0.948 0.211 20.115 2.581 (1.706 to 3.907) <0.001"
+  }
+ ],
+ "record_defects": [
+  "The index/PDF map titles P-261 'Unveiling the sound of the cognitive status: machine learning-based speech analysis...', but the PDF text and registry row are the Liu et al. Qi-stagnation/sleep study; the map title is wrong, the PDF is the intended paper.",
+  "gap_magnitude 0.845 is computed between an AUC (0.8704) and an odds ratio (2.581), which is meaningless.",
+  "Task recorded as T6 for both, but the registry codes P-258 as T1 and its own claim is a prediction-model AUC.",
+  "resolution_status 'partially_resolved_candidate' rests on 'bridging evidence' (prevalences, an HR) that explains no disagreement; there is no disagreement to bridge."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Two studies reporting the same exposure-outcome odds ratio (e.g. PSQI-defined sleep disturbance and MoCA-defined MCI) with non-overlapping confidence intervals in comparable populations."
+}

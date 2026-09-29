@@ -1,0 +1,78 @@
+{
+ "id": "C-200",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-218",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Alzheimer's Disease Prediction Algorithm Based on Group Convolution and a Joint Loss Function (Cheng et al., Comput Math Methods Med 2022, Article ID 1854718)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-146",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting cognitive decline: Deep-learning reveals subtle brain changes in pre-MCI stage (Yue et al., J Prev Alz Dis 2025)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-218": "Group-convolution ResNet18 with hybrid attention on 2D slices of ADNI FDG-PET, classifying AD vs MCI vs NC (three classes); trained on ADNI-1 (190 AD/350 MCI/200 NC), tested on 400 ADNI-2 images (124 AD/192 MCI/84 NC); ACC 89.4%, AUC 92.3%, SEN 87.43, SPE 88.26.",
+  "P-146": "ROI-based deep-learning Progressive Index from baseline T1 MRI, trained on ADNI-1 (AD+pMCI vs NC+sMCI) and applied to cognitively normal/SCD older adults to predict progression to MCI: ADNI-2 (3-year) AUC 0.7048; CLAS (7-year) PI alone AUC 0.711; PI combined with age, gender, education and associative-learning score AUC 0.812 (95% CI 0.725-0.900)."
+ },
+ "quantity_a": "ROI-AUC for concurrent three-class diagnosis AD/MCI/NC from FDG-PET slices in ADNI (diagnostic classification, no future horizon).",
+ "quantity_b": "ROC-AUC for predicting 7-year conversion from normal cognition (NC or SCD) to amnestic MCI in a Shanghai community cohort (CLAS), using a T1-MRI index plus demographic and one neuropsychological score.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even if taken as the same metric type, 0.923 vs 0.812 (CI 0.725-0.900) are single-study estimates from different tasks; neither study claims an ordering the other refutes. A lower AUC for 7-year prediction from normal cognition than for concurrent diagnosis of established AD/MCI is expected, not contradictory.",
+ "gates": {
+  "task": "mismatch: P-218 is concurrent diagnosis of AD/MCI/NC (registry itself codes P-218 as T3, the record says T2); P-146 is prognosis of NC/SCD to MCI conversion",
+  "dataset_family": "mismatch for the contested figure: P-218 uses ADNI-1/ADNI-2; P-146's 0.812 is from the CLAS cohort (Shanghai), although its model was trained on ADNI-1",
+  "validation_tier": "not equal: P-218 is a held-out ADNI-2 test set (same consortium); P-146's 0.812 is on an independent external cohort (CLAS)",
+  "modality_family": "mismatch: FDG-PET (P-218) vs structural T1 MRI plus clinical variables (P-146); the record's 'structural_mri' does not fit P-218"
+ },
+ "endpoint_and_metric": "incompatible: both are ROC-AUCs, but one is a three-class diagnostic AUC and the other a binary 7-year conversion AUC in a different population",
+ "performance_validity": "flag does not apply (AUC 0.923 and 0.812, neither at or above 0.97); the comparison is a performance comparison but on different estimands",
+ "independence": "Distinct studies, no shared authors; P-146 trained on ADNI-1 and P-218 trained on ADNI-1 PET, so ADNI-1 participants may overlap in training data, but the contested figure of P-146 comes from CLAS.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-218 reports a three-class AD/MCI/NC diagnostic AUC on FDG-PET, not a conversion prediction.",
+  "P-146's 0.812 is a 7-year NC/SCD-to-MCI conversion AUC in the CLAS cohort from an MRI index combined with clinical measures.",
+  "Task, population, dataset, horizon and modality all differ, so the 0.923 vs 0.812 gap is not a disagreement on one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-218",
+   "page": 3,
+   "quote": "We use 190 AD cases, 350 MCI cases, and 200 NC cases among PET images as the training data from ADNI-1. Four hundred PET images are selected as the test data from ADNI-2."
+  },
+  {
+   "paper": "P-218",
+   "page": 8,
+   "quote": "G_ResNet18+HAM 89.4 92.3"
+  },
+  {
+   "paper": "P-218",
+   "page": 8,
+   "quote": "This demonstrates the effectiveness of the group convolutional network for the three classification tasks."
+  },
+  {
+   "paper": "P-146",
+   "page": 2,
+   "quote": "Better performance for prediction progression to MCI in CLAS was obtained when the PI score was combined with clinical measures (AUC = 0.812; 95 %CI: 0.725-0.900)."
+  },
+  {
+   "paper": "P-146",
+   "page": 6,
+   "quote": "can effectively predict the conversion of MCI in the CLAS cohort after 7 years, with an AUC of 0.812"
+  }
+ ],
+ "record_defects": [
+  "claim_a writes 'AUC 92.3' on a 0-100 scale while claim_b writes 'AUC 0.812'; gap_magnitude 0.111 silently rescales.",
+  "Task gate recorded as equal (T2), but P-218 is a concurrent three-class diagnostic study (the registry codes it T3) and P-146 is NC/SCD-to-MCI prognosis.",
+  "modality_family recorded as structural_mri, but P-218 uses FDG-PET only.",
+  "dataset_equal 'Yes' overlooks that P-146's 0.812 is from the CLAS cohort, not ADNI.",
+  "claim_b still labels the paper P-310 (the dedup predecessor of P-146)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers: a genuine test would need two studies reporting the same endpoint (e.g. three-class FDG-PET diagnosis on ADNI, or NC-to-MCI conversion at a matched horizon) with non-overlapping uncertainty."
+}

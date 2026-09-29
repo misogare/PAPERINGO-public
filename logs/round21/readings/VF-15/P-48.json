@@ -1,0 +1,50 @@
+{
+ "paper": "P-48",
+ "role": "round-2 verifier",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "yes",
+ "dataset_family": "ADNI (MCI baseline data, 36-month conversion; the authors reuse the data set of their earlier Massetti et al. 2022 paper; the sMRI subset is n = 318)",
+ "method_family": "Tree ensembles (Random Forest, Gradient Boosting, XGBoost, plus hard voting) on tabular FreeSurfer ROI features concatenated with neuropsychological scores; a family none of P-3, P-104 or P-81 uses",
+ "same_sample_or_cohort_as": [
+  "P-3 (ADNI family; participant overlap not determinable)",
+  "P-104 (ADNI family; participant overlap not determinable)",
+  "P-81 (ADNI family, 3-year conversion window; participant overlap likely but not determinable)"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "Within one ADNI subset of 318 MCI subjects with sMRI (36-month conversion, one random 85/15 split, so about 48 test subjects), the same tree ensembles were run on FreeSurfer sMRI features alone and on sMRI plus neuropsychological scores. Accuracy rose from 0.79/0.79/0.77 (RF/GB/XGB) to 0.83/0.88/0.83, and from 0.77 to 0.85 with hard voting. Sensitivity rose from 0.67 to 0.82/0.82/0.73. For RF, specificity fell (0.92 to 0.85) and so did PPV (0.89 to 0.82). The neuropsychology-only model, run on a different n (587), reached 0.83/0.82/0.81. So fusion ties it for RF and beats it by 0.02 to 0.06 for GB and XGB. Two non-imaging models beat the sMRI fusion: AD biomarkers alone (RF 0.85) and neuropsychology + CSF/APOE (0.87/0.85/0.89; voting 0.90). The paper reports no AUC and no significance tests, and its error bars are +/-0.09 to 0.12.",
+ "why": "IDENTITY. PDF p.1 is Franciotti, Nardini, Russo, Onofrj and Sensi, 'Comparison of Machine Learning-based Approaches to Predict the Conversion to Alzheimer's Disease from Mild Cognitive Impairment', Neuroscience 514 (2023) 143-152, doi 10.1016/j.neuroscience.2023.01.029. The block (headed by this PDF's filename, S0306452223000477) describes the same study: RF/GB/XGB, a voting ensemble, 587/318/422 subsets, sMRI accuracy 0.79 and best accuracy 0.90. I read the whole extract up to the reference list (9 pages).\n\nDESIGN. Baseline ADNI MCI data in three classes: neuropsychological scores, FreeSurfer sMRI volumes and thicknesses, and CSF proteins plus APOE e4. Conversion was defined within 36 months. Classes or combinations with n < 300 were excluded. There is one random 85/15 train/test split. Hyperparameters come from a random search that 'selects the hyperparameter combination that provides the best performance'; the paper does not say on which data. Hard voting combines the three algorithms. Metrics are accuracy, PPV, NPV, sensitivity and specificity, with an undefined '+/-' error. There is no AUC and no between-model test.\n\nNARROWED FORM: YES. The narrowed wording is that adding auxiliary information (it lists cognitive scores) to an imaging model improved progressive-MCI prediction over the same imaging model alone, by modest untested margins. Here sMRI alone and neuropsychology + sMRI are fitted on the same n = 318 subset with the same three algorithms. Accuracy improves for every algorithm (RF 0.79 to 0.83, GB 0.79 to 0.88, XGB 0.77 to 0.83) and under voting (0.77 to 0.85). It also improves in the feature-selection rows (0.75/0.77/0.77 to 0.81/0.88/0.81). Sensitivity improves throughout. These are the same kind of modest, untested margins round 20 accepted for P-3 and P-81. The one contrary signal is RF specificity and PPV, both lower with fusion.\n\nSTATED FORM: PARTLY. The part shown is that fusion beats the imaging-only baseline. It does not cleanly beat the non-imaging baselines. (1) The neuropsychology-only model ties the fused model for RF (0.83 vs 0.83) and trails by 0.02 to 0.06 for GB and XGB. That baseline was fitted on n = 587, not on the 318, so it is not a same-sample head-to-head. (2) The AD-biomarker-only model (RF 0.85) beats the RF fusion (0.83). (3) The best model overall is a non-imaging combination, neuropsychology + CSF/APOE (voting 0.90 vs 0.85). This is the P-81 pattern: fusion is clearly better than imaging alone, but not clearly better than the cognitive or fluid baselines. The authors' 'increased all performance indices compared to each class's individual results' (p.8) is contradicted by their own Table 3 for RF (specificity 0.92 to 0.85, PPV 0.89 to 0.82).\n\nCAVEATS. (1) Single 85/15 split, so about 48 test subjects for the n = 318 comparison. A 0.04 gap is about two subjects, inside the stated +/-0.09 to 0.12 errors. (2) The paper does not say whether the sMRI-only and fused arms used the same random split. (3) The hyperparameter search criterion is not stated as confined to training data. (4) No AUC. (5) The neuropsychological set includes CDR-SB and FAQ, which partly define AD conversion (circularity). (6) Registry Sample_N_Approx 587 is the neuropsychology subset; the fusion comparison uses 318.\n\nINDEPENDENCE. ADNI, so it adds no dataset family. It adds a method family (tabular tree ensembles). Its authors (Chieti-Pescara / ASC27) are disjoint from P-3 (Luo, He, Cui, Chen, Ward), P-104 (Heng Tao Shen, Xiaofeng Zhu, Zheng Zhang, Shui-Hua Wang, Yi Chen, Xing Xu, Jie Shao) and P-81 (Cao, Ma, Nayak, Duong). They are also disjoint from the first-page author lists of the round-1 candidates. Not a preprint. Not in registry_duplicates.json.\n\nQuotes are rejoined across line breaks and normalized to ASCII (typographic apostrophes to ', +/- for the plus-minus sign). Table rows are quoted in extract order. Page numbers are extract pages (extract p.N = journal p.142+N).",
+ "quotes": [
+  {
+   "page": 3,
+   "quote": "Single classes or class combinations with a sample size lower than 300 were excluded from the analyses. ML algorithms implemented in Python were applied to identify the best strategy to divide MCI subjects into two groups: individuals who converted to AD within the 36-month follow-up (c-MCI) or not (s-MCI). From the entire dataset, information of 85% of subjects was randomly extracted and used for the training phase performed by RF, GB, and XGB separately. After the training stage, the testing phase was applied by each ML algorithm to the remaining 15% of the dataset."
+  },
+  {
+   "page": 3,
+   "quote": "From several extractions, the algorithm fits the model for each combination of values and then selects the hyperparameter combination that provides the best performance."
+  },
+  {
+   "page": 4,
+   "quote": "Table 3. Performance measures among RF, GB, and XGB applied with multimodal biomarkers. ... Neuropsychological data (n = 587) sMRI data (n = 318) AD-related biomarkers (n = 422) Neuropsychological + AD-related biomarkers (n = 422) Neuropsychological + sMRI data (n = 318) All features RF GB XGB RF GB XGB RF GB XGB RF GB XGB RF GB XGB Accuracy 0.83 0.82 0.81 0.79 0.79 0.77 0.85 0.74 0.74 0.87 0.85 0.89 0.83 0.88 0.83 PPV 0.78 0.78 0.81 0.89 0.89 0.84 0.83 0.91 0.91 0.95 0.90 0.95 0.82 0.90 0.89 NPV 0.87 0.85 0.81 0.73 0.73 0.72 0.87 0.70 0.70 0.83 0.83 0.85 0.85 0.86 0.80 Sensitivity 0.81 0.78 0.69 0.67 0.67 0.67 0.80 0.40 0.40 0.72 0.72 0.76 0.82 0.82 0.73 Specificity 0.85 0.85 0.89 0.92 0.92 0.88 0.89 0.97 0.97 0.97 0.94 0.97 0.85 0.92 0.92 Error +/-0.08 +/-0.08 +/-0.08 +/-0.12 +/-0.12 +/-0.12 +/-0.09 +/-0.11 +/-0.11 +/-0.09 +/-0.09 +/-0.08 +/-0.11 +/-0.09 +/-0.11"
+  },
+  {
+   "page": 4,
+   "quote": "Feature selection RF GB XGB ... Accuracy 0.82 0.82 0.81 0.75 0.77 0.77 NA NA NA 0.84 0.80 0.85 0.81 0.88 0.81"
+  },
+  {
+   "page": 4,
+   "quote": "Table 4. Performance measures following voting technique among RF, GB, and XGB. ... Neuropsychological data (n = 587) sMRI data (n = 318) AD-related biomarkers (n = 422) Neuropsychological + AD-related biomarkers (n = 422) Neuropsychological + sMRI data (n = 318) All features Voting Voting Voting Voting Voting Accuracy 0.82 0.77 0.75 0.90 0.85"
+  },
+  {
+   "page": 5,
+   "quote": "As shown in Table 3, all ML algorithms applied to each class's variables achieved good accuracy, which was lower than 0.80 for sMRI data only. RF achieved the highest accuracy for neuropsychological features (0.83) and AD-related biomarkers (0.85). GB and XGB reached the best performance revealed by the highest accuracy, PPV, NPV, sensitivity, and specificity for combining neuropsychological features with sMRI data (0.88) and AD-related biomarkers (0.89)."
+  },
+  {
+   "page": 8,
+   "quote": "The combination of sMRI and neuropsychological variables increased all performance indices compared to each class's individual results. By combining neuropsychological and sMRI data, accuracy reached 0.88, PPV 0.90, and specificity 0.92. This result confirms the holistic nature of the disease. It also indicates that the variables ensemble of different clinical biomarkers (i.e., neuropsychological and anatomical variables) provides a better model estimation for AD prediction as it increased the accuracy to 0.88 when neuropsychological data or sMRI data reached 0.83 and 0.79 respectively."
+  }
+ ]
+}

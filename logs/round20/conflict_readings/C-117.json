@@ -1,0 +1,80 @@
+{
+ "id": "C-117",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-182",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Differential Role for Hippocampal Subfields in Alzheimer's Disease Progression Revealed with Deep Learning (Kwak et al., Cerebral Cortex 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-122",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting the progression of mild cognitive impairment based on fine-grained and spatiotemporal features of MRI (Hu et al., Biomed. Signal Process. Control 2025)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-182": "Hippocampal-box DenseNet trained on AD vs CN, applied to baseline sMRI of 381 ADNI-2/GO MCI subjects (follow-up at least 18 months); Acc 75.85%, AUC 0.777.",
+  "P-122": "MMS-TransENet (CNN-Transformer) on pairs of longitudinal whole-brain 2D axial slice stacks (two time points); pMCI = progression within 3 years (DSM-5), ADNI 1/GO/2/3; 823 longitudinal samples from 275 subjects; held-out test of 124 samples Acc 84.74%, AUC 0.8587; six-fold CV 84.28% +/- 1.65. Own ablations without the multi-scale modules: 71.6% and 76.5%."
+ },
+ "quantity_a": "Subject-level accuracy from a single baseline T1 hippocampal region, AD/CN-transfer model, 381 MCI, follow-up of at least 18 months.",
+ "quantity_b": "Sample-level accuracy from paired two-time-point whole-brain axial slices, model trained on MCI labels, 3-year progression criterion, test of 124 longitudinal samples.",
+ "same_quantity": false,
+ "incompatible_if_same": "Unclear, and moot: the unit of analysis differs (subjects vs longitudinal samples drawn several per subject), and P-122's architecture ablations without its longitudinal multi-scale modules (71.6-76.5%) bracket P-182's 75.85%, so neither study refutes an ordering the other claims.",
+ "gates": {
+  "task": "match nominally (T2), but the horizons differ (3 years vs at least 18 months).",
+  "dataset_family": "match: ADNI in both; overlap possible.",
+  "validation_tier": "match: both internal ADNI held-out testing.",
+  "modality_family": "match: structural MRI in both."
+ },
+ "endpoint_and_metric": "incompatible: same metric name (accuracy) but different unit of analysis (subjects vs longitudinal samples), different input representation (one baseline scan vs two time points), different training target (AD/CN transfer vs direct pMCI/sMCI) and different horizon.",
+ "performance_validity": "flag does not apply: 0.8474 and 0.7585 are below 0.97; both flags false.",
+ "independence": "Distinct author groups; both ADNI (ADNI-2/GO MCI may appear in both).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-122 classifies pairs of scans from two time points while P-182 classifies a single baseline scan, so the input representation differs (the C-80 precedent).",
+  "P-122's accuracy is computed over longitudinal samples (823 from 275 subjects), not subjects, so the two accuracies do not measure the same quantity.",
+  "The progression criteria differ (3 years vs a follow-up of at least 18 months)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-182",
+   "page": 6,
+   "quote": "In this task, the model achieved an accuracy of 75.85% and an AUC of 0.777 (Fig. 2B)"
+  },
+  {
+   "paper": "P-182",
+   "page": 2,
+   "quote": "This dataset was labeled as either stable MCI (sMCI) or progressive MCI (pMCI) based on longitudinal diagnostic evaluations obtained at least 18 months apart."
+  },
+  {
+   "paper": "P-122",
+   "page": 1,
+   "quote": "The architecture synthesizes longitudinal sMRI data from dual temporal points"
+  },
+  {
+   "paper": "P-122",
+   "page": 5,
+   "quote": "For the sMCI group, we gathered 449 longitudinal samples from 154 subjects diagnosed with sMCI. Similarly, the pMCI group con-sisted of 374 longitudinal samples from 121 subjects"
+  },
+  {
+   "paper": "P-122",
+   "page": 6,
+   "quote": "and the remaining 15% (124 samples) for final model testing"
+  },
+  {
+   "paper": "P-122",
+   "page": 1,
+   "quote": "Patients with pMCI are at a heightened risk of rapidly progressing to AD within the next three years"
+  }
+ ],
+ "record_defects": [
+  "The registry Modality 'MRI/PET' is wrong for both papers (sMRI only).",
+  "resolution_note says 'Confirmed genuine' on a 0.089 accuracy gap that ignores sample-level vs subject-level evaluation and the longitudinal input; the resolution field says 'Rejected - false positive' while the status is partially_resolved_candidate."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Subject-level accuracies from the same single-visit or same two-visit input and horizon in both studies, with non-overlapping uncertainty."
+}

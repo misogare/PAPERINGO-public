@@ -1,0 +1,88 @@
+{
+ "id": "C-230",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-632",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Deficits in recent but not lifetime familiarity in amnestic mild cognitive impairment (Anderson et al., Neuropsychologia 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-667",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Boundary extension as a tool for detection of cognitive change among individuals with mild cognitive impairment: A preliminary study (Chang et al., Archives of Gerontology and Geriatrics 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-632": "24 aMCI vs 24 matched healthy older adults. PDP (within-session repetitions at lags 0-12): recollection lower in aMCI (F(1,45) = 8.49, p = .006), familiarity not different (F < 1). Frequency judgments for recently exposed words: correlation with actual frequency lower in aMCI (F(1,45) = 18.91, p < .001). Lifetime familiarity for object concepts: no group difference.",
+  "P-667": "40 younger adults (YA), 40 healthy older adults (OA), 26 MCI; boundary-extension recognition after a 35-minute delay, ROC-derived familiarity medians YA 0.64, OA 0.37, MCI -0.25 (Kruskal-Wallis p = 0.002); Bonferroni post hoc significant only YA vs MCI (p = 0.001, r = 0.42); YA vs OA p = 0.061; no significant OA vs MCI difference is reported; da and B'' likewise differ only YA vs MCI. The abstract nonetheless states that OA and MCI could be differentiated by familiarity."
+ },
+ "quantity_a": "Familiarity estimate (PDP), and familiarity-based frequency discrimination for recently exposed words, aMCI vs age-matched healthy older adults.",
+ "quantity_b": "ROC-derived familiarity for boundary-extension scene recognition after 35 minutes; the only significant contrast is MCI vs younger adults (mean age 29.6).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Against healthy older adults P-667 reports no significant familiarity difference, which agrees with P-632's PDP result. P-667's significant deficit is relative to young adults, a comparison P-632 did not make. For recent exposure measured by a recollection-minimising task, P-632 itself finds impairment in aMCI, the same direction as P-667's MCI results.",
+ "gates": {
+  "task": "match: both T4 (cross-sectional cognitive characterisation, no classifier).",
+  "dataset_family": "mismatch: Baycrest/Rotman memory clinic (Toronto) vs Taiwanese memory clinics plus community controls; no waiver needed given the outcome.",
+  "validation_tier": "n/a: association studies validating no model (counted as matched).",
+  "modality_family": "match at family level (behavioural recognition-memory paradigms); paradigms differ (PDP, frequency judgments, lifetime ratings vs boundary-extension ROC)."
+ },
+ "endpoint_and_metric": "incompatible as the record frames it: the comparison groups differ (matched older controls vs young adults for P-667's significant contrast), and the familiarity estimators differ (PDP subtraction vs ROC fit on boundary ratings).",
+ "performance_validity": "not a performance comparison.",
+ "independence": "Distinct cohorts and authors; independent.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record misreads P-667 as showing familiarity impaired in MCI relative to healthy older adults; its reported post hoc contrasts are significant only for MCI vs young adults.",
+  "Against older controls both papers find no difference on a dual-process familiarity estimate (P-632 PDP F < 1; P-667 OA vs MCI not significant), so they agree.",
+  "Where P-632 does find a familiarity deficit (frequency judgments of recent exposure), the direction matches P-667's MCI results, so no opposite-direction result exists on any shared quantity.",
+  "The record's reconciliation by recency is not what the sources show: P-632's PDP task also probes recent (within-session) exposure and found familiarity spared; P-632 attributes the split to task demands and recollection contamination."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-632",
+   "page": 1,
+   "quote": "Familiarity was spared on the PDP task, but was impaired when probed with frequency judgments for recently exposed words in aMCI."
+  },
+  {
+   "paper": "P-632",
+   "page": 4,
+   "quote": "Familiarity did not differ between groups, F(1, 45) < 1, but was higher at Lag 3 than at Lag 12"
+  },
+  {
+   "paper": "P-632",
+   "page": 3,
+   "quote": "each containing four 0-lag repetitions, four 3-lag repetitions, and four 12-lag repetitions."
+  },
+  {
+   "paper": "P-667",
+   "page": 4,
+   "quote": "Estimates of familiarity were significantly higher among YA participants than among patients with MCI (|\u0394Rank| = 26.70, p = 0.001, r = 0.42). Differences in estimates of familiarity between YA and OA groups were less pronounced (p = 0.061)."
+  },
+  {
+   "paper": "P-667",
+   "page": 5,
+   "quote": "Familiarity 0.64 (-2.13 ~ 9.04)\u2020 0.37 (-59.55 ~ 40.32) -0.25 (-86.76 ~ 4.96)\u2020 p = 0.002"
+  },
+  {
+   "paper": "P-667",
+   "page": 5,
+   "quote": "\u2020 : YA \u2215= MCI."
+  },
+  {
+   "paper": "P-667",
+   "page": 1,
+   "quote": "The OA and MCI groups could be differentiated by the degree of familiarity associated with BE, wherein the latter group displayed minimal familiarity."
+  }
+ ],
+ "record_defects": [
+  "The resolution_note says both studies compare against healthy older adults; P-667's significant familiarity, da and B'' contrasts are MCI vs young adults only.",
+  "claim_b's p-values (familiarity p = 0.002, da p = 0.001, B'' p = 0.010) are three-group Kruskal-Wallis tests, not MCI vs older-adult contrasts.",
+  "The recency-moderator reconciliation is contradicted by P-632's PDP task, which also used recent within-session exposure and found familiarity spared.",
+  "P-667's abstract claim that OA and MCI were differentiated by familiarity is not supported by its own reported post hoc tests (Table 4 marks only YA vs MCI); the ledger repeats the abstract."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A reported significant OA vs MCI familiarity difference in P-667 on a dual-process estimate (for example in its supplementary material, not in the extract), set against P-632's spared PDP familiarity; even then paradigm and estimator differences would point to incommensurability before a genuine verdict."
+}

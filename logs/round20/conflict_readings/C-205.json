@@ -1,0 +1,78 @@
+{
+ "id": "C-205",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-528",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "An Activation Likelihood Estimation Meta-Analysis of Specific Functional Alterations in Dorsal Attention Network in Mild Cognitive Impairment (Wu et al., Front Neurosci 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-517",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Convergent Functional Changes of Default Mode Network in Mild Cognitive Impairment Using Activation Likelihood Estimation (Yuan et al., Front Aging Neurosci 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-528": "ALE meta-analysis of 38 rs-fMRI studies (17 ALFF, 14 ReHo, 7 FC) restricted to the dorsal attention network, MCI vs HC, GingerALE, cluster-level FWE p < 0.05, 1,000 permutations. MCI: increased ALFF in L MFG, R SFG, bilateral STG; decreased ALFF in L IPL (BA 40) and R MTG; increased ReHo in bilateral preCG (R at BA 44, MNI 54,18,0) and L SPL; decreased ReHo in L IPL (BA 39/40); increased FC in bilateral preCG and MFG; decreased FC in L IFG and R IPL.",
+  "P-517": "ALE meta-analysis of 39 rs-fMRI studies restricted to the default mode network, MCI vs HC. MCI: increased ALFF/fALFF in cerebellum posterior lobe, R PHG, fusiform; decreased ALFF/fALFF in bilateral precuneus; increased ReHo in bilateral IFG (BA 44; R at 56,14,14); decreased ReHo in L STG and L IPL (BA 40, -51,-42,45); increased FC in R medial frontal gyrus (max ALE 0.0156) and L ACC; decreased FC in bilateral precuneus, L temporal and angular regions."
+ },
+ "quantity_a": "Spatial convergence (ALE) of MCI-vs-HC differences in ALFF/ReHo/FC foci within the dorsal attention network.",
+ "quantity_b": "Spatial convergence (ALE) of MCI-vs-HC differences in ALFF/ReHo/FC foci within the default mode network.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The two meta-analyses mostly map different networks; where their clusters coincide on the same index they agree in direction: decreased ReHo in left IPL BA 40 in both (P-528 peak -52,-44,44; P-517 peak -51,-42,45), and increased ReHo at right BA 44 in both (P-528 'precentral' 54,18,0; P-517 IFG 56,14,14). The only near-coincident opposite signs (increased ALFF in left STG BA 39 in P-528 vs decreased FC in left STG/MTG BA 39 in P-517) are on different indices (local amplitude vs connectivity), which are not the same quantity.",
+ "gates": {
+  "task": "match (both MCI vs HC functional group-difference syntheses; the registry codes both T6 while the record says T5)",
+  "dataset_family": "match: pooled published rs-fMRI MCI-vs-HC studies, with substantial overlap of included primary studies",
+  "validation_tier": "n/a (two evidence syntheses; counted as matched)",
+  "modality_family": "match: functional MRI (resting state)"
+ },
+ "endpoint_and_metric": "compatible in type (ALE convergence of ALFF/ReHo/FC foci), but restricted to different networks' coordinates",
+ "performance_validity": "not a performance comparison",
+ "independence": "Not independent: overlapping authorship (Jiu Chen corresponding author on both; Shanshan Chen, Yu Song, Honglin Ge, Wenzhang Qi and Qianqian Yuan on both) and overlapping primary studies (e.g. Cha et al., Wang et al. 2011, Yin et al. 2014, Min et al. 2019, Yuan et al. 2016, Bai et al. 2008, Luo et al. 2018, Han et al. 2012 appear in both tables).",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record names no opposing result: P-528 maps DAN alterations and P-517 maps DMN alterations, each reporting convergent MCI-vs-HC differences.",
+  "Where the two meta-analyses report the same index in the same region (left IPL ReHo decrease; right BA 44 ReHo increase), their directions agree.",
+  "The opposite-signed left STG BA 39 clusters are on different indices (ALFF vs FC), so they are not a disagreement on one quantity.",
+  "The two syntheses share authors and primary studies, so any agreement is not independent, but that does not create a disagreement."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-528",
+   "page": 4,
+   "quote": "Patients with MCI showed increased ReHo in the left preCG (BA 4), left SPL (BA 7), and right preCG (BA 44). Patients with MCI showed decreased ReHo in the left IPL (BA 39, 40)."
+  },
+  {
+   "paper": "P-528",
+   "page": 1,
+   "quote": "A total of 38 studies were involved in our meta-analysis."
+  },
+  {
+   "paper": "P-517",
+   "page": 4,
+   "quote": "Compared to HC, MCI patients demonstrated increased ReHo in the bilateral inferior frontal gyrus (Table 2 and Figure 3), while MCI patients showed decreased ReHo in the left superior temporal gyrus and left inferior parietal lobule"
+  },
+  {
+   "paper": "P-517",
+   "page": 4,
+   "quote": "In addition, MCI patients had decreased ALFF/fALFF in the bilateral precuneus"
+  },
+  {
+   "paper": "P-517",
+   "page": 7,
+   "quote": "Medial Frontal Gyrus 0.015601669 Right 10"
+  }
+ ],
+ "record_defects": [
+  "claim_b attaches 'max ALE ~0.0156' to 'decreased precuneus FC/ALFF'; in P-517 Table 2 the 0.0156 maximum belongs to the increased-FC cluster in the right medial frontal gyrus, while the precuneus decreases peak at about 0.0100 (FC) and 0.0088 (ALFF).",
+  "The G4 note describes this record as a comparison of 'two reported performance figures' and says 'all 20 papers in this range are ADNI-dependent'; neither applies: both papers are ALE meta-analyses of published rs-fMRI studies with no performance figure and no ADNI dependence.",
+  "Task recorded as T5; the registry codes both papers T6.",
+  "resolution_evidence_papers cites P-548 (an EEG synthesis in SCD) as bridging evidence; it bears on neither network nor modality."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An opposite-signed convergent cluster on the same index and the same region in the two syntheses (e.g. ReHo increased in left IPL in one and decreased in the other); none was found in the reported tables."
+}

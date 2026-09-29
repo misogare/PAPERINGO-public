@@ -1,0 +1,49 @@
+{
+ "paper": "P-186",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "ADNI (ADNI-1 MCI with at least three consecutive visits; 49 MCIp / 70 MCIs for 6-month-ahead, 35 MCIp / 50 MCIs for 1-year-ahead; 36-month conversion window)",
+ "method_family": "Longitudinal future-value forecasting (weighted gradient-offset linear model) of FreeSurfer MRI morphometry and neuropsychological markers, then a linear SVM on the concatenated observed-plus-forecast trajectories; incremental t-test-ranked feature subsets",
+ "same_sample_or_cohort_as": [
+  "P-3, P-104, P-81 (all ADNI: same dataset family; ADNI-1 MCI overlap with P-3 and P-81 likely)",
+  "P-190, P-88, P-1128 (candidates; ADNI)"
+ ],
+ "shared_authors_with": [
+  "None found. Authors (Minhas, Khanum, Alvi, Riaz, Khan, Alsolami, Khan) do not appear on P-3, P-104, P-81 or the other candidates"
+ ],
+ "what_it_shows": "Within one study, on the same subjects under 5-fold CV, the NM+MRI model had a higher AUC than both single-modality models at both horizons: 91.2% vs NM 87.1% and MRI 88.0% at 6 months; 95.7% vs NM 91.5% and MRI 90.5% at 1 year. On accuracy the fused model was best at 6 months (84.9 vs 77.0 and 79.8) but worst at 1 year (81.0 vs NM 84.7 and MRI 83.5). Its 1-year specificity was 70 vs 86 (NM) and 90 (MRI).",
+ "why": "STATED: partly. This is a head-to-head fusion (MRI plus cognitive markers) vs unimodal comparison, and on AUC, the authors' declared comparison metric (p.8), fusion beats both unimodal baselines at both horizons. On accuracy and specificity, however, the 1-year fused model falls below both unimodal models (Table 6). That is the same kind of metric split that made P-81 'partly' in round 20. NARROWED: partly. Adding cognitive markers to the MRI model raised the AUC by 3.2 points (6 months) and 5.2 points (1 year). Accuracy rose at 6 months (79.8 to 84.9) but fell at 1 year (83.5 to 81.0), and specificity fell from 90 to 70. The design also differs from the other supporters. Classification uses two observed follow-up visits plus a forecast third value, not baseline data, so it shows the gain only for short-horizon longitudinal prediction. CAVEATS: (1) There is no between-model significance test; the p-values in Tables 5 and 6 are against chance. (2) Each modality's best marker subset was chosen by highest AUC on the cross-validation results, so the reported maxima are optimistic. (3) Features were normalised before the train-test split (p.4). (4) Samples are small (85 to 119). (5) The text says the bimodal setup delivers improved sensitivity and specificity, but Table 6 contradicts this for 1-year specificity. (6) The paper is in Hindawi's Computational Intelligence and Neuroscience. Its retraction or expression-of-concern status was not checked, because the literature tool was unavailable (usage limit), and should be checked before admission. INDEPENDENCE: ADNI, no new dataset family; the method family differs from P-3, P-104 and P-81.",
+ "quotes": [
+  {
+   "page": 9,
+   "quote": "Table 5: Comparison of ground truth (GT) AUC and obtained AUC using the proposed method. ... NM 2 90.7% (1.7 \u00d710\u22125) 87.1% (1.9 \u00d710\u22125) 4 93.7% (4.1 \u00d7 10\u22126) 91.5% (5.1 \u00d7 10\u22126) MRI 13 88.71% (4 \u00d710\u22126) 88% (1.3 \u00d710\u22126) 13 91.4% (8.7 \u00d710\u22127) 90.5% (1.02 \u00d710\u22126) NM + MRI 19 94.2% (4.8 \u00d710\u22126) 91.2% (4.6 \u00d710\u22126) 9 98% (8.5 \u00d710\u22128) 95.7% (4.05 \u00d710\u22127) [columns: 6 months marker set, GT AUC, proposed AUC; 1 year marker set, GT AUC, proposed AUC]"
+  },
+  {
+   "page": 10,
+   "quote": "Table 6: Average MCIp vs. MCIs performance metrics. ... NM 77.0 (9 \u00d710\u22125) 73.5 80 84.7 (9.3 \u00d710\u22126) 82.9 86 MRI 79.8 (1.2 \u00d710\u22125) 71.8 71.8 83.5 (1.69 \u00d710\u22125) 74.28 90 NM + MRI 84.9 (3.9 \u00d710\u22125) 81.7 87.1 81 (1.43 \u00d710\u22125) 85.7 70 [columns: 6 months accuracy, sensitivity, specificity; 1 year accuracy, sensitivity, specificity]"
+  },
+  {
+   "page": 8,
+   "quote": "However, the classification power of our system is the highest when NM measures are used in conjunction with MRI measures which is mentioned in Table 5. In 6-month- and 1-year-ahead predictions, the proposed method delivers a maximum AUC of 91.2% (p value 4.7 \u00d710\u22126) and 95.7% (p value 4.1 \u00d7 10\u22127) using 19 and 9 bimodal features, respectively."
+  },
+  {
+   "page": 8,
+   "quote": "The bimodal setup delivers improved sensitivity and specificity as compared to unimodal models."
+  },
+  {
+   "page": 8,
+   "quote": "AUC is considered for comparison to account for imbalance in the data."
+  },
+  {
+   "page": 4,
+   "quote": "We scale all features to have values between 0 and 1 before the train-test split."
+  },
+  {
+   "page": 3,
+   "quote": "For 6-month-ahead prediction, the dataset consists of subjects with three consecutive 6 monthly follow-up readings. Therefore, we have 49 MCIp and 70 MCIs subjects ... Similarly, for 1-year-ahead prediction, the dataset contains three consecutive annual readings, resulting in 35 MCIp and 50 MCIs subjects."
+  }
+ ]
+}

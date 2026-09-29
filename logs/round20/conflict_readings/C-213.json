@@ -1,0 +1,83 @@
+{
+ "id": "C-213",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-178",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Random forest model for feature-based Alzheimer's disease conversion prediction from early mild cognitive impairment subjects (Velazquez & Lee, PLoS ONE 16(4): e0244773, 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-183",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Signal and Texture Features from T2 Maps for the Prediction of Mild Cognitive Impairment to Alzheimer's Disease Progression (Trejo-Castro et al., Healthcare 2021, 9, 941)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-178": "ADNI 1/2/GO early-MCI (EMCI) only: 383 patients (49 eventual AD converters, mean time to conversion 5.02 years; 334 non-converters), analysed at visit level (1806 visits: 198 converter, 1608 non-converter) with random oversampling of the minority class. Nine clinical features (age, race, APOE4, hippocampal and ventricular volume, ADAS13, ADAS11, FAQ, MMSE); random forest with 1000 trees. Test accuracy 0.936, AUC 0.96 (9 features). A support vector classifier that predicted the majority class throughout scored accuracy 0.900 (recall 1, AUC 0.54), which is the no-information baseline of this test set.",
+  "P-183": "ADNI MCI aged 70-80 with dual-echo PD/T2 scans: 40 subjects, 18 progressors (first AD diagnosis 2 years after baseline) vs 22 stable for at least 5 years. Eight neuropsychological scores plus the top-ranked T2-map signal/texture and volume features; seven classifiers, 100 repeats of 80/20 CV. With imaging: accuracy 0.775 (95% CI 0.615-0.892) for BSWiMS and RF, ROC AUC up to 0.824 (ENS, CI 0.681-0.968). Neuropsychological tests only: best accuracy 0.675 (LASSO). No accuracy of 0.727 is reported (0.727 appears only as the LASSO neuropsychological AUC and the KNN specificity)."
+ },
+ "quantity_a": "Accuracy for eventual AD conversion (mean ~5 years) among early-MCI patients, visit-level records, class-imbalanced test set (~87-90% non-converters), clinical plus hippocampal/ventricular volume features",
+ "quantity_b": "Accuracy for AD diagnosis at 2 years vs stable at least 5 years among MCI patients aged 70-80, subject-level, near-balanced (18/22), neuropsychological plus T2-map signal/texture features",
+ "same_quantity": false,
+ "incompatible_if_same": "Only superficially. P-183's accuracy CI (0.615-0.892) excludes P-178's 0.936. But P-178's accuracy is measured on a test set where predicting 'non-converter' for everyone already scores 0.900, whereas P-183's classes are near-balanced, so the two accuracies are on different scales and the interval comparison is not meaningful.",
+ "gates": {
+  "task": "match in class (MCI-to-AD prognosis, T2), but the populations and endpoints differ: EMCI only with eventual conversion (mean 5.02 y) vs MCI aged 70-80 with conversion at exactly 2 years vs stable at least 5 years",
+  "dataset_family": "match: both ADNI (different phases/subsets; P-183 limited to subjects with dual-echo PD/T2 scans)",
+  "validation_tier": "match: both internal only (V2)",
+  "modality_family": "partial mismatch: P-178 is clinical/cognitive tabular data with two FreeSurfer volumes; P-183 adds quantitative T2-map (dual-echo spin-echo) signal and texture features to cognitive scores"
+ },
+ "endpoint_and_metric": "incompatible: the metric is nominally accuracy in both, but under very different class prevalence (12.8% vs 45% converters), unit of analysis (visits with oversampling vs subjects) and endpoint definition (eventual vs 2-year conversion), so the accuracies do not estimate the same quantity",
+ "performance_validity": "flag does not apply formally: P-178's 0.936 accuracy and 0.96 AUC are below 0.97. However, its visit-level design with minority oversampling (Table 1 lists oversampled 'Testing Data 402/402' although the text says 95 patients were held out) raises a leakage concern, and its accuracy is only 3.6 points above the 0.900 majority-class baseline.",
+ "independence": "Distinct author groups; both ADNI, so MCI participants may overlap",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-178 studies early-MCI patients and eventual conversion (mean 5.02 years), while P-183 studies MCI patients aged 70-80 converting at 2 years against those stable for at least 5 years, so the population and endpoint differ.",
+  "P-178's accuracy is computed at visit level on a test set where a majority-class classifier scores 0.900, while P-183's is subject-level on near-balanced classes, so the accuracy values are not on the same scale.",
+  "The recorded 'Acc 72.7' for P-183 is not a reported accuracy; P-183's best accuracy is 0.775 (CI 0.615-0.892).",
+  "The predictor sets differ: clinical scores with two volumes in P-178, cognitive scores with T2-map signal/texture in P-183."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-178",
+   "page": 1,
+   "quote": "383 Early Mild Cognitive Impairment (EMCI) patients were gathered from the Alzheimer's Disease Neuroimaging Initiative (ADNI). Of these patients, 49 would eventually convert to AD (EMCI_C), whereas the remaining 334 did not convert (EMCI_NC)."
+  },
+  {
+   "paper": "P-178",
+   "page": 3,
+   "quote": "The remaining 1806 EMCI visits were then used as a starting point for training prior to augmentation. Of these, 198 belonged to the EMCI_C class while 1608 visits were from EMCI_NC subjects."
+  },
+  {
+   "paper": "P-178",
+   "page": 8,
+   "quote": "Support Vector 6-Features 0.900 0.900 1 0.948 0.52 (Table 4: Accuracy, Precision, Recall, F1, AUC)"
+  },
+  {
+   "paper": "P-178",
+   "page": 8,
+   "quote": "our 9-feature random forest implementation with an accuracy of 93.6% and an AUC of 96% against a 383-patient data set represents our best model."
+  },
+  {
+   "paper": "P-183",
+   "page": 3,
+   "quote": "the 18 subjects who had their first AD diagnosis 2 years after their baseline visit were regarded as progressers (MCIp), while the 22 subjects who never had an AD diagnosis and participated in the study for at least 5 years were labeled as stable (MCIs)."
+  },
+  {
+   "paper": "P-183",
+   "page": 7,
+   "quote": "RF 0.775 0.615-0.892 0.770 0.636-0.905 (Table 4: accuracy mean and CI, ROC AUC mean and CI)"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-183: Acc 72.7' is not a reported accuracy; P-183 reports 0.775 (best, with imaging) or 0.675 (neuropsychological only); 0.727 is an AUC/specificity value.",
+  "gap_magnitude 0.209 is computed from the misread 72.7.",
+  "Registry Modality 'MRI/PET' is wrong for both: no PET; P-178 is mostly clinical tabular data with two MRI volumes, P-183 uses quantitative T2 maps.",
+  "task_equal 'Yes' ignores the EMCI-only population and eventual-conversion endpoint of P-178 against the 2-year endpoint of P-183."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-178 result at subject level for a fixed 2-year horizon in the same MCI population, with balanced or prevalence-adjusted accuracy (or AUC with an interval), that still excluded P-183's interval."
+}

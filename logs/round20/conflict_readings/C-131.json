@@ -1,0 +1,83 @@
+{
+ "id": "C-131",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-93",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Assessing clinical progression from subjective cognitive decline to mild cognitive impairment with incomplete multi-modal neuroimages (Liu et al., Med Image Anal 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-168",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of progression from mild cognitive impairment to Alzheimer's disease with longitudinal and multimodal data (Ding et al., Front Dement 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-93": "JSRL (GAN image synthesis + CNN) trained on ADNI-1/2 subjects with baseline MRI + FDG-PET; MCI conversion (pMCI vs sMCI, 36-month window) tested on independent ADNI MCI subjects with baseline MRI only (PET synthesised): AUC 0.838, ACC 0.780 (Fig. 4, Table 5). Primary task is SCD->MCI on CLAS (AUC 0.747). Imaging only; no cognitive tests.",
+  "P-168": "LSTM on five time points (baseline to 24 months) of 15 neuropsychological tests + 7 FreeSurfer volumes + demographics, 347 ADNI participants with MCI at the 24-month index exam; outcome MCI->AD within 2 years of the index exam; 10-fold CV AUC 0.93 +/- 0.06 (single-time-point random forest 0.90 +/- 0.09; MRI-only LSTM 0.86; MRI-only random forest 0.85; NP-only LSTM 0.89)."
+ },
+ "quantity_a": "AUC for 36-month pMCI vs sMCI from a single baseline T1 MRI (plus MRI-synthesised PET), no cognitive or demographic inputs, independent ADNI test subset.",
+ "quantity_b": "AUC for 2-year MCI->AD progression from 5-visit longitudinal neuropsychological tests + MRI volumes + demographics, among ADNI participants still MCI at month 24, 10-fold CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-168's own imaging-only comparators (MRI-only LSTM 0.86, MRI-only random forest 0.85) sit next to P-93's imaging-only 0.838; P-168's 0.93 is driven by adding cognitive tests and longitudinal inputs. With P-168's SD of 0.06 across folds the imaging-only figures are not separated.",
+ "gates": {
+  "task": "match: both T2 MCI-to-AD conversion (horizons differ: 36 months vs 2 years from a month-24 index exam)",
+  "dataset_family": "match: both ADNI (P-93 ADNI-1/2; P-168 ADNIMERGE ADNI-1/GO/2); subjects likely overlap",
+  "validation_tier": "match: both internal (P-93 independent ADNI test subset; P-168 10-fold CV)",
+  "modality_family": "mismatch: P-93 structural MRI images (+ synthesised FDG-PET) only; P-168 neuropsychological tests + FreeSurfer volumes + demographics; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different predictor set (imaging only vs cognition + MRI volumes + demographics), input representation (single baseline vs five longitudinal visits), horizon (36 months from baseline vs 24 months from a month-24 index) and population (baseline MCI vs participants still MCI after 2 years)",
+ "performance_validity": "flag does not apply: 0.838 and 0.93 are both below 0.97",
+ "independence": "Distinct author groups; both use ADNI, so participants likely overlap (shared cohort, recorded as non-independence).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-93 predicts from a single baseline MRI (with synthesised PET) without cognitive inputs, whereas P-168's 0.93 uses five visits of neuropsychological tests, MRI volumes and demographics, so the predictor set and input representation differ.",
+  "P-168 predicts conversion within 2 years of a month-24 index exam among people still MCI at that point, while P-93 predicts conversion within 36 months of baseline, so horizon and population differ.",
+  "P-168's own MRI-only models (AUC 0.85-0.86) sit next to P-93's 0.838, which shows the gap tracks the predictor set, not a disagreement about one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-93",
+   "page": 8,
+   "quote": "Figure 4 suggests that our JSRL achieves the best AUC of 0.838 and ACC of 0.780, which is 4.11 and 5.65 percent higher than the second-best AUC and ACC achieved by HGAN+SCFR"
+  },
+  {
+   "paper": "P-93",
+   "page": 8,
+   "quote": "And 177 subjects (including 81 sMCI and 96 pMCI) with only MRI are used as independent test data."
+  },
+  {
+   "paper": "P-93",
+   "page": 3,
+   "quote": "we use the 36-month window to define the conversion of SCD and MCI subjects in ADNI-1 and ADNI-2."
+  },
+  {
+   "paper": "P-168",
+   "page": 1,
+   "quote": "A Long Short-Term Memory (LSTM) model using data collected at five-time points (baseline, 6, 12, 18, and 24-month) was developed to predict the risk of progression from MCI to AD within 2 years from the index exam (the exam at 24-month)."
+  },
+  {
+   "paper": "P-168",
+   "page": 5,
+   "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures. The performance of the random forest models using MRI measures had an AUC of 0.85."
+  },
+  {
+   "paper": "P-168",
+   "page": 5,
+   "quote": "signi\ufb01cantly higher mean AUC (0.93 \u00b1 0.06) than the random forest model based on the data collected at a single time point (24-month) (0.90 \u00b1 0.09)"
+  }
+ ],
+ "record_defects": [
+  "claim_a still names 'P-188' although paper_a was repointed to P-93 (P-188 is a stub duplicate of P-93).",
+  "resolution_note says 'Confirmed genuine' on metric type and gap alone while resolution says 'Rejected: Task, dataset, or modality mismatch'.",
+  "P-93 registry Best_Metric 'not reported' is wrong: the paper reports AUC 0.838/ACC 0.780 for MCI conversion and AUC 0.747 for SCD conversion.",
+  "P-93's own test-set size is inconsistent: text says 177 (81 sMCI/96 pMCI), Table 2 and Table 5 say 66 sMCI/93 pMCI; the registry Sample_N 863 is the SCD-task training set.",
+  "The bridging-evidence list names no condition separating the two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An imaging-only, baseline, same-horizon result from one study whose interval excluded the other's; P-168's imaging-only results (0.85-0.86) instead agree with P-93."
+}

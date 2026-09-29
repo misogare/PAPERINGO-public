@@ -1,0 +1,82 @@
+{
+ "id": "C-177",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-331",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Identifying and Predicting Cognitive Decline Using Multi-Modal Sensor Data and Machine Learning Approach (Joshi et al., Research Square preprint, 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-282",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "AI-Driven Prediction of Possible Mild Cognitive Impairment Using the Oculo-Cognitive Addition Test (OCAT) (Pradhan et al., Brain Sci. 2026, 16, 70)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-331": "118 Nebraska drivers (72 cognitively impaired: 64 MCI + 8 dementia, clinician-adjudicated per NIA-AA 2018; 46 healthy aging). XGBoost on 3 months of naturalistic driving + actigraphy sleep + demographics, nested CV with LOSO outer loop: accuracy 68.64%, precision 73.97%, recall 75.00%, F1 74.48%.",
+  "P-282": "206 Mayo Clinic Arizona APOE-cohort participants (166 CN, 40 'possible MCI' defined as Mattis DRS < 140, including mild dementia). Logistic regression on OCAT eye-movement + time features + age, 80/20 stratified split (test n=42: 31 CN, 11 PMCI), SMOTE on training: Table 5 LR-SMOTE accuracy 0.94 [0.88-0.98] (DT 0.5), 0.93 (DT 0.45); the abstract states accuracy 0.97. No external validation."
+ },
+ "quantity_a": "Subject-level accuracy for classifying clinician-diagnosed MCI or dementia vs healthy aging in community drivers from passive driving, sleep and demographic data, leave-one-subject-out CV",
+ "quantity_b": "Hold-out accuracy for classifying a psychometric threshold (DRS score < 140, 'possible MCI', explicitly an early-risk label) vs DRS >= 140 in neurology-clinic cohort participants from a one-minute eye-tracked mental-addition task, 42-person test set",
+ "same_quantity": false,
+ "incompatible_if_same": "Would appear incompatible numerically (68.64% vs 0.94), but P-282's majority-class baseline on its test set is 31/42 = 74% vs P-331's 61%, and the endpoints differ in kind, so the gap is not interpretable as a disagreement.",
+ "gates": {
+  "task": "mismatch in substance: both detection tasks, but P-331's target is clinician-adjudicated MCI/dementia and P-282's target is a DRS cut-off that the authors say captures 'early cognitive risk rather than established impairment'; registry codes P-331 as T2 while the record says T1",
+  "dataset_family": "mismatch: Nebraska community driver sample vs Mayo Clinic Arizona APOE cohort; the record's dataset_equal 'Yes' rests on both registry rows reading 'not reported'",
+  "validation_tier": "match: both internal only (LOSO CV vs single stratified hold-out)",
+  "modality_family": "mismatch in substance: both coded digital_behaviour, but passive naturalistic driving + wrist actigraphy vs active task-based eye tracking during mental arithmetic"
+ },
+ "endpoint_and_metric": "incompatible: accuracy in both, but against different reference standards (clinical diagnosis vs DRS < 140) and different class balance",
+ "performance_validity": "flag applies to the headline figure: P-282's abstract reports accuracy 0.97 on internal validation with a 42-person test set and no external cohort, which meets the Section 2 exclusion; even its table value (0.94) is internal-only on n=42",
+ "independence": "Distinct studies, cohorts and author groups",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-282's outcome is a DRS score below 140, which its authors say indicates early cognitive risk rather than established MCI, while P-331's outcome is clinician-adjudicated MCI or dementia.",
+  "The input modalities differ in kind (passive driving and sleep vs eye tracking during a mental-addition task) and the cohorts differ, so the dataset-family and modality gates fail with no waiver on record.",
+  "P-282's headline accuracy of 0.97 is internal validation on a 42-person test set with no external cohort, so the performance-validity exclusion would bar a performance comparison even if the quantities matched."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-331",
+   "page": 6,
+   "quote": "the model 6 integrating demographics, driving performance, driving life-space, and sleep data achieved the highest accuracy (68.64%), precision (73.97%), and F1-score (74.48%)."
+  },
+  {
+   "paper": "P-331",
+   "page": 10,
+   "quote": "Participants with cognitive decline but without substantial functional impairments were classified as having MCI. Those who showed both cognitive and functional decline were classified as dementia."
+  },
+  {
+   "paper": "P-282",
+   "page": 4,
+   "quote": "As per the clinical standards, participants with a DRS score of 140 or above were labeled as CN, and those with less than 140 scores were labeled as PMCI [38]."
+  },
+  {
+   "paper": "P-282",
+   "page": 12,
+   "quote": "it likely captures earlier or subtler impairment rather than definitive MCI and may limit direct comparability with studies using lower, more traditional cutoffs (e.g., 123) [9]."
+  },
+  {
+   "paper": "P-282",
+   "page": 1,
+   "quote": "LR models achieved the highest performance using the combined time and eye movement features, with an accuracy of 0.97, recall of 0.91, and an AUPRC of 0.95."
+  },
+  {
+   "paper": "P-282",
+   "page": 11,
+   "quote": "However, model development and evaluation were conducted within a single cohort, and the absence of external validation limits generalizability."
+  }
+ ],
+ "record_defects": [
+  "dataset_equal 'Yes' is wrong: the two studies use unrelated cohorts (Nebraska drivers vs Mayo Clinic Arizona APOE cohort); both registry rows merely say 'not reported'.",
+  "claim_b 'Acc 0.97' is the abstract figure; P-282's own Table 5 gives 0.94 [0.88-0.98] for the best LR model, an internal inconsistency in the source that the record does not note.",
+  "claim_a labels P-331 as T1 whereas the registry codes it T2.",
+  "resolution_note's rejection reason ('Same architecture family (A1_classical)') is not a ground under the rule; the real grounds are endpoint, cohort and modality differences and the performance-validity exclusion."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing within these two papers: a comparison would need both to use the same reference standard (clinical MCI diagnosis) in comparable cohorts with externally validated, prevalence-robust metrics."
+}

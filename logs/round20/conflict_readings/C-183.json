@@ -1,0 +1,90 @@
+{
+ "id": "C-183",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-339",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A prediction nomogram for mild cognitive impairment in type 2 diabetes mellitus based on the Chinese visceral adiposity index (Zhou et al., Scientific Reports 2025;15:32393)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-307",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable machine learning models for identifying mild cognitive impairment in older patients with chronic pain (Zhang et al., BMC Nursing 2025;24:72)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-339": "Logistic-regression nomogram (age, gender, education, CVAI) for MoCA-defined MCI (MoCA < 26) in 337 hospitalised T2DM patients aged 40-75 at one Nanjing hospital: AUC 0.765 (95% CI 0.705-0.826) in the training cohort (n = 236) and 0.690 (95% CI 0.588-0.792) in the random 30% validation cohort (n = 101); optimism-corrected C-index 0.747.",
+  "P-307": "XGBoost on seven variables (age, education, pain duration, number of pain sites, VAS pain level, GDS-15 depression, PSQI sleep) for MCI (Petersen/IWG criteria, MoCA < 26 plus complaint, ADL and neurologist confirmation) in 612 chronic-pain patients aged >= 60 at one Nanchang pain department: AUC 0.925 (95% CI 0.863-0.995) on the 30% test set after SMOTETomek balancing."
+ },
+ "quantity_a": "ROC-AUC of a four-variable demographic + visceral-adiposity nomogram for cross-sectional MoCA-defined MCI vs normal cognition in hospitalised Chinese T2DM patients aged 40-75 (training cohort 0.765; held-out 0.690).",
+ "quantity_b": "ROC-AUC of an XGBoost model on pain, depression, sleep and demographic variables for clinically diagnosed MCI vs non-MCI in Chinese outpatients/inpatients aged >= 60 with chronic pain (held-out test set).",
+ "same_quantity": false,
+ "incompatible_if_same": "Only superficially: the training-cohort interval of P-339 (0.705-0.826) does not overlap P-307's (0.863-0.995), but P-339's own held-out figure is 0.690 and neither study evaluates the other's model or population, so no ordering claimed by one is refuted by the other; the gap is between two different models in two different populations.",
+ "gates": {
+  "task": "match in the broad sense (both cross-sectional MCI vs non-MCI detection, T1), although the registry codes P-339 as T4; the record's 'T1' for P-339 is not what the registry holds.",
+  "dataset_family": "mismatch: two separate single-centre hospital cohorts (Affiliated Zhongda Hospital, Nanjing, T2DM inpatients; 1st Affiliated Hospital of Nanchang University, chronic-pain patients). No waiver on record.",
+  "validation_tier": "match: both internal random split (V2), no external cohort.",
+  "modality_family": "match in family (clinical/tabular) but the predictor sets are disjoint apart from age and education (CVAI and sex vs pain intensity, pain sites, pain duration, depression, sleep). The record's 'P-307=retinal' is wrong; P-307 uses no imaging."
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different populations behind the shared 'MCI' label (T2DM inpatients 40-75 vs chronic-pain patients >= 60), different MCI definitions (MoCA < 26 alone vs Petersen/IWG criteria with neurologist confirmation), and P-339's quoted 0.765 is an apparent training-cohort AUC while P-307's 0.925 is a held-out test AUC.",
+ "performance_validity": "flag does not apply: neither study reaches 0.97 (P-307's 0.925 is the highest); the candidate is a performance comparison but the automatic test is not tripped.",
+ "independence": "Independent: different authors, institutions and cohorts.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two AUCs describe different populations behind the shared MCI label: hospitalised T2DM patients aged 40-75 in P-339 against chronic-pain patients aged 60 or over in P-307.",
+  "The predictor sets are different (demographics plus visceral adiposity index vs pain, depression and sleep scales), so the AUCs measure different models, not one quantity estimated twice.",
+  "The dataset-family gate fails (two unrelated single-centre cohorts) and no waiver is recorded.",
+  "P-339's quoted 0.765 is the training-cohort AUC; its held-out AUC is 0.690, which the record omits.",
+  "Neither paper evaluates or makes a claim about the other's population or model, so no ordering claimed by one is contradicted by the other."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-339",
+   "page": 1,
+   "quote": "A total of 337 hospitalized patients with T2DM were included and randomly assigned to a training cohort (70%, n = 236) and a validation cohort (30%, n = 101)."
+  },
+  {
+   "paper": "P-339",
+   "page": 2,
+   "quote": "MoCA score \u2265 26 is considered normal (NC group) and MoCA score <26 is considered MCI(MCI group)"
+  },
+  {
+   "paper": "P-339",
+   "page": 3,
+   "quote": "identified four robust predictors in the training cohort: age, gender, education, and CVAI."
+  },
+  {
+   "paper": "P-339",
+   "page": 5,
+   "quote": "with AUC values of 0.765 (95% CI: 0.705\u20130.826) in the training cohort and 0.690 (95% CI 0.588\u20130.792) in the validation cohort (Fig. 4C, D)."
+  },
+  {
+   "paper": "P-307",
+   "page": 1,
+   "quote": "A total of 612 older patients with chronic pain were recruited between October 2023 and July 2024."
+  },
+  {
+   "paper": "P-307",
+   "page": 7,
+   "quote": "the final selected variables were: age, education level, pain duration, number of pain sites, pain level, depression, sleep quality"
+  },
+  {
+   "paper": "P-307",
+   "page": 7,
+   "quote": "the XGBoost model performed best, achieving an accuracy of 0.883 and an AUC of 0.925 (95% CI 0.863\u20130.995)."
+  }
+ ],
+ "record_defects": [
+  "resolution_note states 'Modality mismatch: P-339=clinical_survey vs P-307=retinal'; P-307 uses questionnaire and clinical variables only, no retinal data.",
+  "dataset_equal is 'Yes'; the two studies use unrelated single-hospital cohorts in different cities and populations.",
+  "claim_a gives P-339 AUC 0.765 without saying it is the training-cohort figure; the held-out validation AUC is 0.690.",
+  "claim_a labels P-339 as T1 while the registry row codes it T4.",
+  "The bridging-evidence list (P-360, P-5, P-6, P-19, P-38, ...) names no condition separating the two results; it is a list of unrelated performance figures."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A study applying one of the two models to the other's population (or both models to one cohort) with the same MCI definition; absent that, the two AUCs are not estimates of the same quantity."
+}

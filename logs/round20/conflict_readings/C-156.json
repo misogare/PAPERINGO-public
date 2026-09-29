@@ -1,0 +1,83 @@
+{
+ "id": "C-156",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-239",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multimodal multitask learning for predicting MCI to AD conversion using stacked polynomial attention network and adaptive exponential decay (Ho, Jeong [Yang] & Kim, Sci Rep 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-241",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Deep learning for risk-based stratification of cognitively impaired individuals (Romano et al., iScience 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-239": "C-index 0.846 (reported as 0.85) for time to MCI-to-AD conversion, 5-fold CV within ADNI/TADPOLE (249 eMCI, 427 lMCI), multimodal input = clinical data (demographics, CDRSB, MMSE, ADAS13, RAVLT, FAQ, volumetric and FDG/AV45 PET biomarkers) plus MRI radiomics. The MRI-radiomics-only branch scores C-index 0.67; the clinical-only branch 0.80-0.82.",
+  "P-241": "C-index 0.676 +/- 0.003 is the best S-CNN on the EXTERNAL NACC validation cohort (n=508), trained on ADNI (n=544); inputs are T1 MRI only. On ADNI 5-fold CV the same S-CNN scores 0.756 +/- 0.051; MLP (GMV) 0.731 ADNI / 0.707 NACC; CPH 0.750 / 0.735. C-indices averaged over 24, 48 and 108-month bins."
+ },
+ "quantity_a": "Harrell-type C-index for time to AD conversion in ADNI MCI, internal 5-fold CV, predictors = clinical/cognitive/biomarker variables + MRI radiomics",
+ "quantity_b": "Time-binned (24/48/108 mo) averaged C-index for MCI-to-AD conversion in NACC external validation, model trained on ADNI, predictor = T1 MRI only (S-CNN)",
+ "same_quantity": false,
+ "incompatible_if_same": "Not incompatible on the like-for-like components: P-239's MRI-only (radiomics) branch gives C-index 0.67, which agrees with P-241's MRI-only 0.676 (external) and falls below P-241's internal 0.73-0.76; and P-239's clinical-inclusive 0.85 exceeds P-241's MRI-only figures as expected when cognitive scores are added. Neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: both MCI-to-AD time-to-conversion (T2).",
+  "dataset_family": "mismatch for the quoted figures: P-239 0.85 is ADNI; P-241 0.676 is NACC (external). The ADNI-internal P-241 figure is 0.756.",
+  "validation_tier": "mismatch: P-239 internal 5-fold CV; P-241's 0.676 is external-cohort validation.",
+  "modality_family": "mismatch in predictor set: P-239's 0.85 uses clinical/cognitive/PET/CSF-derived variables plus MRI radiomics; P-241 uses structural MRI only."
+ },
+ "endpoint_and_metric": "partly compatible: both concordance index for time to AD; but P-241 averages C-index over three time bins and P-239 reports a single C-index; predictor sets and test cohorts differ.",
+ "performance_validity": "flag does not apply: no value near 0.97; C-indices 0.676-0.85.",
+ "independence": "Distinct groups (Chonnam National University vs Boston University); both use ADNI MCI participants (P-239 via TADPOLE data), so the ADNI parts share a cohort.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-241's 0.676 is the external NACC C-index of an MRI-only CNN, while its internal ADNI figure is 0.756, so the record compares an internal ADNI figure against an external NACC figure.",
+  "P-239's 0.85 rests on clinical and cognitive predictors plus radiomics; its MRI-radiomics-only branch scores 0.67, so the predictor sets differ and the like-for-like MRI figures agree.",
+  "Dataset, validation tier and predictor set all differ with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-239",
+   "page": 1,
+   "quote": "The proposed multimodal strategy yielded the best c-index score in time prediction of MCI to AD conversion (0.85) and the best accuracy in MCI-stage categorization ( 83.19% )."
+  },
+  {
+   "paper": "P-239",
+   "page": 3,
+   "quote": "For generalization, experiments are performed by 5-fold cross validation."
+  },
+  {
+   "paper": "P-239",
+   "page": 5,
+   "quote": "Table 4 ... Radiomics RA 0.67 0.2 725 ... SPAN 0.67 0.19 669 ... Ours(SPAN-AED) 0.85 0.13 347"
+  },
+  {
+   "paper": "P-241",
+   "page": 5,
+   "quote": "The highest performing S-CNN model on our validation dataset utilized transfer learning and fixed layers, demonstrating a CI of 0.676 G 0.003"
+  },
+  {
+   "paper": "P-241",
+   "page": 8,
+   "quote": "S-CNN 0 $ 756 (0 $ 051) 0 $ 209 (0 $ 050) 0 $ 676 (0 $ 003)a 0 $ 122 (0 $ 013)"
+  },
+  {
+   "paper": "P-241",
+   "page": 8,
+   "quote": "Concordance indices were averaged over the 3 time bins (24 months, 48 months, 108 months) for each fold."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-241: C-index 0.676' omits that 0.676 is the external NACC figure; the ADNI internal S-CNN C-index is 0.756 and the best NACC figure (CPH) is 0.735.",
+  "dataset_equal and validation_comparable 'Yes' are wrong for the quoted figures (ADNI internal CV vs NACC external validation).",
+  "P-241 registry Best_Metric 'not reported' is wrong: C-indices and integrated Brier scores are reported in Table 1.",
+  "P-239 registry Best_Metric 'AUC 0.91' belongs to the eMCI vs lMCI classification task, not the conversion task.",
+  "resolution_note 'Metric type unclear: Unknown / Unknown' is wrong: both report C-index explicitly."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A pairing of P-239's MRI-only C-index (0.67, internal ADNI) with P-241's MRI-only internal ADNI C-index (0.73-0.76) could be argued comparable; the difference is small, uncertainty is not reported for P-239, and radiomics features vs CNN on raw MRI is a different input representation, so this would still not be incompatible."
+}

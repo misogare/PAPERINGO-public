@@ -1,0 +1,84 @@
+{
+ "id": "C-216",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-183",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Signal and Texture Features from T2 Maps for the Prediction of Mild Cognitive Impairment to Alzheimer's Disease Progression (Trejo-Castro et al., Healthcare 2021, 9, 941)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-203",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Alzheimer's Disease Diagnosis With Brain Structural MRI Using Multiview-Slice Attention and 3D Convolution Neural Network (Chen, Qiao, Zhu, Front. Aging Neurosci. 2022)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-183": "N = 40 ADNI MCI aged 70-80 (18 progressed to AD by 2 years after baseline, 22 stable for at least 5 years); baseline T2-map signal/texture features plus 8 neuropsychological scores; 100 repetitions of an 80/20 split. Best accuracy with imaging + neuropsychology is 0.775 (BSWiMS, 95% CI 0.615-0.892; RF 0.775, CI 0.615-0.892); neuropsychology-only best is LASSO accuracy 0.675, ROC AUC 0.727. No model reports accuracy 0.727.",
+  "P-203": "The 91.1% accuracy is AD vs CN (trained on ADNI-1, tested on ADNI-2, AUC 0.950). For pMCI (conversion within 0-36 months) vs sMCI the same model reports ACC 0.801, SEN 0.520, SPE 0.856, AUC 0.789, trained ADNI-1 and tested on ADNI-2 (75 pMCI / 241 sMCI)."
+ },
+ "quantity_a": "Accuracy of classifying MCI progressing to AD within 2 years vs MCI stable at least 5 years, from baseline T2-map signal/texture features plus neuropsychological scores, ADNI N = 40, repeated 80/20 internal holdout.",
+ "quantity_b": "As recorded (91.1): accuracy of AD vs cognitively normal classification from baseline T1 sMRI (task T1, not T2). The paper's actual T2 figure: accuracy 0.801 for pMCI (0-36 months) vs sMCI from whole-brain T1 sMRI CNN, trained ADNI-1, tested ADNI-2.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The recorded 91.1 is not an MCI-conversion result at all. The paper's genuine pMCI/sMCI accuracy (0.801) lies inside P-183's own 95% interval for its best models (0.615-0.892), so even on the nearest comparable quantity the two results are compatible; P-183 itself says its interval widths imply 'no real difference between methods'.",
+ "gates": {
+  "task": "mismatch as recorded: the 91.1 figure is AD vs CN (T1), not T2. With the corrected P-203 figure (0.801) both are T2, but horizons differ (2-year progressers vs 5-year stables in P-183; 0-36 month pMCI vs never-converted to 90 months in P-203).",
+  "dataset_family": "match: both ADNI (possible subject overlap, recorded as non-independence).",
+  "validation_tier": "match only loosely: P-183 repeated internal 80/20 splits on N = 40; P-203 cross-phase ADNI-1 -> ADNI-2 train/test (independent subjects within the same family).",
+  "modality_family": "partial: P-183 uses T2 maps (dual fast spin-echo) plus neuropsychological scores; P-203 uses T1-weighted sMRI only."
+ },
+ "endpoint_and_metric": "incompatible as recorded: claim_b's 91.1 belongs to a different task (AD vs CN). Metric type (accuracy) matches only after correcting claim_a, whose 72.7 is the neuropsychology-only LASSO ROC AUC (0.727), not an accuracy.",
+ "performance_validity": "flag does not apply: neither study reports >= 0.97 discrimination on the contested quantity (P-203's AD vs CN AUC 0.950 is also below the threshold and is not the contested quantity).",
+ "independence": "Both draw on ADNI; P-203 uses ADNI-1 and ADNI-2 baseline T1 scans and P-183 uses ADNI MCI subjects with dual-echo T2 scans, so some subjects may be shared. Distinct authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "Claim_b misreads P-203: 91.1% is its AD vs CN accuracy, and its MCI conversion accuracy is 80.1%.",
+  "Claim_a misreads P-183: no model has accuracy 0.727; 0.727 is the neuropsychology-only LASSO ROC AUC, and the best imaging + neuropsychology accuracy is 0.775 (CI 0.615-0.892).",
+  "On the corrected MCI-conversion figures (0.775 vs 0.801) the results are compatible: P-203's value lies within P-183's own confidence interval.",
+  "Neither paper claims an ordering that the other refutes; the record describes performance variance between different models, inputs and horizons, not a disagreement."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-203",
+   "page": 1,
+   "quote": "our model achieves accuracy values of 91.1 and 80.1% on ADNI-1 for AD diagnosis and mild cognitive impairment (MCI) convention prediction, respectively."
+  },
+  {
+   "paper": "P-203",
+   "page": 6,
+   "quote": "MSA3D 0.911 0.888 0.914 0.950 0.898 0.801 0.520 0.856 0.789 0.553 All the models are trained on ADNI-1."
+  },
+  {
+   "paper": "P-203",
+   "page": 3,
+   "quote": "Progressive MCI (pMCI): Subjects are diagnosed with MCI who would gradually progress to AD within 0\u201336 months."
+  },
+  {
+   "paper": "P-183",
+   "page": 3,
+   "quote": "the 18 subjects who had their first AD diagnosis 2 years after their baseline visit were regarded as progressers (MCIp), while the 22 subjects who never had an AD diagnosis and participated in the study for at least 5 years were labeled as stable (MCIs)."
+  },
+  {
+   "paper": "P-183",
+   "page": 5,
+   "quote": "The machine learning technique with the best results was LASSO, with an accuracy of 0.675 and an ROC AUC of 0.727. However, it is worth noting that confidence intervals overlap, implying no real difference between methods."
+  },
+  {
+   "paper": "P-183",
+   "page": 7,
+   "quote": "BSWIMS 0.775 0.615\u20130.892 0.732 0.553\u20130.911"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-203: Acc 91.1 on T2' is wrong: 91.1% is AD vs CN (T1); P-203's pMCI vs sMCI accuracy is 80.1% (AUC 0.789).",
+  "claim_a 'P-183: Acc 72.7 on T2' is wrong: 0.727 is the ROC AUC of the neuropsychology-only LASSO model; P-183's best accuracy is 0.775 (imaging + neuropsychology).",
+  "P-203 abstract and conclusion say the 91.1/80.1 figures are 'on ADNI-1', but Table 4 shows they are the ADNI-2 test results of models trained on ADNI-1 (the paper's own inconsistency; the record did not carry it).",
+  "modality_family 'Neuroimaging' conceals that P-183 combines T2 maps with neuropsychological scores while P-203 uses T1 sMRI only.",
+  "gap_magnitude 0.184 is computed from two misread figures and describes no real gap."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in the two PDFs: the recorded T2 figure for P-203 does not exist. A different pairing (P-203's 0.801 against a same-horizon, same-input study whose reported uncertainty excluded 0.801) would be a new candidate, not this one."
+}

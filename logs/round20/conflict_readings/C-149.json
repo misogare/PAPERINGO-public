@@ -1,0 +1,91 @@
+{
+ "id": "C-149",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-211",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable Machine Learning with Pairwise Interactions for Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease Utilizing Multi-Modalities Data (Cai et al.; Brain Sci. 2023, 13, 1535)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-174",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "A Graph Gaussian Embedding Method for Predicting Alzheimer's Disease Progression with MEG Brain Networks (Xu et al.; IEEE Trans Biomed Eng 2021, 68(5):1579-1588) - NOT the paper the record means",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-37",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Transfer learning for predicting conversion from mild cognitive impairment to dementia of Alzheimer's type based on a three-dimensional convolutional neural network (Bae et al.; Neurobiology of Aging 99 (2021) 53-64) - read as the source of the record's P-174 claim",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-211": "ADNI 1/2/3/GO, 1042 amnestic MCI at baseline; Explainable Boosting Machine on tabular baseline features (FreeSurfer hippocampal/amygdala/entorhinal/inferior temporal volumes and thickness, ADAS13, MMSE, FAQ, CDR-SB, age, sex, education, baseline EMCI/LMCI, APOE4), 5-fold CV. Five-year prediction: accuracy 85%, AUC 0.92 with MRI + cognitive scores (Comb a); only 225 participants remain at 5 years (140 MCI / 85 dementia). At three years the comb-a model with interactions gives accuracy 0.75, AUC 0.81 on the test data.",
+  "P-174": "The pack's PDF for P-174 is an MEG paper (Madrid cohort, 76 MCI + 53 controls, resting-state MEG graph embeddings): mean sMCI/pMCI accuracy 78% across ten classifiers; no ADNI data and no AUC of 0.827 anywhere in the text.",
+  "P-37 (the record's P-174 claim)": "ADNI, 3D-CNN (ResNet29) pretrained on NC vs DAT and retrained on MCI-C (conversion within 3 years, n=228) vs MCI-NC (stable at least 3 years, n=222), single baseline sMRI scan; single held-out test set of 68: accuracy 82.4%, AUC 0.827."
+ },
+ "quantity_a": "AUC for MCI-to-AD conversion within 5 years, ADNI amnestic MCI, tabular MRI volumes plus cognitive scores, demographics and APOE4, 5-fold CV.",
+ "quantity_b": "AUC for MCI-to-DAT conversion within 3 years (against MCI stable for at least 3 years), ADNI, whole-brain T1 sMRI images only, 3D-CNN with transfer learning, single held-out test split (n=68).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. At the matched three-year horizon P-211 itself reports AUC 0.81 on its test data, which is close to Bae et al.'s 0.827; the 0.92 is a five-year figure. Neither study evaluates the other's model or claims an ordering the other refutes.",
+ "gates": {
+  "task": "match in label (both MCI-to-AD conversion, T2) but the horizons differ (5 years vs 3 years)",
+  "dataset_family": "match for the claimed P-174 content (ADNI in both); mismatch if the pack's MEG PDF were taken as P-174 (Madrid hospital cohort, not ADNI)",
+  "validation_tier": "match: both internal only (5-fold CV vs single random hold-out), V2",
+  "modality_family": "mismatch: P-211 is tabular FreeSurfer measures plus neuropsychological scores and APOE4 (clinical/cognitive + sMRI-derived), P-37 is raw sMRI images only (the MEG PDF would be a third modality); the record itself sets modality_family_equal 'No'"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC AUC) but different prediction horizons (5-year vs 3-year conversion) and different predictor sets (cognitive scores dominate P-211's mid-term models; P-37 uses imaging alone).",
+ "performance_validity": "flag does not apply: 0.92 and 0.827 are both below 0.97; not decisive here.",
+ "independence": "Distinct author groups (Xi'an Jiaotong vs Northwestern/Simon Fraser); both use ADNI MCI participants and may overlap.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-211's AUC 0.92 is for conversion within five years, whereas the record's P-174 figure (Bae et al., AUC 0.827) is for conversion within three years.",
+  "P-211 predicts from cognitive test scores, demographics, APOE4 and regional MRI volumes, whereas Bae et al. predict from the MRI image alone, so the predictor sets differ.",
+  "At the matched three-year horizon P-211 reports AUC 0.81, so no disagreement survives once the horizon is aligned.",
+  "The pack's P-174 PDF is the wrong paper (an MEG study); the claim was traced to Bae et al. (P-37 in the corpus, of which the P-174 block is a flagged duplicate stub), and the verdict is the same whichever of the two is read."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-211",
+   "page": 1,
+   "quote": "The five-years prediction accuracy reached 85% (AUC = 0.92) using both cognitive scores and MRI markers."
+  },
+  {
+   "paper": "P-211",
+   "page": 6,
+   "quote": "The baseline information was used as input of all EBMs and the converting AD or not during follow-up period was used as output. All EBMs were tested with the 5-fold cross validation."
+  },
+  {
+   "paper": "P-211",
+   "page": 12,
+   "quote": "The main performance indicators, accuracy, sensitivity, specificity, and AUC, were 0.75, 0.78, 0.73, and 0.81 (with interaction effects)"
+  },
+  {
+   "paper": "P-37",
+   "page": 2,
+   "quote": "In the target task, we examined MCI-C patients with a conversion time of up to 3 years ... This resulted in 228 MCI-C patients and 222 MCI-NC patients."
+  },
+  {
+   "paper": "P-37",
+   "page": 5,
+   "quote": "It produced a test set classification accuracy of 82.4% and 0.827 area under the curve as well as 0.189 equal error rate value"
+  },
+  {
+   "paper": "P-174",
+   "page": 9,
+   "quote": "MG2G achieved high performance with 61% for NC/sMCI/pMCI classification, 79% for NC/sMCI classification, 78% for sMCI/pMCI classification"
+  }
+ ],
+ "record_defects": [
+  "paper_b P-174 is a '[STUB-DEDUP-OF-P-171]' block that 'must not be cited as evidence'; its content (and the 0.827) is Bae et al. 2021, already P-37 in the corpus (P-171 was itself marked duplicate_of P-37 on 2026-09-27).",
+  "The PDF mapped to P-174 in the pack (MEG graph embedding, Xu et al.) is not the paper the record's claim comes from; the map entry is 'formula-unverified'.",
+  "claim_a 'AUC 0.92 on T2' omits that 0.92 is the five-year horizon (225 participants remaining); the three-year AUC is 0.81.",
+  "Registry Sample_N_Approx '242804' for P-211 is impossible; the paper has 1042 MCI participants.",
+  "resolution_note says 'Confirmed genuine' while resolution says 'Rejected: Task, dataset, or modality mismatch' and the status is partially_resolved_candidate: internally inconsistent."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-211 result at a three-year horizon that differed from 0.827 beyond both studies' uncertainty, with a matched predictor set; the paper's own three-year figure (0.81) does not."
+}

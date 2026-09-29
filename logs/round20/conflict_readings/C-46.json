@@ -1,0 +1,88 @@
+{
+ "id": "C-46",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-115",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack text pdf/P-115.txt is 'Detection of mild cognitive Impairment from gait using Adaptive Neuro-Fuzzy Inference system' (Seifallahi et al., BSPC 71 (2022) 103195), NOT the paper the record means. The record's '79% Acc' is from Rallabandi & Seetharaman, 'Classification of cognitively normal controls, mild cognitive impairment and Alzheimer's disease using transfer learning approach', BSPC 79 (2023) 104092, whose PDF is in the repository at downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809422005547-main.pdf; both were read in full.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-109",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multiscale convolution-attention model for efficient Alzheimer's disease and mild cognitive impairment diagnosis approach using sMRI (Khatri, Kim, Kwon, Applied Soft Computing 184 (2025) 113693)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-115": "Three-class CN/MCI/AD balanced accuracy 0.79 (MIX_BRF, kurtosis-to-tensor transfer, geometric mean 0.78) on regional white-matter diffusion indices, ADNI, 150 participants (44 CN/84 MCI/22 AD), 5-fold cross-validation; tensor-to-kurtosis direction 0.73.",
+  "P-109": "BrainViT-L (hybrid CNN-Transformer) on 2D T1-weighted sMRI slices, ADNI, 1075 participants (390 AD/370 MCI/315 HC), about 50 slices per subject (54,300 slices) randomly shuffled and split 90% train / 10% test. Three-class AD/MCI/HC accuracy 96.81%, AUC 98.05; binary MCI vs HC 94.23% (AUC 97.15%), AD vs HC 97.13%."
+ },
+ "quantity_a": "Subject-level 5-fold cross-validated balanced accuracy of a three-class CN/MCI/AD random-forest transfer model on diffusion tensor/kurtosis white-matter indices, ADNI, N=150",
+ "quantity_b": "Accuracy on a randomly drawn 10% hold-out of 2D T1 sMRI slices for a three-class AD/MCI/HC deep network, ADNI, N=1075 (slice-level split)",
+ "same_quantity": false,
+ "incompatible_if_same": "No. They are single scores from two different methods on different inputs and different ADNI subsets, without intervals; neither paper evaluates the other's approach or claims an ordering the other refutes, so a numeric gap is not a contradiction under the rule.",
+ "gates": {
+  "task": "match: both three-class CN(HC)/MCI/AD diagnostic classification (neither is a conversion task; the earlier note's 'T2_conversion vs T1' is wrong; the record's 'T1' labels on both claims are also wrong)",
+  "dataset_family": "match: both ADNI; different subsets (150 with multi-shell diffusion vs 1075 with T1)",
+  "validation_tier": "match in tier (both internal only, no external cohort) but the evaluation unit differs: subject-level 5-fold CV vs a random slice-level 90/10 split",
+  "modality_family": "mismatch: diffusion MRI white-matter microstructure indices vs T1-weighted structural MRI slices (grey-matter morphology); the registry lumps both as MRI/PET but the input representation differs; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: balanced accuracy on a class-imbalanced three-way problem (P-115) vs plain accuracy on a near-balanced one, and subject-level vs slice-level evaluation",
+ "performance_validity": "flag does not apply on the threshold: 96.81% is below 0.97 and P-115's 0.79 is far below; note that P-109's slice-level random split (several slices per subject shuffled before splitting) is liable to subject leakage, which further weakens any cross-study performance reading",
+ "independence": "Independent: different groups (Annamalai University, India vs Chosun University, Korea); both ADNI, so participant overlap is possible but undocumented.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "Both report three-class ADNI accuracy, but P-115 classifies from diffusion white-matter indices and P-109 from T1 sMRI slices, so the input representation (modality family) differs with no waiver on record.",
+  "The metric and evaluation unit also differ: P-115's 0.79 is a subject-level cross-validated balanced accuracy, P-109's 96.81% a slice-level random-split accuracy.",
+  "Neither paper claims an ordering the other refutes, so even on one quantity two method-specific scores would not be incompatible.",
+  "The pack PDF for P-115 is the wrong paper; the verdict rests on the correct P-115 PDF found in the repository."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-115",
+   "page": 5,
+   "quote": "Balanced accuracy of 0.79 and geometric mean of 0.78 using BRF classifier was obtained for kurtosis indices as source model and tensor indices as target (correct PDF S1746809422005547)"
+  },
+  {
+   "paper": "P-115",
+   "page": 5,
+   "quote": "TLSS model with MIX method using source as DKI and target as DTI features achieved the highest overall accuracy and geometric mean and outperformed the other methods SER and STT for 5-fold cross-validation (correct PDF)"
+  },
+  {
+   "paper": "P-115",
+   "page": 1,
+   "quote": "based on white matter Gaussian diffusion (tensor) indices and non-Gaussian diffusion (kurtosis) indices (correct PDF)"
+  },
+  {
+   "paper": "P-109",
+   "page": 7,
+   "quote": "We assessed 315 samples from healthy control (HC), 370 from individuals with MCI, and 390 from individuals diagnosed with AD."
+  },
+  {
+   "paper": "P-109",
+   "page": 8,
+   "quote": "The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training."
+  },
+  {
+   "paper": "P-109",
+   "page": 9,
+   "quote": "In particular, BrainViT-L achieved 96.81 % ACC, which was 7.57 %, 3.42 %, and 4.82 % better than that of ResNet50, EfficientNet-B5, and ConvNext-T, respectively."
+  },
+  {
+   "paper": "P-109",
+   "page": 15,
+   "quote": "Our evaluation was based on a specific ADNI dataset; however, it is crucial to verify that the model performs consistently across datasets with diverse characteristics."
+  }
+ ],
+ "record_defects": [
+  "The pack/paper_pdf_map entry for P-115 ('formula-unverified') points to the wrong PDF (S1746809421007928, Seifallahi gait/ANFIS); the correct P-115 PDF is S1746809422005547.",
+  "claim_a and claim_b both say 'on T1'; both figures are three-class CN/MCI/AD accuracies (P-109's binary MCI vs HC is 94.23%, P-115's CN vs MCI 0.72).",
+  "The resolution note's 'Task mismatch from summaries: T2_conversion vs T1_mci_vs_hc' is wrong: neither paper addresses conversion; both headline figures are the same three-class diagnostic task.",
+  "The bridging-evidence line 'P-359 reports 96.3% Acc' explains nothing about why these two differ and is not bridging evidence under the rule."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these documents; a comparable disagreement would need two studies on the same ADNI input type (e.g. both T1 sMRI or both diffusion), same evaluation unit, with intervals that exclude each other or an explicit contested ordering."
+}

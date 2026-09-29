@@ -1,0 +1,46 @@
+{
+ "paper": "P-23",
+ "role": "round-2 verifier",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "ADNI (ADNI1 and ADNI2 subjects with baseline T1 sMRI, FDG-PET and CSF; N = 552, of whom 82 pMCI / 118 sMCI; 36-month criterion)",
+ "method_family": "End-to-end 3D CNN (ResNeXt with parallel axial attention and distribution-variable ASPP) with SE channel-attention fusion of sMRI and PET, concatenated with an MLP CSF encoder; the same broad family as P-81 (deep fusion of imaging with non-imaging data) and P-3 (3D CNN)",
+ "same_sample_or_cohort_as": [
+  "P-104 (ADNI MRI+PET; participant overlap likely but not determinable)",
+  "P-81 (ADNI FDG-PET, 3-year window; participant overlap likely but not determinable)",
+  "P-3 (ADNI1/2; participant overlap likely but not determinable)"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "The Table 6 modality ablation for sMCI vs pMCI is scored on one held-out test split of about 20 MCI subjects, implied by the fractions: 10/12 and 7/8 for the full model. Results (ACC / AUC): sMRI only 65.00 / 66.67; PET only 80.00 / 79.17; CSF only 75.00 / 88.54; PET+CSF 75.00 / 76.04; sMRI+CSF 70.00 / 71.88; sMRI+PET 70.00 / 69.79; all three 85.00 / 91.67. The tri-modal model beats every single modality. Every dual-modality fusion does worse than PET alone, and PET+CSF does worse than both of its components. Every addition to sMRI improves on sMRI alone, but adding CSF to PET makes it worse. The paper reports no confidence intervals, repeats or significance tests.",
+ "why": "IDENTITY. PDF p.1 is Zhu, Zhang, Yang and Hao, 'TASNet: A tri-modal attentive scale robust adaptive fusion framework for progressive mild cognitive impairment classification', Journal of Neuroscience Methods 430 (2026) 110726, doi 10.1016/j.jneumeth.2026.110726. The block (headed by this PDF's filename) describes the same model: TASNet, sMRI+PET+CSF, ACC 85.00% and AUC 91.67%. I read the whole extract up to the reference list (12 pages).\n\nREJECTION GROUND ANSWERED. P-23 is not in rejected_supporters. Record_notes say it was dropped because it 'report[s] fusion performance alone, no unimodal benchmark' (audit 2026-06-27/28). That ground is factually wrong: Table 6 (p.8) runs single-, dual- and tri-modal configurations of the same framework on the same test split. The source still does not support the record as stated, for the reasons below.\n\nDESIGN. ADNI1/ADNI2 subjects with baseline sMRI, FDG-PET and CSF (Abeta42, TAU, PTAU), 36-month pMCI/sMCI criterion, N = 552 (167 AD, 185 CN, 82 pMCI, 118 sMCI). One 8:1:1 train/validation/test split. AdamW, 100 epochs, early stopping. The ablations use a 'control-variable strategy' with all other components active. All results come from one test split with no repeats.\n\nSTATED FORM: PARTLY. The tri-modal model beats every unimodal baseline, including the multivariable non-imaging CSF-only model: ACC 85.00 vs 75.00, AUC 91.67 vs 88.54. But the study's other fusions contradict a general claim that fusion improves over unimodal baselines. sMRI+PET (70.00 / 69.79) and PET+CSF (75.00 / 76.04) both fall below PET alone (80.00 / 79.17), and PET+CSF also falls below CSF alone on AUC (76.04 vs 88.54). The authors themselves write that 'certain dual-modality variants ... underperformed compared to the single-modality PET' (p.7). Only one of the four fusions beats the best unimodal model. On a 20-subject test, 85.00 vs 80.00 is one subject, and AUC 91.67 vs 88.54 is 3 of 96 case-control pairs.\n\nNARROWED FORM: PARTLY. With sMRI as the imaging model, every addition improves on sMRI alone: +CSF 65.00 to 70.00 (AUC 66.67 to 71.88); +PET 65.00 to 70.00 (69.79); +PET+CSF 85.00 (91.67). The first two gains are one test subject each. With the sMRI+PET imaging model, adding CSF improves a lot (70.00 to 85.00; AUC 69.79 to 91.67). With PET as the imaging model, adding CSF makes it worse (80.00 to 75.00; AUC 79.17 to 76.04). So the study's own data contradict 'adding auxiliary information to an imaging model improved ... over the same imaging model alone' for one of its three imaging anchors. The part shown is that CSF or PET added to an sMRI-based model improved on that model in this single split.\n\nCAVEATS. (1) A test set of about 20 MCI subjects, with single-subject steps of 5 accuracy points and no uncertainty. (2) Design choices (PAFA, DV-ASPP, HAHL) were ablated on the same test split, and the full model is the best row of every sMCI/pMCI ablation (Tables 6-10). That pattern suggests the architecture was selected on the evaluation data, which inflates the tri-modal arm most. (3) Internal inconsistencies. Table 7's 'B0 - Dynamic Channel Fusion' row for sMCI vs pMCI (SEN 77.78, SPE 84.21, ACC 82.14) fits the 9/19 composition of the pMCI-vs-CN test set. The pMCI-vs-CN row (SEN 100, SPE 62.50, ACC 85.00) fits the 20-subject sMCI/pMCI set. So those rows appear swapped. In pMCI vs CN, the tri-modal AUC (88.89) is below sMRI+PET (95.32) and sMRI+CSF (94.74). (4) The block's and registry's sample size (119: 52 sMCI + 67 pMCI) does not match the PDF (82 pMCI + 118 sMCI = 200 MCI within N = 552). This registry repair should go through the normal patch path; it has not been done here. (5) 'Data will be made available on request.'\n\nINDEPENDENCE. ADNI, so it adds no dataset family. Its method family is the same broad deep-fusion family as P-81 and P-3. The authors (Shandong Jianzhu University: Hongliang Zhu, Limei Zhang, Lu Yang, Fanchang Hao) are different people from P-104's Xiaofeng Zhu and Zheng Zhang. They are disjoint from P-3, P-81 and the round-1 candidates' first-page author lists. Not a preprint (published 2026). Not in registry_duplicates.json.\n\nQuotes are rejoined across line breaks and normalized to ASCII (em-dashes to '-', +/- for the plus-minus sign).",
+ "quotes": [
+  {
+   "page": 6,
+   "quote": "Experiments utilized the Alzheimer's Disease Neuroimaging Initiative (ADNI) dataset, selecting subjects from ADNI1 and ADNI2 cohorts with baseline T1-weighted sMRI, FDG-PET, and CSF biomarkers (Abeta42, TAU, PTAU). Subjects were categorized into four groups: AD, CN, progressive MCI (pMCI), and stable MCI (sMCI), based on a 36-month follow-up criterion (Zhang et al., 2022). ... The final cohort (N= 552) was stratified into training, validation, and test sets (8:1:1)."
+  },
+  {
+   "page": 6,
+   "quote": "Table 2 Demographic information table. Category Number F/M Age MMSE AD 167 68/99 74.6 +/- 8.2 23.3 +/- 2.0 CN 185 88/97 73.7 +/- 6.1 29.1 +/- 1.2 pMCI 82 31/51 72.9 +/- 7.8 27.0 +/- 1.9 sMCI 118 51/67 71.1 +/- 7.4 28.3 +/- 1.6"
+  },
+  {
+   "page": 7,
+   "quote": "Specifically, we utilize a control-variable strategy where the ''Baseline'' configuration represents the TASNet framework with only the specific module under investigation removed while keeping all other proposed components (Dynamic Fusion, HAHL loss, etc.) active."
+  },
+  {
+   "page": 7,
+   "quote": "To verify modality complementarity, we evaluated single, dual, and tri-modal configurations (Table 6). While the tri-modal TASNet consistently achieved the most robust performance, an intriguing observation in the sMCI vs. pMCI task is that certain dual-modality variants - despite utilizing the proposed Dynamic Channel Fusion - underperformed compared to the single-modality PET (e.g., A4: PET+ CSF at 75.00% vs. A2: PET at 80.00%). This suggests that effective exploitation of multimodal information remains a significant challenge, potentially hindered by Modality Interference and information incompleteness (Chen et al., 2023)"
+  },
+  {
+   "page": 8,
+   "quote": "Table 6 Experimental results on data modality importance(%). Task ID Model Configuration SEN SPE ACC F1 AUC ... sMCI vs. pMCI A1 sMRI only 66.67 62.50 65.00 69.57 66.67 A2 PET only 91.67 62.50 80.00 84.62 79.17 A3 CSF only 66.67 87.50 75.00 76.19 88.54 A4 PET + CSF 91.67 50.00 75.00 81.48 76.04 A5 sMRI + CSF 83.33 50.00 70.00 76.92 71.88 A6 sMRI + PET 75.00 62.50 70.00 75.00 69.79 A0 sMRI + PET + CSF 83.33 87.50 85.00 86.96 91.67"
+  },
+  {
+   "page": 9,
+   "quote": "Table 7 The role of key modules in the backbone network(%). ... sMCI vs. pMCI B1 B0 - PAFA 83.33 75.00 80.00 83.33 91.67 B2 B0 - Dynamic Channel Fusion 77.78 84.21 82.14 73.68 88.89 B3 B0 - DV-ASPP 66.67 87.50 75.00 76.19 85.42 B0 Full model 83.33 87.50 85.00 86.96 91.67"
+  }
+ ]
+}

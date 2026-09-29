@@ -1,0 +1,83 @@
+{
+ "id": "C-54",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack text pdf/P-117.txt is 'Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging' (Rallabandi & Seetharaman, BSPC 80 (2023) 104312, OASIS), NOT the paper the record means. The record's '99.81% Acc' belongs to Aljalal et al., 'Mild cognitive impairment detection with optimally selected EEG channels based on variational mode decomposition and supervised machine learning', BSPC 87 (2024) 105462, PDF in the repository at downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809423008959-main.pdf. Both read in full.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-52",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Hippocampal auto-segmentation based on deep learning for identifying magnetic resonance imaging biomarkers of early mild cognitive impairment (Hu et al., Neuroscience 2025; doi 10.1016/j.neuroscience.2025.11.014)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "Resting-state 19-channel EEG, 61 participants (29 aMCI/32 HC), VMD + entropy features, 10-fold CV over 3660 ten-second segment feature vectors; binary MCI vs HC accuracy 99.51% (all channels) and 99.81% (11 NSGA-II channels, ensemble KNN).",
+  "P-52": "CNN auto-segmented bilateral hippocampus on 3D T1, 1183 radiomic features, LASSO to seven features, XGBoost; 150 participants (105 MCI/45 NC, Wenzhou Seventh People's Hospital), random 7:3 split (train 75 MCI/30 NC; test 30 MCI/15 NC); MCI vs NC AUC 0.935 (95% CI 0.83-0.97) training and 0.864 (95% CI 0.73-0.89) test."
+ },
+ "quantity_a": "Segment-level 10-fold CV accuracy, binary MCI vs HC, resting-state EEG, N=61",
+ "quantity_b": "Held-out test-set ROC AUC, binary MCI vs NC, hippocampal T1 radiomics, test n=45 (N=150)",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Accuracy and ROC AUC are different metric types and cannot be subtracted; even as the same metric, two scores from unrelated methods and cohorts do not claim an ordering the other refutes.",
+ "gates": {
+  "task": "match: binary MCI vs cognitively normal",
+  "dataset_family": "mismatch: Isfahan Noor Hospital public EEG datasets vs Wenzhou hospital cohort; record's dataset_equal='Yes' is wrong",
+  "validation_tier": "match in tier (internal only, no external cohort) but segment-level 10-fold CV vs a subject-level random 7:3 hold-out",
+  "modality_family": "mismatch: EEG vs structural MRI (hippocampal radiomics); no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: accuracy (P-117) vs ROC AUC (P-52)",
+ "performance_validity": "flag applies to P-117 on the source: 99.81% from internal 10-fold CV over segments of 61 participants, no external cohort; the pack flag is false only because the registry Best_Metric is 'not reported'. P-52's test AUC 0.864 is below the threshold (its authors note the lack of external validation).",
+ "independence": "Independent: different groups (King Saud University/NTNU vs Wenzhou Seventh People's Hospital), different cohorts and modalities.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The metric types differ (accuracy vs ROC AUC), as the earlier note said, and the PDFs confirm it.",
+  "The modality family (EEG vs T1 hippocampal radiomics) and dataset family (Isfahan vs Wenzhou) gates fail with no waiver on record.",
+  "P-117 meets the performance-validity exclusion on its own PDF, so a performance conflict resting on it cannot be genuine.",
+  "The pack PDF for P-117 is the wrong paper; the verdict uses the correct P-117 PDF found in the repository."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method. (correct PDF S1746809423008959)"
+  },
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "19-channel EEGs recorded from 32 healthy subjects and 29 MCI patients in the resting state (correct PDF)"
+  },
+  {
+   "paper": "P-117",
+   "page": 7,
+   "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. (correct PDF)"
+  },
+  {
+   "paper": "P-52",
+   "page": 1,
+   "quote": "The XGBoost model, utilizing the seven selected features, achieved the highest AUC in the test set (AUC = 0.864, 95 %CI:0.73\u20130.89)."
+  },
+  {
+   "paper": "P-52",
+   "page": 2,
+   "quote": "resulting in a training set that was composed of 75 MCI patients and 30 NC subjects, and an independent test set that contained 30 MCI patients and 15 NC subjects"
+  },
+  {
+   "paper": "P-52",
+   "page": 6,
+   "quote": "First, the relatively small sample size and lack of external validation may constrain the generalizability of our findings."
+  }
+ ],
+ "record_defects": [
+  "The pack/paper_pdf_map entry for P-117 ('formula-unverified') points to the wrong PDF (S1746809422007662, MRI-PET fusion); the correct P-117 PDF is S1746809423008959.",
+  "dataset_equal='Yes' is wrong (Isfahan EEG datasets vs Wenzhou hospital cohort).",
+  "gap_magnitude 0.134 subtracts an AUC from an accuracy.",
+  "The bridging-evidence list (P-360, P-322, P-324, P-387 'Left P100 latency') does not bear on this pair."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these documents; the pair shares neither modality, cohort nor metric type."
+}

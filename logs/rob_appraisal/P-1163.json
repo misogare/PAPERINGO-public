@@ -1,0 +1,141 @@
+{
+ "paper_id": "P-1163",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Tamaru Y, Inada S, Ideguchi N, Kagino S, Katsuhara Y, Higashi Y. 'Visual field-based reaction time as a novel indicator for early detection of mild cognitive impairment', Scientific Reports (2026) 16:2330, doi:10.1038/s41598-025-32034-6. The title matches the summaries.md header for Paper 1163. It is a cross-sectional comparison of 43 HC and 31 MCI in Japanese care-facility residents. Every cited number (C-RT, U-RT, t, p, d, the Task x Group interaction F(1,72) = 19.09, partial eta squared 0.210) appears as printed on p.4."
+ },
+ "cited_result": "Results (p.4), 43 HC vs 31 MCI. Central reaction time 554.4 +/- 46.6 vs 568.5 +/- 52.6 ms, t = -1.22, p = 0.228, d = -0.29. UFOV (peripheral) reaction time 580.3 +/- 44.9 vs 638.6 +/- 38.4 ms, t = -5.84, p < 0.001, d = -1.17. Mixed-design ANOVA Task x Group interaction F(1,72) = 19.09, p < 0.001, partial eta squared 0.210. This is the within-study dissociation (loaded condition separates the groups, simple condition does not). The ROC/AUC result of the same paper is not the cited result.",
+ "tool_reason": "The cited result compares reaction times between MCI and healthy controls, measured once, plus a within-subject task by group interaction. It is a group comparison at one time point, not the accuracy of the ROC classifier. Participants were recruited from care facilities and then classified, not sampled on outcome, so the cross-sectional checklist fits rather than the case-control one.",
+ "domains": [
+  {
+   "domain": "1. Criteria for inclusion clearly defined",
+   "judgment": "Yes",
+   "rationale": "Both groups are defined by explicit MoCA-J and MMSE-J score bands, and the exclusion criteria are listed. The bands leave discordant profiles unassigned (for example MoCA-J 26 or more with MMSE-J 24 to 27), and the paper does not say how any such recruits were handled. Only five exclusions are reported, all for exclusion criteria.",
+   "signalling": [
+    {
+     "question": "Were the criteria for inclusion in the sample clearly defined?",
+     "answer": "Yes",
+     "quote": "Inclusion criteria for the HC group were a score of \u2265 26 on the Japanese version of the Montreal Cognitive Assessment (MoCA-J) and a score of 28\u201330 on the Japanese version of the Mini-Mental State Examination (MMSE-J). The MCI group included patients with MoCA-J scores \u2264 25 and MMSE-J scores 24\u201327 ... Exclusion criteria included: visual impairments, regular use of corrective glasses, cerebrovascular disease, or other neurological or medical conditions likely to affect cognitive or visual performance.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study subjects and setting described in detail",
+   "judgment": "Unclear",
+   "rationale": "The period (2024 to 2025), the setting type and age, sex, MoCA-J and MMSE-J by group are given (Table 1). The facilities are not named or counted, the recruitment method (consecutive, convenience) is not stated, and education, comorbidity and visual acuity are not reported. Education matters here because the groups are defined by education-sensitive screening scores.",
+   "signalling": [
+    {
+     "question": "Were the study subjects and the setting described in detail?",
+     "answer": "Unclear",
+     "quote": "This cross-sectional study was conducted between 2024 and 2025 and included older adults residing in medical and nursing care facilities. ... 43 in the HC group (mean age: 72.2 \u00b1 2.9 years; 21 males, 22 females; MoCA-J: 28.1 \u00b1 1.0; MMSE-J: 29.4 \u00b1 0.7) and 31 in the MCI group (mean age: 73.4 \u00b1 3.9 years; 18 males, 13 females; MoCA-J: 22.7 \u00b1 1.3; MMSE-J: 25.7 \u00b1 1.0)",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Exposure measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "The exposure is group membership, assigned from validated Japanese versions of MoCA and MMSE. The document does not say who administered the tests, under what conditions, or when relative to the visual tasks. A classification from screening scores alone is a proxy for MCI status, and the authors call it provisional.",
+   "signalling": [
+    {
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "Participants were classified into two groups: those with MCI (MCI group) and cognitively healthy controls (HC group).",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Objective, standard criteria for the condition",
+   "judgment": "No",
+   "rationale": "The score cut-offs are objective but they are not a standard MCI definition. There is no subjective complaint, no functional assessment and no clinical exclusion of dementia (an MMSE-J of 24 is admitted to the MCI group). The authors state that the gold standard is a consensus clinical diagnosis and that their classification is provisional.",
+   "signalling": [
+    {
+     "question": "Were objective, standard criteria used for measurement of the condition?",
+     "answer": "No",
+     "quote": "Third, MCI classification was based solely on MoCA and MMSE scores. While these are widely used screening tools, the gold standard typically involves a consensus clinical diagnosis incorporating multidisciplinary evaluation. Therefore, our classification should be considered provisional, and future studies should validate UFOV-RT against consensus diagnostic criteria.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "5. Confounding factors identified",
+   "judgment": "Yes",
+   "rationale": "The authors name general response speed or alertness and time-on-task or fatigue as alternative explanations for the U-RT difference. Age is compared between groups (Table 1, p = 0.12), and visual impairment is handled by exclusion. Education and sex are not considered as confounders.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "To further examine whether the MCI\u2013HC difference in U-RT could be explained by general response speed, an ANCOVA was conducted with U-RT as the dependent variable and C-RT as a covariate.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "6. Strategies to deal with confounding stated",
+   "judgment": "Unclear",
+   "rationale": "General response speed is handled well: the within-subject interaction and the ANCOVA with C-RT as covariate. Visual impairment is handled by exclusion. But task order was fixed (central always first), so condition is confounded with order and time on task, and the 80 UFOV trials against 20 central trials make this worse. The authors state in the Discussion that their analyses rule out time-on-task effects, yet in the Limitations they say those effects could not be examined. Age and education are not adjusted.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Unclear",
+     "quote": "To minimize potential carry-over effects, the central visual field task was always presented first, followed by the UFOV task. [p.3] ... the group effect remained highly significant after controlling for C-RT, F(1,72) = 37.94, p < 0.001, \u03b7p2 = 0.348. [p.4] ... Consequently, we could not directly examine time-on-task effects. [p.7]",
+     "page": "3; 4; 7"
+    }
+   ]
+  },
+  {
+   "domain": "7. Outcomes measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "Reaction time was recorded automatically by a USB response button under a custom stimulus program, the same way for every participant, with identical trial-level timing across tasks and individual eye-tracker calibration. Because it is automated, assessor knowledge of group cannot bias it. Minor concerns: the custom VRAS task is not the standard UFOV test and no reliability data are given, and the Fig. 1 caption ('20 trials' per condition) contradicts the text (80 UFOV trials).",
+   "signalling": [
+    {
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "Reaction time was recorded using a USB-connected response button (model USBSWP; TECHNOTOOLS, Japan). Reaction time was defined as the latency between stimulus onset and button press. [p.3] ... the timing parameters for each individual trial (stimulus presentation time, response window, and inter-trial interval) were identical across both tasks. [p.3]",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "8. Appropriate statistical analysis",
+   "judgment": "Yes",
+   "rationale": "Normality was checked before the t-tests. The dissociation is tested directly by the Task x Group interaction, not inferred from differing significance, and the ANCOVA with C-RT as covariate adds a further check. The printed t statistics match the printed means and SDs. Weaknesses: no correction across the seven outcome variables (the U-RT result would survive any correction); no report of ANCOVA slope homogeneity; the printed U-RT Cohen's d (-1.17) does not match its own t and SDs, which imply about 1.38; and the Table 1 effect-size column is internally inconsistent. These are reporting errors that do not change the test statistics.",
+   "signalling": [
+    {
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "Yes",
+     "quote": "Reaction time met normality assumptions and was analyzed using an independent samples t-test. ... A mixed-design ANOVA with task condition (C-RT vs. U-RT) as the within-subject factor and group (HC vs. MCI) as the between-subject factor revealed a significant Task \u00d7 Group interaction, F(1,72) = 19.09, p < 0.001, \u03b7p2 = 0.210.",
+     "page": "4"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "some concerns",
+   "rationale": "The sample is small and homogeneous: Japanese residents of medical and nursing care facilities who do not regularly use corrective glasses, with MCI defined only by screening-score bands. Without a functional assessment, the MCI group may include people with mild dementia. Selecting groups at concordant score extremes may widen the contrast relative to a clinical MCI population."
+  },
+  {
+   "domain": "Test condition",
+   "concern": "some concerns",
+   "rationale": "The 'UFOV' condition is a custom four-location peripheral detection reaction-time task (targets 20 cm from centre at 1 m), not the standard UFOV test. It may not generalise to other peripheral-attention paradigms."
+  }
+ ],
+ "overall": "Some concerns (JBI analytical cross-sectional, this review's rule)",
+ "overall_category": "some_concerns",
+ "overall_rationale": "None of the four trigger items (5 confounders identified, 6 confounder strategy, 7 outcome measurement, 8 analysis) is No, so the rating is not high. It cannot be low either. Item 4 is No: MCI is defined by screening-score bands, not standard criteria, and the authors concede this. Items 2, 3 and 6 are unclear: the setting and recruitment are thin and education is not reported; who administered the group-defining tests is not stated; and the fixed task order with unequal trial counts leaves time on task uncontrolled. On the other side, the interaction test and the ANCOVA on baseline speed directly address the main alternative explanation for the dissociation.",
+ "confidence": "high",
+ "tool": "JBI analytical cross-sectional",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 8,
+  "matched": 8,
+  "annotations_not_checked": 0,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
+ }
+}

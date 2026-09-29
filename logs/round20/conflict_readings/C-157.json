@@ -1,0 +1,77 @@
+{
+ "id": "C-157",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-242",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A holo-spectral EEG analysis provides an early detection of cognitive decline and predicts the progression to Alzheimer's disease (Chu et al., Front Aging Neurosci 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-173",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A Graph Gaussian Embedding Method for Predicting Alzheimer's Disease Progression with MEG Brain Networks (Xu et al., IEEE TBME 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-242": "Baseline resting-state EEG (19 channels, HHSA features), 72 MCI (36 MCI-S, 36 MCI-C, 3-year follow-up) from three Taiwanese hospitals, 10-fold CV. HHSA features: SVM sensitivity 0.90 with specificity 0.50 (accuracy 0.70); Decision Tree sensitivity 0.70 with specificity 0.80 (accuracy 0.75). The abstract's 'sensitivity 0.9 ... specificity 0.8' combines two different classifiers. AUCs are only in supplementary figures.",
+  "P-173": "Eyes-closed resting-state MEG alpha-band functional-connectivity networks, MG2G embeddings, 76 MCI (48 sMCI, 28 pMCI, ~3-year follow-up) from Hospital Universitario San Carlos (Madrid), 5-fold CV; mean accuracy across 10 classifiers 78% for sMCI vs pMCI. AUC plots are in supplementary figures; no AUC value 0.81 appears in the main text extract."
+ },
+ "quantity_a": "Sensitivity (SVM) and specificity (Decision Tree), taken from different classifiers, for MCI-C vs MCI-S within 3 years, EEG, Taiwanese cohort; best single-classifier accuracy 0.75",
+ "quantity_b": "Mean accuracy across ten classifiers (78%) for pMCI vs sMCI at ~3 years, MEG, Madrid cohort; the record's AUC 0.81 is not in the extract",
+ "same_quantity": false,
+ "incompatible_if_same": "No. On the one metric both papers report for the conversion task (accuracy), P-242's best is 0.75 (range 0.50-0.75 across classifiers) and P-173's classifier-averaged accuracy is 0.78; these agree. A sensitivity/specificity pair cannot contradict an AUC, and neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: MCI-to-AD conversion at about 3 years (T2).",
+  "dataset_family": "mismatch: Taiwanese multi-hospital EEG cohort vs Madrid San Carlos MEG cohort (independent clinical cohorts, no shared family).",
+  "validation_tier": "match: both internal cross-validation only (10-fold vs 5-fold).",
+  "modality_family": "match at family level (EEG/MEG electrophysiology), though EEG sensor HHSA features vs MEG source-space connectivity embeddings are different input representations."
+ },
+ "endpoint_and_metric": "incompatible as recorded (sensitivity/specificity from two classifiers vs AUC); on accuracy the two agree (0.75 vs 0.78).",
+ "performance_validity": "flag does not apply: no value at or above 0.97; small samples (72 and 76) but moderate performance.",
+ "independence": "Distinct groups and cohorts (National Central University, Taiwan vs MIT/Complutense Madrid); no shared data or authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record sets a sensitivity/specificity pair against an AUC; these are different metric types and cannot disagree.",
+  "The P-242 pair 0.9/0.8 is a composite of two classifiers (SVM sensitivity 0.90 with specificity 0.50; Tree sensitivity 0.70 with specificity 0.80), so the claim misreads its paper.",
+  "Where both papers report the same metric for the same task, accuracy, the results agree (P-242 best 0.75; P-173 mean 0.78), so there is no disagreement to adjudicate."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-242",
+   "page": 2,
+   "quote": "deploying machine learning algorithms with the best seven features resulted in a sensitivity of 0.9 by the support vector machine (SVM) classifier, with a specificity of 0.8 yielded by the decision tree classifier."
+  },
+  {
+   "paper": "P-242",
+   "page": 12,
+   "quote": "TABLE 6 ... HHSA Sensitivity 0.50 0.50 0.70 0.70 0.90 0.70 0.50 Specificity 0.70 0.70 0.60 0.80 0.50 0.60 0.50 ... Accuracy 0.60 0.60 0.65 0.75 0.70 0.65 0.50"
+  },
+  {
+   "paper": "P-242",
+   "page": 5,
+   "quote": "Seventy-two patients in the MCI (CDR = 0.5) cohort were followed up longitudinally with two rsEEG recordings within 3 years."
+  },
+  {
+   "paper": "P-173",
+   "page": 9,
+   "quote": "MG2G achieved high performance with 61% for NC/sMCI/pMCI classification, 79% for NC/sMCI classification, 78% for sMCI/pMCI classification, and 82% for NC/pMCI classification."
+  },
+  {
+   "paper": "P-173",
+   "page": 4,
+   "quote": "the stable MCI group (sMCI, n = 48) ... and the progressive MCI group (pMCI, n = 28)"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'Sensitivity 0.9, specificity 0.8' presents a single operating point; the two values come from different classifiers (SVM spec 0.50; Tree sens 0.70).",
+  "claim_b 'P-173: AUC 0.81' is not found in the main-text extract; the paper's stated conversion result is 78% mean accuracy, with AUCs only in supplementary figures.",
+  "dataset_equal 'Yes' is wrong: Taiwanese EEG cohort vs Madrid MEG cohort.",
+  "P-242 registry Sample_N_Approx 51 is the CN group size; the conversion analysis uses 72 MCI (205 participants overall)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A reported AUC from each paper for the conversion task with confidence intervals that exclude each other; the supplementary AUC figures were not available in the extracts."
+}

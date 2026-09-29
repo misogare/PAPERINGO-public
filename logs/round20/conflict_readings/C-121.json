@@ -1,0 +1,72 @@
+{
+ "id": "C-121",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-183",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Signal and Texture Features from T2 Maps for the Prediction of Mild Cognitive Impairment to Alzheimer's Disease Progression (Trejo-Castro et al., Healthcare 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-186",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early MCI-to-AD Conversion Prediction Using Future Value Forecasting of Multimodal Features (Minhas et al., Comput. Intell. Neurosci. 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-183": "Baseline T2-map signal/texture + volumes + neuropsychology; n=40 (18 MCIp converting at the 2-year visit, 22 MCIs stable at least 5 years); ensemble AUC 0.824 (95% CI 0.681-0.968); 100 random 80/20 splits.",
+  "P-186": "Linear SVM on neuropsychological + MRI marker trajectories (two observed visits plus one forecast value); conversion before month 36, ADNI-1; 1-year-ahead AUC 95.7% (n=85), 6-month-ahead 91.2% (n=119); 5-fold CV."
+ },
+ "quantity_a": "ROC-AUC, extreme-group MCI conversion (converted at 2 years vs stable at least 5 years), ages 70-80, baseline T2-map radiomics + neuropsychology, n=40.",
+ "quantity_b": "ROC-AUC, conversion before month 36 in ADNI-1 MCI with complete consecutive visits, from forecast three-point longitudinal trajectories of neuropsychology + T1 morphometry, n=85 (or 119).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-183's 95% CI (0.681-0.968) contains both of P-186's figures (0.912 and 0.957).",
+ "gates": {
+  "task": "match nominally (T2), but the class definitions and the need for longitudinal visits differ.",
+  "dataset_family": "match: ADNI in both; overlap with ADNI-1 MCI possible.",
+  "validation_tier": "match: both internal resampling.",
+  "modality_family": "mismatch, not waived: T2 relaxometry maps + neuropsychology vs T1 FreeSurfer morphometry + neuropsychology trajectories."
+ },
+ "endpoint_and_metric": "incompatible: same metric (ROC-AUC) but different class definitions, input representation (single baseline visit vs forecast longitudinal trajectories that include a value at the time of conversion) and eligible populations.",
+ "performance_validity": "flag does not apply: 0.824 and 0.957 are below 0.97; both flags false. Both samples are small (40 and 85).",
+ "independence": "Distinct author groups; both ADNI.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-186's figure comes from trajectories that include a forecast marker value at the time of conversion, while P-183 uses one baseline visit; the input representations differ.",
+  "The class definitions differ (conversion at 2 years vs 5-year stable controls, against conversion before month 36 vs stable to month 36), and the modality gate fails with no waiver.",
+  "Even on a shared quantity there would be no contradiction: P-183's CI covers both P-186 figures."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-183",
+   "page": 7,
+   "quote": "ENS 0.750 0.588\u20130.873 0.824 0.681\u20130.968"
+  },
+  {
+   "paper": "P-183",
+   "page": 3,
+   "quote": "The experiment included only the baseline information from subjects with a baseline MCI diagnosis, between 70 and 80 years old"
+  },
+  {
+   "paper": "P-186",
+   "page": 1,
+   "quote": "Te proposed technique resulted in a high classi\ufb01cation AUC of 91.2% and 95.7% for 6-month- and 1-year-ahead AD prediction, respectively, using multimodal markers."
+  },
+  {
+   "paper": "P-186",
+   "page": 8,
+   "quote": "Te method proposed in this paper has recorded the highest classi\ufb01cation AUC of 95.7% predominantly because of involving the forecasted marker value at the time of conversion as a classi\ufb01cation feature."
+  }
+ ],
+ "record_defects": [
+  "The registry Best_Metric for P-183 'Acc 72.7' does not appear in the PDF.",
+  "claim_b gives P-186 'AUC 0.957' while the registry gives 'AUC 0.912' (different analyses, n=85 vs n=119).",
+  "The registry labels both papers 'MRI/PET'; neither uses PET.",
+  "resolution_note says 'Confirmed genuine' on a gap test that ignores P-183's own CI; the resolution field says 'Rejected'. The bridging list is generic."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "The same class definition and input representation scored in both, with non-overlapping uncertainty."
+}

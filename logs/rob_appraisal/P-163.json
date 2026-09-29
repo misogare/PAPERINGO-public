@@ -1,0 +1,220 @@
+{
+ "paper_id": "P-163",
+ "document_check": {
+  "matches": true,
+  "note": "Wisely CE, Richardson A, Henao R, et al. A Convolutional Neural Network Using Multimodal Retinal Imaging for Differentiation of Mild Cognitive Impairment from Normal Cognition. Ophthalmology Science 2024;4:100355 (doi 10.1016/j.xops.2023.100355), Duke University. The sample is 236 eyes of 129 cognitively normal subjects and 154 eyes of 80 MCI subjects. The full model uses GC-IPL maps, OCTA images and image-derived quantitative data, and gives AUC 0.809 (95% CI 0.681 to 0.937) on a patient-disjoint test set (abstract p1, Table 4 p5). This matches the cited result."
+ },
+ "cited_result": "Per-eye discrimination of MCI from cognitively normal eyes by the multimodal CNN (ResNet18 encoder). Inputs: GC-IPL thickness maps, OCTA superficial capillary plexus 6 x 6 mm en face images and image-derived quantitative OCT/OCTA metrics; demographic data were excluded from this model (Table 4 footnote). Evaluation: a patient-disjoint internal test set of 30 MCI eyes and 60 control eyes, age-matched by subsampling, with the median of 10 runs reported. Result: AUC 0.809 (95% CI 0.681 to 0.937), sensitivity 79%, specificity 83%.",
+ "tool_reason": "The cited result is the discrimination (AUC) of a machine-learning classifier, a convolutional neural network separating MCI from normal cognition. That is a diagnostic prediction-model question, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "Sampling is two-gate, in effect diagnostic case-control. The MCI subjects were diagnosed by a memory-disorders neurologist, and the controls were community volunteers or members of the Duke ADRC registry of cognitively normal people. No consecutive or random sampling from an intended-use population is described. Exclusions are extensive (dementia, diabetes, uncontrolled hypertension, glaucoma, AMD, other retinal pathology, high refractive error, visual acuity worse than 20/40), and the authors acknowledge them as deliberate. Poor-quality images were excluded, and the number excluded is not reported. The groups differ in age, sex and education (Table 1).",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No",
+     "quote": "who volunteered from the local community or who were participants in the Duke Alzheimer\u2019s Disease Research Center\u2019s registry for cognitively normal community subjects.",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "patients were excluded if they had dementia, diabetes mellitus, uncontrolled hypertension, demyelinating disorders, high myopia or hyperopia, glaucoma, age-related macular degeneration, other vitreoretinal pathology, history of ocular surgery apart from cataract surgery",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "All subjects were imaged on one device (Zeiss Cirrus HD-5000 with AngioPlex) under one protocol. The GC-IPL maps and most quantitative parameters come from automated segmentation in the Zeiss software. Two inputs involved manual steps whose masking to diagnosis is not stated: subfoveal choroidal thickness, measured by two graders, and the exclusion of poor-quality images. These are minor relative to the automated inputs. The retinal images would be available when the model is used.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All subjects underwent undilated imaging using the Zeiss Cirrus HD-5000 Spectral-Domain OCT with AngioPlex OCTA",
+     "page": "2"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "All parameters were calculated by the Zeiss software apart from subfoveal choroidal thickness, which was manually measured by 2 graders",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "By comparison, retinal imaging is noninvasive, has a low recurring cost, and is widely available.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "MCI was diagnosed clinically by an expert neurologist to NIA-AA guidelines, which is a standard definition that does not use the retinal predictors. The paper defers to prior work for how controls were confirmed as cognitively normal, so it is unclear whether both groups were classified by the same process. The interval between the clinical diagnosis and the imaging visit is not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "Subjects with MCI were diagnosed based on clinical history, cognitive testing, and any available neuroimaging by an expert neurologist (A.L.) with specialization in memory disorders.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "All diagnoses were made in accordance with National Institute on Aging and Alzheimer\u2019s Association guidelines.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "Subjects with MCI were diagnosed based on clinical history, cognitive testing, and any available neuroimaging by an expert neurologist (A.L.) with specialization in memory disorders.",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "No information",
+     "quote": "Searched for: how the normal-cognition status of controls was established and whether the same neurologist or procedure classified both groups. Controls are described only as community volunteers or ADRC registry participants, and the paper says: 'Eligible subjects with MCI and normal cognition were selected based on clinical diagnoses, as outlined in our prior published work.'",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "Eligible subjects with MCI and normal cognition were selected based on clinical diagnoses, as outlined in our prior published work.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched for: the date of, or interval between, the clinical diagnosis and the OCT/OCTA imaging visit ('interval', 'same day', 'within', 'months'). None is reported.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The data set has 80 MCI subjects (154 eyes). The held-out test set has 30 MCI eyes, and each age-matched run uses about 24 (80% by the stated rule), for a CNN with an image encoder and 15 quantitative inputs. The AUC is computed per eye, and its DeLong CI treats fellow eyes of one subject as independent. The test set was subsampled rather than analysed whole. No calibration is reported. Sensitivity and specificity use a Youden threshold chosen on the test-set ROC. Validation is a single random split with no external validation, and missing data handling is not reported. The patient-level split, the dropout and weight decay, and the 10 re-splits (mean AUC 0.828, SD 0.035) partly address overfitting, but the 95% CI of 0.681 to 0.937 shows how imprecise the estimate is.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "One hundred four (68%) MCI eyes were used for training, 20 (13%) were used for validation, and 30 (19%) were used for testing.",
+     "page": "4"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Brie\ufb02y, quantitative OCT parameters included subfoveal choroidal thickness, central sub\ufb01eld",
+     "page": "2"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "80% of the MCI eyes in the test dataset were randomly selected, and, for each MCI eye, the control eye with the nearest age was also added to the age-matched test dataset.",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for: 'missing', 'imputation' and how incomplete quantitative data were handled. Nothing is reported. Table 3 gives 'Controls (N \u00bc 221)' (the extract's \u00bc is '=') against 236 control eyes in Table 1, without explanation, and the number of images excluded for poor quality is not given.",
+     "page": "4"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "we considered simpli\ufb01ed versions in which only 1 or both imaging modalities or quantitative data only were used as inputs",
+     "page": "3"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "AUC on validation and test set \ufb01gures describe the performance of each model on predicting the probability of mild cognitive impairment diagnosis for each individual eye in the independent sets.",
+     "page": "5"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "As a quantitative estimate of performance, we considered the receiver operating characteristic, the area under the receiver operating characteristic curve (AUC), and summaries of the confusion matrix, namely, accuracy, sensitivity, and speci\ufb01city.",
+     "page": "3"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably no",
+     "quote": "To ensure consistency of this result, we reassigned eyes randomly to the training, validation, and testing groups in 10 variations and ran the CNN for each grouping, resulting in a mean AUC of 0.828 and standard deviation of 0.035.",
+     "page": "4"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched for: the final network weights, code or a model specification beyond the architecture in Figure 1. None is provided.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "There was no patient overlap between the training, valida- tion, and test groups, and patients were randomly assigned to each group.",
+     "page": "4"
+    },
+    {
+     "question": "AI: Are preprocessing, feature handling and hyperparameter tuning confined to the training data?",
+     "answer": "No information",
+     "quote": "Searched for: how the hyperparameters were chosen, the role of the validation set (early stopping or model selection) and any scaling of the quantitative inputs. Only fixed settings are reported: 'The model was trained for 100 epochs using the adaptive moment estimation optimizer37 with a weight decay of 0.01'.",
+     "page": "3"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Probably no",
+     "quote": "Figure 3 is the receiver operating characteristic curve for the best-performing model on the test set. The values in Figure 3 were used to calculate a Youden index threshold value of 0.095",
+     "page": "4"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Partly (the test set was balanced by age-matched subsampling; no handling during training is reported for 152 control and 104 MCI training eyes)",
+     "quote": "This procedure resulted in a balanced test dataset with no signi\ufb01cant differences in age between the MCI and control groups.",
+     "page": "2"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (single random patient-disjoint hold-out split; no external validation)",
+     "quote": "When applied to the independent test set using inputs including GC-IPL thickness maps, OCTA images, and quantitative OCT and OCTA data, the AUC value for the CNN was 0.809",
+     "page": "1"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The participants are a highly selected tertiary-centre sample. People with diabetes, glaucoma, AMD, other retinal disease, uncontrolled hypertension or poor acuity were excluded, as were poor-quality images, and the test set was artificially balanced to 50% prevalence by age-matched subsampling. The authors state this as a limitation for generalisability."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "low",
+   "rationale": "The predictors are standard macular OCT and OCTA acquisitions with automated segmentation, which are feasible in practice. They come from a single device (Zeiss Cirrus), so transfer to other platforms is untested."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "The target is a clinical MCI diagnosis made to NIA-AA guidelines. The model classifies individual eyes, whereas the clinical decision is made per person, and no person-level rule is given."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Two domains are high. Domain 1 is high because of the case-control sampling of neurologist-diagnosed MCI against volunteer or registry controls, with extensive exclusions. Domain 4 is high because of few outcome events, a per-eye analysis that ignores fellow-eye correlation, a subsampled test set, no calibration, a test-set-derived threshold, and a single internal split with no external validation. Domain 3 is unclear. Under PROBAST, any high domain makes the overall rating high.",
+ "confidence": "high",
+ "tool": "PROBAST",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 23,
+  "matched": 21,
+  "annotations_not_checked": 2,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
+ }
+}

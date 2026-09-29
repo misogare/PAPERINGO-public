@@ -1,0 +1,83 @@
+{
+ "id": "C-191",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-359",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multimodal Convolutional Mixer for Mild Cognitive Impairment Detection (Grigas, Damasevicius, Maskeliunas; Comput Mater Contin 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-125",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Tortuosity and discrete compactness biomarkers for machine learning-based classification of mild cognitive impairment (Torres Guzman et al.; Biomed Signal Process Control 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-359": "CN vs MCI, MCM-768 on the Mayo Clinic Study of Aging (MCSA) dataset only, sagittal plane, 85/15 random split: accuracy 0.9639, sensitivity 0.9690, specificity 0.9587 (Table 4). On the pooled ADNI+MCSA+OASIS3 set the best sagittal accuracy is 0.9492 (Table 7); averaged over planes 0.9228 (Table 10). Inputs are fused T1w MRI + PiB-PET mid-slices concatenated with MMSE, CDR, FAQ, education, gender and blood pressure.",
+  "P-125": "HC vs MCI, 74 ADNI subjects (37/37), 8 amygdala morphometric features (volume, normalised volume, discrete compactness, tortuosity per hemisphere), 60/40 split: abstract states test accuracy 82.14%; the results section and Table 6 give mean test accuracy 80.00 +/- 2.43% (RF), 79.29% (SVM), 77.86% (KNN), 80.00% (ANN); test AUC 85.71-90.31%."
+ },
+ "quantity_a": "Accuracy of CN-vs-MCI classification in MCSA (sagittal slice) from a multimodal model whose inputs include the clinical instruments (CDR, MMSE, FAQ) used to define the diagnostic labels, plus PiB-PET and T1w MRI; random 85/15 hold-out.",
+ "quantity_b": "Accuracy of HC-vs-MCI classification in 74 ADNI subjects from 8 FreeSurfer amygdala shape/volume features only (structural MRI); 60/40 hold-out.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Two different methods on different inputs each report their own score; neither paper claims an ordering that the other refutes (P-125 does not test multimodal models; P-359 does not test amygdala morphometry). A higher accuracy for a richer predictor set is not a contradiction.",
+ "gates": {
+  "task": "match: both CN/HC vs MCI detection (T1).",
+  "dataset_family": "mismatch: P-359's 96.3% is MCSA-only ('Classification results using only MCSA dataset sagittal plane'); its pooled result mixes MCSA, OASIS3 and 27/27 ADNI subjects. P-125 is ADNI only. No waiver on record.",
+  "validation_tier": "match: both internal hold-out (V2); P-359 also reports LODO only in a figure.",
+  "modality_family": "mismatch: P-359 is multimodal (T1w MRI + PiB amyloid PET + cognitive tests + clinical/demographic); P-125 is structural MRI morphometry only. The record's 'structural_mri' for both is wrong for P-359."
+ },
+ "endpoint_and_metric": "compatible metric type (accuracy vs accuracy) but incompatible predictor set and label circularity: P-359 feeds CDR/MMSE/FAQ, the instruments that define MCI, into the classifier, and its ablation shows removing cognitive tests produces the largest accuracy drop.",
+ "performance_validity": "flag does not apply by the automatic test: 0.9639 is below 0.97 and the MCSA arm has 824 subjects; however it is internal random-split validation with no external cohort, and the comparison is a performance comparison.",
+ "independence": "Distinct studies, no shared authors. Both draw on ADNI but P-359 uses only 27/27 ADNI subjects and its headline figure uses none.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The contested 96.3% is an MCSA-only result, so the dataset-family gate fails against P-125's ADNI-only cohort, with no waiver on record.",
+  "P-359's predictor set is multimodal and includes the diagnostic instruments (CDR, MMSE, FAQ), whereas P-125 uses eight amygdala morphometric features, so the modality family and input representation differ (the C-80 precedent).",
+  "Even if set side by side, neither study claims an ordering the other refutes; the two accuracies are different methods' scores, not incompatible estimates of one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-359",
+   "page": 1,
+   "quote": "achieves a classification accuracy of 96.3% on the Mayo Clinic Study of Aging (MCSA) dataset (sagittal plane), outperforming state-of-the-art models by 5%-20%."
+  },
+  {
+   "paper": "P-359",
+   "page": 7,
+   "quote": "ADNI 27/27 ... MCSA 412/412 ... OASIS3 134/134"
+  },
+  {
+   "paper": "P-359",
+   "page": 14,
+   "quote": "It was nonsensical to assess the ADNI and OASIS3 separately due to their size."
+  },
+  {
+   "paper": "P-359",
+   "page": 27,
+   "quote": "Removing cognitive test features (MMSE, CDR, and FAQ) results in the highest drop in accuracy"
+  },
+  {
+   "paper": "P-125",
+   "page": 1,
+   "quote": "The analysis included a total of 74 participants, comprising 37 healthy control subjects and 37 mild cognitive impairment patients. Imaging data were sourced from the ADNI database."
+  },
+  {
+   "paper": "P-125",
+   "page": 9,
+   "quote": "The mean test accuracy was 80.00 +/- 2.43 %, 79.29 +/- 5.78 %, 77.86 +/- 3.71 % and 80.00 +/- 3.97 % for the RF, SVM, KNN and ANN models respectively."
+  }
+ ],
+ "record_defects": [
+  "dataset_equal 'Yes' (implying ADNI for both) is wrong: P-359's 96.3% comes from MCSA only.",
+  "modality_family 'structural_mri' is wrong for P-359, which fuses PiB-PET with T1w MRI and adds cognitive, clinical and demographic features.",
+  "The pack registry Best_Metric 'Acc 89.1' for P-359 does not match any accuracy in the paper; 89.1% is the full-dataset sensitivity (abstract).",
+  "P-125's 82.14% is the abstract figure; the paper's own Table 6 reports best mean test accuracy 80.00%, an internal inconsistency in the source that the record does not note.",
+  "The record's resolution_status 'partially_resolved_candidate' rests on a list of third papers that merely report other accuracies; none shows a condition separating these two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An ADNI-only, MRI-only result from P-359 on the same CN-vs-MCI comparison with an interval excluding P-125's estimate would make the quantities comparable; even then, both being method scores with no refuted ordering would make it a false positive rather than genuine."
+}

@@ -1,0 +1,89 @@
+{
+ "id": "C-240",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-1153",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "18F-FDG-PET-based deep learning for predicting cognitive decline in non-demented elderly across the Alzheimer's disease clinical spectrum (Sohn et al., Radiology Advances 2024, 1(3), umae021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-1154",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "FDG-PET brain glucose hypometabolism predicts Alzheimer's disease progression pathways in cognitively normal adults: A longitudinal competing risks modeling (Alhasan et al., Metabolism Open 28 (2025) 100400). The map title reads 'Baseline FDG-PET brain glucose hypometabolism determines ...'; authors, cohort (1136 ADNI CN) and results match the record, so this is taken as the same paper under a variant title.",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-1153": "CNN trained on ADNI AD vs NC FDG-PET (test AUC 0.97; external J-ADNI AUC 0.98) gives an AD-similarity score. Prognosis via Cox models with clinical features + SUVR (Model 1) vs + DL output (Model 2): ADNI MCI (n = 663, MCI to AD over up to 9 years) iAUC 0.768 -> 0.787, difference 0.020 [0.007-0.034]; J-ADNI MCI (n = 129) 0.694 -> 0.716, difference 0.020 [-0.005 to 0.044]; HABS NC (n = 274, NC to MCI) 0.817 -> 0.902, difference 0.059 [-0.003 to 0.126]. DL HR 3.45 / 2.28 / 4.57. Amyloid-positive ADNI MCI 4-year tdAUC 0.720 -> 0.739.",
+  "P-1154": "1136 cognitively normal ADNI participants; four post-defined pathways (stable 32.8%, CN->MCI only 34.9%, CN->MCI->AD 15.8%, CN->AD direct 16.5%). Multinomial logistic regression with FDG MetaROI z-score as primary predictor 'supplemented by baseline cognitive measures when appropriate'; temporal and subject-grouped cross-validation within ADNI. Direct AD conversion AUC 0.999 (12 m), 0.994 (24 m), 0.994 (36 m); MCI as first event AUC 0.686 / 0.643 / 0.680. Direct conversion 17.12 vs 2.31 per 100 person-years (low vs high FDG), 7.4-fold."
+ },
+ "quantity_a": "Incremental prognostic value (difference in integrated time-dependent AUC from Cox models) of adding a CNN FDG-PET score to clinical features and SUVR, for MCI-to-AD conversion in baseline-MCI cohorts (ADNI, J-ADNI) and NC-to-MCI conversion in HABS NC.",
+ "quantity_b": "Absolute fixed-horizon ROC-AUC of a multinomial model (FDG MetaROI z-score plus baseline cognition) for membership in a 'direct CN-to-AD without documented MCI' pathway, and for MCI as first event, in ADNI cognitively normal participants.",
+ "same_quantity": false,
+ "incompatible_if_same": "The apparent gap (0.787 vs 0.994) compares an incremental-model iAUC in MCI with an absolute pathway-classification AUC in CN; if one forced the nearest analogue (CN cohorts predicting NC->MCI), P-1153 HABS gives iAUC 0.817-0.902 with PACC-based clinical features plus SUVR/DL while P-1154 gives AUC 0.64-0.69 for MCI as first event, but predictor sets, cohorts (HABS vs ADNI), event definitions and metric construction all differ, so no incompatibility on one estimand can be established.",
+ "gates": {
+  "task": "match: both T2 prognosis.",
+  "dataset_family": "partial: P-1154 is ADNI only; P-1153's ADNI stratum is MCI (not CN) and its CN stratum is HABS, so no shared population stratum exists.",
+  "validation_tier": "mismatch: P-1153 tests across three cohorts (J-ADNI, HABS beyond ADNI); P-1154 is internal cross-validation within ADNI only. No waiver on record.",
+  "modality_family": "match at family level (FDG-PET); representation differs (CNN AD-similarity score added to SUVR vs single MetaROI z-score)."
+ },
+ "endpoint_and_metric": "incompatible: endpoints differ (MCI-to-AD conversion or NC-to-MCI vs direct CN-to-AD bypass pathway); metric types differ (iAUC from Cox and its increment over a clinical model vs fixed-horizon ROC-AUC of a multinomial classifier); baseline populations differ (MCI vs CN).",
+ "performance_validity": "flag applies to P-1154 in substance: AUC 0.994-0.999 on internal ADNI cross-validation with no external cohort; the sample is not small (1136), but the near-ceiling figure is internal only and the paper's own internals are inconsistent (a 'cognitively normal' cohort containing an 'MCI at baseline (MMSE 20-23)' stratum; 16.5% direct CN-to-dementia conversion). P-1153's AD vs NC AUC 0.97/0.98 is a diagnostic-classification figure with an external J-ADNI test and is not the contested quantity.",
+ "independence": "Both draw on ADNI (P-1153 ADNI MCI; P-1154 ADNI CN) but on disjoint baseline strata; distinct author teams.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-1153 reports how much a deep-learning FDG score adds to a clinical-plus-SUVR Cox model (iAUC difference 0.020 in ADNI MCI), whereas P-1154 reports the absolute AUC of a multinomial pathway classifier; an increment and an absolute AUC are different metric types.",
+  "The endpoints differ: MCI-to-AD conversion (ADNI/J-ADNI MCI) or NC-to-MCI (HABS) in P-1153, versus direct CN-to-AD conversion without documented MCI in P-1154.",
+  "The baseline populations differ: P-1153's ADNI and J-ADNI strata are MCI at baseline; P-1154 contains only ADNI participants labelled cognitively normal.",
+  "P-1154's 0.994 is internal ADNI cross-validation only and near ceiling, so it cannot anchor a cross-study performance comparison under Section 2 in any case."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-1153",
+   "page": 5,
+   "quote": "The addition of DL output to clinical features and SUVR significantly improved the prognosis prediction in the ADNI MCI set (iAUC 0.768 [0.744-0.791] and 0.787 [0.766-0.811] for Model 1 and 2, respectively, iAUC difference 0.020 [0.007-0.034])"
+  },
+  {
+   "paper": "P-1153",
+   "page": 4,
+   "quote": "the main outcome was conversion from MCI to AD-dementia in the ADNI MCI and J-ADNI MCI sets, and from NC to MCI in the HABS NC set."
+  },
+  {
+   "paper": "P-1153",
+   "page": 7,
+   "quote": "HABS NC Clinical features \u00fe SUVR 0.817 (0.692-0.909) NA Clinical features \u00fe SUVR \u00fe DL 0.902 (0.751-0.951) 0.059 (\u22120.003 to 0.126)"
+  },
+  {
+   "paper": "P-1154",
+   "page": 1,
+   "quote": "We analyzed 1136 cognitively normal participants from the Alzheimer's Disease Neuroimaging Initiative with baseline fluorodeoxyglucose positron emission tomography (FDG-PET)"
+  },
+  {
+   "paper": "P-1154",
+   "page": 3,
+   "quote": "Pathway prediction modeling utilized multinomial logistic regression with brain glucose metabolism as the primary predictor, supplemented by baseline cognitive measures when appropriate."
+  },
+  {
+   "paper": "P-1154",
+   "page": 5,
+   "quote": "Direct Alzheimer's disease conversion prediction achieved high accuracy across time horizons: 12-month AUC of 0.999, 24-month AUC of 0.994, and 36-month AUC of 0.994"
+  },
+  {
+   "paper": "P-1154",
+   "page": 5,
+   "quote": "Among participants with MCI at baseline (MMSE 20\u201323), low FDG metabolism resulted in six-fold higher risk"
+  }
+ ],
+ "record_defects": [
+  "conflict_statement says P-1154's AUC 0.994 comes 'from a baseline FDG MetaROI z-score'; the Methods state the multinomial model was 'supplemented by baseline cognitive measures when appropriate', so it is not a standalone FDG figure.",
+  "claim_a labels P-1153 V3; the registry row says V4. The PDF shows external testing in J-ADNI and HABS; the tier label is inconsistent between record and registry.",
+  "The record and map quote P-1154's title with 'determines'; the printed title uses 'predicts' (the abstract does say hypometabolism 'determined pathway selection').",
+  "The record describes P-1154 labels as 'constructed post hoc'; the PDF defines the four pathways from longitudinal diagnoses as outcomes, which is standard; the substantive issue is internal-only validation and internal inconsistencies (an 'MCI at baseline' stratum inside a CN cohort), which the record does not mention.",
+  "residual_risk and gate note say the pair 'passes all four deterministic gates'; the validation-tier gate does not match on the PDFs (multi-cohort testing vs internal ADNI cross-validation)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A study reporting an externally validated absolute AUC for FDG-PET prediction of the same endpoint (e.g. CN-to-AD within a fixed horizon, same predictor set) whose interval excludes P-1154's value; the two documents here do not share an estimand."
+}

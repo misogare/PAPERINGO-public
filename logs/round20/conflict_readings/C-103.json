@@ -1,0 +1,87 @@
+{
+ "id": "C-103",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-178",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Random forest model for feature-based Alzheimer's disease conversion prediction from early mild cognitive impairment subjects (Velazquez & Lee, PLoS ONE 16(4): e0244773, 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-185",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Biomarker Extraction Based on Subspace Learning for the Prediction of Mild Cognitive Impairment Conversion (Li et al., BioMed Research International 2021, Article ID 5531940)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-178": "383 ADNI EARLY MCI patients with >1 year follow-up (49 eventual converters, mean time to conversion 5.02 years; 334 non-converters), conversion judged at the last visit's diagnosis (no fixed horizon). Unit of analysis is the visit (1,806 visits), randomly oversampled to 1,608 per class and split 75/25; 9 features (age, race, APOE4, hippocampal and ventricular volume, ADAS13, ADAS11, FAQ, MMSE). Balanced random forest: accuracy 93.6%, AUC 0.96, precision 0.952, recall 0.978. A support vector classifier that predicted mostly the majority class scored 90.0% accuracy with AUC 0.54.",
+  "P-185": "ADNI-1 baseline 1.5T MRI; 221 MCI (126 pMCI, 95 sMCI, conversion within 3 years), with 142 AD and 165 NC used only as auxiliary data to learn projections. Features: regional cortical thickness and volume only (78 AAL regions), subspace-learning biomarker, 10-fold CV repeated 20 times: best accuracy 69.37% (SVM linear; sensitivity 75.39%, specificity 61.23%, AUC 0.6951)."
+ },
+ "quantity_a": "Visit-level accuracy (after random oversampling of the minority class, 75/25 split) of a random forest on demographic, APOE4, cognitive-test and two volumetric features for eventual conversion to AD (mean 5 years, open horizon) among ADNI early-MCI patients, 12.8% converters",
+ "quantity_b": "Subject-level 10-fold cross-validated accuracy of an SVM on cortical thickness/volume subspace biomarkers for 3-year pMCI vs sMCI among ADNI-1 MCI patients, 57% converters",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable as incompatible: accuracy depends on class prevalence, and the two samples differ sharply (12.8% converters in P-178, where a majority-class predictor already reaches about 87-90%; 57% in P-185); neither paper reports an interval for its accuracy.",
+ "gates": {
+  "task": "match on label: both MCI-to-AD conversion (T2), but the population behind 'MCI' (early MCI vs ADNI-1 MCI, mostly late amnestic) and the horizon (open, mean 5 years vs 3 years) differ",
+  "dataset_family": "match: both ADNI (P-178 ADNI-1/GO/2 EMCI, P-185 ADNI-1); the cohorts overlap little because EMCI was enrolled only from ADNI-GO/2",
+  "validation_tier": "match: both internal only (random visit-level split vs repeated 10-fold CV)",
+  "modality_family": "mismatch: P-178 is chiefly clinical/cognitive tabular data with two volumes and APOE4; P-185 is structural-MRI morphometry only. The record's modality_family_equal='No' is correct; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: both are accuracy, but accuracy is not comparable across a 12.8% vs 57% converter prevalence; endpoints differ in horizon (open vs 3 years), population (EMCI vs MCI), predictor set (cognitive/clinical + volumes vs MRI morphometry only) and unit of analysis (oversampled visits vs subjects)",
+ "performance_validity": "flag does not apply formally (93.6% accuracy and AUC 0.96 are below 0.97), but P-178's test set is drawn from visits after oversampling (Table 1: 402 test records per class), so repeated visits of the same subjects and duplicated minority visits can fall on both sides of the split; this weakens the figure further",
+ "independence": "Independent groups (UMKC vs Shandong/Lanzhou); both use ADNI, with limited overlap (EMCI vs ADNI-1 MCI), recorded as shared data source.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-178's 93.6% is a visit-level accuracy for early-MCI patients converting at any time (mean 5.02 years), while P-185's 69.37% is a subject-level accuracy for ADNI-1 MCI converting within 3 years, so population, horizon and unit of analysis differ.",
+  "The predictor sets differ: P-178 relies on cognitive scores, age and APOE4 plus two volumes; P-185 uses cortical thickness and volume only, so the modality gate fails with no waiver on record.",
+  "Accuracy is not comparable across a 12.8% vs 57% converter prevalence: in P-178 a classifier that predicts mostly the majority class already scores 90.0% (AUC 0.54).",
+  "P-178's oversampling before the visit-level split means its 93.6% is not an estimate on unseen subjects."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-178",
+   "page": 1,
+   "quote": "383 Early Mild Cognitive Impairment (EMCI) patients were gathered from the Alzheimer's Disease Neuroimaging Initiative (ADNI). Of these patients, 49 would eventually convert to AD (EMCI_C), whereas the remaining 334 did not convert (EMCI_NC)."
+  },
+  {
+   "paper": "P-178",
+   "page": 3,
+   "quote": "From the ADNI variables, the Clinical Dementia Rating was used to make this determination based on the value of their last visit's diagnosis."
+  },
+  {
+   "paper": "P-178",
+   "page": 4,
+   "quote": "Record# after Oversampling 1608 1608 Training Data 1206 1206 Testing Data 402 402 (Table 1)"
+  },
+  {
+   "paper": "P-178",
+   "page": 7,
+   "quote": "The difference in AUC between our best RF variation (96% AUC) and our best SVC variation (54% AUC) is shown in Fig 5."
+  },
+  {
+   "paper": "P-185",
+   "page": 2,
+   "quote": "According to whether the MCI subjects will convert to AD or not within a given time period (i.e., 3 years), they are separated into two categories: progressive MCI (pMCI) and stable MCI (sMCI)."
+  },
+  {
+   "paper": "P-185",
+   "page": 2,
+   "quote": "Moreover, the 221 MCI subjects contain 126 pMCI and 95 sMCI subjects."
+  },
+  {
+   "paper": "P-185",
+   "page": 6,
+   "quote": "The proposed biomarker achieved highest accuracy of 69.37% when using SVM classifier with linear kernel."
+  }
+ ],
+ "record_defects": [
+  "resolution_note says 'Confirmed genuine: Same metric type (Acc)' while resolution says 'Rejected: Task, dataset, or modality mismatch'; internally inconsistent, and the same metric type does not make accuracies comparable across different prevalences.",
+  "The record does not note that P-178 is an early-MCI, open-horizon, visit-level, oversampled design and P-185 a 3-year, subject-level, MRI-only design.",
+  "The 'bridging evidence' list mixes accuracies, AUCs, C-indices and sensitivity/specificity pairs from other studies and names no condition separating the two results; it is not bridging evidence under the rule."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Two ADNI studies predicting conversion over the same horizon in the same MCI population from the same predictor set, reporting a prevalence-independent metric (AUC or balanced accuracy) at subject level with intervals that exclude each other."
+}

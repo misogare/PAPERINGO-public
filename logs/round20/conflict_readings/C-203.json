@@ -1,0 +1,77 @@
+{
+ "id": "C-203",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-261",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Association of Qi-stagnation constitution and subjective sleep characteristics with mild cognitive impairment among elderly in community: A cross-sectional study (Liu et al., Eur J Integr Med 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-266",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Identifying mild cognitive impairment and its predictors among normal middle adulthood in Pune, Maharashtra: A community-based cross-sectional survey (Gazbare & Palekar, Clin Epidemiol Glob Health 2024)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-261": "Fuzhou, 1,071 non-depressed adults aged 55-75; MoCA-based MCI prevalence 29.3%. Adjusted OR 2.581 (1.706-3.907) for MCI with joint sleep disturbance (PSQI >= 6) and Qi-stagnation vs neither; sleep disturbance alone OR 1.681 (1.231-2.296); sleep latency OR 1.168 and daytime dysfunction OR 1.261 in the fully adjusted model.",
+  "P-266": "Pune, 605 adults aged 40-60; MCI = ACE-III < 88; prevalence 27.77% (95% CI 24.35-31.47). Multivariable risk factors: older age, female sex, lower education, severe perceived stress, low physical activity. Self-reported sleep duration not associated (chi-square p = 0.88; logistic OR 1.44, 0.94-2.19, p = 0.08, row labelled 'Adequate')."
+ },
+ "quantity_a": "Adjusted odds ratio of MoCA-defined MCI for joint PSQI sleep disturbance and Qi-stagnation vs neither, non-depressed Fuzhou adults 55-75.",
+ "quantity_b": "Point prevalence of ACE-III < 88 'MCI' in Pune adults aged 40-60 (plus multivariable risk factors).",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable for the recorded figures (an odds ratio vs a prevalence). I also checked the one construct both studies measure, sleep: P-261 finds PSQI sleep disturbance and sleep latency associated with MCI (sleep duration significant only univariately, p = 0.025, and dropped from the multivariable model), while P-266 finds self-reported short sleep duration not associated. This is a significant vs non-significant difference on differently defined exposures (PSQI composite vs self-reported <6 h with difficulty sleeping), in different age bands (55-75 vs 40-60) and with different MCI instruments (MoCA vs ACE-III < 88); P-266's OR interval (0.94-2.19) overlaps P-261's sleep-disturbance OR (1.231-2.296). Not incompatible.",
+ "gates": {
+  "task": "nominal match (T6)",
+  "dataset_family": "mismatch: Fuzhou (China) vs Pune (India) community samples; the record itself sets dataset_equal = No",
+  "validation_tier": "n/a (neither validates a model)",
+  "modality_family": "match: questionnaire/cognitive screening tabular data"
+ },
+ "endpoint_and_metric": "incompatible: odds ratio vs prevalence; MCI operationalised by MoCA (P-261) vs ACE-III < 88, a clinical rather than research cut-off, in 40-60 year olds (P-266)",
+ "performance_validity": "not a performance comparison",
+ "independence": "Distinct studies, different countries and authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-261's recorded figure is an adjusted odds ratio for a joint sleep and Qi-stagnation exposure.",
+  "P-266's recorded figure is a prevalence of ACE-III-defined MCI in 40-60 year olds.",
+  "The two are different metric types in different populations with different MCI instruments, and the record already fails its own dataset gate.",
+  "The shared sleep construct differs only in significance, with overlapping intervals and differently defined exposures, which Section 5.2 says is not a data conflict."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-261",
+   "page": 5,
+   "quote": "the risk of suffering from MCI for older adults with sleep disturbance and Qi-stagnation was 2.581 times higher than that for those without sleep disturbance or Qi-stagnation"
+  },
+  {
+   "paper": "P-261",
+   "page": 6,
+   "quote": "Yes No 0.520 0.159 10.672 1.681 (1.231 to 2.296) 0.001"
+  },
+  {
+   "paper": "P-266",
+   "page": 1,
+   "quote": "Prevalence of MCI among adult was 27.77 % with 95 % CI (24.35-31.47)."
+  },
+  {
+   "paper": "P-266",
+   "page": 2,
+   "quote": "We have considered ACE-III score of less than 88 as MCI."
+  },
+  {
+   "paper": "P-266",
+   "page": 5,
+   "quote": "Our result showed no association of sleep duration with cognition."
+  }
+ ],
+ "record_defects": [
+  "gap_magnitude 0.252 is computed between an odds ratio (2.581) and a percentage (27.77%), which is meaningless.",
+  "The PDF map titles P-261 as a speech-analysis paper; the PDF text is the Liu et al. Qi-stagnation/sleep study the record means.",
+  "resolution_status 'partially_resolved_candidate' implies a disagreement bridged by third studies; there is no disagreement to bridge."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Two studies estimating the same sleep-MCI odds ratio with the same exposure definition and comparable MCI criteria, with non-overlapping intervals."
+}

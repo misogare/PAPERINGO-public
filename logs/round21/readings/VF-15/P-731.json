@@ -1,0 +1,34 @@
+{
+ "paper": "P-731",
+ "round": "21 (round-2 verifier)",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "yes",
+ "dataset_family": "ADNI (ADNI-GO and ADNI-2; 162 MCI, 68 converting to AD within 6-60 months and 94 stable over 5 years). It is the same 162-patient sample as round-1 candidate P-1128.",
+ "method_family": "Radiomic scores fed to a logistic regression. FreeSurfer cortical features and SPM/Brainnetome subcortical volumes were screened by pMCI-vs-sMCI significance, mRMR and LASSO into a cortical score and a nuclear score. These were combined with CSF P-tau, CSF Abeta1-42 and APOE e4 in a multivariable logistic regression with backward stepwise selection, shown as a nomogram. 5-fold CV.",
+ "same_sample_or_cohort_as": [
+  "P-1128 (round-1 candidate): the same 162 ADNI MCI patients (68 progressing to AD in 6-60 months, 94 not), checked in the P-1128 PDF. Count P-731 and P-1128 once at most.",
+  "P-3, P-104, P-81 (current supporters): ADNI, the same dataset family. Participant overlap with their ADNI MCI subsets is likely but was not checked.",
+  "P-1214 (round-2 candidate): also ADNI-GO/2 MCI. Participant overlap is possible but was not checked."
+ ],
+ "shared_authors_with": [
+  "P-1128: Lin Tang (Department of Radiology, Chongqing University Cancer Hospital) is an author of both. P-731's Shike Wang is at the Department of Radiology, Second Affiliated Hospital of Chongqing Medical University, which is affiliation 1 of P-1128 (Zeng, Yang, ... Guo). Both papers cite Tang et al. 2021 (J Magn Reson Imaging, a 60-month follow-up), whose authors include Tang L, Guo D, Feng J and Li C. It is one Chongqing group and one sample.",
+  "No author is shared with P-3 (Luo, He, Cui, Chen, Ward), P-104 (Shen, Zhu, Zhang, Shui-Hua Wang, Chen, Xu, Shao) or P-81 (Cao, Ma, Nayak, Duong)."
+ ],
+ "what_it_shows": "One ADNI sample of 162 MCI, with 5-fold CV test-fold AUCs. Each single predictor alone: cortical score 0.824 (95% CI 0.704-0.942, accuracy 0.798), nuclear score 0.668 (sensitivity 0.029), APOE e4 0.671, CSF Abeta1-42 0.756, CSF P-tau 0.737. The combined model (both MRI scores plus APOE e4, Abeta1-42 and P-tau) reached 0.908 (0.814-0.997, accuracy 0.840). Adding the nuclear score and three non-imaging biomarkers to the cortical-score model raised test AUC by 0.084. The CIs overlap and no test compares the models.",
+ "why": "STATED: partly. The combined model beats every baseline the study ran, but each baseline is a single variable. The study fitted no multivariable non-imaging model (CSF plus APOE) and no imaging-only model with both MRI scores. So the P-81 failure mode, a multivariable non-imaging baseline matching the fusion, is untested. No test compares the models, and the test-AUC CIs overlap widely (0.704-0.942 vs 0.814-0.997). NARROWED: yes, with caveats. The comparison is within the study, in the same CV: the cortical-score model alone (test AUC 0.824, accuracy 0.798) against the same score plus auxiliary information (0.908, 0.840). The narrowed wording accepts modest untested margins. The added block is not purely non-imaging. It includes the nuclear score, a second score from the same T1 scan. Alone that score has test AUC 0.668 and sensitivity 0.029, but no cortical-plus-nuclear model was fitted, so the gain cannot be credited to CSF and APOE alone. I count information derived from the same scan as side information, as round 20 did for P-3's attention maps. If the adjudicator does not, this verdict becomes partly. CAVEATS: (1) Both scores were built from features 'with significant differences between pMCI and sMCI patients' (p.3), plus mRMR and LASSO. Nothing says this was nested within the CV folds, so both arms are probably optimistic. (2) 'Train' and 'Test' in Table 3 are CV fold means. There is no external test. (3) 68 events, and the authors call the sample 'comparatively small' (p.7). (4) The AD diagnosis used NINCDS clinical criteria (p.2), so the CSF values are not part of the label. INDEPENDENCE: ADNI, and the same 162-patient sample as P-1128, with a shared author and group. P-731 therefore adds no dataset family and counts once with P-1128. Its method family (radiomic scores plus CSF/APOE in a logistic regression) differs from those of P-3, P-104 and P-81. Registry note, not acted on: P-731's Modality cell holds prose rather than a modality label.",
+ "quotes": [
+  {"page": 5, "quote": "The cortical score demonstrated the best predictive accuracy among all individual predictors, with an AUC (95 %CI) of 0.839 (0.768–0.910) in the training cohort and 0.824(0.704–0.942) in the test cohort. The combined model had been further improved in terms of predictive performance, with an AUC (95 %CI) of 0.918 (0.874–0.968) in the training cohort and 0.908 (0.814–0.997) in the test cohort."},
+  {"page": 6, "quote": "[Table 3, Test columns: Mean AUC(95 %CI), Mean Sensitivity, Mean Specificity, Mean Accuracy] Cortical Score 0.824 (0.704–0.942) 0.698 0.872 0.798; Nuclear Score 0.668 (0.480–0.857) 0.029 1.000 0.593; APOE ε4 alleles 0.671 (0.507–0.835) 0.693 0.649 0.666; Aβ1-42 0.756 (0.590–0.924) 0.589 0.753 0.685; P-tau 0.737 (0.557–0.915) 0.485 0.850 0.697; Combined 0.908 (0.814–0.997) 0.827 0.851 0.840"},
+  {"page": 6, "quote": "Combined model = Cortical Score model + Nuclear Score model + APOE ε4 alleles model + Aβ1-42 model + P-tau model."},
+  {"page": 3, "quote": "For both cortex and nucleus, features with significant differences between pMCI and sMCI patients were used for further analysis."},
+  {"page": 4, "quote": "The construction of a prediction model for MCI conversion was achieved through multivariate logistic regression (LR) analysis with backward stepwise selection, utilizing multi-modal features in a causal network."},
+  {"page": 4, "quote": "In the evaluation process, 5-fold cross-validation was implemented which offered a reliable estimate of the model’s usefulness."},
+  {"page": 2, "quote": "During a 5-year follow-up, 94 participants did not develop to AD. 68 participants were diagnosed with AD within a timeframe of 6 to 60 months."},
+  {"page": 2, "quote": "The clinical diagnosis of Alzheimer’s disease was established in accordance with the criteria set forth by the National Institute of Neurological and Communicative Disorders and Stroke."},
+  {"page": 7, "quote": "Firstly, owing to our stringent inclusion criteria, the sample size of this current research was comparatively small."}
+ ]
+}

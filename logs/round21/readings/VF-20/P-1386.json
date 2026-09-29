@@ -1,0 +1,50 @@
+{
+ "paper": "P-1386",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "yes",
+ "dataset_family": "Single-centre retrospective memory-clinic series, Neurodegenerative Diseases Unit, Fondazione IRCCS Ca' Granda Ospedale Maggiore Policlinico, Milan, Italy (recruited Jan 2015 - Jun 2019; 90 patients with CSF Abeta42/pTau-181 and 3T T1 + DTI; data on request). New dataset family: no participants shared with any current supporter (NACC for P-581) or round-1 candidate.",
+ "method_family": "Diffusion MRI cortical microstructure: the Oxford Brain Diagnostics proprietary cortical columnar diffusivity tool (AngleR, ParlPD, PerpPD+; patent WO2016162682A1) plus cortical MD/FA, compared by ROC with FreeSurfer hippocampal volume fraction, cortical volume fraction and cortical thickness. Same method family, same tool and same developer group as current supporter P-581 (PerpPD+, NACC).",
+ "same_sample_or_cohort_as": [],
+ "shared_authors_with": [
+  "P-581 (Mario Torso, Steven A. Chance, Gerard R. Ridgway; Oxford Brain Diagnostics)"
+ ],
+ "what_it_shows": "Torso M, Fumagalli G, Ridgway GR, Contarino VE, Hardingham I, Scarpini E, Galimberti D, Chance SA, Arighi A (2024), Ann Clin Transl Neurol 11(8):1964-1976, doi 10.1002/acn3.52097. 90 memory-clinic patients (MCI or dementia) grouped by CSF status: A-T- 25, A+T- 28, A+T+ 37 (A-T+ excluded). Across the AT groups AngleR was the only microstructural measure separating A-T- from both A+ groups, and cortical volume fraction and hippocampal volume fraction (HVF) also separated A-T- from both A+ groups. Within the 25 MCI A-T- patients (15 stable, 10 converted to dementia; mean follow-up 32 months; by the authors' classification 2 of the 10 converted to AD and 8 to non-AD dementias: DLB, PCA, PSP, CBS), ROC analysis of eight baseline MRI measures (each adjusted for sex, age, DTI protocol and head motion) gave AngleR AUC 0.800 (p = 0.013; 95% CI 0.619-0.981), against HVF 0.607 (p = 0.375), cortical GM fraction 0.660 (p = 0.183), cortical thickness 0.440 (p = 0.618) and PerpPD+ 0.587 (p = 0.471). At an in-sample cutoff AngleR gave sensitivity 70%, specificity 86.7%, NPV 81.25%; adding AngleR as N to the CSF AT classification raised NPV from 60% to 81.25% and accuracy from 69.4% to 83.3%.",
+ "why": "Identity: the PDF title, authors (Torso ... Arighi), journal and DOI 10.1002/acn3.52097 match the summaries.md block and the map entry. I read the whole extract to the References (13 pages). The extract drops the superscript minus signs, so 'MCI A-T-' prints as 'MCI AT'; I decoded this from the paper's own grouping (A-T-, A+T-, A+T+, with A-T+ excluded) and quote the extract as printed. Unicode symbols are transliterated to ASCII in this file. STATED (Table A1) = partly. Shown: within amyloid/tau-negative MCI, a microstructural measure (whole-brain cortical AngleR) separated patients who converted to dementia from those who stayed stable, where hippocampal volume fraction, cortical volume fraction and cortical thickness did not. This is the study's own ROC comparison (Table 4). Not shown: (1) 'late': imaging is baseline only and the authors call the findings cross-sectional. (2) Volume preserved as an MCI marker in general: across the AT groups HVF and cortical volume fraction did separate A-T- from both A+ groups, so volume was discriminative along the AD continuum. The regime where volume failed is the CSF-negative subgroup whose converters were mostly non-AD syndromes (DLB, PCA, PSP, CBS), where hippocampal atrophy is not the expected signal. (3) No test compares the AUCs, and the 95% CIs overlap (AngleR 0.619-0.981, HVF 0.380-0.834). (4) AngleR is the best of eight ROC tests and no multiplicity correction is described for them (p = 0.013 would not survive a Bonferroni factor of 8; the abstract's 'corrected for multiple comparisons' refers to the GLM group tests). The cutoff is in-sample, n = 25 with 10 converters, and the DTI protocol changed mid-study (adjusted by a factor, not harmonised). Notably PerpPD+, the P-581 signature, was non-discriminative here (AUC 0.587). NARROWED (round 20) = yes, thin and scoped. In one small single-cohort study, a cortical diffusivity measure predicted MCI-to-dementia conversion at least as well as hippocampal volume, and at face value better (volume non-significant). This is the same kind of evidence round 20 accepted for P-581 (parity) and P-518 (group contrast). Scope to state if used: amyloid/tau-negative clinic MCI, all-cause dementia conversion dominated by non-AD syndromes, single centre, in-sample, uncorrected, no between-AUC test. Independence under H.1: the dataset family is new (Milan Policlinico). The method family is the same as P-581, however: the identical proprietary Oxford Brain Diagnostics columnar diffusivity tool (P-581 used PerpPD+, here AngleR). Three authors are shared with P-581 (Torso, Chance, Ridgway). Conflict of interest (p.11): Torso, Ridgway and Hardingham are Oxford Brain Diagnostics employees, and Chance is co-founder and patent holder. It therefore adds a dataset family but not a method family, and it corroborates P-581 from the same developer group. Not a preprint. Model reading, pending operator review.",
+ "quotes": [
+  {
+   "page": 8,
+   "quote": "Table 4. Prognostic accuracy of MRI Neurodegenerative measures to differentiate MCI stable vs converting MCI AT patients. ... AngleR 0.800 0.092 0.013 0.619 0.981 PerpPD+ 0.587 0.131 0.471 0.330 0.844 ... Cortical GM fr 0.660 0.128 0.183 0.427 0.893 Cortical thickness 0.440 0.120 0.618 0.204 0.676 Hippocampal fr 0.607 0.116 0.375 0.380 0.834 [columns: AUC, Std. error, Asymptotic significance, 95% CI lower, upper]"
+  },
+  {
+   "page": 6,
+   "quote": "Investigating the additional contribution of neurodegenerative N measure to AT classification in MCI AT group, all micro- and macrostructural measures were included in ROC analyses. As summarized in Table 4, AngleR resulted the neurodegenerative measure with the higher area under the curve (0.800) in differentiating MCI AT stable and converted."
+  },
+  {
+   "page": 6,
+   "quote": "In the MCI AT group, 15 participants (60%) remained stable and 10 (40%) converted to dementia."
+  },
+  {
+   "page": 9,
+   "quote": "we observed that only the 20% of MCI AT converted were potentially \"false negative\" (having converted to AD) while the remaining 80% included patients converted to non-AD dementia (30% Lewy body dementia, 30% posterior cortical atrophy, 10% progressive supranuclear palsy, and 10% corticobasal syndrome)."
+  },
+  {
+   "page": 5,
+   "quote": "At the macrostructural level, the GLM showed a significant effect of group on all the measures investigated. Cortical volume fraction and HVF were able to differentiate between AT and both A+ groups."
+  },
+  {
+   "page": 4,
+   "quote": "The discrimination power of the MRI N biomarkers in MCI AT groups was assessed by receiver operating characteristic (ROC) curve analysis and conventional indices. Every measure entered into the ROC analysis was adjusted for sex, age, acquisition protocol, and head movement."
+  },
+  {
+   "page": 10,
+   "quote": "The first limitation is the sample size; larger MCI samples may be required to investigate the diagnostic accuracy of cortical diffusivity measures. The findings of the study are cross-sectional, and future work with longitudinal imaging data is needed to evaluate measures for tracking disease progression."
+  },
+  {
+   "page": 11,
+   "quote": "S.A. Chance is a co-founder of a company, Oxford Brain Diagnostics, from which he has received funding for the research and preparation of this manuscript; M. Torso, G.R. Ridgway, and I. Hardingham are currently employed at a company, Oxford Brain Diagnostics; S.A. Chance has a patent (WO2016162682A1) related to the diffusion MRI analysis used in the present study"
+  }
+ ]
+}

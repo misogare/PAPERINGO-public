@@ -1,0 +1,84 @@
+{
+ "id": "C-208",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-125",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Tortuosity and discrete compactness biomarkers for machine learning-based classification of mild cognitive impairment (Torres Guzman, Pinzon Vivas, Barbara Morales; Biomed Signal Process Control 112 (2026) 108848)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-194",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Optimal transport- and kernel-based early detection of mild cognitive impairment patients based on magnetic resonance and positron emission tomography images (Liu et al., Alzheimer's Research & Therapy 2022 14:4)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-125": "Healthy controls vs MCI (37 vs 37, ADNI 1.5T T1 MRI), 8 amygdala features (volume, normalised volume, discrete compactness, tortuosity per hemisphere), 60/40 train/test split with 5-fold CV tuning. Abstract: test accuracy 82.14%, AUC 88.27-91.33%. Table 6: mean test accuracy RF 80.00 +/- 2.43, SVM 79.29, KNN 77.86, ANN 80.00; test AUC 85.71-90.31%.",
+  "P-194": "Early MCI vs late MCI (273 E-MCI vs 187 L-MCI, with 211 NC and 160 AD as auxiliary source domain; ADNI VBM-MRI and FDG-PET ROI features). Best 10-fold CV accuracy 68.76 +/- 7.53% (FDG, rMLTFL, Sinkhorn OT), AUC 0.66; bootstrap-aggregated test accuracy up to 75.00% (FDG, SD L1l2/linear), AUC up to 0.79; VBM-only accuracies 57.86-68.48%. No figure of 53% appears in the paper."
+ },
+ "quantity_a": "Discrimination accuracy of cognitively normal vs MCI, single-split held-out test (n~28 test subjects), amygdala shape/volume features from sMRI",
+ "quantity_b": "Discrimination accuracy of early MCI vs late MCI (MCI sub-staging, no normal controls in the target task), 10-fold CV and 80/20 bagged test, VBM-MRI and FDG-PET ROI features with AD/NC transfer",
+ "same_quantity": false,
+ "incompatible_if_same": "No even then: two different feature sets and models each reporting their own accuracy, and neither paper claims an ordering that the other refutes.",
+ "gates": {
+  "task": "mismatch: P-125 is NC vs MCI detection; P-194 is E-MCI vs L-MCI stratification (the record's shared 'T1' label hides two different classification problems)",
+  "dataset_family": "match: both ADNI (different subject subsets and phases)",
+  "validation_tier": "match: both internal only (V2)",
+  "modality_family": "partial mismatch: P-125 structural MRI only; P-194's headline results are FDG-PET (best) and VBM-MRI, with combined FDG+VBM also reported"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (accuracy) but on different class contrasts (NC/MCI vs EMCI/LMCI), so the accuracies measure different things",
+ "performance_validity": "flag does not apply: P-125 reports ~80% accuracy (below 0.97) and P-194 below 0.80; this is a performance comparison but not one resting on a near-ceiling study",
+ "independence": "Distinct author groups; both draw on ADNI, possibly overlapping subjects, but the class contrasts are different",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-125 classifies healthy controls against MCI, whereas P-194 classifies early against late MCI, so the two accuracies are for different class contrasts.",
+  "P-194's input features and best results are FDG-PET based, while P-125 uses sMRI amygdala shape features only.",
+  "The record's 'Acc 53' for P-194 is not in the paper; its reported accuracies range 56.79-75.00%, so even the stated gap is misrecorded.",
+  "The existing partially_resolved status relies on a list of intermediate scores, which is not a condition separating the two results; the correct reason is that the quantities differ."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-125",
+   "page": 1,
+   "quote": "to differentiate healthy control individuals from patients diagnosed with mild cognitive impairment using magnetic resonance imaging."
+  },
+  {
+   "paper": "P-125",
+   "page": 1,
+   "quote": "these features enhanced performance, yielding a test accuracy of 82.14 %, area under the curve values between 88.27 % and 91.33 %"
+  },
+  {
+   "paper": "P-125",
+   "page": 9,
+   "quote": "The mean test accuracy was 80.00 +/- 2.43 %, 79.29 +/- 5.78 %, 77.86 +/- 3.71 % and 80.00 +/- 3.97 % for the RF, SVM, KNN and ANN models respectively."
+  },
+  {
+   "paper": "P-194",
+   "page": 1,
+   "quote": "We have developed an optimal transport based transfer learning model to discriminate between early and late MCI."
+  },
+  {
+   "paper": "P-194",
+   "page": 6,
+   "quote": "Based on FDG features, our model achieved 68.76 +/- 7.53% accuracy and 0.66 +/- 0.08 AUC score across ten-fold cross-validation."
+  },
+  {
+   "paper": "P-194",
+   "page": 9,
+   "quote": "SD L1l2/l 75.00 0.77 67.39 0.67 69.56 0.77 (Table 4, BAg test ACC/AUC for FDG, VBM, FDG+VBM)"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-194: Acc 53 on T1' is not supported: no 53% accuracy appears in P-194; reported accuracies are 56.79-75.00% (lowest baseline SVM 57.61%).",
+  "task_equal 'Yes' is wrong: P-125 is NC vs MCI, P-194 is E-MCI vs L-MCI.",
+  "Registry Sample_N_Approx 202 for P-194 is the ADNI-1 subject count quoted in the text; the analysed sample is 831 (211 NC, 273 E-MCI, 187 L-MCI, 160 AD), 460 in the target task.",
+  "Registry Modality 'MRI/PET' for P-125 is wrong: P-125 uses T1 MRI only.",
+  "gap_magnitude 0.291 is computed from the unsupported 53% figure."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only a P-194 result on NC vs MCI (it reports such an experiment only in a supplementary table not in the extract) compared with P-125 under the same contrast; even then, two different feature sets with overlapping-range accuracies would not be incompatible."
+}

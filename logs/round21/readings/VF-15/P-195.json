@@ -1,0 +1,44 @@
+{
+  "paper": "P-195",
+  "pdf_is_right_paper": true,
+  "preprint": false,
+  "read_in_full": true,
+  "supports_stated": "partly",
+  "supports_narrowed": "partly",
+  "dataset_family": "ADNI (MCI cohort plus 190 AD / 243 CN ADNI subjects used only for pretraining)",
+  "method_family": "3D CNN (residual attention plus inception) on two-timepoint T1 MRI, late fusion with cross-sectional and longitudinal clinical variables, with AD/CN source-task pretraining; overlaps the CNN late-fusion family of P-81 and the source-task transfer idea of P-3",
+  "same_sample_or_cohort_as": ["P-3", "P-104", "P-81", "P-225", "P-512"],
+  "shared_authors_with": [],
+  "what_it_shows": "In 669 ADNI MCI (440 sMCI, 229 cMCI), under 10-fold CV, Table 2 reports balanced accuracy (BA) and AUC. Clinical only: BA 75.5, AUC 80.6. T1 MRI only: 73.2 / 79.0. Clinical + MRI: 75.4 / 82.2. Clinical + MRI with AD/CN pretraining: 78.2 / 84.1 (fine-tuned) and 77.8 / 84.7 (frozen). Only the frozen pretrained fusion model was significantly above clinical-only (DeLong). The task is diagnosing the conversion point, using a scan and clinical scores from the visit at which conversion was adjudicated. It is not prediction of future progression.",
+  "why": "IDENTITY. The PDF is Pena D, Suescun J, Schiess M, Ellmore TM, Giancardo L. Front Neurosci 2022;15:744190, 'Toward a Multimodal Computer-Aided Diagnostic Tool for Alzheimer's Disease Conversion'. The block's content matches: a multimodal longitudinal CAD tool, 669 subjects, AUC 84.7 vs 80.6. I read the whole extract up to the references.\n\nDESIGN. ADNI, 440 sMCI and 229 cMCI, two T1 scans per subject. For cMCI, session two is the session at which AD was diagnosed, and session one is the previous session. The clinical inputs are nine variables at both sessions plus their differences, and age, sex and education. Evaluation is 10-fold stratified CV (80/10/10). There were five experiments:\n(1) clinical only, a fully connected net that is effectively logistic regression;\n(2) T1 MRI only;\n(3) clinical + MRI;\n(4) and (5) clinical + MRI with the imaging network pre-trained on 190 AD / 243 CN ADNI subjects, fine-tuned or frozen.\nDeLong tests were run against clinical-only.\n\nTASK MISMATCH. This study diagnoses the conversion point; it does not predict future progression. The authors say so: other models 'focus on the prediction of future AD rather than an actual diagnosis of the AD conversion' (p.11). For cMCI, the second scan and the second-session clinical scores come from the visit at which conversion was adjudicated (scan-to-conversion -0.7 +/- 1.4 years). The top clinical features are second-session RAVLT and ADAS11, so the clinical inputs partly encode the label.\n\nNARROWED FORM: PARTLY. Adding clinical variables to the MRI-only network improves AUC: 79.0 to 82.2 for plain fusion, and 84.1-84.7 with AD/CN pretraining. It also improves BA: 73.2 to 75.4, and 77.8-78.2 with pretraining. But the task is conversion diagnosis at the conversion visit, not progressive-MCI prediction. No significance test against MRI-only is reported.\n\nSTATED FORM: PARTLY. Its comparator is the strongest of the four candidates: a multivariable clinical-only model. The fused model with auxiliary AD/CN pretraining beats it significantly and also beats MRI-only. Against that:\n- Plain fusion without the auxiliary pretraining does not beat clinical-only on BA (75.4 vs 75.5) and is not significantly better on AUC.\n- The comparison with MRI-only is confounded, because the MRI-only arm was not pre-trained.\n- The task mismatch applies here too.\n\nINDEPENDENCE. ADNI (the pretraining AD/CN subjects are ADNI too), so no new dataset family. Author-disjoint from P-3, P-104 and P-81. Its method family (3D CNN late fusion of imaging and clinical variables with AD/CN source-task pretraining) overlaps P-81's CNN late-fusion family and P-3's source-task transfer, so it adds no clearly new method family.\n\nOTHER. Time between sessions differed by group (2.9 vs 3.7 years); the authors adjusted for it by logistic regression, and the network output stayed significant. Not a preprint.\n\nQuotes are rejoined across line breaks, with ligatures and typographic characters normalized to ASCII.",
+  "quotes": [
+    {
+      "page": 7,
+      "quote": "TABLE 2 | Model experiments' metric comparison for balanced accuracy, AUC score, and testing for significant differences between AUC curves. (1) Clinical variables only 75.5 80.6 (2) T1-weighted MRI only 73.2 79 (3) Clinical variables + T1-weighted MRI 75.4 82.2 (4) Clinical variables + T1-weighted MRI (pre-trained network: no frozen layers) 78.2 84.1 (5) Clinical variables + T1-weighted MRI (pre-trained network: frozen layers) 77.8 84.7"
+    },
+    {
+      "page": 7,
+      "quote": "Table 2 also shows that the improvement between solely using clinical variables (Experiment 1) and the best model that combined clinical and T1 imaging was statistically significant. Further, our best model was the only one significantly greater than the model that used clinical variables only."
+    },
+    {
+      "page": 3,
+      "quote": "The time points used for cMCI subjects were chosen by selecting the session when the subjects were diagnosed with AD (session two) and the previous session where the subjects were still not converted (session one)."
+    },
+    {
+      "page": 11,
+      "quote": "However, these models focus on the prediction of future AD rather than an actual diagnosis of the AD conversion, and they typically involve a very long pre-processing pipeline that would be hard to use in clinical settings."
+    },
+    {
+      "page": 4,
+      "quote": "A fully connected network using only clinical variables was tested to obtain baseline comparison with the multi-modal network. This model is effectively equivalent to a logistic regression trained using the same optimization technique and validation approach as the multi-modal network"
+    },
+    {
+      "page": 4,
+      "quote": "Two of the experiments used a transfer learning approach where an additional set of 190 AD and 243 CN subjects were first used to pre-train the network aimed at a simpler task first. None of the 433 AD/CN subjects in this pretraining step were used for the cross-validation"
+    },
+    {
+      "page": 9,
+      "quote": "The RAVLT score from the second session was the most important clinical feature, with ADAS11 from the second session and MoCA scores from the first session following."
+    }
+  ]
+}

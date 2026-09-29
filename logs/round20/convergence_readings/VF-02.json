@@ -1,0 +1,57 @@
+{
+ "id": "VF-02",
+ "supporters": [
+  {
+   "paper": "P-9",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Based on the results from the experiments, for an arbitrary theme (for example Crafts Hobbies), the average AUC of multimodal method, bimodal method and unimodal method is 85.3%, 76.3% and 60.9%, respectively.  Table 2/3: trimodal AUC 85.3/82.7/84.4/83.6 vs best unimodal (vision) 60.9/63.2/60.3/64.1 and best bimodal (language+vision) 76.3/78.9/72.2/74.3 across the four themes.",
+   "page": "9 (discussion, Table 3); 8 (Table 2)",
+   "note": "Poor, Dodge and Mahoor 2024, Computers in Biology and Medicine; I-CONECT trial conversations, speech + transcribed language + facial video, co-attention cross-transformer. Runs its own unimodal, bimodal and trimodal comparisons under identical 10-fold CV (repeated 5 times) in each of four themes; the trimodal model wins in all four. Limits: very small per-theme samples (29-36 participants, largely the same people across themes), internal CV only, no external test, behavioural (not neuroimaging) modalities; unimodal speech and language models are near chance, which inflates the fusion gain."
+  },
+  {
+   "paper": "P-14",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "It is found that the multi-modal fusion method achieves better classification results than single modality in the classification tasks, among which the performance of our model is better than the other competing methods.  Table 3 (Ours): EMCI vs NC Acc R 77.08 / D 81.94 / F 85.42; LMCI vs NC R 86.92 / D 89.72 / F 93.46; LMCI vs EMCI R 89.74 / D 90.60 / F 92.31; three-class R 80.58 / D 79.41 / F 83.11.",
+   "page": "5 (results text); 7 (Table 3)",
+   "note": "Lei et al. 2023, Pattern Recognition; ADNI, 77 EMCI / 40 LMCI / 67 NC, resting-state fMRI functional connectivity + DTI structural connectivity fused via LWCC in a multi-scale GCN. Own comparison of R-fMRI-only, DTI-only and fused inputs for every method (SVM, GCN, MS-GCN, proposed); fusion is best in every task for the proposed model and for SVM, GCN and MS-GCN. Limits: LOOCV only, no held-out or external test; both modalities are MRI connectivity; some margins are small (LMCI vs EMCI +1.7 points over DTI alone)."
+  },
+  {
+   "paper": "P-43",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "The sole use of distinct neuropsychological measures, namely word list learning (z-score), verbal fluency animals (z-score), and CLOX 1 classified 85.5 % of all subjects correctly. When combining neuropsychological measures and MRI factors of hippocampus and temporal lobe the overall diagnostic accuracy was again 85.5 % but the correct classification of MCI non-converters improved from 87.8 % to 92.7 % ... The classification matrix of combined MRI and neuropsychological measures was the most accurate model to correctly classify MCI converters and MCI non-converters (AUC:0.94).  Table 5: converters correctly classified 71.4 % combined vs 81.0 % cognition alone; MRI alone 75.8 % overall, AUC 0.79.",
+   "page": "5 (section 3.5); 7 (Table 5)",
+   "note": "Defrancesco et al. 2025, Progress in Neuro-Psychopharmacology and Biological Psychiatry; Innsbruck memory clinic, 62 amnestic MCI (21 converters), FreeSurfer hippocampal subfield and cortical factors + neuropsychology, stepwise LDA with LOOCV, conversion task. Combined beats MRI alone clearly, but against the stronger single domain (cognition) it ties on overall accuracy (85.5 % vs 85.5 %), gains specificity (92.7 % vs 87.8 %) and loses sensitivity for converters (71.4 % vs 81.0 %); the AUC advantage is stated for the combined model but the cognition-only AUC is shown only in Fig. 1, not in the text. Supports a narrower form: fusion outperforms the imaging modality alone and improves AUC/specificity, not a uniform gain over every single modality. Small sample; the MRI features were derived from a prior AD cohort."
+  },
+  {
+   "paper": "P-44",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Although classifying the cognitive levels of CU and MCI patients, the SVM classifier based on structural volumes revealed an accuracy of 88.9% ... and area under the curve (AUC) of 0.889. When structural volumes and functional connectomic profiles were combined, the accuracy increased to 92.9% ... and AUC of 0.929. The p-value for the AUC was 0.022.",
+   "page": "4 (section 3.4)",
+   "note": "Hwang et al. 2024, Clinical Neurology and Neurosurgery; single centre (Haeundae Paik, Busan), 50 aMCI / 26 CU, FreeSurfer volumes + rs-fMRI graph measures, linear SVM, 80/20 split with 10-fold CV. Own structural-only vs structural+functional comparison, significant AUC gain. Limits: no functional-only arm, so the comparison is against one modality only; small sample and small holdout; feature selection by t-tests between groups is described before the split, so leakage cannot be excluded; the secondary subtype task stays near chance even with fusion (AUC 0.528). Vascular risk factors differed between groups."
+  },
+  {
+   "paper": "P-88",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "The AUC of the integrated model in the training and test groups was 0.868 and 0.865, respectively ... The AUCs of the integrated model significantly differed from those of other predictors in both groups (p < 0.05, Delong test).  Table 3 (test cohort AUC): integrated 0.865, psychoradiomics signature 0.719, ADAS 0.742, CDR 0.737.",
+   "page": "1 (abstract); 4 (results); 8 (Table 3)",
+   "note": "Peng et al. 2023, Academic Radiology; ADNI, 341 MCI (102 converters over 8 years), FDG-PET white-matter radiomics signature + CDR + ADAS combined by SVM, conversion task. Own comparison of each single predictor against the integrated model in training and held-out test groups (split by ADNI entry number). Limits: the 'multimodal' model is one imaging signature plus two clinical scales, so the single-modality baselines are individual predictors rather than full unimodal models; internal split only, no external validation; the authors note a possible time-based bias in the split."
+  },
+  {
+   "paper": "P-273",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "As shown in Fig. 4B, the DISFC model using trimodal data achieved the best performance. We also observed that bimodal models outperformed unimodal models overall. The trimodal DISFC model was superior to the top-performing bimodal model using MRI and clinical data with a significant increase of 0.022 (P = 0.048) in AUC, 4.29% (P = 0.03) in accuracy, and 4.83% (P = 0.02) in specificity.",
+   "page": "6 (results)",
+   "note": "Wang et al. 2024, Journal of Translational Medicine; ADNI-1/GO/2 (238 MCI + 45 AD in training) with 14-subject ADNI-3 test, sMRI + clinical/neuropsychological + SNP data, deep model with interaction modules, 4-year conversion task. Own unimodal, bimodal and trimodal comparisons under identical cross-validation. Limits: unimodal values appear only in Fig. 4B (the text says bimodal beat unimodal 'overall'); the independent test has 14 subjects (3 converters) and the modality ablation was run in cross-validation only; SNP selection by Lasso is not stated to be fold-internal; SHAP shows clinical and genetic inputs dominate imaging."
+  }
+ ],
+ "yes_count": 5,
+ "verdict": "holds",
+ "narrowed_wording": "",
+ "reasoning": "Five supporters (P-9, P-14, P-44, P-88, P-273) each run their own comparison of a fused model against single-modality inputs on the same data and report the fused model as better; P-43 supports a narrower form (combined model beats MRI alone and improves AUC and specificity, but ties cognition alone on accuracy and loses converter sensitivity). The yes supporters span at least three dataset families (I-CONECT, a Busan single-centre cohort, ADNI) and several method families (co-attention transformer, SVM on volumes/graph measures, GCN on connectivity, SVM on PET radiomics plus scales, deep interaction network), so the statement as written in Table A1 holds under the brief's rule. The non-ADNI support is two yes (P-9, P-44) plus one partly (P-43), not three yes as the record implies. Caveats that bear on how strongly the review should word it: every comparison is internal (cross-validation or a split of the same cohort; P-273's 14-subject ADNI-3 test was not used for the modality ablation); the 'modalities' fused are heterogeneous (speech/language/video; sMRI+rs-fMRI; rs-fMRI+DTI; PET radiomics+clinical scales; sMRI+clinical+genetics), so the convergence is about fusion in general rather than any specific pairing; several studies were designed to showcase a fusion method, and P-44 and P-88 compare against one modality or individual predictors rather than every unimodal alternative. The Table A1 count of 6 is best read as 5 yes plus 1 partial."
+}

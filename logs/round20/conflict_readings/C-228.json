@@ -1,0 +1,89 @@
+{
+ "id": "C-228",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-655",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Efficacy of digital therapeutic applications for cognitive training among older adults with mild cognitive impairment or dementia: A systematic review and network meta-analysis of randomized controlled trials (Jeong et al., Psychiatry Research 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-642",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Immersive virtual reality versus non-immersive serious games for cognitive training in mild cognitive impairment: A systematic review and network meta-analysis (Zhao et al., General Hospital Psychiatry 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-655": "NMA of 10 RCTs of mobile-application interventions in older adults with MCI or dementia (some trials enrolled subjective memory complaint, subclinical decline or cognitive frailty). ADL, pooled SMD vs control (lower score = better): CCT -0.80 (-1.40 to -0.21), significant; CCT_PRT +0.80 (0.23 to 1.38); CCT ranked first by SUCRA. Minus signs are present in this extract.",
+  "P-642": "NMA of 28 RCTs (1621 participants, aged 60+ with clinical MCI); ADL from 8 RCTs (214 participants: 6 VR, 2 SG with 65 participants), pooled MD vs control: VR -0.07 (-2.23 to 2.07), SG -1.34 (-4.99 to 3.06), both non-significant; SG ranked most likely best for ADL (77.1%)."
+ },
+ "quantity_a": "Pooled SMD in activities of daily living, mobile-app computerised cognitive training (CCT) vs control, MCI or dementia, 10-trial network.",
+ "quantity_b": "Pooled MD in ADL scale score, non-immersive serious games (and immersive VR) vs conventional control, clinical MCI, 8-trial ADL network.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The closest nodes (CCT vs SG, both non-immersive computerised training) differ only in significance: P-642's SG estimate is imprecise (65 participants, interval -4.99 to 3.06), points the same way under the ranking it reports, and its interval cannot exclude an effect of P-655's size. A significant effect against an underpowered null is not a data conflict (Section 5.2).",
+ "gates": {
+  "task": "match: both T6 intervention syntheses.",
+  "dataset_family": "mismatch in part: different pooled trial sets (P-655 10 mobile-app RCTs incl. dementia; P-642 VR/SG RCTs in MCI); overlap of individual trials not checkable from the texts.",
+  "validation_tier": "n/a for two evidence syntheses (counted as matched).",
+  "modality_family": "partial: CCT (mobile app) vs SG (computer/tablet games) are both non-immersive computerised cognitive training; P-642's VR node (head-mounted display) has no counterpart in P-655."
+ },
+ "endpoint_and_metric": "partly compatible: both ADL, but SMD vs raw MD on unspecified ADL scales; P-642 does not state its ADL scale direction (lower-is-better is only implied by its ranking of SG, -1.34, as most likely best).",
+ "performance_validity": "not a performance comparison.",
+ "independence": "Two syntheses of different trial sets; any shared trials would be non-independence (not determinable from the main texts; trial lists are in appendices not in the extract).",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "P-655 reports a significant ADL benefit of CCT (SMD -0.80, lower is better) and P-642 reports a non-significant SG estimate (MD -1.34, -4.99 to 3.06) from two small trials; this is a difference in statistical significance, not incompatible results.",
+  "P-642's own ranking treats SG as the most likely best for ADL, so its point estimate is in the same direction as P-655's CCT effect, and its interval does not exclude a benefit.",
+  "The VR portion of P-642 concerns an intervention absent from P-655's network, so it cannot set up a contradiction either.",
+  "Populations (MCI or dementia vs clinical MCI) and metrics (SMD vs MD) also differ, which would block a genuine verdict even if the directions had opposed."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-655",
+   "page": 1,
+   "quote": "For ADLs, CCT significantly reduced functional impairment (SMD, -0.80 [-1.40 to -0.21])."
+  },
+  {
+   "paper": "P-655",
+   "page": 6,
+   "quote": "A lower score represents better activities of daily living and depression."
+  },
+  {
+   "paper": "P-655",
+   "page": 5,
+   "quote": "In ADLs, CCT ranked the first (Fig. 3a)"
+  },
+  {
+   "paper": "P-655",
+   "page": 6,
+   "quote": "CCT_PRT was especially beneficial in improving ADLs."
+  },
+  {
+   "paper": "P-642",
+   "page": 1,
+   "quote": "no significant differences were found for VR versus control (MD = \u22120.07, 95 % CI [\u22122.23, 2.07]) or for SG versus control (MD = \u22121.34, 95 % CI [\u22124.99, 3.06])."
+  },
+  {
+   "paper": "P-642",
+   "page": 5,
+   "quote": "two studies (65 participants) comparing SG with control groups"
+  },
+  {
+   "paper": "P-642",
+   "page": 6,
+   "quote": "an exploratory probability ranking analysis suggested SG had the highest likelihood of being the most effective intervention for ADL (77.1 %"
+  }
+ ],
+ "record_defects": [
+  "The evaluator_note says both networks are star-shaped without closed loops; that holds for P-642, but P-655 ran node-splitting inconsistency tests and includes multi-arm trials (CCT2x/CCT/CON; CCT/PRT/CCT_PRT/CON; CCT_MED/MED/CON), so P-655's network has closed loops.",
+  "The resolution_note's point that the PDF text layer dropped the minus signs ('1.40 to 0.21') does not reproduce in this PyMuPDF extract, which prints -0.80 (-1.40 to -0.21); the conclusion (lower is better) is unaffected.",
+  "The claim that P-642's SG estimate points the same way as P-655's CCT assumes P-642's ADL scale is lower-is-better; P-642 never states the direction, and only its SUCRA ranking implies it.",
+  "The note's description of P-655's population as MCI/dementia omits that some included trials enrolled subjective memory complaint, subclinical decline or cognitive frailty.",
+  "The P-655 discussion-vs-table inconsistency on CCT_PRT (reported as 'especially beneficial' while its SMD is +0.80 under a lower-is-better caption) is confirmed on the source."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-642 SG ADL estimate whose interval excluded benefit (or a stated higher-is-better scale with a significant positive MD), which would need more trials than the two it pooled."
+}

@@ -1,0 +1,79 @@
+{
+ "id": "C-57",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging (Rallabandi & Seetharaman, 2023, doi 10.1016/j.bspc.2022.104312, file S1746809422007662)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-76",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "MC-ViViT: Multi-branch Classifier-ViViT to detect Mild Cognitive Impairment in older adults using facial videos (Sun, Dodge & Mahoor, Expert Systems With Applications 238 (2024) 121929)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "The record's P-117 (summaries.md S1746809423005462: resting-state EEG, VMD + NSGA-II, best ~99.8% accuracy, sample not reported) could not be checked; the pack PDF is a different paper (OASIS MRI-PET fusion, 95.5% HC vs MCI, AUC 0.988, internal split).",
+  "P-76": "Video vision transformer on I-CONECT interview facial videos, MCI vs NC, K-fold CV per conversation theme with 32-41 videos each. Accuracy 90.63% on the Crafts Hobbies theme only (29/32; AUC 0.6042); other themes 85.37-89.74%; average AUC 0.56; cross-theme accuracy 80.49-85.71%."
+ },
+ "quantity_a": "Record's P-117: resting-state EEG classifier accuracy, MCI vs healthy, own EEG cohort, internal validation (summary block only).",
+ "quantity_b": "P-76: per-theme video-level (majority-vote) accuracy, MCI vs NC, 32 I-CONECT participants in the best theme, subject-disjoint K-fold CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not determinable and not needed. Different modality, cohort and unit of analysis; P-76's 90.63% is its best of four themes and sits beside an AUC of 0.60, so it is not a stable estimate of a shared quantity.",
+ "gates": {
+  "task": "match (MCI vs control detection, T1)",
+  "dataset_family": "mismatch: I-CONECT facial videos vs P-117's EEG cohort (or OASIS under the pack PDF); record's dataset_equal='Yes' unsupported",
+  "validation_tier": "match (both internal, V2)",
+  "modality_family": "mismatch: EEG (or MRI-PET) vs facial video; no waiver on record"
+ },
+ "endpoint_and_metric": "accuracy in both, but P-76's is a per-theme video-level accuracy on 32 subjects with near-chance AUC; not the same estimand as an EEG classifier's accuracy",
+ "performance_validity": "Likely applies to P-117 (claimed 99.81% internal) but unconfirmable without the correct PDF; not needed for the verdict.",
+ "independence": "No shared cohort or authors with P-117. (P-76 shares the I-CONECT cohort and the Dodge/Mahoor authors with P-77, which is not in this pair.)",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The supplied P-117 PDF is the wrong paper (OASIS MRI-PET fusion), so the 99.81% EEG result cannot be checked from source.",
+  "Under either identity of P-117 the modality-family gate (EEG or MRI-PET vs facial video) and dataset-family gate (I-CONECT vs another cohort) fail with no waiver.",
+  "P-76's 90.63% is the best of four themes (29/32 videos) with AUC 0.60, not a general accuracy that could be set against P-117's."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 2,
+   "quote": "taken from Open Access Series of Imaging Studies (OASIS) online dataset contains about 1098 individuals over 2000 MR sessions"
+  },
+  {
+   "paper": "P-117 (summaries.md block, not the PDF)",
+   "page": null,
+   "quote": "Resting-state 19-channel EEG from MCI and healthy participants."
+  },
+  {
+   "paper": "P-76",
+   "page": 1,
+   "quote": "Our experimental results on the I-CONECT dataset show the great potential of MC-ViViT in predicting MCI with a high accuracy of 90.63% accuracy on some of the interview videos."
+  },
+  {
+   "paper": "P-76",
+   "page": 7,
+   "quote": "MC-ViViT predicts 29 out of 32 subjects correctly on the theme Crafts Hobbies, which reaches the highest accuracy, 90.63%."
+  },
+  {
+   "paper": "P-76",
+   "page": 7,
+   "quote": "The average AUC of all four themes is 0.56."
+  }
+ ],
+ "record_defects": [
+  "P-117's paper_pdf_map entry points to the wrong PDF (MRI-PET S1746809422007662 instead of EEG S1746809423005462).",
+  "dataset_equal='Yes' has no basis (I-CONECT vs an unrelated cohort).",
+  "claim_b '90.63% Acc' omits that it is the best of four themes on 32 videos with AUC 0.6042.",
+  "Registry row P-76 Sample_N_Approx 186 is the trial's randomized total; the analysed sets are 32-41 videos per theme.",
+  "Registry row P-117: Best_Metric and Dataset 'not reported' despite the 99.81% claim.",
+  "resolution_note's bridging list is boilerplate unrelated to either paper."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "The correct P-117 PDF would settle the performance-validity question but could not make an EEG result commensurable with an I-CONECT facial-video result."
+}

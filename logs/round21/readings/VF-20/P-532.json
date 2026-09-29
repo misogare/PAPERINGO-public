@@ -1,0 +1,46 @@
+{
+ "paper": "P-532",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "ADNI (cohort A: 355 MCI, 168 converters / 187 stable over 3 years; 94 HC for feature stability only) plus Huashan Hospital, Fudan University, Shanghai, Department of Neurology (cohort B: 22 MCI, 10 converters / 12 stable). ADNI is not held by any current supporter. ADNI and the Huashan Hospital recruitment site are both shared with round-1 candidate P-554.",
+ "method_family": "FDG-PET metabolism (mean FDG SUVR 'traditional' model, plus L1-penalised Cox models on FDG-PET and T1 radiomic texture/intensity features in 80 AAL ROIs), compared with a global grey-matter-volume Cox model by C-index. Metabolic family: new relative to the current supporters.",
+ "same_sample_or_cohort_as": [
+  "P-554 (shared recruitment site, Huashan Hospital (Fudan) Department of Neurology, and a shared dataset family, ADNI; whether participants overlap cannot be determined from either paper)"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "Yang F, Jiang J, Alberts I, Wang M, Li T, Sun X, Rominger A, Zuo C, Shi K, for ADNI (2022), Ann Transl Med 10(9):513, doi 10.21037/atm-21-4349. Six Cox models for MCI-to-AD conversion were compared by C-index under repeated 10-fold CV (cohort A) and on cohort B: clinical, SUVR_PET (mean FDG SUVR), GMV_MRI (global grey-matter volume), radiomic PET, radiomic MRI and radiomic dual-modality. SUVR_PET vs GMV_MRI gave 0.791 vs 0.803 (A training), 0.751 vs 0.749 (A testing) and 0.700 vs 0.702 (B). Radiomic PET gave 0.753 / 0.734, radiomic MRI 0.741 / 0.760 and dual-modality 0.766 / 0.798. The authors report that the GMV and SUVR models 'had similar predictive performances' and conclude that PET and MRI are largely redundant, so the incremental benefit of combining them is limited.",
+ "why": "Identity: the PDF title, authors, journal and DOI 10.21037/atm-21-4349 match the summaries.md block and the map entry. I read the whole extract to the References. STATED (Table A1) = partly, on the parity strand only. Shown: a metabolic measure (mean FDG SUVR) predicted MCI-to-AD conversion with C-indices essentially equal to global grey-matter volume in both cohorts. Not shown: (1) Any regime where volume is preserved or non-discriminative: global GMV was itself prognostic (C-index 0.749 internal test, 0.702 external), equal to SUVR. (2) 'Late' or 'insufficient': the study's own conclusion runs the other way, that the two modalities are largely redundant, which cuts against 'volume is insufficient'. (3) The comparator is global GMV, not hippocampal volume, and round 20 recommended dropping the whole-brain clause. (4) No statistical test compares SUVR with GMV, and cohort B has only 22 patients. The radiomic MRI model uses texture and intensity features rather than volume, so the radiomic comparisons do not bear on volume. I grade this 'partly' rather than 'no' for consistency with round 20's treatment of parity evidence (P-581); the operator may prefer 'no', given that the paper's comparative finding is parity plus redundancy. NARROWED (round 20) = partly. It gives parity between a metabolic measure and volume, the analogue of P-581's parity with hippocampal volume, but on a different comparator (global, not hippocampal). It does not show the metabolic measure carrying information that volume did not: there is no SUVR+GMV model, and the modest dual-modality gain is on radiomic texture features. Independence: the dataset families are ADNI and Huashan Hospital. ADNI is new relative to the current supporters, but ADNI and the Huashan (Fudan) Department of Neurology site are both shared with round-1 candidate P-554 (Shanghai Memory Study plus an ADNI arm). The authors differ (P-554: Chen Z ... Zhao Q, Yang L). The method family, FDG-PET metabolic, is new relative to the current supporters. Not a preprint. Model reading, pending operator review.",
+ "quotes": [
+  {
+   "page": 4,
+   "quote": "The traditional PET model was constructed by calculating the average FDG standardized uptake value ratio (SUVR), and the MRI model was constructed by calculating the global gray matter volume (GMV)."
+  },
+  {
+   "page": 7,
+   "quote": "Table 2 Predictive performance of each model ... SUVR_PET 0.791 (0.002) 0.751 (0.007) 0.700 (0.004) GMV_MRI 0.803 (0.003) 0.749 (0.008) 0.702 (0.007) Radiomic PET 0.871 (0.004) 0.753 (0.008) 0.734 (0.011) Radiomic MRI 0.807 (0.004) 0.741 (0.007) 0.760 (0.009) [columns: Cohort A training, Cohort A testing, Cohort B; C-index mean (SD)]"
+  },
+  {
+   "page": 6,
+   "quote": "Conversely, the GMV_MRI model and SUVR_PET model had similar predictive performances. Similar results were also found in cohort B."
+  },
+  {
+   "page": 9,
+   "quote": "However, the large degree of overlap identified between the two modalities suggests a large degree of redundancy, with dual-modality imaging providing only a slight gain in information."
+  },
+  {
+   "page": 1,
+   "quote": "However, the incremental benefit of combining 18F-FDG PET and MRI is limited, and radiomic analysis of a single modality may yield acceptable predictive results."
+  },
+  {
+   "page": 2,
+   "quote": "Cohort A comprised 355 patients with MCI and 94 healthy control participants (HCs) whose data were collected from the Alzheimer's Disease Neuroimaging Initiative (ADNI) database (http://adni.loni.usc.edu/). Cohort B comprised 22 patients with MCI whose data were collected from the Department of Neurology at the Huashan Hospital in Shanghai, China."
+  },
+  {
+   "page": 10,
+   "quote": "Third, the C-index values of cohort B may contain uncertainty in the external test dataset owing to the small sample size."
+  }
+ ]
+}

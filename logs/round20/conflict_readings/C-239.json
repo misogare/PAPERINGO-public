@@ -1,0 +1,94 @@
+{
+ "id": "C-239",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-686",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Examination of eye movements during visual scanning of real-world images in Alzheimer's disease and amnestic mild cognitive impairment (Eraslan Boz et al., International Journal of Psychophysiology 190 (2023) 84-93)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-966",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Inhibitory Control of Saccadic Eye Movements and Cognitive Impairment in Mild Cognitive Impairment (Opwonya et al., Front. Aging Neurosci. 14:871432, 2022)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-686": "30 probable early-stage AD, 32 aMCI, 32 HC (Izmir); free viewing of 30 real-world photographs for 4000 ms each (EyeLink 1000 Plus). Nine measures: first/second/third fixation durations, total fixation duration, fixation counts, saccade counts, first saccade latency, scanned areas, refixations. AD differed from HC on five measures and from aMCI on total fixation duration (p = 0.045); no measure differed between aMCI and HC (all p > 0.05). Cohen's d reported only for significant contrasts; aMCI-HC cells are dashes. No classifier.",
+  "P-966": "79 MCI (Petersen criteria, CDR 0.5, not restricted to amnestic) vs 170 age-matched HC (Korea, GARD/KIOM); interleaved prosaccade/antisaccade and Go/No-go (Tobii Pro Spectrum). MCI: longer PS latency (p = 0.024), fewer correct PS (p = 0.024), fewer correct AS (reported p = 0.01), more AS errors (p = 0.002), more uncorrected AS errors (p = 0.019), fewer correct Go (p = 0.008), fewer correct No-go (p = 0.002), shorter No-go fixation duration (p = 0.019), more uncorrected No-go errors (p = 0.002). AS latency and Go latency did not differ. No classifier or AUC."
+ },
+ "quantity_a": "Free-viewing scene-exploration parameters (fixation/saccade counts and durations, scanned area, first saccade latency to scene onset), aMCI vs age-matched HC, Turkish clinic sample, ANOVA with Bonferroni post hoc.",
+ "quantity_b": "Stimulus-driven saccade-task performance (latency, proportion correct, inhibition and uncorrected errors on cued PS/AS and Go/No-go trials), all-subtype MCI vs HC, Korean cohort, t-tests.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The measures are different variables from different paradigms. The closest pair, P-686 first saccade latency after scene onset (aMCI 330 vs HC 292 ms, not significant) and P-966 prosaccade latency to a cued peripheral target (longer in MCI, p = 0.024), points the same way numerically; a non-significant difference against a significant one in the same direction is not a conflict under Section 5.2. P-686 itself cites the saccade-task literature showing aMCI abnormalities as consistent background, not as something its data refute.",
+ "gates": {
+  "task": "mismatch in registry (T4 vs T1), but neither paper builds a classifier; both are group-comparison association studies. Not decisive.",
+  "dataset_family": "mismatch: Dokuz Eylul University clinical sample (Turkey) vs GARD/Chonnam cohort (South Korea); no waiver on record.",
+  "validation_tier": "n/a: association studies validating no model (counted as matched).",
+  "modality_family": "match at family level (eye tracking); paradigm differs fundamentally (passive free viewing of photographs vs cued volitional/inhibitory saccade tasks)."
+ },
+ "endpoint_and_metric": "incompatible: different outcome variables (scene-exploration parameters vs saccade-task correctness, inhibition errors and latency) and different population behind the label (aMCI by Albert/Petersen vs any-subtype Petersen MCI with CDR 0.5).",
+ "performance_validity": "not a performance comparison: neither paper reports accuracy, AUC or any discrimination statistic.",
+ "independence": "Distinct cohorts, countries, hardware and author teams; independent.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-686 measures how participants explore photographs during free viewing, whereas P-966 measures correctness, inhibition errors and latency on cued prosaccade/antisaccade and Go/No-go trials, so the aMCI null and the MCI positives are results on different variables.",
+  "P-966's MCI group is defined by Petersen criteria and CDR 0.5 without restriction to amnestic MCI, while P-686 studies amnestic MCI only, so the population behind the shared label differs.",
+  "The one loosely parallel measure (latency of the first saccade) differs in the same direction in both papers, significant only in P-966, which is a significance difference, not a data conflict.",
+  "P-686 reports no effect size or interval for the aMCI-HC contrasts, so even as a null it does not exclude the effects P-966 reports."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-686",
+   "page": 3,
+   "quote": "each experimental trial was shown for 4000 ms, preceded by a fixation cross for 1000 ms, and followed by a grey screen for 2000 ms"
+  },
+  {
+   "paper": "P-686",
+   "page": 5,
+   "quote": "no significant differences were found in aMCI compared to HC in the visual scanning task (p > 0.05)."
+  },
+  {
+   "paper": "P-686",
+   "page": 6,
+   "quote": "First saccade latency (ms) 372.51 \u00b1 149.03 330.26 \u00b1 10.502 292.13 \u00b1 59.49 0.021 AD-HC 0.017 aMCI-HC p > 0.05"
+  },
+  {
+   "paper": "P-686",
+   "page": 2,
+   "quote": "Prosaccade latency was prolonged, antisaccade correct saccades decreased, and antisaccade uncorrected error rates increased in AD and aMCI compared to older adults"
+  },
+  {
+   "paper": "P-686",
+   "page": 3,
+   "quote": "Cohen's d was employed to determine the effect sizes (\u03b72) of statistically significant outcomes in the visual scanning metrics."
+  },
+  {
+   "paper": "P-966",
+   "page": 3,
+   "quote": "MCI participants met the Petersen criteria (Petersen, 2004) and had a CDR score of 0.5. Their neuropsychological test z scores were below -1.5 on at least one of five domain tests"
+  },
+  {
+   "paper": "P-966",
+   "page": 6,
+   "quote": "subjects with MCI had a higher frequency of errors [t(226) = -3.15, p = 0.002], corrected a smaller proportion of errors [t(226) = 2.62, p = 0.009], and had a higher proportion of uncorrected errors [t(226) = -2.36, p = 0.019] than controls."
+  },
+  {
+   "paper": "P-966",
+   "page": 5,
+   "quote": "In the PS task, patients with MCI were slower to initiate eye movements than HC [t(247) = \u22122.28, p = 0.024]."
+  }
+ ],
+ "record_defects": [
+  "claim_a says 'Free viewing of 32 real-world photographs': 32 stimuli were taken but 2 were practice trials; 30 were analysed.",
+  "claim_a says '32 aMCI vs 32 HC': the study also had 30 AD; minor, but the three-group ANOVA is what the post hoc tests come from.",
+  "The record treats P-966 as an MCI arm comparable to P-686's aMCI arm; P-966's MCI group is not restricted to amnestic MCI (Petersen criteria, z < -1.5 in any of five domains).",
+  "The evidence quote attributed to P-966, 'classification modelling (e.g., AUC) rather than group differences alone', does not occur in the P-966 PDF (it appears to come from the summary block's improvement notes).",
+  "The P-966 quote 'Similar to AD patients, MCI patients generate ... sensitive objective MCI screening candidates' is a paraphrase joining the abstract Conclusion and Significance, not verbatim."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A study (or P-686 supplementary data) reporting saccade-task measures in aMCI with a significant null or opposite-direction effect against P-966's inhibition-error results, with an estimate whose interval excludes P-966's effect; the free-viewing null cannot do this."
+}

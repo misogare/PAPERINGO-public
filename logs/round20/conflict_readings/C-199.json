@@ -1,0 +1,77 @@
+{
+ "id": "C-199",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-192",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predictive value of ATN biomarker profiles in estimating disease progression in Alzheimer's disease dementia (Ezzati et al., Alzheimers Dement 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-195",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Toward a Multimodal Computer-Aided Diagnostic Tool for Alzheimer's Disease Conversion (Pena et al., Front Neurosci 2022)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-192": "In 415 ADNI aMCI participants, models trained on CN vs dementia and applied to aMCI predict incident dementia from baseline. RUSBoost on the biomarker feature set: PPV 68% at 4 years (observed dementia onset 22.2%), PPV 53.6 at 2 years; clinical feature set PPV 67.3% at 4 years. Sensitivity/specificity reported per horizon (e.g. RUSBoost biomarker set sens 61.5%, spec 91.7% at 4 years). No AUC is reported.",
+  "P-195": "In 669 ADNI MCI (440 sMCI, 229 cMCI), a longitudinal attention/inception CNN on two T1 MRI sessions plus clinical variables, where the second session for cMCI is the session at which AD was diagnosed, identifies the conversion point with AUC 84.7 (balanced accuracy 77.8) under 10-fold CV; clinical variables alone AUC 80.6."
+ },
+ "quantity_a": "Positive predictive value (prevalence-dependent) of a baseline CN-vs-dementia classifier for incident dementia within 4 years in ADNI aMCI; inputs amyloid PET, CSF, FDG-PET (or clinical/cognitive features); cut-off 0.5.",
+ "quantity_b": "ROC-AUC for discriminating cMCI vs sMCI using an imaging session taken at the time of the clinical conversion diagnosis (a concurrent 'conversion diagnosis' task, not future prediction); inputs longitudinal T1 MRI + clinical variables.",
+ "same_quantity": false,
+ "incompatible_if_same": "No meaningful comparison is possible: a PPV of 68% and an AUC of 0.847 are on different scales; a PPV depends on prevalence (22.2%) and threshold, and a classifier with AUC 0.85 can have PPV near 68% at such prevalence. Neither study claims an ordering the other refutes.",
+ "gates": {
+  "task": "nominal match (both T2, MCI to AD), but P-195 explicitly frames its task as diagnosing conversion at the conversion visit rather than predicting future conversion",
+  "dataset_family": "match: ADNI (same dataset family; overlapping participants likely, ADNI-GO/2)",
+  "validation_tier": "match: V2 internal cross-validation in both",
+  "modality_family": "mismatch: P-192 uses amyloid PET, CSF and FDG-PET (or clinical features); P-195 uses structural T1 MRI plus clinical features. The record's modality_family 'clinical_survey' fits neither paper's imaging input."
+ },
+ "endpoint_and_metric": "incompatible: PPV vs ROC-AUC (different metric types), and 4-year incident dementia predicted from baseline vs conversion diagnosis using a scan at the conversion session",
+ "performance_validity": "flag does not apply (neither is near ceiling; P-192 PPV 68%, P-195 AUC 0.847); the candidate is a performance comparison on non-commensurate metrics",
+ "independence": "Both draw on ADNI; participant overlap between the aMCI samples is likely but not quantified. No shared authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-192's contested figure is a positive predictive value at a 4-year horizon, not a discrimination statistic, and the paper reports no AUC.",
+  "P-195's figure is a ROC-AUC for recognising conversion at the visit when it was diagnosed, which the authors distinguish from prediction of future AD.",
+  "The two use different input modality families (PET/CSF biomarkers or clinical scores vs longitudinal T1 MRI with clinical scores).",
+  "Different metric type and different endpoint mean the 68.0 vs 0.847 'gap' in the record is not a difference on one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-192",
+   "page": 4,
+   "quote": "RUSBoost models applied to biomarker feature set provided > 35% improvement in the prediction of dementia over 2 years (model's PPV = 53.6 vs. observed rate of dementia onset = 18.0%) and > 45% over 4 years (model's PPV = 68% vs. observed rate of dementia onset = 22.2%)."
+  },
+  {
+   "paper": "P-192",
+   "page": 11,
+   "quote": "Sensitivity, specificity, PPV, and negative predictive value (NPV) for each model were calculated."
+  },
+  {
+   "paper": "P-195",
+   "page": 1,
+   "quote": "to identify the AD conversion point in MCI subjects with AUC = 84.7. In contrast, cognitive tests and demographics alone achieved AUC = 80.6"
+  },
+  {
+   "paper": "P-195",
+   "page": 11,
+   "quote": "However, these models focus on the prediction of future AD rather than an actual diagnosis of the AD conversion"
+  },
+  {
+   "paper": "P-195",
+   "page": 3,
+   "quote": "The time points used for cMCI subjects were chosen by selecting the session when the subjects were diagnosed with AD (session two)"
+  }
+ ],
+ "record_defects": [
+  "modality_family 'clinical_survey' does not describe either paper: P-192 is PET/CSF biomarker (or clinical feature) modelling, P-195 is longitudinal T1 MRI plus clinical variables.",
+  "gap_magnitude 0.167 is computed between a PPV (68.0) and an AUC (0.847), which are different metric types.",
+  "resolution_note's 'bridging evidence' is a list of scores in other papers mixing Acc, AUC and C-index; none explains a disagreement between these two papers."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only if P-192 reported a ROC-AUC for a comparable prediction endpoint that was incompatible with P-195's AUC with non-overlapping uncertainty; it reports none."
+}

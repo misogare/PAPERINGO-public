@@ -1,0 +1,83 @@
+{
+ "id": "C-78",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-77",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Mild cognitive impairment detection from facial video interviews by applying spatial-to-temporal attention module (Alsuhaibani, Dodge, Mahoor, Expert Systems With Applications 252 (2024) 124185)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-85",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Screening tools for subjective cognitive decline and mild cognitive impairment based on task-state prefrontal functional connectivity: a functional near-infrared spectroscopy study (Pu et al., NeuroImage 310 (2025) 121130)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-77": "Convolutional autoencoder + transformer (STAM) on facial features from home video-chat interviews in the I-CONECT trial, MCI vs NC, trained and tested per interview theme with 10-fold subject-wise CV. Best theme (Halloween, 32 subjects: 14 MCI/18 NC) accuracy 87.5% (abstract rounds to 88%), F1 0.89, AUC 0.87; other themes 66.7-83.3%; over five reshuffled iterations Halloween averages 84.38% (SD 5.84).",
+  "P-85": "Machine-learning models on task-state prefrontal fNIRS functional connectivity PLUS cognitive-scale scores and completion times (MMSE, BNT, HVLT), 5-fold CV, analysed sample 90 MCI/48 NC for MCI vs NC. Best MCI vs NC accuracy 92.0% (LR during MMSE; LDA during BNT); best AUC 0.970 (95% CI 0.946-0.993, LR during MMSE). The '~97%' in the record is this AUC, not an accuracy."
+ },
+ "quantity_a": "Subject/video-level accuracy of a facial-video deep model for MCI vs NC in socially isolated adults aged 75+ (I-CONECT), per interview theme, 30-39 subjects per theme",
+ "quantity_b": "Accuracy (92.0%) or ROC AUC (0.970) of classifiers on prefrontal fNIRS connectivity combined with MMSE/BNT/HVLT scores for MCI vs NC in a Chinese community/hospital sample (138 analysed)",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Set like for like on accuracy, 87.5% (28 of 32; binomial interval roughly 71-96%, computed here) and 92.0% (about 127 of 138; roughly 86-96%) overlap. Neither paper claims an ordering the other refutes. The record's 97% is an AUC and cannot be set against an accuracy.",
+ "gates": {
+  "task": "match: both MCI vs cognitively normal detection (T1); the registry codes P-85 as T3 because it also classifies SCD",
+  "dataset_family": "mismatch: I-CONECT trial videos vs own Jiaxing/Shanghai fNIRS cohort. The record's dataset_equal='Yes' is wrong",
+  "validation_tier": "match: both internal cross-validation, no external cohort",
+  "modality_family": "mismatch: facial video (digital behaviour) vs fNIRS haemodynamic connectivity combined with neuropsychological test scores. The record's modality_family_equal='Yes' ('digital_behaviour') is wrong for P-85"
+ },
+ "endpoint_and_metric": "incompatible as claimed (accuracy vs AUC); compatible in type only if P-85's 92.0% accuracy is used. P-85's features include the MMSE score that also entered its group definitions, so its accuracy partly reflects the diagnostic criteria (incorporation), which P-77 does not share",
+ "performance_validity": "flag applies in part to P-85: its best AUC is exactly 0.970 on internal 5-fold CV with no external cohort, which trips the automatic test; the sample (138) is moderate rather than small, and its accuracy (92.0%) does not trip it. It is a performance comparison, so the AUC-based claim is excluded under Section 2; the accuracy comparison is not excluded but is compatible.",
+ "independence": "Independent: different groups (University of Denver/MGH; Shanghai Mental Health Center/Kangci Hospital), different cohorts.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claim 'P-85: ~97% on T1' misreads P-85: 0.970 is its best AUC, and its best accuracy is 92.0%.",
+  "On the like-for-like metric, P-77's 87.5% and P-85's 92.0% are overlapping estimates from small cross-validated samples and neither paper claims an ordering the other refutes, so there is no disagreement.",
+  "The dataset-family and modality-family gates also fail (I-CONECT facial video vs own fNIRS plus cognitive-scale cohort) with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-77",
+   "page": 1,
+   "quote": "The detection accuracy using this combined method reached 88%, whereas the accuracy without applying the segments and sequences information of the facial features within a video on a certain theme was 84%."
+  },
+  {
+   "paper": "P-77",
+   "page": 6,
+   "quote": "Halloween 80.3 (3.73) 15.3 (2.5) 14/18 12/20"
+  },
+  {
+   "paper": "P-77",
+   "page": 7,
+   "quote": "Halloween 87.5 90.6 75 84.4 84.4 84.38 5.84"
+  },
+  {
+   "paper": "P-85",
+   "page": 1,
+   "quote": "Accuracies of 92.0 % for MCI vs. NC, 80.0 % for MCI vs. SCD, and 76.1 % for SCD vs. NC were achieved, and the highest AUC values were 97.0 % (95 % CI: 94.6 %-99.3 %) for MCI vs. NC"
+  },
+  {
+   "paper": "P-85",
+   "page": 5,
+   "quote": "Classification and prediction models were built through a machine learning approach and based on the FC among the 10 ROIs under the time series for HBO, HBR and HBT signals along with the scores and completion times for the MMSE, BNT and HVLT"
+  },
+  {
+   "paper": "P-85",
+   "page": 6,
+   "quote": "Consequently, 203 participants, including 48 NC volunteers (NC group), 65 SCD individuals (SCD group), and 90 MCI individuals (MCI group) were finally included for the FC analysis."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-85: ~97% on T1' presents an AUC (0.970) as if it were comparable to P-77's accuracy; P-85's best accuracy is 92.0%.",
+  "dataset_equal='Yes' is wrong: I-CONECT vs P-85's own Chinese cohort.",
+  "modality_family_equal='Yes' with 'digital_behaviour' is wrong for P-85 (fNIRS plus cognitive-scale scores).",
+  "The earlier note 'Paper B (P-85) reports suspect accuracy >=97% (97.0%)' mislabels the AUC as accuracy.",
+  "Bridging entry 'P-387 reports Left P100 latency' (a visual evoked potential latency) is not a comparable performance result."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in the two documents; a disagreement would need both studies to estimate MCI-vs-NC discrimination with the same metric on comparable inputs and cohorts, with intervals that exclude each other."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "C-73",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-58",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Cross-lingual detection of mild cognitive impairment based on temporal parameters of spontaneous speech (Gosztolya et al., Computer Speech & Language 69 (2021) 101215)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-60",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A mobile application using automatic speech analysis for classifying Alzheimer's disease and mild cognitive impairment (Yamada et al., Computer Speech & Language 81 (2023) 101514)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-58": "SVM on 15 ASR-derived temporal speech parameters (telephone 'previous day' monologue), speaker-wise nested leave-one-out CV, MCI vs HC, run separately in an English-speaking sample (n=33; 14 MCI/19 HC, New York) and a Hungarian-speaking sample (n=33; 13 MCI/20 HC, Szeged). All-features monolingual accuracy 84.8% (AUC 0.932) English, 75.8% (AUC 0.727) Hungarian; best subset filler-related Hungarian 90.9% (AUC 0.912). The abstract's '67-92%' is a range spanning several metrics (accuracy, precision, recall, specificity, F1) across feature subsets, not an accuracy range.",
+  "P-60": "Japanese tablet self-administered app, 92 acoustic/prosodic/linguistic features from five tasks, LASSO + SVM-RBF, nested leave-one-out CV, 114 participants (43 CN/46 MCI/25 AD). MCI vs CN accuracy 87.6% (sens 88.1%, spec 87.2%); three-class accuracy 78.6%; AD vs CN 91.2%."
+ },
+ "quantity_a": "Cross-validated accuracy (and other EER-threshold metrics) of an SVM on temporal/pause parameters distinguishing Petersen-criteria MCI from healthy controls, in 33 English and 33 Hungarian speakers, spontaneous telephone speech, monolingual and cross-lingual ASR",
+ "quantity_b": "Leave-one-out cross-validated accuracy of an SVM on 92 multi-task speech features distinguishing NIA-AA MCI from CN in 89 Japanese older adults (MCI vs CN), tablet-recorded task speech",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-60's 87.6% MCI-vs-CN accuracy lies inside P-58's own reported range (67-92%) and between P-58's all-features English (84.8%) and best-subset Hungarian (90.9%) accuracies. Neither paper claims a value or ordering the other refutes; each reports a cross-validated score in its own small cohort without confidence intervals.",
+ "gates": {
+  "task": "match: both MCI vs cognitively normal detection (T1); the registry codes P-60 as T3 because of its three-class model, but the claim quoted is its binary MCI vs CN result",
+  "dataset_family": "mismatch: P-58 uses its own New York (Columbia) and Szeged cohorts; P-60 uses its own University of Tsukuba cohort. The record's dataset_equal='Yes' is wrong; no waiver on record",
+  "validation_tier": "match: both internal nested leave-one-out cross-validation, no external cohort",
+  "modality_family": "match: speech/language"
+ },
+ "endpoint_and_metric": "compatible in type (both accuracy, MCI vs CN) but different features, speech tasks, languages and diagnostic criteria (Petersen 1999 with MMSE bands vs NIA-AA plus ADNI criteria)",
+ "performance_validity": "flag does not apply: neither study is flagged; P-58's best subset (90.9%) and P-60's 87.6% are below 0.97. It is a performance comparison, but between different cohorts.",
+ "independence": "Independent: different groups (Szeged/Columbia vs IBM Research Tokyo/Tsukuba), different cohorts, no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "P-58's abstract reports a range of 67-92% across its metrics, and P-60's MCI-vs-CN accuracy of 87.6% falls inside it, so the two results describe no disagreement.",
+  "The record's 'P-58: 67-92% range' is a mixed-metric range across feature subsets and cohorts, not a single accuracy that could be set against 87.6%.",
+  "Two different methods on two different cohorts each report a score and neither claims an ordering the other refutes, which the rule reads as not incompatible.",
+  "In addition, the dataset-family gate fails (separate own cohorts in three countries), so even a gap would not be a comparable-quantity conflict."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-58",
+   "page": 1,
+   "quote": "the language on which the ASR system was trained only slightly affects the MCI classification performance, because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."
+  },
+  {
+   "paper": "P-58",
+   "page": 3,
+   "quote": "Both the English-speaking (n = 33; New York, NY, USA) and the Hungarian-speaking (n = 33; Szeged, Hungary) participants were diagnosed as MCI or HC."
+  },
+  {
+   "paper": "P-58",
+   "page": 6,
+   "quote": "Besides an accuracy score of 84.8%, the recall/sensitivity and specificity values were also around 85%."
+  },
+  {
+   "paper": "P-58",
+   "page": 7,
+   "quote": "Table 3 ... Filler-related 90:9% 85:7% 92:3% 90:0% 88.9 0.912 (Hungarian-speaking, Hungarian ASR)"
+  },
+  {
+   "paper": "P-60",
+   "page": 1,
+   "quote": "achieved 78.6% accuracy for classifying AD, MCI, and CN through nested cross-validation (AD versus CN: 91.2% accuracy; MCI versus CN: 87.6% accuracy)."
+  },
+  {
+   "paper": "P-60",
+   "page": 3,
+   "quote": "Finally, a total of 114 older individuals met the inclusion criteria: 43 CN participants, 46 MCI patients, and 25 AD patients."
+  }
+ ],
+ "record_defects": [
+  "dataset_equal='Yes' is wrong: P-58 (New York and Szeged own cohorts) and P-60 (Tsukuba own cohort) are different dataset families.",
+  "claim_a '67-92% range' is presented as an accuracy range; in P-58 it is a range spanning accuracy, precision, recall, specificity and F1 across feature subsets.",
+  "gap_magnitude 0.206 has no basis in either paper's matched metric (all-features accuracy 84.8% or 75.8% vs 87.6%).",
+  "The earlier note 'Metric type unclear: Unknown / Unknown' is resolvable from the PDFs: both report accuracy (P-58 at the equal error rate threshold)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in the two documents; a disagreement would need both studies to estimate the same quantity on a shared cohort with intervals that exclude each other."
+}

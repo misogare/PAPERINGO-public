@@ -1,0 +1,76 @@
+{
+ "id": "C-139",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-199",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A Two-Stage Model for Predicting Mild Cognitive Impairment to Alzheimer's Disease Conversion (Lu et al., Front Aging Neurosci 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-168",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of progression from mild cognitive impairment to Alzheimer's disease with longitudinal and multimodal data (Ding et al., Front Dement 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-199": "Med3D-initialised 3D ResNet-50 + MoCo contrastive pretraining + linear classifier on BASELINE structural MRI only; 577 ADNI MCI (297 sMCI/280 pMCI, 36-month conversion); random 80/20 split, 5-fold CV on training for hyperparameters; test Acc 0.819 (95% CI 0.798-0.841), AUC 0.835 (no AUC interval reported).",
+  "P-168": "LSTM on five visits (baseline to 24 months) of 15 neuropsychological tests + 7 FreeSurfer volumes + demographics, 347 ADNI participants still MCI at month 24; outcome MCI->AD within 2 years of that index exam; 10-fold CV AUC 0.93 +/- 0.06. MRI-only LSTM AUC 0.86; MRI-only random forest 0.85; single-visit random forest (all modalities) 0.90."
+ },
+ "quantity_a": "Test-set AUC for 36-month pMCI vs sMCI from one baseline T1 MRI image, no cognitive or demographic inputs, internal random split.",
+ "quantity_b": "10-fold CV AUC for 2-year MCI->AD progression from five-visit longitudinal cognitive tests + MRI volumes + demographics among people still MCI at month 24.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-168's own imaging-only models give AUC 0.85-0.86, next to P-199's 0.835; the 0.93 figure depends on adding cognitive tests and longitudinal data. P-168's fold SD (0.06) and the absence of an AUC interval in P-199 leave no exclusion.",
+ "gates": {
+  "task": "match: T2 MCI-to-AD conversion (horizons differ: 36 months from baseline vs 2 years from a month-24 index)",
+  "dataset_family": "match: both ADNI; participants likely overlap",
+  "validation_tier": "match: both internal (random held-out split vs 10-fold CV)",
+  "modality_family": "mismatch: P-199 structural MRI images only; P-168 neuropsychological tests + FreeSurfer volumes + demographics; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (AUC) but different predictor set (image only vs cognition + MRI volumes + demographics), input representation (single baseline vs five visits), horizon and population (baseline MCI vs participants still MCI after 2 years)",
+ "performance_validity": "flag does not apply: 0.835 and 0.93 are below 0.97",
+ "independence": "Distinct author groups; both ADNI, so participants likely overlap (shared cohort, recorded as non-independence).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-199 predicts from one baseline MRI image without cognitive inputs, whereas P-168's 0.93 uses five visits of cognitive tests, MRI volumes and demographics, so the predictor set and input representation differ.",
+  "P-168's outcome is conversion within 2 years of a month-24 index exam among people still MCI, while P-199's is conversion within 36 months of baseline, so horizon and population differ.",
+  "P-168's MRI-only models (AUC 0.85-0.86) are close to P-199's 0.835, which shows the gap follows the predictor set rather than a disagreement about one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-199",
+   "page": 2,
+   "quote": "To prevent data leakage, only participants' baseline data were selected in this study. Finally, data from 577 MCI subjects (Means \u00b1 std age = 73.08 \u00b1 7.25 years) were included in our study"
+  },
+  {
+   "paper": "P-199",
+   "page": 6,
+   "quote": "ResNet-50 achieved the best performance with an accuracy of 0.819 and an AUC of 0.835, indicating complex models with more parameters may not always work best."
+  },
+  {
+   "paper": "P-199",
+   "page": 10,
+   "quote": "Our model only uses low-invasive, low-cost, and widely available MRI data, which significantly expands the application scenarios of the model."
+  },
+  {
+   "paper": "P-168",
+   "page": 1,
+   "quote": "A Long Short-Term Memory (LSTM) model using data collected at five-time points (baseline, 6, 12, 18, and 24-month) was developed to predict the risk of progression from MCI to AD within 2 years from the index exam (the exam at 24-month)."
+  },
+  {
+   "paper": "P-168",
+   "page": 5,
+   "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures. The performance of the random forest models using MRI measures had an AUC of 0.85."
+  }
+ ],
+ "record_defects": [
+  "resolution_note says 'Confirmed genuine' on metric type and gap alone while resolution says 'Rejected: Task, dataset, or modality mismatch'; it ignores the cognitive-test and longitudinal inputs behind P-168's 0.93.",
+  "The bridging-evidence list names no condition separating the two results.",
+  "P-199 applies MoCo pretraining to 'the full unlabeled MRI data', which appears to include test-set images (unsupervised); not verdict-relevant but worth noting against its 0.835."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An image-only, baseline, same-horizon ADNI result from P-168 (or a cognition-plus-longitudinal result from P-199) whose interval excluded the other study's figure."
+}

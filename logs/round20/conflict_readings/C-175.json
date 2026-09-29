@@ -1,0 +1,79 @@
+{
+ "id": "C-175",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-146",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting cognitive decline: Deep-learning reveals subtle brain changes in pre-MCI stage (Yue, Pan, Li et al., J Prev Alz Dis 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-273",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting long-term progression of Alzheimer's disease using a multimodal deep learning model incorporating interaction effects (Wang et al., J Transl Med 2024)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-146": "Conversion from normal cognition (NC/SCD) to amnestic MCI. On CLAS (n=109, ~7-year follow-up) the MRI-derived Progressive Index alone gives AUC 0.711; PI combined with age, gender, education and an associative-learning score gives AUC 0.812 (95% CI 0.725-0.900). On ADNI-2 NC/SCD (NC-to-MCI within 3 years) the PI gives AUC 0.7048.",
+  "P-273": "Conversion from MCI to AD within 4 years in ADNI-1/GO/2 MCI patients (n=238 cross-validation): trimodal (sMRI + clinical/neuropsychological + SNP) DISFC model, mean AUC 0.962 (SD 0.041) over tenfold CV; AUC 0.939 (95% CI 0.796-1.000) on 14 ADNI-3 MCI subjects."
+ },
+ "quantity_a": "ROC-AUC for predicting progression from cognitively normal/SCD to MCI over ~7 years in a Chinese community cohort (CLAS), from an ADNI-1-trained MRI index plus demographics and one neuropsychological score (0.812); secondarily NC/SCD-to-MCI within 3 years in ADNI-2 (0.7048)",
+ "quantity_b": "ROC-AUC for predicting progression from MCI to AD within 4 years in ADNI MCI patients, from sMRI + 14 clinical/cognitive features + 49 SNPs, tenfold cross-validation (0.962)",
+ "same_quantity": false,
+ "incompatible_if_same": "Possibly: 0.812 (CI 0.725-0.900) does not overlap a CV mean of 0.962, but the ADNI-3 test CI of P-273 (0.796-1.000) overlaps it; the comparison is moot because the endpoints and populations differ.",
+ "gates": {
+  "task": "mismatch: both coded T2 (progression), but P-146 predicts NC/SCD-to-MCI conversion and P-273 predicts MCI-to-AD conversion; different transitions",
+  "dataset_family": "mismatch for the contested figure: 0.812 is from CLAS (Shanghai community cohort), 0.962 from ADNI; P-146's own ADNI result (ADNI-2, NC-to-MCI) is 0.7048 and is not the claimed figure",
+  "validation_tier": "mismatch: P-146 applies an ADNI-1-trained model to independent ADNI-2 and CLAS cohorts (external), P-273's 0.962 is internal tenfold CV (its 14-subject ADNI-3 test gives 0.939)",
+  "modality_family": "partial match: both structural MRI plus clinical variables; P-273 additionally uses SNP genotypes"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different endpoints (MCI onset from normal cognition over 7 years vs AD onset from MCI over 4 years) and different baseline populations",
+ "performance_validity": "flag does not apply: neither value is >= 0.97; P-273's 0.962 is internal CV with small n but below the threshold",
+ "independence": "Distinct studies and author groups (both Shanghai Jiao Tong affiliations but no shared authors); both draw training data from ADNI-1, so ADNI overlap exists for P-146's training set and P-273's cohort, but the contested P-146 figure is on CLAS",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-146's 0.812 is an NC-to-MCI conversion AUC in the CLAS community cohort, not an MCI-to-AD figure.",
+  "P-273's 0.962 is an MCI-to-AD conversion AUC within 4 years in ADNI MCI patients.",
+  "The two transitions have different baseline populations and endpoints, and the dataset-family gate fails for the contested figure (CLAS vs ADNI) with no waiver on record.",
+  "The record's claim_a attributes the figure to P-310, which has been repointed to P-146; the figure does belong to P-146 but was never an MCI-to-AD result."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-146",
+   "page": 2,
+   "quote": "Better performance for prediction progression to MCI in CLAS was obtained when the PI score was combined with clinical measures (AUC = 0.812; 95 %CI: 0.725-0.900)."
+  },
+  {
+   "paper": "P-146",
+   "page": 5,
+   "quote": "Among 109 cognitively normal subjects (33NC and 76 SCD at baseline), 16 NC and 24 SCD showed clinical progression to amnestic MCI at follow-up."
+  },
+  {
+   "paper": "P-146",
+   "page": 5,
+   "quote": "The AUC value was 0.7048, and the SPE and SEN were 0.6667 and 0.6897 (with the threshold of the overall average score)."
+  },
+  {
+   "paper": "P-273",
+   "page": 6,
+   "quote": "On the cross-validation set, the DISFC model achieved a mean (SD) of 0.962 (0.041) for AUC for predicting MCI conversion over 4 years (Fig. 3A)."
+  },
+  {
+   "paper": "P-273",
+   "page": 2,
+   "quote": "The cross-validation set consisted of 238 MCI subjects from ADNI-1 and ADNI-GO/2 cohorts, with a 48-month follow-up."
+  }
+ ],
+ "record_defects": [
+  "claim_a still names P-310 ('P-310: AUC 0.812 on T2') although paper_a was repointed to P-146; the 0.812 figure is P-146's CLAS result.",
+  "dataset_family_equivalence: true is wrong for the contested figure: 0.812 is from CLAS, not ADNI.",
+  "validation_tier_comparable: true is doubtful: P-146's figure is on an independent cohort while P-273's 0.962 is internal CV.",
+  "Registry row for P-146 has Best_Metric 'not reported' although the paper reports AUC 0.812, 0.711 and 0.7048.",
+  "resolution_note's bridging list mixes C-index, accuracy and AUC values from unrelated tasks as 'comparable task/dataset family'."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-146 result for MCI-to-AD conversion in ADNI (none is reported; its ADNI-1 training used AD/pMCI vs NC/sMCI labels without a reported MCI-to-AD test AUC)."
+}

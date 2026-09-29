@@ -1,0 +1,82 @@
+{
+ "id": "C-223",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-3",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Class activation attention transfer neural networks for MCI conversion prediction (Luo, He, Cui, Chen, Ward; Computers in Biology and Medicine 156 (2023) 106700)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-41",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early progression detection from MCI to AD using multi-view MRI for enhanced assisted living (Rahim et al., Image and Vision Computing 157 (2025) 105491)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-3": "593 ADNI-1/2 baseline MCI (295 pMCI diagnosed with dementia within 36 months, 298 sMCI), using the Wen et al. benchmark splits; whole 3D T1 MRI into a 5-layer 3D CNN with attention maps transferred from AD/CN, ADAS and CDR-SB source tasks (source pretraining on up to 1587 subjects); 5-fold CV. CAAT ensemble accuracy 74.61% (variance 0.002), SEN 0.75, SPE 0.75, AUC 0.780. The authors note that using 5-fold CV for both tuning and selection 'may lead to an optimistically biased evaluation'.",
+  "P-41": "192 ADNI-1/GO/2 3 T subjects: 96 sMCI (MCI through M48) vs a positive class of 81 pMCI (converted between M18 and M48) plus 15 established AD patients; 132 2D slices per plane through a heterogeneous EfficientNet/ConvNeXt/DenseNet + CBAM + multi-head attention ensemble; test set 15 + 15 subjects. Accuracy 91.77 +/- 3.14%, SEN 87.69%, SPE 88.53%, AUC 92.87%."
+ },
+ "quantity_a": "Accuracy of pMCI (dementia within 36 months) vs sMCI (still MCI at 36 months), MCI only, from whole 3D T1 images, ADNI-1/2, 5-fold CV on 593 subjects.",
+ "quantity_b": "Accuracy of 48-month-stable sMCI vs a positive class of M18-M48 converters plus established AD patients, from 2D multi-plane slices, ADNI 3 T, a single 30-subject held-out test.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not established. P-3 reports a small run-to-run variance around 74.61%, and P-41 reports +/-3.14 around 91.77% on 30 test subjects. These spreads are not intervals for one population quantity, and P-41's test classes differ in composition from P-3's.",
+ "gates": {
+  "task": "nominal match (T2), but P-41's positive class includes 15 already-demented AD patients (and pMCI is defined as conversion between M18 and M48), while P-3 uses pure MCI with a 36-month horizon.",
+  "dataset_family": "match: both ADNI (ADNI-1/2 vs ADNI-1/GO/2); subject overlap is likely.",
+  "validation_tier": "match (both internal): 5-fold CV on 593 vs a 30-subject held-out test.",
+  "modality_family": "match on structural T1 MRI; the input representations differ (whole 3D volume vs 2D slice stacks from three planes)."
+ },
+ "endpoint_and_metric": "incompatible: both report accuracy, but the positive class of P-41 contains AD patients, which makes its task partly an AD-vs-MCI discrimination. The horizons also differ (36 months vs M18-M48 with M48 stability).",
+ "performance_validity": "flag does not apply: P-41's 91.77% accuracy / 92.87% AUC are below 0.97 (small test set noted), and P-3 is well below.",
+ "independence": "Both draw on ADNI T1 scans; overlapping MCI subjects are likely. Distinct author groups.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-41 adds 15 established AD patients to its pMCI class, so its positive class is not the pMCI population of P-3; the populations behind the label differ.",
+  "The horizons differ: dementia within 36 months (P-3) vs conversion between M18 and M48 against stability to M48 (P-41).",
+  "The validation designs differ enough to change what the number estimates: 5-fold CV over 593 subjects on the Wen benchmark splits vs one 30-subject test set.",
+  "Neither paper claims an ordering the other refutes: P-41's comparison table does not list P-3, and P-3 benchmarks only against methods re-implemented on its own splits."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-3",
+   "page": 3,
+   "quote": "if a subject was diagnosed with Dementia within the following 36 months, he/she was grouped into pMCI; and if the patient\u2019s diagnosis remained as MCI, we categorized him/her as sMCI."
+  },
+  {
+   "paper": "P-3",
+   "page": 6,
+   "quote": "Our dataset consists of 593 MRI images, consisting of 298 sMCIs and 295 pMCIs images. We performed 5 fold cross validation using the same data splits as that used in [11]"
+  },
+  {
+   "paper": "P-3",
+   "page": 7,
+   "quote": "CAAT ensemble 0.75 (0.004) 0.75 (0.006) 0.75 (0.002) 74.61 (0.002) 0.780 (0.003)"
+  },
+  {
+   "paper": "P-3",
+   "page": 9,
+   "quote": "A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models. This may lead to an optimistically biased evaluation of the model performance."
+  },
+  {
+   "paper": "P-41",
+   "page": 8,
+   "quote": "Furthermore, we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously."
+  },
+  {
+   "paper": "P-41",
+   "page": 12,
+   "quote": "The MHA classifier in the same heterogeneous ensemble outperformed the LSTM with an accuracy of 91.77% \u00b13.14, sensitivity of 87.69% \u00b13.24, specificity of 88.53% \u00b13.53, and an impressive AUC of 92.87% \u00b13.58."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-41: Acc 91 on T2' omits that P-41's positive class includes 15 established AD patients and that the test set is 15 + 15 subjects.",
+  "The P-3 registry row's Sample_N_Approx '1587' is the source-task pretraining pool; the pMCI/sMCI sample is 593.",
+  "modality_family 'Neuroimaging' is a broad bucket; both papers are structural T1 MRI, but with different input representations (3D volume vs 2D slices)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-41 result on MCI-only classes (AD patients excluded) with a 36-month horizon and a test set large enough for an interval excluding 74.61%. The paper does not report one."
+}

@@ -1,0 +1,77 @@
+{
+ "id": "C-119",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-183",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Signal and Texture Features from T2 Maps for the Prediction of Mild Cognitive Impairment to Alzheimer's Disease Progression (Trejo-Castro et al., Healthcare 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-168",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of progression from mild cognitive impairment to Alzheimer's disease with longitudinal and multimodal data (Ding et al., Front. Dement. 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-183": "Baseline T2-map signal/texture features + 12 volumes + 8 neuropsychological scores, seven ML methods, 100 random 80/20 splits; n=40 ADNI MCI aged 70-80 (18 MCIp with first AD diagnosis 2 years after baseline vs 22 MCIs stable for at least 5 years). Best AUC: ensemble 0.824 (95% CI 0.681-0.968); best accuracy 0.775 (BSWiMS, RF). Neuropsychological-only best AUC 0.727 (LASSO).",
+  "P-168": "LSTM on five visits of neuropsychological tests + MRI volumes + demographics; 2-year progression after a 24-month index exam; n=347; 10-fold CV AUC 0.93 +/- 0.06."
+ },
+ "quantity_a": "ROC-AUC separating extreme groups (conversion at the 2-year visit vs stability for at least 5 years) among baseline MCI aged 70-80, from baseline T2-map radiomics + neuropsychology; n=40.",
+ "quantity_b": "ROC-AUC for progression within 2 years of a 24-month index exam among all participants still MCI at month 24 (stable = still MCI at month 48), from five-visit neuropsychology + MRI volumes; n=347.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-183's own 95% CI (0.681-0.968) contains P-168's 0.93, so even on a shared quantity the two estimates are compatible.",
+ "gates": {
+  "task": "match nominally (T2), but the class definitions differ (extreme-group design with 5-year stable controls vs 2-year progression from month 24 against MCI at month 48).",
+  "dataset_family": "match: ADNI in both; overlap possible.",
+  "validation_tier": "match: both internal resampling (P-183 repeated 80/20 splits; P-168 10-fold CV).",
+  "modality_family": "mismatch, not waived: P-183 = quantitative T2 relaxometry maps (dual fast spin-echo) + neuropsychology; P-168 = T1 FreeSurfer volumes + neuropsychology over five visits."
+ },
+ "endpoint_and_metric": "incompatible: same metric (ROC-AUC) but different class definitions, horizons, index points and input representation (single-visit T2 radiomics vs longitudinal five-visit trajectories).",
+ "performance_validity": "flag does not apply: 0.824 and 0.93 are below 0.97; both flags false. P-183's n=40 makes its estimate imprecise (CI width about 0.29).",
+ "independence": "Distinct author groups; both ADNI, overlap possible.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two studies define progressive and stable MCI differently: P-183 compares conversion at 2 years with stability for at least 5 years among 70-80-year-olds; P-168 predicts progression within 2 years of month 24 among those still MCI.",
+  "The input representations differ (baseline T2-map signal/texture features vs five-visit longitudinal neuropsychology and T1 volumes); the modality gate fails with no waiver.",
+  "The results are not incompatible in any case: P-183's CI of 0.681-0.968 includes 0.93."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-183",
+   "page": 3,
+   "quote": "the 18 subjects who had their \ufb01rst AD diagnosis 2 years after their baseline visit were regarded as progressers (MCIp), while the 22 subjects who never had an AD diagnosis and participated in the study for at least 5 years were labeled as stable (MCIs)."
+  },
+  {
+   "paper": "P-183",
+   "page": 7,
+   "quote": "ENS 0.750 0.588\u20130.873 0.824 0.681\u20130.968"
+  },
+  {
+   "paper": "P-183",
+   "page": 3,
+   "quote": "In order to generate the T2 maps, we used the dual fast spin-echo images, namely, the PD- and T2-weighted images"
+  },
+  {
+   "paper": "P-168",
+   "page": 1,
+   "quote": "The longitudinal LSTM model showed superior prediction performance of MCI-to-AD progression (AUC 0.93 \u00b1 0.06) compared to the random forest model (AUC 0.90 \u00b1 0.09)."
+  },
+  {
+   "paper": "P-168",
+   "page": 2,
+   "quote": "The index exam is de\ufb01ned as the exam at 24-month, and the outcome is de\ufb01ned as the progression from MCI to AD before 48-month."
+  }
+ ],
+ "record_defects": [
+  "The registry Best_Metric for P-183 is 'Acc 72.7'; no such figure appears in the PDF (accuracies are 0.500-0.775; the claimed AUC 0.824 is the ensemble in Table 4 and is correct).",
+  "The registry labels both papers 'MRI/PET'; neither uses PET (P-183 uses T2 maps and neuropsychology).",
+  "resolution_note says 'Confirmed genuine' on a gap test that ignores P-183's own CI, which contains 0.93; the resolution field says 'Rejected: Task, dataset, or modality mismatch'.",
+  "The bridging-evidence list is generic, with no separating condition shown."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Both studies scoring the same class definition and input on the same horizon, with uncertainty that excludes the other's estimate (P-183's n=40 makes that unlikely)."
+}

@@ -1,0 +1,78 @@
+{
+ "id": "C-222",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-212",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting conversion to Alzheimer's disease in individuals with Mild Cognitive Impairment using clinically transferable features (Rye et al., Scientific Reports (2022) 12:15566)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-308",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting conversion in cognitively normal and mild cognitive impairment individuals with machine learning: Is the CSF status still relevant? (Russo et al., Alzheimer's Dement. 2025;21:e14398)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-212": "678 ADNI MCI (321 converted to probable AD at any later visit, 357 stable at all visits; each with at least 3 visits and 3 MRIs); features are demographics, neuropsychological tests, FreeSurfer hippocampal volume and binary APOE; no CSF. Random forest test accuracy 66.2% (CV 74.6%); ensemble test accuracy 68.3% (CV 74.9%); test n = 139.",
+  "P-308": "648 ADNI CN + MCI participants, with the outcome being conversion to the next cognitive level within 3 years (CN->MCI or MCI->AD; 90 converters, 76.77% of them MCI); standard clinical data plus CSF t-tau/Abeta1-42 status; random undersampling to 409 participants (22% converters). Gradient boosting: test accuracy 84% (training 91%), SEN 43%, SPE 96%; AD-like-CSF sub-cohort test accuracy 88%, normal-CSF sub-cohort 86%."
+ },
+ "quantity_a": "Accuracy of MCI -> probable AD at any later visit (no fixed horizon) vs stable MCI, ADNI MCI only, from neuropsychology + hippocampal volume + APOE + demographics, internal held-out test.",
+ "quantity_b": "Accuracy of 3-year conversion to the next cognitive level in pooled CN + MCI (CN->MCI or MCI->AD), from standard clinical data + CSF biomarkers, after undersampling of non-converters, internal test split.",
+ "same_quantity": false,
+ "incompatible_if_same": "Cannot be judged. Neither study reports an interval on its accuracy. P-308's 84% comes from a class-imbalanced test set (22% converters) with 43% sensitivity, while P-212's classes are near-balanced (47% converters). On such different class balances, raw accuracies are not interchangeable even for one endpoint.",
+ "gates": {
+  "task": "mismatch: P-308's positive class pools CN->MCI and MCI->AD conversion; P-212's is MCI->AD only (T2).",
+  "dataset_family": "match: both ADNI; overlapping MCI subjects are likely.",
+  "validation_tier": "match (both internal only).",
+  "modality_family": "partial mismatch: both rely mainly on neuropsychological/clinical data, but P-308 adds CSF biomarkers (fluid) and P-212 adds MRI hippocampal volume and APOE. Neither is 'Neuroimaging' as recorded."
+ },
+ "endpoint_and_metric": "incompatible: different endpoint (MCI->AD at any horizon vs any-level conversion within 3 years in CN + MCI), different population, and accuracies taken at very different class balances and sensitivity/specificity trade-offs.",
+ "performance_validity": "flag does not apply: no value >= 0.97.",
+ "independence": "Both draw on ADNI; overlapping MCI subjects are likely. Distinct author groups.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-308's conversion label pools CN->MCI and MCI->AD transitions in a CN + MCI sample, while P-212's covers MCI->AD in MCI only; the populations behind the label differ.",
+  "The horizons differ: a fixed 3-year window (P-308) vs conversion at any subsequent visit (P-212).",
+  "The predictor sets differ: CSF t-tau/Abeta ratio plus clinical data (P-308) vs neuropsychology, hippocampal volume and APOE (P-212).",
+  "P-308's 84% is measured at 22% prevalence with 43% sensitivity, while P-212's 66.2% is measured at about 47% prevalence, so the accuracies do not estimate the same thing."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-308",
+   "page": 3,
+   "quote": "The participants were labeled as \u201cconverters\u201d depending on whether their cognitive status progressed within 3 years, that is, (1) from CN to MCI; (2) from MCI to AD."
+  },
+  {
+   "paper": "P-308",
+   "page": 5,
+   "quote": "After undersampling, the model was applied to 409 participants (22% converters). With the optimal cut-off, the model\u2019s accuracy was 91% in the training set and 84% in the test set. The algorithm showed high specificity (96%) but low sensitivity (43%)."
+  },
+  {
+   "paper": "P-212",
+   "page": 2,
+   "quote": "When the model was evaluated on our unseen test set, the overall classification accuracy was 66.2%. Similar results were obtained for the ensemble model."
+  },
+  {
+   "paper": "P-212",
+   "page": 7,
+   "quote": "included subjects who were diagnosed with MCI at their first study visit, but met the criteria for probable AD on a subsequent assessment"
+  },
+  {
+   "paper": "P-212",
+   "page": 5,
+   "quote": "Although we obtained a classification accuracy above chance level, it should still be described as modest."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-308: Acc 84 on T2' mislabels the task: P-308's endpoint pools CN->MCI and MCI->AD conversion within 3 years.",
+  "modality_family 'Neuroimaging' is wrong for both papers: P-308 uses no imaging (clinical + CSF), and P-212 is mainly neuropsychological with one hippocampal volume.",
+  "The registry's Modality 'MRI/PET' for P-308 is wrong.",
+  "gap_magnitude 0.178 compares accuracies at different class prevalences."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An MCI-only, MCI->AD, fixed-horizon accuracy from P-308, reported with uncertainty, on a predictor set comparable to P-212's. P-308 reports neither an MCI-only figure nor intervals."
+}

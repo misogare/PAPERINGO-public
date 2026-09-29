@@ -1,0 +1,88 @@
+{
+ "id": "C-66",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-23",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "TASNet: A tri-modal attentive scale robust adaptive fusion framework for progressive mild cognitive impairment classification (Zhu et al., Journal of Neuroscience Methods 430 (2026) 110726)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-72",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "An end-to-end multimodal 3D CNN framework with multi-level features for the prediction of mild cognitive impairment (Zhang, He, Liu, Ong, Liu, Teng; Knowledge-Based Systems 281 (2023) 111064)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-23": "Tri-modal sMRI + FDG-PET + CSF TASNet, ADNI1/2, single 8:1:1 split. sMCI vs pMCI (36-month criterion, 200 MCI, about 20 test subjects): accuracy 85.00%, AUC 91.67%. AD vs CN (352 subjects, 36 test): accuracy 94.44%, AUC 97.52% (Table 5).",
+  "P-72": "Twin 3D ResNet18 with attention and spatial pyramid pooling on sMRI grey-matter maps + FDG-PET, ADNI (215 AD, 246 NC, 151 pMCI, 238 sMCI; pMCI = conversion within 3 years), 70/15/15 subject-level split repeated over three test subsets. AD vs NC: accuracy 94.61% (0.85), AUC 0.947. sMCI vs pMCI: accuracy 77.19% (1.01), AUC 0.755 (Table 5). Five-fold CV on a fixed subset: 93.83% and 77.19%."
+ },
+ "quantity_a": "As recorded: P-23 pMCI vs sMCI accuracy (T2, 36-month horizon, tri-modal input, about 20 test subjects).",
+ "quantity_b": "As recorded: 94.61%, which in P-72 is AD vs NC diagnostic accuracy, not a T2 conversion result. P-72's T2 figure is 77.19% (sMRI+PET, 3-year horizon).",
+ "same_quantity": false,
+ "incompatible_if_same": "No on either like-for-like reading. AD vs CN: P-23 94.44% vs P-72 94.61%, essentially identical. sMCI vs pMCI: P-23 85.00% (about 17 of 20 test subjects, Wilson 95% interval roughly 64-95%) vs P-72 77.19%; the interval contains 77.19%, and P-23 adds CSF biomarkers that P-72 does not use.",
+ "gates": {
+  "task": "mismatch as recorded (T2 conversion vs AD-vs-NC diagnosis); match (T2) only if P-72's 77.19% is substituted.",
+  "dataset_family": "match: ADNI in both.",
+  "validation_tier": "match in tier (internal splits only); P-23 one small split, P-72 averaged over three splits plus a five-fold check.",
+  "modality_family": "partial mismatch: both combine structural MRI with FDG-PET, but P-23 also uses CSF fluid biomarkers; neither is 'structural_mri' only as the record states."
+ },
+ "endpoint_and_metric": "incompatible as recorded (conversion endpoint vs AD-vs-NC diagnosis); both are accuracy.",
+ "performance_validity": "flag does not apply: 94.61% (P-72) and 94.44%/85.00% (P-23) accuracies are below 0.97; P-23's AD vs CN AUC 97.52% on 36 test subjects would trip the test but is not the contested figure.",
+ "independence": "Distinct studies and author groups; both use ADNI imaging, so participant overlap is possible.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record misreads P-72: its 94.61% is AD vs NC accuracy, while P-72's sMCI vs pMCI accuracy is 77.19%.",
+  "On the matching AD vs CN comparison the two papers agree (94.44% vs 94.61%).",
+  "On the matching T2 comparison P-23's 85.00% rests on about 20 test subjects and cannot exclude 77.19%, and its input adds CSF biomarkers absent from P-72.",
+  "Neither paper claims an ordering the other refutes; there is no disagreement to adjudicate."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-72",
+   "page": 1,
+   "quote": "Especially in AD diagnosis achieved an average accuracy of 94.61 %"
+  },
+  {
+   "paper": "P-72",
+   "page": 7,
+   "quote": "The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 % respectively"
+  },
+  {
+   "paper": "P-72",
+   "page": 3,
+   "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI."
+  },
+  {
+   "paper": "P-72",
+   "page": 6,
+   "quote": "We followed the same data split strategy to construct three different subsets with different test sets, the average of three classification accuracies is used as the final result."
+  },
+  {
+   "paper": "P-23",
+   "page": 7,
+   "quote": "sMCI vs. pMCI: In this critical task for early prognosis, TASNet achieved 85.00% Accuracy and 86.96% F1 (Table 3)"
+  },
+  {
+   "paper": "P-23",
+   "page": 7,
+   "quote": "AD vs. CN: In this baseline task (Table 5), TASNet achieved 94.44% Accuracy and 100.00% Sensitivity"
+  },
+  {
+   "paper": "P-23",
+   "page": 6,
+   "quote": "selecting subjects from ADNI1 and ADNI2 cohorts with baseline T1-weighted sMRI, FDG-PET, and CSF biomarkers (Abeta42, TAU, PTAU)."
+  }
+ ],
+ "record_defects": [
+  "claim_b '94.61% AD on T2' is P-72's AD vs NC accuracy; P-72's T2 (sMCI vs pMCI) accuracy is 77.19%. task_equal 'Yes' is therefore wrong as recorded.",
+  "modality_family 'structural_mri' is wrong for both papers: P-72 fuses sMRI grey matter with FDG-PET; P-23 fuses sMRI, FDG-PET and CSF.",
+  "The rejection reason 'Metric type unclear: Acc / Unknown' is wrong: P-72's 94.61% is plainly an accuracy.",
+  "The bridging-evidence list names no separating condition and mixes metric types; 'partially resolved' is unsupported."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers: the like-for-like comparisons agree (AD vs CN) or overlap (T2). A larger P-23 test set whose T2 interval excluded 77.19% would still differ in predictor set (CSF), making it incommensurable rather than genuine."
+}

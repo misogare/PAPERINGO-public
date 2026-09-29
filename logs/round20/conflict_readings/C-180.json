@@ -1,0 +1,82 @@
+{
+ "id": "C-180",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-339",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A prediction nomogram for mild cognitive impairment in type 2 diabetes mellitus based on the Chinese visceral adiposity index (Zhou, Wang, Yu & Niu, Scientific Reports 2025, 15:32393)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-19",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction and validation of mild cognitive impairment in occupational dust exposure population based on machine learning (Cai et al., Ecotoxicology and Environmental Safety 285 (2024) 117111)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-339": "337 hospitalised T2DM patients aged 40-75 (179 NC, 158 MCI by MoCA < 26), single hospital, cross-sectional. Nomogram of age, gender, education and CVAI (logistic regression after LASSO): AUC 0.765 (95% CI 0.705-0.826) in the training cohort (n=236, apparent), 0.690 (95% CI 0.588-0.792) in the random 30% validation cohort (n=101); optimism-corrected C-index 0.747.",
+  "P-19": "1938 dust-exposed coal miners (1607 normal, 331 MCI by MoCA <= 26; mean age ~43-49), plus a separately collected test set of 351 miners (301/50), single coal mine. Seven ML models on education, age, work years, SSRS, HAMA (and other baseline variables): XGBoost AUC 0.959 training, 0.795 validation, 0.913 test; logistic regression 0.818 training, 0.816 validation, 0.778 test."
+ },
+ "quantity_a": "ROC-AUC for identifying current MoCA-defined MCI (MoCA < 26) among hospitalised adults with type 2 diabetes aged 40-75, from a 4-predictor nomogram (age, gender, education, Chinese visceral adiposity index); 0.765 is the apparent training-set value",
+ "quantity_b": "ROC-AUC for identifying current MoCA-defined MCI (MoCA <= 26) among working-age dust-exposed coal miners, from an XGBoost model on occupational/psychosocial predictors (work years, social support, anxiety, education, age); 0.913 is on a separately recruited test set",
+ "same_quantity": false,
+ "incompatible_if_same": "Not clearly: on comparable model classes the figures are close (P-339 logistic nomogram 0.765 training / 0.690 validation vs P-19 logistic regression 0.818 training / 0.816 validation / 0.778 test), and the gap to 0.913 is a difference between two different methods on different predictors, neither refuting the other.",
+ "gates": {
+  "task": "match in type (current MCI detection, T1); registry codes P-339 as T4 and P-19 as T2, while the record says T1 for both",
+  "dataset_family": "mismatch: single-hospital T2DM inpatient cohort (Nanjing) vs single-coal-mine occupational cohort (Huainan); the record itself has dataset_equal 'No'",
+  "validation_tier": "mismatch for the contested figures: P-339's 0.765 is apparent training performance; P-19's 0.913 is on a separately recruited test set from the same mine",
+  "modality_family": "match at family level (clinical/questionnaire tabular), but the predictor sets differ (visceral adiposity index vs occupational exposure years, social support and anxiety scales)"
+ },
+ "endpoint_and_metric": "compatible metric (ROC-AUC) and similar MoCA-based endpoint (cut-offs < 26 vs <= 26), but populations and predictor sets differ, and the contested figures sit at different validation stages",
+ "performance_validity": "flag does not apply to the contested figures (0.765, 0.913); P-19's training AUCs (random forest 0.981) would trip it but are not the compared values",
+ "independence": "Distinct studies, cohorts and author groups",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-339 studies hospitalised type 2 diabetes patients and P-19 studies dust-exposed coal miners, so the population behind the shared 'MCI' label differs, and the dataset-family gate fails with no waiver on record.",
+  "The predictor sets differ (age, gender, education and a visceral adiposity index vs work years, social support and anxiety scores in an XGBoost model).",
+  "The contested values sit at different validation stages (P-339 apparent training 0.765 vs P-19 separate test set 0.913); on like-for-like logistic models the two papers report similar AUCs (0.765/0.690 vs 0.818/0.816/0.778)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-339",
+   "page": 1,
+   "quote": "A nomogram incorporating age, gender, education level, and CVAI was constructed and validated using calibration plots, ROC curve analysis, and decision curve analysis (DCA)."
+  },
+  {
+   "paper": "P-339",
+   "page": 5,
+   "quote": "with AUC values of 0.765 (95% CI: 0.705-0.826) in the training cohort and 0.690 (95% CI 0.588-0.792) in the validation cohort (Fig. 4C, D)."
+  },
+  {
+   "paper": "P-339",
+   "page": 2,
+   "quote": "MoCA score >= 26 is considered normal (NC group) and MoCA score <26 is considered MCI(MCI group)13."
+  },
+  {
+   "paper": "P-19",
+   "page": 1,
+   "quote": "Results from the test set showed that the AUC of the XGBoost model (AUC=0.913) outperformed the Logistic Regression model (AUC=0.778)."
+  },
+  {
+   "paper": "P-19",
+   "page": 1,
+   "quote": "XGBoost (training set: AUC=0.959, validation set: AUC=0.795) and Logistic Regression (training set: AUC=0.818, validation set: AUC=0.816) models exhibited superior predictive performance."
+  },
+  {
+   "paper": "P-19",
+   "page": 2,
+   "quote": "A total score of <=26 is considered to indicate that there may be mild cognitive impairment (MCI), and a total score of > 26 is defined as a normal population."
+  }
+ ],
+ "record_defects": [
+  "claim_a treats P-339's 0.765 as its result without noting it is the apparent training AUC; the validation AUC is 0.690.",
+  "Task labels: the record says T1 for both, while the registry codes P-339 as T4 and P-19 as T2.",
+  "P-19 and P-20 are the same paper (identical PDF extract; registry P-20 'Same as Paper 19'), so this record and C-181 duplicate each other.",
+  "resolution_note says 'Confirmed genuine' while resolution says 'Rejected: Task, dataset, or modality mismatch'; the fields contradict each other."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Both studies fitting the same predictor set in the same population class and reporting validated AUCs whose intervals excluded each other."
+}

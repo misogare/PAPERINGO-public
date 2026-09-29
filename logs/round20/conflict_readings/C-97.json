@@ -1,0 +1,85 @@
+{
+ "id": "C-97",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-174",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack file ROOT/pdf/P-174.txt is 'A Graph Gaussian Embedding Method for Predicting Alzheimer's Disease Progression with MEG Brain Networks' (Xu et al., 2021), byte-identical to P-173.txt and NOT the paper the record means. P-174's summary block is headed '[STUB-DEDUP-OF-P-171] PMID_33422894_nihms-1655691.pdf'; I read that file from the repository (read-only): 'Transfer Learning for Predicting Conversion from Mild Cognitive Impairment to Dementia of Alzheimer's Type based on a 3D-Convolutional Neural Network' (Bae et al., Neurobiol Aging 2021;99:53-64), which reports the record's 0.827 AUC.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-152",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Features of the superficial white matter as biomarkers for the detection of Alzheimer's disease and mild cognitive impairment: A diffusion tensor imaging study (Bigham et al., Heliyon 8 (2022) e08725)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-174 (Bae et al. 2021, correct paper read from the repository)": "ADNI MCI converters within 3 years (228) vs non-converters stable >=3 years (222), single baseline structural MRI, transfer-learned ResNet29 3D-CNN, independent test set of 68 scans: accuracy 82.4%, AUC 0.827.",
+  "P-152": "ADNI2 DTI of 72 subjects (24 HC, 24 MCI, 24 AD); 1,782 superficial-white-matter features, FCBF feature selection, SVM with internal 5-fold CV, pairwise diagnostic classifications: AD vs HC accuracy 95.8% (sensitivity 95.8%, specificity 95.8%, AUC 0.99, linear kernel, n=48); MCI vs HC 83.3% (AUC 0.88); MCI vs AD 83.3% (AUC 0.93). No conversion analysis."
+ },
+ "quantity_a": "ROC-AUC on an independent test set for 3-year MCI->DAT conversion from a single baseline 3D structural MRI, ADNI",
+ "quantity_b": "5-fold cross-validated accuracy for AD dementia vs healthy controls (current diagnosis) from superficial white matter DTI features, 48 ADNI2 subjects",
+ "same_quantity": false,
+ "incompatible_if_same": "No comparison arises: P-152's 95.8% is an AD-vs-HC diagnostic accuracy, not an MCI conversion figure, and it is set against an AUC; different contrast and different metric type.",
+ "gates": {
+  "task": "mismatch: P-152's 95.8% is AD vs HC diagnosis (its registry codes T3), not MCI conversion (T2). The record's 'Acc 95.8 on T2' and task_equal='Yes' are wrong; no waiver on record",
+  "dataset_family": "match: both ADNI (P-152 ADNI2 subset); possible participant overlap, recorded as non-independence",
+  "validation_tier": "match: both internal (independent split vs 5-fold CV)",
+  "modality_family": "partial: both MRI, but structural T1 vs diffusion tensor imaging (different MRI subtypes)"
+ },
+ "endpoint_and_metric": "incompatible: different endpoint (3-year conversion among MCI vs current AD vs HC status) and different metric types (AUC vs accuracy)",
+ "performance_validity": "flag applies to P-152's contested figure: AD vs HC on 48 subjects with internal 5-fold CV only and AUC 0.99 (accuracy 0.958 with AUC above 0.97), so it would be excluded from cross-study performance comparisons even if the task matched. The pack's performance_suspect=false for P-152 misses this because the registry stores only 'Acc 95.8'.",
+ "independence": "Shared data source (ADNI) with possible participant overlap; recorded as non-independence. Different groups (Northwestern/Simon Fraser vs Mashhad).",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record misreads P-152: its 95.8% is the AD-vs-HC accuracy, and the paper has no MCI conversion analysis, so 'on T2' is wrong (the same misreading class as C-147).",
+  "An AD-vs-HC diagnostic accuracy set against an MCI-conversion AUC describes no disagreement; endpoint and metric type both differ.",
+  "P-152's contested figure would in any case trip the performance-validity exclusion (48 subjects, internal CV, AUC 0.99).",
+  "The P-174 PDF in the pack is the wrong paper (a copy of P-173); the verdict uses the correct paper from the repository, and P-174 is a stub duplicate that its own block says must not be cited."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-174 (Bae et al., repository PDF PMID_33422894_nihms-1655691.pdf)",
+   "page": 8,
+   "quote": "It produced a test set classification accuracy of 82.4% and 0.827 Area Under the Curve (AUC) as well as 0.189 Equal Error Rate (EER) value (Figure 4b)."
+  },
+  {
+   "paper": "P-174 (Bae et al., repository PDF PMID_33422894_nihms-1655691.pdf)",
+   "page": 4,
+   "quote": "This resulted in 228 MCI-C patients and 222 MCI-NC patients."
+  },
+  {
+   "paper": "P-152",
+   "page": 1,
+   "quote": "This method employed DTI data from 72 subjects: 24 subjects as HC, 24 subjects with MCI, and 24 subjects with AD."
+  },
+  {
+   "paper": "P-152",
+   "page": 1,
+   "quote": "The linear kernel of SVM was the best classifier, with an accuracy of 95.8% between the AD and HC groups"
+  },
+  {
+   "paper": "P-152",
+   "page": 5,
+   "quote": "After feature selection, we performed an internal 5-fold cross-validation for the training data and applied the SVM algorithm using binary classification between the three groups."
+  },
+  {
+   "paper": "P-152",
+   "page": 6,
+   "quote": "HC-AD 95.8 95.8 95.8 95.8 .99 (Table 3: Correction, Accuracy, Sensitivity, Specificity, AUC)"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-152: Acc 95.8 on T2' is wrong on task: 95.8% is AD vs HC diagnosis; the paper has no conversion analysis (its registry codes T3).",
+  "task_equal='Yes' is wrong.",
+  "paper_a P-174 is a stub duplicate with 'NA' registry codes that must not be cited; the pack PDF for P-174 is P-173's MEG paper; the 0.827 AUC belongs to Bae et al. (P-37's paper).",
+  "P-152 carries performance_suspect=false although its AD-vs-HC result (AUC 0.99, n=48, internal CV) meets the performance-validity exclusion.",
+  "P-152 registry Method_Architecture holds abstract spillover text.",
+  "The 'bridging evidence' list (including P-385 'AUC 0.970') names no condition separating the two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two papers: P-152 has no conversion result. A genuine candidate would need an MCI-conversion result from DTI or structural MRI in ADNI with a comparable horizon and an AUC interval excluding 0.827."
+}

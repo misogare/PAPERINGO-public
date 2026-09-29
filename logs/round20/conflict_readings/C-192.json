@@ -1,0 +1,77 @@
+{
+ "id": "C-192",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-360",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Brain Functional Networks with Dynamic Hypergraph Manifold Regularization for Classification of End-Stage Renal Disease Associated with Mild Cognitive Impairment (Xi et al.; CMES 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-55",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Abnormal postcentral gyrus voxel-mirrored homotopic connectivity as a biomarker of mild cognitive impairment: A resting-state fMRI and support vector machine analysis (Li et al.; Exp Gerontol 2024)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-360": "ESRD-associated MCI (n=51, mean age 50.05, MoCA 21.30) vs normal volunteers (n=39) from one Changzhou hospital; dynamic brain functional network (DHMR) edge weights, t-test feature selection (87 features), linear SVM, LOOCV: ACC 88.5670 +/- 0.3587%, SEN 80.79%, SPE 90.36%, AUC 0.9008 (Table 6). Window length, step, k and regularisation parameters were all tuned by LOOCV on the same sample.",
+  "P-55": "MCI (n=53, mean age 69.07) vs HCs (n=68) at Wuxi Mental Health Center; single feature (postcentral gyrus VMHC, the cluster found by the whole-sample group t-test), RBF SVM, leave-one-out: accuracy 63.64%, sensitivity 71.69%, specificity 89.71%, AUC 68.42%."
+ },
+ "quantity_a": "LOOCV accuracy of classifying end-stage-renal-disease patients with MCI versus healthy volunteers (middle-aged, mean ~50 y) from 87 dynamic functional-connectivity edge features.",
+ "quantity_b": "LOOCV accuracy of classifying community/memory-clinic older adults with MCI (mean ~69 y) versus healthy controls from one interhemispheric connectivity value (postcentral VMHC).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Two different feature sets (87 dynamic FC edges vs one VMHC value) each yield their own score; neither paper tests the other's method or claims an ordering the other refutes. P-360's own Table 6 shows static PC networks at 80.07%, so feature construction alone moves accuracy by many points.",
+ "gates": {
+  "task": "match in label only: both MCI vs controls (T1), but P-360's positive class is ESRD-associated MCI, a secondary cognitive impairment in dialysis patients, not the neurodegenerative MCI population of P-55. (The pack registry codes P-360 as T4.)",
+  "dataset_family": "mismatch: two separate single-centre Chinese cohorts (Changzhou Second People's Hospital vs Wuxi Mental Health Center); the record itself records dataset_equal 'No'. No waiver on record.",
+  "validation_tier": "match: both leave-one-out internal validation only (V1/V2 in the registry, but same design).",
+  "modality_family": "match: both resting-state fMRI."
+ },
+ "endpoint_and_metric": "same metric type (accuracy) but different population behind the 'MCI' label (ESRD-associated MCI, age ~50, vs older-adult MCI, age ~69) and different predictor sets.",
+ "performance_validity": "not triggered: neither accuracy is near ceiling. Both studies select features on the whole sample (P-360 tunes all hyper-parameters by LOOCV on the same subjects; P-55 selects the VMHC cluster by group t-test on all subjects), so both estimates are optimistic.",
+ "independence": "Distinct studies, distinct cohorts and authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The population behind the label differs: P-360 classifies end-stage renal disease patients with MCI against middle-aged volunteers, P-55 classifies older adults with MCI against age-matched controls.",
+  "The dataset-family gate fails (two unrelated single-centre cohorts) and no waiver is on record.",
+  "The predictor sets differ (87 dynamic FC edges vs a single VMHC value), so the accuracy gap confounds features with population and is not two estimates of one quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-360",
+   "page": 3,
+   "quote": "Fifty-one patients with ESRD who had been diagnosed with MCI (ESRDaMCI group) were included in the study."
+  },
+  {
+   "paper": "P-360",
+   "page": 4,
+   "quote": "Age (x +/- s]) 50.05 +/- 7.86 48.37 +/- 6.59"
+  },
+  {
+   "paper": "P-360",
+   "page": 12,
+   "quote": "The best ACC, SPE, and AUC are 88.5670% +/- 0.3587%, 90.3577% +/- 0.5461% and 0.9008 +/- 0.0011, respectively."
+  },
+  {
+   "paper": "P-55",
+   "page": 4,
+   "quote": "The remaining 53 MCI patients and 68 age-, sex- and education-matched HCs were included in the final analyses"
+  },
+  {
+   "paper": "P-55",
+   "page": 4,
+   "quote": "ultimately yielding respective accuracy, sensitivity, specificity, and AUC values of 63.64 %, 71.69 %, 89.71 %, and 68.42 %."
+  }
+ ],
+ "record_defects": [
+  "The record labels P-55's figure '63.64% (single feat.)' correctly, but treats P-360 as generic MCI; P-360's population is ESRD-associated MCI.",
+  "P-55's own numbers are internally inconsistent: an accuracy of 63.64% cannot lie below both sensitivity 71.69% and specificity 89.71%; the record carries the figure without noting this source defect.",
+  "resolution_status 'partially_resolved_candidate' rests on a list of third papers that merely report other accuracies; none shows a condition separating these two results.",
+  "Pack registry codes P-360 as T4 with Dataset 'not reported' while the record says task_equal 'Yes'."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing within these two papers: a comparable quantity would need the same population (non-renal MCI) and the same feature set evaluated in both cohorts."
+}

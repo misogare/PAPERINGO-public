@@ -1,0 +1,78 @@
+{
+ "id": "C-136",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-195",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Toward a Multimodal Computer-Aided Diagnostic Tool for Alzheimer's Disease Conversion (Pena et al., Front Neurosci 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-33",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Benchmarking parametric models of disease progression for early detection of cognitive decline (Platero and Bengoa, Comput Methods Programs Biomed 2026)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-195": "Attention/Inception 3D CNN on two T1 MRI sessions + 9 clinical variables (cross-sectional and longitudinal differences) + demographics, 669 ADNI MCI (440 sMCI/229 cMCI); session two for converters is the session at which AD conversion was diagnosed, so the task is DIAGNOSING the MCI->AD conversion point, not predicting it. 10-fold CV AUC 84.7 (best), clinical-only 80.6, MRI-only 79.",
+  "P-33": "Parametric disease progression models (Leaspy, RPDPM, GRACE) on neuropsychological scores only, 1163 ADNI participants (536 sCU, 114 pCU, 513 sMCI; MCI who progressed to dementia were EXCLUDED); AUC 0.96 is a per-visit Bayesian-KDE classifier of clinical status (CU vs MCI) from the disease progression score, i.e. the CU->MCI transition, on a 20% test set with 10 bootstrapped models."
+ },
+ "quantity_a": "AUC for classifying MCI patients as converted to AD (at the conversion session) vs stable MCI, from two MRI sessions plus clinical tests.",
+ "quantity_b": "AUC for classifying each visit's clinical status as CU vs MCI (the transition from cognitively unimpaired to MCI) from neuropsychological-score disease progression scores; no AD outcome at all.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable: the two AUCs concern different transitions (MCI->AD vs CU->MCI) and different classification targets, so there is no shared quantity on which they could conflict.",
+ "gates": {
+  "task": "mismatch: P-195 is MCI->AD conversion diagnosis; P-33 is CU vs MCI status and CU->MCI conversion (MCI->dementia progressors excluded). The record's 'task_equal: Yes' (both T2) is wrong for P-33",
+  "dataset_family": "match: both ADNI",
+  "validation_tier": "match: both internal (10-fold CV vs held-out test with bootstrapped models)",
+  "modality_family": "mismatch: P-195 structural MRI + clinical tests; P-33 neuropsychological tests only; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: both ROC-AUC, but P-195's endpoint is AD conversion among MCI, P-33's is CU vs MCI clinical status; the populations also differ (MCI only vs CU + sMCI with MCI-to-dementia progressors excluded)",
+ "performance_validity": "flag does not apply: 0.847 and 0.96 are below 0.97; and the pair is not a comparison of the same performance quantity",
+ "independence": "Distinct author groups; both ADNI (possible participant overlap).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-33's AUC 0.96 classifies cognitively unimpaired vs MCI status and models the CU->MCI transition, excluding MCI participants who progressed to dementia, so it is not an MCI->AD result at all.",
+  "P-195's AUC 84.7 classifies MCI converters vs stable MCI using an MRI session taken at the time AD conversion was diagnosed, so its endpoint is MCI->AD conversion diagnosis.",
+  "The two AUCs therefore describe different transitions and different populations, and cannot be set against each other."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-195",
+   "page": 3,
+   "quote": "The time points used for cMCI subjects were chosen by selecting the session when the subjects were diagnosed with AD (session two) and the previous session where the subjects were still not converted (session one)."
+  },
+  {
+   "paper": "P-195",
+   "page": 1,
+   "quote": "to identify the AD conversion point in MCI subjects with AUC = 84.7. In contrast, cognitive tests and demographics alone achieved AUC = 80.6"
+  },
+  {
+   "paper": "P-33",
+   "page": 2,
+   "quote": "MCI participants whose last visit indicated either reversion to CU or progression to dementia were excluded from the analysis to specifically characterize the transition from normal cognition to MCI."
+  },
+  {
+   "paper": "P-33",
+   "page": 5,
+   "quote": "3. Area Under the Curve (AUC) of the Bayesian-KDE classifier at each visit, based on clinical diagnoses."
+  },
+  {
+   "paper": "P-33",
+   "page": 1,
+   "quote": "Leaspy achieved the highest diagnostic accuracy with an AUC of 0.96 and strong correlation with observed conversion time (r = 0.78)."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-33: AUC 0.96 on T2' and the registry Task_Type T2 are wrong: P-33 models CU->MCI transition and CU-vs-MCI status, not MCI->AD conversion; MCI-to-dementia progressors were excluded.",
+  "task_equal 'Yes' is wrong for the same reason.",
+  "modality_family 'clinical_survey' with modality_family_equal 'Yes' contradicts the resolution_note's own 'Modality mismatch: P-195=structural_MRI vs P-33=clinical_survey'.",
+  "P-195 registry Best_Metric 'not reported' is wrong: AUC 84.7 (best), balanced accuracy 77.8.",
+  "P-195 is a conversion-DIAGNOSIS study (second MRI at the conversion session), which the T2 prediction label does not capture."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing on these sources: P-33 reports no MCI->AD discrimination at all."
+}

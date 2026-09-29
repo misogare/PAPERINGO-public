@@ -1,0 +1,41 @@
+{
+ "id": "VF-14",
+ "supporters": [
+  {
+   "paper": "P-103",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Across all cohorts, four of the five identified subphenotypes were highly consistent, whereas one subphenotype was more specific to individual cohorts, accounting for the variations observed between cohorts.",
+   "page": "10 (also p.9: 'the Kaplan-Meier curve demonstrated a significant difference in AD diagnosis rate among different subphenotypes (p value < 0.001)')",
+   "note": "Zhou et al. 2025, J Biomed Inform (dynaPhenoM). EHR diagnosis/medication/procedure codes, time-aware latent class analysis over the MCI-to-AD interval; development INSIGHT (2,579) with replication in OneFlorida+ (950) and UCSF (678). Population is patients who DID progress from MCI to AD (all converters), so the heterogeneity is in the progression pathway and timing among converters, not converter versus non-converter. Subphenotypes are organ-system comorbidity profiles (respiratory, musculoskeletal, cardiovascular, endocrine/metabolic common; digestive, mental, sensory cohort-specific), not cognitive trajectories. Only supporter with explicit cross-cohort replication."
+  },
+  {
+   "paper": "P-74",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "Cluster 1 mean trajectory of cognitive performance appeared relatively stable while Cluster 2 subjects showed a pattern of worsening over time. ... the validation of clustering-derived groups of cognitive trajectories is challenging in the absence of ground truth. Therefore, to ensure that our cognitive clusters are biologically meaningful, the external validation using independent datasets is essential.",
+   "page": "4 (clusters); 7 (limitation)",
+   "note": "Bucholc et al. 2023, Expert Syst Appl. NACC MCI, n=768 (3 visits) and n=409 (4 visits, a subset of the same pool). Frechet-distance trajectory clustering gives 2 classes (stable vs declining) per test, 3 for WAIS; the classes are per-instrument input features that raise supervised accuracy by 3-6.5 points (p<0.05), not patient-level progression subphenotypes. No reproducibility test: Model 1 and Model 2 proportions are 'comparable' but drawn from overlapping NACC data, and the authors themselves say external validation is still needed. Supports heterogeneity (stable versus declining trajectories) but not 'reproducible subphenotypes'."
+  },
+  {
+   "paper": "P-941",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "In total, 21%, 22%, and 57% of participants (N = 830) experienced fast, slow, and no progression on CDR-SB, respectively; for FAQ, these figures were 14%, 23%, and 64%, respectively. CDR-SB and FAQ class membership was concordant for most participants (77%).",
+   "page": "1 (abstract); p.8 for concordance detail (N = 515; CDR-SB vs MMSE concordance 56%)",
+   "note": "Mouchet et al. 2021, J Alzheimers Dis (Roche-funded). NACC incident MCI with clinical AD etiology, growth mixture models on CDR-SB/FAQ/MMSE, mean follow-up 3.6 y. Longitudinal latent progression-rate classes exist; reproducibility is cross-instrument within one cohort (77% CDR-SB/FAQ, only 56% CDR-SB/MMSE) and consistency with prior three-class literature, not replication in an independent cohort. Authors note GMM is exploratory and 'may identify extraneous latent classes' (p.13). Classes are rate classes (fast/slow/none), not qualitatively distinct phenotypes."
+  },
+  {
+   "paper": "P-947",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "MCI subgroups with distinctive cognitive profiles and risk of progression emerged from cluster analysis. ... HR estimates for MCI 2 and 3 compared to MCI 1 are 2.57 (95% confidence interval [CI: 1.59-4.20]), and 3.84 (95% CI [2.33-6.30]), respectively. Significantly higher HR results for MCI subgroup 4 ... around 7.7 (95% CI [4.32-13.70]).",
+   "page": "1 (abstract); 6 (Cox HRs)",
+   "note": "Giraldo et al. 2021, Alzheimers Dement DADM. ADNI only, evaluation MCI n=408. Subgroups come from PAM clustering on six CFA composite scores measured at a SINGLE (first complete) visit, so they are baseline cognitive-profile subgroups with different progression risk, not longitudinal subphenotypes; the authors list 'longitudinal evaluation of scores to delineate the paths of impairment progression' as future work and state generalisation beyond ADNI was not tested. Reproducibility limited to bootstrap cluster stability (CSI 0.85-0.97) and agreement with earlier ADNI clustering work. The AUC 0.68-0.76 vs 0.63-0.69 figures cited in the ledger concern the composite scores as classifier inputs, not the subgroups."
+  }
+ ],
+ "yes_count": 2,
+ "verdict": "holds_narrowed",
+ "narrowed_wording": "MCI-to-AD progression is heterogeneous: in four studies across three data sources (US EHR networks, NACC, ADNI), data-driven clustering or latent-class methods separate patients into subgroups that differ in progression rate or risk. Replication of the subgroups in independent cohorts is shown by one study (P-103, EHR comorbidity subphenotypes among converters); the others show within-cohort structure only.",
+ "reasoning": "Two supporters answer yes to the statement as the review words it. P-103 derives longitudinal subphenotypes and replicates four of five in two independent EHR cohorts. P-941 derives longitudinal fast/slow/no-progression classes, with cross-instrument concordance as its only reproducibility evidence. P-74 shows stable versus declining trajectory classes per test but never tests reproducibility and asks for external validation itself. P-947 clusters baseline, not longitudinal, profiles and is ADNI-only. With only two full yes answers, the stated form ('reproducible longitudinal subphenotypes') does not meet the three-supporter bar. All four do support a narrower claim: MCI progression is heterogeneous, and data-driven stratification yields subgroups that differ in progression rate or hazard. That narrower claim spans three data sources (EHR, NACC twice, ADNI) and at least three method families (topic model plus time-aware LCA; trajectory clustering and GMM; CFA plus PAM clustering). P-74 and P-941 both draw on NACC UDS, so they are not fully independent datasets. 'Subphenotype' also means different things across studies (comorbidity organ-system profiles, rate classes, cognitive-domain profiles), so the review should not imply that the same subtypes recur."
+}

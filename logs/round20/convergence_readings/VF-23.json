@@ -1,0 +1,41 @@
+{
+ "id": "VF-23",
+ "supporters": [
+  {
+   "paper": "P-553",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "The results revealed no significant difference in EEG spectral power between the HC and MCI groups. However, we observed significant changes in brain complexity and networks in individuals with MCI compared with HC. Patients with MCI exhibited lower complexity in the middle temporal lobe, lower global efficiency in theta and alpha bands, higher local efficiency in the beta band, lower nodal efficiency in the frontal theta band, and less small-world network topology compared to the HC group.",
+   "page": "1 (abstract); results p.7 ('no significant differences were found between the HC and MCI groups in any of the frequency bands and channels after FDR correction'); discussion p.12",
+   "note": "Kim et al. 2023, Front Psychiatry, Hanyang University memory clinic, Korea, 19-channel eyes-closed rsEEG, 12 MCI vs 13 HC. Group-difference tests only (Wilcoxon), no classifier, so 'outperform' rests on significant versus non-significant group differences. Methods p.7 state FDR was applied to PSD, complexity, connectivity and nodal efficiency 'excluding network efficiency and small world', while figure captions for Figs 5 and 7 say FDR-corrected: the correction status of the global/local efficiency and small-world results is internally inconsistent. Complexity result is one channel (C4) at one scale; permutation entropy null. Global-efficiency differences hold only in narrow sparsity windows (e.g. alpha 18-20%, gamma 10-11%). Authors flag low power. The only supporter that tests band power and network measures in the same sample."
+  },
+  {
+   "paper": "P-501",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "We conducted multiscale analysis on time-varying brain functional connectivity and developed an innovative soft discrimination model ... The leave-one-out cross-validation accuracy is 91.97% and 3-fold accuracy is 91.17%.",
+   "page": "1 (abstract); pp.4-8 (methods, results, feature recapitulation)",
+   "note": "Deng et al. 2024, Alzheimers Dement, 137 community-dwelling Black Americans (84 HC, 53 MCI), Detroit/MADRC, 64-channel rsEEG. Searched the full text for any spectral band-power comparator: none is computed or reported. The paper also does not compare against a static single-window connectivity model; it only notes that no voters were selected from window sizes 25 or 3200 (p.8). Feature selection by t-test on all 137 participants before cross-validation (p.4-5), so accuracy is optimistic. Shows connectivity-dynamics features discriminate MCI; says nothing about superiority over spectral power."
+  },
+  {
+   "paper": "P-463",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "We found that MCI and AD alter the neural network topology, leading to connectivity patterns both more widespread in the frequency spectrum and heterogeneous ... The study highlights the relevance of considering the impact of neural pathologies on the frequency-dependent connectivity structure and the potential bias introduced by using fixed frequency bands in MEG studies.",
+   "page": "1 (abstract); results pp.5-7",
+   "note": "Rodriguez-Gonzalez et al. 2024, BSPC, 161 participants (67 HC, 44 MCI, 50 AD), resting MEG from two Japanese hospitals, source-level AEC connectivity. Searched for spectral power as a comparator: none reported. HC-MCI differences are limited to TA for meta-band-1 matrices and the standard deviation of DoD; mean AS, mean DoD, SR and BLZC separate only HC from AD. The critique of 'fixed frequency bands' concerns band segmentation for connectivity, not band-power features. No classification. Does not support the comparative claim."
+  },
+  {
+   "paper": "P-480",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "We found that the salient differences were in the temporal structure of the microstates patterns, with MCI being associated with less complex sequences due to the altered transition probability, frequency and duration of canonic microstate C. Spectral content of EEG, network connectivity, and spatial arrangement of microstates were instead largely similar in the three groups.",
+   "page": "1 (abstract); results pp.6-7; discussion pp.10-11",
+   "note": "Lassi et al. 2023, NeuroImage Clin, PREVIEW cohort Florence, 57 SCD, 46 MCI, 19 HC, 64-channel rsEEG. Supports only a narrower form: microstate temporal dynamics (Lempel-Ziv complexity, Hurst exponent, microstate C duration) separated groups better than spectral power. It contradicts the network/connectivity part of the statement: average strength, clustering, path length were null and small-worldness differed only in delta and only SCD vs MCI (not MCI vs HC), which the authors call 'sub-optimal for decoding'. Spectral power was not wholly null: delta relative power ANOVA p=0.041 and left-central delta MCI vs HC post-hoc p=0.047. Main contrast is SCD vs MCI; groups not age-matched (HC 64, MCI 74 years)."
+  }
+ ],
+ "yes_count": 1,
+ "verdict": "fails",
+ "narrowed_wording": "",
+ "reasoning": "Only P-553 reports, within one sample, null band power alongside significant complexity and network differences, and that sample is 25 people with group tests only and an internally inconsistent statement about whether the network-efficiency and small-world results were FDR-corrected. P-501 and P-463 never compute spectral power, so they cannot show that network measures outperform it; they show only that connectivity-based measures differ between or classify MCI and controls. P-480 supports a narrower form (microstate temporal dynamics beat spectral power) but reports network and connectivity metrics as largely null, which runs against the network half of the statement. That leaves one yes and one partial that does not sustain the network/connectivity claim, below the threshold of three. The Table A1 qualifier already admits that only one supporter makes the within-study comparison; checked against the source documents, the other three do not make it either, even indirectly. A defensible restatement would be descriptive rather than comparative, for example: 'Four single-site EEG/MEG studies report connectivity, network or dynamic (microstate) measures that separate MCI from controls or SCD; only one small study compared them directly with band power.' That is a different statement and would need its own ledger review."
+}

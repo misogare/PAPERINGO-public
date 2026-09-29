@@ -1,0 +1,95 @@
+{
+ "id": "C-244",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-955",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Diagnosing Mild Cognitive Impairment Among Racially Diverse Older Adults: Comparison of Consensus, Actuarial, and Statistical Methods (Devlin et al., J Alzheimers Dis 2022; 85(2): 627-644; PMC author manuscript)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-1084",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Data-driven classification of cognitively normal and mild cognitive impairment subtypes predicts progression in the NACC dataset (Edmonds et al., Alzheimer's Dement. 2024;20:3442-3454)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-955": "354 Penn ADRC participants (consensus NC or MCI at baseline; 68% White, 29% Black); 14 tests in 6 domains, z-scores from published norms adjusted for age, education, gender. MCI rates: consensus 44%, actuarial Jak/Bondi (>1 SD on 2 tests in a domain) 53%, 5-class latent class analysis on domain scores 41% (44% with race-adjusted norms). Consensus-LCA concordance 90% (kappa 0.80); actuarial-consensus kappa 0.68; actuarial-LCA 0.70. Consensus predicted outcomes best overall (dementia HR 29.33 vs actuarial 13.54 vs LCA 9.49).",
+  "P-1084": "26,255 non-demented NACC UDS participants from 46 ADRCs; Ward hierarchical cluster analysis of UDS memory, attention, TMT and language z-scores derived from a 'robust CN' NACC subsample (n = 9742). Five clusters; cluster-derived MCI 58.8% of the sample vs consensus MCI 32.4% (plus 6.6% impaired-not-MCI). 84.2% of consensus MCI fell in cluster MCI groups; 44.5% of consensus 'normal cognition' fell in cluster MCI groups. Of progressors to dementia, 80.3% were cluster-MCI at baseline vs 68.2% consensus-MCI."
+ },
+ "quantity_a": "Share of a single-ADRC memory-centre sample (consensus NC/MCI, 44% consensus MCI) classified as MCI by a 5-class LCA on 6 domain z-scores using published demographic norms, relative to consensus.",
+ "quantity_b": "Share of the multi-site NACC non-demented sample (32.4% consensus MCI) classified as MCI by Ward hierarchical clustering on UDS test z-scores normed on a 'robust CN' subsample, relative to consensus.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. A data-driven partition's MCI rate is a property of the specific procedure (algorithm, battery, normative reference, number of classes) and of the sample's case mix; 41% vs 44% in one frame and 58.8% vs 32.4% in another can both be true. P-1084's own discussion cites P-955's result (reference 23) and attributes the difference to robust-CN norms and single-ADRC vs NACC samples, presenting both findings as true.",
+ "gates": {
+  "task": "mismatch: T6 diagnostic-method comparison vs T2 progression (both also compare data-driven vs consensus classification).",
+  "dataset_family": "overlapping: both are NIA ADRC data using the NACC UDS; the Penn ADRC (P30 AG072979, PI David Wolk, a P-955 co-author) is listed among the NACC-contributing centres in P-1084, so P-955's participants are plausibly inside P-1084's sample.",
+  "validation_tier": "n/a: descriptive classification comparisons without a trained predictive model (counted as matched).",
+  "modality_family": "match: neuropsychological test scores only."
+ },
+ "endpoint_and_metric": "incompatible: different classification procedures (LCA with probabilistic classes on domain means vs Ward clustering on test z-scores), different normative references (published age/education/sex norms vs NACC robust-CN regression norms), different batteries (14 tests incl. CERAD vs UDS subset), and different base rates of consensus MCI (44% vs 32.4%).",
+ "performance_validity": "not a performance comparison.",
+ "independence": "Not independent in data: Penn ADRC contributes to NACC (listed in P-1084's acknowledgments), and P-955 participants completed the NACC UDS. Authorship distinct; P-1084's senior author (Bondi) co-developed the actuarial criteria that P-955 evaluates.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two MCI rates come from different data-driven procedures (5-class LCA on domain means with published norms vs Ward hierarchical clustering on test z-scores with robust-CN norms), so 'data-driven vs consensus' names two different quantities.",
+  "P-1084 explicitly discusses P-955's 90% concordance finding and attributes the difference to its robust normative sample and the larger multi-site frame, i.e. the authors present both results as true of their own procedures.",
+  "The sampling frames differ in consensus-MCI base rate (44% in P-955 vs 32.4% in P-1084) and P-1084 attributes its excess MCI to consensus diagnoses tracking CDR and requiring subjective complaints.",
+  "The dataset family overlaps (Penn ADRC contributes to NACC), so the pair also fails the independence requirement for a genuine contradiction."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-955",
+   "page": 1,
+   "quote": "MCI rates by consensus, actuarial criteria, and LCA were 44%, 53%, and 41%, respectively."
+  },
+  {
+   "paper": "P-955",
+   "page": 9,
+   "quote": "Consensus and LCA diagnoses of MCI demonstrated substantial agreement, with concordant diagnoses for 90% of cases."
+  },
+  {
+   "paper": "P-955",
+   "page": 5,
+   "quote": "All participants completed the Uniform Data Set prescribed by the National Alzheimer's Coordinating Center and additional cognitive tests."
+  },
+  {
+   "paper": "P-1084",
+   "page": 7,
+   "quote": "Overall, the cluster analysis classified a greater number of individuals as having MCI (58.8% of the sample) than did the consensus method (32.4% of the sample with MCI, plus another 6.6% impaired-not-MCI)."
+  },
+  {
+   "paper": "P-1084",
+   "page": 11,
+   "quote": "The current finding of a discrepancy between the cluster-derived classifications and consensus diagnoses differs from a previous study23 that found 90% concordance between statistically-determined MCI diagnoses from a latent profile analysis and consensus diagnoses."
+  },
+  {
+   "paper": "P-1084",
+   "page": 11,
+   "quote": "While both studies leveraged demographically-adjusted neuropsychological z scores, only the current study derived z scores from the performance of robust cognitively normal participants."
+  },
+  {
+   "paper": "P-1084",
+   "page": 3,
+   "quote": "Cluster analysis of baseline neuropsychological data was conducted by entering z scores into a hierarchical cluster analysis using the Ward method"
+  },
+  {
+   "paper": "P-1084",
+   "page": 11,
+   "quote": "P30 AG072979 (PI David Wolk, MD)"
+  }
+ ],
+ "record_defects": [
+  "claim_b and the conflict_statement say P-1084 supplies 'NO count' for its direction claim; the PDF gives 58.8% cluster-MCI vs 32.4% consensus-MCI (plus 6.6% impaired-not-MCI) and a full cross-tabulation (Table 2).",
+  "The record calls P-1084's method 'agnes' hierarchical clustering; the PDF states hierarchical cluster analysis using the Ward method and never names agnes.",
+  "The resolution_note Best_Metric string for P-955 ('actuarial-consensus 0.72, consensus-LCA 0.68') is wrong: primary kappas are consensus-LCA 0.80, actuarial-consensus 0.68, actuarial-LCA 0.70 (race-adjusted 0.79, 0.72, 0.75).",
+  "The record treats Penn-inside-NACC as structural inference; P-1084's acknowledgments list the Penn ADRC grant (P30 AG072979, PI David Wolk, a P-955 co-author) and P-955 states its participants completed the NACC UDS, so the overlap is documented, though exact participant overlap is not quantified.",
+  "The record omits that P-1084 itself cites P-955 and explains the difference (robust norms, single ADRC vs NACC), which is the key fact for the verdict.",
+  "P-1084 describes P-955's method as 'latent profile analysis'; P-955 used latent class analysis. Minor, in P-1084 not the record."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A study applying the same data-driven procedure and normative reference in two comparable samples and obtaining opposite departures from consensus; the two documents here use different procedures, norms and frames, and one cites and reconciles the other."
+}

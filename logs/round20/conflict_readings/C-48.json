@@ -1,0 +1,79 @@
+{
+ "id": "C-48",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack text pdf/P-117.txt is 'Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging' (Rallabandi & Seetharaman, BSPC 80 (2023) 104312), NOT the paper the record means. The record's '99.81% Acc' belongs to Aljalal et al., 'Mild cognitive impairment detection with optimally selected EEG channels based on variational mode decomposition and supervised machine learning', BSPC 87 (2024) 105462, PDF in the repository at downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809423008959-main.pdf. Both read in full.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-6",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Linguistic-based Mild Cognitive Impairment detection using Informative Loss (Pourramezan Fard et al., Computers in Biology and Medicine 176 (2024) 108606)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "Resting-state 19-channel EEG, 61 participants (29 aMCI/32 HC, public Isfahan Noor Hospital datasets), VMD + entropy features, 10-fold CV over 3660 ten-second segment feature vectors; binary MCI vs HC accuracy 99.51% (all channels) and 99.81% (11 NSGA-II channels, ensemble KNN).",
+  "P-6": "Transformer (sentence embedding + sentence cross-attention, InfoLoss) on ASR transcripts of I-CONECT video-chat interviews, 68 subjects, subject-level 5-fold CV with balanced test folds; binary MCI vs NC subject-level accuracy 85.16% (sd 5.76), AUC 84.75% (sd 5.97); sequence-level accuracy 72.45%."
+ },
+ "quantity_a": "Segment-level 10-fold CV accuracy, binary MCI vs HC, resting-state EEG, 61 Iranian participants",
+ "quantity_b": "Subject-level 5-fold CV accuracy, binary MCI vs NC, linguistic features from conversational transcripts, 68 US I-CONECT participants",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Both are binary MCI-vs-normal accuracies, but they are single cross-validated scores from unrelated methods on unrelated inputs; neither paper claims an ordering the other refutes, and P-6 reports fold variability (sd 5.76) that P-117's segment-level figure is not comparable with.",
+ "gates": {
+  "task": "match: binary MCI vs cognitively normal (T1)",
+  "dataset_family": "mismatch: Isfahan Noor Hospital public EEG datasets vs I-CONECT trial (US); record's dataset_equal='Yes' is wrong",
+  "validation_tier": "match in tier (internal CV, no external cohort) but different units: EEG segments (subjects likely spread across folds) vs subject-level folds",
+  "modality_family": "mismatch: EEG vs speech/language transcripts; no waiver on record"
+ },
+ "endpoint_and_metric": "same metric type (accuracy, MCI vs normal) but segment-level vs subject-level evaluation and different MCI definitions (Petersen/MMSE 21-26 amnestic MCI vs I-CONECT MCI/NC classification)",
+ "performance_validity": "flag applies to P-117 on the source: 99.81% from internal 10-fold CV over segments of 61 participants, no external cohort. The earlier resolution note already rejected on this ground, and the PDF confirms it; the pack's performance_suspect=false reflects only the registry's Best_Metric 'not reported'. A performance comparison resting on P-117 cannot be genuine.",
+ "independence": "Independent: different groups (King Saud University/NTNU vs University of Denver/MGH), different cohorts and modalities.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "Task and metric type match (binary MCI vs normal accuracy), but the modality family (EEG vs conversational language) and dataset family (Isfahan EEG vs I-CONECT) gates fail with no waiver.",
+  "The evaluation units differ: P-117's accuracy is over 10-second EEG segments, P-6's over subjects in subject-level folds.",
+  "P-117 meets the performance-validity exclusion on its own PDF, so a performance conflict resting on it cannot be genuine.",
+  "The pack PDF for P-117 is the wrong paper; the verdict uses the correct P-117 PDF found in the repository."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method. (correct PDF S1746809423008959)"
+  },
+  {
+   "paper": "P-117",
+   "page": 3,
+   "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases. (correct PDF)"
+  },
+  {
+   "paper": "P-117",
+   "page": 9,
+   "quote": "divided into 3660 segments (1740 segments from MCI cases and 1860 from HC cases) (correct PDF)"
+  },
+  {
+   "paper": "P-6",
+   "page": 7,
+   "quote": "Since the number of available subjects in the I-CONECT dataset is 68, we assess the performance of our framework using the K-fold validation technique."
+  },
+  {
+   "paper": "P-6",
+   "page": 7,
+   "quote": "the framework achieves an overall accuracy of 85.16% and an AUC of 84.75%, with the corresponding std of 5.76 and 5.97, respectively."
+  }
+ ],
+ "record_defects": [
+  "The pack/paper_pdf_map entry for P-117 ('formula-unverified') points to the wrong PDF (S1746809422007662, MRI-PET fusion); the correct P-117 PDF is S1746809423008959.",
+  "dataset_equal='Yes' is wrong (Isfahan EEG datasets vs I-CONECT).",
+  "The bridging-evidence list (P-360, P-322, P-324, P-387 'Left P100 latency') does not bear on this pair.",
+  "C-50 is an exact duplicate of this record (same pair after the P-11 -> P-6 repoint).",
+  "Registry row (not the record): P-6 Sample_N_Approx 151 disagrees with the PDF's 68 analysed subjects."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these documents; the two share only the task label."
+}

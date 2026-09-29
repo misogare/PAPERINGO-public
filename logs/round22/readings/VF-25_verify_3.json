@@ -1,0 +1,137 @@
+{
+ "vf": "VF-25",
+ "role": "verifier 3 (current supporters, against the reworded statement)",
+ "date": "2026-09-29",
+ "status": "candidate / pending_human_review (model reading; not a gate decision)",
+ "statement_tested": "VF-25 (reworded, BRIEF_R22.md): Loading the system reveals MCI where the unloaded or static counterpart does not. Within the same study, a measure taken under a more demanding condition (for example dual-task or curved-path walking, peripheral-attention reaction time, or task-evoked responses), or a microstructural index of a structure (for example diffusion measures), separates MCI from a non-impaired comparator. The same measure under the simpler condition, or the corresponding volume, does not.",
+ "summary": "Yes: P-651, P-665, P-687. But P-665 and P-687 are one Guangzhou sample, so the three yes answers are two independent dataset families (Chongqing CSVD; Guangzhou Sun Yat-sen) and two method families (NODDI diffusion vs subfield volume; single- vs dual-task TUG). No: P-661 (no non-impaired comparator), P-662 (the simpler condition also separates where per-condition tests are reported), P-666 (no volume or simpler-condition measure analysed). Page numbers are the '=== page N ===' markers of the cached source texts (PDF pages).",
+ "results": [
+  {
+   "paper": "P-651",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "supports_reworded": "yes",
+   "loaded_measure": "NODDI isotropic free-water fraction (FISO) of FreeSurfer hippocampal subfields, chiefly left CA1-3 (also left subiculum): a microstructural index of the structure",
+   "simpler_or_static_measure": "FreeSurfer hippocampal subfield volume normalised by intracranial volume (the corresponding volume of the same subfields)",
+   "comparator": "CSVD without cognitive impairment (CSVD-NCI, n = 54: no complaints, CDR 0, MMSE >= 27). The study also has a healthy-control arm (n = 57), and against that arm the volume does separate (see caveats)",
+   "dataset_family": "Chongqing CSVD single-centre clinical cohort (First Affiliated Hospital of Chongqing Medical University; MRI Oct 2023 - May 2024; N = 169: 58 CSVD-MCI / 54 CSVD-NCI / 57 HC)",
+   "method_family": "Multi-shell diffusion MRI with NODDI (AMICO) of FreeSurfer hippocampal subfields, compared with FreeSurfer subfield volumetry",
+   "same_sample_or_cohort_as": [],
+   "quotes": [
+    {"page": 7, "quote": "When comparing the MCI with the NCI, we did not observe significant differences in hippocampal volume, but significant changes were found in the FISO and NDI metrics in the left CA1–3 region."},
+    {"page": 4, "quote": "The FISO indicator demonstrated the most pronounced group differences, with CSVD-MCI patients consistently showing significantly higher values compared to CSVD-NC and healthy controls, particularly in the left hemisphere subiculum (0.34 ± 0.11 vs. 0.30 ± 0.11 and 0.29 ± 0.08, F = 4.521, P = 0.012, PFDR = 0.028) and CA1–3 region (0.36 ± 0.10 vs. 0.32 ± 0.07 and 0.31 ± 0.06, F = 6.898, P = 0.001, PFDR = 0.005)."},
+    {"page": 5, "quote": "In the left hemisphere, subiculum showed significant group differences (F = 4.445, P = 0.013, PFDR = 0.02836), while CA1–3 and CA4-DG regions exhibited highly significant variations (CA1–3: F = 9.953, P < 0.001, PFDR = 0.00480; CA4-DG: F = 9.368, P < 0.001, PFDR = 0.00480). The right hemisphere mirrored these findings, with comparable significant differences observed across subiculum, CA1–3, and CA4-DG regions, predominantly between patient groups and healthy controls (Supplementary Material 2 Table 8)."},
+    {"page": 4, "quote": "NDI measurements showed more limited variations, with only the left hemisphere CA1–3 region demonstrating marginally significant differences (F = 3.178, P = 0.044, PFDR = 0.066)."},
+    {"page": 1, "quote": "Notably, FISO metrics demonstrated more pronounced differences during early cognitive decline stages compared to volumetric analyses."},
+    {"page": 5, "quote": "Table 1: Fazekas scale WMH (N,%) 7.202 0.027* ... Mild (0–2) 13 (22.41) 25 (46.30)"}
+   ],
+   "why": "The study runs the head-to-head itself, in the same participants, against a non-impaired comparator and for the same structure. Loaded side: left CA1-3 FISO is higher in CSVD-MCI than in CSVD-NCI and in HC (0.36 +/- 0.10 vs 0.32 +/- 0.07 vs 0.31 +/- 0.06; omnibus F = 6.898, PFDR = 0.005; the authors state that MCI is significantly higher than both groups). Static side: 'When comparing the MCI with the NCI, we did not observe significant differences in hippocampal volume'. Both halves are the study's own statistics (ANCOVA adjusted for age and education, FDR, Tukey post hoc). This meets the reworded rule for the microstructural-versus-volume limb: MCI against CSVD-NCI.",
+   "caveats": "(1) The dissociation depends on the comparator. Against the healthy-control arm, subfield volume also separates the groups (left CA1-3 volume F = 9.953, PFDR = 0.0048, differences 'predominantly between patient groups and healthy controls'). So the loaded measure outperforms the volume only against the disease-matched CSVD-NCI group, not against HC. A stricter reading of 'a non-impaired comparator' would make this partly. (2) The pairwise MCI-vs-NCI statistics for both FISO and volume are only in Supplementary Material 2, which is not in the source text. The main text gives three-group F tests and verbal post hoc statements. (3) The NDI half of the Section 4.3 sentence is not borne out by the main text: left CA1-3 NDI PFDR = 0.066, and NDI was higher in MCI. FISO is the only loaded index that holds up. (4) The MCI arm carried more white-matter-hyperintensity burden than the NCI arm (Fazekas p = 0.027), and the ANCOVA adjusts only for age and education, so the free-water difference may track vascular burden. (5) The authors themselves flag CSF partial-volume contamination of FISO at 2 mm slice thickness. (6) The paper is internally inconsistent on MMSE: the CSVD-MCI mean is 27.86 +/- 2.15, although the inclusion criteria required MMSE 24-26, and MMSE did not differ across groups (p = 0.089). (7) The result concerns sensitivity only, with no AUC. The study is single-centre and cross-sectional."
+  },
+  {
+   "paper": "P-665",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "supports_reworded": "yes",
+   "loaded_measure": "Dual-task Timed Up and Go execution time (walking back while dialling a phone number; total time to finish dialling and sit) and dual-task cost (DTC)",
+   "simpler_or_static_measure": "Single-task Timed Up and Go execution time (same test without the cognitive task)",
+   "comparator": "30 healthy controls (age, BMI and education not different; sex 7/23 vs 4/26)",
+   "dataset_family": "Guangzhou single-centre sample, Department of Rehabilitation Medicine, First Affiliated Hospital of Sun Yat-sen University (Oct 2021 - Sep 2022; 30 MCI / 30 HC; ethics [2021] 475-1). The same sample as P-687",
+   "method_family": "Stopwatch-timed single- vs dual-task TUG (loaded gait), plus FreeSurfer surface morphometry, which is not part of this support",
+   "same_sample_or_cohort_as": ["P-687"],
+   "quotes": [
+    {"page": 4, "quote": "There was no significant difference in the execution time of single- task TUG test between the MCI and HC groups (p> 0.05), while a significant difference in the execution time of the dual-task paradigm was observed (T= −2.58, p= 0.012). The DTC was also increased in MCI group (T= −2.55, p= 0.014; Table 3). No between-group difference in accuracy under the dual-task condition was observed (70.00 % vs. 86.67 %, chi-square 2.455, p>0.05)"},
+    {"page": 4, "quote": "Table 3 (HC, MCI, Z/T, p): ST-TUG 17.60±2.89 17.29±2.34 0.47 0.64; DT-TUG 24.92±4.42 29.23±8.02 −2.58 0.012*; DTC 0.45±0.35 0.70±0.42 −2.55 0.014*"},
+    {"page": 3, "quote": "The total time (seconds), taken to complete the entire task (finishing dialing and sitting back on the chair) was recorded."},
+    {"page": 2, "quote": "This study was approved by the Clinical Research and Laboratory Animal Ethics Committee of the First Affiliated Hospital of Sun Yat-sen University (Grant No. [2021] 475–1)."}
+   ],
+   "why": "This is a marker-by-marker dissociation on the same marker (TUG execution time) under a simpler and a more demanding condition, in the same 60 participants, against healthy controls, tested with the same statistic (independent t-tests). Single-task TUG does not separate the groups: MCI 17.29 +/- 2.34 s vs HC 17.60 +/- 2.89 s, T = 0.47, p = 0.64. Dual-task TUG does: 29.23 +/- 8.02 vs 24.92 +/- 4.42 s, T = -2.58, p = 0.012. So does dual-task cost: 0.70 vs 0.45, T = -2.55, p = 0.014. This is the dual-task example the reworded statement names.",
+   "caveats": "(1) SAME SAMPLE AS P-687: identical demographics (age 60.50 +/- 6.66 vs 58.13 +/- 6.50, t -1.393, p 0.169), identical TUG values and statistics, the same ethics approval [2021] 475-1 and overlapping authors (Cheng X, Yu Q, Zheng Y, Zheng J, Lo WLA, Wang C, Zhang S). The dual-task dissociation counts once. (2) The dual-task time includes the time to finish dialling, so part of the loaded measure is the cognitive task itself. Dialling accuracy was 70.0% vs 86.7% (chi2 2.455, p > 0.05): not significant, but a 17-point gap in a small sample. (3) There is no formal group-by-condition interaction test, only two separate t-tests. (4) The sample is small (30/30, powered at 75%), timing was by stopwatch, and no assessor blinding is reported. (5) The imaging half does not bear on this: surface area separates while thickness does not, which is a static-versus-static contrast. (6) The modified Posner peripheral-cuing IOR onset time separated the groups (Z = -2.32, p = 0.02), but the study tested no simpler-condition counterpart, so it adds no dissociation. (7) The method family is shared with round-21 candidate P-604 (single- vs dual-task gait) and broadly with P-1082 (curved walking)."
+  },
+  {
+   "paper": "P-687",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "supports_reworded": "yes",
+   "loaded_measure": "Dual-task Timed Up and Go execution time (walking back while dialling an 11-digit number; total time to finish dialling and sit)",
+   "simpler_or_static_measure": "Single-task Timed Up and Go execution time",
+   "comparator": "30 healthy controls (sex, age, BMI and education not different)",
+   "dataset_family": "Guangzhou single-centre sample, First Affiliated Hospital of Sun Yat-sen University (ethics [2021]475-1; ChiCTR2300069771). The same 60 participants as P-665",
+   "method_family": "Single- vs dual-task TUG (loaded gait), plus CAT12 voxel-based morphometry, which is not part of this support",
+   "same_sample_or_cohort_as": ["P-665"],
+   "quotes": [
+    {"page": 4, "quote": "There was no significant difference in the single task execution time between the MCI and HC groups (MCI: 17.29 ± 2.34 s, HC: 17.60 ± 2.89 s, t = 0.47, p = 0.643). However, a significant difference in the execution time of the dual-task paradigm was observed between the two groups (MCI: 29.23 ± 8.02 s, HC: 24.92 ± 4.42 s, t = −2.58, p = 0.012)."},
+    {"page": 4, "quote": "The volume of the brain parenchyma (MCI: 1036.44 ± 89.30 cm3, HC: 1087.92 ± 98.90 cm3, t = 2.12, p = 0.039) and gray matter (MCI: 569.98 ± 45.62 cm3, HC: 597.03 ± 52.81 cm3, t = 2.12, p = 0.038) was significantly different"},
+    {"page": 3, "quote": "The total time taken to complete the entire task (finishing dialing and sitting back on the chair) was recorded."},
+    {"page": 2, "quote": "This study was approved by the Ethics Committee of the First Affiliated Hospital of Sun Yat-sen University (No. [2021]475–1)"},
+    {"page": 3, "quote": "Table 1 ... Age (years) 60.50 ± 6.66 58.13 ± 6.50 −1.393 0.169"}
+   ],
+   "why": "This is the same dissociation, with the same numbers, as P-665. Single-task TUG does not separate the groups (t = 0.47, p = 0.643), and dual-task TUG does (t = -2.58, p = 0.012), in the same participants against healthy controls. It supports the statement on its own terms but adds no independent support, because it re-reports the P-665 sample.",
+   "caveats": "(1) NOT INDEPENDENT OF P-665: identical group sizes, sex split (4/26 vs 7/23), age, BMI, education, MoCA medians and TUG values, the same ethics approval and the same department. One sample reported in two papers. (2) The same limit as P-665 applies: the dual-task time includes the dialling, and dialling accuracy was 70.00% vs 86.67% (chi2 = 2.46, p = 0.117). (3) Whole grey-matter volume (p = 0.038) and parenchymal volume (p = 0.039) did separate MCI from HC. That is a static structural measure separating the groups, but it is not the counterpart of the dual-task measure (single-task TUG is), so under the rules it is context, not a disqualifier. (4) The appended corrigendum (Hum Mov Sci 97:103275, source PDF p.11) changes only the authorship notes and a duplicated reference, not the data. (5) The registry codes P-687 as case_control and P-665 as cross_sectional. It is the same design."
+  },
+  {
+   "paper": "P-661",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "supports_reworded": "no",
+   "loaded_measure": "Task-evoked theta event-related synchronisation (central cluster, Go trials) during a semantic Go/NoGo task",
+   "simpler_or_static_measure": "None in the reworded sense. The only insensitive measure is behaviour on the same Go/NoGo task (Go RT, accuracy). No resting or simpler-condition EEG was recorded",
+   "comparator": "None non-impaired: early amnestic MCI (n = 18) vs late amnestic MCI (n = 17)",
+   "dataset_family": "UT Dallas / UT Southwestern pilot reasoning-training RCT, pre-training EEG subset (Mudar lab; N = 35 aMCI)",
+   "method_family": "64-channel EEG event-related spectral perturbation (theta/alpha/beta) during a semantic Go/NoGo task",
+   "same_sample_or_cohort_as": [],
+   "quotes": [
+    {"page": 2, "quote": "Data from 35 older adults with aMCI were analyzed"},
+    {"page": 2, "quote": "were classified as EMCI (n = 18) or LMCI (n = 17) based on their performance on the Wechsler Memory Scale-III logical memory delayed recall subtest"},
+    {"page": 4, "quote": "There were no group differences observed for the Go RTs, t(33) = .607, p = .548, d = .205."},
+    {"page": 4, "quote": "Post hoc tests yielded significant between-group differences on the Go trials, with the LMCI group showing greater ERS than the EMCI group (p = .002, d = 1.155). No group differences were observed on the NoGo trials (p = .598)."}
+   ],
+   "why": "The study fails the reworded statement's hard requirement of a non-impaired comparator: both groups are amnestic MCI. Nor does it run the loaded-versus-simpler contrast. The measure that fails is behaviour on the same task, not the same measure under a simpler condition, and there is no resting EEG. Read marker by marker within the EEG, the group difference appears on the less demanding Go (response-execution) trials (p = .002) and not on the more demanding NoGo (inhibition) trials (p = .598), which is the reverse of the statement's direction. Round 20 answered partly under the old wording; the reworded rules make this no.",
+   "caveats": "The groups were defined by logical-memory delayed recall, which differs by construction (p < .001). There is a sex imbalance (12F/6M vs 4F/13M, p = .026). The between-group EEG effect is confined to one of five clusters in the theta band. Alpha interactions gave no between-group post hoc difference, and beta showed nothing. The sample is small (N = 35)."
+  },
+  {
+   "paper": "P-662",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "supports_reworded": "no",
+   "loaded_measure": "Late positive potential difference (reappraisal minus negative-watch, Rea - Neg) in four LPP windows at C1/Cz/CP1/CPz, plus the arousal-rating down-regulation score (Rea - Neg)",
+   "simpler_or_static_measure": "The same LPP and arousal ratings under the simpler neutral-view (Neut) condition. The study also has a valence difference score",
+   "comparator": "47 healthy elderly controls (age, sex and education matched) vs 46 amnestic MCI",
+   "dataset_family": "Shanghai Tongji Hospital (Tongji University School of Medicine) neurology and memory clinic aMCI plus community controls, Shanghai. A different hospital from P-666's Tongji Hospital in Wuhan",
+   "method_family": "64-channel task ERP (P100, N1, N2, P300, LPP) during an IAPS description-based cognitive-reappraisal task, with sLORETA source localisation",
+   "same_sample_or_cohort_as": [],
+   "quotes": [
+    {"page": 5, "quote": "HEC had greater success with decreased emotional intensity relative to MCI (t = 3.205, p = 0.002). No significant group difference was found for the valence rating difference (Rea - Neg)."},
+    {"page": 5, "quote": "Independent t-tests were performed for each condition, indicating that Neut and Rea stimuli elicited greater arousal in individuals with MCI than HEC (t = 2.369, p = .020 for Neut; t = 2.163, p = .033 for Rea)."},
+    {"page": 6, "quote": "The between-group independent t-tests showed that Neut and Rea stimuli elicited more positive LPP in the HEC group than in the MCI group (t = −2.649, p = .010 for Neut; t = −1.170, p = .091 for Rea)."},
+    {"page": 6, "quote": "Most importantly, MCI showed a smaller LPP difference (Rea - Neg) than HEC in the second (t = −2.125, p = .036), third (t = −1.874, p = .064) and fourth (t = −2.009, p = .048) time windows."},
+    {"page": 6, "quote": "Only the main effect of Condition was found in the first (F(2182) = 38.954, ε = .791, p < .001, η2p = .300), second (F(2182) = 18.765, ε = .861, p < .001, η2p = .171), and third time windows"},
+    {"page": 5, "quote": "No Condition effect was found in MCI. No between-group differences were significant in any condition (p > .05)."}
+   ],
+   "why": "Where the paper reports per-condition group tests, the simpler condition also separates the groups, which under the rules is a no. In LPP window 4 (3600-5000 ms), the loaded Rea-Neg difference separates the groups (t = -2.009, p = .048), but so does LPP under neutral viewing (t = -2.649, p = .010). Behaviourally, arousal down-regulation separates (t = 3.205, p = 0.002), but so does arousal under neutral viewing (t = 2.369, p = .020). In window 2 the LPP difference separates the groups (t = -2.125, p = .036). But the window-2 RMANOVA found only a Condition main effect, with no Group or Group-by-Condition effect, and no per-condition group test is reported. So the null on the simpler side is not shown, and the omnibus interaction does not back the loaded contrast. N2 had a Group-by-Condition interaction (p = .037), but no between-group difference in any condition. The loaded valence difference was null. No within-study loaded-versus-simpler dissociation is demonstrated.",
+   "caveats": "26 of 72 recruited aMCI (36%) were excluded for inability to complete the task or abnormal behavioural data. The LPP t-tests are uncorrected, and window 3 is marginal (p = .064). The report 't = -1.170, p = .091' is internally inconsistent: that t would not give p near .09 on about 91 df. The sLORETA contrasts (MCI < HEC for Rea-Neg in the cuneus during N2, and in the IPL and supramarginal gyrus in LPP window 4) are difference-score contrasts with no per-condition counterpart. HAMD >= 14 was an exclusion criterion."
+  },
+  {
+   "paper": "P-666",
+   "pdf_is_right_paper": true,
+   "read_in_full": true,
+   "supports_reworded": "no",
+   "loaded_measure": "DTI mean diffusivity and radial diffusivity (lambda23) on the TBSS skeleton, and atlas-ROI FA/MD, in MetS-MCI vs MetS-NC",
+   "simpler_or_static_measure": "None analysed. T1 volume imaging was acquired but no volumetry or other macrostructural index is reported, and every measure is a diffusion-tensor parameter",
+   "comparator": "Metabolic syndrome with normal cognition (MetS-NC, n = 30, MoCA >= 26), plus healthy controls (n = 38 in the Results; 36 in the Abstract)",
+   "dataset_family": "Wuhan Tongji Hospital (Tongji Medical College, HUST) neurology metabolic-syndrome clinical cohort, Feb - Nov 2024 (36 MetS-MCI / 30 MetS-NC / 38 HC)",
+   "method_family": "64-direction DTI with whole-brain TBSS and ICBM atlas ROI quantification (FA, MD, lambda1, lambda23)",
+   "same_sample_or_cohort_as": [],
+   "quotes": [
+    {"page": 3, "quote": "In the whole-brain TBSS analysis, MetS-MCI group demonstrated 6.02 % (8302/137,832 voxels) and 4.38 % (6045/137,832 voxels) of parcellated WM regions with increased values of MD and λ23 in comparison to MetS-NC group (Fig. 2)."},
+    {"page": 3, "quote": "In both comparisons with MetS-NC group and HC group, MetS-MCI group exhibited decreased FA values in left superior corona radiata (SCR.L), left external capsule (EC.L), and right external capsule (EC.R)."},
+    {"page": 2, "quote": "T1-weighted three-dimensional brain volume imaging sequence (repetition time/echo time/time interval [TR/TE/TI] = 8.2/3.2/450 msec"},
+    {"page": 1, "quote": "36 MetS patients with MCI (MetS-MCI group), 30 age-, gender-, and education-matched MetS patients with normal cognition (MetS-NC group), and 36 healthy controls (HC) were included in the study."},
+    {"page": 3, "quote": "A total of 104 participants were included in the analyses: 36 MetS patients with MCI ... and 30 MetS patients with with normal cognition ... 38 healthy controls"}
+   ],
+   "why": "The reworded statement requires the corresponding volume, or the same measure under a simpler condition, to fail. This study analyses no volume and no simpler condition: T1 was acquired for anatomy and lesion exclusion only, and every reported metric is a diffusion-tensor parameter. It shows only the sensitivity half, that diffusion parameters separate MetS-MCI from MetS-NC. Even the diffusion-internal contrast yields no null, because ROI FA was also lower in MetS-MCI than in MetS-NC in three tracts.",
+   "caveats": "The HC count is inconsistent between the Abstract (36) and the Results (38). The ROI group tests appear uncorrected (P < 0.05). The HC arm differs from both MetS arms on BMI, blood pressure and glucose by design. The parent institution (HUST Tongji Medical College) is shared with round-21 candidate P-604, but the cohort, recruitment route and period differ, and no authors are shared."
+  }
+ ],
+ "independence_note": "The three yes answers reduce to two independent dataset families: Chongqing CSVD (P-651) and Guangzhou Sun Yat-sen (P-665 = P-687). They also cover two method families: NODDI diffusion versus subfield volume, and single- versus dual-task TUG. P-651's yes rests on the CSVD-NCI comparator only (volume also separates MCI from HC). Its pairwise statistics sit in a supplement not included in the source text."
+}

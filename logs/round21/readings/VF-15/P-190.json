@@ -1,0 +1,57 @@
+{
+ "paper": "P-190",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "yes",
+ "supports_narrowed": "yes",
+ "dataset_family": "ADNI (ADNI-1, ADNI-GO, ADNI-2 FDG-PET; 168 MCI-c / 187 MCI-nc, 3-year window; 321 train/validation, 34 independent test)",
+ "method_family": "2D CNN (ZF-Net) deep-radiomics features from FDG-PET, concatenated with clinical variables (demographics, MMSE, MoCA, CDR-SB, APOE4), then a linear SVM (feature-level fusion)",
+ "same_sample_or_cohort_as": [
+  "P-3, P-104, P-81 (all ADNI: same dataset family)",
+  "P-81 (ADNI-1/2/GO FDG-PET MCI with a 3-year window, as here; participant overlap likely)",
+  "P-88 (candidate; ADNI-2/GO FDG-PET MCI; participant overlap likely)",
+  "P-186, P-1128 (candidates; ADNI)",
+  "P-532 (not a supporter or candidate; the same 168 MCI-c / 187 MCI-nc ADNI sample, confirmed in the P-532 PDF)"
+ ],
+ "shared_authors_with": [
+  "P-1128: an author named Rong Zeng is on both papers, but the affiliations differ (Chenzhou No.1 People's Hospital here; Chongqing Medical University on P-1128), so they may be different people",
+  "No author shared with the current supporters P-3 (Luo, He, Cui, Chen, Ward), P-104 (Shen, Zhu, Zhang, Wang, Chen, Xu, Shao) or P-81 (Cao, Ma, Nayak, Duong)"
+ ],
+ "what_it_shows": "A single-study head-to-head on the same independent test group. PET deep-radiomics plus clinical variables (DLR+C) reached AUC 0.90, accuracy 90.62%. The comparators were clinical-only (AUC 0.81, 81.09%), SUVR+clinical (0.85, 85.35%), SUVR-only (0.68, 68.38%), ROI radiomics (73.31%, no AUC) and the ZF-Net imaging model alone (0.756, 74.12%). Adding clinical data to SUVR raised the AUC from 0.68 to 0.85.",
+ "why": "STATED: yes. The study fuses PET imaging features with auxiliary clinical metadata and runs the comparison itself. The fused model beats every unimodal baseline the study ran, including a multivariable clinical-only model, the strongest non-imaging baseline (AUC 0.90 vs 0.81). NARROWED: yes. Adding clinical information to an imaging model improved on the same imaging model alone, both for the ZF-Net encoder (AUC 0.756 to 0.90) and for SUVR (AUC 0.68 to 0.85, both SVM on the same test group). CAVEATS: (1) No significance test between models is reported. The discussion claims 'significant superiority', but the only test compares decision scores between MCI-c and MCI-nc (p.6). (2) The independent test group is small: 16 MCI-c plus 18 MCI-nc (p.3), although the Table 1 header says n = 48. (3) The ZF-Net-alone figures use the CNN's own classifier, not an SVM on DLR features alone, so the imaging-only and fused pipelines are not identical. The SUVR vs SUVR+clinical pair is the cleaner like-for-like comparison. (4) The text puts the Table 2 ZF-Net figures on the independent test group, but the Table 2 footnote says 10-fold cross-validation. (5) Circularity: the clinical block includes CDR-SB and MMSE, which partly define conversion. (6) MCI-c scans were 'not all collected at the baseline' (p.3), which may favour the imaging signal for converters. INDEPENDENCE: ADNI, so no new dataset family. The method family (CNN on FDG-PET fused with cognitive scores) is close to P-81's, although P-190 extracts CNN features and fuses them in an SVM while P-81 concatenates inside an end-to-end 3D CNN.",
+ "quotes": [
+  {
+   "page": 6,
+   "quote": "Among five methods, the DLR+C method showed the best performance with accuracy of 90.62 \u00b1 1.16%, sensibility of 87.50 \u00b1 0.00%, and specificity of 93.39 \u00b1 2.19% in the independent test group. The performance of the SUVR method, radiomics method, clinical method, and SUVR+Clinical method were all poorer than our proposed method, with accuracies of 68.38 \u00b1 1.27, 73.31 \u00b1 6.93, 81.09 \u00b1 1.97, and 85.35 \u00b1 0.72% in the independent test group, respectively."
+  },
+  {
+   "page": 6,
+   "quote": "The average AUCs (\u00b1SD) of SUVR method, Clinical method, SUVR+Clinical method, and DLR+C method were 0.68 \u00b1 0.01, 0.81 \u00b1 0.02, 0.85 \u00b1 0.01, and 0.90 \u00b1 0.01, respectively, in the independent test group."
+  },
+  {
+   "page": 6,
+   "quote": "the accuracy, sensitivity, specificity, AUC, and execution time of the ZF-Net were 74.12 \u00b1 2.32, 70.63 \u00b1 3.02, 77.22 \u00b1 4.10%, 0.756, and 231.20 s, respectively."
+  },
+  {
+   "page": 8,
+   "quote": "our proposed DLR+C method obtained the mean accuracy of 90.62% and outperformed the result of the Base DL model."
+  },
+  {
+   "page": 6,
+   "quote": "(3) Clinical method: Demographic data, neuropsychological cognitive assessment tests, as well as the APOE \u03b54 genotyping characteristics of all subjects. (4) SUVR + Clinical method."
+  },
+  {
+   "page": 3,
+   "quote": "Our test group consisted of 16 MCI-c subjects and 18 MCI-nc subjects, and it was used to evaluate the diagnostic value of the predictive models."
+  },
+  {
+   "page": 3,
+   "quote": "Scan data for MCI-c were not all collected at the baseline."
+  },
+  {
+   "page": 9,
+   "quote": "In this study, a small number of subjects were collected only from the ADNI database."
+  }
+ ]
+}

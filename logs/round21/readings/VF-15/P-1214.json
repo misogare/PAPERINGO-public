@@ -1,0 +1,35 @@
+{
+ "paper": "P-1214",
+ "round": "21 (round-2 verifier)",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "ADNI (ADNI-2 and ADNI-GO): 180 MCI with baseline and 2-year AV-45 PET and MRI; 76 converters and 104 nonconverters over 6 years.",
+ "method_family": "A fixed multiplicative composite of two hand-crafted shape indices: the AV-45 PET brain amyloid smoothing score (BASS) multiplied by the MRI brain atrophy index (BAI). Univariate in-sample ROC with ROC-curve comparison tests (pROC and MedCalc). No fitted model.",
+ "same_sample_or_cohort_as": [
+  "P-3, P-104, P-81: the ADNI dataset family. Participant overlap with P-104's ADNI MRI/PET MCI and other ADNI MCI subsets is possible but was not checked.",
+  "P-731 and P-1128 (candidates): also ADNI-GO/2 MCI. Participant overlap is possible but was not checked.",
+  "The shape feature was introduced in the author's own earlier ADNI study (ref 17: Kim, Oh and Kim 2023, Diagnostics, 48-month follow-up), which probably overlaps this sample. A search of summaries.md for its title and for the term 'brain amyloid smoothing score' found only P-1214 itself."
+ ],
+ "shared_authors_with": [
+  "Single author (Do-Hoon Kim, Eulji University). No author is shared with the current supporters or with the other candidates."
+ ],
+ "what_it_shows": "At baseline the composite (BASS x BAI) had AUC 0.891. That was significantly above MRI BAI at 0.759 (p<0.001) and AV-45 BASS at 0.769 (p<0.001). It was not significantly above amyloid SUVR at 0.844 (p = 0.071). At 2 years the composite reached 0.898, against SUVR 0.836 (p = 0.006), BAI 0.813 (p = 0.018) and BASS 0.758 (p<0.001).",
+ "why": "STATED: partly.\n(1) This is not auxiliary-data-aware fusion. It is a fixed product of a PET index and an MRI index. Both are primary imaging measures, and there is no metadata or side information.\n(2) At baseline, which is the prediction setting, the composite does not significantly beat the standard single-modality amyloid measure (SUVR, p = 0.071). So it does not beat every unimodal baseline.\n(3) No non-imaging baseline was run.\n\nNARROWED: partly. The composite beats each of its two single-modality parts, with tests; at baseline, MRI BAI rises from 0.759 to 0.891 (p<0.001). That matches the narrowed claim only if a second, equally weighted imaging modality counts as 'auxiliary information'.\n- The narrowed wording names PET only as side-information (P-104, where PET informs feature selection).\n- The round-1 skeptic did not treat a second primary brain modality as auxiliary (P-488, MEG).\n- I draw the same line here. The part shown is a combination of imaging modalities, not auxiliary information added to an imaging model.\n- If the adjudicator counts PET added to MRI as auxiliary, the baseline result would support the narrowed form. It is the only one of my four candidates with between-model tests.\n\nCAVEATS:\n(1) The ROC is in-sample, with no validation split. The composite has no fitted weights, so fitting does not inflate the AUC, but the Youden thresholds are in-sample.\n(2) The 2-year comparison is partly concurrent classification. Converters' mean CDR at 2 years was 0.72 +/- 0.32 (Table 1). If those values are 0.5 or 1, about 44% of converters were already at CDR 1 by the 2-year scan.\n(3) Figure 1 and the Table 1/2 abbreviations call BAI 'brain amyloid index'. Section 2.4 defines it as the MRI 'brain atrophic index'; I follow the methods.\n(4) Conversion is defined as the first time the CDR 'exceeded 1' (p.3). Read literally, that means CDR 2; CDR reaching 1 was probably meant.\n(5) Single author, a single ADNI subset, and selection bias acknowledged by the author (p.11).\n\nINDEPENDENCE: ADNI, so no new dataset family. The method family (a fixed multiplicative imaging composite) is distinct from those of P-3, P-104 and P-81.",
+ "quotes": [
+  {"page": 7, "quote": "At baseline, the ROC curves of the shape feature and SUVR were not significantly different. However, at the 2-year follow-up, the shape feature was significantly different when compared to the SUVR ROC curve (p = 0.006). In contrast, comparisons between the shape feature and AV-45 BASS or MRI BAI revealed significant differences at both baseline and at 2-year follow-up."},
+  {"page": 7, "quote": "Table 2. Comparison of ROC curves. [Variables, AUC, 95% CI, Comparison of ROC Curves Between Each Variable and Shape Feature (p-Value)] Baseline Shape feature 0.891 0.836–0.933 -; SUVR 0.844 0.782–0.893 0.071; AV-45 BASS 0.769 0.700–0.828 <0.001; MRI BAI 0.759 0.689–0.819 <0.001"},
+  {"page": 8, "quote": "2 years Shape feature 0.898 0.844–0.938 -; SUVR 0.836 0.774–0.887 0.006; AV-45 BASS 0.758 0.689–0.819 <0.001; MRI BAI 0.813 0.748–0.867 0.018"},
+  {"page": 5, "quote": "The shape feature is obtained by multiplying the BASS and BAI [17]. The BASS reflects the spatial distribution and burden of amyloid plaques detected by AV-45 PET, while the BAI quantifies brain atrophy based on MRI data."},
+  {"page": 4, "quote": "The semiautomatic quantification of brain atrophy was performed by calculating the brain atrophic index (BAI)."},
+  {"page": 4, "quote": "BAI, brain amyloid index."},
+  {"page": 5, "quote": "Receiver operating characteristic (ROC) analysis with area under the curve (AUC) measurement was performed for image parameters."},
+  {"page": 3, "quote": "In the present study, we extracted data from the ADNI 2 and GO datasets for 180 patients with MCI (early MCI or late MCI)"},
+  {"page": 3, "quote": "The onset of dementia was defined as the first time the Clinical Dementia Rating (CDR) value exceeded 1 during the follow-up period."},
+  {"page": 6, "quote": "[Table 1, Nonconverters, Converters, p-Value, FDR-Corrected p-Value] 2-year CDR 0.35 ± 0.29 0.72 ± 0.32 <0.001 0.001"},
+  {"page": 11, "quote": "Second, reliance on data from the ADNI cohort may have caused selection bias."}
+ ]
+}

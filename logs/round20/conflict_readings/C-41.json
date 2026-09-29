@@ -1,0 +1,79 @@
+{
+ "id": "C-41",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-115",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack file pdf/P-115.txt is Seifallahi et al.'s gait/ANFIS paper (BSPC 71 (2022) 103195), which is P-114's paper. The paper the record means (claim '79% Acc', registry row DTI/DKI transfer learning, balanced random forest, ADNI) is Rallabandi & Seetharaman, 'Classification of cognitively normal controls, mild cognitive impairment and Alzheimer's disease using transfer learning approach', BSPC 79 (2023) 104092, extracted with PyMuPDF from the repository PDF downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809422005547-main.pdf to scratchpad r20/conf/tlss_P115_true.txt and read in full. The pack file was also read in full.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-22",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Synergistic integration of clinical and multi-omics data for early MCI diagnosis using an attention-based graph fusion network (Yu et al., Journal of Neuroscience Methods 428 (2026) 110664)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-115": "ADNI diffusion MRI (44 CN, 84 MCI, 22 AD), DTI/DKI white-matter indices, transfer-learning balanced random forest, 5-fold CV. Best model: three-class CN/MCI/AD overall (balanced) accuracy 0.79, F1 0.70, AUC 0.81; pairwise accuracies CN vs AD 0.96, CN vs MCI 0.72, AD vs MCI 0.70.",
+  "P-22": "ADNI, 538 Caucasian participants (199 CN, 339 MCI; EMCI and LMCI pooled), attention-based multimodal graph fusion network on a Clinico-Genetic Risk Score (CDRSB, LDELTOTAL plus a 21-SNP PRS), an 11-CpG methylation signature and a 15-gene expression signature; 5-fold stratified CV. Binary CN vs MCI: AUC 0.86 +- 0.03, accuracy 0.88 +- 0.02, F1 0.88 +- 0.03."
+ },
+ "quantity_a": "Three-class CN vs MCI vs AD balanced accuracy (0.79) of a balanced random forest on DTI/DKI white-matter indices, ADNI, 5-fold CV",
+ "quantity_b": "Binary CN vs MCI F1-score (0.88) of a graph fusion network on clinical scores, polygenic risk, DNA methylation and gene expression, ADNI, 5-fold CV",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even the closest like-for-like pair (P-115 CN vs MCI accuracy 0.72 vs P-22 CN vs MCI accuracy 0.88 +- 0.02) is two methods on entirely different inputs, each reporting its own score; P-115 reports no uncertainty for 0.72, and neither paper claims that omics beat diffusion MRI or the reverse.",
+ "gates": {
+  "task": "mismatch: P-115's 0.79 is three-class CN/MCI/AD (registry T3); P-22 is binary CN vs MCI (T1)",
+  "dataset_family": "match: both ADNI (possible participant overlap recorded as non-independence)",
+  "validation_tier": "match: both internal 5-fold cross-validation",
+  "modality_family": "mismatch: diffusion MRI vs fluid/molecular omics plus clinical scores; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: three-class balanced accuracy vs binary F1-score",
+ "performance_validity": "flag does not apply: no contested value reaches 0.97; neither row flagged.",
+ "independence": "Both use ADNI participants, so the samples may overlap; recorded as non-independence. Different author groups.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The metric types differ: P-115's 0.79 is a balanced accuracy, P-22's 0.88 is an F1-score.",
+  "The class contrast differs: P-115's 0.79 is a three-class CN/MCI/AD figure, P-22's is binary CN vs MCI.",
+  "The modality-family gate fails: DTI/DKI white-matter indices vs clinical, genomic, methylation and transcriptomic features, with no waiver on record.",
+  "P-22's predictor set includes CDRSB and logical memory delayed recall, which are themselves part of the ADNI diagnostic definition, so its score is not a like-for-like estimate of what imaging alone achieves."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-115",
+   "page": 1,
+   "quote": "Transfer learning model using balanced random forest classifier was able to classify and predict all the groups with an overall accuracy about 0.79 using ensemble of SER and STT forests rather than individual algorithms (SER and STT)."
+  },
+  {
+   "paper": "P-115",
+   "page": 1,
+   "quote": "the proposed model using kurtosis indices as source model classified and predicted with accuracies of 0.96, 0.72 and 0.7 in classifying CN vs AD, CN vs MCI and AD vs MCI respectively."
+  },
+  {
+   "paper": "P-22",
+   "page": 1,
+   "quote": "On the ADNI cohort, A-MGFN achieved an AUC of 0.86 +- 0.03 and an F1-score of 0.88 +- 0.03."
+  },
+  {
+   "paper": "P-22",
+   "page": 4,
+   "quote": "The ADNI cohort, after quality control and preprocessing, comprised 538 participants, including 199 CN individuals and 339 with MCI (Table 1)."
+  },
+  {
+   "paper": "P-22",
+   "page": 4,
+   "quote": "Feature importance analysis revealed that Clinical Dementia Rating Sum of Boxes (CDRSB) and Logical Memory Delayed Recall Total Score (LDELTOTAL) were the most discriminative clinical indicators for distinguishing MCI status"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-115: 79% Acc on T1' mislabels a three-class CN/MCI/AD balanced accuracy as T1.",
+  "The pack's P-115 PDF (paper_pdf_map.json, 'formula-unverified') is P-114's gait paper; the correct PDF is 1-s2.0-S1746809422005547-main.pdf (DOI 10.1016/j.bspc.2022.104092).",
+  "The registry row for P-115 gives Best_Metric 'not reported' although the paper reports 0.79 balanced accuracy and 0.81 AUC.",
+  "The registry row for P-22 gives Best_Metric 'AUC 0.86' while the record uses F1 0.88; both are in the paper, but the record picked a different metric from the registry.",
+  "task_equal='Yes' is wrong; P-359's 96.3% (the named bridging evidence) is not relevant to this pair."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these papers: they share ADNI but measure different contrasts from different inputs with different metrics."
+}

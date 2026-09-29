@@ -1,0 +1,72 @@
+{
+ "id": "C-171",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-307",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable machine learning models for identifying mild cognitive impairment in older patients with chronic pain (Zhang et al., BMC Nursing 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-165",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Mild Cognitive Impairment: Data-Driven Prediction, Risk Factors, and Workup (Fouladvand, Noshad, Goldstein, Periyakoil, Chen; Stanford)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-307": "Cross-sectional: 612 older (>=60) chronic-pain inpatients in one Chinese pain department, 169 (27.6%) with MCI (Petersen/IWG criteria incl. MoCA<26, neurologist-confirmed); 7 predictors (age, education, pain sites, pain duration, VAS pain level, GDS-15 depression, PSQI sleep); 70/30 split with SMOTETomek on training; XGBoost test AUC 0.925 (95% CI 0.863-0.995), accuracy 0.883.",
+  "P-165": "Prognostic: 531,387 primary-care visits of patients >=65 in Stanford EHR (OMOP), label = at least one MCI diagnosis code within one year after the visit; 480 structured and clinical-note concepts; temporal split (train <=2019, test 2020+); random forest test ROC-AUC 68.2 +/- 0.7, XGBoost 66.8, logistic regression 57.0."
+ },
+ "quantity_a": "ROC-AUC for identifying prevalent MCI (research-criteria diagnosis at assessment) in older chronic-pain patients from seven questionnaire/clinical variables, random internal hold-out.",
+ "quantity_b": "ROC-AUC for predicting a recorded MCI diagnosis code within the next year from routine EHR history at a primary-care visit, all patients >=65, temporal hold-out.",
+ "same_quantity": false,
+ "incompatible_if_same": "If the estimands were the same the gap (0.925, CI 0.863-0.995 vs 0.682 +/- 0.7) would exclude each other, but they are not: one is present-status identification with a structured cognitive work-up population, the other is one-year incidence of a billing diagnosis in unselected primary care.",
+ "gates": {
+  "task": "mismatch: cross-sectional MCI identification (P-307) vs one-year-ahead MCI onset prediction (P-165); the registry codes P-165 as T2.",
+  "dataset_family": "mismatch: single-centre Nanchang pain-department cohort vs Stanford Healthcare OMOP EHR (record itself: dataset_equal No).",
+  "validation_tier": "mismatch in kind: random 70/30 split vs temporal split (train to 2019, test 2020+).",
+  "modality_family": "both clinical/tabular, but predictor sets entirely different (pain, depression and sleep scales vs 480 EHR diagnosis/medication/procedure/note concepts)."
+ },
+ "endpoint_and_metric": "incompatible: both ROC-AUC, but endpoints differ (prevalent research-criteria MCI vs incident coded MCI diagnosis within one year) and populations differ (chronic-pain inpatients vs all primary-care visits).",
+ "performance_validity": "flag not tripped (0.925 < 0.97; n=612 with a 184-patient test set).",
+ "independence": "Distinct studies, countries and authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-307 identifies MCI present at assessment in chronic-pain inpatients, whereas P-165 predicts a recorded MCI diagnosis within one year of a primary-care visit, so the endpoint and horizon differ.",
+  "The outcome definitions differ: research criteria with MoCA<26 and neurologist confirmation vs any MCI diagnosis code in the EHR.",
+  "Populations, predictor sets and validation designs differ, and the task and dataset gates fail with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-307",
+   "page": 3,
+   "quote": "The outcome of this study was the occurrence of MCI, which was diagnosed according to Petersen's Criteria and the International Working Group on MCI"
+  },
+  {
+   "paper": "P-307",
+   "page": 7,
+   "quote": "the XGBoost model performed best, achieving an accuracy of 0.883 and an AUC of 0.925 (95% CI 0.863-0.995)."
+  },
+  {
+   "paper": "P-165",
+   "page": 2,
+   "quote": "Each primary care visit was assigned with a binary label indicating if the patient has at least one MCI diagnosis code within one year follow up from the time of their primary care visit"
+  },
+  {
+   "paper": "P-165",
+   "page": 4,
+   "quote": "The random forest model has a higher ROC-AUC (68.2%+/-0.7%) than xgboost and logistic regression models on the test set."
+  }
+ ],
+ "record_defects": [
+  "Both claims labelled 'T1', but P-165 is a one-year-ahead prediction of MCI onset (registry codes it T2).",
+  "task_equivalence true / dataset_family_equivalence true contradict dataset_equal 'No' within the same record.",
+  "Index registry row for P-165 gives Best_Metric 'not reported'; the paper reports test ROC-AUC 68.2 +/- 0.7.",
+  "resolution_status 'partially_resolved_candidate' rests on a generic list of 'bridging' papers with no separating condition."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing within these two papers: P-165 reports no cross-sectional identification result and P-307 no incident-diagnosis result."
+}

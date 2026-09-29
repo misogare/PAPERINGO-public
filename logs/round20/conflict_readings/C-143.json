@@ -1,0 +1,78 @@
+{
+ "id": "C-143",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-202",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Development of a machine learning model to predict mild cognitive impairment using natural language processing in the absence of screening (Penfold et al., BMC Med Inform Decis Mak 2022)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-59",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Automatic screening of mild cognitive impairment and Alzheimer's disease by means of posterior-thresholding hesitation representation (Egas-Lopez et al., Comput Speech Lang 2022)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-202": "LASSO logistic regression on NLP concepts extracted from 2 years of primary-care and behavioural-health clinic notes plus demographics, Kaiser Permanente Washington (ACT cohort + general population, n=4185 with standardized scores); target = MCI defined as MMSE or MoCA <=26 on the index date; 40% withheld general-population validation AUC 0.670 (95% CI 0.638-0.702); demographics only 0.598.",
+  "P-59": "Posterior-thresholding hesitation features from a HMM/DNN acoustic model on spontaneous-speech recordings, SVM with 25-fold nested CV, 75 Hungarian memory-clinic subjects (25 HC, 25 MCI, 25 mild AD); THREE-CLASS task; mean one-vs-rest AUC 0.804 over HC/MCI/mAD (per-class: HC 0.911, MCI 0.709, mAD 0.794), accuracy 70.7%."
+ },
+ "quantity_a": "Binary AUC for MCI (MMSE/MoCA <=26) vs not, from clinical-note text and demographics, in a US health-system population aged 65+ without prior dementia/MCI diagnosis, held-out validation split.",
+ "quantity_b": "Mean of three one-vs-rest AUCs (HC, MCI, mild AD) from speech hesitation features, in a clinically diagnosed 75-subject Hungarian memory-clinic sample balanced 25/25/25.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even the closest comparable figure, P-59's MCI one-vs-rest AUC of 0.709, lies just above P-202's 95% CI (0.638-0.702) with no interval reported for a 75-subject sample, and the P-59 MCI-vs-rest contrast includes mild AD in the 'rest'.",
+ "gates": {
+  "task": "mismatch: P-202 is binary MCI detection (screen-positive by MMSE/MoCA) from records; P-59's 0.804 is a three-class HC/MCI/mild-AD mean AUC. Registry codes disagree too (P-202 T2, P-59 T3), contrary to the claimed 'T4' for both",
+  "dataset_family": "mismatch: Kaiser Permanente Washington/ACT (US) vs University of Szeged memory clinic (Hungary); record itself says dataset_equal No, with no waiver",
+  "validation_tier": "match: both internal (random held-out split vs nested CV)",
+  "modality_family": "mismatch: P-202 uses written clinical-note text (NLP on EHR) plus demographics; P-59 uses acoustic speech recordings. The record's shared 'speech_language' family is wrong"
+ },
+ "endpoint_and_metric": "incompatible: P-202's AUC is binary and its reference standard is an MMSE/MoCA cut-off; P-59's is a mean of three one-vs-rest AUCs against a clinical expert-panel diagnosis including mild AD",
+ "performance_validity": "flag does not apply: 0.67 and 0.804 are below 0.97",
+ "independence": "Fully independent: different countries, cohorts and author groups.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-59's 0.804 is the mean of three one-vs-rest AUCs in a three-class HC/MCI/mild-AD problem, whereas P-202's 0.67 is a binary MCI-vs-not AUC, so metric definition and task differ.",
+  "P-202 reads clinical-note text in a US health-system population against an MMSE/MoCA <=26 reference, while P-59 analyses speech recordings of a balanced Hungarian memory-clinic sample diagnosed by an expert panel, so modality, dataset and reference standard differ (the dataset gate fails with no waiver).",
+  "Neither study makes a claim about the other's setting, so there is no disagreement to adjudicate."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-202",
+   "page": 6,
+   "quote": "Our prediction target was a binary indicator of MCI present/absent based on a MoCA or MMSE score > 26 or \u2264 26 on the index date."
+  },
+  {
+   "paper": "P-202",
+   "page": 8,
+   "quote": "General Population, 40% Validation: AUC = 0.670 (0.638, 0.702)"
+  },
+  {
+   "paper": "P-202",
+   "page": 1,
+   "quote": "There were two populations of patients: 1794 participants in the Adult Changes in Thought (ACT) study and 2391 patients in the general population of Kaiser Permanente Washington."
+  },
+  {
+   "paper": "P-59",
+   "page": 1,
+   "quote": "on our corpus consisting of 25 healthy controls, 25 MCI and 25 mild AD subjects, we achieve a (three-class) classification accuracy of 70.7%, an F-measure score of 89.6 and a mean AUC score of 0.804."
+  },
+  {
+   "paper": "P-59",
+   "page": 7,
+   "quote": "In our experiments, we computed the AUC score for all three speaker categories (i.e. for healthy controls, for MCI and for mAD speakers), and we also report the mean of the three AUC scores."
+  }
+ ],
+ "record_defects": [
+  "modality_family 'speech_language' with modality_family_equal 'Yes' is wrong: P-202 analyses written clinical-note text from the EHR, not speech.",
+  "Both claims say 'on T4', but the registry codes P-202 as T2 and P-59 as T3, and P-59's 0.804 is a three-class mean AUC including mild AD.",
+  "resolution_note says 'Confirmed genuine' on metric type and gap while the record's own dataset_equal is 'No' and resolution says 'Rejected: Task, dataset, or modality mismatch'.",
+  "The only 'bridging evidence' cited is P-59 itself, i.e. one of the two papers in the pair.",
+  "P-59 registry Best_Metric 'Acc 70.7' and P-202 registry Dataset/Validation 'not reported' are incomplete: P-202 names KPWA/ACT and a 40% withheld validation sample."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing on these sources: the studies differ in modality, cohort, reference standard and AUC definition."
+}

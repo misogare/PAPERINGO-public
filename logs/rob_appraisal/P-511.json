@@ -1,0 +1,220 @@
+{
+ "paper_id": "P-511",
+ "document_check": {
+  "matches": true,
+  "note": "Smailovic U, Kareholt I, Koenig T, Ashton NJ, Winblad B, Hoglund K, Nilsson P, Zetterberg H, Blennow K, Jelic V. Synaptic Molecular and Neurophysiological Markers Are Independent Predictors of Progression in Alzheimer's Disease. Journal of Alzheimer's Disease 83 (2021) 355-366, DOI 10.3233/JAD-201234. The title matches the summaries.md header for Paper 511. The study is a single-centre clinical cohort of 99 MCI patients (Karolinska University Hospital-Huddinge), of whom 72 had two-year follow-up: 41 stable and 31 progressive MCI. Table 5 (PDF p.7 = JAD p.361) gives the cited accuracies: GFP theta 74.6%, GFS beta 67.6%, CSF Ng & GFP theta 74.3%, CSF Ng & GFP theta & GFS beta 81.4%. The text on PDF p.8 (JAD p.362) gives p = 0.039 for GFS beta in the three-marker model. This matches the citation."
+ },
+ "cited_result": "Progressive (31) vs stable (41) MCI at two years, logistic regression adjusted for age, sex and MMSE, in-sample classification accuracy at a 50% threshold (Table 5, PDF p.7 = JAD p.361). GFP theta 74.6% vs GFS beta 67.6%. CSF neurogranin + GFP theta 74.3%. Adding GFS beta gives 81.4% (GFS beta p = 0.039, text PDF p.8 = JAD p.362).",
+ "tool_reason": "The cited result is the classification accuracy of multivariable logistic regression models (qEEG and CSF predictors, adjusted for age, sex and MMSE) that predict progression from MCI to AD dementia within two years, so it is a prognostic prediction model question for PROBAST. The PROBAST+AI considerations are answered in domain 4 as far as they apply to a regression model with no data split.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "A clinical cohort of memory-clinic MCI patients with baseline measures and follow-up is an appropriate source for a prognostic question. The recruitment method (consecutive or otherwise) is not stated. Patients who later progressed to any non-AD dementia were excluded. That exclusion uses follow-up information, removes a competing outcome and the patients hardest to classify, and so conditions the analysed sample on the outcome. The exclusions for psychiatric or neurological comorbidity and psychotropic medication further restrict the sample.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably yes",
+     "quote": "The study population consisted of 99 patients, clinically diagnosed with MCI according to the Winblad et al. criteria [3], and recruited at Karolinska University Hospital-Huddinge, Stockholm, Sweden.",
+     "page": "3 (journal p. 357)"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "Patients that were less than 50 years old, those that progressed to any other dementia diagnosis, had any significant psychiatric or neurological comorbidity, psychotropic medication, alcohol abuse, and a time gap between baseline lumbar puncture and EEG recordings longer than six months were excluded.",
+     "page": "3-4 (journal pp. 357-358)"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "The predictors are CSF neurogranin (in-house ELISA) and qEEG global field power and synchronisation from a standard 19-electrode resting-state recording. They were measured in the same way for everyone at baseline, before the outcome occurred, and would be available when a prognosis is made. Manual artefact rejection was used, and blinding of that step to later status is not stated. Because the recordings were made at baseline, this is judged a minor concern.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Yes",
+     "quote": "All patients underwent baseline eyes closed resting-state EEG recordings at the Department of Clinical Neurophysiology at Karolinska University Hospital-Huddinge.",
+     "page": "4 (journal p. 358)"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "All EEG recordings were preprocessed using visual inspection and manual artifact rejection.",
+     "page": "4 (journal p. 358)"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "All patients underwent comprehensive clinical evaluation, CSF sampling and biomarker analysis, and resting-state EEG recordings at the baseline.",
+     "page": "3 (journal p. 357)"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The outcome is a standard, pre-specified clinical definition: ICD-10 AD dementia within two years against stable Winblad MCI. However, the follow-up diagnostic procedure (who assessed, with what information) is not described. The paper does not say whether the clinicians who made the follow-up diagnosis were blind to the baseline work-up. That work-up included CSF biomarker analysis and EEG, and CSF neurogranin correlates strongly with t-tau (rs 0.82). The two-year horizon is fixed, and the authors acknowledge that some stable patients may progress later.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "progressive MCI (clinical progression to Alzheimer\u2019s dementia within two years follow-up according to the ICD-10 criteria [37]; n = 31)",
+     "page": "3 (journal p. 357)"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "stable (remained clinically stable during two years, MCI diagnosis according to the Winblad et al. criteria [3]; n = 41)",
+     "page": "3 (journal p. 357)"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "adjusting for baseline age, sex, and MMSE.",
+     "page": "4 (journal p. 358)"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Seventy-two patients had available clinical follow-up information for at least two years and were based on the follow-up stratified as stable",
+     "page": "3 (journal p. 357)"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "No statement on masking of the follow-up diagnosis. Searched Methods (Study population, CSF analysis, EEG recordings) and Discussion. The baseline work-up was part of clinical care: 'All patients underwent comprehensive clinical evaluation, CSF sampling and biomarker analysis, and resting-state EEG recordings at the baseline.'",
+     "page": "3 (journal p. 357)"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably yes",
+     "quote": "a certain proportion of stable MCI patients might have progressed to AD later, after the relatively short two years follow-up.",
+     "page": "9-10 (journal pp. 363-364)"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "There are 31 events, against about nine candidate predictors screened (eight qEEG measures plus neurogranin) and three adjustment covariates, and the three-marker model has six parameters. Of 99 enrolled patients, 27 without two-year follow-up were dropped without comparison or imputation, and patients were also excluded for outlying predictor values. Predictors were kept by per-measure p < 0.1 screening. Performance is classification accuracy at a 50% threshold only, with no AUC, calibration, sensitivity or specificity, no confidence intervals and no test of differences between models. Accuracy is apparent: models were fitted and evaluated on the same participants, with no cross-validation, bootstrap or external validation. The fixed two-year binary outcome excluded censored patients and competing non-AD outcomes rather than modelling them.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "The study population was further stratified into stable (n = 41) and progressive MCI (n = 31), based on the progression to AD dementia during two years follow-up.",
+     "page": "2 (journal p. 356)"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "Data presented as odds ratio with 95% confidence intervals in brackets.",
+     "page": "7 (journal p. 361)"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "No",
+     "quote": "One CSF neurogranin and four GFP alpha outlying data points were detected and excluded from the subsequent statistical analyses",
+     "page": "5 (journal p. 359)"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Probably no",
+     "quote": "Seventy-two patients had available clinical follow-up information for at least two years and were based on the follow-up stratified as stable",
+     "page": "3 (journal p. 357)"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "All qEEG measures were tested for their predictive significance, while measures below p < 0.1 were kept in the model.",
+     "page": "4-5 (journal pp. 358-359)"
+    },
+    {
+     "question": "4.6 Were complexities in the data (censoring, competing risks, sampling of controls) accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "progression to AD dementia in MCI patients during two years follow-up as an outcome (stable versus progressive MCI).",
+     "page": "7 (journal p. 361)"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "Classification accuracy, using a threshold of 50% for predicted probabilities, was used to quantify correctly categorized progressive versus stable MCI.",
+     "page": "5 (journal p. 359)"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "No",
+     "quote": "A logistic regression model was applied to assess baseline CSF neurogranin and qEEG measures that can best predict progression to AD dementia during two years follow-up (progressive versus stable MCI), adjusting for baseline age, sex, and MMSE.",
+     "page": "4 (journal p. 358)"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "Probably yes",
+     "quote": "All models controlled for age, sex, and MMSE.",
+     "page": "7 (journal p. 361)"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Not applicable (no split: the models were fitted and their accuracy computed on the same participants)",
+     "quote": "Classification accuracy, using a threshold of 50% for predicted probabilities, was used to quantify correctly categorized progressive versus stable MCI.",
+     "page": "5 (journal p. 359)"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection and tuning confined to training folds?",
+     "answer": "No (predictor screening and outlier exclusion were done on the whole analysed sample; there are no folds)",
+     "quote": "All qEEG measures were tested for their predictive significance, while measures below p < 0.1 were kept in the model.",
+     "page": "4-5 (journal pp. 358-359)"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "No (there is no test set)",
+     "quote": "A logistic regression model was applied to assess baseline CSF neurogranin and qEEG measures that can best predict progression to AD dementia during two years follow-up (progressive versus stable MCI), adjusting for baseline age, sex, and MMSE.",
+     "page": "4 (journal p. 358)"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "No information (31 versus 41; a fixed 50% threshold, imbalance not addressed)",
+     "quote": "Classification accuracy, using a threshold of 50% for predicted probabilities, was used to quantify correctly categorized progressive versus stable MCI.",
+     "page": "5 (journal p. 359)"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Apparent only (no internal or external validation described)",
+     "quote": "The number of subjects in the present study was not sufficient to divide the study population according to amyloid status for separate logistic regression analyses. Therefore, the results should be further evaluated in larger cohorts",
+     "page": "9 (journal p. 363)"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The sample comes from a single Swedish tertiary memory clinic, aged 50 or over. It excludes patients with psychiatric or neurological comorbidity, those on psychotropic medication and those who progressed to non-AD dementias, so it does not represent a general MCI population in which competing diagnoses occur."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "unclear",
+   "rationale": "CSF neurogranin was measured with an in-house research ELISA that is not a routine clinical assay. GFP and GFS were computed after manual artefact rejection in specific software. Both are feasible in a specialist centre but not standardised."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Clinical progression to AD dementia (ICD-10) within two years is a clinically relevant prognostic outcome, although the horizon is short."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Two domains are high. Domain 1 excluded patients who progressed to non-AD dementias, which uses follow-up information. Domain 4 has 31 events for about nine screened predictors plus three covariates, 27 of 99 patients dropped for lack of follow-up, p < 0.1 predictor screening, accuracy at a 50% threshold as the only measure, and apparent performance with no validation or confidence intervals. Domain 3 is unclear (masking of the follow-up diagnosis not reported) and domain 2 is low. Under PROBAST, any high domain makes the overall rating high.",
+ "confidence": "high",
+ "tool": "PROBAST",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 25,
+  "matched": 19,
+  "annotations_not_checked": 0,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
+ }
+}

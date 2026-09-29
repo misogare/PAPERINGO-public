@@ -1,0 +1,83 @@
+{
+ "id": "C-233",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-742",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Elicited clinician knowledge did not improve dementia risk prediction in individuals with mild cognitive impairment (Wang et al., Journal of Clinical Epidemiology 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-353",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Longitudinal multi-modal data prediction model for mild cognitive impairment by deep survival analysis (Zhang et al., BMC Med Inform Decis Mak 2026, article in press)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-742": "Bayesian Cox models (informative expert priors vs non-informative) on 34 baseline clinical/biomarker predictors, 365 ADNI MCI, outcome time to all-cause dementia within 3 years (142 events); ten-fold cross-validated Harrell's c-index 0.74 (0.70-0.79) with expert priors, 0.75 non-informative, 0.72 frequentist; 0.74-0.77 in sensitivity analyses. No ROC analysis.",
+  "P-353": "tdCoxSNN on baseline demographics/APOE plus longitudinal neuropsychological tests (MMSE and CDRSB excluded) and 116 sMRI ROI measures, 922 ADNI MCI; 20% held-out test set; cumulative/dynamic AUC 0.9089 +/- 0.01 at t = 1 year after a 1-year landmark, AD conversion; performance declines at longer horizons."
+ },
+ "quantity_a": "Harrell's concordance index over a 3-year window for all-cause dementia, from baseline predictors, ADNI MCI, ten-fold cross-validation.",
+ "quantity_b": "Cumulative/dynamic time-dependent AUC for AD conversion within 1 year after a 1-year landmark, from longitudinal predictors observed up to the landmark, ADNI MCI held-out test set.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable as a contradiction: the two are single performance figures from different models, and neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match at T-level (T2 progression prediction), different horizon and outcome definition (3-year all-cause dementia vs 1-year AD after a landmark).",
+  "dataset_family": "match: both ADNI MCI.",
+  "validation_tier": "match at V2 (internal only), different schemes (ten-fold CV vs held-out test split).",
+  "modality_family": "partial: P-742 baseline clinical predictors including binary CSF/FDG-PET positivity and hippocampal atrophy; P-353 longitudinal neuropsychological scores and sMRI ROI densities."
+ },
+ "endpoint_and_metric": "incompatible: Harrell's c-index (global concordance over follow-up) vs cumulative/dynamic AUC at a single short horizon; different endpoint (all-cause dementia vs AD) and different information set (baseline only vs longitudinal up to a landmark).",
+ "performance_validity": "flag does not apply: neither figure meets the ceiling test; both n > 300.",
+ "independence": "Shared cohort: both use ADNI MCI participants (non-independence recorded); no shared authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-742 reports Harrell's c-index and performs no ROC analysis, while P-353 reports a cumulative/dynamic AUC at a 1-year horizon, so the metric types differ.",
+  "The endpoints differ (all-cause dementia within 3 years from baseline vs AD conversion within 1 year after a 1-year landmark), and P-353 notes that its discrimination falls as the horizon lengthens.",
+  "The information sets differ: P-742 uses baseline predictors only; P-353 feeds repeated neuropsychological and MRI measurements up to the landmark into the model."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-742",
+   "page": 2,
+   "quote": "the predictive performance was evaluated using ten-fold cross-validation via c-index, integrated calibration index (ICI), and integrated brier score (IBS)."
+  },
+  {
+   "paper": "P-742",
+   "page": 2,
+   "quote": "Our study outcome was the time to all-cause dementia over a 3-year period for participants with MCI at ADNI enrollment."
+  },
+  {
+   "paper": "P-742",
+   "page": 2,
+   "quote": "When expert knowledge was incorporated, the c-index, ICI, and IBS values were 0.74 (95% CI 0.70-0.79)"
+  },
+  {
+   "paper": "P-353",
+   "page": 3,
+   "quote": "The predictive performance was evaluated using a test set at time intervals t =1, 2, 3, 4 years from the landmark time s = 1."
+  },
+  {
+   "paper": "P-353",
+   "page": 3,
+   "quote": "attaining cdAUC values of 0.9089\u00b10.01 alongside BS of 0.1651\u00b10.01 with t =1 year on the test set"
+  },
+  {
+   "paper": "P-353",
+   "page": 9,
+   "quote": "Longitudinal variables from two modalities of biomarkers i.e. cognitive function and structural MRI morphometry were also analyzed."
+  }
+ ],
+ "record_defects": [
+  "claim_a labels P-742's result 'AUC 0.74'; it is Harrell's c-index (the record's own text and g4_note say so).",
+  "P-353's 'AUC 0.91' is a cumulative/dynamic AUC at t = 1 year after a 1-year landmark; the record carries no horizon or landmark.",
+  "claim_a is truncated mid-sentence ('time to  on T2').",
+  "modality_family 'clinical_survey' mislabels both papers (P-353 uses sMRI ROI measures; P-742 includes CSF/FDG-PET positivity and hippocampal atrophy).",
+  "Status 'partially_resolved_candidate' with bridging papers P-764 and P-876 does not fit a record rejected for metric incommensurability; the bridging entries do not explain the pair."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Both models evaluated with the same metric, endpoint and horizon on a common ADNI split; neither paper provides this."
+}

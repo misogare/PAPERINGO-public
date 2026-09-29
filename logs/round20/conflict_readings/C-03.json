@@ -1,0 +1,82 @@
+{
+ "id": "C-03",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-68",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Temporal constrained joint nonnegative matrix factorization for imaging genomic study of early mild cognitive impairment (Deng et al., Neurocomputing 653 (2025) 131121)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-71",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Longitudinal study of early mild cognitive impairment via similarity-constrained group learning and self-attention based SBi-LSTM (Lei et al., Knowledge-Based Systems 254 (2022) 109466)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-68": "Imaging-genetics matrix factorisation (TCJNMF) of 4-timepoint sMRI AAL ROIs plus blood DNA methylation in ADNI, 91 EMCI vs 62 NC. Ablation classifier on the mined top features, 5-fold CV: LR accuracy 0.830, AUC 0.927; RF accuracy 0.715, AUC 0.731 (Table 3). No latent class model, no pMCI vs sMCI task, no 84% figure.",
+  "P-71": "Similarity-constrained group sparse rs-fMRI connectivity network + self-attention stacked Bi-LSTM, baseline and year-1 rs-fMRI, ADNI-2 (102) and ADNI-3 (51), LOOCV. EMCI vs NC fused ADNI-2&3: accuracy 86.11%, AUC 93.90 (Table 4); ADNI-2 alone 87.50%; LMCI vs NC 91.42%; EMCI vs LMCI 89.42%. No pMCI vs sMCI task and no 81% figure."
+ },
+ "quantity_a": "Cross-validated EMCI vs NC discrimination of LR/RF classifiers built on TCJNMF-selected sMRI ROI + DNA-methylation features (ADNI, n=153, 5-fold CV); this is an ablation for a biomarker-mining method, not a proposed diagnostic model.",
+ "quantity_b": "LOOCV EMCI vs NC (also LMCI vs NC, EMCI vs LMCI) discrimination of a Bi-LSTM on two-timepoint rs-fMRI functional connectivity networks (ADNI-2/3, n=153 incl. 46 LMCI).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even taking the nearest comparable figures (EMCI vs NC), P-68 reports accuracy 0.830 / AUC 0.927 and P-71 reports 86.11% / AUC 93.90: the same direction and practically the same magnitude. The record's 84% vs 81% pMCI/sMCI contrast appears in neither paper.",
+ "gates": {
+  "task": "mismatch against the record: the record states pMCI vs sMCI conversion prediction, but both papers classify EMCI vs NC cross-sectional status (P-71 also LMCI tasks). Between the two papers the task (EMCI vs NC detection) matches.",
+  "dataset_family": "match: both ADNI (P-68 ADNI GO/2 with DNA methylation; P-71 ADNI-2 and ADNI-3 rs-fMRI).",
+  "validation_tier": "match: both internal cross-validation only (5-fold vs LOOCV).",
+  "modality_family": "mismatch: P-68 structural MRI + blood DNA methylation; P-71 resting-state functional MRI."
+ },
+ "endpoint_and_metric": "compatible metric types (accuracy, AUC) for EMCI vs NC, but the predictor sets differ (sMRI ROI + methylation vs rs-fMRI connectivity).",
+ "performance_validity": "flag does not apply: neither headline value reaches 0.97 accuracy/AUC; not in any case a disagreement.",
+ "independence": "Distinct author groups. Both draw on ADNI, so some participants may overlap; not determinable from the papers.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record's claims misread both papers: P-68 contains no latent class model and no pMCI vs sMCI prediction, and P-71 contains no 81% pMCI vs sMCI result.",
+  "Both papers actually report EMCI vs NC discrimination in ADNI, and the nearest figures (P-68 LR accuracy 0.830, AUC 0.927; P-71 86.11%, AUC 93.90) agree in direction and magnitude.",
+  "Neither paper makes a claim the other refutes; there is no disagreement to adjudicate."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-68",
+   "page": 5,
+   "quote": "which included 153 participants, comprising 91 individuals with early mild cognitive impairment (EMCI) and 62 normal controls (NC)"
+  },
+  {
+   "paper": "P-68",
+   "page": 7,
+   "quote": "Each training process employed 5-fold cross-validation, with the final results derived from averaging performance metrics across all five iterations."
+  },
+  {
+   "paper": "P-68",
+   "page": 8,
+   "quote": "TCJNMF 0.830 0.715 0.818 0.661 0.827 0.732 0.820 0.660 0.927 0.731 (Table 3: Accuracy LR/RF ... AUC LR/RF)"
+  },
+  {
+   "paper": "P-71",
+   "page": 3,
+   "quote": "with 102 subjects in ADNI-2 and 51 subjects in ADNI-3 dataset. In ADNI-2 dataset, there are 30 LMCI, 39 EMCI, and 33 NC."
+  },
+  {
+   "paper": "P-71",
+   "page": 5,
+   "quote": "Due to the small dataset, the leave one out cross validation (LOOCV) is used in the experiments."
+  },
+  {
+   "paper": "P-71",
+   "page": 10,
+   "quote": "Proposed 64 EMCI+49 NC M SGN softmax 86.11"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'LCM (latent class model) achieves 84% for pMCI vs sMCI prediction on ADNI N=186': P-68 is a TCJNMF imaging-genetics study of EMCI vs NC (N=153); no latent class model, no conversion task, no 84%.",
+  "claim_b 'LSTM on same cohort achieves 81% on identical task': P-71's SSBi-LSTM uses a different ADNI rs-fMRI sample for EMCI vs NC and reports 86.11% (fused) or 87.50% (ADNI-2); no 81% pMCI/sMCI result.",
+  "resolution_note's 'LCM is probabilistic ... LSTM is deterministic' describes methods neither paper uses as stated.",
+  "The bridging-evidence papers listed are unrelated headline scores and do not explain any disagreement."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two PDFs; if the record intended different papers (an LCM pMCI/sMCI study and an LSTM study on one cohort), those papers would need to be identified and read."
+}

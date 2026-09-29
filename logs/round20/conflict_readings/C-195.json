@@ -1,0 +1,77 @@
+{
+ "id": "C-195",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-33",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Benchmarking parametric models of disease progression for early detection of cognitive decline (Platero, Bengoa; Comput Methods Programs Biomed 2026)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-192",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predictive value of ATN biomarker profiles in estimating disease progression in Alzheimer's disease dementia (Ezzati et al.; Alzheimers Dement 2021, author manuscript)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-33": "1163 ADNI participants (536 stable CU, 114 progressive CU, 513 stable MCI; MCI participants who progressed to dementia or reverted were excluded). Disease progression models fitted to neuropsychological scores (CDRSB, ADAS13, MMSE, etc.), with a Bayesian-KDE classifier assigning CU vs MCI status at each visit: best test-set AUC 0.96 (Leaspy, Table 2). The target transition is CU to MCI.",
+  "P-192": "415 ADNI-GO/2 amnestic MCI participants with amyloid PET, CSF p-tau and FDG PET. Models trained on CN vs dementia and applied to MCI to predict incident dementia: RUSBoost on the biomarker set gives PPV 68% at 4 years against an observed 4-year conversion of 22.2% (sensitivity 61.5%, specificity 91.7%); clinical-feature RUSBoost PPV 67.3%. No AUC is reported in the main text."
+ },
+ "quantity_a": "Per-visit ROC-AUC for classifying clinical status as CU vs MCI (the CU-to-MCI transition) from neuropsychological disease-progression scores, in CU and stable-MCI ADNI participants.",
+ "quantity_b": "Positive predictive value, at a 4-year horizon, for conversion from amnestic MCI to dementia, from biomarker (or clinical) features, at the cohort's natural conversion rate of 22.2%.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. An AUC of 0.96 and a PPV of 68% are not on the same scale: PPV depends on prevalence and threshold, AUC on neither, so the 0.28 'gap' carries no information about disagreement. Neither paper claims a result about the other's endpoint.",
+ "gates": {
+  "task": "mismatch: P-33's contested AUC is for CU vs MCI status (onset of MCI), P-192 predicts MCI-to-dementia conversion; the record codes both T2 but the transitions differ.",
+  "dataset_family": "match: ADNI for both (P-33 ADNI-1 to 3; P-192 ADNI-GO/2), so subject overlap is likely.",
+  "validation_tier": "match: internal only (P-33 bootstrapped 20% test split; P-192 10-fold CV on CN/dementia then application to MCI).",
+  "modality_family": "mismatch: P-33 uses neuropsychological tests only; P-192's 68% PPV comes from CSF and PET biomarkers (its clinical-feature model gives 67.3%). The record's 'clinical_survey' fits P-33 only."
+ },
+ "endpoint_and_metric": "incompatible: different endpoint (CU-to-MCI status vs MCI-to-dementia conversion at 4 years), different population (CU plus stable MCI with dementia converters excluded vs amnestic MCI including converters) and different metric type (ROC-AUC vs PPV).",
+ "performance_validity": "flag does not apply: P-33's 0.96 is below 0.97 on a 1163-participant cohort; but the comparison is not a like-for-like performance comparison. Note P-33's inputs include CDRSB and MMSE, which enter the clinical diagnosis it predicts.",
+ "independence": "Both draw on ADNI; P-33's ADNI-1 to 3 CU/MCI sample and P-192's ADNI-GO/2 aMCI sample probably overlap in part. Distinct authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The endpoints differ: P-33's AUC concerns CU vs MCI status (MCI onset) in a sample that excludes MCI-to-dementia converters, while P-192's PPV concerns MCI-to-dementia conversion at 4 years.",
+  "The metric types differ: a threshold-free ROC-AUC cannot be set against a prevalence-dependent PPV.",
+  "The predictor families differ (neuropsychological scores vs CSF/PET biomarkers), and the task gate fails with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-33",
+   "page": 2,
+   "quote": "MCI participants whose last visit indicated either reversion to CU or progression to dementia were excluded from the analysis to specifically characterize the transition from normal cognition to MCI."
+  },
+  {
+   "paper": "P-33",
+   "page": 6,
+   "quote": "The results show that Leaspy achieved the highest overall performance, with a top AUC of 0.96 and a composite criterion score of 68.7."
+  },
+  {
+   "paper": "P-33",
+   "page": 4,
+   "quote": "Area Under the Curve (AUC) of the Bayesian-KDE classifier at each visit, based on clinical diagnoses."
+  },
+  {
+   "paper": "P-192",
+   "page": 4,
+   "quote": "RUSBoost models applied to biomarker feature set provided > 35% improvement in the prediction of dementia over 2 years (model's PPV = 53.6 vs. observed rate of dementia onset = 18.0%) and > 45% over 4 years (model's PPV = 68% vs. observed rate of dementia onset = 22.2%)."
+  },
+  {
+   "paper": "P-192",
+   "page": 1,
+   "quote": "We aimed to evaluate the value of ATN biomarker classification system (amyloid beta [A], pathologic tau [T], and neurodegeneration [N]) for predicting conversion from mild cognitive impairment (MCI) to dementia."
+  }
+ ],
+ "record_defects": [
+  "task_equal 'Yes' is wrong: P-33's AUC is for the CU-to-MCI transition, P-192's PPV for MCI-to-dementia conversion.",
+  "modality_family 'clinical_survey' is wrong for P-192's 68% figure, which comes from the CSF/PET biomarker feature set.",
+  "validation_comparable 'Yes' and gap_magnitude 0.28 treat an AUC and a PPV as commensurable numbers.",
+  "The pack registry codes P-192 Best_Metric 'not reported' while the record uses 'PPV 68.0'; the paper does report PPV, sensitivity and specificity by horizon."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only results on the same endpoint and metric (e.g. both papers reporting MCI-to-dementia AUC at a stated horizon in comparable ADNI samples) could be set against each other; these two papers do not provide them."
+}

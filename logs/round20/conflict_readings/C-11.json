@@ -1,0 +1,90 @@
+{
+ "id": "C-11",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-112",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Detection of mild cognitive impairment and Alzheimer's disease using dual-task gait assessments and machine learning (Ghoraani et al., Biomedical Signal Processing and Control 64 (2021) 102249)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-112 (intended paper, read from the repository PDF mapped to P-111: downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809420303530-main.pdf, extracted with PyMuPDF to stdout, nothing written)",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A novel electroencephalography based approach for Alzheimer's disease and mild cognitive impairment detection (Oltu, Aksahin & Kibaroglu, Biomedical Signal Processing and Control 63 (2021) 102223)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-62",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A deep learning model for the detection of various dementia and MCI pathologies based on resting-state electroencephalography data: A retrospective multicentre study (Watanabe et al., Neural Networks 171 (2024) 242-250)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-112": "The PDF in the pack is a dual-task gait study (32 healthy, 26 MCI, 20 AD; 3-class SVM accuracy 78%, healthy vs MCI/AD 86%), not the EEG paper the record and summaries.md block 112 describe. The block (35 subjects, DWT+PSD+coherence, Bagged Trees, 96.5%) matches Oltu et al. 2021, whose PDF the repository maps to P-111. Oltu et al.: resting EEG, 35 subjects (16 MCI, 8 AD, 11 HC), 3-class AD/MCI/HC; epoch-level 5-fold CV (490 epochs; epochs of the same subject can fall in train and test) accuracy 96.5%, AUC 0.99; subject-disjoint 50/50 split test accuracy 93.88%.",
+  "P-62": "Resting EEG, MNet CNN trained on Osaka Hospital O dementia cases only; external Hospitals K and N. HV vs dementia (AD+DLB+iNPH) bACC 0.927 (internal), 0.805 (K), 0.920 (N). Dementia subtype AD vs DLB vs iNPH bACC 0.572 / 0.619 / 0.508. The only MCI result: identifying the underlying pathology (AD vs DLB vs iNPH) of 83 MCI patients at Hospital O, bACC 0.715, ROC AUC 0.847. P-62 reports no MCI vs healthy classification."
+ },
+ "quantity_a": "Three-class clinical-stage discrimination (AD vs MCI vs healthy) from resting EEG in 35 single-centre Turkish subjects, epoch-level 5-fold CV (the intended paper); or, for the PDF actually in the pack, three-class stage discrimination from gait.",
+ "quantity_b": "Etiological-subtype discrimination (AD vs DLB vs iNPH pathology) within MCI patients, from a model trained on dementia cases, bACC; plus healthy vs dementia (not MCI) discrimination.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable as a contradiction: P-62's 0.715 answers 'which pathology underlies this MCI' and P-112/Oltu answers 'is this person healthy, MCI or AD'. A higher score on one task says nothing about the other. The record's premise ('more moderate MCI-related balanced performance') compares numbers from different tasks.",
+ "gates": {
+  "task": "mismatch: stage classification AD/MCI/HC (T3) vs etiological subtype classification within MCI and HV-vs-dementia (T1/differential); the registry itself codes P-112 T3 and P-62 T1.",
+  "dataset_family": "mismatch: Baskent University (Turkey) single-centre cohort vs Osaka/Kochi/Nippon Life hospitals (Japan).",
+  "validation_tier": "mismatch: Oltu epoch-level internal CV plus a 50/50 subject split, no external data; P-62 internal 5-fold CV plus two external hospitals.",
+  "modality_family": "match for the intended paper (resting-state EEG); mismatch for the PDF actually in the pack (gait)."
+ },
+ "endpoint_and_metric": "incompatible: different endpoints (clinical stage vs underlying pathology) and different metrics (plain accuracy over epochs vs subject-level balanced accuracy).",
+ "performance_validity": "flag applies to the intended P-112 paper: internal-only validation on 35 subjects with epoch-level cross-validation, AUC 0.99 (accuracy 96.5%, just under the 0.97 accuracy line but AUC over it); a performance comparison resting on it could not be genuine. The gait paper actually in the pack (78%) does not trip the flag.",
+ "independence": "Distinct studies, authors and countries; no shared data.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The pack PDF for P-112 is the wrong paper (a gait study); the record's claim matches Oltu et al. 2021, which the repository maps to P-111 and which was read in full from that PDF.",
+  "Whichever paper P-112 is taken to be, P-62 reports no MCI-vs-healthy result: its only MCI figure (bACC 0.715) is the discrimination of AD vs DLB vs iNPH pathology within MCI patients, a different quantity from three-class AD/MCI/healthy staging.",
+  "The dataset-family and validation-tier gates also fail with no waiver (Turkish single-centre epoch-level CV vs Japanese multicentre subject-level and external testing).",
+  "The intended P-112 result also meets the performance-validity exclusion (AUC 0.99, internal only, N=35, epoch-level CV)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-112 (pack PDF)",
+   "page": 1,
+   "quote": "We collected \"single-tasking\" gait (walking) and \"dual-tasking\" gait (walking with cognitive tasks) from 32 healthy, 26 MCI, and 20 AD participants using a computerized walkway."
+  },
+  {
+   "paper": "P-112 (Oltu et al., repository PDF of P-111)",
+   "page": 1,
+   "quote": "This study analyzed the EEGs of 35 subjects (16 MCI, 8 AD, 11 healthy control) with the developed algorithm."
+  },
+  {
+   "paper": "P-112 (Oltu et al., repository PDF of P-111)",
+   "page": 7,
+   "quote": "In the k-fold cross-validation method, epochs are randomly split into k groups"
+  },
+  {
+   "paper": "P-112 (Oltu et al., repository PDF of P-111)",
+   "page": 8,
+   "quote": "the accuracy of 93.88%, the specificity of 96.62% and the sensitivity of 93.24% is obtained for differentiating MCI patients, AD patients, and HC."
+  },
+  {
+   "paper": "P-62",
+   "page": 1,
+   "quote": "Notably, it also identified MCI pathologies with a bACC of 0.715 for Hospital #1 (n = 83), despite being trained on overt dementia cases instead of MCI cases."
+  },
+  {
+   "paper": "P-62",
+   "page": 6,
+   "quote": "when the MNet classifier was trained with the dementia group instead of the MCI group, it predicted the underlying pathologies of the MCI group at Hospital O, the bACC and ROC AUC values were 0.715 and 0.847"
+  }
+ ],
+ "record_defects": [
+  "The PDF mapped to P-112 in the pack (1-s2.0-S1746809420303773) is Ghoraani et al.'s gait study; summaries.md block 112 and the record describe Oltu et al.'s EEG study (DOI 10.1016/j.bspc.2020.102223), whose PDF is mapped to P-111. The registry row (Modality EEG/MEG, Acc 96.5, N 35) follows the misattached block.",
+  "claim_b 'Multicenter EEG deep CNN reports more moderate MCI-related balanced performance': P-62's MCI figure is pathology-subtype discrimination within MCI, not MCI detection.",
+  "apparent_performance_gap '~15 percentage points' sets a three-class stage accuracy against a subtype bACC; the numbers are not on the same quantity.",
+  "registry Best_Metric for P-62 'bACC 71.5' is the MCI subtype task; the record's resolution note calls it 'MCI-related balanced performance' without saying so.",
+  "The bridging-evidence list includes P-112 itself and many unrelated scores; none identifies a separating condition."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-62 result for MCI vs healthy (or AD vs MCI vs healthy) staging would be needed for any comparison; even then the intended P-112 result would be excluded by the performance-validity rule, and the gait PDF in the pack would need to be replaced by the correct paper in the pdf map."
+}

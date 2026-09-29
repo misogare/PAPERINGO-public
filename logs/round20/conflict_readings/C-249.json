@@ -1,0 +1,95 @@
+{
+ "id": "C-249",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-1046",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Expected and diagnosed rates of mild cognitive impairment and dementia in the U.S. Medicare population: observational analysis (Mattke, Jun, Chen, Liu, Becker, Wallick; Alzheimer's Research & Therapy (2023) 15:128)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-977",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "World Alzheimer Report 2016 - Improving healthcare for people living with dementia: coverage, quality and costs now and in the future (Prince, Comas-Herrera, Knapp, Guerchet, Karagiannidou; ADI, September 2016)",
+   "read_in_full": false
+  }
+ ],
+ "reading_note": "P-977 is a 137-page report (687 KB extract). Read in full: front matter, Chapter 1 (introduction, including the diagnostic-coverage statement and its references), Section 2.4 (detection and diagnosis), the Chapter 1 aims (diagnostic coverage assumptions), the Switzerland diagnosis statement in Chapter 6, and Section 8.2 (summary of findings). A search of the whole extract for Medicare, detection/diagnosis rate and diagnostic-coverage terms located every other passage on the contested quantity. The remaining chapters (hospital care, palliative care, country case studies, cost modelling) do not report diagnostic coverage beyond model assumptions (50% HIC / 5-10% LMIC).",
+ "what_each_reports": {
+  "P-1046": "100% Medicare FFS + Advantage beneficiaries aged 65+ (38.7-41.2 million per 3-year window, 2015-2019). Observed rate = ICD-coded diagnoses (dementia: modified CCW algorithm requiring 2 claims on separate days within a 3-year window). Expected rate = HRS 2000-2016 probit model on demographics only (dementia AUC 0.772). Dementia detection (O/E) 1.086, 1.093, 1.104 across windows; the authors describe dementia as 'overdiagnosed ... by about 10%'. MCI detection 0.062-0.079 (7.4 of 8 million expected MCI undiagnosed, 92%). The authors note their dementia rate is 'much higher than the 38%' of a pre-2007 US meta-analysis and the 62% NHS England estimate, and that their model may underpredict dementia prevalence (expected 0.086 vs 0.113 and 0.100 in other US estimates).",
+  "P-977": "Policy report. Chapter 1: 'In most HIC, only 40-50% of people living with dementia have received a diagnosis. In LMIC ... unlikely to exceed 5-10%'; the three references attached (Brazil, Thailand, India) are LMIC studies, so no source is printed for the HIC figure. Section 2.4 separately reports a systematic review of 15 mainly European/North American primary-care studies: PCPs identified 73.4% (95% CI 62.6-82.9%) of dementia cases, with 37.9% recorded in notes. Cost models assume 50% diagnostic coverage in HIC."
+ },
+ "quantity_a": "Ratio of claims-documented dementia prevalence to an HRS-demographic-model expected prevalence, US Medicare 65+, 2015-2019 (observed/expected, can exceed 1).",
+ "quantity_b": "Proportion of people living with dementia who have ever received a diagnosis (diagnostic coverage against epidemiological prevalence), stated as a round range for 'most HIC', pre-2016, with no printed source or uncertainty for the HIC figure.",
+ "same_quantity": false,
+ "incompatible_if_same": "Unclear, and not testable. At face value 1.09-1.10 and 0.40-0.50 cannot both be the US coverage, but P-977's figure is a generic statement for 'most HIC', not a US estimate, and has no uncertainty. P-977's own Section 2.4 gives 73.4% PCP recognition in Europe/North America. P-1046 itself reports that other denominators would lower its ratio (observed 0.096 against 0.100-0.113 prevalence), so its value depends on the denominator.",
+ "gates": {
+  "task": "match: both T6 descriptive/population-level",
+  "dataset_family": "mismatch: US Medicare claims + HRS model vs a multi-country synthesis whose HIC figure is unsourced; no waiver on record",
+  "validation_tier": "n/a (descriptive; neither validates a predictive model for comparison) - counted as matched",
+  "modality_family": "mismatch: ICD-coded administrative claims vs policy-level evidence synthesis with no primary data"
+ },
+ "endpoint_and_metric": "incompatible: an observed/expected ratio with a model-based denominator vs a coverage proportion against epidemiological prevalence; different populations (US Medicare 65+ vs 'most HIC') and eras (2015-2019 vs pre-2016 sources)",
+ "performance_validity": "not a performance comparison",
+ "independence": "Independent: different authors, data and years; no shared cohort.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two quantities differ in metric and denominator: P-1046's detection rate is observed over a model-predicted expectation, while P-977's 40-50% is a coverage proportion against epidemiological prevalence.",
+  "The populations and eras differ: US Medicare beneficiaries 65+ in 2015-2019 vs a generic 'most HIC' figure in a 2016 report.",
+  "The dataset-family and modality gates fail (claims + HRS model vs an unsourced policy-report figure) with no waiver on record.",
+  "P-1046 itself flags that its dementia ratio depends on the expected-rate denominator, and it sets its figure against other estimates (38%, 62%) rather than claiming to refute them."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-1046",
+   "page": 1,
+   "quote": "Dementia was diagnosed more frequently than expected (1.086 to 1.104) from 2015 to 2019, mostly in non-Hispanic White beneficiaries (1.367) compared with 0.696 in Black beneficiaries and 0.758 in Hispanic beneficiaries."
+  },
+  {
+   "paper": "P-1046",
+   "page": 3,
+   "quote": "The O/E ratio can be interpreted as the proportion of expected cases that were diagnosed or the detection rate."
+  },
+  {
+   "paper": "P-1046",
+   "page": 6,
+   "quote": "This dementia detection rate is much higher than the 38% reported by a meta-analysis of US-based studies prior to 2007 [29] and the July 2022 estimate of 62% from the National Health Service in England [30]"
+  },
+  {
+   "paper": "P-1046",
+   "page": 6,
+   "quote": "it is possible that our model underpredicts dementia prevalence, because our expected rate of 0.086 is slightly lower than the rates reported for the US population aged 65 and older by Rajan et al. [38] (0.113) and Manly et al. [39] (0.100), which are closer to the observed rate of 0.096."
+  },
+  {
+   "paper": "P-1046",
+   "page": 1,
+   "quote": "the results mean that 7.4 of 8 million (92%) expected MCI cases remained undiagnosed."
+  },
+  {
+   "paper": "P-977",
+   "page": 12,
+   "quote": "Diagnostic coverage is low. In most HIC, only 40-50% of people living with dementia have received a diagnosis. In LMIC there are few available estimates, but diagnostic coverage is unlikely to exceed 5-10% in most settings3\u20135."
+  },
+  {
+   "paper": "P-977",
+   "page": 24,
+   "quote": "3 Nakamura AE, Opaleye D, Tani G, Ferri CP. Dementia underdiagnosis in Brazil. Lancet 2015; 385: 418\u20139."
+  },
+  {
+   "paper": "P-977",
+   "page": 33,
+   "quote": "In a systematic review of 15 such studies conducted mainly in Europe and North America, the pooled proportion of dementia cases identified by PCPs was 73.4% (95% CI: 62.6-82.9%)34."
+  }
+ ],
+ "record_defects": [
+  "evidence_quotes attribute to P-1046 the limitation 'Reliance on ICD codes for MCI/dementia identification (underestimates true prevalence'; no such sentence is in the PDF. On dementia the paper reports overdiagnosis of about 10% (23% under the original CCW algorithm) and says its MODEL may underpredict prevalence. The human_evaluation_note's argument from 'an acknowledged undercounting numerator' therefore has no source in the paper; the paper's own explanation is a low expected rate.",
+  "claim_b and conflict_statement treat P-977's 40-50% as a sourced, canonical figure; in the PDF the only citations attached to that sentence (refs 3-5) are LMIC studies (Brazil, Thailand, India), so the HIC figure has no printed source.",
+  "The record implies the incompatibility is 'created entirely by the denominator'; P-977's figure is for 'most HIC' generally, not the US, so population and era also differ (the operator's 2026-09-09 note already flagged this overstatement).",
+  "Registry Sample_N_Approx for P-1046 ('~46M ... per year') does not match the PDF: 38.7-41.2 million beneficiaries included per 3-year window (13.2% excluded for enrolment).",
+  "Registry Validation_Type V3/V4 for two descriptive papers is not meaningful for this comparison (minor)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A US-specific diagnostic-coverage estimate for 2015-2019 against an epidemiological prevalence denominator, with uncertainty, set against P-1046's ratio recomputed on the same denominator. Neither paper provides this."
+}

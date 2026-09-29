@@ -1,0 +1,50 @@
+{
+ "paper": "P-185",
+ "role": "round-2 verifier",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "yes",
+ "dataset_family": "ADNI (ADNI-1-era 1.5 T baseline MRI: 142 AD, 165 NC, 221 MCI = 126 pMCI / 95 sMCI; 3-year conversion)",
+ "method_family": "Graph-regularized regression subspace learning: projection matrices learned on auxiliary AD/NC MRI, with CCA-like coupling of cortical thickness and volume, then decision tree, RBF-SVM or linear SVM. This is close to P-104's AD/NC-auxiliary sparse regression feature learning plus linear SVM, so it is not a clearly distinct method family from P-104.",
+ "same_sample_or_cohort_as": [
+  "P-104 (ADNI; both use ADNI AD/NC subjects as auxiliary data for 1.5 T-era MCI; participant overlap likely but not determinable)",
+  "P-3 (ADNI1/2; participant overlap likely but not determinable)",
+  "P-81 (ADNI family)"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "An MRI-only study with no fusion across data types. The proposed biomarker maps each MCI subject's regional thickness and volume through projection matrices learned from auxiliary AD and NC subjects. Section 3.3 / Table 4 runs the with-versus-without comparison on the same MCI data, with the same pipeline and the same three classifiers: projections learned from AD/NC data versus projections learned from the pMCI/sMCI training folds themselves. The auxiliary version is better for every classifier: decision tree ACC 60.89 to 66.35, AUC 0.532 to 0.622; RBF-SVM 65.17 to 68.37, AUC 0.650 to 0.680; linear SVM 64.78 to 69.37, AUC 0.663 to 0.695. Paired t-tests on accuracy over 20 CV repeats give p < 0.0001. RBF-SVM specificity falls (53.46 to 48.06). Absolute performance is modest (AUC <= 0.70).",
+ "why": "IDENTITY. PDF p.1 is Li, Fang, Wang, Zhang and Hu, 'Biomarker Extraction Based on Subspace Learning for the Prediction of Mild Cognitive Impairment Conversion', BioMed Research International 2021, Article ID 5531940, doi 10.1155/2021/5531940 (Hindawi). The block (headed by this PDF's filename) describes the same study: subspace learning, AD/NC auxiliary information, 528 subjects (142 AD / 165 NC / 126 pMCI / 95 sMCI). I read the whole extract up to the reference list (10 pages).\n\nDESIGN. ADNI baseline 1.5 T T1 MRI, FreeSurfer 5.3, 78 AAL cortical regions, mean thickness and volume. Projection matrices U and V are learned on AD/NC data by a regression-to-labels objective with thickness-volume coupling, graph regularization and ridge terms. MCI features are projected, self-weighted and fused (weight eta). Evaluation is 10-fold CV repeated 20 times, with paired t-tests on the 20 run accuracies. Hyperparameters (lambda, alpha, beta, k, eta) are grid-searched. The paper states that 'we also conducted the parameter optimization for each method in comparison to reach their best performance', and nested selection is not described.\n\nNARROWED FORM: YES. The round-20 narrowed wording counts 'AD/NC ... side-information' (P-104) and 'source-task attention maps' (P-3) as auxiliary information added to an imaging model, and asks whether this beats the same imaging model alone. P-185's Table 4 is that comparison. The pipeline, MCI feature extraction, parameter ranges and classifiers are the same; the only difference is whether the projections come from the auxiliary AD/NC data or from the pMCI/sMCI training folds. Accuracy and AUC improve for all three classifiers (for example, linear SVM ACC 64.78 to 69.37, AUC 0.6628 to 0.6951), and the accuracy gains are tested (p < 0.0001). It is the same design element that makes P-104 (GSR-Aux vs GSR-Pre) and P-3 (transfer vs no transfer) count under the narrowed wording. The margins are modest, as the narrowed wording already concedes.\n\nSTATED FORM: PARTLY. The part shown is that an auxiliary-data-aware model beats the same MRI model without the auxiliary data. There is no fusion of modalities and no comparison with a unimodal baseline of another kind. The study is MRI-only; the 'weighted fusion' is of two MRI morphometric feature types. This matches the round-20 grading of P-3, which was PARTLY on the stated form for the same reason. Also, the proposed biomarker's AUC (0.6951) is slightly below a competing AD/NC-informed biomarker (global grading, 0.6981). Both AD/NC-informed approaches beat the original morphological features (AUC 0.6508), but that row uses a different selection and classifier pipeline, so it is not a clean same-model comparison.\n\nCAVEATS. (1) Parameters were tuned on the CV results for both arms, with no nested selection described, so both arms carry the same optimism. (2) Paired t-tests over 20 repeats of 10-fold CV use overlapping training sets and overstate significance; the p < 0.0001 values should not be read literally. (3) RBF-SVM specificity is lower with auxiliary data (53.46 vs 48.06), so the gain comes through sensitivity for that classifier. (4) The auxiliary arm learns projections from more subjects (307 AD/NC) than the within-MCI arm (training folds of about 199 MCI). That is inherent to using auxiliary data but confounds 'auxiliary information' with 'more training data'. (5) Internal CV only, no external test. (6) Published in Hindawi BioMed Research International (2021). Its retraction or expression-of-concern status is UNCHECKED: the Scite tool returned its monthly-limit error today. Check it before any admission.\n\nINDEPENDENCE. ADNI, so it adds no dataset family. Its method is close to P-104's: both use AD/NC auxiliary data to learn a regression-based feature mapping for MCI, then a linear SVM. The authors (Shandong Normal University / Shandong Management University / Qilu University of Technology / Lanzhou University) are disjoint from P-3, P-104 (Heng Tao Shen, Xiaofeng Zhu, Zheng Zhang, Shui-Hua Wang, Yi Chen, Xing Xu, Jie Shao) and P-81. They are also disjoint from the round-1 candidates' first-page author lists; common surnames (Zhang, Wang, Li) belong to different people. Not a preprint. Not in registry_duplicates.json.\n\nQuotes are rejoined across line breaks and normalized to ASCII. The in-plane resolution in the p.2 quote is elided because the extract mangles it ('1:25 mm').",
+ "quotes": [
+  {
+   "page": 2,
+   "quote": "We use baseline MRI scans (1.5 T, ...) of 528 subjects, which include 142 AD subjects, 165 NC subjects, and 221 MCI subjects. Moreover, the 221 MCI subjects contain 126 pMCI and 95 sMCI subjects."
+  },
+  {
+   "page": 5,
+   "quote": "To make fair comparisons, we repeated 10-fold cross-validation 20 times to report the average results for each method. ... Moreover, to assess whether the differences between the two competing methods were statistically significant, paired t-tests at 95% significance level were performed on the classification accuracies of the 20 runs."
+  },
+  {
+   "page": 5,
+   "quote": "Note that we also conducted the parameter optimization for each method in comparison to reach their best performance."
+  },
+  {
+   "page": 7,
+   "quote": "In this subsection, we examined the effectiveness of learning projection matrices using AD and NC data. For comparison, we learned projection matrices by virtue of pMCI and sMCI data. The same procedure of MCI feature extraction as Section 2.2 was conducted. Three different classifiers, i.e., decision tree classifier, SVM with RBF kernel, and SVM with linear kernel, were used for test in turn. We also conducted 10-fold cross-validation for 20 times to obtain the average results."
+  },
+  {
+   "page": 7,
+   "quote": "Table 4 demonstrates the classification results of learning projection matrices using different data. Compared with pMCI and sMCI data, the projection matrices learned with AD and NC data obtained better classification performance no matter which classifier was used. In particular, compared to learning projection matrices using pMCI and sMCI data, the proposed method obtained significant improvements on the classification accuracy and sensitivity by 4.59% and 7.8% when using SVM classifier with linear kernel, respectively."
+  },
+  {
+   "page": 8,
+   "quote": "Table 4: Classification performance of learning projection matrices using different data. Data of learning projection matrices Classifier ACC (%) p value SEN (%) SPE (%) AUC pMCI and sMCI data Decision tree classifier 60.89 <0.0001 67.22 52.27 0.5318 AD and NC data 66.35 70.97 60.33 0.6216 pMCI and sMCI data SVM classifier with RBF kernel 65.17 <0.0001 73.95 53.46 0.6495 AD and NC data 68.37 83.57 48.06 0.6800 pMCI and sMCI data SVM classifier with linear kernel 64.78 <0.0001 67.59 60.91 0.6628 AD and NC data 69.37 75.39 61.23 0.6951"
+  },
+  {
+   "page": 7,
+   "quote": "Table 3: Comparison of classification results of all competing methods. Feature Classifier ACC (%) SEN (%) SPE (%) AUC Original morphological features SVM classifier with RBF kernel 62.92 71.23 51.72 0.6508 MFN in [13] SVM classifier with RBF kernel 65.61 70.63 58.95 0.6670 Global grading biomarker in [15] SVM classifier with linear kernel 67.43 70.04 63.96 0.6981 Proposed biomarker SVM classifier with linear kernel 69.37 75.39 61.23 0.6951"
+  }
+ ]
+}

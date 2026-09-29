@@ -1,0 +1,78 @@
+{
+ "id": "C-61",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging (Rallabandi & Seetharaman, 2023, doi 10.1016/j.bspc.2022.104312, file S1746809422007662)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-99",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Machine learning approaches to mild cognitive impairment detection based on structural MRI data and morphometric features (Zubrikhina et al., Cognitive Systems Research 78 (2023) 87-95)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "The record's P-117 (summaries.md S1746809423005462: resting-state EEG, VMD + NSGA-II, best ~99.8% accuracy, sample not reported) could not be checked; the pack PDF is a different paper (OASIS MRI-PET fusion, 95.5% HC vs MCI accuracy, AUC 0.988, internal 60/20/20 split).",
+  "P-99": "FreeSurfer morphometric features from structural MRI, SVC with chi-squared feature selection, 10-fold CV, Moscow Memory Clinic cohort of 207 (62 HC, 145 MCI). Accuracy 0.73 +/- 0.059, ROC-AUC 0.735, F1-macro 0.683."
+ },
+ "quantity_a": "Record's P-117: EEG classifier accuracy, MCI vs healthy, own cohort, internal validation (summary block only).",
+ "quantity_b": "P-99: structural-MRI morphometry SVC accuracy, MCI vs HC, 207 Moscow participants, 10-fold CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not determinable and not needed; different modality and cohort. Two methods each reporting their own accuracy, neither claiming an ordering the other refutes.",
+ "gates": {
+  "task": "match (MCI vs control, T1)",
+  "dataset_family": "mismatch: Moscow Mental-health Clinic No. 1 cohort vs P-117's EEG cohort (or OASIS under the pack PDF); record's dataset_equal='Yes' unsupported",
+  "validation_tier": "match (both internal, V2)",
+  "modality_family": "mismatch for the EEG paper the record means (structural MRI vs EEG); against the pack PDF's MRI-PET fusion the family would partly overlap, but the dataset gate still fails; no waiver on record"
+ },
+ "endpoint_and_metric": "compatible metric type (accuracy, MCI vs control) but different cohorts and input modalities",
+ "performance_validity": "Likely applies to P-117 (claimed 99.81% internal; the mapped MRI-PET PDF also reports AUC 0.985-0.989 on an internal split) but unconfirmable for the intended paper; not needed for the verdict.",
+ "independence": "No shared cohort or authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The supplied P-117 PDF is the wrong paper (OASIS MRI-PET fusion), so the 99.81% EEG result cannot be checked from source.",
+  "The dataset-family gate fails under either identity of P-117 (Moscow memory-clinic cohort vs another cohort), and the modality gate fails for the EEG paper the record means; no waiver on record.",
+  "P-99's 73% is correctly quoted but is a structural-MRI morphometry accuracy in a different population, not a competing estimate of P-117's quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "we used 60 % training, 20 % for validation and the remaining 20 % as a test set using various convolutional neural networks."
+  },
+  {
+   "paper": "P-117 (summaries.md block, not the PDF)",
+   "page": null,
+   "quote": "They proposed VMD-based EEG feature extraction with multi-objective channel optimization (NSGA variants) and supervised ML to detect MCI from resting-state EEG."
+  },
+  {
+   "paper": "P-99",
+   "page": 1,
+   "quote": "The dataset for the study consists of 62 healthy volunteers and 145 patients with MCI obtained from the \u00abMemory Clinic\u00bb (Moscow, Russia)."
+  },
+  {
+   "paper": "P-99",
+   "page": 1,
+   "quote": "We propose a machine learning method, which achieved an accuracy of 73%"
+  },
+  {
+   "paper": "P-99",
+   "page": 4,
+   "quote": "the best and most stable results were obtained by SVC (0.68 F1, 0.735 ROC -AUC)"
+  }
+ ],
+ "record_defects": [
+  "P-117's paper_pdf_map entry points to the wrong PDF (MRI-PET S1746809422007662 instead of EEG S1746809423005462).",
+  "dataset_equal='Yes' has no basis.",
+  "Registry row P-99 Dataset 'not reported' although the PDF names the Mental-health clinic No. 1 (Moscow) Memory Clinic cohort.",
+  "Registry row P-117: Best_Metric and Dataset 'not reported' despite the 99.81% claim.",
+  "resolution_note's bridging list is boilerplate unrelated to either paper."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "The correct P-117 PDF would settle performance validity; it could not make the pair commensurable, since the cohorts differ and no waiver is on record."
+}

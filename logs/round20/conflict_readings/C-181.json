@@ -1,0 +1,73 @@
+{
+ "id": "C-181",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-339",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A prediction nomogram for mild cognitive impairment in type 2 diabetes mellitus based on the Chinese visceral adiposity index (Zhou, Wang, Yu & Niu, Scientific Reports 2025, 15:32393)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-20",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction and validation of mild cognitive impairment in occupational dust exposure population based on machine learning (Cai et al., Ecotoxicology and Environmental Safety 285 (2024) 117111); byte-identical to the P-19 extract, i.e. the same paper registered twice",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-339": "337 hospitalised T2DM patients aged 40-75 (179 NC, 158 MCI by MoCA < 26). Nomogram of age, gender, education and CVAI: AUC 0.765 (95% CI 0.705-0.826) training (apparent, n=236), 0.690 (95% CI 0.588-0.792) validation (n=101).",
+  "P-20": "Same paper as P-19: 1938 dust-exposed coal miners (331 MCI by MoCA <= 26) plus a 351-miner test set, single coal mine. XGBoost AUC 0.959 training, 0.795 validation, 0.913 test; logistic regression 0.818 / 0.816 / 0.778."
+ },
+ "quantity_a": "ROC-AUC for current MoCA-defined MCI among hospitalised T2DM adults from age, gender, education and visceral adiposity index (0.765 apparent training value)",
+ "quantity_b": "ROC-AUC for current MoCA-defined MCI among dust-exposed coal miners from occupational and psychosocial predictors in XGBoost (0.913 on a separate test set)",
+ "same_quantity": false,
+ "incompatible_if_same": "Not clearly: like-for-like logistic models give similar AUCs in both papers (0.765/0.690 vs 0.818/0.816/0.778); the 0.913 is a different method on a different predictor set.",
+ "gates": {
+  "task": "match in type (current MCI detection); registry codes P-339 as T4 and P-20 as T1",
+  "dataset_family": "mismatch: T2DM inpatient cohort vs coal-mine occupational cohort; the record's dataset_equal 'Yes' is wrong (both registry rows merely read 'not reported')",
+  "validation_tier": "mismatch for the contested figures: apparent training AUC (P-339) vs separately recruited test set (P-20); registry codes P-20 as V4, which overstates a same-mine test set",
+  "modality_family": "match at family level (clinical/questionnaire tabular) but different predictor sets"
+ },
+ "endpoint_and_metric": "compatible metric and similar MoCA endpoint (cut-offs < 26 vs <= 26), but different populations, predictors and validation stage",
+ "performance_validity": "flag does not apply to the contested figures",
+ "independence": "Distinct studies; however P-20 is a duplicate registration of P-19, so this record duplicates C-180 and must not be counted as a separate candidate",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-20 is the same paper as P-19 (identical extract), so this record restates C-180 and inherits its grounds.",
+  "The populations differ (hospitalised T2DM patients vs dust-exposed coal miners) and the dataset-family gate fails with no waiver; the record's dataset_equal 'Yes' is wrong.",
+  "The predictor sets and validation stages of the contested figures differ, and like-for-like logistic models in the two papers give similar AUCs."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-339",
+   "page": 5,
+   "quote": "with AUC values of 0.765 (95% CI: 0.705-0.826) in the training cohort and 0.690 (95% CI 0.588-0.792) in the validation cohort (Fig. 4C, D)."
+  },
+  {
+   "paper": "P-339",
+   "page": 2,
+   "quote": "Patients with T2DM who were admitted to the Department of Endocrinology at the Affiliated Zhongda Hospital of Southeast University between November 2021 and April 2023 were consecutively enrolled in this study."
+  },
+  {
+   "paper": "P-20",
+   "page": 1,
+   "quote": "Results from the test set showed that the AUC of the XGBoost model (AUC=0.913) outperformed the Logistic Regression model (AUC=0.778)."
+  },
+  {
+   "paper": "P-20",
+   "page": 6,
+   "quote": "The data used in this model comes from a single coal mine. More external data may be needed to improve the model's generalizability."
+  }
+ ],
+ "record_defects": [
+  "P-20 duplicates P-19 (same PDF, same numbers); C-181 duplicates C-180 and inflates the candidate count.",
+  "dataset_equal 'Yes' is wrong: T2DM inpatients vs coal miners.",
+  "claim_a uses P-339's apparent training AUC (0.765) rather than its validation AUC (0.690).",
+  "Registry codes P-20 as V4 (external) although its test set comes from the same single coal mine; P-19 is coded V3 for the same paper.",
+  "The rejection reason recorded ('Same architecture family (A1_classical)') is not a ground under the rule."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing within these papers; P-20 should first be merged with P-19 and C-181 with C-180."
+}

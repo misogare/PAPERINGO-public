@@ -1,0 +1,52 @@
+{
+ "paper": "P-1128",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "yes",
+ "dataset_family": "ADNI (ADNI-GO/2 per P-731's description of the identical sample; 162 MCI = 68 converters within 6-60 months / 94 non-converters over 5 years; random 112 training / 50 validation split)",
+ "method_family": "Hand-crafted T1 MRI radiomics (FreeSurfer cortical morphology plus individual grey-matter similarity-network features, LASSO-Cox rad-score) combined with clinical covariates in multivariate Cox proportional-hazards models; time-to-conversion C-index",
+ "same_sample_or_cohort_as": [
+  "P-731 (not a supporter or candidate here): the same 162 ADNI MCI (68 converters / 94 stable, 5-year follow-up), confirmed in the P-731 PDF; shares co-author Lin Tang and the Chongqing radiology group. Count P-1128 and P-731 once at most",
+  "P-3, P-104, P-81 (all ADNI: same dataset family)",
+  "P-190, P-186, P-88 (candidates; ADNI)"
+ ],
+ "shared_authors_with": [
+  "P-731: Lin Tang",
+  "P-190: an author named Rong Zeng is on both, with different affiliations (Chongqing Medical University here; Chenzhou No.1 People's Hospital on P-190), possibly different people",
+  "No author shared with the current supporters P-3, P-104 or P-81"
+ ],
+ "what_it_shows": "Within one study, on the same 50-patient validation split, adding clinical covariates to each MRI-only Cox model raised the validation C-index. Morphology went from 0.784 to 0.877 and network from 0.765 to 0.849. Network-morphology went from 0.844 to 0.880 by Table 2, but from 0.884 to 0.880 by the abstract and results text. No clinical-only model was fitted.",
+ "why": "STATED: partly. Fusion of imaging with auxiliary clinical data beats the imaging-only (MRI) baselines within the study, but the study has no clinical-only or other non-imaging model. It therefore does not test fusion against all unimodal baselines, and the outcome is time-to-conversion discrimination (Cox C-index), not a pMCI/sMCI classifier. NARROWED: yes. This is the narrowed claim that auxiliary information added to an imaging model improves on the same imaging model alone. Two of the three pairs improve clearly (morphology 0.784 to 0.877; network 0.765 to 0.849). The third depends on an internal inconsistency. Table 2 gives Network-Morphology validation C-index 0.844 (95% CI 0.756-0.932), which the fused model's 0.880 improves on. The abstract and results text give 0.884, which would mean no gain. The paper's own statement that the morphology-network-clinical model 'performed the best (Table 2)' is only consistent with the Table 2 value, so the text figure is probably a typographical error. This correction to the finder's 'no gain' reading rests on that inconsistency and should be read with it. CAVEATS: (1) The validation set is 50 patients, a single random internal split with no external validation (p.8). (2) No significance test between models; the confidence intervals overlap widely (morphology 0.672-0.896 vs morphology-clinical 0.808-0.945). (3) The clinical variables are not listed per model. The final nomogram keeps MoCA and FAQ, and FAQ (functional impairment) partly defines the dementia outcome (circularity). (4) The text does not say whether feature selection was restricted to the training set. INDEPENDENCE: ADNI, no new dataset family. The method family (radiomics plus Cox) differs from P-3, P-104 and P-81.",
+ "quotes": [
+  {
+   "page": 1,
+   "quote": "The C-indexes of those models in the validation group were 0.765, 0.784, 0.849, 0.877, 0.884, and 0.880, respectively. The morphology-network-clinical model performed the best."
+  },
+  {
+   "page": 5,
+   "quote": "TABLE 2 Performance of the different models. ... Test set ... Network 0.765 0.672 0.857 ... Morphology 0.784 0.672 0.896 ... Morphology-Clinical 0.877 0.808 0.945 ... Network-Clinical 0.849 0.783 0.915 ... Network-Morphology 0.844 0.756 0.932 ... Network-Morphology-Clinical 0.880 0.817 0.943 [columns: test C-index, lower, upper]"
+  },
+  {
+   "page": 5,
+   "quote": "The C-indexes of those models in the validation group were 0.765, 0.784, 0.849, 0.877, 0.884 and 0.880, respectively. The morphology-network-clinical model performed the best (Table 2)."
+  },
+  {
+   "page": 3,
+   "quote": "The factors that were significant in the univariate analysis (p < 0.05) were used in a multivariate Cox proportional hazards model to establish network, morphology, network\u2013clinical, morphology\u2013clinical, morphology\u2013network and morphology\u2013network\u2013clinical models."
+  },
+  {
+   "page": 7,
+   "quote": "This nomogram included 3 predictors: the Montreal Cognitive Assessment (MoCA) score, Functional Assessment Questionnaire (FAQ) score, and rad-score (Figure 4A)."
+  },
+  {
+   "page": 2,
+   "quote": "The dataset included baseline T1W images and clinical data of 68 MCI patients who progressed to AD in 6\u201360 months and 94 other MCI patients without AD conversion in 5 years"
+  },
+  {
+   "page": 8,
+   "quote": "Second, our research lacked independent external validation."
+  }
+ ]
+}

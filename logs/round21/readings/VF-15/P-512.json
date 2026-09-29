@@ -1,0 +1,40 @@
+{
+  "paper": "P-512",
+  "pdf_is_right_paper": true,
+  "preprint": false,
+  "read_in_full": true,
+  "supports_stated": "partly",
+  "supports_narrowed": "yes",
+  "dataset_family": "ADNI",
+  "method_family": "Whole-brain T1 WM/GM/CSF radiomics signature (mRMR plus LASSO, logistic Rad-score) combined with APOE4, CDR and ADAS in an RBF-kernel SVM; same method family as P-225",
+  "same_sample_or_cohort_as": ["P-225", "P-3", "P-104", "P-81", "P-195"],
+  "shared_authors_with": [],
+  "what_it_shows": "In 357 ADNI MCI (154 progressed within 48 months; train 249, test 108), the SVM combining radiomics, APOE4, CDR and ADAS reached 0.807 on the test set. The radiomics signature alone reached 0.692, ADAS 0.695, CDR 0.599 and APOE4 0.592. DeLong tests showed the integrated model significantly higher than each predictor (p < 0.05). The paper labels these ROC values 'accuracy', but they are most plausibly AUCs. So adding clinical and genetic predictors to the imaging-only signature improves on it. No multivariable non-imaging model was tested.",
+  "why": "IDENTITY. The PDF is Shu Z-Y, Mao D-W, Xu Y-Y, Shao Y, Pang P-P, Gong X-Y. Ther Adv Neurol Disord 2021;14:1-13 (doi 10.1177/17562864211029551). Its title matches the block header, and the block's N (357; 203 stable / 154 progressed; 249/108) matches. I read the whole extract up to the references.\n\nDESIGN. ADNI, 357 MCI, split 7:3 by ADNI participant number. A whole-brain WM/GM/CSF radiomics signature was built (mRMR + LASSO, logistic Rad-score). AIC backward stepwise regression kept APOE4, CDR, ADAS and the Rad-score, which were combined in an RBF-kernel SVM. The integrated model was compared by ROC with each single predictor in the training and test sets, with DeLong tests and decision-curve analysis.\n\nNARROWED FORM: YES. Adding APOE4, CDR and ADAS to the radiomics signature raises test-set discrimination from 0.692 to 0.807. DeLong shows the integrated model significantly higher than each predictor (p < 0.05); per-comparison p-values are not printed. The paper calls these ROC values 'accuracy'. Figure 3 shows ROC curves and Table 4 labels the time-stratified values AUC, so they are most plausibly AUCs.\n\nSTATED FORM: PARTLY. The integrated model beats the imaging-only signature and each single non-imaging predictor (ADAS 0.695, CDR 0.599, APOE4 0.592). But no multivariable clinical-only model (APOE4 + CDR + ADAS) was tested, so the study does not show that fusion beats the best non-imaging baseline. On the test set, the imaging-only signature (0.692) is no better than ADAS alone (0.695).\n\nCAVEATS. CDR and ADAS partly determine the ADNI AD diagnosis. The validation is an internal split only, and the study is retrospective.\n\nOVERLAP WITH P-225. P-512 very likely uses the same ADNI participant subset as P-225. Both report the same 154 progressors, 48 months, a 7:3 split and the same pipeline, with near-identical training demographics and paraphrased discussion (details in the P-225 entry). P-512 is the earlier paper (2021). If either is admitted, count only one.\n\nOTHER AUTHORS. The finder reported that Zhenyu Shu is also an author of P-88. P-88 is not a VF-15 supporter or candidate, and I did not check it.\n\nINDEPENDENCE FROM CURRENT SUPPORTERS. ADNI, so no new dataset family. Author-disjoint from P-3, P-104 and P-81. The method family only partly overlaps P-104 (sparse selection plus SVM at a coarse level). The fusion mechanism differs: P-104 uses side-information to guide imaging-feature selection, while P-512 concatenates clinical and genetic predictors with an imaging score. Not a preprint.\n\nQuotes are rejoined across line breaks and normalized to ASCII.",
+  "quotes": [
+    {
+      "page": 6,
+      "quote": "The ROC curve showed that the accuracy of the integrated model, radiomics signature, ADAS scores, CDR scores, and APOE4 in the test set was 0.807, 0.692, 0.695, 0.599, and 0.592, with a specificity of 0.738, 0.721, 0.803, 0.672, and 0.525 and a sensitivity of 0.745, 0.659, 0.532, 0.511, and 0.66, respectively (Figure 3). Furthermore, the Delong test demonstrated that the performance of the integrated model was significantly higher compared to the other independent predictors in the training and test sets (p < 0.05)."
+    },
+    {
+      "page": 4,
+      "quote": "The ROC curve showed that the prediction performance of the radiomics signature in the training and test sets was good, with AUC values of 0.722 and 0.692"
+    },
+    {
+      "page": 1,
+      "quote": "357 patients with MCI were selected from the ADNI database, which is an open-source database for AD with multicentre cooperation, of which 154 progressed to AD during the 48-month follow-up period."
+    },
+    {
+      "page": 3,
+      "quote": "according to the original ADNI participant number, these patients were assigned to a training set (n = 249) or a test set (n = 108) at a 7:3 ratio."
+    },
+    {
+      "page": 4,
+      "quote": "Table 1 ... Gender [n (%)] Male 156 (62.7) 73 (67.6) ... Education (years) 15.7 (3) 15.6 (2.8) ... CDR (score) 1.6 (0.9) 1.6 (0.9) ... ADAS (score) 11.5 (4.3) 11.9 (4.8)"
+    },
+    {
+      "page": 10,
+      "quote": "Secondly, this study is a retrospective study based on information available in public databases. It is necessary to conduct further longitudinal prospective studies on MCI patients to confirm the results of this study."
+    }
+  ]
+}

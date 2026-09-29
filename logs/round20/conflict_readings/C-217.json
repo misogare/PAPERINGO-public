@@ -1,0 +1,83 @@
+{
+ "id": "C-217",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-183",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Signal and Texture Features from T2 Maps for the Prediction of Mild Cognitive Impairment to Alzheimer's Disease Progression (Trejo-Castro et al., Healthcare 2021, 9, 941)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-308",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting conversion in cognitively normal and mild cognitive impairment individuals with machine learning: Is the CSF status still relevant? (Russo et al., Alzheimer's Dement. 2025;21:e14398)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-183": "N = 40 ADNI MCI aged 70-80 (18 progressed to AD by 2 years, 22 stable at least 5 years); baseline T2-map signal/texture features plus 8 neuropsychological scores; 100 random 80/20 splits. Best accuracy 0.775 (BSWiMS and RF; 95% CI 0.615-0.892); neuropsychology-only best LASSO accuracy 0.675 / ROC AUC 0.727.",
+  "P-308": "N = 648 ADNI participants who were CN or MCI at baseline (90 converters: CN->MCI or MCI->AD within 3 years); predictors are standard clinical data (demographics, drug classes, neuropsychology) plus CSF t-tau/Abeta1-42 categorisation, no MRI; after random undersampling of non-converters the gradient-boosting model was applied to 409 participants (22% converters): test accuracy 84%, sensitivity 43%, specificity 96%; 88% in the AD-like-CSF sub-cohort and 86% in the normal-CSF sub-cohort."
+ },
+ "quantity_a": "Accuracy of classifying MCI progressing to AD within 2 years vs MCI stable at least 5 years, from T2-map radiomics plus neuropsychology, ADNI MCI only, N = 40, repeated internal holdout.",
+ "quantity_b": "Accuracy of classifying 3-year conversion to the next cognitive level (CN->MCI or MCI->AD) in a pooled CN + MCI sample, from standard clinical data and CSF biomarkers (no imaging), after undersampling, internal train/test split.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even taking the corrected P-183 accuracy (0.775) against 0.84, P-183's own 95% interval (0.615-0.892) contains 0.84, so the two accuracies would not be incompatible even on one quantity. Neither paper claims an ordering that the other refutes.",
+ "gates": {
+  "task": "mismatch: P-183 is MCI->AD (T2) with 2-year progressers vs 5-year stables; P-308's endpoint pools CN->MCI and MCI->AD conversion within 3 years, so its positive class is not the T2 label.",
+  "dataset_family": "match: both ADNI.",
+  "validation_tier": "match (both internal only).",
+  "modality_family": "mismatch: P-183 is T2-map MRI plus neuropsychology; P-308 is clinical/neuropsychological data plus CSF biomarkers with no MRI input. The record's 'Neuroimaging' label is wrong for P-308."
+ },
+ "endpoint_and_metric": "incompatible: different endpoint (MCI->AD 2-year vs any-level conversion within 3 years in CN + MCI), different horizon, different population behind the label; claim_a's 72.7 is an ROC AUC, not an accuracy, so even the recorded metric types did not match.",
+ "performance_validity": "flag does not apply: neither result is >= 0.97 (P-308's training accuracies of 91-95% are not the reported test figure and are not the contested quantity).",
+ "independence": "Both draw on ADNI; overlapping MCI participants are possible. Distinct author groups.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-308's outcome pools CN->MCI and MCI->AD conversion in a CN + MCI sample, while P-183's outcome is MCI->AD alone, so the populations behind the conversion label differ.",
+  "P-308's predictors are clinical data and CSF biomarkers with no MRI, while P-183's are T2-map radiomics plus neuropsychology; the predictor set and modality family differ, and no waiver is on record.",
+  "The horizons differ: 2-year progression vs a 5-year-stable comparator in P-183, and a 3-year window in P-308.",
+  "Claim_a misstates P-183 (0.727 is a neuropsychology-only AUC). Its corrected best accuracy (0.775, CI 0.615-0.892) would not exclude 0.84 anyway."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-308",
+   "page": 3,
+   "quote": "The participants were labeled as \u201cconverters\u201d depending on whether their cognitive status progressed within 3 years, that is, (1) from CN to MCI; (2) from MCI to AD."
+  },
+  {
+   "paper": "P-308",
+   "page": 1,
+   "quote": "ML was applied to predict the 3-year conversion with standard clinical data (SCD), assess the model\u2019s accuracy, and identify the role of cerebrospinal fluid (CSF) biomarkers in this approach."
+  },
+  {
+   "paper": "P-308",
+   "page": 5,
+   "quote": "After undersampling, the model was applied to 409 participants (22% converters). With the optimal cut-off, the model\u2019s accuracy was 91% in the training set and 84% in the test set. The algorithm showed high specificity (96%) but low sensitivity (43%)."
+  },
+  {
+   "paper": "P-183",
+   "page": 3,
+   "quote": "the 18 subjects who had their first AD diagnosis 2 years after their baseline visit were regarded as progressers (MCIp), while the 22 subjects who never had an AD diagnosis and participated in the study for at least 5 years were labeled as stable (MCIs)."
+  },
+  {
+   "paper": "P-183",
+   "page": 5,
+   "quote": "The machine learning technique with the best results was LASSO, with an accuracy of 0.675 and an ROC AUC of 0.727."
+  },
+  {
+   "paper": "P-183",
+   "page": 7,
+   "quote": "RF 0.775 0.615\u20130.892 0.770 0.636\u20130.905"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-183: Acc 72.7 on T2' is wrong: 0.727 is the ROC AUC of the neuropsychology-only LASSO model; P-183's best accuracy is 0.775.",
+  "claim_b 'P-308: Acc 84 on T2' mislabels the task: P-308's 84% is for 3-year conversion in pooled CN + MCI (CN->MCI or MCI->AD), not MCI->AD alone.",
+  "modality_family 'Neuroimaging' is wrong for P-308, which uses no imaging (clinical data plus CSF). The registry Modality 'MRI/PET' for P-308 is also wrong.",
+  "validation_comparable 'Yes' hides that P-308 undersampled non-converters before the train/test evaluation and reports sensitivity of only 43%."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An MCI-only, MCI->AD result from P-308 with a reported interval excluding P-183's 0.775, on a comparable predictor set. P-308 reports no such MCI-only accuracy, and the predictor sets would still differ."
+}

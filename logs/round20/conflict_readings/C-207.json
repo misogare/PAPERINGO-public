@@ -1,0 +1,79 @@
+{
+ "id": "C-207",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-81",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Deep learning combining FDG-PET and neurocognitive data accurately predicts MCI conversion to Alzheimer's dementia 3-year post MCI diagnosis (Cao et al., Neurobiol Dis 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-211",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable Machine Learning with Pairwise Interactions for Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease Utilizing Multi-Modalities Data (Cai et al., Brain Sci 2023)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-81": "ADNI, 257 MCI (164 stable, 93 converting within 3 years) plus 150 CN and 205 AD for pre-training; 3D CNN on whole-brain FDG-PET with age and five cognitive scores (CDRSB, LDEL, MMSE, mPACCdigit, mPACCtrailsB), transfer learning from AD vs CN; 5-fold CV on validation sets: best AUC 0.7849 +/- 0.0963, balanced accuracy 0.7326 +/- 0.0978 for conversion within 3 years. No amyloid/tau data.",
+  "P-211": "ADNI, 1,042 amnestic MCI; Explainable Boosting Machine with FreeSurfer MRI volumes/thicknesses (hippocampus, amygdala, entorhinal, inferior temporal), cognitive scores (ADAS13, MMSE, FAQ, CDRSB), age, sex, education, baseline EMCI/LMCI label and APOE4; SMOTE, 90/10 split with 5-fold CV. Five-year prediction: accuracy 85%, AUC 0.92 (Comb a). AUC is lowest at 3 years; on the 3-year test set with interactions accuracy 0.75, AUC 0.81."
+ },
+ "quantity_a": "ROC-AUC for MCI-to-AD conversion within 3 years, from baseline FDG-PET plus age and five cognitive scores, ADNI, 5-fold CV.",
+ "quantity_b": "ROC-AUC for MCI-to-AD conversion within 5 years, from baseline structural MRI regional measures plus cognitive scores, demographics, baseline MCI stage and APOE4, ADNI.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. The recorded figures are at different horizons (3 vs 5 years), and P-211 itself shows AUC varying with horizon (lowest at 3 years). At the matched 3-year horizon P-211 reports test AUC 0.81, which lies inside P-81's 0.785 +/- 0.096, so the two are compatible where they are closest to the same quantity.",
+ "gates": {
+  "task": "match (T2, MCI-to-AD conversion)",
+  "dataset_family": "match: ADNI (overlapping MCI participants likely; P-81 uses ADNI1/GO/2, P-211 ADNI1/GO/2/3)",
+  "validation_tier": "match: V2 internal (CV / internal split) in both",
+  "modality_family": "mismatch: FDG-PET (P-81) vs structural MRI FreeSurfer measures (P-211); the record's 'Neuroimaging' bucket hides this, and both also include cognitive scores"
+ },
+ "endpoint_and_metric": "incompatible for the recorded pair: same metric type (ROC-AUC) but different horizon (3-year vs 5-year conversion) and different predictor sets (FDG-PET + 5 cognitive scores vs MRI volumes + ADAS13/MMSE/FAQ/CDRSB + APOE4 + baseline EMCI/LMCI label)",
+ "performance_validity": "flag does not apply: AUC 0.785 and 0.92 (below 0.97). Note P-81's AD-vs-CN pre-training models with cognitive scores reached 1.000, which the authors attribute to circularity, but that is not the contested conversion figure.",
+ "independence": "Distinct studies and authors; both draw on ADNI so participant overlap is likely but not quantified.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-81's 0.785 is a 3-year conversion AUC from FDG-PET plus cognitive scores.",
+  "P-211's 0.92 is a 5-year conversion AUC from structural MRI measures plus cognitive, demographic and APOE4 features, and the paper shows AUC depends on horizon.",
+  "Horizon, imaging modality and predictor set all differ, so the 0.135 gap is not a disagreement on one quantity.",
+  "At the matched 3-year horizon, P-211's test AUC of 0.81 falls within P-81's reported spread, so even the closest comparable figures agree."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-81",
+   "page": 1,
+   "quote": "the best model was a combination of FDG-PET, age, and neurocognitive data, yielding an AUC of 0.785 \u00b1 0.096 and a balanced accuracy of 0.733 \u00b1 0.098."
+  },
+  {
+   "paper": "P-81",
+   "page": 2,
+   "quote": "predict if a patient with mild cognitive impairment (MCI) will convert to dementia within three years of their baseline diagnosis."
+  },
+  {
+   "paper": "P-211",
+   "page": 1,
+   "quote": "The five-years prediction accuracy reached 85% (AUC = 0.92) using both cognitive scores and MRI markers."
+  },
+  {
+   "paper": "P-211",
+   "page": 7,
+   "quote": "The mean AUC using Comb (a) displayed a characteristic pattern of first at about 0.9, then decreasing, reaching a low point at 3 years, followed by a gradual increase until 5 years of follow-up, to about 0.92."
+  },
+  {
+   "paper": "P-211",
+   "page": 12,
+   "quote": "The main performance indicators, accuracy, sensitivity, specificity, and AUC, were 0.75, 0.78, 0.73, and 0.81 (with interaction effects)"
+  }
+ ],
+ "record_defects": [
+  "The record treats 0.785 vs 0.92 as the same T2 quantity without noting the horizon difference (3-year vs 5-year).",
+  "modality_family 'Neuroimaging' conflates FDG-PET (P-81) with structural MRI measures (P-211).",
+  "Pack registry row gives P-211 Sample_N_Approx '242804'; the paper includes 1,042 aMCI patients.",
+  "Pack registry row gives P-81 Modality 'MRI/PET'; the model input is FDG-PET (MRI used only for skull-stripping masks), plus cognitive scores.",
+  "The resolution_note's bridging entries (e.g. P-764 C-index, P-876 bACC) mix metric types and explain no condition separating these two results."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A study reporting 3-year conversion AUC on ADNI from comparable inputs with uncertainty excluding P-81's 0.785 +/- 0.096; P-211's own 3-year figure (0.81) does not."
+}

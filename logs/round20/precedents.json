@@ -1,0 +1,695 @@
+{
+ "C-80": {
+  "id": "C-80",
+  "paper_a": "P-82",
+  "paper_b": "P-3",
+  "claim_a": "P-82: Transformer on FreeSurfer features — 83.3% Acc on T2, ADNI, structural MRI, V2",
+  "claim_b": "P-3: CNN with attention transfer — 74.61% Acc on T2, ADNI, structural MRI, V2",
+  "task_equal": "Yes",
+  "dataset_equal": "Yes",
+  "validation_comparable": "Yes",
+  "modality_family_equal": "Yes",
+  "modality_family": "structural_mri",
+  "resolution": "Confirmed genuine conflict",
+  "gap_magnitude": 0.087,
+  "resolution_evidence_papers": [
+   "P-82",
+   "P-3",
+   "P-8",
+   "P-23",
+   "P-37",
+   "P-65",
+   "P-81",
+   "P-122",
+   "P-132",
+   "P-156",
+   "P-171",
+   "P-174",
+   "P-179",
+   "P-180",
+   "P-182",
+   "P-183",
+   "P-187",
+   "P-93",
+   "P-195",
+   "P-198",
+   "P-199",
+   "P-208",
+   "P-230",
+   "P-239",
+   "P-274",
+   "P-308",
+   "P-146",
+   "P-334",
+   "P-356",
+   "P-507",
+   "P-244",
+   "P-742",
+   "P-876"
+  ],
+  "resolution_status": "documented_incommensurability",
+  "resolution_note": "Genuine architectural conflict: different architecture families (transformer vs CNN) on same task T2, same dataset ADNI, same modality structural MRI, same validation tier V2, gap 8.7%. Pre-computed anatomical ROIs (FreeSurfer) beat end-to-end voxel learning (CNN) on small datasets. Bridging evidence: P-321 reports Acc 83.3 with comparable task/dataset family. Bridging evidence: P-507 reports Acc 79.95% (random-forest top-20 features; sensitivity 74.44%, specificity 85.46%) with comparable task/dataset family. Bridging evidence: P-244 reports AUC 0.802 with comparable task/dataset family. Bridging evidence: P-742 reports AUC 0.74. The paper does report a discrimination statistic, so this field must not be set to NR. What it reports is Harrell's concordance index from ten-fold cross-validation, accompanied by the integrated calibration index and the integrated Brier score; it reports no accuracy, no balanced accuracy, no F1, no kappa, no sensitivity and no specificity, and it performs no receiver operating characteristic analysis, because the outcome is modelled as time to  with comparable task/dataset family. Bridging evidence: P-876 reports bACC 79.4% (Sens 81.7% / Spec 77.1%) with comparable task/dataset family.",
+  "genuine_conflict": true,
+  "g4_reviewed": true,
+  "genuine": true,
+  "task": "T2",
+  "dataset": "ADNI",
+  "validation_tier": "V2",
+  "architecture_families": [
+   "transformer",
+   "CNN"
+  ],
+  "interpretation": "Pre-computed anatomical ROIs (FreeSurfer) beat end-to-end voxel learning (CNN) on small datasets",
+  "human_eval_notes": [
+   "G4 2026-06-28 (batch P-490..499): RESTORED resolution_status=genuine_confirmed; legacy corpus-wide Agent 4 had downgraded it to 'partially_resolved_candidate' despite genuine_conflict=True and resolution='Confirmed genuine conflict'. C-80 (P-82 transformer 83.3% vs P-3 CNN 74.61%, T2/ADNI/structural-MRI/V2) and C-204 (P-41 vs P-65) remain the 2 canonical genuine architectural conflicts; held stable across batches.",
+   "2026-08-16 batch P-798..P-807 G6 (delegated evaluator): RESTORED resolution_status 'partially_resolved_candidate' -> 'genuine_confirmed'. Diagnosis: agent6_write._is_confirmed_conflict calls _is_candidate_record on resolution_status, and _is_candidate_like matches any token CONTAINING 'candidate'. So the string 'partially_resolved_candidate' excluded this record from Table 6.4 by substring alone, even though genuine=True, genuine_conflict=True, g4_reviewed=True and resolution='Confirmed genuine conflict'. The effect was that Table 6.4 listed only C-227 and C-232 and Table 6.8 asserted '2 confirmed genuine' while conflicts.json holds 4. This restoration re-asserts the operator's own G4 decision of 2026-06-28 recorded in this record's human_eval_notes; the downgrade was NOT made by this batch's Agent 4 run, which changed only two resolution_note strings corpus-wide (verified by field-level diff against a pre-run snapshot). Same substring-filter class as the known IA status-filter bug."
+  ],
+  "audit_note": "2026-06-29: legacy Agent 4 (P-500..509 batch) downgraded to partially_resolved_candidate via bridging re-check; RESTORED to genuine_confirmed (held at 2 with C-204) per batch P-440 root-cause decision.",
+  "status": "rejected",
+  "misattached_summary_repoint_2026_08_30": "resolution_evidence_papers: P-320 dropped (duplicate of P-81, already present); resolution_evidence_papers: P-321 dropped (duplicate of P-82, already present)",
+  "dedup_note_2026_09_16": "resolution_evidence_papers: P-188 -> P-93; resolution_evidence_papers: P-310 -> P-146",
+  "prior_status": "genuine_confirmed",
+  "rejection_status_detail": "rejected_human_reader_2026-09-19_incommensurable_representation",
+  "human_adjudication_2026_09_19": {
+   "date": "2026-09-19",
+   "by": "human reader (blinded worksheet logs/human_adjudication_worksheet_2026-09-19.csv)",
+   "protocol": "AI block-summaries used as reading aid; every quoted figure re-verified against the blocks; verdict the reader's own",
+   "worksheet_item": 42,
+   "verdict": "reject",
+   "reason": "P-82 consumes pre-computed FreeSurfer tabular ROI features while P-3 consumes image-level CNN input, so the 83.3-vs-74.61 accuracy gap confounds input representation with architecture and is not two results disagreeing about the same measured quantity; adjudicated as documented incommensurability (same substrate-error family as CF-193)."
+  }
+ },
+ "C-204": {
+  "id": "C-204",
+  "paper_a": "P-41",
+  "paper_b": "P-65",
+  "claim_a": "P-41: Multi-view 2D projection ensemble — AUC ~0.92 on T2 (sMCI→pMCI/AD), ADNI internal (V2) validation",
+  "claim_b": "P-65: 3D hemispheric asymmetry CNN — AUC ~0.84 on T2 (MCI→AD), ADNI internal (V2) validation",
+  "task_equal": "Yes",
+  "dataset_equal": "Yes",
+  "validation_comparable": "Yes",
+  "modality_family_equal": "Yes",
+  "modality_family": "structural_mri",
+  "apparent_performance_gap": "8 AUC points on ADNI internal (V2) validation",
+  "gap_magnitude": 0.08,
+  "genuine": false,
+  "genuine_conflict": false,
+  "resolution": "Confirmed genuine conflict",
+  "resolution_status": "documented_incommensurability",
+  "resolution_note": "Multi-view 2D projection ensemble (P-41, AUC ~0.92) outperforms 3D hemispheric asymmetry CNN (P-65, AUC ~0.84) by ~8 AUC points on ADNI internal (V2) validation, suggesting lateral asymmetry alone is insufficient as an architectural principle for MCI conversion prediction. CAVEAT (2026-06-28): the two papers use slightly different progression endpoints (P-41 sMCI->pMCI/AD; P-65 MCI->AD), so this is a same-dataset cross-architecture performance spread, not a strictly identical-endpoint contradiction; the 'external validation' label previously on both claims was incorrect (both are ADNI-internal) and has been stripped. Bridging evidence: P-435 reports sensitivity 88.4% / specificity 86.9% (Acc) with comparable task/dataset family. [2026-06-28: resolution_status set genuine_confirmed - C-204 passes all 4 gates (T2/ADNI/V2/structural-MRI, 8 AUC-pt gap) and is a genuine conflict; the prior partially_resolved_candidate label referred only to bridging evidence (P-435), not to genuineness. This makes Agent 6 render it stably in Table 6.4 so the count stays 2.] Bridging evidence: P-177 reports Acc 92 with comparable task/dataset family. Bridging evidence: P-203 reports Acc 91.1 with comparable task/dataset family. Bridging evidence: P-225 reports AUC 0.895 with comparable task/dataset family. Bridging evidence: P-321 reports Acc 83.3 with comparable task/dataset family. Bridging evidence: P-554 reports AUC 0.91 internal (SMS sMRI+fMRI); AUC 0.86 external (ADNI) with comparable task/dataset family. Bridging evidence: P-178 reports Acc 93.6 with comparable task/dataset family. Bridging evidence: P-199 reports AUC 0.835 with comparable task/dataset family. Bridging evidence: P-211 reports AUC 0.92 with comparable task/dataset family. Bridging evidence: P-41 reports Acc 91 with comparable task/dataset family. Bridging evidence: P-239 reports AUC 0.91 with comparable task/dataset family. Bridging evidence: P-243 reports AUC 0.89 with comparable task/dataset family. Bridging evidence: P-308 reports Acc 84 with comparable task/dataset family. Bridging evidence: P-353 reports AUC 0.91 with comparable task/dataset family. Bridging evidence: P-731 reports AUC 0.908 (test cohort, combined five-predictor model; 95 per cent CI 0.814-0.997), with accompanying test sensitivity 0.827, specificity 0.851 and accuracy 0.840. The corresponding training figure is AUC 0.918 (0.874-0.968) with sensitivity 0.835, specificity 0.859 and accuracy 0.849. The best single-predictor metric is the cortical score at test AUC 0.824 (0.704-0.942) with accuracy 0.798, followed by Abeta1-42 at 0.756, P-tau at 0.737, APOE e4 with comparable task/dataset family. Bridging evidence: P-764 reports AUC 0.872 (nomogram, training set; validation 0.867), recorded under the binary-outcome equivalence between the concordance index and the ROC area, with that equivalence stated explicitly below. The type prefix is mandatory here and the choice of prefix is the single most consequential coding decision in this entry, so the reasoning is recorded in full. The values as printed. Section 3.5 prints \"The modle achived C-Index = 0.872(95%CI 0.74-1)\" fo with comparable task/dataset family.",
+  "audit_note": "[2026-06-28 demo-vetting audit] FALSE VALIDATION FRAMING: claim_a/claim_b and resolution_note state 'external validation' for both, but per summaries.md P-41 is ADNI-INTERNAL ONLY (N=192, 96 sMCI/81 pMCI; its summary explicitly notes 'without extensive external-site validation'). Only P-65 has an external cohort (OASIS-3 N=144), and the cited AUC 0.84 is P-65's ADNI-INTERNAL figure, not its external one. So both AUCs (0.92 vs 0.84) are ADNI-internal, on slightly different progression definitions (P-41 sMCI->pMCI/AD vs P-65 MCI->AD) = a cross-method performance spread, NOT a like-for-like external-validation contradiction. Do NOT present C-204 as an 'external-validation conflict'. RESOLVED 2026-06-28 (human decision): KEEP in Table 6.4 with corrected framing — it is a genuine architectural conflict on ADNI-internal T2 validation with a real ~8 AUC-point gap; the false 'external validation' labels were stripped from claim_a/claim_b/apparent_performance_gap/resolution_note and a one-line progression-definition caveat added. genuine_conflict/resolution_status retained (reframe without demotion, same approach as IA-31).",
+  "interpretation": "Lateral asymmetry alone is insufficient as an architectural principle for MCI conversion prediction",
+  "architecture_families": [
+   "multi-view 2D ensemble",
+   "3D CNN"
+  ],
+  "resolution_evidence_papers": [
+   "P-435",
+   "P-177",
+   "P-203",
+   "P-225",
+   "P-82",
+   "P-554",
+   "P-178",
+   "P-199",
+   "P-211",
+   "P-41",
+   "P-239",
+   "P-243",
+   "P-308",
+   "P-353",
+   "P-731",
+   "P-764"
+  ],
+  "g4_reviewed": true,
+  "human_eval_notes": [
+   "G4 2026-06-28 (batch P-490..499): RESTORED resolution_status=genuine_confirmed; legacy corpus-wide Agent 4 had downgraded it to 'partially_resolved_candidate' despite genuine_conflict=True and resolution='Confirmed genuine conflict'. C-80 (P-82 transformer 83.3% vs P-3 CNN 74.61%, T2/ADNI/structural-MRI/V2) and C-204 (P-41 vs P-65) remain the 2 canonical genuine architectural conflicts; held stable across batches.",
+   "2026-08-16 batch P-798..P-807 G6 (delegated evaluator): RESTORED resolution_status 'partially_resolved_candidate' -> 'genuine_confirmed'. Diagnosis: agent6_write._is_confirmed_conflict calls _is_candidate_record on resolution_status, and _is_candidate_like matches any token CONTAINING 'candidate'. So the string 'partially_resolved_candidate' excluded this record from Table 6.4 by substring alone, even though genuine=True, genuine_conflict=True, g4_reviewed=True and resolution='Confirmed genuine conflict'. The effect was that Table 6.4 listed only C-227 and C-232 and Table 6.8 asserted '2 confirmed genuine' while conflicts.json holds 4. This restoration re-asserts the operator's own G4 decision of 2026-06-28 recorded in this record's human_eval_notes; the downgrade was NOT made by this batch's Agent 4 run, which changed only two resolution_note strings corpus-wide (verified by field-level diff against a pre-run snapshot). Same substring-filter class as the known IA status-filter bug."
+  ],
+  "status": "rejected",
+  "misattached_summary_repoint_2026_08_30": "resolution_evidence_papers: P-321 -> P-82",
+  "second_reader_2026_09_15": {
+   "design": "blinded model reader (not a human), 45-record stratified sample, first-reader verdict withheld; scored by scripts/score_double_adjudication.py",
+   "first_reader": "admit",
+   "second_reader": "admit",
+   "confidence": "high",
+   "note": "Both blocks match the claims: P-41 \"Outcomes\" reports \"92% AUC\" on ADNI for sMCI-to-pMCI/AD progression using three MRI planes (axial/coronal/sagittal) with 2D backbones (EfficientNet-B7/ConvNeXt/DenseNet-121) in an ensemble, ADNI-only evaluation (\"without extensive external-site validation\"); P-65 reports \"AUC 84.01%\" on ADNI (\"Cross-validation on ADNI\") for MCI-to-AD conversion (300 pMCI/273 sMCI) with a 3D hemispheric-asymmetry CNN, and the registry codes both as T2 / structural_MRI_only / ADNI / V2, so task, modality family, dataset family and validation tier agree and 0.92 - 0.8401 = 0.08 as claimed. Caveats that do not trip any reject condition: P-41's block does not spell out its internal validation scheme (V2 comes from the registry), neither block states a conversion horizon, and P-41's sample line is internally inconsistent (192 vs 96+81=177).",
+   "action": "no action; readers agree"
+  },
+  "prior_status_pre_2026_09_24": "genuine_confirmed",
+  "prior_resolution_status_pre_2026_09_24": "genuine_confirmed",
+  "prior_genuine_pre_2026_09_24": [
+   true,
+   true
+  ],
+  "rejection_status_detail": "rejected_operator_2026-09-24_incommensurable_endpoint_and_evaluation",
+  "operator_reclassification_2026_09_24": {
+   "date": "2026-09-24",
+   "by": "operator decision in session on 2026-09-24, taken after reviewing the round-13 source-document audit (both PDFs of each pair read in full by an auditor and an independent challenger; logs/round13_source_audit_2026-09-24.md)",
+   "decision": "reclassified from genuine contradiction to documented incommensurability",
+   "grounds": [
+    "Different endpoints: P-41's positive class combines conversion between months 18 and 48 with 15 patients already diagnosed with AD (96 per class), against participants stable to month 48; P-65 predicts conversion within 36 months against participants stable for 36 months.",
+    "Non-equivalent evaluation: P-41 reports a single held-out test split of 15 per class; P-65 reports five-fold stratified cross-validation repeated five times on 573 participants.",
+    "No contradiction in direction or ranking survives the difference in magnitude; neither paper evaluates the other's method. The only like-for-like test of the asymmetry principle, P-65's own ablation, found the asymmetry and attention modules raised AUC over its DenseNet baseline (0.7854 to 0.8401)."
+   ],
+   "blinded_audit_note": "This record was admitted by both the pipeline and the blinded human reader on 2026-09-19, reading summary records; the 69-record agreement statistic is unchanged because it measured agreement at that time, and the reversal is disclosed in Section 2, Section 9.3 and Appendix C.4 of the review.",
+   "evidence": [
+    "P-41 PDF Section 5.1 and Table 1",
+    "P-65 PDF Sections 2.1, 4.1, 4.2.2 and Table 5"
+   ],
+   "summary_block_defect": "The P-41 summary block gives 192 (96 sMCI/81 pMCI) without the 15 added AD patients or the conversion window; both readers worked from it."
+  }
+ },
+ "C-227": {
+  "id": "C-227",
+  "paper_a": "P-655",
+  "paper_b": "P-653",
+  "claim_a": "P-655: intensified/doubled mobile-application cognitive training (CCT2x, defined as two mobile-application interventions or active application use) is the top-ranked treatment for every cognitive outcome - global cognition SMD 1.21 (95% CI 0.69-1.73) versus CCT 0.80 (0.34-1.27), episodic memory 0.87 versus 0.36, working memory 0.93 versus 0.62 - and ranks first by SUCRA on all three, on T6 evidence synthesis in MCI/dementia",
+  "claim_b": "P-653: within MCI, adding a three-week computerised cognitive training burst before functional skills training produced NO advantage over skills training alone - composite cognition t = 0.86, p = 0.39; VRFCAT completion time t = 0.19, p = 0.85 - and the synergistic combined-training benefit the same group had previously reported (Harvey et al., 2022) was explicitly not reproduced, on T5 randomised trial evidence in MCI (N = 164)",
+  "task_equal": "Yes",
+  "dataset_equal": "No",
+  "validation_comparable": "Yes",
+  "modality_family_equal": "Yes",
+  "modality_family": "digital_cognitive_training",
+  "genuine": false,
+  "resolution": "Genuine claim-level conflict: pooled indirect evidence versus a direct randomised head-to-head on the same question, with the trial that anchors the pooled claim superseded by its own follow-up",
+  "resolution_evidence_papers": [
+   "P-655",
+   "P-653"
+  ],
+  "resolution_status": "documented_incommensurability",
+  "resolution_note": "This is a genuine conflict and the strongest one in the P-620..P-667 batch. Same question (does intensifying or combining computerised cognitive training beat single-modality training in MCI?), same population (MCI), same outcome domain (composite/global cognition), same era (searches closing June 2024 and trial published February 2024) - and opposite answers. The decisive detail is the shared provenance: P-655's CCT2x node draws on Harvey 2022 (N = 117, of which only the 55 cognitively-impaired arms entered the pool), and P-653 IS the successor trial from that same group, which randomised MCI participants precisely to combined-versus-single training and found no difference. The conflict therefore cannot be dismissed as population or paradigm mismatch. INTERPRETATION: P-653 supplies its own mechanism for the discrepancy - the time-by-training-sessions interaction was significant for cognition (F = 4.03, p = 0.02) and within MCI more sessions correlated with more improvement (r = 0.28, p < 0.01 for composite cognition; r = 0.24 for VRFCAT), so the apparent CCT2x superiority in the pooled network is consistent with a training-DOSE confound rather than a synergy between training types: arms labelled intensive simply received more exposure. P-653 also notes its revised graduation criterion cut training exposure relative to the earlier trial, which is why the same group's effect shrank. PRACTICAL CONSEQUENCE for the manuscript: the CCT2x-first hierarchy should not be reported as evidence of a dose-response or synergy without stating that the one direct randomised test of that hypothesis in MCI was null.",
+  "evaluator_note": "Actor/critic pass 2026-07-31. Checked against the FP taxonomy and survives: task_equivalence holds (both target cognitive-training efficacy in MCI); population is MCI in both; the metric types differ (SMD versus t-test on composite z-scores) so no numeric gap_magnitude is computed and this is filed as a claim-level conflict per the METRIC_TYPE_MISMATCH blocking rule; DESIGN_MISMATCH is present (evidence synthesis versus primary RCT) but is the SUBSTANCE of the conflict rather than a confound, since the question at issue is exactly whether indirect pooled evidence survives a direct randomised test.",
+  "genuine_conflict": false,
+  "g4_reviewed": true,
+  "curation_batch": "manual_curation_2026-07-31_P620plus",
+  "review_status": "confirmed_human_g4_2026-07-31",
+  "conflict_class": "claim_level",
+  "g4_review_date": "2026-07-31",
+  "human_evaluation_note": "CONFIRMED GENUINE. A genuine, high-value contradiction: pooled indirect evidence versus a direct randomised head-to-head, with shared provenance (P-655's CCT2x node draws on Harvey 2022; P-653 is that group's successor trial), so it cannot be dismissed as population mismatch. The training-dose-confound resolution is elegant and carries a direct manuscript consequence.",
+  "g4_override": {
+   "gates_waived": [
+    "Task_Type",
+    "study_design_type",
+    "modality_subtype"
+   ],
+   "actor": "human operator gate pass 2026-07-31 (record human_eval_notes)",
+   "reason": "Claim-level conflict admitted deliberately: pooled network-meta evidence (P-655, T6 review) versus the direct successor RCT from the same question (P-653, T5 trial); the design difference IS the substance of the conflict, so the deterministic design/task gates are waived by the human gate."
+  },
+  "prior_status_pre_2026_09_24": null,
+  "prior_resolution_status_pre_2026_09_24": "genuine_conflict_confirmed",
+  "prior_genuine_pre_2026_09_24": [
+   "Yes",
+   true
+  ],
+  "status": "rejected",
+  "rejection_status_detail": "rejected_operator_2026-09-24_incommensurable_quantity_and_population",
+  "operator_reclassification_2026_09_24": {
+   "date": "2026-09-24",
+   "by": "operator decision in session on 2026-09-24, taken after reviewing the round-13 source-document audit (both PDFs of each pair read in full by an auditor and an independent challenger; logs/round13_source_audit_2026-09-24.md)",
+   "decision": "reclassified from genuine contradiction to documented incommensurability",
+   "grounds": [
+    "Different quantities: P-655 (network meta-analysis) estimates each training type against control, with overlapping intervals (CCT2x 1.21, 0.69-1.73; CCT 0.80, 0.34-1.27) and no combined-versus-single estimate, in a population pooling MCI and dementia; P-653 tests combined against single-modality training within MCI on a six-subtest composite (t = 0.86, p = 0.39). A non-significant head-to-head is compatible with the network's point estimates.",
+    "Metric type differs (SMD against control versus a between-arm test on composite z-scores), as the record's own evaluator note had found; dataset family was neither matched nor waived on record.",
+    "The CCT SMD of 0.80 for global cognition is correctly quoted from P-655; the external reviewer's suggestion that it was a daily-living figure was wrong."
+   ],
+   "blinded_audit_note": "This record was admitted by both the pipeline and the blinded human reader on 2026-09-19, reading summary records; the 69-record agreement statistic is unchanged because it measured agreement at that time, and the reversal is disclosed in Section 2, Section 9.3 and Appendix C.4 of the review.",
+   "evidence": [
+    "P-655 PDF Results 3.2 and Fig. 2a",
+    "P-653 PDF results and session counts"
+   ]
+  }
+ },
+ "C-232": {
+  "id": "C-232",
+  "paper_a": "P-344",
+  "paper_b": "P-309",
+  "claim_a": "P-344 (ADNI, n=902 MCI, 5 survival learners): 'RSF was the best model, with C-index 0.878 and IBS 0.115' - random survival forests outperformed classical and other ML survival approaches.",
+  "claim_b": "P-309 (NACC UDS 3.0, n=3,674 MCI): validation C-index 0.781 (RSF), 0.781 (XGBoost), 0.798 (Cox) - 'The prediction effects of the XGBoost and RSF models were not better than those of the Cox model.'",
+  "description": "CONFLICT (rescoped): The within-study ranking of machine-learning survival learners against classical Cox regression for MCI-to-AD time-to-event prediction does not replicate across the two corpus studies that run the comparison themselves. SIDE A - P-344 (ADNI, n=902 MCI, 61 baseline variables, five learners: CoxPH/Weibull/CoxEN/GBSA/RSF): `### What are the outcomes? (Results)` \"RSF was the best model, with C-index 0.878 and IBS 0.115\"; `### Key findings reported` \"Random survival forests outperformed classical and other machine-learning survival approaches in this cohort.\" SIDE B - P-309 (NACC UDS 3.0, n=3,674 MCI, 13 accessible demographic/lifestyle/comorbidity/neuropsychological predictors): `### What are the outcomes? (Results)` \"Validation C-index: 0.781 (RSF), 0.781 (XGBoost), 0.798 (Cox)\"; and per the verbatim source abstract carried in P-147 `### Key findings reported`, \"The prediction effects of the XGBoost and RSF models were not better than those of the Cox model.\" Both sides: T2, task_substage=MCI_to_AD, Validation_Type=V2 (internal only), population_specificity=general, Modality=Clinical/tabular, Harrell's C-index. NATURE OF THE CONFLICT: a reversal of ORDINAL RANKING ONLY, not of a quantified effect. P-344 does not report its CoxPH C-index, so the size of its RSF-over-Cox margin is unknown; P-309's margin is 0.017 on a single validation split with no confidence interval, and its measured claim is ML NON-SUPERIORITY rather than Cox superiority. OPEN RESOLUTION MECHANISMS, stated on the record's face: (i) different cohorts - ADNI's biomarker-enriched research cohort vs NACC's multi-centre memory-clinic UDS; note this is the FIRST cross-dataset conflict in this KB, as C-80 (P-82/P-3) and C-204 (P-41/P-65) are both within-ADNI; (ii) different predictor breadth - 61 ADNI baseline variables vs 13 accessible clinical/neuropsychological predictors, with modality_subtype='not reported' on both registry rows so the fine modality gate is UNVERIFIED rather than passed; (iii) both rankings are single-split point estimates without uncertainty on the between-model difference. DROPPED FROM THE RECORD: P-13, which fails the modality gate (registry Modality='MRI/PET', modality_subtype='structural_MRI_only') and whose asserted \"Cox best in the high-risk stratum\" is not stated in any of its fields - only Cox's own C-index 0.844 (95% CI 0.815-0.873) is reported, with no head-to-head against RSF. LINKED DATA-INTEGRITY ACTIONS (independently verified, action them regardless of the conflict verdict): (1) P-147 and P-309 are the SAME publication - Guan T, Shang L, Yang P et al., J Prev Alz Dis 2025;12:100083, DOI 10.1016/j.tjpad.2025.100083, NACC n=3,674, identical C-indices 0.781/0.781/0.798 and IBS 0.087, identical 13 predictors; both registry rows carry duplicate_of='not reported' and one must be set. (2) IA-16 [confirmed, strength \"strong\"] rests on that single study counted once, and P-344 is unclaimed counter-evidence to it; attach a G5 caveat to IA-16 noting the ordering does not replicate in ADNI. (3) Registry primary_metric_type is mis-coded 'AUC_ROC' for P-147/P-309 and should be 'C_index' - the source reports concordance indices; this mis-coding is the likely reason no automated pass ever paired these papers.",
+  "genuine": false,
+  "resolution_status": "documented_incommensurability",
+  "gate_verified": true,
+  "task_type": "T2",
+  "task_substage": "MCI_to_AD",
+  "modality_family": "Clinical/tabular",
+  "metric_type": "Harrell C-index",
+  "validation_tier": "V2 (internal only, both sides)",
+  "supporting_papers": [
+   "P-344",
+   "P-309"
+  ],
+  "source": "claude receiver-side mining sweep (Fable 5): 5 band miners over 156 under-mined papers under the FP-hardened rulebook, each candidate then adversarially verified by an independent agent",
+  "curation_batch": "mine_2026-08-03_undermined_sweep",
+  "provisional_id": "band-C-CONFLICT-01",
+  "confidence": "medium",
+  "review_note": "MINED + INDEPENDENTLY VERIFIED (ACCEPT_WITH_RESCOPE, medium). Passes the conflict bar on all four gates: same task substage (MCI_to_AD), comparable validation tier (V2 both), same modality subtype (clinical/tabular), commensurable metric (Harrell C-index). IMPORTANT SCOPE recorded by the verifier: this is a reversal of ORDINAL RANKING ONLY, not of a quantified effect - P-344 does not report its CoxPH C-index so its RSF-over-Cox margin is unknown, and P-309's margin is 0.017 on a single split with no CI. genuine=None pending human G4; do NOT promote to genuine without operator review.",
+  "verification": {
+   "method": "mined from under-mined corpus papers under the FP-hardened rulebook, then INDEPENDENTLY adversarially verified (quote-by-quote verbatim audit + field-placement audit + FP-code sweep + dedup)",
+   "verifier_verdict": "ACCEPT_WITH_RESCOPE",
+   "verifier_confidence": "medium",
+   "quote_audit": "ALL nine miner quotes checked line-by-line against summaries.md. Every load-bearing quote is VERBATIM and sits in a MEASURED field. (1) P-344 L25669 `### What are the key components in the method?` \"ADNI cohort of 902 MCI participants... five survival models: CoxPH, Weibull, CoxEN, GBSA, and RSF.\" VERBATIM. (2) P-344 L25675 `### What are the outcomes? (Results)` \"RSF was the best model, with C-index 0.878 and IBS 0.115, and SHAP showed cognitive tests as the strongest predictors.\" VERBATIM - MEASURED. (3) P-344 L25702 `### Key findings reported` \"Random survival forests outperformed classical and other machine-learning survival approaches in this cohort.\" VERBATIM - MEASURED. (4) P-309 L22793-94 `### What are the outcomes? (Results)` \"Validation C-index: 0.781 (RSF), 0.781 (XGBoost), 0.798 (Cox).\" / \"IBS reported as 0.087 for Cox; Cox performed best overall.\" VERBATIM modulo bullet markers - MEASURED. (5) P-309 L22823 `### Key findings reported` \"Cox model achieved the best overall performance among tested models.\" VERBATIM - MEASURED. (6) P-147 L5360 `### Key findings reported` \"In the validation set, the concordance indices were 0.781 (RSF), 0.781 (XGBoost), and 0.798 (Cox), and the Integrated Brier Score was 0.087 (Cox). The prediction effects of the XGBoost and RSF models were not better than those of the Cox model.\" VERBATIM (source has ligature glyphs 'eﬀects') - MEASURED. (7) P-309 L22784-87 method components - VERBATIM. (8+9) P-13 L13423-24 `### What are the outcomes? (Results)` \"For the high-risk group, Cox model performance reached **C-index 0.844 (95% CI: 0.815-0.873)**.\" and \"RSF with longitudinal ADAS13/FAQ plus demographics and APOE e4 was favored for low-risk prognosis.\" VERBATIM - MEASURED field. CREDIT: the miner deliberately avoided P-309's interpretiv",
+   "fp_findings": "PASSES: SOURCE_REFUSES_CONCLUSION - I read both `### Potential gaps or limitations` fields; P-344 \"Feature set and cohort are ADNI-specific, with limited external validation\", P-309 \"Limited extract detail on metrics and validation beyond internal testing\". Both limit external generalisability; NEITHER retracts its own within-study model ranking. PASSES: SCOPE_POOLED_POPULATION - both cohorts are pure MCI (902 MCI; 3,674 MCI subjects), no dementia pooling. PASSES: MODEL_FITTED_VALUE_AS_MEASURED - C-indices are validation-set discrimination, not fitted values at chosen covariate levels. PASSES: AUTHORS_DECLINED_TO_CLAIM - both rankings are headlined in the papers' own Key findings / abstract Conclusion, not buried in Open problems. PASSES: FAILS_SOURCE_OWN_CORRECTION - N/A, no multiple-comparison p-values involved. PASSES: DEDUP - I loaded all 165 records in data/conflicts.json and matched on paper_a/paper_b: the ONLY record touching any of these is C-187 (P-344 vs P-192, C-index 0.878 vs PPV 68.0, genuine_conflict=false, incommensurable metrics). No record pairs P-344 with P-309 or P-147. Not one of the 3 genuine conflicts. Distinct from IA-16 (verified in invalidated.json: IA-16 paper_id='P-147', status confirmed, single-paper evidence base) - this is the counter-evidence to that IA, not a restatement. TRIPS (all fixable by rescope): (a) EVIDENTIAL_OVERSTATEMENT on P-13 - \"Cox best in the high-risk stratum\" is inferred, not in any field. (b) UNQUANTIFIED_REVERSAL_CLAUSE, partial - side A's RSF-vs-Cox margin carries NO statistic because P-344's Cox C-index is never reported; only the ordinal \"best of five\" is measured. (c) Side B is mis-framed: the source's measured claim is NON-SUPERIORITY (\"not better than\"), margin 0.017 on a single split with no CI - \"Cox was best\" ",
+   "verifier_reason": "ACCEPT WITH RESCOPE. What survives adversarial scrutiny is the strongest thing a conflict can have in this KB and the reason I did not reject: BOTH sides ran the Cox-vs-ML comparison THEMSELVES, inside their own cohort. A within-study relative ordering is far more portable across cohorts than an absolute accuracy, which is precisely why C-01-style \"cohort difficulty explains the gap\" does not automatically dissolve this the way it dissolves 89%-vs-73% comparisons. Every load-bearing quote is verbatim and from `### What are the outcomes? (Results)` or `### Key findings reported`; the miner explicitly refused the available interpretive quote. The two conflict sides are coded identically on all four registry gates (T2 / MCI_to_AD / V2 / general / Clinical-tabular), the metric family is Harrell's C-index on both sides quoted from Results, and the direction of the within-study RSF-vs-Cox ordering genuinely reverses. Dedup is clean against all 165 conflicts.json records and against IA-16. But it does not survive AS STATED, for five reasons, hence rescope not accept. (1) The paper set double-counts: P-147 and P-309 are one publication, so the opposing side is ONE study, not two. (2) P-13 must be dropped from the paper list - it fails the record's own modality gate (registry Modality='MRI/PET', modality_subtype='structural_MRI_only', not Clinical/tabular) and the only thing the record wants from it (\"Cox best in high-risk\") is not quotable from any field. (3) Side B's measured claim is non-superiority, not Cox-superiority - 0.798 vs 0.781 is a 0.017 single-split margin with no CI, and the source's own words are \"not better than\". (4) Side A's margin is unquantified: P-344 never reports the CoxPH C-index, so only the ordinal ranking is in evidence. (5) The miner's defence of the",
+   "human_confirmed": true,
+   "human_confirmed_date": "2026-08-15"
+  },
+  "genuine_conflict": false,
+  "g4_operator_verdict_2026_08_15": "ACCEPT as GENUINE CONFLICT after rescope (operator, 2026-08-15). Fixes applied: P-147 removed from supporting_papers (duplicate of P-309 - same publication, Guan et al., J Prev Alz Dis 2025, DOI 10.1016/j.tjpad.2025.100083; registry duplicate_of set P-147->P-309); P-13 removed (fails modality gate - structural MRI, not clinical/tabular; 'Cox best in high-risk stratum' not quotable from any field); Side B framing is non-superiority ('not better than'), margin 0.017 on a single validation split with no CI; Side A margin unquantified (P-344 never reports its CoxPH C-index - ordinal ranking only is evidenced); conflict scoped to a reversal of ORDINAL RANKING only, not of a quantified effect size. Registry primary_metric_type corrected AUC_ROC->C_index for P-147/P-309; G5 caveat attached to IA-16.",
+  "g4_reviewed": true,
+  "g4_review_date": "2026-08-15",
+  "task_equal": "True",
+  "dataset_equal": "False",
+  "validation_comparable": "True",
+  "resolution_note": "Genuine model-ordering conflict (operator gate 2026-08-15): the same survival-model families reverse ranking across cohorts - RSF best on ADNI (P-344, C-index 0.878) while Cox matches or beats RSF/XGBoost on NACC (P-309, 0.798 vs 0.781) - so 'ML beats classical Cox' is cohort-contingent, not general.",
+  "prior_status_pre_2026_09_24": null,
+  "prior_resolution_status_pre_2026_09_24": "confirmed_human_g4",
+  "prior_genuine_pre_2026_09_24": [
+   true,
+   true
+  ],
+  "status": "rejected",
+  "rejection_status_detail": "rejected_operator_2026-09-24_incommensurable_predictor_set_and_horizon",
+  "operator_reclassification_2026_09_24": {
+   "date": "2026-09-24",
+   "by": "operator decision in session on 2026-09-24, taken after reviewing the round-13 source-document audit (both PDFs of each pair read in full by an auditor and an independent challenger; logs/round13_source_audit_2026-09-24.md)",
+   "decision": "reclassified from genuine contradiction to documented incommensurability",
+   "grounds": [
+    "Different predictor sets: P-344's final ADNI models include FDG-PET and four structural MRI volumes; P-309's NACC models include no imaging. The mismatch was not waived and confounds the cohort difference that was waived (the C-80 precedent).",
+    "Different horizons: ADNI follow-up runs to 16 years (median time to progression 6 years); NACC median follow-up is 24.5 months.",
+    "The discordance is narrower than recorded: gradient boosting trails Cox in both studies (ADNI GBSA 0.803 vs CoxPH 0.863; NACC XGBoost 0.781 vs Cox 0.798); only the random-survival-forest ordering reverses (ADNI 0.878 vs 0.863; NACC 0.781 vs 0.798)."
+   ],
+   "blinded_audit_note": "This record was admitted by both the pipeline and the blinded human reader on 2026-09-19, reading summary records; the 69-record agreement statistic is unchanged because it measured agreement at that time, and the reversal is disclosed in Section 2, Section 9.3 and Appendix C.4 of the review.",
+   "evidence": [
+    "P-344 PDF Table 2, Methods and Results",
+    "P-309 PDF Abstract, Table 3, 3.1 and 3.2.3"
+   ],
+   "record_corrections": [
+    "The description and g4_operator_verdict_2026_08_15 say P-344 does not report its CoxPH C-index; it does, 0.863 (95% CI 0.862-0.864).",
+    "P-309's 13 final predictors include no lifestyle or comorbidity variables."
+   ]
+  }
+ },
+ "C-234": {
+  "id": "C-234",
+  "paper_a": "P-832",
+  "paper_b": "P-705",
+  "claim_a": "P-832 (Teselink et al. 2021, Ageing Res Rev 72:101499; NIBS meta-analysis, 19 studies for global cognition): the tDCS subgroup did NOT significantly improve global cognition - SMD 1.20 (95% CI -0.26, 2.65), I2 93.6%, p = 0.107, from 6 studies (94 active / 78 sham). The abstract states the effects were 'restricted to rTMS but not tDCS'.",
+  "claim_b": "P-705 (tDCS meta-analysis for global cognition in MCI and AD, 22 RCTs / 1,074 patients, 426 MCI and 648 AD): tDCS DID improve global cognition - MMSE pooled mean difference 1.96 points (95% CI 0.95 to 2.97), p = 0.0001, from 10 RCTs in 9 studies with 451 participants, random-effects, I2 92%.",
+  "description": "CONFLICT (curated at G4 2026-08-23; Agent 4 did not detect it). Two meta-analyses of transcranial direct-current stimulation for GLOBAL COGNITION in overlapping MCI/AD populations reach opposite conclusions about whether tDCS works. P-832 finds the tDCS subgroup non-significant (SMD 1.20, 95% CI -0.26 to 2.65, p = 0.107) and concludes efficacy is restricted to rTMS; P-705 finds tDCS significantly improves MMSE (MD 1.96, 95% CI 0.95 to 2.97, p = 0.0001). NOT a metric-incommensurability artefact of the kind rejected elsewhere in this ledger: the disagreement is about the SIGNIFICANCE and direction of a synthesis, not about comparing an SMD to an MD numerically. The two reviews also draw on overlapping primary trials, which makes this the informative 'same evidence, different synthesis' case - plausible sources are P-832's smaller tDCS subgroup (6 studies) versus P-705's 10 RCTs, differing inclusion windows, and P-832 pooling any global-cognition instrument while P-705 pools MMSE specifically. Both carry extreme heterogeneity (I2 93.6% and 92%), which is itself the most defensible reading: neither pooled estimate is stable. SIGN NOTE: P-832's lower bound is printed as ' 0.26' with the minus lost in extraction; it is reconstructed as -0.26 on two independent anchors - the point estimate is the interval midpoint only if the bound is negative (1.195 vs 1.455), and the printed p = 0.107 requires an interval crossing zero.",
+  "task_equivalence": true,
+  "task_equal": true,
+  "dataset_family_equivalence": true,
+  "dataset_equal": true,
+  "validation_tier_comparable": true,
+  "modality_family": "non-invasive brain stimulation (tDCS) intervention, global cognition outcome",
+  "modality_family_equal": true,
+  "apparent_performance_gap": "significant vs non-significant pooled effect for the same intervention and outcome",
+  "genuine_conflict": false,
+  "genuine": false,
+  "resolution_status": "documented_incommensurability",
+  "resolution": "unresolved - both pooled estimates carry I2 > 92%",
+  "resolution_note": "Curated by the delegated evaluator at G4 for batch P-828..P-837. Recommend surfacing in the review paper as a synthesis-level disagreement with the heterogeneity caveat, NOT as evidence that one review is wrong. See also PAPERINGO-ha4: reviews in this corpus routinely re-pool the same trials, so agreement between two meta-analyses is not independent confirmation and disagreement is not necessarily a data conflict.",
+  "resolution_evidence_papers": [
+   "P-832",
+   "P-705"
+  ],
+  "g4_reviewed": true,
+  "g4_review_date": "2026-08-23",
+  "curated": true,
+  "prior_status_pre_2026_09_24": null,
+  "prior_resolution_status_pre_2026_09_24": "open_genuine",
+  "prior_genuine_pre_2026_09_24": [
+   true,
+   true
+  ],
+  "status": "rejected",
+  "rejection_status_detail": "rejected_operator_2026-09-24_incommensurable_quantity",
+  "operator_reclassification_2026_09_24": {
+   "date": "2026-09-24",
+   "by": "operator decision in session on 2026-09-24, taken after reviewing the round-13 source-document audit (both PDFs of each pair read in full by an auditor and an independent challenger; logs/round13_source_audit_2026-09-24.md)",
+   "decision": "reclassified from genuine contradiction to documented incommensurability",
+   "grounds": [
+    "Different quantities: P-832's tDCS estimate is an SMD pooled over MMSE, MoCA or ADAS-Cog (ADAS-Cog preferred) from six sham-controlled studies, one of them in MCI; P-705's is an MMSE mean difference from ten RCTs in nine studies, four of them in MCI.",
+    "Compatible results: both point estimates favour tDCS (SMD 1.20, 95% CI -0.26 to 2.65; MD 1.96, 0.95 to 2.97), and P-832's authors attribute their non-significance to low power. The difference is one of precision, not direction."
+   ],
+   "blinded_audit_note": "This record was admitted by both the pipeline and the blinded human reader on 2026-09-19, reading summary records; the 69-record agreement statistic is unchanged because it measured agreement at that time, and the reversal is disclosed in Section 2, Section 9.3 and Appendix C.4 of the review.",
+   "evidence": [
+    "P-832 PDF Section 3.4.1, Table 4, Section 2.5, Discussion",
+    "P-705 PDF MMSE results and Table 1"
+   ],
+   "record_corrections": [
+    "The description's 'significance and direction' is wrong: the directions agree.",
+    "Comparators are sham in both cited estimates; comparator difference is not a ground.",
+    "Five of P-832's six tDCS trials are among P-705's included studies, but the two cited pooled estimates share only Im 2019 and Khedr 2019."
+   ]
+  }
+ },
+ "C-12": {
+  "id": "C-12",
+  "paper_a": "P-109",
+  "paper_b": "P-66",
+  "claim_a": "BrainViT reports around 96.81% AD/MCI diagnostic performance on ADNI benchmark",
+  "claim_b": "Radiomics/CNN study reports low AD-vs-MCI separability in practical ROI-focused setting",
+  "task_equivalence": true,
+  "dataset_family_equivalence": true,
+  "validation_tier_comparable": true,
+  "apparent_performance_gap": "~14.8 percentage points (96.81% vs ~82% class-level comparables)",
+  "genuine_conflict": false,
+  "resolution_note": "Task framing and label granularity differ; whole-volume hybrid architecture vs ROI-constrained design likely drives most of the performance divergence Bridging evidence: P-115 reports 79% Acc with comparable task/dataset family. Bridging evidence: P-14 reports 90.39% with comparable task/dataset family. Bridging evidence: P-30 reports AUC ~0.85 with comparable task/dataset family. Bridging evidence: P-66 reports 72.7% MCI vs CN with comparable task/dataset family. Bridging evidence: P-71 reports 91.42% LMCI vs NC with comparable task/dataset family. Bridging evidence: P-75 reports 93.5% Acc with comparable task/dataset family. Bridging evidence: P-92 reports 92.7% Acc with comparable task/dataset family. Bridging evidence: P-109 reports 96.81% Acc with comparable task/dataset family. Bridging evidence: P-125 reports 82.14% Acc with comparable task/dataset family. Bridging evidence: P-210 reports Acc 90.6 with comparable task/dataset family. Bridging evidence: P-299 reports AUC 0.863 with comparable task/dataset family. Bridging evidence: P-359 reports 96.3% Acc with comparable task/dataset family.",
+  "resolution_evidence_papers": [
+   "P-115",
+   "P-14",
+   "P-30",
+   "P-66",
+   "P-71",
+   "P-75",
+   "P-92",
+   "P-109",
+   "P-125",
+   "P-210",
+   "P-299",
+   "P-359"
+  ],
+  "resolution_status": "false_positive",
+  "modality_family": "structural_mri",
+  "modality_family_equal": "Yes",
+  "genuine": false,
+  "resolution": "Rejected — false positive",
+  "misattached_summary_repoint_2026_09_15": "2026-09-15 block repair: summaries.md block 110 described BrainViT (Khatri 2025), whose PDF is P-109; P-110 (Sadegh-Zadeh 2024, scores-only AD vs MCI classifier) was re-summarised from its PDF. Record repointed from P-110 to P-109; claims unchanged. No gate field changed."
+ },
+ "C-26": {
+  "id": "C-26",
+  "paper_a": "P-114",
+  "paper_b": "P-5",
+  "claim_a": "P-114: 93% Acc on T1",
+  "claim_b": "P-5: 84.96% precision on T1",
+  "task_equal": "Yes",
+  "dataset_equal": "Yes",
+  "validation_comparable": "Yes",
+  "resolution": "Rejected — false positive",
+  "gap_magnitude": 0.08,
+  "resolution_evidence_papers": [
+   "P-114",
+   "P-20",
+   "P-38",
+   "P-44",
+   "P-50",
+   "P-52",
+   "P-60",
+   "P-70",
+   "P-76",
+   "P-77",
+   "P-83",
+   "P-101",
+   "P-112",
+   "P-5",
+   "P-6",
+   "P-19",
+   "P-118",
+   "P-123",
+   "P-141",
+   "P-69",
+   "P-167",
+   "P-169",
+   "P-214",
+   "P-263",
+   "P-268",
+   "P-269",
+   "P-158",
+   "P-307",
+   "P-314",
+   "P-345",
+   "P-360"
+  ],
+  "resolution_status": "false_positive",
+  "resolution_note": "G4 reviewed via summary analysis. Rejected: Metric incommensurability: Acc vs Precision. Bridging evidence: P-360 reports 88.57% Acc with comparable task/dataset family. Bridging evidence: P-322 reports Acc 93.87 with comparable task/dataset family.",
+  "genuine_conflict": false,
+  "g4_reviewed": true,
+  "dedup_note_2026_08_29": "resolution_evidence_papers: P-10 dropped (duplicate of P-5, already present); resolution_evidence_papers: P-11 dropped (duplicate of P-6, already present)",
+  "misattached_summary_repoint_2026_08_30": "resolution_evidence_papers: P-322 dropped (duplicate of P-83, already present)",
+  "dedup_note_2026_09_16": "resolution_evidence_papers: P-113 -> P-112; resolution_evidence_papers: P-276 -> P-158"
+ },
+ "C-01": {
+  "id": "C-01",
+  "paper_a": "P-50",
+  "paper_b": "P-99",
+  "claim_a": "VBM + SBM achieve 89% LOOCV accuracy on N=46 ADNI subset",
+  "claim_b": "FreeSurfer achieves 73% 10-fold CV on N=207 Moscow cohort",
+  "task_equivalence": true,
+  "dataset_family_equivalence": false,
+  "validation_tier_comparable": false,
+  "apparent_performance_gap": "16 percentage points (89% vs 73%)",
+  "genuine_conflict": false,
+  "resolution_note": "LOOCV optimism bias (~3-7%) + N heterogeneity + cohort-specific classifier; ADNI-specificity explains majority of gap; not genuine architectural conflict Bridging evidence: P-20 reports AUC 0.913 with comparable task/dataset family. Bridging evidence: P-50 reports 89% Acc with comparable task/dataset family. Bridging evidence: P-52 reports AUC 0.864 with comparable task/dataset family. Bridging evidence: P-60 reports 87.6% MCI vs CN with comparable task/dataset family. Bridging evidence: P-62 reports bACC 0.805–0.920 with comparable task/dataset family. Bridging evidence: P-76 reports 90.63% Acc with comparable task/dataset family. Bridging evidence: P-77 reports 88% Acc with comparable task/dataset family. Bridging evidence: P-91 reports AUC 0.80 with comparable task/dataset family. Bridging evidence: P-99 reports 73% Acc with comparable task/dataset family. Bridging evidence: P-5 reports 84.96% precision with comparable task/dataset family. Bridging evidence: P-6 reports 85.16% Acc with comparable task/dataset family. Bridging evidence: P-10 reports 84.96% precision with comparable task/dataset family. Bridging evidence: P-11 reports 85.16% Acc with comparable task/dataset family. Bridging evidence: P-19 reports AUC 0.913 with comparable task/dataset family. Bridging evidence: P-123 reports 92.0% Acc with comparable task/dataset family. Bridging evidence: P-141 reports AUC 0.85 with comparable task/dataset family. Bridging evidence: P-145 reports Acc 0.80 with comparable task/dataset family. Bridging evidence: P-133 reports Acc 72.67 with comparable task/dataset family. Bridging evidence: P-163 reports AUC 0.809 with comparable task/dataset family. Bridging evidence: P-167 reports AUC 0.87 with comparable task/dataset family. Bridging evidence: P-214 reports Acc 84.5 with comparable task/dataset family. Bridging evidence: P-247 reports AUC 0.809 with comparable task/dataset family. Bridging evidence: P-270 reports AUC 0.75 with comparable task/dataset family. Bridging evidence: P-306 reports bACC 81.83% with comparable task/dataset family. Bridging evidence: P-314 reports AUC 0.9149 with comparable task/dataset family. Bridging evidence: P-339 reports AUC 0.765 with comparable task/dataset family. Bridging evidence: P-343 reports AUC 0.80 with comparable task/dataset family. Bridging evidence: P-345 reports AUC 0.852 with comparable task/dataset family. Bridging evidence: P-360 reports 88.57% Acc with comparable task/dataset family. Bridging evidence: P-411 reports Accuracy 75.6% (thalamic+PCC metabolites, PDMCI vs PDN) with comparable task/dataset family. Bridging evidence: P-416 reports Precision 83.33% (sens 75.0%, spec 84.68%) with comparable task/dataset family. Bridging evidence: P-478 reports AUC 0.85 (combined CA1-CA2 stiffness + volume) with comparable task/dataset family. Bridging evidence: P-333 reports AUC 0.8 with comparable task/dataset family. Bridging evidence: P-501 reports Acc 91.97% (LOO CV HC vs MCI); 3-fold 91.17%; 84.61% 9-18mo progression-trend prediction (22/26) with comparable task/dataset family. Bridging evidence: P-9 reports AUC 0.853 with comparable task/dataset family. Bridging evidence: P-538 reports AUC 0.87 (combined qEEG/ERP+vMRI 3-class model; dementia vs SCD pairwise AUC 0.96) with comparable task/dataset family. Bridging evidence: P-703 reports AUC 0.859 (95% CI 0.788-0.931) in the temporally separated validation set from the seven-variable nomogram; training-set AUC 0.914 (95% CI 0.887-0.941). with comparable task/dataset family. Bridging evidence: P-855 reports AUC 0.785 (composite score, SMI vs MCI; cut-off -0.54, sensitivity 80.0%, specificity 61.4%, p < 0.001; in-sample, no CI printed in extract) with comparable task/dataset family. Bridging evidence: P-931 reports AUC 0.783 (95% CI 0.747-0.819) for AD vs non-AD at cut-off 70 (sens 0.78, spec 0.64); multinomial subgroup classification poor with comparable task/dataset family.",
+  "resolution_evidence_papers": [
+   "P-20",
+   "P-50",
+   "P-52",
+   "P-60",
+   "P-62",
+   "P-76",
+   "P-77",
+   "P-91",
+   "P-99",
+   "P-5",
+   "P-6",
+   "P-19",
+   "P-123",
+   "P-141",
+   "P-145",
+   "P-133",
+   "P-163",
+   "P-167",
+   "P-214",
+   "P-146",
+   "P-270",
+   "P-306",
+   "P-314",
+   "P-339",
+   "P-343",
+   "P-345",
+   "P-360",
+   "P-411",
+   "P-416",
+   "P-478",
+   "P-333",
+   "P-501",
+   "P-9",
+   "P-538",
+   "P-703",
+   "P-855",
+   "P-931"
+  ],
+  "resolution_status": "partially_resolved_candidate",
+  "modality_family": "structural_mri",
+  "modality_family_equal": "Yes",
+  "genuine": false,
+  "resolution": "Rejected: Task, dataset, or modality mismatch",
+  "task_equal": "Yes",
+  "dataset_equal": "No",
+  "dedup_note_2026_08_29": "resolution_evidence_papers: P-10 dropped (duplicate of P-5, already present); resolution_evidence_papers: P-11 dropped (duplicate of P-6, already present)",
+  "dedup_note_2026_09_16": "resolution_evidence_papers: P-247 -> P-146"
+ },
+ "C-03": {
+  "id": "C-03",
+  "paper_a": "P-68",
+  "paper_b": "P-71",
+  "claim_a": "LCM (latent class model) achieves 84% for pMCI vs sMCI prediction on ADNI N=186",
+  "claim_b": "LSTM on same cohort achieves 81% on identical task",
+  "task_equivalence": true,
+  "dataset_family_equivalence": true,
+  "validation_tier_comparable": true,
+  "apparent_performance_gap": "3 percentage points (84% vs 81%)",
+  "genuine_conflict": false,
+  "resolution_note": "Non-competing methods; LCM is probabilistic (returns class probabilities); LSTM is deterministic (returns predicted label); performance difference within noise margin; different objective functions Bridging evidence: P-546 reports AUC 0.938 (VBM+GCD PCUN.R, AD vs MCI; sens 81.3%, spec 100.0%) with comparable task/dataset family. Bridging evidence: P-588 reports AUC 0.901 (left-hemisphere entropy, CN vs MCI); amyloid-burden prediction error reduction 38.7-42.1% (p<0.01); AD-vs-CN/MCI entropy delta 8-21% (p<0.001) with comparable task/dataset family. Bridging evidence: P-75 reports Acc 93.5 with comparable task/dataset family. Bridging evidence: P-821 reports AUC 0.953 with comparable task/dataset family.",
+  "modality_family": "structural_mri|functional_mri",
+  "modality_family_equal": "No",
+  "genuine": false,
+  "resolution": "Rejected by G4 review",
+  "resolution_evidence_papers": [
+   "P-546",
+   "P-588",
+   "P-75",
+   "P-821"
+  ],
+  "resolution_status": "partially_resolved_candidate"
+ },
+ "C-238": {
+  "id": "C-238",
+  "paper_a": "P-747",
+  "paper_b": "P-748",
+  "claim_a": "The apparent negative arm. N=52 Barcelona neurology clinic, five groups (10 HC / 11 executive MCI / 10 temporo-medial MCI / 11 mild AD / 10 moderate AD), video-annotated co-speech gesture in ELAN. Reports a blanket null across fourteen gestural variables and no gesture-MMSE or gesture-group correlation, while its discussion and title nonetheless assert discriminative value - hence the overclaim flag. Its usable contribution is its negatives.",
+  "claim_b": "The apparent positive arm. N=105 pooled English three-source connected-speech sample (35 HC / 35 MCI / 35 AD), transcript-level referential grammar. Reports corrected moderate-to-large effects on hypothesis-selected grammatical variables. Measures no gesture at all, so it neither confirms nor refutes P-747's channel.",
+  "conflict_statement": "DOCUMENTED INCOMMENSURABILITY - NOT a genuine conflict, filed so the pair is not regenerated. P-747 and P-748 are the most collidable pair in the speech/language frontier: same publication year (2022), same journal (Journal of Neurolinguistics), same elicitation paradigm (picture description), same diagnostic groups (HC / amnestic MCI / AD), same task code T4, same cross-sectional design, same validation tier V2, and headline directions that read as opposite - P-747 reports that not one of fourteen gestural variables reached p below 0.05 and that gesture correlates with neither MMSE nor study group, while P-748 reports the adjunct clause ratio separating MCI from controls at Cohen's d .93. They are nevertheless incommensurable on three independent grounds. (1) CHANNEL: they measure different channels of the same elicitation task - manually annotated co-speech hand gesture versus transcribed referential grammar - so 'does picture description carry an MCI signal' is not one question they both answer. (2) NO METRIC: neither paper computes any discrimination statistic of any kind, so no gap magnitude exists and none can be constructed; any performance row sourced from either would be an artefact of P-747's title word 'discriminate'. (3) OVERCLAIM: P-747's card carries authors_overclaim and its three headline variables sit at p .088, .060 and .088 in cells of ten to eleven, so it cannot be the strong arm of anything. Where the two papers DO measure the same quantity - the type-token ratio - they AGREE: both report it null. The pair should be carried as convergent on generic surface measures and silent on each other elsewhere.",
+  "additional_papers": null,
+  "genuine_conflict": false,
+  "genuine": false,
+  "resolution_status": "documented_incommensurability",
+  "resolution_note": "== conflict P-747 P-748\n  pass Task_Type: T4\n  pass study_design_type: 'cross_sectional'\n  FAIL task_substage: 'biomarker_correlation' vs 'group_difference'\n  FAIL population_specificity: 'occupational_exposure' vs 'general'\n  skip modality_subtype: not reported on one side ('not reported' / 'NLP_text_transcripts') - lint cannot block, but a human gate can. State why they are comparable.\n  WARN primary_metric_type differs (not reported vs group_difference) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-747='NR. The paper reports no classification performance of any kind - no accuracy, no balanced accuracy, no area under the curve, no F-score, no sensitivity and no specificity - because it builds no classifier and defines no discrimination task. The title contains the phrase capacity to discriminate and the abstract repeats it, but that capacity is assessed by comparing group means with rank tests, not by classifying anyone. Every quantity in the pap'  P-748='NR. The paper computes no classification performance of any kind - no accuracy, balanced accuracy, F1, sensitivity, specificity, AUC or c-index - because it builds no classifier and defines no discrimination task. Every number a scraper might mistake for performance is something else and must not be harvested: the p values (e.g. adjunct clause omnibus .001, AD-HC definite NP p .048) are Bonferroni-corrected hypothesis-test results, not performanc'\n  Validation:  P-747='V2'  P-748='V2'\n  => FAIL ",
+  "status": null,
+  "g4_reviewed": true,
+  "g4_review_date": "2026-09-09",
+  "review_status": "confirmed_human_g4_2026-09-09",
+  "gate_verified": true,
+  "human_evaluation_note": "ACCEPT as incommensurability; REJECT genuine conflict (Strong A). Different speech channels (co-speech gesture vs transcript grammar); no shared discrimination metric; where both measure type-token ratio they AGREE (null in both). P-747 overclaim-flagged (conclusions drawn from non-significant results). File separately: P-747 population_specificity ('occupational_exposure' miscode for a Barcelona clinic cohort) and modality_subtype ('not reported').",
+  "verification": {
+   "verdict": "SURVIVES",
+   "checked_quotes": 6,
+   "lens_pass": {
+    "grounding": true,
+    "novelty_scope": true,
+    "inference": true
+   },
+   "notes": "All 6 quotes verified verbatim. The gate FAIL is reproduced exactly as filed: FAIL on task_substage ('biomarker_correlation' vs 'group_difference') and population_specificity ('occupational_exposure'  | Neither P-747 nor P-748 appears in any ledger and the pair is in no conflict pool cell - which is precisely the regeneration risk the record exists to close, and the brief explicitly invites a documen | Correctly NOT filed as a genuine conflict: the record's own analysis shows the pair is convergent wherever it is commensurable (both report the type-token ratio null) and incommensurable elsewhe",
+   "verifier": "adversarial 3-lens pass (mixed internal + external model, advisory)"
+  },
+  "evidence_quotes": [
+   {
+    "paper": "P-747",
+    "quote": "Explicitly, no significant correlation was found between gesture production and MMSE score, or between gestures and study group.",
+    "supports": "The negative headline that would be paired against P-748's positive one."
+   },
+   {
+    "paper": "P-747",
+    "quote": "Not one gestural variable reached p below 0.05 on the omnibus test",
+    "supports": "The scale of the null in P-747's own channel."
+   },
+   {
+    "paper": "P-747",
+    "quote": "The governing problem is that the paper's conclusions are drawn from results it reports as non-significant.",
+    "supports": "Ground (3): P-747 is overclaim-flagged and cannot serve as the strong arm of a conflict."
+   },
+   {
+    "paper": "P-747",
+    "quote": "the type/token ratio was flat across all five groups",
+    "supports": "The one quantity both papers measure, and they agree on it - the pair is convergent, not opposed, wherever it is commensurable."
+   },
+   {
+    "paper": "P-748",
+    "quote": "its adjunct-clause result (MCI d .93) is the number most likely to be cited forward",
+    "supports": "The positive headline that would be paired against P-747's null."
+   },
+   {
+    "paper": "P-748",
+    "quote": "All four generic linguistic measures were null: number of utterances (12.886/12.886/12.971; omnibus p .788), MLU (11.14/9.500/9.928; ANOVA omnibus .063), type-token ratio (0.656/0.648/0.618; omnibus .252) and formal grammatical errors (printed 0.1289/0.0095/0.0179; all Fisher pairwise p at 1).",
+    "supports": "P-748's own type-token null, matching P-747's - the commensurable overlap is concordant."
+   }
+  ],
+  "residual_risk": "A negative record consumes a candidate slot and adds no new knowledge about MCI - an operator may reasonably judge that the correct action is simply to fix P-747's two mis-coded registry fields and let the deterministic gate block the pair on its own, with no ledger entry at all. The counter is that the mis-coded population field currently blocks the pair for the WRONG reason, so repairing the registry would move P-747 into comparability cells it does not belong in and could surface this pair as a candidate rather than suppress it; the substantive blocker is the channel mismatch, which no column repair removes.",
+  "dedup_note": "Neither P-747 nor P-748 appears anywhere in conflicts.json, existing_records_core.md or existing_gaps.md (grep returns zero hits for both ids). The pair is absent from conflict_pool.md - only P-748 x P-749 appears for P-748, and P-747 appears in no pool cell at all, because P-747's registry row carries modality_subtype 'not reported' and population_specificity 'occupational_exposure', which keeps it out of the pre-screened cells. That is precisely why the pair needs a filed record: it is invisible to the pool but highly visible to any human or agent reading the theme, and it will be re-raised.",
+  "fp_codes_cleared": [
+   "This record does NOT clear the FP codes - it IS an FP-code determination. The blocking codes that apply are MODALITY_SUBTYPE_MISMATCH (gesture channel versus transcript-grammar channel within one elicitation task) and TASK_SUBSTAGE_MISMATCH ('biomarker_correlation' versus 'group_difference'), with METRIC_TYPE_MISMATCH also standing (neither paper reports any discrimination metric, so gap_magnitude is not computable). DUPLICATE_PAPER does not apply: different countries, languages, samples, teams and datasets, and neither card lists the other in cross_paper_claims (P-748's cross_paper_claims is empty), so they are independent - independent enough to be a conflict pair if they were commensurable, which they are not."
+  ],
+  "original_claim_before_narrowing": null,
+  "provenance": {
+   "source": "frontier mining P-680..P-1262, card-grounded, 2026-09-06",
+   "actor": "model-run synthesis + adversarial 3-lens verification; NOT an operator gate decision",
+   "_candidate_id": "T01_speech_language-conf-02"
+  }
+ },
+ "C-239": {
+  "id": "C-239",
+  "paper_a": "P-686",
+  "paper_b": "P-966",
+  "claim_a": "The unloaded arm and the apparent negative. Free viewing of 32 real-world photographs, 32 aMCI vs 32 HC, nine parameters, none separating aMCI from HC; no classifier and no ROC analysis of any kind, so it produces no discrimination figure that could be placed against an AUC. It also supplies, from its own literature review, the field's position that the documented aMCI oculomotor abnormalities are SACCADE-TASK abnormalities - which is what makes the paradigm reading a source-grounded reading rat",
+  "claim_b": "The loaded arm in an independent cohort (Korea Institute of Oriental Medicine / GARD, 79 MCI vs 170 age-matched HC). Inhibition errors and failure to self-correct in interleaved prosaccade/antisaccade and Go/No-go. Reports group differences only and no classification AUC, which is itself part of why the pairing with P-686 is not adjudicable as a conflict.",
+  "conflict_statement": "DOCUMENTED INCOMMENSURABILITY, NOT A GENUINE CONFLICT. P-686's amnestic-MCI null (not one of nine eye-movement parameters separated aMCI from healthy controls) does not contradict the positive eye-movement MCI results in this frontier (P-966, P-1163); the apparent contradiction is a paradigm boundary and gatecheck refuses both pairings. The discriminating variable is attentional/executive LOAD, not eye tracking as a channel: the signal appears under inhibitory-control and divided-attention demand (P-966 interleaved prosaccade/antisaccade and Go/No-go, 79 MCI vs 170 HC; P-1163 peripheral Useful-Field-of-View reaction time) and is absent under passive or unloaded viewing (P-686 free viewing of real-world photographs; P-1163's own central visual-field task, null in the SAME 74 participants). P-1163 therefore replicates the boundary WITHIN one study, which is the strongest form of the evidence because participants, hardware and reference standard are held constant across the loaded and unloaded arms. The corpus record that should follow is a scope boundary on VF-18 ('Ocular channels ... are repeatedly supported as scalable biomarker directions', supporters include P-966): the eye-movement half of VF-18 is demonstrated only for load paradigms, and passive free viewing is a null channel. P-686 bounds that claim rather than refuting it, because its own null is reported without an effect size, without an interval and without an equivalence test, and the paper leaves underpowering at 32 per group open as an alternative explanation.",
+  "additional_papers": [
+   "P-1163"
+  ],
+  "genuine_conflict": false,
+  "genuine": false,
+  "resolution_status": "documented_incommensurability",
+  "resolution_note": "== conflict P-686 P-966\n  FAIL Task_Type: T4 vs T1\n  FAIL study_design_type: 'case_control' vs 'cross_sectional'\n  FAIL task_substage: 'visual_scanning' vs 'mci_vs_hc_saccade'\n  FAIL population_specificity: 'general' vs 'korean_mci_hc'\n  pass modality_subtype: 'eye_tracking'\n  WARN primary_metric_type differs (effect_size vs not reported) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-686='Cohen d 0.928 for scanned areas (AD vs HC); total fixation duration was the only measure separating AD from BOTH aMCI (p=0.045) and HC (p=0.007). No eye-movement measure differed between aMCI and healthy controls'  P-966='MCI: increased inhibition errors and uncorrected errors in PS/AS and Go/No-go; no classification AUC reported'\n  Validation:  P-686='V2'  P-966='V2'\n  => FAIL - do not propose as genuine\n\n== conflict P-686 P-1163\n  FAIL Task_Type: T4 vs T1\n  FAIL study_design_type: 'case_control' vs 'cross_sectional'\n  FAIL task_substage: 'visual_scanning' vs 'MCI_vs_HC'\n  pass population_specificity: 'general'\n  pass modality_subtype: 'eye_tracking'\n  WARN primary_metric_type differs (effect_size vs AUC_ROC) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-686='Cohen d 0.928 for scanned areas (AD vs HC); total fixation duration was the only measure separating AD from BOTH aMCI (p=0.045) and HC (p=0.007). No eye-movement measure differed between aMCI and healthy controls'  P-1163='AUC 0.841 (0.741-0.916); cutoff 598.1 ms; sens 90.3% / spe",
+  "status": null,
+  "g4_reviewed": true,
+  "g4_review_date": "2026-09-09",
+  "review_status": "confirmed_human_g4_2026-09-09",
+  "gate_verified": true,
+  "human_evaluation_note": "ACCEPT as incommensurability (Strong A, best-constructed record). Free-viewing vs cognitively loaded oculomotor tasks; the within-study load-boundary replication in P-1163 (same 74 participants; central-field RT null vs UFOV AUC 0.841) is useful but does not establish a universal 'load is necessary' rule. Conditions: reword the proposed VF-18 boundary paradigm-descriptively ('active, speeded, error-scorable paradigms', not 'load'); carry the n=32 caveat; file the P-966 x P-1006 non-independence blind spot separately.",
+  "verification": {
+   "verdict": "SURVIVES",
+   "checked_quotes": 10,
+   "lens_pass": {
+    "grounding": true,
+    "novelty_scope": true,
+    "inference": true
+   },
+   "notes": "All 10 quotes verified verbatim, and both conflict gates reproduced exactly as filed: P-686 x P-966 FAIL (Task_Type T4 vs T1, design case_control vs cross_sectional, substage visual_scanning vs mci_vs | Correctly filed as a documented incommensurability under schema rule 4, not as a genuine conflict - the brief explicitly invites this record type. Neither paper appears in any existing conflict; the p | The record does exactly what the brief asks when a pair looks like a conflict and is not: names the incommensurability, pastes the real gate refusals, and converts the apparent contradiction int",
+   "verifier": "adversarial 3-lens pass (mixed internal + external model, advisory)"
+  },
+  "evidence_quotes": [
+   {
+    "paper": "P-686",
+    "quote": "not one of nine eye movement parameters, including the three early fixation durations and the refixation count, separated amnestic MCI from healthy controls, and the authors conclude that their second hypothesis was not supported while the first was confirmed.",
+    "supports": "The unloaded free-viewing arm is null for aMCI, and the authors themselves state the null as their conclusion."
+   },
+   {
+    "paper": "P-686",
+    "quote": "The saccade literature in AD and aMCI is well developed, with prolonged prosaccade latency, reduced correct antisaccades and increased uncorrected antisaccade errors documented in both groups relative to older adults",
+    "supports": "The paradigm reading comes from P-686's own account of the field: what the literature documents in aMCI are saccade-task measures, which is exactly the class P-966 and P-1163 sample and the class P-686 did not use."
+   },
+   {
+    "paper": "P-686",
+    "quote": "Not reported. No classifier was built and no receiver-operating-characteristic analysis appears anywhere in the paper.",
+    "supports": "P-686 yields no discrimination metric at all, so no numerical gap against an AUC-reporting paper can be computed - the pairing is metric-incommensurable before any substantive argument."
+   },
+   {
+    "paper": "P-686",
+    "quote": "insufficient power at 32 per group, which cannot be judged because Cohen's d was computed only for statistically significant outcomes and every aMCI-versus-HC cell in the effect size column is a dash",
+    "supports": "The null is unquantified, so it bounds rather than refutes; this is why the record is a scope boundary and not an invalidated assumption."
+   },
+   {
+    "paper": "P-686",
+    "quote": "It should be read as a negative result constraining that literature, not as a detection-performance record, and must not be entered as supporting evidence for any verified finding about eye-movement-based MCI detection.",
+    "supports": "The digest itself directs P-686 to be used as a constraint on the eye-movement detection literature - i.e. exactly as a scope boundary on VF-18 - rather than as an arm of a performance comparison."
+   },
+   {
+    "paper": "P-686",
+    "quote": "First and most serious, the abstract overstates the AD result.",
+    "supports": "The authors_overclaim flag on P-686 is confined to the AD-versus-aMCI staging sentence in the abstract; it does not touch the aMCI-versus-HC null this record rests on."
+   },
+   {
+    "paper": "P-966",
+    "quote": "Similar to AD patients, MCI patients generate a high proportion of erroneous saccades toward the prepotent target and fail to self-correct, consistent with impaired inhibitory control and error monitoring; interleaved PS/AS and Go/No-go are sensitive objective MCI screening candidates.",
+    "supports": "The loaded (inhibitory-control) arm is positive in an independent cohort, and the authors read it as an inhibitory-control/error-monitoring deficit rather than a general oculomotor one."
+   },
+   {
+    "paper": "P-966",
+    "quote": "classification modelling (e.g., AUC) rather than group differences alone",
+    "supports": "P-966 reports no AUC either, so P-686 x P-966 cannot be adjudicated numerically in either direction."
+   },
+   {
+    "paper": "P-1163",
+    "quote": "central-field reaction time showed no group difference, isolating divided-attention/peripheral processing as the discriminatory component",
+    "supports": "The load boundary is replicated WITHIN a single study and single participant set: the unloaded central task is null while the loaded peripheral task discriminates, and the authors state that reading themselves."
+   },
+   {
+    "paper": "P-1163",
+    "quote": "UFOV reaction time detects MCI at AUC 0.841 with ms-level actionable cutoff",
+    "supports": "The loaded arm reaches a usable discrimination figure in a third independent cohort."
+   }
+  ],
+  "residual_risk": "The load-versus-unloaded axis is a post-hoc reading imposed across three papers, none of which set out to test it, and it has a competing explanation that this evidence cannot exclude: stimulus complexity and free response. P-686's free viewing of 32 natural photographs has no correct answer and no reaction-time demand, whereas both positive paradigms are speeded forced-response tasks with an error that can be scored - so 'speeded scoreable response' may be the operative variable rather than 'attentional load', and P-1163's central-versus-peripheral dissociation is consistent with either since both its arms are speeded. Two further weaknesses. First, P-686's null has 32 aMCI participants and no power analysis, so the boundary's negative side rests on a result the paper itself will not call demonstrated absence. Second, the loaded side is thinner than three papers suggest: P-1006, the other load-positive paper in this pack, shares four authors (Opwonya, Lee, Kim, Kim) and the GARD cohort with P-966, and gatecheck cf P-966 P-1006 nonetheless prints PASS, so the non-independence registry does not currently see this pair - the effective count of independent load-positive cohorts here is two, not three.",
+  "dedup_note": "Checked against every T03 record and every retinal/ocular record in existing_records_core.md and existing_gaps.md. VF-18 ('Ocular channels (retinal structure and eye-movement behavior) are repeatedly supported as scalable biomarker directions for early cognitive decline detection', supporters P-5, P-105, P-109, P-952, P-966) and VF-13 assert the direction but state no paradigm scope; this record supplies the boundary and names P-686 as the constraint. Existing gaps G-02, G-10, G-15, G-CAND-42, ACTOR-G-002/006/060/068 are all about retinal STRUCTURE and ocular functional electrophysiology (OCT, OCTA, choroid, fundus ML, PVEP/FERG longitudinal validation); none concerns eye-movement paradigms. No conflict in conflicts.json involves P-686, P-966 or P-1163 (the conflict pool lists only P-247 x P-1006, P-247 x P-1163 and P-1006 x P-1163 for this theme). Distinct from sibling candidate T03_retina_eye-gap-03, which makes a REPORTING claim (positives carry effect sizes, negatives do not) about the same P-686 null; this record makes a SUBSTANTIVE claim about which oculomotor paradigms carry MCI signal, and its corroborating datum - the central-versus-peripheral dissociation inside P-1163 - appears in no existing record or candidate. Distinct from T03_retina_eye-gap-02, which is about the screener-defined reference standard, an axis this record does not use.",
+  "fp_codes_cleared": [
+   "GENUINE-CONFLICT CLAIM: not made. This record is explicitly filed as a documented incommensurability under schema rule 4, because gatecheck prints FAIL for both P-686 x P-966 and P-686 x P-1163. Nothing here should be promoted to conflicts.json as genuine.",
+   "TASK_SUBSTAGE_MISMATCH: this is one of the reasons the record exists, not a defect in it - registry task_substage is 'visual_scanning' for P-686 against 'mci_vs_hc_saccade' (P-966) and 'MCI_vs_HC' (P-1163), and the record's claim is precisely that the substage difference is the finding.",
+   "MODALITY_SUBTYPE_MISMATCH: likewise named rather than cleared. The registry collapses all three to modality_subtype 'eye_tracking'; the record's whole point is that free viewing, interleaved prosaccade/antisaccade with Go/No-go, and peripheral UFOV are NOT one modality subtype, which is the same failure the operator recorded for 'digital cognitive training' at C-229.",
+   "METRIC_TYPE_MISMATCH: applies and is stated - P-686 primary_metric_type effect_size with no AUC at all, P-966 not reported, P-1163 AUC_ROC. No numerical gap is asserted anywhere in this record.",
+   "DESIGN_MISMATCH: P-686 is case_control and Task_Type T4 (group comparison, no classifier); P-966 and P-1163 are cross_sectional T1. Stated, not overridden.",
+   "DUPLICATE_PAPER: cleared - gatecheck show prints duplicate_of 'not reported' for P-686 and '-' for P-966 and P-1163.",
+   "NON-INDEPENDENCE: cleared for the three papers used. P-686 is Dokuz Eylul University, Izmir (Eraslan Boz et al.); P-966 is the Korea Institute of Oriental Medicine / GARD cohort (Opwonya et al.); P-1163 is a Kyoto care-facility cohort (Tamaru et al.). Three countries, three teams, three cohorts, no shared participants and no review-includes-primary relation. P-1006 is deliberately NOT used as a fourth arm because it shares four authors and the GARD cohort with P-966.",
+   "AUTHORS_OVERCLAIM (schema rule 2): no strong arm is being claimed, since no conflict is being claimed. P-686's overclaim flag is confined to the abstract's AD-versus-aMCI staging sentence and does not touch the aMCI-versus-HC null used here; P-1163's overclaim flag concerns its unquantified 'benchmarks favourably against conventional screeners' claim, which this record does not use and does not endorse."
+  ],
+  "original_claim_before_narrowing": null,
+  "provenance": {
+   "source": "frontier mining P-680..P-1262, card-grounded, 2026-09-06",
+   "actor": "model-run synthesis + adversarial 3-lens verification; NOT an operator gate decision",
+   "_candidate_id": "T03_retina_eye-conf-01"
+  },
+  "truncated_field_operator_review_2026_09_14": "claim_a is truncated at exactly 500 characters (2026-09-06 frontier-merge buffer), ending mid-sentence at '...hat makes the paradigm reading a source-grounded reading rat'. Flagged, not repaired - no ending invented and no source located locally. Any reader or downstream writer using this field must treat it as incomplete.",
+  "operator_review_2026_09_14": "Truncation flagged only, on operator instruction of 2026-09-14 (item 4b). No behaviour change: status, gate_verified, genuine and all text fields left exactly as found."
+ }
+}

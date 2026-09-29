@@ -1,0 +1,60 @@
+{
+ "paper": "P-282",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "Arizona APOE Cohort, Mayo Clinic Arizona Department of Neurology (USA); 250 enrolled, 206 analysed (166 CN, 40 'possible MCI' by DRS<140, including mild dementia)",
+ "method_family": "Tablet with integrated eye tracker (EyeTech EyeOn Elite, 120 Hz) during the one-minute Oculo-Cognitive Addition Test; fixation, saccadic-velocity, blink and pupil features; RF/decision-tree feature selection; LR and KNN with SMOTE; 80/20 stratified hold-out",
+ "same_sample_or_cohort_as": [],
+ "shared_authors_with": [],
+ "what_it_shows": "Eye-movement features alone, recorded during a one-minute tablet arithmetic task, classified DRS-defined 'possible MCI' on a held-out 42 participants (31 CN / 11 PMCI). With LR-SMOTE: accuracy 0.90-0.91, recall 0.89-0.90, specificity 0.90-0.94, AUPRC 0.93 (Table 6). Combined eye and time features reached accuracy 0.93-0.94 (Table 5); time-only features did as well as eye-only (accuracy 0.93-0.94, Table 7).",
+ "why": "PDF identity confirmed: title, authors (Pradhan, Kingsbury, Cevette, Stepanek, Caselli) and DOI 10.3390/brainsci16010070 match the block. STATED FORM: partly. The study itself trains and tests an eye-only model, so it supports eye-movement behaviour as a detection direction for early cognitive impairment. Limits from the full text: (1) The outcome is not clinical MCI. PMCI is DRS<140 'including those with mild dementia' (p.4), and the authors say the cutoff 'likely captures earlier or subtler impairment rather than definitive MCI' (p.12). (2) Age is added as a feature to every model (p.5). (3) The eye features are recorded during a timed mental-addition task, so they carry cognitive-task load, and time-only features performed as well as eye-only ones. The eye/time split is also not clean: '(Log-) Mean Latency Time', saccadic latency per Appendix B.3, is listed under time-related features (Table 2). (4) Single cohort, no external validation; the authors call the findings 'preliminary' (pp.11-12). (5) 44 of 250 (17.6%) were excluded for inadequate tracking, which weighs against the paper's own scalability claim. (6) The abstract's figures do not match the results tables. The abstract gives combined accuracy 0.97, recall 0.91 and AUPRC 0.95, against Table 5's best 0.94, 0.88 and 0.94. It gives eye-only accuracy 0.93 and F1 0.87, against Table 6's maximum of 0.91 accuracy and 0.84 F1. The block copies the abstract figures; the tables should be cited. (7) Pradhan, Cevette, Stepanek and Mayo Clinic declare a financial interest (US Patent 11,869,386). Correction to the finders: the test set holds 11 PMCI, not about 8 (Table 3, p.6: testing 31 CN / 11 PMCI). SCALABLE: a tablet-integrated tracker is more deployable than a lab rig, but scalability is the authors' aspiration ('With further refinement, OCAT has the potential to serve as a practical and scalable cognitive screening tool'), not something tested. NARROWED FORM: partly. It is a single-centre, preliminary result without external validation, which matches the register of the narrowed wording. But the label is a DRS threshold that includes mild dementia rather than clinically diagnosed MCI, and the measure is fixation, saccade, blink and pupil features during arithmetic, not the saccadic inhibition errors or prosaccade latency of the narrowed clause. Admitting it would require the narrowed wording to add 'eye-movement features during a tablet arithmetic task discriminated DRS-defined possible MCI in one US clinic cohort'. INDEPENDENCE: The Mayo Clinic Arizona site, Arizona APOE Cohort and author list share nothing with P-5, P-105, P-952 or P-966, or with the other candidates (P-169 Hanyang, P-998 Tehran, P-363 Duke). It is an extended version of a KDIR 2025 conference paper; a grep of summaries.md for OCAT finds no separate corpus block for that conference version. Not a preprint (Brain Sci 2026, peer-reviewed). BLOCK DEFECT: the sample-size field reads '250' (250 enrolled; 206 analysed).",
+ "quotes": [
+  {
+   "page": 4,
+   "quote": "All tested participants were categorized into Cognitive Normal (CN) and Possible Mild Cognitive Impairment (PMCI) groups, including those with mild dementia, based on their DRS score during clinical neuropsychological assessment. As per the clinical standards, participants with a DRS score of 140 or above were labeled as CN, and those with less than 140 scores were labeled as PMCI [38]."
+  },
+  {
+   "page": 4,
+   "quote": "The final distributed dataset included the OCAT data of 206 participants, with 166 categorized as CN class and 40 as PMCI class."
+  },
+  {
+   "page": 4,
+   "quote": "The OCAT software (version 1.0) was installed on the 14\u2032\u2032 EyeOn Elite Windows 10 Pro tablet (EyeTech Digital Systems, Tempe, Arizona, USA) with an integrated eye tracking device (8MP Eye Gaze Camera) to track eye gaze during the OCAT."
+  },
+  {
+   "page": 5,
+   "quote": "It is worth noting that, in addition to the 31 features listed in Table 2, the age of the participants was also included as an additional feature in the predictive modeling."
+  },
+  {
+   "page": 6,
+   "quote": "Table 3. Class distribution of training and testing dataset from the original, imbalanced dataset. ... Training dataset 135 29 Testing dataset 31 11"
+  },
+  {
+   "page": 9,
+   "quote": "Table 6. LR and KNN mean model performance with bootstrapped 95% confidence intervals on SMOTE-balanced and imbalanced datasets for eye movement features alone. ... LR\u2013SMOTE DT = 0.45: 0.9 [0.81\u20130.91] | 0.77 [0.64\u20130.91] | 0.9 [0.84\u20130.97] | 0.83 [0.72\u20130.91] | 0.9 [0.83\u20130.95] | 0.93 [0.88\u20130.96]; DT = 0.5: 0.89 [0.81\u20130.91] | 0.79 [0.67\u20130.91] | 0.94 [0.84\u20130.97] | 0.84 | 0.91 [0.86\u20130.95] [columns: recall, precision, specificity, F1, accuracy, AUPRC; re-assembled from the extract]"
+  },
+  {
+   "page": 9,
+   "quote": "LR with SMOTE and eye movement features alone achieved the same high recall, but precision, specificity and F1 score were reduced as compared to the models using combined time and eye movement features."
+  },
+  {
+   "page": 1,
+   "quote": "LR models achieved the highest performance using the combined time and eye movement features, with an accuracy of 0.97, recall of 0.91, and an AUPRC of 0.95. The eye-only and time-only LR models also performed well (accuracy = 0.93), though with slightly lower F1-scores (0.87 and 0.86, respectively)."
+  },
+  {
+   "page": 11,
+   "quote": "However, model development and evaluation were conducted within a single cohort, and the absence of external validation limits generalizability. Accordingly, these findings should be interpreted as preliminary"
+  },
+  {
+   "page": 12,
+   "quote": "Although this threshold is supported by prior literature [38,42\u201344] as indicative of increased cognitive risk, it likely captures earlier or subtler impairment rather than definitive MCI and may limit direct comparability with studies using lower, more traditional cutoffs (e.g., 123) [9]."
+  },
+  {
+   "page": 14,
+   "quote": "Gaurav N. Pradhan, Michael Cevette, Jan Stepanek, and Mayo Clinic have a financial interest related to this research."
+  }
+ ]
+}

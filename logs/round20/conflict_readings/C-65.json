@@ -1,0 +1,102 @@
+{
+ "id": "C-65",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-23",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "TASNet: A tri-modal attentive scale robust adaptive fusion framework for progressive mild cognitive impairment classification (Zhu, Zhang, Yang, Hao; Journal of Neuroscience Methods 430 (2026) 110726)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-3",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Class activation attention transfer neural networks for MCI conversion prediction (Luo, He, Cui, Chen, Ward; Computers in Biology and Medicine 156 (2023) 106700)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-23": "TASNet, tri-modal (baseline T1 sMRI + FDG-PET + CSF Abeta42/TAU/PTAU) 3D ResNeXt with attention fusion, ADNI1/2, pMCI vs sMCI defined by a 36-month follow-up criterion; 200 MCI subjects (82 pMCI, 118 sMCI) split 8:1:1, single held-out test split of about 20 MCI subjects: accuracy 85.00%, sensitivity 83.33%, specificity 87.50%, F1 86.96, AUC 91.67% (Table 3). Its own sMRI-only ablation on the same task gives accuracy 65.00%, AUC 66.67 (Table 6, A1).",
+  "P-3": "CAAT ensemble (5-layer 3D CNN with class-activation-map attention transferred from AD/CN, ADAS-cog and CDR-SB source tasks), baseline T1 sMRI only, ADNI1/2 Wen et al. splits, 295 pMCI vs 298 sMCI (conversion within 36 months), 5-fold CV: accuracy 74.61% (variance 0.002), sensitivity/specificity/F1 0.75, AUC 0.780 (Table 3)."
+ },
+ "quantity_a": "Held-out-split accuracy (n of about 20 test subjects) for pMCI vs sMCI (36-month horizon) in ADNI, using three input modalities: sMRI, FDG-PET and CSF biomarkers.",
+ "quantity_b": "5-fold cross-validated accuracy for pMCI vs sMCI (36-month horizon) in ADNI, using baseline structural MRI only.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-23's 85.00% rests on about 17 of 20 test subjects; a Wilson 95% interval for that proportion is roughly 64-95%, which contains P-3's 74.61%. And neither paper claims an ordering the other refutes: P-23's own MRI-only configuration scores 65.00%, below P-3, so on the like-for-like input the direction even reverses.",
+ "gates": {
+  "task": "match: both T2, pMCI vs sMCI with a 36-month conversion window.",
+  "dataset_family": "match: ADNI (ADNI1/ADNI2) in both; the subject sets overlap in family but not in selection (P-23 requires baseline FDG-PET and CSF, N=200 MCI; P-3 uses the Wen et al. split of 593 MCI).",
+  "validation_tier": "match in tier (internal only), but the designs differ: one 8:1:1 random split with about 20 MCI test subjects (P-23) versus 5-fold CV on 593 (P-3).",
+  "modality_family": "mismatch: P-23 fuses structural MRI with FDG-PET and CSF fluid biomarkers; P-3 uses structural MRI alone. The record's 'structural_mri' for both is wrong, and no waiver is on record."
+ },
+ "endpoint_and_metric": "compatible endpoint (36-month conversion) and metric type (accuracy), but incompatible predictor set: tri-modal imaging plus fluid biomarkers versus MRI only.",
+ "performance_validity": "flag does not apply: 85.00% accuracy and AUC 0.9167 are below the 0.97 threshold (though P-23's test split is very small); P-3 is 74.61%.",
+ "independence": "Distinct studies and author groups; both draw on ADNI1/ADNI2, so some participants may be shared (recorded as partial cohort overlap, not disqualifying).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The modality-family gate fails with no waiver: P-23's 85.00% is a tri-modal sMRI+FDG-PET+CSF result, P-3's 74.61% is from structural MRI alone.",
+  "This is the predictor-set/input-representation difference that reclassified precedent C-80 (P-82 x P-3) to documented incommensurability.",
+  "Even read as one quantity the results are compatible: P-23's single 20-subject test split cannot exclude 74.61%, and P-23's own MRI-only ablation (65.00%) scores below P-3.",
+  "Neither paper evaluates the other's method or claims an ordering the other refutes."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-23",
+   "page": 1,
+   "quote": "Results: Experiments on the ADNI dataset resulted in an accuracy of 85.00% and an AUC of 91.67% in pMCI/sMCI classification."
+  },
+  {
+   "paper": "P-23",
+   "page": 6,
+   "quote": "selecting subjects from ADNI1 and ADNI2 cohorts with baseline T1-weighted sMRI, FDG-PET, and CSF biomarkers (Abeta42, TAU, PTAU)."
+  },
+  {
+   "paper": "P-23",
+   "page": 6,
+   "quote": "based on a 36-month follow-up criterion (Zhang et al., 2022)."
+  },
+  {
+   "paper": "P-23",
+   "page": 6,
+   "quote": "was stratified into training, validation, and test sets (8:1:1)."
+  },
+  {
+   "paper": "P-23",
+   "page": 8,
+   "quote": "Subject counts represent the total of sMCI and pMCI samples."
+  },
+  {
+   "paper": "P-23",
+   "page": 8,
+   "quote": "Table 6, sMCI vs. pMCI, A1 sMRI only: SEN 66.67, SPE 62.50, ACC 65.00, F1 69.57, AUC 66.67 (table cells joined)"
+  },
+  {
+   "paper": "P-3",
+   "page": 1,
+   "quote": "predict which patients with mild cognitive impairment (MCI) will progress to AD within 3 years."
+  },
+  {
+   "paper": "P-3",
+   "page": 2,
+   "quote": "Experimental results on the ADNI dataset show that CAAT achieves accuracy of 74.61 for classifying between pMCI and sMCI using only whole 3D images of the brain and no other ancillary information."
+  },
+  {
+   "paper": "P-3",
+   "page": 6,
+   "quote": "Our dataset consists of 593 MRI images, consisting of 298 sMCIs and 295 pMCIs images. We performed 5 fold cross validation"
+  },
+  {
+   "paper": "P-3",
+   "page": 9,
+   "quote": "A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models."
+  }
+ ],
+ "record_defects": [
+  "modality_family 'structural_mri' and modality_family_equal 'Yes' are wrong: P-23's reported model uses sMRI, FDG-PET and CSF biomarkers.",
+  "The rejection reason 'Same architecture family (A4_transformer)' is wrong: P-23 is a 3D ResNeXt CNN with axial attention and P-3 a 5-layer 3D CNN; neither is a transformer.",
+  "The bridging-evidence list mixes metric types (C-index, AUC, sensitivity) and tasks and names no condition that separates the two results; it does not support 'partially resolved'."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A P-23 result on structural MRI alone that, on an adequately sized test set, excluded P-3's 74.61% in the upward direction, together with a claim that P-3's approach is inferior on the same input; P-23's own MRI-only ablation (65.00%) points the other way."
+}

@@ -1,0 +1,79 @@
+{
+ "id": "C-94",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-168",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of progression from mild cognitive impairment to Alzheimer's disease with longitudinal and multimodal data (Ding et al., Front. Dement. 2:1271680, 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-174",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack file ROOT/pdf/P-174.txt is 'A Graph Gaussian Embedding Method for Predicting Alzheimer's Disease Progression with MEG Brain Networks' (Xu et al., IEEE TBME 2021), byte-identical to P-173.txt (same MD5) and NOT the paper the record means. The P-174 summary block is headed '[STUB-DEDUP-OF-P-171] PMID_33422894_nihms-1655691.pdf' and describes a transfer-learning 3D-CNN; I therefore read that file from the repository (read-only): 'Transfer Learning for Predicting Conversion from Mild Cognitive Impairment to Dementia of Alzheimer's Type based on a 3D-Convolutional Neural Network' (Bae et al., Neurobiol Aging 2021;99:53-64), which reports the record's 0.827 AUC.",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-168": "ADNI participants still MCI at month 24 with complete five-visit NP + FreeSurfer MRI data (n=347, 77 converters); outcome = progression to AD within 2 years of the month-24 index exam. Longitudinal multimodal LSTM, 10-fold CV: AUC 0.93 \u00b1 0.06; single-visit random forest 0.90; MRI-only LSTM 0.86; NP-only LSTM 0.89.",
+  "P-174 (Bae et al. 2021, correct paper read from the repository)": "ADNI MCI patients, single-timepoint baseline structural MRI (whole 3D T1 scan, no engineered features), converters within 3 years (n=228) vs non-converters stable >=3 years (n=222); ResNet29 3D-CNN pre-trained on NC vs DAT, independent 15% test set (68 scans): accuracy 82.4%, AUC 0.827, EER 0.189. Sensitivity falls for longer conversion times (81.08%, 71.79%, 55.56% for 0-3, 3-6, 6-10 years)."
+ },
+ "quantity_a": "ROC-AUC (10-fold CV) for 2-year MCI->AD progression from five-visit longitudinal NP test scores + FreeSurfer regional volumes + demographics, ADNI MCI at month 24",
+ "quantity_b": "ROC-AUC (independent test set, n=68) for MCI->DAT conversion within 3 years from a single baseline raw 3D structural MRI scan, ADNI MCI at first MCI diagnosis, converters vs non-converters stable >=3 years",
+ "same_quantity": false,
+ "incompatible_if_same": "Not determinable as incompatible: Bae et al. give no interval for 0.827 on 68 test scans, and P-168's 0.93 carries a fold SD of 0.06. More to the point, P-168's own MRI-only model reaches AUC 0.86, close to Bae's MRI-only 0.827, so the 0.93-vs-0.827 gap tracks the added longitudinal NP input, not a disagreement.",
+ "gates": {
+  "task": "match on label: both MCI-to-AD conversion (T2); horizons differ (2 years from a month-24 index exam vs within 3 years of first MCI diagnosis)",
+  "dataset_family": "match: both ADNI; overlapping participants, recorded as non-independence",
+  "validation_tier": "match: both internal to ADNI (10-fold CV vs a random 70/15/15 split with an independent held-out test set)",
+  "modality_family": "mismatch: P-168 uses neuropsychological test scores plus FreeSurfer volumes (clinical/cognitive + structural MRI features); Bae uses raw structural MRI only. The record's modality_family_equal='No' is correct; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different predictor set and input representation (longitudinal NP+MRI tabular features vs a single raw 3D MRI), different horizon (2 vs 3 years) and different cohort construction",
+ "performance_validity": "flag does not apply: neither figure reaches 0.97",
+ "independence": "Shared cohort: both ADNI, so participants overlap; recorded as non-independence. Different groups (Boston University/UMass vs Northwestern/Simon Fraser).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-168's AUC 0.93 comes from five visits of neuropsychological scores and MRI volumes, while Bae et al.'s 0.827 comes from a single baseline raw MRI scan, so predictor set and input representation differ.",
+  "P-168's MRI-only model gives AUC 0.86, showing the same study places MRI-only performance near Bae's 0.827; the headline gap reflects different inputs, not incompatible results.",
+  "The horizons differ (2 years after a month-24 index exam vs conversion within 3 years of first MCI diagnosis) and the modality-family gate fails with no waiver on record.",
+  "The P-174 PDF in the pack is the wrong paper (a copy of P-173); the verdict rests on the correct paper read from the repository, and P-174 is a stub duplicate that its own block says must not be cited as evidence."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-168",
+   "page": 1,
+   "quote": "A Long Short-Term Memory (LSTM) model using data collected at five-time points (baseline, 6, 12, 18, and 24-month) was developed to predict the risk of progression from MCI to AD within 2 years from the index exam (the exam at 24-month)."
+  },
+  {
+   "paper": "P-168",
+   "page": 5,
+   "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures."
+  },
+  {
+   "paper": "P-174 (Bae et al., repository PDF PMID_33422894_nihms-1655691.pdf)",
+   "page": 4,
+   "quote": "In the target task, we examined MCI-C patients with a conversion time of up to 3 years (longer conversion times are examined later) to MCI-NC patients with a clinical diagnosis that remains MCI for a duration of at least 3 years."
+  },
+  {
+   "paper": "P-174 (Bae et al., repository PDF PMID_33422894_nihms-1655691.pdf)",
+   "page": 8,
+   "quote": "It produced a test set classification accuracy of 82.4% and 0.827 Area Under the Curve (AUC) as well as 0.189 Equal Error Rate (EER) value (Figure 4b)."
+  },
+  {
+   "paper": "P-174 (Bae et al., repository PDF PMID_33422894_nihms-1655691.pdf)",
+   "page": 10,
+   "quote": "The ability to predict DAT conversion based on a single time point MRI is advantageous for the clinical field."
+  }
+ ],
+ "record_defects": [
+  "paper_b P-174 is a stub duplicate (summary header '[STUB-DEDUP-OF-P-171]', registry codes all 'NA', 'must not be cited as evidence'); the record should not have been built on it.",
+  "The pack's P-174 PDF text is the MEG paper of P-173 (identical file); the data/paper_pdf_map.json entry for P-174 points to P-173's PDF (method 'formula-unverified').",
+  "P-174 registry Category/Task/Validation/Best_Metric are 'NA', yet the record states 'AUC 0.827 on T2'; the value exists only in the correct paper (Bae et al.), which is P-37's paper per the P-171 map note.",
+  "resolution_note says 'Confirmed genuine: Same metric type (AUC)' while resolution says 'Rejected: Task, dataset, or modality mismatch'; internally inconsistent.",
+  "The 'bridging evidence' list names no condition separating the two results and is not bridging evidence under the rule."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "If the operator rules that only the pack PDF may be used, the verdict should be 'unresolved' because the pack's P-174 file is the wrong paper. On the substance, a genuine conflict would need two ADNI studies with the same input representation (e.g. both single baseline MRI) and horizon whose AUC intervals exclude each other."
+}

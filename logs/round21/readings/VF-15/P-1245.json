@@ -1,0 +1,49 @@
+{
+ "paper": "P-1245",
+ "role": "verifier, round 2",
+ "status": "candidate / pending_human_review (model reading; not a gate action)",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "partly",
+ "supports_narrowed": "partly",
+ "dataset_family": "ADNI (ADNIGO/ADNI2; Cohort 1 n=625 without dementia, Cohort 2 n=393 with plasma Abeta42/40)",
+ "method_family": "Two-stage stacking: ridge-regression MRI score (inner CV) combined with demographics, APOE4, cognitive composites and plasma markers in random-forest regression of decline rate; C-index / tertile Cox HR of the predicted rate for progression",
+ "same_sample_or_cohort_as": [
+  "P-3, P-104, P-81 (ADNI family; ADNIGO/2 participant overlap likely, not verified)",
+  "Round-1 ADNI candidates P-190, P-211, P-1128, P-88, P-512, P-225, P-195, P-186, P-1 (ADNI family)"
+ ],
+ "shared_authors_with": [],
+ "what_it_shows": "In Cohort 2 MCI (65 progressed to dementia, 120 stable), the predicted memory-decline rate discriminated progression with these C-indices: basic model (demographics, APOE4, cognition) 0.76; + plasma 0.74; + MRI 0.77; + plasma + MRI 0.79. Adding plasma to the MRI-containing model raised the C-index by 0.02, and the full fusion beat the non-imaging baseline by 0.03. None of these differences was tested. There is no imaging-only or plasma-only model, and the risk score comes from models trained to predict memory-decline rate, not conversion.",
+ "why": "IDENTITY. PDF p.1 is Moradi E, Dahnke R, Imani V, Gaser C, Solomon A and Tohka J (2025), Neurobiology of Aging 155:53-65, 'Integrating plasma, MRI, and cognitive biomarkers for personalized prediction of decline across cognitive domains'. It matches the P-1245 block header and the map DOI. I read the whole extract up to the reference list.\n\nDESIGN. ADNI (ADNIGO/2) participants without dementia. Cohort 1 has 625 (162 CN, 90 SMC, 244 EMCI, 129 LMCI). Cohort 2 is the subset of 393 with plasma Abeta42/40. The primary outcome is the rate of decline in four ADNI composite cognitive scores, estimated by regression with nested 10x10 CV. Four models were fitted:\n- basic: demographics, APOE4, baseline composite cognition;\n- plasma: basic + plasma NfL, p-tau181 (and Abeta42/40 in Cohort 2);\n- MRI: basic + a ridge-regression MRI score;\n- combined: all of the above.\nNo MRI-only or plasma-only model exists. In a secondary analysis, the predicted ADNI-MEM decline rate serves as a risk score for clinical progression (C-index, tertile Cox HRs). The Cohort 2 MCI group in that analysis has 65 progressors and 120 stable, which is 185 of the 233 MCI; the paper does not explain the remainder.\n\nRESULT (MCI to dementia, p.8 and Table 3).\n- C-index: basic 0.76, plasma 0.74, MRI 0.77, combined 0.79.\n- High-vs-low tertile HR: 11.01, 14.43, 21.02, 29.45, with overlapping 95% CIs (4.91-24.69 up to 9.06-95.74).\n- No test compares the C-indices. The supplementary p-values the paper cites compare decline-rate correlations.\n\nNARROWED: PARTLY.\n- Shown: adding auxiliary non-imaging data (plasma NfL, p-tau181, Abeta42/40) to a model that already contains MRI raises MCI-to-dementia discrimination, from 0.77 to 0.79.\n- Not shown, part 1: the base is not the imaging model alone. The 'MRI model' already holds demographics, APOE4 and cognitive composites (Fig. 5 legend).\n- Not shown, part 2: the gain is 0.02 and untested.\n- Not shown, part 3: the outcome is a proxy. The authors say the model 'was primarily designed to estimate memory domain decline rates, rather than directly predict progression to dementia'.\n- Not shown, part 4: plasma added to the non-imaging model lowered the C-index (0.76 to 0.74).\n\nSTATED: PARTLY. A multivariable non-imaging baseline exists (basic, 0.76), and the full fusion (0.79) beats it, as well as the MRI+clinical (0.77) and plasma+clinical (0.74) fusions. But there is no unimodal imaging or unimodal plasma baseline, and the gains of 0.02-0.03 are untested. One fusion, the plasma model, falls below the non-imaging baseline, so fusion as such does not reliably help. The primary decline-rate result (ADNI-MEM r: basic 0.38, plasma 0.45, MRI 0.46, combined 0.50; significance reported) covers CU and MCI together and a rate of memory decline, not progressive-MCI prediction.\n\nCAVEATS.\n(1) The paper does not say which of the ten CV repetitions supplies the predicted rates used in the survival analysis.\n(2) 48 of 233 Cohort-2 MCI are absent from the survival analysis without explanation.\n(3) Internal validation only, within ADNI.\n(4) Baseline composite cognition is in every model, and conversion is judged clinically partly on cognition, so the non-imaging baseline is strong and partly circular.\n\nINDEPENDENCE. ADNI family, with likely participant overlap with P-3, P-104 and P-81, so no new dataset family. The authors (University of Eastern Finland, Jena University Hospital, Karolinska Institute) are disjoint from the supporters and from the round-1 candidates whose front matter I checked. Jussi Tohka appears on P-186 only as academic editor, not as an author. P-1245 cites P-81 (Cao et al. 2023) in its introduction but shares no data with it beyond ADNI. The method (two-stage stacking with random-forest regression and a C-index on the predicted rate) differs from all three supporters. The paper is not a preprint.\n\nQuotes are rejoined across line breaks, with typographic characters normalized to ASCII. Table cells are joined in reading order.",
+ "quotes": [
+  {
+   "page": 8,
+   "quote": "For predicting dementia progression in individuals with MCI, the basic model yielded a C-index of 0.76. Adding plasma biomarkers did not enhance predictive accuracy (C-index of 0.74), but the MRI model offered a slight improvement with a C-index of 0.77. The combined model also achieved the highest performance for the MCI group, with a C-index of 0.79. Although our cognitive decline prediction model based on ADNI-MEM was primarily designed to estimate memory domain decline rates, rather than directly predict progression to dementia, it still showed strong predictive power for early-stage dementia, even in CU individuals."
+  },
+  {
+   "page": 3,
+   "quote": "We designed four models with different feature combinations. The first model, the basic model, was trained using only demographic information, APOE4, and the baseline composite cognitive scores. The second model, the plasma model, included plasma biomarkers and predictors used in the basic model. The third model, the MRI model, incorporated MRI data with the predictors of the basic model. Finally, the fourth model, termed the combined model, utilized all available predictors: demographic data, APOE4, composite cognitive scores, plasma biomarkers, and MRI data."
+  },
+  {
+   "page": 8,
+   "quote": "In Cohort 2, which included 160 cognitively unimpaired individuals (CN and SMC), 30 transitioned to MCI or dementia during the follow-up period, and 96 remained stable with a follow-up duration of at least four years. In the MCI group (EMCI and LMCI), 65 individuals progressed to dementia, and 120 remained with MCI status."
+  },
+  {
+   "page": 10,
+   "quote": "Risk of progression to dementia in MCI individuals ... Low vs. High 11.01 (4.91-24.69) <0.001 7/62 vs. 42/62 14.43 (5.62-37.04) <0.001 5/62 vs. 39/62 21.02 (7.48-59.07) <0.001 4/62 vs. 44/62 29.45 (9.06-95.74) <0.001 3/62 vs. 43/62"
+  },
+  {
+   "page": 9,
+   "quote": "Basic model: Demographics, APOE4, Composite cognitive scores. Plasma model: Demographics, APOE4, Composite cognitive scores, plasma biomarkers. MRI model: Demographics, APOE4, Composite cognitive scores, MRI data. Combined model: Demographics, APOE4, Composite cognitive scores, plasma biomarkers, MRI data."
+  },
+  {
+   "page": 4,
+   "quote": "For predicting the rate of change in the ADNI-MEM measure, the average correlation score across 10 computation runs, derived from the basic model, was 0.38 ... Adding plasma biomarkers to the basic model (plasma model) significantly improved performance, with an improved correlation score of 0.45 ... Similarly, adding MRI data to the basic model (MRI model) significantly improved performance to a correlation score of 0.46 ... Finally, the combined model integrating plasma and MRI measures to the basic model, provided significantly improved prediction performance compared to all other models (basic, plasma, and MRI models), with an average correlation score of 0.50"
+  },
+  {
+   "page": 4,
+   "quote": "These results are the average over 10 repeated 10-fold cross-validation analyses for each experiment. The p-values for comparing the performance of different models are provided in Supplementary Tables 2&3."
+  }
+ ]
+}

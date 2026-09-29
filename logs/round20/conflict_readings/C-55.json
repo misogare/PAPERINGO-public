@@ -1,0 +1,84 @@
+{
+ "id": "C-55",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging (Rallabandi & Seetharaman, Biomed Signal Process Control 80 (2023) 104312, doi 10.1016/j.bspc.2022.104312, file S1746809422007662)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-58",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Cross-lingual detection of mild cognitive impairment based on temporal parameters of spontaneous speech (Gosztolya et al., Computer Speech & Language 69 (2021) 101215)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "The record's P-117 (summaries.md header '1-s2.0-S1746809423005462-main.pdf': VMD entropy features from resting-state 19-channel EEG with NSGA-II channel selection; best ~99.8% accuracy, sample size not reported) could not be checked: the pack PDF is a different paper (MRI-PET fusion on OASIS, Inception-ResNet, 95.5% HC vs MCI accuracy, AUC 0.988 on a 60/20/20 internal split). 99.81% appears nowhere in the supplied PDF.",
+  "P-58": "Speech temporal parameters from a phone-level ASR, SVM with nested leave-one-speaker-out CV, MCI vs HC in two separate cohorts (English n=33 New York; Hungarian n=33 Szeged). All-feature accuracy 84.8% (English, English ASR), 75.8% (Hungarian, Hungarian ASR); best subset accuracy 90.9% (Hungarian, filler-related). The abstract's '67-92%' range spans several metrics (accuracy, precision, recall, specificity), not accuracy alone."
+ },
+ "quantity_a": "Record's P-117: resting-state EEG classifier accuracy, MCI vs healthy, own (unnamed) EEG cohort, internal validation (from the summary block only; source PDF unavailable).",
+ "quantity_b": "P-58: speech-based SVM accuracy (and other metrics at EER), MCI vs HC, 33 English and 33 Hungarian speakers, leave-one-out CV within each language.",
+ "same_quantity": false,
+ "incompatible_if_same": "No determination possible and not needed: different modality, different cohort, different predictor representation. Two different methods each reporting their own score, neither claiming an ordering the other refutes, is not incompatibility under the rule.",
+ "gates": {
+  "task": "match (both MCI vs control detection, T1) as far as the record's P-117 description goes",
+  "dataset_family": "mismatch: P-58 uses its own New York + Szeged speech recordings; P-117 (either the EEG paper the record means or the OASIS MRI-PET paper in the pack) is a different dataset family. Record's dataset_equal='Yes' has no basis.",
+  "validation_tier": "match (both internal only, V2)",
+  "modality_family": "mismatch: EEG (record's P-117) or MRI-PET (pack PDF) vs spontaneous speech; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: P-58's '67-92%' is a range across metrics and feature subsets, not a single accuracy on the same estimand as P-117's best accuracy",
+ "performance_validity": "Would likely apply to P-117 (record claims 99.81% accuracy, internal validation, sample not reported; the mapped MRI-PET PDF also reports AUC 0.985-0.989 on an internal split), but cannot be confirmed because the intended P-117 PDF is not in the pack; the verdict does not depend on it.",
+ "independence": "No shared cohort or authors evident.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The supplied P-117 PDF is the wrong paper (MRI-PET fusion on OASIS, DOI 10.1016/j.bspc.2022.104312), while the record and summary block describe an EEG VMD/NSGA-II paper (file S1746809423005462); the 99.81% figure cannot be checked.",
+  "Whichever paper P-117 is, it is neither speech-based nor drawn from P-58's New York/Szeged recordings, so the modality-family and dataset-family gates fail with no waiver on record.",
+  "P-58's contested '67-92%' is a range across metrics and feature subsets in two languages, not a single accuracy on a shared estimand."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "We found the proposed model as the best classifier with an accuracy of 95.5 %, 94.1 % and 95.9 % in classifying HC vs MCI, MCI vs AD and AD vs HC respectively"
+  },
+  {
+   "paper": "P-117",
+   "page": 2,
+   "quote": "T1-weighted magnetization prepared rapid gradient-echo (MP- RAGE) images were acquired on a 1.5 T and 3 T Siemens scanner taken from Open Access Series of Imaging Studies (OASIS) online dataset"
+  },
+  {
+   "paper": "P-117 (summaries.md block, not the PDF)",
+   "page": null,
+   "quote": "They proposed VMD-based EEG feature extraction with multi-objective channel optimization (NSGA variants) and supervised ML to detect MCI from resting-state EEG."
+  },
+  {
+   "paper": "P-58",
+   "page": 1,
+   "quote": "because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."
+  },
+  {
+   "paper": "P-58",
+   "page": 3,
+   "quote": "Both the English-speaking (n = 33; New York, NY, USA) and the Hungarian-speaking (n = 33; Szeged, Hungary) participants were diagnosed as MCI or HC."
+  },
+  {
+   "paper": "P-58",
+   "page": 6,
+   "quote": "we did not create separate training and test sets, but opted for speaker-wise cross-validation (CV)"
+  }
+ ],
+ "record_defects": [
+  "The pack/paper_pdf_map entry for P-117 points to the wrong PDF (S1746809422007662, MRI-PET fusion, 2022/2023) whereas summaries.md Paper 117 is S1746809423005462 (EEG VMD); the map entry is 'formula-unverified'.",
+  "dataset_equal='Yes' and validation_comparable='Yes' are unsupported: P-58 uses its own bilingual speech recordings, unrelated to P-117's cohort.",
+  "claim_b '67-92% range' is read as accuracy; in P-58 it spans accuracy, precision, recall and specificity across feature subsets (Table 3 accuracies range 39.4%-90.9%).",
+  "Registry row P-58 Best_Metric 'Acc 92' is wrong: best accuracy printed is 90.9%; 92.3% is recall. Registry Dataset names only the Szeged corpus, omitting the New York English cohort (n=33).",
+  "Registry row P-117 has Best_Metric 'not reported' and Dataset 'not reported' while the claim states 99.81%, so the automatic performance_suspect flag could not fire.",
+  "resolution_note's bridging list (P-360 88.57% Acc, P-322/P-324/P-387) is boilerplate and bears on neither paper; P-387 reports a P100 latency."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "Nothing plausible would make this genuine (the modality and cohort mismatch holds under either identity of P-117). Obtaining the correct P-117 PDF (S1746809423005462) would confirm the EEG cohort and settle whether the performance-validity exclusion also applies."
+}

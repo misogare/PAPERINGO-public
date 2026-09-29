@@ -1,0 +1,84 @@
+{
+ "id": "C-12",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-109",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Multiscale convolution-attention model for efficient Alzheimer's disease and mild cognitive impairment diagnosis approach using sMRI (Khatri, Kim & Kwon, Applied Soft Computing 184 (2025) 113693)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-66",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Automated classification of Alzheimer's disease, mild cognitive impairment, and cognitively normal patients using 3D convolutional neural network and radiomic features from T1-weighted brain MRI: A comparative study on detection accuracy (Zarei et al., Clinical Imaging 115 (2024) 110301)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-109": "BrainViT hybrid CNN-Transformer on 2D slices (about 50 axial/coronal/sagittal slices per subject, 54,300 slices) from ADNI 3T T1 MRI of 1075 subjects (390 AD, 370 MCI, 315 HC); 'The images were shuffled randomly' and split 90/10 train/test (slice level). Three-class AD/MCI/HC: BrainViT-L accuracy 96.81%, AUC 98.05 (Table 3). Binary: AD/HC 97.13% (AUC 98.52), MCI/HC 94.23% (AUC 97.15) (Table 4). No AD vs MCI binary result; no external cohort.",
+  "P-66": "ADNI 1.5T T1 MRI, 599 subjects (199 AD, 200 MCI, 200 CN; 2403 images), FSL-FIRST hippocampus and amygdala ROIs, radiomics + 3D CNN fusion, 5-fold CV with random image-level partitioning. Fusion: AD vs CN accuracy 84.4% (AUC 0.90); MCI vs CN 72.7% (AUC 0.80); AD vs MCI 58% (AUC 0.595) (Tables 5-7). Authors attribute poor AD vs MCI separation to the mild AD cases in ADNI."
+ },
+ "quantity_a": "Slice-level-split test accuracy/AUC of a whole-brain 2D-slice hybrid transformer for three-class AD/MCI/HC (and binary AD/HC, MCI/HC) in an ADNI 3T subset.",
+ "quantity_b": "Image-level 5-fold CV accuracy/AUC of hippocampus+amygdala ROI radiomics/3D-CNN models for binary AD/CN, MCI/CN and AD/MCI in an ADNI 1.5T subset.",
+ "same_quantity": false,
+ "incompatible_if_same": "The record sets P-109's three-class 96.81% against P-66's AD-vs-MCI separability; these are different tasks and P-109 reports no AD-vs-MCI binary figure. On the nearest shared task (MCI vs HC), 94.23% vs 72.7% +- 3.3 differ widely, but they come from different input representations (whole-brain slices vs two segmented ROIs), different scanner field strengths and ADNI subsets, and different split units. Neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch for the recorded comparison: three-class staging (P-109) vs binary AD-vs-MCI (P-66). Partial match only on the binary MCI/HC and AD/HC tasks both report.",
+  "dataset_family": "match: both ADNI (different subsets: P-109 3T; P-66 1.5T Siemens Symphony protocol).",
+  "validation_tier": "match in tier (internal only), but the split unit differs (random slice-level 90/10 split vs random image-level 5-fold CV); both are at risk of subject overlap between train and test.",
+  "modality_family": "match: structural MRI (T1)."
+ },
+ "endpoint_and_metric": "incompatible for the recorded pair (three-class accuracy vs binary AD/MCI accuracy); for MCI/HC the metric types match but the input representation differs (whole-brain 2D slices vs hippocampal/amygdala ROI radiomics and ROI CNN), the representation confound that reclassified precedent C-80.",
+ "performance_validity": "flag applies to P-109 in substance, although the pack marks it false: AUC 98.05 (three-class), 98.52 (AD/HC) and 97.15 (MCI/HC) on internal validation only, with randomly shuffled slices (about 50 per subject) split 90/10, so slices from the same subject can appear in train and test; the sample (1075) is not small, so the automatic small-sample criterion is not met, but no external cohort exists. Any performance comparison resting on these figures cannot be genuine.",
+ "independence": "Distinct author groups (Korea vs Iran); both draw ADNI participants, so overlap is possible but not determinable.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The recorded comparison sets P-109's three-class AD/MCI/HC accuracy against P-66's binary AD-vs-MCI result; P-109 reports no binary AD-vs-MCI figure, so the task gate fails.",
+  "On the binary tasks both report, the input representation differs (whole-brain 2D slices vs two segmented ROIs), as do field strength and ADNI subset, so the gap confounds representation and data with method.",
+  "Neither paper claims an ordering that the other refutes.",
+  "P-109's near-ceiling internal AUCs rest on a random slice-level split without an external cohort, so it would be excluded from any cross-study performance comparison."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-109",
+   "page": 8,
+   "quote": "The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training."
+  },
+  {
+   "paper": "P-109",
+   "page": 8,
+   "quote": "For training and testing, around 50 brain fields\u2014axial, coronal, and sagittal\u2014were created from each subject's anatomy."
+  },
+  {
+   "paper": "P-109",
+   "page": 11,
+   "quote": "BrainViT-L, exhibited higher accuracy, surpassing other models, with rates of 97.13 % with 98.52 % AUC for AD/HC and 94.23 % with 97.15 % for MCI/HC classifications"
+  },
+  {
+   "paper": "P-66",
+   "page": 1,
+   "quote": "we aimed to develop an algorithm based on CNN and radiomic features derived from ROIs of bilateral hippocampus and amygdala in brain MRI for stratification between AD, MCI and CN."
+  },
+  {
+   "paper": "P-66",
+   "page": 1,
+   "quote": "In the term of AD vs MCI, radiomic-based algorithm alone obtained ACC of 57 % and AUC of 57.5, CNN-based algorithm obtained ACC of 56.6 % and AUC of 57.7 and their fusion showed ACC of 58 % and AUC of 59.5."
+  },
+  {
+   "paper": "P-66",
+   "page": 8,
+   "quote": "The major limitation of this study was the single-center limitation."
+  }
+ ],
+ "record_defects": [
+  "apparent_performance_gap '96.81% vs ~82% class-level comparables': no 82% figure appears in P-66 (its results are 84.4% AD/CN, 72.7% MCI/CN, 58% AD/MCI), and 96.81% is a three-class result.",
+  "claim_a describes 96.81% as 'AD/MCI diagnostic performance'; it is three-class AD/MCI/HC accuracy.",
+  "validation_tier_comparable true without noting that both evaluations split at image/slice level rather than subject level.",
+  "The pack's performance_suspect false for P-109 misses AUCs of 97-98.5 on internal validation only.",
+  "resolution_status false_positive with bridging evidence: the listed papers are unrelated headline scores; the correct ground is incommensurable tasks and representations."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A subject-level evaluation of both pipelines on the same ADNI subset for the same binary task, with one result's uncertainty excluding the other's, would make this a comparable quantity; P-109 would also need an external or subject-disjoint evaluation to escape the performance-validity exclusion."
+}

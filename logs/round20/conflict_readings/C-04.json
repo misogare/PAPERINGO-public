@@ -1,0 +1,83 @@
+{
+ "id": "C-04",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-78",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A dynamic time series inference learning framework for individualized prediction of mild cognitive impairment progression (Xu et al., Expert Systems With Applications 302 (2026) 130576)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-84",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Latent diffusion model-based MRI superresolution enhances mild cognitive impairment prognostication and Alzheimer's disease classification (Yoon et al., NeuroImage 296 (2024) 120663)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-78": "Longitudinal structural-MRI-only 3D DenseNet encoder + Transformer trajectory model predicting 36-month sMCI/pMCI. External Dataset A (ADNI-3 29 + OASIS-3 144, baseline scan): AUC 0.858 (0.803-0.918), ACC 0.827, SEN 0.769, SPE 0.890 (Table 3). Held-out ADNI Dataset B (101 subjects): single timepoint AUC 0.832, ACC 0.763, SEN 0.852; four timepoints ACC 0.907, AUC 0.871 (Table 5). No CSF measure is used anywhere.",
+  "P-84": "Diffusion-model super-resolution of ADNI-1 1.5T MRI to 3T*, then an in-house 3D DenseNet Siamese classifier. 36-month c-MCI (n=77) vs s-MCI (n=129): 1.5T ACC 0.578, AUROC 0.553, SEN 0.623; d3T* ACC 0.650, AUROC 0.625, SEN 0.675 (Table 5). No 2D CNN, no 82% sensitivity, no N=156."
+ },
+ "quantity_a": "Prognostic discrimination (AUC/ACC/SEN) of a longitudinal sMRI trajectory model for 36-month MCI-to-AD conversion, trained on ADNI-1/2/GO with CDR-SB supervision and tested on ADNI-3/OASIS-3 (external) and held-out ADNI.",
+ "quantity_b": "Prognostic discrimination of a 3D Siamese DenseNet on native 1.5T vs super-resolved ADNI-1 baseline MRI for 36-month c-MCI vs s-MCI; the study's estimand is the gain from super-resolution, not a best-achievable conversion score.",
+ "same_quantity": false,
+ "incompatible_if_same": "The record's contrast (CSF 77% vs MRI CNN 82% sensitivity) does not exist in either paper. On the numbers the papers do print, both predict 36-month conversion from baseline sMRI in ADNI, and P-78's single-timepoint AUC 0.832 (0.783-0.874) does not overlap P-84's 1.5T AUROC 0.553 (0.485-0.621). But these are two different models, each reporting its own score. Neither paper claims an ordering the other refutes (P-78 does not report P-84's pipeline; P-84 makes no claim about achievable conversion accuracy). Under the rule this is not an incompatibility.",
+ "gates": {
+  "task": "match: both 36-month MCI-to-AD conversion (T2).",
+  "dataset_family": "partial match: both ADNI (P-78 trains on ADNI-1/2/GO and tests externally on ADNI-3/OASIS-3; P-84 uses ADNI-1 MCI).",
+  "validation_tier": "mismatch in part: P-78 reports external validation (ADNI-3/OASIS-3) plus held-out ADNI; P-84 reports internal ADNI-1 evaluation only.",
+  "modality_family": "match between the papers (structural MRI); mismatch against the record, which casts P-78 as a CSF biomarker study."
+ },
+ "endpoint_and_metric": "compatible endpoint definition in outline (36-month conversion) and metric types, but the sMCI/pMCI construction differs (P-78 uses dynamic augmentation with pMCI defined from any follow-up and sMCI as MCI at all time points; P-84 uses ADNI-1 baseline MCI with a 36-month status), and the classifiers differ.",
+ "performance_validity": "flag does not apply: no value at or above 0.97; P-78's highest is ACC 0.907 on held-out data with confidence intervals.",
+ "independence": "Distinct author groups (Chongqing vs Seoul). Both use ADNI-1 subjects, so some MCI participants may overlap; not determinable.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record misreads P-78: it is a longitudinal structural-MRI deep learning model and contains no CSF p-tau/Abeta ratio or 77% sensitivity.",
+  "The record misreads P-84: its classifier is a 3D Siamese DenseNet on super-resolved MRI, reporting 67.5% (d3T*) or 62.3% (1.5T) sensitivity on 206 MCI patients, not 82% on N=156.",
+  "The recorded disagreement (CSF vs MRI) therefore does not exist; what the papers actually print are two different MRI models' own scores, and neither claims an ordering the other refutes."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-78",
+   "page": 1,
+   "quote": "By utilizing structural magnetic resonance imaging (sMRI) data with flexible time intervals, the proposed network quantifies disease severity and predicts progression patterns in MCI patients over a 36-month period."
+  },
+  {
+   "paper": "P-78",
+   "page": 8,
+   "quote": "Proposed Network 0.858 (0.803 - 0.918) 0.827 (0.769 - 0.884) 0.824 (0.779 - 0.890) 0.769 (0.722 - 0.919)"
+  },
+  {
+   "paper": "P-78",
+   "page": 12,
+   "quote": "The single-modality design restricts integration of key biomarkers such as the APOE4 allele and cerebrospinal fluid tau protein"
+  },
+  {
+   "paper": "P-84",
+   "page": 6,
+   "quote": "The c-MCI group was defined as patients who proceeded to be diagnosed with AD within 36 months of the MRI scan"
+  },
+  {
+   "paper": "P-84",
+   "page": 7,
+   "quote": "The model was further evaluated to confirm whether it could distinguish c-MCI (n = 77) from s-MCI (n = 129)."
+  },
+  {
+   "paper": "P-84",
+   "page": 8,
+   "quote": "d3T* [95 % CI] 0.650 [0.587-0.715] 0.625 [0.557-0.693] 0.301 [0.238-0.364] 0.591 [0.524-0.658] 0.675 [0.611-0.739] 0.636 [0.570-0.702]"
+  }
+ ],
+ "record_defects": [
+  "claim_a 'CSF p-tau/Abeta ratio alone achieves 77% sensitivity for pMCI detection': P-78 uses sMRI only and states CSF tau is not integrated; its sensitivity is 0.769 on Dataset A from MRI, not from CSF.",
+  "claim_b '2D CNN on brain MRI achieves 82% sensitivity on overlapping cohort (N=156)': P-84's classifier is a 3D Siamese DenseNet; conversion sensitivity is 0.623-0.675 on 206 MCI patients.",
+  "resolution_note 'Different modality (CSF biomarker vs structural MRI)': both papers are structural MRI.",
+  "registry records P-84 Best_Metric 'not reported'; P-84 does report conversion ACC/AUROC/SEN (Table 5).",
+  "Bridging-evidence entries (e.g., 'P-84 reports Improv. over 1.5T') are headline scores, not explanations of a disagreement."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A claim in either paper that a given MRI pipeline's conversion AUC on ADNI MCI is bounded (or exceeds) a value the other's same-pipeline result contradicts. The AUC gap between P-78 (0.83-0.86) and P-84 (0.55-0.63) is a model difference, and would at most be read as documented incommensurability (different classifier, input resolution, label construction), never as a contradiction as the record states it."
+}

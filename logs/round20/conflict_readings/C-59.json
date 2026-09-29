@@ -1,0 +1,79 @@
+{
+ "id": "C-59",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging (Rallabandi & Seetharaman, 2023, doi 10.1016/j.bspc.2022.104312, file S1746809422007662)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-91",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Segmental disturbance of white matter microstructure in predicting mild cognitive impairment in idiopathic Parkinson's disease: An individualized study based on automated fiber quantification tractography (Yu et al., Parkinsonism and Related Disorders 115 (2023) 105802)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "The record's P-117 (summaries.md S1746809423005462: resting-state EEG, VMD + NSGA-II, best ~99.8% accuracy, sample not reported) could not be checked; the pack PDF is a different paper (OASIS MRI-PET fusion, 95.5% HC vs MCI accuracy, AUC 0.988).",
+  "P-91": "DTI automated fiber quantification in idiopathic Parkinson's disease; SVM on segmental FA/MD plus clinical features separating IPD-MCI (n=30) from IPD with normal cognition (n=40), 70/30 split. Validation AUC 0.80, balanced accuracy 0.79 (training AUC 0.82)."
+ },
+ "quantity_a": "Record's P-117: EEG classifier accuracy, MCI vs cognitively healthy older adults, own cohort, internal validation (summary block only).",
+ "quantity_b": "P-91: SVM ROC-AUC, Parkinson's-disease MCI vs Parkinson's disease with normal cognition, 70 IPD patients, internal 30% hold-out.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable: accuracy vs AUC are different metric types, and the comparison (PD-MCI vs PD-NCI) and population (Parkinson's disease) differ from MCI vs healthy controls.",
+ "gates": {
+  "task": "nominal match (both coded T1) but the comparison differs: PD-MCI vs PD-NCI within Parkinson's disease, not MCI vs healthy controls",
+  "dataset_family": "mismatch: China Medical University IPD cohort vs P-117's EEG cohort (or OASIS); record's dataset_equal='Yes' unsupported",
+  "validation_tier": "match (both internal, V2)",
+  "modality_family": "mismatch: diffusion MRI vs EEG (record's P-117); against the pack PDF's MRI-PET the family would partly overlap, but the dataset gate still fails; no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: accuracy (P-117) vs ROC-AUC (P-91); different comparison and population class behind the label 'MCI'",
+ "performance_validity": "Likely applies to P-117 (claimed 99.81% internal) but unconfirmable without the correct PDF; not needed for the verdict.",
+ "independence": "No shared cohort or authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The supplied P-117 PDF is the wrong paper (OASIS MRI-PET fusion), so the 99.81% EEG result cannot be checked from source.",
+  "P-91 reports an AUC for Parkinson's-disease MCI vs Parkinson's disease with normal cognition, a different metric, comparison and population from an accuracy for MCI vs healthy controls.",
+  "The dataset-family gate fails under either identity of P-117, and the modality gate fails for the EEG paper the record means; no waiver is on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "We found the proposed model as the best classifier with an accuracy of 95.5 %, 94.1 % and 95.9 % in classifying HC vs MCI, MCI vs AD and AD vs HC respectively"
+  },
+  {
+   "paper": "P-117 (summaries.md block, not the PDF)",
+   "page": null,
+   "quote": "Resting-state 19-channel EEG from MCI and healthy participants."
+  },
+  {
+   "paper": "P-91",
+   "page": 1,
+   "quote": "Methods: Forty IPD with normal cognition (IPD-NCI), thirty IPD-MCI, and thirty healthy controls were included."
+  },
+  {
+   "paper": "P-91",
+   "page": 2,
+   "quote": "those DTI measures with statistical difference between PD-MCI and PD- NCI were extracted as features and then with the clinical characteristics were fed into support vector machine (SVM) model to differentiate IPD- NCI from IPD-MCI."
+  },
+  {
+   "paper": "P-91",
+   "page": 4,
+   "quote": "validation dataset: balanced accuracy = 0.79; AUC = 0.80; sensitivity = 0.78; specificity = 0.75"
+  }
+ ],
+ "record_defects": [
+  "P-117's paper_pdf_map entry points to the wrong PDF (MRI-PET S1746809422007662 instead of EEG S1746809423005462).",
+  "claim_b 'AUC 0.80 on T1' omits that the comparison is PD-MCI vs PD-NCI within Parkinson's disease.",
+  "dataset_equal='Yes' has no basis.",
+  "The earlier rejection reason ('Metric incommensurability: Acc vs AUC') is correct as far as it goes, but it was filed as false_positive; the right category is documented incommensurability.",
+  "Registry row P-117: Best_Metric and Dataset 'not reported' despite the 99.81% claim.",
+  "resolution_note's bridging list is boilerplate unrelated to either paper."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing plausible: the metric type and the PD-MCI vs PD-NCI comparison make P-91 incommensurable with any MCI-vs-healthy accuracy, whatever the correct P-117 PDF says."
+}

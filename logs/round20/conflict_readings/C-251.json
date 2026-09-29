@@ -1,0 +1,88 @@
+{
+ "id": "C-251",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-831",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Affective symptoms and risk of progression to mild cognitive impairment or dementia in subjective cognitive decline: A systematic review and meta-analysis (Desai, Whitfield, Said, John, Saunders, Marchant, Stott, Charlesworth; Ageing Research Reviews 71 (2021) 101419)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-912",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Psychiatric Risk Factors for Progression From Mild Cognitive Impairment to Alzheimer's Disease: A Systematic Review (Meynadasy, Sachs-Ericsson, Cushing, Sheffler, Kabbaj, Wilber; Am J Geriatr Psychiatry: Open Science, Education, and Practice 8 (2025) 17-32)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-831": "Random-effects meta-analysis of 12 longitudinal cohorts of cognitively normal older adults WITH subjective cognitive decline at baseline (9 pooled for depression). Comparison: SCD with higher vs lower/no depressive symptoms. Depression -> MCI: RR 0.98 (0.75-1.26), 4 studies, I2 = 0%. Depression -> dementia: RR 0.69 (0.27-1.79). All outcomes: RR 0.90 (0.62-1.30), I2 = 80.17%. Anxiety/SCD-related worry -> MCI or dementia: RR 1.40 (1.20-1.63). ORs, HRs and SMD-derived ORs were pooled on an RR scale.",
+  "P-912": "Narrative systematic review of 17 longitudinal human studies (published 2016-2025) of people WITH MCI at baseline and AD at follow-up, plus a targeted rodent review; no meta-analysis, no pooled estimate. Concludes, consistent with Li et al. 2016, that depression is 'an important risk factor' for MCI-to-AD progression, while listing contradictory studies (e.g. depression without apathy not associated with conversion in 4,932 NACC participants; no association in Yokoi, Dietlin, Bartels (history), Liang (PRS))."
+ },
+ "quantity_a": "Relative risk of incident MCI (or dementia) for higher vs lower depressive symptoms among cognitively normal older adults with SCD (SCD -> MCI/dementia).",
+ "quantity_b": "Qualitative association of depression (various measures: GDS, NPI-Q, history, PRS) with conversion from MCI to AD-type dementia among people already diagnosed with MCI (MCI -> AD); no estimate.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not assessable. P-912 gives no effect estimate or interval against which P-831's RR could be set, and its own evidence base is mixed. A null within the SCD stage and a positive association within the MCI stage can both be true.",
+ "gates": {
+  "task": "match: both T6 evidence syntheses",
+  "dataset_family": "mismatch: primary literature on SCD cohorts (normal cognition at baseline) vs primary literature on MCI-baseline cohorts; no waiver on record",
+  "validation_tier": "n/a (two syntheses; counted as matched)",
+  "modality_family": "match: questionnaire/clinical assessment of affective symptoms with clinical cognitive outcomes"
+ },
+ "endpoint_and_metric": "incompatible: different baseline stage and endpoint (SCD -> MCI/dementia vs MCI -> AD), different comparison, and a pooled RR vs no metric at all",
+ "performance_validity": "not a performance comparison",
+ "independence": "No shared participants are possible at baseline (P-831 requires normal cognition; P-912 requires MCI), although both draw on some of the same source cohorts (e.g. NACC). Distinct authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The populations differ by clinical stage: P-831 pools cognitively normal people with SCD, while P-912 reviews people already diagnosed with MCI.",
+  "The endpoints differ: P-831's outcome is incident MCI or dementia, while P-912's is conversion from MCI to AD-type dementia.",
+  "P-912 reports no effect estimate (no meta-analysis), so there is no numeric result to set against P-831's RR 0.98.",
+  "The dataset-family gate fails (SCD-baseline vs MCI-baseline literatures) with no waiver on record."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-831",
+   "page": 2,
+   "quote": "Studies were included if they ... were longitudinal cohort studies, included participants had normal cognition and SCD at baseline, reported depressive or anxiety symptoms at baseline and had an outcome of MCI or dementia at follow-up."
+  },
+  {
+   "paper": "P-831",
+   "page": 7,
+   "quote": "Pooling these three studies reduced the heterogeneity to non-significant levels (\u03c72 = 3.27, df = 3, p = 0.35, I2 = 0%) and indicated that higher depressive symptoms did not significantly increase the risk of MCI in individuals with SCD (RR = 0.98; 95 % CI: 0.75\u20131.26)"
+  },
+  {
+   "paper": "P-831",
+   "page": 2,
+   "quote": "The standardised mean difference (SMD) was calculated and subsequently transformed to an OR. In this way, all the estimates were transformed to or interpreted as RR and pooled for the meta-analysis."
+  },
+  {
+   "paper": "P-912",
+   "page": 4,
+   "quote": "Articles were included if longitudinal (i.e., to appropriately assess risk of progression), assessed MCI at baseline using the criteria outlined above and AD-type dementia at follow-up"
+  },
+  {
+   "paper": "P-912",
+   "page": 1,
+   "quote": "We found seventeen papers examining psychiatric risk factors for MCI progression to AD; we found cross species support for the role of depression as an important risk factor."
+  },
+  {
+   "paper": "P-912",
+   "page": 10,
+   "quote": "Depression alone was not a significant predictor compared to no NPS; however, older adults with both apathy and depression had the greatest risk for conversion to AD."
+  },
+  {
+   "paper": "P-912",
+   "page": 11,
+   "quote": "findings that suggest depressive symptoms are an important predictor of conversion from MCI to AD ... although there are some contradictory findings."
+  }
+ ],
+ "record_defects": [
+  "claim_b and conflict_statement quote P-912 as naming depression 'the strongest supported psychiatric risk factor' ('Consolidates depression as the strongest supported ...'); the PDF says 'an important risk factor' and calls for work on factors other than depression. 'Strongest' is summary wording, not the paper's.",
+  "The record describes P-912's MCI-stage evidence as uniformly positive; the PDF lists several null or contrary studies (Ruthirakuhan: depression alone not significant; Yokoi, Dietlin: no affective-symptom effect; Bartels: history of depression not associated; Liang: depression PRS not associated; Roberto: asymptomatic profile had the highest AD conversion).",
+  "claim_a gives the all-outcomes depression pool (RR 0.90, 0.62-1.30) without its heterogeneity; the PDF reports I2 = 80.17%, so only the 4-study MCI-outcome pool is homogeneous.",
+  "Minor: P-831's text says 'Pooling these three studies' for a four-study pool (df = 3); the record correctly uses 4."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A pooled estimate of depression's effect on progression within the same baseline stage and endpoint as P-831 (SCD -> MCI) that excludes RR 0.98's interval. P-912 does not provide one, and its stage differs."
+}

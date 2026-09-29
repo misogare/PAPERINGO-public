@@ -1,0 +1,52 @@
+{
+  "paper": "P-183",
+  "pdf_is_right_paper": true,
+  "preprint": false,
+  "read_in_full": true,
+  "supports_stated": "no",
+  "supports_narrowed": "no",
+  "dataset_family": "ADNI: 40 baseline MCI aged 70-80 (18 progressed to AD at 2 years, 22 stable for at least 5 years), images retrieved up to April 2020",
+  "method_family": "Quantitative T2 mapping (T2 computed from ADNI dual-echo PD/T2 fast spin-echo) with region-wise signal-distribution and texture (radiomic) features, contralateral mean and absolute difference. Analysis: FRESA.CAD benchmark of 7 classifiers, neuropsychology-only vs neuropsychology + imaging (T2 features + volumes)",
+  "same_sample_or_cohort_as": [],
+  "shared_authors_with": [],
+  "what_it_shows": "In 40 ADNI MCI, regional volume was essentially non-discriminative for 2-year progression to AD: only right amygdala volume reached uncorrected p=0.034, and no hippocampal volume effect was reported. But the T2 signal/texture features were not robustly discriminative either. 140 of 2,960 features were nominally significant (about the 148 expected by chance at alpha 0.05, by my arithmetic), and none survived Benjamini-Hochberg correction. Adding imaging features (T2 features plus 12 volumes, pre-selected by lowest univariate p on the whole sample) to 8 neuropsychological scores raised mean AUC for 6 of 7 classifiers, with overlapping CIs and no formal test. There was no T2-only or volume-only model. Volumes were rarely selected into final models.",
+  "why": "Trejo-Castro, Caballero-Luna, Garnica-Lopez, Vega-Lara and Martinez-Torteya 2021, Healthcare (MDPI) 9(8):941, doi 10.3390/healthcare9080941. The PDF title, authors and DOI match the summaries.md block and the map entry. The extract was read in full, including methods, results, Tables 1-4, discussion and limitations; the reference list was omitted by the extractor.\n\nSTATED FORM (Table A1): no. The 'volume preserved / non-discriminative' condition does hold in this sample: only right amygdala volume was nominally significant (p.4). But the study does not demonstrate that the non-volumetric measure predicts conversion. (1) Univariately, 140 of 2,960 T2 signal/texture features were nominally different and 'none of these remained significant' after Benjamini-Hochberg (p.4). By my arithmetic, 140 is at or below the ~148 false positives expected at alpha 0.05 across 2,960 tests, so the univariate result is compatible with chance. The authors attribute the null to the small sample (p.8). (2) Multivariately, the only comparison is neuropsychology alone against neuropsychology plus imaging (Tables 3-4, p.5 and p.7). There is no T2-only model, and the imaging model also contained volumes. Mean AUC rose for 6 of 7 methods (e.g. ENS 0.649 to 0.824, LASSO 0.727 to 0.773, RPART fell 0.638 to 0.513), but the 95% CIs overlap throughout and no test of the difference is reported. The authors note overlapping CIs imply 'no real difference between methods' in Table 3 (p.5). (3) Imaging features entered the pool by 'lowest p-value of the univariate analyses' (p.5-6). That selection was apparently done on all 40 subjects before cross-validation, which biases the imaging model upward. Taken together, the paper shows volume failing, but not the T2 measure succeeding. The positive half of the statement is not demonstrated.\n\nNARROWED FORM (round 20): no. The narrowed wording needs the non-volumetric measure to carry information that volume did not, or to predict at least as well as volume. The authors conclude 'signal and texture information is more relevant for this task than mere volumetric information' (p.8). The evidence for that is selection frequency (volumes appeared in the 50 most frequent features only for RPART, p.7) within models whose gain over neuropsychology is untested and whose imaging features were pre-selected on the full sample. No head-to-head of T2 features vs volume is run. With none of the T2 features surviving correction, the study does not show that the T2 measure carries prognostic information at all. It is reasonable to record it as hypothesis-generating.\n\nINDEPENDENCE: dataset family ADNI (no current supporter is ADNI; P-581 is NACC). Method family: quantitative T2 mapping, the same family as current supporter P-432 (Bristol T2 relaxometry), which round 20 judged does not support VF-20 and recommended dropping. No overlap in authors or samples with current supporters or with the other candidates (P-224 Qatar, P-44 Busan, P-1107 Tainan). The authors cite their own preliminary conference paper on hippocampal T2 maps (ref [20], p.2), which probably drew on the same ADNI subjects; it was not found in summaries.md by author search. Not a preprint. Not in registry_duplicates.json. The registry dataset field (ADNI) matches the PDF. The finder's n=40 is correct.\n\nQuotes are rejoined across line breaks, with ligatures, typographic characters and the multiplication sign normalised to ASCII.",
+  "quotes": [
+    {
+      "page": 3,
+      "quote": "From these, the 18 subjects who had their first AD diagnosis 2 years after their baseline visit were regarded as progressers (MCIp), while the 22 subjects who never had an AD diagnosis and participated in the study for at least 5 years were labeled as stable (MCIs)."
+    },
+    {
+      "page": 4,
+      "quote": "Regarding the volumetric information, only one feature was found to be significant under the Wilcoxon rank-sum test: the right amygdala (p-value = 0.034)."
+    },
+    {
+      "page": 4,
+      "quote": "Of the 2960 signal and texture features, 140 were significantly different between classes, 89 mean values and 51 absolute differences. However, after adjusting for multiple comparisons using the Benjamini-Hochberg method, none of these remained significant."
+    },
+    {
+      "page": 5,
+      "quote": "The machine learning technique with the best results was LASSO, with an accuracy of 0.675 and an ROC AUC of 0.727. However, it is worth noting that confidence intervals overlap, implying no real difference between methods."
+    },
+    {
+      "page": 5,
+      "quote": "In order to include only relevant features in the selection pool to be used for each classifier, we proceeded to take the most relevant characteristics, that is, those with the lowest p-value of the univariate analyses. Twelve volumes (~15%; 12/83) and 148 features related to signal and texture (~5%; 148/2960) were considered. All eight neuropsychological tests were also included."
+    },
+    {
+      "page": 7,
+      "quote": "ENS 0.750 0.588-0.873 0.824 0.681-0.968"
+    },
+    {
+      "page": 7,
+      "quote": "Regarding volumetric information, only in the RPART method were volumes found within the 50 most frequent features. The RPART methods used on average 9.67 features per model."
+    },
+    {
+      "page": 8,
+      "quote": "Additionally, the inclusion criteria forced us to work with a small population, a potential cause for the lack of significant features after the p-value correction in the univariate analysis"
+    },
+    {
+      "page": 8,
+      "quote": "Furthermore, we found that signal and texture information is more relevant for this task than mere volumetric information."
+    }
+  ]
+}

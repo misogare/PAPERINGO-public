@@ -1,0 +1,82 @@
+{
+ "id": "C-148",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-208",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Deep Learning Model for Prediction of Progressive Mild Cognitive Impairment to Alzheimer's Disease Using Structural MRI (Lim, Lai, Haiskin et al.; Front. Aging Neurosci. 2022, 14:876202)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-78",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A dynamic time series inference learning framework for individualized prediction of mild cognitive impairment progression (Xu, Liu, Huang, Yao, Wang, Yao; Expert Systems With Applications 302 (2026) 130576)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-208": "Despite its title, a 3-way cross-sectional diagnostic classification (CN vs MCI vs AD) of ADNI1 baseline 1.5T sMRI (819 subjects: 229 CN, 398 MCI, 192 AD), using axial 2D slices (slices 160-170) fed to a CNN from scratch, VGG-16 and ResNet-50; 20% held-out test set of images. Test accuracy 72.70% (CNN), 78.57% (VGG-16), 75.71% (ResNet-50). No MCI conversion labels, no pMCI/sMCI task, no AUC.",
+  "P-78": "Prediction of MCI-to-AD conversion within 36 months (pMCI vs sMCI) from longitudinal sMRI with a DenseNet encoder pre-trained on CDR-SB plus a Transformer time-series module. External test (Dataset A: ADNI-3 29 + OASIS-3 144, single-visit baseline): ACC 0.827, AUC 0.858. Internal held-out ADNI test (Dataset B, 101 subjects): ACC 0.763 with one time point rising to ACC 0.907 / AUC 0.871 with four time points (QTP)."
+ },
+ "quantity_a": "Image-level accuracy of 3-way diagnostic classification CN/MCI/AD at baseline (cross-sectional; no prognostic horizon), ADNI1 sMRI 2D slices, single random hold-out split of images.",
+ "quantity_b": "Subject-level accuracy of predicting 36-month MCI-to-AD conversion (pMCI vs sMCI) using up to four longitudinal sMRI visits, held-out ADNI subjects (Dataset B); the single-visit external figure is 82.7%.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not applicable in substance: a 3-class diagnostic accuracy and a binary conversion accuracy have different chance levels and different class definitions. Even if the tasks matched, two different pipelines each reporting their own accuracy, with neither evaluating the other's method, would not be incompatible.",
+ "gates": {
+  "task": "mismatch: P-208 is 3-way CN/MCI/AD diagnosis (no conversion endpoint); P-78 is 36-month pMCI vs sMCI prognosis. The record's T2 label for P-208 follows its title, not its experiment.",
+  "dataset_family": "match: both ADNI (P-208 ADNI1; P-78 ADNI-1/2/GO for training and internal test, with ADNI-3 and OASIS-3 external)",
+  "validation_tier": "mismatch: P-208 single random hold-out of images (V2); P-78 reports an independent external test on ADNI-3/OASIS-3 (the registry's V4), while the 90.7% itself is on an internal held-out ADNI set",
+  "modality_family": "match: both structural MRI (P-78 longitudinal, multi-visit)"
+ },
+ "endpoint_and_metric": "incompatible: same metric name (accuracy) but different endpoints (current 3-class diagnosis vs 36-month conversion), different unit of analysis (image slices vs subjects) and different inputs (single baseline slice vs up to four longitudinal scans).",
+ "performance_validity": "flag does not apply: neither figure reaches 0.97 (78.57% and 90.7%); the candidate is a performance comparison but the incommensurability decides it before the flag matters.",
+ "independence": "Distinct author groups (Universiti Malaya/Xuzhou vs Chongqing); both draw on ADNI and may share subjects.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-208 reports a 3-way CN/MCI/AD diagnostic accuracy with no conversion labels, while P-78 reports accuracy for 36-month pMCI vs sMCI conversion, so the two figures are on different endpoints.",
+  "P-78's 90.7% uses four longitudinal time points; its single-visit figures are 76.3% (internal) and 82.7% (external), so the input representation also differs from P-208's single-slice classifier.",
+  "The existing partially_resolved status rests on a list of intermediate scores that names no separating condition; the correct reason is that the quantities differ."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-208",
+   "page": 1,
+   "quote": "we proposed a multiclass classification method based on 3D T1-weight brain sMRI images from the ADNI database. Axial brain images were extracted from 3D MRI and fed into the convolutional neural network (CNN) for multiclass classification."
+  },
+  {
+   "paper": "P-208",
+   "page": 2,
+   "quote": "Implementing CNN to perform multiclass classification (3-way) to classify cognitively normal (CN), MCI, and AD subjects."
+  },
+  {
+   "paper": "P-208",
+   "page": 7,
+   "quote": "the reported classification performance on test data is accuracy of 72.70, 78.57, and 75.71%, respectively"
+  },
+  {
+   "paper": "P-78",
+   "page": 3,
+   "quote": "subjects diagnosed with MCI at all time points are defined as sMCI; subjects diagnosed with MCI at any follow-up visit and who progressed to AD within three years are defined as pMCI."
+  },
+  {
+   "paper": "P-78",
+   "page": 9,
+   "quote": "The model achieved peak performance with QTP, recording an AUC of 87.1 % and an ACC of 90.7 %."
+  },
+  {
+   "paper": "P-78",
+   "page": 8,
+   "quote": "attaining the highest scores in AUC (0.858), ACC (0.827), F1-score (0.824), SPE (0.890), and PRE (0.886)."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-208: Acc 78.57 on T2' mislabels the task: 78.57% is a 3-way CN/MCI/AD diagnostic test accuracy; P-208 contains no MCI conversion (T2) experiment.",
+  "task_equal 'Yes' is wrong (3-way diagnosis vs conversion prognosis); validation_comparable 'Yes' is doubtful (P-78 has an external test cohort, P-208 a single random image hold-out).",
+  "claim_b '90.7% Acc on T2' omits that this is the four-time-point longitudinal ablation on internal Dataset B; the single-visit external result is 82.7%.",
+  "resolution_note says 'Confirmed genuine' while resolution says 'Rejected - false positive' and resolution_status is partially_resolved_candidate: the record is internally inconsistent."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in either PDF: P-208 would need a pMCI vs sMCI experiment with a 36-month window for the pair to share a quantity."
+}

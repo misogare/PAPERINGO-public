@@ -1,0 +1,102 @@
+{
+ "id": "C-245",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-986",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Mild Cognitive Impairment, Reversion Rates, and Associated Factors: Comparison of Two Diagnostic Approaches (Overton, Sjogren, Elmstahl, Rosso; J Alzheimers Dis 91 (2023) 585-601)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-1136",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Conventional and neuropsychological criteria for mild cognitive impairment show similar prognostic value for dementia across 12 years in a non-clinical setting (Galati et al., Scientific Reports (2025) 15:19827)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-986": "GAS/SNAC Sweden, 5,804 examined (age 60-102), retrospective algorithmic MCI. Petersen (1 test <7th percentile + complaint) n = 744 eligible at follow-up; modified NP (2 tests <16th percentile in a domain, complaint retained) n = 375. Reversion = reverters / (reverters + stable MCI), reverters still meeting complaint and ADL requirements; progressors and those losing eligibility excluded. Petersen 43.4% (39.8-47.0) vs NP 48.3% (43.2-53.5). Original NP without complaint: 54.7% (50.4-59.0). Same-participant subsample (n = 334): Petersen 32.9% vs NP 46.4%. Conclusion: neither definition superior on stability. Reverters had lower dementia HR (0.34 Petersen; 0.17 NP).",
+  "P-1136": "InveCe.Ab Italy, 1,021 eligible (936 analysed), born 1935-39 (70-74 at baseline), mean education 7.2 years, waves at 0, 2, 4, 8, 12 years; internal norms. Conventional (1 test 1.5 SD + complaint) 18.5% MCI vs Neuropsychological (Jak/Bondi, 2 tests 1 SD, no complaint) 43.8%. Diagnostic consistency in 280 participants with a non-uncertain MCI diagnosis under both criteria: Neuropsychological 63.2% (n = 177) vs Conventional 43.2% (n = 121), McNemar 32.9, p < 0.001. 'Consistent' includes those who kept meeting impairment criteria regardless of dementia diagnosis. Dementia HR comparable (2.84 vs 2.72); AUC 0.603 vs 0.633, DeLong p = 0.223."
+ },
+ "quantity_a": "Proportion reverting to normal test scores among MCI cases that remain eligible (complaint and ADL retained), denominator reverters plus stable MCI (progressors excluded), each criterion applied to its own eligible sample, community cohort aged 60+, 3- or 6-yearly follow-up.",
+ "quantity_b": "Proportion with a 'consistent' MCI diagnosis (continued impairment in later waves, dementia progressors counted as consistent) among 280 people diagnosed MCI at least once under both criteria and with complete follow-up, age-restricted (70-74) low-education cohort, 2-4-yearly waves over 12 years; NP rule without complaint requirement.",
+ "same_quantity": false,
+ "incompatible_if_same": "Yes on the numbers, if they were one estimand: P-986's NP-minus-Petersen reversion difference (+4.9 points, intervals 43.2-53.5 vs 39.8-47.0) cannot accommodate the roughly 20-point NP stability advantage P-1136 reports (McNemar p < 0.001), and P-986's same-participant and original-NP analyses point further the other way (NP 46.4% vs Petersen 32.9%; original NP 54.7%). But the estimands differ in definition of the event, denominator, the NP rule itself and the sampled population, and P-986 itself shows that changing the comparison group reverses such orderings.",
+ "gates": {
+  "task": "registry mismatch (T5 vs T4); in substance both are longitudinal comparisons of two MCI operationalisations within one cohort.",
+  "dataset_family": "mismatch: GAS/SNAC (Sweden) vs InveCe.Ab (Abbiategrasso, Italy); no waiver on record.",
+  "validation_tier": "n/a: association/cohort studies validating no predictive model (counted as matched; the registry's V4 for P-1136 is not supported by the PDF).",
+  "modality_family": "match: neuropsychological test scores with algorithmic criteria."
+ },
+ "endpoint_and_metric": "incompatible: P-986 reversion requires complaint and ADL still met and excludes progressors from the denominator; P-1136 counts dementia progressors as consistent and restricts to people diagnosed by both criteria with non-uncertain status; P-986's NP rule retains the complaint requirement whereas P-1136's is original Jak/Bondi; follow-up cadence differs (3/6-yearly vs 2/4-yearly waves).",
+ "performance_validity": "not a performance comparison.",
+ "independence": "Distinct cohorts, countries and author teams; independent. P-1136 cites P-986 (its reference 5) as a prior study reporting similar reversion rates.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two stability metrics are defined differently: P-986's reversion excludes dementia progressors from the denominator and requires complaint and ADL to persist, whereas P-1136's 'consistent' MCI counts progressors as consistent and is computed only in people diagnosed under both criteria.",
+  "The neuropsychological rule is not the same: P-986 applies a modified NP rule that keeps the subjective-complaint requirement, while P-1136 applies Jak/Bondi without it.",
+  "P-986 itself shows that the ordering of criteria on reversion flips when the comparison group changes (Wong et al.: 7.4% vs 13.5% becomes 30.7% vs 27.8%), so orderings under different denominators are not one quantity.",
+  "The populations differ in ways P-1136 names as driving its criteria behaviour (age 70-74 at baseline, low complaint prevalence, heterogeneous low education), which also inverts which rule labels more people MCI (NP 43.8% vs Conventional 18.5%).",
+  "Had the estimands been the same, the results would be incompatible, so this is closer to a genuine contradiction than most records; it is recorded as incommensurability on the definitional differences, not on significance."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-986",
+   "page": 1,
+   "quote": "Reversion rates were 323/744 (43.4%, 95% confidence intervals (CI): 39.8; 47.0) and 181/375 (48.3% 95% CI: 43.2; 53.5) for the Petersen criteria and NP criteria, respectively."
+  },
+  {
+   "paper": "P-986",
+   "page": 4,
+   "quote": "this requirement is retained for both criteria. The NP criteria applied here is consequently considered a modified version."
+  },
+  {
+   "paper": "P-986",
+   "page": 4,
+   "quote": "To calculate reversion rate, the proportion of reverters was compared to the proportion of non-reverters, i.e., the stable MCI group."
+  },
+  {
+   "paper": "P-986",
+   "page": 6,
+   "quote": "Calculation of reversion rates for the Petersen and the NP criteria, for a sample containing the same participants (n = 334), yielded a slightly lower reversion rate of the Petersen criteria (32.9%), but similar for the NP criteria (46.4%)"
+  },
+  {
+   "paper": "P-986",
+   "page": 12,
+   "quote": "Remarkedly, taking the same number of reverters and only comparing them to stable MCI, rates appear different with a reversion of 30.7.% for the NP and 27.8% for the Petersen criteria"
+  },
+  {
+   "paper": "P-1136",
+   "page": 4,
+   "quote": "Consistent MCI diagnosis over 12 years was more common (McNemar's test = 32.9, p value < 0.001) when using the Neuropsychological criteria (n = 177, 63.2%) compared with the Conventional criteria (n = 121, 43.2%) in the subsample of subjects with a non-uncertain diagnosis of MCI when using both criteria (n = 280)."
+  },
+  {
+   "paper": "P-1136",
+   "page": 10,
+   "quote": "We considered consistent MCI those individuals who, once diagnosed, keep fulfilling the criteria for cognitive impairment in subsequent waves (regardless of dementia diagnosis)"
+  },
+  {
+   "paper": "P-1136",
+   "page": 7,
+   "quote": "Thus, the prevalence of subjective cognitive complaints in our sample was probably lower than that in the clinical setting, leading to a lower probability of being diagnosed with MCI on the basis of Conventional criteria."
+  },
+  {
+   "paper": "P-1136",
+   "page": 7,
+   "quote": "Overton and colleagues reported that Conventional and Neuropsychological criteria had similar reversion rates and diagnostic stability5."
+  }
+ ],
+ "record_defects": [
+  "The conflict_statement says P-1136 reports consistency 'with no test statistic'; the PDF reports McNemar's test = 32.9, p < 0.001.",
+  "claim_b says the criteria were applied to 'the same 1,021 participants'; analyses used 936, and the consistency comparison used a 280-person subsample diagnosed MCI under both criteria with non-uncertain status.",
+  "The record omits P-986's same-participant sensitivity analysis (Petersen 32.9% vs NP 46.4%) and its original-NP result (54.7%), which sharpen the opposite direction and are relevant to any closure test.",
+  "The record does not note that P-1136 explicitly cites P-986 (reference 5) and attributes its own divergence from prior studies to sample features (age range, complaint prevalence, education).",
+  "The evidence quote attributed to P-1136, 'reversion/consistency metrics depend on visit cadence', does not occur in the PDF (summary-block wording).",
+  "The record describes P-986's sample as 'the same 5,804 examined participants' for both rules; the rules were applied to all examined, but the reversion analyses use different eligible samples (744 vs 375).",
+  "The registry codes P-1136 Validation_Type V4 and modality_subtype 'review_no_primary_data'; the PDF is a primary population cohort with no external validation."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "Re-analysis of either cohort using the other's definition (e.g. P-1136 reversion with progressors excluded and complaint retained in the NP rule, or P-986 consistency counting progressors as consistent in participants diagnosed under both rules). If the orderings stayed opposite under one shared definition, with gates waived for different national cohorts, the pair would become a genuine candidate or a partially-resolved one explained by complaint prevalence and age."
+}

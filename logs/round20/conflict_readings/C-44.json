@@ -1,0 +1,89 @@
+{
+ "id": "C-44",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-115",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack text pdf/P-115.txt is 'Detection of mild cognitive Impairment from gait using Adaptive Neuro-Fuzzy Inference system' (Seifallahi et al., Biomed Signal Process Control 71 (2022) 103195), which is NOT the paper the record means. The record's '79% Acc' belongs to Rallabandi & Seetharaman, 'Classification of cognitively normal controls, mild cognitive impairment and Alzheimer's disease using transfer learning approach', Biomed Signal Process Control 79 (2023) 104092 (the summaries.md P-115 block). That paper's PDF is in the repository at downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809422005547-main.pdf and was read in full (PyMuPDF text); the wrong pack PDF was also read in full and contains no 79% accuracy.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-71",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Longitudinal study of early mild cognitive impairment via similarity-constrained group learning and self-attention based SBi-LSTM (Lei et al., Knowledge-Based Systems 254 (2022) 109466)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-115": "Rallabandi & Seetharaman 2023: transfer-learning balanced random forest (MIX_BRF, kurtosis indices as source, tensor indices as target) on white-matter diffusion indices (TFA/TMD/KFA/KMD) from ADNI diffusion MRI, 150 participants (44 CN, 84 MCI, 22 AD), 5-fold cross-validation. Three-class CN/MCI/AD overall (balanced) accuracy 0.79, geometric mean 0.78; pairwise CN vs AD 0.96, CN vs MCI 0.72, AD vs MCI 0.7.",
+  "P-71": "SSBi-LSTM on similarity-constrained group sparse rs-fMRI connectivity networks from two time points (baseline and year 1), ADNI-2 (102) and ADNI-3 (51), leave-one-out CV. LMCI vs NC on the combined ADNI-2&3 fusion data: ACC 91.42%, AUC 96.43% (40 LMCI + 49 NC). EMCI vs NC 86.11%, EMCI vs LMCI 89.42%."
+ },
+ "quantity_a": "Subject-level 5-fold cross-validated balanced accuracy of a three-class CN/MCI/AD classifier on cross-sectional diffusion-MRI white-matter indices, ADNI, N=150 (pairwise CN vs MCI 0.72)",
+ "quantity_b": "Leave-one-out accuracy of a binary late-MCI vs NC classifier on longitudinal (two time-point) resting-state fMRI functional connectivity networks, ADNI-2/3, 40 LMCI + 49 NC",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even if both were the same task, 0.79 (or 0.72 for CN vs MCI) and 91.42% are single cross-validated scores from different methods on different inputs and different subsamples, reported without intervals; neither paper evaluates the other's method or claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch: P-115's 79% is three-class CN/MCI/AD (its binary CN vs MCI is 0.72); P-71's 91.42% is binary LMCI vs NC, a late-MCI subset rather than all MCI. The record's 'T1' for P-115 is wrong (registry codes it T3)",
+  "dataset_family": "match: both ADNI (P-115 ADNI3-era multi-shell diffusion; P-71 ADNI-2 and ADNI-3 rs-fMRI); subsets differ and overlap is not stated",
+  "validation_tier": "match: both internal cross-validation only (5-fold vs LOOCV), no external cohort",
+  "modality_family": "mismatch: diffusion MRI white-matter microstructure (P-115) vs resting-state functional MRI connectivity (P-71); no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: three-class balanced accuracy vs binary accuracy on a different contrast (all-MCI in a three-way model vs late-MCI vs NC), cross-sectional vs two-time-point longitudinal input",
+ "performance_validity": "flag does not apply: neither result reaches 0.97 (P-71's best AUC 96.43% is below the threshold and the contested figure is accuracy 91.42%); it is a performance comparison, but across different tasks and modalities",
+ "independence": "Independent: different groups (Annamalai University, India vs Shenzhen University, China); both draw on ADNI, so partial participant overlap cannot be excluded but neither paper lists subject IDs.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-115's 79% is a three-class CN/MCI/AD balanced accuracy, not an MCI-vs-control accuracy, while P-71's 91.42% is binary LMCI vs NC, so the task gate fails.",
+  "The modality family differs: diffusion-MRI white-matter indices against longitudinal resting-state fMRI connectivity, with no waiver on record.",
+  "Even on a common task the two single cross-validated scores from different methods would not be incompatible, since neither study claims an ordering the other refutes.",
+  "The pack PDF for P-115 is the wrong paper (a Kinect gait study); the verdict rests on the correct P-115 PDF located in the repository."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-115",
+   "page": 1,
+   "quote": "Transfer learning model using balanced random forest classifier was able to classify and predict all the groups with an overall accuracy about 0.79 using ensemble of SER and STT forests rather than individual algorithms (SER and STT). (correct PDF S1746809422005547)"
+  },
+  {
+   "paper": "P-115",
+   "page": 5,
+   "quote": "Balanced accuracy of 0.79 and geometric mean of 0.78 using BRF classifier was obtained for kurtosis indices as source model and tensor indices as target and the classification accuracies of CN vs AD, CN vs MCI and CN vs MCI are 0.96, 0.72 and 0.7 respectively. (correct PDF)"
+  },
+  {
+   "paper": "P-115",
+   "page": 1,
+   "quote": "The structural T1-weighted magnetic resonance imaging and diffusion images were taken from ADNI dataset with 44 CN, 84 MCI and 22 AD patients. (correct PDF)"
+  },
+  {
+   "paper": "P-115",
+   "page": 1,
+   "quote": "The study included 70 elders with MCI and 80 healthy control (HC) elderly subjects (pack PDF pdf/P-115.txt: the Seifallahi gait paper, the wrong document)"
+  },
+  {
+   "paper": "P-71",
+   "page": 3,
+   "quote": "The datasets collected in this work are all from public ADNI-2 and ADNI-3 datasets, with 102 subjects in ADNI-2 and 51 subjects in ADNI-3 dataset."
+  },
+  {
+   "paper": "P-71",
+   "page": 5,
+   "quote": "Due to the small dataset, the leave one out cross validation (LOOCV) is used in the experiments."
+  },
+  {
+   "paper": "P-71",
+   "page": 10,
+   "quote": "Proposed 40 LMCI+49 NC M SGN softmax 91.42"
+  }
+ ],
+ "record_defects": [
+  "The pack/paper_pdf_map entry for P-115 (method 'formula-unverified') points to the wrong PDF (S1746809421007928, Seifallahi gait/ANFIS); the correct P-115 PDF is S1746809422005547 (the summaries.md header's S1746809422004092 does not exist in downloads).",
+  "claim_a 'P-115: 79% Acc on T1' is wrong on task: 0.79 is a three-class CN/MCI/AD balanced accuracy; the CN vs MCI figure is 0.72.",
+  "task_equal='Yes' is wrong (three-class vs binary LMCI vs NC).",
+  "The resolution note 'Metric type unclear: Acc / Unknown' is resolvable: both report accuracy (P-115 balanced accuracy).",
+  "The resolution_note repeats the same AUTO-FIXED string dozens of times, and the gap_magnitude 0.124 compares non-comparable figures."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these two documents; a comparable conflict would need an rs-fMRI or diffusion study reporting the same binary contrast on the same kind of input with uncertainty that excludes the other value."
+}

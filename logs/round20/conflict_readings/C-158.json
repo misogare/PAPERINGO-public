@@ -1,0 +1,77 @@
+{
+ "id": "C-158",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-244",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Identifying underlying patterns in Alzheimer's disease trajectory: a deep learning approach and Mendelian randomization analysis (Yi et al., eClinicalMedicine 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-198",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predicting Progression from Mild Cognitive Impairment to Alzheimer's Disease using MRI-based Cortical Features and a Two-State Markov Model (Ficiara et al., ISBI 2021)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-244": "Deep-AD (transformer VAE survival clustering) on ADNI MCI->AD (783 MCI, 348 converters), 5-fold CV; inputs = baseline clinical variables (MMSE, ADAS, CDRSB, FAQ, APOE4, demographics etc.) plus FreeSurfer Destrieux MRI features. Time-dependent AUC for MCI->AD 0.914 at 3 years and 0.957 at 5 years (range 0.810-0.979 over 1-10 years); C-index 0.718; external AIBL C-index 0.752.",
+  "P-198": "Two-state Markov model with 5 MRI covariates, then logistic regression, ADNI1/2 (721 MCI: 533 sMCI, 188 converters), stratified 10-fold CV, conversion within ~2 years. AUC 0.78 +/- 0.08 (cortical thickness covariates), 0.71 +/- 0.09 (sulcal width), 0.56 +/- 0.10 (baseline, no covariates)."
+ },
+ "quantity_a": "Time-dependent ROC-AUC at a 5-year horizon for MCI-to-AD conversion, ADNI, predictors = clinical/cognitive/genetic variables plus MRI morphometry, 5-fold CV",
+ "quantity_b": "ROC-AUC for conversion by the second visit (~2 years), ADNI1/2, predictors = five FreeSurfer cortical-thickness covariates only (MRI-only), 10-fold CV",
+ "same_quantity": false,
+ "incompatible_if_same": "Even setting the horizons aside, a clinical-plus-MRI model outscoring an MRI-only model is expected, not contradictory; neither paper claims an ordering the other refutes. The two do not estimate the same discrimination quantity.",
+ "gates": {
+  "task": "match in label (MCI-to-AD conversion, T2) but the horizon differs: 5 years vs ~2 years.",
+  "dataset_family": "match: both ADNI (P-244 ADNI1/GO/2/3; P-198 ADNI1/2) - overlapping participants likely.",
+  "validation_tier": "match: both internal cross-validation for the quoted figures (P-244 also has an AIBL external C-index, not the quoted AUC).",
+  "modality_family": "mismatch in predictor set: P-244 combines cognitive/clinical scores (CDRSB, ADAS11, MMSE, FAQ), APOE4 and MRI; P-198 uses structural MRI cortical thickness only."
+ },
+ "endpoint_and_metric": "incompatible: both ROC-AUC, but P-244's 0.957 is a time-dependent AUC at 5 years from a survival model, P-198's 0.78 is a 2-year classification AUC.",
+ "performance_validity": "flag does not apply: 0.957 is below 0.97, internal CV on a large sample (783) with an external cohort also reported; not a valid performance comparison anyway given different horizons and predictors.",
+ "independence": "Distinct groups (Zhejiang/PUMCH vs Turin/USC); both draw on ADNI MCI participants, so cohort overlap is likely (non-independence).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-244's 0.957 is a 5-year time-dependent AUC; P-198's 0.78 is for conversion within about two years, so the endpoints differ in horizon.",
+  "P-244's predictors include cognitive and clinical scores plus APOE4 alongside MRI, while P-198 uses five MRI cortical-thickness covariates only, so the predictor sets differ.",
+  "With endpoint horizon and predictor set both different and no waiver on record, the two AUCs are not estimates of the same quantity."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-244",
+   "page": 1,
+   "quote": "AUC (CN\u2192MCI, 3 years 0.802, 5 years 0.876; MCI\u2192AD, 3 years 0.914, 5 years 0.957)."
+  },
+  {
+   "paper": "P-244",
+   "page": 3,
+   "quote": "we concatenated the baseline clinical features and neuroimaging features extracted from the MRI scans, embedded with t through a transformer encoder, to map to z."
+  },
+  {
+   "paper": "P-244",
+   "page": 5,
+   "quote": "For evaluation, we applied five-fold cross validation"
+  },
+  {
+   "paper": "P-198",
+   "page": 3,
+   "quote": "using \u03bb to predict whether a test patient will transition to AD within the next two years, given the outcome of the first visit."
+  },
+  {
+   "paper": "P-198",
+   "page": 5,
+   "quote": "sulcal width (AUC=0.71 \u00b1 0.09; Accuracy= 0.72 \u00b1 0.04) and cortical thickness (AUC=0.78 \u00b1 0.08; Accuracy= 0.75 \u00b1 0.02) compared to the baseline model (AUC=0.56 \u00b1 0.10; Accuracy=0.65 \u00b1 0.08)."
+  }
+ ],
+ "record_defects": [
+  "resolution_note 'Confirmed genuine: Same metric type (AUC); Gap magnitude 0.177 exceeds threshold' ignores the 5-year vs 2-year horizon and the clinical-plus-MRI vs MRI-only predictor sets.",
+  "resolution field 'Rejected - false positive' and resolution_status 'partially_resolved_candidate' contradict the note's 'Confirmed genuine'; the record is internally inconsistent.",
+  "P-244 registry Best_Metric 'AUC 0.802' is the CN->MCI 3-year AUC, not the MCI->AD figure; Sample_N_Approx 587 is the CN->MCI dataset (MCI->AD is 783).",
+  "P-198 registry Best_Metric 'AUC 0.56' is the no-covariate baseline model, not the best model (0.78)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An AUC from P-244 at a ~2-year horizon using MRI features only, compared against P-198's 0.78 with non-overlapping uncertainty; P-244 reports neither."
+}

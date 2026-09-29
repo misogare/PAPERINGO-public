@@ -1,0 +1,41 @@
+{
+ "id": "VF-18",
+ "supporters": [
+  {
+   "paper": "P-5",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "The proposed method achieved high precision rates of 84.96% and 80.90% in classifying MCI and positive test scores for cognitive impairment, respectively ... These findings demonstrate the potential of our approach in identifying individuals with MCI and emphasize the significance of retinal imaging for early detection of cognitive impairment.",
+   "page": "1 (abstract); Table 2 p.7; Table 3 p.8",
+   "note": "Gao et al. 2023, dual-stream DL on fundus photographs plus SS-OCT. Dataset 1: 29 MCI, 38 AD, 50 CN from Daping Hospital (clinical NIA-AA diagnosis); dataset 2: 133 nCI vs 140 pCI at WMU Eye Hospital labelled only by MMSE/MoCA. The 15,640 images come from roughly 390 people and the paper does not state that train/validation/test splits were made by subject, so image-level leakage cannot be excluded. Internal inconsistency: DuCAN nCI/pCI accuracy is 82.46% (AUC 84.41%) in Table 3 but 91.46% (AUC 94.41%) in the text of section 4.4.1. Authors concede small data, possible overfitting and no handling of eye disease (p.10). Supports the retinal-structure leg, with those caveats."
+  },
+  {
+   "paper": "P-105",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "In this article, we comprehensively reviewed how recent research studies have implemented eye-tracking technology to study cognitive disorders, focusing on MCI ... Data availability: No data was used for the research described in the article.",
+   "page": "1 (abstract); 17 (data availability); Table 1 p.8 lists 'Opwonya et al. 2022 [24] 274, MCI 79, HC 170 ... Tobii Pro spectrum system'",
+   "note": "Shah et al. 2025, narrative review of eye-tracking for MCI (Information Fusion). It reports no result of its own; it only cites others, which under the brief's rule counts as 'no'. It also cites the GARD Korea cohort that is supporter P-966 (Table 1, ref [24], and Opwonya 2023 refs [108],[110]), so it is not independent of P-966. Its own challenges section lists inter-individual variability, lack of standardised protocols, data quality and small single-centre samples (section 6), and does not state that eye-tracking is scalable."
+  },
+  {
+   "paper": "P-952",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "In the fundus original images, the AUCs of the SVM model were 0.85, 0.87, and 0.86 for the normal group, MCI group, and dementia group ... One important limitation is the lack of external validation for the model.",
+   "page": "8 (Results); Table 1 p.9; 12 (Discussion)",
+   "note": "Zhang et al. 2021, HOG features from non-mydriatic fundus photographs with SVM/ELM, single rehabilitation department in Shenzhen, N=86 (38 normal, 26 MCI, 22 dementia), 2:1 random split, no external validation. Severe confounding: the normal group's mean age is 35.1 years against 55.6 (MCI) and 57.6 (dementia) (Table 1), and 19 of 26 MCI cases are post-stroke (cerebral infarction or haemorrhage) while no normal participant had a stroke. A retinal-vascular classifier separating these groups may be detecting age and cerebrovascular disease rather than cognitive decline. It reports the result, but the design cannot show that the channel is a biomarker of cognitive decline."
+  },
+  {
+   "paper": "P-966",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "The interleaved PS/AS and Go/No-go paradigms are sensitive and objective at detecting subtle cognitive deficits and saccade changes in MCI, indicating that these saccadic eye movement paradigms have clinical potential as a screening tool for MCI.",
+   "page": "2 (Significance); Results pp.5-6",
+   "note": "Opwonya et al. 2022, GARD Korea: 79 MCI (Petersen criteria, CDR 0.5) vs 170 age-matched HC, interleaved prosaccade/antisaccade and Go/No-go on a research-grade Tobii Pro Spectrum (300 Hz, chin rest). Reports group differences only, with small effects: about 5% (PS/AS) and 10% (Go/No-go) more inhibition errors and longer PS latency (p=0.024). No classification or diagnostic accuracy, and in MCI the correlations with neuropsychology vanish after adjustment. Supports eye-movement behaviour as a biomarker direction, but not scalability or detection performance; native Korean sample only."
+  }
+ ],
+ "yes_count": 1,
+ "verdict": "holds_narrowed",
+ "narrowed_wording": "Ocular measures show preliminary, single-centre associations with MCI: retinal imaging (fundus with or without OCT) discriminated MCI in two small Chinese hospital cohorts, one heavily confounded by age and stroke, and saccadic inhibition errors and prosaccade latency differed between MCI and controls at group level in one Korean cohort; neither channel has been externally validated or shown to be scalable.",
+ "reasoning": "Only one supporter (P-5) reports a result that plainly supports the statement, and even that result carries unresolved subject-level leakage risk and an internal accuracy inconsistency. P-105 is a narrative review with no data of its own, so it counts as 'no' under the rule that citing others is not support; it also cites the P-966 cohort, so it would not add an independent leg even if it counted. P-952 reports AUC 0.87 for MCI, but its normal group is about 20 years younger than its MCI group and most of its MCI cases are post-stroke, so the retinal signal cannot be attributed to cognitive decline. P-966 is the only primary eye-movement study; it shows small group differences and no detection accuracy, on laboratory-grade equipment. The eye-movement half of the claim therefore rests on one primary cohort, not on repeated support, and 'scalable' is asserted by the authors rather than tested by any supporter. The three yes-or-partly supporters (P-5, P-952, P-966) come from three datasets and so sustain only a much narrower statement of preliminary association. This is at the boundary between holds_narrowed and fails. If the review keeps the words 'repeatedly supported' and 'scalable', it should be scored as fails."
+}

@@ -1,0 +1,41 @@
+{
+ "id": "VF-19",
+ "supporters": [
+  {
+   "paper": "P-19",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "Univariate and multivariable logistic regression analyses revealed that education level, Age, Work years, SSRS (Self-Rating Scale for Stress), and HAMA (Hamilton Anxiety Rating Scale) were independent risk factors for cognitive impairment among dust-exposed workers. (p.1) ... Seven machine learning predictive models were constructed based on the above multivariate logistic regression analysis results. (p.4) ... we performed SHAP analysis on the XGBoost model (Table 6). Fig. 4 shows the weight of various variables ... As shown in the figure, AGE has the most significant proportion. (p.4)",
+   "page": "1, 4",
+   "note": "Cai et al. 2024, coal miners exposed to dust, Huainan, N=1938 plus 351 test set; MCI = MoCA <=26. The XGBoost/SHAP model entered only the five regression-selected factors (education, age, work years, SSRS social support, HAMA anxiety); no laboratory measure entered (blood glucose was screened and dropped, p=0.238). The text states only that age ranks first in SHAP; the ranking of education, social support and anxiety is in Fig. 4, which the extract does not carry. So education/psychosocial factors are three of five model inputs and are independent risk factors in logistic regression, but their SHAP rank is not stated in the text. Single mine; MoCA cut-off only."
+  },
+  {
+   "paper": "P-25",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "The five most important characteristics for predicting MCI were educational level, social events, gender, relationship with children, and age. (p.1) ... Educational background, social events, gender, relationship with children, and age were the five most important characteristics that predicted MCI. We used SHAP values to interpret the importance of these features. (p.5)",
+   "page": "1, 5",
+   "note": "Song et al. 2025, CHARLS 2020, community-dwelling adults >=60, N=6434 (761 MCI by AACD, 1 SD below age norm, not clinical diagnosis). LightGBM with SHAP; inputs were questionnaire variables only (sociodemographic, ADL/IADL, sleep, social events, CES-D10, life satisfaction, relationship with children); no laboratory measures. Education ranked first and social events second. Cross-sectional; SMOTE applied; no external validation."
+  },
+  {
+   "paper": "P-27",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "SHAP analysis identified education, loneliness, household registration, Instrumental Activities of Daily Living disability and dyslipidemia as the most influential predictors of MCI risk. (p.1) ... with education being the most influential factor in discriminating MCI among individuals with depression. (p.7) ... This framework requires only demographic and neuropsychological indicators obtainable in regular outpatient clinics, eliminating the need for expensive imaging or biomarker tests (p.8)",
+   "page": "1, 7, 8",
+   "note": "Yao et al. 2026, CHARLS 2018 participants >=60 with CES-D10 >=10 (depressed), N=1964, external validation in CLHLS 2018 N=6782 (RF external AUC 0.653 only). Random forest with SHAP. Dyslipidaemia and the other chronic conditions are physician-diagnosed self-reports, not laboratory values, so the model entered no laboratory measures. Education first, loneliness second, IADL disability fourth. MCI by AACD. Same CHARLS panel as P-25 (different wave, depressed subgroup), so P-25 and P-27 are not independent populations. Minor internal inconsistency: says eight variables but lists seven, and dyslipidaemia appears in the importance plot though not in the listed final set."
+  },
+  {
+   "paper": "P-307",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Figure 3A is the SHAP feature importance plot, which ranks the 7 variables by importance. It shows that pain level, age, and depression are the 3 most important variables for MCI risk. The SHAP summary plot in Fig. 3B shows ... education level being the most important variable negatively associated with MCI risk. (p.7) ... variables such as medical history, medication history, comorbidities, and laboratory measures were excluded (p.12)",
+   "page": "7, 12",
+   "note": "Zhang et al. 2025, older inpatients/outpatients with chronic pain at one Nanchang tertiary hospital pain department, N=612, cross-sectional; MCI by Petersen criteria with neurologist confirmation. XGBoost with SHAP; laboratory measures explicitly excluded. Depression (GDS-15) ranked third and education fourth of seven (Table 3); pain level ranked first and age second. Supports 'among the leading predictors', not that psychosocial factors lead."
+  }
+ ],
+ "yes_count": 3,
+ "verdict": "holds",
+ "narrowed_wording": "",
+ "reasoning": "Three supporters (P-25, P-27, P-307) report, in their own SHAP analyses of models that entered no laboratory values, that education and psychosocial/functional factors (social events, loneliness, IADL disability, depression) rank among the leading predictors; P-19 supports it partly (education, social support and anxiety are three of five model inputs and independent risk factors, but the text gives only age as the top SHAP feature). The yes-supporters come from two distinct data sources (CHARLS; a Nanchang chronic-pain clinic) and two method families (LightGBM, random forest, XGBoost across the three), so the admission rule is met and the Table A1 wording ('rank among the leading predictors') is accurate. Two corrections to the record: (1) P-25 and P-27 both draw on the CHARLS panel (2020 wave, all adults >=60; 2018 wave, depressed subgroup), so the claim of 'four DISTINCT non-ADNI Chinese population cohorts' overstates independence; there are three independent data sources (CHARLS, Nanchang pain clinic, Huainan miners), and the 'community survey N=6434' and 'depression N=1964' samples overlap in population. (2) Age ranks first in P-19 and second in P-307, and pain level first in P-307, so the statement must stay at 'among the leading' and not imply that education or psychosocial factors dominate. Outcomes in P-25 and P-27 are AACD psychometric definitions, not clinical MCI diagnoses, and all designs are cross-sectional; the Chinese-only scope caveat in the record stands."
+}

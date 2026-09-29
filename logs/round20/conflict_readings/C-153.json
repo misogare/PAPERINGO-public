@@ -1,0 +1,77 @@
+{
+ "id": "C-153",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-218",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Alzheimer's Disease Prediction Algorithm Based on Group Convolution and a Joint Loss Function (Cheng, Wang, Wei, Liu, Chen; Computational and Mathematical Methods in Medicine 2022, 1854718)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-65",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Leveraging hemispheric asymmetry in structural MRI with an attention-guided 3D CNN for early prediction of Alzheimer's conversion (Liu, Yao, Liu, Li, Zeng, Xu; Neural Networks 197 (2026) 108534)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-218": "Three-class cross-sectional diagnosis (AD vs MCI vs NC) from 18F-FDG PET: 2D slices of SPM-normalised PET, grouped-convolution ResNet18 with hybrid attention and a centre-loss term. Training ADNI-1 (190 AD / 350 MCI / 200 NC per text), test ADNI-2 (124 AD / 192 MCI / 84 NC); Table 3 also lists K_fold 10. Best: ACC 89.4%, AUC 92.3% (SEN 87.43 / SPE 88.26, with AD and MCI both counted as positives). No conversion endpoint.",
+  "P-65": "MCI-to-AD conversion within 36 months (300 pMCI / 273 sMCI, right-handed ADNI-1/2/3/GO) from single baseline T1 sMRI with HemiNet (DenseNet-121 3D CNN plus hemispheric asymmetry modules), five-fold stratified CV repeated five times: AUC 0.8401 +/- 0.0297, ACC 0.7819. External OASIS-3 (62 sMCI / 82 pMCI): AUC 0.8137, ACC 0.7345."
+ },
+ "quantity_a": "AUC of 3-class AD/MCI/NC diagnostic classification (current diagnosis, no horizon) from FDG-PET slices, ADNI-1 train / ADNI-2 test.",
+ "quantity_b": "AUC of predicting 36-month conversion to AD among people with MCI (pMCI vs sMCI) from baseline structural MRI, ADNI 5-fold CV (external OASIS-3 0.81).",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Even for a shared task, two different architectures each reporting their own AUC, with neither evaluating the other's model, would not be incompatible.",
+ "gates": {
+  "task": "mismatch: P-218 is 3-way diagnosis AD/MCI/NC (registry T3), P-65 is MCI conversion prognosis (T2); the record's 'T2' for P-218 is wrong",
+  "dataset_family": "match: both ADNI",
+  "validation_tier": "match: both internal ADNI evaluation (P-218 ADNI-1 to ADNI-2 split; P-65 5-fold CV), with P-65 adding an external OASIS-3 test",
+  "modality_family": "mismatch: P-218 is FDG-PET only; P-65 is structural MRI only (the record's 'structural_mri' for both is wrong)"
+ },
+ "endpoint_and_metric": "incompatible: both report ROC AUC, but on different endpoints (3-class current diagnosis vs binary 36-month conversion) and from different imaging modalities; P-218 does not say how its 3-class AUC is averaged.",
+ "performance_validity": "flag does not apply: 0.923 and 0.840 are below 0.97.",
+ "independence": "Distinct author groups (Anhui University vs Chongqing Normal University/Chongqing Medical University); both draw on ADNI.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-218 classifies current diagnosis into AD, MCI or NC, whereas P-65 predicts which MCI patients convert to AD within 36 months, so the two AUCs are on different endpoints.",
+  "P-218 uses FDG-PET and P-65 uses structural MRI, so the modality-family gate fails and no waiver is on record.",
+  "The record labels both as T2 and structural MRI; both labels are wrong for P-218."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-218",
+   "page": 1,
+   "quote": "Alzheimer's disease (AD) can effectively predict by 18F-fluorodeoxyglucose positron emission tomography (18F-FDG PET) of the brain"
+  },
+  {
+   "paper": "P-218",
+   "page": 3,
+   "quote": "We use 190 AD cases, 350 MCI cases, and 200 NC cases among PET images as the training data from ADNI-1. Four hundred PET images are selected as the test data from ADNI-2."
+  },
+  {
+   "paper": "P-218",
+   "page": 10,
+   "quote": "The proposed method 124 192 84 2D PET ADNI 87.43 88.26 89.4 92.3 (Table 6: AD/MCI/NC subjects, SEN, SPE, ACC, AUC)"
+  },
+  {
+   "paper": "P-65",
+   "page": 3,
+   "quote": "participants in the pMCI group were initially diagnosed with MCI at baseline and converted to AD within 36 months of follow-up"
+  },
+  {
+   "paper": "P-65",
+   "page": 1,
+   "quote": "Extensive experiments and cross-validation on the ADNI dataset demonstrate that HemiNet achieves an AUC of 84.01% and an accuracy of 78.19% for MCI prediction."
+  }
+ ],
+ "record_defects": [
+  "claim_a 'P-218: AUC 92.3 on T2' mislabels the task: 92.3% is a 3-class AD/MCI/NC diagnostic AUC; P-218 has no conversion endpoint (its registry row says T3).",
+  "modality_family 'structural_mri' and modality_family_equal 'Yes' are wrong: P-218 is FDG-PET only.",
+  "task_equal 'Yes' is wrong (diagnosis vs conversion prognosis).",
+  "P-218's own sample counts are inconsistent (text: 190/350/200 training; Table 1: AD 190, MCI 250, NC 200)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in either PDF: P-218 would need an MCI-conversion experiment on structural MRI for the two to share a quantity."
+}

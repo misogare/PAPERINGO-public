@@ -1,0 +1,44 @@
+{
+  "paper": "P-44",
+  "pdf_is_right_paper": true,
+  "preprint": false,
+  "read_in_full": true,
+  "supports_stated": "no",
+  "supports_narrowed": "partly",
+  "dataset_family": "Haeundae Paik Hospital (Inje University), Busan, Republic of Korea: single-centre retrospective sample, March 2018 - January 2020, 50 aMCI (Petersen criteria) and 26 cognitively unimpaired controls",
+  "method_family": "Resting-state fMRI graph-theory connectomics (CONN toolbox: local and global network topology) combined with FreeSurfer structural volumes. Analysis: t-test feature filtering, then linear SVM with an 80/20 hold-out split and 10-fold CV within the training data",
+  "same_sample_or_cohort_as": [],
+  "shared_authors_with": [],
+  "what_it_shows": "Cross-sectional, 76 participants. FreeSurfer volumes of the limbic structures (hippocampus, entorhinal cortex, parahippocampal gyrus, amygdala, thalamus) were lower in aMCI than in CU, and a structural-volume-only SVM classified aMCI vs CU with 88.9% accuracy (AUC 0.889). Adding rs-fMRI connectomic features raised this to 92.9% (AUC 0.929). The authors report the combined ROC as significantly greater than the structural-only ROC (p=0.022). No functional-only model was fitted. For the secondary subtype task the same comparison went from AUC 0.363 to 0.528 (p=0.017), both at or below chance.",
+  "why": "Hwang, Kim, Lee, Lee and Park 2024, Clinical Neurology and Neurosurgery 238:108177, doi 10.1016/j.clineuro.2024.108177. The PDF title, authors and DOI match the summaries.md block and the map entry. The extract was read in full, including methods, results, Table 1, discussion and limitations; the reference list was omitted by the extractor. Supplementary Tables 1-2 (the actual volume and connectivity group statistics) are not in the extract.\n\nSTATED FORM (Table A1): no. Volume was neither preserved nor non-discriminative. Limbic and hippocampal volumes were lower in aMCI (p.4) and 'profoundly decreased in the hippocampus' (p.5), and volumes alone classified aMCI vs CU at 88.9% accuracy / AUC 0.889 (p.4). The study never asks whether rs-fMRI detects aMCI where volume fails, and it has no longitudinal or conversion component.\n\nNARROWED FORM (round 20): partly. The study runs its own within-sample comparison of structural volumes alone against volumes plus rs-fMRI connectome, and reports a significant AUC gain (0.889 to 0.929, p=0.022, p.4). Taken at face value, that is the 'non-volumetric measure carried information that volume did not' strand, in the complementarity form round 20 accepted for P-478 (stiffness added to subfield volume). Volume remained discriminative, consistent with the narrowed wording's last sentence. The verdict is 'partly', not 'yes', for four reasons. (1) No functional-only model, so the study does not show the functional measure detecting aMCI on its own, nor at parity with volume. (2) Features were filtered by group t-tests ('The variables that were significantly different between the two groups were retained', p.3). This is described before the 80/20 split and is not stated to be nested within the training folds, so both models may be optimistically biased. (3) The same AUC comparison is reported as significant for the subtype task, where the 'improved' model has AUC 0.528, i.e. chance (p.4). That makes the p-value weak evidence that the rs-fMRI features carry generalisable information. With a 20% hold-out of 76 participants (about 15), the 4-point accuracy gain corresponds to very few test cases. (4) Single-centre retrospective sample. Vascular risk factors differ by group (hypertension 36% vs 0%, diabetes 16% vs 0%), and the authors acknowledge these influence brain volume (p.5). If the operator accepts the reported test at face value, the study fits the narrowed complementarity strand.\n\nINDEPENDENCE: new dataset (Busan, Korea) with no overlap with the current supporters' samples, sites or authors, or with the other candidates (P-224 Qatar, P-1107 Tainan, P-183 ADNI). But its method family, rs-fMRI functional connectivity, is the SAME as current supporter P-518 (rs-fMRI ROI-to-ROI connectivity, Sunshine Coast). Under H.1, which requires distinct method families across supporters, it would not add an independent method family. Not a preprint. Not in registry_duplicates.json.\n\nQuotes are rejoined across line breaks, with soft hyphens and typographic characters normalised to ASCII.",
+  "quotes": [
+    {
+      "page": 4,
+      "quote": "Compared with the CU group, patients with aMCI showed significant alterations in their structural volumes. The structural volumes of the limbic system, including the amygdala, entorhinal cortex, parahippocampal gyrus, hippocampus, and thalamus, were lower in patients with aMCI than in those with CU."
+    },
+    {
+      "page": 4,
+      "quote": "Although classifying the cognitive levels of CU and MCI patients, the SVM classifier based on structural volumes revealed an accuracy of 88.9%, sensitivity of 91.8%, specificity of 86.0%, positive predictive value of 86.5%, negative predictive value of 91.5%, and area under the curve (AUC) of 0.889. When structural volumes and functional connectomic profiles were combined, the accuracy increased to 92.9%, with a sensitivity of 93.9%, specificity of 92.0%, positive predictive value of 92.0%, negative predictive value of 93.9%, and AUC of 0.929. The p-value for the AUC was 0.022."
+    },
+    {
+      "page": 4,
+      "quote": "However, when the structural volumes and functional connectomic profiles were combined, the accuracy increased to 53.1%, with a sensitivity of 50.0%, specificity of 55.6%, positive predictive value of 47.8%, negative predictive value of 57.7%, and AUC of 0.528. The p-value for the AUC was 0.017."
+    },
+    {
+      "page": 4,
+      "quote": "As shown in Fig. 2, the AUC of the ROC curve generated from the combined structural volumes and functional connectomic profiles was significantly greater than that of the ROC curve generated from the structural volumes alone for distinguishing between aMCI and CU patients, and between verbal- or visual-aMCI and both aMCI patients."
+    },
+    {
+      "page": 3,
+      "quote": "The classifier was initially trained using structural volumes. Next, training was performed using functional connectomic profiles and structural volumes to evaluate their effects on classifier performance. All variables were standardized using z-scores. Feature selection from structural volumes and functional connectomic profiles was performed to determine the relevant features for classification. Student's t-tests were performed to compare each variable between the aMCI and CU groups and between the verbal- or visual-aMCI and both aMCI groups. The variables that were significantly different between the two groups were retained (p < 0.05)."
+    },
+    {
+      "page": 5,
+      "quote": "Volumes profoundly decreased in the hippocampus and entorhinal, parahippocampal, and rostral anterior cingulate regions, which are medial temporal structures."
+    },
+    {
+      "page": 5,
+      "quote": "First, this was a single-center, retrospective study enrolling only 50 aMCI patients and 26 healthy controls. Overall, the number of participants included in the study was small, and there may have been residual or unmeasured confounding factors and selection bias due to the single-center retrospective design."
+    }
+  ]
+}

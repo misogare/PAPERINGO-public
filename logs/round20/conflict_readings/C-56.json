@@ -1,0 +1,79 @@
+{
+ "id": "C-56",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging (Rallabandi & Seetharaman, 2023, doi 10.1016/j.bspc.2022.104312, file S1746809422007662)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-60",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "A mobile application using automatic speech analysis for classifying Alzheimer's disease and mild cognitive impairment (Yamada et al., Computer Speech & Language 81 (2023) 101514)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "The record's P-117 (summaries.md header S1746809423005462: resting-state EEG, VMD entropy features, NSGA-II channel selection, best ~99.8% accuracy, sample not reported) could not be checked: the pack PDF is a different paper (OASIS MRI-PET fusion, 95.5% HC vs MCI accuracy, AUC 0.988, internal 60/20/20 split). 99.81% does not appear in the supplied PDF.",
+  "P-60": "Tablet-app speech features (92 acoustic/prosodic/linguistic), LASSO + SVM-RBF, nested leave-one-out CV, 114 Japanese participants (43 CN, 46 MCI, 25 AD) from University of Tsukuba. MCI vs CN accuracy 87.6% (sens 88.1%, spec 87.2%); three-class accuracy 78.6%; AD vs CN 91.2%."
+ },
+ "quantity_a": "Record's P-117: resting-state EEG classifier accuracy, MCI vs healthy, own unnamed EEG cohort, internal validation (summary block only).",
+ "quantity_b": "P-60: speech-feature SVM accuracy, MCI vs CN, 89 Japanese participants in the binary task, nested leave-one-out CV.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not determinable and not needed; different modality, cohort and predictor representation. Each paper reports its own method's score; neither claims an ordering the other refutes.",
+ "gates": {
+  "task": "match for the binary MCI vs CN figure the record uses (the registry codes P-60 as T3 because its headline is the three-class 78.6%)",
+  "dataset_family": "mismatch: P-60's Tsukuba speech cohort vs P-117's EEG cohort (or OASIS under the pack PDF); record's dataset_equal='Yes' unsupported",
+  "validation_tier": "match (both internal CV / split, V2; the registry's V3 for P-60 is not supported by an external cohort in the PDF)",
+  "modality_family": "mismatch: EEG (or MRI-PET) vs speech; no waiver on record"
+ },
+ "endpoint_and_metric": "compatible metric type (accuracy, MCI vs control) but on different populations and input modalities",
+ "performance_validity": "Likely applies to P-117 (claimed 99.81% internal accuracy, sample not reported) but unconfirmable without the correct PDF; the verdict does not rest on it.",
+ "independence": "No shared cohort or authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The supplied P-117 PDF is the wrong paper (OASIS MRI-PET fusion), so the record's 99.81% EEG result cannot be read from source.",
+  "Under either identity of P-117 the modality-family gate (EEG or MRI-PET vs speech) and the dataset-family gate (Tsukuba speech cohort vs a different cohort) fail with no waiver on record.",
+  "P-60's 87.6% is correctly quoted but is a speech-based MCI vs CN accuracy in 89 Japanese participants, a different quantity from an EEG classifier's accuracy in another cohort."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "we develop the Inception-ResNet wrapper model in differentiating the healthy controls (HC), mild cognitive impairment (MCI), and Alzheimer's disease (AD) using conjoint magnetic reso nance imaging (MRI) and positron emission tomography (PET) scans."
+  },
+  {
+   "paper": "P-117 (summaries.md block, not the PDF)",
+   "page": null,
+   "quote": "Reported best performance near **99.8%** using optimized subset + ensemble setup."
+  },
+  {
+   "paper": "P-60",
+   "page": 1,
+   "quote": "a machine-learning speech classifier using these features achieved 78.6% accuracy for classifying AD, MCI, and CN through nested cross-validation (AD versus CN: 91.2% accuracy; MCI versus CN: 87.6% accuracy)."
+  },
+  {
+   "paper": "P-60",
+   "page": 3,
+   "quote": "Finally, a total of 114 older individuals met the inclusion criteria: 43 CN participants, 46 MCI patients, and 25 AD patients."
+  },
+  {
+   "paper": "P-60",
+   "page": 13,
+   "quote": "Second, this study used a small dataset with different sizes of diagnostic groups, which might affect the generalizability of our findings."
+  }
+ ],
+ "record_defects": [
+  "P-117's paper_pdf_map entry points to the wrong PDF (S1746809422007662 MRI-PET) instead of summaries.md's S1746809423005462 (EEG); mapping marked formula-unverified.",
+  "dataset_equal='Yes' and validation_comparable='Yes' have no basis: the cohorts are unrelated.",
+  "task_equal='Yes' conflicts with the registry's T3 coding of P-60; the record silently uses the binary sub-result.",
+  "Registry row P-60: Dataset 'not reported' although the PDF names the University of Tsukuba Hospital cohort; Validation_Type V3 not supported (nested LOO CV only).",
+  "Registry row P-117: Best_Metric and Dataset 'not reported' while the claim states 99.81%.",
+  "resolution_note's bridging list is boilerplate unrelated to either paper."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "The correct P-117 PDF would confirm the EEG cohort and the performance-validity status; it could not make the pair commensurable, since P-60 is speech-based on a separate cohort."
+}

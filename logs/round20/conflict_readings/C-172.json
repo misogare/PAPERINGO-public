@@ -1,0 +1,77 @@
+{
+ "id": "C-172",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-307",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable machine learning models for identifying mild cognitive impairment in older patients with chronic pain (Zhang et al., BMC Nursing 2025)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-270",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Predictive model for identifying mild cognitive impairment in patients with type 2 diabetes mellitus: A CHAID decision tree analysis (Maimaitituerxun et al., Brain and Behavior 2024)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-307": "612 chronic-pain inpatients aged >=60 (27.6% MCI by Petersen/IWG criteria incl. MoCA<26); predictors age, education, pain sites, pain duration, VAS pain, GDS-15, PSQI; 70/30 split, SMOTETomek on training; XGBoost test AUC 0.925 (95% CI 0.863-0.995); logistic regression test AUC 0.895 (0.829-0.966).",
+  "P-270": "Hospital-based case-control study of 1001 T2DM inpatients aged >=40 (274 MCI by Petersen criteria with education-adjusted MMSE cut-offs); predictors age, education, household income, physical activity, diabetic nephropathy, diabetic retinopathy (CHAID); 7:3 split; decision-tree AUC 0.75 (0.71-0.78) training and 0.67 (0.61-0.74) validation; logistic regression 0.76 training, 0.69 (0.62-0.75) validation."
+ },
+ "quantity_a": "Held-out AUC for identifying prevalent MCI in older (>=60) chronic-pain patients from pain, mood, sleep, age and education variables; MCI defined with MoCA<26.",
+ "quantity_b": "Training (0.75) or validation (0.67) AUC for identifying prevalent MCI in T2DM inpatients aged >=40 from demographic, lifestyle and diabetic-complication variables; MCI defined with education-adjusted MMSE.",
+ "same_quantity": false,
+ "incompatible_if_same": "Numerically the intervals do not overlap (P-307 test 0.863-0.995 vs P-270 validation 0.61-0.74), so if these were one quantity they would conflict. They are not: each AUC is the discrimination of a different predictor set in a different clinical population against a differently operationalised MCI label, and neither paper claims anything about the other's model or population.",
+ "gates": {
+  "task": "match in class (cross-sectional MCI identification from clinical/tabular data).",
+  "dataset_family": "mismatch: two independent single-centre Chinese hospital cohorts (Nanchang pain department vs Changsha endocrinology department); record itself says dataset_equal No, and no waiver is recorded.",
+  "validation_tier": "match (both internal random hold-out, no external validation).",
+  "modality_family": "match at family level (clinical/tabular), but the predictor sets share only age and education."
+ },
+ "endpoint_and_metric": "partly compatible: both ROC-AUC for prevalent MCI, but the reference standard differs (MoCA<26 plus criteria and neurologist confirmation vs education-adjusted MMSE thresholds plus criteria) and the populations differ (chronic pain, >=60 vs T2DM, >=40, mean age 60).",
+ "performance_validity": "flag not tripped (0.925 < 0.97; 184-patient test set). P-307's CI upper bound (0.995) and its SMOTETomek-balanced training make its estimate optimistic, but the automatic exclusion does not apply.",
+ "independence": "Distinct studies, centres and authors.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The two AUCs measure different predictor sets: P-307 uses pain intensity, depression and sleep scales, and P-270 uses income, physical activity and diabetic complications, with only age and education in common.",
+  "The populations differ (chronic-pain patients aged >=60 vs T2DM inpatients aged >=40), and so does the MCI reference standard (MoCA<26 vs education-adjusted MMSE).",
+  "The dataset-family gate fails (two unrelated hospital cohorts) with no waiver on record, and neither paper claims an ordering that the other refutes."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-307",
+   "page": 3,
+   "quote": "(2) Montreal Cognitive Assessment Scale (MoCA) score < 26"
+  },
+  {
+   "paper": "P-307",
+   "page": 7,
+   "quote": "the XGBoost model performed best, achieving an accuracy of 0.883 and an AUC of 0.925 (95% CI 0.863-0.995)."
+  },
+  {
+   "paper": "P-270",
+   "page": 3,
+   "quote": "objective cognitive impairment measured by the mini-mental state examination score (<=19 for illiterate individuals, <=22 for individuals with elementary school education, and <=26 for individuals with middle school education or above)"
+  },
+  {
+   "paper": "P-270",
+   "page": 4,
+   "quote": "The AUC value of the decision tree models was .75 (95% CI: .71-.78) and .67 (95% CI: .61-.74) in the training and validation sets, respectively"
+  },
+  {
+   "paper": "P-270",
+   "page": 3,
+   "quote": "(2) hospitalized due to T2DM; (3) aged >=40 years"
+  }
+ ],
+ "record_defects": [
+  "claim_b 'AUC 0.75' is P-270's training-set AUC; the held-out validation AUC is 0.67 (0.61-0.74), which is what corresponds to P-307's test-set figure.",
+  "task_equivalence true / dataset_family_equivalence true contradict dataset_equal 'No' within the same record.",
+  "apparent_performance_gap '17.5 percentage points' uses the training value; on held-out data the gap is 25.5 points, which is still not a comparison of like with like.",
+  "resolution_status 'partially_resolved_candidate' rests on a generic list of ~50 'bridging' papers with no named separating condition."
+ ],
+ "confidence": "medium",
+ "what_would_change_the_verdict": "A reader who treats 'clinical/tabular MCI identification in Chinese hospital patients' as one quantity and waives the dataset gate would face non-overlapping AUC intervals; the verdict would then turn on whether a difference in population and predictor set can be waived, which the rule as applied does not allow. Evidence that the same model was applied to both populations would change it."
+}

@@ -1,0 +1,49 @@
+{
+ "id": "VF-03",
+ "supporters": [
+  {
+   "paper": "P-168",
+   "right_paper": true,
+   "supports": "partly",
+   "quote": "the LSTM model, which incorporates longitudinal data (baseline, 6, 12, 18, and 24-month), achieved a significantly higher mean AUC (0.93 +/- 0.06) than the random forest model based on the data collected at a single time point (24-month) (0.90 +/- 0.09) (DeLong test P = 0.039). Additionally, we constructed two random forest models using the data collected across the same five time points (baseline, 6, 12, 18, and 24-month): one using the mean of the data which achieved an AUC of 0.87 +/- 0.10, and another using all data which achieved an AUC of 0.89 +/- 0.10.",
+   "page": "4-5",
+   "note": "ADNI, N=347 MCI at the 24-month index exam, 77 converters, 2-year horizon, 10-fold CV, no external set. Ding et al. 2023, Front. Dement. The headline comparison changes the learner as well as the data (LSTM on 5 time points versus RF on 1). With the learner held fixed, the study's own random forests given the same five time points (AUC 0.87 and 0.89) did NOT beat the single-time-point random forest (0.90). The same pattern holds in the age sensitivity analysis (RF single 0.89/0.87 versus RF mean-longitudinal 0.87/0.85). The paper therefore supports 'a longitudinal sequence model (LSTM) outperformed a cross-sectional RF', but not 'multi-timepoint data outperforms cross-sectional data' as a like-for-like result. The record calls this the cleanest comparison. On the source it is the most confounded one."
+  },
+  {
+   "paper": "P-13",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "For the high-risk group, in the baseline models, ADAS13 showed the best performance (C-index/Optimism-corrected C-index = 0.677/0.665). In the longitudinal models, CDRSB showed the best performance (C-index/Optimism-corrected C-index = 0.816/0.805), which was 19.9% higher than that in the baseline model. All the longitudinal models performed better than the baseline models (see Supplementary Table 3).",
+   "page": "3",
+   "note": "ADNI-1/GO/2, N=718 baseline MCI (Ge et al. 2023, J Psychiatr Res). Survival models (Cox/RSF) with C-index, internal bootstrap validation only. The longitudinal markers are MFPCA/FPC scores summarising trajectories across follow-up visits (up to 96 months). The paper does not describe a landmark or cut-off that stops post-baseline information from overlapping the time to event, so part of the gain may come from look-ahead. The low-risk group comparison (ADAS13 baseline 0.825 versus longitudinal 0.914) points the same way. The baseline-versus-longitudinal result is in the main text only for the best markers. The full table is supplementary."
+  },
+  {
+   "paper": "P-337",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Ensemble models (Elastic Net + BMA) consistently excelled, achieving C-indices of 0.608 (baseline), 0.885 (visit 1), and 0.904 (visit 2), and time-dependent AUCs of 0.606, 0.898, and 0.922 ... This represents a significant improvement with one follow-up visit after baseline (48.1% C-index, 48.2% AUC gains)",
+   "page": "8",
+   "note": "ADNI, N=721 cognitively normal at baseline, 142 progressed to MCI or AD (Ghosh et al. 2025, J Alzheimers Dis). The outcome is CN to MCI/AD, i.e. onset of MCI, not MCI-to-dementia progression. Predictors use visits up to 12 months while events are counted over the full follow-up. The paper does not say that events occurring before visit 1 or visit 2 were excluded. The rate of change in FAQ is the top predictor, so some of the gain may come from change scores that coincide with or follow early conversions. The baseline C-index (0.608) is unusually low. There is no external validation. The record's notes call this paper 'P-338'. The supporter list and the source are P-337, and the description ('follow-up provided most of the gain') matches P-337."
+  },
+  {
+   "paper": "P-74",
+   "right_paper": true,
+   "supports": "no",
+   "quote": "In Model 1, disease prognosis at Y2 was determined using cognitive scores at BL and Y1 and cognitive trajectory classes derived using cognitive scores from BL and Y1 ('cognitive trajectories + cognitive scores' models). We compared the performance of these models to ones developed using only cognitive scores at BL and Y1 ('cognitive scores' models).",
+   "page": "4",
+   "note": "NACC-UDS, Model 1 N=768 (112 converters), Model 2 N=409 (65) (Bucholc et al. 2023, Expert Syst Appl). Both arms of the comparison use multi-timepoint data: the comparator already contains the scores from every visit (BL+Y1, or BL+Y1+Y2). The contrast is unsupervised trajectory-class labels added to raw multi-visit scores, not longitudinal against a cross-sectional baseline. I searched the full text and found no single-visit or baseline-only model. The paper also compares Model 2 (4 visits) with Model 1 (3 visits) ('models including the fourth time point offered enhanced predictive performance'), but those models use different samples (409 against 768) and different horizons (Y3 against Y2), and neither is cross-sectional. The accuracy gains are 3-4 points. The ensemble and SVM AUCs are about 0.60 in both arms. Counting this paper as a non-ADNI replication of longitudinal-over-cross-sectional is not supported by the source."
+  },
+  {
+   "paper": "P-348",
+   "right_paper": true,
+   "supports": "yes",
+   "quote": "Including delta scores improved performance, with ridge and elastic net achieving accuracy = 0.90, kappa = 0.73 and 0.72, AUC-ROC = 0.94, specificity = 0.96, and sensitivity = 0.73.",
+   "page": "1 (abstract); Tables 4 and 5, pp. 6 and 8",
+   "note": "Gothenburg MCI Study, memory clinic, N=347, 84 converters over 2-6 years (Thorvaldsson et al. 2026, JINS). Same models, same sample and same LOOCV, with and without T2-T1 cognitive delta scores. This is a direct comparison. Caveats: (1) the delta uses the 2-year (T2) assessment, and 61 of the 84 conversions (Table 1: 29+13+17+2) were diagnosed at T2, so for most converters the change score is measured at the diagnostic visit. (2) The improvement is not uniform. Logistic regression did not converge, and AUC fell with deltas for logistic regression (0.85 to 0.79), naive Bayes (0.91 to 0.87) and decision tree (0.82 to 0.77). The record's 'longitudinal change-scores > baseline-only across 11 models' is therefore inaccurate. The gain holds for the best models (ridge 0.92 to 0.94, elastic net 0.91 to 0.94, LDA 0.89 to 0.92). This is the only non-ADNI supporter that survives."
+  }
+ ],
+ "yes_count": 3,
+ "verdict": "holds_narrowed",
+ "narrowed_wording": "In four studies that compare the two directly (three ADNI analyses and one Swedish memory-clinic cohort), adding repeated measurements or change scores to a baseline model improved discrimination. In two of them the follow-up measures overlap the outcome window, and in the ADNI LSTM study the gain is not separable from the change of learner (a random forest given the same five time points did not beat the single-time-point random forest). Non-ADNI replication rests on one cohort.",
+ "reasoning": "Three supporters answer yes on the source: P-13 (ADNI, survival models, longitudinal C-index above baseline for every marker), P-337 (ADNI CN cohort, ensemble survival, C-index 0.608 to 0.885 with one follow-up) and P-348 (Gothenburg memory clinic, 11 learners, delta scores raise AUC for the best models). Together they span two datasets and at least two method families (survival models and regularised/tree classifiers), which meets the threshold. P-168 is partly: its headline result is LSTM-longitudinal against RF-cross-sectional, and its own like-for-like random forests show no gain from the longitudinal data. P-74 is no: its comparator already uses every visit's scores, so it never compares longitudinal with cross-sectional modelling. The statement survives, but not in the form the record gives it. The supporter count should be 4, not 5, if the partly is admitted, or 3 if only yes answers count. The claimed two non-ADNI replications (NACC and Gothenburg) are one (Gothenburg). The record's 'P-168 is the cleanest' and 'across 11 models' are both contradicted by the sources. The record's notes name 'P-338' where the supporter is P-337. Design caveats (follow-up measures overlapping the event window in P-337 and P-348, and a possible look-ahead in P-13's FPC trajectories) mean the gains are upper bounds, not clean prospective increments."
+}

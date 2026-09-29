@@ -1,0 +1,95 @@
+{
+ "id": "C-47",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack text pdf/P-117.txt is 'Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging' (Rallabandi & Seetharaman, BSPC 80 (2023) 104312, OASIS), NOT the paper the record means. The record's '99.81% Acc' belongs to Aljalal et al., 'Mild cognitive impairment detection with optimally selected EEG channels based on variational mode decomposition and supervised machine learning', BSPC 87 (2024) 105462 (the summaries.md P-117 block), whose PDF is in the repository at downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809423008959-main.pdf. Both were read in full; the wrong pack PDF reports no 99.81%.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-5",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Using a dual-stream attention neural network to characterize mild cognitive impairment based on retinal images (Gao et al., Computers in Biology and Medicine 166 (2023) 107411)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "Aljalal et al. 2024: resting-state 19-channel EEG, 61 participants (29 amnestic MCI, 32 HC) from two public Isfahan (Noor Hospital) datasets, 10-s segments (3660 feature vectors), VMD + entropy features, 10-fold CV over the feature vectors. Binary MCI vs HC accuracy 99.51% with all channels (KNN) and 99.81% with 11 NSGA-II-selected channels (ensemble KNN).",
+  "P-5": "DuCAN dual-stream network on fundus photographs + OCT, first dataset 117 patients (29 MCI/58 eyes, 50 CN/100 eyes, 38 AD/76 eyes, Daping Hospital), 5-fold CV. Three-class MCI/AD/CN overall accuracy 91.64%, AUC 96.78%; 84.96% is the per-class PRECISION for MCI in that three-class model (80.90% is precision for the positive-cognitive-test group in a second, transfer-learning dataset)."
+ },
+ "quantity_a": "Segment-level 10-fold cross-validated accuracy of a binary MCI vs HC classifier on resting-state EEG, N=61",
+ "quantity_b": "Per-class precision (positive predictive value) for the MCI class within a three-class MCI/AD/CN classifier on retinal fundus + OCT images, eye-level 5-fold CV, N=117",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Accuracy and class-specific precision are different metrics, and the two are single cross-validated scores from unrelated methods; neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "mismatch: binary MCI vs HC (P-117) vs three-class MCI/AD/CN (P-5)",
+  "dataset_family": "mismatch: public Isfahan Noor Hospital EEG datasets vs Daping Hospital retinal cohort; record's dataset_equal='Yes' is wrong",
+  "validation_tier": "match in tier (both internal CV, no external cohort) but different units (EEG segments vs eyes)",
+  "modality_family": "mismatch: EEG vs retinal imaging (fundus/OCT); no waiver on record"
+ },
+ "endpoint_and_metric": "incompatible: accuracy vs per-class precision; binary vs three-class",
+ "performance_validity": "flag applies to P-117 on the source: 99.81% (and 99.51% full-channel) accuracy from internal 10-fold CV over segments of only 61 participants with no external cohort; the pack's performance_suspect=false arises only because the registry Best_Metric is 'not reported'. A performance comparison resting on P-117 cannot be genuine.",
+ "independence": "Independent: different groups (King Saud University/NTNU vs Wenzhou/Daping), different cohorts and modalities.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-117 reports binary MCI-vs-HC accuracy from resting-state EEG while P-5's 84.96% is the MCI-class precision of a three-class retinal-imaging model, so metric type, task and modality all differ.",
+  "The dataset-family and modality-family gates fail with no waiver on record.",
+  "P-117 itself meets the performance-validity exclusion (99.81% on internal CV of 61 participants, no external cohort), so the pair could not be a genuine performance conflict in any case.",
+  "The pack PDF for P-117 is the wrong paper (an MRI-PET fusion study); the verdict rests on the correct P-117 PDF located in the repository."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "We assess the classification performance of the proposed methods on 19-channel EEGs recorded from 32 healthy subjects and 29 MCI patients in the resting state. (correct PDF S1746809423008959)"
+  },
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method. (correct PDF)"
+  },
+  {
+   "paper": "P-117",
+   "page": 7,
+   "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets (correct PDF)"
+  },
+  {
+   "paper": "P-117",
+   "page": 9,
+   "quote": "divided into 3660 segments (1740 segments from MCI cases and 1860 from HC cases) (correct PDF)"
+  },
+  {
+   "paper": "P-117",
+   "page": 2,
+   "quote": "taken from Open Access Series of Imaging Studies (OASIS) online dataset (pack PDF pdf/P-117.txt: the MRI-PET fusion paper, the wrong document)"
+  },
+  {
+   "paper": "P-5",
+   "page": 1,
+   "quote": "The proposed method achieved high precision rates of 84.96% and 80.90% in classifying MCI and positive test scores for cognitive impairment, respectively."
+  },
+  {
+   "paper": "P-5",
+   "page": 6,
+   "quote": "The first dataset included information for a total of 29 patients (58 eyes) with MCI, 50 age-matched individuals with CN (100 eyes), and 38 patients (76 eyes) with AD."
+  },
+  {
+   "paper": "P-5",
+   "page": 7,
+   "quote": "As shown in Table 2, the proposed network DuCAN had an accuracy of 91.64% and an AUC of 96.78%."
+  }
+ ],
+ "record_defects": [
+  "The pack/paper_pdf_map entry for P-117 ('formula-unverified') points to the wrong PDF (S1746809422007662, Rallabandi MRI-PET fusion); the correct P-117 PDF is S1746809423008959 (summaries.md header S1746809423005462 does not exist in downloads).",
+  "claim_b 'P-5: 84.96% precision on T1' mislabels the task: the figure is MCI-class precision within a three-class MCI/AD/CN model.",
+  "dataset_equal='Yes' is wrong (separate Iranian EEG and Chinese retinal cohorts); validation_comparable='Yes' ignores segment-level vs eye-level CV.",
+  "gap_magnitude 0.149 subtracts a precision from an accuracy.",
+  "The bridging-evidence list (P-360, P-322, P-324, P-387 'Left P100 latency') explains nothing about this pair.",
+  "C-49 is an exact duplicate of this record (same pair after the P-10 -> P-5 repoint)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these documents; the pair shares neither modality, cohort, task nor metric."
+}

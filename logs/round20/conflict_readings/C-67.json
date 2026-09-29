@@ -1,0 +1,86 @@
+{
+ "id": "C-67",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-30",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Spatio-temporal convolution for classification of alzheimer disease and mild cognitive impairment (Turhan, Kucuk, Ozturk Isik; Computer Methods and Programs in Biomedicine 221 (2022) 106825)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-66",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Automated classification of Alzheimer's disease, mild cognitive impairment, and cognitively normal patients using 3D convolutional neural network and radiomic features from T1-weighted brain MRI: A comparative study on detection accuracy (Zarei et al., Clinical Imaging 115 (2024) 110301)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-30": "(2+1)D CNN on whole-brain T1 MRI resized to 32x32x32, ADNI, AD vs MCI only (507 scans of 223 AD, 507 scans of 204 MCI), 5-fold CV: average AUC 0.85 +/- 0.046 (per fold 0.86, 0.94, 0.86, 0.80, 0.83), validation accuracy 0.78 +/- 0.032. P-30 reports no MCI vs CN result.",
+  "P-66": "3D CNN on bilateral hippocampus and amygdala ROI crops fused with PyRadiomics features plus age and sex, ADNI (199 AD/602 images, 200 MCI/948 images, 200 CN/853 images), 5-fold CV with an 80/20 image split. Fusion model: AD vs CN ACC 84.4%, AUC 0.90; MCI vs CN ACC 72.7%, AUC 0.80; AD vs MCI ACC 58%, AUC 0.595."
+ },
+ "quantity_a": "Cross-validated ROC-AUC for AD vs MCI discrimination, ADNI, whole-brain downsampled structural MRI.",
+ "quantity_b": "As recorded: cross-validated accuracy for MCI vs CN discrimination, ADNI, hippocampus/amygdala ROI CNN + radiomics.",
+ "same_quantity": false,
+ "incompatible_if_same": "The recorded pair sets an AD-vs-MCI AUC against an MCI-vs-CN accuracy, so there is nothing to compare. The only comparison both papers report, AD vs MCI AUC, differs (P-30 0.85 +/- 0.046; P-66 0.595), but it rests on different inputs (whole-brain 32^3 volume vs hippocampal/amygdala ROI crops with radiomics and age/sex), and neither paper claims an ordering that the other refutes.",
+ "gates": {
+  "task": "mismatch as recorded: P-30 is AD vs MCI (registry T2); claim_b is P-66's MCI vs CN (T1). The record's 'task_equal: Yes' and 'T1' for P-30 are wrong.",
+  "dataset_family": "match: ADNI in both.",
+  "validation_tier": "match: internal 5-fold cross-validation in both (P-66 splits by image, P-30 states a subject-level split).",
+  "modality_family": "match: structural T1 MRI in both."
+ },
+ "endpoint_and_metric": "incompatible as recorded: different comparison (AD vs MCI vs MCI vs CN) and different metric (AUC vs accuracy).",
+ "performance_validity": "not a performance comparison that could be adjudicated as recorded; neither figure is near ceiling (0.85, 72.7%).",
+ "independence": "Distinct studies and author groups; both sample ADNI, so participant overlap is possible.",
+ "bridging_evidence": [],
+ "verdict": "false_positive",
+ "grounds": [
+  "The record sets P-30's AD-vs-MCI AUC against P-66's MCI-vs-CN accuracy, a claim about one comparison against a claim about another, so it describes no disagreement.",
+  "P-30 reports no MCI-vs-CN result at all, so the recorded claim_b has no counterpart in P-30.",
+  "The one comparison both papers report (AD vs MCI AUC 0.85 vs 0.595) differs in input representation (whole-brain volume vs hippocampal/amygdala ROI crops with radiomics and age/sex), the C-80 confound, and neither paper claims an ordering the other refutes."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-30",
+   "page": 1,
+   "quote": "507 scans of 223 AD patients and 507 scans of 204 MCI patients were obtained for the computational experiments."
+  },
+  {
+   "paper": "P-30",
+   "page": 4,
+   "quote": "and in 0.85 + /-0.046 average auc score, (auc score per fold: [0.86,0.94,0.86,0.80.,0.83])."
+  },
+  {
+   "paper": "P-30",
+   "page": 2,
+   "quote": "The dataset then resized into 32 \u00d7 32 \u00d7 32 dimensions."
+  },
+  {
+   "paper": "P-66",
+   "page": 1,
+   "quote": "In the term of MCI vs CN, radiomic-based algorithm alone obtained ACC of 71.6 % and AUC of 77.8, CNN-based algorithm obtained ACC of 69 % and AUC of 75 and their fusion showed ACC of 72.7 % and AUC of 80."
+  },
+  {
+   "paper": "P-66",
+   "page": 1,
+   "quote": "In the term of AD vs MCI, radiomic-based algorithm alone obtained ACC of 57 % and AUC of 57.5, CNN-based algorithm obtained ACC of 56.6 % and AUC of 57.7 and their fusion showed ACC of 58 % and AUC of 59.5."
+  },
+  {
+   "paper": "P-66",
+   "page": 5,
+   "quote": "randomly dividing the MRI data for each classification dataset into a sizeable training and validation set (80 % of images) and a testing set (20 % of images)."
+  },
+  {
+   "paper": "P-66",
+   "page": 6,
+   "quote": "primarily due to the less severe nature of the AD cases in the ADNI dataset."
+  }
+ ],
+ "record_defects": [
+  "claim_a says 'P-30: AUC ~0.85 on T1'; P-30's task is AD vs MCI (registry T2), not MCI vs CN.",
+  "task_equal 'Yes' is wrong: the recorded claims are on different comparisons (AD vs MCI and MCI vs CN).",
+  "The rejection reason 'Metric type unclear: AUC / Unknown' is wrong: P-66's 72.7% is an accuracy, and P-66 also reports AUC for every comparison."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Re-filing the pair on AD vs MCI AUC (0.85 vs 0.595) would move it to documented incommensurability (different input representation), not to genuine, unless both used the same input and one claimed the other's approach fails."
+}

@@ -1,0 +1,78 @@
+{
+ "id": "C-155",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-229",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Attention-Guided Autoencoder for Automated Progression Prediction of Subjective Cognitive Decline with Structural MRI (Guan et al., IEEE JBHI 2023)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-207",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "The Coupled Representation of Hierarchical Features for Mild Cognitive Impairment and Alzheimer's Disease Classification (Liu et al., Front Neurosci 2022)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-229": "Accuracy 71.05% (BAC 69.87%, SPE 73.08%) for progressive vs stable SUBJECTIVE COGNITIVE DECLINE (pSCD vs sSCD; conversion to MCI within 84 months) on the private Chinese CLAS cohort (24 pSCD, 52 sSCD), model trained on ADNI AD/NC 90-ROI AAL grey-matter volumes and transferred by domain adaptation. A separate pMCI vs sMCI experiment (393 ADNI MCI, 36-month conversion) is reported in Table IV, whose numbers do not survive in the extract.",
+  "P-207": "Accuracy 90.44% (SEN 88.5%, SPE 93.67%) for AD vs NC (121 AD, 120 NC, ADNI baseline sMRI), 10-fold CV, two-level coupled ICA-network/ROI GMV features with AdaBoost-SVM; 87.72% for MCI-c vs MCI-nc (3-year conversion)."
+ },
+ "quantity_a": "Classification accuracy, pSCD vs sSCD (SCD-to-MCI conversion within 84 months), CLAS cohort (target domain, labels unseen in training), ROI GMV features, cross-cohort transfer from ADNI AD/NC",
+ "quantity_b": "Classification accuracy, AD vs NC (diagnostic, cross-sectional), ADNI, 10-fold cross-validation, coupled ICA-network/ROI GMV features",
+ "same_quantity": false,
+ "incompatible_if_same": "No claim of incompatibility is possible: the two figures are different tasks. Even if one pairs the nearest shared quantity (pMCI vs sMCI on ADNI, 36-month horizon), P-229's Table IV figures are not in the extract, and two different methods each reporting their own accuracy with no claimed ordering the other refutes is not an incompatibility under the rule.",
+ "gates": {
+  "task": "mismatch: P-229's 71.05 is SCD progression to MCI (a preclinical conversion task); P-207's 90.44 is AD vs NC diagnosis. Neither is MCI-to-AD conversion as coded T2.",
+  "dataset_family": "mismatch: P-229's 71.05 is tested on CLAS (Chinese Longitudinal Aging Study), ADNI only as source domain; P-207 is ADNI only.",
+  "validation_tier": "mismatch in kind: P-229 trains on ADNI and tests on an independent cohort (cross-cohort transfer); P-207 uses internal 10-fold CV.",
+  "modality_family": "match: both structural MRI (T1) grey-matter volume features; the record's 'modality_family_equal: No' is wrong (registry codes P-207 as EEG/MEG in error)."
+ },
+ "endpoint_and_metric": "incompatible: both accuracy, but different endpoints (SCD->MCI within 84 months vs AD vs NC diagnosis).",
+ "performance_validity": "flag does not apply: neither value is at or above 0.97; not a valid performance comparison anyway because the endpoints differ.",
+ "independence": "Distinct groups (UNC/Shanghai vs Beijing Normal University); both draw on ADNI (P-229 only as training source).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-229's 71.05% is accuracy for progressive vs stable subjective cognitive decline on the CLAS cohort, not MCI-to-AD conversion on ADNI.",
+  "P-207's 90.44% is AD vs NC classification accuracy, a diagnostic task, not conversion prediction.",
+  "Task, dataset family and validation design all differ, and no waiver is on record, so the two numbers are on different quantities."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-229",
+   "page": 4,
+   "quote": "There are 24 progressive SCD (pSCD) and 52 stable SCD (sSCD) subjects. These pSCD subjects have evolved to MCI within the next 84 months, while the sSCD ones remain stable."
+  },
+  {
+   "paper": "P-229",
+   "page": 7,
+   "quote": "In our experiment, we use the ADNI dataset as the source domain, while the CLAS dataset is used as the target domain."
+  },
+  {
+   "paper": "P-229",
+   "page": 10,
+   "quote": "our model achieves higher accuracy, balanced accuracy (i.e., 71.05%, 69.87%) and specificity (i.e., 73.08%) which are much better than the other three state-of-the-art methods"
+  },
+  {
+   "paper": "P-207",
+   "page": 6,
+   "quote": "the best prediction accuracy is 90.44%, sensitivity is 88.5%, and specificity is 93.67% for AD and NC groups and the best prediction accuracy is 87.72%, sensitivity is 84.16%, and specificity is 91.64% for the MCI-c and MCI-nc groups."
+  },
+  {
+   "paper": "P-207",
+   "page": 6,
+   "quote": "The 10-fold cross-validation was applied to evaluate the performance, and the average results were reported."
+  }
+ ],
+ "record_defects": [
+  "claim_b 'P-207: Acc 90.44 on T2' is wrong: 90.44% is AD vs NC; P-207's conversion figure is 87.72% (MCI-c vs MCI-nc).",
+  "claim_a 'P-229: Acc 71.05 on T2' is wrong in task and dataset: 71.05% is pSCD vs sSCD on CLAS, not MCI conversion on ADNI.",
+  "dataset_equal 'Yes' is wrong for the quoted figures (CLAS vs ADNI).",
+  "modality_family_equal 'No' is wrong: both papers use T1 structural MRI; P-207's registry Modality 'EEG/MEG' and Task_Type 'T4' are registry errors.",
+  "P-229 registry Sample_N_Approx 393 is the MCI experiment's N, not the N behind Best_Metric 71.05 (76 CLAS SCD)."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Only a pairing of like with like: P-229's Table IV pMCI vs sMCI accuracy (not in the extract) set against P-207's 87.72%; even then the two are different methods each reporting its own score with no refuted ordering, which the rule does not treat as incompatible."
+}

@@ -1,0 +1,103 @@
+{
+ "id": "C-248",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-711",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "The prevalence and influencing factors of reversion from mild cognitive impairment to normal cognition: A systemic review and meta-analysis (Zhao, Wei, ... Ma; Geriatric Nursing 63 (2025) 379-387)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-722",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Dietary patterns and transition from normal cognition to mild cognitive impairment and its reversion: A longitudinal study of older adults (Du, Gao, Zhang, Guo; Clinical Nutrition 50 (2025) 137-145)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-711": "Random-effects pooled proportion of MCI participants observed to revert to normal cognition across 48 studies (31,876 subjects): 31% (95% CI 26-35%, I2 = 98.9%); community setting 36% (30-42%, 27 studies), hospital 20% (14-27%, 14 studies); Petersen 28%, international consensus 35%, DSM 29%. Study-level rates range 4.6% to 62.8%. No strict limit on follow-up time; MCI definitions not uniform (Table 1 includes MMSE-only, MoCA/MMSE, self-developed criteria, 'NS').",
+  "P-722": "CLHLS, 11,211 adults aged 65+ (mean age 85.80), MCI defined as CMMSE < 18 and non-demented, continuous-time multi-state Markov model with death as absorbing state. Abstract: 'The rate of reversion from MCI to NC was 9.4 %'. Results: over follow-up (mean 4.76 years, up to 11.24), baseline-MCI transition probabilities were 14% remain MCI, 9% revert to NC, 1% dementia, 75% death. The paper describes its 9% as similar to a Spanish cohort's 11% and attributes disparities with other studies to MCI definition, design and population."
+ },
+ "quantity_a": "Pooled observed proportion of MCI participants who reverted to normal cognition among those followed up, across heterogeneous MCI definitions, settings, ages and follow-up durations (random-effects mean of study-level proportions).",
+ "quantity_b": "Model-based transition probability MCI -> NC over the cohort follow-up in a four-state Markov model where death (75% of baseline-MCI transitions) is an explicit competing absorbing state, in the oldest-old (mean age 85.8), with MCI = CMMSE < 18 without dementia.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. P-711 pools with I2 = 98.9% and reports study-level rates from 4.6% to 62.8%; a random-effects pooled mean and its CI describe the average of the distribution, not a bound on individual studies, so a single cohort at 9.4% lies inside the observed range. P-722's own comparison finds its rate 'similar' to another community cohort (11%).",
+ "gates": {
+  "task": "mismatch: P-711 T6 evidence synthesis; P-722 T5 longitudinal association cohort; no waiver on record",
+  "dataset_family": "mismatch in kind (pooled literature vs CLHLS); possible partial overlap not settled: P-711 pools Sha et al. 2022 (China, n = 7422, MMSE-defined MCI, factors incl. ethnicity, tea, housework) whose source cohort is not named in the extract (reference list omitted)",
+  "validation_tier": "n/a (neither validates a model; counted as matched)",
+  "modality_family": "match at a broad level (epidemiological cognitive screening data), but ascertainment differs: CMMSE < 18 single-screen threshold vs criteria-based diagnoses in most P-711 studies"
+ },
+ "endpoint_and_metric": "incompatible: pooled observed proportion vs competing-risk multi-state transition probability; different populations (all ages 60+/various vs oldest-old mean 85.8 with 75% death transition) and follow-up horizons",
+ "performance_validity": "not a performance comparison",
+ "independence": "Distinct studies and authors. Possible non-independence if P-711's Sha 2022 (23% of the pooled sample) is CLHLS-derived; not determinable from the extract.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The estimands differ: P-711 pools observed reversion proportions, while P-722's 9% is a Markov-model transition probability in which 75% of baseline-MCI participants transition to death.",
+  "The populations and MCI definitions differ: P-722's cohort is the oldest-old (mean 85.8 years) with MCI defined as CMMSE < 18, while P-711 pools mostly criterion-based diagnoses in younger samples.",
+  "The task gate fails (T5 cohort vs T6 synthesis) with no waiver on record.",
+  "Even read as the same quantity, a single cohort at 9.4% sits inside P-711's own study-level range (4.6-62.8%), so the results would not be incompatible."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-711",
+   "page": 5,
+   "quote": "the overall prevalence of reversion from MCI to normal cognition was estimated to be 31% (95% CI:26% to 35%, I2= 98.9%, P <0.001)."
+  },
+  {
+   "paper": "P-711",
+   "page": 5,
+   "quote": "In the 48 studies available for the meta-analysis, the prevalence of reversion from MCI to normal cognition ranged from 4.6% to 62.8%."
+  },
+  {
+   "paper": "P-711",
+   "page": 6,
+   "quote": "Community 27 36% 30%-42% 98.3% <0.001"
+  },
+  {
+   "paper": "P-711",
+   "page": 7,
+   "quote": "the measurement tools of MCI in the included studies were not uniform and there was no strict limit on the followup time"
+  },
+  {
+   "paper": "P-711",
+   "page": 3,
+   "quote": "Sha, F., et al. (2022)24 China 7422 21.6 MMSE"
+  },
+  {
+   "paper": "P-722",
+   "page": 1,
+   "quote": "Participants (mean [SD] age, 85.80 [11.13] years ...) were followed over a mean time of 4.76 (SD = 3.14) years. The rate of reversion from MCI to NC was 9.4 %."
+  },
+  {
+   "paper": "P-722",
+   "page": 3,
+   "quote": "Those with MCI status at baseline had a 14 % probability of remaining there, a 9 % probability of reverting to NC, a 1 % probability of developing to dementia, and a 75 % probability of transmitting to death."
+  },
+  {
+   "paper": "P-722",
+   "page": 2,
+   "quote": "The identified MCI cases should meet the following: 1) had CMMSE scores of less than 18 points [17], and 2) were nondemented."
+  },
+  {
+   "paper": "P-722",
+   "page": 6,
+   "quote": "reported a 3 % probability of NC-to-MCI transition and a 11 % probability of MCI-to-NC reversion during a 5-year follow-up [4], which were similar to our results of 3 % for NC-to-MCI and 9 % for MCI-to-NC."
+  },
+  {
+   "paper": "P-722",
+   "page": 6,
+   "quote": "The disparities of transition rate between cognitive stages might be due to differences in MCI definition, study design, and population."
+  }
+ ],
+ "record_defects": [
+  "claim_b attributes to P-722 (via its digest) the statement that its rate 'is not comparable with the wider literature'; the PDF contains no such sentence. It says its 9% is similar to a Spanish cohort's 11% and that disparities 'might be due to differences in MCI definition, study design, and population'.",
+  "The record gives P-722's follow-up as 'CLHLS 2008-2018'; the analysed waves run 2008/2009 to 2017/2018, with follow-up up to 11.24 years (minor).",
+  "The gatecheck in resolution_note codes P-722's primary metric as Hazard_Ratio; the reversion figure being compared is a transition probability, and the hazard ratios concern dietary exposures, not the reversion rate itself (minor).",
+  "P-711's diagnostic-criterion subgroups cover 30 of 48 studies (15 + 12 + 3), as the operator's 2026-09-14 revision states; confirmed from Table 2."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing plausible would make this genuine: a common estimand would need P-722 to report an observed reversion proportion among survivors under a criterion-based MCI definition comparable to P-711's pooled studies. Identifying Sha 2022 as CLHLS-derived would add non-independence but would not change the verdict."
+}

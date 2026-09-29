@@ -1,0 +1,82 @@
+{
+ "id": "C-53",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-117",
+   "pdf_is_right_paper": false,
+   "title_as_printed": "Pack text pdf/P-117.txt is 'Deep learning-based classification of healthy aging controls, mild cognitive impairment and Alzheimer's disease using fusion of MRI-PET imaging' (Rallabandi & Seetharaman, BSPC 80 (2023) 104312, OASIS), NOT the paper the record means. The record's '99.81% Acc' belongs to Aljalal et al., 'Mild cognitive impairment detection with optimally selected EEG channels based on variational mode decomposition and supervised machine learning', BSPC 87 (2024) 105462, PDF in the repository at downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809423008959-main.pdf. Both read in full.",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-50",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Cortical and subcortical gray matter abnormalities in mild cognitive impairment (Wang, Liang et al., Neuroscience 2024; doi 10.1016/j.neuroscience.2024.07.036)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-117": "Resting-state 19-channel EEG, 61 participants (29 aMCI/32 HC, public Isfahan Noor Hospital datasets), VMD + entropy features, 10-fold CV over 3660 ten-second segment feature vectors; binary MCI vs HC accuracy 99.51% (all channels) and 99.81% (11 NSGA-II channels, ensemble KNN).",
+  "P-50": "Linear SVM on combined cortical (SBM sulcal depth, gyrification) and subcortical (VBM volume, vertex shape) T1 sMRI features, 46 participants (24 MCI/22 NC, Nanjing Drum Tower Hospital), leave-one-out CV; binary MCI vs NC accuracy 89%, sensitivity 87%, specificity 90%, AUC 0.89."
+ },
+ "quantity_a": "Segment-level 10-fold CV accuracy, binary MCI vs HC, resting-state EEG, N=61",
+ "quantity_b": "Subject-level LOOCV accuracy, binary MCI vs NC, T1 structural MRI morphometric features, N=46",
+ "same_quantity": false,
+ "incompatible_if_same": "No. Both are binary MCI-vs-normal accuracies from small internal cross-validations, but they come from unrelated methods and inputs, with no intervals; neither paper claims an ordering the other refutes.",
+ "gates": {
+  "task": "match: binary MCI vs cognitively normal",
+  "dataset_family": "mismatch: Isfahan Noor Hospital public EEG datasets vs Nanjing Drum Tower Hospital cohort; record's dataset_equal='Yes' is wrong",
+  "validation_tier": "match in tier (internal CV, no external cohort) but segment-level 10-fold vs subject-level LOOCV",
+  "modality_family": "mismatch: EEG vs structural MRI; no waiver on record"
+ },
+ "endpoint_and_metric": "same metric type (accuracy) but segment-level vs subject-level evaluation and different MCI definitions",
+ "performance_validity": "flag applies to P-117 on the source: 99.81% from internal 10-fold CV over segments of 61 participants, with no external cohort (the earlier note's rejection on this ground is confirmed by the PDF; the pack flag is false only because the registry Best_Metric is 'not reported'). P-50's 89% is below the threshold.",
+ "independence": "Independent: different groups (King Saud University/NTNU vs Nanjing University), different cohorts and modalities.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "Task and metric type match, but the modality family (EEG vs T1 structural MRI) and dataset family (Isfahan vs Nanjing) differ with no waiver on record.",
+  "P-117's accuracy is over EEG segments while P-50's is subject-level LOOCV, so the evaluation units differ.",
+  "P-117 meets the performance-validity exclusion on its own PDF, so a performance conflict resting on it cannot be genuine.",
+  "The pack PDF for P-117 is the wrong paper; the verdict uses the correct P-117 PDF found in the repository."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-117",
+   "page": 1,
+   "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method. (correct PDF S1746809423008959)"
+  },
+  {
+   "paper": "P-117",
+   "page": 3,
+   "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases. (correct PDF)"
+  },
+  {
+   "paper": "P-117",
+   "page": 7,
+   "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets (correct PDF)"
+  },
+  {
+   "paper": "P-50",
+   "page": 1,
+   "quote": "When combined with cortical and subcortical metrics, SVM achieved a peak accuracy of 89 % in distinguishing MCI from NC."
+  },
+  {
+   "paper": "P-50",
+   "page": 3,
+   "quote": "SVM classification was based on a linear kernel function, and leave-one-out cross-validation (LOOCV) was selected to evaluate the performance of the classification model"
+  },
+  {
+   "paper": "P-50",
+   "page": 3,
+   "quote": "A total of 46 participants were included in the study, consisting of 24"
+  }
+ ],
+ "record_defects": [
+  "The pack/paper_pdf_map entry for P-117 ('formula-unverified') points to the wrong PDF (S1746809422007662, MRI-PET fusion); the correct P-117 PDF is S1746809423008959.",
+  "dataset_equal='Yes' is wrong (Isfahan EEG datasets vs Nanjing hospital cohort).",
+  "The resolution_note repeats the same AUTO-FIXED string dozens of times; the bridging-evidence list (P-360, P-322, P-324, P-387) does not bear on this pair."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "Nothing in these documents; the two share only the task label and metric type."
+}

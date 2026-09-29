@@ -1,0 +1,95 @@
+{
+ "id": "C-250",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-891",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Sleep quality modifies the association between nocturnal sleep, daytime napping, and mild cognitive impairment: A population-based dose-response study (Luo, Yin, Sun, Li; Sleep Medicine: X 11 (2026) 100175)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-773",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Late-life sleep duration associated with amnestic mild cognitive impairment (Yuan, Hong, ... Xu, Wang; International Psychogeriatrics (2023) 35:8, 439-448)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-891": "CHARLS 2018, n = 7,480 adults aged 45+ (mean age 59.7). MCI = TICS-10 score at least 1 SD below the mean of one's 5-year age group (AACD-adapted); 1,186 (15.9%) classed as MCI. Category contrast, long (>8 h) vs normal (6-8 h) nocturnal sleep: adjusted OR 1.333 (95% CI 1.027-1.716) in Table 2 (1.335, 1.030-1.71 in Table 4). By sleep quality: good quality, long sleep OR 1.334 (1.004-1.754); poor quality, long sleep adjusted OR 1.875 (0.939-3.623, p = 0.066), which is not significant. RCS: U-shape, lowest odds at about 6-7 h.",
+  "P-773": "CLAS 2011-2012, n = 2,977 aged 60-96 (505 aMCI by Petersen-adapted criteria, 2,472 normal ageing; dementia, vascular MCI and depression excluded). Late-life sleep split at 7 h (the cut taken from a MoCA inverted-U with optimum 6.87 h). Within >= 7 h (n = 1,543, mean 7.68 +/- 0.82 h, 245 aMCI): per-additional-hour OR 0.91 (0.77-1.08), p = 0.283 (adjusted for age, gender, education); fully adjusted 0.92 (0.76-1.10). Within < 7 h: OR 0.81 (0.69-0.95) per hour (0.80 fully adjusted)."
+ },
+ "quantity_a": "Odds of screening-defined MCI (age-relative TICS-10 low score) for >8 h vs 6-8 h habitual nocturnal sleep, community adults aged 45+ (mean 59.7), cross-sectional, category contrast.",
+ "quantity_b": "Per-additional-hour odds of clinically diagnosed amnestic MCI within the stratum sleeping >= 7 h in late life (mostly 7-9 h; mean 7.68, SD 0.82), urban community adults aged 60-96, cross-sectional, slope estimate.",
+ "same_quantity": false,
+ "incompatible_if_same": "No clear incompatibility. P-773's >= 7 h stratum is centred on 7-8 h, which is inside P-891's reference band (6-8 h), so its per-hour slope mostly describes a range where P-891 predicts no excess. Converting roughly, two extra hours at OR 0.91/h gives about 0.83 (0.59-1.17), whose interval touches P-891's 1.333 (1.027-1.716). Both papers also find an inverted U / U-shape with the optimum near 6-7 h (P-891 RCS minimum 6-7 h; P-773 MoCA optimum 6.87 h).",
+ "gates": {
+  "task": "match: both T6 cross-sectional association studies",
+  "dataset_family": "distinct cohorts (CHARLS vs CLAS); for an association question, independent cohorts are not a gate failure",
+  "validation_tier": "n/a (neither validates a model; counted as matched)",
+  "modality_family": "match: self-reported sleep questionnaires plus cognitive testing"
+ },
+ "endpoint_and_metric": "incompatible: different outcome (age-relative TICS-10 screening cut from age 45 vs Petersen amnestic MCI with clinical exclusions from age 60), different contrast (>8 h vs 6-8 h category OR vs per-hour slope within >= 7 h), different age window",
+ "performance_validity": "not a performance comparison",
+ "independence": "Independent cohorts and authors; no shared data.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The contrasts differ: P-891 compares >8 h with a 6-8 h reference, while P-773 estimates a per-hour slope within a >= 7 h stratum whose mass (mean 7.68 h) lies largely inside P-891's reference band.",
+  "The outcomes differ: P-891's MCI is a TICS-10 score 1 SD below the age-group mean, while P-773's is clinically diagnosed amnestic MCI with vascular MCI and depression excluded.",
+  "The age windows differ: P-891 covers adults from 45 (mean 59.7), while P-773's late-life stratum is 60-96.",
+  "The shapes agree (a U or inverted U with its optimum near 6-7 h in both), and on a rough conversion the intervals touch, so no incompatibility on a common quantity is shown."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-891",
+   "page": 6,
+   "quote": "Long(>8 h) 1.595(1.248, 2.022) *** 1.333(1.027, 1.716) *"
+  },
+  {
+   "paper": "P-891",
+   "page": 5,
+   "quote": "among participants with poor sleep quality, only long sleep duration had elevated odds in the unadjusted model (OR = 2.077, p < 0.05), which was attenuated after adjustment (OR = 1.875, 95% CI: 0.94\u20133.62, p = 0.066)."
+  },
+  {
+   "paper": "P-891",
+   "page": 3,
+   "quote": "MCI was operationally defined as scoring at least one standard deviation below the mean TICS-10 score of one's respective five-year age group"
+  },
+  {
+   "paper": "P-891",
+   "page": 4,
+   "quote": "In the total sample, the lowest odds of MCI were observed at around 6\u20137 h of nocturnal sleep."
+  },
+  {
+   "paper": "P-773",
+   "page": 4,
+   "quote": "\u22657 hours 1,543 245 (15.9) 0.91 (0.77\u20131.08) 0.283"
+  },
+  {
+   "paper": "P-773",
+   "page": 5,
+   "quote": "SLEEP DURATION \u22657 HOURS (n = 1,543) ... Sleep duration in late life (mean \u00b1 SD) ... 7.68 \u00b1 0.82 0.92 (0.76\u20131.10) 0.353"
+  },
+  {
+   "paper": "P-773",
+   "page": 3,
+   "quote": "in late life, the highest point for MoCA scores was associated with 6.87 hours (Table 2)."
+  },
+  {
+   "paper": "P-773",
+   "page": 2,
+   "quote": "The diagnostic criteria for aMCI, which were adapted from the MCI diagnostic criteria of Petersen (Portet et al., 2006)"
+  }
+ ],
+ "record_defects": [
+  "audit_note_2026_09_14 and conflict_statement say P-891 prints no unstratified long-sleep main effect and no confidence interval; the PDF prints both: adjusted OR 1.333 (1.027-1.716) in Table 2 and 1.335 (1.030-1.71) in Table 4 'ALL'. The operator's open item is therefore answered the other way.",
+  "claim_a and evidence_quotes present 'OR 1.88 with poor sleep quality' as elevated odds; in Table 4 the adjusted estimate is 1.875 (0.939-3.623, p = 0.066), which is not significant (only the unadjusted 2.077 is).",
+  "claim_a gives P-891's categories as '<=6 h' and '>=8 h'; the paper uses <6 h, 6-8 h (reference) and >8 h (minor).",
+  "human_evaluation_note's 'intervals are formally incompatible (P-773 OR 0.91 upper 1.08 vs P-891 1.33/1.88)' compares a per-hour slope with a category OR; the two are not on the same scale, and on a rough two-hour conversion the intervals touch.",
+  "residual_risk says 'it is only the tail that is thin'; for the late-life >= 7 h stratum this is inaccurate (1,543 participants, 245 aMCI), as the audit already noted.",
+  "The record's statement that P-773's curve 'recovers the SAME inverted-U shape' is true only for MoCA scores (R2 = 0.017), not for aMCI odds; P-773 tests aMCI only by split-sample slopes."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "An estimate from P-773 of aMCI odds for > 8 h vs 6-8 h late-life sleep (or from P-891 of a per-hour slope within >= 7 h), under comparable MCI definitions and age windows, showing non-overlapping intervals. Neither paper reports this."
+}

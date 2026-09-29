@@ -1,0 +1,220 @@
+{
+ "paper_id": "P-1322",
+ "document_check": {
+  "matches": true,
+  "note": "Lin Y, Shi X, Mu J, et al. Uncovering stage-specific neural and molecular progression in Alzheimer's disease: Implications for early screening. Alzheimer's Dement. 2025;21:e70182, doi:10.1002/alz.70182. The title matches the summaries.md header for Paper 1322. The design is a two-site Shenzhen sample of 277 participants (HC 168, SCD 30, MCI 51, AD 28) with random-forest classification of SCD, MCI and AD against HC from seven feature groups. The cited numbers are present: Table 1 (p.14) MCI vs HC AUC for EEG relative PSD 0.76, EEG FC 0.49, EEG combined 0.59; SCD vs HC 0.69 / 0.68 / 0.78; AD vs HC 0.68 / 0.77 / 0.84. The same figures appear in the text on p.12. The stratified 80/20 split with SMOTE is on p.6."
+ },
+ "cited_result": "MCI vs HC random-forest classification from resting-state eyes-closed EEG, one stratified 80/20 train-test split with ANOVA feature selection, age/education residualisation, scaling, SMOTE and GridSearchCV tuning (p.6). AUC (Table 1, p.14): relative PSD 0.76, dwPLI FC 0.49, PSD+FC combined 0.59. With the same pipeline, SCD vs HC gave 0.69 / 0.68 / 0.78 and AD vs HC 0.68 / 0.77 / 0.84 (p.12). The principal result appraised is the MCI vs HC comparison. The SCD and AD rows share its design, and the judgments below apply to them too.",
+ "tool_reason": "The cited result is the discrimination (AUC) of machine-learning classifiers (random forests) built on different EEG feature sets to separate MCI from healthy controls. That is a diagnostic prediction-model performance question, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "Clinically labelled groups were recruited at two sites, a hospital and a research institute. No consecutive or random sampling frame is described, and the paper does not say which site supplied which group. The design therefore works as a diagnostic case-control comparison (168 HC against 51 MCI). The eligible age range is 20 to 70, and age and education differ significantly between groups. Broad exclusions (psychiatric and other neurological disease, Fazekas >= 2 white-matter lesions, psychoactive medication) remove the harder differential cases. Both features tend to inflate discrimination.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "Probably no",
+     "quote": "Participants were recruited from two sites: Shenzhen People\u2019s Hospital and Shenzhen BGI Life Sciences Research Institute.",
+     "page": "3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "(4) Abnormal cranial MRI scans, indicating a Fazekas score of \u22652 for white matter lesions, space-occupying lesions, or other abnormal signals [p.3]; aged between 20 and 70 years, right-handed, and able to provide informed consent [p.3]; Significant differences in age and education level were observed among the four groups [p.7]",
+     "page": "3, 7"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "The EEG predictors were recorded on one 64-channel system in the same resting, eyes-closed condition for everyone and would be available at the time of intended use. Preprocessing included manual visual rejection of artefact segments and ICA component removal. The paper does not state whether these steps were done blind to diagnostic group, and diagnoses were known at recruitment.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "EEG data were acquired using a 64-channel BrainAmp DC amplifier system (Brain Products, GmbH, Munich, Germany) with the scalp electrodes placed according to the international 10\u201320 system, while the participants were in the resting state with eyes closed.",
+     "page": "6"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "No information",
+     "quote": "Searched Section 2.8 for any statement that EEG preprocessing was blind to group; none found. The manual step is: (2) the bad segments contaminated by artifacts were excluded manually via visual inspection",
+     "page": "6"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "while the participants were in the resting state with eyes closed",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "MCI follows the 2011 NIA-AA criteria for MCI due to AD, but objective impairment is operationalised by a single screening score (MoCA 26 or below), and no biomarker confirmation is reported for MCI (only AD had CSF testing). The paper gives no criteria for the healthy control group. The MCI cut-off (26 or below) overlaps the SCD cut-off (26 or higher). EEG does not enter the diagnosis, which was made at recruitment. The interval between cognitive assessment and EEG is not reported.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably no",
+     "quote": "MCI patients were confirmed to have objective memory impairment, as reflected by a MoCA score of 26 or below (adjusted for education), while maintaining daily functional independence, evidenced by an ADLs score of 23 or lower.",
+     "page": "3"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "Participants included in the AD and MCI groups had to meet the 2011 National Institute on Aging-Alzheimer\u2019s Association (NIA-AA) diagnostic criteria for AD or MCI due to AD, respectively.",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "All participants in these groups completed the Montreal Cognitive Assessment (MoCA) and an evaluation of activities of daily living (ADLs).",
+     "page": "3"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "All participants in these groups completed the Montreal Cognitive Assessment (MoCA) and an evaluation of activities of daily living (ADLs).",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Probably yes",
+     "quote": "Participants included in the AD and MCI groups had to meet the 2011 National Institute on Aging-Alzheimer\u2019s Association (NIA-AA) diagnostic criteria for AD or MCI due to AD, respectively.",
+     "page": "3"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched Sections 2.1 and 2.8 for the timing of the cognitive assessment relative to the EEG recording; none reported.",
+     "page": "3, 6"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "The whole MCI group is 51, so a 20% stratified test set holds about 10 MCI cases, before any EEG missingness (the counts appear only in Figure 1B). Candidate EEG features (7 bands by 64 channels, and dwPLI over atlas region pairs by 7 bands) far outnumber events. Predictors were chosen by univariable ANOVA, though on training data. Performance comes from one random hold-out split, with no repetition, no confidence intervals, no calibration and no external validation. Several feature-set combinations were compared on the same small test set, and an RFE or importance-based step was added 'to enhance model performance' without saying on which data. The threshold metrics for FC (recall 0.79, specificity 0.97) sit alongside an AUC of 0.49, which points to unstable estimates. SMOTE and residualisation were applied during training, which is appropriate.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "The study recruited 277 participants from four groups: HC (n = 168), SCD (n = 30), MCI (n = 51), and AD (n = 28) [p.7]; The dataset was initially split into an 80% training set and a 20% test set using stratified sampling to ensure balanced class labels across splits. [p.6]",
+     "page": "6, 7"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "The data were subsequently scaled and oversampled using SMOTE to balance class distributions in each pairwise comparison.",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably no",
+     "quote": "(B) Data collection status across dimensions, with missing samples colored silver and the count of missing samples labeled next to each corresponding bar.",
+     "page": "4"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched Sections 2.8, 2.9 and 3.8 for imputation or complete-case handling of missing EEG or other modality data; none described.",
+     "page": "6, 7, 11"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "No",
+     "quote": "Significant unidimensional features were initially selected by performing one-way ANOVA on the training data, controlling for age and education to identify group differences.",
+     "page": "6"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "During training, the data were residualized via linear regression to remove the effects of age and education, ensuring these covariates did not influence classification.",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "No",
+     "quote": "A RandomForestClassifier was trained with hyperparameter tuning via GridSearchCV, and model performance was evaluated using classification reports, specificity, and receiver operating characteristics-area under the curve (ROC-AUC) scores.",
+     "page": "6"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably no",
+     "quote": "To enhance model performance, recursive feature elimination (RFE) or feature importance-based selection was employed to reduce redundant or irrelevant features.",
+     "page": "7"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched the Methods, Results and Table 1 for the selected features or a final model specification; none reported in the main text (Supporting Information not available in the source).",
+     "page": "6-14"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Probably yes",
+     "quote": "The dataset was initially split into an 80% training set and a 20% test set using stratified sampling to ensure balanced class labels across splits.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Are preprocessing, feature selection, augmentation and tuning confined to the training data?",
+     "answer": "Probably yes",
+     "quote": "Significant unidimensional features were initially selected by performing one-way ANOVA on the training data [p.6]; During training, the data were residualized via linear regression [p.6]",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "To enhance model performance, recursive feature elimination (RFE) or feature importance-based selection was employed to reduce redundant or irrelevant features. [p.7] (the data used for this step, and for choosing among feature-set combinations, are not stated)",
+     "page": "7"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes",
+     "quote": "The data were subsequently scaled and oversampled using SMOTE to balance class distributions in each pairwise comparison.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (one random stratified 80/20 hold-out split; no repetition, no external validation)",
+     "quote": "The dataset was initially split into an 80% training set and a 20% test set using stratified sampling to ensure balanced class labels across splits.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The design is a two-site case-control sample with an eligible age range of 20 to 70, right-handed participants only, and broad exclusions (psychiatric, neurological, vascular, medication). This is not the population in which MCI screening would be used."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "64-channel research-grade resting EEG with manual artefact rejection and ICA cleaning is less feasible in routine screening than the paper implies."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "some concerns",
+   "rationale": "MCI due to AD is operationalised by MoCA 26 or below without biomarker confirmation, and control criteria are not reported."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Domain 1 is high: a two-site case-control sample with restrictive exclusions and groups that differ in age and education. Domain 4 is high: about 10 MCI test cases on a single hold-out split, univariable feature selection, many feature-set comparisons on the same test set, and no confidence intervals, calibration or external validation. Domains 2 and 3 are unclear (no blinding statement for manual EEG preprocessing; control criteria and timing not reported). Under PROBAST, any high domain makes the overall rating high.",
+ "confidence": "high",
+ "tool": "PROBAST (Wolff et al. 2019) with PROBAST+AI considerations (Moons et al. 2025)",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 21,
+  "matched": 17,
+  "annotations_not_checked": 4,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
+ }
+}

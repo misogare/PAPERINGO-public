@@ -1,0 +1,87 @@
+{
+ "id": "C-127",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-186",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Early MCI-to-AD Conversion Prediction Using Future Value Forecasting of Multimodal Features (Minhas et al., Comput Intell Neurosci 2021)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-156",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Prediction of future dementia among patients with mild cognitive impairment (MCI) by integrating multimodal clinical data (Cirincione et al., Heliyon 2024)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-186": "SVM on longitudinal trajectories of 8 neuropsychological measures plus 249 FreeSurfer MRI features, three time points of which the last is forecast; 5-fold CV within ADNI-1 MCI subjects with complete follow-up. 1-year-ahead NM+MRI AUC 95.7% (n=85: 35 MCIp/50 MCIs, 9 features); 6-month-ahead AUC 91.2% (n=119). Accuracy 81% and 84.9% respectively.",
+  "P-156": "Ensemble Integration (stacking with random forest) on BASELINE-only TADPOLE features (cognitive tests, MRI volumes/ROI, CSF, demographics/APOE) for 841 E/LMCI patients (ADNI 1/2/GO); outcome = most recent diagnosis (dementia vs stayed MCI), no fixed horizon; held-out 20% test set AUC 0.81, F-measure 0.68 (XGBoost 0.68, autoencoder 0.79)."
+ },
+ "quantity_a": "AUC for classifying MCI progressors (conversion by month 36) vs stables among ADNI-1 MCI with 3 consecutive annual visits, using 3-point longitudinal NM+MRI-feature trajectories including a forecast value at the conversion time point; 5-fold CV, n=85.",
+ "quantity_b": "AUC for predicting eventual dementia (final diagnosis, unspecified horizon) from a single baseline visit among 841 early/late MCI patients from ADNI 1/2/GO (TADPOLE), held-out test split.",
+ "same_quantity": false,
+ "incompatible_if_same": "Not settled even if the quantities were aligned: neither study reports an interval for its AUC, and neither claims an ordering the other refutes; the gap (0.957 vs 0.81) is a difference between two methods on different inputs, not two estimates of one quantity whose uncertainty excludes the other.",
+ "gates": {
+  "task": "match: both T2 MCI-to-dementia/AD conversion prediction",
+  "dataset_family": "match: both ADNI-derived (P-186 ADNI-1 subset; P-156 TADPOLE from ADNI 1/2/GO), overlapping subjects likely",
+  "validation_tier": "match: both internal (P-186 5-fold CV; P-156 internal random 80/20 held-out split)",
+  "modality_family": "partial: both combine cognitive tests with FreeSurfer MRI measures, but P-156 also includes CSF and APOE; the record set this gate to No with no waiver"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC-AUC) but different endpoint and input representation: P-186 uses longitudinal three-visit trajectories (with a forecast value at the time of conversion) in a complete-follow-up ADNI-1 subsample, P-156 uses baseline-only data with an open-ended final-diagnosis outcome in a broader E/LMCI cohort",
+ "performance_validity": "flag does not apply: 0.957 is below the 0.97 threshold and P-156's 0.81 is far below it; note P-186 normalises all features before the train-test split and selects the reported marker-subset size from results (Table 5), so its 0.957 is optimistic",
+ "independence": "Distinct author groups; both draw on ADNI, so ADNI-1 MCI subjects may overlap (shared cohort, recorded as non-independence).",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-186's AUC is computed on longitudinal multi-visit trajectories that include a forecast of the marker at the conversion time point, while P-156 predicts from baseline data only, so the input representation differs.",
+  "P-186's outcome is conversion within 36 months in a complete-follow-up ADNI-1 subsample of 85 subjects; P-156's outcome is the most recent diagnosis in 841 E/LMCI patients, so endpoint horizon and population differ.",
+  "Neither paper claims a result about the other's setting, and no uncertainty intervals are reported that could make the two AUCs mutually exclusive."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-186",
+   "page": 1,
+   "quote": "The proposed technique resulted in a high classification AUC of 91.2% and 95.7% for 6-month- and 1-year-ahead AD prediction, respectively, using multimodal markers."
+  },
+  {
+   "paper": "P-186",
+   "page": 3,
+   "quote": "for 1-year-ahead prediction, the dataset contains three consecutive annual readings, resulting in 35 MCIp and 50 MCIs subjects."
+  },
+  {
+   "paper": "P-186",
+   "page": 8,
+   "quote": "The method proposed in this paper has recorded the highest classification AUC of 95.7% predominantly because of involving the forecasted marker value at the time of conversion as a classification feature."
+  },
+  {
+   "paper": "P-186",
+   "page": 4,
+   "quote": "We scale all features to have values between 0 and 1 before the train-test split."
+  },
+  {
+   "paper": "P-156",
+   "page": 3,
+   "quote": "our target prediction problem was to predict which of these MCI patients' diagnosis changed to dementia, and who stayed as MCI, based only on data collected at baseline when they were diagnosed with MCI."
+  },
+  {
+   "paper": "P-156",
+   "page": 1,
+   "quote": "on a held out test set, the EI-based model performed better (AUC = 0.81, F-measure = 0.68) than the more commonly used XGBoost (AUC = 0.68, F-measure = 0.57)"
+  },
+  {
+   "paper": "P-156",
+   "page": 8,
+   "quote": "only baseline patient data from TADPOLE were considered, and did not utilize the available longitudinal data."
+  }
+ ],
+ "record_defects": [
+  "resolution_note states 'Confirmed genuine' on metric type and gap alone while the record's own resolution field says 'Rejected: Task, dataset, or modality mismatch'; the note ignores the baseline-vs-longitudinal input difference.",
+  "The registry row for P-186 lists Best_Metric 'AUC 0.912' (the 6-month result) while the claim uses 0.957 (the 1-year result, n=85); the claim does not say which horizon or that n=85.",
+  "P-156 registry Validation_Type V2 is right, but the Method_Architecture field is a garbled text fragment.",
+  "Bridging evidence list (dozens of T2 papers with mixed Acc/AUC values) identifies no condition that separates the two results; it is generic heterogeneity, not bridging evidence."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A baseline-only P-186 result (or a longitudinal P-156 result) on the same horizon and population, with intervals that exclude each other."
+}

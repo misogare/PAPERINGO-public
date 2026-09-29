@@ -1,0 +1,83 @@
+{
+ "id": "C-229",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-642",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Immersive virtual reality versus non-immersive serious games for cognitive training in mild cognitive impairment: A systematic review and network meta-analysis (Zhao et al., General Hospital Psychiatry 2026)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-655",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Efficacy of digital therapeutic applications for cognitive training among older adults with mild cognitive impairment or dementia: A systematic review and network meta-analysis of randomized controlled trials (Jeong et al., Psychiatry Research 2025)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-642": "MMSE, pooled MD vs control from 18 RCTs (789 participants): immersive head-mounted VR -1.18 (-2.18 to -0.20), a significant decline; non-immersive SG +1.63 (0.69 to 2.62); MoCA: VR -0.12 (-2.19 to 2.07), SG +2.84 (0.61 to 5.01). The paper reads the VR decline as a possibly transient, short-term effect. Its reported indirect VR-vs-SG MMSE contrast (MD 0.45, -0.87 to 1.88) does not agree with the two node estimates, which differ by about 2.8 points.",
+  "P-655": "Global cognitive function, pooled SMD vs control (5 treatments and control in this network): CCT2x 1.21 (0.69 to 1.73), CCT 0.80 (0.34 to 1.27). The text gives no estimates for the other nodes. There is no immersive-VR node among CCT, CCT2x, CCE, PRT, MED, CCT_MED, CCT_PRT and control."
+ },
+ "quantity_a": "Pooled MMSE mean difference, immersive head-mounted-display VR vs conventional control, older adults with clinical MCI.",
+ "quantity_b": "Pooled SMD in global cognition, mobile-app computerised cognitive training (CCT, CCT2x) vs control, older adults with MCI or dementia.",
+ "same_quantity": false,
+ "incompatible_if_same": "Only the VR node declines, and P-655 has no VR node, so there is no shared quantity on which the two could be incompatible. On the comparable non-immersive nodes both papers report improvement (P-642 SG +1.63 MMSE; P-655 CCT 0.80 SMD).",
+ "gates": {
+  "task": "match: both T6 intervention syntheses.",
+  "dataset_family": "mismatch: different pooled trial sets (VR/SG trials in MCI vs mobile-app trials in MCI or dementia).",
+  "validation_tier": "n/a for two evidence syntheses (counted as matched).",
+  "modality_family": "mismatch for the contested result: immersive head-mounted VR (P-642) vs mobile-app CCT (P-655); no waiver on record (the record itself fails this gate)."
+ },
+ "endpoint_and_metric": "incompatible: MMSE MD vs global-cognition SMD, on different interventions and populations.",
+ "performance_validity": "not a performance comparison.",
+ "independence": "Two syntheses of different trial sets; trial overlap not determinable from the main texts.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "The only declining estimate is for immersive head-mounted VR, an intervention P-655's network does not contain, so the two papers report on different interventions.",
+  "Where the interventions are comparable (non-immersive serious games vs mobile-app CCT), both papers report significant improvement, so no disagreement exists on a shared quantity.",
+  "Metrics and populations also differ: MMSE mean difference in clinical MCI vs global-cognition SMD in MCI or dementia.",
+  "The VR decline itself is weakened on the source: the authors call it a probable short-term effect, and P-642's reported indirect VR-vs-SG contrast (0.45) does not agree with its own node estimates (-1.18 vs +1.63)."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-642",
+   "page": 6,
+   "quote": "while VR was associated with a significant decline compared to control (mean difference = \u22121.18, 95 % CI: \u22122.18 to \u22120.20)."
+  },
+  {
+   "paper": "P-642",
+   "page": 6,
+   "quote": "The indirect comparison between VR and SG showed no statistically significant difference (MD = 0.45, 95 % CI: \u22120.87 to 1.88)."
+  },
+  {
+   "paper": "P-642",
+   "page": 3,
+   "quote": "Immersive VR interventions are characterized by their use of head-mounted displays and multisensory environments"
+  },
+  {
+   "paper": "P-642",
+   "page": 8,
+   "quote": "the observed MMSE decline should be interpreted cautiously as a short-term phenomenon rather than evidence of long-term cognitive deterioration."
+  },
+  {
+   "paper": "P-655",
+   "page": 2,
+   "quote": "In our main NMA, we had 8 comparison groups: [1] CCT, [2] CCT2x, [3] CCE, [4] PRT, [5] MED, [6] CCT plus MED, [7] CCT plus PRT, and [8] CON."
+  },
+  {
+   "paper": "P-655",
+   "page": 4,
+   "quote": "The SMD was 1.21 (95 % CI, 0.69\u20131.73) for CCT2x and 0.80 (95 % CI, 0.34\u20131.27) for CCT."
+  }
+ ],
+ "record_defects": [
+  "claim_b's 'all computerised cognitive-training nodes improved global cognition ... with no node showing decline' is not supported by the text: P-655 reports only CCT2x and CCT for global cognition; the other nodes' estimates are figure-only.",
+  "The resolution_note describes all eight P-655 nodes as 'mobile-application or non-immersive computerised training'; PRT is progressive resistance training, MED is medication and CON is control.",
+  "The record does not note P-642's internal inconsistency: its indirect VR-vs-SG MMSE contrast (MD 0.45) cannot follow from node estimates of -1.18 and +1.63 against a common control.",
+  "Status 'false_positive' fits less well than documented incommensurability: the failure is a difference in intervention and metric (the record's own MODALITY_SUBTYPE_MISMATCH), not compatible results on one quantity."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A mobile-app or non-immersive CCT arm in either synthesis showing a significant global-cognition decline, or an immersive-VR node in P-655 showing improvement; neither exists."
+}

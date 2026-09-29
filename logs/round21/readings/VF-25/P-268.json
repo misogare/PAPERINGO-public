@@ -1,0 +1,26 @@
+{
+ "paper": "P-268",
+ "pdf_is_right_paper": true,
+ "preprint": false,
+ "read_in_full": true,
+ "supports_stated": "no",
+ "supports_narrowed": "n/a",
+ "dataset_family": "Korea University Anam Hospital memory-clinic patients, Seoul (with KIST); single site, IRB 2021AN0266; not public",
+ "method_family": "64-channel BioSemi EEG: phase/spectral/temporal time-frequency features (total, induced, evoked power) during auditory word memory encoding vs eyes-open rest; 9 ML and 3 DL four-class classifiers with leave-one-subject-out validation",
+ "same_sample_or_cohort_as": [],
+ "shared_authors_with": [],
+ "what_it_shows": "Kim et al. 2024, Sci Rep 14:5252 (20 SCD, 10 naMCI, 18 aMCI, 10 AD). Four-class cKNN: memory-encoding EEG features gave 93.10% accuracy (kappa 0.816) against 67.24% (kappa 0.126) for eyes-open resting EEG. Resting EEG still identified aMCI well (one-vs-rest AUC 0.882, sensitivity 88.89%). naMCI was poorly identified from resting EEG (AUC 0.619, sensitivity 30%) and well from encoding EEG (AUC 0.890).",
+ "why": "Identity: the block header is the PDF filename, but the block's title, author and DOI fields match the PDF (Kim S-K, Kim H, Kim SH, Kim JB, Kim L; 10.1038/s41598-024-55656-8). Extract read in full to the References. VERDICT NO: (1) The study never compares MCI with a non-impaired comparator on the EEG measures. Its output is a four-class classifier with one-vs-rest AUCs, so it produces no finding that the static (resting) measure fails to separate MCI from a non-impaired group. (2) Resting EEG does discriminate: 67.24% four-class accuracy against 25% chance, and aMCI AUC 0.882. What the study shows is that task-state EEG outperforms resting EEG, not that task-evoked EEG separates MCI where the static measure does not. The nearest element is naMCI (resting AUC 0.619 vs encoding 0.890), but that is a one-vs-rest AUC against SCD, aMCI and AD pooled, with n=10 and no test against chance or against SCD specifically. (3) Features were selected by one-way ANOVA across all 58 participants before LOSO. This leaks label information into both conditions and more features passed for encoding (258 vs 56); Figure 8's equal-feature-count comparison addresses the count but not the leakage. (4) Comparator: SCD (CDR 0 with subjective complaints) is objectively unimpaired but is not a healthy-control group, and ages were neither matched nor tested (SCD 63.42 vs naMCI 69.60 vs aMCI 66.17). (5) On fit: eyes-open resting power is a reasonable unloaded counterpart, and total/induced/evoked time-frequency power during word encoding counts as task-evoked electrophysiology broadly, though these are not ERP components. INDEPENDENCE: Korea University Anam Hospital. No shared cohort, site or author with any current supporter or other candidate. METHOD FAMILY: task-state EEG time-frequency analysis is the same broad family as current supporter P-661 (ERSP theta/alpha during Go/NoGo), which round 20 scored 'partly'. Not a registry duplicate stub. Peer-reviewed, not a preprint. NARROWED: the packet says the record is not a convergence, so n/a.",
+ "quotes": [
+  {"page": 10, "quote": "The overall accuracy was higher in encoding states (93.10%) than in resting states (67.24%)."},
+  {"page": 10, "quote": "The low F1 score the resting state was because of the low sensitivity values of naMCI (sensitivity: 30%) and AD (sensitivity: 30%) compared to SCD (sensitivity: 85%) and aMCI (sensitivity: 88.89%)."},
+  {"page": 13, "quote": "aMCI Sensitivity 88.89% 94.44% Specificity 87.50% 95.00%"},
+  {"page": 13, "quote": "AUC​ 0.882 0.947"},
+  {"page": 13, "quote": "AUC​ 0.619 0.890"},
+  {"page": 13, "quote": "Accuracy 67.24% 93.10% Kappa 0.126 0.816"},
+  {"page": 8, "quote": "First, we performed a one-way ANOVA for the four groups to select useful features from the significant extracted features, which had a p value of < 0.05."},
+  {"page": 4, "quote": "CDR 0 was defined as SCD, CDR 0.5 as MCI, and CDR 1 as"},
+  {"page": 7, "quote": "To analyze EEG data obtained during the resting state, the middle 2-min interval was used for the analysis of data measured for 3 min with eye opened state."},
+  {"page": 5, "quote": "Age (Years) 63.42 ± 11.18 69.60 ± 3.47 66.17 ± 8.74 71.20 ± 6.76"}
+ ]
+}

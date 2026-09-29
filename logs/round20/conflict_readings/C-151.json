@@ -1,0 +1,78 @@
+{
+ "id": "C-151",
+ "reader": "adjudicator",
+ "papers_read": [
+  {
+   "paper": "P-211",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Explainable Machine Learning with Pairwise Interactions for Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease Utilizing Multi-Modalities Data (Cai et al.; Brain Sci. 2023, 13, 1535)",
+   "read_in_full": true
+  },
+  {
+   "paper": "P-93",
+   "pdf_is_right_paper": true,
+   "title_as_printed": "Assessing clinical progression from subjective cognitive decline to mild cognitive impairment with incomplete multi-modal neuroimages (Liu, Yue, Xiao, Yang, Shen, Liu; Medical Image Analysis 75 (2022) 102266)",
+   "read_in_full": true
+  }
+ ],
+ "what_each_reports": {
+  "P-211": "ADNI 1/2/3/GO amnestic MCI (1042 at baseline); Explainable Boosting Machine on tabular features (FreeSurfer regional volumes/thickness, ADAS13, MMSE, FAQ, CDR-SB, demographics, baseline EMCI/LMCI, APOE4); 5-fold CV. Five-year conversion: accuracy 85%, AUC 0.92 (225 participants remaining at 5 years). Three-year comb-a model with interactions: accuracy 0.75, AUC 0.81 (test data).",
+  "P-93": "Primary task is SCD-to-MCI conversion (CLAS, 76 SCD, 7-year follow-up; JSRL AUC 0.747). Secondary task (Section 4.3): pMCI vs sMCI with a 36-month window on ADNI-1/2, trained on 939 subjects with MRI + FDG-PET (sCN/sMCI negative, pMCI/AD positive) and tested on independent MCI subjects with MRI only (PET synthesised by a GAN): AUC 0.838, ACC 0.780."
+ },
+ "quantity_a": "AUC for MCI-to-AD conversion within 5 years, ADNI amnestic MCI, cognitive scores + regional MRI volumes + demographics/APOE4, 5-fold CV.",
+ "quantity_b": "AUC for MCI-to-AD conversion within 36 months, ADNI-1/2, whole-brain T1 MRI images with GAN-synthesised FDG-PET features (no cognitive or demographic inputs), single held-out independent MCI test set.",
+ "same_quantity": false,
+ "incompatible_if_same": "No. At the matched three-year horizon P-211 reports AUC 0.81, close to P-93's 0.838. Neither paper evaluates the other's method or claims an ordering the other refutes.",
+ "gates": {
+  "task": "match in label (MCI-to-AD conversion, T2) for P-93's secondary task, but horizons differ (5 years vs 36 months); P-93's headline task is SCD-to-MCI, a different transition",
+  "dataset_family": "match: both ADNI",
+  "validation_tier": "match: both internal (5-fold CV vs ADNI held-out test set), V2",
+  "modality_family": "mismatch: P-211 is tabular MRI measures plus neuropsychological scores and APOE4; P-93 is MRI images with synthetic FDG-PET, no cognitive data; the record sets modality_family_equal 'No'"
+ },
+ "endpoint_and_metric": "incompatible: same metric type (ROC AUC) but different horizons (5-year vs 3-year conversion) and different predictor sets and input representations (tabular cognitive + volumetric features vs voxel images).",
+ "performance_validity": "flag does not apply: 0.92 and 0.838 are below 0.97.",
+ "independence": "Distinct author groups (Xi'an Jiaotong vs UNC/Southern Medical University/Shanghai); both use ADNI MCI participants and may overlap.",
+ "bridging_evidence": [],
+ "verdict": "documented_incommensurability",
+ "grounds": [
+  "P-211's AUC 0.92 is for conversion within five years, whereas P-93's AUC 0.838 is for conversion within 36 months.",
+  "P-211 relies on cognitive scores, demographics and APOE4 alongside regional MRI volumes, whereas P-93 uses MRI images with synthesised PET only, so predictor sets and input representations differ.",
+  "At the matched three-year horizon P-211 reports AUC 0.81, which does not disagree with P-93's 0.838."
+ ],
+ "evidence_quotes": [
+  {
+   "paper": "P-211",
+   "page": 1,
+   "quote": "The five-years prediction accuracy reached 85% (AUC = 0.92) using both cognitive scores and MRI markers."
+  },
+  {
+   "paper": "P-211",
+   "page": 12,
+   "quote": "The main performance indicators, accuracy, sensitivity, specificity, and AUC, were 0.75, 0.78, 0.73, and 0.81 (with interaction effects)"
+  },
+  {
+   "paper": "P-93",
+   "page": 3,
+   "quote": "we use the 36-month window to define the conversion of SCD and MCI subjects in ADNI-1 and ADNI-2."
+  },
+  {
+   "paper": "P-93",
+   "page": 8,
+   "quote": "Figure 4 suggests that our JSRL achieves the best AUC of 0.838 and ACC of 0.780"
+  },
+  {
+   "paper": "P-93",
+   "page": 9,
+   "quote": "we used only neuroimaging data for prediction, without considering the demographic information (e.g., age, gender, and education)"
+  }
+ ],
+ "record_defects": [
+  "claim_b is still written as 'P-188: AUC 0.838 on T2' although paper_b was repointed from the duplicate stub P-188 to P-93 on 2026-09-16.",
+  "claim_a 'AUC 0.92 on T2' omits the five-year horizon; the three-year AUC in P-211 is 0.81.",
+  "Registry Sample_N_Approx '242804' for P-211 is impossible (1042 MCI participants).",
+  "P-93's own MCI test-set size is inconsistent (text: 177 = 81 sMCI + 96 pMCI; Table 2 and Table 5: 66 sMCI / 93 pMCI); the AUC 0.838 is not affected.",
+  "resolution_note says 'Confirmed genuine' while resolution says 'Rejected: Task, dataset, or modality mismatch' and the status is partially_resolved_candidate: internally inconsistent."
+ ],
+ "confidence": "high",
+ "what_would_change_the_verdict": "A three-year P-211 AUC with a matched (imaging-only) predictor set whose uncertainty excluded 0.838; the paper reports no such figure."
+}

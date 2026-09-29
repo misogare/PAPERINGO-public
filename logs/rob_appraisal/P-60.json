@@ -1,0 +1,226 @@
+{
+ "paper_id": "P-60",
+ "document_check": {
+  "matches": true,
+  "note": "Yamada Y, Shinkawa K, Nemoto M, Nemoto K, Arai T. A mobile application using automatic speech analysis for classifying Alzheimer's disease and mild cognitive impairment. Computer Speech & Language 81 (2023) 101514, doi 10.1016/j.csl.2023.101514. The file is 1-s2.0-S0885230823000335-main.pdf, which is the summaries.md title of Paper 60. There are 114 participants (43 CN, 46 MCI, 25 AD), recorded with a voice application on an iPad Air 2. Table 6 and the text on p. 8 report the RBF-SVM result for MCI versus CN: accuracy 87.6%, sensitivity 88.1%, specificity 87.2%. This matches the citation."
+ },
+ "cited_result": "Nested leave-one-out classification of clinically diagnosed MCI (n=46) versus cognitively normal (n=43) participants. The inputs are 92 speech features extracted automatically from recordings made with a voice application on an iPad Air 2 tablet. The RBF-kernel SVM reaches accuracy 87.6%, sensitivity 88.1%, specificity 87.2% and F1 87.1% (Table 6; text p. 8).",
+ "tool_reason": "The cited result is the discrimination (accuracy, sensitivity, specificity) of a machine-learning classifier (SVM on speech features) that separates MCI from cognitively normal participants. That is a diagnostic prediction-model question, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "The patients were psychiatry outpatients who already had a diagnosis of AD or MCI. The controls were their spouses and community volunteers, age-matched to the patients. This is a two-gate (diagnostic case-control) design with no consecutive or random sampling frame, and the paper does not report how many people were screened or excluded. MCI was restricted to AD-type MCI meeting CDR and ADNI-style cut-offs, and non-AD MCI was excluded. Together these remove the ambiguous presentations a screening tool would meet.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used?",
+     "answer": "No",
+     "quote": "We recruited outpatients from the Department of Psychiatry, University of Tsukuba Hospital, along with their spouses, and other participants either through local recruiting agencies or community advertisements in Ibaraki, Japan. [p. 2]; CN participants were then age-matched with the patients. [p. 3]",
+     "page": "2, 3"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "Patients were excluded if they had diagnoses of non-AD dementia (dementia with Lewy bodies, frontotemporal dementia, vascular dementia, etc.), non-AD MCI, or other serious diseases or disabilities that would interfere with the collection of speech data.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "low",
+   "rationale": "Every participant answered the same prerecorded questions on the same tablet in the same room. The 92 features were extracted automatically (ASR, voice activity detection, signal-processing libraries), so extraction did not depend on knowing the diagnosis. The features would be available at the intended time of use. There are two minor departures: the experimenter repeated instructions when needed, and caregivers sat behind the partition for a few dementia patients. The caregivers did not attend any participant in the MCI versus CN comparison.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The experiment was conducted in the same room for all participants. [p. 3]; If a participant could not follow the tablet\u2019s instructions, the experimenter gave the instruction again and restarted the task. [p. 3]",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "From the participants\u2019 speech responses to the five tasks, we automatically extracted a total of 92 speech features",
+     "page": "4"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Yes",
+     "quote": "The participants sat in front of an iPad Air 2 tablet and answered questions presented by a voice-based application on the tablet",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "low",
+   "rationale": "MCI was defined by the NIA-AA core clinical criteria plus CDR and ADNI-style MMSE and logical-memory criteria. Two dementia psychiatrists confirmed each diagnosis while blind to the speech analysis, and the CN group was defined with the same instruments. No speech feature enters the outcome definition, although the app's subtraction task shares content with the MMSE serial sevens. The paper does not report the interval between clinical assessment and recording. The diagnoses are clinical, without biomarkers, as the authors acknowledge; for a clinically defined MCI target this is not judged a source of bias.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "the diagnoses of AD, MCI, and CN were confirmed by two psychiatrists (authors T. A. and K. N.), who are experts in dementia and were blind to the results of the speech data analysis. For this confirmation, they examined each case in terms of the clinical record and the cognitive and clinical measures.",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Yes",
+     "quote": "clinical criteria for MCI (Albert et al., 2011): (i) cognitive concern by the subject, an informant, or a clinician; (ii) impairment in one or more cognitive domains; (iii) essentially normal functional activities; and (iv) absence of dementia.",
+     "page": "3"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably yes",
+     "quote": "They also had a CDR global score of 0.5, with the memory box score being 0.5 or greater, and they met at least one of the remaining two ADNI criteria for MCI (Petersen et al., 2010) [p. 3]; serial sevens subtraction in the MMSE [p. 4]",
+     "page": "3, 4"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "The cognitive performance of all participants was assessed through seven neuropsychological assessments. [p. 3]; The CN participants did not fulfill the NIA-AA criteria for MCI or dementia (Albert et al., 2011; McKhann et al., 2011). [p. 3]",
+     "page": "3"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "Yes",
+     "quote": "who are experts in dementia and were blind to the results of the speech data analysis.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "No information",
+     "quote": "Searched Sections 2.1 and 2.2 for the time between the neuropsychological and clinical assessment and the tablet recording; not reported.",
+     "page": "2-4"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "For MCI versus CN there are 46 participants with the outcome against 92 candidate features, about 0.5 events per candidate predictor (about 20 features selected per fold). Several parts of the validation are appropriate: nested leave-one-out at the participant level, LASSO feature selection and grid-search tuning in the inner loop, and class weights tuned for a near-balanced sample. However, six algorithms were compared on the outer-loop results and only the best is reported (RBF SVM 87.6%; the other five 49.4% to 85.4%). That choice adds optimism the nested design does not remove. The paper does not say whether scaling and imputation were fitted within folds. Performance is reported as accuracy, sensitivity, specificity and F1 only, with no AUC, calibration or confidence interval. The permutation test covers only the three-class accuracy. The MCI group had fewer women than the CN group (39% vs 65%), and the leading MCI features are pitch variation and MFCC variances, voice features that may differ by sex; no adjustment for sex is reported. There is no external validation.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Finally, a total of 114 older individuals met the inclusion criteria: 43 CN participants, 46 MCI patients, and 25 AD patients. [p. 3]; The input variables for the models were the 92 speech features extracted from each task [p. 5]",
+     "page": "3, 5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Yes",
+     "quote": "The variables were normalized before training the classifiers by using the robust scaler in the Python package scikit-learn (version 0.23.2).",
+     "page": "5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Yes",
+     "quote": "A total of 114 older individuals met the inclusion criteria and participated in the speech data collection: 43 CN participants, 46 MCI patients, and 25 AD patients.",
+     "page": "7"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "Yes",
+     "quote": "As for missing values, we used multivariate imputation by chained equations implemented with IterativeImputer of scikit-learn (version 0.23.2). [p. 6]; For the speech data collection, 110 of the 114 participants completed all five tasks. [p. 4]",
+     "page": "4, 6"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Yes",
+     "quote": "we applied feature selection by using the least absolute shrinkage and selection operator (LASSO) penalized logistic regression model using the training set before training classifiers.",
+     "page": "6"
+    },
+    {
+     "question": "4.6 Were complexities in the data accounted for appropriately?",
+     "answer": "Probably no",
+     "quote": "there was a lower proportion of female participants in the MCI group than in the control group. [p. 7]; The pitch variation in the subtraction task had the highest importance, followed by the MFCC variances in the picture description and phonemic verbal fluency tasks. [p. 11]",
+     "page": "7, 11"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately (including calibration)?",
+     "answer": "Probably no",
+     "quote": "while that for discriminating MCI from CN achieved an accuracy of 87.6% (sensitivity: 88.1%; specificity: 87.2%; F1 score: 87.1% and Fig. 3B and Table 6).",
+     "page": "8"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism accounted for?",
+     "answer": "Probably no",
+     "quote": "The classification algorithms were k-nearest neighbors (Goldberger et al., 2004), a random forest (Breiman, 2001), a logistic regression (Cox, 1958), a light gradient boosting machine (Ke et al., 2017) and a support vector machine (SVM) (Boser et al., 1992) [p. 6]; this study used a small dataset with different sizes of diagnostic groups, which might affect the generalizability of our findings. [p. 13]",
+     "page": "6, 13"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the reported multivariable analysis?",
+     "answer": "No information",
+     "quote": "Searched Sections 2.4 and 3.4 for the final model's features and weights. The lists of selected features are deferred to Supplementary Tables 3-5 ('see Supplementary Tables 3\u20135 for the full lists'), which are not in the source document, and no final RBF-SVM specification is given.",
+     "page": "6, 8"
+    },
+    {
+     "question": "AI: Is the train/test split at the participant level?",
+     "answer": "Yes",
+     "quote": "In the outer loop, data from all but one participant (the training set) was used to predict the label for the left-out participant (the test set), and the process was repeated for all participants.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Are feature selection and hyperparameter tuning done within the training folds only?",
+     "answer": "Yes",
+     "quote": "In the inner loop, the training set was further split by using a leave-one-out procedure for feature selection and hyperparameter tuning.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Are other preprocessing steps (scaling, imputation) confined to the training folds?",
+     "answer": "No information",
+     "quote": "The variables were normalized before training the classifiers by using the robust scaler in the Python package scikit-learn (version 0.23.2).",
+     "page": "5"
+    },
+    {
+     "question": "AI: Is the test set held out from all tuning?",
+     "answer": "Partly: yes for features and hyperparameters; no for the choice among six algorithms, which rests on the outer-loop results",
+     "quote": "After feature selection, the hyperparameters of each algorithm were chosen on the basis of the training set by a grid-search method.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Was class imbalance handled?",
+     "answer": "Yes",
+     "quote": "and for the SVM, the kernel, the regularization parameter, the kernel coefficient, and the class weights.",
+     "page": "6"
+    },
+    {
+     "question": "AI: Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated only (nested leave-one-out cross-validation)",
+     "quote": "In the outer loop, data from all but one participant (the training set) was used to predict the label for the left-out participant (the test set), and the process was repeated for all participants.",
+     "page": "6"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "The participants are psychiatry outpatients with AD-type MCI and age-matched spouse or community controls, all Japanese speakers at one university hospital. Non-AD MCI was excluded."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "some concerns",
+   "rationale": "Recordings were made in a quiet laboratory room, with a hidden experimenter who re-instructed participants when needed. The intended use is self-administered screening, and the authors acknowledge the laboratory setting as a limitation."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "MCI is defined clinically by NIA-AA criteria, which is the target of a screening tool. There is no biomarker confirmation."
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Two domains are high. Domain 1: two-gate recruitment of diagnosed outpatients against age-matched spouse and community controls, with non-AD MCI excluded. Domain 4: 46 events against 92 candidate features, the best of six algorithms reported from the outer-loop results, no AUC, calibration or confidence interval, sex imbalance not addressed, and internal validation only. Domains 2 and 3 are low.",
+ "confidence": "high",
+ "tool": "PROBAST",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 25,
+  "matched": 16,
+  "annotations_not_checked": 1,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
+ }
+}
