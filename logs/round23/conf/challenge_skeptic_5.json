@@ -1,0 +1,83 @@
+{
+  "skeptic": "challenge_skeptic_5",
+  "date": "2026-09-29",
+  "results": [
+    {
+      "id": "C-204",
+      "final": "yes",
+      "overturned": false,
+      "reason": "No failed condition found in the sources. Question: MCI-to-AD conversion in ADNI from single structural MRI scans (MRI channel); AUC in both. No matched figure: P-41 reports nothing without its 15 added AD patients or at 36 months, and P-65 reports nothing at P-41's 18-48-month window or with AD in the positive class. P-65's DenseNet baseline (0.7854) and the re-implemented methods are other architectures under P-65's own protocol, so they are not P-41's condition. Hanley-McNeil recomputed: P-41 0.9287 on 15/15 gives SE 0.0505 and an interval of 0.830-1.000. P-65 0.8401 on 300/273 gives SE 0.0165 and 0.808-0.872. P-41's estimate lies outside P-65's interval, which meets condition 4 as worded. The reverse does not hold (0.8401 lies inside 0.830-1.000; two-sample z = 1.67), so the qualification rests on the one-directional reading the rule permits. Both figures are below 0.97, so condition 5 passes. The operator's grounds of 2026-09-24 (different endpoint, non-equivalent evaluation) are differences this rule allows, so they become candidate explanations. One new reliability concern, which is not a failed condition: P-41's printed metrics are internally inconsistent. On a balanced 15/15 test set, accuracy must equal the mean of sensitivity and specificity (88.1%), yet P-41 prints 91.77% (sensitivity 87.69, specificity 88.53). The same pattern recurs in other rows (86.76% against 83.65/81.47). The +/- on a single split is never defined. P-65 analyses 1905 scans from 573 subjects, and its Grad-CAM figure uses M06 and M24 scans, so its evaluation unit may be scan-level. The interval above uses subjects, which is conservative.",
+      "figures": {
+        "P-41": "AUC 0.9287 +/- 3.58 (Table 4 text; 92% in the abstract), heterogeneous EN+CN+DN ensemble with an MHA head, single test split of 15 sMCI / 15 pMCI+AD (Table 1). Hanley-McNeil: Q1 = 0.8669, Q2 = 0.8944, SE = sqrt(0.5743/225) = 0.0505, CI 0.830-1.000. Printed accuracy 91.77% is inconsistent with the printed sensitivity 87.69% and specificity 88.53% on balanced classes (must be 88.1%).",
+        "P-65": "AUC 0.8401 +/- 0.0297 (SD across 5 repeats of 5-fold stratified CV, 300 pMCI / 273 sMCI). Hanley-McNeil: Q1 = 0.7243, Q2 = 0.7671, SE = sqrt(22.35/81900) = 0.0165, CI 0.808-0.872. OASIS-3 external: 0.8137 +/- 0.0351 (62 sMCI / 82 pMCI).",
+        "comparison": "0.9287 lies outside 0.808-0.872 (condition 4 met, one direction); 0.8401 lies inside 0.830-1.000; z = (0.9287 - 0.8401)/sqrt(0.0505^2 + 0.0165^2) = 1.67."
+      },
+      "candidate_explanations": [
+        "Label definition (P-41): 15 patients already diagnosed with AD were added to the positive class: 'we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously.'",
+        "Horizon and stability windows: conversion between M18 and M48 with stability to M48 (P-41) against conversion within 36 months (P-65): 'converted to AD within 36 months of follow-up, whereas those in the sMCI group remained cognitively stable over the same period'.",
+        "Validation: one 30-subject test split scored for more than a dozen backbone/head/ensemble configurations, with the best reported (P-41), against 5x repeated 5-fold CV on 573 subjects (P-65).",
+        "Reporting reliability (P-41): accuracy exceeds both sensitivity and specificity on a balanced test set in several rows (91.77 vs 87.69/88.53; 86.76 vs 83.65/81.47), which is arithmetically impossible for one set of subject-level predictions. The evaluation unit (subject or slice) and the meaning of the +/- are not stated.",
+        "Scan timing: P-41 states 'We specifically used pMCI subjects starting from M18', which is ambiguous about scan timing, although its Table 5 marks the data as BL. P-65 analyses 1905 scans from 573 subjects and shows M06/M24 scans, so follow-up scans closer to conversion may be included.",
+        "Input representation and architecture: 132 middle 2D slices per plane in a 2D CNN ensemble (P-41) against a whole-volume 3D asymmetry CNN (P-65).",
+        "Cohort selection: 192 subjects chosen 'based on data availability' (P-41) against 573 right-handed subjects only (P-65)."
+      ]
+    },
+    {
+      "id": "C-209",
+      "final": "yes",
+      "overturned": false,
+      "reason": "No failed condition found. Both papers predict NC-to-MCI progression in ADNI older adults from baseline hippocampal T1 MRI and report accuracy. P-132's figure comes from a multimodal model with ADAS-Cog, but the MRI channel is shared. No matched figure exists. P-132 has no 2-year, amnestic-only or matched extreme-group result. P-177 has no 7-year or unselected-cohort result. P-177's hippocampal-volume baseline (0.72) and its AVLT-only model (0.62) are other feature sets within P-177's design, not P-132's condition. Wilson intervals recomputed: P-132 test 26/35 gives 0.579-0.858 and 27/35 gives 0.610-0.879. P-177 110/120 gives 0.853-0.954; 111/120, the count implied by sensitivity 53/60 and specificity 58/60, gives 0.864-0.960. The exclusion holds in both directions (z = 2.23). P-177's sparse-coding dictionary is unsupervised, built from randomly selected patches with the same seed for every subject and no labels, so no label leakage is shown. The 0.97 in P-177 is a specificity, so condition 5 passes. Additional check: P-132's test accuracies sit near its no-information rate (25/35 = 0.714). Its printed test F1 values (0.85 at accuracy 0.74; 0.86 at 0.77) are reproduced only if all 25 stable subjects were classified correctly and just 1-2 of 10 progressors were detected (stable-class F1 50/59 = 0.847; 50/58 = 0.862). The raw-accuracy comparison therefore understates the gap in progressor detection. Prevalence is a candidate explanation, but it pushes against reconciliation rather than towards it.",
+      "figures": {
+        "P-132": "Test (25 sNC / 10 pNC): LightGBM 0.74 (26/35; Wilson 0.579-0.858), SVM 0.77 (27/35; 0.610-0.879), LR 0.73, RF 0.74; test AUC 0.80 (Hanley-McNeil 10/25: 0.620-0.980). Training 0.79-0.81 (the record's 79 is the LightGBM training figure). Test F1 0.85/0.86 implies near-total prediction of the stable class.",
+        "P-177": "ADNI 60/60 LOOCV: accuracy 0.92, sensitivity 0.88, specificity 0.97 (Table 2); Wilson 110/120 0.853-0.954 (111/120: 0.864-0.960). Mean over 10 patch selections 0.90 +/- 0.01 (Table 5). Hippocampal volume alone 0.72 (Table 4).",
+        "comparison": "0.92 lies above 0.879; 0.74-0.77 lie below 0.853; z = (0.9167 - 0.7429)/sqrt(0.9167*0.0833/120 + 0.7429*0.2571/35) = 2.23."
+      },
+      "candidate_explanations": [
+        "Horizon: progression within 7 years (P-132: 'identifying 50 who progressed to MCI within seven years') against about 2 years (P-177).",
+        "Case/control construction: amnestic-MCI progressors against age-, sex-, education- and APOE-matched nonprogressors unimpaired for at least 4 years, an extreme-group design (P-177), against all NC with 7-year follow-up (P-132).",
+        "Scan timing conditioned on outcome (P-177): 'Baseline scans were the MRI scans from progressors at 2 years prior to clinically significant decline and the corresponding matched nonprogressors' MRI scans.'",
+        "Class balance and operating point: 25:10 test set, with printed F1 implying almost no progressors detected (P-132), against balanced 60:60 (P-177).",
+        "Features: hippocampal radiomics plus ADAS-Cog11/13 (P-132) against surface multivariate morphometry with patch-based sparse coding (P-177). P-177's own volume baseline gives 0.72 in its design.",
+        "Validation and size: 35-subject held-out split (P-132) against LOOCV on 120 (P-177). P-177 names small samples as a limitation."
+      ]
+    },
+    {
+      "id": "C-211",
+      "final": "yes",
+      "overturned": false,
+      "reason": "The record misreads the contrasts (P-152 AD vs HC against P-301 AD vs MCI), so the pair is judged on AD vs MCI, which both papers print. It still qualifies. Hanley-McNeil recomputed: P-152 AUC 0.93 on 24/24 gives SE 0.0392 and 0.853-1.000. P-301 AUROC 0.60 on a derived 23/49 gives SE 0.0734 and 0.456-0.744. The two exclude each other. I verified the derivation of P-301's operating point. From accuracy 0.74, kappa 0.25 and AD share 0.32: Pe = 0.653, predicted-AD share 0.074, sensitivity 0.21, specificity 0.99, balanced accuracy 0.600. That equals the printed AUROC, and the same accuracy/AUROC/kappa pattern recurs in the other heads of Table 3 (for example 0.72/0.56/0.15). This means P-301's AUROC is computed from hard labels, so the AUC-with-AUC comparison is partly a score-based AUC against a single-threshold one. The balanced-accuracy comparison removes that mismatch and still excludes in both directions: 0.835 (0.730-0.940) against 0.60 (0.515-0.684). It stays excluded down to a validation n of about 50. Raw accuracy does not separate the papers (0.74 lies inside P-152's 0.704-0.913), because P-301's model calls almost every case MCI in a 68%-MCI set. I checked the caption placement in P-301: captions follow their tables in the extract, so the AD vs MCI table is the one with DBN at 0.74/0.60/0.69/0.25, which matches the text and Table 6. No matched figure reconciles the pair: P-301's other heads (AUROC 0.53-0.65) and its demographic-augmented model (0.58) stay low. P-152 passes condition 5 on the compared figure (0.93 < 0.97). Its FCBF feature selection precedes the internal 5-fold CV, and it reports the best of several kernels. Both are optimism candidates, not exclusions.",
+      "figures": {
+        "P-152": "AD vs MCI (24/24, Gaussian SVM, internal 5-fold CV after FCBF): accuracy 83.3% (40/48; Wilson 0.704-0.913), sensitivity 80.7%, specificity 86.3%, balanced accuracy 0.835 (0.730-0.940), AUC 0.93 (Hanley-McNeil SE 0.0392: 0.853-1.000). AD vs HC 95.8%/0.99 is not compared (condition 6; it would also meet the condition-5 exclusion).",
+        "P-301": "AD vs MCI (DBN ensemble over 138 ROI 3D ViTs, single 80/20 split, validation set): accuracy 0.74, AUROC 0.60, F1 0.69, kappa 0.25 (Table 3; Table 6). The validation n is derived at about 72 (23 AD/49 MCI). Wilson 0.628-0.827; Hanley-McNeil SE 0.0734: 0.456-0.744. Derived sensitivity 0.21, specificity 0.99, balanced accuracy 0.60 (0.515-0.684), equal to the printed AUROC.",
+        "comparison": "AUC: 0.60 < 0.853 and 0.93 > 0.744. Balanced accuracy: 0.60 < 0.730 and 0.835 > 0.684. Raw accuracy: not separated."
+      },
+      "candidate_explanations": [
+        "Features within the MRI channel: DTI/tractography/connectivity features of superficial white matter (P-152) against T1 regional volumes through per-ROI 3D ViTs (P-301).",
+        "Feature selection before CV and kernel selection (P-152): 'After feature selection, we performed an internal 5-fold cross-validation for the training data', with the best of several kernels reported per contrast.",
+        "Sample size: 48 subjects per contrast (P-152) against an 80/20 split of 364 AD+MCI (P-301).",
+        "Class balance and operating point: balanced 24/24 (P-152) against 117 AD/247 MCI, where the derived AD sensitivity is about 0.21 and the AUROC appears to be hard-label (P-301).",
+        "MCI composition: 140 of P-301's 247 amnestic MCI progress within 24 months. P-152's ADNI2 MCI composition is not reported.",
+        "Cohort subset: ADNI2 DTI participants (P-152) against a baseline ADNI T1 dataset with 2-year labels (P-301).",
+        "Architecture: kernel SVM against a DBN ensemble over 138 ROI vision transformers."
+      ]
+    },
+    {
+      "id": "C-212",
+      "final": "no",
+      "overturned": true,
+      "reason": "Fails condition 3: P-211's own data show that horizon, which is the candidate explanation, can produce the whole gap. P-211's own series covers P-156's figure. The reader had P-211's horizon series only as text ('the CV value is not printed'). Figure 2d (P-211 page 7; red = Comb (a) per the legend) gives CV AUCs of about 0.90, 0.80, 0.76, 0.88 and 0.92 at 1-5 years, with features, model and validation held fixed. The record's 0.92 is the maximum of the five horizons. P-156's endpoint is the most recent diagnosis at whatever follow-up each patient had, which defines no horizon, so the 5-year figure has no better claim to be the comparator than any other. At 2 years P-211 (about 0.80; Hanley-McNeil 0.762-0.846 on 172/461) and P-156 (0.81; 0.736-0.884) agree in both directions. P-211's only held-out figure (3-year, same model with interactions) is 0.81, identical to P-156's held-out 0.81. P-156's converter share (288/841 = 34%) lies between P-211's 3-year (32%) and 4-year (36%) cumulative shares, and at those horizons P-211's AUCs (about 0.76 and 0.88) sit on either side of 0.81. P-211 also explains its mid-horizon dip by patients who had not yet converted being labelled stable ('50% of false-positive MCI patients would convert to AD at the 5-year follow-up'). A last-diagnosis endpoint with variable follow-up carries the same label mechanism. The papers' own data therefore dissolve the gap: it appears only when an endpoint with no horizon is set against P-211's best horizon. The plotted values are read from the figure (reading error about +/-0.01). They are not printed numbers, but the text confirms the shape: 'first at about 0.9, then decreasing, reaching a low point at 3 years ... to about 0.92'.",
+      "figures": {
+        "P-156": "Ensemble Integration, held-out 20% test (169; about 58/111 at the cohort's 34% converters): AUC 0.81. Hanley-McNeil SE 0.0377: 0.736-0.884. Endpoint: 'The most recent diagnosis given to each patient (Final DX)'; 288/841 converted.",
+        "P-211": "Comb (a) EBM, 5-fold CV on the 90% training set (Figure 2d, read from the plot), with Hanley-McNeil on the real 90% counts from Table 1: 1y about 0.90 (98/700: 0.864-0.946); 2y about 0.80 (172/461: 0.762-0.846); 3y about 0.76 (169/353: 0.709-0.803); 4y about 0.88 (126/221: 0.835-0.919); 5y 0.92 (76/126: 0.876-0.964). Dementia shares 12/27/32/36/38%. Held-out 3-year test AUC 0.81 with interactions, 0.78 without (about 19/39: 0.681-0.939).",
+        "comparison": "5-year 0.92 vs 0.81: mutual exclusion (the reader's result). 2-year 0.80 vs 0.81: mutual agreement. 3-year held-out 0.81 vs held-out 0.81: identical. At the horizons whose converter share matches P-156's (3-4 years), P-211's AUCs of 0.76 and 0.88 bracket 0.81, so there is no consistent direction of disagreement."
+      },
+      "candidate_explanations": [
+        "Endpoint and horizon (shown by P-211 to move AUC from about 0.76 to 0.92 under a fixed design): 'reaching a low point at 3 years, followed by a gradual increase until 5 years of follow-up, to about 0.92' (P-211), against 'The most recent diagnosis given to each patient (Final DX) was the outcome predicted' (P-156).",
+        "Validation: 5-fold CV after SMOTE on the 90% training set (P-211: 'In order to handle the issues of data imbalance, the synthetic minority oversampling technique (SMOTE) is used'; whether SMOTE was applied inside the folds is not stated) against a single held-out 20% test set (P-156).",
+        "Sample: the 5-year analysis uses the 225 patients with 5-year data (140 MCI/85 dementia) against 841 all-comers in P-156.",
+        "Features: cognitive scores, FreeSurfer regional measures, APOE4 and demographics (P-211) against nine TADPOLE modalities including CSF (P-156).",
+        "Model: EBM with pairwise interactions (P-211; the 3-year test AUC is 0.81 with interactions and 0.78 without) against a stacking ensemble (P-156)."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "C-202",
+  "qualifies": "borderline",
+  "question": "As recorded, none: the record sets P-259's MCI prevalence (21.5%) against P-261's joint-exposure odds ratio (2.581). Condition 6 says to judge what the papers print, and both print an MCI prevalence for community-dwelling older adults. P-259's first aim is 'to establish the prevalence of MCI' (Singapore CHI study, aged 60-99, door-to-door and community-centre recruitment, Petersen/DSM-5 consensus diagnosis). P-261 reports 29.3% in Fuzhou (aged 55-75, non-depressed, randomly sampled from the health records of 34 community day-care centres, MoCA cut-offs plus clinical criteria) and sized its sample to estimate a prevalence with a 3% margin. Task (how common MCI is), population class (community older adults) and channel (clinical/cognitive assessment) nominally match. The doubt is that for a prevalence the population is the estimand. A restricted Fuzhou sample (non-depressed, 55-75, day-care-centre registered, 58.8% of those recruited analysed) and an unrestricted Singapore sample aged 60-99 may not be one population class.",
+  "metric": "As recorded, a mismatch (a prevalence against an odds ratio). On the printed figures, prevalence with prevalence.",
+  "figures": {
+    "P-259": "194 MCI of 902 assessed (696 normal, 12 dementia) = 21.5%, no interval printed. Wilson n = 902: centre 0.2163, half-width 0.0268, CI [0.190, 0.243]. Excluding the 12 dementia cases (194/890 = 21.8%): CI [0.192, 0.246].",
+    "P-261": "314 MCI of 1071 = 29.3%, no interval printed. Wilson n = 1071: centre 0.2939, half-width 0.0272, CI [0.267, 0.321]."
+  },
+  "matched_figure_check": "No matched figure exists. P-259 prints no prevalence for ages 60-75 or under MoCA cut-offs, and P-261 prints none for a Petersen consensus diagnosis or an older age band. On the constructs both papers touch, they agree: education is lower in MCI in both (P-259 t = 2.04, p = .038; P-261 median 9 vs 11 years, z = -7.615, P < 0.001).",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [1],
+  "candidate_explanations": [
+    {"difference": "Diagnostic procedure: consensus Petersen/DSM-5 diagnosis with objective impairment defined as 1.5 SD below norms on any test of a nine-subdomain battery (P-259), against MoCA cut-offs with clinical criteria (P-261). P-259 itself notes that its broad battery makes a positive criterion more likely, which would push its estimate up, not down.", "quote": "Objective cognitive impairment criterion was operationalized as scoring 1.5 standard deviations below the age and education appropriate norms in any of the tests in the neurocognitive battery", "paper": "P-259"},
+    {"difference": "Diagnostic procedure (P-261 side): MoCA-based cut-offs.", "quote": "≥25 points, and 19–24 points if the years of education are ≤6 years, indicate normal cognition, and 14–19 points indicate MCI", "paper": "P-261"},
+    {"difference": "Setting and sampling: random selection from day-care-centre health records in Fuzhou, with 1071 of 1821 recruited analysed, against door-to-door, activity-centre and word-of-mouth recruitment in western Singapore.", "quote": "30–40 cases of elderly individuals were randomly selected from the health records of each day care center in the community", "paper": "P-261"},
+    {"difference": "Age band: 55-75 against 60-99. P-259 notes that prevalence rises with age, so this difference runs against the observed gap rather than explaining it.", "quote": "Their lower rates could be attributed to the inclusion of the 55–60 years old age group, especially since MCI prevalence is found to increase with age.", "paper": "P-259"},
+    {"difference": "Country and population: Singapore against Fuzhou, China. P-259 reports prevalence varying from 5% to 36.7% across regions even under a uniform criterion.", "quote": "When a uniformed criterion was applied across studies from diverse geographical and ethnocultural regions, prevalence rates ranged from 5% to 36.7% (Sachdev et al., 2015).", "paper": "P-259"}
+  ],
+  "reason": "The record's comparison (a prevalence against an odds ratio) is meaningless. But both papers print an MCI prevalence for community older adults, 21.5% (CI 0.190-0.243) against 29.3% (CI 0.267-0.321). The intervals do not overlap, and no matched figure reconciles them. Whether this is one clinical question turns on condition 1: for a prevalence the population is the estimand, and the two samples differ in country, age band, depression exclusion, sampling frame and diagnostic procedure. If the operator reads both as the same class (community older adults), the pair is an unresolved discrepancy on prevalence, not on the recorded OR. Diagnostic procedure and setting would be the candidate explanations, and neither paper shows them to be sufficient. Age runs the other way.",
+  "quotes": [
+    {"paper": "P-259", "page": 1, "quote": "The prevalence of MCI in our sample was 21.5%."},
+    {"paper": "P-259", "page": 5, "quote": "Our sample mainly consisted of cognitively normal individuals (N = 696) and we had 194 participants with MCI and 12 with dementia."},
+    {"paper": "P-259", "page": 2, "quote": "They were recruited via door-to-door visits within a 10 km radius of the research centre in the western region of Singapore."},
+    {"paper": "P-259", "page": 2, "quote": "The MCI diagnoses were made via a consensus from a panel of psychiatrists and psychologists."},
+    {"paper": "P-261", "page": 3, "quote": "Among the 1071 study subjects, 314 suffered from MCI, with a prevalence rate of 29.3%."},
+    {"paper": "P-261", "page": 2, "quote": "According to the literature, the prevalence rate of cognitive impairment in older adults staying at home and in nursing institutions in Fuzhou is 30.17% [11]. The test level α was set at 0.05, and the permissible error δ was 3%."},
+    {"paper": "P-261", "page": 2, "quote": "The exclusion criteria were as follows: (1) GDS-15 > 8 points [9], or a history of depression"},
+    {"paper": "P-261", "page": 3, "quote": "Finally, 1071(58.81%) qualified cases were included in the statistical analysis"},
+    {"paper": "P-261", "page": 5, "quote": "the risk of suffering from MCI for older adults with sleep disturbance and Qi-stagnation was 2.581 times higher than that for those without sleep disturbance or Qi-stagnation"}
+  ]
+}

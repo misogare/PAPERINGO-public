@@ -2,96 +2,122 @@
  "paper_id": "P-1169",
  "document_check": {
   "matches": true,
-  "note": "The document is Sun Y et al. (2026), 'Clinical trial characteristics and intervention profiles for mild cognitive impairment: a systematic analysis of WHO ICTRP registry', Front. Pharmacol. 17:1701064. It reports 2,609 MCI trials, of which 216 (8.28%) had results reported, with the denominator including 847 recruiting and 22 'authorised' trials. This matches the citation."
+  "note": "The document is Sun Y, Zhang F, Zhou Y, Yuan Y, Li M, Xu J and Deng H (2026), 'Clinical trial characteristics and intervention profiles for mild cognitive impairment: a systematic analysis of WHO ICTRP registry', Front. Pharmacol. 17:1701064, doi 10.3389/fphar.2026.1701064 (article type 'Systematic Review', p1). I read the text in full up to the References (p15), and read Figure 1 (p3) from the embedded image. The flow is 2,913 records, 255 non-MCI records excluded, 49 duplicates removed, 2,609 included. Table 5 (p12) reports 216 of 2,609 (8.28%) with a results URL link. The sharing routes are registry documentation 147, unpublished results 34, journal articles 20, online platform 8, downloadable reports 6 and telephone-requested data 1. Recruitment status is authorised 22, recruiting 847, not recruiting 1,727 and N/A 13. This matches the cited result and the review's citing sentence in literature_review.md."
  },
  "cited_result": "Proportion of registered MCI trials in WHO ICTRP (to 31 Dec 2024) with any results dissemination recorded: 216 of 2,609 (8.28%), denominator including still-recruiting trials (Table 5, p12; text p11).",
- "tool": "JBI prevalence",
- "tool_reason": "The cited result is a proportion estimated from a census of registry records, not a synthesis of study results, so ROBIS does not fit. The JBI prevalence checklist is applied with trial registrations as the unit of observation.",
+ "tool_reason": "The cited proportion comes from a systematic search, screening and dual extraction of trial registrations in WHO ICTRP. That makes it a systematic analysis of records, which the operator's clarification of 2026-09-29 (rule 3) assigns to the JBI checklist for systematic reviews and research syntheses rather than ROBIS or the JBI prevalence checklist used before.",
  "domains": [
   {
-   "domain": "JBI prevalence checklist (9 items)",
+   "domain": "JBI checklist for systematic reviews and research syntheses (11 items)",
    "judgment": "high",
-   "rationale": "Items 1 to 5 are met (a census of all ICTRP MCI records, described in detail and fully covered). Item 6 (valid identification of 'dissemination') is No. Ascertainment relied only on the registry results field, with no search for linked publications, and the count includes 'unpublished results' and 'telephone-requested data'. The discussion also re-describes the same 216 as trials that 'expressed a willingness to share data'. Item 8 (appropriate analysis) is No: the denominator includes trials that are recruiting or not yet complete, there is no stratification by completion status or time since completion, and no confidence interval. Under this review's rule, a No on valid measurement or appropriate analysis gives high.",
+   "rationale": "Items 1, 3, 4 and 7 are Yes. The question is stated, the search terms and platform are reported without restrictions, ICTRP brings together 18 primary registries, and extraction was done by two reviewers independently with adjudication by a third. Item 2 is Unclear because 'MCI-related' is not defined beyond MeSH categories and a geriatrician's review. Items 5, 6 and 9 are Not applicable to a census count of registry fields. Item 11 is Unclear. Item 8 is No. The 8.28% is a crude count over every registration: recruiting (847) and authorised (22) trials that could not yet have results, observational (499) and other (46) registrations, and registries whose results fields the authors say vary in definition. It has no restriction to completed trials, no stratification by time since completion or by registry, and no confidence interval. 'Unpublished results' and 'telephone-requested data' are counted as reported. Item 10 is No. The source concludes there are 'persistent deficiencies in data sharing practices' and recommends frameworks for sharing anonymised data. Its discussion re-describes the 216 as trials that 'expressed a willingness to share data' and the 181 as trials that 'store their raw data'. What was measured was a results link in the registry. Under this review's rule, a No on item 8 or 10 gives high.",
    "signalling": [
     {
-     "question": "1. Was the sample frame appropriate to address the target population?",
+     "question": "1. Is the review question clearly and explicitly stated?",
      "answer": "Yes",
-     "quote": "We conducted a comprehensive search of all clinical trials related to MCI registered in ICTRP from inception to 31 December 2024.",
-     "page": "2"
+     "quote": "This study aimed to analyze MCI trials in the ICTRP to delineate the research landscape, key focus areas, and emerging trends in MCI to inform future intervention strategies. ... The goal of this study is to describe the main characteristics of current clinical trials on MCI to help identify any important research gaps.",
+     "page": "1; 2"
     },
     {
-     "question": "2. Were study participants (records) sampled in an appropriate way?",
-     "answer": "Yes",
-     "quote": "The search strategy was developed including the following terms: \u201cMCI\u201d OR \u201cmild cognitive impairment\u201d OR \u201cmild cognitive disorder\u201d OR \u201cmild cognitive decline\u201d, with no additional restrictions applied to the search parameters.",
-     "page": "2"
-    },
-    {
-     "question": "3. Was the sample size adequate?",
-     "answer": "Yes",
-     "quote": "304 records were excluded after remove duplicates and manual screening, an additional 2,609 trials were ultimately retained for further analysis",
-     "page": "3"
-    },
-    {
-     "question": "4. Were the study subjects and the setting described in detail?",
-     "answer": "Yes",
-     "quote": "2,609 trials were sourced from 18 registries across 61 countries, with registration years spanning from 1999 to 2024.",
-     "page": "3"
-    },
-    {
-     "question": "5. Was data analysis conducted with sufficient coverage of the identified sample?",
-     "answer": "Yes",
-     "quote": "Results url link (2,609) Reported 216 8.28% Not reported 2,393 91.72%",
-     "page": "12"
-    },
-    {
-     "question": "6. Were valid methods used for the identification of the condition (results dissemination)?",
-     "answer": "No",
-     "quote": "Out of these, 216 trials (8.28%) shared their findings through various dissemination methods, including registry documentation, online platform releases, articles in peer-reviewed journals, downloadable reports, data available upon telephone request, and unpublished sources. ... Unpublished results 34 15.74% ... Out of the 2,609 trials, 216 studies expressed a willingness to share data",
-     "page": "11; 12; 14"
-    },
-    {
-     "question": "7. Was the condition measured in a standard, reliable way for all participants?",
+     "question": "2. Were the inclusion criteria appropriate for the review question?",
      "answer": "Unclear",
-     "quote": "Two independent researchers (SYX and LMJ) manually reviewed the trial information. Disagreements in the data extraction were adjudicated by a third researcher (XJ). ... variations in data field definitions, entry standards, and reporting requirements across different national registries may introduce heterogeneity that could affect the comparability and reliability of pooled analyses.",
-     "page": "3; 14"
+     "quote": "By integrating the MeSH database's categories with the Conditions listed in the ICTRP dataset, we constructed a novel Condition table that associates conditions with each trial's ID. Other non-relevant categories were excluded from the dataset. ... * We consulted a geriatrician and used the Mesh vocabulary to review the MCI trial, identified those that focused on MCI diseases or conditions. [Figure 1 image: 'Manually exclude no-MCI trials*: n=255']",
+     "page": "2; 3"
     },
     {
-     "question": "8. Was there appropriate statistical analysis?",
-     "answer": "No",
-     "quote": "Categorical data are presented as number (n) and percent (%). ... Among the 2,609 MCI trials in the study, 66.19% (1727) of them were labeled as \u201cnot recruiting\u201d, 32.46% (847) as \u201crecruiting\u201d, and 0.84% (22) as \u201cauthorized\u201d.",
-     "page": "3; 11"
+     "question": "3. Was the search strategy appropriate?",
+     "answer": "Yes",
+     "quote": "The search was performed using the standard search interface of the WHO ICTRP (ICTRP, 2025), with no additional restrictions applied to the search parameters. The search strategy was developed including the following terms: \u201cMCI\u201d OR \u201cmild cognitive impairment\u201d OR \u201cmild cognitive disorder\u201d OR \u201cmild cognitive decline\u201d, with no additional restrictions applied to the search parameters.",
+     "page": "2"
     },
     {
-     "question": "9. Was the response rate adequate, and if not, was the low response rate managed appropriately?",
-     "answer": "Not applicable",
-     "quote": "The study is a census of registry records with no respondents. Searched for non-retrievable records: the only losses are deduplication and screening exclusions ('304 records were excluded after remove duplicates and manual screening').",
+     "question": "4. Were the sources and resources used to search for studies adequate?",
+     "answer": "Yes",
+     "quote": "2,609 trials were sourced from 18 registries across 61 countries, with registration years spanning from 1999 to 2024. ... The following information was collected from each study: title, sponsor, registration date, data source, recruitment status, sample size, trial type, study design, phase, country, intervention protocols, outcomes, resultant linked to registry.",
      "page": "3"
+    },
+    {
+     "question": "5. Were the criteria for appraising studies appropriate?",
+     "answer": "Not applicable",
+     "quote": "No appraisal of individual records was performed. I looked for any check of record currency or completeness, or of results fields against publications, and found only a narrative acknowledgement: 'The analysis of trial designs across all included studies identified deficiencies in the specification and completion of key indicators, suggesting inadequate completeness of trial registration information and suboptimal data reporting rates.' The cited result is a count of registry fields, not a synthesis of study findings, so appraising each record's methods does not bear on it.",
+     "page": "14"
+    },
+    {
+     "question": "6. Was critical appraisal conducted by two or more reviewers independently?",
+     "answer": "Not applicable",
+     "quote": "No critical appraisal was performed (see item 5). Dual independent review applied to screening and extraction only: 'Two independent researchers (SYX and LMJ) manually reviewed the trial information.'",
+     "page": "3"
+    },
+    {
+     "question": "7. Were there methods to minimise errors in data extraction?",
+     "answer": "Yes",
+     "quote": "Dual independent extraction was performed, with third-party adjudication for discrepancies. ... Two independent researchers (SYX and LMJ) manually reviewed the trial information. Disagreements in the data extraction were adjudicated by a third researcher (XJ).",
+     "page": "1; 3"
+    },
+    {
+     "question": "8. Were the methods used to combine studies appropriate?",
+     "answer": "No",
+     "quote": "Categorical data are presented as number (n) and percent (%). ... Among the 2,609 MCI trials in the study, 66.19% (1727) of them were labeled as \u201cnot recruiting\u201d, 32.46% (847) as \u201crecruiting\u201d, and 0.84% (22) as \u201cauthorized\u201d. ... Out of these, 216 trials (8.28%) shared their findings through various dissemination methods, including registry documentation, online platform releases, articles in peer-reviewed journals, downloadable reports, data available upon telephone request, and unpublished sources. ... Results url link (2,609) Reported 216 8.28% Not reported 2,393 91.72% ... Unpublished results 34 15.74% ... Telephone-requested data 1 0.46% ... variations in data field definitions, entry standards, and reporting requirements across different national registries may introduce heterogeneity that could affect the comparability and reliability of pooled analyses.",
+     "page": "3; 11; 12; 14"
+    },
+    {
+     "question": "9. Was the likelihood of publication bias assessed?",
+     "answer": "Not applicable",
+     "quote": "A registry census is the frame against which selective publication is measured, so publication bias among included records does not arise. The analogue, non-registration, is acknowledged but not assessed: 'Finally, as registration of observational studies is generally not mandatory, our analysis might have missed relevant investigations, introducing potential selection bias.'",
+     "page": "14"
+    },
+    {
+     "question": "10. Were recommendations for policy and/or practice supported by the reported data?",
+     "answer": "No",
+     "quote": "Out of the 2,609 trials, 216 studies expressed a willingness to share data, 181 studies chose to store their raw data in clinical trial registries or public management platforms. For other ways, data could be obtained by contacting the researchers via email. ... However, these advancements are constrained by persistent deficiencies in data sharing practices and overall trial transparency within the MCI research domain, potentially impeding the reproducibility and clinical translation of these innovative approaches.",
+     "page": "14"
+    },
+    {
+     "question": "11. Were the specific directives for new research appropriate?",
+     "answer": "Unclear",
+     "quote": "Future research should address this issue by actively seeking methods to minimize bias. These may include strictly implementing outcome assessments by independent assessors who remain blinded, along with standardizing and monitoring treatment procedures to reduce interventionist bias. ... Moving forward, there is a need to establish more robust frameworks for data anonymization and sharing to balance scientific progress with ethical responsibilities.",
+     "page": "13; 14"
     }
    ]
   }
  ],
- "overall": "High risk of bias (JBI prevalence, this review's rule)",
+ "overall": "High risk of bias (JBI checklist for systematic reviews and research syntheses, this review's rule: items 8 and 10 are No)",
  "overall_category": "high",
- "overall_rationale": "The frame and coverage are strong, but the proportion has two problems. The outcome was ascertained only from registry fields and mixes in non-dissemination categories (item 6 No). The denominator includes trials that could not yet have results, and there is no completion or time stratification (item 8 No). Both push the figure down relative to a true dissemination rate among completed trials.",
+ "overall_rationale": "The identification of records is sound. The search is reported and unrestricted, the source is the aggregate WHO ICTRP platform, and extraction was done independently in duplicate. The problems lie in how the cited proportion is built and read. The denominator is every registration, including about a third that were recruiting or only authorised, so could not yet have results. It also includes observational and 'other' registrations and registries whose results fields differ. There is no restriction to completed trials, no allowance for time since completion and no interval estimate. The numerator counts 'unpublished results' and 'telephone-requested data' as reported (item 8 No). The source then reads the figure as a measure of data sharing and raw-data storage, which a registry results link does not measure (item 10 No). Both flaws make the 8.28% a poor estimate of results dissemination among trials that could have reported. The denominator effect pushes it down, and the numerator categories pad it with non-dissemination routes.",
  "applicability": [
   {
-   "domain": "Unit of analysis",
+   "domain": "Unit of analysis and construct",
    "concern": "some concerns",
-   "rationale": "The unit is trial registrations, not people. The figure measures results recorded in the registry, not publication, which the review's wording ('recorded any dissemination') partly reflects."
+   "rationale": "The unit is trial registrations, not participants. The measure is a results route recorded in the registry ('Results url link', Table 5, p12), not publication. Only 20 of the 216 were journal articles, and publications not linked in a registry are not captured. So the figure cannot measure what fraction of registered MCI trials remain unpublished."
+  },
+  {
+   "domain": "Registry heterogeneity",
+   "concern": "some concerns",
+   "rationale": "The authors state that data field definitions and reporting requirements vary across the 18 contributing registries (p14). The results field therefore may not mean the same thing, or be equally available, across the 54.1% of records from ClinicalTrials.gov and the rest."
   }
  ],
  "confidence": "medium",
- "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
- "review_status": "reviewed and accepted by the operator (2026-09-28)",
- "brief": "logs/rob_appraisal/ROB_BRIEF.md",
- "quote_check": {
-  "checked": 9,
-  "matched": 8
+ "tool": "JBI checklist for systematic reviews and research syntheses",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md (including the clarifications of 2026-09-29)",
+ "tool_changed_2026_09_29": {
+  "previous_tool": "JBI prevalence",
+  "previous_category": "high",
+  "why": "operator's tool review of 2026-09-29",
+  "superseded_record": "logs/rob_appraisal/superseded/P-1169_2026-09-28.json"
  },
- "operator_review_2026_09_28": {
-  "date": "2026-09-28",
-  "by": "operator, stated in session on 2026-09-28",
-  "statement": "The operator reviewed the model readers' risk-of-bias judgments and accepts them.",
-  "scope": "Judgments, signalling answers and quotations unchanged by the review."
+ "operator_tool_review_2026_09_29": {
+  "date": "2026-09-29",
+  "by": "operator",
+  "verdict": "disagrees with the reader's tool (JBI prevalence); operator's tool: JBI checklist for systematic reviews",
+  "statement": "",
+  "scope": "the choice of tool for the cited result, in a sample of 17 records reviewed by the operator after the appraisal; the domain judgments were not reviewed in this sample"
+ },
+ "quote_check": {
+  "checked": 11,
+  "matched": 8,
+  "annotations_not_checked": 0,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
  }
 }

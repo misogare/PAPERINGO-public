@@ -1,0 +1,30 @@
+{
+  "id": "C-112",
+  "qualifies": "no",
+  "question": "Discrimination of progressive from stable MCI (conversion to AD) in ADNI MCI patients from baseline data. The shared channel is structural MRI: P-182 uses a hippocampal box of T1 voxels only; P-23's headline model adds FDG-PET and CSF (a multimodal model matches on the shared channel). Horizon (follow-up at least 18 months vs a 36-month criterion) and training (AD/CN transfer vs direct pMCI/sMCI training) differ, which the rule allows.",
+  "metric": "Shared: accuracy with accuracy (the record's comparison); both also report AUC.",
+  "figures": {
+    "P-182": "DenseNet trained on AD vs CN (ADNI-2/GO), applied without retraining to 381 ADNI-2/GO MCI (118 pMCI, 263 sMCI): accuracy 75.85%, no interval; Wilson n=381: centre (0.7585+1.9208/381)/(1+3.8416/381)=0.756, half-width 1.96*sqrt(0.7585*0.2415/381+3.8416/(4*381^2))/1.010=0.043 -> 0.713-0.799. AUC 0.777; Hanley-McNeil Q1=0.777/1.223=0.635, Q2=2*0.6037/1.777=0.680, SE=sqrt([0.777*0.223+117*(0.635-0.6037)+262*(0.680-0.6037)]/(118*263))=0.028 -> 0.723-0.831.",
+    "P-23": "TASNet, ADNI1/ADNI2, 200 MCI (82 pMCI, 118 sMCI) split 8:1:1, so about 20 test subjects (sensitivity 83.33% = 10/12, specificity 87.50% = 7/8). Tri-modal sMRI+FDG-PET+CSF: accuracy 85.00% = 17/20, Wilson centre (0.85+1.9208/20)/(1+3.8416/20)=0.794, half-width 1.96*sqrt(0.85*0.15/20+3.8416/1600)/1.192=0.154 -> 0.640-0.948; AUC 0.9167 (Hanley-McNeil 12/8: SE 0.064 -> 0.791-1.000). sMRI only (Table 6, A1): accuracy 65.00% = 13/20, Wilson 0.433-0.819; AUC 0.6667 (SE 0.123 -> 0.425-0.908)."
+  },
+  "matched_figure_check": "A matched figure exists and reconciles the pair. P-23 reports its own sMRI-only configuration, i.e. P-182's input channel: accuracy 65.00% (0.433-0.819) contains P-182's 75.85%, and AUC 0.6667 (0.425-0.908) contains 0.777. P-23's sMRI-only accuracy falls below P-182, not above it (combined z about 1.0). P-23's own modality ablation thus shows that its higher headline comes from adding FDG-PET and CSF, which P-182 does not use. On the headline figures, P-182's 75.85% lies inside P-23's 20-subject interval (0.640-0.948) and P-23's 85% lies outside P-182's (0.713-0.799), so they differ one way only.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: 0.85/0.9167 and 0.7585/0.777 are below 0.97. P-23's roughly 20-subject test set makes its estimates very imprecise.",
+  "failed_conditions": [3],
+  "candidate_explanations": [
+    {"difference": "Non-shared channels: P-23's 85% needs FDG-PET and CSF alongside sMRI; its sMRI-only arm scores 65%. This explanation is shown by P-23's ablation, which is why condition 3 fails.", "quote": "sMCI vs. pMCI A1 sMRI only 66.67 62.50 65.00 69.57 66.67", "paper": "P-23"},
+    {"difference": "Test-set size: about 20 subjects in P-23 against 381 in P-182.", "quote": "stratified into training, validation, and test sets (8:1:1).", "paper": "P-23"},
+    {"difference": "Training target and horizon: P-182 transfers an AD/CN model with no MCI labels, with progression judged over at least 18 months; P-23 trains on pMCI/sMCI labels with a 36-month criterion.", "quote": "This dataset was labeled as either stable MCI (sMCI) or progressive MCI (pMCI) based on longitudinal diagnostic evaluations obtained at least 18 months apart.", "paper": "P-182"}
+  ],
+  "reason": "The record sets P-23's tri-modal 85% against P-182's MRI-only 75.85%. P-23 also reports the MRI-only condition (65%, AUC 0.667), whose interval contains P-182's figures, so the papers' own data dissolve the gap: it comes from P-23's added PET and CSF, as P-23's ablation shows. Condition 3 fails.",
+  "quotes": [
+    {"paper": "P-182", "page": 6, "quote": "In this task, the model achieved an accuracy of 75.85% and an AUC of 0.777 (Fig. 2B), with a sensitivity of 0.66 and a specificity of 0.8 (Fig. 2C)."},
+    {"paper": "P-182", "page": 6, "quote": "This model was thus used next for differentiating the pMCI and sMCI groups based on data from ADNI-2/GO."},
+    {"paper": "P-182", "page": 2, "quote": "Based on these criteria, a total of 118 pMCI and 263 sMCI subjects were included in this study."},
+    {"paper": "P-23", "page": 7, "quote": "sMCI vs. pMCI: In this critical task for early prognosis, TASNet achieved 85.00% Accuracy and 86.96% F1 (Table 3), outperforming existing multi-modal approaches."},
+    {"paper": "P-23", "page": 6, "quote": "based on a 36-month follow-up criterion"},
+    {"paper": "P-23", "page": 8, "quote": "sMCI vs. pMCI A1 sMRI only 66.67 62.50 65.00 69.57 66.67"},
+    {"paper": "P-23", "page": 8, "quote": "A0 sMRI + PET + CSF 83.33 87.50 85.00 86.96 91.67"}
+  ]
+}

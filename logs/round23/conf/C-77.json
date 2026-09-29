@@ -1,0 +1,29 @@
+{
+  "id": "C-77",
+  "qualifies": "borderline",
+  "question": "Prediction of MCI-to-AD conversion within 3 years (pMCI vs sMCI) in ADNI from baseline MRI. P-82 uses FreeSurfer cortical features from T1 MRI; P-72's reported model fuses sMRI grey matter with FDG-PET (MRI channel shared) and it also reports an sMRI-only arm. The recorded P-72 figure (94.61%) is its AD vs NC accuracy; judged here on P-72's printed conversion figures.",
+  "metric": "Accuracy with accuracy and AUC with AUC; both papers report both.",
+  "figures": {
+    "P-72": "238 sMCI/151 pMCI, subject-level 70/15/15 split (about 57 test subjects per split), averaged over three splits. sMRI-only MAResNet18: 73.68% (42/57), Wilson 61.0-83.4%; AUC 0.721, Hanley-McNeil (22/35) SE=0.072 -> 0.580-0.862. Multimodal SPDFC(0.6): 77.19% (44/57), Wilson 64.8-86.2%; AUC 0.755, SE=0.069 -> 0.620-0.890.",
+    "P-82": "249 ADNI MCI (145 pMCI/104 sMCI), one random test set of 24 (11 pMCI/13 sMCI, implied by sensitivity 0.727=8/11 and specificity 0.923=12/13): accuracy 83.3% = 20/24, Wilson (z^2/n=0.160, centre=0.787, half-width=0.146) 64.1-93.3%; AUC 0.888, Hanley-McNeil n1=11, n2=13: Q1=0.799, Q2=0.835, SE=sqrt([0.888*0.112+10*(0.799-0.789)+12*(0.835-0.789)]/143)=0.073 -> 0.745-1.0 (capped). 10-fold CV is in Supplementary Table S2, not in the extract."
+  },
+  "matched_figure_check": "P-72's sMRI-only arm is P-82's input condition (T1 MRI only), on the same 3-year horizon. Accuracy: 73.68% lies inside P-82's 64.1-93.3% and 83.3% lies inside P-72's 61.0-83.4% (by 0.1 point), so the matched accuracies agree (two-sample z=1.01). AUC: P-82's 0.888 lies outside P-72's 0.580-0.862 and P-72's 0.721 lies outside P-82's 0.745-1.0, so each excludes the other (z=1.63). P-72's multimodal model agrees with P-82 on both metrics (0.888 inside 0.620-0.890 by 0.002; 0.755 inside 0.745-1.0). The matched figure reconciles accuracy and does not reconcile AUC.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: P-82 0.888/83.3% and P-72 conversion figures are below 0.97; P-82's single 24-subject test set makes its estimate imprecise but it is not near ceiling.",
+  "failed_conditions": [3],
+  "candidate_explanations": [
+    {"difference": "Input representation and architecture: FreeSurfer DKT tabular cortical features (volume, thickness, curvature, folding, area over 62 regions) with a transformer (P-82) vs a 3D CNN on grey-matter images (P-72). On P-82's own 24-subject test set, AUC ranges from 0.542 to 0.888 across models on the same features.", "quote": "GRU (AUC = 0.853) performs better than LSTM (AUC = 0.839) and RNN (AUC = 0.790) among the three deep learning models. Furthermore, the random forest has the best performance (AUC = 0.678) among four machine learning models.", "paper": "P-82"},
+    {"difference": "sMCI label: P-82 counts MCI reverters to normal as sMCI; P-72 labels non-converters as sMCI without a stated follow-up minimum.", "quote": "In addition, the subjects who were diagnosed as MCI at least twice, but reverse to a standard control, at last, are also considered as sMCI", "paper": "P-82"},
+    {"difference": "Class balance: 145 pMCI/104 sMCI (58% pMCI) in P-82 vs 151/238 (39% pMCI) in P-72.", "quote": "Subjects’ number 104 145", "paper": "P-82"},
+    {"difference": "Evaluation size and design: one random 24-subject test set (P-82) vs three hold-out splits of about 57 averaged (P-72).", "quote": "we split our 249 subjects randomly into three groups, including the training dataset (n = 200), the validation dataset (n = 25), and the testing dataset (n = 24).", "paper": "P-82"}
+  ],
+  "reason": "On P-72's printed conversion figures, the matched sMRI-only AUCs exclude each other (0.888 vs 0.721, each outside the other's derived interval, z=1.63), but the same models' accuracies agree within uncertainty. P-72's reported multimodal model also agrees with P-82 on both metrics. Conditions 1, 2, 4, 5 and 6 hold on AUC; condition 3 is met on AUC and failed on accuracy, so the pair is borderline. It is the strongest of the three P-72 cases. No paper shows any candidate explanation to be sufficient.",
+  "quotes": [
+    {"paper": "P-72", "page": 6, "quote": "MAResNet18 88.24 85.42 90.74 0.881 73.68 65.91 79.05 0.721"},
+    {"paper": "P-72", "page": 7, "quote": "The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 % respectively"},
+    {"paper": "P-82", "page": 4, "quote": "The proposed model achieved 83.3% accuracy and an AUC of 0.888 (Fig. 2), with a sensitivity of 0.727 and a specificity of 0.923"},
+    {"paper": "P-82", "page": 3, "quote": "we split our 249 subjects randomly into three groups, including the training dataset (n = 200), the validation dataset (n = 25), and the testing dataset (n = 24)."},
+    {"paper": "P-82", "page": 2, "quote": "T1-weighted structural images were processed using the Freesurfer software"}
+  ]
+}

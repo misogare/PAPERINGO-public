@@ -1,0 +1,28 @@
+{
+  "id": "C-170",
+  "qualifies": "no",
+  "question": "None shared. P-158's compared figure (95% accuracy) separates Alzheimer's dementia from cognitively normal speakers on ADReSS (Pitt Cookie Theft recordings). P-58's figures separate MCI from healthy controls (Petersen criteria) using 'describe your previous day' monologues recorded in New York and Szeged. The positive label covers a different population class: AD dementia in one, MCI in the other. P-158's second dataset (MUDC, 60 Turkish clinic patients) is described both as 'patients with mild cognitive impairment' and as 'cognitively normal (CN) and AD patients', and its classification label is never defined as MCI against healthy controls. No P-158 figure therefore addresses P-58's question. The broad channel (speech) is shared. The features differ (spectral/MFCC acoustic features against ASR-derived temporal and pause parameters), which condition 1 would allow.",
+  "metric": "Accuracy with accuracy, a nominal match. The record's P-58 value '67-92%' is a span across accuracy, precision, recall, specificity and F1 over feature subsets and ASR languages, not a single accuracy. P-58's monolingual full-feature accuracies are 84.8% (English) and 75.8% (Hungarian), both taken at the equal error rate.",
+  "figures": {
+    "P-158": "ADReSS AD vs non-AD, random forest, 10-fold CV over speed-perturbed 20-second segments (1520 training samples from 153 recordings): 95% (+/- 0.07). Segments of one recording are not independent, so no subject-level interval can be derived for this figure. ADReSS held-out test set: 73% for 'dementia or not'. The test-set size is printed both as 48 and as 60 recordings. Wilson 95% CI at n=48: [0.591, 0.835]; at n=60: [0.606, 0.826]. MUDC MLP 94% on an undefined label (Wilson at n=60, ignoring augmentation: [0.850, 0.978]).",
+    "P-58": "English MCI vs HC (14 MCI / 19 HC, n=33): accuracy 84.8% = 28/33, Wilson 95% CI [0.691, 0.934]. AUC 0.932; Hanley-McNeil at 14/19: Q1 = 0.932/1.068 = 0.8727, Q2 = 2(0.932^2)/1.932 = 0.8992, SE^2 = [0.932*0.068 + 13*(0.8727-0.8686) + 18*(0.8992-0.8686)]/266, SE = 0.050, CI [0.834, 1.000]. Hungarian (13 MCI / 20 HC): accuracy 75.8% = 25/33, Wilson [0.590, 0.872]; AUC 0.727, SE = 0.094, CI [0.543, 0.911]."
+  },
+  "matched_figure_check": "No matched figure exists. P-158 reports no MCI-against-healthy-control result, and P-58 reports no dementia result. On P-158's only subject-level figure (held-out 73%), P-58's English and Hungarian Wilson intervals ([0.691, 0.934] and [0.590, 0.872]) both contain 0.73. P-58's 84.8% lies just outside P-158's held-out interval ([0.606, 0.826] at n=60), so the evidence on uncertainty is mixed. The 95% headline is a segment-level cross-validated figure computed on augmented segments of the same recordings.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "The formal exclusion does not apply: 95% is below 0.97. P-158's 95% is a weak estimate, however. It comes from cross-validation over segments cut from the same recordings and speed-perturbed, which lets one speaker's segments fall in both training and test folds, and P-158's own held-out test accuracy is 73%. P-58 uses speaker-wise nested leave-one-out CV on 33 speakers per language.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "The two papers do not share a clinical question. P-158's 95% separates Alzheimer's dementia from cognitively normal speakers, P-58 separates MCI from healthy controls, and P-158 defines no MCI-against-control label on its Turkish data (condition 1). The record also treats P-58's '67-92%' span of several metrics as one accuracy estimate and computes the 0.28 gap from its lower end (condition 6). On the only subject-level P-158 figure (73%), P-58's own intervals contain it.",
+  "quotes": [
+    {"paper": "P-158", "page": 2, "quote": "it is a balanced dataset composed of cognitively normal (CN) patients and those suffering from Alzheimer’s disease (AD)"},
+    {"paper": "P-158", "page": 2, "quote": "we repeated the same Cookie Theft picture exam in Turkish on 60 patients with mild cognitive impairment in the MUDC."},
+    {"paper": "P-158", "page": 2, "quote": "Both datasets are composed of cognitively normal (CN) and AD patients balanced in terms of age and sex along with their written MMSE scores."},
+    {"paper": "P-158", "page": 4, "quote": "we programmatically perturbed each section at speeds of 0.7, 0.8, 1.2, and 1.3 to create 1520 samples from 153 samples for the training dataset"},
+    {"paper": "P-158", "page": 5, "quote": "We achieved 73% accuracy for the labels (dementia or not)"},
+    {"paper": "P-158", "page": 7, "quote": "Moreover, Turkish training dataset is limited to mild cognitive delay although Adress dataset contains a wider spectrum of the disease."},
+    {"paper": "P-58", "page": 1, "quote": "because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)"},
+    {"paper": "P-58", "page": 6, "quote": "Besides an accuracy score of 84.8%, the recall/sensitivity and speciﬁcity values were also around 85%."},
+    {"paper": "P-58", "page": 7, "quote": "Furthermore, the AUC and minCllr values are also quite good (0.932 and 0.305, respectively)"}
+  ]
+}

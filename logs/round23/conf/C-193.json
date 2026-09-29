@@ -1,0 +1,28 @@
+{
+  "id": "C-193",
+  "qualifies": "no",
+  "question": "MCI against healthy older adults (P-83: 15 participants aged 63-83 in Magdeburg, aMCI and naMCI; P-214: community screening cohorts in Shanghai). The population class matches, and the shared channel is EEG: P-83 adds heart-rate variability recorded during CERAD sub-tests, and P-214 adds eye tracking, a 20-subtest neuropsychological battery and demographics to one-electrode EEG. Cohort, features, architecture, sample size and validation design differ, which the rule allows.",
+  "metric": "Accuracy with accuracy (same type). The unit differs: P-83 scores 3-second signal windows, with windows of the same 15 people shuffled across its 75/25 split, while P-214 scores subjects in 5-fold CV and on an independent cohort. As in C-117, subjects are taken as n for the uncertainty.",
+  "figures": {
+    "P-83": "Hybrid SVM/GB/RF voting on EEG+HRV windows: average accuracy over seven CERAD tests 93.86% (sensitivity 93.87%, specificity 93.53%); best test T1 97.43% (10-fold 95.23%, LOOCV 96.14%). Evaluation unit = windows of 15 subjects, so no subject-level test count is reported. Wilson with n = 15 subjects: 93.86% [0.709, 0.990]; T1 97.43% [0.757, 0.998]. P-214's pipeline re-implemented on P-83's data (Table 9): average 87.68%, Wilson n = 15 [0.633, 0.967].",
+    "P-214": "RBF SVM on MRMR-selected EEG, eye-tracking, neuropsychological and demographic features: Cohort 1, 5-fold CV on 336 subjects, 84.5 +/- 4.43% (AUC 0.942), Wilson [0.802, 0.880]; Cohort 2, independent test on 92 subjects (44 MCI/48 NC) from another district, 88.8 +/- 3.59% (AUC 0.966), Wilson [0.807, 0.938]."
+  },
+  "matched_figure_check": "A matched figure exists and reconciles the pair. P-83 ran P-214's method on its own data (Table 9): the average accuracy is 87.68%, which lies inside both of P-214's intervals ([0.802, 0.880] and [0.807, 0.938]), and P-214's 84.5% and 88.8% lie inside the interval of the re-implementation. With the method held to P-214's, P-83's data reproduce P-214's accuracy. The remaining gap (93.86% against 87.68%) is P-83's own method comparison on its own 15-subject, window-level data, which that paper shows directly. On subject-level uncertainty the headline gap also runs one way only. 93.86% lies outside P-214's CV interval and, by 0.001, outside its independent-cohort interval. But 84.5% and 88.8% lie well inside P-83's interval [0.709, 0.990].",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "P-83 meets the Section 3.5 exclusion in substance, as recorded in C-74: its best result is 97.43% accuracy (LOOCV 96.14%) on internal validation of 15 subjects with windows of the same people shuffled across training and test, and no external cohort. The compared 93.86% is the cross-test average of that same evaluation. Section 3.5 names segment-level splitting as a design that inflates accuracy. P-214 (84.5%, 88.8%; AUC 0.942, 0.966, with an independent cohort) is not excluded.",
+  "failed_conditions": [3, 5],
+  "candidate_explanations": [
+    {"difference": "Evaluation unit and split (window-level shuffling within 15 people vs subject-level CV and an independent cohort). Not needed to explain the gap, because the matched re-implementation already reconciles it.", "quote": "For each test, we separated our data into 75% for the training set and 25% for the testing set. To boost the effectiveness of ML model accuracy and to reduce the rate of overfitting, we applied the shuffling strategy throughout the data partitioning process.", "paper": "P-83"}
+  ],
+  "reason": "P-83 reports P-214's method on its own data (87.68%), and this agrees with P-214's own accuracies (84.5% and 88.8%) within uncertainty, so the papers' data dissolve the gap (condition 3). What remains is P-83's in-paper method comparison on 15 subjects. P-83 also meets the near-ceiling small-sample exclusion (97.43% on window-level internal validation of 15 people), so a performance comparison resting on it fails condition 5. With subjects as n, the headline gap is beyond uncertainty in one direction only.",
+  "quotes": [
+    {"paper": "P-83", "page": 1, "quote": "Our dataset includes 15 subjects who were randomly assigned to training and testing groups of 7 HC and 8 MCI, respectively."},
+    {"paper": "P-83", "page": 1, "quote": "An average accuracy of 93.86%, a sensitivity of 93.87%,"},
+    {"paper": "P-83", "page": 8, "quote": "With our dataset, we put these methods into practice. For each CERAD test, the comparison between our suggested method and these works is shown in Table 9."},
+    {"paper": "P-83", "page": 9, "quote": "Avg 87.25% 87.68% 84.22% 84.38% 93.86%"},
+    {"paper": "P-83", "page": 8, "quote": "T1 demonstrates the best test results for both k-fold and LOOCV with respectively 95.23% and 96.14% compared to the other tests."},
+    {"paper": "P-214", "page": 1, "quote": "the proposed model achieved 84.5 ± 4.43% and 88.8 ± 3.59% in Cohort 1 and Cohort 2, respectively."},
+    {"paper": "P-214", "page": 6, "quote": "Cohort 2 was used as an independent test group to verify the robustness of the classification results."}
+  ]
+}

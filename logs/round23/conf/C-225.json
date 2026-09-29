@@ -1,0 +1,26 @@
+{
+  "id": "C-225",
+  "qualifies": "no",
+  "question": "As recorded, none: the ledger's P-244 figure (AUC 0.802) is the 3-year CN-to-MCI AUC in 587 cognitively normal participants, not an MCI-to-AD result, while P-353 studies MCI-to-AD only. Read correctly, both papers predict MCI-to-AD conversion among ADNI MCI participants from clinical/neuropsychological plus structural MRI ROI features: P-244 (Yi et al., eClinicalMedicine 2023) from baseline features with a Deep-AD survival-clustering model, 783 MCI, 5-fold CV; P-353 (Zhang et al., BMC Med Inform Decis Mak 2026) from longitudinal features up to a 1-year landmark with tdCoxSNN, 922 MCI, 184-case held-out test set. On that shared question the horizon construction differs, which condition 1 allows.",
+  "metric": "Time-dependent AUC in both: P-244's AUC at fixed horizons from baseline (MCI-to-AD 3 years 0.914) and P-353's cumulative/dynamic AUC at t = 1 year after landmark s = 1 year (0.9089). Treated here as the same metric type.",
+  "figures": {
+    "P-244": "MCI-to-AD: AUC 0.914 at 3 years, 0.957 at 5 years, 0.810-0.979 over 1-10 years (Fig. 7C); C-index 0.718 (95% CI 0.712-0.725); AIBL external C-index 0.752. No AUC interval printed. Hanley-McNeil with the dataset's 348 converters / 435 censored: Q1 = 0.914/1.086 = 0.8416, Q2 = 2(0.914^2)/1.914 = 0.8729, SE = 0.0111, CI [0.892, 0.936] (the case count at 3 years is smaller than 348, so the true interval is wider). CN-to-MCI (the recorded figure): AUC 0.802 at 3 years in 587 CN (119 converters): SE 0.0255, CI [0.752, 0.852].",
+    "P-353": "tdCoxSNN on all feature sets, test set of 184 (74 converters / 110 stable): cdAUC 0.9089 +/- 0.01 at t = 1 year from landmark s = 1 year; other horizons only in Figure 2 boxplots. Hanley-McNeil with 74/110: Q1 = 0.8330, Q2 = 0.8655, SE = 0.0245, CI [0.861, 0.957] (the at-risk set at the landmark is smaller, so this is if anything narrow)."
+  },
+  "matched_figure_check": "P-244's own MCI-to-AD figures are the counterpart to P-353's, and they agree: 0.914 at 3 years lies inside P-353's interval [0.861, 0.957], P-353's 0.909 lies inside P-244's [0.892, 0.936], and P-244's 1-10-year range (0.810-0.979) brackets 0.909. Neither paper reports the other's exact horizon construction, but no printed MCI-to-AD figure differs.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not triggered for the compared figures (0.914 and 0.909 are below 0.97). P-244's 0.957-0.979 long-horizon values are not the compared figures; P-244 also has an external AIBL C-index, and both samples exceed 500.",
+  "failed_conditions": [1, 4, 6],
+  "candidate_explanations": [],
+  "reason": "The record reads P-244's CN-to-MCI AUC (0.802) as an MCI-to-AD result (conditions 1 and 6). On the printed MCI-to-AD figures the two papers agree: P-244 reports 0.914 at 3 years and P-353 reports 0.909, each inside the other's derived interval, so there is no difference beyond uncertainty (condition 4).",
+  "quotes": [
+    {"paper": "P-244", "page": 1, "quote": "AUC (CN→MCI, 3 years 0.802, 5 years 0.876; MCI→AD, 3 years 0.914, 5 years 0.957)"},
+    {"paper": "P-244", "page": 3, "quote": "The CN→MCI dataset included 587 patients"},
+    {"paper": "P-244", "page": 3, "quote": "Regarding the MCI→AD dataset, there were 783 patients (306 [39.08%] female, mean age 75 years [IQR, 70–81]), of which 348 (44.44%) samples were converted from MCI to AD dementia while the others (55.56%) were right censored."},
+    {"paper": "P-244", "page": 12, "quote": "our model achieved consistently impressive performance on predicting the progression time of AD dementia/MCI onset with an AUC of 0.708–0.886 and 0.810–0.979 on the CN→MCI and MCI→AD cohorts, respectively."},
+    {"paper": "P-353", "page": 3, "quote": "attaining cdAUC values of 0.9089±0.01 alongside BS of 0.1651±0.01 with t =1 year on the test set"},
+    {"paper": "P-353", "page": 15, "quote": "In the test set, 74 cases (40%) progressed to AD, and 110 cases (60%) remained in the MCI state."},
+    {"paper": "P-353", "page": 17, "quote": "Across all models, predictive performance declined as the prediction horizon increased."}
+  ]
+}

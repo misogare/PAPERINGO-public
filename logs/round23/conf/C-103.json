@@ -1,0 +1,85 @@
+{
+  "id": "C-103",
+  "qualifies": "yes",
+  "question": "Prediction of progression from MCI to AD among ADNI MCI patients (Alzheimer's-spectrum MCI in both: early MCI in P-178, ADNI-1 MCI in P-185). The channel compared is structural MRI: P-185 uses MRI morphometry only; P-178's multimodal model includes hippocampal and ventricular volume, which rank among its top features, alongside cognitive scores, APOE4 and demographics. Horizon (open, last-visit diagnosis vs 3 years) and cohort differ, which the rule allows.",
+  "metric": "Shared: both report accuracy and ROC-AUC. The record uses accuracy (93.6% vs 69.37%); AUC (0.96 vs 0.6951) is the prevalence-independent comparison and gives the same result.",
+  "figures": {
+    "P-178": "Balanced random forest, 9 features, 383 EMCI (49 converters), 75/25 random split (95 test patients), visits as units with random oversampling (Table 1: 402 test records per class). Accuracy 93.6%: Wilson with n=95 patients, centre (0.936+1.9208/95)/(1+3.8416/95)=0.919, half-width 1.96*sqrt(0.936*0.064/95+3.8416/(4*95^2))/1.040=0.051 -> 0.868-0.970. AUC 0.96, no interval: Hanley-McNeil at subject level with about 12 converters / 83 non-converters in the test patients (25% of 49 and 334): Q1=0.96/1.04=0.923, Q2=2*0.9216/1.96=0.940, SE=sqrt([0.96*0.04+11*(0.923-0.9216)+82*(0.940-0.9216)]/(12*83))=0.040 -> 0.882-1.000 (at the record level, 402/402: SE 0.007 -> 0.946-0.974).",
+    "P-185": "Subspace-learning biomarker from cortical thickness and volume, ADNI-1, 221 MCI (126 pMCI, 95 sMCI; conversion within 3 years), 10-fold CV repeated 20 times, linear SVM: accuracy 69.37% (Wilson n=221: 0.630-0.751), sensitivity 75.39%, specificity 61.23%, AUC 0.6951. Hanley-McNeil: Q1=0.6951/1.3049=0.533, Q2=2*0.4832/1.6951=0.570, SE=sqrt([0.6951*0.3049+125*(0.533-0.4832)+94*(0.570-0.4832)]/(126*95))=0.035 -> 0.627-0.763."
+  },
+  "matched_figure_check": "No matched figure exists. P-178 reports no MRI-only model (its only reduced model, 6 features, drops the MRI volumes and APOE4 and keeps cognitive scores and demographics: accuracy 0.892, AUC 0.88 in Table 4, against 0.936 / 0.96 with the volumes and APOE4 added), no fixed 3-year horizon and no ADNI-1 late-MCI subset; P-185 reports no cognitive or clinical predictors and no early-MCI or open-horizon analysis. Nothing in either paper reproduces the other's condition, so the gap is not reconciled by the papers' own data.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes the Section 3.5 test as written: P-178's AUC is 0.96 and accuracy 0.936 (below 0.97) on 383 patients; P-185's 0.6951 is far from ceiling. P-178's design (visit-level records, random oversampling of the minority class, feature group chosen by test accuracy, internal split only) is a serious validity concern recorded below as a candidate explanation, not as the exclusion.",
+  "failed_conditions": [],
+  "candidate_explanations": [
+    {
+      "difference": "Predictor set: P-178 adds cognitive scores (ADAS13, ADAS11, FAQ, MMSE), age, race and APOE4 to two MRI volumes; P-185 uses MRI morphometry alone. P-178's model without the MRI volumes and APOE4 still reaches AUC 0.88 (accuracy 0.892), far above P-185's 0.6951. That points to the cognitive scores, but it is not an MRI-only comparison, so it does not show the explanation is sufficient.",
+      "quote": "We also tested a 6-feature group, which removed the RAVLT variables as well as the biomarker data; however, this saw the worst accuracy of the three groups at 89.2%.",
+      "paper": "P-178"
+    },
+    {
+      "difference": "Label definition and horizon: conversion by the last available visit (open horizon, mean time to conversion about 5 years) versus conversion within 3 years.",
+      "quote": "From the ADNI variables, the Clinical Dementia Rating was used to make this determination based on the value of their last visit\u2019s diagnosis.",
+      "paper": "P-178"
+    },
+    {
+      "difference": "Population: early MCI enrolled in ADNI-GO/2 versus ADNI-1 MCI, with converter prevalence 12.8% versus 57% (which also makes the accuracies non-comparable, though the AUCs are not affected).",
+      "quote": "Moreover, the 221 MCI subjects contain 126 pMCI and 95 sMCI subjects.",
+      "paper": "P-185"
+    },
+    {
+      "difference": "Unit of analysis and validation: P-178 evaluates oversampled visit records from one random split (Table 1 shows an oversampled test set of 402 per class, while its SVC's 90.0% accuracy at AUC 0.54 implies an imbalanced one, an internal inconsistency); P-185 evaluates subjects with 10-fold CV repeated 20 times.",
+      "quote": "This allows for the model to be trained against 2412 exam visits (1206 per class) rather than only the 1354 from the original data set train/test split.",
+      "paper": "P-178"
+    },
+    {
+      "difference": "Model selection on test performance: P-178 chose its nine-feature group by comparing accuracies across feature groups.",
+      "quote": "Many different variations of ADNI features were tested for model inclusion; however, these nine features were found to provide the best overall fit.",
+      "paper": "P-178"
+    }
+  ],
+  "reason": "Both papers predict MCI-to-AD conversion in ADNI with a model that includes structural MRI, and both report AUC: 0.96 (subject-level interval about 0.88-1.00) against 0.6951 (0.627-0.763), far apart on either side, with no figure in either paper under the other's condition. Neither reaches the 0.97 near-ceiling exclusion. The gap may come from P-178's cognitive-score predictors, its open horizon and early-MCI population, or its visit-level oversampled evaluation, but neither paper shows that any of these is sufficient.",
+  "quotes": [
+    {
+      "paper": "P-178",
+      "page": 1,
+      "quote": "Of these patients, 49 would eventually convert to AD (EMCI_C), whereas the remaining 334 did not convert (EMCI_NC)."
+    },
+    {
+      "paper": "P-178",
+      "page": 3,
+      "quote": "a mix of genetic biomarkers (APOE4), physical biomarkers (hippocampal and ventricular volume), four neuropsychological scale scores (ADAS13, ADAS11, FAQ, MMSE), and the patient\u2019s demographic information (age, race)."
+    },
+    {
+      "paper": "P-178",
+      "page": 7,
+      "quote": "The difference in AUC between our best RF variation (96% AUC) and our best SVC variation (54% AUC) is shown in Fig 5."
+    },
+    {
+      "paper": "P-178",
+      "page": 8,
+      "quote": "our 9-feature random forest implementation with an accuracy of 93.6% and an AUC of 96% against a 383-patient data set represents our best model."
+    },
+    {
+      "paper": "P-185",
+      "page": 2,
+      "quote": "According to whether the MCI subjects will convert to AD or not within a given time period (i.e., 3 years), they are separated into two categories: progressive MCI (pMCI) and stable MCI (sMCI)."
+    },
+    {
+      "paper": "P-185",
+      "page": 5,
+      "quote": "we repeated 10-fold cross-validation 20 times to report the average results for each method."
+    },
+    {
+      "paper": "P-185",
+      "page": 6,
+      "quote": "The proposed biomarker achieved highest accuracy of 69.37% when using SVM classi\ufb01er with linear kernel."
+    },
+    {
+      "paper": "P-185",
+      "page": 6,
+      "quote": "Proposed biomarkers 69.37 75.39 61.23 0.6951"
+    }
+  ]
+}

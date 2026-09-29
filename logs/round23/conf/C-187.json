@@ -1,0 +1,25 @@
+{
+  "id": "C-187",
+  "qualifies": "no",
+  "question": "Shared at the level of condition 1. Both papers predict progression from MCI among ADNI MCI participants: P-344 models time to clinically diagnosed AD over up to 16 years (902 MCI, median time to progression 6 years); P-192 scores incident dementia of any cause at fixed horizons of 6 to 48 months (415 aMCI) with classifiers trained on CN vs dementia. Channels overlap: P-344 uses cognitive and functional scores, FDG-PET, four MRI volumes and APOE e4; P-192's quoted PPV comes from its biomarker set (CSF, regional amyloid PET, regional FDG-PET) and it also reports a clinical feature set. Endpoint definition (AD vs all-cause dementia), horizon and training design differ, which the rule allows.",
+  "metric": "Mismatch (condition 2 fails). P-344 reports Harrell's C-index (threshold-free ranking of time to event) and the integrated Brier score, and nothing else. P-192 reports sensitivity, specificity, PPV and NPV at a fixed probability cut-off and fixed horizons, and no AUC or C-index. A C-index and a PPV are not on a common scale, and neither paper prints the other's metric.",
+  "figures": {
+    "P-344": "Random survival forest, 30% test split of 902 ADNI MCI: C-index 0.878 (printed 95% CI 0.877-0.879); CoxPH 0.863 (0.862-0.864). No sensitivity, specificity or PPV reported.",
+    "P-192": "RUSBoost, biomarker feature set, applied to 415 ADNI aMCI: PPV 68% at 4 years against an observed dementia rate of 22.2% (PPV 53.6% at 2 years against 18.0%); clinical feature set PPV 67.3% at 4 years. No AUC or C-index reported, so no interval on a shared scale can be derived."
+  },
+  "matched_figure_check": "No matched figure exists: neither paper reports any result on the other's metric, so there is nothing to compare under a common condition. The recorded gap (0.198) is the arithmetic difference between a C-index and a PPV.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not applicable as a performance comparison, since there is no shared metric. Neither figure approaches 0.97 (C-index 0.878; PPV 68%), so the Section 3.5 exclusion would not apply in any case.",
+  "failed_conditions": [2],
+  "candidate_explanations": [],
+  "reason": "Both papers address MCI progression in ADNI with overlapping channels, but they report different metric types: P-344 a C-index for time to AD, P-192 a threshold- and prevalence-dependent PPV for all-cause dementia within 4 years. Neither paper prints the other's metric, so condition 2 fails and no uncertainty comparison (condition 4) can be made. The recorded gap is a subtraction across unlike quantities.",
+  "quotes": [
+    {"paper": "P-344", "page": 1, "quote": "Models were evaluated using C-index and IBS."},
+    {"paper": "P-344", "page": 5, "quote": "Based on the C-index, RSF achieved the best performance with a score of 0.878 (95% CI: 0.877–0.879), followed by CoxPH with 0.863 (95% CI: 0.862–0.864)"},
+    {"paper": "P-344", "page": 5, "quote": "The median time to progression was 6 years (95% CI: 5–7 years), as shown in Fig. 2."},
+    {"paper": "P-192", "page": 4, "quote": "RUSBoost models applied to biomarker feature set provided > 35% improvement in the prediction of dementia over 2 years (model’s PPV = 53.6 vs. observed rate of dementia onset = 18.0%) and > 45% over 4 years (model’s PPV = 68% vs. observed rate of dementia onset = 22.2%)."},
+    {"paper": "P-192", "page": 7, "quote": "Using baseline data from CN and dementia participants, LR or RUSBoost models were trained to differentiate CN participants from individuals diagnosed with dementia. Subsequently, the trained model was applied to aMCI participants"},
+    {"paper": "P-192", "page": 5, "quote": "In the ADNI sample, MCI and dementia diagnosis was not necessarily due to AD"}
+  ]
+}

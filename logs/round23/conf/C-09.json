@@ -1,0 +1,34 @@
+{
+ "id": "C-09",
+ "qualifies": "no",
+ "question": "Prediction of conversion from MCI to Alzheimer's disease in ADNI older adults. P-1 uses early-MCI patients only, with conversion judged at the last exam (stated as within five years); P-3 uses EMCI, LMCI and MCI patients, with conversion within 36 months. The rule allows these subset and horizon differences as candidate explanations. The shared channel is MRI: P-1's DTI-only CNN arm (the clinical arm also carries MRI volumetrics) against P-3's single baseline T1 MRI.",
+ "metric": "accuracy with accuracy (AUC with AUC also available in both)",
+ "figures": {
+  "P-1": "Held-out test: ensemble accuracy 98.81% = 83/84 (the Table 5 accuracies 98.81, 97.62, 96.43, 95.24, 94.05 and 92.86 are all multiples of 1/84, so n = 84 test units), Wilson 95% CI 0.936-0.998, AUC 0.992. DTI-only CNN (the MRI-channel figure) accuracy 96.43% = 81/84, Wilson 95% CI 0.900-0.988, AUC 0.973 (Table 6); the DTI arm is built from 405 images of 90 patients (16 converters). Clinical-only RF 92.86%, AUC 0.960.",
+  "P-3": "5-fold CV over 593 subjects (298 sMCI, 295 pMCI): CAAT ensemble accuracy 74.61% (fold variance 0.002), Wilson 95% CI with n = 593: 0.710-0.780; AUC 0.780, Hanley-McNeil with 295/298: Q1 = 0.78/1.22 = 0.639, Q2 = 2(0.78^2)/1.78 = 0.684, SE = 0.019, 95% CI 0.743-0.817."
+ },
+ "matched_figure_check": "No matched figure exists. P-3 reports no EMCI-only result and no longer horizon; P-1 reports no all-MCI result, no 36-month horizon and no T1-only result. Neither paper reconciles the gap.",
+ "beyond_uncertainty": true,
+ "significance_only": false,
+ "performance_validity": "Fails for P-1 (checked against the source). The ensemble gives accuracy 98.81% with AUC 0.992. The DTI-only arm, which is the MRI-channel figure, gives AUC 0.973. All three are on internal random splits: the RF uses 75/25 over 383 patients; the CNN holds out 10% of 405 images drawn from 90 patients. There is no external cohort, and the models were tuned repeatedly ('the experiment was repeated several dozen times per model'). Section 3.5 of the review names this study (98.81%) in its excluded set. P-3 (accuracy 74.61%, AUC 0.780, 5-fold CV) does not trip the rule.",
+ "failed_conditions": [5],
+ "candidate_explanations": [
+  {"difference": "Population subset: early MCI only vs all MCI grades", "quote": "383 Early Mild Cognitive Impairment (EMCI) patients were collected from the Alzheimer’s Disease Neuroimaging Initiative (ADNI).", "paper": "P-1"},
+  {"difference": "Horizon: last exam (stated as within five years) vs 36 months", "quote": "if a subject was diagnosed with Dementia within the following 36 months, he/she was grouped into pMCI", "paper": "P-3"},
+  {"difference": "Input: clinical features plus single-slice DTI vs one baseline T1 volume", "quote": "Nine clinical features were selected to be combined with the visual predictor.", "paper": "P-1"},
+  {"difference": "Evaluation: a small held-out imaging arm with repeated tuning vs 5-fold CV that the authors say may be optimistic", "quote": "This may lead to an optimistically biased evaluation of the model performance.", "paper": "P-3"}
+ ],
+ "reason": "Both papers address MCI-to-AD conversion in ADNI, and on the shared MRI channel they disagree far beyond uncertainty: P-1's DTI arm reaches 96.43% (CI 0.900-0.988) and P-3 reaches 74.61% (CI 0.710-0.780). No matched figure reconciles them. The pair fails condition 5, because P-1's results are near-ceiling (ensemble AUC 0.992, DTI arm AUC 0.973) on internal splits of a small imaging sample (90 patients) with no external cohort, and Section 3.5 excludes this study by name. The listed differences are recorded for completeness; none is shown to be sufficient.",
+ "quotes": [
+  {"paper": "P-1", "page": 1, "quote": "383 Early Mild Cognitive Impairment (EMCI) patients were collected from the Alzheimer’s Disease Neuroimaging Initiative (ADNI). Within this set, 49 patients would eventually convert to AD (EMCI_C)"},
+  {"paper": "P-1", "page": 3, "quote": "These were then grouped into 90 unique EMCI patients, where 16 would convert to AD (EMCI_C) and 74 would not (EMCI_NC)."},
+  {"paper": "P-1", "page": 6, "quote": "With only clinical data being supplied, our model maintains an accuracy of 92.86%. When only DTI scans are provided, our model performs at 96.43% accuracy."},
+  {"paper": "P-1", "page": 6, "quote": "CNN .964 1 .958 .813 .897 .973 Ensemble .988 1 .986 .929 .963 .992"},
+  {"paper": "P-1", "page": 6, "quote": "For CNN training, 10% of our images are reserved for testing, 10% for validation, and the remaining 80% for training."},
+  {"paper": "P-1", "page": 7, "quote": "the experiment was repeated several dozen times per model."},
+  {"paper": "P-3", "page": 3, "quote": "At the start (baseline time), all selected subjects were diagnosed with MCI, early MCI (EMCI), or late MCI (LMCI)."},
+  {"paper": "P-3", "page": 6, "quote": "Our dataset consists of 593 MRI images, consisting of 298 sMCIs and 295 pMCIs images."},
+  {"paper": "P-3", "page": 7, "quote": "CAAT ensemble 0.75 (0.004) 0.75 (0.006) 0.75 (0.002) 74.61 (0.002) 0.780 (0.003)"},
+  {"paper": "P-3", "page": 9, "quote": "A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models. This may lead to an optimistically biased evaluation of the model performance."}
+ ]
+}

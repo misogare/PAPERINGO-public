@@ -1,0 +1,49 @@
+{
+  "id": "C-97",
+  "qualifies": "no",
+  "question": "None shared. P-174's figure (the paper meant is Bae et al. 2021, Neurobiol Aging; P-174 is a stub duplicate and its pack PDF is a copy of P-173) is 3-year MCI-to-DAT conversion from baseline structural MRI in ADNI. P-152 (superficial white matter DTI, 72 ADNI2 subjects) reports only current-diagnosis contrasts: AD vs HC, MCI vs HC, MCI vs AD. Bae reports only the conversion target task (its NC-vs-DAT source task has no reported accuracy in the text read), so the two papers print no figure for a common question.",
+  "metric": "Mismatch as recorded: Bae's AUC 0.827 (conversion) against P-152's accuracy 95.8% (AD vs HC). P-152 also prints AUCs, but for diagnostic contrasts only.",
+  "figures": {
+    "P-174 (Bae et al., read as P-37.txt / repository PDF PMID_33422894)": "MCI-C (conversion within 3 years) vs MCI-NC, independent test set of 68 scans: accuracy 82.4% (56/68; Wilson n=68: 0.716-0.896), AUC 0.827.",
+    "P-152": "AD vs HC accuracy 95.8%, AUC 0.99 (n=48, internal 5-fold CV); MCI vs HC 83.3%, AUC 0.88; MCI vs AD 83.3%, AUC 0.93. No conversion analysis."
+  },
+  "matched_figure_check": "Not applicable: neither paper reports the other's contrast. P-152 has no conversion result; Bae has no AD-vs-HC or MCI-vs-HC result in the text.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "P-152's recorded figure fails the Section 3.5 test: AD vs HC with AUC 0.99 (accuracy 0.958) on 48 subjects, internal 5-fold CV, no external cohort. Bae's 0.827 on an independent test split passes.",
+  "failed_conditions": [
+    1,
+    2,
+    5,
+    6
+  ],
+  "candidate_explanations": [],
+  "reason": "The record reads P-152's 95.8% as a conversion accuracy; it is the AD-vs-healthy accuracy, and P-152 contains no conversion analysis, so the claimed disagreement exists only through a misreading (condition 6). The two papers address different questions (condition 1) with different metrics as recorded (condition 2), and P-152's contested figure would be excluded under the near-ceiling rule in any case (condition 5).",
+  "quotes": [
+    {
+      "paper": "P-174 (Bae et al.)",
+      "page": 5,
+      "quote": "It produced a test set classification accuracy of 82.4% and 0.827 area under the curve as well as 0.189 equal error rate value (Fig. 4B)."
+    },
+    {
+      "paper": "P-174 (Bae et al.)",
+      "page": 5,
+      "quote": "The test set was composed of MCI-C patients whose conversion time was between 0 and 3 years."
+    },
+    {
+      "paper": "P-152",
+      "page": 1,
+      "quote": "The linear kernel of SVM was the best classifier, with an accuracy of 95.8% between the AD and HC groups"
+    },
+    {
+      "paper": "P-152",
+      "page": 1,
+      "quote": "followed by the quadratic kernel of SVM with an accuracy of 83.3% between the MCI and HC groups and the Gaussian kernel of SVM with an accuracy of 83.3% between the AD and MCI groups."
+    },
+    {
+      "paper": "P-152",
+      "page": 1,
+      "quote": "This method employed DTI data from 72 subjects: 24 subjects as HC, 24 subjects with MCI, and 24 subjects with AD."
+    }
+  ]
+}

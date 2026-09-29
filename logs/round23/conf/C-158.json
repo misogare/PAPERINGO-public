@@ -1,0 +1,30 @@
+{
+ "id": "C-158",
+ "qualifies": "borderline",
+ "question": "Prediction of conversion from MCI to AD among ADNI MCI patients. The shared channel is structural MRI. P-244 (Deep-AD survival clustering, 783 MCI, 348 converters, 5-fold CV) uses baseline clinical and cognitive variables with FreeSurfer MRI features. P-198 (two-state Markov model plus logistic regression, ADNI1/2, 721 MCI) uses five cortical-thickness covariates only. The horizon differs: P-244 reports time-dependent AUC at 1, 3, 5 and 10 years, and P-198 conversion by the second visit, about 2 years later. Predictor set and horizon differences are allowed.",
+ "metric": "ROC AUC with ROC AUC: P-244's time-dependent AUC at t against P-198's binary AUC for conversion by about 2 years.",
+ "figures": {
+  "P-244": "Time-dependent AUC for MCI to AD: 1 year 0.810, 3 years 0.914, 5 years 0.957, 10 years 0.979 (Figure 7C legend; abstract gives 3 and 5 years). Per-horizon case counts are not printed. Hanley-McNeil under assumed counts: at 3 years, 0.914 with 100/100 (conservative) gives Q1 = 0.8416, Q2 = 0.8729, SE 0.021, CI [0.873, 0.955]; with 150/300, [0.882, 0.946]. At 1 year, 0.810 with 60/650 gives [0.742, 0.878]; with 100/500, [0.757, 0.863]. C-index 0.718 (95% CI 0.712-0.725); external AIBL C-index 0.752.",
+  "P-198": "Cortical-thickness model: AUC 0.78 +/- 0.08 (10-fold SD) for conversion by the second visit, 721 MCI (188 converters/533 stable). Hanley-McNeil: Q1 = 0.6393, Q2 = 0.6836, SE 0.0214, CI [0.738, 0.822]. From the fold SD, SE 0.08/sqrt(10) = 0.0253, CI [0.730, 0.830]."
+ },
+ "matched_figure_check": "P-244 prints no 2-year AUC, and the horizons on either side of P-198's give opposite answers. At 1 year, 0.810 lies inside P-198's interval [0.738, 0.822], and 0.78 lies inside P-244's 1-year interval under any plausible case count: agreement. At 3 years, 0.914 lies outside P-198's interval, and 0.78 lies outside P-244's 3-year interval even at 100/100: disagreement. P-244's own AUC climbs from 0.810 at 1 year to 0.979 at 10 years, so the recorded pairing of a 5-year 0.957 with a 2-year 0.78 is largely a horizon effect. Whether a gap remains at 2 years cannot be read from the printed values. Neither paper reports the other's predictor set: P-244 has no MRI-only arm (its comparators are MMSE, 0.537-0.600, and APOE4, 0.564-0.681), and P-198 has no clinical predictors.",
+ "beyond_uncertainty": true,
+ "significance_only": false,
+ "performance_validity": "Passes. The recorded 0.957 is below 0.97. P-244's 10-year 0.979 reaches 0.97, but on 783 MCI with an external cohort (AIBL), so the exclusion does not apply. P-198's 0.78 is far below.",
+ "failed_conditions": [3],
+ "candidate_explanations": [
+  {"difference": "Predictor set: P-244 concatenates baseline clinical and cognitive variables with MRI features, while P-198 uses five MRI cortical-thickness covariates only.", "quote": "we concatenated the baseline clinical features and neuroimaging features extracted from the MRI scans, embedded with t through a transformer encoder, to map to z.", "paper": "P-244"},
+  {"difference": "Horizon: P-198 predicts conversion within about two years, while P-244's discrimination rises with horizon (0.810 at 1 year, 0.914 at 3 years).", "quote": "using λ to predict whether a test patient will transition to AD within the next two years, given the outcome of the first visit.", "paper": "P-198"},
+  {"difference": "Model and endpoint construction: a time-dependent AUC from a deep survival model against a logistic regression on Markov transition rates and probabilities, with five covariates chosen by Relief ranking. P-198 does not say the selection was nested in the folds.", "quote": "Finally, we applied a Relief-based feature selection algorithm (available in the R package, CORElearn), to rank raw features according to their classification relevance [15] and select the top five", "paper": "P-198"}
+ ],
+ "reason": "Both papers predict MCI-to-AD conversion in ADNI with MRI-containing models and report AUC, and the recorded gap (0.957 at 5 years vs 0.78 at about 2 years) is beyond uncertainty. P-244 prints no 2-year figure. Its 1-year AUC (0.810) agrees with P-198's 0.78 while its 3-year AUC (0.914) does not, so the papers' own figures neither clearly dissolve nor clearly sustain the gap at P-198's horizon. None of the candidate explanations (cognitive predictors, horizon, model) is shown to be sufficient, so the pair is borderline.",
+ "quotes": [
+  {"paper": "P-244", "page": 1, "quote": "AUC (CN→MCI, 3 years 0.802, 5 years 0.876; MCI→AD, 3 years 0.914, 5 years 0.957)."},
+  {"paper": "P-244", "page": 12, "quote": "our model achieved consistently impressive performance on predicting the progression time of AD dementia/MCI onset with an AUC of 0.708–0.886 and 0.810–0.979 on the CN→MCI and MCI→AD cohorts, respectively."},
+  {"paper": "P-244", "page": 13, "quote": "ROC Curves (MCI→AD) ... 1 Year (AUC=0.810) 3 year (AUC=0.914) 5 year (AUC=0.957) 10 year (AUC=0.979) [Figure 7C legend, read from the rendered page]"},
+  {"paper": "P-244", "page": 5, "quote": "For evaluation, we applied five-fold cross validation"},
+  {"paper": "P-198", "page": 2, "quote": "the follow-up scan was performed approximately two years later, when their condition was re-assessed to establish whether they had transitioned to AD."},
+  {"paper": "P-198", "page": 3, "quote": "The dataset includes 721 MCI individuals, 533 of whom were categorized as having stable MCI (sMCI)"},
+  {"paper": "P-198", "page": 5, "quote": "sulcal width (AUC=0.71 ± 0.09; Accuracy= 0.72 ± 0.04) and cortical thickness (AUC=0.78 ± 0.08; Accuracy= 0.75 ± 0.02) compared to the baseline model (AUC=0.56 ± 0.10; Accuracy=0.65 ± 0.08)."}
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "id": "C-29",
+ "qualifies": "no",
+ "question": "None shared. This is the same pair as C-26: paper_b was repointed from the P-10 dedup stub to P-5 on 2026-08-29, and claim_b still names P-10. P-114 (Seifallahi et al., Kinect gait, pack pdf/P-115.txt) separates MCI from healthy controls; P-5 classifies AD/MCI/CN three ways from fundus photographs and OCT. The channels (gait/motor vs eye/retina) and the contrasts differ.",
+ "metric": "Mismatch: binary accuracy (93%) vs the MCI-class precision (84.96%) of a three-class model.",
+ "figures": {
+  "P-114": "Binary MCI vs HC: accuracy 93% (n = 150; ANFIS protocol not stated), Wilson 0.878-0.961.",
+  "P-5": "Three-class accuracy 91.64%, AUC 96.78%; MCI-class precision 84.96% (image-level 5-fold CV; 29 MCI, 50 CN, 38 AD patients). No binary MCI-vs-CN accuracy."
+ },
+ "matched_figure_check": "No matched figure is possible (see C-26): P-5 prints no binary MCI-vs-CN accuracy.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Passes: no contested figure reaches 0.97.",
+ "failed_conditions": [1, 2],
+ "candidate_explanations": [],
+ "reason": "This duplicates C-26 and gets the same judgment. The channels differ (gait vs retinal imaging), the contrasts differ (binary vs three-class), and the figures are different statistics (accuracy vs MCI-class precision). The pair should be counted once.",
+ "quotes": [
+  {"paper": "P-114 (pack pdf/P-115.txt)", "page": 1, "quote": "the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups."},
+  {"paper": "P-5", "page": 1, "quote": "The proposed method achieved high precision rates of 84.96% and 80.90% in classifying MCI and positive test scores for cognitive impairment, respectively."},
+  {"paper": "P-5", "page": 1, "quote": "The neural network was applied to classify individuals with MCI, Alzheimer’s disease, and control participants with normal cognition."}
+ ]
+}

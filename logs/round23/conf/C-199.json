@@ -1,0 +1,27 @@
+{
+  "id": "C-199",
+  "qualifies": "no",
+  "question": "Not shared. P-192 predicts future dementia in ADNI aMCI from baseline data at fixed horizons of 0.5 to 4 years. P-195 recognises conversion at the visit where it was diagnosed. For cMCI, its second MRI and clinical session is the session at which AD was diagnosed, and its clinical variables include scores from that session. The authors distinguish this from predicting future AD. The headline channels also differ: longitudinal T1 MRI plus clinical data in P-195, against CSF and amyloid/FDG PET in P-192's biomarker set. Only the clinical channel is shared.",
+  "metric": "As recorded, a mismatch: PPV (P-192, 68.0% at 4 years) against ROC-AUC (P-195, 84.7). The round-20 reading says P-192 reports no AUC. That is wrong: P-192's Tables 3-4 (PDF pages 24-26) print AUCs at every horizon for both feature sets. AUC with AUC is therefore available.",
+  "figures": {
+    "P-192": "4-year horizon, evaluation set 234 aMCI, 22.2% converted, about 52/182. Biomarker set RUSBoost AUC 0.77 (the record's PPV 68.0% belongs to this model), Hanley-McNeil Q1 = 0.626, Q2 = 0.670, SE = 0.041, CI [0.690, 0.850]. Clinical set at 4 years: RUSBoost AUC 0.77, LR 0.77, same CI. Clinical set at the other horizons: RUSBoost 0.82/0.77/0.79/0.81, LR 0.76-0.77.",
+    "P-195": "669 ADNI MCI (229 cMCI / 440 sMCI), 10-fold stratified CV. Model 5 (T1 MRI + clinical, pre-trained, frozen layers): AUC 0.847, balanced accuracy 77.8%. Hanley-McNeil Q1 = 0.735, Q2 = 0.777, SE = 0.017, CI [0.813, 0.881]. Clinical variables only: AUC 0.806, balanced accuracy 75.5%, CI [0.769, 0.843]. T1 MRI only: AUC 0.79."
+  },
+  "matched_figure_check": "The shared channel is clinical data, and there the papers agree. P-195's clinical-only AUC (0.806, CI [0.769, 0.843]) and P-192's clinical-set AUCs (0.77 at 4 years, CI [0.690, 0.850]; 0.81 at 3 years; 0.82 at 6 months) each lie inside the other's interval. On the headline, P-192's 0.77 lies outside P-195's interval, but P-195's 0.847 lies inside P-192's interval (upper bound 0.850). The headline also sets MRI + clinical against PET/CSF on a different endpoint.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: P-195's 0.847 and P-192's 0.69-0.82 are below 0.97.",
+  "failed_conditions": [1, 3, 6],
+  "candidate_explanations": [],
+  "reason": "P-195 recognises conversion using scans and clinical scores taken at the visit where conversion was diagnosed, which its authors distinguish from predicting future AD. P-192 predicts dementia from baseline data, so condition 1 fails. On the one shared channel (clinical data) the two papers' AUCs agree (0.806 against 0.77-0.82), so condition 3 fails as well. The record's PPV-against-AUC gap and the round-20 note that P-192 prints no AUC both misdescribe the papers.",
+  "quotes": [
+    {"paper": "P-195", "page": 3, "quote": "The time points used for cMCI subjects were chosen by selecting the session when the subjects were diagnosed with AD (session two) and the previous session where the subjects were still not converted (session one)."},
+    {"paper": "P-195", "page": 9, "quote": "The RAVLT score from the second session was the most important clinical feature, with ADAS11 from the second session and MoCA scores from the first session following."},
+    {"paper": "P-195", "page": 7, "quote": "(1) Clinical variables only 75.5 80.6"},
+    {"paper": "P-195", "page": 7, "quote": "(5) Clinical variables + T1-weighted MRI (pre-trained network: frozen layers) 77.8 84.7"},
+    {"paper": "P-195", "page": 11, "quote": "However, these models focus on the prediction of future AD rather than an actual diagnosis of the AD conversion"},
+    {"paper": "P-192", "page": 9, "quote": "The goal of predictive modeling was to partition persons with aMCI into two groups: one that did not progress to dementia, and another that would progress to dementia within the next 4 years of follow-up."},
+    {"paper": "P-192", "page": 25, "quote": "4 61.5 91.7 68.0 89.3 0.77 22.2"},
+    {"paper": "P-192", "page": 26, "quote": "4 63.4 91.2 67.3 89.7 85.0 0.77 22.2"}
+  ]
+}

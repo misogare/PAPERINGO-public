@@ -1,0 +1,32 @@
+{
+  "id": "C-128",
+  "qualifies": "borderline",
+  "question": "Prediction of MCI-to-AD conversion within 3 years among ADNI MCI participants. The shared channel is structural MRI: P-186 is multimodal (neuropsychological measures plus FreeSurfer MRI markers), and Bae et al. use raw baseline T1 MRI only. The ledger's AUC 0.827 for P-174 is Bae et al. (the P-37 document). The PDF mapped to P-174 is a MEG paper (Xu et al., Madrid cohort) that reports no AUC 0.827, and P-174's block is a stub duplicate of P-171, itself a duplicate of P-37. The comparison is therefore P-186 vs Bae et al. (P-37). Allowed differences: input (longitudinal feature trajectories with a forecast value vs one baseline image), features, label definition, sample size and validation.",
+  "metric": "AUC with AUC (0.957 vs 0.827).",
+  "figures": {
+    "P-186": "NM+MRI, 1-year-ahead: AUC 0.957, n=85 (35 MCIp, 50 MCIs), 5-fold CV. Hanley-McNeil with n1=35, n2=50: SE 0.0249, 95% CI 0.908-1.000. MRI-only (the shared channel), 1-year-ahead: AUC 0.905 (Table 5), SE 0.0366, 95% CI 0.833-0.977. MRI-only, 6-month-ahead (n=119, 49/70, same 36-month conversion label): AUC 0.88, SE 0.0344, 95% CI 0.813-0.947.",
+    "P-37": "Bae et al.: test-set AUC 0.827, accuracy 82.4%, on 68 independent held-out scans, one baseline scan per subject. The paper gives 37 MCI-C with conversion in 0-3 years for the test evaluation, implying 31 MCI-NC. Hanley-McNeil with n1=37, n2=31: Q1=0.7050, Q2=0.7487, SE 0.0498, 95% CI 0.729-0.925. A balanced 34/34 split gives SE 0.0507, CI 0.728-0.926.",
+    "P-174": "The PDF mapped to P-174 (Xu et al., MEG, 76 MCI: 28 pMCI/48 sMCI) reports mean accuracy of 78% for sMCI vs pMCI and no AUC 0.827; its dataset (Madrid clinic), channel (MEG) and metric differ from P-186's.",
+    "comparison": "Headline figures: the intervals do not overlap (0.908-1.000 vs 0.729-0.925); each estimate lies outside the other's interval."
+  },
+  "matched_figure_check": "P-186 reports results in the channel Bae et al. use (MRI only), with the same 36-month conversion label; neither is a single-scan result. At 1 year ahead, P-186's MRI-only 0.905 lies inside Bae's interval (0.729-0.925). Bae's 0.827 lies 0.006 below the Hanley-McNeil lower bound for 0.905 (0.833), a margin smaller than the precision of that approximation for a cross-validated estimate with a post-hoc marker-subset size. At 6 months ahead, P-186's MRI-only 0.88 (CI 0.813-0.947) and Bae's 0.827 (CI 0.729-0.925) agree in both directions. The channel-matched figures therefore sit at the edge of agreement: one agrees fully, the other fails the rule's test by 0.006 in one direction. Whether they reconcile the pair (a condition-3 failure) is the open judgment.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes condition 5 on the compared figures: 0.957 and 0.827 are below 0.97. P-186's ground-truth AUC of 0.98 uses observed future values and is not the compared figure. P-186's figures are optimistic: features are scaled before the train-test split and the best marker-subset size is reported.",
+  "failed_conditions": [3],
+  "candidate_explanations": [
+    {"difference": "Predictor set: P-186's 0.957 adds neuropsychological measures to MRI. Its own MRI-only figures (0.905, 0.88) come close to Bae's MRI-only 0.827, so most of the headline gap follows the added cognitive channel.", "quote": "the classi\ufb01cation power of our system is the highest when NM measures are used in conjunction with MRI measures", "paper": "P-186"},
+    {"difference": "Input representation: longitudinal marker trajectories with a forecast value at the time of conversion (P-186) vs one baseline raw scan (Bae et al.).", "quote": "Included in the target task is the single time point sMRI scan at which an individual \ufb01rst received a diagnosis of MCI.", "paper": "P-37"},
+    {"difference": "Label definition: Bae's non-converters must remain MCI for at least 3 years; P-186's stables are those retaining MCI through the 36-month follow-up in an ADNI-1 subsample with complete consecutive visits.", "quote": "This resulted in 228 MCI-C patients and 222 MCI-NC patients.", "paper": "P-37"},
+    {"difference": "Validation: one independent held-out test of 68 scans (Bae) vs 5-fold CV with pre-split scaling and a post-hoc marker-subset size (P-186).", "quote": "We scale all features to have values between 0 and 1 before the train-test split.", "paper": "P-186"}
+  ],
+  "reason": "Read against the right document (Bae et al., P-37), the pair shares the question, the MRI channel and the metric, and the headline AUCs (0.957 vs 0.827) are separated beyond uncertainty. But P-186's own MRI-only figures, the channel Bae uses, nearly close the gap: at 6 months ahead (0.88) they agree with Bae's 0.827 in both directions, and at 1 year ahead (0.905) Bae's figure misses the derived interval by 0.006. Whether these channel-matched figures reconcile the pair is a knife-edge call. If reported, the ledger pair must be repointed from P-174 to P-37.",
+  "quotes": [
+    {"paper": "P-186", "page": 8, "quote": "method proposed in this paper has recorded the highest classi\ufb01cation AUC of 95.7% predominantly because of involving the forecasted marker value at the time of conversion as a classi\ufb01cation feature."},
+    {"paper": "P-186", "page": 9, "quote": "MRI 13 88.71% (4 \u00d710\u22126) 88% (1.3 \u00d710\u22126) 13 91.4% (8.7 \u00d710\u22127) 90.5% (1.02 \u00d710\u22126)"},
+    {"paper": "P-37", "page": 5, "quote": "It produced a test set classi\ufb01cation accuracy of 82.4% and 0.827 area under the curve"},
+    {"paper": "P-37", "page": 2, "quote": "randomly split into training, validation, and test sets by following the conventional ratio of 70% versus 15% versus 15% (314, 68, and 68 scans, respectively)"},
+    {"paper": "P-37", "page": 5, "quote": "In conversion times from 0 to 3 years, 3 to 6 years, and 6 to 10 years, there were 37, 39, and 9 MCI-C subjects"},
+    {"paper": "P-174", "page": 3, "quote": "MEG data for this study was collected from 76 MCI patients and 53 age-matched"}
+  ]
+}

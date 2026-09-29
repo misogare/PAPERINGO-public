@@ -1,0 +1,29 @@
+{
+  "id": "C-191",
+  "qualifies": "no",
+  "question": "MCI against cognitively normal older adults. The population class matches (Mayo Clinic Study of Aging for P-359's quoted figure; ADNI for P-125); the cohort difference is allowed. The shared channel is structural MRI: P-359's MCM fuses a mid-slice T1 MRI with PiB amyloid PET and concatenates MMSE, CDR, FAQ, education, gender and blood pressure; P-125 uses eight FreeSurfer amygdala morphometric features (volume, normalised volume, discrete compactness, tortuosity per hemisphere). A multimodal model matches when the compared channel is shared (as applied in C-103).",
+  "metric": "Accuracy with accuracy (match). P-125 also reports test AUC (85.71-90.31%); P-359 reports no AUC, so accuracy is the only shared metric.",
+  "figures": {
+    "P-359": "MCM-768-20, MCSA only, sagittal plane, random 85/15 train/validation split: accuracy 0.9639 (sensitivity 94/97, specificity 93/97, so 194 evaluation units; 187/194 = 0.9639). No interval printed. Wilson, n = 194: [0.927, 0.982]; at n = 124 (15% of 824 MCSA patients): [0.915, 0.985]. Same table and inputs: MCM-1024-20 0.7990 ([0.737, 0.849]), MCM-1536-20 0.7165 ([0.649, 0.775]); image baselines 0.65-0.74; Table 11 MCM without attention, sagittal best 0.7629 ([0.698, 0.817]).",
+    "P-125": "74 ADNI subjects (37 MCI/37 HC), 60/40 subject split (about 30 test subjects): mean test accuracy 80.00% (RF and ANN; +/-2.43% is across fold-models on one test partition). Wilson, 24/30: [0.627, 0.905]. The abstract's 82.14% (23/28) is not in the results tables; Wilson [0.644, 0.921]. Derivation as in C-83."
+  },
+  "matched_figure_check": "No figure under P-125's condition exists: P-359 reports no MRI-only, amygdala or ADNI-only result, and P-125 reports no PET or cognitive-score model. But P-359's own tables show that configuration alone, on the same MCSA sagittal split and inputs, spans P-125's level and the headline. MCM-1536-20 scores 0.7165, MCM-1024-20 0.7990, and the MCM without multi-head self-attention 0.7629; the image baselines score 0.65-0.74. All lie inside P-125's interval [0.627, 0.905], and P-125's 0.80 lies inside the intervals of MCM-1024 [0.737, 0.849] and the no-attention MCM [0.698, 0.817] (not MCM-1536's), so those two agree with P-125 in both directions. So the paper shows that the architecture and configuration difference is sufficient for the gap, which under the rule is a condition-3 failure. This is the reading applied in C-40 and in C-190. C-117 left a similar within-paper ablation to the operator.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Not excluded on the letter: P-359's 0.9639 is below 0.97, but it comes from a single random train/validation split with no separate test set or external cohort and is the best of many variants on that split. P-125 (accuracy 80.00%, AUC up to 90.31%) is not flagged, though its test set is about 30 subjects.",
+  "failed_conditions": [3],
+  "candidate_explanations": [
+    {"difference": "Architecture and configuration, shown sufficient within P-359: without the multi-head self-attention module, or at another MCM dimension, accuracy on identical data and inputs falls to P-125's range.", "quote": "We performed the same experiments with our proposed model, the only difference being that we removed the multi-head self-attention module.", "paper": "P-359"},
+    {"difference": "Predictor set and label circularity: MMSE, CDR and FAQ plus PiB-PET in P-359, against eight amygdala shape and volume features in P-125.", "quote": "Removing cognitive test features (MMSE, CDR, and FAQ) results in the highest drop in accuracy (except for omitting motion correction and PVC in PiB-PET preprocessing)", "paper": "P-359"},
+    {"difference": "Sample and evaluation: 74 subjects with a 60/40 split in P-125 against a random 85/15 split with 194 evaluation units in P-359.", "quote": "The analysis included a total of 74 participants, comprising 37 healthy control subjects and 37 mild cognitive impairment patients. Imaging data were sourced from the ADNI database.", "paper": "P-125"}
+  ],
+  "reason": "Both papers classify MCI against controls with MRI in the model, and the headline accuracies (0.9639 against 0.80) exclude each other's intervals. P-359 prints no MRI-only or ADNI-only result. But sibling configurations of its own model on the same data and inputs (0.7165, 0.7629, 0.7990) and its image baselines (0.65-0.74) all sit inside P-125's interval. The paper shows that architecture and configuration alone are sufficient for the gap, so condition 3 fails, as in C-190 and C-40. The record's 82.14% is P-125's abstract figure; its tables print 80.00%, and the verdict is the same on either.",
+  "quotes": [
+    {"paper": "P-359", "page": 1, "quote": "achieves a classification accuracy of 96.3% on the Mayo Clinic Study of Aging (MCSA) dataset (sagittal plane), outperforming state-of-the-art models by 5%–20%."},
+    {"paper": "P-359", "page": 7, "quote": "The dataset was divided into training and validation sets with a ratio of 85/15."},
+    {"paper": "P-359", "page": 15, "quote": "MCM-1536-20 0.7165 0.8865 0.5463 0.4404"},
+    {"paper": "P-359", "page": 24, "quote": "The MCM-1024 model achieves the highest accuracy in the sagittal plane, at 76.29%."},
+    {"paper": "P-125", "page": 1, "quote": "yielding a test accuracy of 82.14 %, area under the curve values between 88.27 % and 91.33 %"},
+    {"paper": "P-125", "page": 9, "quote": "The mean test accuracy was 80.00 ± 2.43 %, 79.29 ± 5.78 %, 77.86 ± 3.71 % and 80.00 ± 3.97 % for the RF, SVM, KNN and ANN models respectively."}
+  ]
+}

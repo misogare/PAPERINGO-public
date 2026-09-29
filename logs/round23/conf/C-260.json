@@ -1,0 +1,29 @@
+{
+ "id": "C-260",
+ "qualifies": "no",
+ "question": "None shared. P-1225 asks whether plasma p-tau181 detects biomarker-defined AD pathology (A+ with T+, T taken from CSF p-tau181) inside a memory-clinic sample of SCD and MCI patients, with AD dementia left out of the ROC and no controls. P-1231's P-tau181 AUC range is about separating clinically diagnosed AD and aMCI patients from controls. The channel is the same (blood p-tau181, fluid biomarkers), but the comparison and the target condition are not.",
+ "metric": "AUC in name on both sides, but P-1231 gives no pooled AUC. Its 0.610-0.840 is the spread of individual study AUCs in a 32-study narrative review. What it pools is a ratio of means.",
+ "figures": {
+  "P-1225": "AUC 0.910 with no numeric interval (Fig. 4 shows a band). The ROC set is 22 AP+ / 36 AP- SCD and MCI patients (text). Hanley-McNeil: Q1 = 0.910/1.090 = 0.835, Q2 = 2(0.8281)/1.910 = 0.867, SE = sqrt([0.910(0.090) + 21(0.835-0.828) + 35(0.867-0.828)]/(22*36)) = 0.045, giving 0.822-0.998. The Youden cut-off is derived and evaluated in the same sample.",
+  "P-1231": "P-tau181 AUC range 0.610-0.840 across the studies of a narrative review (Supplementary Table 6, not in the PDF). There is no pooled AUC and no interval. The pooled P-tau181 figures are ratios of means: AD vs controls 2.06 (1.39-3.06), AD vs aMCI 1.36 (1.20-1.54).",
+  "comparison": "There is no estimate on P-1231's side to test against. Even treating the range's top (0.840) as a bound, P-1225's own derived interval (0.822-0.998) reaches below it. A single further study landing above a spread of study results is not a result outside an interval."
+ },
+ "matched_figure_check": "No matched figure exists. P-1225 has no control group, so it cannot report clinical AD/aMCI against controls. P-1231 reports no biomarker-defined (A+T+) target and no pooled AUC. P-1225 cites other target conditions with lower AUCs (for example Karikari's 0.799 for amyloid-positive vs negative MCI), but that is another target, not P-1231's condition.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "The flag does not apply. P-1225's 0.910 is below 0.97, although it comes from internal, in-sample ROC analysis on 58 patients. P-1231's P-tau217 range of 0.97-0.98 is a literature range for another marker, not an internal-validation classifier, and it is not the compared quantity.",
+ "failed_conditions": [1, 4, 6],
+ "candidate_explanations": [],
+ "reason": "The two figures answer different questions. P-1225 measures detection of A+T+ pathology within SCD and MCI patients, with no controls and a reference standard built on CSF p-tau181, the same analyte as the index test. P-1231's range concerns clinical AD/aMCI against controls. P-1231 also has no pooled AUC to disagree with: its 0.61-0.84 is a spread of study results, and the record's claim that it 'pools' this AUC is a misreading. P-1225's own derived interval (0.822-0.998) overlaps the top of that spread anyway.",
+ "quotes": [
+  {"paper": "P-1225", "page": 1, "quote": "were classified as carriers of AD pathology (AP+) when A+ was associated with T+ (regardless of N)"},
+  {"paper": "P-1225", "page": 4, "quote": "For the purpose of this analysis, we did not consider AD- d group (as 100% of these patients were AP+) and we merged SCD and MCI, as there were no differences between these groups in p-tau181 concentrations when adjusted for confounding variables."},
+  {"paper": "P-1225", "page": 4, "quote": "The analysis showed that plasma p-tau181 was highly accurate for discriminating between AP+ and AP- patients (AUC = 0.910) (Fig. 4)."},
+  {"paper": "P-1225", "page": 3, "quote": "Patients were classified as T+ or T– if CSF p-tau concentrations were higher or lower than cut-off values respectively."},
+  {"paper": "P-1225", "page": 7, "quote": "Secondly, the lack of a healthy control group"},
+  {"paper": "P-1231", "page": 2, "quote": "The ratio of means method (RoM method) was used to evaluate the difference in biomarker concentrations between patients and controls"},
+  {"paper": "P-1231", "page": 5, "quote": "The blood biomarkers were conducted in the systematic review of 32 eligible studies (Supplementary Table 6)."},
+  {"paper": "P-1231", "page": 5, "quote": "P-tau 181 (AUC = 0.610−0.840; sensitivity 67–71 %; specificity 66–86 %)"},
+  {"paper": "P-1231", "page": 3, "quote": "AD patients compared to aMCI patients (T-tau 1.27, 95 %CI = 1.13–1.41, p < 0.001; P-tau 181 1.36, 95 %CI = 1.20–1.54, p < 0.001)"}
+ ]
+}

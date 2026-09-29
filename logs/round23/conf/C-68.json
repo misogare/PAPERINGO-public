@@ -1,0 +1,26 @@
+{
+ "id": "C-68",
+ "qualifies": "no",
+ "question": "None shared. P-30 reports only binary AD vs MCI (ADNI, whole-brain structural MRI). P-109 reports three-class AD/MCI/HC plus binary AD vs HC and MCI vs HC (ADNI, 2D sMRI slices), but no binary AD vs MCI result. The channel (structural MRI) and dataset family match; the comparison does not.",
+ "metric": "As recorded, a mismatch: P-30's binary ROC-AUC (0.85) against P-109's three-class accuracy (96.81%). P-109's AUCs (three-class 98.05; AD/HC 98.52; MCI/HC 97.15) belong to other comparisons.",
+ "figures": {
+  "P-30": "AD vs MCI AUC 0.85 +/- 0.046 on a 15% subject-level test set (about 64 subjects). Hanley-McNeil with 33/31: SE 0.0486, interval [0.755, 0.945]. Validation accuracy 0.78 +/- 0.032.",
+  "P-109": "Three-class AD/MCI/HC accuracy 96.81%, AUC 98.05 (BrainViT-L); AD/HC 97.13% (AUC 98.52); MCI/HC 94.23% (AUC 97.15). 1075 subjects (390 AD, 370 MCI, 315 HC), about 50 slices per subject shuffled randomly, 10% test split. No AD vs MCI figure, so no interval can be set against P-30."
+ },
+ "matched_figure_check": "None exists. P-109 gives no binary AD vs MCI figure, and P-30 gives no three-class or HC-based figure. A three-class confusion matrix appears only as a figure (Fig. 7), not as a printed AD-vs-MCI result.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "P-30 (0.85) is not near ceiling. P-109's three-class accuracy (96.81%) is just under 0.97, but its AUCs (98.05, 98.52, 97.15) and AD/HC accuracy (97.13%) are at or above 0.97. They come from internal validation only, a random slice-level split that places slices of the same subject in train and test, with no external cohort. The sample (1075 subjects) is not small, so the Section 3.5 exclusion as worded is not clearly met. The verdict does not rest on this.",
+ "failed_conditions": [1, 2],
+ "candidate_explanations": [],
+ "reason": "P-30's figure is a binary AD-vs-MCI ROC-AUC. P-109's is a three-class AD/MCI/HC accuracy, and P-109 prints no binary AD-vs-MCI result, so the papers answer different questions with different metrics (conditions 1 and 2). No figure in either paper puts them on the same comparison.",
+ "quotes": [
+  {"paper": "P-30", "page": 1, "quote": "a (2 + 1)D convolutional neural network (CNN) architecture has been proposed to distinguish mild cognitive impairment (MCI) from AD, based on structural magnetic resonance imaging (MRI)."},
+  {"paper": "P-30", "page": 4, "quote": "and in 0.85 + /-0.046 average auc score, (auc score per fold: [0.86,0.94,0.86,0.80.,0.83])."},
+  {"paper": "P-109", "page": 8, "quote": "The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training."},
+  {"paper": "P-109", "page": 8, "quote": "For training and testing, around 50 brain fields—axial, coronal, and sagittal—were created from each subject’s anatomy."},
+  {"paper": "P-109", "page": 8, "quote": "A total of 1075 individuals, including 390 with AD, 370 with MCI, and 315 HC, were used to create a balanced dataset for the 2D model."},
+  {"paper": "P-109", "page": 10, "quote": "with rates of 97.13 % with 98.52 % AUC for AD/HC and 94.23 % with 97.15 % for MCI/HC classifications"},
+  {"paper": "P-109", "page": 14, "quote": "achieving a 96.81 % accuracy rate for multiclass classification tasks using BrainViT-L. The higher performance of our model, evidenced by an AUC of 98.05"}
+ ]
+}

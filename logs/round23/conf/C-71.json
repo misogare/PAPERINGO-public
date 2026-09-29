@@ -1,0 +1,27 @@
+{
+  "id": "C-71",
+  "qualifies": "no",
+  "question": "MCI vs cognitively normal detection from speech in older adults (P-58: temporal/pause parameters of telephone monologues, English and Hungarian clinic samples; P-6: transcript semantics of I-CONECT video-chat conversations). Same task and channel (speech/language); cohorts and features differ (allowed).",
+  "metric": "Accuracy with accuracy and AUC with AUC. The recorded '67-92%' for P-58 is not a single estimate but a range across metrics, feature subsets, languages and ASR systems.",
+  "figures": {
+    "P-58": "English cohort (14 MCI/19 HC), all features, speaker-wise LOO-CV: accuracy 84.8% = 28/33 (at the EER threshold), Wilson 69.1-93.3%; AUC 0.932, Hanley-McNeil (14/19) SE=0.050 -> 0.834-1.0. Hungarian cohort (13 MCI/20 HC): 75.8% = 25/33, Wilson 59.0-87.2%; AUC 0.727, SE=0.094 -> 0.543-0.911.",
+    "P-6": "68 participants (34 MCI/34 NC), subject-level 5-fold CV: accuracy 85.16% (fold SD 5.76), Wilson on 58/68: 75.0-91.8%; AUC 84.75% (fold SD 5.97), Hanley-McNeil (34/34) SE=0.048 -> 0.754-0.941; mean AUC over 25 repeated runs 79.94% -> 0.693-0.906."
+  },
+  "matched_figure_check": "P-58's English-speaking cohort is P-6's population subset (English-speaking US older adults). Accuracy 84.8% vs 85.16%: each lies inside the other's interval. AUC 0.932 vs 0.8475: 0.932 lies inside P-6's 0.754-0.941 and 0.8475 inside P-58's 0.834-1.0. The matched figures agree, so the papers' own data dissolve any gap. P-58's Hungarian AUC (0.727) falls below P-6's 5-fold interval but inside the interval around P-6's 25-run mean; it is not the matched subset, and P-58 itself says its two cohorts cannot be compared.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Passes: no compared figure reaches 0.97 (P-58 English AUC 0.932, accuracy 84.8%; P-6 85.16%/0.8475). Note that P-6's AUC equals its accuracy fold by fold, which suggests it is computed from hard labels.",
+  "failed_conditions": [3, 4, 6],
+  "candidate_explanations": [],
+  "reason": "The recorded claim sets P-6's 85.16% against a multi-metric range (67-92%) that contains it, so there is no recorded disagreement. On the matched English-speaking subset, P-58's 84.8%/0.932 and P-6's 85.16%/0.8475 agree within uncertainty in both directions. The pair fails conditions 3 and 4, and condition 6 for the recorded figures.",
+  "quotes": [
+    {"paper": "P-58", "page": 1, "quote": "because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."},
+    {"paper": "P-58", "page": 7, "quote": "All features 84:8% 80:0% 85:7% 84:2% 82.8 0.932"},
+    {"paper": "P-58", "page": 7, "quote": "All features 75:8% 66:7% 76:9% 75:0% 71.4 0.727"},
+    {"paper": "P-58", "page": 7, "quote": "(although, of course, the two parts of Table 3 cannot be compared, as the values were measured on different subjects)"},
+    {"paper": "P-58", "page": 6, "quote": "since we had 14 and 13 MCI subjects for English and Hungarian, respectively"},
+    {"paper": "P-6", "page": 7, "quote": "the framework achieves an overall accuracy of 85.16% and an AUC of 84.75%, with the corresponding std of 5.76 and 5.97, respectively."},
+    {"paper": "P-6", "page": 7, "quote": "As the test set tends to be balanced in most cases, the values for accuracy and AUC are very close."},
+    {"paper": "P-6", "page": 9, "quote": "the overall AUC of all 25 experiments is 79.94%, with a std value of 1.93"}
+  ]
+}

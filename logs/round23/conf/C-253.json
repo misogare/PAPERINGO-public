@@ -1,0 +1,25 @@
+{
+  "id": "C-253",
+  "qualifies": "no",
+  "question": "None shared. P-1216 estimates the association of cholinesterase-inhibitor use (donepezil, rivastigmine or galantamine) with progression from amnestic MCI to AD dementia. P-1215 is a narrative review of choline alphoscerate, a cholinergic precursor, and relays second-hand that it reduced MCI-to-AD conversion. The endpoint (MCI to AD) is shared, but the named factor is a different drug class, so the clinical question ('does exposure X change conversion?') is not the same. P-1215 gives no conversion figure for cholinesterase inhibitors alone. P-929 (context paper) does study cholinesterase inhibitors, but it is not part of the recorded pair.",
+  "metric": "Mismatch. P-1216: IPTW-adjusted Cox hazard ratio over up to 120 months. P-1215: crude 3-year conversion proportions (8.2% vs 26.1%) relayed from one randomized study, with no test statistic, interval or effect measure printed, plus an unquantified statement from a second study.",
+  "figures": {
+    "P-1216": "ChEI users vs never-users, progression to AD dementia: HR 1.77 (95% CI 1.15-2.73, p = 0.001), as printed; Abeta+ stratum HR 2.18 (1.31-3.63); Abeta- stratum HR 1.57 (0.71-3.47).",
+    "P-1215": "Choline alphoscerate vs no therapy (Ponomareva et al. 2024, relayed): conversion to AD 8.2% vs 26.1% at 3 years in 100 amnestic MCI; no interval printed. Group sizes are not printed, so no interval can be derived from the review itself. Kim et al. 2025: 'reduced conversion', no number.",
+    "P-929 (context only)": "ChEI use and 1-year progression to CDR 1: multivariate OR 1.120 (0.204-6.238), p = 0.892, as printed. This interval contains P-1216's 1.77, so even the same-drug context comparison shows no difference beyond uncertainty (and the metric, horizon and endpoint differ)."
+  },
+  "matched_figure_check": "No matched figure. P-1215 reports nothing for cholinesterase inhibitors alone in MCI conversion (its donepezil material concerns choline alphoscerate added to donepezil vs donepezil alone), and P-1216 has no choline alphoscerate data. No paper reports the other's exposure.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not a performance comparison (observational association vs relayed treatment effect).",
+  "failed_conditions": [1, 2, 4],
+  "candidate_explanations": [],
+  "reason": "The pair sets a cholinesterase-inhibitor hazard ratio (P-1216, HR 1.77, 1.15-2.73) against relayed conversion proportions for choline alphoscerate, a different drug (P-1215), so the named factor and hence the clinical question differ (condition 1). The metrics differ as well (a Cox HR against crude proportions without a test statistic; condition 2), and P-1215 prints nothing from which an interval could be derived, so no difference beyond uncertainty can be shown (condition 4). The only same-drug figure in the candidate set, P-929's OR 1.120 (0.204-6.238), contains P-1216's estimate.",
+  "quotes": [
+    {"paper": "P-1216", "page": 5, "quote": "The IPTW-adjusted model revealed that ChEI users had a significantly higher risk of progression to AD dementia compared to non-users (HR = 1.77, 95% CI: 1.15 to 2.73, p = 0.001) (Table 2)."},
+    {"paper": "P-1216", "page": 3, "quote": "donepezil, rivastigmine, or galantamine for more than"},
+    {"paper": "P-1215", "page": 1, "quote": "is a cholinergic precursor naturally found in the brain"},
+    {"paper": "P-1215", "page": 6, "quote": "In this prospective, randomized study in 100 patients with amnesic type MCI, progression of cognitive deficits were reduced after 3 years of choline alphoscerate compared with no therapy (12.2% vs. 39.1%), and the conversion rate to Alzheimer’s disease was lower (8.2% vs. 26.1%)"},
+    {"paper": "P-929", "page": 1, "quote": "In addition, ChEI use or non-use could not predict disease progression to CDR 1 at 1-year"}
+  ]
+}

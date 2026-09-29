@@ -1,0 +1,25 @@
+{
+  "id": "C-53",
+  "qualifies": "no",
+  "question": "The task label matches (binary MCI vs normal) but the channel does not: P-117 (correct PDF S1746809423008959, Aljalal et al.) uses resting-state EEG; P-50 (Wang, Liang et al., Neuroscience 557 (2024) 81-88) uses T1 structural MRI morphometry (cortical SBM + subcortical VBM/shape). Condition 1 fails on channel.",
+  "metric": "Same metric type (accuracy), segment-level 10-fold CV (P-117) vs subject-level LOOCV (P-50).",
+  "figures": {
+    "P-117": "99.81% accuracy (ensemble KNN, 11 NSGA-II channels; 99.51% all 19 channels), binary aMCI vs HC, 10-fold CV over 3660 segment feature vectors from 61 participants; no interval reported. Wilson 95% with n = 61: z^2/n = 0.06297; centre = (0.9981 + 0.03149)/1.06297 = 0.9686; half-width 0.0314; interval [0.937, 1.000].",
+    "P-50": "89% accuracy (sensitivity 87%, specificity 90%, AUC 0.89), linear SVM, LOOCV, 46 participants (24 MCI/22 NC). No interval reported. Wilson with n = 46: z^2/n = 3.8415/46 = 0.08351; centre = (0.89 + 0.04175)/1.08351 = 0.8599; half-width = 1.96*sqrt(0.89*0.11/46 + 3.8415/(4*46^2))/1.08351 = 0.0919; interval [0.768, 0.952]."
+  },
+  "matched_figure_check": "No matched figure exists. Neither paper reports a result in the other's channel, and P-117 prints no subject-level accuracy that would match P-50's LOOCV unit. Nothing reconciles the pair.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "P-117 meets the Section 3.5 exclusion on its own PDF: 99.81% (>= 0.97), internal 10-fold CV over randomly split segment feature vectors, 61 participants, no external cohort. P-50's 89% is below the threshold and is not excluded.",
+  "failed_conditions": [1, 5],
+  "candidate_explanations": [],
+  "reason": "The numbers differ beyond uncertainty (0.9981 lies outside P-50's Wilson [0.768, 0.952]; 0.89 lies outside P-117's [0.937, 1.000]), but EEG and structural MRI are different measurement channels, so the pair does not address the same clinical question under condition 1. P-117's 99.81% also fails the performance-validity exclusion (condition 5). The record's figures match the papers; its dataset_equal='Yes' is wrong.",
+  "quotes": [
+    {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+    {"paper": "P-117", "page": 3, "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases."},
+    {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+    {"paper": "P-50", "page": 1, "quote": "When combined with cortical and subcortical metrics, SVM achieved a peak accuracy of 89 % in distinguishing MCI from NC."},
+    {"paper": "P-50", "page": 3, "quote": "A total of 46 participants were included in the study, consisting of 24 MCI patients and 22 NCs."},
+    {"paper": "P-50", "page": 3, "quote": "SVM classification was based on a linear kernel function, and leave-one-out cross-validation (LOOCV) was selected to evaluate the performance of the classification model"}
+  ]
+}

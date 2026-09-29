@@ -1,0 +1,35 @@
+{
+  "id": "C-93",
+  "qualifies": "yes",
+  "question": "Prediction of progression from MCI to Alzheimer's disease/dementia among ADNI MCI patients, from neuropsychological test scores and structural MRI (FreeSurfer) measures with demographics. The clinical/cognitive and MRI channels are shared; P-156 adds CSF and APOE4. The horizon (fixed 2 years vs latest diagnosis), cohort construction, input representation and validation design differ, which condition 1 allows. Both draw on ADNI 1/GO/2, so the samples overlap (non-independent).",
+  "metric": "ROC-AUC vs ROC-AUC (matches).",
+  "figures": {
+    "P-168": "Longitudinal LSTM (five visits): AUC 0.93 +/- 0.06, a mean and SD over 10 CV folds, not an interval. n=347 (77 converters, 270 non-converters). Hanley-McNeil: Q1=A/(2-A), Q2=2A^2/(1+A), SE=sqrt[(A(1-A)+(76)(Q1-A^2)+(269)(Q2-A^2))/(77*270)] = 0.0206 -> 0.890-0.970 (fold-SD t-interval 0.93 +/- 2.262*0.06/sqrt(10) -> 0.887-0.973). Single-timepoint random forest (index exam only): AUC 0.90 +/- 0.09; Hanley-McNeil SE 0.0242 -> 0.853-0.947 (fold-SD t-interval 0.836-0.964).",
+    "P-156": "Ensemble Integration, baseline data only: held-out test AUC 0.81 (test set = 841-672 = 169). No interval printed and the test class split is in a supplement not held; with the cohort's 34% progressors (about 58/111), Hanley-McNeil SE 0.0377 -> 0.736-0.884 (0.732-0.888 across splits from 50/119 to 66/103)."
+  },
+  "matched_figure_check": "P-168 reports a single-timepoint model, the input representation P-156 uses: AUC 0.90. P-156's 0.81 lies outside P-168's single-timepoint interval (0.853-0.947 by Hanley-McNeil; 0.836-0.964 from the fold SD), and P-168's 0.90 lies outside P-156's derived interval (0.736-0.884). The matched figure narrows the gap from 0.12 to 0.09 but does not reconcile it. Neither paper reports the other's horizon. P-168's age-restricted single-timepoint AUCs (0.89 over 65, 0.87 over 70) are subsets that do not match P-156's cohort (median age 73.5); the over-70 figure would fall inside P-156's derived interval, which shows the margin is not large.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: no figure reaches 0.97 (0.93, 0.90, 0.81). Both are internal validations (P-168 10-fold CV, n=347; P-156 random 20% hold-out, n=841).",
+  "failed_conditions": [],
+  "candidate_explanations": [
+    {"difference": "Horizon: P-168 predicts conversion within a fixed 2 years of a month-24 index exam; P-156 predicts the latest recorded diagnosis with no fixed horizon, so it includes late converters.", "quote": "The index exam is deﬁned as the exam at 24-month, and the outcome is deﬁned as the progression from MCI to AD before 48-month.", "paper": "P-168"},
+    {"difference": "Horizon (P-156 side): outcome is the most recent diagnosis.", "quote": "The most recent diagnosis given to each patient (Final DX) was the outcome predicted (stable MCI or progressed to dementia).", "paper": "P-156"},
+    {"difference": "Cohort construction: P-168 keeps only participants with complete NP and MRI data at five visits who were still MCI at month 24, and drops 187 with undetermined status at month 48; P-156 takes all 841 baseline EMCI/LMCI patients.", "quote": "restricted to participants who had corresponding NP tests and MRI measures collected at ﬁve time points (baseline, 6, 12, 18, and 24-month) and were diagnosed with MCI at 24-month (n = 553).", "paper": "P-168"},
+    {"difference": "Input timepoint and representation: P-168's headline uses five visits; even its single-timepoint model uses the month-24 exam of people already MCI for up to two years, not the first MCI visit. P-168 shows longitudinal input adds 0.03 (0.93 vs 0.90), which accounts for only part of the gap.", "quote": "signiﬁcantly higher mean AUC (0.93 ± 0.06) than the random forest model based on the data collected at a single time point (24-month) (0.90 ± 0.09) (DeLong test P = 0.039).", "paper": "P-168"},
+    {"difference": "Baseline-only input and feature loss: P-156 uses baseline data only and dropped PET and DTI modalities for missingness.", "quote": "This resulted in several imaging modalities, namely FDG PET, AV45 PET, AV1451 PET and DTI, being removed", "paper": "P-156"},
+    {"difference": "Validation design: 10-fold CV mean (P-168) vs a single random 20% held-out test set (P-156).", "quote": "performed using two separate 10-fold cross-validation procedures for hyperparameter selection and model performance evaluation.", "paper": "P-168"},
+    {"difference": "Label and case mix: AD (P-168) vs dementia (P-156); 35.4% of P-156's cohort is early MCI at baseline.", "quote": "Our cohort derived from TADPOLE consisted of 841 patients diagnosed with MCI at their first visit (baseline).", "paper": "P-156"},
+    {"difference": "Data processing: TADPOLE aggregates ADNI editions that may have been processed differently.", "quote": "the TADPOLE Challenge data were aggregated from multiple editions of ADNI (1, 2 and GO), which may have been processed in distinct ways", "paper": "P-156"}
+  ],
+  "reason": "Both studies predict MCI-to-AD/dementia progression in ADNI from cognitive and MRI data. P-168's longitudinal AUC 0.93 and, on the matched single-timepoint input, 0.90 both lie outside the interval derived for P-156's 0.81, and 0.81 lies outside P-168's intervals. The differences in horizon, cohort construction, timepoint, feature set, validation and label could produce the gap, but they are not shown to be sufficient: P-168 quantifies only the longitudinal-input effect (0.03 of the 0.12). The result rests on a derived interval for P-156, whose test class split is not printed, and the 0.90 lies only just above that interval's upper bound (0.884).",
+  "quotes": [
+    {"paper": "P-168", "page": 1, "quote": "A Long Short-Term Memory (LSTM) model using data collected at ﬁve-time points (baseline, 6, 12, 18, and 24-month)"},
+    {"paper": "P-168", "page": 1, "quote": "The study included 347 participants with MCI at 24-month (age: mean 75, SD 7 years; 39.8% women) from ADNI, of whom 77 converted to AD over a 2-"},
+    {"paper": "P-168", "page": 5, "quote": "signiﬁcantly higher mean AUC (0.93 ± 0.06) than the random forest model based on the data collected at a single time point (24-month) (0.90 ± 0.09) (DeLong test P = 0.039)."},
+    {"paper": "P-168", "page": 5, "quote": "The random forest models built on a single time point reached the AUC of 0.89 and 0.87 for participants aged above 65 and 70, respectively."},
+    {"paper": "P-156", "page": 3, "quote": "MCI, based only on data collected at baseline when they were diagnosed with MCI. A randomly sampled 80 % subset of this cohort was used"},
+    {"paper": "P-156", "page": 4, "quote": "consisting of baseline data of 672 patients using a five-fold nested cross-validation (CV) setup"},
+    {"paper": "P-156", "page": 5, "quote": "test set (F-measure = 0.68 and AUC = 0.81)"}
+  ]
+}

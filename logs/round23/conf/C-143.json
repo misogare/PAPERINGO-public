@@ -1,0 +1,26 @@
+{
+  "id": "C-143",
+  "qualifies": "no",
+  "question": "None shared. P-202 (Penfold et al., 2022) predicts a binary MCI indicator, defined as MoCA or MMSE <= 26 on the index date, from NLP concepts in two years of clinician-written primary-care and behavioural-health notes plus demographics. Its population is Kaiser Permanente Washington patients (ACT cohort + general population) without a dementia diagnosis. P-59 (Egas-Lopez et al., 2022) classifies healthy controls, MCI and mild AD in a three-class task from acoustic hesitation features of the patients' own spontaneous speech, in a balanced 75-subject Hungarian memory-clinic sample diagnosed clinically. The channel differs: clinical-record text written by clinicians is clinical/record data, not a speech or language measurement of the patient. The task (binary screen-positive vs three-class HC/MCI/mild AD), the reference standard (psychometric cut-off vs clinical diagnosis) and the population (health-system primary care vs memory clinic) also differ.",
+  "metric": "Mismatch. P-202 reports a binary AUC. P-59's 0.804 is the mean of three one-vs-rest AUCs in a three-class problem. Its closest figure, the MCI one-vs-rest AUC of 0.709, sets MCI against HC plus mild AD, which is not P-202's MCI-vs-not contrast.",
+  "figures": {
+    "P-202": "AUC 0.670 (95% CI 0.638-0.702) as printed, general-population 40% withheld validation sample (n = 956); demographics only 0.598 (0.576-0.621).",
+    "P-59": "Mean one-vs-rest AUC 0.804 (HC 0.911, MCI 0.709, mild AD 0.794), accuracy 70.7%, 25-fold nested CV on 25 HC/25 MCI/25 mild AD. No intervals printed. Hanley-McNeil for MCI one-vs-rest 0.709 with n1 = 25 MCI, n2 = 50 rest: Q1 = 0.709/1.291 = 0.5492, Q2 = 2(0.709^2)/1.709 = 0.5883, SE = 0.0664, CI [0.579, 0.839]. For the mean AUC 0.804, treated the same way for reference only: SE 0.0581, CI [0.690, 0.918]."
+  },
+  "matched_figure_check": "No matched figure exists. P-59 reports no binary MCI-vs-not-MCI result in an unselected population, and P-202 reports no three-class or speech result. For reference only: P-59's MCI one-vs-rest 0.709 lies just above P-202's printed interval (upper bound 0.702), while P-202's 0.670 lies inside P-59's derived interval [0.579, 0.839]. Even this closest pairing is a different contrast in a different channel.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: 0.670 and 0.804 are below 0.97.",
+  "failed_conditions": [1, 2, 6],
+  "candidate_explanations": [],
+  "reason": "The studies do not address the same clinical question through the same channel. P-202 applies NLP to clinician notes for an MMSE/MoCA-defined screen-positive label in primary care; P-59 analyses patients' speech acoustics in a three-class memory-clinic task. Condition 1 fails, and condition 2 fails because a mean three-class one-vs-rest AUC is not a binary AUC. The ledger's shared 'speech_language' family and its 'T4' labels misdescribe both papers (condition 6).",
+  "quotes": [
+    {"paper": "P-202", "page": 6, "quote": "Our prediction target was a binary indicator of MCI present/absent based on a MoCA or MMSE score > 26 or ≤ 26 on the index date."},
+    {"paper": "P-202", "page": 1, "quote": "There were two populations of patients: 1794 participants in the Adult Changes in Thought (ACT) study and 2391 patients in the general population of Kaiser Permanente Washington."},
+    {"paper": "P-202", "page": 1, "quote": "Concepts derived from the NLP system were used to predict future MCI. The prediction model was trained on the ACT cohort and 60% of the general population cohort with 40% withheld for validation."},
+    {"paper": "P-202", "page": 8, "quote": "General Population, 40% Validation: AUC = 0.670 (0.638, 0.702)"},
+    {"paper": "P-59", "page": 1, "quote": "on our corpus consisting of 25 healthy controls, 25 MCI and 25 mild AD subjects, we achieve a (three-class) classification accuracy of 70.7%, an F-measure score of 89.6 and a mean AUC score of 0.804."},
+    {"paper": "P-59", "page": 7, "quote": "In our experiments, we computed the AUC score for all three speaker categories (i.e. for healthy controls, for MCI and for mAD speakers), and we also report the mean of the three AUC scores."},
+    {"paper": "P-59", "page": 8, "quote": "70.7% 93.5% 86.0% 88.0% 89.6 0.911 0.709 0.794 0.804"}
+  ]
+}

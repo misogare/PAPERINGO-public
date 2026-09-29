@@ -1,0 +1,23 @@
+{
+  "id": "C-169",
+  "qualifies": "no",
+  "question": "None shared, and the record is a duplicate of C-168. After the repoints (paper_b P-11 -> P-6 on 2026-08-29, P-11 being a duplicate of P-6; paper_a P-276 -> P-158 on 2026-09-16), C-169 names the same two papers and the same two figures as C-168. Its claim_b still reads 'P-11: 85.16% Acc on T1'. P-158's 95% is Alzheimer's dementia vs non-AD on ADReSS from acoustic features. P-6's 85.16% is MCI vs normal cognition in I-CONECT from interview transcripts. The channel (speech or language) is shared, but the comparison is not, and P-158 reports no MCI vs NC result.",
+  "metric": "Both accuracy, for different diagnostic contrasts: AD vs non-AD against MCI vs NC.",
+  "figures": {
+    "P-158": "ADReSS random forest 95% (+-0.07), 10-fold CV over 1,520 speed-perturbed segments from 153 recordings. Held-out ADReSS test accuracy 73%. Wilson for 0.95 at n = 153: [0.903, 0.975]. Wilson for 0.73 at n = 48: [0.591, 0.835] (n = 60: [0.606, 0.826]). Arithmetic as in C-168.",
+    "P-6": "Subject-level 5-fold CV on 68 subjects (34 MCI / 34 NC): accuracy 85.16% (fold SD 5.76), AUC 84.75%. Wilson for 0.8516 at n = 68: [0.748, 0.917]."
+  },
+  "matched_figure_check": "No matched figure exists: P-158 has no MCI vs NC contrast and P-6 no dementia contrast. P-158's own held-out figure (73%) lies below P-6's interval, the opposite direction to the recorded 95% vs 85.16%, so even the direction of the recorded gap depends on taking P-158's augmented-segment CV figure.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "The exclusion is not met on its letter (95% < 0.97). P-158's 95% is a segment-level CV estimate on augmented copies of the same recordings, with 73% on the held-out test set. P-6 passes.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "This is the same pair and the same figures as C-168, left behind by the P-11 -> P-6 and P-276 -> P-158 repoints. It should be merged or withdrawn, not counted as a separate candidate. On the merits the verdict matches C-168: P-158's 95% is AD vs non-AD and P-6's 85.16% is MCI vs NC, so the record misreads the task (condition 6) and the papers answer different questions (condition 1).",
+  "quotes": [
+    {"paper": "P-158", "page": 2, "quote": "it is a balanced dataset composed of cognitively normal (CN) patients and those suffering from Alzheimer’s disease (AD) who were requested to talk about Cookie theft pictures"},
+    {"paper": "P-158", "page": 5, "quote": "We achieved 73% accuracy for the labels (dementia or not) and a root mean square error (RMSE) of 5.6 for the MMSE predictions"},
+    {"paper": "P-6", "page": 1, "quote": "to distinguish between Mild Cognitive Impairment (MCI) and Normal Cognitive (NC) conditions in older adults."},
+    {"paper": "P-6", "page": 7, "quote": "the framework achieves an overall accuracy of 85.16% and an AUC of 84.75%, with the corresponding std of 5.76 and 5.97, respectively."}
+  ]
+}

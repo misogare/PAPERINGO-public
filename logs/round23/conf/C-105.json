@@ -1,0 +1,67 @@
+{
+  "id": "C-105",
+  "qualifies": "no",
+  "question": "Prediction of progression from MCI to AD in ADNI MCI patients. The shared channel is structural MRI: P-179 combines baseline FreeSurfer ROI volumes with blood SNP and mRNA data; P-168 combines FreeSurfer volumes with neuropsychological tests and demographics. Horizon and index point differ (3 years from baseline vs 2 years from a month-24 index exam among those still MCI), which the rule allows.",
+  "metric": "Shared: ROC-AUC with ROC-AUC.",
+  "figures": {
+    "P-179": "MCI-CPS, ADNI-1, 125 MCI (48 converters / 77 stable, from 39/48 sensitivity and 60/77 specificity), 5-fold CV: AUC 0.8260 (abstract 0.83). No interval; Hanley-McNeil: Q1=0.826/1.174=0.704, Q2=2*0.6823/1.826=0.747, SE=sqrt([0.826*0.174+47*(0.704-0.6823)+76*(0.747-0.6823)]/(48*77))=0.041 -> 0.746-0.906. External ADNI-GO/2 (n=98): 0.7809.",
+    "P-168": "347 participants still MCI at month 24 (77 converters, 270 stable), 10-fold CV. LSTM, five visits, NP tests + MRI + demographics: AUC 0.93 +/- 0.06 (fold SD, not a sampling interval); Hanley-McNeil (77/270): SE 0.021 -> 0.890-0.970. Random forest, single time point (month 24), all modalities: 0.90 (0.853-0.947). MRI-only LSTM: 0.86 (0.805-0.915). MRI-only random forest, single time point: 0.85 (SE 0.029 -> 0.794-0.906)."
+  },
+  "matched_figure_check": "A matched figure exists and reconciles the pair. On the shared channel and under P-179's single-timepoint condition, P-168's MRI-only random forest at one visit gives AUC 0.85 (0.794-0.906), against P-179's 0.826 (0.746-0.906): each estimate lies inside the other's interval (difference 0.024, z about 0.5). P-168's own ablations locate its higher headline in inputs P-179 does not share: all modalities vs MRI-only, 0.93 vs 0.86 (LSTM) and 0.90 vs 0.85 (random forest). The headline pair (0.93 [0.890-0.970] vs 0.826 [0.746-0.906]) differs beyond uncertainty, but that difference dissolves on the matched figure.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: 0.826 and 0.93 are below 0.97.",
+  "failed_conditions": [
+    3
+  ],
+  "candidate_explanations": [
+    {
+      "difference": "Non-shared predictors: P-168 adds five visits of neuropsychological tests (its MRI-only models score 0.85-0.86); P-179 adds blood SNP and mRNA.",
+      "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures. The performance of the random forest models using MRI measures had an AUC of 0.85.",
+      "paper": "P-168"
+    },
+    {
+      "difference": "Horizon, index point and population: progression before month 48 among participants still MCI at month 24, versus conversion within 3 years of baseline.",
+      "quote": "The index exam is de\ufb01ned as the exam at 24-month, and the outcome is de\ufb01ned as the progression from MCI to AD before 48-month.",
+      "paper": "P-168"
+    }
+  ],
+  "reason": "Both papers predict MCI-to-AD conversion in ADNI with models that include structural MRI and report AUC, and their headline figures (0.93 vs 0.83) differ beyond uncertainty. But P-168 also reports the shared MRI channel at a single time point (AUC 0.85), which agrees with P-179's 0.83 within uncertainty, and its own ablations attribute its higher headline to the neuropsychological tests and longitudinal input that P-179 lacks. The papers' own data dissolve the gap, so condition 3 fails.",
+  "quotes": [
+    {
+      "paper": "P-179",
+      "page": 7,
+      "quote": "The results show that the AUC of MCI-CPS (5-fold) was 0.8260 (81.82% sensitivity, 77.08% speci\ufb01city, 80.00% accuracy)."
+    },
+    {
+      "paper": "P-179",
+      "page": 1,
+      "quote": "from 125 MCI patients were used in the Alzheimer\u2019s Disease Neuroimaging Initiative (ADNI)-1 dataset and from 98 MCI patients in the ADNI-GO/2 dataset."
+    },
+    {
+      "paper": "P-179",
+      "page": 2,
+      "quote": "If conversion happens within three years, we de\ufb01ne these MCI patients as having progressive MCI (P-MCI)"
+    },
+    {
+      "paper": "P-168",
+      "page": 1,
+      "quote": "The study included 347 participants with MCI at 24-month (age: mean 75, SD 7 years; 39.8% women) from ADNI, of whom 77 converted to AD over a 2-"
+    },
+    {
+      "paper": "P-168",
+      "page": 4,
+      "quote": "we built a random forest model with data collected at the 24-month time point for comparison in this study"
+    },
+    {
+      "paper": "P-168",
+      "page": 5,
+      "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures. The performance of the random forest models using MRI measures had an AUC of 0.85."
+    },
+    {
+      "paper": "P-168",
+      "page": 5,
+      "quote": "signi\ufb01cantly higher mean AUC (0.93 \u00b1 0.06) than the random forest model based on the data collected at a single time point (24-month) (0.90 \u00b1 0.09)"
+    }
+  ]
+}

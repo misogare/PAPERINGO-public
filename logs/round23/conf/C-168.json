@@ -1,0 +1,26 @@
+{
+  "id": "C-168",
+  "qualifies": "no",
+  "question": "None shared. P-158's 95% is the accuracy for Alzheimer's dementia vs non-AD speakers on ADReSS (DementiaBank Pitt Cookie Theft recordings), from acoustic features. P-6's 85.16% is for MCI vs normal cognition in I-CONECT (68 adults aged 75+), from transcripts of conversational video-chat interviews. The channel is shared (speech or language), but the comparison is not: dementia against controls is a different contrast from MCI against controls. P-158's second set (MUDC, 60 Turkish dementia-clinic patients) is also described as CN and AD patients labelled 'dementia or not'. P-158 reports no MCI vs NC result.",
+  "metric": "Both accuracy, but for different diagnostic contrasts: AD vs non-AD against MCI vs NC.",
+  "figures": {
+    "P-158": "ADReSS random forest 95% (+-0.07) by 10-fold CV over speed-perturbed 20-s segments: 1,520 augmented samples from 153 recordings, split at segment level. On the ADReSS held-out test set the accuracy is 73% (the paper gives 48 test recordings in one place and 60 in another). Wilson 95% for 0.95 at recording level (n = 153): [0.903, 0.975]. Wilson for 0.73, n = 48: z^2/n = 0.080; centre = (0.73 + 0.040)/1.080 = 0.713; half-width = 1.96*sqrt(0.73*0.27/48 + 3.8416/(4*48^2))/1.080 = 0.122; interval [0.591, 0.835]. At n = 60 the interval is [0.606, 0.826].",
+    "P-6": "I-CONECT transformer on ASR transcripts, subject-level 5-fold CV on 68 subjects (34 MCI / 34 NC): accuracy 85.16% (fold SD 5.76), AUC 84.75% (fold SD 5.97); mean AUC over 25 repeated fold configurations 79.94%. Wilson 95% for 0.8516, n = 68: z^2/n = 0.0565; centre = (0.8516 + 0.0282)/1.0565 = 0.833; half-width = 1.96*sqrt(0.8516*0.1484/68 + 3.8416/(4*68^2))/1.0565 = 0.0843; interval [0.748, 0.917]."
+  },
+  "matched_figure_check": "No matched figure exists. P-158 has no MCI vs NC contrast and P-6 has no dementia contrast. As arithmetic only: the recorded 95% lies outside P-6's interval, but it is a segment-level CV estimate on augmented copies of the same recordings. P-158's own held-out test accuracy (73%) runs the other way: it lies below P-6's interval, while 85.16% lies outside P-158's test interval by 0.02 (n = 48) or 0.03 (n = 60). So the direction of any 'gap' depends on which P-158 figure is taken.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "The exclusion is not met on its letter (95% < 0.97). But P-158's 95% comes from cross-validation over speed-perturbed segments, where copies of one recording can fall in both training and test folds. Its held-out test figure is 73%, so the 95% is not a subject-level estimate. P-6 (85.16%, subject-level CV on 68) passes. Checked against P-158 Tables 4-5 and P-6 Table 3.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "The ledger labels both figures 'T1' (MCI detection), but P-158's 95% separates Alzheimer's dementia from non-AD speakers on ADReSS, while P-6's 85.16% separates MCI from normal cognition. That is a misreading (condition 6), and on the printed figures the two papers answer different questions (condition 1). The shared speech channel does not make them comparable. P-158's 95% is also a segment-level CV estimate on augmented data whose held-out counterpart is 73%.",
+  "quotes": [
+    {"paper": "P-158", "page": 2, "quote": "it is a balanced dataset composed of cognitively normal (CN) patients and those suffering from Alzheimer’s disease (AD) who were requested to talk about Cookie theft pictures"},
+    {"paper": "P-158", "page": 2, "quote": "Both datasets are composed of cognitively normal (CN) and AD patients balanced in terms of age and sex along with their written MMSE scores."},
+    {"paper": "P-158", "page": 4, "quote": "we programmatically perturbed each section at speeds of 0.7, 0.8, 1.2, and 1.3 to create 1520 samples from 153 samples for the training dataset and 800 samples from 48 samples for the test dataset"},
+    {"paper": "P-158", "page": 5, "quote": "We achieved 73% accuracy for the labels (dementia or not) and a root mean square error (RMSE) of 5.6 for the MMSE predictions"},
+    {"paper": "P-6", "page": 1, "quote": "to distinguish between Mild Cognitive Impairment (MCI) and Normal Cognitive (NC) conditions in older adults."},
+    {"paper": "P-6", "page": 6, "quote": "Among the 68 randomized individuals, 34 were identified with MCI, while 34 were diagnosed with NC conditions."},
+    {"paper": "P-6", "page": 7, "quote": "the framework achieves an overall accuracy of 85.16% and an AUC of 84.75%, with the corresponding std of 5.76 and 5.97, respectively."}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "C-88",
+  "qualifies": "no",
+  "question": "None shared. P-133's cited 72.67% is three-class HC/MCI/AD accuracy, and its only binary contrast with controls pools MCI with AD (HC vs MCI+AD); it reports no MCI-vs-control figure. The record's P-114 value (93%) comes from a summary block describing a Kinect dual-task gait/ANFIS study (gait/motor channel, 70 MCI vs 80 HC per the block) whose PDF is not held; the PDF mapped as P-114 is a different paper (task-EEG LORETA, 19 MCI vs 22 HE). With the recorded P-114 the channel also differs (ERP/EEG + TCM questionnaire vs gait).",
+  "metric": "Accuracy on both sides, but three-class (or HC vs pooled MCI+AD) accuracy against binary MCI-vs-control accuracy; the supplied P-114 PDF reports epoch-level, not subject-level, accuracy.",
+  "figures": {
+    "P-133": "Ternary HC/MCI/AD 72.67 +/- 1.89% (GCN, Neutral stimulus; SD over folds; cross-subject 10-fold CV, n=90: 30/30/30). Wilson on n=90: 0.627-0.808. Binary HC vs MCI+AD 89.22 +/- 1.90% (Table 2; the abstract says 90.17 +/- 5.58%): Wilson on n=90: centre 0.876, half-width 0.065 -> 0.811-0.941.",
+    "P-114": "As recorded: 93% accuracy, Kinect gait/ANFIS study; source document not held, so no interval can be derived from a source. Supplied (different) PDF: MCI vs HE 96% at epoch level (SVM on LORETA CSD); a subject-level Wilson on n=41 would be 0.851-0.990, but the classifier labels epochs, not patients."
+  },
+  "matched_figure_check": "No matched figure exists: P-133 reports no MCI-vs-control accuracy, and neither P-114 candidate reports HC vs MCI+AD or three-class accuracy.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply to P-133 (max 0.902). The supplied P-114 PDF reports 0.96 per epoch (below 0.97); the recorded Kinect study cannot be checked against a source.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "The record misreads P-133: 72.67% is three-class accuracy, and P-133's binary result pools MCI with AD, so no P-133 figure estimates MCI-vs-control accuracy. The recorded P-114 value belongs to a gait study whose source is not held (a different channel), and the mapped PDF is another paper. No difference beyond uncertainty is established on a comparable figure: the recorded 93% lies inside P-133's binary interval (0.811-0.941), and setting it against a three-class accuracy is not like for like.",
+  "quotes": [
+    {"paper": "P-133", "page": 1, "quote": "Similarly, in ternary classification of HC, MCI, and AD, GCN reached the highest accuracy of 72.67 ± 1.89 % under Neutral stimulus."},
+    {"paper": "P-133", "page": 1, "quote": "After feature fusion, 10-fold cross-subject binary (HC vs. MCI+AD; MCI vs. AD) and ternary (HC, MCI, AD) classification tasks were performed subsequently."},
+    {"paper": "P-133", "page": 5, "quote": "89.22 ± 1.90 (Table 2, GCN, Neutral, HC vs MCI+AD)"},
+    {"paper": "P-114", "page": 1, "quote": "into MCI (N = 19) and HE (N = 22) groups."},
+    {"paper": "P-114", "page": 1, "quote": "Group prediction through SVM achieved 96% accu"}
+  ]
+}

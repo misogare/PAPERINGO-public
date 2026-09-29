@@ -1,0 +1,32 @@
+{
+  "id": "C-07",
+  "qualifies": "borderline",
+  "question": "Prediction of progression from MCI to AD in ADNI MCI participants, from (a) FDG-PET alone and (b) cognitive/clinical scores alone. P-81: 164 sMCI / 93 pMCI, conversion within 3 years. P-88: 341 MCI, 102 progressing during up to 8 years of follow-up. Same task, population class and channels (PET; clinical/cognitive data). Horizon, PET representation (whole-brain 3D CNN vs a 10-feature white-matter radiomics signature) and cognitive predictor set (5-score composite vs single ADAS or CDR) differ, which the rule allows.",
+  "metric": "ROC-AUC with ROC-AUC on both arms. The record's disputed quantity is the ordering 'cognitive scores vs FDG-PET alone'.",
+  "figures": {
+    "P-81": "5-fold CV, mean +- fold SD (Table 3). PET only: AUC 0.6102 +- 0.0231; CS only: AUC 0.7496 +- 0.0683. The fold SDs are not 95% intervals, so Hanley-McNeil intervals are derived with 93 pMCI / 164 sMCI. PET: Q1 = 0.6102/1.3898 = 0.4391; Q2 = 2*0.6102^2/1.6102 = 0.4625; SE^2 = [0.2379 + 92*(0.4391-0.3723) + 163*(0.4625-0.3723)]/(93*164) = 21.07/15252 = 0.00138; SE = 0.0372; interval [0.537, 0.683]. The interval is [0.531, 0.689] if only 85% of subjects (79/139) entered the CV folds. CS: SE = 0.0331; interval [0.685, 0.815].",
+    "P-88": "Time-ordered split by ADNI entry number, test group 72 stable / 31 progressive (Table 1). Test AUCs (Table 3): psychoradiomics (white-matter FDG-PET) signature 0.719; ADAS 0.742; CDR 0.737. Training: 0.747 / 0.755 / 0.683. No intervals printed. Hanley-McNeil for PET 0.719 with 31/72: Q1 = 0.5613; Q2 = 0.6015; SE^2 = [0.2020 + 30*(0.5613-0.5170) + 71*(0.6015-0.5170)]/(31*72) = 7.532/2232 = 0.00337; SE = 0.0581; interval [0.605, 0.833]. ADAS 0.742: SE = 0.0566; interval [0.631, 0.853]."
+  },
+  "matched_figure_check": "No matched figure exists. P-88 reports no fixed 3-year result and no whole-brain PET model. P-81 reports no radiomics signature and no longer horizon. On the ordering the record disputes, the printed AUCs agree in direction: P-81 has cognition 0.750 above PET 0.610, and P-88 has ADAS 0.742 and CDR 0.737 above PET 0.719 on the test set (ADAS 0.755 vs PET 0.747 in training). P-88's sentence that the rad-score 'was superior to clinical scale scores' is not borne out by its own Table 3 AUCs and was not tested (DeLong only for the integrated model). The accuracies it prints for the scales (ADAS 0.551 test) cannot be reproduced from its own sensitivity/specificity (0.645/0.75 on 31/72 gives about 0.72). The cognitive arms agree: 0.750 [0.685, 0.815] and 0.742 [0.631, 0.853] lie within each other's intervals.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study meets the exclusion: no conversion AUC reaches 0.97. P-81's 1.0 values are its CN-vs-AD pre-training, which the authors attribute to circularity; they are not part of the conversion comparison.",
+  "failed_conditions": [],
+  "candidate_explanations": [
+    {"difference": "Prediction horizon: conversion within 3 years (P-81) against progression at any time during up to 8 years of follow-up (P-88). P-81's authors name horizon as a factor that affects comparison across studies.", "quote": "One significant factor to take into account is the duration over which the models make predictions.", "paper": "P-81"},
+    {"difference": "P-88's longer follow-up window.", "quote": "In total, we enrolled 341 patients with MCI, and 102 of these patients progressed to AD during a follow-up period of 8 years", "paper": "P-88"},
+    {"difference": "PET representation and model: P-81 feeds the whole-brain FDG-PET image to a 3D CNN first trained to separate AD from controls and then transferred. Table 3 reports the zero-shot predictions. P-88 builds a 10-feature radiomics signature from white-matter PET.", "quote": "Table 3 shows the prediction performance from zero-shot predictions.", "paper": "P-81"},
+    {"difference": "P-81's transfer from a CN-vs-AD classifier.", "quote": "we first trained a classification 3D-CNN to differentiate between the brains of dementia patients and cognitively normal “healthy control” subjects. Afterward, we performed transfer learning to adapt the task to predicting dementia conversion.", "paper": "P-81"},
+    {"difference": "Validation design: 5-fold CV (P-81) against a single split by ADNI entry number, with 103 test subjects (P-88).", "quote": "We divided these patients according to their entry numbers in the ADNI database as follows: training group, 238 patients and test group, 103 patients.", "paper": "P-88"}
+  ],
+  "reason": "The recorded dispute, whether cognition or FDG-PET alone predicts conversion better, dissolves on the printed AUCs: both studies put cognitive scores at or above PET. The cognitive arms agree within uncertainty. What remains is the PET-alone AUC: P-88's test estimate (0.719) lies outside P-81's derived interval [0.537, 0.683]. By the letter of condition 4 that is a qualifying gap, and no matched figure closes it. I mark it borderline, not yes, because the exclusion holds in one direction only: P-81's 0.610 lies inside P-88's interval [0.605, 0.833], and a two-sample comparison gives z = (0.719-0.610)/sqrt(0.0372^2+0.0581^2) = 1.58. The gap also sits on a quantity the ledger record did not dispute. Candidate explanations (horizon, zero-shot transfer from a CN-vs-AD PET model against a white-matter radiomics signature, validation design) are not shown to be sufficient.",
+  "quotes": [
+    {"paper": "P-81", "page": 1, "quote": "FDG-PET and CS were obtained at MCI diagnosis to predict AD conversion within three years of MCI diagnosis using convolutional neural networks."},
+    {"paper": "P-81", "page": 4, "quote": "PET ONLY 0.5651 ± 0.0490 0.6921 ± 0.0384 0.4380 ± 0.0651 0.6102 ± 0.0231"},
+    {"paper": "P-81", "page": 4, "quote": "CS 0.7130 ± 0.0589 0.9238 ± 0.0898 0.5023 ± 0.0559 0.7496 ± 0.0683"},
+    {"paper": "P-81", "page": 2, "quote": "including 205 patients with the diagnosis of Dementia of Alzheimer’s type (DAT), 150 cognitively normal subjects, 164 stable-MCI subjects, and 93 unstable-MCI subjects."},
+    {"paper": "P-88", "page": 5, "quote": "Stable MCI (n = 72) Progressive MCI (n =31)"},
+    {"paper": "P-88", "page": 8, "quote": "Psychoradiomics signature 0.747 0.831 0.581 0.719 0.613 0.778 ADAS score 0.755 0.606 0.761 0.742 0.645 0.75 CDR score 0.683 0.732 0.539 0.737 0.807 0.569"},
+    {"paper": "P-88", "page": 5, "quote": "also found that the rad-score was superior to clinical scale scores"}
+  ]
+}

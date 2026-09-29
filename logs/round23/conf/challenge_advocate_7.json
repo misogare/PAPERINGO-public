@@ -1,0 +1,357 @@
+{
+  "role": "advocate",
+  "batch": "challenge_advocate_7",
+  "date": "2026-09-29",
+  "status": "candidate verdicts for operator review; not a gate",
+  "sources_read": {
+    "rule": "r23/DISCREPANCY_BRIEF.md; literature_review.md Section 3.5 (read for the scope of the performance-validity exclusion)",
+    "readers": "r23/conf/C-202.json, C-210.json, C-213.json, C-218.json; round-20 readings logs/round20/conflict_readings/C-202, C-210, C-213, C-218",
+    "precedents": "r23/conf/C-211.json (same P-152 table, qualified yes, figure-level condition 5), C-66.json and C-117.json (figure-level condition 5), C-121.json (P-183 AUC 0.824, one-way AUC exclusion, qualified yes), C-147/C-155/C-117 (within-paper ablation left to the operator), C-221 (per-class figures split), C-254 (judged on printed figures after a record misread)",
+    "P-259": "r20/pdf/P-259.txt pp. 1, 2, 5",
+    "P-261": "r20/pdf/P-261.txt pp. 2, 3",
+    "P-152": "r20/pdf/P-152.txt pp. 1, 5, 6, 7 (Table 3; 'Correction' searched for in the full text: it is never defined)",
+    "P-63": "r20/pdf/P-63.txt pp. 6, 7, 9 (Table 4)",
+    "P-178": "r20/pdf/P-178.txt pp. 1, 3, 4 (Table 1), 7, 8 (Table 4), 9",
+    "P-183": "r20/pdf/P-183.txt pp. 3, 5, 7 (Table 4, all seven models), 8",
+    "P-185": "r20/pdf/P-185.txt pp. 2, 5, 6",
+    "P-41": "r20/pdf/P-41.txt pp. 8, 9 (Table 2, Experiment 1: no attention, single backbone, single plane), 10, 11 (Table 3), 12 (Table 4)",
+    "arithmetic": "r23/calc_adv7.py (Wilson and Hanley-McNeil, z = 1.96)"
+  },
+  "results": [
+    {
+      "id": "C-202",
+      "reader_verdict": "borderline (failed 1)",
+      "final": "yes",
+      "overturned": true,
+      "conditions_attacked": {
+        "1_question": "Holds as the rule is written. The task is the same: how common MCI is. P-259's first aim is 'to establish the prevalence of MCI', and P-261 sized its sample for a prevalence estimate (permissible error 3%) and prints one. The population class is the one the brief itself gives as its example: community-dwelling older adults (P-259: 'community-dwelling older adults', aged 60-99; P-261: 'elderly in community', aged 55-75, living in Fuzhou communities). The channel is clinical and cognitive assessment in both. The label is closer than the reader allowed. P-261's diagnostic criteria are Petersen's core criteria: complaint, objective impairment in one or more domains, preserved independence, no dementia. P-259 used Petersen's criteria with DSM-5 confirmation. Both also remove depression-attributable cases: P-261 excludes GDS-15 > 8 or a depression history, and P-259's panel ruled out major depressive disorder before diagnosing MCI. The remaining differences (country, age band, sampling frame, MoCA against a nine-subdomain battery) are cohort and label-operationalisation differences. The rule allows these and lists them ('cohort ... label definition') as candidate explanations. The reader's added test, that 'for a prevalence the population is the estimand', is not in the rule. Condition 2 names 'prevalence with prevalence' as a qualifying metric pair, and it would be empty if any cohort difference broke condition 1, because two prevalence studies always sample different cohorts.",
+        "2_metric": "Holds on the printed figures: sample prevalence against sample prevalence. The record's prevalence-against-OR alignment is a misread (condition 6).",
+        "3_matched_figure": "Holds. Neither paper prints a prevalence under the other's condition: none for ages 60-75 or under MoCA cut-offs in P-259, and none for a consensus Petersen/DSM-5 diagnosis or ages above 75 in P-261. The one shared construct, lower education in MCI, points the same way in both, so nothing reconciles the prevalence gap.",
+        "4_uncertainty": "Holds in both directions (arithmetic below). The Wilson intervals do not overlap. Each estimate lies outside the other's interval, and this still holds with dementia removed from P-259's denominator.",
+        "5_performance_validity": "Not a performance comparison.",
+        "6_record": "The record sets a prevalence against an odds ratio, a misread. As in C-211 and C-254, the pair is judged on what the papers print. The printed prevalences exist and are the quantity both papers report for the same question."
+      },
+      "figures": {
+        "P-259": "194 MCI of 902 assessed (696 normal, 194 MCI, 12 dementia) = 21.5%, no interval printed. Wilson n = 902: z^2/n = 0.00426, centre 0.2163, half-width 0.0268, CI [0.190, 0.243]. Excluding the 12 dementia cases, 194/890 = 21.8%: CI [0.192, 0.246].",
+        "P-261": "314 MCI of 1071 = 29.3%, no interval printed. Wilson n = 1071: z^2/n = 0.00359, centre 0.2939, half-width 0.0272, CI [0.267, 0.321].",
+        "comparison": "0.215 < 0.267 and 0.293 > 0.243 (0.246 with dementia excluded). The intervals are separated by 0.024."
+      },
+      "matched_figure_check": "No matched figure exists in either paper (no age-restricted, criterion-restricted or subset prevalence), so nothing dissolves the gap.",
+      "candidate_explanations": [
+        {
+          "difference": "Operationalisation of objective impairment: MoCA cut-offs in P-261, against 1.5 SD below norms on any test of a nine-subdomain battery with a consensus panel in P-259. P-259 says its broad battery makes the criterion easier to meet, which would raise its own estimate and so runs against the gap. The MoCA side is not shown to be sufficient.",
+          "quote": "\u226525 points, and 19\u201324 points if the years of education are \u22646 years, indicate normal cognition, and 14\u201319 points indicate MCI",
+          "paper": "P-261"
+        },
+        {
+          "difference": "Sampling frame: random selection from the health records of 34 community day-care centres in Fuzhou, against door-to-door, activity-centre and word-of-mouth recruitment in western Singapore.",
+          "quote": "30\u201340 cases of elderly individuals were randomly selected from the health records of each day care center in the community",
+          "paper": "P-261"
+        },
+        {
+          "difference": "Response and missing-data exclusions: 1071 of 1821 recruited analysed, after removing those without sleep-scale or constitution-scale data.",
+          "quote": "Finally, 1071(58.81%) qualified cases were included in the statistical analysis",
+          "paper": "P-261"
+        },
+        {
+          "difference": "Age band 55-75 against 60-99. P-259 notes that prevalence rises with age, so this difference runs against the observed gap.",
+          "quote": "Their lower rates could be attributed to the inclusion of the 55\u201360 years old age group, especially since MCI prevalence is found to increase with age.",
+          "paper": "P-259"
+        },
+        {
+          "difference": "Depression handling: an exclusion from the sample in P-261, and a rule-out at diagnosis in P-259. Both remove depression-attributable impairment, so this does not explain a higher P-261 estimate.",
+          "quote": "they had to rule out Major Depressive Disorder and anxiety disorders based on both their Geriatric Depression Scale (GDS) and Geriatric Anxiety Inventory (GAI) scores as well as their existing medical history before the diagnosis of MCI was given",
+          "paper": "P-259"
+        },
+        {
+          "difference": "Country and population: Singapore against Fuzhou, China. P-259 cites regional variation even under a uniform criterion, but neither paper shows that this variation accounts for this pair.",
+          "quote": "When a uniformed criterion was applied across studies from diverse geographical and ethnocultural regions, prevalence rates ranged from 5% to 36.7% (Sachdev et al., 2015).",
+          "paper": "P-259"
+        }
+      ],
+      "reason": "Both papers print a sample prevalence of Petersen-type MCI in community-dwelling older adults: 21.5% [0.190, 0.243] against 29.3% [0.267, 0.321]. The intervals do not overlap, and neither paper has an age-, criterion- or subset-matched figure. Condition 1 holds as the rule is written. The task, the population class (the brief's own example, community older adults) and the channel match. P-261's criteria are Petersen's core criteria, and cohort and label operationalisation are differences the rule allows and lists as candidate explanations. Condition 2 would be empty for prevalence if every cohort difference broke condition 1. The record's prevalence-against-OR pairing is a misread (condition 6), so the pair is judged on the printed prevalences, as C-211 and C-254 were. Age, depression handling and P-259's broad battery run against the gap. MoCA operationalisation, sampling frame, missing-data exclusions and country remain, and neither paper shows any of them to be sufficient.",
+      "quotes": [
+        {
+          "paper": "P-259",
+          "page": 5,
+          "quote": "The prevalence of MCI in our sample was 21.5%."
+        },
+        {
+          "paper": "P-259",
+          "page": 5,
+          "quote": "Our sample mainly consisted of cognitively normal individuals (N = 696) and we had 194 participants with MCI and 12 with dementia."
+        },
+        {
+          "paper": "P-259",
+          "page": 2,
+          "quote": "The Petersen\u2019s criteria was used for the MCI diagnosis (Petersen, 2004). These included subjective cognitive complaints and largely preserved functional independence, as assessed via the Clinical Dementia Rating, and the presence of objective cognitive impairment."
+        },
+        {
+          "paper": "P-261",
+          "page": 2,
+          "quote": "MCI diagnostic criteria were as follows [10]: (1) cognitive impairment reported by patients or informant, or detected by experienced clinicians; (2) objective evidence of impairments in one or more cognitive fields (from cognitive testing); (3) slight impairments in complex instrumental activities of daily living, but maintain the ability of independently daily life; and (4) no current diagnosis of dementia."
+        },
+        {
+          "paper": "P-261",
+          "page": 2,
+          "quote": "The test level \u03b1 was set at 0.05, and the permissible error \u03b4 was 3%."
+        },
+        {
+          "paper": "P-261",
+          "page": 3,
+          "quote": "Among the 1071 study subjects, 314 suffered from MCI, with a prevalence rate of 29.3%."
+        }
+      ]
+    },
+    {
+      "id": "C-210",
+      "reader_verdict": "borderline (failed 5)",
+      "final": "yes",
+      "overturned": true,
+      "conditions_attacked": {
+        "1_question": "Holds. The shared question is MCI against healthy controls in ADNI from MRI. Diffusion MRI (P-152) and T1 MRI (P-63) are one channel under the rule, and P-63's multimodal model matches on the shared MRI channel. The reader accepted this.",
+        "2_metric": "Holds: accuracy with accuracy and AUC with AUC.",
+        "3_matched_figure": "Holds. P-63's MRI-only arm is the result under P-152's single-channel condition. It widens the gap rather than closing it: accuracy 70.08% and AUC 0.7641, against P-152's 83.3% and 0.88.",
+        "4_uncertainty": "Holds. On the matched MRI-only arm the gap holds both ways on accuracy (83.3% lies outside [0.645, 0.751], and 70.08% outside [0.704, 0.913]) and both ways on AUC (0.88 lies outside [0.708, 0.821], and 0.764 outside [0.780, 0.980]). Against the record's own fused P-63 figure, 83.3% lies outside [0.717, 0.814], which meets the rule's one-way test. P-152's AUC has no 'Correction' column, so the matched-arm AUC exclusion holds on either reading of its table.",
+        "5_performance_validity": "Holds under the convention this round applies to every pair. The exclusion is judged on the compared figures: C-211 (the same P-152 table, qualified yes) states that P-152's AD vs HC AUC 0.99 'meets the Section 3.5 exclusion, but it is not a compared figure, the convention used for C-66 and C-117'. Section 3.5 itself describes 'performance-validity flags on the reported numbers', 'recorded per record'. The compared figures here are 0.88 and 83.3% for P-152, and at most 0.873 for P-63, all below 0.97. Failing C-210 on a study-level reading while C-211 passes on a figure-level reading would break the brief's instruction to apply the rule identically to every pair.",
+        "6_record": "The record's gap (95.8% AD vs HC against 76.88% CN vs MCI) misreads the contrasts. Condition 6 directs that the figures the papers print be judged, which is what C-211 and C-254 did. The contrast the record did not name is therefore not a reason to withhold the pair."
+      },
+      "figures": {
+        "P-152": "MCI vs HC, 24/24, internal 5-fold CV, mean over folds, quadratic SVM. Accuracy 83.3% = 40/48 (stated in the abstract, the results and the discussion). Wilson: z^2/n = 0.0800, centre 0.8086, half-width 0.1044, CI [0.704, 0.913]. The printed sensitivity and specificity (94.4/76.6) imply 0.855, which is higher still. AUC 0.88. Hanley-McNeil: Q1 = 0.7857, Q2 = 0.8238, SE = 0.0511, CI [0.780, 0.980]. Table 3's 'Correction' column (70.3) is never defined anywhere in the paper. The same table's MCI-AD row was judged on its accuracy of 83.3%, not its 'Correction' of 87.5, in C-211.",
+        "P-63": "CN vs MCI, 158/128 (n = 286), 10-fold CV. MRI-only arm (Table 4): accuracy 70.08 +/- 3.49%, Wilson centre 0.6981, half-width 0.0528, CI [0.645, 0.751]. AUC 76.41%, Hanley-McNeil Q1 = 0.6183, Q2 = 0.6619, SE = 0.0288, CI [0.708, 0.821]. GMFF fusion: accuracy 76.88%, CI [0.717, 0.814]; AUC 87.31%, SE 0.0220, CI [0.830, 0.916].",
+        "comparison": "Matched arm: two-sample z = 2.20 on accuracy and 1.98 on AUC. Fused: accuracy z = 1.09 (one-way exclusion only), and the AUCs agree (0.88 against 0.873), but the fused model adds SNP and blood-miRNA channels that P-152 does not have, so it is not the matched figure."
+      },
+      "matched_figure_check": "The matched figure is P-63's MRI-only arm, and it does not reconcile the pair. It excludes P-152 in both directions on both metrics. P-152 reports nothing under P-63's T1 or multimodal condition. The AD vs CN (95.8% against 95.0%) and MCI vs AD agreements are different contrasts and do not bear on MCI vs HC.",
+      "candidate_explanations": [
+        {
+          "difference": "Features within the MRI channel: superficial-white-matter DTI, tractography and connectivity features, against T1 images through a network.",
+          "quote": "This method employed DTI data from 72 subjects: 24 subjects as HC, 24 subjects with MCI, and 24 subjects with AD.",
+          "paper": "P-152"
+        },
+        {
+          "difference": "Feature selection (FCBF) before the internal 5-fold CV, the full-sample selection design that Section 3.5 names as a candidate source of optimism.",
+          "quote": "After feature selection, we performed an internal 5-fold cross-validation for the training data and applied the SVM algorithm using binary classification between the three groups.",
+          "paper": "P-152"
+        },
+        {
+          "difference": "Best kernel chosen per contrast on the same cross-validation.",
+          "quote": "Finally, we show the Receiver operating characteristic (ROC) curve and the area under the curve (AUC) for the best kernel in each classification",
+          "paper": "P-152"
+        },
+        {
+          "difference": "Sample size and cohort: 48 ADNI2 DTI subjects against 286 ADNI subjects with complete SNP, GE and MRI data.",
+          "quote": "After data quality control, 549 ADNI subjects who have complete SNP, GE, and MRI data were retained, where 158 were diagnosed as control normal (CN), 128 were diagnosed as mild cognitive impairment (MCI)",
+          "paper": "P-63"
+        },
+        {
+          "difference": "Undefined 'Correction' column in P-152's Table 3 (70.3 for MCI-HC). If it were the accuracy, the accuracy gap would close, but the matched-arm AUC gap would not.",
+          "quote": "MCI-HC 70.3 83.3 94.4 76.6 .88",
+          "paper": "P-152"
+        }
+      ],
+      "reason": "On MCI vs HC from MRI in ADNI, P-152's 83.3% (Wilson [0.704, 0.913]) and AUC 0.88 ([0.780, 0.980]) are separated from P-63's matched MRI-only arm, 70.08% ([0.645, 0.751]) and 0.764 ([0.708, 0.821]), in both directions on both metrics. P-152's 83.3% also lies outside the interval of the record's fused P-63 figure. The reader's condition-5 failure applies the exclusion at study level, from P-152's AD vs HC AUC of 0.99. This round judges condition 5 on the compared figures (C-211 with this same P-152 table, and C-66 and C-117), and the compared figures (0.88, 83.3%) are far below 0.97. The undefined 'Correction' value touches accuracy only, and the matched-arm AUC exclusion stands without it. The misread contrast in the record is handled by condition 6, as in C-211. The candidate explanations (DTI against T1, feature selection before CV, per-contrast kernel choice, 48 against 286 subjects) are not shown to be sufficient.",
+      "quotes": [
+        {
+          "paper": "P-152",
+          "page": 1,
+          "quote": "The linear kernel of SVM was the best classi\ufb01er, with an accuracy of 95.8% between the AD and HC groups, followed by the quadratic kernel of SVM with an accuracy of 83.3% between the MCI and HC groups"
+        },
+        {
+          "paper": "P-152",
+          "page": 5,
+          "quote": "The mean accuracy, sensitivity, and speci\ufb01city were reported as the results of this study."
+        },
+        {
+          "paper": "P-152",
+          "page": 6,
+          "quote": "MCI-HC 70.3 83.3 94.4 76.6 .88 (Table 3: Correction, Accuracy, Sensitivity, Specificity, AUC; 'Correction' is not defined in the paper)"
+        },
+        {
+          "paper": "P-63",
+          "page": 9,
+          "quote": "CN vs. MCI ... MRI \u2013 70.08 \u00b1 3.49 70.07 \u00b1 3.73 69.87 \u00b1 5.11 76.41 \u00b1 3.39 (Table 4: ACC, SEN, SPE, AUC)"
+        },
+        {
+          "paper": "P-63",
+          "page": 7,
+          "quote": "We performed a 10-fold cross-validation on these three tasks."
+        }
+      ]
+    },
+    {
+      "id": "C-213",
+      "reader_verdict": "borderline (failed 3)",
+      "final": "yes",
+      "overturned": true,
+      "conditions_attacked": {
+        "1_question": "Holds, as the reader and C-121 accept: MCI-to-AD conversion in ADNI MCI from cognitive scores plus MRI measures. The EMCI subset, the horizon and the features are allowed differences.",
+        "2_metric": "Holds on AUC with AUC. AUC does not depend on prevalence or threshold, and it is the metric on which C-121 (the same P-183 figure) qualified.",
+        "3_matched_figure": "Holds on AUC. Neither paper reports an AUC under the other's condition: P-178 has no 2-year horizon, no 70-80 subset and no T2 features, and P-183 has no EMCI-only or eventual-conversion subset. What the reader treats as dissolving the pair is not a matched figure in the rule's sense. The 0.788 is a reweighting of P-178's class-wise rates to P-183's class mix, a derivation that no paper reports. It shows only that class prevalence can explain the raw-accuracy gap, and prevalence cannot move an AUC. If the per-class figures are treated as population-subset figures, as in C-221, they split rather than agree. In the converter subset they agree (0.556, Wilson n = 12 [0.297, 0.788], against 0.722-0.778). In the stable subset they do not: P-178's specificity (printed as recall) of 0.978 has an interval of [0.919, 0.994] at n = 83, while P-183's specificities are 0.818 [0.597, 0.948] (RF), 0.773 [0.546, 0.922] (BSWiMS, ENS) and 0.818 (SVM). These exclude each other in both directions. The agreement in balanced accuracy (0.767 against 0.770-0.777) comes from averaging this split at P-178's specificity-favouring operating point. It is not a figure under P-183's condition.",
+        "4_uncertainty": "Holds. Every P-183 model's AUC (0.513-0.824) lies below P-178's derived lower bound of 0.882. P-178's 0.96 lies above the printed upper bounds of five of P-183's six informative models: BSWiMS 0.911, KNN 0.892, LASSO 0.936, RF 0.905 and SVM 0.882. Against ENS the exclusion runs one way, which is the test C-121 applied to the same 0.824. The exclusion holds down to 5 converters in P-178's 95-patient test set (lower bound 0.839), against an expected 12.",
+        "5_performance_validity": "Holds as written. P-178's 0.96 and 0.936 are below 0.97, and P-183's figures are far below. P-178's visit-level design, oversampling and test-accuracy feature choice are candidate explanations, not the exclusion. The review's Section 3.5 names a different Velazquez and Lee study (P-1, 98.81%), not this one.",
+        "6_record": "The record's 'P-183: Acc 72.7' is a misread (0.727 is a neuropsychology-only AUC). The pair is judged on P-183's printed Table 4, and the AUC gap exists in those printed figures."
+      },
+      "figures": {
+        "P-178": "95 test patients (25% of 383). The expected converter count is 12 (49 x 0.25), and the SVC row fixes the test set at 90% non-converters. AUC 0.96 (Table 4, 9 features). Hanley-McNeil with 12/83: Q1 = 0.9231, Q2 = 0.9404, SE = sqrt([0.0384 + 11(0.0015) + 82(0.0188)]/996) = 0.0400, CI [0.882, 1.000]. Sensitivity of the lower bound to the converter count: 10 -> 0.874, 8 -> 0.864, 6 -> 0.849, 5 -> 0.839, 4 -> 0.825. At visit level (about 45 converter visits against 402) the interval is [0.920, 1.000]. Accuracy 0.936, Wilson n = 95: [0.868, 0.970]. Recall 0.978 on the majority class (specificity), Wilson n = 83: [0.919, 0.994].",
+        "P-183": "40 subjects (18/22), 100 random 80/20 splits, CIs as printed (Table 4, imaging + neuropsychology). AUC: ENS 0.824 [0.681, 0.968]; LASSO 0.773 [0.610, 0.936]; RF 0.770 [0.636, 0.905]; SVM 0.742 [0.603, 0.882]; BSWiMS 0.732 [0.553, 0.911]; KNN 0.721 [0.550, 0.892]; RPART 0.513. Accuracy 0.775 [0.615, 0.892] (BSWiMS, RF).",
+        "comparison": "AUC: P-183's best, 0.824, is below 0.882. P-178's 0.96 is above the upper bound of RF (z = 2.39 against RF, using the SE implied by its printed interval) and of four other models; inside ENS only (z = 1.63). Raw accuracy also excludes both ways (0.936 against [0.615, 0.892]; 0.775 against [0.868, 0.970]). That gap is prevalence-driven, and the pair does not rest on it."
+      },
+      "matched_figure_check": "No AUC is reported under the other paper's condition. The reweighted accuracy (0.788) and the balanced accuracies are derivations at P-178's operating point. They explain the raw-accuracy gap by class mix, cannot touch a prevalence-free AUC, and on a per-class reading split (converter subset agrees, stable subset excludes both ways). Nothing in either paper reconciles the AUC gap.",
+      "candidate_explanations": [
+        {
+          "difference": "Visit-level evaluation: P-178 scores exam visits, including converter visits close to conversion, on diagnosis-related scales (ADAS13, ADAS11, FAQ, MMSE). Not shown to be sufficient.",
+          "quote": "This allows for the model to be trained against 2412 exam visits (1206 per class) rather than only the 1354 from the original data set train/test split.",
+          "paper": "P-178"
+        },
+        {
+          "difference": "Feature group chosen by test accuracy.",
+          "quote": "While initially, using all 13-features seemed to provide the highest accuracy at 91.6%, we found that by removing the RAVLT features, our accuracy rose to 93.6% in the 9-feature group.",
+          "paper": "P-178"
+        },
+        {
+          "difference": "Population and horizon: early-MCI patients with eventual conversion (5-7 years), against MCI patients aged 70-80 converting at 2 years or stable for at least 5 years.",
+          "quote": "the 18 subjects who had their first AD diagnosis 2 years after their baseline visit were regarded as progressers (MCIp), while the 22 subjects who never had an AD diagnosis and participated in the study for at least 5 years were labeled as stable (MCIs).",
+          "paper": "P-183"
+        },
+        {
+          "difference": "Features: hippocampal and ventricular volume with clinical scales, against T2-map signal and texture features with neuropsychological scores.",
+          "quote": "The clinical features that were used to train our random forest model included a mix of genetic biomarkers (APOE4), physical biomarkers (hippocampal and ventricular volume), four neuropsychological scale scores (ADAS13, ADAS11, FAQ, MMSE), and the patient\u2019s demographic information (age, race).",
+          "paper": "P-178"
+        },
+        {
+          "difference": "Sample size: 40 subjects in P-183.",
+          "quote": "the inclusion criteria forced us to work with a small population",
+          "paper": "P-183"
+        },
+        {
+          "difference": "Class prevalence (90% against 55% non-converters). P-178's own figures show this is enough to explain the raw-accuracy gap, but it cannot explain the AUC gap.",
+          "quote": "One observation when observing our SVC model is that it struggled to predict the negative class (conversion to AD) and predominantly chose the majority class.",
+          "paper": "P-178"
+        }
+      ],
+      "reason": "On AUC, the prevalence- and threshold-free metric, the pair meets all six conditions, exactly as C-121 did with the same P-183 figure. Every P-183 AUC (best 0.824) lies below P-178's derived interval of [0.882, 1.000], which holds down to 5 converters. P-178's 0.96 lies above the printed intervals of five of P-183's six informative models, and neither figure is near ceiling. The reader's condition-3 failure rests on a reweighted accuracy (0.788) and on balanced accuracies. Neither is a figure reported under P-183's condition. They explain only the raw-accuracy gap, by class mix, which cannot move an AUC. Read as population-subset figures, they split: the converter subset agrees, and the stable subset excludes both ways (0.978 [0.919, 0.994] against 0.773-0.818). Nothing in either paper reconciles the AUC gap. Visit-level evaluation, feature choice on the test set, population, horizon and features are candidate explanations not shown to be sufficient.",
+      "quotes": [
+        {
+          "paper": "P-178",
+          "page": 3,
+          "quote": "These patients were then randomly split such that 75% (288 patients) of our selected patients were used to train the random forest model, with the remaining 25% (95 patients) used for validation testing (shown in Table 1)."
+        },
+        {
+          "paper": "P-178",
+          "page": 8,
+          "quote": "9-Features 0.936 0.952 0.978 0.965 0.96 (Table 4, Random Forest: Accuracy, Precision, Recall, F1 Score, AUC)"
+        },
+        {
+          "paper": "P-178",
+          "page": 8,
+          "quote": "Support Vector ... 9-Features 0.900 0.900 1 0.948 0.54 (Table 4)"
+        },
+        {
+          "paper": "P-183",
+          "page": 7,
+          "quote": "ENS 0.750 0.588\u20130.873 0.824 0.681\u20130.968 0.773 0.546\u20130.922 0.722 0.465\u20130.903 0.250 0.124\u20130.398"
+        },
+        {
+          "paper": "P-183",
+          "page": 7,
+          "quote": "RF 0.775 0.615\u20130.892 0.770 0.636\u20130.905 0.818 0.597\u20130.948 0.722 0.465\u20130.903 0.225 0.101\u20130.360"
+        },
+        {
+          "paper": "P-183",
+          "page": 7,
+          "quote": "SVM 0.750 0.588\u20130.873 0.742 0.603\u20130.882 0.818 0.597\u20130.948 0.667 0.410\u20130.867 0.255 0.127\u20130.401"
+        }
+      ]
+    },
+    {
+      "id": "C-218",
+      "reader_verdict": "borderline (failed 3)",
+      "final": "yes",
+      "overturned": true,
+      "conditions_attacked": {
+        "1_question": "Holds, as the reader accepts: stable against progressive MCI in ADNI from baseline structural MRI. The 15 AD patients in P-41's positive class are a label-definition difference, which the rule allows.",
+        "2_metric": "Holds: accuracy with accuracy and AUC with AUC.",
+        "3_matched_figure": "Holds. The reader's premise is contradicted by P-41's own tables. The reader states that P-41's 'single-backbone, single-plane models without attention score 47.67-77.76% accuracy (AUC 0.53-0.80)', so that the gap lies in attention and ensembling. That range leaves out the Experiment-1 rows (Table 2: no attention, one backbone, one plane) that P-41 carried forward. ConvNext+LSTM on the coronal plane scores 83.94% with AUC 0.8266, and DenseNet+LSTM on the axial plane scores 81.78% with AUC 0.8054 (85.78%/0.8454 in Table 3's 'without attention module' column). For DenseNet+LSTM, attention changes nothing (85.78% before and after). These plain configurations already lie outside P-185's intervals on accuracy ([0.630, 0.751]), including the accuracies implied by their own sensitivity and specificity (0.787 and 0.791), and on AUC ([0.627, 0.763]). So removing attention and the ensemble leaves a gap that still meets condition 4 by the one-way test. P-41 therefore does not show its attention or ensemble to be sufficient. Attention and ensembling account for about 8 of the 22 points (83.94% to 91.77%). The configurations at P-185's level (for example EfficientNet+MHA axial, 68.86%) are weaker backbone, head and plane choices that P-41 discarded, not the plain version of its reported model. Unlike C-147, C-155 and C-117, where the plain version of the reported method matched the other paper, here it does not. No figure is reported under P-185's condition (ROI thickness and volume features, pMCI-only labels, 3-year horizon, 1.5 T).",
+        "4_uncertainty": "Holds in both directions on both metrics for the reported model, even at the accuracy P-41's own sensitivity and specificity imply (0.881). It holds in one direction on both metrics for P-41's plain no-attention configurations.",
+        "5_performance_validity": "Holds as written. P-41's 0.918 and 0.929 are below 0.97, and P-185's figures are far below.",
+        "6_record": "The record's 'P-41: Acc 91' is what P-41 prints. The arithmetic inconsistency in P-41's tables (accuracy above both sensitivity and specificity) is handled by also testing the implied accuracies, which still exclude."
+      },
+      "figures": {
+        "P-185": "221 MCI (126 pMCI/95 sMCI), 20 x 10-fold CV. Accuracy 69.37%. Wilson n = 221: centre 0.6904, half-width 0.0603, CI [0.630, 0.751]. AUC 0.6951. Hanley-McNeil 126/95: Q1 = 0.5327, Q2 = 0.5701, SE = 0.0349, CI [0.627, 0.763].",
+        "P-41": "Test set of 15 sMCI and 15 pMCI/AD. Heterogeneous ensemble: 91.77%, Wilson n = 30 [0.766, 0.974]. Implied by its sensitivity and specificity: 0.881 [0.720, 0.955]. AUC 0.9287, Hanley-McNeil 15/15: SE 0.0505, [0.830, 1.000]. Plain configurations without attention or ensemble (Table 2): ConvNext+LSTM coronal 83.94% [0.671, 0.930], implied 0.787 [0.612, 0.896], AUC 0.8266 (SE 0.0774) [0.675, 0.978]. DenseNet+LSTM axial 81.78% [0.647, 0.917], implied 0.791, AUC 0.8054 [0.646, 0.965]. Table 3 prints the latter as 85.78% [0.693, 0.942] with AUC 0.8454 [0.701, 0.989].",
+        "comparison": "Reported model against P-185: 0.694 lies below 0.720 even at the implied 0.881, and 0.881 and 0.918 lie above 0.751. On AUC, 0.695 lies below 0.830 and 0.929 above 0.763. P-41's plain configurations against P-185: 0.787-0.839 lie above 0.751, and AUC 0.805-0.845 lies above 0.763. For the Table 3 values, P-185's AUC of 0.6951 also lies just below the 0.701 lower bound."
+      },
+      "matched_figure_check": "No figure under P-185's condition exists in either paper. P-41's ablation does not dissolve the gap. Its plain single-model, single-plane, no-attention configurations still exceed P-185's intervals on accuracy (as printed and as implied) and on AUC. The variants that land at P-185's level are discarded weaker backbones, so 'bracketing' identifies no difference between the two studies that accounts for the gap.",
+      "candidate_explanations": [
+        {
+          "difference": "Representation and architecture: CNNs on 132 two-dimensional slices per plane, against a linear SVM on FreeSurfer regional thickness and volume projected into a learned subspace. P-41's ablation shows that attention and ensembling add about 8 points but not that they account for the gap.",
+          "quote": "In the case of ConvNext+LSTM with coronal plane, the model without attention achieved an accuracy of 83.94% \u00b15.32, sensitivity of 77.34% \u00b15.34, specificity of 79.96% \u00b14.31, and an AUC of 82.66% \u00b13.28.",
+          "paper": "P-41"
+        },
+        {
+          "difference": "Configuration selection on the test set: about 45 backbone, head and plane combinations are all scored on the same 30 test subjects, and the best are carried forward.",
+          "quote": "The dataset was carefully partitioned to ensure that no data leakage occurred, and all results reported in this study were based on the test set.",
+          "paper": "P-41"
+        },
+        {
+          "difference": "Label definition: 15 patients with established AD are added to P-41's positive class.",
+          "quote": "Furthermore, we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously.",
+          "paper": "P-41"
+        },
+        {
+          "difference": "Horizon: conversion within 3 years, against conversion between M18 and M48 with stability to M48.",
+          "quote": "According to whether the MCI subjects will convert to AD or not within a given time period (i.e., 3 years), they are separated into two categories: progressive MCI (pMCI) and stable MCI (sMCI).",
+          "paper": "P-185"
+        },
+        {
+          "difference": "Validation and sample: a single 15 + 15 test set, against 20 repetitions of 10-fold CV on 221 MCI.",
+          "quote": "repeated 10-fold cross-validation 20 times to report the average results for each method.",
+          "paper": "P-185"
+        },
+        {
+          "difference": "Field strength: 1.5 T against 3 T MPRAGE.",
+          "quote": "We use baseline MRI scans (1.5 T, 1:25 mm \u00d7 1:25 mm in-plane spatial resolution, 1.2 mm thick slices) of 528 subjects",
+          "paper": "P-185"
+        },
+        {
+          "difference": "Reporting reliability: P-41's printed accuracies exceed both its sensitivity and specificity throughout its tables.",
+          "quote": "The MHA classifier in the same heterogeneous ensemble outperformed the LSTM with an accuracy of 91.77% \u00b13.14, sensitivity of 87.69% \u00b13.24, specificity of 88.53% \u00b13.53, and an impressive AUC of 92.87% \u00b13.58.",
+          "paper": "P-41"
+        }
+      ],
+      "reason": "The pair meets conditions 1, 2, 4, 5 and 6, as the reader found. Condition 3 also holds, because the ablation the reader relied on does not show what the reader said it does. P-41's plain Experiment-1 configurations (no attention, no ensemble, one backbone and one plane) reach 83.94% with AUC 0.827 (ConvNext+LSTM coronal) and 81.78-85.78% with AUC 0.805-0.845 (DenseNet+LSTM axial). These already lie outside P-185's intervals ([0.630, 0.751]; [0.627, 0.763]), even at the accuracies implied by their own sensitivity and specificity. Attention and ensembling add about 8 of the 22 points, and the rest of the gap remains without them. The P-41 variants at P-185's level are discarded weaker backbones, not the plain version of the reported model, so unlike C-147, C-155 and C-117 no paper shows an explanation to be sufficient. Representation, test-set configuration selection, AD patients in the positive class, horizon, the 30-subject test and field strength remain candidate explanations, none shown to be sufficient.",
+      "quotes": [
+        {
+          "paper": "P-185",
+          "page": 2,
+          "quote": "Moreover, the 221 MCI subjects contain 126 pMCI and 95 sMCI subjects."
+        },
+        {
+          "paper": "P-185",
+          "page": 6,
+          "quote": "The proposed biomarker achieved highest accuracy of 69.37% when using SVM classi\ufb01er with linear kernel."
+        },
+        {
+          "paper": "P-41",
+          "page": 9,
+          "quote": "ConvNext ... LSTM 65.74 \u00b1 4.35 63.12 \u00b1 4.43 67.54 \u00b1 5.24 68.33 \u00b1 4.31 83.94 \u00b1 5.32 77.34 \u00b1 5.34 79.96 \u00b1 4.31 82.66 \u00b1 3.28 (Table 2, Experiment 1: axial then coronal Acc, Sen, Spe, AUC)"
+        },
+        {
+          "paper": "P-41",
+          "page": 11,
+          "quote": "Unlike Experiment 1, in which no attention mechanisms were applied, Experiment 2 leveraged CBAM"
+        },
+        {
+          "paper": "P-41",
+          "page": 11,
+          "quote": "For DenseNet + LSTM with the axial plane, the model without attention achieved an accuracy of 85.78% \u00b14.34, with a sensitivity of 80.42% \u00b15.44, specificity of 79.72% \u00b15.44, and an AUC of 84.54% \u00b13.22. Interestingly, the performance remained stable after incorporating the attention mechanism, maintaining an accuracy of 85.78%"
+        },
+        {
+          "paper": "P-41",
+          "page": 12,
+          "quote": "The MHA classifier in the same heterogeneous ensemble outperformed the LSTM with an accuracy of 91.77% \u00b13.14, sensitivity of 87.69% \u00b13.24, specificity of 88.53% \u00b13.53, and an impressive AUC of 92.87% \u00b13.58."
+        }
+      ]
+    }
+  ]
+}

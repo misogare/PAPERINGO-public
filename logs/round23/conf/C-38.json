@@ -1,0 +1,23 @@
+{
+  "id": "C-38",
+  "qualifies": "no",
+  "question": "Both address binary MCI vs healthy controls, but through different broad channels: P-114 (the gait/ANFIS paper, Seifallahi et al. 2022; the right text is pack file pdf/P-115.txt) uses Kinect dual-task gait parameters (gait/motor), and P-99 (Zubrikhina et al. 2023) uses FreeSurfer morphometry from T1 MRI. Condition 1 requires the same channel, so under the rule there is no shared clinical question.",
+  "metric": "Accuracy, MCI vs HC, in both (matched).",
+  "figures": {
+    "P-114": "ANFIS accuracy 93% (all dual-task walking features), N=150 (70 MCI/80 HC), evaluation protocol for ANFIS not stated. Wilson with n=150: 0.93 -> (0.878, 0.961).",
+    "P-99": "RBF-SVC accuracy 0.73 +- 0.059 (SD over 10 folds), 10-fold CV, N=207 (145 MCI/62 HC). Wilson with n=207: 0.73 -> (0.666, 0.786); from the fold SD, SE = 0.059/sqrt(10) = 0.019 -> (0.693, 0.767)."
+  },
+  "matched_figure_check": "No matched figure: neither paper runs the other's channel, and neither reports a result on the other's cohort.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study is excluded: 93% and 73% are below 0.97. The record's resolution note claiming that P-99 reports 99.0% accuracy is false; P-99 reports 0.73.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "The pair fails condition 1 on the channel: gait parameters against structural-MRI morphometry. Task and metric match, and 0.93 and 0.73 lie outside each other's Wilson intervals, but the rule does not treat gait and MRI classifiers of the same contrast as the same clinical question. The record's claimed figures (93% and 73%) are what the papers print.",
+  "quotes": [
+    {"paper": "P-114", "page": 1, "quote": "Generally, the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups. (document: Seifallahi et al. 2022, pack file pdf/P-115.txt)"},
+    {"paper": "P-114", "page": 8, "quote": "Considering the accuracy metric, the ANFIS, LR, and SVM showed the values of 93%, 81.25%, and 78.85%, respectively when the whole collection of DTW features were used for classification."},
+    {"paper": "P-99", "page": 1, "quote": "The dataset for the study consists of 62 healthy volunteers and 145 patients with MCI obtained from the «Memory Clinic» (Moscow, Russia). The morphometric data were extracted from T1-weighted structural MR images. We propose a machine learning method, which achieved an accuracy of 73%"},
+    {"paper": "P-99", "page": 3, "quote": "Due to an imbalanced dataset, for estimation of model performance, we used 10-fold cross-validation with the F1-metric."}
+  ]
+}

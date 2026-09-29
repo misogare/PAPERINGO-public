@@ -1,0 +1,25 @@
+{
+  "id": "C-50",
+  "qualifies": "no",
+  "question": "The task label matches (binary MCI vs cognitively normal) but the measurement channel does not: P-117 (correct PDF S1746809423008959, Aljalal et al.) uses resting-state EEG; P-6 (Pourramezan Fard et al., CBM 176 (2024) 108606; claim_b names P-11, a dedup stub of P-6) uses conversational-language transcripts from I-CONECT (speech or language channel). Condition 1 fails on channel.",
+  "metric": "Same metric type (accuracy), but segment-level (P-117) vs subject-level (P-6).",
+  "figures": {
+    "P-117": "99.81% accuracy (ensemble KNN, 11 NSGA-II channels; 99.51% all 19 channels), binary aMCI vs HC, 10-fold CV over 3660 ten-second segment feature vectors from 61 participants (29 aMCI/32 HC); no interval reported. Wilson 95% with n = 61 subjects: z^2/n = 0.06297; centre = (0.9981 + 0.03149)/1.06297 = 0.9686; half-width 0.0314; interval [0.937, 1.000].",
+    "P-6": "85.16% subject-level accuracy (mean of 5 folds, fold SD 5.76; AUC 84.75%), 68 I-CONECT subjects, 5-fold CV with 20% of subjects held out per fold. No 95% interval reported. Wilson with n = 68: z^2/n = 3.8415/68 = 0.05649; centre = (0.8516 + 0.02825)/1.05649 = 0.8328; half-width = 1.96*sqrt(0.8516*0.1484/68 + 3.8415/(4*68^2))/1.05649 = 0.0843; interval [0.748, 0.917]."
+  },
+  "matched_figure_check": "No matched figure exists. Neither paper reports a result in the other's channel, and P-117 prints only segment-level accuracies (no subject-level figure under P-6's evaluation unit). Nothing reconciles the pair.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "P-117 meets the Section 3.5 exclusion on its own PDF: 99.81% (>= 0.97) from internal 10-fold CV that randomly splits the segment feature matrix (no subject-wise split described), 61 participants, no external cohort; the registry flag is false only because its Best_Metric is 'not reported'. P-6 (85.16%) is not excluded.",
+  "failed_conditions": [1, 5],
+  "candidate_explanations": [],
+  "reason": "The gap is numerically beyond uncertainty (0.9981 lies outside P-6's Wilson [0.748, 0.917] and 0.8516 lies outside P-117's [0.937, 1.000]), but the two studies measure different channels (EEG vs language transcripts), so they do not address the same clinical question under condition 1. P-117's figure also fails the performance-validity exclusion (condition 5). The record duplicates C-48 after the P-11 -> P-6 repoint; its figures are otherwise quoted correctly.",
+  "quotes": [
+    {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+    {"paper": "P-117", "page": 3, "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases."},
+    {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+    {"paper": "P-117", "page": 9, "quote": "This results in a 3660 × 76 feature matrix, which is used as input to the classifier."},
+    {"paper": "P-6", "page": 7, "quote": "Since the number of available subjects in the I-CONECT dataset is 68, we assess the performance of our framework using the K-fold validation technique."},
+    {"paper": "P-6", "page": 7, "quote": "the framework achieves an overall accuracy of 85.16% and an AUC of 84.75%, with the corresponding std of 5.76 and 5.97, respectively."}
+  ]
+}

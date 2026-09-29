@@ -1,0 +1,25 @@
+{
+  "id": "C-239",
+  "qualifies": "no",
+  "question": "Shared at the level condition 1 asks for: do eye-movement measures differ between clinic MCI and age-matched healthy controls? P-686 studies amnestic MCI in Izmir (32 aMCI v 32 HC, with 30 AD) during free viewing of real-world photographs. P-966 studies Petersen MCI of any subtype with CDR 0.5 in Korea (79 MCI v 170 HC) on interleaved prosaccade/antisaccade and Go/No-go tasks. The paradigm and the amnestic restriction are allowed differences in features and cohort.",
+  "metric": "Direction and significance of MCI-HC group differences in both: ANOVA with Bonferroni post hoc tests in P-686, t-tests in P-966. The nearest shared variable is the latency of the first saccade to stimulus onset.",
+  "figures": {
+    "P-686": "No aMCI-HC difference on any of nine scanning measures (all p > 0.05). First saccade latency: AD 372.51 +/- 149.03, aMCI 330.26 +/- 10.502 (SD as printed; 105.02 is the likely value), HC 292.13 +/- 59.49 ms. aMCI - HC = 38.13 ms, n = 32 each. Using the pooled ANOVA error variance, MSE = (29(149.03^2) + 31(10.502^2) + 31(59.49^2))/91 = 8,321, SE = sqrt(8321(2/32)) = 22.8 ms, 95% CI [-7.2, 83.4] ms, d = 38.13/91.2 = 0.42 (CI -0.08 to 0.91). With SD 105.02: MSE 12,041, SE 27.4 ms, CI [-16.4, 92.6] ms, d = 0.35 (CI -0.15 to 0.84).",
+    "P-966": "Prosaccade latency longer in MCI, t(247) = -2.28, p = 0.024 (means are in the supplement). d = 2.28 x sqrt(1/79 + 1/170) = 0.31; SE_d = sqrt(0.01854 + 0.31^2/498) = 0.137; CI [0.04, 0.58]. Also: more antisaccade errors (p = 0.002), fewer correct antisaccades, fewer correct Go and No-go responses. Antisaccade latency (p = 0.265) and Go latency (p = 0.099) do not differ."
+  },
+  "matched_figure_check": "The nearest matched figure is saccade latency to stimulus onset (P-686 first saccade latency in free viewing; P-966 prosaccade latency to a cued target), and it reconciles the pair. Both show longer latency in MCI, with similar standardised effects (d about 0.35-0.42 against 0.31). Each estimate lies inside the other's interval: P-966's 0.31 is within P-686's -0.08 to 0.91, and P-686's 0.42 (or 0.35) is within P-966's 0.04 to 0.58. P-686's other nulls concern free-viewing measures that P-966 does not record. With 32 per group, P-686 could not exclude effects of the size P-966 reports.",
+  "beyond_uncertainty": false,
+  "significance_only": true,
+  "performance_validity": "Not a performance comparison: neither paper reports accuracy, AUC or any other discrimination statistic.",
+  "failed_conditions": [3, 4],
+  "candidate_explanations": [],
+  "reason": "The question and the eye channel are shared, but the apparent disagreement, a null in aMCI against positives in MCI, is a difference in statistical significance on mostly different variables. On the one parallel measure, saccade latency, both papers show MCI slower, with overlapping effect-size intervals (d 0.42 against 0.31), so the matched figure reconciles them. P-686's nulls come from 32 per group and do not exclude P-966's effects, so conditions 3 and 4 fail.",
+  "quotes": [
+    {"paper": "P-686", "page": 5, "quote": "no significant differences were found in aMCI compared to HC in the visual scanning task (p > 0.05)."},
+    {"paper": "P-686", "page": 6, "quote": "First saccade latency (ms) 372.51 ± 149.03 330.26 ± 10.502 292.13 ± 59.49 0.021 AD-HC 0.017 aMCI-HC p > 0.05"},
+    {"paper": "P-686", "page": 3, "quote": "Cohen's d was employed to determine the effect sizes (η2) of statistically significant outcomes in the visual scanning metrics."},
+    {"paper": "P-966", "page": 3, "quote": "MCI participants met the Petersen criteria (Petersen, 2004) and had a CDR score of 0.5."},
+    {"paper": "P-966", "page": 5, "quote": "In the PS task, patients with MCI were slower to initiate eye movements than HC [t(247) = −2.28, p = 0.024]."},
+    {"paper": "P-966", "page": 6, "quote": "There was no signiﬁcant diﬀerence in the latency of correct AS responses [t(226) = 1.12, p = 0.265]."}
+  ]
+}

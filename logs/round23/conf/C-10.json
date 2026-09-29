@@ -1,0 +1,30 @@
+{
+ "id": "C-10",
+ "qualifies": "no",
+ "question": "Detection of MCI against normal cognition in older adults from facial video of I-CONECT conversation sessions. The clinical question, population class and channel are the same. The two papers use different conversation themes, video subsets and architectures, which the rule allows.",
+ "metric": "Accuracy with accuracy (proportion of participants or videos classified correctly) matches. AUC matches in name only: P-76's AUC does not come from the subject-level decisions whose accuracy it reports (see matched_figure_check), so it is not the same quantity as P-77's video-level AUC.",
+ "figures": {
+  "P-76": "Best theme (Crafts Hobbies, 20 MCI/12 NC): accuracy 29/32 = 90.63%, Wilson 95% CI 0.758-0.968. The other themes give 36/41 = 85.37%, 30/35 = 85.71% and 35/39 = 89.74%. AUC 0.6042 on the same theme; Hanley-McNeil with 20/12 gives SE 0.102 and CI 0.403-0.805. On that theme the paper also reports sensitivity 100% and specificity 75%.",
+  "P-77": "Best theme (Halloween, 14 MCI/18 NC): accuracy 28/32 = 87.5%, Wilson 95% CI 0.719-0.950. AUC 0.87; Hanley-McNeil with 14/18 gives SE 0.068 and CI 0.736-1.000. The other themes give 83.3%, 66.7% and 79.5%, and the means over five fold reshuffles are 74.64%, 61.34%, 84.38% and 77.96% (Table 7).",
+  "note": "A sensitivity check that neither paper reports: pooling videos across themes gives 130/147 = 88.4% (Wilson 0.823-0.927) for P-76 against 104/131 = 79.4% (0.717-0.854) for P-77. This pooled figure is not used. The same participants recur across themes, so the video counts overstate the independent n, and the themes differ between the papers."
+ },
+ "matched_figure_check": "The papers share no theme. P-76 uses Crafts Hobbies, Day Time TV Shows, Movie Genres and School Subjects; P-77 uses Summertime, Self-Care, Halloween and Cities and Towns. For AUC, the relevant matched figures are P-76's own subject-level operating points: sensitivity/specificity of 100%/75%, 85%/85.71%, 90.48%/78.57% and 86.36%/94.12%, which give balanced accuracies of 0.875, 0.854, 0.845 and 0.902. An empirical ROC curve through (FPR 0.25, TPR 1.00) has an area of at least 0.75, and one through (0.143, 0.85) at least 0.73. P-76's AUCs of 0.6042 and 0.4952 on those themes therefore cannot be subject-level ROC areas for the decisions it reports, and P-76 itself attributes them to clips of MCI subjects being scored as NC. P-77's AUCs equal its accuracies to within 0.01 in all 16 cells of Table 4. That is the pattern a video-level, single-operating-point AUC produces, though P-77 does not state how it computed AUC. On a subject-level basis, P-76's discrimination (0.85-0.90) is not below P-77's (0.66-0.87). The AUC gap P-77 claims (0.87 vs 0.6) sets quantities computed on different bases against each other.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Passes: no figure reaches 0.97. P-76 used its test fold as the validation set during training ('we use the test set as the validation one during the training process'). That design optimistically biases its accuracies, but it is not the Section 3.5 exclusion.",
+ "failed_conditions": [2, 4],
+ "candidate_explanations": [],
+ "reason": "On the metric both papers define the same way (accuracy), the headline results are 29/32 against 28/32, and each lies inside the other's Wilson interval, so condition 4 fails. The AUC gap P-77 points to (0.87 vs 0.6) is not on the same quantity. P-76's own subject-level sensitivity and specificity rule out a subject-level AUC as low as 0.60, and put its balanced accuracy at 0.85-0.90. So condition 2 fails for AUC in substance, and P-76's own figures dissolve that gap. The papers also share their senior authors and trial, and P-77 accepts P-76's higher accuracy.",
+ "quotes": [
+  {"paper": "P-76", "page": 6, "quote": "Here, we use the test set as the validation one during the training process."},
+  {"paper": "P-76", "page": 6, "quote": "Moreover, videos in each fold belong to different participants."},
+  {"paper": "P-76", "page": 7, "quote": "MC-ViViT predicts 29 out of 32 subjects correctly on the theme Crafts Hobbies, which reaches the highest accuracy, 90.63%."},
+  {"paper": "P-76", "page": 7, "quote": "AUC 0.6042 0.4952 0.6122 0.5294 MCI/NC 20/12 20/21 21/14 22/17 Sensitivity/ 100%/ 85%/ 90.48%/ 86.36%/ Specificity 75% 85.71% 78.57% 94.12%"},
+  {"paper": "P-76", "page": 7, "quote": "Given that not all the clips have MCI features in the video, even for subjects with MCI, it is reasonable to predict parts of their video sequences as NC. Due to this reason, some subjects will be correctly predicted as MCI with low scores. Thus, the average AUC value is around 0.6."},
+  {"paper": "P-77", "page": 6, "quote": "The accuracy reflects the percentage of participants that were correctly classified during the testing."},
+  {"paper": "P-77", "page": 6, "quote": "We labeled the video as correctly classified if the majority of its sequences are correctly classified."},
+  {"paper": "P-77", "page": 7, "quote": "Halloween 84.4% 0.86 0.84 75% 0.79 0.74 81.3% 0.84 0.8 87.5% 0.89 0.87"},
+  {"paper": "P-77", "page": 7, "quote": "Sun et al. (2024) Visual 90.6% 0.93 0.6 Ours Visual 87.5% 0.89 0.87"},
+  {"paper": "P-77", "page": 8, "quote": "Although other models have achieved better accuracy and F1 score, our proposed framework achieved the highest AUC on the I-CONECT dataset."}
+ ]
+}

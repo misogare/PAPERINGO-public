@@ -1,0 +1,26 @@
+{
+  "id": "C-78",
+  "qualifies": "no",
+  "question": "Both studies detect MCI against cognitively normal adults, but they share no measurement channel. P-77 classifies from facial features in home video-chat interviews (I-CONECT, socially isolated adults aged 75+). P-85 classifies from task-state prefrontal fNIRS functional connectivity plus MMSE/BNT/HVLT scores and completion times (a Chinese hospital/community sample). P-85's cognitive-scale inputs have no counterpart in P-77, and facial video has no counterpart in P-85.",
+  "metric": "Mismatch as recorded: the record sets P-77's 88% accuracy against P-85's '~97%', but 0.970 is P-85's best AUC, not an accuracy. Like-for-like values exist: accuracy 87.5% vs 92.0%, and AUC 0.87 vs 0.970.",
+  "figures": {
+    "P-77": "Halloween theme, 32 selected videos (14 MCI/18 NC), 10-fold subject-wise CV. Accuracy 87.5% = 28/32, Wilson 95% CI 0.719-0.950 (p=0.875, n=32). AUC 0.87, Hanley-McNeil SE 0.068 (n1=14, n0=18), 95% CI 0.736-1.0. Mean over five reshuffled iterations 84.38% (SD 5.84).",
+    "P-85": "MCI vs NC, 90 MCI/48 NC analysed, 5-fold CV. Best accuracy 92.0% (about 127/138), Wilson 95% CI 0.863-0.955. Best AUC 0.970, reported 95% CI 0.946-0.993 (LR during MMSE)."
+  },
+  "matched_figure_check": "Neither paper reports a result on the other's input (facial video vs fNIRS plus cognitive scores). Compared like for like on accuracy, 87.5% lies inside P-85's interval (0.863-0.955) and 92.0% lies inside P-77's (0.719-0.950), so the gap is within uncertainty. On AUC, P-77's 0.87 lies outside P-85's reported CI, but P-85's 0.970 meets the performance-validity exclusion, so the AUC comparison cannot be used.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "P-85's best MCI-vs-NC AUC is 0.970, exactly at the 0.97 threshold. It comes from internal 5-fold CV on 138 analysed subjects with no external cohort, so the AUC meets the Section 3.5 exclusion. P-85's 92.0% accuracy is below 0.97. P-85's feature set also includes the MMSE score, and MMSE thresholds are among its inclusion criteria. P-77 (accuracy 87.5%, AUC 0.87) is not flagged.",
+  "failed_conditions": [1, 4, 5, 6],
+  "candidate_explanations": [],
+  "reason": "Condition 1 fails because there is no shared measurement channel: P-77 uses facial-video features, and P-85 uses fNIRS prefrontal connectivity plus cognitive-scale scores. The record's '~97%' is P-85's AUC. On like-for-like accuracy (87.5% of 32 vs 92.0% of 138), each estimate lies inside the other's Wilson interval (condition 4 fails). The AUC comparison is barred because P-85's 0.970 on internal 5-fold CV with 138 subjects meets the exclusion (condition 5). The claimed disagreement exists only through the misread (condition 6).",
+  "quotes": [
+    {"paper": "P-77", "page": 1, "quote": "The detection accuracy using this combined method reached 88%, whereas"},
+    {"paper": "P-77", "page": 6, "quote": "Halloween 80.3 (3.73) 15.3 (2.5) 14/18 12/20 (Table 3 row: age, education, MCI/NC, M/F; cells joined)"},
+    {"paper": "P-77", "page": 7, "quote": "Halloween 87.5 90.6 75 84.4 84.4 84.38 5.84 (Table 7 row; cells joined)"},
+    {"paper": "P-85", "page": 1, "quote": "Accuracies of 92.0 % for MCI vs. NC, 80.0 % for MCI vs. SCD, and 76.1 % for SCD vs. NC were achieved, and the highest AUC values were 97.0 % (95 % CI: 94.6 %-99.3 %) for MCI vs. NC"},
+    {"paper": "P-85", "page": 5, "quote": "based on the FC among the 10 ROIs under the time series for HBO, HBR and HBT signals along with the scores and completion times for the MMSE, BNT and HVLT"},
+    {"paper": "P-85", "page": 5, "quote": "Five-fold cross-validation was adopted to divide the samples into four training sets and one test set"},
+    {"paper": "P-85", "page": 6, "quote": "203 participants, including 48 NC volunteers (NC group), 65 SCD individuals (SCD group), and 90 MCI individuals (MCI group) were finally included for the FC analysis."}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "C-131",
+  "qualifies": "no",
+  "question": "Prediction of MCI-to-AD conversion among ADNI MCI participants. The shared channel is structural MRI: P-93 is imaging-only (baseline T1 MRI plus FDG-PET synthesised from the MRI), and P-168 combines neuropsychological tests, FreeSurfer MRI volumes and demographics. Allowed differences: horizon (36 months from baseline vs 2 years from a month-24 index exam), single baseline vs five-visit input, predictor set and validation.",
+  "metric": "AUC with AUC (0.838 vs 0.93). The ledger's claim_a still names P-188, a stub duplicate of P-93; the figure 0.838 is P-93's.",
+  "figures": {
+    "P-93": "MCI-conversion AUC 0.838 (ACC 0.780) on an independent ADNI test set of MRI-only subjects. The text gives 177 (81 sMCI, 96 pMCI); Tables 2 and 5 give 159 (66/93). Hanley-McNeil with n1=96, n2=81: SE 0.0298, 95% CI 0.780-0.896; with 93/66: SE 0.0310, 95% CI 0.777-0.899.",
+    "P-168": "LSTM, five visits, NP+MRI+demographics: AUC 0.93 +/- 0.06 (fold SD), n=347 (77/270). Hanley-McNeil: SE 0.0206, 95% CI 0.890-0.970. MRI-only: LSTM 0.86 (SE 0.0279, 95% CI 0.805-0.915); random forest 0.85 (SE 0.0287, 95% CI 0.794-0.906).",
+    "comparison": "Headline figures are separated: 0.93 lies above P-93's 0.896/0.899 upper bound, and 0.838 lies below P-168's 0.890 lower bound."
+  },
+  "matched_figure_check": "P-168 reports the result in P-93's channel (MRI measures only). The random-forest MRI model scores 0.85 (CI 0.794-0.906) and the MRI LSTM 0.86 (CI 0.805-0.915). Both intervals contain P-93's 0.838, and P-93's interval (0.780-0.896) contains both 0.85 and 0.86, so the matched figures agree in both directions. The headline gap comes from P-168 adding cognitive tests and longitudinal inputs, and the papers' own data dissolve it. Condition 3 fails.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes condition 5: 0.838 and 0.93 are below 0.97.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "The headline AUCs (0.838 imaging-only vs 0.93 cognition plus MRI over five visits) are separated beyond uncertainty. But P-168 reports MRI-only models (0.85 and 0.86) whose intervals and P-93's interval each contain the other's estimate. Restricted to the shared channel, the two papers agree, so the pair fails condition 3 and does not qualify.",
+  "quotes": [
+    {"paper": "P-93", "page": 8, "quote": "And 177 subjects (including 81 sMCI and 96 pMCI) with only MRI are used as independent test data."},
+    {"paper": "P-93", "page": 8, "quote": "Figure 4 suggests that our JSRL achieves the best AUC of 0.838 and ACC of 0.780"},
+    {"paper": "P-93", "page": 4, "quote": "subjects with pMCI would convert to AD within 36 months after baseline and subjects with sMCI remain stable."},
+    {"paper": "P-168", "page": 1, "quote": "The longitudinal LSTM model showed superior prediction performance of MCI-to-AD progression (AUC 0.93 \u00b1 0.06) compared to the random forest model (AUC 0.90 \u00b1 0.09)."},
+    {"paper": "P-168", "page": 5, "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures. The performance of the random forest models using MRI measures had an AUC of 0.85."},
+    {"paper": "P-168", "page": 4, "quote": "during which 77 (22.2%) were converted to AD"}
+  ]
+}

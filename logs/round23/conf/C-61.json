@@ -1,0 +1,25 @@
+{
+ "id": "C-61",
+ "qualifies": "no",
+ "question": "Same task and population class: MCI against healthy controls, in both cases a clinic MCI sample (Noor Hospital, Isfahan, amnestic MCI, for P-117; Moscow Memory Clinic for P-99). The channel differs: resting-state EEG (P-117, Aljalal et al. 2024, correct file downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809423008959-main.pdf) against structural-MRI FreeSurfer morphometry (P-99). Condition 1 fails on the channel.",
+ "metric": "Accuracy with accuracy (match).",
+ "figures": {
+  "P-117": "99.81% accuracy (ensemble KNN, 11 NSGA-selected channels), 10-fold CV over 3660 EEG segments from 61 participants (29 aMCI, 32 HC). No interval is reported. Wilson with n = 61: z^2/n = 0.06298; centre = (0.9981 + 0.03149)/1.06298 = 0.9686; half-width 0.0314; interval [0.937, 1.000].",
+  "P-99": "Accuracy 0.73 +/- 0.059 (SVC, 10-fold CV), ROC-AUC 0.735, F1-macro 0.683; 207 participants (62 HC, 145 MCI). No 95% interval is reported. Wilson with n = 207: z^2/n = 0.01856; centre = (0.73 + 0.00928)/1.01856 = 0.7258; half-width = 1.96*sqrt(0.73*0.27/207 + 3.8415/(4*207^2))/1.01856 = 0.0601; interval [0.666, 0.786]."
+ },
+ "matched_figure_check": "None exists. P-117 reports no MRI result and P-99 no EEG result.",
+ "beyond_uncertainty": true,
+ "significance_only": false,
+ "performance_validity": "The Section 3.5 exclusion applies to P-117 on its own source: 99.81% (>= 0.97), internal 10-fold CV over randomly split segments of 61 participants, no external cohort. P-99 (73%) is not near ceiling.",
+ "failed_conditions": [1, 5],
+ "candidate_explanations": [],
+ "reason": "Both papers classify MCI against healthy controls, and the intervals do not overlap (P-117 [0.937, 1.000], P-99 [0.666, 0.786]). The channel differs, though: EEG against structural MRI (condition 1). P-117's figure is a near-ceiling internal estimate on 61 participants with segment-level cross-validation and no external cohort, the Section 3.5 exclusion (condition 5). The pair does not qualify.",
+ "quotes": [
+  {"paper": "P-117", "page": 1, "quote": "We assess the classification performance of the proposed methods on 19-channel EEGs recorded from 32 healthy subjects and 29 MCI patients in the resting state."},
+  {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+  {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+  {"paper": "P-99", "page": 1, "quote": "The dataset for the study consists of 62 healthy volunteers and 145 patients with MCI obtained from the «Memory Clinic» (Moscow, Russia). The morphometric data were extracted from T1-weighted structural MR images."},
+  {"paper": "P-99", "page": 1, "quote": "We propose a machine learning method, which achieved an accuracy of 73%"},
+  {"paper": "P-99", "page": 4, "quote": "the best and most stable results were obtained by SVC (0.68 F1, 0.735 ROC -AUC)"}
+ ]
+}

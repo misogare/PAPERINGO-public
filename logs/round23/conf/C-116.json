@@ -1,0 +1,33 @@
+{
+  "id": "C-116",
+  "qualifies": "borderline",
+  "question": "Prediction of progression from MCI to AD from structural MRI in ADNI MCI patients (P-182: baseline hippocampal box; P-78: whole-brain sMRI, one to four scans). Horizon (follow-up at least 18 months vs status at 36 months) and training (AD/CN transfer vs CDR-SB-supervised pretraining) differ, which the rule allows.",
+  "metric": "Shared: accuracy with accuracy (the record's comparison); both also report AUC.",
+  "figures": {
+    "P-182": "381 ADNI-2/GO MCI (118 pMCI, 263 sMCI), single baseline scan, model trained only on AD vs CN: accuracy 75.85%, Wilson n=381 -> 0.713-0.799 (centre 0.756, half-width 0.043); AUC 0.777, Hanley-McNeil Q1=0.635, Q2=0.680, SE=sqrt([0.777*0.223+117*(0.635-0.6037)+262*(0.680-0.6037)]/(118*263))=0.028 -> 0.723-0.831.",
+    "P-78": "Intervals reported (1000 bootstrap resamples). Internal Dataset B (101 held-out ADNI-1/2/GO subjects, 304 images; class split not reported): four scans (QTP) accuracy 0.907 (0.870-0.944), AUC 0.871 (0.805-0.926) - the record's figure; one scan (STP) accuracy 0.763 (0.711-0.816), AUC 0.832 (0.783-0.874). External Dataset A (baseline scan only; 29 ADNI-3 + 144 OASIS-3 subjects, 91 pMCI / 82 sMCI): accuracy 0.827 (0.769-0.884), AUC 0.858 (0.803-0.918). The Dataset B intervals are narrower than a subject-level interval for 101 subjects (Wilson for 0.763 at n=101: 0.671-0.835), which suggests resampling of images, not subjects."
+  },
+  "matched_figure_check": "P-78 reports the single-scan condition twice, with mixed results. (a) Internal Dataset B STP, the closest match (same ADNI-1/2/GO family, held-out ADNI subjects, one scan): accuracy 0.763 (0.711-0.816) contains 75.85%, and 0.763 lies inside P-182's 0.713-0.799 (z = 0.13), so the recorded 90.7 vs 75.85 gap dissolves. On AUC, 0.777 lies 0.006 below P-78's lower bound 0.783, and 0.832 lies 0.001 above P-182's derived upper bound 0.831 (z = 1.52): at the edge of the rule's test. (b) External Dataset A (one baseline scan, different cohort): accuracy 0.827 (0.769-0.884) vs 0.7585 (0.713-0.799) and AUC 0.858 (0.803-0.918) vs 0.777 (0.723-0.831) each exclude the other estimate (z = 1.87 and 2.01). So the four-scan headline gap is reconciled on the recorded metric, but a smaller single-scan gap (AUC about 0.83-0.86 vs 0.78; external accuracy 82.7% vs 75.85%) is not.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: 0.907/0.871, 0.763/0.832, 0.827/0.858 and 0.7585/0.777 are all below 0.97.",
+  "failed_conditions": [3],
+  "candidate_explanations": [
+    {"difference": "Input representation (recorded gap only): the 90.7% needs four longitudinal scans; with one scan P-78's internal accuracy is 76.3%. This is shown by P-78 and dissolves the recorded accuracy gap.", "quote": "Compared to STP, DTP, and TTP, the ACC improved by 14.4 %, 7.7 %, and 3.8 %, respectively", "paper": "P-78"},
+    {"difference": "Training: P-182's model never saw MCI labels (AD/CN transfer from a hippocampal box); P-78's encoder is pretrained on CDR-SB across 1393 subjects and trained on longitudinal MCI data.", "quote": "This model was thus used next for differentiating the pMCI and sMCI groups based on data from ADNI-2/GO.", "paper": "P-182"},
+    {"difference": "Label and horizon: progression across diagnoses at least 18 months apart, versus status 36 months after the first MCI scan with 'dynamic data augmentation' of pMCI cases.", "quote": "During the selection process for pMCI subjects, a dynamic data augmentation method was used, including cases that progressed to AD within three years from the initial time point (T1).", "paper": "P-78"},
+    {"difference": "Cohort (external figures): ADNI-3 and OASIS-3 (CDR-defined status, 53% pMCI) against ADNI-2/GO (31% pMCI).", "quote": "Dataset A, as an independent external test set, consists of baseline T1-weighted sMRI images from 29 subjects in ADNI-3 and 144 subjects in OASIS-3.", "paper": "P-78"},
+    {"difference": "Input region: hippocampal bounding box versus whole-brain sMRI.", "quote": "We first defined a 3D bounding box", "paper": "P-182"}
+  ],
+  "reason": "The recorded gap (P-78 90.7% vs P-182 75.85%) comes from P-78's four-scan input. On one scan in the same ADNI family, P-78's accuracy is 76.3% (71.1-81.6%), matching P-182, so on the record's quantity the pair fails condition 3. But P-78's single-scan AUC (0.832 internal, at the edge of the rule's test; 0.858 external) and its external single-scan accuracy (82.7%) exceed P-182's figures beyond the rule's interval test. The matched figures therefore split, and the pair is borderline. If reported, it should be reported as this smaller single-scan discrepancy, not as 90.7 vs 75.85, with the training, horizon and cohort differences as candidate explanations that are not shown to be sufficient.",
+  "quotes": [
+    {"paper": "P-182", "page": 6, "quote": "In this task, the model achieved an accuracy of 75.85% and an AUC of 0.777 (Fig. 2B), with a sensitivity of 0.66 and a specificity of 0.8 (Fig. 2C)."},
+    {"paper": "P-182", "page": 2, "quote": "Based on these criteria, a total of 118 pMCI and 263 sMCI subjects were included in this study."},
+    {"paper": "P-78", "page": 9, "quote": "Using these varying time points, we predicted patients\\u2019 clinical status 36 months after the initial STP, summarizing the results in Table 5. The model achieved peak performance with QTP, recording an AUC of 87.1 % and an ACC of 90.7 %."},
+    {"paper": "P-78", "page": 10, "quote": "STP 0.832 (0.783-0.874) 0.763 (0.711-0.816)"},
+    {"paper": "P-78", "page": 10, "quote": "QTP 0.871 (0.805-0.926) 0.907 (0.870-0.944)"},
+    {"paper": "P-78", "page": 8, "quote": "Proposed Network 0.858 (0.803 - 0.918) 0.827 (0.769 - 0.884)"},
+    {"paper": "P-78", "page": 3, "quote": "Ultimately, 101 subjects who met the above longitudinal criteria were selected from a total of 486 subjects, and 304 sMRI images were obtained, forming Dataset B."},
+    {"paper": "P-78", "page": 8, "quote": "this study employs 1000 bootstrap resamples to calculate the accuracy (ACC), precision (PRE), sensitivity (SEN), speci\\ufb01city (SPE), F1-score, and area under the curve (AUC) for each model, and reports 95 % con\\ufb01dence intervals."}
+  ]
+}

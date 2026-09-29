@@ -1,0 +1,30 @@
+{
+ "id": "C-156",
+ "qualifies": "borderline",
+ "question": "Prediction of time to conversion from MCI to AD, both in Alzheimer's-spectrum MCI with ADNI as the development cohort. The shared channel is structural MRI. P-239 (676 ADNI/TADPOLE MCI: 249 eMCI, 427 lMCI; 5-fold CV) combines clinical variables with MRI radiomics and also reports each branch alone. P-241 (ADNI 544 with 5-fold CV, and NACC 508 as external validation) uses MRI only: an S-CNN on T1 images, and MLP, Weibull and CPH models on regional grey-matter volumes. Cohort, validation tier and features within the channel differ, which the rule allows.",
+ "metric": "Concordance index with concordance index. P-241 averages its C-index over three time bins (24, 48 and 108 months); P-239 reports a single index.",
+ "figures": {
+  "P-239": "Multimodal (SPAN-AED) C-index 0.85 (0.846 in Table 2); clinical-only 0.80 (RA) and 0.82 (SPAN); radiomics-only (MRI) 0.67 (both encoders). No interval is printed. Events derived from the printed censoring rates: 249 x 0.08 + 427 x 0.447 = about 211 converters, 465 censored. A Hanley-McNeil approximation treating events and censored subjects as the two classes gives: for 0.67, Q1 = 0.5038, Q2 = 0.5376, SE 0.0232, CI [0.624, 0.716]; for 0.85, SE 0.0177, CI [0.815, 0.885]; for 0.82, SE 0.0191, CI [0.783, 0.857].",
+  "P-241": "5-fold means with fold SDs; SE = SD/sqrt(5), CI = mean +/- 2.776 SE. ADNI: S-CNN 0.756 (0.051) gives SE 0.0228 and CI [0.693, 0.819] (z-based [0.711, 0.801]); MLP-GMV 0.731 (0.032) gives [0.691, 0.771]; Weibull 0.743 (0.020) gives [0.718, 0.768]; CPH 0.750 (0.051) gives [0.687, 0.813]. NACC external: S-CNN 0.676 (0.003), the recorded figure; CPH 0.735 (0.014). Hanley-McNeil for the NACC 0.676 with about 130 events/378 censored gives [0.620, 0.732]."
+ },
+ "matched_figure_check": "There are two matched figures, and they point in opposite directions. (1) P-239's MRI-only branch is the result under P-241's input condition. It scores 0.67 against P-241's recorded NACC 0.676, so they agree, and the recorded gap (0.85 vs 0.676) comes from P-239's clinical variables: its clinical-only branch alone scores 0.80-0.82. (2) The fully matched cell, both papers reporting ADNI MCI, internal 5-fold CV and MRI-only models, gives P-239 0.67 against P-241 0.729-0.756. That reverses the recorded direction. 0.67 lies below every P-241 ADNI interval (lowest lower bound 0.687), and every P-241 ADNI figure lies above P-239's derived upper bound of 0.716. The z values are 2.24 (MLP-GMV), 2.46 (CPH), 2.64 (S-CNN) and 2.94 (Weibull). That exclusion is narrow, and it rests on an approximated interval for P-239: Hanley-McNeil applied to a censored C-index, with event counts derived from rounded censoring rates.",
+ "beyond_uncertainty": true,
+ "significance_only": false,
+ "performance_validity": "Passes: no C-index near 0.97 (range 0.67-0.85).",
+ "failed_conditions": [3],
+ "candidate_explanations": [
+  {"difference": "Features within the MRI channel: P-239's radiomics branch uses a low-dimensional texture set from the CSF segment, chosen as the best combination. P-241 uses regional grey-matter volumes or raw T1 images, and P-239 itself warns the radiomics input carries little information.", "quote": "the optimal combination of [CSF][texture] features was utilized as the radiomics input for our proposed model", "paper": "P-239"},
+  {"difference": "P-239 flags the weakness of its own radiomics input.", "quote": "radiomics features may contribute less to the multi-model and may potentially introduce bias", "paper": "P-239"},
+  {"difference": "C-index computation: P-241 averages concordance over three horizon bins per fold, while P-239 reports one index.", "quote": "Concordance indices were averaged over the 3 time bins (24 months, 48 months, 108 months) for each fold.", "paper": "P-241"},
+  {"difference": "Population and censoring: P-239 pools eMCI (92% censored) with lMCI (55.3% censored), while P-241's ADNI set is 544 MCI with 390 right-censored.", "quote": "249 eMCI patients - Censoring rate: 92% 427 lMCI patients - Censoring rate: 55.3% 0.846 0.132", "paper": "P-239"}
+ ],
+ "reason": "The recorded gap (P-239 0.85 vs P-241 0.676) dissolves on P-239's own MRI-only branch (0.67), which matches P-241's external 0.676. The recorded difference is P-239's clinical variables. But on the fully matched cell (ADNI MCI, internal 5-fold CV, MRI only), P-239's 0.67 falls below P-241's 0.73-0.76 in the reverse direction, excluded narrowly (z 2.2-2.9) under intervals derived by approximation, since P-239 prints none. None of the candidate explanations is shown to be sufficient, so the pair is borderline.",
+ "quotes": [
+  {"paper": "P-239", "page": 5, "quote": "Clinical RA 0.8 0.16 510 80.83 91.22 80.67 80.54 80.24 0.88 SPAN 0.82 0.16 454 ... Radiomics RA 0.67 0.2 725 77.21 ... SPAN 0.67 0.19 669 ... Ours(SPAN-AED) 0.85 0.13 347 83.19 94.76 82.31 82.85 82.47 0.91"},
+  {"paper": "P-239", "page": 3, "quote": "For generalization, experiments are performed by 5-fold cross validation."},
+  {"paper": "P-241", "page": 8, "quote": "S-CNN 0 $ 756 (0 $ 051) 0 $ 209 (0 $ 050) 0 $ 676 (0 $ 003)a 0 $ 122 (0 $ 013) MLP, GMV 0 $ 731 (0 $ 032) 0 $ 192 (0 $ 057) 0 $ 707 (0 $ 009)b"},
+  {"paper": "P-241", "page": 8, "quote": "Metrics were averaged over 5-fold cross validation with standard deviation shown in parentheses."},
+  {"paper": "P-241", "page": 5, "quote": "The highest performing S-CNN model on our validation dataset utilized transfer learning and fixed layers, demonstrating a CI of 0.676"},
+  {"paper": "P-241", "page": 4, "quote": "ADNI: n = 544, 390 right-censored; NACC: n = 508, 378 right-censored"}
+ ]
+}

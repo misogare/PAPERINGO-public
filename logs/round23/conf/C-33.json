@@ -1,0 +1,25 @@
+{
+ "id": "C-33",
+ "qualifies": "no",
+ "question": "The task is the same (MCI vs healthy controls in older adults), but the measurement channel is not. P-114 (Seifallahi et al., pack pdf/P-115.txt) uses Kinect gait (the gait/motor channel). P-58 uses ASR-derived temporal parameters of spontaneous speech (the speech/language channel).",
+ "metric": "Accuracy with accuracy, once P-58's accuracies are read from its tables. The ledger's '67-92% range' mixes accuracy, precision, recall, specificity and F1 across feature subsets, so it is not an accuracy estimate (a misreading covered by condition 6); the printed accuracies are judged instead.",
+ "figures": {
+  "P-114": "Accuracy 93% (n = 150: 70 MCI, 80 HC; ANFIS protocol not stated), Wilson 95% CI 0.878-0.961.",
+  "P-58": "Speaker-wise nested leave-one-out CV, n = 33 per language. English, all 15 parameters: accuracy 84.8% = 28/33, Wilson 0.691-0.934 (contains 93%). Hungarian, all parameters: 75.8% = 25/33, Wilson 0.590-0.872 (excludes 93%; 75.8% is also outside P-114's CI). Best subset (filler-related, Hungarian): 90.9% = 30/33, Wilson 0.764-0.969 (contains 93%)."
+ },
+ "matched_figure_check": "No matched figure is possible across channels: neither paper reports a result in the other's channel or cohort.",
+ "beyond_uncertainty": true,
+ "significance_only": false,
+ "performance_validity": "Passes: no compared figure reaches 0.97.",
+ "failed_conditions": [1],
+ "candidate_explanations": [],
+ "reason": "The measurement channels differ (Kinect gait vs speech tempo and pause parameters), so the pair fails condition 1 whatever the numbers. Only P-58's Hungarian all-feature accuracy (75.8%) lies beyond uncertainty from P-114's 93%. Its English and best-subset accuracies do not.",
+ "quotes": [
+  {"paper": "P-114 (pack pdf/P-115.txt)", "page": 1, "quote": "the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups."},
+  {"paper": "P-114 (pack pdf/P-115.txt)", "page": 2, "quote": "The MCI subjects of the present study were selected through clients of the Iran dementia and Alzheimer’s Association (IDAA) in Tehran city of Iran"},
+  {"paper": "P-58", "page": 1, "quote": "we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."},
+  {"paper": "P-58", "page": 3, "quote": "Both the English-speaking (n = 33; New York, NY, USA) and the Hungarian-speaking (n = 33; Szeged, Hungary) participants were diagnosed as MCI or HC."},
+  {"paper": "P-58", "page": 6, "quote": "Besides an accuracy score of 84.8%, the recall/sensitivity and specificity values were also around 85%."},
+  {"paper": "P-58", "page": 6, "quote": "classifying one further MCI subject correctly leads to an increase of about 7%."}
+ ]
+}

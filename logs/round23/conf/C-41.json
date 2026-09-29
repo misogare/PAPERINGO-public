@@ -1,0 +1,23 @@
+{
+  "id": "C-41",
+  "qualifies": "no",
+  "question": "Both address CN vs MCI in ADNI, but through different broad channels. P-115 (Rallabandi & Seetharaman 2023; the right PDF is 1-s2.0-S1746809422005547) uses diffusion MRI white-matter indices. P-22 (Yu et al. 2026) uses clinical scores (CDRSB, LDELTOTAL) plus a polygenic risk score, DNA methylation and gene expression, with no imaging. No channel is shared, so condition 1 fails.",
+  "metric": "The record pairs a three-class balanced accuracy (0.79) with a binary F1 (0.88), which do not match. The papers' printed like-for-like figures are binary CN vs MCI accuracy (0.72 against 0.88), which do match in metric type.",
+  "figures": {
+    "P-115": "CN vs MCI accuracy 0.72, 5-fold CV, n=128: Wilson (0.637, 0.791). Three-class balanced accuracy 0.79, n=150: (0.718, 0.848).",
+    "P-22": "Binary CN vs MCI accuracy 0.88 +- 0.02, F1 0.88 +- 0.03, AUC 0.86 +- 0.03, 5-fold stratified CV, N=538 (199 CN/339 MCI). Wilson with n=538: 0.88 -> (0.850, 0.905)."
+  },
+  "matched_figure_check": "No matched figure: neither paper reports a result from the other's channel.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study is excluded: no contested figure reaches 0.97.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "The pair fails condition 1: diffusion MRI against clinical scores and molecular omics share no channel. On the printed binary figures, 0.72 and 0.88 differ beyond uncertainty, but P-22's predictors include CDRSB and logical-memory delayed recall, which enter the ADNI diagnostic labels, so the two scores do not answer the same question. The record also misreads both figures (a three-class accuracy labelled T1, compared with an F1).",
+  "quotes": [
+    {"paper": "P-115", "page": 1, "quote": "Our results conclude that the proposed model using kurtosis indices as source model classified and predicted with accuracies of 0.96, 0.72 and 0.7 in classifying CN vs AD, CN vs MCI and AD vs MCI respectively. (document: 1-s2.0-S1746809422005547)"},
+    {"paper": "P-22", "page": 8, "quote": "the proposed A-MGFN achieved the highest overall performance, with an AUC of 0.86 ± 0.03, accuracy of 0.88 ± 0.02, and F1-score of 0.88 ± 0.03."},
+    {"paper": "P-22", "page": 4, "quote": "The ADNI cohort, after quality control and preprocessing, comprised 538 participants, including 199 CN individuals and 339 with MCI (Table 1)."},
+    {"paper": "P-22", "page": 4, "quote": "we applied the Boruta algorithm, a random-forest-based feature selection method, to seven neurocognitive test scores (see S1 Table in the S1 File), including CDRSB and LDELTOTAL."}
+  ]
+}

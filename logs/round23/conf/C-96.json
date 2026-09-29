@@ -1,0 +1,73 @@
+{
+  "id": "C-96",
+  "qualifies": "borderline",
+  "question": "The record's question (MCI-to-AD conversion, T2, in both papers) does not exist: P-153 has no conversion analysis and discriminates current MCI from healthy subjects. The only question for which both papers print figures is MCI against controls from resting electrophysiology (MEG in P-173, EEG in P-153; one channel under the rule). P-173 reports it only as outcome-defined subgroup contrasts (NC vs stable MCI, NC vs progressive MCI), never NC vs all MCI.",
+  "metric": "Recorded claim: mismatch (P-173 'AUC 0.81', not stated in the main text, against P-153 'Acc 93.96' on a task it does not address). On the printed MCI-vs-control figures: accuracy with accuracy, but P-173's value is the mean accuracy of ten classifiers and P-153's the mean over three random subject splits of one SVM pipeline.",
+  "figures": {
+    "P-173": "Mean accuracy over 10 classifiers, 5-fold CV, Madrid MEG cohort (53 NC, 48 sMCI, 28 pMCI). sMCI vs pMCI 78% (n=76; Wilson 0.675-0.858). NC vs sMCI 79% (n=101): Wilson 0.701-0.858 (centre 0.779, half-width 0.079). NC vs pMCI 82% (n=81): Wilson 0.722-0.889. No AUC in the text read.",
+    "P-153": "Dataset I (Isfahan, 29 MCI / 32 healthy): accuracy 93.96%, mean of three random 41/20 subject splits with voting over 1.5-min patches; no interval. Derived Wilson with n=20 test subjects: centre (0.9396+1.9208/20)/(1+3.8416/20)=0.869, half-width 1.96*sqrt(0.9396*0.0604/20+3.8416/(4*20^2))/1.192=0.119 -> 0.750-0.988 (with n=60 pooled test predictions: 0.849-0.977). Dataset II (Emotiv, 40 subjects): 78.65% (Wilson n=40: 0.638-0.885). No AUC, no conversion analysis."
+  },
+  "matched_figure_check": "No matched figure exists: P-153 reports no conversion result and no outcome-defined MCI subgroups; P-173 reports no NC-vs-all-MCI contrast and no Isfahan/Emotiv data. On the recorded T2 question there is nothing to compare. On the MCI-vs-control question: P-153's 0.9396 lies outside P-173's NC/sMCI interval (0.701-0.858) and NC/pMCI interval (0.722-0.889); P-173's 0.79 and 0.82 lie inside P-153's n=20 interval (0.750-0.988) and outside only the n=60 interval (0.849-0.977). P-153's own Dataset II figure (78.65%) is close to P-173's values but is not P-173's condition.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: P-153's 93.96% (best split 96.52%) is below 0.97 on 61 subjects with internal splits only; its 96.98% is a specificity, not the discrimination measure. P-173's accuracies are 0.61-0.82.",
+  "failed_conditions": [
+    1,
+    6
+  ],
+  "candidate_explanations": [
+    {
+      "difference": "Classifier averaging: P-173 reports the mean of ten off-the-shelf classifiers, not a tuned model; P-153 reports its best feature configuration (60 micro-band powers, component number chosen by accuracy).",
+      "quote": "the value of the variable related to the number of components (R) in the tensor analysis is selected using the classification accuracy assessment and in accordance with the best accuracy in each of the methods.",
+      "paper": "P-153"
+    },
+    {
+      "difference": "Label definition / population subset: P-173's MCI arms are defined by outcome after about 3 years; P-153's MCI group is unselected by course.",
+      "quote": "the stable MCI group (sMCI, n = 48) comprising those patients that still fulfilled the diagnosis criteria of MCI at the end of follow-up, and the progressive MCI group (pMCI, n = 28)",
+      "paper": "P-173"
+    },
+    {
+      "difference": "Dataset and recording hardware: the same P-153 pipeline scores 93.96% on the Isfahan 10-20 dataset and 78.65% on the 14-channel Emotiv dataset, so dataset differences of this size occur within one method.",
+      "quote": "average classification accuracy of 93.96% and 78.65% for the first and second datasets, respectively.",
+      "paper": "P-153"
+    },
+    {
+      "difference": "Sample size and validation: three random 20-subject test sets from 61 subjects versus 5-fold CV on 81-101 subjects.",
+      "quote": "41 subjects (20 MCI and 21 healthy) for training process and 20 subjects (9 MCI and 11 healthy) for test, are randomly selected each time.",
+      "paper": "P-153"
+    }
+  ],
+  "reason": "The recorded disagreement is a misreading: P-153 has no conversion result, so conditions 1 and 6 fail for the pair as recorded. On the MCI-against-control figures the papers do print (P-173 NC/sMCI 79%, NC/pMCI 82%; P-153 93.96%), the rule's one-way interval test is met with no matched figure, but only if P-173's outcome-defined subgroup contrasts, reported as a ten-classifier mean, are accepted as the same comparison as unselected MCI vs controls; hence borderline. No paper shows any candidate explanation to be sufficient, though P-153's own 15-point gap between its two datasets shows how large dataset effects are.",
+  "quotes": [
+    {
+      "paper": "P-173",
+      "page": 9,
+      "quote": "MG2G achieved high performance with 61% for NC/sMCI/pMCI classification, 79% for NC/sMCI classification, 78% for sMCI/pMCI classification, and 82% for NC/pMCI classification."
+    },
+    {
+      "paper": "P-173",
+      "page": 7,
+      "quote": "To assess performance irrespective of a particular classifier, we averaged the classification accuracy of ten popular classifiers"
+    },
+    {
+      "paper": "P-153",
+      "page": 1,
+      "quote": "Then, using parallel factor analysis (PARAFAC) tensor decomposition, the features are extracted, and a support vector machine (SVM) is used to discriminate MCI from normal subjects."
+    },
+    {
+      "paper": "P-153",
+      "page": 1,
+      "quote": "average classification accuracy of 93.96% and 78.65% for the first and second datasets, respectively."
+    },
+    {
+      "paper": "P-153",
+      "page": 3,
+      "quote": "61 people over the age of 55,29 of them had MCI, and 32 of them were healthy."
+    },
+    {
+      "paper": "P-153",
+      "page": 4,
+      "quote": "41 subjects (20 MCI and 21 healthy) for training process and 20 subjects (9 MCI and 11 healthy) for test, are randomly selected each time."
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "role": "advocate",
+  "batch": "challenge_advocate_1",
+  "date": "2026-09-29",
+  "status": "candidate verdicts for operator review; not a gate",
+  "sources_read": {
+    "rule": "scratchpad/r23/DISCREPANCY_BRIEF.md; literature_review.md Section 2 (line 45, the declared exclusion) and Section 3.5",
+    "P-81": "scratchpad/r20/pdf/P-81.txt, pp. 1-6 in full (Tables 1-3 p. 4)",
+    "P-88": "scratchpad/r20/pdf/P-88.txt, pp. 1-8 (Table 1 p. 5, Table 3 p. 8); Figure 3 (p. 6) rendered from the PDF to check for a printed AUC interval: none (panel B reads only 'AUC = 0.719')",
+    "P-109": "scratchpad/r20/pdf/P-109.txt, pp. 7-11 and 13-15 (Table 4 p. 11, limitations p. 15)",
+    "P-66": "scratchpad/r20/pdf/P-66.txt, pp. 1-2, 5, 7-8 (Table 6 p. 7)",
+    "P-27": "scratchpad/r20/pdf/P-27.txt, pp. 1-6",
+    "P-96": "scratchpad/r20/pdf/P-96.txt, pp. 1-6 and 9 (Tables 1-3)",
+    "P-37": "scratchpad/r20/pdf/P-37.txt, pp. 1-2, 5",
+    "P-72": "scratchpad/r20/pdf/P-72.txt, pp. 3, 6-8 (Tables 2-5)",
+    "precedents_checked": "conf/C-46, C-67, C-82, C-83, C-121, C-180, C-181, C-188, C-103, C-214, C-265 and the skeptic challenges that upheld C-46, C-67, C-82, C-83 and C-121",
+    "arithmetic": "scratchpad/r23/adv1/calc_adv1.py (Wilson, Hanley-McNeil, logit-scale check, P-96 implied prevalence)"
+  },
+  "results": [
+    {
+      "id": "C-07",
+      "papers": ["P-81", "P-88"],
+      "reader_verdict": "borderline",
+      "final": "yes",
+      "overturned": true,
+      "conditions": {
+        "1_question": "Holds. Both predict MCI-to-AD progression in ADNI MCI participants (P-81 ADNI-1/2/GO; P-88 ADNI-2/GO) from baseline FDG-PET alone, which is the PET channel in both. Horizon (within 3 years vs during up to 8 years of follow-up) and PET representation (whole-brain 3D CNN vs a 10-feature white-matter radiomics signature) are allowed differences.",
+        "2_metric": "Holds. ROC-AUC against ROC-AUC.",
+        "3_matched_figure": "Holds. Neither paper reports the other's condition: P-88 has no 3-year result and no whole-brain model; P-81 has no radiomics signature and no longer horizon. The cognitive-score arms agree (0.750 vs 0.742), but they are a different quantity (clinical channel), not the PET arm under the other paper's condition, so they do not reconcile the PET gap.",
+        "4_uncertainty": "Holds in one direction, robustly. P-81 reports mean +- fold SD, not an interval, so Hanley-McNeil applies: 93 pMCI / 164 sMCI gives SE 0.0372 and [0.537, 0.683]; if only the 85% train+validation pool (79/139) entered the folds, [0.531, 0.689]. P-88's test AUC 0.719 lies outside both. The exclusion does not depend on the interval construction: a logit-scale interval from the same SE gives [0.535, 0.680] (or [0.529, 0.686]), and P-81's own fold dispersion gives 0.6102 + 1.96 x 0.0231 = 0.655 even if the fold SD were treated as the SE of one fold. The reverse does not hold: P-88's [0.605, 0.833] (31/72) contains 0.610. Two-sample z = 1.58. The rule asks for one estimate outside the other's interval, and C-121, C-82 and C-83 were qualified, and upheld on skeptic review, on exactly this one-directional pattern (C-121 with z = 1.17 and 1.81).",
+        "5_performance_validity": "Holds. No conversion AUC is near 0.97. P-81's 1.0 values are its CN-vs-AD pretraining (Table 2), not the compared quantity.",
+        "6_record": "The record misreads P-88 (it prints 0.719 test / 0.747 training, not 0.79) and frames the pair as an ordering dispute that dissolves on the printed figures. Condition 6 directs judging the figures the papers print. The PET-alone conversion AUC is the record's own claim_b quantity, and P-81 prints the same quantity (PET ONLY). Judging a pair on a printed shared quantity rather than the misread one is how C-67 (qualified on AD vs MCI, a contrast the record never named), C-12, C-46, C-69 and C-82 were read. The reader's reservation that the gap 'sits on a quantity the record did not dispute' is therefore not a ground under the rule."
+      },
+      "figures": {
+        "P-81": "PET ONLY AUC 0.6102 +- 0.0231 (5-fold CV validation sets, Table 3). Hanley-McNeil 93/164: Q1 = 0.6102/1.3898 = 0.4391, Q2 = 2(0.3723)/1.6102 = 0.4625, SE^2 = [0.2379 + 92(0.0667) + 163(0.0901)]/15252 = 0.00138, SE 0.0372, 95% CI [0.537, 0.683]; with 79/139, SE 0.0404, [0.531, 0.689]; logit-scale [0.535, 0.680]. CS only 0.7496, [0.685, 0.815].",
+        "P-88": "Psychoradiomics (white-matter FDG-PET) signature, test group (72 stable / 31 progressive, split by ADNI entry number): AUC 0.719, no interval printed (text, Table 3 and Fig. 3B). Hanley-McNeil 31/72: Q1 = 0.5613, Q2 = 0.6015, SE^2 = 7.532/2232 = 0.00337, SE 0.0581, [0.605, 0.833]. Training AUC 0.747 (apparent, on the group used to select the features). ADAS 0.742 [0.631, 0.853]; CDR 0.737.",
+        "comparison": "0.719 > 0.683 (and > 0.689, > 0.680): outside P-81's interval by 0.030 to 0.039. 0.610 inside P-88's [0.605, 0.833]. z = (0.719 - 0.610)/sqrt(0.0372^2 + 0.0581^2) = 1.58."
+      },
+      "failed_conditions": [],
+      "candidate_explanations": [
+        {"difference": "Prediction horizon: conversion within 3 years (P-81) vs progression at any time during up to 8 years of follow-up (P-88).", "quote": "One significant factor to take into account is the duration over which the models make predictions.", "paper": "P-81"},
+        {"difference": "P-88's follow-up window and label (progression over 8 years, bidirectional converters excluded).", "quote": "In total, we enrolled 341 patients with MCI, and 102 of these patients progressed to AD during a follow-up period of 8 years", "paper": "P-88"},
+        {"difference": "PET representation and training: P-81 applies a whole-brain 3D CNN pretrained on CN vs AD, and Table 3 reports its zero-shot predictions; P-88 builds a 10-feature white-matter radiomics signature selected (mRMR, GBDT) on its training group.", "quote": "Table 3 shows the prediction performance from zero-shot predictions.", "paper": "P-81"},
+        {"difference": "P-88's feature-reduction step on the training group.", "quote": "Thereafter, 10 features were screened to construct the psychoradiomics model", "paper": "P-88"},
+        {"difference": "Validation design: 5-fold CV means (P-81) vs a single time-ordered split with a 103-subject test group (P-88).", "quote": "We divided these patients according to their entry numbers in the ADNI database as follows: training group, 238 patients and test group, 103 patients.", "paper": "P-88"},
+        {"difference": "ADNI phases differ (P-81 ADNI1/2/GO with a PET-without-SUVR inclusion criterion; P-88 ADNI-2/GO), with unquantified participant overlap.", "quote": "which included ADNI1, ADNI2, or ADNIGO datasets.", "paper": "P-81"}
+      ],
+      "reason": "Every condition holds on the sources. The recorded ordering dispute dissolves, but condition 6 sends the pair to the figures the papers print, and on the shared PET-alone conversion AUC P-88's 0.719 lies outside P-81's derived interval [0.537, 0.683] under every construction tried (full or 85% n, Wald or logit, or P-81's own fold spread). The exclusion is one-directional (z = 1.58), which the rule accepts and which C-121, C-82 and C-83 were qualified on. The candidate explanations (horizon, zero-shot whole-brain CNN vs white-matter radiomics, validation design, ADNI phases) are not shown by either paper to be sufficient.",
+      "quotes": [
+        {"paper": "P-81", "page": 1, "quote": "FDG-PET and CS were obtained at MCI diagnosis to predict AD conversion within three years of MCI diagnosis using convolutional neural networks."},
+        {"paper": "P-81", "page": 2, "quote": "164 stable-MCI subjects, and 93 unstable-MCI subjects."},
+        {"paper": "P-81", "page": 4, "quote": "Balanced accuracy (BA), specificity, sensitivity, and AUC of the validation sets were obtained using 5-fold cross validation. Values shown are mean ± standard deviation."},
+        {"paper": "P-81", "page": 4, "quote": "The AUCs were 0.6102, 0.6029, 0.7496, 0.7983, and 0.7849."},
+        {"paper": "P-88", "page": 4, "quote": "The areas under the curve (AUCs) of the psychoradiomics model in the training and test groups were 0.747 and 0.719, respectively"},
+        {"paper": "P-88", "page": 5, "quote": "Stable MCI (n = 72) Progressive MCI (n =31)"},
+        {"paper": "P-88", "page": 6, "quote": "AUC = 0.719", "note": "legend of Figure 3B (ROC in testing samples), read from the rendered PDF image; no interval is printed on the figure"}
+      ]
+    },
+    {
+      "id": "C-12",
+      "papers": ["P-109", "P-66"],
+      "reader_verdict": "borderline (condition 5 in doubt)",
+      "final": "yes",
+      "overturned": true,
+      "conditions": {
+        "1_question": "Holds. MCI vs cognitively normal classification from T1 structural MRI in ADNI older adults (P-109 3T subset; P-66 1.5T subset).",
+        "2_metric": "Holds. Accuracy with accuracy and AUC with AUC.",
+        "3_matched_figure": "Holds. P-109 has no ROI, 1.5T or subject-level result; P-66 has no whole-brain result. Every P-109 model on its own split (Table 4, MCI/HC 85.13-94.23%, AUC 0.934-0.972) stays outside P-66's interval, so no figure in either paper closes the gap. A different architecture on P-109's split is not P-66's condition.",
+        "4_uncertainty": "Holds in both directions under every n. P-109 94.23% at the most conservative n = 69 test subjects: Wilson [0.861, 0.977]; P-66's 72.7% lies outside. P-66 at its most conservative n (20% test partition, about 80 subjects): [0.621, 0.813]; at n = 400, [0.681, 0.768]; 94.23% lies outside both. AUC: P-109 0.9715, Hanley-McNeil 37/32 [0.932, 1.0]; P-66 0.80 at 40/40 [0.702, 0.898] or 200/200 [0.757, 0.843]; each estimate lies outside the other's interval.",
+        "5_performance_validity": "Holds on the letter, checked against the source. The declared exclusion (Section 2) is conjunctive: 'near-ceiling discrimination on internal validation with small samples (at or above 0.97 accuracy or AUC, no external cohort)'. P-109 meets the ceiling clause (MCI/HC AUC 0.9715, AD/HC 0.9852 and 97.13%), internal validation and no external cohort, but not the small-sample clause: 1,075 participants, 685 in the MCI/HC contrast. That is larger than every study Section 3.5 names as its exemplars (P-200 582, P-1 383, P-197 125, P-119 unreported), which the review itself describes as 'small-to-modest samples'. The same reading was applied to the same paper and the same AUCs in C-46 (qualified yes) and upheld on skeptic review ('It does not meet the third, a small sample ... P-109 is not in the suspect set'); C-68 and C-84 read it the same way. The shuffled-slice split is the mechanism Section 3.5 names as a candidate, but the exclusion as declared contains no split-unit clause, so it enters as the leading candidate explanation, not as a failed condition. Against this reading: P-109 itself says it used 'only a small amount of ADNI Alzheimer's data', and the review sets no numeric cut-off for 'small' (as C-194 notes). That phrase concerns data volume for deep learning, not the review's criterion, and applying a looser reading here but not in C-46 would break the brief's requirement that every candidate be judged identically. P-66 passes (at most AUC 0.90).",
+        "6_record": "The record's comparison (three-class 96.81% vs an '~82%' P-66 does not print) is a misreading; the pair is judged on the MCI vs CN figures both papers print, as in C-46, C-83 and C-84."
+      },
+      "figures": {
+        "P-109": "MCI/HC (BrainViT-L, Table 4): accuracy 94.23%, AUC 0.9715, random 90/10 split of shuffled 2D slices (about 50 per subject). Wilson n = 69 [0.861, 0.977]; n = 685 [0.922, 0.957]. AUC Hanley-McNeil 37/32: SE 0.020, [0.932, 1.0]. Lowest model on the same split (ResNet50): 85.13%, Wilson n = 69 [0.749, 0.917]; AUC 0.9411 [0.884, 0.998].",
+        "P-66": "MCI vs CN (radiomics + CNN fusion, Table 6): 72.7% +- 3.3, AUC 0.80 +- 4.6 (5 repetitions, 200 MCI / 200 CN, 1,801 images, test partition 20% of images). Wilson n = 80 [0.621, 0.813]; n = 400 [0.681, 0.768]. AUC Hanley-McNeil 40/40 [0.702, 0.898]; 200/200 [0.757, 0.843]."
+      },
+      "failed_conditions": [],
+      "candidate_explanations": [
+        {"difference": "Split unit: random slice-level shuffle with about 50 slices per subject, so slices of one subject can sit in training and test (the Section 3.5 candidate mechanism; not tested by either paper).", "quote": "The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training.", "paper": "P-109"},
+        {"difference": "Split unit on the other side: random image-level partition (about 4.7 images per MCI subject), also without stated subject separation.", "quote": "randomly dividing the MRI data for each classification dataset into a sizeable training and validation set (80 % of images) and a testing set (20 % of images).", "paper": "P-66"},
+        {"difference": "Input representation: whole-brain 2D slices in three planes vs segmented hippocampus and amygdala ROIs.", "quote": "For training and testing, around 50 brain fields—axial, coronal, and sagittal—were created from each subject’s anatomy.", "paper": "P-109"},
+        {"difference": "Scanner subset: 3T MPRAGE vs 1.5T.", "quote": "All sMRI scans were conducted at a resolution of 3Tesla (3 T)", "paper": "P-109"},
+        {"difference": "Architecture: a 20.1M-parameter hybrid CNN-transformer vs radiomics plus a small ROI 3D CNN. On P-109's split, architecture moves MCI/HC from 85.13% to 94.23%, so it explains part of the gap on P-109's data but not the remainder to 72.7%.", "quote": "ResNet50 23.5 3.8 90.41 97.18 85.13 94.11", "paper": "P-109"},
+        {"difference": "Sample and selection: 1,075 participants in a balanced 2D dataset vs 599 randomly selected baseline participants from one centre's scans.", "quote": "A total of 1075 individuals, including 390 with AD, 370 with MCI, and 315 HC, were used to create a balanced dataset for the 2D model.", "paper": "P-109"}
+      ],
+      "reason": "The MCI vs CN results are incompatible in both directions under every test-set size (94.23% [0.861, 0.977] vs 72.7% [0.621, 0.813]; AUC 0.9715 vs 0.80), and no figure in either paper reconciles them. The only doubted condition is 5, and on the source P-109 does not meet the declared exclusion: its 685-subject contrast is not a small sample by any benchmark the review names, and the same paper with the same AUCs was qualified on this reading in C-46 and upheld by the skeptic. The shuffled-slice split is the leading candidate explanation, with input representation, scanner subset, architecture and sample; none is shown by either paper to be sufficient.",
+      "quotes": [
+        {"paper": "P-109", "page": 8, "quote": "A total of 1075 individuals, including 390 with AD, 370 with MCI, and 315 HC, were used to create a balanced dataset for the 2D model."},
+        {"paper": "P-109", "page": 9, "quote": "We evaluated the improved model using only a small amount of ADNI Alzheimer’s data."},
+        {"paper": "P-109", "page": 10, "quote": "97.13 % with 98.52 % AUC for AD/HC and 94.23 % with 97.15 % for MCI/HC classifications"},
+        {"paper": "P-109", "page": 15, "quote": "Our evaluation was based on a specific ADNI dataset; however, it is crucial to verify that the model performs consistently across datasets with diverse characteristics."},
+        {"paper": "P-66", "page": 1, "quote": "their fusion showed ACC of 72.7 % and AUC of 80."},
+        {"paper": "P-66", "page": 5, "quote": "The performance evaluation method employed in this study was the 5-fold cross-validation method."},
+        {"paper": "literature_review.md", "page": 0, "quote": "Studies reporting near-ceiling discrimination on internal validation with small samples (at or above 0.97 accuracy or AUC, no external cohort) are treated as performance-validity cases and left out of those comparisons."},
+        {"paper": "literature_review.md", "page": 0, "quote": "All four figures come from internal validation with small-to-modest samples and no external cohort."}
+      ]
+    },
+    {
+      "id": "C-63",
+      "papers": ["P-27", "P-96"],
+      "reader_verdict": "borderline (turns on condition 1)",
+      "final": "yes",
+      "overturned": true,
+      "conditions": {
+        "1_question": "Holds, on both prongs the reader left open. Task: both discriminate AACD-defined MCI (score at least 1 SD below the age-band mean) from non-MCI among Chinese older adults in CHARLS with a random forest on routine tabular data. (a) Population class. P-27's sample is CHARLS 2018 respondents aged 60+ whose CESD-10 score is 10 or more; P-96's is CHARLS 2015 older adults (mean age 70.7) with no depression-based selection stated and no depression variable among its 34 candidates. P-27's sample is therefore a symptom-screen subset of the community population P-96 samples, drawn from the same national survey, not a separate disease population. That is the distinction the round drew in C-180/C-181, which failed condition 1 because diabetic inpatients and dust-exposed miners are populations of different kinds and 'Neither sample is a subset of the other's population', and it matches C-214 (early-MCI subset, qualified) and C-265 (family-history-enriched cohort vs a random community sample, qualified). The depression restriction is a cohort difference, which the rule allows as a candidate explanation. (b) Channel. The rule's channel is 'clinical/cognitive/questionnaire data', and a multimodal model matches when the compared channel is shared. P-96 describes its predictors as 'basic clinical indicators' drawn from demographics, health conditions, lifestyle, physical examination and blood tests; its model adds grip strength (motor) and routine blood values (fluid) to demographic and anthropometric clinical data. The shared clinical channel carries each model's top predictor: education is P-96's most influential SHAP feature and first in P-27's SHAP list. Unimodal-vs-multimodal pairs sharing a channel were qualified in C-103 and C-188. Against: P-96 contrasts itself with studies that 'use baseline MMSE score and other questionnaire data'; that marks the absence of cognitive tests among its inputs, not a different channel under the rule's list.",
+        "2_metric": "Holds. ROC-AUC against ROC-AUC.",
+        "3_matched_figure": "Holds. Neither paper reports the other's population subset (no depressed subgroup in P-96, no non-depressed sample in P-27). The closest matched figure makes the gap wider: P-27's CLHLS external validation labels MCI with the CMMSE, the same MMSE-type AACD label P-96 uses, and it gives 0.653, against P-96's 0.83 and 0.87. At every validation tier the gap persists.",
+        "4_uncertainty": "Holds in both directions on reported intervals at every tier. Development: 0.826 [0.809, 0.843] vs 0.93 [0.91, 0.95]. P-27 internal hold-out 0.801 [0.760, 0.841] and 5-fold CV 0.791 [0.771, 0.810] vs 0.93 [0.91, 0.95]. External: 0.653 [0.636, 0.670] vs 0.83 [0.82, 0.84] and 0.87 [0.86, 0.88]. The reported intervals match Hanley-McNeil (P-27 external 1146/5636 [0.635, 0.671]; P-96 External Set 1 572/3568 [0.809, 0.851]), so they are sample intervals, and none overlaps.",
+        "5_performance_validity": "Holds. Maximum 0.93; both papers validate externally.",
+        "6_record": "Holds. The record's 0.826 and 0.93 are printed development-set values, and the gap is confirmed on the external figures."
+      },
+      "figures": {
+        "P-27": "RF AUC with reported 95% CIs: training 0.826 [0.809, 0.843]; internal validation (30% of 1,964 CHARLS 2018 participants) 0.801 [0.760, 0.841]; 5-fold CV 0.791 [0.771, 0.810]; external CLHLS 2018 (n = 6,782, 1,146 MCI) 0.653 [0.636, 0.670].",
+        "P-96": "RF AUROC with reported 95% CIs: training set (CHARLS 2015, n = 2,932, 518 MCI, stratified 5-fold CV) 0.93 [0.91, 0.95]; External Set 1 (Yiwu 2021, n = 4,140, 572 MCI) 0.83 [0.82, 0.84]; External Set 2 (CHARLS 2011, n = 1,782, 297 MCI) 0.87 [0.86, 0.88]."
+      },
+      "failed_conditions": [],
+      "candidate_explanations": [
+        {"difference": "Population restricted to older adults with depressive symptoms (CESD-10 >= 10) in P-27; depression itself lowers cognitive scores, so the AACD label may capture depression-related impairment.", "quote": "The inclusion criteria for participants in both datasets were consistent: 1. Age ≥60 years; 2. Complete cognitive dimension-related data; 3. Complete depression scale responses; 4. Patients with depression.", "paper": "P-27"},
+        {"difference": "Predictor sets: self-report and questionnaire variables (P-27) vs education plus physical-examination and routine blood variables (P-96).", "quote": "Seven key variables (education, grip strength, height, weight, creatinine, mean corpuscular volume, and platelet count) were selected through majority voting.", "paper": "P-96"},
+        {"difference": "Cognition instrument behind the label: the HRS-style CHARLS battery in P-27's development data vs an MMSE-based score in P-96.", "quote": "CHARLS evaluate cognitive performance using the identical meth­odological framework adopted by the U.S. Health and Retirement Study", "paper": "P-27"},
+        {"difference": "External cohorts: CLHLS scored with the CMMSE, a shift from the training battery (P-27), vs Yiwu 2021 and an earlier CHARLS wave (P-96).", "quote": "CLHLS assesses cognition with the Chinese version of the Mini- Mental State Examination (CMMSE)", "paper": "P-27"},
+        {"difference": "P-96's threshold metrics imply class-balanced evaluation sets at every tier although its text says SMOTE was not applied to test or external sets: External Set 1 PPV 0.735 at sensitivity 0.782 and specificity 0.718 corresponds to 50% prevalence (at the stated 13.8% it would be 0.307); External Set 2 PPV 0.793 likewise (0.436 expected at 16.7%). If AUROCs were computed on resampled sets they could be optimistic. AUROC does not depend on class balance as such, so this is not shown to close the gap.", "quote": "SMOTE was performed exclusively within the training folds during cross-validation and was not applied to test sets or external validation cohorts.", "paper": "P-96"},
+        {"difference": "Different CHARLS waves (2018 vs 2015 and 2011) with likely participant overlap, so the samples are not independent.", "quote": "Data from the China Health and Retirement Longitudinal Study (CHARLS) 2015 were used to develop the model.", "paper": "P-96"}
+      ],
+      "reason": "Conditions 2 to 6 hold on reported intervals at every tier, and the closest label-matched figure (P-27's CMMSE-labelled external 0.653) widens the gap. Condition 1 also holds: P-27's depressed sample is a symptom-screen subset of the same CHARLS community population P-96 samples (the subset relation that separates this pair from C-180/C-181 and aligns it with C-214 and C-265), and both models are routine clinical tabular models whose top predictor is education, with P-96's grip strength and blood values as added channels under the multimodal clause. The depression restriction, predictor sets, label instrument, external cohorts and P-96's apparently balanced evaluation sets are candidate explanations, none shown to be sufficient.",
+      "quotes": [
+        {"paper": "P-27", "page": 1, "quote": "SHAP analysis identified education, loneliness, household registration, Instrumental Activities of Daily Living disability and dyslipidemia as the most influential predictors of MCI risk."},
+        {"paper": "P-27", "page": 2, "quote": "so a score of ≥10 is classified as clinically signifi­cant depression"},
+        {"paper": "P-27", "page": 4, "quote": "In the validation set, RF (0.801, 95 % CI: 0.760–0.841) showed a higher AUC value compared to other ML models"},
+        {"paper": "P-27", "page": 6, "quote": "(0.653, 95 % CI: 0.636–0.670) of RF did not reach the level of the"},
+        {"paper": "P-96", "page": 1, "quote": "A total of 34 variables were considered, including demographics, health conditions, lifestyle, and physical and blood ex­amination data."},
+        {"paper": "P-96", "page": 2, "quote": "Participants scoring ≥1 SD below their age group’s mean MMSE were classified as having cognitive impairment consistent."},
+        {"paper": "P-96", "page": 6, "quote": "Globally, as shown in Fig. 4A, education was the most influential feature"},
+        {"paper": "P-96", "page": 9, "quote": "Our approach overcomes these limitations by leveraging basic clinical indicators"},
+        {"paper": "P-96", "page": 5, "quote": "the RF model showed the best performance, with an AUROC of 0.93[95 %CI, 0.91–0.95]"}
+      ]
+    },
+    {
+      "id": "C-69",
+      "papers": ["P-37", "P-72"],
+      "reader_verdict": "borderline (failed 3, 4)",
+      "final": "no",
+      "overturned": false,
+      "conditions": {
+        "1_question": "Holds. Three-year MCI-to-AD conversion in ADNI from baseline structural MRI; P-72's sMRI-only arm is P-37's input condition.",
+        "2_metric": "Holds. Accuracy and AUC are both printed for the conversion task.",
+        "3_matched_figure": "Fails on the metric the record disputes. P-72's sMRI-only MAResNet18 arm is the matched figure (same horizon, same single-timepoint MRI input). Its accuracy 73.68% lies inside P-37's [0.716, 0.896], and P-37's 82.4% lies inside the arm's [0.610, 0.834] at n = 57, so the papers' own data dissolve the accuracy gap. The strongest counter I found: the rule's n is 'subjects in the test set', P-72 averages three 'different test sets', and if their union reached 75 subjects P-37's 82.4% would fall outside the arm's interval. The paper does not say the sets are disjoint, and its own spread argues against pooling: the multimodal model's SD across the three splits is 1.01 points, against about 5.6 points expected from independent 57-subject test sets (inference, not stated in the paper). P-72's headline multimodal model agrees with P-37 in both directions on both metrics.",
+        "4_uncertainty": "Not established. On AUC the matched arm's 0.721 lies 0.008 below P-37's Wald Hanley-McNeil bound 0.729 (37/31; 0.725 with class roles swapped), while 0.827 lies inside the arm's [0.580, 0.862]; z = 1.21. The separation does not survive a logit-scale interval built from the same Hanley-McNeil SE (P-37 [0.707, 0.904], which contains 0.721), so it depends on an interval-construction choice the rule does not fix. By contrast, C-07's one-directional exclusion holds under both constructions. This is the strongest case for qualification, and it is not robust enough to meet condition 4 on the sources.",
+        "5_performance_validity": "Holds. No conversion figure is near ceiling; P-72's 94.61% is AD vs NC.",
+        "6_record": "The recorded 94.61% is P-72's AD vs NC accuracy; judged on the printed conversion figures, which reverse the recorded direction."
+      },
+      "figures": {
+        "P-37": "Test set 68 subjects, one scan each (37 MCI-C converting within 3 years, 31 MCI-NC stable for at least 3 years): accuracy 82.4% = 56/68, Wilson [0.716, 0.896]; AUC 0.827, Hanley-McNeil Q1 = 0.705, Q2 = 0.749, SE 0.0498, Wald [0.729, 0.925], logit-scale [0.707, 0.904].",
+        "P-72": "sMCI 238 / pMCI 151, subject-level 70/15/15, mean over three test subsets of about 57 (about 22 pMCI / 35 sMCI). sMRI-only MAResNet18: 73.68% (42/57), Wilson n = 57 [0.610, 0.834], n = 75 upper bound 0.824, n = 171 [0.666, 0.797]; AUC 0.721, Hanley-McNeil 22/35 [0.580, 0.862], 66/105 [0.640, 0.802]. Multimodal SPDFC(0.6): 77.19% (SD 1.01 over the three splits), AUC 0.755 [0.620, 0.890]."
+      },
+      "failed_conditions": [3, 4],
+      "candidate_explanations": [
+        {"difference": "Stable-MCI definition: at least 3 years without conversion (P-37) vs no stated minimum follow-up (P-72).", "quote": "MCI subjects with a duration of MCI less than 3 years without conver­sion were excluded due to the potential possibility of near-future conversion.", "paper": "P-37"},
+        {"difference": "P-72's label rule.", "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI.", "paper": "P-72"},
+        {"difference": "Input and pretraining: whole-brain T1 with transfer from 3,490 NC/DAT scans (P-37) vs grey-matter maps initialised from P-72's own AD vs NC task.", "quote": "The source task used 1406 DAT and 2084 NC scans from 1080 subjects.", "paper": "P-37"},
+        {"difference": "Evaluation design: one 68-subject test set (P-37) vs the mean of three test subsets (P-72).", "quote": "We followed the same data split strategy to construct three different subsets with different test sets, the average of three classification accu­racies is used as the final result.", "paper": "P-72"}
+      ],
+      "reason": "The advocate case rests on the AUC of P-72's sMRI-only arm, which falls 0.008 below P-37's Wald Hanley-McNeil bound in one direction only. That separation disappears under a logit-scale interval from the same SE. The same matched arm's accuracy, which is the metric the record disputes, agrees with P-37 within uncertainty in both directions at the test-set size the paper supports. So the papers' own matched data dissolve the recorded gap (condition 3), and the residual AUC difference is not shown to be beyond uncertainty (condition 4). It would change only if P-72 showed that its three test sets are disjoint (n = 171). Then accuracy would clear in one direction and AUC in both.",
+      "quotes": [
+        {"paper": "P-37", "page": 2, "quote": "ratio of 70% versus 15% versus 15% (314, 68, and 68 scans, respec-tively)"},
+        {"paper": "P-37", "page": 2, "quote": "a single time point scan was used for each subject."},
+        {"paper": "P-37", "page": 5, "quote": "It produced a test set classi­ﬁcation accuracy of 82.4% and 0.827 area under the curve"},
+        {"paper": "P-37", "page": 5, "quote": "there were 37, 39, and 9 MCI-C subjects"},
+        {"paper": "P-72", "page": 6, "quote": "For the classification of sMCI vs. pMCI, the accuracy based on sMRI and PET was 73.68 % and 75.44 %, respec­tively."},
+        {"paper": "P-72", "page": 6, "quote": "MAResNet18 88.24 85.42 90.74 0.881 73.68 65.91 79.05 0.721"},
+        {"paper": "P-72", "page": 7, "quote": "SPDFC (0.6) 94.61(0.85) 92.19 97.22 0.947 77.19(1.01) 68.18 82.86 0.755"}
+      ]
+    }
+  ]
+}

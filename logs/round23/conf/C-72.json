@@ -1,0 +1,23 @@
+{
+  "id": "C-72",
+  "qualifies": "no",
+  "question": "MCI vs cognitively normal detection from speech in older adults; same pair as C-71 (P-58 x P-6). The record's claim_b still names P-11, a duplicate of P-6; the 85.16% is P-6's figure.",
+  "metric": "Accuracy with accuracy and AUC with AUC; the recorded P-58 '67-92%' is a multi-metric, multi-subset range, not one estimate.",
+  "figures": {
+    "P-58": "English cohort (14 MCI/19 HC), all features, LOO-CV: 84.8% = 28/33, Wilson 69.1-93.3%; AUC 0.932, Hanley-McNeil (14/19) -> 0.834-1.0. Hungarian cohort (13/20): 75.8% = 25/33, Wilson 59.0-87.2%; AUC 0.727 -> 0.543-0.911.",
+    "P-6": "68 participants (34/34), 5-fold CV: accuracy 85.16%, Wilson (58/68) 75.0-91.8%; AUC 84.75%, Hanley-McNeil (34/34) -> 0.754-0.941; 25-run mean AUC 79.94% -> 0.693-0.906."
+  },
+  "matched_figure_check": "As for C-71: P-58's English cohort is P-6's population subset; accuracy 84.8% vs 85.16% and AUC 0.932 vs 0.8475 each lie inside the other's interval. The matched figures agree.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Passes: no compared figure reaches 0.97.",
+  "failed_conditions": [3, 4, 6],
+  "candidate_explanations": [],
+  "reason": "This record duplicates C-71 since paper_b was repointed from P-11 to P-6. The recorded 85.16% falls inside P-58's recorded range, and on the matched English-speaking subset the two papers agree within uncertainty on accuracy and AUC. The verdict follows C-71.",
+  "quotes": [
+    {"paper": "P-58", "page": 6, "quote": "Besides an accuracy score of 84.8%, the recall/sensitivity and speciﬁcity values were also around 85%."},
+    {"paper": "P-58", "page": 7, "quote": "All features 84:8% 80:0% 85:7% 84:2% 82.8 0.932"},
+    {"paper": "P-6", "page": 7, "quote": "the framework achieves an overall accuracy of 85.16% and an AUC of 84.75%, with the corresponding std of 5.76 and 5.97, respectively."},
+    {"paper": "P-6", "page": 6, "quote": "Among the 68 randomized individuals, 34 were identified with MCI, while 34 were diagnosed with NC conditions."}
+  ]
+}

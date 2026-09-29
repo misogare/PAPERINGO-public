@@ -1,0 +1,27 @@
+{
+  "id": "C-226",
+  "qualifies": "no",
+  "question": "Shared: MCI vs normal controls from ADNI resting-state fMRI (116-ROI AAL), binary SVM classification in both. P-516 (Guo et al., Front Neurosci 2021) builds higher-order networks PCn by iterating Pearson correlation and tests whether higher order adds discrimination; 143 participants (299 scans), subject-level 5-fold CV. P-523 (Li et al., Front Cell Dev Biol 2021) combines three first-order estimators (Pearson, sparse representation, Granger causality) by multi-kernel learning; 63 MCI / 64 NC, nested LOOCV. Features and validation differ, which condition 1 allows.",
+  "metric": "Accuracy with accuracy (recorded: about 50% vs 87.40%).",
+  "figures": {
+    "P-516": "No accuracy is printed as a number; all accuracies appear only in Figures 6, 7 and 9. The text states that the accuracy of the convergent network (PCconv, thirty iterations) approaches 50%; the captions state that accuracy decreases with n in all cases (Figure 6) and that SEN and SPE of PC1 (ordinary Pearson) are better than the other cases (Figure 7), so PC1 is P-516's best network. Illustrative Wilson for 0.50 at n = 143 subjects: [0.419, 0.581].",
+    "P-523": "Nested LOOCV, 127 participants: MCPC 87.40% (111/127), Wilson [0.805, 0.921], AUC 0.922; single Pearson (PC) 77.95% (99/127), Wilson [0.700, 0.843], AUC 0.851; SR 81.10%; GCM 72.44%."
+  },
+  "matched_figure_check": "P-516's own figures account for the recorded gap. Its accuracy falls from the first-order Pearson network (PC1, its best) toward 50% as the order n rises, in all cases, and P-516 states that at convergence the discrimination almost disappears; the recorded 50% is the end point of that deliberate iteration. A paper therefore shows that the feature construction produces the gap, which is a condition-3 failure. The matched condition, first-order Pearson connectivity, exists in both papers (P-516 PC1; P-523 PC 77.95%), but P-516 prints PC1's accuracy only in figures, so no numeric matched comparison can be made.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Not triggered: P-523's 87.40% (AUC 0.922) is below 0.97, and P-516's recorded value is about 50%. The recorded P-516 value is an ablation end point, not a best-performance claim.",
+  "failed_conditions": [3, 6],
+  "candidate_explanations": [],
+  "reason": "The record takes the end point of P-516's ablation, the convergent higher-order network whose accuracy approaches 50%, as P-516's result, while P-516's best network is ordinary first-order Pearson correlation (condition 6). P-516's own figures show that the iteration drives the accuracy down to chance, so a paper shows the explanation is sufficient (condition 3). On the first-order Pearson condition both papers share, P-516 prints no number to set against P-523's 77.95%.",
+  "quotes": [
+    {"paper": "P-516", "page": 1, "quote": "fusing the PCn-based BFNs (n>1) with the PC1-based BFN can generally improve the sensitivity for MCI identiﬁcation, but fail to help the classiﬁcation accuracy."},
+    {"paper": "P-516", "page": 2, "quote": "which leaves us 299 scans (including 154 HCs and 145 MCIs) from 143 participants (with some participants scanned at one or more times)."},
+    {"paper": "P-516", "page": 6, "quote": "The PCconv-based BFN is the empirically convergent adjacency matrix through thirty iterations. Note that, with the increase of n, the ACC of PCn-based BFN tends to decrease in all the cases."},
+    {"paper": "P-516", "page": 7, "quote": "It can be observed that the SEN and SPE of PC1 is better than other cases."},
+    {"paper": "P-516", "page": 8, "quote": "(1) As n increases, the ACC of PCn generally decreases for both MCI identiﬁcation and gender prediction, even with various p-values in t-test for selecting diﬀerent groups of feature. This illustrates that the higher-order does not result in stronger discriminative ability. Especially when the BFN converges with a big n, the ACC approaches 50%, meaning that its discrimination almost disappears since our task is a binary classiﬁcation."},
+    {"paper": "P-523", "page": 2, "quote": "Notably, 127 participants, including sixty-three MCIsand 64 NCs were included in this experiment."},
+    {"paper": "P-523", "page": 3, "quote": "Due to the limited sample size, we adopt the nest LOOCV strategy"},
+    {"paper": "P-523", "page": 4, "quote": "PC 77.95 76.19 79.69 0.851 ... MCPC 87.40 90.48 84.38 0.922 (Table 1 rows: accuracy, sensitivity, specificity, AUC; cells joined)"}
+  ]
+}

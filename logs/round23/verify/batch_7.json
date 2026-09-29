@@ -1,0 +1,134 @@
+{
+ "results": [
+  {
+   "id": "C-149",
+   "compared": "Matched figure at P-37's condition (3-year conversion, single baseline MRI, no cognitive tests): P-211 Comb (c) (MRI measures + age, gender, education, baseline EMCI/LMCI, APOE4) 3-year 5-fold CV AUC, read from Figure 2(d), against P-37 (Bae et al.; the ledger's P-174 is a duplicate stub of P-37 and its mapped PDF is a MEG paper) test AUC 0.827. Not the ledger's 0.92, which is P-211's five-year Comb (a) figure.",
+   "a": {
+    "paper": "P-211",
+    "estimate": 0.703,
+    "se": 0.0254,
+    "se_source": "No number or interval printed; measured from Figure 2(d) (p. 7): axis 0.0 at y = 681.8 px and 1.0 at y = 50.2 px (gridlines 0.2/0.4/0.6/0.8 at 555.5/429.5/303/176.5 px); the green Comb (c) point at 3 years sits at y = 237.9 px (intersection of the two line segments), AUC = 443.9/631.6 = 0.703 (read precision about +/-0.005; the plotted SD bar, about +/-0.01, is a fold spread, not an SE). The advocate independently read 0.704. Hanley-McNeil over the CV portion of the 3-year cohort (Table 1: 188 dementia/392 MCI; 90% = 169/353): Q1 = 0.703/1.297 = 0.542, Q2 = 2(0.703^2)/1.703 = 0.580, SE = 0.0254, CI [0.653, 0.753]. Over the full 188/392: SE 0.0241."
+   },
+   "b": {
+    "paper": "P-37",
+    "estimate": 0.827,
+    "se": 0.0498,
+    "se_source": "No interval printed. Test set 68 scans ('314, 68, and 68 scans, respectively'): 37 MCI-C converting in 0-3 years (sensitivity 81.08% = 30/37) and 31 MCI-NC (56/68 = 82.4% correct; 1.5 T 25/32 + 3 T 31/36). Hanley-McNeil n1 = 37, n2 = 31: Q1 = 0.827/1.173 = 0.705, Q2 = 2(0.827^2)/1.827 = 0.749, SE = 0.0498, CI [0.729, 0.925]."
+   },
+   "scale": "ROC AUC; SE by Hanley-McNeil from class sizes",
+   "z": 2.22,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "one_sentence": "At the matched three-year horizon, the MRI-based model of Cai et al. (P-211; regional MRI measures with demographics and APOE4, no cognitive tests) reached a cross-validated AUC of about 0.70 (read from its Figure 2d), below the AUC of 0.827 that Bae et al. (P-37) report for a 3D CNN on baseline T1 scans (z = 2.2, a narrow margin), which reverses the recorded comparison (0.92 vs 0.827, which set P-211's five-year figure against a three-year one and cited the P-174 duplicate stub).",
+   "reason": "z = |0.827 - 0.703| / sqrt(0.0498^2 + 0.0254^2) = 0.124/0.0559 = 2.22 (2.24 with the full 188/392). Skeptic check of conditions 1-6: (1) holds, since both predict 3-year MCI-to-AD conversion in ADNI amnestic MCI through MRI, and label definition, representation, pretraining and validation differ, which is allowed; (2) holds, AUC with AUC; (3) holds on the best-matched figure, because Comb (c) is the only 3-year P-211 figure without the cognitive channel P-37 does not use, and it does not reconcile the pair. But P-211's 3-year figures that add cognitive scores do agree with 0.827 (test-set Comb (a) 0.81, z = 0.21; CV Comb (a) 0.753, z = 1.34), so the verdict rests on treating Comb (c) as the governing matched figure, the same choice applied in C-151; (4) passes, narrowly: z = 2.04 at 0.713 and 1.92 at 0.72, so the result depends on the plot read-off being accurate to about 0.01; (5) holds, all figures < 0.97; (6) holds only once the record is restated: the 0.827 is Bae et al. (P-37), not the P-174 stub, and the ledger's 0.92 is a five-year figure (headline 0.92 vs 0.827 gives z = 1.72 and would not pass). So the qualifying gap runs opposite to the record, with P-211 lower. I could not show a failed condition, so the pair qualifies, but the margin is the thinnest in this batch.",
+   "candidate_explanations": [
+    "Label definition (P-37 vs P-211): P-37 keeps later converters and short-follow-up MCI out of the stable group ('MCI subjects with a duration of MCI less than 3 years without conversion were excluded due to the potential possibility of near-future conversion.'). P-211's 3-year negatives include later converters, and P-211 attributes its 3-year dip to them ('these false positives represent individuals whose diagnostic classification did not change during the short-term follow-up period, despite the disease progressing and eventually reaching the dementia stage at a later time point'; '50% of false-positive MCI patients would convert to AD at the 5-year follow-up'). It prints no 3-year AUC with them removed.",
+    "Input representation and model: ten FreeSurfer regional measures plus covariates in an EBM (P-211: 'They contain the volume of left and right hippocampus and amygdala, and the volume and thickness of left and right entorhinal and inferior temporal.') against a transfer-learned 3D CNN on the whole T1 image (P-37).",
+    "Pretraining (P-37): 'The source task used 1406 DAT and 2084 NC scans from 1080 subjects.' P-211 trains on MCI only.",
+    "Validation design: one random 68-scan held-out test in P-37 ('314, 68, and 68 scans, respectively') against 5-fold CV with SMOTE in P-211 ('All EBMs were tested with the 5-fold cross validation.'; 'the synthetic minority oversampling technique (SMOTE) is used').",
+    "Index scan and cohort: P-37 uses 'the single time point sMRI scan at which an individual first received a diagnosis of MCI'; P-211 uses the ADNI baseline visit of '1042 Amnestic MCI individuals at baseline from ADNI1, ADNI2, ADNI3, and ADNIGO' with complete data.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "other_condition_failed": []
+  },
+  {
+   "id": "C-151",
+   "compared": "Matched figure at P-93's condition (36-month conversion, neuroimaging only, no demographics or cognition): P-211 Comb (c) 3-year 5-fold CV AUC (Figure 2(d)) against P-93's MCI-conversion AUC 0.838 on an independent MRI-only ADNI test set. Not the ledger's 0.92 (P-211's five-year Comb (a) figure); the ledger's claim_b also names P-188 for P-93's figure.",
+   "a": {
+    "paper": "P-211",
+    "estimate": 0.703,
+    "se": 0.0254,
+    "se_source": "Same figure as C-149: Figure 2(d), Comb (c) at 3 years, measured at 0.703 (y = 237.9 px on an axis running from 681.8 px for 0.0 to 50.2 px for 1.0); no printed interval. Hanley-McNeil over 169 dementia/353 MCI (90% of Table 1's 3-year cohort, 188/392): Q1 = 0.542, Q2 = 0.580, SE = 0.0254, CI [0.653, 0.753]."
+   },
+   "b": {
+    "paper": "P-93",
+    "estimate": 0.838,
+    "se": 0.031,
+    "se_source": "No interval printed. The text says '177 subjects (including 81 sMCI and 96 pMCI) with only MRI are used as independent test data'; Tables 2 and 5 give 66 sMCI/93 pMCI. I used the smaller 93/66 (the larger SE): Q1 = 0.838/1.162 = 0.721, Q2 = 2(0.838^2)/1.838 = 0.764, SE = 0.0310, CI [0.777, 0.899] (with 96/81: SE 0.0298)."
+   },
+   "scale": "ROC AUC; SE by Hanley-McNeil from class sizes",
+   "z": 3.37,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "one_sentence": "For three-year MCI-to-AD conversion in ADNI, Liu et al. (P-93) report AUC 0.838 on an independent MRI-only test set, while the MRI model without cognitive scores of Cai et al. (P-211) reaches about 0.70 in cross-validation (read from its Figure 2d; z = 3.4), the reverse of the recorded 0.92 vs 0.838, which set P-211's five-year multimodal figure against a 36-month one.",
+   "reason": "z = |0.838 - 0.703| / sqrt(0.0310^2 + 0.0254^2) = 0.135/0.0401 = 3.37. Robust to the read-off (2.96 even at 0.72) and to the choice of P-211 CV figure (Comb (a) CV 0.753 still gives z = 2.17). Only P-211's small test-set Comb (a) figure, 0.81 (about 19/39, CI [0.681, 0.939]), agrees (z = 0.38), and it adds the cognitive channel that P-93 does not use ('we used only neuroimaging data for prediction, without considering the demographic information'). Skeptic check: (1) holds: same question, both ADNI MCI, MRI at test time (P-93 synthesises PET from MRI; the multimodal clause covers its MRI+PET training); (2) holds, AUC; (3) holds, because the figure best matched on horizon and input excludes P-93 in both directions, and P-93 uses the same 36-month window ('we use the 36-month window to define the conversion'), so P-211's later-converter explanation acts on both; (4) z >= 1.96; (5) holds, all < 0.97; (6) the record misnames the paper (P-188) and omits the five-year horizon, but at the matched horizon the printed figures still disagree, with P-93 higher. I found no failed condition. The report should give the matched, reversed figures.",
+   "candidate_explanations": [
+    "Input representation and model: P-93 applies a deep network to whole-brain T1 with GAN-synthesised PET features; P-211 applies an EBM to tabular FreeSurfer measures ('Comb. (c) MRI-driven biomarkers, plus age, gender, education, diagnose at baseline, and APOE4.').",
+    "Training data (P-93): trained on 939 subjects with real PET, with CN and AD pooled into the two classes: 'That is, sMCI and sCN are treated as the negative category, pMCI and AD are used as the positive category.'",
+    "Validation design (P-211): SMOTE, a 90/10 split and 5-fold CV ('The dataset is divided into training and test sets with a percentage, respectively, of 90% and 10%.'). Its single 3-year test figure (0.81, Comb (a)) sits above its plotted CV means, so its 3-year estimate depends on the split.",
+    "Test-set composition (P-93): the text gives 96 pMCI/81 sMCI, while Tables 2 and 5 give 93/66 ('And 177 subjects (including 81 sMCI and 96 pMCI) with only MRI are used as independent test data.').",
+    "Label construction near the horizon (P-211): 'these false positives represent individuals whose diagnostic classification did not change during the short-term follow-up period, despite the disease progressing and eventually reaching the dementia stage at a later time point'. P-93 uses the same 36-month window, so this is not shown to separate the papers.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "other_condition_failed": []
+  },
+  {
+   "id": "C-154",
+   "compared": "No matched figure exists, so the shared-metric headline figures are compared: P-229's printed MCI-to-AD conversion AUC (Table IV, PDF p. 30, IADT 75.70) against P-178's 9-feature random forest AUC 0.96. AUC is used rather than the ledger's accuracies: the ledger's 71.05% is P-229's SCD-to-MCI result, and P-178's accuracy is prevalence-driven (its SVC scores 0.900 with AUC 0.52).",
+   "a": {
+    "paper": "P-229",
+    "estimate": 0.757,
+    "se": 0.0252,
+    "se_source": "No interval printed. Table IV: 'IADT (Ours) 73.54 73.00 75.70 69.46 76.55' (ACC, BAC, AUC, SEN, SPE) on '393 MCI subjects (167 pMCI, 226 sMCI)'. Hanley-McNeil n1 = 167, n2 = 226: Q1 = 0.757/1.243 = 0.609, Q2 = 2(0.757^2)/1.757 = 0.652, SE = 0.0252, CI [0.708, 0.806]."
+   },
+   "b": {
+    "paper": "P-178",
+    "estimate": 0.96,
+    "se": 0.04,
+    "se_source": "No interval printed. Table 4, 9-feature RF: 'Accuracy 0.936 ... AUC 0.96'; '95 patients reserved for testing', about 12 converters at the cohort's 49/383 = 12.8% rate. Hanley-McNeil at the subject level (12/83, the conservative choice): Q1 = 0.96/1.04 = 0.923, Q2 = 2(0.96^2)/1.96 = 0.940, SE = 0.040, CI [0.882, 1.000]. The AUC appears to be visit-level (about 44/409 visits), which would give a smaller SE."
+   },
+   "scale": "ROC AUC; SE by Hanley-McNeil from class sizes",
+   "z": 4.29,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "one_sentence": "For MCI-to-AD conversion in ADNI, Guan et al. (P-229) report AUC 0.757 from grey-matter volumes alone, with a classifier trained only on AD/NC labels, against AUC 0.96 for the random forest of Velazquez and Lee (P-178), which combines two MRI volumes with cognitive scores, APOE4 and demographics in early MCI over an open horizon (z = 4.3). P-178's figure is visit-level, its feature set was chosen on its test split, and its tables disagree on the test-set size.",
+   "reason": "z = |0.96 - 0.757| / sqrt(0.040^2 + 0.0252^2) = 0.203/0.0473 = 4.29 (4.16 at 11/84; 6.34 if the whole 49/334 is used). This pair came through the reader and skeptic route: the earlier skeptic (challenge_skeptic_4) attacked all six conditions and found none failed. I re-read P-229 Table IV from the PDF (p. 30) and P-178 Table 4 and confirm the figures. Condition 1 holds through the multimodal clause (P-178's hippocampal and ventricular volumes are in the model; the same treatment was used in C-103 and C-188). No matched figure exists: P-178's 6-feature model drops MRI and keeps cognition (AUC 0.88), and every P-229 method is AD/NC-to-MCI transfer. 0.96 < 0.97, so condition 5 passes by the letter. The record's misread 71.05% is set aside under condition 6.",
+   "candidate_explanations": [
+    "Predictor set: P-178 adds cognitive and functional scores (ADAS13, ADAS11, FAQ, MMSE), APOE4, age and race to two MRI volumes; P-229 uses grey-matter ROI volumes alone. P-178's model without MRI and APOE4 still reaches AUC 0.88, but that is not an MRI-only comparison ('We also tested a 6-feature group, which removed the RAVLT variables as well as the biomarker data; however, this saw the worst accuracy of the three groups at 89.2%.').",
+    "Horizon and label: conversion by the last visit ('the Clinical Dementia Rating was used to make this determination based on the value of their last visit's diagnosis', mean 5.02 years) against 'The pMCI subjects have converted to AD within 36 months while sMCI have not.'",
+    "Training design (P-229): the classifier never sees MCI labels: 'A total of 393 MCI subjects (167 pMCI, 226 sMCI) with structural MRIs are used as the unlabeled target domain, while AD and NC samples are adopted as the labeled source domain.'",
+    "Population: early MCI only in P-178 ('383 Early Mild Cognitive Impairment (EMCI) patients were gathered from the Alzheimer's Disease Neuroimaging Initiative (ADNI)') against unselected ADNI MCI in P-229.",
+    "Unit of analysis and reporting (P-178): trained and tested on visit records ('This allows for the model to be trained against 2412 exam visits (1206 per class) rather than only the 1354 from the original data set train/test split.'), with a Table 1 test count (402/402) that contradicts Table 4.",
+    "Model selection on the test split (P-178): 'we found that by removing the RAVLT features, our accuracy rose to 93.6% in the 9-feature group.'",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "other_condition_failed": []
+  },
+  {
+   "id": "C-155",
+   "compared": "No matched figure exists, so the shared-metric headline conversion figures the papers print are compared (the record misreads both): P-229 IADT MCI-to-AD accuracy 73.54% (Table IV, PDF p. 30) against P-207 CFMnetwork MCI-c vs MCI-nc accuracy 87.72%. Accuracy, because P-207 reports no AUC.",
+   "a": {
+    "paper": "P-229",
+    "estimate": 0.7354,
+    "se": 0.0223,
+    "se_source": "No interval printed. Table IV ACC 73.54% on 393 ADNI MCI (167 pMCI/226 sMCI) = 289/393. Binomial SE = sqrt(0.7354 x 0.2646 / 393) = 0.0223; Wilson 95% CI [0.690, 0.777]."
+   },
+   "b": {
+    "paper": "P-207",
+    "estimate": 0.8772,
+    "se": 0.0215,
+    "se_source": "No interval printed. 'the best prediction accuracy is 87.72% ... for the MCI-c and MCI-nc groups', 10-fold CV over 126 MCI-c + 108 MCI-nc = 234. Binomial SE = sqrt(0.8772 x 0.1228 / 234) = 0.0215; Wilson 95% CI [0.829, 0.913]."
+   },
+   "scale": "accuracy (proportion); binomial SE from the evaluation-set n",
+   "z": 4.59,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "one_sentence": "For three-year MCI-to-AD conversion in ADNI from structural-MRI grey-matter volumes, Liu et al. (P-207) report 87.72% accuracy (10-fold CV, 234 MCI) with a coupled network representation, against 73.54% for Guan et al. (P-229) on 393 MCI with a classifier trained only on AD/NC labels (z = 4.6). The two papers' plain regional-volume baselines coincide (64.15% and 64.12%), which points to the methods, but neither paper reports a figure under the other's conditions.",
+   "reason": "z = |0.8772 - 0.7354| / sqrt(0.0223^2 + 0.0215^2) = 0.1418/0.0309 = 4.59. Skeptic check: (1) holds: both predict 3-year conversion in ADNI MCI ('converted to AD within 3-year follow-up' / 'within 36 months') from baseline sMRI grey-matter volumes; (2) holds, accuracy with accuracy on near-balanced sets (BAC 73.00 vs about 87.9); (3) is the only contestable condition. The baseline coincidence (64.12 vs 64.15) sets a logistic regression on 90 AAL volumes trained on AD/NC against AdaBoost-SVM on ICA-network ROIs trained on MCI labels by CV, so it is not a figure under the other's condition. P-207's plain features (64.15%) also fall below P-229's reported 73.54% beyond uncertainty (z = 0.0939/sqrt(0.0314^2 + 0.0223^2) = 2.44), so the ablation does not show the representation alone reconciles the two reported figures. I could not show condition 3 failed. (4) passes; (5) holds, both < 0.97, and the best-of-15 concern is weaker than first read, since E1 = 3, E2 = 2 was fixed on AD vs NC ('The same parameter selection is applicable to the MCI-c vs. MCI-nc distinction'); (6) the record's 71.05% (SCD) and 90.44% (AD vs NC) are misreads, but the printed conversion figures still disagree. The pair qualifies. This rests on the same reading of the sufficiency clause as C-147 (P-207 vs P-185), which the operator may overrule.",
+   "candidate_explanations": [
+    "Feature representation (P-207): the coupled features raise its own accuracy from 64.15% to 87.72% ('The best classification accuracies for different features are 64.15% for OFMROI, 75.10% for CFMROI, 68.62% for OFMnetwork, and 87.72% for CFMnetwork.'). P-229 uses 90 AAL volumes with an attention autoencoder.",
+    "Training design (P-229): the classifier never sees MCI conversion labels ('A total of 393 MCI subjects (167 pMCI, 226 sMCI) with structural MRIs are used as the unlabeled target domain, while AD and NC samples are adopted as the labeled source domain.'). P-207 trains on MCI labels ('The 10-fold cross-validation was applied to evaluate the performance, and the average results were reported.').",
+    "Parameter selection (P-207): E1 and E2 were searched ('the optimal values of E1 and E2 were searched from a small set of {2, 3, 4} and {1, 2, 3, 4, 5}, respectively.'). The AD/NC-chosen setting is also the MCI maximum; the other CFMnetwork settings give 70.24-82.31%.",
+    "Label definition: P-207's non-converters are 'otherwise', with no minimum follow-up stated ('The patients with MCI who converted to AD within 3-year follow-up were classified into the MCI-c group; otherwise, they were classified into the MCI-nc group.'); P-229: 'The pMCI subjects have converted to AD within 36 months while sMCI have not.'",
+    "Region set and sample (P-207): 'only the top 3 ROIs ranked by the cluster size were selected as the ROI-level features within each network' of AD/NC-derived ICA networks, on 234 MCI, against all 90 AAL regions on 393 MCI in P-229.",
+    "Coupling weights (P-207): computed across subjects ('the Pearson's correlation coefficient, R, between each pair of the ROI-level features of ZEFM, was calculated as the network-level intra-coupled weight matrix'); the paper does not say this was done inside the training folds.",
+    "None of these is shown by either paper to be sufficient for the cross-paper gap."
+   ],
+   "other_condition_failed": []
+  }
+ ]
+}

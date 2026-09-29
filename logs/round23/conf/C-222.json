@@ -1,0 +1,25 @@
+{
+  "id": "C-222",
+  "qualifies": "no",
+  "question": "Not shared. P-212 (Rye et al., Sci Rep 2022) predicts conversion of MCI to probable AD at any later visit among ADNI MCI participants. P-308 (Russo et al., Alzheimer's Dement 2025) predicts conversion to the next cognitive level within 3 years among pooled cognitively normal and MCI ADNI participants: CN to MCI or MCI to AD, with 90 converters of whom about 77% were MCI. The positive class and the population behind it differ (non-demented CN + MCI with two pooled transitions vs MCI only), and P-308 prints no MCI-only, MCI-to-AD result. The broad channel is shared (neuropsychological and clinical data in both; P-308 adds CSF t-tau/Abeta1-42, P-212 adds hippocampal volume and APOE), so the failure is on the task and population, not the channel.",
+  "metric": "Accuracy with accuracy nominally (84% vs 66.2%), but taken at about 22% vs 47% converters. P-212 prints no AUC; P-308's logistic Models A/B (AUC 0.85/0.87) are also on the pooled CN + MCI endpoint.",
+  "figures": {
+    "P-212": "Held-out test set of 139 (65 cAD / 74 sMCI): random forest 92/139 = 0.662, Wilson [0.580, 0.735]; ensemble 95/139 = 0.683, Wilson [0.602, 0.755]; CV mean 74.6-74.9% over 50 folds. Balanced accuracy 0.659 (RF) and 0.680 (ensemble).",
+    "P-308": "Gradient boosting after undersampling, test accuracy 84% (training 91%), sensitivity 43%, specificity 96%; balanced accuracy (0.43 + 0.96)/2 = 0.695 against a majority-class rate of about 0.78. The test-set size is not printed, and the paper's counts do not reconcile (146 sampled non-converters plus 90 converters is 236, yet the model is 'applied to 409 participants (22% converters)'). Wilson for 0.84 if the test set were all 409: [0.801, 0.872]; if it were 20% of 409 (82): [0.746, 0.904]. Sub-cohorts: AD-like CSF test 88%, normal CSF test 86%, both still pooling CN and MCI."
+  },
+  "matched_figure_check": "No matched figure. P-308 reports no MCI-only or MCI-to-AD-only result; its CSF sub-cohort results still pool CN and MCI participants and both transitions. P-212 has no CN participants. Neither paper prints a result under the other's condition. For the record, the balanced accuracies (0.695 vs 0.659-0.680) are close, so the plain-accuracy gap (84% vs 66-68%) tracks the difference in converter share.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither reaches 0.97: P-308 test 84% (training 91%, AD-like CSF training 95%), P-212 at most 74.9%. Both are internal evaluations only.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "P-308's outcome pools CN-to-MCI and MCI-to-AD transitions within 3 years in a CN + MCI sample, while P-212's covers MCI-to-AD in MCI only, and P-308 prints no MCI-only figure, so the two studies do not address the same comparison (condition 1). The ledger's T2 (MCI-to-AD) label for P-308's 84% misdescribes that endpoint (condition 6). The plain accuracies would be separated for any plausible P-308 test-set size, but they are taken at 22% and 47% converters, and the balanced accuracies (0.695 vs 0.659-0.680) are close.",
+  "quotes": [
+    {"paper": "P-308", "page": 3, "quote": "The participants were labeled as “converters” depending on whether their cognitive status progressed within 3 years, that is, (1) from CN to MCI; (2) from MCI to AD."},
+    {"paper": "P-308", "page": 4, "quote": "Of these, 90 participants’ cognition significantly worsened within 3 years, converting to the next “cog-nitive level” (i.e., CN participants developed MCI, MCI individuals developed dementia). Of the 90 converters, 76.77% were MCI cases, the others were CN."},
+    {"paper": "P-308", "page": 4, "quote": "Thus, a sample of “non-converters” (146 partici-pants) was randomly extracted and fed to the ML algorithms, along with all the converters"},
+    {"paper": "P-308", "page": 5, "quote": "After undersampling, the model was applied to 409 participants (22% converters). With the optimal cut-off, the model’s accuracy was 91% in the training set and 84% in the test set. The algorithm showed high specificity (96%) but low sensitivity (43%)."},
+    {"paper": "P-212", "page": 2, "quote": "When the model was evaluated on our unseen test set, the overall classification accuracy was 66.2%. Similar results were obtained for the ensemble model."},
+    {"paper": "P-212", "page": 7, "quote": "The other diagnostic group was defined as converters to AD (cAD; n = 321, 47.3%), and included subjects who were diagnosed with MCI at their first study visit, but met the criteria for probable AD on a subsequent assessment"}
+  ]
+}

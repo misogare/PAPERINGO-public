@@ -1,0 +1,25 @@
+{
+  "id": "C-92",
+  "qualifies": "no",
+  "question": "Not shared. P-96 screens cross-sectionally for currently present MMSE-defined cognitive impairment (>= 1 SD below the age-stratum mean MMSE) in the general CHARLS 2015 older population. P-166 predicts incident MCI over four years among CHARLS respondents with sarcopenia who were cognitively normal at baseline (21-point battery plus no IADL disability). Detecting present impairment in the general population and predicting future MCI in a baseline-normal sarcopenic subgroup are different tasks, comparisons and populations. The channel (clinical/tabular) is shared.",
+  "metric": "ROC-AUC vs ROC-AUC (matches).",
+  "figures": {
+    "P-96": "RF on 7 routine variables: training set, stratified 5-fold CV (n=2932): AUROC 0.93 (95% CI 0.91-0.95); external Yiwu 2021: 0.83 (0.82-0.84); external CHARLS 2011: 0.87 (0.86-0.88). Intervals as printed.",
+    "P-166": "Test (20% of 414): 0.708 (95% CI 0.544-0.844); temporal validation CHARLS 2015-2018 (n=156): 0.711 (0.588-0.823). Intervals as printed."
+  },
+  "matched_figure_check": "Neither paper reports the other's endpoint (P-96 has no incident-MCI result, P-166 no prevalent-impairment result), so no matched figure can reconcile or confirm the gap. On validation tier alone the gap persists: P-96's external CHARLS 2011 0.87 (0.86-0.88) does not overlap P-166's temporal validation 0.711 (0.588-0.823).",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: P-96's 0.93 is below 0.97, from 2932 participants with two external cohorts; P-166 is 0.71.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "The intervals exclude each other, but the two AUCs answer different questions: detection of present MMSE-defined impairment in the general population (P-96) versus four-year prediction of incident MCI among cognitively normal sarcopenic adults (P-166). Condition 1 fails, so the gap is not a discrepancy on a shared clinical question.",
+  "quotes": [
+    {"paper": "P-96", "page": 5, "quote": "showed the best performance, with an AUROC of 0.93[95 %CI, 0.91–0.95]"},
+    {"paper": "P-96", "page": 2, "quote": "scoring ≥1 SD below their age group’s mean MMSE were classified as having cognitive impairment consistent."},
+    {"paper": "P-96", "page": 5, "quote": "For External Set 1, the Random Forest model achieved an AUROC of 0.83 (95 % CI: 0.82–0.84)"},
+    {"paper": "P-96", "page": 10, "quote": "Third, the cross-sectional design of this study limits"},
+    {"paper": "P-166", "page": 1, "quote": "Our model forecasts MCI incidence over the next four years, categorizing patients into low and high-risk groups based on their risk levels."},
+    {"paper": "P-166", "page": 5, "quote": "of the validation centralized model was 0.711 (0.95 CI,"}
+  ]
+}

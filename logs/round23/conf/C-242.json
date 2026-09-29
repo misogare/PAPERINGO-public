@@ -1,0 +1,27 @@
+{
+  "id": "C-242",
+  "qualifies": "no",
+  "question": "Not shared. P-709 asks whether a stopwatch-timed stepping test (FSST) separates fallers from non-fallers within neurologist-diagnosed MCI (CDR 0.5; 22 fallers v 24 non-fallers by 12-month self-report; Turkey). P-1013's ROC sample pools 20 healthy adults of mean age 25 with 20 older adults of mean age 79, labelled MCI by MMSE 20-23 plus a recent fall. Its positive class is either BBS < 40 / TUG > 14 s (Section 2.4) or a fall within 3 months, which coincides with MCI group membership because a recent fall was an inclusion criterion (Section 2.5). Its contrast is therefore clinical fall-risk scores, or old fallers against young controls, not fallers against non-fallers within MCI. P-695 (context only) tests 6-month change in gait speed against prospectively recorded falls in MCI and mild AD (Brazil).",
+  "metric": "AUC in P-709 and P-1013. P-695 reports age-adjusted logistic-regression odds ratios with no AUC, so it does not share a metric with either.",
+  "figures": {
+    "P-709": "FSST AUC 0.825 (cut-off 15.11 s, sens 77.38%, spec 89.50%), 22 fallers v 24 non-fallers, in-sample; no CI printed. Hanley-McNeil: Q1 = 0.825/1.175 = 0.7021; Q2 = 2(0.6806)/1.825 = 0.7459; SE = sqrt([0.1444 + 21(0.0215) + 23(0.0653)]/528) = 0.0630; CI [0.701, 0.949].",
+    "P-1013": "Postural-sway AUCs with printed 95% CIs (Table 2). BBS criterion: AP 0.91 (0.82-0.99), ML 0.94 (0.87-0.99), V 0.91 (0.81-0.99), mean 0.92 (0.84-0.99). TUG criterion: AP 0.83 (0.69-0.96), ML 0.82 (0.68-0.96), V 0.86 (0.74-0.98), mean 0.84 (0.70-0.97).",
+    "P-695": "Change in gait speed for falls in MCI: OR 31.718 (0.192-525.927), p = 0.185. Only recurrent falls in MCI reached significance (Table 4). No AUC."
+  },
+  "matched_figure_check": "No figure answers the same contrast. Where the numbers can be set side by side, they agree. P-709's 0.825 lies inside P-1013's TUG-criterion intervals, and every P-1013 AUC (0.82-0.94) lies inside P-709's derived interval [0.701, 0.949]. P-709's 0.825 falls just outside two BBS-criterion intervals (ML 0.87-0.99; mean 0.84-0.99), in one direction only. Those rows score sway during the BBS against a BBS cut-off in a sample half made up of 25-year-olds, which is not P-709's question.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "The exclusion does not apply. P-709's AUC is 0.825 and P-1013's AUCs reach at most 0.94, with accuracy at most 0.81; P-1013's 0.99 sensitivity is not the exclusion's metric. P-1013's Table 3 is internally inconsistent: in 7 of 8 rows the printed accuracy lies below both sensitivity and specificity.",
+  "failed_conditions": [1, 2, 4],
+  "candidate_explanations": [],
+  "reason": "The papers do not address the same clinical question. P-709 separates fallers within diagnosed MCI, while P-1013's ROC sets clinical fall-risk cut-offs, or old MCI fallers, against a sample half made up of 25-year-old controls, so condition 1 fails. P-695 reports odds ratios rather than AUC, so condition 2 fails for it. Where P-709 and P-1013 can be compared, both instruments discriminate in the same direction and the AUCs overlap, apart from a one-way miss on two BBS-criterion rows that belong to the unmatched contrast, so no difference beyond uncertainty exists on a shared question.",
+  "quotes": [
+    {"paper": "P-709", "page": 3, "quote": "The optimum cut-off time for the FSST of 15.11 s was identiﬁed to best discriminate fallers from non-fallers with MCI. The AUC was 0.825, with 77.38 % sensitivity and 89.50 % speciﬁcity."},
+    {"paper": "P-709", "page": 3, "quote": "fall history, namely the number of falls they had in the preceding 12 months."},
+    {"paper": "P-1013", "page": 2, "quote": "A convenience sample of 20 healthy adults (mean age, 25.20 ± 3.19 years) and 20 older adults with MCI (mean age, 79.00 ± 8.25 years)"},
+    {"paper": "P-1013", "page": 5, "quote": "The criteria for fall scores were classiﬁed as positive (probability of falls occurring) or negative (probability of no falls occurring), which were fall prediction scores (BBS < 40, TUG > 14 s)"},
+    {"paper": "P-1013", "page": 5, "quote": "Among the participants, those who experienced falls within 3 months were considered positive and those who did not were classiﬁed as negative"},
+    {"paper": "P-1013", "page": 8, "quote": "The AUC derived from posture sway data showed a good to excellent fall prediction capability, ranging from 0.82 to 0.94 (Table 2)."},
+    {"paper": "P-695", "page": 4, "quote": "DGS failed to discriminate fallers in older people with MCI p = 0.185 (OR [95% CI] = 31.718 [0.192-525.927])"}
+  ]
+}

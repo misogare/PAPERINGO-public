@@ -1,0 +1,145 @@
+{
+  "role": "advocate",
+  "batch": "challenge_advocate_6",
+  "date": "2026-09-29",
+  "status": "candidate verdicts for operator review; not a gate",
+  "sources_read": {
+    "P-273": "scratchpad/r20/pdf/P-273.txt (pp. 1, 2, 6-7, 10) plus Fig. 4B raster (scratchpad/r23/img_c164/fig4b.png), bar heights measured independently from pixels",
+    "P-65": "scratchpad/r20/pdf/P-65.txt (pp. 2-3, Table 3 and section 4.1 on p. 6, p. 7)",
+    "P-356": "scratchpad/r20/pdf/P-356.txt (pp. 1, 4-7)",
+    "P-307": "scratchpad/r20/pdf/P-307.txt (pp. 1-3, 6-7, 11-12)",
+    "P-270": "scratchpad/r20/pdf/P-270.txt (pp. 1, 3-4, 7)",
+    "P-258": "scratchpad/r20/pdf/P-258.txt (pp. 1-3)",
+    "P-261": "scratchpad/r20/pdf/P-261.txt (pp. 2-3, 5-7)",
+    "readings": "logs/round20/conflict_readings/C-172.json, C-201.json; reader verdicts scratchpad/r23/conf/C-164.json, C-172.json, C-189.json, C-201.json",
+    "rule": "scratchpad/r23/DISCREPANCY_BRIEF.md",
+    "arithmetic": "scratchpad/r23/calc_adv6.py (Hanley-McNeil, Wilson, two-sample z)"
+  },
+  "fig4b_measurement": {
+    "method": "Tick marks at x=150 px: 0.00 at y=451, 0.25 at y=337, 0.50 at y=224, 0.75 at y=110.5; least-squares fit y = 450.8 - 453.8*value. Bar top = first white pixel scanning up the bar centre.",
+    "calibration": "Against printed or text-derived values: trimodal AUC 0.9625 vs 0.962; trimodal accuracy 0.9295 vs 0.9292; sensitivity 0.8876 vs 0.8889; specificity 0.9537 vs 0.9533; MRI+clinical AUC 0.9405 vs 0.940 (0.962 - 0.022); MRI+clinical accuracy 0.8854 vs 0.8863 (0.9292 - 0.0429); MRI+clinical specificity 0.9052 vs 0.9050 (0.9533 - 0.0483). Largest deviation 0.0013.",
+    "mri_only": "AUC 0.8017, accuracy 0.7598, sensitivity 0.511, specificity 0.907, F1 0.597 (mean across the ten folds, 48-month horizon, 91 pMCI / 147 sMCI in the CV set)."
+  },
+  "results": [
+    {
+      "id": "C-164",
+      "final": "no",
+      "overturned": false,
+      "conditions_attacked": {
+        "1_question": "Holds. MCI-to-AD conversion in ADNI MCI participants; structural MRI shared.",
+        "2_metric": "Holds. AUC with AUC and accuracy with accuracy, both internal cross-validation.",
+        "3_matched_figure": "The advocate case was tested and fails. The matched figure exists and is readable: P-273's MRI-only arm, 'cross-validated with identical settings' (Fig. 4B caption, p. 7), measured at AUC 0.8017 and accuracy 0.7598 (calibration within 0.0013). The strongest case for yes is the literal one-way test: 0.802 lies outside P-65's Hanley-McNeil interval [0.808, 0.872], by 0.005-0.008 across the reading range 0.800-0.803. It does not carry the pair. (i) The recorded gap has P-273 higher. P-273's own ablation shows that its clinical inputs produce that gap: MRI-only 0.802 is below P-65's 0.840, and MRI+clinical reaches 0.940. The brief says a pair fails condition 3 when a paper shows an explanation to be sufficient. (ii) The residual runs the other way and is not beyond uncertainty in both directions. P-65's 0.840 lies inside P-273's MRI-only interval [0.741, 0.862], z = 1.09. The matched accuracies agree both ways: 0.760 is inside P-65's Wilson [0.746, 0.814] and 0.782 is inside P-273's [0.702, 0.810]. (iii) P-65 prints its own run-to-run SD, 0.0297 across five repeats 'using identical data partitions' (p. 6), which is training variability on fixed data. Adding the SE of the five-run mean (0.0297/sqrt(5) = 0.0133) to the Hanley-McNeil SE (0.0165) gives a combined SE of 0.0212 and an interval of [0.799, 0.882], which contains 0.802. The one-way crossing does not survive the variability P-65 itself reports.",
+        "4_uncertainty": "Met for the recorded figures: 0.962 [0.934, 0.990] against 0.840 [0.808, 0.872]. On the matched figures, only the one-way Hanley-McNeil AUC crossing above is met.",
+        "5_performance_validity": "Holds. 0.962 is below 0.97. P-65 has 573 subjects and an external OASIS-3 cohort (0.8137).",
+        "6_record": "The recorded figures are the ones printed."
+      },
+      "figures": {
+        "P-273": "Trimodal 10-fold CV AUC 0.962 (fold SD 0.041). CV set 91 pMCI / 147 sMCI (94 - 3 test pMCI; 238 = 252 - 14). Hanley-McNeil: Q1 = 0.9268, Q2 = 0.9434, SE 0.0144, interval [0.934, 0.990]. MRI-only arm (Fig. 4B, pixel-measured): AUC 0.8017, Hanley-McNeil SE 0.0310, interval [0.741, 0.862] ([0.739, 0.861] at 0.800; [0.742, 0.864] at 0.803). Accuracy 0.7598, Wilson n = 238 [0.702, 0.810].",
+        "P-65": "HemiNet, 5-fold stratified CV repeated five times on identical partitions, 300 pMCI / 273 sMCI: AUC 0.8401 +- 0.0297 (SD across runs). Hanley-McNeil: Q1 = 0.7243, Q2 = 0.7671, SE 0.0165, interval [0.808, 0.872]. Combined with the SE of the five-run mean: SE 0.0212, interval [0.799, 0.882]. Accuracy 0.7819, Wilson n = 573 [0.746, 0.814]. Matched AUC z = (0.8401 - 0.8017)/sqrt(0.0310^2 + 0.0165^2) = 1.09."
+      },
+      "candidate_explanations": [
+        {"difference": "Predictor set. P-273 adds cognitive/clinical scores and SNPs to MRI; P-65 uses MRI alone. P-273's ablation shows this explanation is sufficient for the recorded gap, so it is shown, not a candidate.", "quote": "The trimodal DISFC model was superior to the top-performing bimodal model using MRI and clinical data with a significant increase of 0.022 (P = 0.048) in AUC", "paper": "P-273"},
+        {"difference": "Horizon: 48 months against 36 months.", "quote": "participants in the pMCI group were initially diagnosed with MCI at baseline and converted to AD within 36 months of follow-up", "paper": "P-65"},
+        {"difference": "Training data: 45 AD subjects added to P-273's training folds.", "quote": "Additionally, 45 subjects with AD were included in the model training to provide insights into pathological changes and address class imbalance.", "paper": "P-273"},
+        {"difference": "Run-to-run training variability that P-65 reports but a single-number interval ignores.", "quote": "Each experiment was independently repeated five times using identical data partitions to ensure statistical robustness. The reported results are expressed as the mean +- standard deviation (std) across these runs.", "paper": "P-65"}
+      ],
+      "reason": "The reader's MRI-only reading is confirmed by an independent pixel measurement (0.8017, calibrated within 0.0013 against printed values). The one route to yes is the literal one-way test on the matched AUC: 0.802 is outside P-65's Hanley-McNeil bound 0.808. That residual is reversed relative to the recorded gap. P-65's value lies inside P-273's matched interval (z = 1.09), the matched accuracies agree both ways, and the crossing disappears once P-65's own printed run-to-run SD is included. P-273's ablation shows its added clinical inputs account for the recorded gap, so the pair fails condition 3.",
+      "quotes": [
+        {"paper": "P-273", "page": 7, "quote": "B Performance comparison of the models based on different modality combinations. The unimodal, bimodal, and trimodal models were cross-validated with identical settings. Each bar represents the mean value across folds for each metric"},
+        {"paper": "P-273", "page": 6, "quote": "On the cross-validation set, the DISFC model achieved a mean (SD) of 0.962 (0.041) for AUC for predicting MCI conversion over 4 years (Fig. 3A). The average (SD) accuracy, sensitivity and specificity were 92.92% (4.41%), 88.89% (9.07%) and 95.33% (4.50%), respectively (Fig. 3B)."},
+        {"paper": "P-65", "page": 6, "quote": "Each experiment was independently repeated five times using identical data partitions to ensure statistical robustness."},
+        {"paper": "P-65", "page": 6, "quote": "Proposed Network  0.8401 +- 0.0297"}
+      ]
+    },
+    {
+      "id": "C-189",
+      "final": "no",
+      "overturned": false,
+      "conditions_attacked": {
+        "1_question": "Holds. MCI-to-AD conversion in ADNI, reverters excluded in both; structural MRI shared.",
+        "2_metric": "Holds. AUC with AUC, and accuracy with accuracy.",
+        "3_matched_figure": "The reader left condition 3 open because 'the paper prints no number' for P-273's MRI-only arm. The value is readable from Fig. 4B, and the matched figures agree within uncertainty. Pixel measurement, calibrated within 0.0013 against seven printed or text-derived values, gives MRI-only AUC 0.8017 and accuracy 0.7598. AUC: P-273's 0.802 lies inside P-356's Hanley-McNeil interval [0.634, 0.846]. P-356's 0.74 sits on P-273's MRI-only lower bound, which is 0.739-0.742 across the reading range 0.800-0.803, so no crossing can be established; z = 0.99. P-356's own whole-brain 3D ResNet-18 (AUC 0.75, SD 0.01) is the input representation nearest P-273's 3D volume, and it lies inside both intervals ([0.646, 0.854]). Accuracy: 0.69 lies 0.012 below P-273's MRI-only Wilson interval [0.702, 0.810], while 0.760 lies inside P-356's [0.586, 0.778]; z = 1.22. That crossing comes from class balance, not discrimination. P-273's MRI-only operating point, read from the same figure (sensitivity 0.511, specificity 0.907), gives 0.756 at its own 91/238 pMCI share, which reproduces the bar, and 0.718 at P-356's 41/86 share. The Wilson interval for 0.718 at n = 238, [0.658, 0.772], contains 0.69. So the papers' own data dissolve the gap. Removing P-273's clinical and genetic inputs takes the AUC from 0.962 to 0.802, which is 0.16 of the 0.22 gap, and the 0.06 residual is within uncertainty on AUC in both directions.",
+        "4_uncertainty": "Met for the recorded figures: 0.962 [0.934, 0.990], or 0.939 (printed CI 0.796-1.000) on the 36-48-month ADNI-3 test, against 0.74 [0.634, 0.846]. Not met on the matched AUC.",
+        "5_performance_validity": "Holds. 0.962 is below 0.97; P-356's 0.74 is not near ceiling.",
+        "6_record": "The figures are printed as recorded."
+      },
+      "figures": {
+        "P-356": "ViT on three hippocampal slices, 36-month horizon, one held-out test set (15% of 575, about 41 pMCI / 45 sMCI) scored over 10 training runs: AUC 0.74 (SD 0.02, range 0.72-0.78). Hanley-McNeil: Q1 = 0.5873, Q2 = 0.6294, SE 0.0540, interval [0.634, 0.846]. Accuracy 0.69, Wilson n = 86 [0.586, 0.778]; sensitivity 0.65, specificity 0.72. 3D ResNet-18 on the same split: AUC 0.75 (SD 0.01), Hanley-McNeil [0.646, 0.854].",
+        "P-273": "Trimodal CV AUC 0.962, Hanley-McNeil [0.934, 0.990] (91/147); ADNI-3 test AUC 0.939, printed CI 0.796-1.000 (n = 14). MRI-only arm (Fig. 4B, pixel-measured): AUC 0.8017, Hanley-McNeil SE 0.0310, interval [0.741, 0.862]; accuracy 0.7598, Wilson n = 238 [0.702, 0.810]; sensitivity 0.511, specificity 0.907. Matched AUC z = (0.8017 - 0.74)/sqrt(0.0310^2 + 0.0540^2) = 0.99. Accuracy at P-356's class balance: 0.477*0.511 + 0.523*0.907 = 0.718, Wilson n = 238 [0.658, 0.772]."
+      },
+      "candidate_explanations": [
+        {"difference": "Predictor set. P-273 adds clinical scores and SNPs. Its MRI-only arm (0.802) shows this accounts for most of the gap, and the residual is within uncertainty, so this is shown, not a candidate.", "quote": "We also observed that bimodal models outperformed unimodal models overall.", "paper": "P-273"},
+        {"difference": "Horizon: 48 months (P-273 CV) against 36 months.", "quote": "The pMCI group included participants who progressed from MCI at baseline to Alzheimer's disease (AD) within 36 months.", "paper": "P-356"},
+        {"difference": "Class balance, which moves accuracy but not AUC: 38% pMCI in P-273's CV set against 48% in P-356.", "quote": "In total, data from 575 participants were included, with 299 in the sMCI group and 276 in the pMCI group.", "paper": "P-356"},
+        {"difference": "Imaging representation: whole-brain 3D volume against three hippocampal slices. P-356's own 3D ResNet-18 (0.75) shows little effect.", "quote": "In comparison, the 3D ResNet-18 model showed an AUC-ROC of 0.75 (SD = 0.01; range = 0.73-0.78).", "paper": "P-356"}
+      ],
+      "reason": "The reader treated condition 3 as unsettled because no number is printed for P-273's MRI-only arm. The bar is readable to within about 0.001 (AUC 0.802, accuracy 0.760). P-273's matched AUC lies inside P-356's interval, and P-356's 0.74 sits on P-273's matched lower bound (z = 0.99). The one-way accuracy crossing disappears at a common class balance. The papers' own data dissolve the gap, so the pair fails condition 3 and does not qualify.",
+      "quotes": [
+        {"paper": "P-273", "page": 7, "quote": "The unimodal, bimodal, and trimodal models were cross-validated with identical settings. Each bar represents the mean value across folds for each metric"},
+        {"paper": "P-356", "page": 6, "quote": "On average, the model achieved an AUC-ROC of 0.74 with a standard deviation of 0.02 and a range of 0.72 to 0.78"},
+        {"paper": "P-356", "page": 6, "quote": "the model was trained and evaluated across 10 independent runs"},
+        {"paper": "P-356", "page": 5, "quote": "The data were split into training (70%), validation (15%), and test (15%) sets, while maintaining a constant sMCI/pMCI subject ratio across all splits."}
+      ]
+    },
+    {
+      "id": "C-172",
+      "final": "no",
+      "overturned": false,
+      "conditions_attacked": {
+        "1_question": "Fails. The advocate case: the task and comparison match (prevalent Petersen-type MCI against non-MCI in Chinese hospital inpatients), the channel matches (clinical/questionnaire), and P-307 sets a diabetes-based model's AUC (0.893) beside its own. Against it: the rule requires the same population class behind the label and gives a disease-defined patient population (Parkinson's patients) as a different class. Here each sample is defined by a different disease, chronic pain at age >= 60 (mean 71.1) against hospitalisation for T2DM from age 40 (mean 60.2), and each model rests on disease-specific predictors. P-307 itself treats the diabetic population as a separate target population whose model does not serve its own. P-270 states that its diabetic predictors are 'specifically limited to the diabetic population'. On the sources, the two papers address MCI identification in two different patient populations.",
+        "2_metric": "Holds. AUC with AUC.",
+        "3_matched_figure": "Holds. The one same-model figure, logistic regression, does not reconcile: 0.895 (0.829-0.966) against 0.69 (0.62-0.75). Neither paper reports a result in the other's population, and neither has a subgroup AUC.",
+        "4_uncertainty": "Holds. 0.925 (printed 0.863-0.995; Hanley-McNeil check at 51/133 [0.873, 0.977]) against 0.67 (printed 0.61-0.74; Hanley-McNeil check [0.599, 0.741]).",
+        "5_performance_validity": "Holds. 0.925 is below 0.97; the test set of 184 was left unresampled.",
+        "6_record": "The record cites P-270's training AUC 0.75. The held-out 0.67 makes the gap larger, not smaller."
+      },
+      "figures": {
+        "P-307": "XGBoost test AUC 0.925, printed 95% CI 0.863-0.995 (n = 184). Hanley-McNeil at about 51/133: SE 0.026, [0.873, 0.977]. Logistic regression 0.895 (0.829-0.966).",
+        "P-270": "CHAID validation AUC 0.67, printed 95% CI 0.61-0.74 (83/213). Hanley-McNeil SE 0.036, [0.599, 0.741]. Logistic regression validation 0.69 (0.62-0.75). Training 0.75 and 0.76."
+      },
+      "candidate_explanations": [
+        {"difference": "Population (the failing condition): older chronic-pain inpatients against T2DM inpatients from age 40.", "quote": "Although MCI prediction models have been developed for older patients with diabetes and chronic kidney disease, etc [12, 13]. , no such models exist for older patients with chronic pain.", "paper": "P-307"},
+        {"difference": "Disease-specific predictors.", "quote": "whereas diabetic nephropathy and retinopathy were factors specifically limited to the diabetic population.", "paper": "P-270"},
+        {"difference": "Reference standard: MoCA < 26 against education-adjusted MMSE.", "quote": "(2) Montreal Cognitive Assessment Scale (MoCA) score < 26", "paper": "P-307"},
+        {"difference": "Class balancing and model: SMOTETomek with XGBoost against unresampled CHAID and logistic regression.", "quote": "Given the small number of MCI-positive samples in our study, SMOTETomek comprehensive sampling was used to balance the data.", "paper": "P-307"}
+      ],
+      "reason": "Conditions 2 to 6 hold on the printed figures, and the matched logistic-regression AUCs (0.895 against 0.69) do not reconcile. Condition 1 fails on the sources. The samples are defined by different diseases (chronic pain at age 60 and over, T2DM from age 40), with disease-specific predictors, which matches the rule's Parkinson's example of a different population class. P-307 itself treats the diabetic population as a separate target population. If the operator reads 'population class' as the MCI construct alone, every other condition is met and the listed explanations are not shown sufficient.",
+      "quotes": [
+        {"paper": "P-307", "page": 2, "quote": "Although many risk factors for MCI in older adults are worth considering [11], this needs further validation in this specific subgroup."},
+        {"paper": "P-307", "page": 11, "quote": "Jiang et al.'s traditional diabetes-based MCI prediction model reported an AUC of 0.893 [12]"},
+        {"paper": "P-270", "page": 4, "quote": "The AUC value of the decision tree models was .75 (95% CI: .71-.78) and .67 (95% CI: .61-.74) in the training and validation sets, respectively, and that of the multivariate logistic regression models was 0.76 (95% CI: .72-.80) and 0.69 (95% CI: .62-.75) in the training and validation sets, respectively."},
+        {"paper": "P-270", "page": 3, "quote": "(2) hospitalized due to T2DM; (3) aged >=40 years"}
+      ]
+    },
+    {
+      "id": "C-201",
+      "final": "no",
+      "overturned": false,
+      "conditions_attacked": {
+        "1_question": "Fails under the AUC reading. The advocate case: both papers print AUCs for MoCA-based MCI against non-MCI in Chinese community adults from questionnaire data. P-261's limitations call its model 'the prediction model', and condition 6 directs judging printed figures rather than the record's AUC-against-OR comparison. Against it: P-261's stated objectives are association (to compare prevalence and to 'analyze the ... association' of sleep characteristics with MCI). Its AUCs are fit statistics for exposure models built from a DAG, and the paper says 'The smaller the values of AIC and AUC, the better performance of the model', so it does not offer its AUC as a discrimination result. The brief lists 'the association of a named factor with MCI' as a separate question from 'MCI against controls'. P-261 addresses the first and P-258 (a risk nomogram) the second.",
+        "2_metric": "Under the AUC reading, AUC with AUC. As recorded, AUC against OR, which is a mismatch.",
+        "3_matched_figure": "None exists in either reading.",
+        "4_uncertainty": "Fails under the sleep reading, the one question both address. P-261: PSQI sleep disturbance, adjusted OR 1.681 (1.231-2.296). P-258: sleep quality and insomnia were not significant in univariate screening, with the statistics only in Multimedia Appendix 1 and no estimate in the paper. That is a difference in significance alone, which Section 5.2 does not count. Under the AUC reading the derived intervals do not overlap: 0.835 [0.797, 0.873] against 0.682 [0.645, 0.719].",
+        "5_performance_validity": "Holds. All AUCs are below 0.97.",
+        "6_record": "The record misreads the metric (it computes a gap between an AUC and an OR). Judged on printed figures, the result is as above."
+      },
+      "figures": {
+        "P-258": "387 MCI / 91 non-MCI. Apparent AUC 0.8704, Hanley-McNeil SE 0.0167 [0.838, 0.903]; 10-fold CV 0.8353, SE 0.0194 [0.797, 0.873]. No sleep estimate printed.",
+        "P-261": "314 / 757. Table 4 AUC: Model 1 0.602, Model 2 0.682 (SE 0.0187, [0.645, 0.719]), Model 3 0.683 ([0.646, 0.720]). Sleep disturbance adjusted OR 1.681 (1.231-2.296); joint with Qi-stagnation OR 2.581 (1.706-3.907)."
+      },
+      "candidate_explanations": [
+        {"difference": "Question type: association study against risk-prediction nomogram (the failing condition).", "quote": "To better clarify the association of Qi-stagnation and sleep quality with MCI, we investigated subjective sleep quality, Qi-stagnation exposure, and cognitive function level in older adults of the community in China.", "paper": "P-261"},
+        {"difference": "Label definition: MoCA < 25 gives 81% MCI in P-258, against education-graded cut-offs and 29.3% in P-261.", "quote": "If the score was less than 25 points, it was defined as MCI.", "paper": "P-258"},
+        {"difference": "Age band: 45 and over against 55-75, where age does not separate groups in P-261.", "quote": "Criteria for inclusion were as follows: (1) aged 45 and older; (2) completed the MCI and connected survey questionnaire.", "paper": "P-258"},
+        {"difference": "Predictor selection: 5 of 42 candidates selected for discrimination on the same data, against hypothesis-driven exposures.", "quote": "These predictors included age, gender, residence, education level, and reading.", "paper": "P-258"}
+      ],
+      "reason": "The strongest case for yes is that both papers print AUCs for MCI against non-MCI in Chinese community adults with non-overlapping derived intervals (0.835 [0.797, 0.873] against 0.682 [0.645, 0.719]), and P-261 calls its model a prediction model. But P-261 is an association study whose AUC is a model-fit statistic it misreads ('smaller ... better'), so it offers no result on the detection question, and condition 1 fails. On the shared association question (sleep), P-258 prints no estimate, a difference in significance only, which fails condition 4.",
+      "quotes": [
+        {"paper": "P-261", "page": 3, "quote": "The smaller the values of AIC and AUC, the better performance of the model."},
+        {"paper": "P-261", "page": 7, "quote": "the effects of ambidextrous TCM constitution on sleep quality and cognitive disturbance need to be further explored to evaluate the prediction model more comprehensively."},
+        {"paper": "P-258", "page": 3, "quote": "By internal 10-fold cross-validation, the mean AUC based on data from the development people was 0.8353 (Fig. 3B)."},
+        {"paper": "P-258", "page": 3, "quote": "Factors with statistical significance in univariate analysis (P < 0.05) included age, gender, residence, education level, economic status, family history of longevity, number of offspring, child visit frequency, smoke, strength and flexibility, physical exercise, plant flowers and aviculture, reading, keep poultry or livestock, self-reported health, ADL, and neck circumference (Multimedia Appendix 1)."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "C-58",
+  "qualifies": "no",
+  "question": "The task label matches (MCI vs normal) but the channel does not: P-117 (correct PDF S1746809423008959, Aljalal et al.) uses resting-state EEG; P-77 (Alsuhaibani, Dodge & Mahoor, ESWA 252 (2024) 124185) uses facial video from I-CONECT interviews. Facial video is not EEG under any reading of the channel list. Condition 1 fails on channel.",
+  "metric": "Same metric type (accuracy); P-77's '88%' is the abstract's rounding of its best per-theme accuracy, 87.5% (Halloween).",
+  "figures": {
+    "P-117": "99.81% accuracy (ensemble KNN, 11 NSGA-II channels), binary aMCI vs HC, 10-fold CV over 3660 segment feature vectors from 61 participants; no interval. Wilson 95% with n = 61: z^2/n = 0.06297; centre = (0.9981 + 0.03149)/1.06297 = 0.9686; half-width 0.0314; interval [0.937, 1.000].",
+    "P-77": "87.5% accuracy (F1 0.89, AUC 0.87), Halloween theme, 32 videos (14 MCI/18 NC), 10-fold CV with subjects randomly assigned to folds; best of four themes (66.7%-87.5%). No interval reported. Wilson with n = 32 (28/32): z^2/n = 0.12005; centre = (0.875 + 0.06002)/1.12005 = 0.8348; half-width = 1.96*sqrt(0.875*0.125/32 + 3.8415/(4*32^2))/1.12005 = 0.1155; interval [0.719, 0.950]."
+  },
+  "matched_figure_check": "No matched figure exists. Neither paper reports a result in the other's channel. Nothing reconciles the pair.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "P-117 meets the Section 3.5 exclusion on its own PDF: 99.81% (>= 0.97), internal 10-fold CV over randomly split segment feature vectors, 61 participants, no external cohort (the round-20 reading's 'likely applies' is confirmed from the correct PDF). P-77's 87.5% is not excluded.",
+  "failed_conditions": [1, 5],
+  "candidate_explanations": [],
+  "reason": "The gap is numerically beyond uncertainty (0.9981 lies outside P-77's Wilson [0.719, 0.950]; 0.875 lies outside P-117's [0.937, 1.000]), but EEG and facial video are different measurement channels, so condition 1 fails. P-117's 99.81% also fails the performance-validity exclusion (condition 5). The record's '88% Acc' is the abstract's rounding of the best theme's 87.5% on 32 videos.",
+  "quotes": [
+    {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+    {"paper": "P-117", "page": 3, "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases."},
+    {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+    {"paper": "P-77", "page": 1, "quote": "The detection accuracy using this combined method reached 88%, whereas the accuracy without applying the segments and sequences information of the facial features within a video on a certain theme was 84%."},
+    {"paper": "P-77", "page": 6, "quote": "We randomly assigned the subjects to 10 different folds for all themes separately to perform a 10- folds cross-validation evaluation of the model."},
+    {"paper": "P-77", "page": 7, "quote": "Ours Visual 87.5% 0.89 0.87"}
+  ]
+}

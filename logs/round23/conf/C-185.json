@@ -1,0 +1,24 @@
+{
+  "id": "C-185",
+  "qualifies": "no",
+  "question": "Not shared at the level of population class, and this is the same comparison as C-184. P-20 is the same paper as P-19: the two source extracts are byte-identical (Cai et al., Ecotoxicology and Environmental Safety 2024;285:117111). Both papers detect current MCI from clinical and questionnaire tabular data. But P-343's population is hospitalised type 2 diabetes patients aged 40 or over (MCI by AAN 2018 criteria with MoCA < 26), and P-20's is working-age dust-exposed coal miners (inclusion age >= 18; mean 42.6 normal / 48.8 MCI; MCI by a MoCA <= 26 screen). The predictors are tied to each population and share only age and education.",
+  "metric": "ROC-AUC with ROC-AUC (match).",
+  "figures": {
+    "P-343": "Internal tuned SVC 0.74 +/- 0.04 (CV mean and SD; mean +/- 1.96 SD [0.662, 0.818]; Hanley-McNeil at the 623-person split, about 218/405: SE = 0.0218, [0.697, 0.783]). External DECODE 0.80, no interval; n = 161, class split derived from the printed accuracy 0.75, recall 0.89 and precision 0.72 as about 88 MCI/73 NC; Hanley-McNeil Q1 = 0.6667, Q2 = 0.7111, SE = 0.0344, CI [0.733, 0.867] ([0.712, 0.888] even at a 40/121 split).",
+    "P-20": "Identical to P-19. XGBoost 0.959 training / 0.795 validation / 0.913 separately recruited test; logistic 0.818 / 0.816 / 0.778; no interval printed. Derived Hanley-McNeil: test (50/301) XGBoost 0.913, SE = 0.0280, CI [0.858, 0.968]; validation (about 66/322) XGBoost 0.795, SE = 0.0344, CI [0.728, 0.862]; logistic validation 0.816, CI [0.751, 0.881]."
+  },
+  "matched_figure_check": "As in C-184. No figure is reported in the other's population or with the other's predictors. The recorded pairing (external DECODE 0.80 against the same-mine test set 0.913) differs both ways but pairs unlike tiers. On the matched internal tier, P-343's 0.74 lies inside P-20's XGBoost validation interval [0.728, 0.862], and P-20's 0.795 lies inside P-343's mean +/- 1.96 SD range [0.662, 0.818] but just above the Hanley-McNeil interval [0.697, 0.783]; the logistic figures still differ (0.73 against 0.816). Condition 3 is equivocal; condition 1 decides.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: the compared figures are 0.80 and 0.913, both below 0.97.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "This record duplicates C-184, since P-20 and P-19 are one paper, and it gets the same judgment. The recorded AUCs differ beyond uncertainty, but they describe MCI detection in different population classes (hospitalised diabetic adults against working-age dust-exposed coal miners) with different predictors and MCI definitions, so condition 1 fails. The pair should be counted once, with C-184.",
+  "quotes": [
+    {"paper": "P-343", "page": 1, "quote": "External validation with the DECODE cohort yielded an AUC of 0.80, an F1 score of 0.80, and a recall of 0.89."},
+    {"paper": "P-343", "page": 2, "quote": "This cross-sectional study prospectively enrolled adult inpatients diagnosed with T2DM from the Department of Endocrinology at Nanjing Drum Tower Hospital over the period from January 2016 to December 2023."},
+    {"paper": "P-20", "page": 1, "quote": "XGBoost (training set: AUC=0.959, validation set: AUC=0.795) and Logistic Regression (training set: AUC=0.818, validation set: AUC=0.816) models exhibited superior predictive performance. Results from the test set showed that the AUC of the XGBoost model (AUC=0.913) outperformed the Logistic Regression model (AUC=0.778)."},
+    {"paper": "P-20", "page": 2, "quote": "A total score of ≤26 is considered to indicate that there may be mild cognitive impairment (MCI), and a total score of > 26 is defined as a normal population."},
+    {"paper": "P-20", "page": 6, "quote": "The data used in this model comes from a single coal mine. More external data may be needed to improve the model’s generalizability."}
+  ]
+}

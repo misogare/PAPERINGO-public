@@ -1,0 +1,24 @@
+{
+ "id": "C-36",
+ "qualifies": "no",
+ "question": "None shared. P-114 (Seifallahi et al., pack pdf/P-115.txt) separates MCI from healthy controls in community older adults using Kinect gait. P-91 separates Parkinson's disease with MCI from Parkinson's disease with normal cognition using DTI tract profiles. The population class (idiopathic Parkinson's disease vs general older adults), the comparison (PD-NCI vs healthy controls) and the channel (diffusion MRI vs gait/motor) all differ.",
+ "metric": "Mismatch: accuracy (93%) vs ROC-AUC (0.80); P-91's other figure is balanced accuracy (0.79), not plain accuracy.",
+ "figures": {
+  "P-114": "Accuracy 93% (n = 150; ANFIS protocol not stated), Wilson 0.878-0.961.",
+  "P-91": "SVM on pointwise FA/MD plus clinical features, trained on 70% of the 70 IPD patients and tested on a stratified 30% hold-out (about 21 patients): validation AUC 0.80, balanced accuracy 0.79, sensitivity 0.78, specificity 0.75 for IPD-MCI vs IPD-NCI. No interval arithmetic was done because no shared quantity exists."
+ },
+ "matched_figure_check": "No matched figure is possible: P-91 reports no MCI-vs-healthy-control classifier and no gait result; P-114 reports no Parkinson's cohort.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Passes: no compared figure reaches 0.97.",
+ "failed_conditions": [1, 2],
+ "candidate_explanations": [],
+ "reason": "The studies address different clinical questions (MCI within Parkinson's disease against Parkinson's with normal cognition, vs MCI against healthy older adults) through different channels (DTI vs gait), and they report different metrics (AUC vs accuracy). The pair fails conditions 1 and 2.",
+ "quotes": [
+  {"paper": "P-114 (pack pdf/P-115.txt)", "page": 1, "quote": "the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups."},
+  {"paper": "P-91", "page": 1, "quote": "Forty IPD with normal cognition (IPD-NCI), thirty IPD-MCI, and thirty healthy controls were included."},
+  {"paper": "P-91", "page": 1, "quote": "Automated fiber quantification was applied to extract the fractional anisotropy (FA) and mean diffusivity (MD)"},
+  {"paper": "P-91", "page": 3, "quote": "The IPD group was separated into training (70%) and validation (30%) dataset with stratified random sampling."},
+  {"paper": "P-91", "page": 4, "quote": "validation dataset: balanced accuracy = 0.79; AUC = 0.80; sensitivity = 0.78; specificity = 0.75"}
+ ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "C-44",
+  "qualifies": "no",
+  "question": "MCI vs controls in ADNI from MRI (diffusion white-matter indices in P-115; resting-state fMRI connectivity in P-71; one channel under the rule). P-115 (Rallabandi & Seetharaman 2023; the right PDF is 1-s2.0-S1746809422005547) pools MCI (CN vs MCI accuracy 0.72). P-71 (Lei et al. 2022) reports LMCI vs NC and EMCI vs NC separately. The record's pairing (P-115's three-class 0.79 against P-71's binary LMCI vs NC 91.42%) mixes a three-class and a binary figure. Judged on the printed binary figures, condition 1 is met at the level of MCI (or an MCI subset) against controls.",
+  "metric": "Binary MCI-vs-control accuracy in both, using the like-for-like printed figures.",
+  "figures": {
+    "P-115": "CN vs MCI accuracy 0.72, 5-fold CV, n=128 (44 CN + 84 MCI): Wilson (0.637, 0.791). Three-class balanced accuracy 0.79, n=150: (0.718, 0.848).",
+    "P-71": "ADNI-2&3 combined, leave-one-out CV (Table 4). Proposed SSBi-LSTM on fused baseline + year-1 scans: LMCI vs NC 91.42% (n=89: Wilson 0.838-0.957), EMCI vs NC 86.11% (n=113: 0.785-0.913). Baseline scan only, same network: 87.14% (0.786-0.926) and 82.63% (0.746-0.885). Baseline scan only with SGN features + SVM: 75.00% (0.651-0.828) and 73.93% (0.651-0.811)."
+  },
+  "matched_figure_check": "P-71 reports its result under P-115's single-timepoint condition (baseline scan only). With its proposed network that figure still differs: 0.72 lies outside 0.746-0.885 (EMCI vs NC) and outside 0.786-0.926 (LMCI vs NC), and 0.8263 lies outside 0.637-0.791. With a conventional classifier on the same single-timepoint features (SGN + SVM), P-71 obtains 73.93% and 75.00%. Both intervals contain 0.72, and both figures lie inside P-115's interval. P-71's own Table 4 therefore shows that the gap comes from its proposed network and its two-timepoint fusion: for EMCI vs NC, SVM 73.93% -> baseline SSBi-LSTM 82.63% -> fusion 86.11%. Under the rule, a paper that shows an explanation to be sufficient fails condition 3.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study is excluded: P-71's contested accuracy (91.42%) and its AUC (96.43%) are below 0.97. Its 97.59% AUC is for EMCI vs LMCI, not an MCI-vs-control figure and not the contested one. P-115 has no contested figure at or above 0.97. Checked on the sources.",
+  "failed_conditions": [3],
+  "candidate_explanations": [
+    {"difference": "Architecture and longitudinal input: P-71's SSBi-LSTM on two time points against a balanced random forest on one scan. P-71 SHOWS this explanation is sufficient: on the same data, SVM on single-timepoint features gives 73.93%/75.00%, against 86.11%/91.42% for its fused model.", "quote": "Baseline ... SGN SVM 75.00 79.14 77.55 72.50 75.00 82.56 73.74 80.68 73.93 77.74 67.19 81.63 ... Fusion ... SGN SSBi-LSTM 91.42 96.43 86.96 97.67 89.42 97.59 92.19 87.50 86.11 93.90 89.06 77.55 (Table 4: LMCI vs NC, EMCI vs LMCI, EMCI vs NC; ACC AUC SEN SPE)", "paper": "P-71"},
+    {"difference": "Label definition: EMCI and LMCI subsets against pooled MCI. This is not tested.", "quote": "In ADNI-2 dataset, there are 30 LMCI, 39 EMCI, and 33 NC.", "paper": "P-71"},
+    {"difference": "Parameter selection on the evaluation results. This is not tested.", "quote": "The regularization parameters with the best performance are selected as the optimal parameters.", "paper": "P-71"}
+  ],
+  "reason": "Against controls in ADNI from MRI, P-71's proposed longitudinal model (86.11% and 91.42%) and even its single-scan network (82.63% and 87.14%) exceed P-115's pooled 0.72 beyond uncertainty. But P-71's own conventional classifier on single-scan features (73.93% and 75.00%) agrees with P-115, so P-71's data show that its architecture and two-timepoint fusion are what produce the gap. The pair fails condition 3. The record's pairing (a three-class 0.79 against a binary 91.42%) was replaced by the printed binary figures under condition 6.",
+  "quotes": [
+    {"paper": "P-115", "page": 1, "quote": "Our results conclude that the proposed model using kurtosis indices as source model classified and predicted with accuracies of 0.96, 0.72 and 0.7 in classifying CN vs AD, CN vs MCI and AD vs MCI respectively. (document: 1-s2.0-S1746809422005547)"},
+    {"paper": "P-71", "page": 3, "quote": "The datasets collected in this work are all from public ADNI-2 and ADNI-3 datasets, with 102 subjects in ADNI-2 and 51 subjects in ADNI-3 dataset."},
+    {"paper": "P-71", "page": 5, "quote": "Due to the small dataset, the leave one out cross validation (LOOCV) is used in the experiments."},
+    {"paper": "P-71", "page": 7, "quote": "the results on the combined dataset ADNI-2&3 decrease relatively, comparing to the results on the two datasets individually, which are from 87.50% to 86.11%, 91.30% to 89.42% and 92.06% to 91.42% in the three detection tasks of EMCI vs. NC, EMCI vs. LMCI and LMCI vs. NC, respectively."},
+    {"paper": "P-71", "page": 10, "quote": "Proposed 40 LMCI+49 NC M SGN softmax 91.42 ... Proposed 64 EMCI+49 NC (Table 6)"}
+  ]
+}

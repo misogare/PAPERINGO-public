@@ -1,0 +1,30 @@
+{
+  "id": "C-196",
+  "qualifies": "no",
+  "question": "Shared once the record's misreading is set aside: LMCI vs NC classification from MRI in ADNI. P-71 uses rs-fMRI connectivity at baseline and year 1 (ADNI-2 and ADNI-3). P-79 uses a single time point of rs-fMRI plus T1 grey-matter volumes plus an age/sex population graph (ADNI2). Structural and functional MRI count as one channel, and the two-time-point input, the added T1 features, the architecture and the validation design (LOOCV against stratified 5-fold CV) are differences the rule allows.",
+  "metric": "Accuracy with accuracy, on the figures the papers print. The record's claim_b ('+8.5% vs baseline') is P-79's average improvement over its own baselines, not an accuracy (condition 6). P-79's task-matched figure is NC vs LMCI 97.44% (AUC 99.75%).",
+  "figures": {
+    "P-71": "LOOCV, SGN + SSBi-LSTM. The record's figure is ADNI-2&3 pooled (40 LMCI + 49 NC = 89): fusion of two time points 91.42%, Wilson n = 89 gives [0.838, 0.957]; baseline only 87.14% [0.786, 0.926]; year 1 only 89.28%. ADNI-2 alone (30 LMCI + 33 NC = 63): fusion 92.06% [0.827, 0.966]; baseline only 87.30% [0.769, 0.934].",
+    "P-79": "Stratified 5-fold CV, ADNI2 (161 NC + 128 LMCI = 289). The record's task-matched headline is Scheme 3 (fMRI + T1 + phenotype) 97.44 +/- 1.85%, Wilson n = 289 gives [0.949, 0.987]. Scheme 2 (fMRI + phenotype, single time point) is 87.59 +/- 5.36%, Wilson [0.833, 0.909]. Scheme 1 (T1 + phenotype) is 84.65%."
+  },
+  "matched_figure_check": "Both papers report the shared condition, one time point of rs-fMRI. P-71's baseline-only accuracies are 87.30% on ADNI-2 (the cohort P-79 uses) and 87.14% on ADNI-2&3. P-79's fMRI + phenotype scheme gives 87.59%. Each estimate lies inside the others' intervals: 0.8759 is inside [0.769, 0.934] and [0.786, 0.926], and 0.873 is inside [0.833, 0.909]. The matched figures dissolve the gap. The headline gap (91.42% against 97.44%, beyond uncertainty in both directions) comes from the inputs each paper adds. P-79's own ablation attributes about 9.9 points to adding T1 volumes to fMRI, and P-71's own tables attribute about 4-5 points to adding the year-1 scan. The small difference left (P-79's population graph uses age and sex, which P-71's baseline model does not) does not open a gap.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "P-79 meets the Section 3.5 exclusion for its headline figure, checked against the source. NC vs LMCI accuracy 97.44% (AUC 99.75%) comes from internal stratified 5-fold CV on 289 subjects (a small-to-modest sample). There is no external MCI cohort: its only external test is a depression dataset (REST-META-MDD, MDD vs healthy controls). P-71 (91.42%, AUC 96.43%, LOOCV on 89 subjects) is below 0.97. The exclusion does not decide the pair, because condition 3 already fails.",
+  "failed_conditions": [3, 5, 6],
+  "candidate_explanations": [
+    {"difference": "Input representation, shown by P-79 to produce the headline gap: adding T1 grey-matter volumes to fMRI raises NC vs LMCI accuracy from 87.59% to 97.44%. Because a paper shows this, the pair fails condition 3.", "quote": "the multimodal model achieved an ACC of 97.44%, an AUC of 99.75%, and an F1-score of 97.22%, representing improvements of approximately 9.9%, 5.7%, and 11.4%, respectively, compared to the fMRI-only setting", "paper": "P-79"},
+    {"difference": "Longitudinal input in P-71: a second (year-1) scan raises its accuracy from 87.14% to 91.42% on ADNI-2&3.", "quote": "All the detection tasks have three different scenarios: baseline, year1, and their fusion.", "paper": "P-71"}
+  ],
+  "reason": "Once the record's misreading ('+8.5%' is an improvement margin, not an accuracy) is corrected, the pair compares P-71's 91.42% with P-79's 97.44% for LMCI vs NC. That gap is beyond uncertainty, but both papers report the shared single-time-point rs-fMRI condition, and there they agree (87.30%/87.14% against 87.59%). P-79's own ablation assigns the rest of the gap to its added T1 input. The pair fails condition 3. P-79's headline figure would also fall under the Section 3.5 exclusion.",
+  "quotes": [
+    {"paper": "P-79", "page": 1, "quote": "achieving an average improvement of 8.5% in accuracy over baseline models."},
+    {"paper": "P-79", "page": 6, "quote": "The dataset includes 161 normal controls (NC), 147 early mild cognitive impairment (EMCI) subjects, and 128 late mild cognitive impairment (LMCI) subjects."},
+    {"paper": "P-79", "page": 7, "quote": "We adopted stratified five-fold cross-validation to evaluate model performance."},
+    {"paper": "P-79", "page": 8, "quote": "Scheme 2 fMRI&Phen 87.59 ± 5.36 94.10 ± 8.45"},
+    {"paper": "P-79", "page": 15, "quote": "we selected data from the Southwest University site (SITE-20) of the publicly available multi-center REST-META-MDD dataset (Yan et al., 2019), comprising 282 patients with Major Depressive Disorder (MDD) and 251 Healthy Controls (HC)."},
+    {"paper": "P-71", "page": 5, "quote": "Due to the small dataset, the leave one out cross validation (LOOCV) is used in the experiments."},
+    {"paper": "P-71", "page": 9, "quote": "Table 4 Algorithm comparison of different scenarios on ADNI-2&3 dataset."},
+    {"paper": "P-71", "page": 10, "quote": "Proposed 40 LMCI+49 NC M SGN softmax 91.42"}
+  ]
+}

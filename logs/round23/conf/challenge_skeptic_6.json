@@ -1,0 +1,87 @@
+{
+  "role": "skeptic",
+  "batch": "challenge_skeptic_6",
+  "date": "2026-09-29",
+  "method": "Each reader verdict was tested against the source texts (r20/pdf P-178, P-212, P-243, P-81, P-344; r21/pdf P-309, P-1232, P-1254) and, for C-232, the ledger record in data/conflicts.json. For each pair I looked for a matched figure that reconciles it, redid the uncertainty arithmetic (Wilson, Hanley-McNeil, fold-based t), and checked for a significance-only difference, the performance-validity exclusion, a different question, population or channel, and a misread figure. The final is 'no' only where the source shows a condition fails.",
+  "results": [
+    {
+      "id": "C-214",
+      "final": "yes",
+      "overturned": false,
+      "reason": "No condition fails on the source. Arithmetic reproduced: P-178 0.936, Wilson n = 95 subjects [0.868, 0.970]; P-212 RF 92/139 [0.580, 0.735], ensemble 95/139 [0.602, 0.755]. The raw figures exclude each other in both directions. The strongest challenge is prevalence. P-178's SVC (accuracy = precision = 0.900, recall 1) shows its test set is about 90% non-converters, and Table 1 even lists a 402/402 oversampled 'Testing Data' row that contradicts Table 4, so P-178's test composition is internally inconsistent. Reconstructing class-wise figures under either reading (NC share 0.900 or 402/452 = 0.889) gives converter sensitivity 0.556-0.604, and at P-212's 46.8% converters an accuracy of 0.781-0.803. That still lies above both P-212 held-out upper bounds (0.735, 0.755), so prevalence narrows the gap but does not close it. This holds one way only: P-178's adjusted interval (SE about 0.068 with about 12 test converters) contains P-212's figures, and 0.781 sits on the upper bound of P-212's CV interval [0.708, 0.781]. The rule needs only one direction. No matched figure exists: every P-178 model (6, 9 and 13 features, RF/SVC/LR/XGB) contains ADAS, MMSE and FAQ, and P-212 prints no model with them and no EMCI subgroup. EMCI is Alzheimer's-spectrum MCI in the same ADNI population class, which the rule allows as a cohort difference. Performance validity passes (0.936, AUC 0.96 < 0.97). The pair qualifies. Of the four it rests most on the raw figures, because after prevalence adjustment the exclusion is one-way and marginal.",
+      "figures": {
+        "P-178": "Accuracy 0.936 (9-feature RF, 95 test patients, visit-level). Wilson n = 95: z^2/n = 0.0404, centre 0.919, half-width 0.051 -> [0.868, 0.970]. Class-wise: NC share 0.900 -> sensitivity 0.556, specificity 0.978, balanced 0.767; NC share 0.889 (402/452 visits) -> sensitivity 0.604, balanced 0.791. At 46.8% converters: 0.781 (or 0.803).",
+        "P-212": "Held-out n = 139 (74 sMCI/65 cAD). RF 92/139 = 0.662, Wilson [0.580, 0.735]. Ensemble 95/139 = 0.683, Wilson [0.602, 0.755]. 50-fold CV RF 74.6%, Wilson n = 539 [0.708, 0.781].",
+        "comparison": "Raw: two-way exclusion. Prevalence-adjusted: 0.781-0.803 is outside P-212's held-out intervals (one way). The reverse fails: the adjusted P-178 interval, about [0.649, 0.913], contains 0.662/0.683."
+      },
+      "candidate_explanations": [
+        "Class prevalence and chance level: P-178's test set is about 90% non-converters (Table 4 SVC 'Support Vector 9-Features 0.900 0.900 1 0.948 0.54') against 47% converters in P-212. P-178's own figures show this accounts for part of the gap, not all of it.",
+        "Diagnosis-defining scales as predictors: P-178 uses 'four neuropsychological scale scores (ADAS13, ADAS11, FAQ, MMSE)'. P-212 excludes them: 'we ensured complete independence between features used to define outcome and features used to train the classification model'.",
+        "Population: P-178 is early MCI only ('Early Mild Cognitive Impairment (EMCI) patients were eligible for our study as long as they had follow-up appointments for greater than a year'). P-212 is all ADNI MCI with at least three visits and three MRIs.",
+        "Unit of evaluation and oversampling: P-178 analyses 1806 visits with random minority oversampling ('trained against 2412 exam visits (1206 per class) rather than only the 1354 from the original data set train/test split'). Its Table 1 testing row (402/402 after oversampling) is inconsistent with Table 4. P-212 uses one record per subject.",
+        "Feature group chosen on test accuracy (P-178): 'by removing the RAVLT features, our accuracy rose to 93.6% in the 9-feature group'.",
+        "Validation: P-178 uses a single random 95-patient split. P-212 uses 50-fold CV and then a 139-subject held-out set, and its own CV-to-test drop (74.6% to 66.2%) shows how much split variance there is.",
+        "Overlapping ADNI participants (ADNI-1/GO/2 in both), so the two samples are not fully independent."
+      ]
+    },
+    {
+      "id": "C-224",
+      "final": "yes",
+      "overturned": false,
+      "reason": "No condition fails on the source. Arithmetic reproduced: P-243 test AUC 0.89, Hanley-McNeil at 81/107 (test = 30% of 627, class ratio from the cohort because S10 reports no train/test difference) gives SE 0.0258, CI [0.839, 0.941]. P-81's recorded model 0.7849 at 93/164 gives SE 0.0314, CI [0.723, 0.846]; z = 2.59. The strongest challenge is P-81's own fold SD. The t-based interval [0.665, 0.904] contains 0.89, and for CS + age [0.672, 0.929]. But 0.785 and 0.800 still lie outside P-243's test interval [0.839, 0.941] and its fold-based validation interval [0.873, 0.947], so the one-directional criterion holds under every interval choice. There is no matched figure: P-243 prints no model without sMRI volumes (its Table 1 variants are all on the full or LASSO sets, and 'we also didn't introduce more variables such as genes and PET-CT images'), and P-81 prints no sMRI model. P-81's best model without imaging (CS + age, 0.800) does not close the gap. Channel (condition 1): both models are multimodal and share the clinical/cognitive channel, which drives both (P-243's top predictors are FAQ, mPACCtrailsB, RAVLT and ADAS11; P-81's CS-only 0.750 against PET-only 0.610), so the multimodal clause is met. I checked a new point on the source: P-81's Table 3 figures are zero-shot predictions from a network trained on CN vs AD ('Table 3 shows the prediction performance from zero-shot predictions'), so P-81's model never learned the conversion labels. That is a strong candidate explanation, but the clinical question and evaluation population (257 ADNI MCI, 3-year conversion) are unchanged, so it is an allowed architecture/training difference, not a failed condition. Neither figure is near ceiling (P-243's 0.98 is a 0-6-month regrouping of the test set, and P-81's 1.0 values are CN vs AD). The ledger's P-320 label is a record defect, not a misread figure: 0.785 is P-81's.",
+      "figures": {
+        "P-243": "AdaBoost (LR base), LASSO 8 variables, held-out test n = 188 (about 81 converters/107 stable): AUC 0.89, no CI. Hanley-McNeil Q1 = 0.8018, Q2 = 0.8382, SE 0.0258 -> [0.839, 0.941]. Validation 0.91 +/- 0.03 (5 folds): t-based [0.873, 0.947].",
+        "P-81": "Zero-shot transfer from CN-vs-AD pretraining, 5-fold CV over 257 MCI (93/164). PET + age + CS AUC 0.7849 +/- 0.0963: Hanley-McNeil SE 0.0314 -> [0.723, 0.846]; fold t [0.665, 0.904]. CS + age 0.8004 +/- 0.1037: HM [0.741, 0.860]; fold t [0.672, 0.929]. CS 0.7496: HM [0.685, 0.815]. PET only 0.6102.",
+        "comparison": "z = 0.105/sqrt(0.0258^2 + 0.0314^2) = 2.59. Under HM, each estimate lies outside the other's interval. Under P-81's fold SD the exclusion is one-way (P-81's estimates lie outside P-243's intervals)."
+      },
+      "candidate_explanations": [
+        "Training regime: P-81's reported figures are zero-shot predictions from a network pretrained to separate CN from AD ('Table 3 shows the prediction performance from zero-shot predictions'; 'zero-shot learning outperformed fine-tuning'). P-243 trains directly on conversion labels.",
+        "Cognitive instruments: P-243's strongest predictors are FAQ, ADAS11, RAVLT and mPACCtrailsB ('scores from the FAQ, ADAS11 and Modified Preclinical Alzheimer Cognitive Composite with Trails test (mPACCtrailsB) ranked top 3'). P-81 uses CDRSB, LDEL, MMSE, mPACCdigit and mPACCtrailsB, with no FAQ, ADAS or RAVLT.",
+        "Imaging channel: three FreeSurfer volumes (P-243) against whole-brain FDG-PET (P-81). P-81 shows PET adds little to cognitive scores ('Neurocognitive scores predicted better than FDG-PET per se').",
+        "Cohort and selection: P-243 has 627 MCI from ADNI-1/GO/2/3 with 3-year follow-up required and 'Participants diagnosed with bidirectional changes during follow-up were excluded'. P-81 has 257 MCI from ADNI-1/2/GO, restricted to 'a 3D whole-brain FDG-PET scan taken within two months of baseline diagnosis', with no stated follow-up requirement for stable labels.",
+        "Model selection and validation: P-243 selects among nine models and fusion strategies with Bayesian tuning and LASSO on 5-fold CV, then evaluates once on a 30% held-out set. P-81 uses 5-fold CV on 257 subjects with a large fold SD (0.096).",
+        "P-81's own caution: 'interpretation of performance metrics needs to be made with caution. Differences in performance could be due to differences many factors.'",
+        "Overlapping ADNI participants, so the two samples are not fully independent."
+      ]
+    },
+    {
+      "id": "C-232",
+      "final": "yes",
+      "overturned": false,
+      "reason": "No condition fails on the source, but the qualifying discrepancy is the absolute level of the C-index, not the ledger's claimed ordering reversal. Arithmetic reproduced: P-344 test n = 271, stratified, 379/902 = 42.0% events (about 114/157). RSF 0.878 has Hanley-McNeil SE 0.0227, CI [0.833, 0.923]; CoxPH 0.863 has SE 0.0240, CI [0.816, 0.910]. P-309 validation is about 1,102 at about 27% events (about 298/804). RSF 0.781 has SE 0.0170, CI [0.748, 0.814]; Cox 0.798 has SE 0.0166, CI [0.766, 0.830]. z = 3.42 (RSF) and 2.23 (Cox). P-344's printed +/-0.001 bootstrap CIs cannot be sampling intervals for 271 subjects, so deriving intervals is correct. Hanley-McNeil is only an approximation for Harrell's C with censoring, but the RSF gap survives doubling both SEs (P-344 lower bound 0.789 > 0.781; P-309 upper bound 0.848 < 0.878). There is no matched figure. P-344 prints no C-index for a model without imaging (only KM by category) and no time-dependent AUC. P-309 has no imaging. P-309's training-set C-indices (RSF 0.861, XGBoost 0.840) are apparent performance, not a matched condition. Channel: the clinical/cognitive channel is shared and P-344's multimodal model matches on it. Population: MCI in research or memory-clinic cohorts in both. NACC 'MCI' is investigator-diagnosed of any subtype, an allowed cohort difference. The ledger's own claim, the reversal of the RSF-vs-Cox ordering (+0.015 against -0.017), is not established: it depends on an unreported inter-model correlation. Under condition 6 the pair is judged on the printed figures, and on those it qualifies. Performance validity passes (0.878 < 0.97).",
+      "figures": {
+        "P-344": "Test n = 271 (about 114 events/157 censored). RSF 0.878: Q1 = 0.7825, Q2 = 0.8210, SE 0.0227 -> [0.833, 0.923]. CoxPH 0.863: SE 0.0240 -> [0.816, 0.910]. Printed bootstrap CIs (+/-0.001) are not sampling intervals.",
+        "P-309": "Validation about 1,102 (about 298 events/804). RSF 0.781: Q1 = 0.6407, Q2 = 0.6850, SE 0.0170 -> [0.748, 0.814]. XGBoost 0.781. Cox 0.797 (with APOE e4) / 0.798 (without): SE 0.0166 -> [0.766, 0.830].",
+        "comparison": "RSF z = 3.42, Cox z = 2.23; two-way exclusion for both families. RSF exclusion robust to doubled SEs. The within-study ordering difference is indeterminate without the inter-model correlation."
+      },
+      "candidate_explanations": [
+        "Imaging predictors: P-344's final 14 features include '(b) PET (FDG), (c) MRI (Hippocampus, Entorhinal, Fusiform, MidTemp)'. P-309 has none and says CSF and radiomics 'may have a greater effect on the progression of AD'.",
+        "Cohort: the ADNI research cohort (ADNIMERGE 2005-2023) against NACC UDS 3.0 memory-clinic data, where 'The diagnoses of MCI and AD were determined by the investigator and documented in the database'.",
+        "Follow-up and horizon of Harrell's C: ADNI 'follow-up data spanning up to 16 years', median time to progression 6 years, against NACC 'median follow-up time was 24.5 months'. P-309 shows discrimination falls with horizon, so the direction of this effect across cohorts is not established.",
+        "Event proportion and definition: 42.0% converters in ADNI against about 27% in NACC. NACC events are AD diagnosed at the most recent follow-up ('in the most recent follow-up, the subjects were clinically evaluated as having dementia and diagnosed with AD').",
+        "Preprocessing before the split (P-344): missForest imputation and Lasso-Cox feature selection are described before 'After preprocessing, the data was randomly split into non-overlapping training (n = 631, 70%) and testing (n = 271, 30%) sets', so the test figure may be optimistic.",
+        "Predictor sets within the clinical channel: P-344 uses CDRSB, FAQ, ADAS13, RAVLT, LDELTOTAL and TRABSCOR. P-309 uses MoCA, three CDR domain scores, Craft Story, Benson figure, category fluency, informant-reported decline, age, BMI, education and APOE e4 count.",
+        "Evaluation-set size: 271 against about 1,102."
+      ]
+    },
+    {
+      "id": "C-237",
+      "final": "yes",
+      "overturned": false,
+      "reason": "No condition fails on the source as the rule is written. Arithmetic reproduced: P-1232 prints AUC 0.700 (CI 0.641-0.760), matching Hanley-McNeil at 150/150 (SE 0.030). P-1254's ROC is 24 MCI v 24 age-matched controls ('Receiver operating characteristic curves for miR-483-5p and miR-502-5p to discriminate MCI from age-matched control'), not the 72-person cohort. At 24/24 Hanley-McNeil gives miR-483-5p 0.901 SE 0.0465, CI [0.810, 0.992], and miR-502-5p 0.872 SE 0.0527, CI [0.769, 0.975]; z = 3.63. Both directions exclude, and the gap survives doubling P-1254's SE (lower bound 0.719 > 0.700). No matched figure: neither paper measures the other's markers or reports the other's case definition or control group, and P-1232's AddNeuroMed AUC 0.695 is for ATP2A2/PSEN1, not the lncRNA panel. Performance validity: P-1254's top AUC is 0.901 and its accuracy at the operating point is 43/48 = 0.896, both below 0.97, so the exclusion does not apply despite the tiny in-sample design. The strongest challenge is condition 1. The two studies evaluate different analytes (a three-lncRNA logistic panel against single miRNAs), so the gap may simply mean one marker is better than another, not that two results about one test disagree. But the rule treats different features within the fluid-biomarker channel as an allowed difference, and the clinical question (community Chinese older adults, MCI v controls, plasma exosomal RNA) and population class match. The source shows no failed condition, so the pair qualifies. The different analyte is the leading candidate explanation, and the report should say so.",
+      "figures": {
+        "P-1232": "Three-lncRNA combination, qRT-PCR set 150 MCI v 150 controls: AUC 0.700, printed CI 0.641-0.760. HM check Q1 = 0.5385, Q2 = 0.5765, SE 0.0300 -> [0.641, 0.759].",
+        "P-1254": "24 MCI v 24 age-matched controls, in-sample, no CI. miR-483-5p AUC 0.901 (sens 19/24, spec 24/24): Q1 = 0.8198, Q2 = 0.8541, SE 0.0465 -> [0.810, 0.992]. miR-502-5p 0.872: SE 0.0527 -> [0.769, 0.975].",
+        "comparison": "z = 0.201/sqrt(0.030^2 + 0.0465^2) = 3.63; two-way exclusion; robust to doubling P-1254's SE."
+      },
+      "candidate_explanations": [
+        "Different analytes: P-1232 tests 'the combination of plasma exosomal LINC001380, ENST00000484033 and ENST00000531087' as a logistic panel. P-1254 tests single miRNAs (miR-483-5p, miR-502-5p). Neither study measures the other's markers.",
+        "Marker preselection and in-sample optimism (P-1254): 'we have selected miRNA-132-3p, -206, -483-5p, and 502-5p as prospective candidates'. ROC is reported for the two that separated the groups, evaluated in-sample on 48 people, with no CI, cross-validation or external cohort.",
+        "Sample size: 'As the biomarker exploration cohort, 24 MCI patients and 24 age-matched controls were chosen at random' (P-1254), against 150 v 150 (P-1232).",
+        "Control group: P-1254's 'age-matched' controls average 73.35 years against 78.12 for MCI, and the paper notes 'CD9 showed an increasing trend dependent on age'. P-1232's controls are matched 1:1.",
+        "Case definition: education-specific MMSE cut-offs ('MMSE <=17 for illiterate, MMSE <=20 for primary school education, and MMSE <=24 for secondary school and above'; case mean MMSE 18.46) in P-1232, against MoCA < 26 plus European Consortium criteria (case mean MoCA 20.37) in P-1254.",
+        "Cohort: Guangzhou community case-control study (age >= 60) against a Gansu community survey (age > 65)."
+      ]
+    }
+  ]
+}

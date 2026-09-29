@@ -1,0 +1,24 @@
+{
+  "id": "C-48",
+  "qualifies": "no",
+  "question": "Both address binary MCI vs cognitively normal, but through different broad channels: resting-state EEG in P-117 (Aljalal et al. 2024; the right PDF is 1-s2.0-S1746809423008959, and the pack file is an MRI-PET fusion paper) against linguistic features from conversational transcripts in P-6 (Pourramezan Fard et al. 2024). Condition 1 fails on the channel.",
+  "metric": "Accuracy, MCI vs normal, in both (matched in type). The evaluation unit differs: EEG segments in P-117, subjects in P-6.",
+  "figures": {
+    "P-117": "Accuracy 99.81% (11 NSGA channels, ensemble KNN) and 99.51% with all channels, 10-fold CV over 3660 segments from 61 participants (29 aMCI/32 HC). Wilson with subject n=61: (0.937, 1.000).",
+    "P-6": "Subject-level accuracy 85.16% (SD 5.76 over 5 subject-level folds), AUC 84.75%, 68 I-CONECT participants. Wilson with n=68: (0.748, 0.917); from the fold SD, SE = 5.76/sqrt(5) = 2.58 -> (80.1, 90.2)."
+  },
+  "matched_figure_check": "No matched figure: neither paper uses the other's channel, cohort or evaluation unit.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "P-117 meets the Section 3.5 exclusion on its own PDF: 99.81% from internal 10-fold CV over segments of 61 participants, with no external cohort. The registry flag is false only because its Best_Metric is 'not reported'. P-6 is not excluded (85.16%).",
+  "failed_conditions": [1, 5],
+  "candidate_explanations": [],
+  "reason": "Task and metric type match, and the figures differ beyond uncertainty, but the pair fails condition 1 (EEG against speech and language) and condition 5 (P-117's 99.81% on internal segment-level CV of 61 participants with no external cohort). A performance comparison resting on P-117 cannot qualify.",
+  "quotes": [
+    {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method. (document: 1-s2.0-S1746809423008959)"},
+    {"paper": "P-117", "page": 3, "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases."},
+    {"paper": "P-117", "page": 9, "quote": "divided into 3660 segments (1740 segments from MCI cases and 1860 from HC cases)"},
+    {"paper": "P-6", "page": 7, "quote": "Since the number of available subjects in the I-CONECT dataset is 68, we assess the performance of our framework using the K-fold validation technique."},
+    {"paper": "P-6", "page": 7, "quote": "the framework achieves an overall accuracy of 85.16% and an AUC of 84.75%, with the corresponding std of 5.76 and 5.97, respectively."}
+  ]
+}

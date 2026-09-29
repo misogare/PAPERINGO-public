@@ -1,0 +1,25 @@
+{
+  "id": "C-228",
+  "qualifies": "no",
+  "question": "Effect of non-immersive computerised cognitive training against control on activities of daily living in older adults with cognitive impairment. P-655 covers mobile-app CCT in a 10-RCT network of MCI or dementia, with some trials enrolling subjective complaint or frailty. P-642 covers serious games (SG) delivered by computer or tablet, within an ADL network of 8 RCTs in clinical MCI. On the SG node, the question and the channel (ADL scales) match loosely, and the population difference is allowed. P-642's immersive-VR node has no counterpart in P-655.",
+  "metric": "Mismatch: P-655 reports an SMD, while P-642 reports a raw mean difference on unspecified ADL scales. P-642 does not state the scale or its direction; only its ranking implies that lower is better.",
+  "figures": {
+    "P-655": "ADL, CCT against control: SMD -0.80 (95% CI -1.40 to -0.21), where lower is better, significant. CCT ranks first for ADL.",
+    "P-642": "ADL, SG against control: MD -1.34 (95% CI -4.99 to 3.06), from 2 trials and 65 participants, not significant. VR against control: MD -0.07 (-2.23 to 2.07), from 6 trials and 149 participants. SG has the highest probability of being best for ADL (77.1%). No conversion to an SMD is possible: the scales and SDs are not given."
+  },
+  "matched_figure_check": "Neither paper prints a figure under the other's condition: P-642 reports no SMD, P-655 reports no ADL mean difference and has no VR node. On the closest nodes (CCT and SG) the point estimates point the same way, towards benefit.",
+  "beyond_uncertainty": false,
+  "significance_only": true,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [2, 4],
+  "candidate_explanations": [],
+  "reason": "The two estimates use different metrics (an SMD against a raw MD on unstated ADL scales), so their intervals cannot be compared (condition 2). What separates them is significance, not direction. P-655's CCT effect is significant; P-642's SG estimate rests on two trials and 65 participants, points the same way under the ranking P-642 reports, and has an interval wide enough to include benefit. Condition 4 would need the intervals to exclude each other, which cannot be shown, so this is a difference in significance only.",
+  "quotes": [
+    {"paper": "P-655", "page": 4, "quote": "The SMD was −0.80 (95 % CI, −1.40 to −0.21) for CCT"},
+    {"paper": "P-655", "page": 6, "quote": "A lower score represents better activities of daily living and depression."},
+    {"paper": "P-642", "page": 5, "quote": "VR showed virtually no difference in ADL compared to control (MD = −0.07, 95 % CI:–2.23 to 2.07), and SG also showed no significant improvement (MD = −1.34, 95 % CI: −4.99 to 3.06)."},
+    {"paper": "P-642", "page": 5, "quote": "two studies (65 participants) comparing SG with control groups"},
+    {"paper": "P-642", "page": 6, "quote": "an exploratory probability ranking analysis suggested SG had the highest likelihood of being the most effective intervention for ADL (77.1 %; Fig. 4)."},
+    {"paper": "P-642", "page": 4, "quote": "Interventions included VR using head-mounted displays and non-immersive SG delivered via computers or tablets."}
+  ]
+}

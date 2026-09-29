@@ -1,0 +1,28 @@
+{
+  "id": "C-243",
+  "qualifies": "no",
+  "question": "Not the same comparison. Both syntheses concern executive function in older adults with MCI, measured by cognitive tests (same channel). But P-834 pools structured exercise alone against non-exercise controls and excludes by design any exercise combined with cognitive training or virtual games. P-833 pools VR-delivered combined cognitive-plus-physical training against mixed controls, and its inclusion criteria admit controls that themselves received cognitive-only, physical-only or combined training. The intervention and the comparator both differ, and neither is among the differences the rule allows.",
+  "metric": "SMD against SMD for the executive-function contrasts (P-834 per test: TMT-A, TMT-B, Stroop reaction time; P-833 one executive-function/attention composite over TMT, Stroop, digit span and EXIT-25). The record's gate line instead set P-834's delayed-recall MD 0.61 (a working-memory test) against P-833's global-cognition MD 2.66, which are different outcomes.",
+  "figures": {
+    "P-834": "TMT-A SMD -0.24 (95% CI -0.36 to -0.12), n = 1104; TMT-B SMD -0.28 (-0.42 to -0.15), n = 913; Stroop reaction time SMD -0.31 (-0.55 to -0.08), n = 280. Negative = faster = benefit. All printed intervals.",
+    "P-833": "Executive function/attention SMD -0.19 (95% CI -0.74 to 0.36), 4 RCTs, I2 = 53%, printed. The sign convention is in the forest-plot image only. The text says the individual trials 'tended to improve executive function', and omitting Amjad (the Kinect trial) moves the pool to +0.07, so a negative SMD reads as benefit, the same direction as P-834.",
+    "arithmetic": "P-833's -0.19 lies inside all three P-834 intervals (-0.36 to -0.12, -0.42 to -0.15, -0.55 to -0.08). P-834's -0.24, -0.28 and -0.31 all lie inside P-833's interval (-0.74 to 0.36). Suppose instead the signs were opposite, so that P-833's aligned estimate is +0.19 with interval -0.36 to 0.74. That interval still contains all three P-834 estimates, and the intervals overlap from -0.36 to -0.12. Neither estimate lies outside the other's interval in both directions under either sign reading."
+  },
+  "matched_figure_check": "No matched figure exists. P-833 prints no per-test pooled TMT or Stroop estimate, and P-834 prints no executive-function composite (it pooled per instrument because the tests were 'incompatible'). There is no comparator-matched figure either: P-833 does not split its controls into passive and active arms for executive function.",
+  "beyond_uncertainty": false,
+  "significance_only": true,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [1, 4, 6],
+  "candidate_explanations": [],
+  "reason": "The executive-function estimates agree within uncertainty. P-833's SMD -0.19 (-0.74 to 0.36) contains P-834's TMT and Stroop effects (-0.24 to -0.31), and P-833's point estimate lies inside P-834's intervals. What differs is statistical significance: 4 small trials (188 participants in the whole review) against pools of up to 1,104. Section 5.2 and condition 4 exclude a difference of that kind. The papers also answer different comparisons: P-834 excludes exercise combined with cognitive training or virtual games, which is exactly P-833's intervention, and P-833's controls often trained cognitively or physically. The record's own contrast (delayed-recall MD 0.61 against global-cognition MD 2.66) compares different outcomes. The operator named this pair. The source documents show a gap in significance on different interventions, not a discrepancy in effect.",
+  "quotes": [
+    {"paper": "P-834", "page": 3, "quote": "studies involving exercise training combined with other non-exercise activities such as cognitive training, drugs supplementation, or virtual games and interventions that without supervised training sessions were excluded."},
+    {"paper": "P-834", "page": 3, "quote": "Groups receiving cognitive interventions were excluded."},
+    {"paper": "P-834", "page": 7, "quote": "TMT A (n = 1104, SMD=−0.24, 95% CI −0.36 to −0.12, p = 0.0001, I2 = 0%) and TMT B (n = 913, SMD=−0.28, 95% CI −0.42 to −0.15, p < 0.0001, I2 = 20%)"},
+    {"paper": "P-834", "page": 10, "quote": "enhancing SWCT react time(ms/s) (n = 280, SMD=−0.31, 95% CI −0.55 to −0.08, p = 0.009, I2 =0%)"},
+    {"paper": "P-833", "page": 5, "quote": "compared to the control group, the VR combined intervention had no significant effect on executive function/attention, with moderate heterogeneity (SMD = −0.19, 95% CI = −0.74 to 0.36, 4 studies; I 2 = 53%, Fig. 4)."},
+    {"paper": "P-833", "page": 2, "quote": "control group with only cognitive intervention or with only physical exercise or combined with cognitive and physical intervention, without cognitive or physical intervention"},
+    {"paper": "P-833", "page": 7, "quote": "In the individual study, VR combined intervention tended to improve executive function in the older adults with MCI. But the results of the meta-analysis were not meaningful, it may be related to of the combination of VR cognitive training and physical exercise and the control conditions of the control group."},
+    {"paper": "P-833", "page": 7, "quote": "Amjad 0.07 -0.36 ~ 0.50 0.75 0 0.79"}
+  ]
+}

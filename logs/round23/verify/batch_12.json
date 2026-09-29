@@ -1,0 +1,152 @@
+{
+ "batch": 12,
+ "verifier_note": "Uniform difference test of the brief's 'Verification round': z = |a - b| / sqrt(SE_a^2 + SE_b^2). SE from a printed 95% CI = (upper - lower)/3.92; otherwise binomial sqrt(p(1-p)/n) for proportions and Hanley-McNeil for AUC. Figures re-read in r20/pdf and r21/pdf source texts. C-237, C-244 and C-245 were upheld by the first-round skeptic (challenge_skeptic_6.json, challenge_skeptic_7.json), so here they get the z test only. C-249 qualified only through the advocate (challenge_advocate_9.json, overturning the reader's borderline 1/2), so it also gets a full skeptic check of conditions 1-6. These are candidate verdicts pending operator review, not gate decisions.",
+ "results": [
+  {
+   "id": "C-237",
+   "compared": "MCI against community controls from plasma exosomal RNA, headline in-sample AUCs. No matched figure exists: neither paper measures the other's markers or reports a result under the other's case definition or control group. P-1254 miR-483-5p 0.901 (24 MCI v 24 age-matched controls over 65) against P-1232's three-lncRNA logistic combination 0.700 (150 MCI v 150 controls). P-1254's second marker, miR-502-5p (0.872), checked as well.",
+   "a": {
+    "paper": "P-1254",
+    "estimate": 0.901,
+    "se": 0.0465,
+    "se_source": "No interval printed: 'From ROC analysis, miR-483-5p showed an AUC of 0.901 (sensitivity 79.2 % and specificity 100 %)' (pp. 4-5). ROC set: 'As the biomarker exploration cohort, 24 MCI patients and 24 age-matched controls were chosen at random' (p. 2); Fig. 4e 'Receiver operating characteristic curves for miR-483-5p and miR-502-5p to discriminate MCI from age-matched control'. Hanley-McNeil 24/24: Q1 = 0.901/1.099 = 0.8198, Q2 = 2(0.8118)/1.901 = 0.8541, SE^2 = [0.0892 + 23(0.0080) + 23(0.0423)]/576 = 1.2465/576 = 0.002164, SE = 0.0465. For miR-502-5p 0.872: Q1 = 0.7730, Q2 = 0.8124, SE = 0.0527."
+   },
+   "b": {
+    "paper": "P-1232",
+    "estimate": 0.7,
+    "se": 0.0304,
+    "se_source": "Printed 95% CI: 'the AUC of ROC curves for the combination of plasma exosomal LINC001380, ENST00000484033 and ENST00000531087 was 70.0 % (CI: 64.1 %-76.0 %, P < 0.001)' (p. 5), on the qRT-PCR set ('significant differences in expression of target lncRNAs between 150 MCI patients and 150 healthy subjects', p. 5). SE = (0.760 - 0.641)/3.92 = 0.0304. Hanley-McNeil at 150/150 gives 0.0300, which agrees."
+   },
+   "scale": "AUC",
+   "z": 3.62,
+   "arithmetic": "|0.901 - 0.700| / sqrt(0.0465^2 + 0.0304^2) = 0.201 / sqrt(0.002164 + 0.000922) = 0.201 / 0.0555 = 3.62. Weaker marker miR-502-5p: |0.872 - 0.700| / sqrt(0.0527^2 + 0.0304^2) = 0.172 / 0.0608 = 2.83. P-1232's external AddNeuroMed AUC (0.695, CI 0.618-0.7715) is for ATP2A2 and PSEN1, not the lncRNA panel, so it is not a matched figure.",
+   "passes_z": true,
+   "skeptic_checked": false,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "candidate_explanations": [
+    "Different analytes: a logistic combination of three lncRNAs ('the combination of plasma exosomal LINC001380, ENST00000484033 and ENST00000531087', P-1232) against single miRNAs (miR-483-5p, miR-502-5p, P-1254). Each study measures only its own markers. This is the leading candidate: the gap may show which marker was measured rather than a disagreement about one test.",
+    "Marker preselection and in-sample optimism in P-1254: 'Based on the amassed evidence, we have selected miRNA-132-3p, -206, -483-5p, and 502-5p as prospective candidates'. ROC is reported only for the two that separated the groups, evaluated in-sample on 48 people, with no CI, cross-validation or external cohort.",
+    "Sample size: 'As the biomarker exploration cohort, 24 MCI patients and 24 age-matched controls were chosen at random' (P-1254), against 150 v 150 (P-1232).",
+    "Control group: P-1254's 'age-matched' controls average 73.35 years against 78.12 for its MCI group (Table 3), and the paper notes that 'CD9 showed an increasing trend dependent on age'. P-1232's controls were '1:1 proportion-matched'.",
+    "Label definition: Petersen criteria operationalised with education-specific MMSE cut-offs ('MMSE <=17 for illiterate, MMSE <=20 for primary school education, and MMSE <=24 for secondary school and above', P-1232) against MoCA < 26 plus European Consortium criteria (P-1254, case mean MoCA 20.37).",
+    "Cohort: 'the community of Guangzhou City, Guangdong Province' (P-1232, aged 60 or over) against a Gansu community survey (P-1254, controls over 65).",
+    "Neither paper shows any of these to be sufficient."
+   ],
+   "one_sentence": "Two community studies using plasma exosomal RNA to separate Chinese older adults with MCI from controls report AUCs that differ beyond their combined uncertainty: P-1254 reports 0.901 for miR-483-5p, in-sample, in 24 v 24 people, and P-1232 reports 0.700 (95% CI 0.641-0.760) for a three-lncRNA panel in 150 v 150 (z = 3.62). The studies measure different markers, which is the leading candidate explanation; P-1254's in-sample estimate after marker selection, its younger controls, the MCI definitions and the cohorts are others, and none is shown to be sufficient.",
+   "reason": "No matched figure exists. The headline AUCs give z = 3.62 (2.83 on P-1254's weaker marker), so the gap exceeds combined uncertainty. The first-round skeptic upheld conditions 1-3, 5 and 6, and re-reading the sources agrees: P-1254's ROC is the 24 v 24 age-matched contrast, both AUCs are below 0.97, and both are in-sample. The pair qualifies. The report should say that the two studies test different analytes."
+  },
+  {
+   "id": "C-244",
+   "compared": "Agreement between data-driven neuropsychological classification and consensus MCI/NC diagnosis in ADRC participants, headline concordance. No matched figure exists. P-955: LCA against consensus, 90% of 354. P-1084: Ward clusters against NACC consensus, 65.4%, derived from its Table 2 restricted to consensus NC and MCI (P-955's frame). P-955's actuarial (Jak/Bondi) concordance of 84%, the closest impairment definition, checked as well.",
+   "a": {
+    "paper": "P-955",
+    "estimate": 0.9,
+    "se": 0.0159,
+    "se_source": "No interval printed: 'Consensus and LCA diagnoses of MCI demonstrated substantial agreement, with concordant diagnoses for 90% of cases' (p. 9); 'Participants (N = 354; M age = 71 ...' (p. 1), consensus NC or MCI only. Binomial SE = sqrt(0.90 x 0.10/354) = sqrt(0.000254) = 0.0159."
+   },
+   "b": {
+    "paper": "P-1084",
+    "estimate": 0.654,
+    "se": 0.003,
+    "se_source": "No agreement statistic printed. Derived from Table 2 (p. 7): concordant NC = oCN 3081 + tCN 5797 = 8,878; concordant MCI = aMCI 2283 + mMCI-Mild 2586 + mMCI-Severe 2297 = 7,166; 16,044 / (16,005 + 8,513 = 24,518) = 0.6544. Binomial SE = sqrt(0.6544 x 0.3456/24,518) = 0.00304."
+   },
+   "scale": "proportion (raw concordance); kappa reported, not tested",
+   "z": 15.13,
+   "arithmetic": "|0.900 - 0.654| / sqrt(0.0159^2 + 0.0030^2) = 0.2456 / sqrt(0.000254 + 0.0000092) = 0.2456 / 0.0162 = 15.1. Actuarial check: P-955 concordance 100 - 13 - 3 = 84%, SE sqrt(0.84 x 0.16/354) = 0.0195, so |0.84 - 0.654| / sqrt(0.0195^2 + 0.0030^2) = 0.1856 / 0.0197 = 9.41. Kappa, not tested because no SE is printed for P-955: 0.80 against a derived 0.342 (p_e = 0.6528 x 0.4170 + 0.3472 x 0.5830 = 0.4746).",
+   "passes_z": true,
+   "skeptic_checked": false,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "candidate_explanations": [
+    "Normative reference: P-1084 used robust-CN regression norms, P-955 published age/education/sex norms. P-1084 (p. 11): 'only the current study derived z scores from the performance of robust cognitively normal participants' and 'Robust norms may create a higher standard for normal and thus identify more individuals as falling into an MCI group'. Neither paper tests this.",
+    "Sampling frame: one ADRC (44% consensus MCI) against the multi-site NACC UDS (32.4%). P-1084: 'the previous study was conducted in a sample of participants from one ADRC while we used the larger NACC UDS sample'.",
+    "How the reference label is made: NACC consensus 'appeared to be heavily driven by CDR scores' (P-1084 p. 7), while P-955's consensus used 'comprehensive neuropsychological data, functional status, medical and psychiatric history' (p. 5), which includes the test information LCA uses.",
+    "Impairment threshold: P-1084's cluster-MCI groups sit about 1 SD below the mean on several scores. P-1084: 'This difference in the definition of what constitutes memory impairment may have contributed to more participants being classified with MCI using our data-driven approach'.",
+    "Algorithm and input: LCA on domain scores ('Cognitive domain scores, rather than individual test scores, were entered as indicators in LCA', P-955) against Ward hierarchical clustering on individual test z scores (P-1084 p. 3).",
+    "Battery: 14 measures in six domains, including CERAD list learning and praxis (P-955), against a UDS subset of memory, span, TMT, category fluency and naming (P-1084).",
+    "Independence caveat, not a condition of the rule: the Penn ADRC contributes to NACC, so some P-955 participants are plausibly in P-1084's sample. That makes the gap more a difference of method than of population.",
+    "Neither paper shows any of these to be sufficient."
+   ],
+   "one_sentence": "In Alzheimer's Disease Research Center participants, data-driven classification from neuropsychological tests agreed with the consensus MCI/normal diagnosis for 90% of 354 people in P-955 (latent class analysis, one centre, kappa 0.80), but for 65.4% of 24,518 in P-1084 (hierarchical clustering, NACC; derived from its Table 2, kappa 0.34), a gap far beyond combined uncertainty (z = 15.1). P-1084 names the contrast itself. Robust-normal norms, one centre against many, a CDR-driven consensus, the impairment threshold and the algorithm are candidate explanations that neither paper tests.",
+   "reason": "No matched figure exists. Headline concordance gives z = 15.1, and even P-955's actuarial rule, the closest in impairment definition, gives z = 9.41 against P-1084. The first-round skeptic upheld conditions 1-3, 5 and 6, and the source re-reading confirms the counts (P-955 p. 9; P-1084 Table 2) and that P-1084 names P-955 as the study it differs from (p. 11). The pair qualifies."
+  },
+  {
+   "id": "C-245",
+   "compared": "Difference in reversion to normal cognition between conventional/Petersen and Jak/Bondi neuropsychological (NP) MCI criteria, conventional minus NP, matched to P-1136's definitions. P-986: Petersen with no complaint or ADL requirement at follow-up (42.1%, n 1063) minus the original NP rule without complaint (54.7%, n 528) = -0.126. P-1136: full-sample Table 3 reversion, conventional 192/325 = 59.1% minus NP 246/531 = 46.3% = +0.128. The headline figures (P-986 43.4% v 48.3%; P-1136 paired 56.8% v 36.8% in 280) and every other pairing were checked.",
+   "a": {
+    "paper": "P-986",
+    "estimate": -0.126,
+    "se": 0.0268,
+    "se_source": "Printed 95% CIs on each proportion, Table 2 (p. 9): Petersen 'No requirements for ADL or memory complaints at follow-up ... 42.1% (39.1; 45.1)'; original NP 'No requirements for cognitive complaint neither at baseline not at follow-up ... 54.7% (50.4;59.0)'. SE of each = width/3.92 = 0.0153 and 0.0219. SE of the difference, treating the two criterion samples as independent, = sqrt(0.0153^2 + 0.0219^2) = 0.0268. This is conservative: the samples overlap, and positive correlation would narrow it."
+   },
+   "b": {
+    "paper": "P-1136",
+    "estimate": 0.128,
+    "se": 0.0348,
+    "se_source": "No interval printed. Table 3 (p. 5): conventional 'Reverters Consistent ... n = 192 n = 133'; NP 'n = 246 n = 285'. Reversion 192/325 = 0.591 and 246/531 = 0.463. Binomial SE of the difference = sqrt(0.591 x 0.409/325 + 0.463 x 0.537/531) = sqrt(0.000744 + 0.000468) = 0.0348."
+   },
+   "scale": "difference in proportions (reversion, conventional minus NP)",
+   "z": 5.77,
+   "arithmetic": "Matched: |-0.126 - 0.128| / sqrt(0.0268^2 + 0.0348^2) = 0.254 / sqrt(0.000716 + 0.001212) = 0.254 / 0.0439 = 5.77. Headline: P-986 standard 323/744 v 181/375 = -0.049, SE sqrt(0.0184^2 + 0.0263^2) = 0.0321 from its printed CIs (39.8-47.0; 43.2-53.5). P-1136's printed paired contrast in 280 is consistency 63.2% v 43.2%, McNemar 32.9; continuity-corrected (56 - 1)^2/(b + c) = 32.9 gives b + c = 92, and paired SE = sqrt(92 - 56^2/280)/280 = 0.0321, so +0.200. z = 0.249/0.0454 = 5.48. Most conservative pairing: P-986 impairment-only rows, 43.3% (40.8; 45.8) v 45.3% (41.7; 48.9) = -0.020, SE 0.0224, against P-1136 with incident-dementia cases removed (172/262 v 237/449 = +0.129, SE 0.0376): 0.148/0.0438 = 3.39. Same-participant subsets: P-986 -0.135 (n = 334; independence SE 0.0375, per-criterion counts not printed) against +0.200: 6.79. Every pairing tried lies between z = 3.39 and 7.80.",
+   "passes_z": true,
+   "skeptic_checked": false,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "candidate_explanations": [
+    "Age window and cohort: InveCe.Ab enrolled 'a population-based sample of older adults aged between 70 and 74 years of age at baseline' (P-1136); GAS/SNAC pooled random population samples aged 60 and over, with a mean age of 68 at first MCI (P-986).",
+    "Prevalence of subjective complaints, which the conventional rule requires: 'the prevalence of subjective cognitive complaints in our sample was probably lower than that in the clinical setting, leading to a lower probability of being diagnosed with MCI on the basis of Conventional criteria' (P-1136), with conventional MCI at 18.5% against 43.8% under NP.",
+    "Education: low and heterogeneous in InveCe.Ab (mean 7.2 years, P-1136).",
+    "Stability definition: P-1136 counts as consistent anyone who keeps 'fulfilling the criteria for cognitive impairment in subsequent waves (regardless of dementia diagnosis)'. P-986's reverters must keep complaint and intact ADL ('the participants had normal ADL, cognitive complaint, and no dementia'), and it excludes progressors. Both parts were tested approximately (P-986 relaxed rows; progressors removed from P-1136's counts), and the gap stays.",
+    "Same-participant frame: P-986's n = 334 are participants 'that had enough data to fulfil both criteria, and that had complete follow-up data', not necessarily MCI under both. P-1136's 280 had MCI under both criteria.",
+    "Follow-up cadence: 'every third year for those older than 78 years and every sixth year for those younger than 78' (P-986), against waves at 0, 2, 4, 8 and 12 years (P-1136).",
+    "Norms: external SNAC-Blekinge/Stockholm norms (P-986) against internal InveCe.Ab normative samples stratified by age and education (P-1136).",
+    "Neither paper shows any of these to be sufficient."
+   ],
+   "one_sentence": "Two population cohorts disagree on which MCI criteria give the more stable diagnosis. In P-986 (Sweden), Petersen MCI reverts to normal no more often than Jak/Bondi MCI (43.4% against 48.3%; 42.1% against 54.7% under P-1136's rules). In P-1136 (Italy), conventional MCI reverts more often (59.1% against 46.3% overall; 56.8% against 36.8% in the same 280 people). The difference exceeds combined uncertainty on the matched contrast (z = 5.77) and is at least 3.39 in every pairing. The age window, complaint prevalence, education, follow-up schedule and norms are candidate explanations, and none is shown to be sufficient.",
+   "reason": "The two papers' orderings are opposite, and the difference exceeds combined uncertainty on the matched contrast (z = 5.77), on the headline figures (5.48) and on the most conservative pairing (3.39). The first-round skeptic upheld conditions 1-3, 5 and 6. Re-reading the sources confirms the counts (P-986 Table 2 and p. 6; P-1136 p. 4 and Table 3), and P-1136 itself sets its result against P-986's ('contrasting results'). The pair qualifies."
+  },
+  {
+   "id": "C-249",
+   "compared": "Share of people with dementia who carry a diagnosis in high-income health systems, headline figures (no matched figure exists): P-1046's US Medicare dementia observed/expected ratio 1.086 (2015-2017, the lowest of 1.086-1.104) against P-977's 'In most HIC, only 40-50% of people living with dementia have received a diagnosis' (midpoint 0.45). P-977's only interval-bearing coverage figure (diagnosis recorded in primary-care notes, 37.9%, 26.8-49.6%) checked as well.",
+   "a": {
+    "paper": "P-1046",
+    "estimate": 1.086,
+    "se": 0.0377,
+    "se_source": "No interval printed. Table 1 (p. 4): 'Detection rate 1.086 1.093 1.104' on 38,739,387 to 41,205,474 beneficiaries. The claims sampling SE is negligible (observed 0.098: sqrt(0.098 x 0.902/38,739,387) = 0.00005). The model denominator dominates. HRS validation: 'for dementia, the predicted and observed rates were 0.082 and 0.078' (p. 4), on N = 9,808 (Table S4 title, p. 7). SE = sqrt(0.078 x 0.922/9,808) = 0.00271, a relative 3.47%, so SE of the ratio = 1.086 x 0.0347 = 0.0377. This leaves out the model-specification uncertainty the paper itself shows (0.85 and 0.96 on the Rajan and Manly denominators)."
+   },
+   "b": {
+    "paper": "P-977",
+    "estimate": 0.45,
+    "se": 0.0255,
+    "se_source": "The headline has no source, sample or interval: 'In most HIC, only 40-50% of people living with dementia have received a diagnosis' (p. 12). The references attached to that sentence (3-5) are Brazil, Thailand and India studies. The brief's SE therefore cannot be derived. Treating the 40-50% range as if it were a 95% interval gives SE = 0.10/3.92 = 0.0255. Check with P-977's sourced figure: 'Diagnoses were even less likely to have been recorded in the patient notes (37.9%, 95% CI: 26.8-49.6%)' (p. 33), SE = 0.228/3.92 = 0.0582."
+   },
+   "scale": "proportion diagnosed (P-977) against an observed/expected ratio (P-1046); not the same quantity (condition 2)",
+   "z": 13.97,
+   "arithmetic": "|1.086 - 0.45| / sqrt(0.0377^2 + 0.0255^2) = 0.636 / 0.0455 = 13.97. Against 37.9% (SE 0.0582): 0.707 / 0.0693 = 10.20. To bring z below 1.96, P-977's SE would have to exceed sqrt((0.636/1.96)^2 - 0.0377^2) = 0.322, which a binomial proportion near 0.45 reaches only at n of about 2. P-1046's lowest printed subgroup ('Others' 0.630, SE 0.022 at the same relative error) against 37.9% gives 4.04. The z test passes on every construction, but it compares two different quantities (see skeptic_detail 2).",
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "does_not_qualify",
+   "other_condition_failed": [2],
+   "skeptic_detail": {
+    "1": "Holds, weakly. Both statements concern how much dementia among older people in high-income health systems is diagnosed. P-1046 sets out 'to derive contemporary population-level diagnosis rates of MCI and dementia documented in the full Medicare population and compare these with the expected rates' (p. 2). P-977 gives 40-50% for 'most HIC' (p. 12), and the US is a high-income system. Differences of country and era are allowed. There are two weaknesses, neither a failure under the rule as written. First, P-977's figure is an unsourced background assertion in a policy report, not the result of an analysis: the references on the sentence are 'Dementia underdiagnosis in Brazil', a Thai population study and 'Closing the treatment gap for dementia in India'. Second, because no source is given, its measurement channel cannot be established.",
+    "2": "Fails. P-977's quantity is a proportion among true cases, bounded at 1: 'People with dementia, who have received a diagnosis (diagnostic coverage)' (Figure 1.1, p. 16). P-1046's quantity is 'the ratio between the observed rates based on diagnoses documented in the claims data and the expected rates predicted by the model' (p. 3). The observed rate counts anyone with '2 claims with the remaining codes on separate days in either setting over rolling windows of 3 years' (p. 3), including beneficiaries enrolled 'until death'. The expected rate is a demographics-only probit prediction of the HRS Langa-Kabeto-Weir classification. By construction, O/E = coverage + (coded diagnoses that fall on non-cases)/(expected cases), so the two quantities coincide only when no coded diagnosis falls on a non-case. P-1046 says some do. It reads its ratio above 1 as overdiagnosis ('dementia appears to be overdiagnosed in Medicare beneficiaries by about 10%'; under the original CCW algorithm 'the detection rate 1.23, suggesting a 23% rate of overdiagnosis', p. 6), a reading that is impossible for a coverage proportion. P-1046 therefore prints no figure that bounds coverage in its population: 1.086 is arithmetically compatible with any coverage from 0 to 1, depending on a false-positive share that neither paper measures. The advocate argues that the authors treat the two as one metric, citing the interpretive sentence on p. 3 ('can be interpreted as the proportion of expected cases that were diagnosed') and the comparison with 38% and 62% on p. 6. But the same p. 6 paragraph reads the excess over 1 as overdiagnosis, which only an O/E ratio allows, and an author's comparison does not change what the estimator measures. Coverage excludes false positives by definition, whatever the ascertainment method, so the difference is one of estimand, not of label definition, and it cannot be recorded as a candidate explanation. The ledger record reaches the same point ('METRIC_TYPE_MISMATCH ... an observed/expected ratio against a coverage percentage').",
+    "3": "Holds. Neither paper reports a result under the other's condition. P-977 prints nothing for the US or for 2015-2019. P-1046 prints no coverage figure with case-level linkage. Its lowest printed values ('Others' 0.630, Black 0.696, dual-eligible 0.855) and its alternative denominators (0.096/0.113 = 0.85; 0.096/0.100 = 0.96) are still O/E ratios, so none of them is a matched figure.",
+    "4": "Passes numerically on every construction: z = 13.97 with the range treated as an interval, 10.20 against P-977's sourced 37.9%, and 4.04 for P-1046's lowest subgroup. But P-977's headline has no n and no interval, so the brief's SE cannot be derived for it, and a z computed on two different quantities does not show a difference in either one.",
+    "5": "Not a performance comparison.",
+    "6": "The numbers are printed as the record gives them (1.086-1.104; 40-50%). Two parts of the record are wrong. Its P-1046 evidence quote 'Reliance on ICD codes for MCI/dementia identification (underestimates true prevalence' is not in the source, which says only that 'the classification algorithm based on claims data may have misclassified some individuals' (p. 6). Its claim that P-977's 'denominator is epidemiological prevalence' has no support, because P-977 prints no source or denominator for the HIC figure. These defects do not create the numeric gap; the pair fails on condition 2."
+   },
+   "candidate_explanations": [
+    "Metric construction: O/E counts every coded diagnosis, including the ones the authors call overdiagnosis, against a model-expected prevalence; coverage counts only diagnosed true cases. P-1046: 'Based on the original CCW algorithm, the observed rate would have been 0.106 and the detection rate 1.23, suggesting a 23% rate of overdiagnosis.' Under condition 2 this is a difference of quantity, not a candidate explanation of a discrepancy.",
+    "Observed-rate window: claims diagnoses accumulated 'over rolling windows of 3 years', with beneficiaries included through the year of death, against an expected prevalence for a single point in time (P-1046 p. 3).",
+    "Expected-rate denominator: 'it is possible that our model underpredicts dementia prevalence, because our expected rate of 0.086 is slightly lower than the rates reported for the US population aged 65 and older by Rajan et al. [38] (0.113) and Manly et al. [39] (0.100)' (P-1046).",
+    "Model accuracy: 'a predictive model based on demographic information alone has only adequate accuracy' (P-1046).",
+    "Population and era: US Medicare 2015-2019 against a generic 'most HIC' figure in a 2016 report whose attached references are LMIC studies (P-977 p. 12; references 3-5).",
+    "Setting of P-977's sourced evidence: 'older patients seen in primary care are given a research diagnostic assessment, and this is then compared with the PCPs contemporaneous clinical judgment, and/or recording of information suggesting a clinical diagnosis in primary care medical records' (P-977 p. 33).",
+    "These would need weighing only if the two figures measured one quantity. They do not (condition 2)."
+   ],
+   "one_sentence": "P-1046's US Medicare dementia detection ratio (claims-coded diagnoses over model-expected prevalence, 1.086-1.104 in 2015-2019) and P-977's statement that only 40-50% of people with dementia in most high-income countries have a diagnosis are far apart numerically (z about 14), but they do not measure the same thing. P-1046 counts every coded diagnosis and itself reads its ratio above 1 as overdiagnosis, so the ratio puts no bound on the share of true cases diagnosed, and P-977's figure has no source, sample or interval. The pair is therefore not an unresolved discrepancy.",
+   "reason": "The z test passes on any construction, but the full skeptic check finds condition 2 fails on the source texts. P-1046's 1.086-1.104 is claims-coded period prevalence over model-expected prevalence, and its authors read values above 1 as overdiagnosis. P-977's 40-50% is the share of people with dementia who have a diagnosis. Without the false-positive share, which neither paper measures, the first figure puts no bound on the second. The advocate's overturn rests on the authors' interpretive sentence and their comparison with 38% and 62%, and neither changes what the estimator measures. Condition 1 holds only loosely, because P-977's figure is an unsourced assertion whose attached references are LMIC studies. This confirms the first reader's borderline verdict on condition 2, and the pair does not qualify."
+  }
+ ]
+}

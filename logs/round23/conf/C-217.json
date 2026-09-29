@@ -1,0 +1,24 @@
+{
+ "id": "C-217",
+ "qualifies": "no",
+ "question": "None shared. P-183 predicts MCI-to-AD progression (2-year progressors against 5-year stables, MCI aged 70-80). P-308 predicts conversion to the next cognitive level within 3 years (CN to MCI, or MCI to AD) in a pooled cognitively normal plus MCI cohort. The comparison and the population behind the label differ, and P-308 reports no MCI-only accuracy. The clinical/cognitive channel is shared; P-183 adds T2-map MRI and P-308 adds CSF.",
+ "metric": "Accuracy in both nominally. The record's 72.7 for P-183 is an AUC (0.727, neuropsychology-only LASSO), so the recorded metric types did not match. On printed accuracies P-183 reports 0.775 and P-308 84%.",
+ "figures": {
+  "P-183": "Imaging plus neuropsychology, n = 40: best accuracy 0.775 (printed 95% CI 0.615-0.892). Neuropsychology only: LASSO accuracy 0.675 (0.509-0.814), AUC 0.727.",
+  "P-308": "3-year CN-or-MCI conversion after undersampling to 409 participants (22% converters): test accuracy 84%, sensitivity 43%, specificity 96%. The test-set size is not printed. Wilson: 0.746-0.904 at n = 82 (20% of 409), 0.765-0.894 at n = 123 (30%). The lower bound passes 0.775 only when the test set exceeds 158 subjects, i.e. 39% of the modelling set.",
+  "comparison": "0.84 lies inside P-183's 0.615-0.892. 0.775 lies inside P-308's derived interval at any test fraction up to about 39%. No exclusion is established in either direction."
+ },
+ "matched_figure_check": "No figure answers the shared question. P-308's whole-cohort and CSF sub-cohort results all pool CN and MCI participants, and P-308 reports no MCI-only accuracy.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Passes: neither compared figure reaches 0.97. P-308's training accuracies of 91-95% are not compared figures.",
+ "failed_conditions": [1, 4, 6],
+ "candidate_explanations": [],
+ "reason": "P-308's endpoint pools CN-to-MCI and MCI-to-AD conversion in a CN plus MCI cohort, so it does not address P-183's MCI-to-AD question (condition 1). The record misreads P-183's 0.727 AUC as an accuracy and labels P-308's pooled result as MCI-to-AD (condition 6). Even on the printed accuracies, 0.84 lies inside P-183's interval, and 0.775 lies inside P-308's derived interval at any plausible test size (condition 4).",
+ "quotes": [
+  {"paper": "P-308", "page": 3, "quote": "The participants were labeled as “converters” depending on whether their cognitive status progressed within 3 years, that is, (1) from CN to MCI; (2) from MCI to AD."},
+  {"paper": "P-308", "page": 5, "quote": "After undersampling, the model was applied to 409 participants (22% converters). With the optimal cut-off, the model’s accuracy was 91% in the training set and 84% in the test set."},
+  {"paper": "P-183", "page": 5, "quote": "The machine learning technique with the best results was LASSO, with an accuracy of 0.675 and an ROC AUC of 0.727."},
+  {"paper": "P-183", "page": 7, "quote": "RF 0.775 0.615–0.892 0.770 0.636–0.905"}
+ ]
+}

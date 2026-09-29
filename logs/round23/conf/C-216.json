@@ -1,0 +1,27 @@
+{
+ "id": "C-216",
+ "qualifies": "no",
+ "question": "As recorded there is no shared question, because P-203's 91.1% is its AD vs CN accuracy. Once the record is corrected, both papers predict MCI-to-AD conversion (pMCI vs sMCI) in ADNI from MRI: P-183 from T2-map signal and texture features plus neuropsychological scores, P-203 from whole-brain T1 sMRI with a 3D CNN. The horizons differ (2-year progressors against 5-year stables; conversion within 0-36 months against stability to 90 months), which the rule allows.",
+ "metric": "After correction, accuracy with accuracy and AUC with AUC. As recorded, claim_a (72.7) is P-183's neuropsychology-only LASSO AUC, not an accuracy, and claim_b (91.1) is P-203's AD vs CN accuracy.",
+ "figures": {
+  "P-183": "Imaging plus neuropsychology, n = 40 (18/22): BSWiMS and RF accuracy 0.775 (printed 95% CI 0.615-0.892). ENS AUC 0.824 (0.681-0.968). BSWiMS balanced error 0.223 (0.100-0.359), i.e. balanced accuracy 0.777 (0.641-0.900).",
+  "P-203": "pMCI vs sMCI, trained on ADNI-1 and tested on ADNI-2 (75 pMCI/241 sMCI): accuracy 0.801, sensitivity 0.520, specificity 0.856, AUC 0.789. Wilson with n = 316: z^2/n = 0.0122, centre 0.797, half-width 0.044 -> 0.753-0.841. Hanley-McNeil with 75/241: Q1 = 0.789/1.211 = 0.652, Q2 = 2(0.6225)/1.789 = 0.696, SE = sqrt([0.1665 + 74(0.0290) + 240(0.0735)]/18075) = 0.033 -> 0.724-0.854. Balanced accuracy (0.520 + 0.856)/2 = 0.688. The printed sensitivity and specificity at 75/241 imply an accuracy of 0.776, not 0.801; either value gives the same verdict.",
+  "comparison": "0.801 lies inside P-183's 0.615-0.892, and 0.775 lies inside P-203's 0.753-0.841. 0.789 lies inside 0.681-0.968, and 0.824 inside 0.724-0.854. The balanced accuracy of 0.688 lies inside 0.641-0.900. No metric excludes in either direction."
+ },
+ "matched_figure_check": "No reconciliation is needed beyond condition 4, because the corrected conversion figures agree. P-203's AD vs CN 91.1% has no counterpart: P-183 contains no AD vs CN analysis.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Passes: no compared figure reaches 0.97. P-203's AD vs CN AUC of 0.950 is below the threshold and is not a compared figure.",
+ "failed_conditions": [4, 6],
+ "candidate_explanations": [],
+ "reason": "The recorded disagreement exists only through two misreadings. P-203's 91.1% is AD vs CN, and P-183's 72.7 is an AUC from its neuropsychology-only model (condition 6). On the conversion figures both papers print, P-183's 0.775 and P-203's 0.801 each lie inside the other's interval, and so do the AUCs (0.824 and 0.789), so condition 4 fails.",
+ "quotes": [
+  {"paper": "P-203", "page": 1, "quote": "our model achieves accuracy values of 91.1 and 80.1% on ADNI-1 for AD diagnosis and mild cognitive impairment (MCI) convention prediction, respectively."},
+  {"paper": "P-203", "page": 3, "quote": "Progressive MCI (pMCI): Subjects are diagnosed with MCI who would gradually progress to AD within 0–36 months."},
+  {"paper": "P-203", "page": 3, "quote": "The ADNI-2 dataset has 643 3T T1W sMR brain images, including 143 AD, 184 CN, 75 pMCI, and 241 sMCI."},
+  {"paper": "P-203", "page": 6, "quote": "MSA3D 0.911 0.888 0.914 0.950 0.898 0.801 0.520 0.856 0.789 0.553 All the models are trained on ADNI-1."},
+  {"paper": "P-183", "page": 5, "quote": "The machine learning technique with the best results was LASSO, with an accuracy of 0.675 and an ROC AUC of 0.727."},
+  {"paper": "P-183", "page": 7, "quote": "BSWIMS 0.775 0.615–0.892 0.732 0.553–0.911 0.773 0.546–0.922 0.778 0.524–0.936 0.223 0.100–0.359"},
+  {"paper": "P-183", "page": 7, "quote": "ENS 0.750 0.588–0.873 0.824 0.681–0.968"}
+ ]
+}

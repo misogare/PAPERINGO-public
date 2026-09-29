@@ -1,0 +1,26 @@
+{
+  "id": "C-03",
+  "qualifies": "no",
+  "question": "Early MCI versus normal controls in ADNI (cross-sectional detection). P-68 uses sMRI ROI features with blood DNA methylation. P-71 uses two-timepoint rs-fMRI connectivity. MRI is shared (structural and functional count as one channel), so the question can be treated as the same. The record's question (pMCI vs sMCI conversion) is in neither paper.",
+  "metric": "Accuracy with accuracy and AUC with AUC. P-68: LR accuracy 0.830 / AUC 0.927 (RF 0.715 / 0.731). P-71: 86.11% / AUC 93.90.",
+  "figures": {
+    "P-68": "Table 3, TCJNMF-selected top 10 imaging features + top 1000 CpG sites, 5-fold CV. LR accuracy 0.830, AUC 0.927; RF accuracy 0.715, AUC 0.731. No interval printed. n = 147 analysed (91 EMCI + 56 NC after image exclusion; 153 enrolled). Wilson for LR 0.830 (122/147): [0.761, 0.882]. Hanley-McNeil for AUC 0.927 with 91/56: SE = 0.021, interval [0.886, 0.968].",
+    "P-71": "EMCI vs NC on ADNI-2&3, LOOCV: accuracy 86.11%, AUC 93.90 (Table 4). No interval printed. The subject counts give 64 EMCI + 43 NC = 107 (the comparison table prints '64 EMCI+49 NC' = 113). Wilson for 0.861: n = 107 gives [0.782, 0.913]; n = 113 gives [0.782, 0.911]. Hanley-McNeil for AUC 0.939 with 64/43: SE = 0.023, interval [0.894, 0.984]."
+  },
+  "matched_figure_check": "The nearest matched figures agree. P-68's LR accuracy 0.830 lies inside P-71's interval [0.782, 0.913], and P-71's 0.861 lies inside P-68's [0.761, 0.882]. The AUCs 0.927 and 0.939 lie inside each other's intervals. P-68's RF accuracy (0.715) falls below P-71's interval, but it is the weaker of the two classifiers P-68 ran on the same features. P-68's own LR figure on those features agrees with P-71, so P-68's data do not support a gap.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Neither study meets the exclusion: no accuracy or AUC reaches 0.97 (P-68 AUC 0.927; P-71 AUC 0.939).",
+  "failed_conditions": [4, 6],
+  "candidate_explanations": [],
+  "reason": "The recorded disagreement (a latent class model at 84% against an LSTM at 81% for pMCI vs sMCI) exists in neither paper: both papers classify EMCI against NC. On the figures the papers print, P-68's LR (0.830, AUC 0.927) and P-71's Bi-LSTM (0.861, AUC 0.939) lie within each other's derived 95% intervals, so there is no difference beyond uncertainty. P-68's classifier is also an ablation used to rate a biomarker-mining method, not a proposed diagnostic model.",
+  "quotes": [
+    {"paper": "P-68", "page": 5, "quote": "which included 153 participants, comprising 91 individuals with early mild cognitive impairment (EMCI) and 62 normal controls (NC)"},
+    {"paper": "P-68", "page": 5, "quote": "91 EMCI patients and 56 NC patients were identified."},
+    {"paper": "P-68", "page": 7, "quote": "The top 10 features of neural images in module 6 and the top 1000 sites of DNA methylation in each module were used to construct classification models."},
+    {"paper": "P-68", "page": 8, "quote": "TCJNMF 0.830 0.715 0.818 0.661 0.827 0.732 0.820 0.660 0.927 0.731"},
+    {"paper": "P-71", "page": 3, "quote": "In ADNI-2 dataset, there are 30 LMCI, 39 EMCI, and 33 NC. In ADNI-3 dataset, there are 16 LMCI, 25 EMCI, and 10 NC."},
+    {"paper": "P-71", "page": 5, "quote": "Due to the small dataset, the leave one out cross validation (LOOCV) is used in the experiments."},
+    {"paper": "P-71", "page": 10, "quote": "64 EMCI+49 NC M SGN softmax 86.11"}
+  ]
+}

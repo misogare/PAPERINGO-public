@@ -1,0 +1,25 @@
+{
+  "id": "C-195",
+  "qualifies": "no",
+  "question": "None shared. P-33 classifies clinical status as cognitively unimpaired (CU) vs MCI at each visit, which is the CU-to-MCI transition. Its sample is CU plus stable-MCI ADNI participants, and MCI participants who progressed to dementia were excluded by design. P-192 predicts progression from amnestic MCI to dementia at 0.5 to 4 years in 415 ADNI-GO/2 aMCI participants. The transitions differ (onset of MCI against conversion of MCI to dementia), and so does the population behind the label (CU and stable MCI against all eligible aMCI). The channel could be shared: P-192's clinical feature set (demographics, APOE, ADAS-Cog11, RAVLT, TMT-B, FAQ, MoCA) and P-33's neuropsychological scores are both clinical/cognitive data. But the question differs.",
+  "metric": "As recorded, a mismatch: ROC-AUC (P-33, 0.96) against PPV (P-192, 68.0% at 4 years). The round-20 reading says P-192 reports no AUC. That is wrong. P-192's Tables 3 and 4 (PDF pages 24-26, after the reference list of the author manuscript, which the round-20 text extract left out) print AUCs for every horizon: biomarker feature set LR 0.69-0.78 and RUSBoost 0.69-0.79; clinical feature set LR 0.76-0.77 and RUSBoost 0.77-0.82. They also print accuracy for the clinical set. So AUC with AUC is available, but only on different endpoints.",
+  "figures": {
+    "P-33": "Best test-set AUC 0.96 (Leaspy; bootstrapped 20% test split, printed SD 0.006) for per-visit CU vs MCI status from neuropsychological disease-progression scores; 1163 participants (536 sCU, 114 pCU, 513 sMCI).",
+    "P-192": "aMCI to dementia, models trained on CN vs dementia and applied to aMCI. 4-year RUSBoost, biomarker set: PPV 68.0%, sensitivity 61.5%, specificity 91.7%, AUC 0.77 (evaluation set 234 aMCI, 22.2% converted, about 52/182). Hanley-McNeil for context only: Q1 = 0.626, Q2 = 0.670, SE = 0.041, CI [0.690, 0.850]. Clinical set, 4-year RUSBoost AUC 0.77, LR 0.77."
+  },
+  "matched_figure_check": "No matched figure exists. P-33 reports no MCI-to-dementia result, because it excluded the progressors, and P-192 reports no CU-vs-MCI result. The uncertainty test is not reached, because condition 1 fails.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not reached. For the record: P-33's 0.96 is below 0.97 on a 1163-participant cohort, but its inputs include CDRSB and MMSE, which enter the clinical diagnosis it predicts. P-192's AUCs are all at or below 0.82.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "The two papers answer different clinical questions. P-33 detects the onset of MCI in unimpaired and stable-MCI participants (it excludes MCI-to-dementia progressors), and P-192 predicts conversion from aMCI to dementia. Condition 1 fails whatever the figures show. The record also compares an AUC with a PPV. The round-20 reading's statement that P-192 prints no AUC is an extraction artefact: P-192's Tables 3-4 print AUCs of 0.69-0.82. Those AUCs are on the other endpoint, so they do not create a shared quantity.",
+  "quotes": [
+    {"paper": "P-33", "page": 2, "quote": "MCI participants whose last visit indicated either reversion to CU or progression to dementia were excluded from the analysis to specifically characterize the transition from normal cognition to MCI."},
+    {"paper": "P-33", "page": 1, "quote": "Leaspy achieved the highest diagnostic accuracy with an AUC of 0.96 and strong correlation with observed conversion time (r = 0.78)."},
+    {"paper": "P-192", "page": 9, "quote": "The goal of predictive modeling was to partition persons with aMCI into two groups: one that did not progress to dementia, and another that would progress to dementia within the next 4 years of follow-up."},
+    {"paper": "P-192", "page": 24, "quote": "TABLE 3 Performance of predictive models in prediction of progression from aMCI to dementia at different follow-up time points. Models developed using biomarker feature set"},
+    {"paper": "P-192", "page": 25, "quote": "4 61.5 91.7 68.0 89.3 0.77 22.2"},
+    {"paper": "P-192", "page": 12, "quote": "Among 415 individuals with aMCI, 388 participants were assessed at 6 months, 392 participants at 1 year, 339 participants at 2 years, 291 at 3 years, and 234 at 4 years."}
+  ]
+}

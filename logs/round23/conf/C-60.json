@@ -1,0 +1,24 @@
+{
+ "id": "C-60",
+ "qualifies": "no",
+ "question": "None shared. P-117 (Aljalal et al. 2024; correct file downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809423008959-main.pdf) is a binary amnestic MCI vs healthy control classification from resting-state EEG. P-95 is a three-class AD/MCI/control classification from 482 neuropsychological and neuroradiological (MRI) attributes, and it reports no binary MCI-vs-control result. The comparison differs (three-class against binary), and so does the channel (clinical/cognitive tests plus MRI against EEG).",
+ "metric": "Both are accuracies, but of different estimands: a three-class accuracy (chance 33%) against a binary accuracy (chance about 50%).",
+ "figures": {
+  "P-117": "99.81% accuracy, aMCI vs HC, 10-fold CV over 3660 EEG segments from 61 participants. Wilson with n = 61: centre = (0.9981 + 0.03149)/1.06298 = 0.9686; half-width 0.0314; interval [0.937, 1.000].",
+  "P-95": "Three-class accuracy with all attributes, 66.22% to 81.00% across seven classifiers (weighted AUROC 76.3% to 95.0%); 90 participants (30 AD, 30 MCI, 30 controls), 10-fold stratified CV. Wilson with n = 90: 81.00% gives [0.717, 0.878]; 66.22% gives [0.560, 0.752]."
+ },
+ "matched_figure_check": "None exists. P-95 gives no binary MCI-vs-control figure and P-117 gives no three-class figure, so neither paper reports the other's condition.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "The Section 3.5 exclusion applies to P-117 on its own source: 99.81% from internal 10-fold CV over randomly split segments of 61 participants, with no external cohort. P-95 (at most 81%) is not near ceiling.",
+ "failed_conditions": [1, 5],
+ "candidate_explanations": [],
+ "reason": "P-95's 66-81% is a three-class AD/MCI/control accuracy from neuropsychological and MRI attributes. P-117's 99.81% is a binary aMCI-vs-control accuracy from EEG. Task, comparison and channel all differ (condition 1). P-117's figure also meets the near-ceiling exclusion on its own PDF (condition 5). No shared quantity exists, so no difference beyond uncertainty can be established.",
+ "quotes": [
+  {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+  {"paper": "P-117", "page": 3, "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases."},
+  {"paper": "P-95", "page": 1, "quote": "Results: The accuracy for the whole set of attributes ranged between 66.22 % and 81.00 %, and the weighted average AUROC was between 76.3 % and 95.0 %."},
+  {"paper": "P-95", "page": 7, "quote": "The output attribute is Class, which holds one of the three values (AD, MCI or C) and it is the target for classification algorithms."},
+  {"paper": "P-95", "page": 10, "quote": "As the dataset contains exactly 30 representatives of each of the three classes (AD, MCI, C) and since the experiments are based on 10-fold stratified cross-validation"}
+ ]
+}

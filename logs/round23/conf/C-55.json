@@ -1,0 +1,26 @@
+{
+  "id": "C-55",
+  "qualifies": "no",
+  "question": "The task label matches (MCI vs healthy controls) but the channel does not: P-117 uses resting-state EEG; P-58 (Gosztolya et al., Computer Speech & Language 69 (2021) 101215) uses temporal parameters of spontaneous speech. Condition 1 fails on channel. Note: the round-20 reading could not check P-117 because the pack PDF is the wrong paper; this reading used the correct PDF (S1746809423008959, Aljalal et al., BSPC 87 (2024) 105462, DOI 10.1016/j.bspc.2023.105462), whose content matches the summaries.md Paper 117 block (the block header's file name S1746809423005462 does not exist in downloads/ and appears to fuse the PII with the article number).",
+  "metric": "Accuracy in both once P-58's printed accuracies are used. The record's '67-92% range' is not an accuracy: it spans accuracy, precision, recall and specificity across feature subsets.",
+  "figures": {
+    "P-117": "99.81% accuracy (ensemble KNN, 11 NSGA-II channels; 99.51% all 19 channels), binary aMCI vs HC, 10-fold CV over 3660 segment feature vectors from 61 participants (29 aMCI/32 HC); no interval. Wilson 95% with n = 61: z^2/n = 0.06297; centre = (0.9981 + 0.03149)/1.06297 = 0.9686; half-width 0.0314; interval [0.937, 1.000].",
+    "P-58": "Accuracy at EER, SVM with nested leave-one-speaker-out CV (Table 3). English all features 84.8% (n = 33): centre (0.848 + 0.05820)/1.11641 = 0.8117, half-width 0.1215, Wilson [0.690, 0.933]. Hungarian all features 75.8% (n = 33): Wilson [0.590, 0.872]. Best accuracy 90.9% (Hungarian, filler-related subset, n = 33): z^2/n = 3.8415/33 = 0.11641; centre = (0.909 + 0.05820)/1.11641 = 0.8664; half-width = 1.96*sqrt(0.909*0.091/33 + 3.8415/(4*33^2))/1.11641 = 0.1022; Wilson [0.764, 0.969]. Printed accuracies range 39.4%-90.9%."
+  },
+  "matched_figure_check": "No matched figure exists. Neither paper reports a result in the other's channel; P-117 prints only segment-level accuracies and P-58 only speaker-level ones. Nothing reconciles the pair.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "P-117 meets the Section 3.5 exclusion on its own PDF: 99.81% (>= 0.97), internal 10-fold CV over randomly split segment feature vectors, 61 participants, no external cohort (the round-20 reading's 'likely applies' is confirmed from the correct PDF). P-58's accuracies are all below 0.97; its best AUC is 0.932 (English all features); not excluded.",
+  "failed_conditions": [1, 5],
+  "candidate_explanations": [],
+  "reason": "Judged on the accuracies P-58 actually prints (condition 6 corrects the record's '67-92% range'), the gap is beyond uncertainty: 0.9981 lies outside every P-58 Wilson interval (highest upper bound 0.969) and each P-58 accuracy lies outside P-117's [0.937, 1.000]. But EEG and spontaneous speech are different measurement channels, so the pair fails condition 1, and P-117's 99.81% fails the performance-validity exclusion (condition 5).",
+  "quotes": [
+    {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+    {"paper": "P-117", "page": 3, "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases."},
+    {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+    {"paper": "P-58", "page": 1, "quote": "because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."},
+    {"paper": "P-58", "page": 3, "quote": "Both the English-speaking (n = 33; New York, NY, USA) and the Hungarian-speaking (n = 33; Szeged, Hungary) participants were diagnosed as MCI or HC."},
+    {"paper": "P-58", "page": 6, "quote": "Besides an accuracy score of 84.8%, the recall/sensitivity and specificity values were also around 85%."},
+    {"paper": "P-58", "page": 7, "quote": "we achieved classification accuracy, recall (sensitivity) and specificity scores above 90%; with a precision score of 85.7%, it led to an F-measure value of 88.9."}
+  ]
+}

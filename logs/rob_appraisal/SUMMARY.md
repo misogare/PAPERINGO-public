@@ -76,3 +76,17 @@ Cited set after the additions (Sections 1 to 8, `logs/appraisal_worksheet.csv`):
 some concerns, 4 with no applicable tool, none at low risk. P-663 is no longer cited. Supporters of admitted convergences
 that the text does not cite: P-83, P-337, P-687, P-1046. `scripts/rob_convergence_sensitivity.py`: still only VF-29 keeps
 three or more supporters not at high risk.
+
+## Tool review by the operator and corrections, 2026-09-29
+
+The operator reviewed the tool chosen for a sample of 17 records (operator_tool_review_2026_09_29 on each) and agreed
+with 13. The four disagreements (P-624, P-646: ROBINS-E where the result is an association not framed causally; P-940:
+QUADAS-2 where the result is a prognostic factor; P-1169: JBI prevalence for a registry-landscape analysis) clarified
+three rules, written into ROB_BRIEF.md and applied to every ROBINS-E, QUADAS-2 and JBI-prevalence record. Re-screening
+moved four more: P-1136 and P-1214 (QUADAS-2 to QUIPS), P-1150 and P-1157 (ROBINS-E to the JBI cohort checklist).
+The eight were re-appraised with the corrected tool; the earlier records are kept in `superseded/`. One rating changed:
+P-646, high to some concerns. Blinded second readings of P-624 and P-1150 (every fourth in P-number order) agreed.
+These re-appraisals are model readings not yet reviewed by the operator.
+
+Cited set now: 190 studies, 156 high, 30 some concerns, 4 not applicable, none low. VF-29 remains the only convergence
+with three or more supporters not at high risk.

@@ -1,0 +1,30 @@
+{
+ "id": "C-66",
+ "qualifies": "no",
+ "question": "As recorded, none: claim_b's 94.61% is P-72's AD vs NC accuracy, not a conversion (T2) result. Judged on the printed figures, the papers share two questions. The first is pMCI vs sMCI (36-month / 3-year conversion) in ADNI, with the MRI and PET channels shared: P-23 uses sMRI + FDG-PET + CSF, P-72 sMRI grey matter + FDG-PET. The second is AD vs CN in ADNI.",
+ "metric": "Accuracy with accuracy (match).",
+ "figures": {
+  "P-23": "pMCI vs sMCI tri-modal (A0) 85.00% = 17/20 on one held-out split. Wilson with n = 20: centre 0.7936, half-width 0.1540, interval [0.640, 0.948]. Matched sMRI + PET ablation (Table 6, A6): 70.00% = 14/20 (SEN 9/12, SPE 5/8). Wilson: z^2/n = 0.19207; centre = (0.70 + 0.09604)/1.19207 = 0.6678; half-width = 1.96*sqrt(0.70*0.30/20 + 3.8415/1600)/1.19207 = 0.1868; interval [0.481, 0.855]. AD vs CN 94.44% (34/36; A6 sMRI + PET 91.67%).",
+  "P-72": "pMCI vs sMCI 77.19% (SD 1.01 over three test subsets; subject-level 70/15/15 split of 389 MCI). The printed SEN 68.18 and SPE 82.86 equal 15/22 and 29/35, i.e. 44/57 = 77.19% on a 57-subject test set. No interval is reported. Wilson with n = 57: z^2/n = 0.06740; centre = (0.7719 + 0.03370)/1.06740 = 0.7548; half-width = 1.96*sqrt(0.7719*0.2281/57 + 3.8415/(4*57^2))/1.06740 = 0.1068; interval [0.648, 0.862]. If the three test sets were disjoint and pooled (n = 171), the interval would be [0.703, 0.828]. AD vs NC 94.61% (SD 0.85)."
+ },
+ "matched_figure_check": "P-23 reports its model on P-72's input condition (sMRI + FDG-PET, ablation A6): 70.00% (14/20, Wilson [0.481, 0.855]). P-72 reports 77.19% (Wilson [0.648, 0.862]). Each estimate lies inside the other's interval (two-proportion z = -0.62), so the matched figures agree. P-23's ablation also shows its 85.00% comes from adding CSF (A6 70.00 -> A0 85.00). On AD vs CN the papers agree outright (94.44% vs 94.61%). The matched figures dissolve the gap.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Not excluded for the compared figures. The pMCI/sMCI accuracies are 85.00% and 77.19%; AD vs CN is 94.44% and 94.61%. P-23's AD vs CN AUC of 97.52% on 36 test subjects would meet the exclusion, but it is not a compared figure.",
+ "failed_conditions": [3, 4, 6],
+ "candidate_explanations": [
+  {"difference": "P-23 adds CSF biomarkers to sMRI + FDG-PET. SHOWN SUFFICIENT by P-23's ablation: sMRI + PET 70.00%, tri-modal 85.00%.", "quote": "The substantial improvement to 85.00% (A0) demonstrates that sMRI, PET, and CSF are mutually reinforcing.", "paper": "P-23"},
+  {"difference": "Test-set size: one 20-subject split (P-23) against 57-subject test sets averaged over three subsets (P-72).", "quote": "We followed the same data split strategy to construct three different subsets with different test sets, the average of three classification accuracies is used as the final result.", "paper": "P-72"}
+ ],
+ "reason": "The recorded disagreement exists only because the ledger reads P-72's AD vs NC accuracy (94.61%) as a conversion result (condition 6). On the figures the papers print, AD vs CN agrees (94.44% vs 94.61%). On pMCI vs sMCI, P-23's 85.00% (n = 20) and P-72's 77.19% (n = 57) each lie inside the other's Wilson interval (condition 4). On the matched sMRI + PET input, P-23's own ablation (70.00%) agrees with P-72, and it attributes P-23's higher figure to the added CSF (condition 3).",
+ "quotes": [
+  {"paper": "P-72", "page": 1, "quote": "Especially in AD diagnosis achieved an average accuracy of 94.61 %"},
+  {"paper": "P-72", "page": 7, "quote": "The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 % respectively"},
+  {"paper": "P-72", "page": 3, "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI."},
+  {"paper": "P-72", "page": 3, "quote": "We divided the dataset by subject-level split way according to the number of subjects in the ratio of 70 %, 15 % and 15 %"},
+  {"paper": "P-72", "page": 7, "quote": "SPDFC (0.6) 94.61(0.85) 92.19 97.22 0.947 77.19(1.01) 68.18 82.86 0.755 (Table 3, cells joined)"},
+  {"paper": "P-23", "page": 7, "quote": "sMCI vs. pMCI: In this critical task for early prognosis, TASNet achieved 85.00% Accuracy and 86.96% F1 (Table 3)"},
+  {"paper": "P-23", "page": 7, "quote": "AD vs. CN: In this baseline task (Table 5), TASNet achieved 94.44% Accuracy and 100.00% Sensitivity"},
+  {"paper": "P-23", "page": 8, "quote": "A6 sMRI + PET 75.00 62.50 70.00 75.00 69.79 (Table 6, sMCI vs. pMCI block, cells joined: SEN SPE ACC F1 AUC)"}
+ ]
+}

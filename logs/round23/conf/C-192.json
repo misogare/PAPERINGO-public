@@ -1,0 +1,25 @@
+{
+  "id": "C-192",
+  "qualifies": "no",
+  "question": "Not shared (condition 1 fails on the population class). Both label the task MCI against controls from resting-state fMRI, but P-360's positive class is MCI secondary to end-stage renal disease: 51 hospital patients (mean age 50) with ESRD, a cognitive impairment the paper attributes to uraemia, dialysis and related causes, against 39 middle-aged volunteers. P-55's is MCI among older adults (mean age 69) against age-matched controls at a mental health centre. As with Parkinson's MCI against Alzheimer's-spectrum MCI, or MCI in diabetic inpatients against dust-exposed miners (C-180), these are different population classes behind the same label. The channel (fMRI) and metric match.",
+  "metric": "Accuracy with accuracy (match); both also report AUC.",
+  "figures": {
+    "P-360": "DHMR dynamic functional networks, 87 t-test-selected edges, linear SVM, LOOCV on 90 subjects (51 ESRDaMCI/39 normal): accuracy 88.5670 +/- 0.3587%, AUC 0.9008. No interval for sampling uncertainty (the +/- is run-to-run). Wilson, n = 90: [0.804, 0.936]. Hanley-McNeil, AUC 0.9008 with 51/39: Q1 = 0.8195, Q2 = 0.8538, SE = 0.0325, CI [0.837, 0.965]. All hyper-parameters were tuned by LOOCV on the same sample.",
+    "P-55": "Postcentral-gyrus VMHC (single feature), RBF SVM, leave-one-out on 121 subjects (53 MCI/68 HC): printed accuracy 63.64% (= 77/121), sensitivity 71.69%, specificity 89.71%, AUC 68.42%. Wilson for 63.64%, n = 121: [0.548, 0.717]. The printed accuracy is inconsistent with the printed sensitivity and specificity, which imply 38/53 + 61/68 = 99/121 = 81.82% (Wilson [0.740, 0.877]). Hanley-McNeil, AUC 0.6842 with 53/68: SE = 0.0494, CI [0.587, 0.781]."
+  },
+  "matched_figure_check": "No matched figure: neither paper reports its method in the other's population or with the other's feature set. P-360's static Pearson-correlation networks reach 80.07% in its own Table 6, which shows that feature construction alone moves accuracy by several points within one cohort, but that is not the other paper's condition.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study is near ceiling (88.57% and AUC 0.90; 63.64% and AUC 0.68). Both estimates are optimistic by design: P-360 tunes window length, step, k and regularisation by LOOCV on the same 90 subjects, and P-55 chose the VMHC cluster by a whole-sample group t-test before its leave-one-out classification.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "The figures differ beyond uncertainty on accuracy (88.57% [0.804, 0.936] against 63.64% [0.548, 0.717]) and AUC. But the two papers classify different populations under the MCI label: MCI secondary to end-stage renal disease in dialysis-age patients (mean 50 years) against older adults with MCI (mean 69 years). Condition 1 fails whatever the numbers show. P-55's printed accuracy is also inconsistent with its own sensitivity and specificity, which imply 81.82%, and the gap would narrow to one direction on that figure.",
+  "quotes": [
+    {"paper": "P-360", "page": 3, "quote": "Fifty-one patients with ESRD who had been diagnosed with MCI (ESRDaMCI group) were included in the study."},
+    {"paper": "P-360", "page": 1, "quote": "The structure and function of brain networks have been altered in patients with end-stage renal disease (ESRD)."},
+    {"paper": "P-360", "page": 4, "quote": "Age (x ± s]) 50.05 ± 7.86 48.37 ± 6.59"},
+    {"paper": "P-360", "page": 12, "quote": "The best ACC, SPE, and AUC are 88.5670% ± 0.3587%, 90.3577% ± 0.5461% and 0.9008 ± 0.0011, respectively."},
+    {"paper": "P-55", "page": 4, "quote": "The remaining 53 MCI patients and 68 age-, sex- and education-matched HCs were included in the final analyses"},
+    {"paper": "P-55", "page": 4, "quote": "ultimately yielding respective accuracy, sensitivity, specificity, and AUC values of 63.64 %, 71.69 %, 89.71 %, and 68.42 %."}
+  ]
+}

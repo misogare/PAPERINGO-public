@@ -1,0 +1,25 @@
+{
+  "id": "C-85",
+  "qualifies": "no",
+  "question": "None shared. P-141 predicts future conversion to PD-MCI within 5 years among de novo, cognitively normal Parkinson's patients (PPMI), from baseline DTI structural connectivity with or without clinical data. P-99 detects existing MCI vs healthy controls among memory-clinic patients in Moscow from T1 FreeSurfer morphometry. The task differs (incident conversion vs prevalent detection) and so does the population behind 'MCI' (Parkinson's disease vs Alzheimer's-spectrum memory clinic). The channel (MRI) is the same.",
+  "metric": "Mismatch as recorded: AUC 0.85 (P-141) vs accuracy 73% (P-99). Each paper also reports the other metric (P-141 ACC 0.74-0.85; P-99 ROC-AUC 0.735), so the metric could be matched; condition 1 decides the pair.",
+  "figures": {
+    "P-141": "90 de novo PD patients (33 converters/57 non-converters). Clinical+connectivity models: AUC 0.81-0.85, ACC 0.74-0.85 across classifiers; no external cohort. Hanley-McNeil on the full cohort (33/57), for context only: AUC 0.85 gives 0.760-0.940, and AUC 0.81 gives 0.711-0.909.",
+    "P-99": "145 MCI/62 HC, 10-fold CV, SVC: accuracy 0.73 (Wilson n=207: 0.666-0.786), ROC-AUC 0.735 (Hanley-McNeil 145/62: 0.666-0.804), F1 0.68."
+  },
+  "matched_figure_check": "Neither paper reports a result under the other's condition. P-141 does not detect prevalent MCI against controls, and P-99 does not predict incident MCI in Parkinson's disease. The uncertainty arithmetic is shown for completeness only; it is not reached because condition 1 fails.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Neither study is flagged: no result reaches 0.97. Both use internal validation only.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "The clinical question and population differ. P-141 predicts 5-year conversion to PD-MCI in de novo Parkinson's patients; P-99 classifies existing MCI against healthy controls in memory-clinic patients. Condition 1 fails whatever the figures show. The record also sets an AUC against an accuracy and labels P-141's conversion task 'T1'.",
+  "quotes": [
+    {"paper": "P-141", "page": 3, "quote": "Definition of PD-MCI converters: PD patients with normal cognition at baseline who subsequently developed PD-MCI within a 5-year follow- up."},
+    {"paper": "P-141", "page": 1, "quote": "to models that were trained with both clinical and structural connectivity data (AUC range, 0.81–0.85; ACC range, 0.74–0.85; SEN range, 0.79–0.91; SPE range, 0.70–0.89)."},
+    {"paper": "P-141", "page": 1, "quote": "A total of 57 PD patients were classified as PD-MCI nonconverters, and 33 PD patients were classified as PD-MCI converters."},
+    {"paper": "P-99", "page": 1, "quote": "The dataset for the study consists of 62 healthy volunteers and 145 patients with MCI obtained from the «Memory Clinic» (Moscow, Russia)."},
+    {"paper": "P-99", "page": 1, "quote": "We propose a machine learning method, which achieved an accuracy of 73%"},
+    {"paper": "P-99", "page": 4, "quote": "obtained by SVC (0.68 F1, 0.735 ROC -AUC)"}
+  ]
+}

@@ -2,75 +2,171 @@
  "paper_id": "P-1136",
  "document_check": {
   "matches": true,
-  "note": "Galati S, Rossi M, Del Signore F, Locatelli G, Guaita A, Rolandi E. Conventional and neuropsychological criteria for mild cognitive impairment show similar prognostic value for dementia across 12 years in a non-clinical setting. Sci Rep 2025;15:19827. This is the InveCe.Ab population cohort. The cited numbers match: AUC 0.603 vs 0.633 (DeLong p = 0.223), HRs 2.84 vs 2.72, diagnostic consistency 63.2% vs 43.2%."
+  "note": "Galati S, Rossi M, Del Signore F, Locatelli G, Guaita A, Rolandi E. Conventional and neuropsychological criteria for mild cognitive impairment show similar prognostic value for dementia across 12 years in a non-clinical setting. Scientific Reports (2025) 15:19827, doi:10.1038/s41598-025-04275-y (p1). InveCe.Ab population cohort, Abbiategrasso. The source text was read in full to the end (page 11, Data availability; reference list omitted in the extract). The cited numbers match: AUC 0.603 vs 0.633, difference -0.030 (-0.078 to 0.018), DeLong p = 0.223 (Table 1, p4); adjusted HRs 2.84 vs 2.72 (Table 2, p4); diagnostic consistency 63.2% vs 43.2% (p4)."
  },
  "cited_result": "Principal result: prognostic accuracy for dementia over 12 years of baseline MCI classified by Conventional (Petersen/Winblad) versus Neuropsychological (Jak/Bondi) criteria. AUC was 0.603 vs 0.633, a difference of -0.030 (95% CI -0.078 to 0.018; DeLong p = 0.223), with comparable adjusted HRs (2.84 vs 2.72). Secondary: diagnostic consistency (63.2% vs 43.2%).",
- "tool": "QUADAS-2",
- "tool_reason": "The cited result is the accuracy of two single classification rules (index tests) for dementia diagnosed at follow-up (reference standard), compared by ROC AUC. That is a comparative test-accuracy question, so QUADAS-2 is applied to both criteria.",
+ "tool_reason": "The cited result is the prognostic value of a baseline MCI classification (under each of two criteria) for later dementia over 12 years, measured by AUC and adjusted Cox hazard ratios; under the operator's clarification 2 of 2026-09-29 an ROC or AUC does not make this a diagnostic-accuracy study, and a baseline measure evaluated as a predictor of later progression is a prognostic factor, so QUIPS applies (the existing record used QUADAS-2).",
  "domains": [
   {
-   "domain": "1. Patient selection",
-   "judgment": "low",
-   "rationale": "Participants were enrolled from a whole birth cohort in one town, in a cohort (not case-control) design. The exclusions of dementia and major psychiatric disorder are consistent with MCI definitions. Losses before follow-up are dealt with under flow.",
+   "domain": "1. Study participation",
+   "judgment": "moderate",
+   "rationale": "The source population (everyone born 1935 to 1939 and living in one town on the prevalence day), the baseline sample and the inclusion criteria are well described, and the design is population-based rather than clinic-based. The document does not report how many eligible residents took part or declined, so whether participants differ from non-participants on cognition and later dementia cannot be judged from this document. Sampling procedures are referred to the parent cohort. The restriction to people with at least one follow-up visit is judged under attrition.",
    "signalling": [
     {
-     "question": "Was a consecutive or random sample of patients enrolled?",
-     "answer": "Probably yes",
-     "quote": "a population-based cohort of people born between 1935 and 1939 and living in the city of Abbiategrasso (Milan, Italy) on the prevalence day",
+     "question": "Adequate participation in the study by eligible persons?",
+     "answer": "No information",
+     "quote": "Searched for 'participation rate', 'eligible', 'invited', 'refus', 'response', 'declin': only the enrolled number is given ('The enrolled participants (n = 1321)', p9), not the number of eligible residents or refusals.",
+     "page": "7; 9"
+    },
+    {
+     "question": "Description of the source population or population of interest?",
+     "answer": "Yes",
+     "quote": "a population-based cohort of people born between 1935 and 1939 and living in the city of Abbiategrasso (Milan, Italy) on the prevalence day [...] (November 1st, 2009).",
+     "page": "7; 9"
+    },
+    {
+     "question": "Description of the baseline study sample?",
+     "answer": "Yes",
+     "quote": "we conducted our analysis on a sample of 936 individuals at baseline, of which 479 (52.1%) were female, with an average age of 72.1 years (SD = 1.3) and an average education level of 7.2 years (SD = 3.3).",
+     "page": "2"
+    },
+    {
+     "question": "Adequate description of the sampling frame and recruitment?",
+     "answer": "Partly",
+     "quote": "The participants for the present study were recruited from InveCe.Ab study (Invecchiamento Cerebrale in Abbiategrasso, i.e., Brain aging in Abbiategrasso; ClinicalTrials.gov, NCT01345110)",
      "page": "7"
     },
     {
-     "question": "Was a case-control design avoided?",
+     "question": "Adequate description of the period and place of recruitment?",
      "answer": "Yes",
-     "quote": "We directly compared the ability of each classification method to predict progression to dementia and the stability of the diagnosis over 12 years in a population-based sample of 1021 older adults without dementia.",
-     "page": "1"
+     "quote": "living in the city of Abbiategrasso (Milan, Italy) on the prevalence day [...] (November 1st, 2009).",
+     "page": "7; 9"
     },
     {
-     "question": "Did the study avoid inappropriate exclusions?",
-     "answer": "Probably yes",
-     "quote": "At baseline, 50 patients were excluded for depression, 11 for psychosis, two for intellectual disability, 39 for a baseline dementia diagnosis and 44 for not completing the neuropsychological assessment.",
-     "page": "2"
+     "question": "Adequate description of inclusion and exclusion criteria?",
+     "answer": "Yes",
+     "quote": "For the aim of the present study, we included individuals without a baseline diagnosis of dementia or major psychiatric disorders (depression or psychosis) and who performed at least one follow-up visit across the study period.",
+     "page": "9"
     }
    ]
   },
   {
-   "domain": "2. Index test",
-   "judgment": "unclear",
-   "rationale": "The criteria were applied by algorithm with published thresholds. However, the baseline z-scores used norms from members of the same cohort who were selected for normal cognition at the 2-year follow-up, so later status entered the index test definition. The direction of any effect on each AUC is unclear.",
+   "domain": "2. Study attrition",
+   "judgment": "high",
+   "rationale": "Of the 1175 people eligible at baseline after clinical exclusions, 154 (13.1%) were excluded because they died before or never attended a follow-up visit, and participation fell further over 12 years; the per-wave numbers are in a flow chart that did not survive text extraction. No characteristics of those lost are given and they are not compared with those retained. For the principal result, the ROC, sensitivity, specificity and predictive values treat dementia within 12 years as binary over all 936 participants, so anyone who died or left without a dementia diagnosis counts as a non-case; the reported values reproduce with all 936 in the denominator (145 cases, 791 non-cases). MCI in people in their seventies is plausibly associated with both death and drop-out, so the relationship between the classification and dementia is likely to differ between completers and non-completers. The Cox hazard ratios censor at loss and are less affected, but they also exclude the 154.",
    "signalling": [
     {
-     "question": "Were the index test results interpreted without knowledge of the results of the reference standard?",
-     "answer": "Probably yes",
-     "quote": "An algorithmic approach was applied retrospectively to the entire study sample to classify individuals according to the Conventional and Neuropsychological criteria.",
+     "question": "Adequate response rate for study participants (proportion of the baseline sample available for analysis)?",
+     "answer": "Probably no",
+     "quote": "Furthermore, 43 patients died before follow-up, and 111 did not attend any follow-up visit, resulting in a final sample of 1021 eligible individuals. [...] Due to the long observation period, participation in the study decreased over the years.",
+     "page": "2; 7"
+    },
+    {
+     "question": "Description of attempts to collect information on participants who dropped out?",
+     "answer": "Partly",
+     "quote": "if the diagnosis was formulated in clinical settings during the period between subsequent study visits, the date of diagnosis was retrospectively collected",
      "page": "10"
     },
     {
-     "question": "If a threshold was used, was it pre-specified?",
+     "question": "Reasons for loss to follow-up are provided?",
+     "answer": "Partly",
+     "quote": "43 patients died before follow-up, and 111 did not attend any follow-up visit",
+     "page": "2"
+    },
+    {
+     "question": "Adequate description of participants lost to follow-up?",
+     "answer": "No information",
+     "quote": "Searched for 'lost', 'drop', 'withdr', 'attrition', 'died', 'death': no characteristics are given for the 154 excluded before follow-up or for later non-attenders; the per-wave flow chart (Fig. 1) did not survive text extraction, so its numbers could not be checked.",
+     "page": "2-11"
+    },
+    {
+     "question": "There are no important differences between participants who completed the study and those who did not?",
+     "answer": "No information",
+     "quote": "Searched for a comparison of completers and non-completers: none reported. The nearest data are the 'uncertain' groups, 'those who could not be definitively classified as reverters or consistent due to incomplete or absent assessments after the first MCI diagnosis' (p10), who had high dementia incidence (Table 3, p5), but this group also includes people first diagnosed at the last waves, so it is not a measure of attrition.",
+     "page": "5; 10"
+    },
+    {
+     "question": "Additional: is incomplete follow-up handled in the analysis of the cited AUC?",
+     "answer": "No",
+     "quote": "During the 12-year observation period, 15.5% (n = 145) of the participants developed dementia. [...] This analysis, together with the calculation of positive and negative predictive values (PPVs, NPVs), evaluated the ability of each MCI criterion to classify individuals who progressed to dementia over the following 12 years.",
+     "page": "2; 10"
+    }
+   ]
+  },
+  {
+   "domain": "3. Prognostic factor measurement",
+   "judgment": "moderate",
+   "rationale": "Both classifications are clearly defined, use published cut-points, are derived from the same test battery given to everyone, and are assigned by algorithm, so knowledge of the outcome did not enter the classification directly. Two concerns remain. The z-score norms for waves 1 to 3 come from a subsample of the same cohort selected for normal cognition both at baseline and 2 years later, so early course enters the thresholds that define baseline MCI. And the classification is complete-case: people who did not complete testing were excluded (44 at baseline and 85 more), analysed participants could miss up to 4 of 11 tests, and how a missing test counted toward either rule is not stated. Both issues affect the two criteria, but not necessarily equally, because the Neuropsychological rule needs two tests in a domain.",
+   "signalling": [
+    {
+     "question": "A clear definition or description of the prognostic factor is provided?",
      "answer": "Yes",
      "quote": "The presence of cognitive impairment was ascertained if at least one test was 1.5 SD below the normative mean for Conventional criteria and if two tests within the same cognitive domain were 1 SD below the normative mean for Neuropsychological criteria (except for the language domain where a single test was considered).",
      "page": "10"
     },
     {
-     "question": "Could the conduct or interpretation of the index test have introduced bias?",
+     "question": "Method of prognostic factor measurement is adequately valid and reliable?",
+     "answer": "Partly",
+     "quote": "All participants completed the same protocol of cognitive tests during a single session lasting 2 h. All tests were administered in Italian by neuropsychologists [...] a subsample of 766 participants with normal cognition (based on InveCe.Ab study criteria) both at baseline [...] and after 2 years were used as normative samples for assessment waves 1\u20133",
+     "page": "9; 9-10"
+    },
+    {
+     "question": "Continuous variables are reported or appropriate cut-points are used?",
+     "answer": "Yes",
+     "quote": "objective impairment in one or more cognitive domains (at least one cognitive test scoring 1.5 standard deviations below the mean of the normative sample) [...] require two impaired test scores within the same cognitive domain, with a cutoff score of 1 standard deviation below the mean of the normative sample",
+     "page": "2"
+    },
+    {
+     "question": "The method and setting of measurement of the prognostic factor is the same for all participants?",
+     "answer": "Yes",
+     "quote": "An algorithmic approach was applied retrospectively to the entire study sample to classify individuals according to the Conventional and Neuropsychological criteria. The presence of subjective cognitive complaints was based on the following yes/no question asked by the geriatrician: \u201cDo you think you have some memory problems?\u201d.",
+     "page": "10"
+    },
+    {
+     "question": "Adequate proportion of the study sample has complete data for the prognostic factor?",
+     "answer": "Partly",
+     "quote": "44 for not completing the neuropsychological assessment. [...] Excluding those with incomplete neuropsychological assessments, we conducted our analysis on a sample of 936 individuals at baseline [...] we analyzed only patients completing at least 60% of the neuropsychological tests considered for the present study (7 out of 11).",
+     "page": "2; 9"
+    },
+    {
+     "question": "Appropriate methods of imputation are used for missing prognostic factor data?",
+     "answer": "No information",
+     "quote": "Searched for 'imput', 'missing', 'incomplete': no imputation is described; the analysis is restricted to participants with at least 7 of 11 tests, and how an untested domain or missing test entered either rule is not stated.",
+     "page": "2; 9-10"
+    },
+    {
+     "question": "Additional: was the prognostic factor classified without knowledge of the outcome?",
      "answer": "Probably yes",
-     "quote": "a subsample of 766 participants with normal cognition (based on InveCe.Ab study criteria) both at baseline and after 2 years were used as normative samples for assessment waves 1\u20133",
-     "page": "9-10"
+     "quote": "An algorithmic approach was applied retrospectively to the entire study sample to classify individuals according to the Conventional and Neuropsychological criteria.",
+     "page": "10"
     }
    ]
   },
   {
-   "domain": "3. Reference standard",
-   "judgment": "unclear",
-   "rationale": "Dementia was diagnosed by a robust two-step consensus against DSM criteria. The final review used all individual records, including the neuropsychological scores from which both index tests are computed, and no blinding is reported (searched: blind, mask, unaware).",
+   "domain": "4. Outcome measurement",
+   "judgment": "moderate",
+   "rationale": "Dementia is clearly defined and diagnosed by a two-step consensus against DSM criteria, which is a valid method. However, the final consensus reviewed all individual records, including the neuropsychological scores from which both classifications are computed, and no blinding is reported. Ascertainment was not uniform: DSM-IV-TR at waves 1 to 3 and DSM-5 at waves 4 and 5, and some diagnoses were made in clinical settings between study visits rather than by the study consensus. The document does not say how dementia was ascertained for people who stopped attending. Because the two criteria are compared in the same participants, these issues bear more on each association than on the difference between the criteria.",
    "signalling": [
     {
-     "question": "Is the reference standard likely to correctly classify the target condition?",
+     "question": "A clear definition of the outcome is provided?",
      "answer": "Yes",
-     "quote": "first, the neuropsychologist and the physician make independent working diagnoses; then, an expert geriatrician together with a clinical neuropsychologist reviewed all individual records to define the final diagnosis. Dementia diagnosis was formulated after multidimensional assessment at each evaluation wave according to the DSM-IV-TR38 (waves 1\u20133) or DSM-5 criteria12 (waves 4\u20135).",
+     "quote": "The main outcome of the study was conversion to dementia within the observation period (12 years).",
      "page": "10"
     },
     {
-     "question": "Were the reference standard results interpreted without knowledge of the results of the index test?",
+     "question": "Method of outcome measurement used is adequately valid and reliable?",
+     "answer": "Probably yes",
+     "quote": "first, the neuropsychologist and the physician make independent working diagnoses; then, an expert geriatrician together with a clinical neuropsychologist reviewed all individual records to define the final diagnosis.",
+     "page": "10"
+    },
+    {
+     "question": "The method and setting of outcome measurement is the same for all study participants?",
+     "answer": "Probably no",
+     "quote": "Dementia diagnosis was formulated after multidimensional assessment at each evaluation wave according to the DSM-IV-TR38 (waves 1\u20133) or DSM-5 criteria12 (waves 4\u20135). If the diagnosis was first formulated after the study visits, dementia onset was set at the date of the corresponding evaluation wave, whereas if the diagnosis was formulated in clinical settings during the period between subsequent study visits, the date of diagnosis was retrospectively collected",
+     "page": "10"
+    },
+    {
+     "question": "Additional: was the outcome determined without knowledge of the prognostic factor?",
      "answer": "Probably no",
      "quote": "an expert geriatrician together with a clinical neuropsychologist reviewed all individual records to define the final diagnosis",
      "page": "10"
@@ -78,63 +174,127 @@
    ]
   },
   {
-   "domain": "4. Flow and timing",
-   "judgment": "high",
-   "rationale": "Of the enrolled participants, 154 were excluded because they died before follow-up or never attended one, and 85 more for incomplete testing. Participation fell over 12 years. The ROC, sensitivity and predictive-value analysis treats dementia within 12 years as binary, without saying how people lost or dead before verification were classified (searched: censor, lost, attrition, missing). Dementia was ascertained by two routes and under two DSM editions.",
+   "domain": "5. Study confounding",
+   "judgment": "low",
+   "rationale": "The cited result is a prognostic comparison of two classification rules applied to the same participants, not a causal estimate, so the comparison between criteria is not confounded by differences between groups of people. Age is restricted by design (a five-year birth cohort), the z-score norms are stratified by age and education, and the hazard ratios are adjusted for age, sex and education, the core factors for this question. No other factors (for example genetic or vascular) enter the analysis, which would matter for an explanatory question but not for the prognostic value that is cited.",
    "signalling": [
     {
-     "question": "Was there an appropriate interval between index test and reference standard?",
-     "answer": "Yes",
-     "quote": "The enrolled participants (n = 1321) underwent periodic multidimensional assessment, comprising blood sampling, geriatric visits, neuropsychological assessments, and social and lifestyle interviews (at baseline and after 2, 4, 8 and 12 years).",
-     "page": "9"
-    },
-    {
-     "question": "Did all patients receive the same reference standard?",
-     "answer": "Probably no",
-     "quote": "If the diagnosis was first formulated after the study visits, dementia onset was set at the date of the corresponding evaluation wave, whereas if the diagnosis was formulated in clinical settings during the period between subsequent study visits, the date of diagnosis was retrospectively collected",
+     "question": "All important confounders are measured?",
+     "answer": "Partly",
+     "quote": "We subsequently developed Cox proportional hazards models adjusted for age, sex, and education to evaluate the predictive validity of each MCI criterion (standard classification), both separately and combined, for the onset of dementia over time.",
      "page": "10"
     },
     {
-     "question": "Were all patients included in the analysis?",
+     "question": "Clear definitions of the important confounders measured are provided?",
+     "answer": "Probably yes",
+     "quote": "an average age of 72.1 years (SD = 1.3) and an average education level of 7.2 years (SD = 3.3)",
+     "page": "2"
+    },
+    {
+     "question": "Measurement of all important confounders is adequately valid and reliable?",
+     "answer": "Probably yes",
+     "quote": "stratified for 4 levels of education (less than primary school, primary school, secondary school, high school or higher)",
+     "page": "10"
+    },
+    {
+     "question": "The method and setting of confounding measurement are the same for all study participants?",
+     "answer": "Probably yes",
+     "quote": "The enrolled participants (n = 1321) underwent periodic multidimensional assessment, comprising blood sampling, geriatric visits, neuropsychological assessments, and social and lifestyle interviews",
+     "page": "9"
+    },
+    {
+     "question": "Appropriate methods are used if imputation is used for missing confounder data?",
+     "answer": "Not applicable",
+     "quote": "Searched for 'imput', 'missing': no imputation of confounders is described, and Models 1 and 2 of Table 2 use all 936 participants (Num. obs 936), so no confounder data appear to be missing for the principal hazard ratios.",
+     "page": "4; 10"
+    },
+    {
+     "question": "Important potential confounders are accounted for in the study design?",
+     "answer": "Yes",
+     "quote": "a population-based cohort of people born between 1935 and 1939 [...] we defined internal normative samples stratified by age and education.",
+     "page": "7; 9"
+    },
+    {
+     "question": "Important potential confounders are accounted for in the analysis?",
+     "answer": "Yes",
+     "quote": "The comparison of the Cox proportional hazards models adjusted for age, sex, and education, shown in Table 2, indicates a comparable risk of developing dementia within the next 12 years among individuals diagnosed with MCI using either the Neuropsychological criteria or Conventional criteria.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "6. Statistical analysis and reporting",
+   "judgment": "moderate",
+   "rationale": "The AUCs, sensitivities, specificities and predictive values are reported and internally consistent, and the analyses announced in the methods are all reported. The analysis is not well matched to the design: the principal AUC comparison treats dementia within 12 years as binary for everyone, ignoring variable follow-up and death as a competing event, and the Cox models violate the proportional-hazards assumption for the Neuropsychological model (p = 0.023) and the combined model (p = 0.047) without comment. Reporting has errors: the Table 1 z statistics are inconsistent with their p values, hazard ratios are given with '(SD)' rather than confidence intervals, and the numbers analysed change without explanation (639 observations in the combined model; 958 observations and 148 events in Table 4 against 936 and 145 elsewhere).",
+   "signalling": [
+    {
+     "question": "Sufficient presentation of data to assess the adequacy of the analytic strategy?",
+     "answer": "Partly",
+     "quote": "Difference \u22120.030 \u22120.078 0.018 \u221212.20 0.223 [...] Hazard ratio (SD), model goodness-of-fit indices (AIC and R2), number of events and observations, and proportional hazards test (PH test) are reported.",
+     "page": "4"
+    },
+    {
+     "question": "Strategy for model building is appropriate and based on a conceptual framework or model?",
+     "answer": "Probably yes",
+     "quote": "We subsequently developed Cox proportional hazards models adjusted for age, sex, and education to evaluate the predictive validity of each MCI criterion (standard classification), both separately and combined, for the onset of dementia over time.",
+     "page": "10"
+    },
+    {
+     "question": "The selected statistical model is adequate for the design of the study?",
+     "answer": "Probably no",
+     "quote": "we performed an area comparison analysis under receiver operating characteristic (ROC) curves via the DeLong test. [...] PH test 0.452 0.023 0.047",
+     "page": "10; 4"
+    },
+    {
+     "question": "There is no selective reporting of results?",
+     "answer": "Probably yes",
+     "quote": "The diagnostic outcomes at each time point according to the Conventional and Neuropsychological criteria are reported in Supplementary Tables S1 and S2, respectively.",
+     "page": "2"
+    },
+    {
+     "question": "Additional: are the numbers analysed consistent across analyses?",
      "answer": "No",
-     "quote": "Furthermore, 43 patients died before follow-up, and 111 did not attend any follow-up visit, resulting in a final sample of 1021 eligible individuals. Excluding those with incomplete neuropsychological assessments, we conducted our analysis on a sample of 936 individuals at baseline [...] Due to the long observation period, participation in the study decreased over the years.",
-     "page": "2; 7"
+     "quote": "Num. obs 936 936 639 [...] Num. events 148 148 148 Num. obs 958 958 958",
+     "page": "4; 5"
     }
    ]
   }
  ],
  "applicability": [
   {
-   "domain": "Patient selection",
+   "domain": "Study participation (population)",
    "concern": "unclear",
-   "rationale": "A narrow age band (70 to 74 years) from one Italian town, with low mean education (7.2 years), limits transfer to the broader MCI populations the review compares: 'in a population-based sample of older adults aged between 70 and 74 years of age at baseline' (p2)."
+   "rationale": "A narrow age band from one Italian town with low mean education (7.2 years) limits transfer to the wider MCI populations the review compares: 'in a population-based sample of older adults aged between 70 and 74 years of age at baseline' (p2)."
   },
   {
-   "domain": "Index test",
+   "domain": "Prognostic factor",
    "concern": "low",
-   "rationale": "Both criteria are recognisable implementations, with minor adaptations: subjective complaint from one yes/no question ('Do you think you have some memory problems?', p10) and a single test for the language domain."
+   "rationale": "Both criteria are recognisable implementations with minor adaptations: subjective complaint from one yes/no question to the geriatrician and a single test for the language domain (p10)."
   },
   {
-   "domain": "Reference standard",
+   "domain": "Outcome",
    "concern": "low",
-   "rationale": "Dementia diagnosed at follow-up by DSM consensus matches the review's target condition (progression to dementia)."
+   "rationale": "Incident dementia by DSM consensus over 12 years matches the review's use of the result (predictive value of competing MCI definitions for dementia)."
   }
  ],
- "overall": "High risk of bias (QUADAS-2). Flow and timing is high; index test and reference standard are unclear; patient selection is low.",
+ "overall": "High risk of bias (QUIPS). Study attrition is high; study participation, prognostic factor measurement, outcome measurement and statistical analysis and reporting are moderate; study confounding is low.",
  "overall_category": "high",
- "overall_rationale": "Flow and timing drives the high rating: participants without follow-up were excluded, attrition built up over 12 years, the binary 12-year accuracy analysis does not handle unverified participants, and dementia was ascertained by mixed routes. The index test and reference standard domains are unclear because the norms were selected on 2-year cognitive status and the consensus reference was not blinded to the underlying test data. Both criteria share these features and are compared in the same participants, so the bias in the AUC difference may be smaller than in each AUC. QUADAS-2 nevertheless rates the result high overall.",
+ "overall_rationale": "By the QUIPS rule in the brief (high if any domain is high or three or more are moderate) the rating is high, and both conditions are met. Attrition drives it: 154 of 1175 baseline-eligible people were excluded for death or no follow-up, participation fell over 12 years, no one lost is described or compared, and the principal binary 12-year AUC counts anyone lost without a diagnosis as a non-case. Four other domains carry moderate concerns: participation rate not reported; z-score norms taken from cohort members selected on normal cognition at 2 years, and complete-case classification; an unblinded consensus outcome with two DSM editions and two ascertainment routes; and an analysis that ignores censoring and death for the AUC, proportional-hazards violations and unexplained changes in N. Because both criteria are compared in the same participants, much of this bias is shared, so the AUC difference (the cited finding of no significant difference) is probably less affected than each AUC or HR on its own. The rule nevertheless rates the result high.",
  "confidence": "medium",
- "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
- "review_status": "reviewed and accepted by the operator (2026-09-28)",
- "brief": "logs/rob_appraisal/ROB_BRIEF.md",
- "quote_check": {
-  "checked": 11,
-  "matched": 9
+ "tool": "QUIPS",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md (including the clarifications of 2026-09-29)",
+ "tool_changed_2026_09_29": {
+  "previous_tool": "QUADAS-2",
+  "previous_category": "high",
+  "why": "re-screen under the operator's clarified rules: The cited result is how well MCI status at baseline, classified by Conventional or by Neuropsychological criteria, predicts dementia that develops over the next 12 years. The source frames this as prognostic value ('compare the prognostic value of Conventional and Neuropsychological criteria', p.1-2) and reports ROC AUCs alongside Cox hazard ratios for dementia onset, adjusted for age, sex and education. That is a single baseline factor evaluated for a later outcome, not an index test read against a concurrent reference standard. Clarification 2 says an AUC does not by itself make a diagnostic-accuracy study, and that a baseline measure evaluated as a predictor of later progression is a prognostic factor, so QUIPS applies (once for each criterion). This matches the operator's decision on P-940, where QUADAS-2 was changed to QUIPS.",
+  "superseded_record": "logs/rob_appraisal/superseded/P-1136_2026-09-28.json"
  },
- "operator_review_2026_09_28": {
-  "date": "2026-09-28",
-  "by": "operator, stated in session on 2026-09-28",
-  "statement": "The operator reviewed the model readers' risk-of-bias judgments and accepts them.",
-  "scope": "Judgments, signalling answers and quotations unchanged by the review."
+ "quote_check": {
+  "checked": 32,
+  "matched": 31,
+  "annotations_not_checked": 3,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
  }
 }

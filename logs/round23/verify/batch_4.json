@@ -1,0 +1,139 @@
+{
+  "batch": 4,
+  "date": "2026-09-29",
+  "role": "verifier (unresolved-discrepancy tier, verification round)",
+  "arithmetic_script": "r23/verify/calc_batch4.py",
+  "results": [
+    {
+      "id": "C-82",
+      "compared": "pMCI vs sMCI (MCI-to-AD conversion) accuracy in ADNI, MRI channel. Matched figure used: P-72's sMRI-only arm (MAResNet18, baseline sMRI, Table 2) 73.68%, against P-122's six-fold CV 84.28% (longitudinal two-timepoint sMRI). P-72's recorded 94.61% is its AD-vs-NC accuracy and is not used (condition 6).",
+      "a": {
+        "paper": "P-122",
+        "estimate": 0.8428,
+        "se": 0.0219,
+        "se_source": "No interval printed; '84.28% ... with standard deviations of 1.65' is a spread across six folds, so SE is derived from n. n = 275 subjects ('449 longitudinal samples from 154 subjects diagnosed with sMCI ... 374 longitudinal samples from 121 subjects'): sqrt(0.8428 x 0.1572 / 275) = 0.0219. On the 823 samples it would be 0.0127."
+      },
+      "b": {
+        "paper": "P-72",
+        "estimate": 0.7368,
+        "se": 0.0583,
+        "se_source": "No interval printed. Each test set is 15% of 389 MCI subjects ('ratio of 70 %, 15 % and 15 %'), 57 subjects (22 pMCI/35 sMCI: 77.19% = 44/57, SEN 15/22, SPE 29/35). sqrt(0.7368 x 0.2632 / 57) = 0.0583. The figure averages 'three different subsets with different test sets'; the paper does not state that they are disjoint, so the pooled n = 171 (SE 0.0337) is not used as primary."
+      },
+      "scale": "accuracy (proportion); AUC checked as a sensitivity",
+      "z": 1.70,
+      "passes_z": false,
+      "skeptic_checked": false,
+      "final": "does_not_qualify",
+      "other_condition_failed": [],
+      "candidate_explanations": [
+        "Longitudinal two-timepoint input (P-122) vs baseline-only images (P-72). P-122 p1: 'The architecture synthesizes longitudinal sMRI data from dual temporal points'.",
+        "Unit of analysis: P-122 scores longitudinal samples (about three per subject), P-72 one prediction per subject. P-122 p5: 'For the sMCI group, we gathered 449 longitudinal samples from 154 subjects diagnosed with sMCI.'",
+        "Test-set design and size: mean of three 57-subject test subsets (P-72) vs six-fold CV over 275 subjects (P-122). P-72 p6: 'construct three different subsets with different test sets, the average of three classification accuracies is used as the final result.'",
+        "Input representation: 2D axial slice sequences (P-122) vs 3D grey-matter and PET volumes (P-72). P-122 p8: 'This discrepancy may be attributable to their utilization of 3D MRI images, while we used 2D image sequence processing strategy.'",
+        "Label definition and class balance: AD within 3 years, 39% pMCI (P-72) vs DSM-5-guided selection with no stated window, 45% pMCI samples (P-122). P-72 p3: 'MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI.'",
+        "PET fusion in P-72's headline model; its sMRI-only figure is lower (73.68%), so fusion does not account for P-72 being lower. P-72 p6: 'the accuracy based on sMRI and PET was 73.68 % and 75.44 %, respectively.'",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "one_sentence": "For predicting MCI-to-AD conversion in ADNI from structural MRI, P-122 reports 84.28% accuracy (six-fold cross-validation on longitudinal two-timepoint MRI from 275 subjects) and P-72 reports 77.19% with MRI plus PET, or 73.68% with MRI alone, on 57-subject test sets; the gap is within combined uncertainty (z = 1.70 on the MRI-only figure), so it is a difference in reported accuracy, not a reportable conflict.",
+      "reason": "Matched figures (P-72 on P-122's channel, sMRI only): z = |0.8428 - 0.7368| / sqrt(0.0219^2 + 0.0583^2) = 0.1060 / 0.0623 = 1.70, below 1.96. Other constructions: with P-122's 823 samples, z = 1.78. Headline 77.19% vs 84.28%: z = 0.0709 / 0.0598 = 1.19. AUC, matched 0.721 vs 0.8599 (Hanley-McNeil 22/35 gives SE 0.0720; 121/154 gives 0.0236): z = 0.1389 / 0.0758 = 1.83. Headline AUC 0.755: z = 1.44. The pair passes only if P-72's three test sets are pooled as 171 disjoint subjects (matched accuracy z = 2.64, matched AUC 2.92, headline accuracy 1.82, headline AUC 2.28); the break-even is n = 80 for P-72. That pooling is not established. The paper says only 'different test sets' (Fig. 8 calls them 'three folds'). Its printed SD across the three subsets, 77.19(1.01), cannot arise from three 57-subject accuracies averaging 44/57, since the smallest non-zero sample SD is 1.75 points. It is also far below the roughly 5.6-point sampling SD that disjoint 57-subject test sets would show, and P-72's AD-vs-NC figure shows the same pattern (0.85 against about 2.7). So the reported dispersion does not support treating the three sets as independent samples. Conditions 1, 2, 3, 5 and 6 were upheld by the reader and skeptic (challenge_skeptic_2); this verification changes only condition 4."
+    },
+    {
+      "id": "C-83",
+      "compared": "MCI vs cognitively normal accuracy in ADNI from T1 MRI. Matched figure used: P-66's amygdala-only radiomic+CNN fusion arm (Table 6) 70.0%, the region P-125 uses, against P-125's mean test accuracy 80.00% (RF/ANN on eight amygdala morphometric features). P-125's abstract figure 82.14% does not appear in its results tables.",
+      "a": {
+        "paper": "P-125",
+        "estimate": 0.80,
+        "se": 0.0756,
+        "se_source": "The printed '80.00 +/- 2.43 %' is a 95% margin of error across five fold-models scored on one test partition (RF recall '92.86 +/- 0 %' is identical across folds), so it is a fold spread and the SE is derived from n. The test n is 28 as implied by the printed metrics (recall 13/14; '3.6 % of MCI as HC' = 1/28), or 30 from the 60-40 split of 74 (training accuracy 77.27% = 34/44). sqrt(0.80 x 0.20 / 28) = 0.0756 (0.0730 at n = 30)."
+      },
+      "b": {
+        "paper": "P-66",
+        "estimate": 0.70,
+        "se": 0.0289,
+        "se_source": "The printed '70.0 +/- 1.6' is an SD across five repetitions on one fixed 20% image test set ('20 % of the remaining 80 % were used for validation'), so the SE is derived from n: about 252 distinct subjects among about 360 test images (20% of 948 MCI + 853 CN images). sqrt(0.70 x 0.30 / 252) = 0.0289 (0.0242 at 360 images)."
+      },
+      "scale": "accuracy (proportion); AUC checked as a sensitivity",
+      "z": 1.24,
+      "passes_z": false,
+      "skeptic_checked": false,
+      "final": "does_not_qualify",
+      "other_condition_failed": [],
+      "candidate_explanations": [
+        "Features within the MRI channel: eight amygdala morphometric scalars vs 1746 radiomic features per ROI fused with 3D-CNN features. P-125 p8: 'used for training were V, VN, DC, and TR for both hemispheres of the amygdala, for a total of 8 features.'",
+        "Participant selection: strict ADNI criteria in P-125 (controls MMSE 28-30 and CDR 0; MCI CDR 0.5 with memory impairment), vs 200 randomly selected subjects per group in P-66. P-125 p4: 'Healthy controls had MMSE scores between 28 and 30, CDR score of 0, and no signs of cognitive impairment or depression.'",
+        "Test-set size: about 28-30 subjects in P-125 vs about 360 images from about 250 subjects in P-66. P-125 p1: 'The machine learning algorithms were trained with the proposed metrics with a partition of 60-40 subjects for training and testing.'",
+        "Split unit: subject-level hold-out (P-125) vs image-level split (P-66). The leakage this allows would favour P-66, so it runs against the observed gap. P-66 p5: 'randomly dividing the MRI data for each classification dataset into a sizeable training and validation set (80 % of images) and a testing set (20 % of images).'",
+        "Classifier and ROI set: RF/SVM/KNN/ANN on the amygdala only vs radiomics+3D-CNN fusion over hippocampus and amygdala. P-66 p1: 'their fusion showed ACC of 72.7 % and AUC of 80.'",
+        "None of these is shown by either paper to be sufficient; P-66's own amygdala-only arm moves away from P-125, not towards it."
+      ],
+      "one_sentence": "For MCI vs cognitively normal classification from T1 MRI in ADNI, P-125 reports 80.00% test accuracy from eight amygdala shape measures on about 28 held-out subjects, against 72.7% for P-66's hippocampus-plus-amygdala radiomics-CNN fusion and 70.0% for its amygdala-only arm; the gap is within combined uncertainty (z = 1.24 on the amygdala-matched figures, 0.91 on the headline figures), mainly because P-125's test set is so small.",
+      "reason": "Matched figures: z = |0.80 - 0.70| / sqrt(0.0756^2 + 0.0289^2) = 0.100 / 0.0809 = 1.24. The range across plausible n (28 or 30 for P-125; 252 subjects or 360 images for P-66) is 1.24-1.30. Headline 80.00% vs 72.7%: z = 0.073 / 0.0806 = 0.91 (0.91-0.95). AUC sensitivity (Hanley-McNeil 14/14 for P-125, about 190/170 for P-66): RF 85.71 vs the amygdala-only 77.5 gives z = 1.06, and the RF against the fusion 80.0 gives 0.74. Even the most favourable pairing, P-125's best-of-four classifier (SVM 90.31) against P-66's lowest arm (77.5), gives z = 1.95, below 1.96. P-125's printed MOE would exclude 72.7%, but it measures variation among fold-models on one test partition, which the brief treats as a spread, not an SE. This is one of the five pairs the operator named; it was judged by the same test as every other pair. Conditions 1, 2, 3, 5 and 6 were upheld by the reader and skeptic (challenge_skeptic_3); condition 4 fails on the uniform test."
+    },
+    {
+      "id": "C-84",
+      "compared": "Binary MCI vs healthy-control accuracy in ADNI from T1 structural MRI: P-109 BrainViT-L 94.23% (random 90/10 split of shuffled 2D slices) vs P-125 80.00% (subject-level test partition). No matched figure exists. P-109's recorded 96.81% is its three-class accuracy and is not used (condition 6).",
+      "a": {
+        "paper": "P-109",
+        "estimate": 0.9423,
+        "se": 0.0089,
+        "se_source": "No interval printed. The test set is 10% of about 34,000 shuffled slices ('The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training'), about 50 slices per subject, so nearly all 685 contrast subjects (370 MCI + 315 HC) contribute test slices. sqrt(0.9423 x 0.0577 / 685) = 0.0089. Alternatives: n = 69 (10% of subjects) gives 0.0281; about 3,400 test slices gives 0.0040."
+      },
+      "b": {
+        "paper": "P-125",
+        "estimate": 0.80,
+        "se": 0.0756,
+        "se_source": "The printed +/-2.43% is a 95% MOE across five fold-models on one test partition (a fold spread), so the SE is derived from n. n = 28 is implied by the printed metrics (recall 13/14; '3.6 % of MCI as HC' = 1/28), or 30 from the 60-40 split of 74. sqrt(0.80 x 0.20 / 28) = 0.0756 (0.0730 at n = 30)."
+      },
+      "scale": "accuracy (proportion); AUC checked as a sensitivity",
+      "z": 1.87,
+      "passes_z": false,
+      "skeptic_checked": true,
+      "final": "does_not_qualify",
+      "other_condition_failed": [],
+      "candidate_explanations": [
+        "Split unit: a random slice-level split, so slices of one subject can sit in both the training and test sets (P-109), against a subject-level hold-out (P-125). Section 3.5 names this kind of design as one that inflates reported accuracy. P-109 p8: 'The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training.'",
+        "Input representation and unit of evaluation: about 50 2D slices per subject classified individually, against 8 amygdala morphometric scalars per subject. P-125 p8: 'used for training were V, VN, DC, and TR for both hemispheres of the amygdala, for a total of 8 features.'",
+        "Sample size: 685 subjects in the contrast against 74, with a test partition of about 28-30 in P-125. P-109 p8: 'A total of 1075 individuals, including 390 with AD, 370 with MCI, and 315 HC, were used to create a balanced dataset for the 2D model.'",
+        "Architecture: a CNN-transformer hybrid on images against RF/SVM/KNN/ANN on hand-crafted features. P-109 p10: '97.13 % with 98.52 % AUC for AD/HC and 94.23 % with 97.15 % for MCI/HC classifications'.",
+        "Participant selection and acquisition: P-125's controls are restricted to MMSE 28-30 and CDR 0, and its MCI to MMSE 24-30 and CDR 0.5; P-109 used 3 T scans and states no selection criteria beyond ADNI diagnosis. P-109 p7: 'All sMRI scans were conducted at a resolution of 3Tesla (3 T)'.",
+        "None of these is shown by either paper to be sufficient; the split unit is the leading candidate."
+      ],
+      "one_sentence": "For binary MCI vs healthy-control classification from T1 MRI in ADNI, P-109 reports 94.23% accuracy (AUC 97.15%) from a vision transformer tested on a random 10% of shuffled slices, so the same subjects contribute to training and test, while P-125 reports 80.00% from eight amygdala measures on a held-out set of about 28 subjects; the difference does not exceed combined uncertainty under any construction (z = 1.87; at most 1.95), and P-109's slice-level split is the leading candidate explanation for its higher figure.",
+      "reason": "Test: z = |0.9423 - 0.80| / sqrt(0.0089^2 + 0.0756^2) = 0.1423 / 0.0761 = 1.87. Every construction falls below 1.96: n(P-109) = 69, 685 or 3,400 against n(P-125) = 28 gives 1.77, 1.87 and 1.88; against n = 30 it gives 1.82, 1.93 and 1.95. Even with zero SE for P-109, z = 1.88 (n = 28) or 1.95 (n = 30), because P-125's test set alone carries an SE of about 0.073-0.076. AUC 0.9715 vs RF 0.8571 or SVM 0.9031 (Hanley-McNeil 37/32 and 14/14) gives z = 1.50 and 1.07 (1.56 and 1.12 on slice counts). The advocate's 'both directions' result relied on P-125's printed MOE, a spread across fold-models on one test partition, and on the one-sided outside-the-interval wording that the verification round replaced. Skeptic check of conditions 1-6 on the source texts: (1) holds, binary MCI vs HC in ADNI from T1 MRI (3 T in P-109). (2) holds, accuracy with accuracy. (3) holds, no matched figure; P-109 has no subject-level or morphometric arm, and P-125 has no slice model. (4) fails on the uniform test. (5) contested but not shown failed on the letter. P-109 meets the ceiling limb (MCI/HC AUC 97.15%, AD/HC 98.52%) on internal validation with no external cohort ('Our evaluation was based on a specific ADNI dataset'). It calls its data 'only a small amount of ADNI Alzheimer's data' and evaluates on shuffled slices. But its 685 contrast subjects exceed every Section 3.5 exemplar (P-200 582 is the largest), and C-46 read the same P-109 figures as not small. If the review reads 'small samples' to cover a 685-subject slice-shuffled design, condition 5 also fails. (6) holds once the record's three-class 96.81% is replaced by the printed binary 94.23%. The pair fails on condition 4 whichever way condition 5 is read."
+    },
+    {
+      "id": "C-93",
+      "compared": "MCI-to-AD/dementia progression AUC in ADNI from cognitive and MRI data (both multimodal). Matched figure used: P-168's single-timepoint random forest, 0.90 (month-24 index exam; the single-timepoint input P-156 uses), against P-156's Ensemble Integration held-out test AUC 0.81 (baseline data only). Headline: P-168 LSTM 0.93 (five visits).",
+      "a": {
+        "paper": "P-168",
+        "estimate": 0.90,
+        "se": 0.0242,
+        "se_source": "The printed '0.90 +/- 0.09' is an SD across 10 CV folds, so the SE is derived by Hanley-McNeil from n = 347 ('347 participants ... of whom 77 converted'; 77/270): Q1 = 0.90/1.10 = 0.818, Q2 = 2(0.81)/1.90 = 0.853, SE = sqrt([0.09 + 76(0.818 - 0.81) + 269(0.853 - 0.81)] / (77 x 270)) = 0.0242. The LSTM's 0.93 gives SE 0.0206."
+      },
+      "b": {
+        "paper": "P-156",
+        "estimate": 0.81,
+        "se": 0.0377,
+        "se_source": "No interval printed. Held-out test set = 841 - 672 = 169 ('A randomly sampled 80 % subset ... remaining 20 %'). The class split is in a supplement that was not available, so it is estimated from the cohort's 286/841 = 34% progressors as 58/111: Hanley-McNeil SE = 0.0377. It would be 0.0399 at 50/119 and 0.0359 at 66/103."
+      },
+      "scale": "ROC-AUC",
+      "z": 2.01,
+      "passes_z": true,
+      "skeptic_checked": false,
+      "final": "qualifies",
+      "other_condition_failed": [],
+      "candidate_explanations": [
+        "Horizon: P-168 predicts conversion within a fixed 2 years of a month-24 index exam; P-156 predicts the latest recorded diagnosis with no fixed horizon. P-168 p2: 'The index exam is defined as the exam at 24-month, and the outcome is defined as the progression from MCI to AD before 48-month.' P-156 p4: 'The most recent diagnosis given to each patient (Final DX) was the outcome predicted (stable MCI or progressed to dementia).'",
+        "Cohort construction: P-168 keeps only participants with complete data at five visits who were still MCI at month 24, and excludes 187 with undetermined status at month 48; P-156 takes all 841 baseline EMCI/LMCI patients. P-168 p2: 'The participants who either reverted to normal cognitive status (n = 19) or cannot determine the cognitive status at the 48-month follow-up examination (n = 187) were excluded.'",
+        "Index timepoint and representation: even P-168's single-timepoint model uses the month-24 exam of people already MCI for up to two years, not the first MCI visit. P-168 shows longitudinal input adds 0.03 (DeLong P = 0.039), which accounts for only part of the gap. P-168 p5: 'significantly higher mean AUC (0.93 +/- 0.06) than the random forest model based on the data collected at a single time point (24-month) (0.90 +/- 0.09)'.",
+        "Validation optimism in P-168: hyperparameters were selected by 10-fold CV on the same 347 participants later scored by a second 10-fold CV. P-168 p4: 'The optimization was performed using two separate 10-fold cross-validation procedures for hyperparameter selection and model performance evaluation.'",
+        "Validation design: 10-fold CV mean (P-168) vs a single random 20% held-out test set (P-156).",
+        "Feature loss and data processing in P-156: PET and DTI were dropped for missingness, and TADPOLE aggregates ADNI editions. P-156 p7: 'This resulted in several imaging modalities, namely FDG PET, AV45 PET, AV1451 PET and DTI, being removed'.",
+        "Label and case mix: AD (P-168) vs dementia (P-156); 35.4% of P-156's cohort is early MCI at baseline. P-156 p3: 'Our cohort derived from TADPOLE consisted of 841 patients diagnosed with MCI at their first visit (baseline).'",
+        "None of these is shown to be sufficient; P-168 quantifies only the longitudinal-input effect (0.03 of the 0.12 headline gap)."
+      ],
+      "one_sentence": "For predicting progression from MCI to AD or dementia in ADNI from cognitive and MRI data, P-168 reports AUC 0.90 from a single-timepoint model (0.93 with five visits; 10-fold cross-validation, 347 participants, 2-year horizon) and P-156 reports AUC 0.81 from baseline data on a 169-patient held-out set (outcome: latest diagnosis). The matched single-timepoint figures differ only just beyond combined uncertainty (z = 2.01), a margin that depends on P-156's unprinted test class split. Horizon, cohort selection, index timepoint and validation design are candidate explanations, none shown to be sufficient.",
+      "reason": "Matched figures: z = |0.90 - 0.81| / sqrt(0.0242^2 + 0.0377^2) = 0.090 / 0.0448 = 2.01, which passes. Headline: LSTM 0.93 vs 0.81 gives z = 0.120 / 0.0429 = 2.80 (2.67-2.90 across test splits). The pass is thin, for three reasons. First, the matched z depends on P-156's test class split. It is 2.01 at the expected 58/111 (a random 20% draw gives a mean of 57.5 progressors, SD 5.5), 1.93 at 50/119, and 2.08 at 66/103. It falls below 1.96 at 52 or fewer progressors, which has roughly an 18% chance under random sampling. Second, the figures are printed to two decimals, and a difference below 0.088 would fail. Third, treating P-168's fold SD as an SE (0.09/sqrt(10)) would give 1.91, but the brief directs deriving the SE from n. P-168's age-restricted single-timepoint AUCs (0.89 over 65; 0.87 over 70) are narrower subsets than P-156's cohort (median age 73.5, IQR 68.0-78.8), so they are not the matched figure. Conditions 1, 2, 3, 5 and 6 were upheld by the reader and skeptic (challenge_skeptic_3). A spot check of the source here confirms the figures: P-168 347 (77/270), 0.93 and 0.90; P-156 841, 672 training, test AUC 0.81. Both studies draw on ADNI 1/GO/2, so the samples overlap and are not independent."
+    }
+  ]
+}

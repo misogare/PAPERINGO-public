@@ -1,0 +1,31 @@
+{
+  "id": "C-227",
+  "qualifies": "no",
+  "question": "The record's question is whether combined or intensified computerised training improves cognition more than single computerised training in older adults with cognitive impairment. P-653 tests this directly within MCI: a three-week CCT burst before FUNSAT skills training against FUNSAT alone, with no untrained control arm. P-655 prints only each training node against control, in a network that pools MCI and dementia. Its CCT2x-versus-CCT contrast (which pools Harvey 2022, P-653's predecessor trial) appears only implicitly, through the SUCRA ranking and the gap between two SMDs against control. The channel (cognitive test scores) matches. On the printed figures the comparison does not match: P-655 compares against control, while P-653 compares against an active single-training arm. The populations also differ in part (MCI or dementia against MCI).",
+  "metric": "Mismatch on the printed figures. P-655 gives SMDs against control (CCT2x 1.21, CCT 0.80). P-653 gives an unsigned between-arm t on change in a six-subtest composite z-score (t = 0.86, p = 0.39), with no SMD and no arm sizes in the text. A common SMD can only be derived (see figures).",
+  "figures": {
+    "P-655": "Global cognition, SMD against control: CCT2x 1.21 (95% CI 0.69-1.73), CCT 0.80 (0.34-1.27). SEs from the intervals: 1.04/3.92 = 0.265 and 0.93/3.92 = 0.237. The implied CCT2x-minus-CCT difference is 0.41; it is not printed. Its interval depends on the network covariance, which is not reported. Assuming independence (the widest case): SE = sqrt(0.265^2 + 0.237^2) = 0.356, 95% CI -0.29 to 1.11. With a correlation of 0.3 between the two node estimates: SE 0.298, CI -0.17 to 0.99. With 0.5: SE 0.252, CI -0.08 to 0.90. Every version includes 0, so P-655 does not show CCT2x beating CCT. Its CCT2x-first ranking is a SUCRA ordering, not a tested contrast.",
+    "P-653": "Combined (CCT burst + FUNSAT) against FUNSAT alone within MCI. 92 MCI randomised; the arm sizes are not printed, so about 46 each is assumed. Composite cognition t = 0.86, p = 0.39. d = t*sqrt(1/n1 + 1/n2) = 0.86*sqrt(2/46) = 0.18, SE = sqrt(2/46 + 0.18^2/184) = 0.21. The sign of t is not printed: if positive (combined better), 95% CI -0.23 to 0.59; if negative, -0.59 to 0.23. Table 2 does not settle the sign. Gains from baseline to post-training are +0.39 for skills-only and +0.21 for combined; gains from baseline to 30 days are +0.37 and +0.43. The within-group d from baseline to 30 days is 0.91 for skills-only and 0.73 for combined."
+  },
+  "matched_figure_check": "No matched figure is printed. P-655 gives no combined-versus-single estimate: its three CCT2x-vs-CCT trials, Harvey 2022 among them, enter the network, but the text gives only SMDs against control and SUCRA ranks. P-653 has no untrained control arm, so it cannot give an SMD against control. Its within-group pre-post d values are not controlled estimates and cannot stand in for one.",
+  "beyond_uncertainty": false,
+  "significance_only": true,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [1, 2, 4],
+  "candidate_explanations": [],
+  "reason": "On the printed figures the papers answer different comparisons with different metrics. P-655 gives training against control, pooled over MCI and dementia, as SMDs; P-653 gives combined against single training within MCI, as an unsigned t (conditions 1 and 2). Take P-655's implied CCT2x-minus-CCT gap of 0.41 as the shared quantity: neither paper has a significant estimate of it. P-655's derived interval includes 0 and contains P-653's derived d (0.18, either sign). Condition 4 could be met only under assumptions the texts do not support: a negative sign for P-653's t, which would put 0.41 outside -0.59 to 0.23, and, for the reverse direction, a network correlation of about 0.3 or more (at 0.3 the lower bound is -0.17, just above -0.18). The pair therefore sets a ranking against a null head-to-head, a difference in significance that is not shown to exceed uncertainty. The operator's 2026-09-24 reading (the results are compatible) holds under this rule too. P-653's own dose finding (time by training sessions, F = 4.03, p = 0.02) is context, not a qualifying gap.",
+  "quotes": [
+    {"paper": "P-655", "page": 4, "quote": "The SMD was 1.21 (95 % CI, 0.69–1.73) for CCT2x and 0.80 (95 % CI, 0.34–1.27) for CCT."},
+    {"paper": "P-655", "page": 2, "quote": "Intensive CCT (CCT2x) indicated cases where participants received two interventions involving mobile applications or were actively using the application during the study period."},
+    {"paper": "P-655", "page": 4, "quote": "CCT2x with CCT (n = 3) (Harvey, 2022; Robert et al., 2020; Schmitter et al., 2022)"},
+    {"paper": "P-655", "page": 4, "quote": "In Harvey et al. 2022, only cognitive impairment patient data (G1, G2) were used for meta-analysis."},
+    {"paper": "P-655", "page": 5, "quote": "CCT2x ranked first in all of the outcomes."},
+    {"paper": "P-655", "page": 2, "quote": "(1) RCTs that included older individuals with cognitive impairment or dementia"},
+    {"paper": "P-653", "page": 2, "quote": "receive FUNSAT training only or to receive a three-week burst of CCT prior to the initiation of FUNSAT"},
+    {"paper": "P-653", "page": 5, "quote": "There were no training condition differences within the MCI group for composite cognition, t = 0.86, p = 0.39"},
+    {"paper": "P-653", "page": 5, "quote": "We also compared training gains from baseline to endpoint between MCI participants across the two training conditions"},
+    {"paper": "P-653", "page": 7, "quote": "We did not find a synergistic effect of combined training on cognition or functional capacity in MCI"},
+    {"paper": "P-653", "page": 7, "quote": "Time x Training Sessions for Cognition, F = 4.03, p = 0.02"},
+    {"paper": "P-653", "page": 7, "quote": "Effect Sizes are within group change from baseline to 30-Day Follow-up."}
+  ]
+}

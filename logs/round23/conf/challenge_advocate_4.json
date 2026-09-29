@@ -1,0 +1,164 @@
+{
+  "role": "advocate",
+  "batch": "challenge_advocate_4",
+  "date": "2026-09-29",
+  "status": "candidate verdicts for operator review; not a gate",
+  "sources_read": {
+    "P-182": "scratchpad/r20/pdf/P-182.txt (pp. 2-3 cohort and labels, p. 6 results, p. 10 limitations)",
+    "P-122": "scratchpad/r20/pdf/P-122.txt (pp. 5-8: dataset, Table 2 six-fold CV, Table 3, Table 4 ablation, Table 5, ablation text)",
+    "P-207": "scratchpad/r20/pdf/P-207.txt (pp. 2-9: participants, ICA templates, coupling, E1/E2 selection, Tables 2-3)",
+    "P-185": "scratchpad/r20/pdf/P-185.txt (pp. 2, 5-8: labels, protocol, Tables 2-4, discussion)",
+    "P-186": "scratchpad/r20/pdf/P-186.txt (pp. 1-10: subsets, Figure 1 pipeline, marker ranking, Table 5, Table 6)",
+    "P-37": "scratchpad/r20/pdf/P-37.txt (Bae et al. 2021, the document behind the ledger's P-174 figure; pp. 1-6)",
+    "P-211": "scratchpad/r20/pdf/P-211.txt (pp. 1-13) plus Figure 2 (page 7) rendered from the PDF with PyMuPDF at 8x and measured pixel by pixel (script r23/adv4_px2.py); legend read from the rendered page (r23/p211_p7.png)",
+    "arithmetic": "r23/adv4_calc.py (Wilson and Hanley-McNeil, z = 1.96)",
+    "rule": "r23/DISCREPANCY_BRIEF.md"
+  },
+  "results": [
+    {
+      "id": "C-117",
+      "final": "yes",
+      "overturned": true,
+      "reader_verdict": "borderline (condition 3 left to the operator)",
+      "conditions_attacked": {
+        "1_question": "Holds. Both classify pMCI against sMCI in ADNI MCI from structural MRI. Horizon (P-182: follow-up at least 18 months; P-122: progression within three years), input, architecture and unit of analysis differ, which condition 1 allows.",
+        "2_metric": "Holds. Accuracy with accuracy, AUC with AUC.",
+        "3_matched_figure": "Holds. Neither paper reports a result under the other's condition: P-122 has no single-timepoint, hippocampal-box, AD/CN-transfer or subject-level figure, and P-182 has no two-timepoint figure. The ablation the reader leans on (unimproved Eff-GCNet, 71.6%, AUC 0.7770) removes P-122's own modules while keeping P-122's two-timepoint whole-brain input, its three-year label, its MCI-trained target and its sample-level test. None of P-182's conditions is applied, and P-182's model is a two-stream 3D DenseNet, not Eff-GCNet. So it is not a matched figure. Nor does it show that the architecture difference between these two papers accounts for their gap. It shows that P-122's modules are worth 11 to 13 points on P-122's own input. For that to account for the cross-paper gap, the other differences (input, region, training target, label window) would have to net out against P-122 by about 4 points (71.6 vs 75.85), and neither paper tests that. P-182 itself names the missing longitudinal imaging and the single modality as things that may have lowered its performance. The ablation is also weaker evidence than the reading credits. (a) Every ablation and backbone row in Tables 3-4 is consistent with whole-number counts only for a test set of 42 positive and 60 negative cases (or multiples), not the stated 124-sample test. Example: 71.6% = (34 + 39)/102. (b) On that set the full model's own sensitivity (83.33%) and specificity (82.27%) imply 82.7%. The 84.74% headline exceeds both its sensitivity and its specificity, which no single confusion matrix can do. This fits the paper's statement that its final metrics were aggregated across the two validation schemes. (c) At about 34 test subjects (102 x 275/823), the ablated 71.6% has a Wilson interval of 0.549-0.839, which contains the full model's 0.827. So at subject level the module effect itself is not beyond uncertainty. At sample level (n = 102, 0.622-0.794) it is. Finally, if a within-paper ablation that lands near the other paper's figure counted as showing sufficiency, nearly every method-versus-method pair would fail: ablated baselines routinely land at prior published levels. P-122's own Table 5 lists 13 prior pMCI/sMCI results at 71.07-83.51%. That is the outcome the operator's direction rules out.",
+        "4_uncertainty": "Holds in both directions. P-182 accuracy Wilson (n = 381): 0.713-0.799. It excludes P-122's CV 0.8428, its test 0.8474 and the implied 0.827. P-122 CV accuracy Wilson (n = 275 subjects): 0.795-0.881, which excludes 0.7585. AUC: P-182 Hanley-McNeil (118/263) 0.723-0.831 excludes 0.8599. P-122 CV Hanley-McNeil (121/154) 0.814-0.906 excludes 0.777. Two-sample checks: accuracy z = 2.72, AUC z = 2.28.",
+        "5_performance_validity": "Holds: 0.8474/0.8587 and 0.7585/0.777 are below 0.97. P-182's 94.07%/0.993 is one AD-vs-CN training fold, not a compared figure.",
+        "6_record": "Holds. The compared figures are the ones the papers print. The registry modality 'MRI/PET' is wrong but does not create the gap. P-122's headline is internally inconsistent (see 3b), but its CV figure (84.28%) and its implied single-split figure (82.7%) both still lie outside P-182's interval."
+      },
+      "figures": {
+        "P-182": "Acc 0.7585, n = 381 (118 pMCI/263 sMCI), Wilson 0.713-0.799. AUC 0.777, Hanley-McNeil SE 0.0276, CI 0.723-0.831.",
+        "P-122": "Six-fold CV over 275 subjects (823 samples): Acc 0.8428, Wilson 0.795-0.881. AUC 0.8599, Hanley-McNeil (121/154) SE 0.0236, CI 0.814-0.906. The headline 84.74%/0.8587 is aggregated; the single split implied by its sensitivity/specificity is about 82.7% (Wilson on 102 cases 0.742-0.888). Ablation (unimproved Eff-GCNet): 71.6%, AUC 0.7770. Wilson 0.622-0.794 on 102 cases, 0.549-0.839 on about 34 subjects."
+      },
+      "candidate_explanations": [
+        {"difference": "Architecture: P-122's multi-scale spatiotemporal attention and adaptive fusion modules. P-122's ablation makes this the leading candidate, but it is shown only for P-122's own backbone on P-122's own input, not for P-182's model.", "quote": "The performance of the spatiotemporal attention module is evaluated using the unimproved Eff-GCNet, which in this configuration without any improvement or add-on blocks", "paper": "P-122", "page": 8},
+        {"difference": "Input representation: two time points (P-122) vs a single baseline scan (P-182). P-182 names this as a limitation.", "quote": "we did not examine longitudinal changes in imaging metrics", "paper": "P-182", "page": 10},
+        {"difference": "Input region: hippocampal bounding box only (P-182) vs whole-brain axial slices (P-122).", "quote": "the model utilizes voxel intensity values from a 3D bounding box surrounding the entire hippocampal region", "paper": "P-182", "page": 6},
+        {"difference": "Training target: P-182 trains on AD vs CN and applies the model to MCI; P-122 trains directly on pMCI/sMCI.", "quote": "We used baseline MRI data from 349 subjects from ADNI-2/GO to train the deep learning model", "paper": "P-182", "page": 2},
+        {"difference": "Label window and exclusions: at least 18 months with 65 reverters excluded (P-182) vs a three-year progression criterion (P-122).", "quote": "We excluded 65 subjects who were diagnosed with MCI at baseline but reverted to CN status during follow-up.", "paper": "P-182", "page": 2},
+        {"difference": "Unit of analysis and validation: longitudinal samples (about 3 per subject) on a 15% split plus six-fold CV, with the headline aggregated across both schemes (P-122); 381 subjects scored once (P-182).", "quote": "The final performance metrics were derived from systematic aggregation of both validation paradigms.", "paper": "P-122", "page": 6},
+        {"difference": "Single modality, which P-182 says may have reduced its performance.", "quote": "basing our models on a single modality may have reduced its performance in the classification task", "paper": "P-182", "page": 10}
+      ],
+      "not_shown_sufficient": "No candidate explanation is shown sufficient for the cross-paper gap. P-122's ablation shows the size of its own module effect on its own input only, and that effect is not beyond uncertainty at subject level.",
+      "reason": "No figure in either paper is under the other's condition. P-122's architecture ablation keeps P-122's two-timepoint input, label and target, so it neither matches P-182's condition nor shows that architecture accounts for the cross-paper gap. The ablation's own test set does not match the stated one, and its effect is within subject-level uncertainty. Every other condition holds, with the gap beyond uncertainty in both directions (accuracy z = 2.72, AUC z = 2.28). This verdict rests on the reading that a paper's ablation of its own modules is a candidate explanation, not a condition-3 failure. If the operator rules otherwise, C-117 and C-147 both fail condition 3, and the ruling must then be applied to every method-versus-method pair.",
+      "quotes": [
+        {"paper": "P-182", "page": 6, "quote": "In this task, the model achieved an accuracy of 75.85% and an AUC of 0.777 (Fig. 2B), with a sensitivity of 0.66 and a specificity of 0.8"},
+        {"paper": "P-182", "page": 2, "quote": "An additional sample of 381 subjects with MCI at baseline, obtained from ADNI-2/GO, was used to test the model."},
+        {"paper": "P-122", "page": 6, "quote": "the proposed framework achieved mean ACC and AUC of 84.28% and 0.8599 with standard deviations of 1.65 and 0.0167"},
+        {"paper": "P-122", "page": 6, "quote": "and the remaining 15% (124 samples) for final model testing"},
+        {"paper": "P-122", "page": 6, "quote": "MMS-TransENet 84.74 83.33 82.27 0.8587"},
+        {"paper": "P-122", "page": 7, "quote": "w/ w/o w/o 71.6 80.95 65.00 0.7770"},
+        {"paper": "P-122", "page": 1, "quote": "The architecture synthesizes longitudinal sMRI data from dual temporal points"}
+      ]
+    },
+    {
+      "id": "C-147",
+      "final": "yes",
+      "overturned": true,
+      "reader_verdict": "borderline (condition 3 left to the operator, as in C-117)",
+      "conditions_attacked": {
+        "1_question": "Holds. Both predict three-year MCI-to-AD conversion in ADNI MCI from baseline T1 sMRI. P-207 MCI-c converted within 3-year follow-up; P-185 separates pMCI/sMCI at 3 years. The ledger's EEG/MEG modality for P-207 is wrong. Features within the channel differ, which condition 1 allows.",
+        "2_metric": "Holds. Accuracy with accuracy (P-207's MCI-c vs MCI-nc 87.72%, not the ledger's 90.44% AD-vs-NC figure).",
+        "3_matched_figure": "Holds. Neither paper evaluates the other's features, classifier or subjects. The agreeing baselines are each paper's own condition, not the other's. P-207's OFMROI (64.15%) is VBM grey-matter volume of the top three AAL ROIs within ICA network templates, fed to AdaBoost with linear-SVM learners. P-185's original morphological features (62.92%) are FreeSurfer cortical thickness and volume with mRMR plus SVM-RFE and an RBF SVM, the protocol of its reference [13]. That the two agree is the reader's cross-paper inference; neither paper shows it. Chaining the two ablations says only that each paper's figure departs from a plain baseline in its own representation. That restates the discrepancy (two feature-extraction methods for the same question give 87.7% and 69.4%) rather than dissolving it, and features within the channel are an allowed difference to be recorded as a candidate explanation. On the 'best of 15' point: P-207 gives E1 = 3, E2 = 2 as the setting that was best for AD vs NC, and says the same selection applies to MCI. So 87.72% is P-207's recommended setting, carried over from the AD/NC task, not only the maximum of the MCI grid. Whether the setting was fixed before the MCI runs is not stated. Even the median of the 15 CFMnetwork settings (75.71%; mean 76.24%) lies above P-185's upper bound of 0.751. Only the lowest settings (70.24%, 70.65%) fall inside it. Parameter sensitivity is a candidate explanation, not a figure under P-185's condition, and P-185 also tuned every method's parameters.",
+        "4_uncertainty": "Holds in both directions. P-207 Wilson (n = 234): 0.829-0.913. P-185 Wilson (n = 221): 0.630-0.751. Two-sample z = 4.87.",
+        "5_performance_validity": "Holds: 87.72% and 69.37% are below 0.97, as is P-207's highest figure (90.44%, AD vs NC).",
+        "6_record": "Holds. The ledger's 90.44% is a misread (AD vs NC), but the printed conversion figure (87.72%) still differs beyond uncertainty, so the misread does not create the gap. The record must quote 87.72% and sMRI."
+      },
+      "figures": {
+        "P-207": "MCI-c vs MCI-nc 87.72%, 10-fold CV, n = 234 (126/108), Wilson 0.829-0.913. At the recommended setting (E1 = 3, E2 = 2). Across the 15 settings: range 70.24-87.72, median 75.71. OFMROI baseline 64.15%, Wilson 0.578-0.700.",
+        "P-185": "pMCI vs sMCI 69.37% (AUC 0.6951), 20 x 10-fold CV, n = 221 (126/95), Wilson 0.630-0.751. Original morphological features 62.92%, Wilson 0.564-0.690."
+      },
+      "candidate_explanations": [
+        {"difference": "Feature representation: ICA-network two-level coupled grey-matter volume (P-207) vs FreeSurfer thickness and volume projected into an AD/NC-learned subspace (P-185). Neither paper evaluates the other's representation.", "quote": "The average GMV of each ROI falling into the brain network template was regarded as the ROI-level original feature value.", "paper": "P-207", "page": 3},
+        {"difference": "Parameter setting: P-207's E1/E2 carried over from AD vs NC; its lowest settings fall inside P-185's interval.", "quote": "When E1 and E2 were set as 3 and 2, the two-level coupled feature representation achieved the best performance for AD vs. NC classification. The same parameter selection is applicable to the MCI-c vs. MCI-nc distinction.", "paper": "P-207", "page": 6},
+        {"difference": "Transductive coupling: P-207 computes its Pearson coupling weights and CCA coefficients over all M subjects of the task. No within-fold estimation is described. P-185 learns its subspace on AD/NC data only.", "quote": "the utilization of AD and NC subjects instead of MCI subjects during subspace learning can avoid the double-dipping problem", "paper": "P-185", "page": 8},
+        {"difference": "Classifier: AdaBoost ensemble of linear-SVM base learners (P-207) vs a single linear SVM (P-185).", "quote": "The proposed biomarker achieved highest accuracy of 69.37% when using SVM classifier with linear kernel.", "paper": "P-185", "page": 6},
+        {"difference": "Scanners and subject selection: mixed 1.5T/3T with 108 MCI-nc (P-207) vs 1.5T only with 95 sMCI (P-185).", "quote": "The T1-weighted magnetization prepared rapid gradient echo (MPRAGE) images of all these subjects were obtained from 1.5T or 3T scanners.", "paper": "P-207", "page": 3},
+        {"difference": "Validation: single 10-fold CV (P-207) vs 20 repeats of 10-fold CV (P-185).", "quote": "we repeated 10-fold cross-validation 20 times to report the average results for each method.", "paper": "P-185", "page": 5}
+      ],
+      "not_shown_sufficient": "None is shown sufficient. P-207's ablation measures its representation against its own plain features, not against P-185's representation or subjects.",
+      "reason": "Neither paper reports a figure under the other's condition. The agreeing plain-feature baselines are two different pipelines, so linking them is the reader's inference, not a paper's showing, and it restates the gap rather than dissolving it. P-207's 87.72% is its recommended setting carried over from AD vs NC, and even its median setting lies above P-185's interval. All six conditions hold (z = 4.87). The verdict rests on the same ruling as C-117.",
+      "quotes": [
+        {"paper": "P-207", "page": 6, "quote": "the best prediction accuracy is 87.72%, sensitivity is 84.16%, and specificity is 91.64% for the MCI-c and MCI-nc groups."},
+        {"paper": "P-207", "page": 3, "quote": "The patients with MCI who converted to AD within 3-year follow-up were classified into the MCI-c group"},
+        {"paper": "P-207", "page": 3, "quote": "The GM images of the AD and NC groups were decomposed into a mixing coefficient matrix and a source matrix"},
+        {"paper": "P-185", "page": 6, "quote": "the original morphological features were also added for comparison using the same feature selection strategy and classifier as literature [13]."},
+        {"paper": "P-185", "page": 2, "quote": "Moreover, the 221 MCI subjects contain 126 pMCI and 95 sMCI subjects."}
+      ]
+    },
+    {
+      "id": "C-128",
+      "final": "no",
+      "overturned": false,
+      "reader_verdict": "borderline (knife-edge on condition 3)",
+      "failed_conditions": [3],
+      "conditions_attacked": {
+        "1_question": "Holds once the right document is read: P-186 vs Bae et al. (P-37), 36-month MCI-to-AD conversion in ADNI, with MRI as the shared channel. The P-174 PDF is a MEG paper and prints no 0.827.",
+        "2_metric": "Holds: AUC with AUC.",
+        "3_matched_figure": "Fails, though the case for passing is real. The case for passing: the ledger's 0.957 comes from P-186's one-year-ahead experiment on 85 subjects. The figure that changes only the channel to Bae's is the one-year MRI-only AUC, 0.905, on the same 85 subjects. Its Hanley-McNeil interval (35/50) is 0.833-0.977, which excludes Bae's 0.827 by 0.006. The bound still excludes 0.827 with the class roles swapped (0.841-0.969), and the rule has no tolerance term. Why it fails anyway: P-186 reports its MRI-only result under two forecasting settings. Both use the same 36-month label, the same contrast and the same MRI-only channel, and neither uses Bae's single-timepoint input, so the two are equally matched to Bae's condition. The six-month-ahead MRI-only figure (0.88, n = 119, CI 0.813-0.947) agrees with Bae's 0.827 (0.729-0.925) in both directions. The one-year figure misses by an approximation-sized margin (two-sample z = 1.26). That estimate is also a fold-averaged AUC whose markers were ranked on the full normalised dataset (Figure 1: 'Full Normalized Longitudinal Dataset (n=85)' feeds 'Marker Ranking' before the CV split), with the marker count chosen as the best on the evaluation folds. That optimism, if removed, would move P-186 toward Bae. The papers' own channel-matched data therefore reconcile the pair at one setting and leave only an approximation-sized residual at the other. If the operator treats the one-year experiment as the only counterpart of the recorded figure and applies the bound strictly, the pair qualifies by 0.006; I do not recommend that reading.",
+        "4_uncertainty": "Headline figures are separated (0.908-1.000 vs 0.729-0.925). Channel-matched: one year, one direction by 0.006; six months, no separation.",
+        "5_performance_validity": "Holds on the compared figures (0.957, 0.905, 0.88, 0.827 are all below 0.97). P-186's ground-truth 0.98 uses observed future values and is not compared.",
+        "6_record": "The ledger pair must be repointed from P-174 to P-37."
+      },
+      "figures": {
+        "P-186": "NM+MRI one-year 0.957 (35/50), Hanley-McNeil CI 0.908-1.000. MRI-only one-year 0.905, SE 0.0366, CI 0.833-0.977. MRI-only six-month 0.88 (49/70), SE 0.0344, CI 0.813-0.947. NM+MRI six-month 0.912, CI 0.854-0.970.",
+        "P-37": "Bae et al.: test AUC 0.827 on 68 held-out scans (37 MCI-C/31 MCI-NC), Hanley-McNeil SE 0.0498, CI 0.729-0.925."
+      },
+      "candidate_explanations": [],
+      "reason": "The strongest case uses the one-year MRI-only figure (0.905), which excludes Bae's 0.827 under Hanley-McNeil by 0.006. But P-186's equally channel-matched six-month MRI-only figure (0.88) agrees with Bae in both directions. The one-year residual is smaller than the approximation's resolution (two-sample z = 1.26), and it comes from a fold-averaged AUC with full-data marker ranking. The papers' own channel-matched data dissolve the gap, so condition 3 fails.",
+      "quotes": [
+        {"paper": "P-186", "page": 9, "quote": "MRI 13 88.71% (4 x10-6) 88% (1.3 x10-6) 13 91.4% (8.7 x10-7) 90.5% (1.02 x10-6)"},
+        {"paper": "P-186", "page": 3, "quote": "For 6-month-ahead prediction, the dataset consists of subjects with three consecutive 6 monthly follow-up readings. Therefore, we have 49 MCIp and 70 MCIs subjects"},
+        {"paper": "P-186", "page": 4, "quote": "We scale all features to have values between 0 and 1 before the train-test split."},
+        {"paper": "P-37", "page": 5, "quote": "It produced a test set classification accuracy of 82.4% and 0.827 area under the curve"}
+      ]
+    },
+    {
+      "id": "C-149",
+      "final": "yes",
+      "overturned": true,
+      "reader_verdict": "no (condition 3: matched three-year figure 0.81 agrees)",
+      "direction_note": "The pair qualifies in the reverse direction to the ledger record. At the matched three-year horizon and MRI channel, P-211 is LOWER than Bae et al. (about 0.70 vs 0.827). The record's 0.92 (P-211 higher) is a five-year multimodal figure.",
+      "conditions_attacked": {
+        "1_question": "Holds: three-year MCI-to-AD conversion in ADNI MCI, with MRI as the shared channel. P-211 uses baseline FreeSurfer regional measures in an EBM; Bae et al. (P-37, the document behind the ledger's P-174 figure) use a 3D CNN on the baseline T1.",
+        "2_metric": "Holds: AUC with AUC.",
+        "3_matched_figure": "Holds. The reader's matched figure missed P-211's primary three-year results. The 0.81 is a side analysis of Comb (a) with and without interactions 'in the test dataset', the 10% hold-out (about 58 people). Comb (a) also adds cognitive scores (ADAS13, MMSE, FAQ, CDR-SB) to MRI. P-211's primary results are the 5-fold CV means in Figure 2(d), which the text does not print as numbers. I measured them from the PDF rendered at 8x: the axis runs from 0 at y = 1304 px to 1.0 at y = 394.5 px. At three years, Comb (c) (green triangle) sits at 0.704, SD bar 0.693-0.714. Comb (a) (red) is 0.754 and Comb (b) is 0.752. Read-off precision is about +/-0.01, and the C-151 reader independently read the same values. Comb (c) is 'MRI-driven biomarkers, plus age, gender, education, diagnose at baseline, and APOE4', from baseline input, at the three-year horizon. It matches Bae on horizon, single-timepoint input, contrast and channel, so it is the best-matched figure in either paper. Hanley-McNeil over the CV portion of the three-year set (about 169 dementia/353 MCI) gives SE 0.0254 and CI 0.654-0.754, which excludes Bae's 0.827. Bae's CI (0.729-0.925) excludes 0.704. Two-sample z = 2.20. The best-matched figure therefore does not reconcile the pair; the gap persists, reversed. Comb (a)'s CV three-year figure (0.754, CI 0.707-0.801) also excludes 0.827 in one direction. Only the small, less-matched side-analysis figure (0.81, CI 0.681-0.939) agrees. Comb (c)'s extra non-MRI inputs (age, baseline EMCI/LMCI, APOE4) would be expected to raise P-211's AUC, so the reverse gap is conservative. P-211's text agrees: performance dips at two to three years, and it recommends cognitive measures for mid-term prediction.",
+        "4_uncertainty": "Holds in both directions on the best-matched figures (0.704 outside 0.729-0.925; 0.827 outside 0.654-0.754). This holds whether the CV n is taken as 169/353 or the full 188/392 (CI 0.657-0.751).",
+        "5_performance_validity": "Holds: all compared figures are below 0.97.",
+        "6_record": "The record needs correcting, but the printed figures disagree. The ledger attributes 0.827 to P-174 (a MEG paper) and sets P-211's five-year figure against a three-year one, claiming P-211 higher. Judged on what the papers print at the matched horizon and channel, they do disagree, with P-211 lower. The pair must be repointed to P-37 and restated with the three-year figures."
+      },
+      "figures": {
+        "P-211": "Three-year 5-fold CV (Figure 2d, measured): Comb (c) MRI + demographics/APOE4 about 0.704 (SD bar 0.693-0.714). Hanley-McNeil (169/353) SE 0.0254, CI 0.654-0.754; over 188/392, CI 0.657-0.751. Comb (a) about 0.754, CI 0.707-0.801. Side analysis on the 10% test set, Comb (a): 0.81 with interactions (CI 0.681-0.939), 0.78 without. Five-year Comb (a) 0.92 (CV CI about 0.876-0.964); this is the ledger's figure, at a different horizon.",
+        "P-37": "Bae et al.: test AUC 0.827 on 68 held-out scans (37 MCI-C converting in 0-3 years/31 MCI-NC stable for at least 3 years), Hanley-McNeil SE 0.0498, CI 0.729-0.925."
+      },
+      "candidate_explanations": [
+        {"difference": "Label definition: Bae excludes non-converters followed for less than 3 years and keeps later converters out of the target task. P-211's three-year negatives include later converters, and P-211 attributes its three-year dip to them. It reports that half its false positives convert by five years but gives no three-year AUC with them removed.", "quote": "MCI subjects with a duration of MCI less than 3 years without conversion were excluded due to the potential possibility of near-future conversion.", "paper": "P-37", "page": 2},
+        {"difference": "P-211's own account of its three-year false positives.", "quote": "these false positives represent individuals whose diagnostic classification did not change during the short-term follow-up period, despite the disease progressing and eventually reaching the dementia stage at a later time point", "paper": "P-211", "page": 11},
+        {"difference": "Feature representation: ten FreeSurfer regional measures in an EBM (P-211) vs the whole raw 3D T1 image in a transfer-learned 3D CNN (Bae).", "quote": "They contain the volume of left and right hippocampus and amygdala, and the volume and thickness of left and right entorhinal and inferior temporal.", "paper": "P-211", "page": 3},
+        {"difference": "Pretraining: Bae pretrains on NC/DAT scans before the MCI task; P-211 trains on MCI only.", "quote": "The source task used 1406 DAT and 2084 NC scans from 1080 subjects.", "paper": "P-37", "page": 2},
+        {"difference": "Validation: one random 68-scan held-out test (Bae) vs 5-fold CV with SMOTE on the 90% training portion (P-211).", "quote": "In order to handle the issues of data imbalance, the synthetic minority oversampling technique (SMOTE) is used.", "paper": "P-211", "page": 5},
+        {"difference": "Index scan and cohort: the scan at first MCI diagnosis (Bae) vs the ADNI baseline visit of amnestic MCI with complete data across ADNI1/2/3/GO (P-211).", "quote": "Included in the target task is the single time point sMRI scan at which an individual first received a diagnosis of MCI.", "paper": "P-37", "page": 2}
+      ],
+      "not_shown_sufficient": "None is shown sufficient. P-211's false-positive follow-up supports the label-definition explanation, but no figure shows its three-year AUC reaching Bae's level once later converters are removed.",
+      "reason": "The reader matched on P-211's side-analysis test figure (0.81, Comb (a), about 58 people), which adds the cognitive channel. P-211's primary three-year CV results in Figure 2(d) put its MRI-channel model (Comb (c)) at about 0.70. That matches Bae on horizon, input, contrast and channel, and it is separated from Bae's 0.827 in both directions (z = 2.20). So the matched figure does not reconcile the pair. It qualifies, but in the reverse direction to the ledger record, and must be repointed from P-174 to P-37.",
+      "quotes": [
+        {"paper": "P-211", "page": 6, "quote": "Comb. (c) MRI-driven biomarkers, plus age, gender, education, diagnose at baseline, and APOE4."},
+        {"paper": "P-211", "page": 6, "quote": "The baseline information was used as input of all EBMs and the converting AD or not during follow-up period was used as output. All EBMs were tested with the 5-fold cross validation."},
+        {"paper": "P-211", "page": 7, "quote": "Accuracy, sensitivity, specificity, and AUC, with (a-d), for classifier performance from 1 to 5 years of follow-up. Error bars show the associated standard deviation."},
+        {"paper": "P-211", "page": 7, "quote": "However, during the mid-term follow-up period, such as 2 or 3 years, nearly all performances of the three classifiers were lower than those of other follow-up periods and showed a certain degree of false positives."},
+        {"paper": "P-211", "page": 12, "quote": "Thus, we conducted a comparative study considering interaction effects versus not considering interaction effects in the test dataset."},
+        {"paper": "P-211", "page": 12, "quote": "we recommend, for MCI patients, using MRI for predicting dementia status as a relatively accurate and cost-efficient method of short-term and long-term prediction, and using cognitive measures for mid-term prediction."},
+        {"paper": "P-211", "page": 11, "quote": "The results showed that 50% of false-positive MCI patients would convert to AD at the 5-year follow-up"},
+        {"paper": "P-37", "page": 2, "quote": "In the target task, we examined MCI-C patients with a conversion time of up to 3 years (longer conversion times are examined later) to MCI-NC patients with a clinical diagnosis that remains MCI for a duration of at least 3 years."},
+        {"paper": "P-37", "page": 5, "quote": "It produced a test set classification accuracy of 82.4% and 0.827 area under the curve"}
+      ]
+    }
+  ],
+  "cross_cutting": [
+    "C-117 and C-147 turn on one ruling: whether a paper's ablation of its own modules or features, whose baseline lands near the other paper's figure, counts as a condition-3 failure. This file reads it as a candidate explanation, because condition 3 names the other paper's condition and condition 1 allows architecture and feature differences. Whichever way the operator rules, the ruling should be applied to every method-versus-method pair.",
+    "C-149's reversal uses the same Figure 2(d) reading the C-151 reader made. C-150's reader, like C-149's, reportedly used only the 0.81, so C-150 should be rechecked against Comb (c) at the matched horizon.",
+    "P-122's headline (84.74% with sensitivity 83.33% and specificity 82.27%) is arithmetically impossible for a single confusion matrix, and its ablation tables fit a 102-case test, not the stated 124. Anywhere P-122's headline is cited, it should be treated as an aggregate."
+  ]
+}

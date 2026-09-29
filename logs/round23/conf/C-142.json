@@ -1,0 +1,27 @@
+{
+  "id": "C-142",
+  "qualifies": "no",
+  "question": "Shared: prediction of MCI-to-AD conversion (conversion by month 36) in ADNI MCI, with MRI as the shared channel. P-199 (Lu et al., 2022) uses one baseline T1 image (3D ResNet-50, Med3D + MoCo). P-186 (Minhas et al., 2021) uses a linear SVM on three-visit trajectories of neuropsychological measures and FreeSurfer MRI features, with the last value forecast. Feature set, input timepoints, sample and validation differ, which condition 1 allows.",
+  "metric": "AUC in both.",
+  "figures": {
+    "P-199": "AUC 0.835 on a held-out 20% test set, no AUC interval printed. Test class sizes from sensitivity 0.786 = 44/56 and specificity 0.850 = 51/60: 56 pMCI/60 sMCI. Hanley-McNeil: Q1 = 0.7167, Q2 = 0.7599, SE = 0.0382, 95% CI [0.760, 0.910].",
+    "P-186": "No intervals printed (only p values). NM+MRI, 1-year-ahead (35 MCIp/50 MCIs, 5-fold CV): AUC 0.957; Q1 = 0.957/1.043 = 0.9175, Q2 = 2(0.957^2)/1.957 = 0.9360, SE = 0.0249, CI [0.908, 1.000]. NM+MRI, 6-month-ahead (49/70): 0.912, CI [0.854, 0.970]. MRI-only, 1-year-ahead: 0.905, SE 0.0366, CI [0.833, 0.977]. MRI-only, 6-month-ahead: 0.88, SE 0.0344, CI [0.813, 0.947]."
+  },
+  "matched_figure_check": "A matched figure exists and reconciles the pair. P-186 reports MRI-only models, the channel P-199 uses: 0.905 (1-year-ahead) and 0.88 (6-month-ahead). P-199's 0.835 lies inside both intervals ([0.833, 0.977] by 0.002; [0.813, 0.947] clearly), and both P-186 MRI-only figures lie inside P-199's interval [0.760, 0.910]. The matched figures therefore agree in both directions at both horizons, although the 1-year margin is narrow. On the headline figures the gap is beyond uncertainty (0.957 is above P-199's upper bound 0.910; 0.835 is below P-186's lower bound 0.908). P-186 itself attributes its peak AUC to adding neuropsychological measures and the forecast conversion-time value.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: 0.957 is below 0.97 (P-186's 'GT AUC' 0.98 is a ground-truth benchmark that uses observed future values, not a prediction). P-186 scales features before the train-test split and picks the subset size from results, which makes its figures optimistic, but that is not the Section 3.5 exclusion.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "The headline AUCs (0.835 vs 0.957) differ beyond uncertainty. But P-186's own MRI-only figures (0.905 and 0.88) agree with P-199's image-only 0.835 in both directions. The gap sits in P-186's added neuropsychological measures and forecast value, which P-186 reports, so condition 3 fails. The 1-year MRI-only interval contains 0.835 by only 0.002, so the reconciliation holds on the rule's arithmetic with little room.",
+  "quotes": [
+    {"paper": "P-199", "page": 2, "quote": "To prevent data leakage, only participants' baseline data were selected in this study."},
+    {"paper": "P-199", "page": 6, "quote": "ResNet-50 achieved the best performance with an accuracy of 0.819 and an AUC of 0.835"},
+    {"paper": "P-186", "page": 3, "quote": "for 1-year-ahead prediction, the dataset contains three consecutive annual readings, resulting in 35 MCIp and 50 MCIs subjects."},
+    {"paper": "P-186", "page": 3, "quote": "i.e., 36th month, are called MCI progressors (MCIp), and those retaining MCI diagnosis at all times are known as MCI stables (MCIs)."},
+    {"paper": "P-186", "page": 9, "quote": "MRI 13 88.71% (4 ×10−6) 88% (1.3 ×10−6) 13 91.4% (8.7 ×10−7) 90.5% (1.02 ×10−6) NM + MRI 19 94.2% (4.8 ×10−6) 91.2% (4.6 ×10−6) 9 98% (8.5 ×10−8) 95.7% (4.05 ×10−7)"},
+    {"paper": "P-186", "page": 8, "quote": "MRI measures, despite being accurately forecasted, deliver the least classification AUC."},
+    {"paper": "P-186", "page": 8, "quote": "The method proposed in this paper has recorded the highest classification AUC of 95.7% predominantly because of involving the forecasted marker value at the time of conversion as a classification feature."},
+    {"paper": "P-186", "page": 4, "quote": "We scale all features to have values between 0 and 1 before the train-test split."}
+  ]
+}

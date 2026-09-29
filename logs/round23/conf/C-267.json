@@ -1,0 +1,25 @@
+{
+ "id": "C-267",
+ "qualifies": "no",
+ "question": "Shared: the difference in CSF YKL-40 between AD and MCI, from two meta-analyses (fluid-biomarker channel). P-1427 compares against any MCI. P-1337's 7-study AD-vs-MCI pooling is labelled stable MCI in its abstract. P-1337's AD vs progressive MCI (MCI-AD) comparison is another contrast, which P-1427 does not make.",
+ "metric": "Mismatch in magnitude. P-1427 pools SMDs. P-1337 states an SMD, but its figure captions describe weighted mean differences in pg/mL and its tau2 values (for example 1969.97) are far outside a standardised scale, so the pooled quantity appears to be an unstandardised mean difference. Direction and significance can be compared, magnitudes cannot.",
+ "figures": {
+  "P-1427": "CSF YKL-40, AD vs MCI, 15 studies, random effects: SMD 0.25 (95% CI -0.08 to 0.57), p = 0.134 (also printed as p = 0.12 and p = 0.53), I2 = 89.2%.",
+  "P-1337": "CSF YKL-40, AD vs MCI, 7 studies, random effects: z = 2.02, p = 0.0429, I2 = 97.4%. The pooled estimate and interval are only in a raster forest plot. From the printed z, the 95% interval runs from about 0.030 to 1.97 times the point estimate (1 -/+ 1.96/2.02).",
+  "comparison": "Same direction: AD above MCI in both. If P-1337's effect were an SMD, its lower bound (0.030 x estimate) would exceed P-1427's upper bound of 0.57 only for a pooled SMD above 19, which is implausible. So the intervals overlap, and the difference is statistical significance alone. P-1337's AD vs MCI-AD result (z = 7.68, fixed effects) is a different contrast."
+ },
+ "matched_figure_check": "The only shared contrast is AD vs MCI, and it shows the same direction with overlapping uncertainty. P-1427 does not separate stable from progressive MCI, so P-1337's MCI-AD comparisons have no counterpart.",
+ "beyond_uncertainty": false,
+ "significance_only": true,
+ "performance_validity": "Not a performance comparison (pooled group differences in biomarker level).",
+ "failed_conditions": [2, 4],
+ "candidate_explanations": [],
+ "reason": "Both meta-analyses place CSF YKL-40 higher in AD than in MCI. P-1427's estimate is not significant (SMD 0.25, -0.08 to 0.57), and P-1337's is only just significant (z = 2.02, p = 0.043, I2 = 97.4%) on what appears to be an unstandardised scale. From P-1337's printed z, its interval reaches nearly to zero and cannot exclude P-1427's estimate on any plausible effect size. This is a difference in significance only, which the rule does not count. The papers' opposite interpretive conclusions follow from that significance difference.",
+ "quotes": [
+  {"paper": "P-1427", "page": 1, "quote": "However, CSF YKL-40 levels showed no statistically significant difference between AD and MCI groups (SMD = 0.25, 95%CI: [−0.08, 0.57]; p = 0.134)."},
+  {"paper": "P-1427", "page": 8, "quote": "Notably, while CSF YKL-40 levels in AD patients showed an increasing trend compared to MCI patients, this difference did not reach statistical significance (p = 0.53)."},
+  {"paper": "P-1337", "page": 7, "quote": "The comparison between Alzheimer’s disease patients and mild cognitive impairment showed high heterogeneity with I2 = 97.4%, and τ2 = 1969.97, and a z-value of 2.02 and a p-value of 0.0429 on seven studies (Figure 4A)."},
+  {"paper": "P-1337", "page": 4, "quote": "The ﬁgures indicate the means, standard errors (pg/mL), 95% conﬁdence intervals, and weighted mean differences for each study included in this meta-analysis."},
+  {"paper": "P-1337", "page": 8, "quote": "We used a ﬁxed effects model which showed a z-value of 7.68 (p < 0.0001), hence YKL-40 levels in the CSF of AD patients were signiﬁcantly increased in comparison to MCI patients progressing to AD."}
+ ]
+}

@@ -86,3 +86,35 @@ moderate), `high` (includes very high), `not_applicable`, `document_mismatch`.
   `cited_contexts` drive the judgment; it only tells you which result to appraise.
 - If the cited context misstates what the document reports, say so in `notes` (this is recorded for correction).
 - British spelling; no em-dashes.
+
+## Clarifications from the operator's review of the tool choice, 2026-09-29
+
+The operator reviewed the tool chosen for a sample of 17 records and agreed with 13. The four disagreements clarify three
+rules, which apply to every record:
+
+1. **ROBINS-E only for an exposure effect estimated with causal intent**: the question is framed as the effect of an
+   exposure and the analysis is built to estimate it (for example propensity-score or inverse-probability weighting, a
+   target-trial emulation, or confounder control chosen for a causal estimand). A longitudinal association that is not
+   framed causally (for example depressive symptoms and later MCI, or a cross-lagged panel) is appraised with the JBI
+   checklist for cohort studies; a single baseline factor evaluated for a later outcome, with QUIPS.
+2. **An ROC curve or an AUC does not by itself make a diagnostic-accuracy study.** QUADAS-2 applies when an index test is
+   evaluated against a reference standard in a diagnostic-accuracy design. A baseline measure evaluated as a predictor of
+   later progression is a prognostic factor (QUIPS).
+3. **A systematic analysis of registrations or records** (for example a registry-landscape analysis) is appraised with
+   the JBI checklist for systematic reviews and research syntheses. Systematic reviews and meta-analyses of studies stay
+   with ROBIS.
+
+**JBI checklist for cohort studies (11 items)**: 1 groups similar and recruited from the same population; 2 exposure
+measured similarly to assign groups; 3 exposure measured validly and reliably; 4 confounding factors identified;
+5 strategies to deal with confounding stated; 6 participants free of the outcome at the start (or at exposure);
+7 outcomes measured validly and reliably; 8 follow-up time reported and sufficient for outcomes to occur; 9 follow-up
+complete, or reasons for loss described and explored; 10 strategies to address incomplete follow-up used; 11 appropriate
+statistical analysis. Items Yes / No / Unclear / Not applicable. Overall by this review's rule: high if item 4, 5, 7 or
+11 is No; low if every applicable item is Yes; otherwise some concerns.
+
+**JBI checklist for systematic reviews and research syntheses (11 items)**: 1 review question clearly stated;
+2 inclusion criteria appropriate; 3 search strategy appropriate; 4 sources and resources adequate; 5 criteria for
+appraising studies appropriate; 6 appraisal by two or more reviewers independently; 7 methods to minimise errors in data
+extraction; 8 methods used to combine studies appropriate; 9 likelihood of publication bias assessed; 10 recommendations
+supported by the reported data; 11 directives for new research appropriate. Overall by this review's rule: high if item
+3, 4, 8 or 10 is No; low if every applicable item is Yes; otherwise some concerns.

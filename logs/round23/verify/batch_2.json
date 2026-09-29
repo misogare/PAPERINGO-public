@@ -1,0 +1,110 @@
+{
+ "role": "verifier",
+ "batch": "verify_batch_2",
+ "date": "2026-09-29",
+ "status": "candidate verdicts for operator review; not a gate",
+ "candidates": ["C-46", "C-63", "C-67", "C-70"],
+ "advocate_only_full_skeptic": ["C-63", "C-70"],
+ "sources_read": [
+  "r20/conf/tlss_P115_true.txt (P-115, correct document 1-s2.0-S1746809422005547)",
+  "r20/pdf/P-109.txt", "r20/pdf/P-27.txt", "r20/pdf/P-96.txt", "r20/pdf/P-30.txt", "r20/pdf/P-66.txt",
+  "P-66 PDF page 8 (Tables 7 and 8) via PyMuPDF: downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S0899707124002316-main.pdf",
+  "r20/pdf/P-52.txt", "r20/pdf/P-99.txt"
+ ],
+ "results": [
+  {
+   "id": "C-46",
+   "compared": "Headline shared metric, three-class CN/MCI/AD accuracy in ADNI MRI: P-115 balanced accuracy 0.79 (MIX_BRF, DKI source to DTI target, 5-fold CV) against P-109 accuracy 96.81% (BrainViT-L, random 10% slice-level hold-out). No matched figure exists: neither paper reports the other's input, classifier or split. The binary CN vs MCI figures printed by both (0.72 against 94.23%) were also tested.",
+   "a": {"paper": "P-115", "estimate": 0.79, "se": 0.0333, "se_source": "No interval printed. Binomial SE from n = 150 participants in the 5-fold CV ('44 CN, 84 MCI and 22 AD patients', abstract; Methods gives 44/88/23): sqrt(0.79*0.21/150) = sqrt(0.001106) = 0.0333. With n = 96 (subjects left after the balanced training draw) SE = 0.0416."},
+   "b": {"paper": "P-109", "estimate": 0.9681, "se": 0.0169, "se_source": "No interval printed. Test set is 10% of about 54,300 shuffled slices from 1,075 participants ('A total of 1075 individuals'; 'splitting the data into 10 % for testing and 90 % for training'); subject count of the test set not stated. Taking 108 subjects (10% of 1,075), the conservative choice: sqrt(0.9681*0.0319/108) = sqrt(0.000286) = 0.0169. Slice-level n = 5,430 would give 0.0024."},
+   "scale": "accuracy (proportion); P-115 balanced accuracy on imbalanced classes, P-109 plain accuracy on near-balanced classes",
+   "z": 4.77,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "candidate_explanations": [
+    "Split unit and validation design (P-109): 'The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training.' About 50 slices per subject, subject separation not stated; P-115 uses subject-level 5-fold CV. Section 3.5 names this mechanism of inflation; neither paper tests it. It is the most material candidate.",
+    "Input representation within MRI: regional white-matter tensor and kurtosis FA/MD indices (P-115: 'based on white matter Gaussian diffusion (tensor) indices and non-Gaussian diffusion (kurtosis) indices') against whole 2D T1-weighted slices (P-109).",
+    "Architecture: a balanced random forest with SER/STT transfer against a hybrid CNN-transformer. On P-109's own split, architecture alone moves three-class accuracy from 74.87% (CMT-T) and 79.96% (DeiT-T) to 96.81%.",
+    "Sample size and class balance: 150 participants split 44/84/22 (P-115) against 1,075 split 315/370/390 (P-109).",
+    "Metric and training scheme (P-115): balanced accuracy after equal-size class draws ('balanced random forest (BRF) considers equal samples from all the groups in training and rest will be assigned to test dataset'). The highest plain accuracy compatible with 0.79 is 0.908 (skeptic_1); even that gives z = (0.9681 - 0.908)/sqrt(0.0236^2 + 0.0169^2) = 2.07.",
+    "ADNI subsets: multi-shell diffusion participants (P-115) against 3T MPRAGE participants of unstated phase (P-109); overlap unknown.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "For three-class CN/MCI/AD classification from MRI in ADNI, a balanced random forest on diffusion white-matter indices reached 0.79 balanced accuracy under subject-level 5-fold CV in 150 participants (P-115), while a CNN-transformer on T1 slices reported 96.81% on a random 10% slice-level hold-out from 1,075 participants (P-109) (z = 4.8; binary CN vs MCI 0.72 against 94.23%, z = 4.6); neither paper explains the gap, and the leading candidate explanation is P-109's shuffled slice-level split, which does not state subject separation.",
+   "other_condition_failed": [],
+   "reason": "z = |0.9681 - 0.79| / sqrt(0.0333^2 + 0.0169^2) = 0.1781/0.0373 = 4.77; it stays above 1.96 with n = 96 for P-115 (3.97), with slice-level n for P-109 (5.34), and with the highest plain accuracy compatible with P-115's balanced 0.79 (2.07). The binary CN vs MCI contrast printed by both papers gives z = |0.9423 - 0.72| / sqrt(0.0397^2 + 0.0281^2) = 4.57 (n = 128 and 69). This pair came through reader and skeptic (challenge_skeptic_1); here I re-checked the figures and conditions against the correct P-115 document and P-109, and found no failed condition. Condition 5 holds only because the sample is not small: P-109's AUCs (98.05, 97.15, 98.52) are at or above 0.97 on internal validation with no external cohort, but it has 1,075 participants, and its contested accuracies are below 0.97. The report should name P-109's slice-level split as the leading candidate explanation."
+  },
+  {
+   "id": "C-63",
+   "compared": "No matched figure exists (neither paper reports the other's population subset or predictor set). Headline shared-metric figures, as recorded: random-forest ROC-AUC for AACD-defined MCI vs non-MCI in CHARLS, P-27 training AUC 0.826 against P-96 training-set AUROC 0.93. Like-for-like tiers were also tested: P-27 internal hold-out 0.801 and 5-fold CV 0.791 against 0.93; external P-27 CLHLS 0.653 (CMMSE-labelled, the label family P-96 uses) against P-96 0.83 and 0.87.",
+   "a": {"paper": "P-27", "estimate": 0.826, "se": 0.0087, "se_source": "Printed 95% CI 'RF (0.826, 95 % CI: 0.809-0.843)' (training set): SE = (0.843 - 0.809)/3.92 = 0.0087."},
+   "b": {"paper": "P-96", "estimate": 0.93, "se": 0.0102, "se_source": "Printed 95% CI 'AUROC of 0.93[95 %CI, 0.91-0.95]' (training set, CHARLS 2015, 518 MCI / 2,414 non-MCI): SE = (0.95 - 0.91)/3.92 = 0.0102."},
+   "scale": "ROC-AUC",
+   "z": 7.77,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "candidate_explanations": [
+    "Population restricted to older adults with depressive symptoms in P-27 (CESD-10 >= 10), in whom depression itself lowers cognitive scores: 'The inclusion criteria for participants in both datasets were consistent: 1. Age >=60 years; 2. Complete cognitive dimension-related data; 3. Complete depression scale responses; 4. Patients with depression.' P-96 samples general CHARLS 2015 older adults with no depression-based selection.",
+    "Predictor sets: self-report and questionnaire variables in P-27 ('education, household registration, loneliness, IADL, diabetes, hypertension, and exercise') against education plus physical-examination and routine blood values in P-96 ('education, grip strength, height, weight, creatinine, mean corpuscular volume, and platelet count'). Education is the top SHAP feature in both.",
+    "Cognition instrument behind the AACD label: the HRS-style CHARLS battery in P-27's development data ('CHARLS evaluate cognitive performance using the identical methodological framework adopted by the U.S. Health and Retirement Study') against a score P-96 calls the MMSE ('Participants scoring >=1 SD below their age group's mean MMSE were classified as having cognitive impairment').",
+    "External cohorts: CLHLS scored with the CMMSE, a shift from P-27's training battery ('CLHLS assesses cognition with the Chinese version of the Mini- Mental State Examination (CMMSE)'), against Yiwu 2021 and CHARLS 2011 in P-96.",
+    "P-96's evaluation sets appear class-balanced, although the text says 'SMOTE was performed exclusively within the training folds during cross-validation and was not applied to test sets or external validation cohorts.' Table 3, External Set 1: sensitivity 0.782, specificity 0.718, PPV 0.735, accuracy 0.75. These match 50% prevalence; at the stated 13.8% they would be PPV 0.307 and accuracy 0.727. The printed AUROC intervals (0.82-0.84, 0.86-0.88) match Hanley-McNeil for balanced 3568/3568 and 1485/1485 sets, not the stated 572/3568 and 297/1485, which give 0.809-0.851 and 0.843-0.897. A training AUPRC of 0.93 at 17.7% prevalence points the same way. If synthetic cases entered evaluation, P-96's AUROCs could be optimistic; this is not shown to close the gap.",
+    "Validation tier of the recorded figures: P-27's 0.826 is an apparent training-set AUC after SMOTE on the training set ('we applied the Synthetic Minority Over - sampling Technique (SMOTE)'). Its internal hold-out gives 0.801 and its CV 0.791. The gap persists at every tier.",
+    "Different CHARLS waves (2018 against 2015 and 2011), probably with overlapping participants, so the samples are not independent.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "Two CHARLS random-forest models for AACD-defined MCI from routine tabular data disagree: P-27, in older adults with depressive symptoms and self-report predictors, reported AUC 0.826 in training (0.801 internal, 0.653 external), against 0.93 in P-96's training set (0.83 and 0.87 external) with education, grip strength, anthropometry and routine blood values (z = 7.8 on the training figures, over 12 on the external ones); the depression-restricted sample, the predictor sets, the cognition instrument behind the label and P-96's apparently class-balanced evaluation sets are candidate explanations, none shown to be sufficient.",
+   "other_condition_failed": [],
+   "reason": "z = |0.93 - 0.826| / sqrt(0.0087^2 + 0.0102^2) = 0.104/0.0134 = 7.77. At other tiers: internal hold-out 0.801 [0.760, 0.841] gives 5.60; CV 0.791 [0.771, 0.810] gives 9.75; external 0.653 [0.636, 0.670] against 0.83 [0.82, 0.84] gives 17.6, or 12.7 with a Hanley-McNeil SE at P-96's stated class sizes (0.0109). Full skeptic check: I could not show a failed condition. (1) Population: P-27's sample is a symptom-screen subset of the same CHARLS community population, not a separate disease population, and the round treated such subsets as cohort differences (C-214, C-265). Channel: both are routine clinical tabular models whose top predictor is education, and P-96 calls its inputs 'basic clinical indicators'. The added grip-strength and blood values fall under the multimodal clause, as in C-103 and C-188. This is a judgement, carried as the first candidate explanation. (3) No figure under the other's condition; the label-matched external figure (0.653) widens the gap. (5) Maximum 0.93, and both papers validate externally. (6) The recorded 0.826 and 0.93 are printed values. One correction to the advocate: P-96's printed external intervals do NOT match Hanley-McNeil at the stated class sizes. They are about half as wide, and they match balanced resampled sets. P-27 is also internally inconsistent on its class counts (Methods 1634/330, Results 1473/491). Neither point changes the verdict."
+  },
+  {
+   "id": "C-67",
+   "compared": "Re-filed on the figures both papers print for the same contrast (the ledger's pairing of P-30's AD-vs-MCI AUC with P-66's MCI-vs-CN accuracy is a misread): AD vs MCI ROC-AUC from ADNI T1 MRI, P-30 (2+1)D CNN 0.85 against P-66 fusion headline 0.595 (best variant, CNN on amygdala, 0.620). There is no matched AUC figure. P-66 Table 8 prints AD/MCI accuracy on a 20-subject subset, which agrees with P-30's accuracy, so the accuracy comparison is dropped.",
+   "a": {"paper": "P-30", "estimate": 0.85, "se": 0.0486, "se_source": "Printed '0.85 + /-0.046 average auc score, (auc score per fold: [0.86,0.94,0.86,0.80.,0.83])' is the spread of five fold models on one test set, not an SE. SE derived from n by Hanley-McNeil: '15% of the data was split as test set at the very beginning' with a subject-level split of 427 subjects, so about 33 AD / 31 MCI. Q1 = 0.85/1.15 = 0.7391, Q2 = 2(0.7225)/1.85 = 0.7811, SE = sqrt([0.1275 + 32(0.0166) + 30(0.0586)]/1023) = 0.0486. At scan level (76/76) SE = 0.0316."},
+   "b": {"paper": "P-66", "estimate": 0.595, "se": 0.0635, "se_source": "No interval. Table 7 gives '59.5 +- 3.0' (SD over five repetitions). SE derived from n by Hanley-McNeil with the test fraction '(20 % of images)' of 199 AD / 200 MCI subjects, taken conservatively as 40/40 subjects: Q1 = 0.595/1.405 = 0.4235, Q2 = 2(0.3540)/1.595 = 0.4439, SE = sqrt([0.2410 + 39(0.0695) + 39(0.0899)]/1600) = 0.0635. At image level (about 120/190) SE = 0.0334."},
+   "scale": "ROC-AUC",
+   "z": 3.19,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "candidate_explanations": [
+    "Input representation: the whole-brain T1 volume ('The dataset then resized into 32 x 32 x 32 dimensions', P-30) against cropped hippocampus and amygdala ROIs with PyRadiomics features plus age and sex ('The input images of the left and right hippocampus have been resized to 16x40x24', P-66).",
+    "Scan and subject selection: P-30 uses '507 scans of 223 AD patients and 507 scans of 204 MCI patients', not restricted to baseline, and keeps AD patients who 'stayed stable during the follow-up'. P-66 'randomly selected baseline structural MRI data'. Later AD scans are likely to be more atrophic.",
+    "P-66's own account of its low AD vs MCI figure: 'primarily due to the less severe nature of the AD cases in the ADNI dataset.'",
+    "Validation design: P-30 scores five CV models on a 15% subject-level test set. P-66 uses a random 80/20 split of images ('80 % of images'), repeated five times; an image-level split would, if anything, inflate P-66, the opposite of the observed direction.",
+    "P-66 is internally inconsistent for AD vs MCI. Table 7 (PDF p. 8) gives accuracies of 56.2-61.5%, but Table 8 gives 78.7% (sigmoid) and 72.4% (SVM) on 'ten AD patients (23 images) ... and ten MCI (24 images) ... selected randomly among testing set'. Table 8 agrees with P-30's 0.78, so the pair stands on AUC only.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "For AD versus MCI from ADNI T1 MRI, a whole-brain (2+1)D CNN reported AUC 0.85 on a subject-level test set (P-30), against 0.595 for a hippocampus/amygdala CNN-radiomics fusion model (best variant 0.620; P-66) (z = 3.2); whole-brain against ROI input, and P-30's non-baseline, stability-filtered scans, are candidate explanations. The discrepancy is reported on AUC only, because P-66's own accuracies for this contrast disagree between its Tables 7 and 8.",
+   "other_condition_failed": [],
+   "reason": "z = |0.85 - 0.595| / sqrt(0.0486^2 + 0.0635^2) = 0.255/0.0800 = 3.19. With P-66's best AUC (0.620, SE 0.0627) z = 2.90; with scan- and image-level n z = 5.54. The pair came through reader and skeptic (challenge_skeptic_1). Here I confirmed Tables 7 and 8 from the P-66 PDF (best AUC 62.0 +- 5.0 for CNN on amygdala; Table 8 MCI/AD 78.7 and 72.4) and P-30's subject-level test set, and found no failed condition for the AUC comparison. Condition 5 holds (P-30's best single model 0.94). The ledger record must be re-filed on AD vs MCI AUC, because as recorded (P-30's AD-vs-MCI AUC against P-66's MCI-vs-CN accuracy) the two papers share no question."
+  },
+  {
+   "id": "C-70",
+   "compared": "No matched figure exists. Headline shared metric: MCI vs controls ROC-AUC from structural MRI, P-52 hippocampal-radiomics XGBoost test AUC 0.864 (printed 95% CI 0.73-0.89, 30 MCI / 15 NC) against P-99 whole-brain FreeSurfer RBF-SVC AUC 0.735 (10-fold CV, 145 MCI / 62 HC). The record paired P-52's AUC with P-99's accuracy; P-52 prints no test accuracy, so AUC is compared.",
+   "a": {"paper": "P-52", "estimate": 0.864, "se": 0.0408, "se_source": "Printed 'AUC = 0.864, 95 %CI:0.73-0.89': SE = (0.89 - 0.73)/3.92 = 0.0408. The interval is asymmetric (0.134 below, 0.026 above), and its upper limit is tighter than any standard method gives at n = 45. Hanley-McNeil (30/15) gives SE 0.0535, interval [0.759, 0.969]. An exact binomial interval gives [0.729, 0.948]; its lower limit reproduces the printed 0.73, and its SE would be 0.0559."},
+   "b": {"paper": "P-99", "estimate": 0.735, "se": 0.0351, "se_source": "Printed '0.735 +- 0.076' is a 10-fold SD, so the SE is derived from n by Hanley-McNeil ('62 healthy volunteers and 145 patients with MCI'): Q1 = 0.735/1.265 = 0.581, Q2 = 2(0.5402)/1.735 = 0.623, SE = sqrt([0.1948 + 144(0.0408) + 61(0.0825)]/8990) = 0.0351."},
+   "scale": "ROC-AUC",
+   "z": 2.4,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "candidate_explanations": [
+    "Control label (P-52): the stated criterion 'Forty-five participants with normal MoCA performance (MoCA score >=27) ... served as the normal control (NC) group' is contradicted in all three tabulated columns (Table 1 NC MoCA 22.53 +/- 2.91; Table 2 training 22.67, test 22.34). At a mean of 11.43 years of education the NC mean falls below P-52's own impairment cut-off ('<=24 for 7 + years of education'), and the NC MMSE of 25.73 is under its '<=26 for secondary education or above' cut-off. MCI and NC do not differ on MoCA (p = 0.17) or MMSE (p = 0.09), so what P-52's contrast separates is unclear.",
+    "Preprocessing scope (P-52): features were z-scored against 'the mean feature value across the entire patient cohort', and 'hypothesis testing identified 252 radiomic features ... showing statistically significant intergroup differences' is not stated to be confined to the training set. Either could leak into the 45-subject test set.",
+    "Validation design and size: one random 45-subject test split (P-52: 'an independent test set that contained 30 MCI patients and 15 NC subjects') against 10-fold CV on 207 (P-99).",
+    "Features within MRI: seven hippocampal radiomic texture/wavelet features from deep-learning segmentation (P-52: 'A total of 1183 radiomic features were systematically extracted from the bilateral hippocampus') against whole-brain FreeSurfer morphometry with chi-squared SelectKBest (P-99).",
+    "Classifier: XGBoost (P-52) against RBF SVC (P-99); P-99's own XGBoost gave ROC-AUC 0.644 +- 0.149 on its data.",
+    "MCI label: MoCA/MMSE education-adjusted cut-offs at a Wenzhou hospital (P-52) against an ICD-10 F06.7 memory-clinic diagnosis in patients over 65 (P-99: 'Patients over the age of 65 who had been diagnosed with mild cognitive impairment (F06.7) were eligible').",
+    "Model selection in P-99: the best of six classifiers, grid-searched within the same CV. This would favour P-99, against the observed direction. So would P-99's age imbalance (MCI 73.9 +/- 7.3 against HC 68.9 +/- 5.3).",
+    "Scanner: 1.5 T Toshiba (P-99); P-52's protocol is only in its supplement.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "For MCI versus controls from structural MRI, a hippocampal-radiomics XGBoost model reported test AUC 0.864 (95% CI 0.73 to 0.89) on a single 45-subject split (P-52), against 0.735 by 10-fold CV in 207 participants with whole-brain FreeSurfer features (P-99); the difference is marginal (z = 2.40 on the printed interval, 2.02 with a sample-size SE, below 1.96 on other readings of P-52's asymmetric interval), and P-52's tabulated control MoCA (22.5) contradicts its stated control criterion (MoCA 27 or above).",
+   "other_condition_failed": [],
+   "reason": "Under the brief's rule, z = |0.864 - 0.735| / sqrt(0.0408^2 + 0.0351^2) = 0.129/0.0539 = 2.40. With P-99's SE from the fold SD (0.024) it would be 2.72, but the brief forbids that. The result is fragile because P-52's printed upper limit (0.89) cannot be reproduced at n = 45. With the brief's own n-derived fallback (Hanley-McNeil for P-52, SE 0.0535) z = 2.02, still a pass. With an exact binomial interval whose lower limit matches the printed 0.73 (upper 0.948), z = 1.95; with the printed lower half-width alone (0.134/1.96), z = 1.68. Neither of these readings is the brief's method. Full skeptic check of conditions 1 to 6: (1) the strongest attack is P-52's control label, contradicted by its own tables in every column. The source does not show whether the text or the tables are wrong, and both samples are clinic older adults with MCI against controls. As in C-01, the contradiction is carried as a label-definition candidate explanation, not a different population class. (2) AUC with AUC. (3) No matched figure: P-99's XGBoost (0.644) uses different features, and P-52 reports nothing on whole-brain morphometry. (5) 0.864 and 0.735 are below 0.97. (6) The record's metric mismatch is set aside by comparing the printed AUCs. The pair qualifies on the rule as written, but by the narrowest margin in this batch. The report should say that the gap rests on one 45-subject split with an implausible printed interval and an internally inconsistent control group."
+  }
+ ]
+}

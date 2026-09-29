@@ -1,0 +1,28 @@
+{
+  "id": "C-248",
+  "qualifies": "no",
+  "question": "Shared at a broad level: how often do older adults with MCI revert to normal cognition over follow-up? P-711 pools 48 studies; P-722 is the CLHLS oldest-old cohort (mean age 85.8, MCI = CMMSE < 18 without dementia). Same channel (cognitive screening/diagnosis). The population classes overlap: community older adults, and P-711 has community and Asia subgroups.",
+  "metric": "Mismatch as recorded. P-711's 'prevalence of reversion' is the observed proportion of MCI participants found to revert among those followed up (random-effects mean). P-722's 9% (9.4% in the abstract) is a multi-state Markov transition probability over the whole follow-up, in which death is an absorbing competing state that takes 75% of baseline-MCI participants. The two share a numerator (reverters) but not a denominator: P-722's includes everyone who died.",
+  "figures": {
+    "P-711": "Pooled 31% (95% CI 26-35%, I2 = 98.9%, 48 studies, printed). Community setting 36% (30-42%, 27 studies); Asia 34% (27-42%, 15 studies); hospital 20% (14-27%). Study-level range 4.6% to 62.8%.",
+    "P-722": "From baseline MCI over mean 4.76 years of follow-up (up to 11.24): remain MCI 14%, revert to NC 9%, dementia 1%, death 75% (printed; the 95% CIs are in the Fig. 1 image only). Baseline MCI count not printed in the text, so no Wilson interval can be derived.",
+    "matched_derivation": "P-711-type denominator (MCI participants alive at follow-up) from P-722's own probabilities: 9 / (14 + 9 + 1) = 0.375. Integer rounding of the printed probabilities bounds this at 8.5/24.5 = 0.347 to 9.5/23.5 = 0.404."
+  },
+  "matched_figure_check": "A matched figure follows from P-722's own printed transition probabilities and dissolves the gap. Conditional on surviving follow-up, which is the denominator of the observed proportions P-711 pools, reversion in P-722 is about 37.5% (34.7-40.4% under rounding). That lies inside P-711's community-setting interval (30-42%) and its Asia interval (27-42%), and just above the overall 26-35%. The recorded 9.4% against 31% is a difference of denominator, not of reversion.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [2, 3],
+  "candidate_explanations": [],
+  "reason": "The recorded gap (9.4% against 31%) sets a competing-risk transition probability, with 75% of baseline-MCI participants going to death, against pooled observed proportions among people followed up. Put on the same survivor denominator, P-722's own probabilities give about 37.5%. That agrees with P-711's community (30-42%) and Asia (27-42%) pooled estimates. The papers' own figures therefore dissolve the difference (condition 3), and the recorded figures are not the same metric (condition 2). P-722 itself calls its rate similar to another community cohort's (11%, from the same kind of Markov model).",
+  "quotes": [
+    {"paper": "P-711", "page": 5, "quote": "the overall prevalence of reversion from MCI to normal cognition was estimated to be 31% (95% CI:26% to 35%, I2= 98.9%, P <0.001)."},
+    {"paper": "P-711", "page": 5, "quote": "In the 48 studies available for the meta-analysis, the prevalence of reversion from MCI to normal cognition ranged from 4.6% to 62.8%."},
+    {"paper": "P-711", "page": 6, "quote": "Asia 15 34% 27%-42% 98.6% <0.001 ... Community 27 36% 30%-42% 98.3% <0.001"},
+    {"paper": "P-722", "page": 1, "quote": "were followed over a mean time of 4.76 (SD = 3.14) years. The rate of reversion from MCI to NC was 9.4 %."},
+    {"paper": "P-722", "page": 4, "quote": "Those with MCI status at baseline had a 14 % probability of remaining there, a 9 % probability of reverting to NC, a 1 % probability of developing to dementia, and a 75 % probability of transmitting to death."},
+    {"paper": "P-722", "page": 3, "quote": "We specified that NC could transit to MCI, dementia, and death; MCI could revert to NC or develop to dementia and death; dementia could only develop to death; and death was the absorbing state (Fig. 1)."},
+    {"paper": "P-722", "page": 2, "quote": "The identified MCI cases should meet the following: 1) had CMMSE scores of less than 18 points [17], and 2) were nondemented."},
+    {"paper": "P-722", "page": 6, "quote": "The disparities of transition rate between cognitive stages might be due to differences in MCI definition, study design, and population."}
+  ]
+}

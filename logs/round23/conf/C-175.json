@@ -1,0 +1,25 @@
+{
+  "id": "C-175",
+  "qualifies": "no",
+  "question": "Not shared. P-146's cited AUC (0.812) is for conversion from normal cognition or subjective cognitive decline to amnestic MCI over about 7 years, in the CLAS community cohort. P-273's AUC (0.962) is for conversion from MCI to AD within 4 years in ADNI MCI patients. The transitions differ (normal to MCI, against MCI to AD), and so do the baseline populations (cognitively normal community adults against MCI patients). The brief lists progression from MCI to AD as its own task. The broad channel is partly shared: structural MRI plus clinical/cognitive variables in both, and P-273 also uses SNP genotypes.",
+  "metric": "ROC-AUC with ROC-AUC (match).",
+  "figures": {
+    "P-146": "CLAS NC/SCD to amnestic MCI (40 progressors / 69 stable), Progressive Index plus demographics and associative learning: AUC 0.812, printed 95% CI 0.725-0.900. Hanley-McNeil check at 40/69: SE = 0.046, CI [0.723, 0.901]. ADNI-2 NC/SCD to MCI within 3 years, Progressive Index alone: AUC 0.7048, no interval printed.",
+    "P-273": "ADNI MCI to AD within 4 years, trimodal DISFC model (sMRI + 14 clinical features + 49 SNPs): tenfold CV mean AUC 0.962 (SD 0.041 across folds; no interval printed) on 238 MCI subjects. Independent ADNI-3 test (14 MCI subjects, 3 of them pMCI): AUC 0.939, printed 95% CI 0.796-1.000."
+  },
+  "matched_figure_check": "No matched figure exists. P-146 reports no MCI-to-AD test AUC: its ADNI-1 training pooled AD with pMCI against NC with sMCI, and no held-out figure for that contrast is printed. P-273 reports no normal-to-MCI result.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: 0.962 is below 0.97. It is internal tenfold CV on 238 subjects, with 45 AD subjects added to training. P-273's external test AUC (0.939) rests on 14 subjects, of whom 3 are pMCI.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "P-146's 0.812 predicts normal cognition to MCI in a Shanghai community cohort, while P-273's 0.962 predicts MCI to AD in ADNI MCI patients. The task and the baseline population differ, so condition 1 fails. On uncertainty the picture is mixed: P-273's CV mean (0.962) and test AUC (0.939) lie above P-146's interval [0.725, 0.900], but P-146's 0.812 lies inside P-273's external-test interval [0.796, 1.000].",
+  "quotes": [
+    {"paper": "P-146", "page": 2, "quote": "Better performance for prediction progression to MCI in CLAS was obtained when the PI score was combined with clinical measures (AUC = 0.812; 95 %CI: 0.725–0.900)."},
+    {"paper": "P-146", "page": 5, "quote": "Among 109 cognitively normal subjects (33NC and 76 SCD at baseline), 16 NC and 24 SCD showed clinical progression to amnestic MCI at follow-up."},
+    {"paper": "P-146", "page": 5, "quote": "The AUC value was 0.7048, and the SPE and SEN were 0.6667 and 0.6897 (with the threshold of the overall average score)."},
+    {"paper": "P-273", "page": 2, "quote": "The cross-validation set consisted of 238 MCI subjects from ADNI-1 and ADNI-GO/2 cohorts, with a 48-month follow-up."},
+    {"paper": "P-273", "page": 6, "quote": "On the cross-validation set, the DISFC model achieved a mean (SD) of 0.962 (0.041) for AUC for predicting MCI conversion over 4 years (Fig. 3A)."},
+    {"paper": "P-273", "page": 6, "quote": "On the independent test set, DISFC demonstrated good generalizability with an AUC of 0.939 (95% CI 0.796–1.000)"}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "C-37",
+  "qualifies": "no",
+  "question": "None shared. P-114 (the gait/ANFIS paper, Seifallahi et al., BSPC 71 (2022) 103195; the pack file pdf/P-114.txt is the wrong document and the right one is pdf/P-115.txt) classifies MCI vs healthy controls, a binary task. P-95 (Kurbalija et al. 2023) classifies AD vs MCI vs controls, a three-class task, and prints no binary MCI-vs-control figure. The channels also differ: Kinect gait parameters (gait/motor) against neuropsychological tests plus neuroradiological rating measures (clinical/cognitive data plus MRI).",
+  "metric": "Accuracy in both, but binary (chance 50%) against three-class (chance 33%), and P-95's 66.22-81.00% is a range over seven classifiers, not one estimate.",
+  "figures": {
+    "P-114": "ANFIS accuracy 93% on all 26 dual-task walking features, binary MCI vs HC, N=150 (70 MCI, 80 HC); the ANFIS evaluation protocol is not stated. Wilson 95% interval with n=150: 0.93 -> (0.878, 0.961). Same paper, same features: LR 81.25%, SVM 78.85%.",
+    "P-95": "Three-class AD/MCI/control accuracy 66.22% (LR) to 81.00% (naive Bayes), 10x10 stratified CV, N=90 (30/30/30). Wilson with n=90: 0.81 -> (0.717, 0.878); 0.6622 -> (0.560, 0.751)."
+  },
+  "matched_figure_check": "No matched figure exists: P-95 reports no binary MCI-vs-control accuracy and P-114 no three-class result, so there is no common condition under which to compare.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study is excluded: P-114's 93% and all P-95 figures are below 0.97 (P-95's best weighted AUROC is 95.0%). Checked on the sources.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "The pair fails condition 1: P-114 is a binary MCI-vs-control gait classifier and P-95 a three-class AD/MCI/control classifier built on neuropsychological and MRI rating attributes, so neither the comparison nor the channel is shared. The claimed disagreement ('P-95: 66-81% on T1') exists only because the record labels P-95's three-class range as a T1 result (condition 6). The numbers differ beyond their Wilson intervals, but they measure different quantities, so the arithmetic carries no weight.",
+  "quotes": [
+    {"paper": "P-114", "page": 1, "quote": "Generally, the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups. (document: Seifallahi et al. 2022, pack file pdf/P-115.txt)"},
+    {"paper": "P-114", "page": 1, "quote": "The study included 70 elders with MCI and 80 healthy control (HC) elderly subjects who were selected based on specific criteria."},
+    {"paper": "P-95", "page": 1, "quote": "Results: The accuracy for the whole set of attributes ranged between 66.22 % and 81.00 %, and the weighted average AUROC was between 76.3 % and 95.0 %."},
+    {"paper": "P-95", "page": 7, "quote": "The data for this study consists of NP and NR features (as explained in Section 3) for 30 patients with AD, 30 patients with MCI and 30 healthy individuals (C – control group)."},
+    {"paper": "P-95", "page": 10, "quote": "These performance measures were calculated in WEKA using 10 times repeated 10-fold stratified cross-validation (SCV10x10)."}
+  ]
+}

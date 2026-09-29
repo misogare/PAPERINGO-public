@@ -1,0 +1,132 @@
+{
+ "role": "verifier (unresolved-discrepancy tier, verification round)",
+ "batch": "batch_8",
+ "date": "2026-09-29",
+ "status": "candidate verdicts for operator review; not a gate",
+ "sources_read": {
+  "brief": "scratchpad/r23/DISCREPANCY_BRIEF.md in full, incl. 'Verification round'",
+  "first_pass": "r23/conf/C-156.json, C-158.json, C-176.json, C-188.json",
+  "challenges": "r23/conf/challenge_advocate_5.json (C-156, C-158), challenge_skeptic_4.json (C-176, C-188); challenge_advocate_1 and challenge_skeptic_3 mention C-188 only as a precedent",
+  "P-239": "r20/pdf/P-239.txt read in full (Tables 2 and 4, p. 4-5; discussion p. 6)",
+  "P-241": "r20/pdf/P-241.txt read in full (Fig. 1A p. 4 of extract; Table 1 and notes; limitations)",
+  "P-244": "r20/pdf/P-244.txt read in full (datasets p. 3, inference p. 4-5, evaluation p. 5, Table 2 p. 10, C-index p. 11, ROC text p. 12, AIBL p. 12 and 14, Fig. 7 caption)",
+  "P-198": "r20/pdf/P-198.txt read in full",
+  "P-331": "r20/pdf/P-331.txt: Tables 2 and 3 (p. 6-7), methods on sensors, labels and nested LOSO-CV",
+  "P-69": "r20/pdf/P-69.txt: cohort and labels (p. 4), I-score application (p. 6), test split (p. 8), model list (p. 9), Table 3 (p. 10), confusion-matrix orientation (p. 11)",
+  "P-356": "r20/pdf/P-356.txt: cohort and labels (p. 3), split (p. 5), results (p. 6-7)"
+ },
+ "method_note": "z = |a - b| / sqrt(SE_a^2 + SE_b^2). Where only a fold or run SD is printed it is treated as a spread and the SE is derived from n. AUC and C-index SEs by Hanley-McNeil: Q1 = A/(2-A), Q2 = 2A^2/(1+A), SE^2 = [A(1-A) + (n1-1)(Q1-A^2) + (n2-1)(Q2-A^2)]/(n1 n2). For a censored C-index the two classes are events and censored subjects, which is an approximation. Balanced accuracy SE = 0.5*sqrt(sens(1-sens)/n1 + spec(1-spec)/n0).",
+ "results": [
+  {
+   "id": "C-156",
+   "compared": "The fully matched cell (MRI-only input, ADNI MCI, internal 5-fold CV): P-239's radiomics-only branch C-index 0.67 (both encoders) against P-241's S-CNN on ADNI 0.756, the same P-241 model that produced the recorded NACC figure 0.676. The recorded pair (P-239 clinical+MRI 0.85 vs P-241 external NACC 0.676) is not the compared pair: P-239's own MRI-only branch (0.67) matches the NACC 0.676 (z 0.16), so the recorded gap is P-239's clinical variables together with the cohort and validation-tier difference.",
+   "a": {"paper": "P-239", "estimate": 0.67, "se": 0.0232, "se_source": "No interval printed (Table 4: 'Radiomics RA 0.67 0.2 725 ... SPAN 0.67 0.19 669'; the second column is the Brier score). Events from Table 2 censoring rates ('249 eMCI patients - Censoring rate: 92%', '427 lMCI patients - Censoring rate: 55.3%'): 249 x 0.08 + 427 x 0.447 = 210.8, so 211 events / 465 censored. HM: Q1 = 0.67/1.33 = 0.5038, Q2 = 2(0.4489)/1.67 = 0.5376, SE 0.0232, 95% CI [0.624, 0.716]."},
+   "b": {"paper": "P-241", "estimate": 0.756, "se": 0.0247, "se_source": "Table 1 prints '0.756 (0.051)', mean (fold SD) over 5-fold CV; the SD is a spread, so SE from n. ADNI 'n = 544, 390 right-censored' (Fig. 1A), so 154 events / 390 censored. HM: Q1 = 0.756/1.244 = 0.6077, Q2 = 2(0.5715)/1.756 = 0.6510, SE 0.0247, 95% CI [0.708, 0.804]. Check: HM SE at one fold's size is about 0.055, close to the printed fold SD 0.051."},
+   "scale": "Concordance index (0-1). P-241's index is averaged over the 24, 48 and 108-month bins per fold; P-239 reports a single index.",
+   "z": 2.54,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "skeptic_conditions": {
+    "1": "Holds. Both predict time to MCI-to-AD conversion in ADNI Alzheimer's-spectrum MCI; both compared figures are MRI-only (P-239 radiomics branch; P-241 S-CNN on T1 images).",
+    "2": "Holds. C-index with C-index; the bin-averaged computation in P-241 is kept as an explanation.",
+    "3": "Holds on the fully matched cell. The input-only match (0.67 vs NACC 0.676) differs in cohort and tier; the figure matched on input, cohort and validation design (0.756) does not agree with 0.67.",
+    "4": "z = |0.756 - 0.67| / sqrt(0.0247^2 + 0.0232^2) = 0.086 / 0.0339 = 2.54. Taking P-239's two-decimal 0.67 as 0.675: z 2.39. Other P-241 ADNI MRI-only models: CPH 0.750 z 2.35, Weibull 0.743 z 2.14, MLP-GMV 0.731 z 1.77, MLP-GMV+CSF 0.729 z 1.71. The gap holds for P-241's primary model and two others, not for its two MLPs.",
+    "5": "Holds. C-indices 0.67-0.85.",
+    "6": "Holds. All figures are printed as recorded; the record's direction (P-239 higher) does not survive, so the report must give the matched figures."
+   },
+   "candidate_explanations": [
+    "Features within the MRI channel: P-239 uses a low-dimensional CSF-segment texture set chosen as the best combination, P-241 uses raw T1 images (S-CNN) or regional grey-matter volumes. P-239: 'the optimal combination of [CSF][texture] features was utilized as the radiomics input for our proposed model'.",
+    "P-239 says its own radiomics input is weak (a statement, not a demonstration): 'radiomics features may contribute less to the multi-model and may potentially introduce bias into the overall network'.",
+    "C-index computation: P-241: 'Concordance indices were averaged over the 3 time bins (24 months, 48 months, 108 months) for each fold.' P-239 reports one index.",
+    "Population: P-239 excludes reverters and pools eMCI (92% censored) with lMCI (55.3% censored): 'we screened out irreversible individuals who had altered their condition from AD to MCI or from MCI to cognitive normal (CN)'. P-241 keeps them: 'we denote persons who have not developed AD after a diagnosis of MCI to be non-converters'.",
+    "Time-to-event construction in P-239: 'When considering the censored patients, the conversion time is calculated by adding the delaying time to their most recent visits.'",
+    "Cohort selection in P-241: the ADNI discovery set is the one divided by CSF amyloid ('subdividing individuals with mild cognitive impairment (MCI) into risk groups based on cerebrospinal fluid amyloid-b levels'), which suggests a CSF-available subset; the inclusion rules are in the STAR Methods, not in the held text.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "On MRI alone, in ADNI MCI with 5-fold cross-validation, P-239's radiomics branch predicts time to AD conversion with a C-index of 0.67 against 0.756 for P-241's S-CNN (z = 2.5; P-241's other MRI models give 0.73-0.75, two of them within uncertainty of 0.67), the reverse of the recorded 0.85 versus 0.676, which set P-239's clinical-plus-MRI model against P-241's external NACC result.",
+   "reason": "Skeptic check of conditions 1-6 on the source texts found no failed condition. The recorded gap (0.85 vs 0.676) dissolves on P-239's own MRI-only branch, but P-241 also prints its S-CNN under P-239's cohort and design (ADNI, 5-fold CV), and that fully matched figure (0.756) differs from P-239's 0.67 with z = 2.54 (2.39 after rounding P-239's figure up). The margin is modest: it rests on Hanley-McNeil SEs for a censored C-index with P-239's event count derived from rounded censoring rates, and P-241's two MLPs (z 1.77, 1.71) do not clear the test, while P-241 reports that all its models performed comparably on ADNI. The pair qualifies as a discrepancy in the direction opposite to the record."
+  },
+  {
+   "id": "C-158",
+   "compared": "No figure at a matched horizon exists: P-198's AUC is for conversion by the second visit, about 2 years, and P-244 prints time-dependent AUCs at 1, 3, 5 and 10 years only; neither paper has the other's predictor set. Per the brief, the headline shared-metric figures are compared: P-244 5-year 0.957 (the recorded figure and an abstract headline) against P-198 0.78. The bracketing horizons were also tested: 1 year 0.810 (agrees), 3 years 0.914 (differs), linear 2-year interpolation 0.862 (differs).",
+   "a": {"paper": "P-244", "estimate": 0.957, "se": 0.0148, "se_source": "No interval and no per-horizon class sizes printed ('MCI->AD, 3 years 0.914, 5 years 0.957', abstract; 1-year 0.810 and 10-year 0.979 from the Fig. 7C legend and the text range '0.810-0.979'). HM at an assumed conservative 100 cases / 100 controls: Q1 = 0.957/1.043 = 0.9175, Q2 = 2(0.9158)/1.957 = 0.9360, SE 0.0148, 95% CI [0.928, 0.986]. At a plausible 300/110 (783 MCI, 348 converters, Table 2 follow-up times) SE 0.0091."},
+   "b": {"paper": "P-198", "estimate": 0.78, "se": 0.0214, "se_source": "'cortical thickness (AUC=0.78 +/- 0.08 ...)' with the SD over stratified 10-fold CV, treated as a spread; SE from n: 721 MCI, 188 converters / 533 stable. HM: Q1 = 0.78/1.22 = 0.6393, Q2 = 2(0.6084)/1.78 = 0.6836, SE 0.0214, 95% CI [0.738, 0.822]."},
+   "scale": "ROC AUC: P-244 time-dependent AUC at t from a survival model; P-198 binary AUC for conversion within about 2 years.",
+   "z": 6.79,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "skeptic_conditions": {
+    "1": "Holds through the multimodal clause, applied as in C-103 and C-188. Both predict MCI-to-AD conversion in ADNI MCI; P-198 uses five FreeSurfer cortical-thickness covariates, P-244 concatenates baseline clinical features with FreeSurfer regional morphometry.",
+    "2": "Holds. AUC with AUC (time-dependent cumulative AUC at t vs binary AUC at about 2 years).",
+    "3": "Holds by the letter; this is the weak point. No figure at P-198's horizon and no cross-predictor arm exist. The bracketing figures split: 1-year 0.810 vs 0.78 gives z 0.6-0.9 across assumed counts (60/650 to 50/50); 3-year 0.914 gives z 4.47 (100/100) to 5.38 (265/327). P-244's printed series (0.810, 0.914, 0.957, 0.979) rises by 0.052, 0.0215 and 0.0044 per year, a concave shape that puts the 2-year value at or above the chord value 0.862, which gives z 2.41 (100/100) to 2.93 (185/500). That is an interpolation, not a printed figure. For agreement at 2 years P-244's AUC would have to stay below about 0.83, gaining under 0.02 in year 2 and about 0.09 in year 3. Neither paper shows the horizon to be sufficient at 2 years, so condition 3 is not failed.",
+    "4": "z = |0.957 - 0.78| / sqrt(0.0148^2 + 0.0214^2) = 0.177 / 0.0260 = 6.79 on the headline figures; 4.47 on the 3-year figure; 2.41-2.93 on the interpolated 2-year value; 0.6-0.9 on the 1-year figure.",
+    "5": "Holds by the letter. The compared 0.957 is below 0.97. P-244's 10-year 0.979 is not compared and comes from 783 MCI with an AIBL external cohort. The methods place AUC under five-fold CV: 'For evaluation, we applied five-fold cross validation, and ... measured the performance of time-to-conversion predictions by using ... area under receiver operating characteristic curve (AUC)'.",
+    "6": "Holds. Both figures are printed as recorded; the record omits the horizons."
+   },
+   "candidate_explanations": [
+    "Predictor set: P-244 adds baseline cognitive and clinical scores to MRI ('we concatenated the baseline clinical features and neuroimaging features extracted from the MRI scans, embedded with t through a transformer encoder, to map to z'); P-198 uses five MRI cortical-thickness covariates only. P-244 prints no MRI-only model.",
+    "Horizon: P-198 predicts conversion within about two years ('using lambda to predict whether a test patient will transition to AD within the next two years, given the outcome of the first visit'), while P-244's AUC rises with horizon and its 1-year value (0.810) agrees with P-198.",
+    "Internal optimism in P-244: internally its model is 'largely superior to the survival analysis models using MMSE (0.537-0.600) or APOE4 (0.564-0.681)', but in AIBL (30 MCI) its C-index (0.752, 95% CI 0.698-0.807) is close to MMSE's (0.730, 0.682-0.778) and its external AUCs are described only as 'consistently comparative performance with MMSE'.",
+    "Time conditioning in P-244: the latent pattern is defined on x and progression time t during training; the paper states 'In the inference stage, we only used data x at the starting point to predictively analyze the disease progression of an individual patient.' Whether t affects the evaluated scores is not shown either way.",
+    "Feature selection in P-198: 'we applied a Relief-based feature selection algorithm ... to rank raw features according to their classification relevance [15] and select the top five', not stated to be nested in the folds. If anything this would inflate P-198's 0.78 and so would not close the gap.",
+    "Inclusion and follow-up: P-244 requires 'at least two T1-weighted volumetric MRI scans' and follows MCI patients up to 10 years with censoring; P-198 uses 721 MCI with a follow-up scan about two years after baseline.",
+    "P-244 prints no AUC intervals or per-horizon class sizes, so its SEs rest on assumed counts.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "For MCI-to-AD conversion in ADNI, P-244 reports time-dependent AUCs of 0.957 at 5 years and 0.914 at 3 years against P-198's 0.78 for conversion within about 2 years; P-244's own 1-year AUC (0.810) agrees with P-198, so the gap may partly be a horizon effect as well as P-244's added cognitive predictors, and neither paper reports a result at the other's horizon.",
+   "reason": "Skeptic check of conditions 1-6 found no condition failed as the rule is written: there is no figure at P-198's horizon to reconcile the pair, and neither paper shows the horizon or the predictor set to be sufficient. The headline test passes easily (z 6.79), but at P-198's horizon the result rests on an interpolation: P-244's 1-year figure agrees with P-198, its 3-year figure does not, and the concave shape of its printed series puts the 2-year value near 0.86, outside P-198's interval (z 2.4-2.9 under assumed counts). The pair qualifies, but it is fragile, and the report must give the horizons and say that P-244's 1-year figure agrees with P-198."
+  },
+  {
+   "id": "C-176",
+   "compared": "Matched input: P-69's headline Model 5 Interaction-Based ResBlocks (demographics + driving time-series features, I-score selected) against P-331's Model 4 (demographics + driving, P-69's input channel). Raw accuracy is prevalence-confounded (15/105 impaired vs 72/118; an all-healthy rule scores 90/105 = 0.857 in P-69's test set, itself outside P-331's interval), so balanced accuracy derived from the printed counts is compared. Raw accuracy 0.962 vs 0.670 gives z = 6.2.",
+   "a": {"paper": "P-69", "estimate": 0.867, "se": 0.0572, "se_source": "Confusion matrix (90 0 / 4 11) over 90 healthy and 15 impaired test drivers (Table 3; orientation from p. 11: 'the diagonal elements are the correctly classified healthy (i.e., 90) and dementia (i.e., 11) case numbers'). BA = (11/15 + 90/90)/2 = 0.867. SE = 0.5*sqrt(0.733*0.267/15 + v_spec), with v_spec from (90.5/91)(0.5/91)/90 = 6.1e-5 because 90/90 has zero binomial variance: SE 0.0572, 95% CI [0.755, 0.979]."},
+   "b": {"paper": "P-331", "estimate": 0.643, "se": 0.0445, "se_source": "Table 2 Model 4: accuracy 66.95%, precision 71.43%, recall 76.39%, subject-level nested LOSO-CV over 72 impaired / 46 healthy. TP = 0.7639 x 72 = 55, FP = 55/0.7143 - 55 = 22, TN = 24 (accuracy 79/118 = 0.6695, as printed). BA = (55/72 + 24/46)/2 = 0.643; SE = 0.5*sqrt(0.764*0.236/72 + 0.522*0.478/46) = 0.0445, 95% CI [0.556, 0.730]."},
+   "scale": "Balanced accuracy (0-1), derived from printed counts; both papers print accuracy.",
+   "z": 3.09,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "candidate_explanations": [
+    "Class mix and operating point: 14% impaired in P-69's test set vs 61% in P-331, with P-331 tuned toward recall ('F1-score, optimizing the balance between precision and recall'). P-69: 'We randomly select 90 healthy and 15 dementia data points as the test data, and use the remaining 2826 healthy and 46 dementia data points as the training data.' Balanced accuracy at one threshold is not threshold-free, and P-331 reports no AUC.",
+    "I-score selection carries the gap: on the same demographics+driving inputs without I-score, P-69's random forest (BA 0.700, z 0.74 vs P-331), ResBlocks (0.767, z 1.58) and logistic regression (0.778, z 1.75) are within two-sample uncertainty of P-331's 0.643. The modules come from 'Applying BDA to the dementia dataset, we present the top five most predictive variable modules from I-score in Table 1', with no stated hold-out of the 15 test cases.",
+    "Demographic and site signal in P-69: its top module includes 'Age (at the time of study entry), Region (study site)', and its ResBlocks on demographics alone (85 5 / 4 11) reach BA 0.839.",
+    "Timing of the positive label: P-69's drivers were intact at enrolment and are labelled by the most severe later diagnosis ('However, here we only use the most severe one.'); P-331 classifies baseline status (its one-year-ahead model, BA 0.694 from 74/105, still gives z 2.37).",
+    "Label source: P-69 uses annual-interview labels ('participants were interviewed annually. Thus, we have each participant's yearly diagnosis label.'); P-331 uses assessments by two dementia-specialist clinicians under the 2018 NIA-AA framework.",
+    "Case mix: P-69 'Among these 61 patients, 36 have MCI, 8 Alzheimer's disease, and 17 have other or unspecified dementia'; P-331 has 64 MCI and 8 dementia.",
+    "Monitoring length and features: 10 to 44 months of monthly driving variables with 48 time-series features each (P-69) vs 'naturalistic driving behavior over three months at baseline year' (P-331).",
+    "Validation: one random split with 15 impaired test cases and SMOTE-balanced training ('In this paper, we use SMOTE to balance the training data.') vs nested LOSO-CV with subject-level majority voting ('The Outer CV Loop used Leave-One-Subject-Out Cross-Validation (LOSOCV) to evaluate generalization performance').",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "Among older drivers, P-69's naturalistic-driving model separates cognitively impaired from healthy drivers with 96% accuracy (balanced accuracy 0.87, on 15 impaired and 90 healthy test drivers) against 67-69% accuracy (balanced 0.64-0.67) in P-331 on the same demographics-plus-driving inputs; the gap survives the class-mix difference but rests on P-69's I-score-selected models, since its other classifiers on the same inputs are within uncertainty of P-331.",
+   "reason": "Not an advocate-only pair: the full skeptic check was done in challenge_skeptic_4 (no failed condition) and is not repeated here; this round re-read the printed counts and ran the test. On the matched inputs, balanced accuracy 0.867 vs 0.643 gives z = 3.09 (headline Model 6: z 2.74; one-year-ahead: z 2.37), so the pair passes and qualifies. The report must say that raw accuracy is inflated by P-69's 86% healthy test set and that the gap depends on P-69's I-score-selected models, whose selection is not shown to exclude the test cases."
+  },
+  {
+   "id": "C-188",
+   "compared": "Horizon-matched: P-244's 3-year time-dependent AUC 0.914 against P-356's 36-month binary AUC 0.74 (ViT on three hippocampal T1 slices). No input-matched figure exists: P-244 prints no MRI-only model and P-356 no clinical model. The record's 5-year 0.957 was replaced by the matched 3-year figure.",
+   "a": {"paper": "P-244", "estimate": 0.914, "se": 0.0248, "se_source": "No interval and no per-horizon class sizes printed (abstract 'MCI->AD, 3 years 0.914'). HM at one fold's size of the 783 MCI / 348 converters, about 70 cases / 87 controls: Q1 = 0.914/1.086 = 0.8416, Q2 = 2(0.8354)/1.914 = 0.8729, SE 0.0248, 95% CI [0.865, 0.963]. Across assumptions SE runs from 0.0111 (348/435) to 0.0362 (30/127)."},
+   "b": {"paper": "P-356", "estimate": 0.74, "se": 0.054, "se_source": "'an AUC-ROC of 0.74 with a standard deviation of 0.02 and a range of 0.72 to 0.78' over 10 runs on the test set; the SD is a spread, so SE from n. Test = 15% of 575 = about 86 at the constant ratio (276 pMCI / 299 sMCI), so 41 pMCI / 45 sMCI. HM: Q1 = 0.74/1.26 = 0.5873, Q2 = 2(0.5476)/1.74 = 0.6294, SE 0.0540, 95% CI [0.634, 0.846]."},
+   "scale": "ROC AUC: P-244 time-dependent AUC at 3 years from a survival model with censoring; P-356 binary AUC, conversion within 36 months vs stable for at least 3 years.",
+   "z": 2.93,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "candidate_explanations": [
+    "Predictor set: P-244 adds baseline cognitive and clinical scores and APOE4 to FreeSurfer morphometry ('we concatenated the baseline clinical features and neuroimaging features extracted from the MRI scans, embedded with t through a transformer encoder, to map to z'); P-356: 'In this work, we solely focused on MRI features'. P-244 prints no MRI-only model, so this is not shown to be sufficient.",
+    "Estimand and censoring: a time-dependent AUC over all MCI participants, 'of which 348 (44.44%) samples were converted from MCI to AD dementia while the others (55.56%) were right censored' (P-244), vs a binary AUC on a cleaned dichotomy. The cleaning favours P-356, so it does not explain P-356's lower figure.",
+    "Label cleaning in P-356: 'Individuals in the sMCI group were categorized as stable if they retained this status for a minimum of three years and maintained it throughout all available follow-up assessments provided by ADNI'; reverters excluded.",
+    "Internal optimism in P-244: internal MMSE AUCs are 0.537-0.600, but in AIBL the Deep-AD C-index (0.752) is close to MMSE's (0.730) and the external 3- and 5-year AUCs are described only as 'consistently comparative performance with MMSE'.",
+    "Time conditioning in P-244: the encoder uses baseline x and progression time t in training; the paper states 'In the inference stage, we only used data x at the starting point'.",
+    "Validation and inclusion: five-fold CV among participants with 'at least two T1-weighted volumetric MRI scans' (P-244) vs one subject-level 70/15/15 split with about 86 test subjects (P-356).",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "For MCI-to-AD progression in ADNI, P-244's clinical-plus-MRI survival model reports a 3-year time-dependent AUC of 0.914 against 0.74 for P-356's hippocampal-slice vision transformer at 36 months (z = 2.9); P-244's added cognitive and APOE4 predictors, its survival estimand and its unprinted external AUCs are candidate explanations, none shown to be sufficient.",
+   "reason": "Not an advocate-only pair: the full skeptic check was done in challenge_skeptic_4 (no failed condition) and is not repeated here. On the horizon-matched figures, z = |0.914 - 0.74| / sqrt(0.0248^2 + 0.054^2) = 0.174 / 0.0594 = 2.93; it stays above 1.96 under every assumed P-244 class size (2.68 at 30/127, 3.16 at 348/435), and P-356's best run (0.78) still gives z 2.15-2.59. The pair qualifies. P-244's SE rests on assumed counts, and its external AUCs, described only as comparable with MMSE, are not printed."
+  }
+ ]
+}

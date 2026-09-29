@@ -1,0 +1,25 @@
+{
+ "id": "C-11",
+ "qualifies": "no",
+ "question": "None shared. The intended P-112 paper (Oltu et al. 2021, read from the repository PDF mapped to P-111) stages AD vs MCI vs healthy controls from resting EEG. P-62's only MCI result identifies the underlying pathology (AD vs DLB vs iNPH) within MCI patients, and its healthy-volunteer contrasts are against dementia, not MCI. The pack PDF for P-112 is a different paper (Ghoraani et al., dual-task gait), which would also fail the channel test.",
+ "metric": "Mismatch: plain epoch-level accuracy (and AUC) for three-class staging vs subject-level balanced accuracy for etiological subtyping.",
+ "figures": {
+  "P-112": "Oltu et al.: three-class AD/MCI/HC accuracy 96.5% with ROC AUC 0.99, from epoch-level 5-fold CV over the epochs of 35 subjects (16 MCI, 8 AD, 11 HC); a 50/50 subject split gives test accuracy 93.88%. The pack PDF (Ghoraani gait study) gives three-class accuracy 78% (32 healthy, 26 MCI, 20 AD).",
+  "P-62": "MCI group at Hospital O (n = 83), pathology AD vs DLB vs iNPH: bACC 0.715, ROC AUC 0.847. Healthy volunteers vs dementia: bACC 0.927 internal, 0.805 and 0.920 external. No MCI vs healthy or AD/MCI/HC staging result. No interval arithmetic was done because no shared quantity exists."
+ },
+ "matched_figure_check": "No matched figure is possible: P-62 prints no result for the staging contrast, and P-112/Oltu prints none for pathology subtyping within MCI.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Fails for the intended P-112 paper. It reports AUC 0.99 on internal validation only, with 35 subjects, epoch-level CV (epochs of one subject can fall on both sides) and no external cohort. P-62 (external hospitals; bACC at most 0.927) passes.",
+ "failed_conditions": [1, 2, 5, 6],
+ "candidate_explanations": [],
+ "reason": "The two papers answer different clinical questions: three-stage AD/MCI/HC classification against identification of the pathology underlying MCI. The ledger's 'more moderate MCI-related balanced performance' misreads P-62's subtype bACC as MCI detection. The metrics differ as well (epoch-level accuracy vs subject-level bACC), and the intended P-112 result meets the Section 3.5 exclusion (AUC 0.99, N = 35, internal epoch-level CV).",
+ "quotes": [
+  {"paper": "P-112 (Oltu et al., repository PDF mapped to P-111)", "page": 1, "quote": "This study analyzed the EEGs of 35 subjects (16 MCI, 8 AD, 11 healthy control) with the developed algorithm."},
+  {"paper": "P-112 (Oltu et al., repository PDF mapped to P-111)", "page": 7, "quote": "In the k-fold cross-validation method, epochs are randomly split into k groups"},
+  {"paper": "P-112 (Oltu et al., repository PDF mapped to P-111)", "page": 8, "quote": "the accuracy of 93.88%, the specificity of 96.62% and the sensitivity of 93.24% is obtained for differentiating MCI patients, AD patients, and HC."},
+  {"paper": "P-62", "page": 3, "quote": "Importantly, data obtained from individuals with MCI and data collected at Hospital K and Hospital N were not used for training and were included only in the test sets."},
+  {"paper": "P-62", "page": 6, "quote": "Notably, when the MNet classifier was trained with the dementia group instead of the MCI group, it predicted the underlying pathologies of the MCI group at Hospital O, the bACC and ROC AUC values were 0.715 and 0.847, respectively"},
+  {"paper": "P-112 (pack PDF, Ghoraani et al.)", "page": 1, "quote": "We collected \"single-tasking\" gait (walking) and \"dual-tasking\" gait (walking with cognitive tasks) from 32 healthy, 26 MCI, and 20 AD participants using a computerized walkway."}
+ ]
+}

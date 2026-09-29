@@ -1,0 +1,27 @@
+{
+  "id": "C-247",
+  "qualifies": "no",
+  "question": "Nominally shared: does vitamin E (an antioxidant) slow cognitive decline or progression in MCI? P-1196 is a narrative review of 22 animal and human studies with mixed outcomes. P-1199 is a mechanistic review of redox proteomics that mentions clinical antioxidant trials in passing.",
+  "metric": "Mismatch: neither paper reports an effect estimate. P-1196 gives a vote count ('Eleven studies showed some level of the neuroprotective effect'; 6/7 animal plus 8/15 human in its results text) and says it could not pool. P-1199 gives a qualitative appraisal ('for the most part quite disappointing') and one trial vignette ('no improvement').",
+  "figures": {
+    "P-1196": "No pooled estimate ('restricted our ability to generate pooled estimates'). Conclusion: no study type has 'provided the conclusive answer'. Its appendix lists the ADCS vitamin E/donepezil MCI trial (via the 756-participant Edmonds 2018 analysis) as 'Vitamin E may not have an effect on lowering the rate of MCI towards AD'. The '800-2000 IU/day' figure is a reported safe-dose range, not a recommended efficacious dose.",
+    "P-1199": "No estimate. Describes the 769-participant three-year MCI trial (placebo, vitamin E 2000 IU, donepezil 10 mg): 'Vitamin E demonstrated no improvement in MCI patients'.",
+    "arithmetic": "No interval can be derived: neither paper has an estimate or an evaluation set for one."
+  },
+  "matched_figure_check": "The one object both papers address, the ADCS vitamin E/donepezil MCI trial, is reported as null by both (P-1196 via Edmonds 2018, P-1199 directly). On that matched object they agree.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [2, 4, 6],
+  "candidate_explanations": [],
+  "reason": "Neither review reports a quantity whose uncertainty could exclude the other's (conditions 2 and 4). On the only shared piece of evidence, the large vitamin E MCI trial, both call it null, and P-1196's own conclusion (evidence inconclusive) is compatible with P-1199's 'mostly disappointing'. The claimed disagreement rests on the record reading P-1196's safe-dose range (800-2000 IU/day) as a dosing recommendation and its Discussion wording as its conclusion, which is condition 6.",
+  "quotes": [
+    {"paper": "P-1196", "page": 1, "quote": "The results were equivocal. Eleven studies showed some level of the neuroprotective effect of Vitamin E, tocopherols and tocotrienols on the progression of MCI."},
+    {"paper": "P-1196", "page": 5, "quote": "The guidelines on the safe dose of vitamin E varies from 800–2000 IU/day as reported by previous studies [46,47]."},
+    {"paper": "P-1196", "page": 5, "quote": "These restricted our ability to generate pooled"},
+    {"paper": "P-1196", "page": 6, "quote": "In conclusion, epidemiological, clinical, nor other studies have provided the conclusive answer to whether or not Vitamin E slows the progression of MCI."},
+    {"paper": "P-1196", "page": 9, "quote": "Vitamin E may not have an effect on lowering the rate of MCI towards AD."},
+    {"paper": "P-1199", "page": 6, "quote": "clinical trials of antioxidants in AD and MCI have been for the most part quite disappointing [134,135]."},
+    {"paper": "P-1199", "page": 6, "quote": "A three-year, double-blind clinical trial involving 769 MCI participants treated daily with placebo, 2000 IU of vitamin E, or 10 mg of donepezil was conducted [136]. Vitamin E demonstrated no improvement in MCI patients"}
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "C-237",
+  "qualifies": "yes",
+  "question": "Cross-sectional discrimination of MCI from cognitively normal community-dwelling older adults in China, using plasma exosomal RNA (the fluid-biomarker channel). P-1232 is a Guangzhou community case-control study: MCI by Petersen criteria operationalised with education-specific MMSE cut-offs, dementia excluded, 150 v 150 in the qRT-PCR set. P-1254 comes from a Gansu community survey: MCI by MoCA < 26 plus European Consortium criteria, 24 MCI v 24 controls over 65. The markers differ (three lncRNAs combined in P-1232, single miRNAs in P-1254); condition 1 allows this as a difference in features within the channel.",
+  "metric": "ROC AUC in both, in-sample.",
+  "figures": {
+    "P-1232": "Three-lncRNA logistic combination (LINC001380, ENST00000484033, ENST00000531087): AUC 0.700, printed 95% CI 0.641-0.760, sens 72.0%, spec 60.7%, 150 MCI v 150 controls. The printed interval matches Hanley-McNeil at 150/150: Q1 = 0.5385, Q2 = 0.5765, SE = 0.0300, CI [0.641, 0.759].",
+    "P-1254": "miR-483-5p AUC 0.901 (sens 79.2% = 19/24, spec 100% = 24/24); miR-502-5p AUC 0.872 (sens 79.2%, spec 83.3%). 24 MCI v 24 controls over 65; no CI printed. Hanley-McNeil for 0.901 with n1 = n2 = 24: Q1 = 0.901/1.099 = 0.8198; Q2 = 2(0.8118)/1.901 = 0.8541; SE = sqrt([0.0892 + 23(0.0080) + 23(0.0423)]/576) = 0.0465; CI [0.810, 0.992]. For 0.872: Q1 = 0.7730, Q2 = 0.8124, SE = 0.0527, CI [0.769, 0.975]."
+  },
+  "matched_figure_check": "No matched figure exists. Neither study measures the other's markers, and neither reports a result under the other's case definition or control group. P-1232's external AddNeuroMed analysis (AUC 0.695) tests two target genes, ATP2A2 and PSEN1, not the lncRNA panel. P-1254's other contrasts use controls under 65. Nothing in either paper dissolves the gap.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "The exclusion does not apply. P-1254's highest AUC is 0.901 and its accuracy at the reported operating point is 43/48 = 0.896, both below 0.97; its 100% specificity is not the exclusion's metric. The 24 v 24 sample, the missing CI, the choice of markers from four candidates and the lack of any cross-validation or external cohort are caveats, not the exclusion. P-1232 (AUC 0.700) is not near ceiling.",
+  "failed_conditions": [],
+  "candidate_explanations": [
+    {"difference": "Different predictor: a logistic combination of three lncRNAs against a single miRNA. Each study measures only its own markers.", "quote": "the AUC of ROC curves for the combination of plasma exosomal LINC001380, ENST00000484033 and ENST00000531087 was 70.0 % (CI: 64.1 %–76.0 %, P < 0.001)", "paper": "P-1232"},
+    {"difference": "Marker selection and optimism. P-1254 chose its miRNAs from four literature candidates, reported ROC only for the two that separated the groups, and evaluated them in-sample on 48 people, with no cross-validation or CI.", "quote": "Based on the amassed evidence, we have selected miRNA-132-3p, −206, −483- 5p, and 502-5p as prospective candidates.", "paper": "P-1254"},
+    {"difference": "Sample size: 24 v 24 against 150 v 150.", "quote": "As the biomarker exploration cohort, 24 MCI patients and 24 age- matched controls were chosen at random.", "paper": "P-1254"},
+    {"difference": "Control group. P-1254's 'age-matched' controls averaged about 4.8 years younger than its MCI group (73.35 v 78.12), and the paper reports an age trend in an exosomal marker. P-1232's controls were matched 1:1.", "quote": "CD9 showed an increasing trend dependent on age.", "paper": "P-1254"},
+    {"difference": "Label definition: education-specific MMSE cut-offs (P-1232, case mean MMSE 18.46) against MoCA < 26 plus European Consortium criteria (P-1254, case mean MoCA 20.37).", "quote": "MCI was determined using an education-specific cut-off point for the MMSE total score. MMSE ≤17 for illiterate, MMSE ≤20 for primary school education, and MMSE ≤24 for secondary school and above.", "paper": "P-1232"},
+    {"difference": "Cohort: a Guangzhou (south China) community case-control sample against a Gansu (north-west China) community survey.", "quote": "The recruitment of participants for this case-control study was completed in the community of Guangzhou City, Guangdong Province from January 2018 to December 2022.", "paper": "P-1232"}
+  ],
+  "reason": "Both studies ask whether plasma exosomal RNA separates community-dwelling Chinese older adults with MCI from controls, and both report in-sample AUC. P-1232's printed interval (0.641-0.760) excludes P-1254's 0.901. P-1254's derived Hanley-McNeil interval (0.810-0.992) excludes 0.700, and even its weaker marker (0.872, interval 0.769-0.975) clears P-1232's interval. No matched figure exists, and neither result is near ceiling. The candidate explanations are the different markers, P-1254's post-selection in-sample estimate on 48 people, its younger controls, the case definitions and the cohorts; neither paper shows that any of them is sufficient.",
+  "quotes": [
+    {"paper": "P-1232", "page": 2, "quote": "We included 155 elderly patients with MCI as the case group, with a 1:1 proportion-matched 155 non-MCI elderly subjects served as the healthy control group."},
+    {"paper": "P-1232", "page": 2, "quote": "who had been diagnosed with MCI by reference to Petersen criteria. (Petersen, 2004)"},
+    {"paper": "P-1232", "page": 5, "quote": "the AUC of ROC curves for the combination of plasma exo­somal LINC001380, ENST00000484033 and ENST00000531087 was 70.0 % (CI: 64.1 %–76.0 %, P < 0.001) with a sensitivity of 72.0 % and a specificity of 60.7 % (Fig. 4A)."},
+    {"paper": "P-1232", "page": 5, "quote": "we validated the predictive power of target genes using an external dataset of 80 MCI patients and 104 healthy controls. The AUC for the combination of plasma ATP2A2 and PSEN1 was 69.5 %"},
+    {"paper": "P-1254", "page": 1, "quote": "we evaluated miR-483-5p (Area Under the Curve (AUC) is 0.901, sensitivity 79.2 % and specificity 100 %) and miR-502-5p (AUC is 0.872, sensitivity 79.2 % and"},
+    {"paper": "P-1254", "page": 2, "quote": "As the biomarker exploration cohort, 24 MCI patients and 24 age- matched controls were chosen at random."},
+    {"paper": "P-1254", "page": 4, "quote": "Age(years), Mean ± SD 59.56 ± 4.31 73.35 ± 5.33 78.12 ± 5.83"},
+    {"paper": "P-1254", "page": 4, "quote": "CD9 showed an increasing trend dependent on age."}
+  ]
+}

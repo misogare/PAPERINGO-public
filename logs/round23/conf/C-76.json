@@ -1,0 +1,31 @@
+{
+  "id": "C-76",
+  "qualifies": "borderline",
+  "question": "Prediction of MCI-to-AD conversion within 3 years/36 months (pMCI vs sMCI) in ADNI from baseline MRI. P-3 uses T1 MRI only; P-72's reported model fuses sMRI grey matter with FDG-PET (MRI channel shared) and it also reports an sMRI-only arm. The recorded P-72 figure (94.61%) is its AD vs NC accuracy; judged here on P-72's printed conversion figures.",
+  "metric": "Accuracy with accuracy and AUC with AUC; both papers report both.",
+  "figures": {
+    "P-72": "238 sMCI/151 pMCI, subject-level 70/15/15 split (about 57 test subjects per split), averaged over three splits. sMRI-only MAResNet18: 73.68% (42/57), Wilson 61.0-83.4%; AUC 0.721, Hanley-McNeil (22/35) SE=0.072 -> 0.580-0.862. Multimodal SPDFC(0.6): 77.19% (44/57), Wilson 64.8-86.2%; AUC 0.755 -> 0.620-0.890.",
+    "P-3": "298 sMCI/295 pMCI (ADNI1/2, Wen et al. splits), 5-fold CV, CAAT ensemble: accuracy 74.61% (fold variance 0.002; no interval), Wilson on n=593 70.9-77.9%; AUC 0.780 (fold variance 0.003), Hanley-McNeil n1=295, n2=298: Q1=0.639, Q2=0.684, SE=sqrt([0.78*0.22+294*(0.639-0.608)+297*(0.684-0.608)]/(295*298))=0.019 -> 0.743-0.817."
+  },
+  "matched_figure_check": "P-72's sMRI-only arm is P-3's input condition (T1 MRI only), on the same 3-year horizon. Accuracy: 73.68% vs 74.61%, each inside the other's interval (two-sample z=0.15). AUC: P-72's 0.721 lies 0.022 below P-3's derived lower bound 0.743, while P-3's 0.780 lies inside P-72's 0.580-0.862 (z=0.79). P-72's multimodal model (77.19%, 0.755) lies inside P-3's intervals on both metrics and P-3's figures lie inside its. The matched figure reconciles the accuracy comparison almost exactly; on AUC it fails to reconcile only in one direction, because P-3's 593-subject interval is narrow.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: no conversion figure near ceiling (P-72 77.19%/0.755, sMRI-only 73.68%/0.721; P-3 74.61%/0.780).",
+  "failed_conditions": [3, 4],
+  "candidate_explanations": [
+    {"difference": "Architecture: P-3's CAAT ensemble transfers class-activation attention from three source tasks; P-3's own plain 3D CNN on the same splits gives 70.84% and AUC 0.758, so architecture alone moves AUC by 0.022 within P-3.", "quote": "Baseline 3D CNN 0.71 (0.005) 0.71 (0.003) 0.71 (0.003) 70.84 (0.001) 0.758 (0.003)", "paper": "P-3"},
+    {"difference": "Input representation: whole 3D T1 image (P-3) vs grey-matter map (P-72).", "quote": "using only whole 3D images of the brain and no other ancillary information", "paper": "P-3"},
+    {"difference": "Cohort selection and class balance: P-3 uses the Wen et al. ADNI1/2 benchmark (298/295); P-72 is restricted to subjects with paired baseline MRI and FDG-PET (238/151).", "quote": "The dataset consists of 298 sMCI and 295 pMCI participants retrieved from datasets ANDI1 and ADNI2.", "paper": "P-3"},
+    {"difference": "Validation design: 5-fold CV over 593 (P-3) vs three hold-out splits of about 57 subjects (P-72).", "quote": "We followed the same data split strategy to construct three different subsets with different test sets, the average of three classification accuracies is used as the final result.", "paper": "P-72"},
+    {"difference": "sMCI label: P-3 requires the diagnosis to remain MCI through 36 months; P-72 labels non-converters as sMCI without a stated follow-up minimum.", "quote": "if the patient’s diagnosis remained as MCI, we categorized him/her as sMCI.", "paper": "P-3"}
+  ],
+  "reason": "On P-72's printed conversion figures, the matched sMRI-only accuracies are essentially identical (73.68% vs 74.61%) and P-72's reported model agrees with P-3 on both metrics. The only crossing is the AUC of P-72's sMRI-only ablation (0.721), which lies outside P-3's narrow derived interval while P-3's 0.780 lies well inside P-72's (z=0.79). That meets the letter of condition 4 in one direction only, and condition 3 is met on AUC but not on accuracy, so this is the weakest of the borderline cases. No paper shows any candidate explanation to be sufficient.",
+  "quotes": [
+    {"paper": "P-72", "page": 6, "quote": "MAResNet18 88.24 85.42 90.74 0.881 73.68 65.91 79.05 0.721"},
+    {"paper": "P-72", "page": 7, "quote": "SPDFC (0.6) 94.61(0.85) 92.19 97.22 0.947 77.19(1.01) 68.18 82.86 0.755"},
+    {"paper": "P-72", "page": 3, "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI."},
+    {"paper": "P-3", "page": 7, "quote": "CAAT ensemble 0.75 (0.004) 0.75 (0.006) 0.75 (0.002) 74.61 (0.002) 0.780 (0.003)"},
+    {"paper": "P-3", "page": 3, "quote": "To evaluate the performance, we performed 5-fold cross-validation of the dataset."},
+    {"paper": "P-3", "page": 6, "quote": "The dataset consists of 298 sMCI and 295 pMCI participants"}
+  ]
+}

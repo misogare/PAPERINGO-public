@@ -1,0 +1,26 @@
+{
+  "id": "C-255",
+  "qualifies": "no",
+  "question": "Shared. Both papers detect MoCA-screened MCI against normal cognition in hospitalised type 2 diabetes patients, using plasma biomarkers plus routine clinical variables (fluid-biomarker channel). The differences are allowed: disjoint predictor sets (galectin-3 + age + education vs BVR-A + HOMA-IR + diabetes duration), slightly different MoCA cut-offs (<26 vs 19-25 against >=26), different single centres (Nanjing vs Xuzhou) and sample sizes (329 vs 140).",
+  "metric": "ROC-AUC with ROC-AUC (match). P-1212's 'C-index 0.863' is numerically its held-out test AUC, so the record's AUC-versus-C-index split is not a metric mismatch.",
+  "figures": {
+    "P-1206": "Held-out validation cohort (random 30%, n = 98: 43 MCI / 55 NC): nomogram AUC 0.775 (95% CI 0.681-0.870), as printed. Hanley-McNeil check: Q1 = 0.775/1.225 = 0.6327, Q2 = 2(0.6006)/1.775 = 0.6768, SE^2 = [0.775*0.225 + 42*(0.6327-0.6006) + 54*(0.6768-0.6006)]/(43*55) = 5.637/2365, SE = 0.0488, CI [0.679, 0.871], matching the printed interval. Training (n = 231): 0.813 (0.758-0.867). Optimism-corrected C-index: 0.813 (0.757-0.868). Gal-3 alone: 0.737 (0.671-0.803) training, 0.750 (0.648-0.853) validation.",
+    "P-1212": "Held-out test set (random 30% of 140, about 42; about 22 MCI / 20 NCF): nomogram AUC 0.863 (95% CI 0.752-0.973), as printed. Hanley-McNeil check at 22/20: Q1 = 0.7590, Q2 = 0.7995, SE^2 = [0.863*0.137 + 21*(0.7590-0.7448) + 19*(0.7995-0.7448)]/440 = 1.456/440, SE = 0.0575, CI [0.750, 0.976], matching the printed interval. Internal-validation C-index: 0.863 (0.752-0.937). Training: 0.897 (0.837-0.958). 5-fold CV mean AUC: 0.884 (folds 0.738-0.964), no interval; Hanley-McNeil at 75/65 gives SE = 0.0286, CI [0.828, 0.940]. BVR-A alone: 0.791 (0.655-0.926)."
+  },
+  "matched_figure_check": "A matched figure exists and it reconciles the pair. Both papers use the same validation design, a random 7:3 split with the model fitted on the 70% and evaluated on the held-out 30%, and both print the held-out AUC. The two agree within uncertainty: P-1206's 0.775 lies inside P-1212's 0.752-0.973, and P-1212's 0.863 lies inside P-1206's 0.681-0.870. The single-marker validation AUCs also overlap (Gal-3 0.750, 0.648-0.853; BVR-A 0.791, 0.655-0.926). Two unmatched comparisons do differ beyond uncertainty, reported for transparency. The apparent (training) AUCs, 0.813 (0.758-0.867) vs 0.897 (0.837-0.958), are measured on the data used to select and fit each model, and P-1212 selected its predictors by stepwise AIC. P-1206's optimism-corrected 0.813 vs P-1212's 5-fold CV mean 0.884 (derived 0.828-0.940) compare two different internal-validation procedures. On the matched held-out tier the gap dissolves.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Exclusion not triggered. No compared figure reaches 0.97: held-out 0.775 and 0.863, training maximum 0.897. The best single CV fold (0.964) is not a reported summary. Both papers use internal validation only with no external cohort, but neither is near ceiling.",
+  "failed_conditions": [3, 4],
+  "candidate_explanations": [],
+  "reason": "Both papers detect MCI in T2DM inpatients from plasma markers with the same 7:3 held-out design. On that matched tier the AUCs (0.775, 0.681-0.870, against 0.863, 0.752-0.973) each lie inside the other's interval, so the recorded gap is within sampling error of validation sets of 98 and about 42 patients. Only the apparent training AUCs, and two unlike internal-validation procedures, separate beyond uncertainty; the matched held-out figures dissolve the discrepancy (conditions 3 and 4).",
+  "quotes": [
+    {"paper": "P-1206", "page": 4, "quote": "A total of 329 eligible patients were randomly assigned to a training cohort (n = 231) and a validation cohort (n = 98) at a ratio of 7:3."},
+    {"paper": "P-1206", "page": 10, "quote": "0.813(0.758–0.867)"},
+    {"paper": "P-1206", "page": 10, "quote": "0.775(0.681–0.870)"},
+    {"paper": "P-1206", "page": 5, "quote": "The optimism-corrected C-index to assess the discrimination of the nomogram model was 0.813 (95% CI: 0.757–0.868)"},
+    {"paper": "P-1212", "page": 3, "quote": "Secondly, the total sample was divided into the training set and the test set in a 7:3 ratio. The training set was used to screen variables and construct the predictive model, while the test set was used to validate the results."},
+    {"paper": "P-1212", "page": 3, "quote": "In terms of discrimination, the AUC of the training set was 0.897 (95% CI: 0.837–0.958) and the AUC of the test set was 0.863 (95% CI: 0.752–0.973), indicating good model discrimination (Figure S2)."},
+    {"paper": "P-1212", "page": 4, "quote": "with AUC values ranging from 0.738 to 0.964. The average AUC value, at 0.884, underscores the model’s stability"}
+  ]
+}

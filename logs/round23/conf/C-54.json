@@ -1,0 +1,26 @@
+{
+  "id": "C-54",
+  "qualifies": "no",
+  "question": "The task label matches (binary MCI vs normal) but the channel does not: P-117 (correct PDF S1746809423008959, Aljalal et al.) uses resting-state EEG; P-52 (Hu et al., Neuroscience 2025) uses CNN-segmented hippocampal T1 MRI radiomics. Condition 1 fails on channel.",
+  "metric": "Mismatch: P-117 reports accuracy (no AUC anywhere in the paper); P-52 reports ROC AUC and prints no test-set accuracy. The only 'accuracy' in P-52's text (Discussion, 'the accuracy of 0.93 achieved in our study') matches its training AUC 0.935; no accuracy table is printed.",
+  "figures": {
+    "P-117": "99.81% accuracy (ensemble KNN, 11 NSGA-II channels), binary aMCI vs HC, 10-fold CV over 3660 segment feature vectors from 61 participants; no interval. Wilson 95% with n = 61: z^2/n = 0.06297; centre = (0.9981 + 0.03149)/1.06297 = 0.9686; half-width 0.0314; interval [0.937, 1.000].",
+    "P-52": "Test-set AUC 0.864 (reported 95% CI 0.73-0.89) on a random 7:3 hold-out test set of 45 (30 MCI/15 NC); training AUC 0.935 (95% CI 0.83-0.97). No accuracy reported for the test set."
+  },
+  "matched_figure_check": "No matched figure exists: P-117 reports no AUC and P-52 no accuracy, and neither reports anything in the other's channel. The record's gap_magnitude 0.134 subtracts an AUC from an accuracy.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "P-117 meets the Section 3.5 exclusion on its own PDF: 99.81% (>= 0.97), internal 10-fold CV over randomly split segment feature vectors, 61 participants, no external cohort. P-52's test AUC 0.864 is below 0.97 (its authors note the lack of external validation) and is not excluded.",
+  "failed_conditions": [1, 2, 5],
+  "candidate_explanations": [],
+  "reason": "EEG and hippocampal MRI radiomics are different channels (condition 1), and the two papers report different metric types, accuracy against ROC AUC, with no shared metric printed anywhere (condition 2), so condition 4 cannot be assessed. P-117's 99.81% also fails the performance-validity exclusion (condition 5).",
+  "quotes": [
+    {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+    {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+    {"paper": "P-117", "page": 9, "quote": "This results in a 3660 × 76 feature matrix, which is used as input to the classifier."},
+    {"paper": "P-52", "page": 1, "quote": "The XGBoost model, utilizing the seven selected features, achieved the highest AUC in the test set (AUC = 0.864, 95 %CI:0.73–0.89)."},
+    {"paper": "P-52", "page": 2, "quote": "resulting in a training set that was composed of 75 MCI patients and 30 NC subjects, and an independent test set that contained 30 MCI patients and 15 NC subjects"},
+    {"paper": "P-52", "page": 5, "quote": "achieving 70 % accuracy in distinguishing MCI from NC, which was significantly lower than the accuracy of 0.93 achieved in our study."},
+    {"paper": "P-52", "page": 6, "quote": "First, the relatively small sample size and lack of external validation may constrain the generalizability of our findings."}
+  ]
+}

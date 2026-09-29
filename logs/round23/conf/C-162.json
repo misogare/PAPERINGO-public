@@ -1,0 +1,26 @@
+{
+  "id": "C-162",
+  "qualifies": "no",
+  "question": "None shared. The recorded figures answer different questions. P-263's 93% is the accuracy of an etiological classifier within MCI (MCI-FTD vs MCI-AD/MCI-DLB). P-133's 72.67% is a three-class HC/MCI/AD accuracy. The closest printed pair is also a different comparison: P-263 MCI vs HC (0.84) against P-133 HC vs MCI+AD (89.22%), where P-133's impaired class includes AD dementia. P-133 prints no binary HC vs MCI result. The channels also differ. P-263 uses TMS measures of motor-cortex excitability (SICI, ICF, LICI, SAI). P-133 fuses visual-oddball ERP differential-entropy features (EEG) with TCM constitution questionnaires. TMS is not EEG/MEG, and P-263 uses no questionnaire features, so the two papers share no channel.",
+  "metric": "Both report accuracy, but for different class structures: a binary within-MCI etiological split against a three-class HC/MCI/AD problem, where chance is 33%.",
+  "figures": {
+    "P-263": "As recorded, 93% is the accuracy of the new RF classifier for MCI-FTD vs MCI-non-FTD (Table 2b). The MCI vs HC accuracy is 0.84 (new RF, 5-fold CV) or 0.73 (the previously published classifier). For MCI vs HC the analysed sample is 153 (106 MCI, 47 HC), and 8 outliers were removed for the first classifier, so n = 145. Wilson 95% for 0.84, n = 145: z^2/n = 3.8416/145 = 0.0265; centre = (0.84 + 0.01325)/1.0265 = 0.831; half-width = 1.96*sqrt(0.84*0.16/145 + 3.8416/(4*145^2))/1.0265 = 0.0595; interval [0.772, 0.891]. At n = 153 the interval is [0.774, 0.890].",
+    "P-133": "As recorded, 72.67 +- 1.89% is the three-class HC/MCI/AD accuracy (GCN, Neutral stimulus). The nearest binary figure is HC vs MCI+AD at 89.22 +- 1.90% in Table 2 (the abstract prints 90.17 +- 5.58%). The +- values are SDs across 8 repeats of 10-fold cross-subject CV on 90 subjects (30 HC, 30 MCI, 30 AD). Wilson 95% for 0.8922, n = 90: z^2/n = 0.0427; centre = (0.8922 + 0.0213)/1.0427 = 0.876; half-width = 1.96*sqrt(0.8922*0.1078/90 + 3.8416/(4*8100))/1.0427 = 0.0648; interval [0.811, 0.941]."
+  },
+  "matched_figure_check": "No matched figure exists. P-133 reports no HC vs MCI contrast and no etiological split within MCI. P-263 reports no three-class result and no contrast whose impaired class includes dementia. The nearest pair (0.84 against 89.22%) is only an approximation of a shared comparison. On that pair, P-263's 0.84 lies inside P-133's interval [0.811, 0.941], and P-133's 0.8922 lies 0.001 above P-263's upper bound of 0.891 (two-sample z = (0.8922 - 0.84)/sqrt(0.0304^2 + 0.0327^2) = 1.17). Even as an approximation, the two figures do not show a gap.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "The exclusion does not apply. No compared value reaches 0.97: P-263's figures are 0.84, 0.93 and 0.90, and P-133's are 89.22% and 72.67%. Checked against P-263 Table 2 and P-133's abstract and Table 2.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "The recorded disagreement rests on a misreading (condition 6). P-263's 93% is its MCI-FTD vs MCI-non-FTD classifier and P-133's 72.67% is its three-class accuracy, and neither is an MCI vs controls figure. Judged on the figures the papers print, the pair still fails condition 1. TMS excitability measures and ERP/EEG plus questionnaire features share no channel, and P-133's only healthy-vs-impaired contrast includes AD dementia in the impaired class. The nearest figures (0.84 vs 89.22%) differ by less than their uncertainty in one direction, and by only 0.001 in the other.",
+  "quotes": [
+    {"paper": "P-263", "page": 1, "quote": "We applied a RF classiﬁer on TMS measures obtained from a multicenter cohort of patients with MCI, including MCI-Alzheimer’s Disease (MCI-AD), MCI-frontotemporal dementia (MCI-FTD), MCI-dementia with Lewy bodies (MCI-DLB), and healthy controls (HC)."},
+    {"paper": "P-263", "page": 7, "quote": "Two-group classiﬁer First classiﬁer MCI vs HC Second classiﬁer MCI-FTD vs MCI-non-FTD Third classiﬁer MCI-AD vs MCI-DLB"},
+    {"paper": "P-263", "page": 7, "quote": "b) Present sample classiﬁer (adjusted) Accuracy 0.84 0.93 0.90"},
+    {"paper": "P-263", "page": 7, "quote": "after removing outliers with Brier score >1 (8, 5, 5 for 1st, 2nd and 3rd RF classiﬁer, respectively)."},
+    {"paper": "P-133", "page": 1, "quote": "Deep learning models, including EEGNet, Convolutional Neural Network - Long Short-Term Memory, Graph Convolutional Network, (GCN), and multi-scale feature reconstruction GCN, were employed to extract differential entropy features from ERP data, and multilayer perceptron was utilized to extract features from TCM questionnaires."},
+    {"paper": "P-133", "page": 1, "quote": "Similarly, in ternary classification of HC, MCI, and AD, GCN reached the highest accuracy of 72.67 ± 1.89 % under Neutral stimulus."},
+    {"paper": "P-133", "page": 4, "quote": "1) binary classification of HC vs. MCI+AD to differentiate healthy individuals from those with cognitive impair­ment; 2) binary classification of MCI vs. AD to distinguish different degrees of cognitive impairment; and 3) ternary classification involving HC, MCI, and AD"}
+  ]
+}

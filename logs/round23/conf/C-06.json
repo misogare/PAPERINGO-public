@@ -1,0 +1,23 @@
+{
+  "id": "C-06",
+  "qualifies": "no",
+  "question": "None shared. P-95 ranks expert-selected neuropsychological feature groups against neuroradiological groups (DTI, visual rating scales, subcortical volumes) for 3-class AD / MCI / control diagnosis in a Novi Sad memory-clinic cohort of 90. P-96 screens for an MMSE-defined 'high-risk MCI' label from seven routine physical-examination and blood variables in Chinese community cohorts (CHARLS, Yiwu). The task (3-class diagnosis vs binary screening), label and channels (NP + MRI vs blood/anthropometry) all differ.",
+  "metric": "Mismatch. The record's claimed quantity is a modality ranking (NP vs MRI) in each paper, but P-96 contains no such ranking: it has no MRI and no neuropsychological predictor. P-95's metrics are 3-class accuracy and weighted AUROC; P-96's are binary AUROC and accuracy.",
+  "figures": {
+    "P-95": "NP better than NR within the cohort: best NP combination 71.11-79.78% accuracy across seven classifiers (Table 7); most NR groups below 50% accuracy (text; NR left out of Table 7); all 482 features 66.22-81.00% accuracy.",
+    "P-96": "Random forest for MMSE-defined high-risk MCI: training AUROC 0.93 (0.91-0.95), accuracy 85.5%; external AUROC 0.83 and 0.87. No MRI-vs-NP comparison exists."
+  },
+  "matched_figure_check": "Not applicable: one side of the claimed comparison (an MRI-vs-NP ranking in P-96) does not exist, so there is no figure to match.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not a like-for-like performance comparison. In any case neither paper reaches 0.97: P-95's best AUROC is 94.95%; P-96's is AUROC 0.93, with external validation.",
+  "failed_conditions": [1, 2, 6],
+  "candidate_explanations": [],
+  "reason": "P-96 uses no MRI and no neuropsychological predictor; the MMSE only defines its outcome. So the recorded 'MRI outperforms NP (79% vs 72%)' has no counterpart, and there is no second result to set against P-95. The papers also answer different questions: 3-class clinical diagnosis in a Serbian clinic, against community screening for a psychometric label from blood and physical-examination data.",
+  "quotes": [
+    {"paper": "P-95", "page": 4, "quote": "The data includes neuroradiological (NR) and neuropsychological (NP) parameters of 90 people, divided into three different groups of equal sizes (per 30 participants)"},
+    {"paper": "P-95", "page": 17, "quote": "the results of all the other NR groups were less than 50 %, i.e. most of the patients were classified in the wrong class."},
+    {"paper": "P-96", "page": 1, "quote": "The Mini-Mental State Examination (MMSE) was used for MCI diagnosis. Seven key variables (education, grip strength, height, weight, creatinine, mean corpuscular volume, and platelet count) were selected through majority voting."},
+    {"paper": "P-96", "page": 9, "quote": "While these models offer excellent performance, they are highly dependent on costly imaging and genetic assessments, limiting their use in real-world primary care settings [21,22]."}
+  ]
+}

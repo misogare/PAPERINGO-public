@@ -1,0 +1,25 @@
+{
+  "id": "C-86",
+  "qualifies": "no",
+  "question": "None shared. P-145's cited 0.80 separates healthy controls from Parkinson's disease patients of any cognitive status; its only MCI contrast is PD-MCI vs PD-NC within Parkinson's patients. P-44 compares amnestic MCI with cognitively unimpaired memory-clinic patients. The population class behind the label differs (Parkinson's patients vs Alzheimer's-spectrum aMCI), which is the case the rule names as a condition-1 failure. The channel (MRI) is shared.",
+  "metric": "Accuracy vs accuracy (type matches; the quantities do not).",
+  "figures": {
+    "P-145": "HC vs PD 'up to 80%' (RF/LDA on dFNC sequential patterns, 100 fits of 10-fold CV, n=55: 22 HC, 33 PD). No interval printed; Table 2 is an image. Wilson on n=55: centre (0.80+1.96^2/110)/(1+1.96^2/55)=0.780, half-width 0.104 -> 0.676-0.884. PD-NC vs PD-MCI 'up to 72%' (n=33: 18/15): Wilson 0.550-0.844.",
+    "P-44": "aMCI vs CU accuracy 92.9%, AUC 0.929 (linear SVM, FreeSurfer volumes + rs-fMRI graph metrics; sMRI-only 88.9%). 50 aMCI + 26 CU; 80/20 hold-out with 10-fold CV in training; test-set size not printed. Wilson on n=76: 0.848-0.968; on a 20% hold-out of about 15: 0.696-0.987."
+  },
+  "matched_figure_check": "No matched figure exists. Neither paper reports the other's contrast: P-145 has no MCI-vs-cognitively-normal result outside Parkinson's disease, and P-44 has no Parkinson's patients.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: the highest figure is 0.929 (P-44), below 0.97.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "The record reads P-145's 0.80 as an MCI result, but it is the Parkinson's vs healthy-control accuracy; P-145's only MCI contrast is PD-MCI vs PD-NC within Parkinson's patients (up to 72%). That is a different population class and comparison from P-44's aMCI vs cognitively unimpaired (92.9%), so there is no shared clinical question. On the letter of condition 4 P-44's 0.929 lies outside both P-145 Wilson intervals, but this is moot because conditions 1 and 6 fail.",
+  "quotes": [
+    {"paper": "P-145", "page": 7, "quote": "distinguished people with PD from HC individuals with up to 80 %"},
+    {"paper": "P-145", "page": 7, "quote": "MCI with up to 72 % accuracy"},
+    {"paper": "P-145", "page": 2, "quote": "a total of 55 participants (all right- handed) were included in the current investigation: 22 in the HC group, 18 in the PD-NC group, and 15 in the PD-MCI group."},
+    {"paper": "P-44", "page": 1, "quote": "However, when the structural volumes and functional connectomic profiles were combined, the accuracy increased to 92.9%."},
+    {"paper": "P-44", "page": 1, "quote": "In addition, 26 CU patients were enrolled in the control group."},
+    {"paper": "P-44", "page": 3, "quote": "80% of the subjects were randomly selected for use as the training dataset, whereas the remaining 20% were considered the test, or holdout, dataset."}
+  ]
+}

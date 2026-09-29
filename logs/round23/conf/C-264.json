@@ -1,0 +1,25 @@
+{
+ "id": "C-264",
+ "qualifies": "no",
+ "question": "Shared: the cross-sectional difference in blood NfL between MCI and cognitively healthy controls, from evidence syntheses (fluid-biomarker channel). P-1341 takes MCI of any subtype, P-1231 amnestic MCI. Both searches closed in May 2021, so the pooled studies may overlap.",
+ "metric": "Mismatch in magnitude: P-1341 pools standardised mean differences and P-1231 pools ratios of means. Only direction can be compared directly; magnitudes can be compared only through an approximate conversion.",
+ "figures": {
+  "P-1341": "Blood NfL, MCI vs HC: plasma, 2 comparisons, SMD 0.10 (95% CI -0.36 to 0.56), P = .67. Simoa (all 3 blood comparisons), SMD 0.01 (-0.38 to 0.41), P = .95. The minus signs are rendered as a control character in the extract; the P values and midpoints confirm negative lower bounds.",
+  "P-1231": "Blood NfL, aMCI vs controls: ratio of means 1.24 (1.17-1.32), p < 0.001.",
+  "comparison": "Same direction: all point estimates put MCI above controls. The difference is in significance. Approximate conversion using the means and SDs of P-1341's three blood studies (Table 1; SMD = (RoM - 1) x control mean / pooled SD): P-1231's 1.17-1.32 corresponds to about 0.44-0.83 (Lin: control 17.8, SDs 7.3/6.4), 0.32-0.61 (Thijssen: 15.2, SD 8) and 0.24-0.44 (Steinacker: 21.7, SDs 8.1/20.6). P-1341's plasma interval (up to 0.56) overlaps all three ranges, and its Simoa interval (up to 0.41) overlaps two. The intervals do not exclude each other."
+ },
+ "matched_figure_check": "No reconciling figure is needed, since there is no gap beyond uncertainty. P-1231's per-assay NfL values are in a figure, not in the text. P-1341's assay split cannot separate matrix from assay, because its 4 ELISA comparisons are its 4 CSF comparisons and its 3 Simoa comparisons are its 3 blood comparisons.",
+ "beyond_uncertainty": false,
+ "significance_only": true,
+ "performance_validity": "Not a performance comparison (group-difference effect sizes). P-1231's P-tau217 AUC range is a literature range for another marker.",
+ "failed_conditions": [2, 4],
+ "candidate_explanations": [],
+ "reason": "Both syntheses put blood NfL higher in MCI than in controls. P-1341's blood estimates are simply not significant (SMD 0.10, -0.36 to 0.56; 0.01, -0.38 to 0.41), while P-1231's ratio of 1.24 (1.17-1.32) is. The metrics differ (SMD against ratio of means). On an approximate conversion using P-1341's own study dispersions, the intervals overlap. A significant estimate against a non-significant one with overlapping intervals is a difference in significance only, which the rule does not count.",
+ "quotes": [
+  {"paper": "P-1341", "page": 3, "quote": "However, 2 comparisons in plasma samples found that there was no association between NfL expression levels in MCI cases and HC subjects (SMD=0.10, 95%CI: [\u00010.36,0.56], I2=73%, P=.67)."},
+  {"paper": "P-1341", "page": 4, "quote": "3 comparisons used the Simoa assay (SMD=0.01, 95%CI: [\u00010.38,0.41], I2=62%, P=.95)."},
+  {"paper": "P-1341", "page": 5, "quote": "yet NfL in blood may be not a biomarker of MCI in our study and more studies on blood NfL are needed in future."},
+  {"paper": "P-1231", "page": 3, "quote": "aMCI patients compared with controls (1.24, 95 %CI = 1.17–1.32, p < 0.001)."},
+  {"paper": "P-1231", "page": 2, "quote": "The ratio of means method (RoM method) was used to evaluate the difference in biomarker concentrations between patients and controls"}
+ ]
+}

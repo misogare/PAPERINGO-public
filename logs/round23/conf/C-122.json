@@ -1,0 +1,24 @@
+{
+  "id": "C-122",
+  "qualifies": "no",
+  "question": "None shared. P-185 predicts MCI-to-AD conversion within 3 years (pMCI vs sMCI). P-152 reports only cross-sectional diagnostic classification (AD vs HC, MCI vs HC, AD vs MCI) and has no conversion analysis. The channel is shared (MRI: T1 morphometry vs DTI of the superficial white matter both count as MRI), but the task and comparison differ.",
+  "metric": "Accuracy in both, but on different contrasts: P-185's 69.37% is pMCI vs sMCI; the ledger's 95.8% for P-152 is AD vs healthy controls.",
+  "figures": {
+    "P-185": "pMCI vs sMCI accuracy 69.37% (AUC 0.6951), 221 ADNI MCI (126 pMCI, 95 sMCI), 20 x 10-fold CV. Wilson 95% CI with n=221: 0.630-0.751.",
+    "P-152": "AD vs HC accuracy 95.8% (AUC 0.99) on 48 subjects (24 AD, 24 HC), 5-fold CV; Wilson 95% CI with n=48: 0.860-0.988. MCI vs HC 83.3% (AUC 0.88); AD vs MCI 83.3% (AUC 0.93). No pMCI-vs-sMCI figure exists."
+  },
+  "matched_figure_check": "Not applicable. P-152 reports no conversion result, so no figure matches P-185's contrast, and P-185 reports no AD-vs-HC diagnostic accuracy.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "P-152's cited figure meets the Section 3.5 exclusion: AUC 0.99 (accuracy 95.8%) for AD vs HC on 48 subjects, internal 5-fold CV, no external cohort. P-185's 69.37% passes.",
+  "failed_conditions": [1, 5, 6],
+  "candidate_explanations": [],
+  "reason": "The ledger's claim 'P-152: Acc 95.8 on T2' misreads P-152. The 95.8% separates AD from healthy controls, and the paper contains no MCI-conversion analysis, so there is no shared clinical question to set against P-185's 69.37% pMCI-vs-sMCI accuracy. The cited P-152 figure would also fall under the near-ceiling exclusion (AUC 0.99, n=48, internal CV only). The uncertainty test is not assessed because no shared quantity exists.",
+  "quotes": [
+    {"paper": "P-185", "page": 2, "quote": "Moreover, the 221 MCI subjects contain 126 pMCI and 95 sMCI subjects."},
+    {"paper": "P-185", "page": 6, "quote": "marker achieved highest accuracy of 69.37% when using SVM classi\ufb01er with linear kernel."},
+    {"paper": "P-152", "page": 1, "quote": "This method employed DTI data from 72 subjects: 24 subjects as HC, 24 subjects with MCI, and 24 subjects with AD."},
+    {"paper": "P-152", "page": 1, "quote": "The linear kernel of SVM was the best classi\ufb01er, with an accuracy of 95.8% between the AD and HC groups"},
+    {"paper": "P-152", "page": 6, "quote": "HC-AD 95.8 95.8 95.8 95.8 .99"}
+  ]
+}

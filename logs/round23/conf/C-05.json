@@ -1,0 +1,23 @@
+{
+  "id": "C-05",
+  "qualifies": "no",
+  "question": "None shared. P-85 builds binary classifiers for MCI vs NC (also MCI vs SCD and SCD vs NC) from task-state prefrontal fNIRS connectivity plus cognitive-scale scores and completion times, in a Zhejiang/Shanghai sample. P-86 builds one 3-class AD / MCI / normal-aging classifier on T1 structural MRI (NACC 88%, ADNI 8%, Hanyang 4%) and reports one-vs-rest AUCs. The contrast differs (MCI vs NC against MCI vs the rest of an AD/MCI/normal sample), and the channels differ (fNIRS + questionnaire against MRI), with no shared channel.",
+  "metric": "Mismatch: binary ROC-AUC / accuracy (P-85) against one-vs-rest AUC and per-class metrics inside a 3-class task (P-86). The record's 88% and 87% carry no metric type and match no printed figure for the designs it names.",
+  "figures": {
+    "P-85": "MCI vs NC: best accuracy 0.920; best AUC 0.970 (95% CI 0.946-0.993), 5-fold CV on 48 NC + 90 MCI retained for analysis.",
+    "P-86": "MCI one-vs-rest AUC in the 3-class task: combined CNN-GAT 0.719 +- 0.015 (fold SD; 72.3% in the Results text), CNN 0.696, GAT 0.639; stratified 5-fold CV on 1,900 scans."
+  },
+  "matched_figure_check": "Not applicable: neither paper reports the other's contrast or channel. P-85 has no MRI and no 3-class result; P-86 has no binary MCI-vs-NC result and no fNIRS.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "P-85's best MCI-vs-NC figure (AUC 0.970, 95% CI 0.946-0.993) meets the Section 3.5 exclusion: internal 5-fold CV on 138 participants with no external cohort. P-86 (MCI AUC 0.719) does not.",
+  "failed_conditions": [1, 2, 5, 6],
+  "candidate_explanations": [],
+  "reason": "The two papers do not share a clinical question or a channel. P-85 separates MCI from controls with fNIRS and cognitive scales; P-86 scores MCI against the rest of a 3-class AD/MCI/normal sample from structural MRI. P-85's best figure also meets the performance-validity exclusion. The recorded disagreement (attention fusion at 88% vs concatenation + SVM at 87% on the same ADNI cohort) misreads both papers. P-85 has no attention model and is not ADNI; P-86 has no SVM and is mostly NACC. The record itself calls the one-point gap noise.",
+  "quotes": [
+    {"paper": "P-85", "page": 1, "quote": "Accuracies of 92.0 % for MCI vs. NC, 80.0 % for MCI vs. SCD, and 76.1 % for SCD vs. NC were achieved, and the highest AUC values were 97.0 % (95 % CI: 94.6 %-99.3 %) for MCI vs. NC"},
+    {"paper": "P-85", "page": 6, "quote": "Consequently, 203 participants, including 48 NC volunteers (NC group), 65 SCD individuals (SCD group), and 90 MCI individuals (MCI group) were finally included for the FC analysis."},
+    {"paper": "P-86", "page": 3, "quote": "Herein, a combined CNN–GAT framework was constructed for the classification of AD, MCI and normal aging."},
+    {"paper": "P-86", "page": 6, "quote": "the AUC increased to 86.5 % for AD and 72.3 % for MCI"}
+  ]
+}

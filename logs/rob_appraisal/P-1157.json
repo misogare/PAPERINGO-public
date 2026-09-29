@@ -2,233 +2,191 @@
  "paper_id": "P-1157",
  "document_check": {
   "matches": true,
-  "note": "The document is Hsu Y-H et al., 'Polypharmacy and risk of dementia progression in older adults with mild cognitive impairment: A longitudinal cohort study', Alzheimer's Dement (TRCI) 2025;11:e70179. It is a cohort of 237 Taiwanese veterans with MCI and reports an adjusted HR for antihypertensive agents of 0.59 (0.37 to 0.93), which matches the citation."
+  "note": "The source text is Hsu Y-H, Liang C-K, Chou M-Y et al., 'Polypharmacy and risk of dementia progression in older adults with mild cognitive impairment: A longitudinal cohort study', Alzheimer's Dement (TRCI) 2025;11:e70179, DOI 10.1002/trc2.70179. I read all nine pages to the References. It is a cohort of 237 older veterans in Taiwan with MCI (CDR 0.5), followed for a median of 34.0 months, with 89 progressing to dementia. Page 5 reports the cited adjusted HR for antihypertensive agents: 0.59 (95% CI 0.37 to 0.93). I rendered page 7 to confirm Figure 3, where the row is labelled 'Antihypertensive Drugs'."
  },
- "cited_result": "Adjusted Cox hazard ratio for use of antihypertensive agents at baseline (ATC class, one of the 15 most prescribed categories) and progression from MCI (CDR 0.5) to dementia: HR 0.59, 95% CI 0.37 to 0.93 (p5; Figure 3).",
- "tool": "ROBINS-E",
- "tool_reason": "The cited result is the effect of a medication exposure on a later outcome in an observational cohort, and the authors frame it causally ('may contribute to a reduced risk', 'potential protective role'), so ROBINS-E applies.",
+ "cited_result": "Adjusted Cox hazard ratio for use of antihypertensive agents at baseline (one of the 15 most commonly prescribed ATC medication categories) and progression from MCI (CDR 0.5) to dementia (CDR 1, confirmed by a neurologist): HR 0.59, 95% CI 0.37 to 0.93 (p5; Figure 3, p7).",
+ "tool_reason": "The cited result is a longitudinal association between a baseline medication class and later progression, estimated by conventional multivariable Cox adjustment in an exploratory drug-class analysis ('This analysis aimed to explore the potential impact of different medications', p4; 'our analysis cannot establish causal relationships', p8). No analysis was built for a causal estimand, so under the operator's clarification of 2026-09-29 the JBI cohort checklist applies rather than ROBINS-E.",
  "domains": [
   {
-   "domain": "1. Confounding",
-   "judgment": "high",
-   "rationale": "The model did not adjust for the indication (hypertension or blood pressure), for baseline cognitive severity within CDR 0.5, for APOE, or for co-medication, and it compares users with all non-users rather than within people with hypertension. Hypertension itself is less common among those who progressed, which is consistent with confounding by indication, reverse causation (blood pressure falls in prodromal dementia) and surveillance effects. The authors raise the surveillance explanation themselves.",
+   "domain": "Item 1: Groups similar and recruited from the same population",
+   "judgment": "Unclear",
+   "rationale": "Users and non-users come from one cohort in one veterans' healthcare system, so they share a source population. The main text does not report baseline characteristics by antihypertensive use, and the medication distributions are only in supplementary Tables S2 and S3, which are not in the document. The indication (hypertension) was recorded at baseline and differs by outcome, so the exposure groups are very unlikely to be similar, but the document does not show them.",
    "signalling": [
     {
-     "question": "1.1 Did the authors control for all the important confounding factors for which this was necessary?",
-     "answer": "Probably no",
-     "quote": "Cox proportional hazards regression models were applied, adjusting for potential confounders, including age, sex, CCI, education, smoking status, hearing and visual impairment, Barthel Index Scores, GDS-15, MNA-SF, and recruitment source. ... All Cox regression models were adjusted for the same covariates listed above",
-     "page": "4"
-    },
+     "question": "Were the two groups similar and recruited from the same population?",
+     "answer": "Unclear",
+     "quote": "Participants were recruited from both the Veterans Homes and Kaohsiung Veterans General Hospital belong to the same veterans affairs health care system in Taiwan, ensuring that participants were recruited within a unified institutional framework. ... The distribution of medication use by polypharmacy status and dementia conversion status is presented in Tables S2 and S3, respectively.",
+     "page": "3; 5"
+    }
+   ]
+  },
+  {
+   "domain": "Item 2: Exposure measured similarly to assign people to exposed and unexposed groups",
+   "judgment": "Yes",
+   "rationale": "Medication use was taken from baseline prescription records at recruitment for every participant and classified by one system (ATC).",
+   "signalling": [
     {
-     "question": "1.2 Were the confounding factors that were controlled for measured validly and reliably?",
-     "answer": "Probably yes",
-     "quote": "Information on comorbidities was originally collected through structured paper-based questionnaires and verified through medical record review to ensure data accuracy.",
-     "page": "3"
-    },
-    {
-     "question": "1.3 Did the authors control for any variables after the start of the exposure period that could have been affected by the exposure?",
-     "answer": "Probably no",
-     "quote": "Baseline characteristics, including demographic information, comorbidities, and medication use, were assessed at the time of recruitment.",
-     "page": "3"
-    },
-    {
-     "question": "1.4 Did the authors use an appropriate analysis method to control for the confounders?",
-     "answer": "Probably yes",
-     "quote": "Adjusted hazard ratios (HRs) with 95% confidence intervals (CIs) were estimated from these models.",
-     "page": "4"
-    },
-    {
-     "question": "1.5 Is there potential for substantial residual or uncontrolled confounding?",
+     "question": "Were the exposures measured similarly to assign people to both exposed and unexposed groups?",
      "answer": "Yes",
-     "quote": "Compared with those who remained with MCI, participants who progressed to dementia had a lower prevalence of hypertension (p = 0.003), dyslipidemia (p = 0.004), and coronary artery disease (p < 0.005) ... individuals receiving polypharmacy may have undergone closer medical surveillance, leading to earlier detection and management of risk factors",
-     "page": "4; 7"
+     "quote": "Baseline characteristics, including demographic information, comorbidities, and medication use, were assessed at the time of recruitment. ... Based on baseline prescription records in our cohort, we identified the 15 most commonly prescribed medication categories for subsequent analysis.",
+     "page": "3; 4"
     }
    ]
   },
   {
-   "domain": "2. Measurement of the exposure",
-   "judgment": "some concerns",
-   "rationale": "Exposure is a single baseline snapshot from prescription records (use for more than 2 weeks). Duration, dose, adherence and changes over a median of 34 months are not captured, although any error is probably non-differential.",
+   "domain": "Item 3: Exposure measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "Prescription records coded by ATC are a credible source. However, the ATC codes that make up 'antihypertensive agents' are not listed, and the minimum-duration rule (over 2 weeks) is stated only for the polypharmacy count, not for category use. Adherence was not measured, and the authors say it may have differed between recruitment settings. Exposure is a single baseline snapshot held fixed over a median of 34 months.",
    "signalling": [
     {
-     "question": "2.1 Does the exposure measure characterise the exposure over an appropriate time period?",
-     "answer": "Probably no",
-     "quote": "Based on baseline prescription records in our cohort, we identified the 15 most commonly prescribed medication categories for subsequent analysis.",
-     "page": "4"
-    },
-    {
-     "question": "2.2 Is there potential for error in measuring the exposure?",
-     "answer": "Probably yes",
-     "quote": "these two populations differ in the level of supervision and medication management, which could have influenced medication adherence",
-     "page": "7"
-    },
-    {
-     "question": "2.3 Could the exposure measurement have been influenced by knowledge of the outcome?",
-     "answer": "Probably no",
-     "quote": "Polypharmacy was defined as the concurrent use of five or more prescription medications for over 2 weeks at baseline.",
-     "page": "3"
-    },
-    {
-     "question": "2.4 Is exposure measurement error likely to be differential?",
-     "answer": "Probably no",
-     "quote": "Baseline characteristics, including demographic information, comorbidities, and medication use, were assessed at the time of recruitment.",
-     "page": "3"
+     "question": "Was the exposure measured in a valid and reliable way?",
+     "answer": "Unclear",
+     "quote": "drugs were classified using the Anatomical Therapeutic Chemical (ATC) classification system. ... Polypharmacy was defined as the concurrent use of five or more prescription medications for over 2 weeks at baseline. ... these two populations differ in the level of supervision and medication management, which could have influenced medication adherence",
+     "page": "4; 3; 7"
     }
    ]
   },
   {
-   "domain": "3. Selection of participants",
-   "judgment": "some concerns",
-   "rationale": "This is a prevalent-user design: follow-up starts at recruitment, not when treatment started. Entry required being at the MCI stage (86 people with dementia at baseline were excluded), which risks depleting susceptible participants in unknown directions. Only 4 people were excluded for incomplete data.",
+   "domain": "Item 4: Confounding factors identified",
+   "judgment": "No",
+   "rationale": "For the cited drug-class result, the main confounder is not identified. The covariate set was chosen for the polypharmacy question and reused unchanged for all 15 drug categories. It does not include hypertension (the indication for antihypertensive agents), even though hypertension was recorded at baseline and is less common in those who progressed (72.3% vs 52.8%, p = 0.003). The set also leaves out blood pressure, other cardiovascular conditions, co-prescribed classes such as lipid-modifying agents, and baseline cognitive severity within CDR 0.5. The authors themselves raise closer medical surveillance of heavily medicated patients as an explanation.",
    "signalling": [
     {
-     "question": "3.1 Was follow-up of all participants started at the start of the exposure?",
+     "question": "Were confounding factors identified?",
      "answer": "No",
-     "quote": "Based on baseline prescription records in our cohort ... Among the 387 individuals initially enrolled, a total of 237 participants diagnosed with MCI at baseline and with complete follow-up data were included in the final analysis",
-     "page": "4; 3"
+     "quote": "Cox proportional hazards regression models were applied, adjusting for potential confounders, including age, sex, CCI, education, smoking status, hearing and visual impairment, Barthel Index Scores, GDS-15, MNA-SF, and recruitment source. ... All Cox regression models were adjusted for the same covariates listed above to control for potential confounding effects.",
+     "page": "4"
     },
     {
-     "question": "3.2 Was selection into the study or analysis based on characteristics observed after the start of the exposure?",
-     "answer": "Probably yes",
-     "quote": "Participants who had normal cognition (n = 60), mild dementia at baseline (n = 86), or incomplete data (n = 4) were excluded.",
+     "question": "Supporting evidence: is the unidentified factor related to the outcome in this cohort?",
+     "answer": "Yes",
+     "quote": "Hypertension, n (%) 107 (72.3) 47 (52.8) 0.003",
+     "page": "6 (Table 2)"
+    }
+   ]
+  },
+  {
+   "domain": "Item 5: Strategies to deal with confounding stated",
+   "judgment": "Yes",
+   "rationale": "A strategy is stated: multivariable Cox adjustment, supported by a comprehensive geriatric assessment. It does not address confounding by indication. The study does not restrict to people with hypertension, use a new-user design or adjust for blood pressure, but the item asks only whether a strategy was stated.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Yes",
+     "quote": "we sought to mitigate this by using comprehensive geriatric assessments to capture key confounders related to function, mood, and nutrition.",
+     "page": "8"
+    }
+   ]
+  },
+  {
+   "domain": "Item 6: Participants free of the outcome at the start of the study",
+   "judgment": "Yes",
+   "rationale": "Only participants with CDR 0.5 at a standardised baseline assessment were included, and those with mild dementia at baseline were excluded. The authors acknowledge that the duration of MCI before baseline is unknown, but that does not affect freedom from the outcome.",
+   "signalling": [
+    {
+     "question": "Were the participants free of the outcome at the start of the study (or at the moment of exposure)?",
+     "answer": "Yes",
+     "quote": "At baseline, all participants underwent a standardized CDR assessment, and only those scoring 0.5 were classified as MCI and included in the cohort. ... Participants who had normal cognition (n = 60), mild dementia at baseline (n = 86), or incomplete data (n = 4) were excluded.",
      "page": "3"
-    },
+    }
+   ]
+  },
+  {
+   "domain": "Item 7: Outcomes measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "The outcome is a change from CDR 0.5 to 1, a standard instrument administered annually in person by trained research nurses, with each dementia diagnosis confirmed by neurologists against ICD-10/ICD-11 criteria. It was ascertained the same way for all participants. Blinding of assessors to medication use is not reported, and onset is interval-censored by the annual schedule, which the authors acknowledge.",
+   "signalling": [
     {
-     "question": "3.3 Were adjustment techniques used that are likely to correct for selection bias?",
-     "answer": "No information",
-     "quote": "Searched for inverse probability weighting, new-user restriction or any selection adjustment; none described.",
+     "question": "Were the outcomes measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "Cognitive function was assessed annually using the Clinical Dementia Rating (CDR) scale through in-person interviews conducted by well-trained research nurses. ... Progression from MCI to dementia was defined as an increase in the CDR score from 0.5 to 1 during follow-up. Dementia diagnoses were further confirmed by the neurologists using internationally recognized diagnostic criteria",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "Item 8: Follow-up time reported and sufficient",
+   "judgment": "Yes",
+   "rationale": "The median follow-up of 34.0 months (IQR 16.6 to 52.6) is reported and produced 89 progression events, which is long enough for conversion from MCI to occur. A quarter of participants had under about 17 months, consistent with recruitment running to 2023.",
+   "signalling": [
+    {
+     "question": "Was the follow-up time reported and sufficient to be long enough for outcomes to occur?",
+     "answer": "Yes",
+     "quote": "The cohort was followed for a median of 34.0 months (IQR: 16.6 to 52.6 months). During this period, 89 participants developed dementia",
      "page": "4"
     }
    ]
   },
   {
-   "domain": "4. Post-exposure interventions",
-   "judgment": "some concerns",
-   "rationale": "Nothing is reported on medication changes, discontinuation or anti-dementia treatment during follow-up. The authors suggest the exposed group received closer care, which makes co-interventions plausible.",
+   "domain": "Item 9: Follow-up complete, or reasons for loss described and explored",
+   "judgment": "Yes",
+   "rationale": "Only 4 people were excluded for incomplete data. Deaths are the main source of truncated follow-up: they are described, and mortality is compared between the polypharmacy groups (10.9% vs 11.0%). It is not compared between antihypertensive users and non-users.",
    "signalling": [
     {
-     "question": "4.1 Was there a post-exposure intervention that was influenced by prior exposure?",
-     "answer": "No information",
-     "quote": "Searched for medication changes, discontinuation or new treatments during follow-up; none reported. The authors note that 'individuals receiving polypharmacy may have undergone closer medical surveillance'.",
-     "page": "7"
-    },
-    {
-     "question": "4.2 If so, was it likely to affect the outcome?",
-     "answer": "No information",
-     "quote": "Searched as above; not reported.",
-     "page": "3-4"
+     "question": "Was follow up complete, and if not, were the reasons to loss to follow up described and explored?",
+     "answer": "Yes",
+     "quote": "a total of 237 participants diagnosed with MCI at baseline and with complete follow-up data were included in the final analysis ... No significant difference in mortality was observed between participants with and without polypharmacy (10.9% vs 11.0%, p > 0.99).",
+     "page": "3; 4"
     }
    ]
   },
   {
-   "domain": "5. Missing data",
-   "judgment": "low",
-   "rationale": "Only 4 of 241 eligible participants were excluded for incomplete data. Deaths were censored at the last cognitive assessment, and mortality was similar between groups.",
+   "domain": "Item 10: Strategies to address incomplete follow-up utilised",
+   "judgment": "Yes",
+   "rationale": "People who died contributed follow-up time up to their last cognitive evaluation and were then censored in the Cox model. Death was not modelled as a competing risk. That is acceptable for an aetiological cause-specific hazard, but it is not discussed.",
    "signalling": [
     {
-     "question": "5.1 Were complete data on exposure available for all or nearly all participants?",
+     "question": "Were strategies to address incomplete follow up utilized?",
      "answer": "Yes",
-     "quote": "Participants who had normal cognition (n = 60), mild dementia at baseline (n = 86), or incomplete data (n = 4) were excluded.",
-     "page": "3"
-    },
-    {
-     "question": "5.2 Were complete outcome data available for all or nearly all participants?",
-     "answer": "Probably yes",
      "quote": "Participants who died during the follow-up were included in the analysis up to their final cognitive evaluation prior to death.",
      "page": "3"
-    },
-    {
-     "question": "5.3 Were complete data on confounders available for all or nearly all participants?",
-     "answer": "Probably yes",
-     "quote": "a total of 237 participants diagnosed with MCI at baseline and with complete follow-up data were included in the final analysis",
-     "page": "3"
     }
    ]
   },
   {
-   "domain": "6. Measurement of the outcome",
-   "judgment": "some concerns",
-   "rationale": "The outcome (a CDR change from 0.5 to 1, confirmed by a neurologist against ICD criteria) is valid and was assessed the same way for everyone at annual visits. But no blinding to medication is reported, and the neurologists' confirmation drew on clinical history, so assessors probably knew the exposure.",
+   "domain": "Item 11: Appropriate statistical analysis",
+   "judgment": "Unclear",
+   "rationale": "A Cox model is appropriate for time to dementia. However, no check of proportional hazards is reported. The model estimates 12 parameters from 89 events (about 7 events per parameter). The antihypertensive result is one of 15 drug-category models and 9 count thresholds, all tested at p < 0.05 with no correction for multiplicity. The text does not say whether the drug classes were mutually adjusted or modelled one at a time against all non-users, and the p value for the antihypertensive estimate is not reported. Figure 3 shows all 15 categories, which limits selective reporting.",
    "signalling": [
     {
-     "question": "6.1 Was the outcome measure valid and reliable?",
-     "answer": "Yes",
-     "quote": "Progression from MCI to dementia was defined as an increase in the CDR score from 0.5 to 1 during follow-up. Dementia diagnoses were further confirmed by the neurologists using internationally recognized diagnostic criteria",
-     "page": "3"
-    },
-    {
-     "question": "6.2 Were outcome assessors aware of the exposure history?",
-     "answer": "Probably yes",
-     "quote": "based on detailed clinical history, neurological examination, cognitive testing, and functional assessments",
-     "page": "3"
-    },
-    {
-     "question": "6.3 Could assessment of the outcome have been influenced by knowledge of the exposure?",
-     "answer": "Probably no",
-     "quote": "Cognitive function was assessed annually using the Clinical Dementia Rating (CDR) scale through in-person interviews conducted by well-trained research nurses.",
-     "page": "3"
-    },
-    {
-     "question": "6.4 Was the outcome measured differently between exposure groups?",
-     "answer": "Probably no",
-     "quote": "Follow-up cognitive assessments were conducted annually until December 2024.",
-     "page": "3"
-    }
-   ]
-  },
-  {
-   "domain": "7. Selection of the reported result",
-   "judgment": "some concerns",
-   "rationale": "No protocol or pre-registered analysis plan is mentioned. The antihypertensive result is one of 15 drug-category models and nine count thresholds, all tested at p < 0.05 without multiplicity correction, although Figure 3 appears to show all 15 categories.",
-   "signalling": [
-    {
-     "question": "7.1 Was the result reported in accordance with a pre-specified analysis plan?",
-     "answer": "No information",
-     "quote": "Searched for a registration number, protocol or statistical analysis plan; only ethics approval numbers are given.",
-     "page": "3"
-    },
-    {
-     "question": "7.2 Is the result likely to have been selected from multiple exposure measurements or analyses?",
-     "answer": "Probably yes",
-     "quote": "Medication exposure thresholds were set from one to nine medications ... additional Cox regression analyses were conducted for the 15 most commonly prescribed medication categories ... A p value < 0.05 (two-tailed) was considered statistically significant for all tests.",
+     "question": "Was appropriate statistical analysis used?",
+     "answer": "Unclear",
+     "quote": "additional Cox regression analyses were conducted for the 15 most commonly prescribed medication categories based on the ATC classification system. All Cox regression models were adjusted for the same covariates listed above to control for potential confounding effects. A p value < 0.05 (two-tailed) was considered statistically significant for all tests.",
      "page": "4"
-    },
-    {
-     "question": "7.3 Is the result likely to have been selected from multiple outcome measurements?",
-     "answer": "Probably no",
-     "quote": "Progression from MCI to dementia was defined as an increase in the CDR score from 0.5 to 1 during follow-up.",
-     "page": "3"
     }
    ]
   }
  ],
- "overall": "High risk of bias",
+ "overall": "High risk of bias (JBI cohort: item 4 No; items 1, 3 and 11 Unclear; items 2, 5, 6, 7, 8, 9 and 10 Yes)",
  "overall_category": "high",
- "overall_rationale": "In ROBINS-E the overall rating is the most severe domain. Confounding is high: the indication (hypertension) is not adjusted for, users are compared with all non-users, and there is evidence of confounding by indication or reverse causation and surveillance effects. Several other domains have some concerns: a baseline-only exposure, a prevalent-user design, unreported co-interventions, unblinded outcome confirmation, and multiple unadjusted tests.",
+ "overall_rationale": "By the review's rule, a No on item 4, 5, 7 or 11 makes the rating high. For the antihypertensive estimate, item 4 is No. The covariate set was built for the polypharmacy question and reused for every drug class, so the indication (hypertension), which was recorded at baseline and is associated with the outcome in this cohort, is not identified as a confounder. The authors also name closer medical surveillance as a possible explanation. There are further concerns that do not by themselves set the rating: no description of groups by exposure (item 1), an exposure definition and adherence that are not specified (item 3), and multiple unadjusted tests with no reported proportional-hazards check (item 11). Outcome ascertainment, freedom from the outcome at baseline, follow-up length and completeness are satisfactory.",
  "applicability": [
   {
    "domain": "Population",
    "concern": "some concerns",
-   "rationale": "A single veterans' healthcare system in Taiwan, mixing institutionalised residents and outpatients; recruitment source alone had HR 3.38."
+   "rationale": "A single veterans' healthcare system in Taiwan that mixes institutionalised residents with outpatients. Recruitment source alone carried an HR of 3.38 (1.81 to 6.32)."
   },
   {
    "domain": "Exposure/comparator",
    "concern": "some concerns",
-   "rationale": "The exposure is any baseline antihypertensive-class prescription compared with non-use in the whole MCI cohort (not restricted to people with hypertension). That differs from the 'any antihypertensive use' exposure it is set against in the review."
+   "rationale": "The exposure is any baseline prescription in the 'Antihypertensive Drugs' category, compared with non-use across the whole MCI cohort. The cohort is not restricted to people with hypertension (154 of 237 had it), and the ATC codes are not specified."
   }
  ],
  "confidence": "high",
- "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
- "review_status": "reviewed and accepted by the operator (2026-09-28)",
- "brief": "logs/rob_appraisal/ROB_BRIEF.md",
- "quote_check": {
-  "checked": 20,
-  "matched": 18
+ "tool": "JBI checklist for cohort studies",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md (including the clarifications of 2026-09-29)",
+ "tool_changed_2026_09_29": {
+  "previous_tool": "ROBINS-E",
+  "previous_category": "high",
+  "why": "re-screen under the operator's clarified rules: Rule 1 is not met. The study's objective is 'to assess the association between polypharmacy and the risk of progression from MCI to dementia' (p1). The cited antihypertensive HR 0.59 comes from an exploratory screen of 'the 15 most commonly prescribed medication categories' that 'aimed to explore the potential impact of different medications' (p3). Every class was fitted with the same covariate set chosen for the polypharmacy model, and the indication (hypertension) was not adjusted for. There is no propensity-score or inverse-probability weighting, no target-trial emulation, and no confounder set chosen for an antihypertensive estimand. The authors also state that the analysis 'cannot establish causal relationships' (p8). The phrases 'may contribute' and 'potential protective role' in the discussion do not make the analysis one built to estimate an effect. The cited result is baseline medication use (an exposure) against later progression, analysed as a longitudinal association without causal intent, so the rule requires the JBI cohort checklist. QUIPS would be the alternative only if medication use were treated as a prognostic measure, which is not how the operator treated a baseline condition in P-646.",
+  "superseded_record": "logs/rob_appraisal/superseded/P-1157_2026-09-28.json"
  },
- "operator_review_2026_09_28": {
-  "date": "2026-09-28",
-  "by": "operator, stated in session on 2026-09-28",
-  "statement": "The operator reviewed the model readers' risk-of-bias judgments and accepts them.",
-  "scope": "Judgments, signalling answers and quotations unchanged by the review."
+ "quote_check": {
+  "checked": 12,
+  "matched": 11,
+  "annotations_not_checked": 0,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
  }
 }

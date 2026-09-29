@@ -1,0 +1,27 @@
+{
+  "id": "C-49",
+  "qualifies": "no",
+  "question": "None shared. P-117 (correct PDF S1746809423008959, Aljalal et al., BSPC 87 (2024) 105462) classifies amnestic MCI against healthy controls from resting-state 19-channel EEG (binary). P-5 (Gao et al., CBM 166 (2023) 107411; claim_b names P-10, a dedup stub of P-5) classifies MCI/AD/CN from retinal fundus + OCT images (three-class). The measurement channel differs (EEG vs eye/retina) and so does the task (binary vs three-class).",
+  "metric": "Mismatch. P-117 reports accuracy; the record's P-5 figure (84.96%) is the MCI-class precision inside a three-class model. P-5's only accuracy is three-class (91.64%); it prints no binary MCI-vs-CN accuracy.",
+  "figures": {
+    "P-117": "99.81% accuracy (ensemble KNN, 11 NSGA-II-selected channels; 99.51% with all 19 channels and KNN), binary aMCI vs HC, 10-fold CV over 3660 ten-second segment feature vectors from 61 participants (29 aMCI/32 HC); no interval reported. Wilson 95% with n = 61 subjects: z^2/n = 3.8415/61 = 0.06297; centre = (0.9981 + 0.03149)/1.06297 = 0.9686; half-width = 1.96*sqrt(0.9981*0.0019/61 + 3.8415/(4*61^2))/1.06297 = 0.0314; interval [0.937, 1.000].",
+    "P-5": "84.96% = MCI-class precision of the three-class DuCAN model (Table 2); three-class accuracy 91.64%, AUC 96.78%; 5-fold CV on the first dataset, 117 patients (29 MCI/50 CN/38 AD; 234 eyes). No interval reported. For reference only, the three-class accuracy with n = 117: centre = (0.9164 + 0.01642)/1.03283 = 0.9032, half-width 0.0511, Wilson [0.852, 0.954]; the denominator of the MCI-class precision (eyes predicted MCI) is not printed in the text, so no interval can be derived for 84.96%."
+  },
+  "matched_figure_check": "No matched figure exists. P-5 reports no binary MCI-vs-CN result, and P-117 reports no three-class result and no per-class precision for an MCI/AD/CN task; neither paper reports anything in the other's channel. Nothing reconciles the pair, but nothing makes the two figures the same quantity either.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "P-117 meets the Section 3.5 exclusion on its own PDF: 99.81% (>= 0.97) from internal 10-fold CV that randomly splits the 3660 x 76 segment feature matrix (no subject-wise split is described), 61 participants, no external cohort. The registry flag is false only because the P-117 Best_Metric is 'not reported'. P-5's three-class AUC 0.9678 is just below 0.97 and its precision 84.96% is well below; P-5 is not excluded.",
+  "failed_conditions": [1, 2, 5, 6],
+  "candidate_explanations": [],
+  "reason": "The pair shares no clinical question under condition 1 (EEG vs retinal imaging; binary vs three-class) and no metric type under condition 2 (accuracy vs a class-specific precision), so condition 4 cannot be assessed. The record misreads P-5 by presenting a three-class MCI-class precision as a T1 result (condition 6), and P-117's 99.81% fails the performance-validity exclusion on its own PDF (condition 5). The record is also a duplicate of C-47 after the P-10 -> P-5 repoint.",
+  "quotes": [
+    {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+    {"paper": "P-117", "page": 1, "quote": "We assess the classification performance of the proposed methods on 19-channel EEGs recorded from 32 healthy subjects and 29 MCI patients in the resting state."},
+    {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+    {"paper": "P-117", "page": 9, "quote": "This results in a 3660 × 76 feature matrix, which is used as input to the classifier."},
+    {"paper": "P-5", "page": 1, "quote": "The proposed method achieved high precision rates of 84.96% and 80.90% in classifying MCI and positive test scores for cognitive impairment, respectively."},
+    {"paper": "P-5", "page": 7, "quote": "As shown in Table 2, the proposed network DuCAN had an accuracy of 91.64% and an AUC of 96.78%."},
+    {"paper": "P-5", "page": 6, "quote": "The first dataset included information for a total of 29 patients (58 eyes) with MCI, 50 age-matched individuals with CN (100 eyes), and 38 patients (76 eyes) with AD."},
+    {"paper": "P-5", "page": 7, "quote": "We applied 5-fold cross validation, which involved training using 80% of the data and testing with the remaining 20% five times for each fold."}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "C-250",
+  "qualifies": "no",
+  "question": "Is long nocturnal sleep associated with higher odds of MCI in community-dwelling Chinese adults? Both are cross-sectional community studies using self-reported sleep and cognitive testing (questionnaire/cognitive channel). They differ in MCI label (P-891: TICS-10 at least 1 SD below one's five-year age-group mean; P-773: Petersen-adapted amnestic MCI) and in age window (45+ against 60-96). Both differences are allowed as candidate explanations under condition 1.",
+  "metric": "Direction of association as an odds ratio, but on different contrasts. P-891 gives a category OR for more than 8 h against 6-8 h. P-773 gives a per-additional-hour OR within the at-least-7-h stratum (mean 7.68 h, SD 0.82). Comparing them needs a conversion of P-773's slope to the category contrast. The conversion is shown below and does not change the result.",
+  "figures": {
+    "P-891": "Long (>8 h) against normal (6-8 h), adjusted OR 1.333 (95% CI 1.027-1.716) in Table 2; 1.335 (1.030-1.71) in Table 4 'ALL'; good sleep quality 1.334 (1.004-1.754); poor sleep quality 1.875 (0.939-3.623), not significant. All printed.",
+    "P-773": "Within the at-least-7-h late-life stratum (n = 1,543, 245 aMCI): per-hour OR 0.91 (0.77-1.08), p = 0.283, adjusted for age, gender and education; fully adjusted 0.92 (0.76-1.10). Printed.",
+    "arithmetic": "Directly, P-773's interval (0.77-1.08) and P-891's (1.027-1.716) overlap between 1.027 and 1.08. Converted to a multi-hour contrast by raising the OR and its limits to the power h: h = 1.5 gives 0.868 (0.676-1.122), and h = 2 gives 0.828 (0.593-1.166). The upper limit rises above 1.08 as h grows, so the overlap with P-891's lower limit of 1.027 persists for every conversion of one hour or more. P-891's 1.333 lies outside P-773's interval, but P-773's estimate is not significant and the intervals do not exclude each other."
+  },
+  "matched_figure_check": "No matched figure exists. P-773 prints no category OR for more than 8 h against 6-8 h (its only categorical analysis splits the under-7-h group). P-891 prints no per-hour slope within at least 7 h and no age-60+ subgroup. The restricted cubic splines agree in shape: P-891's lowest odds fall at about 6-7 h, and P-773's MoCA peak is at 6.87 h.",
+  "beyond_uncertainty": false,
+  "significance_only": true,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [4],
+  "candidate_explanations": [],
+  "reason": "A significant positive association in P-891 (OR 1.333, 1.027-1.716) is set against a non-significant per-hour OR in P-773 (0.91, 0.77-1.08). The intervals overlap directly and under any conversion of P-773's slope to a contrast of one hour or more. This is a difference in significance, which condition 4 and Section 5.2 exclude. The record's claim that P-891 prints no unstratified long-sleep interval is wrong: it prints 1.333 (1.027-1.716). The 'OR 1.88 with poor sleep quality' it cites is not significant after adjustment. Neither correction creates a qualifying gap.",
+  "quotes": [
+    {"paper": "P-891", "page": 4, "quote": "a long nocturnal sleep duration (>8 h) was associated with greater odds of MCI than a normal sleep duration (6–8 h) was (OR = 1.333, 95% CI: 1.027–1.716)."},
+    {"paper": "P-891", "page": 7, "quote": "Long(>8 h) 1.617 (1.268, 2.045) *** 1.335 (1.030, 1.71) *"},
+    {"paper": "P-891", "page": 3, "quote": "MCI was operationally defined as scoring at least one standard deviation below the mean TICS-10 score of one's respective five-year age group"},
+    {"paper": "P-891", "page": 4, "quote": "In the total sample, the lowest odds of MCI were observed at around 6–7 h of nocturnal sleep."},
+    {"paper": "P-773", "page": 4, "quote": "≥7 hours 1,543 245 (15.9) 0.91 (0.77–1.08) 0.283"},
+    {"paper": "P-773", "page": 4, "quote": "Conversely, there was no significant association between sleep duration in late life and aMCI when sleeping equal to or more than 7 hours (Table 3)."},
+    {"paper": "P-773", "page": 5, "quote": "SLEEP DURATION ≥7 HOURS (n = 1,543) ... 0.92 (0.76–1.10)"},
+    {"paper": "P-773", "page": 6, "quote": "the subjects that slept less than 7 hours were classified into three categories: group 1 (6 hours ≤sleep duration < 7 hours), group 2 (5 hours ≤sleep duration < 6 hours), group 3 (sleep duration < 5 hours)."}
+  ]
+}

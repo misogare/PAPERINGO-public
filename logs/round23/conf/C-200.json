@@ -1,0 +1,24 @@
+{
+  "id": "C-200",
+  "qualifies": "no",
+  "question": "Not shared. P-218 classifies current diagnosis into three classes (AD vs MCI vs NC) from 2D FDG-PET slices. It trains on ADNI-1 and tests on 400 ADNI-2 images (124 AD / 192 MCI / 84 NC). P-146's recorded figure is the 7-year prediction of progression from normal cognition or SCD to MCI in the Shanghai CLAS community cohort (n = 109). That model uses a T1-MRI Progressive Index combined with age, gender, education and an associative-learning score. The task (concurrent three-class diagnosis against prognosis of incident MCI), the population (ADNI AD/MCI/NC against community NC/SCD) and the channel (PET against MRI plus clinical data) all differ.",
+  "metric": "A mismatch in kind, though both are called AUC: P-218's is a three-class AUC ('AUC (%) 92.3', 0-100 scale), and P-146's is a binary conversion AUC (0.812).",
+  "figures": {
+    "P-218": "Three-class AD/MCI/NC on the ADNI-2 test set (400 images): accuracy 89.4%, AUC 92.3%, sensitivity 87.43%, specificity 88.26%. No interval.",
+    "P-146": "CLAS 7-year NC/SCD-to-MCI conversion: Progressive Index + clinical measures AUC 0.812 (95% CI 0.725-0.900, printed); PI alone 0.711. ADNI-2 3-year: AUC 0.7048."
+  },
+  "matched_figure_check": "No matched figure exists. P-218 reports no conversion or binary MCI result, and P-146 reports no three-class or PET result. The uncertainty test is not reached, because conditions 1 and 2 fail.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not reached. Neither figure is at or above 0.97.",
+  "failed_conditions": [1, 2, 6],
+  "candidate_explanations": [],
+  "reason": "P-218 reports a three-class diagnostic AUC from FDG-PET in ADNI. P-146's 0.812 is a binary 7-year prognosis of incident MCI in a Shanghai community cohort, from MRI plus clinical measures. Task, population, channel and the kind of AUC all differ, so the pair fails conditions 1 and 2. The record also mislabels the task as T2 for P-218, gives its modality as structural MRI and its dataset as ADNI for both, and still names P-146 by its duplicate ID P-310.",
+  "quotes": [
+    {"paper": "P-218", "page": 3, "quote": "We use 190 AD cases, 350 MCI cases, and 200 NC cases among PET images as the training data from ADNI-1. Four hundred PET images are selected as the test data from ADNI-2."},
+    {"paper": "P-218", "page": 8, "quote": "G_ResNet18+HAM 89.4 92.3"},
+    {"paper": "P-218", "page": 10, "quote": "The proposed method 124 192 84 2D PET ADNI 87.43 88.26 89.4 92.3"},
+    {"paper": "P-146", "page": 2, "quote": "Better performance for prediction progression to MCI in CLAS was obtained when the PI score was combined with clinical measures (AUC = 0.812; 95 %CI: 0.725–0.900)."},
+    {"paper": "P-146", "page": 1, "quote": "the model on ADNI-2 ( n = 321, followed 3 years) and our private study ( n = 109), the China Longitudinal Aging Study (CLAS), to validate the rationality for pre-MCI conversion prediction."}
+  ]
+}

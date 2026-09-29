@@ -1,0 +1,139 @@
+{
+  "batch": 3,
+  "verifier_note": "Rule applied identically to all four: the compared figures are the matched figures where they exist, otherwise the headline figures; the compared metric is the one the ledger record compares (accuracy; for C-79 balanced accuracy, with P-8's derived from its printed sensitivity and specificity). AUC is computed for every pair as a second check and reported in each reason. SEs: binomial sqrt(p(1-p)/n) for accuracy, 0.5*sqrt(sens(1-sens)/n1 + spec(1-spec)/n0) for balanced accuracy, Hanley-McNeil for AUC; fold SDs and fold variances were not used as SEs. Arithmetic script: scratchpad/r23/verify/calc_batch3.py. Only C-79's verdict depends on the metric choice; this is stated in its reason.",
+  "results": [
+    {
+      "id": "C-77",
+      "compared": "Matched figures (T1 MRI only, conversion within 3 years, ADNI MCI): P-82 transformer on FreeSurfer features, test accuracy 83.3% (AUC 0.888), against P-72 sMRI-only MAResNet18, sMCI vs pMCI accuracy 73.68% (AUC 0.721). The ledger's P-72 figure (94.61%) is P-72's AD vs NC accuracy and is not used.",
+      "a": {
+        "paper": "P-82",
+        "estimate": 0.8333,
+        "se": 0.0761,
+        "se_source": "No interval reported. Binomial SE sqrt(0.8333*0.1667/24) = 0.0761 with n = 24 test subjects: 'the validation dataset (n = 25), and the testing dataset (n = 24)' (p.3). Class split 11 pMCI/13 sMCI implied by 'a sensitivity of 0.727 and a specificity of 0.923' (8/11, 12/13; 20/24 = 83.3%). AUC 0.888: Hanley-McNeil (n1 = 11, n2 = 13) Q1 = 0.7986, Q2 = 0.8353, SE = 0.0729."
+      },
+      "b": {
+        "paper": "P-72",
+        "estimate": 0.7368,
+        "se": 0.0583,
+        "se_source": "No interval reported. Subject-level 70/15/15 split of 389 MCI (151 pMCI/238 sMCI), so about 57 test subjects per split; 22 pMCI/35 sMCI per test set implied by Table 5 (68.18% = 15/22, 82.86% = 29/35). Binomial SE sqrt(0.7368*0.2632/57) = 0.0583. The figure is 'the average of three classification accuracies' over 'three different subsets with different test sets' (p.6); if the three test sets were disjoint (not stated), n = 171 gives SE 0.0337. AUC 0.721: Hanley-McNeil SE 0.0720 at 22/35, 0.0413 at 66/105."
+      },
+      "scale": "accuracy (proportion); AUC as second check",
+      "z": 1.01,
+      "passes_z": false,
+      "skeptic_checked": true,
+      "final": "does_not_qualify",
+      "other_condition_failed": [3, 6],
+      "candidate_explanations": [
+        "Input representation and architecture: 62-region FreeSurfer DKT tabular measures with a transformer (P-82) against a 3D CNN on CAT12 grey-matter maps (P-72). P-82 p.2: 'we extracted multiple cortical measurements including volume (VOL), cortical thickness (CT), curvature index (CD), folding index (FD), and surface area (SA) for 62 brain regions'; P-72 p.3: 'Final we used the SPM CAT12 to extract GM tissue from the preprocessed sMRI.'",
+        "Model selection on a small test set: P-82's 0.888 is the best of eight models scored on the same 24 subjects (AUC 0.542 to 0.888). P-82 p.4: 'GRU (AUC = 0.853) performs better than LSTM (AUC = 0.839) and RNN (AUC = 0.790) among the three deep learning models.'",
+        "Transfer initialisation in P-72: the conversion network starts from AD vs NC weights. P-72 p.6: 'we use the network parameters learned to initialize the training network for sMCI vs. pMCI task.'",
+        "sMCI label: P-82 counts MCI reverters to normal as sMCI; P-72 states no follow-up minimum. P-82 p.2: 'the subjects who were diagnosed as MCI at least twice, but reverse to a standard control, at last, are also considered as sMCI'; P-72 p.3: 'those who did not convert to AD were labeled as sMCI.'",
+        "Class balance: 145 pMCI/104 sMCI (58% pMCI) in P-82 against 151/238 (39% pMCI) in P-72; this bears on accuracy more than on AUC.",
+        "Cohort selection: P-72 keeps only subjects with paired baseline MRI and FDG-PET. P-72 p.3: 'acquiring paired multimodal images from the same subject and from the closest acquisition date.'",
+        "Evaluation size and design: one random 24-subject test set (P-82) against three held-out test sets of about 57, averaged (P-72). P-82's 10-fold CV is only in Supplementary Table S2, which is not in the source. P-82 p.3: 'we split our 249 subjects randomly into three groups, including the training dataset (n = 200), the validation dataset (n = 25), and the testing dataset (n = 24).'",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "one_sentence": "On the matched condition (T1 MRI alone, conversion within 3 years in ADNI), P-82 reports 83.3% accuracy (AUC 0.888) on a single 24-subject test set and P-72's MRI-only network 73.68% (AUC 0.721) averaged over three test sets of about 57; the accuracies do not differ beyond combined uncertainty (z = 1.01) and the AUCs reach z = 1.99 only if P-72's three test sets are assumed disjoint, so the pair is not an unresolved discrepancy (the ledger's 94.61% for P-72 is its AD vs NC accuracy).",
+      "reason": "z test on the matched accuracies: |0.8333 - 0.7368| / sqrt(0.0761^2 + 0.0583^2) = 0.0965 / 0.0959 = 1.01 (1.16 at n = 171); fails. AUC check: |0.888 - 0.721| / sqrt(0.0729^2 + 0.0720^2) = 0.167 / 0.1025 = 1.63 at the stated per-split class sizes; 1.99 only at 66/105, which assumes the three test sets are disjoint, and P-72 does not state that. P-72's headline multimodal figure (77.19%, AUC 0.755) is closer still to P-82 (z 0.65 accuracy, 1.33 AUC). Full skeptic check of conditions 1 to 6 (the pair qualified only through the advocate): 1 holds (both label conversion within 3 years in ADNI MCI from baseline T1 MRI; P-72 p.3 'MCI subjects who developed AD within 3 years were labeled as pMCI'); 2 holds; 3 fails, because P-72's MRI-only arm is a result under P-82's condition and the matched accuracies agree within uncertainty at every plausible evaluation size (the matched AUCs agree at the stated size); 5 holds (no figure near 0.97); 6 fails for the ledger's claim, since the recorded 94.61% is P-72's AD vs NC accuracy ('The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 %', p.7), and on the printed conversion figures the direction reverses. The advocate's argument that 83.3% lies outside P-72's accuracy interval at n above 57 is a one-directional exclusion, which the uniform two-sample test replaces. The advocate's consistency argument with C-80 now points the same way: C-80 also fails the test (z 1.12)."
+    },
+    {
+      "id": "C-79",
+      "compared": "Matched figures on the shared channel (cognitive scores only, conversion within 3 years, ADNI MCI): P-81 CS network balanced accuracy 0.713 (AUC 0.750) against P-8 Cognitive-SVM balanced accuracy 0.77 (AUC 0.832), with P-8's Cognitive-RFT (0.775; AUC 0.833) and Cognitive-MLP (0.75; AUC 0.810) as alternatives. Headline multimodal figures: P-81 PET+Age+CS BA 0.733 (AUC 0.785) against P-8 DAFN BA 0.815 (AUC 0.874).",
+      "a": {
+        "paper": "P-81",
+        "estimate": 0.713,
+        "se": 0.0279,
+        "se_source": "No interval reported; the '+/-' values are fold SDs ('Values shown are mean +/- standard deviation', Table 3, p.4), not used. 5-fold CV over 257 MCI ('164 stable-MCI subjects, and 93 unstable-MCI subjects', p.2). CS row: BA 0.7130, specificity 0.9238, sensitivity 0.5023, AUC 0.7496. SE(BA) = 0.5*sqrt(0.5023*0.4977/93 + 0.9238*0.0762/164) = 0.0279 (binomial on 257: 0.0282). AUC Hanley-McNeil (93/164): Q1 = 0.5995, Q2 = 0.6423, SE = 0.0331."
+      },
+      "b": {
+        "paper": "P-8",
+        "estimate": 0.77,
+        "se": 0.0173,
+        "se_source": "No interval reported; the parenthesised values are fold variances ('The numbers in parentheses report the variance value', Table 2, p.9), not used. 5-fold CV over 593 MCI (295 pMCI/298 sMCI, p.7). Cognitive-svm row: SEN 0.75, SPE 0.79, ACC 77.24%, AUC 0.832; BA = (0.75 + 0.79)/2 = 0.77, SE = 0.5*sqrt(0.75*0.25/295 + 0.79*0.21/298) = 0.0173. AUC Hanley-McNeil (295/298) SE 0.0168. RFT: BA 0.775, SE 0.0171, AUC 0.833, SE 0.0168. MLP: BA 0.75, SE 0.0177, AUC 0.810, SE 0.0178."
+      },
+      "scale": "balanced accuracy (the ledger compares P-81's balanced accuracy); AUC as second check",
+      "z": 1.74,
+      "passes_z": false,
+      "skeptic_checked": false,
+      "final": "does_not_qualify",
+      "other_condition_failed": [3],
+      "candidate_explanations": [
+        "Training target: P-81's conversion figures are zero-shot predictions from models trained on AD vs CN, while P-8 trains on the pMCI/sMCI labels; P-81 reports that fine-tuning did not help. P-81 p.4: 'Table 3 shows the prediction performance from zero-shot predictions.'",
+        "Imaging modality in the headline models: whole-brain FDG-PET (P-81) against T1 MRI plus FreeSurfer volumes (P-8). P-81 p.1: 'Neurocognitive scores predicted better than FDG-PET per se, but the best model was a combination of FDG-PET, age, and neurocognitive data'",
+        "Cognitive instruments within the shared channel: CDR-SB, logical memory delayed recall, MMSE and two mPACC composites (P-81) against MMSE, CDR-SB and ADAS-cog (P-8). P-8 p.7: 'The baseline cognitive test scores consist of MMSE, CDR-SB, and ADAS-cog.'",
+        "Additional predictors in P-8's headline model (sex, APOE4, seven FreeSurfer volumes); its metadata-only SVM already reaches AUC 0.868. P-8 p.7: 'The demographic data include the subjects' age, gender, and APOE4 status.'",
+        "Cohort and class balance: 257 MCI with 36% converters, restricted to FDG-PET within two months of baseline (ADNI1/GO/2), against 593 MCI with 50% converters (ADNI1/2); subjects may overlap. P-81 p.2: 'The inclusion criteria require the recruited participants to have a 3D whole-brain FDG-PET scan taken within two months of baseline diagnosis'",
+        "Label definition: P-8 requires the diagnosis to remain MCI over 36 months; P-81 labels all non-converters within three years as stable. P-8 p.4: '(2) stable MCI (sMCI) if the patient's diagnosis remains as MCI over the same time period.'",
+        "Model and sample size in the cognitive-only arm: a four-layer dense network (P-81) against SVM, random forest and MLP on 593 subjects (P-8). P-81 p.2: 'The input arrays are sent through a series of four Dense layers of filter size 8, 16, 16, and 32, followed by a sigmoid activation.'",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "one_sentence": "P-81 (FDG-PET, age and cognitive scores, zero-shot from an AD vs CN model) and P-8 (T1 MRI with cognitive, genetic and volumetric metadata) report 3-year conversion AUCs of 0.785 and 0.874 in ADNI, but on the cognitive-score-only models both papers report the gap narrows to balanced accuracy 0.713 against 0.75 to 0.775 (z 1.12 to 1.89) and AUC 0.750 against 0.810 to 0.833 (z 1.61 to 2.25), so it is not established beyond uncertainty on the shared channel and the pair is not reported as an unresolved discrepancy.",
+      "reason": "Condition 1 lets a multimodal pair match only on the shared channel, and both papers report a cognitive-scores-only model, so those are the matched figures. z on the matched balanced accuracies: |0.770 - 0.713| / sqrt(0.0173^2 + 0.0279^2) = 0.057 / 0.0328 = 1.74; RFT 1.89; MLP 1.12; allowing for rounding of P-8's sensitivity and specificity, the SVM value stays within 1.58 to 1.89. All fail. AUC check on the same matched models: SVM |0.832 - 0.7496| / sqrt(0.0168^2 + 0.0331^2) = 2.22, RFT 2.25, MLP 1.61 (2.07, 2.10 and 1.50 if P-81's CV pool excluded a 15% test hold-out, 79/139). This is the one verdict in the batch that depends on the metric: on AUC with P-8's SVM or random forest the matched gap passes, while on the ledger's metric it fails for every P-8 classifier, and P-8's own dense network on cognitive scores agrees with P-81's dense network on both metrics. Under condition 3, matched figures that agree within uncertainty dissolve the gap. The headline multimodal figures do differ (AUC z 2.57, BA z 2.51), but that comparison mixes PET with MRI plus APOE4 and volumes, which is not the shared channel. The skeptic's pass (challenge_skeptic_2) found no failed condition under the first-pass one-directional test; the uniform two-sample test now fails on the matched balanced accuracy."
+    },
+    {
+      "id": "C-80",
+      "compared": "Headline figures (no matched figure exists): P-82 test accuracy 83.3% (AUC 0.888) against P-3 CAAT ensemble 5-fold CV accuracy 74.61% (AUC 0.780), both predicting conversion within 3 years from one baseline T1 MRI in ADNI MCI.",
+      "a": {
+        "paper": "P-82",
+        "estimate": 0.8333,
+        "se": 0.0761,
+        "se_source": "No interval reported. Binomial SE sqrt(0.8333*0.1667/24) = 0.0761, n = 24 test subjects ('the testing dataset (n = 24)', p.3); 11 pMCI/13 sMCI implied by sensitivity 0.727 and specificity 0.923. AUC 0.888, Hanley-McNeil (11/13) SE 0.0729."
+      },
+      "b": {
+        "paper": "P-3",
+        "estimate": 0.7461,
+        "se": 0.0179,
+        "se_source": "No interval reported; '74.61 (0.002)' is a fold variance (Table 3, p.7), not used. Binomial SE sqrt(0.7461*0.2539/593) = 0.0179 with n = 593 subjects in 5-fold CV ('Our dataset consists of 593 MRI images, consisting of 298 sMCIs and 295 pMCIs images', p.6). AUC 0.780, Hanley-McNeil (295/298) Q1 = 0.6393, Q2 = 0.6836, SE = 0.0190."
+      },
+      "scale": "accuracy (proportion); AUC as second check",
+      "z": 1.12,
+      "passes_z": false,
+      "skeptic_checked": false,
+      "final": "does_not_qualify",
+      "other_condition_failed": [],
+      "candidate_explanations": [
+        "Input representation within the MRI channel: 62-region FreeSurfer DKT measures (5 x 62) against whole 3D volumes. P-82 p.2: 'we extracted multiple cortical measurements including volume (VOL), cortical thickness (CT), curvature index (CD), folding index (FD), and surface area (SA) for 62 brain regions'",
+        "Label definition: P-82 counts MCI-to-normal reverters as sMCI; P-3 requires the diagnosis to remain MCI. P-82 p.2: 'the subjects who were diagnosed as MCI at least twice, but reverse to a standard control, at last, are also considered as sMCI'; P-3 p.3: 'if the patient's diagnosis remained as MCI, we categorized him/her as sMCI.'",
+        "Class balance and cohort: 145 pMCI/104 sMCI (58% pMCI) against 295/298 (50%), on different, possibly overlapping ADNI subsets. P-3 p.6: 'The dataset consists of 298 sMCI and 295 pMCI participants retrieved from datasets ANDI1 and ADNI2.'",
+        "Validation design and sample size: one random 24-subject test split, where one subject moves accuracy by 4.2 points and P-82's alternative models on the same subjects range 54.2% to 70.8%, against 5-fold CV over 593. P-82 p.3: 'we split our 249 subjects randomly into three groups, including the training dataset (n = 200), the validation dataset (n = 25), and the testing dataset (n = 24).'",
+        "Model selection on the evaluation folds in P-3, which the authors say biases P-3 upward, against the observed gap. P-3 p.9: 'A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models. This may lead to an optimistically biased evaluation of the model performance.'",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "one_sentence": "P-82 (83.3% accuracy, AUC 0.888, one 24-subject test set) and P-3 (74.61%, AUC 0.780, 5-fold CV over 593 subjects) both predict 3-year conversion from one baseline T1 MRI in ADNI, but the difference is within combined uncertainty (z = 1.12 for accuracy, 1.43 for AUC) because P-82's estimate rests on 24 subjects, so the pair is not an unresolved discrepancy.",
+      "reason": "z on accuracy: |0.8333 - 0.7461| / sqrt(0.0761^2 + 0.0179^2) = 0.0872 / 0.0781 = 1.12; fails. AUC check: |0.888 - 0.780| / sqrt(0.0729^2 + 0.0190^2) = 0.108 / 0.0754 = 1.43; fails. The first pass and the skeptic qualified the pair only on the one-directional wording of condition 4 (P-82's estimate outside P-3's narrow interval, P-3's inside P-82's); the uniform test of the difference does not support it. Conditions 1, 2, 3 (no matched figure in the sources; P-82's 10-fold CV is in an unavailable supplement), 5 and 6 hold, so the pair fails on the test alone."
+    },
+    {
+      "id": "C-81",
+      "compared": "Headline figures (no matched figure exists): P-122 six-fold CV accuracy 84.28% (AUC 0.8599) from paired two-timepoint structural MRI, against P-3 CAAT ensemble 5-fold CV accuracy 74.61% (AUC 0.780) from one baseline T1 MRI, pMCI vs sMCI in ADNI. P-122's hold-out headline of 84.74% is not used because it exceeds both its sensitivity (83.33%) and specificity (82.27%), which is impossible for an accuracy.",
+      "a": {
+        "paper": "P-122",
+        "estimate": 0.8428,
+        "se": 0.0219,
+        "se_source": "No interval reported; '(+/-1.65)' is a fold SD (Table 2, p.6), not used. Binomial SE sqrt(0.8428*0.1572/275) = 0.0219 with n = 275 subjects, the conservative unit ('449 longitudinal samples from 154 subjects diagnosed with sMCI. Similarly, the pMCI group consisted of 374 longitudinal samples from 121 subjects', p.5); on the 823 samples SE 0.0127 (z 4.41). AUC 0.8599, Hanley-McNeil (121/154) Q1 = 0.7542, Q2 = 0.7951, SE = 0.0236."
+      },
+      "b": {
+        "paper": "P-3",
+        "estimate": 0.7461,
+        "se": 0.0179,
+        "se_source": "No interval reported; '74.61 (0.002)' is a fold variance, not used. Binomial SE sqrt(0.7461*0.2539/593) = 0.0179, n = 593 subjects in 5-fold CV (p.6). AUC 0.780, Hanley-McNeil (295/298) SE 0.0190."
+      },
+      "scale": "accuracy (proportion); AUC as second check",
+      "z": 3.42,
+      "passes_z": true,
+      "skeptic_checked": false,
+      "final": "qualifies",
+      "other_condition_failed": [],
+      "candidate_explanations": [
+        "Two-timepoint longitudinal input (P-122) against a single baseline scan (P-3); P-122 does not state the interval between the two scans or whether the later scan precedes conversion. P-122 p.4: 'the two longitudinal samples of T1 slice sequences and T2 slice sequences for each patient were employed as two complete sequences within the input model'",
+        "Unit of analysis: accuracy over longitudinal samples (about three per subject) against one prediction per subject. P-122 p.5: 'For the sMCI group, we gathered 449 longitudinal samples from 154 subjects diagnosed with sMCI.'",
+        "Input representation: 2D axial slice sequences against whole 3D volumes. P-122 p.5: 'Therefore, we chose the axial section for experimental illustration.'",
+        "Label definition and cohort: DSM-5-guided selection from ADNI 1/GO/2/3 with no stated conversion window, against dementia within 36 months in ADNI1/2. P-122 p.5: 'Selection of the dataset was guided by DSM-5 criteria, ensuring clinical relevance and rigor.'; P-3 p.3: 'if a subject was diagnosed with Dementia within the following 36 months, he/she was grouped into pMCI'",
+        "Data augmentation in P-122. P-122 p.5: 'data augmentation techniques such as mirroring and random rotations were employed.'",
+        "Model selection on the evaluation folds in P-3, which biases P-3 upward, against the gap. P-3 p.9: 'A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models.'",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "one_sentence": "For pMCI vs sMCI from structural MRI in ADNI, P-122's model on two scans per subject reports 84.28% accuracy (AUC 0.860; six-fold CV, 275 subjects) against 74.61% (AUC 0.780; 5-fold CV, 593 subjects) for P-3's single-baseline-scan model; the gap is beyond combined uncertainty (z = 3.42 for accuracy, 2.64 for AUC) and neither paper reconciles it, and longitudinal against single-scan input, sample-level scoring, 2D slices and label definition are candidate explanations that neither paper shows to be sufficient.",
+      "reason": "z on accuracy: |0.8428 - 0.7461| / sqrt(0.0219^2 + 0.0179^2) = 0.0967 / 0.0283 = 3.42 with subjects as the unit (4.41 on samples); passes. AUC check: |0.8599 - 0.780| / sqrt(0.0236^2 + 0.0190^2) = 0.0799 / 0.0303 = 2.64; passes. No matched figure exists: P-122's ablations (71.6% to 81.4%, Table 3) all keep two timepoints, P-3 has no longitudinal input, and P-122's comparison table does not list P-3. Conditions were re-read against the sources: same task and channel (condition 1; the single vs two-timepoint input is a matched-figure dimension under condition 3, not a different question, and P-122 does not state that any input scan follows conversion, so a different-question failure cannot be shown); same metric (2); P-122 separates subjects across subsets ('samples in different subsets did not come from the same subjects', p.6); no figure near 0.97 (5); the ledger's 84.74% is P-122's internally inconsistent hold-out figure, and judged on the CV figure the gap stands (6). The skeptic check for this pair was done in challenge_skeptic_2 and found no failed condition; it was not repeated in full here."
+    }
+  ]
+}

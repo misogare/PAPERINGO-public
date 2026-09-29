@@ -1,0 +1,26 @@
+{
+ "id": "C-152",
+ "qualifies": "no",
+ "question": "Detection of MCI against cognitively normal older adults, sharing the EEG channel. P-214 (Shanghai community screening) uses single-electrode EEG, eye tracking and a neuropsychological battery with an RBF-SVM. P-83 (Magdeburg, 15 participants) uses 14-channel EEG and HRV recorded during CERAD subtests, with a voting ensemble. Cohort, features and architecture differ, which the rule allows.",
+ "metric": "Accuracy with accuracy in name only. P-214 classifies people, with 5-fold CV plus an independent cohort. P-83 classifies 3-second EEG/HRV windows split 75/25 at random after shuffling, so windows from the same 15 people fall in both training and test sets. The unit of analysis differs, and the P-83 figure is not a per-person accuracy.",
+ "figures": {
+  "P-214": "Cohort 1 (n = 336, 5-fold CV): 84.5 +/- 4.43%, Wilson 95% CI [0.802, 0.880]. Cohort 2 (independent, 44 MCI/48 NC, n = 92): 88.8 +/- 3.59%, Wilson [0.807, 0.937]. The printed AUCs are 0.942 (0.893-0.982) and 0.966 (0.921-0.988). The physiological-only model (EEG + eye tracking) scores 81.4% (Wilson [0.769, 0.852]) and 87.0% ([0.786, 0.924]).",
+  "P-83": "Average over seven CERAD subtests 93.86% (range 86.19-97.43%), from 15 subjects. Wilson at n = 15 subjects: [0.709, 0.990]. The best subtest (T1) is 97.43%, Wilson [0.757, 0.998]. LOOCV on T1 gives 96.14%. P-214's pipeline, re-run by P-83 on P-83's data (Table 9, 'J. Jiang et al. [93]'), averages 87.68% (range 80.95-91.76%), Wilson at n = 15 [0.633, 0.967]."
+ },
+ "matched_figure_check": "A matched figure exists and reconciles the pair. P-83 ran P-214's method on its own data and evaluation design and obtained 87.68%. That agrees with P-214's own 84.5% and 88.8%, each inside the other's interval. So the gap between 93.86% and P-214's figures is P-83's method against P-214's method inside P-83's 15-person, window-level design, and the papers' own data dissolve the cross-paper gap. P-214's physiological-only figures (81.4%, 87.0%), which sit closest to P-83's channel, also fall inside P-83's subject-level interval.",
+ "beyond_uncertainty": true,
+ "significance_only": false,
+ "performance_validity": "P-83's best figure meets the exclusion: 97.43% on subtest T1 (LOOCV 96.14%), from internal validation of 15 participants with no external cohort. The recorded 93.86% is an average just below 0.97 that rests on the same shuffled window-level split. P-214 passes: its highest AUC, 0.966, is below 0.97 and comes from an independent cohort.",
+ "failed_conditions": [2, 3, 5],
+ "candidate_explanations": [],
+ "reason": "The two accuracies are on different units: people in P-214 against 3-second windows shared between training and test sets in P-83. More decisively, P-83's own re-run of P-214's method on P-83's data gives 87.68%, matching P-214's 84.5-88.8%, so the papers' data dissolve the gap (condition 3). P-83's best figure (97.43%, n = 15, internal only) meets the near-ceiling exclusion. The uncertainty test passes one way only: 93.86% lies outside P-214's intervals, but P-214's figures lie inside P-83's subject-level interval [0.709, 0.990].",
+ "quotes": [
+  {"paper": "P-214", "page": 1, "quote": "the proposed model achieved 84.5 ± 4.43% and 88.8 ± 3.59% in Cohort 1 and Cohort 2, respectively."},
+  {"paper": "P-214", "page": 7, "quote": "Single physiological test model 81.4 ± 4.66 72.1 ± 8.25 89.2 ± 5.42 0.9045 (0.819–0.961)"},
+  {"paper": "P-83", "page": 1, "quote": "Our dataset includes 15 subjects who were randomly assigned to training and testing groups of 7 HC and 8 MCI, respectively."},
+  {"paper": "P-83", "page": 6, "quote": "For each test, we separated our data into 75% for the training set and 25% for the testing set."},
+  {"paper": "P-83", "page": 8, "quote": "With our dataset, we put these methods into practice. For each CERAD test, the comparison between our suggested method and these works is shown in Table 9."},
+  {"paper": "P-83", "page": 9, "quote": "Avg 87.25% 87.68% 84.22% 84.38% 93.86%"},
+  {"paper": "P-83", "page": 8, "quote": "T1 demonstrates the best test results for both k-fold and LOOCV with respectively 95.23% and 96.14%"}
+ ]
+}

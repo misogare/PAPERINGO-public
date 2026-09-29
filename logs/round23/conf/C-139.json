@@ -1,0 +1,27 @@
+{
+  "id": "C-139",
+  "qualifies": "no",
+  "question": "Shared: prediction of MCI-to-AD progression in ADNI MCI, with MRI as the shared channel. P-199 (Lu et al., 2022) uses one baseline T1 image (3D ResNet-50, Med3D + MoCo) for 36-month conversion; P-168 (Ding et al., 2023) uses a multimodal model (neuropsychological tests + FreeSurfer volumes + demographics) that includes MRI, for conversion within 2 years of a month-24 index exam. Horizon, feature set, input timepoints and sample differ, which condition 1 allows.",
+  "metric": "AUC in both.",
+  "figures": {
+    "P-199": "AUC 0.835 on a held-out 20% test set, no AUC interval printed (accuracy 0.819, bootstrap 95% CI 0.798-0.841). Test class sizes from the printed sensitivity 0.786 = 44/56 and specificity 0.850 = 51/60: 56 pMCI/60 sMCI (116, about 20% of 577). Hanley-McNeil: Q1 = 0.835/1.165 = 0.7167, Q2 = 2(0.835^2)/1.835 = 0.7599, SE = 0.0382, 95% CI [0.760, 0.910].",
+    "P-168": "Headline LSTM (five visits, all modalities) AUC 0.93 +/- 0.06 (fold SD), 10-fold CV over 347 participants (77 converters/270 non-converters). Hanley-McNeil: Q1 = 0.8692, Q2 = 0.8963, SE = 0.0206, 95% CI [0.890, 0.970]. Single-timepoint random forest, all modalities: 0.90, CI [0.853, 0.947]. MRI-only random forest (single 24-month timepoint): 0.85, SE 0.0287, CI [0.794, 0.906]. MRI-only LSTM: 0.86, CI [0.805, 0.915]."
+  },
+  "matched_figure_check": "A matched figure exists and reconciles the pair. P-168 reports its result on P-199's condition of MRI-only input at a single timepoint: random forest on 24-month MRI measures, AUC 0.85 (MRI-only LSTM 0.86). P-199's 0.835 lies inside that figure's interval [0.794, 0.906], and 0.85 lies inside P-199's interval [0.760, 0.910]; the same holds for 0.86. On the headline figures the gap is beyond uncertainty (0.93 lies above P-199's upper bound 0.910, and 0.835 lies below P-168's lower bound 0.890). P-168's own data show that the gap comes from adding cognitive tests, demographics and longitudinal visits to MRI.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: 0.835 and 0.93 are below 0.97.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "The headline AUCs (0.835 vs 0.93) differ beyond uncertainty. But P-168 also reports MRI-only models (0.85 single timepoint, 0.86 longitudinal), and these agree with P-199's 0.835 in both directions. The papers' own figures dissolve the gap: it follows from P-168's added cognitive, demographic and longitudinal inputs, so condition 3 fails.",
+  "quotes": [
+    {"paper": "P-199", "page": 2, "quote": "To prevent data leakage, only participants' baseline data were selected in this study. Finally, data from 577 MCI subjects (Means ± std age = 73.08 ± 7.25 years) were included in our study, and 297 of the MCI was classified as sMCI (51.5%) and the rest 280 were pMCI (48.5%)."},
+    {"paper": "P-199", "page": 6, "quote": "The dataset was randomly split into training and testing data with a ratio of 8:2. Optimal hyperparameters were selected using fivefold cross-validation on the training set, and the optimal model was chosen for model evaluation on the test set"},
+    {"paper": "P-199", "page": 6, "quote": "ResNet-50 achieved the best performance with an accuracy of 0.819 and an AUC of 0.835"},
+    {"paper": "P-199", "page": 7, "quote": "ResNet-50 0.819 (0.798, 0.841) 0.786 (0.754, 0.821) 0.850 (0.815, 0.877) 0.807 (0.783, 0.834)"},
+    {"paper": "P-168", "page": 1, "quote": "A Long Short-Term Memory (LSTM) model using data collected at five-time points (baseline, 6, 12, 18, and 24-month) was developed to predict the risk of progression from MCI to AD within 2 years from the index exam (the exam at 24-month)."},
+    {"paper": "P-168", "page": 1, "quote": "of whom 77 converted to AD over a 2- year follow-up period. The longitudinal LSTM model showed superior prediction performance of MCI-to-AD progression (AUC 0.93 ± 0.06) compared to the random forest model (AUC 0.90 ± 0.09)."},
+    {"paper": "P-168", "page": 4, "quote": "we built a random forest model with data collected at the 24-month time point for comparison in this study"},
+    {"paper": "P-168", "page": 5, "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures. The performance of the random forest models using MRI measures had an AUC of 0.85."}
+  ]
+}

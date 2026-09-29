@@ -1,0 +1,27 @@
+{
+  "id": "C-130",
+  "qualifies": "no",
+  "question": "Not the same comparison. P-187 predicts 3-year disease progression among non-demented Japanese ADNI (J-ADNI) participants, pooling 152 normal and 235 MCI individuals (387; progression includes 4 NL to MCI and 1 NL to AD besides 119 MCI to AD). P-78 classifies pMCI vs sMCI among MCI participants only (North American ADNI; external ADNI-3/OASIS-3). The channel is shared (structural MRI; P-187's ADLSc adds MMSE), but the population class behind the label differs: about 39% of P-187's denominator is cognitively normal.",
+  "metric": "Accuracy with accuracy (79.3% abstract upper bound, or 77.4-79.4% in the results, vs 90.7%).",
+  "figures": {
+    "P-187": "Progression accuracy 77.4-79.4% (ADLS) and 79.6-80.4% (ADLSc) on 387 non-demented participants. The ADNI-trained model is applied to J-ADNI (external). Wilson 95% CI with n=387: 0.730-0.813 at 0.774 and 0.751-0.831 at 0.794.",
+    "P-78": "QTP (four longitudinal scans over 36 months) accuracy 0.907, reported 95% CI 0.870-0.944, on internal Dataset B (101 MCI subjects, 304 images). STP (single time point) on the same Dataset B: 0.763, reported CI 0.711-0.816. External Dataset A (baseline scans, 29 ADNI-3 + 144 OASIS-3): 0.827, reported CI 0.769-0.884.",
+    "comparison": "Headline figures are separated: P-78's 0.907 lies outside P-187's intervals, and P-187's 0.774-0.794 lie outside P-78's QTP interval 0.870-0.944."
+  },
+  "matched_figure_check": "P-78 reports the result under P-187's input condition, a single baseline scan. On the same internal Dataset B, STP accuracy is 0.763 (0.711-0.816); this contains P-187's 0.774-0.794, and P-187's Wilson intervals (0.730-0.813 and 0.751-0.831) contain 0.763, so the two agree in both directions. On the external baseline-scan Dataset A, which matches P-187's external validation tier, the accuracy is 0.827 (0.769-0.884); this interval contains all of P-187's figures. The gap exists only for P-78's four-scan input. The matched figures dissolve it, so condition 3 fails.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes condition 5: all compared accuracies are below 0.97.",
+  "failed_conditions": [1, 3],
+  "candidate_explanations": [],
+  "reason": "P-187's progression accuracy pools normal and MCI participants in J-ADNI (and counts NL-to-MCI as progression), while P-78 classifies MCI only, so the population behind the label differs. More decisively, P-78's own single-baseline-scan accuracy (0.763, CI 0.711-0.816 internal; 0.827, CI 0.769-0.884 external) agrees with P-187's 77.4-79.4%. The recorded 90.7% exists only with four longitudinal scans. The pair does not qualify.",
+  "quotes": [
+    {"paper": "P-187", "page": 2, "quote": "535 participants consisting of 148 patients with AD, 235 with MCI, and 152 normal individuals (NL)."},
+    {"paper": "P-187", "page": 5, "quote": "During the 3 years of observation, among the 387 participants with NL or MCI, 119 MCI had converted to AD, 4 NL to MCI, and one NL to AD."},
+    {"paper": "P-187", "page": 5, "quote": "The prediction accuracy of disease progression in non-dementia individuals was 77.4% to 79.4% for ADLS and 79.6% to 80.4% for ADLSc."},
+    {"paper": "P-78", "page": 9, "quote": "The model achieved peak performance with QTP, recording an AUC of 87.1 % and an ACC of 90.7 %."},
+    {"paper": "P-78", "page": 10, "quote": "STP 0.832 (0.783-0.874) 0.763 (0.711-0.816)"},
+    {"paper": "P-78", "page": 3, "quote": "Dataset A, as an independent external test set, consists of baseline T1-weighted sMRI images from 29 subjects in ADNI-3 and 144 subjects in OASIS-3."},
+    {"paper": "P-78", "page": 8, "quote": "Proposed Network 0.858 (0.803 - 0.918) 0.827 (0.769 - 0.884)"}
+  ]
+}

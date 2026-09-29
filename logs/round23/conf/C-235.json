@@ -1,0 +1,24 @@
+{
+  "id": "C-235",
+  "qualifies": "no",
+  "question": "None shared. P-989 asks whether mild behavioural impairment (MBI) profiles predict progression from amnestic MCI to clinically diagnosed AD dementia (1,184 aMCI patients from two Seoul centres, mean follow-up 3.1 years). P-997 asks whether each baseline neuropsychiatric symptom, modelled one at a time, predicts cognitive-score decline and incident PD-MCI in drug-naive early Parkinson's disease (PPMI, 423 patients, 5 years). The population class differs (Alzheimer-spectrum aMCI against Parkinson's disease), the mismatch condition 1 names explicitly. The comparison also differs: conversion to AD dementia against test-score slopes and occurrence of PD-MCI.",
+  "metric": "Mismatch: Cox hazard ratio for time to AD dementia (P-989) against linear mixed-model betas for annual test-score change and GEE odds ratios for PD-MCI (P-997).",
+  "figures": {
+    "P-989": "Complex vs asymptomatic MBI cluster: HR 2.541 (1.904-3.392), p < 0.001. Affective-only cluster: HR 1.214 (0.883-1.670), p = 0.232. Per-domain HRs (Table 4, all significant): impulse dyscontrol 1.920 (1.444-2.554); affective dysregulation 1.373 (1.049-1.796); decreased motivation 2.131 (1.595-2.848).",
+    "P-997": "GEE OR for PD-MCI: depression 2.575 (1.771-3.744); ICDs (QUIP) 1.173 (0.830-1.659), p = 0.366. No analysis of symptom counts or clusters."
+  },
+  "matched_figure_check": "Neither paper reports a figure under the other's condition. P-997 has no AD-conversion hazard and no aMCI sample; P-989 has no Parkinson's sample and no odds of MCI. The nearest constructs point the same way. Affective symptoms raise risk in both (P-989 affective dysregulation HR 1.373; P-997 depression OR 2.575). The one apparent split is the impulse-type contrast: MBI impulse dyscontrol HR 1.920 (1.444-2.554) against QUIP impulse-compulsive disorders OR 1.173 (0.830-1.659). That is a same-direction difference with overlapping intervals (they overlap from 1.444 to 1.659), on different constructs and different metrics.",
+  "beyond_uncertainty": false,
+  "significance_only": true,
+  "performance_validity": "Not a performance comparison: hazard ratios, regression betas and odds ratios, with no discrimination metric on either side.",
+  "failed_conditions": [1, 2, 4, 6],
+  "candidate_explanations": [],
+  "reason": "The two papers study different populations (Alzheimer-spectrum aMCI against drug-naive Parkinson's disease) and different outcomes with different metrics (hazard of AD dementia against test-score slopes and odds of PD-MCI), so conditions 1 and 2 fail. The opposition the record describes, symptom aggregation against symptom-specific decomposition, is not a result of either paper: P-997 never analyses symptom counts, and P-989 itself reports per-domain hazard ratios, so condition 6 fails. Where the constructs touch, the papers agree in direction. The only split, on impulse-type symptoms, is a significance difference with overlapping intervals, which condition 4 excludes.",
+  "quotes": [
+    {"paper": "P-989", "page": 1, "quote": "Compared to the asymptomatic group, the complex group was associated with a higher risk of progression to AD (hazard ratio = 2.541 [1.904–3.392], p < 0.001), but the affective dysregulation group was not (1.214 [0.883–1.670], p = 0.232)."},
+    {"paper": "P-989", "page": 5, "quote": "Impulse dyscontrol 1.920 1.444–2.554 < 0.001"},
+    {"paper": "P-997", "page": 2, "quote": "All the PD patients recruited were drug-naïve."},
+    {"paper": "P-997", "page": 3, "quote": "The odds of MCI was significantly greater among depressed patients in comparison with those of non-depressed patients (odds ratio [OR] = 2.575; 95% confidence interval [CI]: 1.771–3.744, p < 0.001) in the GEE model (Figure 1)."},
+    {"paper": "P-997", "page": 5, "quote": "Finally, there is no significant difference in the odds of MCI with and without QUIP (OR = 1.173; 95% CI: 0.830–1.659; p = 0.366) in the GEE model (Figure 1)."}
+  ]
+}

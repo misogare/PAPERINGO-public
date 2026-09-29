@@ -1,0 +1,26 @@
+{
+  "id": "C-219",
+  "qualifies": "no",
+  "question": "None on the recorded figures, and no shared metric on the corrected ones. The ledger sets P-198's AUC 0.56 against P-239's AUC 0.91. P-198's 0.56 is its covariate-free baseline Markov model, which uses no MRI input at all. P-239's 0.91 is early-MCI vs late-MCI stage classification, not conversion, and P-198 reports no stage classification. Read correctly, both papers address MCI-to-AD conversion in ADNI MCI participants with MRI as a shared channel: P-198 (Ficiara et al., ISBI 2021) predicts conversion by a follow-up about 2 years later from FreeSurfer cortical thickness or BrainVISA sulcal width covariates in a two-state Markov model; P-239 (Ho et al., Sci Rep 2023) predicts time to conversion from clinical data plus T1 radiomics. Horizon, feature set and model differ, which condition 1 allows.",
+  "metric": "Mismatch. P-198 reports ROC-AUC and accuracy for a binary 2-year conversion label. P-239 reports its conversion result only as a survival concordance index (C-index 0.846), Brier score and MAE in days; its only AUC (0.91) belongs to the eMCI vs lMCI classification task. P-198 reports no C-index. A censored time-to-conversion C-index is not the same metric type as a fixed-horizon ROC-AUC.",
+  "figures": {
+    "P-198": "2-year conversion, 721 ADNI-1/2 MCI (188 converters / 533 stable), one cycle of stratified 10-fold CV; +/- values are fold SDs. Baseline model without covariates: AUC 0.56 +/- 0.10, accuracy 0.65 +/- 0.08 (the recorded figure). Sulcal width: AUC 0.71 +/- 0.09, accuracy 0.72 +/- 0.04. Cortical thickness: AUC 0.78 +/- 0.08, accuracy 0.75 +/- 0.02. Hanley-McNeil for 0.78 with 188/533: Q1 = 0.78/1.22 = 0.6393, Q2 = 2(0.78^2)/1.78 = 0.6836, SE = sqrt([0.78*0.22 + 187*(0.6393-0.6084) + 532*(0.6836-0.6084)]/(188*533)) = 0.0214, 95% CI [0.738, 0.822]. For the recorded 0.56: SE 0.0248, CI [0.512, 0.609].",
+    "P-239": "676 ADNI baseline MCI (249 eMCI / 427 lMCI), 5-fold CV. Time to AD conversion: C-index 0.846 for SPAN-AED on clinical + radiomics, Brier 0.132 (Table 2); Table 4: clinical-only C-index 0.82, radiomics (MRI)-only C-index 0.67. No interval printed for any C-index. Stage classification eMCI vs lMCI: accuracy 83.19%, AUC 0.91 (the recorded figure). No ROC-AUC for conversion is printed anywhere in the paper."
+  },
+  "matched_figure_check": "No same-metric comparison exists, so no matched figure can be checked. P-239's MRI-only arm (radiomics, C-index 0.67) is the channel-matched counterpart to P-198's MRI models, but it is a C-index and P-198 prints none. P-198 prints no eMCI vs lMCI result to set against P-239's 0.91.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not triggered: no compared figure reaches 0.97 (P-198 at most AUC 0.78; P-239 C-index 0.846, and its AUC 0.91 belongs to another task). Both use internal cross-validation only.",
+  "failed_conditions": [1, 2, 6],
+  "candidate_explanations": [],
+  "reason": "The record pairs P-198's covariate-free baseline (AUC 0.56, no MRI) with P-239's eMCI vs lMCI stage AUC (0.91). Neither is a conversion result from the channel under comparison, and the stage task has no counterpart in P-198 (conditions 1 and 6). Read correctly, both papers predict MCI-to-AD conversion in ADNI with MRI as a shared channel, but P-198 reports only fixed-horizon ROC-AUC (best 0.78, 95% CI 0.738-0.822) and P-239 reports only a survival C-index for conversion (0.846; MRI-only 0.67), so no same-metric comparison exists (condition 2).",
+  "quotes": [
+    {"paper": "P-198", "page": 5, "quote": "showing higher AUC and accuracy for the model incorporating covariates from MRI-based features from sulcal width (AUC=0.71 ± 0.09; Accuracy= 0.72 ± 0.04) and cortical thickness (AUC=0.78 ± 0.08; Accuracy= 0.75 ± 0.02) compared to the baseline model (AUC=0.56 ± 0.10; Accuracy=0.65 ± 0.08)."},
+    {"paper": "P-198", "page": 4, "quote": "First, we built a baseline model without covariates."},
+    {"paper": "P-198", "page": 3, "quote": "using λ to predict whether a test patient will transition to AD within the next two years, given the outcome of the first visit."},
+    {"paper": "P-198", "page": 3, "quote": "The dataset includes 721 MCI individuals, 533 of whom were categorized as having stable MCI (sMCI)"},
+    {"paper": "P-239", "page": 1, "quote": "The proposed multimodal strategy yielded the best c-index score in time prediction of MCI to AD conversion (0.85) and the best accuracy in MCI-stage categorization ( 83.19% )."},
+    {"paper": "P-239", "page": 3, "quote": "we use c-index score (CI), Brier score (BS), and mean absolute error (MAE) as criteria of time prediction task, while using accuracy (Acc), average precision (AP), precision (Pre), recall (Rec), F1-score ( F1 ), and area under receiver operating characteristic curve (AUC) as criteria of classification task."},
+    {"paper": "P-239", "page": 5, "quote": "Our approach achieved an accuracy of 83.19% and an AUC of 0.91, demonstrating robust performance in accurately distinguishing between the two classes."}
+  ]
+}

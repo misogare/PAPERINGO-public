@@ -1,0 +1,26 @@
+{
+  "id": "C-165",
+  "qualifies": "no",
+  "question": "Prediction of conversion from MCI to AD among ADNI MCI participants, with structural MRI as the shared channel. P-273's DISFC is multimodal: 3D sMRI, demographic/cognitive scores and 49 SNPs, with a 48-month horizon. P-198 feeds five FreeSurfer cortical-thickness covariates into a two-state Markov model followed by logistic regression, with transition to AD by a second visit about two years after baseline. Same task, population class and shared channel. The added predictors, horizon, features and model differ; the rule allows these.",
+  "metric": "ROC-AUC with ROC-AUC (and accuracy with accuracy), both from internal 10-fold CV on ADNI.",
+  "figures": {
+    "P-273": "Trimodal DISFC AUC 0.962 (fold SD 0.041), accuracy 92.92%, on a CV set of 238 MCI (91 pMCI / 147 sMCI, derived from 94/158 overall minus the 3/11 in the ADNI-3 test set). Hanley-McNeil: SE = 0.0144; interval [0.934, 0.990]. MRI-only unimodal arm read from Fig. 4B, calibrated against the printed trimodal bars to about +-0.004: AUC about 0.802, Hanley-McNeil with 91/147 SE = 0.0310, interval [0.741, 0.863]. MRI-only accuracy about 0.758, Wilson n = 238: [0.700, 0.808].",
+    "P-198": "Cortical-thickness model, stratified 10-fold CV (one cycle), 721 MCI (188 converters / 533 sMCI): AUC 0.78 +- 0.08, accuracy 0.75 +- 0.02 (fold SDs; no interval printed). Hanley-McNeil for 0.78 with 188/533: Q1 = 0.78/1.22 = 0.6393; Q2 = 2*0.6084/1.78 = 0.6836; SE^2 = [0.1716 + 187*(0.6393-0.6084) + 532*(0.6836-0.6084)]/(188*533) = 45.95/100204 = 0.000459; SE = 0.0214; interval [0.738, 0.822]. With the fold SD as the spread: [0.623, 0.937]. Accuracy 0.75, Wilson n = 721: [0.717, 0.780]."
+  },
+  "matched_figure_check": "A matched figure exists and reconciles the pair. P-273's Fig. 4B unimodal MRI model, cross-validated with identical settings, is P-198's input condition (MRI only). Its AUC of about 0.802 lies inside P-198's interval [0.738, 0.822], and P-198's 0.78 lies inside P-273's MRI-only interval [0.741, 0.863]; two-sample z = (0.802-0.78)/sqrt(0.0310^2+0.0214^2) = 0.58. The accuracies agree too (0.758 vs 0.75, z = 0.25). Both directions hold across the whole reading range of the bar (0.795-0.806). P-273's own ablation shows that its advantage over MRI-only models comes from the cognitive/clinical inputs: MRI-only about 0.80, MRI+clinical about 0.94, trimodal 0.962. No figure matches the horizon (48 months vs about 2 years), but the channel-matched figures already agree.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study meets the Section 3.5 exclusion. P-273's 0.962 is below 0.97 and has a small (n = 14) ADNI-3 test. P-198's 0.78 comes from 721 subjects. Note that P-198's top-5 covariates were chosen by Relief on the whole dataset before cross-validation, which is a possible optimism, but its figure is not near ceiling. Checked against P-273 pages 6-7 and P-198 pages 2-5.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "The recorded AUCs (0.962 vs 0.78) differ beyond uncertainty, but the 0.962 comes from P-273's trimodal model, which uses cognitive scores and genotypes. P-273's own MRI-only arm (about 0.80 AUC, about 0.76 accuracy) agrees with P-198's MRI-only 0.78 AUC and 0.75 accuracy in both directions. The papers' own data dissolve the gap and P-273 shows its source, so condition 3 fails. The ledger's 'AUC 0.56' for P-198 is its no-covariate baseline, not its best model.",
+  "quotes": [
+    {"paper": "P-273", "page": 1, "quote": "On the cross-validation set, our model achieved superior results for predicting MCI conversion within 4 years (AUC, 0.962; accuracy, 92.92%; sensitivity, 88.89%; specificity, 95.33%)"},
+    {"paper": "P-273", "page": 2, "quote": "For each participant, we considered 14 clinical features at baseline, including demographic data (age, sex, education) and cognitive assessments, as listed in Table 1."},
+    {"paper": "P-273", "page": 6, "quote": "As shown in Fig. 4B, the DISFC model using trimodal data achieved the best performance. We also observed that bimodal models outperformed unimodal models overall."},
+    {"paper": "P-273", "page": 7, "quote": "The unimodal, bimodal, and trimodal models were cross-validated with identical settings. Each bar represents the mean value across folds for each metric"},
+    {"paper": "P-198", "page": 3, "quote": "using λ to predict whether a test patient will transition to AD within the next two years, given the outcome of the first visit."},
+    {"paper": "P-198", "page": 3, "quote": "The dataset includes 721 MCI individuals, 533 of whom were categorized as having stable MCI (sMCI)"},
+    {"paper": "P-198", "page": 5, "quote": "cortical thickness (AUC=0.78 ± 0.08; Accuracy= 0.75 ± 0.02) compared to the baseline model (AUC=0.56 ± 0.10; Accuracy=0.65 ± 0.08)."}
+  ]
+}

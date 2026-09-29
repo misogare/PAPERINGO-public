@@ -1,0 +1,24 @@
+{
+ "id": "C-153",
+ "qualifies": "no",
+ "question": "None shared. P-218 classifies current diagnosis (AD/MCI/NC) from 18F-FDG PET slices, and its AUC counts AD and MCI together as positives against NC. P-65 predicts 36-month conversion among MCI patients (pMCI vs sMCI) from baseline structural MRI. The comparison (impaired against normal vs converters against stable MCI) and the channel (PET vs MRI) both differ.",
+ "metric": "ROC AUC in name for both, but on different contrasts: impaired vs NC from a 3-class model, against pMCI vs sMCI.",
+ "figures": {
+  "P-218": "ACC 89.4%, AUC 92.3% (SEN 87.43, SPE 88.26), on an ADNI-2 PET test set (124 AD/192 MCI/84 NC). No conversion endpoint and no MRI.",
+  "P-65": "AUC 0.8401 +/- 0.0297, ACC 0.7819, from ADNI 5-fold CV (300 pMCI/273 sMCI, sMRI). External OASIS-3: AUC 0.8137 +/- 0.0351. No diagnostic task and no PET."
+ },
+ "matched_figure_check": "None exists. P-218 reports no conversion analysis and no MRI; P-65 reports no diagnostic classification and no PET.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Passes: 0.923 and 0.840 are below 0.97. Not relevant, since the questions differ.",
+ "failed_conditions": [1, 6],
+ "candidate_explanations": [],
+ "reason": "P-218's 92.3% is an AD-plus-MCI vs NC AUC from FDG-PET, and P-65's 0.84 is a 36-month MCI-conversion AUC from structural MRI. The two share neither the clinical question nor the channel (condition 1). The record's 'T2' and 'structural_mri' labels for P-218 misread the paper (condition 6), and neither paper prints a figure under the other's question.",
+ "quotes": [
+  {"paper": "P-218", "page": 7, "quote": "TP means the true positives' number, indicating AD and MCI samples' number that are predicted correctly"},
+  {"paper": "P-218", "page": 3, "quote": "We use 190 AD cases, 350 MCI cases, and 200 NC cases among PET images as the training data from ADNI-1."},
+  {"paper": "P-218", "page": 10, "quote": "The proposed method 124 192 84 2D PET ADNI 87.43 88.26 89.4 92.3"},
+  {"paper": "P-65", "page": 3, "quote": "participants in the pMCI group were initially diagnosed with MCI at baseline and converted to AD within 36 months"},
+  {"paper": "P-65", "page": 1, "quote": "HemiNet achieves an AUC of 84.01% and an accuracy of 78.19% for MCI prediction."}
+ ]
+}

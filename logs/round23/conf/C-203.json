@@ -1,0 +1,29 @@
+{
+  "id": "C-203",
+  "qualifies": "no",
+  "question": "None for the recorded figures. The ledger sets P-261's adjusted odds ratio for a joint exposure (PSQI sleep disturbance with Qi-stagnation vs neither, non-depressed Fuzhou community adults aged 55-75, MoCA-defined MCI) against P-266's point prevalence of ACE-III < 88 'MCI' in Pune adults aged 40-60. The only construct both studies measure is sleep. Even there the named factor differs: P-261's exposure is the PSQI global score >= 6 ('sleep disturbance'), P-266's is 'sleep duration' (adequate 6-8 h vs < 6 h with difficulty sleeping and frequent waking). The age bands also differ (older adults 55-75 vs middle-aged adults 40-60), and so do the MCI instruments (MoCA vs ACE-III < 88).",
+  "metric": "Mismatch for the recorded pair: odds ratio vs prevalence. On sleep, both papers report adjusted odds ratios, but for different exposures under different adjustment sets.",
+  "figures": {
+    "P-261": "Recorded figure: adjusted OR 2.581 (1.706-3.907) for sleep disturbance with Qi-stagnation vs neither (Table 5, adjusted for age, sex, education). Sleep disturbance without Qi-stagnation vs neither: OR 1.681 (1.231-2.296). Prevalence 314/1071 = 29.3%; Wilson 0.267-0.321. Crude sleep-disturbance contrast from the printed percentages (57.6% of 314 MCI = 181; 45.6% of 757 normal = 345): OR = (181 x 412)/(133 x 345) = 1.625, Woolf SE = sqrt(1/181 + 1/133 + 1/345 + 1/412) = 0.1355, 95% CI 1.246-2.120. PSQI sleep-duration component: shorter in MCI univariately (Z = -2.237, P = 0.025), then dropped from the multivariable models; no OR printed.",
+    "P-266": "Recorded figure: prevalence 27.77% (95% CI 24.35-31.47), n = 605. Sleep: Table 3 prints 'Adequate 1 1.44 (0.94-2.19) 0.08'. The '1' is the df column (the reference level of Age is printed with df 3), and binary variables show only the non-reference level (Gender: 'Female 1 1.90'), so 1.44 is the OR for ADEQUATE vs inadequate sleep. Oriented as inadequate vs adequate: 1/1.44 = 0.694 (1/2.19 = 0.457 to 1/0.94 = 1.064). Crude (Table 2): inadequate 91/323 MCI vs adequate 77/282; OR = (91 x 205)/(232 x 77) = 1.044, Woolf SE 0.1821, 95% CI 0.731-1.492; chi-square p = 0.88."
+  },
+  "matched_figure_check": "Prevalence: 29.3% (0.267-0.321) and 27.77% (0.2435-0.3147) overlap, and they come from different age bands and instruments anyway. Sleep, same named factor (sleep duration): P-261's component is significant only univariately and is removed after adjustment; P-266's is non-significant crude and adjusted. That is a difference in significance only, and P-261 prints no interval that could exclude P-266's. Sleep, PSQI disturbance vs P-266's inadequate sleep: the unadjusted contrast is the one condition both papers print (as counts or percentages). There the intervals overlap (1.246-2.120 vs 0.731-1.492): P-261 is significant, P-266 is not, and the intervals do not exclude each other, so the papers' own crude data dissolve the difference. The adjusted intervals exclude each other only once P-266's OR is re-oriented (0.457-1.064 vs 1.231-2.296). That comparison sets P-261's subgroup contrast from an interaction model, adjusted for age, sex and education, against P-266's model with ten covariates.",
+  "beyond_uncertainty": false,
+  "significance_only": true,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [1, 2, 3, 4],
+  "candidate_explanations": [],
+  "reason": "The recorded pair sets an odds ratio for a joint sleep and Qi-stagnation exposure against a prevalence, so it shares no question and no metric (conditions 1 and 2). On sleep, the one shared construct, the same named factor (sleep duration) differs only in significance (condition 4). The PSQI composite is a different factor from P-266's duration-based variable, and its unadjusted association overlaps P-266's (condition 3). The round-20 reading compared P-266's 1.44 as if it had P-261's orientation. The table layout shows 1.44 is the OR for adequate sleep, so the adjusted intervals do not overlap once re-oriented. That gap appears only across different exposures, adjustment sets and age bands, and the crude figures reconcile it.",
+  "quotes": [
+    {"paper": "P-261", "page": 5, "quote": "the risk of suffering from MCI for older adults with sleep disturbance and Qi-stagnation was 2.581 times higher than that for those without sleep disturbance or Qi-stagnation"},
+    {"paper": "P-261", "page": 6, "quote": "Yes No 0.520 0.159 10.672 1.681 (1.231 to 2.296) 0.001"},
+    {"paper": "P-261", "page": 3, "quote": "Compared with the group with normal cognition (45.6%), the MCI group showed a higher possibility of suffering from sleep disturbance (57.6%)"},
+    {"paper": "P-261", "page": 4, "quote": "the dangerous effect of sleep duration on MCI was replaced by sleep latency, daytime dysfunction, and Qi-stagnation; therefore, it was not included in the models."},
+    {"paper": "P-261", "page": 3, "quote": "The result of 0-5 points indicate good sleep quality; points >=6 indicate sleep disturbance."},
+    {"paper": "P-266", "page": 1, "quote": "Prevalence of MCI among adult was 27.77 % with 95 % CI (24.35-31.47)."},
+    {"paper": "P-266", "page": 2, "quote": "people who sleeps for 6-8 h, 5 day/week was considered having adequate sleep and people with less than 6hrs/day of sleep for 5 day/week and has difficulty in sleep and wakes up frequently at odd times during a sleep cycle were termed as inadequate sleep."},
+    {"paper": "P-266", "page": 4, "quote": "Sleep duration Adequate 282 (46.6) 77 (27.30) 205 (72.70) 0.06 0.88, NS Inadequate 323 (53.4) 91 (28.17) 232 (71.83)"},
+    {"paper": "P-266", "page": 5, "quote": "Gender Female 1 1.90 (1.24-2.92) 0.003"},
+    {"paper": "P-266", "page": 5, "quote": "Sleep duration Adequate 1 1.44 (0.94-2.19) 0.08"}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+ "id": "C-26",
+ "qualifies": "no",
+ "question": "None shared. P-114 (Seifallahi et al., the gait/ANFIS paper the ledger means, present in the pack as pdf/P-115.txt; pack pdf/P-114.txt is P-112's EEG paper) separates MCI from healthy controls using Kinect gait (the gait/motor channel). P-5 classifies AD/MCI/CN three ways from fundus photographs and OCT (the eye/retina channel). The measurement channels differ, and so does the contrast (binary vs three-class).",
+ "metric": "Mismatch: binary accuracy (93%) vs the MCI-class precision (positive predictive value, 84.96%) of a three-class model.",
+ "figures": {
+  "P-114": "Binary MCI vs HC, ANFIS on all dual-task gait features: accuracy 93%, sensitivity 90%, F-score 91.5% (n = 150: 70 MCI, 80 HC; the ANFIS evaluation protocol is not stated). Wilson with n = 150: 0.878-0.961.",
+  "P-5": "First dataset (29 MCI, 50 CN, 38 AD patients; image-level 5-fold CV): three-class accuracy 91.64%, AUC 96.78%; MCI-class precision 84.96%. Second dataset (nCI vs pCI by MMSE/MoCA): accuracy 82.46%. No binary MCI-vs-CN accuracy. No interval arithmetic was done because no shared quantity exists."
+ },
+ "matched_figure_check": "No matched figure is possible: P-5 reports no binary MCI-vs-CN accuracy, and P-114 reports no retinal result.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Passes: no contested figure reaches 0.97 (P-5's AUC is 96.78%; P-114's 99% specificity is not the compared figure).",
+ "failed_conditions": [1, 2],
+ "candidate_explanations": [],
+ "reason": "The two studies measure different channels (Kinect gait vs retinal imaging) and different contrasts (binary MCI vs HC vs a per-class figure from an AD/MCI/CN model). The compared numbers are also different statistics (accuracy vs class precision). This is the same pair as C-29.",
+ "quotes": [
+  {"paper": "P-114 (pack pdf/P-115.txt)", "page": 1, "quote": "the proposed ANFIS classifier had values of 93%, 90%, and 91.5% for accuracy, sensitivity, and F-score, respectively when all extracted gait parameters in the DTW condition for the classification of elderly subjects to MCI and HC groups."},
+  {"paper": "P-114 (pack pdf/P-115.txt)", "page": 1, "quote": "novel method is presented to detect MCI among elders from skeletal data of elders’ gait recorded with a Kinect."},
+  {"paper": "P-114 (pack pdf/P-115.txt)", "page": 2, "quote": "Of 150 selected subjects, 80 subjects were healthy individuals without any cognitive impairments (HC subjects), and 70 subjects were elderly people with MCI."},
+  {"paper": "P-5", "page": 1, "quote": "The proposed method achieved high precision rates of 84.96% and 80.90% in classifying MCI and positive test scores for cognitive impairment, respectively."},
+  {"paper": "P-5", "page": 1, "quote": "The neural network was applied to classify individuals with MCI, Alzheimer’s disease, and control participants with normal cognition."},
+  {"paper": "P-5", "page": 7, "quote": "As shown in Table 2, the proposed network DuCAN had an accuracy of 91.64% and an AUC of 96.78%."}
+ ]
+}

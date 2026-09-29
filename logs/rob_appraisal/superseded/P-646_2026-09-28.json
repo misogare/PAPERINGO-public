@@ -1,0 +1,205 @@
+{
+ "paper_id": "P-646",
+ "document_check": {
+  "matches": true,
+  "note": "Guo Y, Pai M, Xue B, Lu W. 'Bidirectional association between depressive symptoms and mild cognitive impairment over 20 years: Evidence from the Health and Retirement Study in the United States', Journal of Affective Disorders 338 (2023) 449-458. The SHRs 1.20 and 1.16 and the continuous-score growth-curve sensitivity analysis are all in the paper."
+ },
+ "cited_result": "Principal: the fully adjusted subdistribution hazard ratio for baseline high-risk depressive symptoms (CES-D-8 at or above 4) and incident MCI, SHR 1.20 (95% CI 1.08-1.34), N=9317. Reverse direction: baseline MCI and incident high-risk depressive symptoms, SHR 1.16 (1.01-1.33), N=9428 (Tables 2 and 3, pp. 4-6). Also cited: the continuous-score multilevel growth-curve sensitivity analysis (p. 4).",
+ "tool": "ROBINS-E",
+ "tool_reason": "The cited result is the effect of an exposure (a condition: depressive symptoms, and reciprocally MCI) on a later outcome in an observational cohort. The authors frame it causally, with confounder adjustment, mediator sensitivity models and claims of minimised reverse causality, so ROBINS-E applies.",
+ "domains": [
+  {
+   "domain": "Domain 1: Confounding",
+   "judgment": "High",
+   "rationale": "The adjustment set is broad on sociodemographics and lifestyle. It omits the baseline level of the outcome within the unaffected range: the composite cognitive score among people classed as normal (12-27) for depression to MCI, and the CES-D score among those below 4 for MCI to depression. It also omits antidepressant use and genetic risk. People with depressive symptoms plausibly start nearer the MCI cut-off, which would inflate the SHR. No negative controls or quantitative bias analysis were used, and the authors acknowledge residual confounding.",
+   "signalling": [
+    {
+     "question": "1.1 Did the authors control for all the important confounding factors for which this was necessary?",
+     "answer": "Probably no",
+     "quote": "baseline variables (1998, Wave 4) including age (years), gender (Male; Female), race (White/Caucasian; Black/African American; Other), marital status ..., education ..., total household wealth ($), father with 8+ years of education (Yes; No), smoking ..., frequency of alcohol consumption (days per week), physical activity (Yes; No), BMI ..., and long-term conditions (Yes; No) were considered to be covariates.",
+     "page": "3 (journal p. 451)"
+    },
+    {
+     "question": "1.2 Were confounding factors that were controlled for measured validly and reliably?",
+     "answer": "Probably yes",
+     "quote": "Based on previous literature and data availability in HRS ... baseline variables (1998, Wave 4) ... were considered to be covariates.",
+     "page": "3 (journal p. 451)"
+    },
+    {
+     "question": "1.3 Did the authors control for any variables that could have been affected by the exposure (post-exposure or mediating variables)?",
+     "answer": "Probably yes",
+     "quote": "Second, intermediate models were developed without adjusting for behavioral variables (smoking, alcohol consumption, physical activity, and BMI) and marital status, as they might be influenced by depression and/or cognition.",
+     "page": "4 (journal p. 452)"
+    },
+    {
+     "question": "1.4 Did the authors use negative controls or other methods to assess or remove residual confounding?",
+     "answer": "No",
+     "quote": "Third, although the HRS provided a considerable number of covariates for this study, the possibility of residual confounding still cannot be ruled out.",
+     "page": "8 (journal p. 456)"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 2: Measurement of the exposure",
+   "judgment": "Some concerns",
+   "rationale": "The exposure is a single baseline measurement: a CES-D-8 screening cut-off, or a single-wave composite cognitive cut-off for MCI. It was measured before the outcome, so misclassification is likely non-differential, but it ignores changes in the exposure over 20 years.",
+   "signalling": [
+    {
+     "question": "2.1 Does the measure of exposure well characterise the exposure of interest?",
+     "answer": "Probably yes",
+     "quote": "A modified version of the Centre for Epidemiological Studies-Depression (CES-D) scale (8-item scale; yes/no; 0\u20138) was used to measure depressive symptoms. ... High-risk depressive symptoms are indicated when the total score is \u22654 (Mojtabai and Olfson, 2004).",
+     "page": "3 (journal p. 451)"
+    },
+    {
+     "question": "2.2 Was exposure measurement error likely?",
+     "answer": "Probably yes",
+     "quote": "Limitations: Items used to construct the composite cognitive measure are limited; selection bias due to missing data; and residual confounding.",
+     "page": "1"
+    },
+    {
+     "question": "2.3 Was the exposure measured before the outcome occurred (so that errors are unlikely to be related to the outcome)?",
+     "answer": "Yes",
+     "quote": "We set 1998 as the study baseline and tracked the risk of outcome in these baseline participants over the following 20 years.",
+     "page": "2 (journal p. 450)"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 3: Selection of participants into the study (or analysis)",
+   "judgment": "Some concerns",
+   "rationale": "Prevalent cases of the outcome were appropriately excluded at baseline. However, the design uses prevalent exposure (depressive symptoms already present in 1998, not incident). The paper also states that participants scoring in the dementia range at subsequent visits were excluded, which is selection on a post-exposure outcome state and contradicts the outcome definition that counts later dementia as MCI.",
+   "signalling": [
+    {
+     "question": "3.1 Was selection of participants into the study (or analysis) based on participant characteristics observed after the start of exposure?",
+     "answer": "Probably yes",
+     "quote": "At subsequent visits, those participants who scored in the \u2018dementia\u2019 range have been excluded.",
+     "page": "3 (journal p. 451)"
+    },
+    {
+     "question": "3.2 Did the start of follow-up and start of exposure coincide?",
+     "answer": "No",
+     "quote": "We used binary variables for high-risk depressive symptoms as the outcome (subsequent high-risk depressive symptoms) and the primary exposure (baseline high-risk depressive symptoms), respectively.",
+     "page": "3 (journal p. 451)"
+    },
+    {
+     "question": "3.3 Were adjustment techniques used that are likely to correct for the presence of selection biases?",
+     "answer": "Probably no",
+     "quote": "Apart from showing the percentages of missingness, baseline sample characteristics between the analysed and excluded samples were compared to assess whether selection bias existed (see Supplement IV).",
+     "page": "3 (journal p. 451)"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 4: Post-exposure interventions",
+   "judgment": "Some concerns",
+   "rationale": "Nothing is reported on treatment of depression or other interventions during follow-up that could follow from the exposure and affect the outcome.",
+   "signalling": [
+    {
+     "question": "4.1 Were there post-exposure interventions that were influenced by prior exposure during the follow-up period?",
+     "answer": "No information",
+     "quote": "Searched the full text for 'antidepressant', 'treatment', 'medication' and 'intervention' in the methods and results: no information on depression treatment or cognitive interventions during follow-up.",
+     "page": "2-9"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 5: Missing data",
+   "judgment": "High",
+   "rationale": "The analysis sample excludes people with missing outcome data across waves, and people with missing baseline exposure or covariates. The analysed samples (about 9,300 each) are well under half of the 20,012 baseline core participants, and the full breakdown is only in the supplements. Excluded participants were more likely to be exposed at baseline. Multiple imputation covered only baseline exposure and covariates, not the outcome-driven exclusions, and the authors acknowledge selection bias from attrition.",
+   "signalling": [
+    {
+     "question": "5.1 Were data on the outcome reasonably complete?",
+     "answer": "Probably no",
+     "quote": "We further excluded samples who already reported outcome of interest (MCI/dementia; high-risk depressive symptoms) at baseline, missing data on continuous outcome measures across waves before the end of follow-up (see Supplements I and II for detailed explanation) and missing data on primary exposures (high-risk depressive symptoms; MCI) and covariates at baseline.",
+     "page": "3 (journal p. 451)"
+    },
+    {
+     "question": "5.2 Were data on exposure and confounders reasonably complete?",
+     "answer": "Probably no",
+     "quote": "Third, there were missing data for covariates.",
+     "page": "3 (journal p. 451)"
+    },
+    {
+     "question": "5.3 Is there evidence that the result was not biased by missing data (appropriate analysis or sensitivity analysis)?",
+     "answer": "Probably no",
+     "quote": "Third, we performed multiple imputation using chained equations to deal with missing data for baseline depressive symptoms/MCI and covariates. ... In both investigations, excluded participants tended to have baseline exposures ... compared to analytic participants (see Supplement IV).",
+     "page": "4 (journal p. 452)"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 6: Measurement of the outcome",
+   "judgment": "Some concerns",
+   "rationale": "The outcome is ascertained with a standardised cognitive test battery, not assessor judgement. However, one wave below an HRS-derived cut-off counts as incident MCI, with no confirmation and no allowance for reversion; incidence was 4296 of 9317. Later dementia is counted as MCI, with onset imputed at the midpoint. Depressive symptoms may depress test performance at follow-up, which would introduce error related to the exposure.",
+   "signalling": [
+    {
+     "question": "6.1 Could measurement or ascertainment of the outcome have differed between exposure groups or been influenced by knowledge of exposure?",
+     "answer": "Probably no",
+     "quote": "although the use of a composite cognitive score developed by the HRS to assess cognitive function is effective in reducing the reporting bias",
+     "page": "8 (journal p. 456)"
+    },
+    {
+     "question": "6.2 Was the outcome measured validly and reliably?",
+     "answer": "Probably no",
+     "quote": "1 = subsequent MCI [including cases with subsequent dementia, assuming subsequent MCI occurred in the midterm between baseline and dementia occurrence] ... the specificity and sensitivity of these cut-offs for the CES-D (\u22654 to define high-risk depressive symptoms) and cognitive scores (7\u201311 to define MCI) have been developed, assessed, and endorsed by the HRS team itself",
+     "page": "3 and 8 (journal pp. 451, 456)"
+    },
+    {
+     "question": "6.3 Is the timing of outcome ascertainment appropriate?",
+     "answer": "Probably yes",
+     "quote": "For outcomes of interest detected at follow-up (incident MCI/high-risk depressive symptoms), the time to incident event was calculated using the year and month of onset minus the year and month of the baseline interview.",
+     "page": "3 (journal p. 451)"
+    }
+   ]
+  },
+  {
+   "domain": "Domain 7: Selection of the reported result",
+   "judgment": "Some concerns",
+   "rationale": "Unadjusted, minimally adjusted and fully adjusted models, interaction models and three sensitivity analyses are all reported, and there is no sign of selective reporting. However, no pre-registered protocol or analysis plan is cited.",
+   "signalling": [
+    {
+     "question": "7.1 Was the reported result likely selected from multiple exposure measurements?",
+     "answer": "Probably no",
+     "quote": "We re-run all statistical models using continuous CES-D and composite cognitive scores. Results were consistent with the original results based on dichotomous variables.",
+     "page": "9 (journal p. 457)"
+    },
+    {
+     "question": "7.2 Was the reported result likely selected from multiple analyses of the exposure-outcome relationship?",
+     "answer": "Probably no",
+     "quote": "First, for the associations between baseline high-risk depressive symptoms and the subsequent MCI, and between baseline MCI and the subsequent high-risk depressive symptoms, unadjusted, minimally, and fully adjusted models were considered.",
+     "page": "3 (journal p. 451)"
+    },
+    {
+     "question": "7.3 Was the analysis carried out in accordance with a pre-specified plan finalised before results were available?",
+     "answer": "No information",
+     "quote": "Searched for 'protocol', 'registered', 'pre-specified' and 'analysis plan': none cited.",
+     "page": "2-9"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "The overall judgment takes the most severe domain. Confounding is high because the adjustment set omits the baseline level of the outcome within the normal range, and residual confounding is acknowledged. Missing data is high: the analysed sample was restricted to people with complete outcome data across waves, the excluded participants were more often exposed, and imputation did not address outcome missingness. Exposure measurement, selection, post-exposure interventions, outcome measurement and reporting each raise some concerns.",
+ "confidence": "medium",
+ "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
+ "review_status": "reviewed and accepted by the operator (2026-09-28)",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "quote_check": {
+  "checked": 18,
+  "matched": 12
+ },
+ "operator_review_2026_09_28": {
+  "date": "2026-09-28",
+  "by": "operator, stated in session on 2026-09-28",
+  "statement": "The operator reviewed the model readers' risk-of-bias judgments and accepts them.",
+  "scope": "Judgments, signalling answers and quotations unchanged by the review."
+ },
+ "operator_tool_review_2026_09_29": {
+  "date": "2026-09-29",
+  "by": "operator",
+  "verdict": "disagrees with the reader's tool (ROBINS-E); operator's tool: JBI cohort checklist; ROBINS-E judged not the appropriate primary framework",
+  "statement": "",
+  "scope": "the choice of tool for the cited result, in a sample of 17 records reviewed by the operator after the appraisal; the domain judgments were not reviewed in this sample"
+ }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "C-206",
+  "qualifies": "no",
+  "question": "None shared. P-75 classifies MCI against cognitively normal controls (117 vs 113, ADNI) from tau PET (18F-AV-1451) and amyloid PET (18F-AV-45) network features. P-194 classifies early MCI against late MCI (273 vs 187, ADNI) from FDG-PET and VBM-MRI ROI features, with transfer from AD vs NC. PET is a shared channel, but the comparison differs: MCI vs controls against a within-MCI staging split. P-194's MCI-vs-NC experiment appears only in supplementary Table S2, which is not in the PDF read.",
+  "metric": "Accuracy in both, but on different class contrasts.",
+  "figures": {
+    "P-75": "MCI vs NC: accuracy 0.935 +/- 0.022, AUC 0.922 (MPHN(H++)-SAGCN); validation scheme not stated. Wilson over the 230 subjects: 0.896-0.960.",
+    "P-194": "EMCI vs LMCI: 10-fold CV accuracy 68.76 +/- 7.53% (FDG), AUC 0.66; Wilson over 460 target subjects: 0.644-0.728. Bagged 80/20 test: best accuracy 75.00% (FDG, SD L1l2/linear), AUC 0.77; Wilson over about 92 test subjects: 0.653-0.827. The record's 'Acc 53' is not P-194's result: its own method reports 56.79-75.00%, and the nearest figure, 52.44%, is a comparator (SUBA on VBM)."
+  },
+  "matched_figure_check": "No matched figure is available. P-75 reports no EMCI-vs-LMCI result. P-194 says it ran MCI vs NC but reports it only in supplementary material, which is not in the source text.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not triggered: P-75's accuracy 0.935 and AUC 0.922 are below 0.97; P-194 reaches at most 75%.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "The two accuracies answer different clinical questions. P-75 separates MCI from controls; P-194 separates early from late MCI, a within-MCI split its authors call the more difficult task. Condition 1 therefore fails. The record also misreads P-194: no 53% accuracy is its result (condition 6). The intervals are numerically apart, but condition 4 is not assessed because no shared quantity exists.",
+  "quotes": [
+    {"paper": "P-75", "page": 1, "quote": "Our proposed MCI identification method was evaluated on 230 subjects (including 117 MCI subjects, 113 normal control subjects) with both 18F-AV-1451 PET and 18F-AV-45 PET data"},
+    {"paper": "P-75", "page": 8, "quote": "MPHN(H++)- SAGCN 0.935 +/- 0.022 0.903 +/- 0.025 0.895 +/- 0.032 0.922 +/- 0.021"},
+    {"paper": "P-194", "page": 1, "quote": "We have developed an optimal transport based transfer learning model to discriminate between early and late MCI."},
+    {"paper": "P-194", "page": 6, "quote": "Based on FDG features, our model achieved 68.76 +/- 7.53% accuracy and 0.66 +/- 0.08 AUC score across ten-fold cross-validation."},
+    {"paper": "P-194", "page": 8, "quote": "But we added two more experiments on AD vs MCI and MCI vs NC to illustrate the effectiveness of our framework. We demonstrate our results and benchmark studies in the supplementary material (Table S1 and S2)."},
+    {"paper": "P-194", "page": 8, "quote": "by using OT theory to project the more difficult task, E-MCI vs L-MCI, onto the easier task of distinguishing AD and NC"}
+  ]
+}

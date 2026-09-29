@@ -1,0 +1,24 @@
+{
+  "id": "C-231",
+  "qualifies": "no",
+  "question": "None shared. P-646 asks whether high depressive-symptom burden predicts incident MCI. Its population is 9,317 US community adults aged 50+ free of MCI at baseline, with MCI defined as an HRS composite-score band of 7-11. P-645 asks how neuropsychological scores change over one year in 59 Korean clinic patients who already have both MCI and DSM-5 depression, stratified by depression severity and amyloid PET. The population class (unimpaired community adults against established MCI with clinical depression), the outcome (incidence against within-person change) and the exposure contrast (CES-D cut-off against MDD versus subthreshold depression) all differ.",
+  "metric": "Mismatch: P-646 reports a subdistribution hazard ratio; P-645 reports within-group paired baseline-to-1-year tests in each subgroup, with no between-subgroup estimate.",
+  "figures": {
+    "P-646": "Fully adjusted SHR for incident MCI, high-risk against low CES-D: 1.20 (95% CI 1.08-1.34).",
+    "P-645": "STD-MCI-A(+) (n = 15): word-list recall 1.13 to 0.40 (p = 0.020), recognition 5.47 to 3.47 (p = 0.012), MMSE 21.93 to 19.20 (p = 0.049). MDD-MCI-A(+) (n = 20): no significant change. No test compares the two subgroups. One-year dementia conversion was 3/15 (20%) against 3/20 (15%). Wilson intervals 0.070-0.452 and 0.052-0.360 overlap almost entirely."
+  },
+  "matched_figure_check": "Neither paper reports under the other's condition. P-645 has no incidence analysis in unimpaired adults, and P-646 has no severity-stratified trajectory within MCI.",
+  "beyond_uncertainty": false,
+  "significance_only": true,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [1, 2, 4, 6],
+  "candidate_explanations": [],
+  "reason": "The two papers estimate different quantities in different populations: incident MCI in community adults without MCI against one-year change within clinic patients who already have MCI and depression (conditions 1 and 2). The recorded 'severity inversion' rests on within-group significance in one subgroup of 15 and not in another of 20. P-645 runs no between-subgroup test, and the conversion rates do not differ beyond uncertainty. The difference is one of significance only (condition 4). The record also overstates P-645: the amyloid-negative MDD subgroup improved on word-list scores, but its MMSE fell (22.81 to 20.94, p = 0.042) (condition 6).",
+  "quotes": [
+    {"paper": "P-645", "page": 5, "quote": "The paired t-test and Wilcoxon signed-rank test were used to assess changes in neuropsychological test results during the 1-year follow-up period."},
+    {"paper": "P-645", "page": 5, "quote": "16, 8, 20, and 15 patients, respectively"},
+    {"paper": "P-645", "page": 5, "quote": "cognitive deterioration was more pronounced in the STD-MCI-A(+) group than the MDD-MCI-A(+) group."},
+    {"paper": "P-646", "page": 1, "quote": "baseline high-risk depressive symptoms were significantly associated with subsequent MCI (SHR = 1.20, 95%CI 1.08–1.34)."},
+    {"paper": "P-646", "page": 3, "quote": "When the total scores were between 0–6, 7–11 and 12–27, participants were considered to have dementia, MCI without dementia, and normal respectively"}
+  ]
+}

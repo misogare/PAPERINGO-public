@@ -1,0 +1,23 @@
+{
+ "id": "C-215",
+ "qualifies": "no",
+ "question": "None shared. P-178 predicts eventual conversion to AD among early-MCI patients. P-308 predicts conversion to the next cognitive level within 3 years (CN to MCI, or MCI to AD) in a pooled cohort of cognitively normal and MCI participants: about 23% of its converters are CN-to-MCI, and CN participants also sit among its non-converters. The comparison and the population behind the label differ, and P-308 reports no MCI-only accuracy. The clinical/cognitive channel is shared; P-178 adds MRI volumes and P-308 adds CSF.",
+ "metric": "Accuracy in both nominally (P-178 0.936; P-308 84% on its test set), but on different endpoints and class ratios: about 10% converters in P-178's test set and 22% in P-308's undersampled set.",
+ "figures": {
+  "P-178": "EMCI-to-AD, 95 test patients: accuracy 0.936, Wilson 0.868-0.970. Class-wise sensitivity 0.556 and specificity 0.978, derived from Table 4 as in C-213.",
+  "P-308": "3-year CN-or-MCI conversion, gradient boosting after undersampling to 409 participants (22% converters). Test accuracy 84%, sensitivity 43%, specificity 96%. The test-set size is not printed. Wilson: 0.746-0.904 at n = 82 (20% of 409), 0.765-0.894 at n = 123 (30%). On the raw figures each lies outside the other's interval, but this does not bear on the verdict because the figures do not estimate the same quantity."
+ },
+ "matched_figure_check": "No figure answers P-178's question. P-308's whole-cohort result and its CSF sub-cohort results (88% AD-like CSF, 86% normal CSF) all pool CN and MCI participants and both kinds of conversion. P-308 runs SHAP separately for MCI but reports no MCI-only accuracy or AUC.",
+ "beyond_uncertainty": true,
+ "significance_only": false,
+ "performance_validity": "Passes: 0.936 and 0.84 are below 0.97. P-308's training accuracy of 91% is not a compared figure.",
+ "failed_conditions": [1, 6],
+ "candidate_explanations": [],
+ "reason": "P-308's outcome is any one-step conversion within 3 years in a pooled cognitively normal plus MCI cohort, whereas P-178's is AD conversion among early-MCI patients. The two papers do not share a clinical question or the population behind the label (condition 1), and P-308 prints no MCI-only figure to set against P-178. The record's labelling of P-308's 84% as an MCI-to-AD (T2) result misdescribes that paper (condition 6). The raw accuracy gap is therefore not a discrepancy under the rule.",
+ "quotes": [
+  {"paper": "P-178", "page": 1, "quote": "383 Early Mild Cognitive Impairment (EMCI) patients were gathered from the Alzheimer’s Disease Neuroimaging Initiative (ADNI). Of these patients, 49 would eventually convert to AD (EMCI_C), whereas the remaining 334 did not convert (EMCI_NC)."},
+  {"paper": "P-308", "page": 3, "quote": "The participants were labeled as “converters” depending on whether their cognitive status progressed within 3 years, that is, (1) from CN to MCI; (2) from MCI to AD. Otherwise, they were considered non-converters."},
+  {"paper": "P-308", "page": 4, "quote": "Of the 90 converters, 76.77% were MCI cases, the others were CN."},
+  {"paper": "P-308", "page": 5, "quote": "After undersampling, the model was applied to 409 participants (22% converters). With the optimal cut-off, the model’s accuracy was 91% in the training set and 84% in the test set. The algorithm showed high specificity (96%) but low sensitivity (43%)."}
+ ]
+}

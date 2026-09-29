@@ -1,0 +1,25 @@
+{
+  "id": "C-47",
+  "qualifies": "no",
+  "question": "None shared. P-117 (Aljalal et al. 2024; the right PDF is 1-s2.0-S1746809423008959, and the pack file pdf/P-117.txt is an MRI-PET fusion paper) classifies MCI vs HC (binary) from resting-state EEG. P-5 (Gao et al. 2023) classifies MCI vs AD vs CN (three-class) from fundus photographs plus OCT. The channels (EEG against eye/retina), the comparison and the cohorts all differ.",
+  "metric": "Mismatch: P-117's figure is accuracy, while P-5's 84.96% is the per-class precision for MCI inside a three-class model.",
+  "figures": {
+    "P-117": "Binary MCI vs HC accuracy 99.81% (11 NSGA-selected channels, ensemble KNN) and 99.51% with all channels, 10-fold CV over 3660 EEG segments from 61 participants (29 amnestic MCI/32 HC). Wilson with subject n=61: 0.9981 -> (0.937, 1.000).",
+    "P-5": "MCI-class precision 84.96% within a three-class model; three-class accuracy 91.64%, AUC 96.78%, 5-fold CV, first dataset 117 patients (29 MCI/58 eyes, 50 CN/100 eyes, 38 AD/76 eyes)."
+  },
+  "matched_figure_check": "No matched figure: P-5 prints no binary MCI-vs-CN accuracy and P-117 no three-class or retinal result.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "P-117 meets the Section 3.5 exclusion on its own PDF: 99.81% (and 99.51% full-channel) from internal 10-fold CV over segments of only 61 participants, with no external cohort. The registry's performance_suspect=false arises only because its Best_Metric reads 'not reported'. P-5's 96.78% AUC is below 0.97.",
+  "failed_conditions": [1, 2, 5, 6],
+  "candidate_explanations": [],
+  "reason": "The pair fails condition 1 (EEG against retinal imaging; binary against three-class) and condition 2 (accuracy against class-specific precision), and P-117 meets the performance-validity exclusion (condition 5). The claimed disagreement exists only because the record labels P-5's MCI-class precision as a T1 accuracy-like result (condition 6). No uncertainty comparison is meaningful across different metric types, so beyond_uncertainty is recorded as false, meaning not assessable.",
+  "quotes": [
+    {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method. (document: 1-s2.0-S1746809423008959)"},
+    {"paper": "P-117", "page": 3, "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases."},
+    {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+    {"paper": "P-117", "page": 9, "quote": "divided into 3660 segments (1740 segments from MCI cases and 1860 from HC cases)"},
+    {"paper": "P-5", "page": 1, "quote": "The proposed method achieved high precision rates of 84.96% and 80.90% in classifying MCI and positive test scores for cognitive impairment, respectively."},
+    {"paper": "P-5", "page": 7, "quote": "As shown in Table 2, the proposed network DuCAN had an accuracy of 91.64% and an AUC of 96.78%."}
+  ]
+}

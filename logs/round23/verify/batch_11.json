@@ -1,0 +1,152 @@
+{
+ "batch": 11,
+ "role": "verifier (unresolved-discrepancy tier, verification round)",
+ "date": "2026-09-29",
+ "sources_read": [
+  "r23/DISCREPANCY_BRIEF.md (full, incl. 'Verification round')",
+  "r23/conf/C-221.json, C-223.json, C-224.json, C-232.json",
+  "r23/conf/challenge_advocate_8.json (C-221, C-223), challenge_skeptic_6.json (C-224, C-232)",
+  "data/conflicts.json records C-221, C-223, C-224, C-232 (read-only)",
+  "r20/pdf/P-203.txt (pp.1-3, 6, 10), P-212.txt (pp.1-3, 5, 8), P-3.txt (pp.1, 3, 6-7, 9), P-41.txt (pp.3, 6, 8, 12), P-243.txt (pp.1-3), P-81.txt (pp.1-2, 4), P-344.txt (pp.1, 3-5); r21/pdf/P-309.txt (pp.1-2, 5-6)"
+ ],
+ "arithmetic_script": "none written (the brief allows output files only); inline Python, with every step shown in se_source and reason",
+ "results": [
+  {
+   "id": "C-221",
+   "compared": "MCI-to-AD conversion (pMCI vs sMCI) among ADNI MCI participants, accuracy with accuracy. Neither paper reports a result under the other's condition, so the pair's headline shared-metric figures are compared. For P-203 that is its printed conversion accuracy, 0.801 on the ADNI-2 test set. The ledger's 91.1% is P-203's AD vs CN accuracy, which is a misreading under condition 6. For P-212 it is the ledger's figure, the random-forest held-out test accuracy of 0.662 (92/139). Against P-212's ensemble, 0.683 (95/139), z = 0.118/sqrt(0.02246^2 + 0.03945^2) = 2.59. The per-class figures, the only same-subset results, are tested under condition 3 in the reason.",
+   "a": {
+    "paper": "P-203",
+    "estimate": 0.801,
+    "se": 0.02246,
+    "se_source": "No interval printed. Binomial SE = sqrt(0.801 x 0.199 / 316) = 0.02246, with n = 316 ADNI-2 MCI test subjects: 'The ADNI-2 dataset has 643 3T T1W sMR brain images, including 143 AD, 184 CN, 75 pMCI, and 241 sMCI' (p.3). Table 4, p.6, row MSA3D, pMCI vs sMCI: ACC 0.801, SEN 0.520, SPE 0.856, AUC 0.789, F1 0.553 ('All the models are trained on ADNI-1'). Wilson interval [0.753, 0.841]. Consistency check: ACC 0.801, SEN 0.520 and F1 0.553 fit a single confusion matrix, TP 39, FN 36, TN 214, FP 27 (F1 = 78/141 = 0.553), which implies a specificity of 214/241 = 0.888. The printed SPE of 0.856 does not fit. The same pattern holds in three of the other four Table 4 rows (3D-CNN: TP 32, TN 211, F1 64/137 = 0.467 as printed; Voxel+SVM 0.162 and Multi-Slice 0.317 also reproduce). So the printed accuracy is taken as correct and the SPE column as the inconsistent one. The p.10 ablation supports the same pairing: 'the ACC and SEN is 0.772 vs. 0.801 and 0.440 vs. 0.520'."
+   },
+   "b": {
+    "paper": "P-212",
+    "estimate": 0.662,
+    "se": 0.04013,
+    "se_source": "No interval printed. Binomial SE = sqrt(0.662 x 0.338 / 139) = 0.04013 on the held-out test set: 'a test set comprising 21% (n = 139) was held aside to be used for a final evaluation of how well the model performs on unseen data' (p.8), and 'When the model was evaluated on our unseen test set, the overall classification accuracy was 66.2%' (p.2). The random forest misclassified 22 of 74 sMCI and 25 of 65 cAD, so 92/139 were correct. Wilson interval [0.580, 0.735]. The ensemble scored 68.3% (95/139), SE 0.03945, Wilson [0.602, 0.755]. The 74.6% and 74.9% CV means are not the evaluation figure: they come from the 50-fold search used to set hyperparameters ('To find hyperparameter settings for the machine learning models we used model-specific parameter grids and a randomized grid search across 50 cross-validation folds', p.8)."
+   },
+   "scale": "accuracy (proportion)",
+   "z": 3.03,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "other_condition_failed": [],
+   "final": "qualifies",
+   "candidate_explanations": [
+    "Class mix of the evaluation sets: 24% converters in P-203's ADNI-2 test ('75 pMCI, and 241 sMCI', P-203 p.3) against 47% in P-212 ('converters to AD (cAD; n = 321, 47.3%)', P-212 p.8). P-203's 0.801 lies within uncertainty of its all-stable rate, 241/316 = 0.763, which falls inside its Wilson interval [0.753, 0.841]. Applied to P-212's mix, P-203's own per-class figures close the gap. Applied to P-203's mix, P-212's per-class figures do not. So class mix alone is not shown to be sufficient.",
+    "Operating threshold: P-203 runs at high specificity and low sensitivity (SEN 0.520; SPE 0.856 printed, 0.888 implied), while P-212 is near-symmetric (ensemble: 'a specificity of 73.0% and a sensitivity of 63.1%', P-212 p.2). P-203's threshold was learned on ADNI-1 at 42% converters (167 pMCI / 229 sMCI) and applied to ADNI-2 at 24%. P-212 prints no AUC, so no threshold-free comparison is possible, and this is not shown to be sufficient.",
+    "Label definition and horizon. P-203: 'Progressive MCI (pMCI): Subjects are diagnosed with MCI who would gradually progress to AD within 0-36 months'; stable over 0-90 months (p.3). P-212: conversion to probable AD at any later assessment against stability at all visits (p.8).",
+    "Predictor set: whole-brain T1 images through a multiview-slice attention network and a 3D CNN (P-203), against cognitive tests, one FreeSurfer hippocampal volume, APOE and demographics in a random forest or ensemble (P-212: 'with cognitive function, hippocampal volume and genetic APOE status as features, we obtained a cross-validation classification accuracy of about 70%', p.1). This difference would lead one to expect P-212 to score higher, not lower.",
+    "Validation design: P-203 trains on ADNI-1 (1.5 T) and tests on ADNI-2 (3 T), a cross-phase and cross-field-strength test. P-212 uses a stratified internal 79/21 split, and its test accuracy (66-68%) falls below its own tuning-CV mean of about 75% ('When the model was evaluated on our unseen test set, the overall classification accuracy was 66.2%', p.2).",
+    "Reporting inconsistency in P-203: its printed SPE (0.856) does not fit its ACC, SEN and F1, which together imply 0.888. The inconsistency affects the per-class reading but not the compared accuracy.",
+    "Both samples come from ADNI and may share participants, so they are not fully independent.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "For predicting conversion from MCI to AD in ADNI, a whole-brain MRI network reached 80.1% accuracy on an ADNI-2 test set with 24% converters (P-203). A random forest on cognitive scores, hippocampal volume and APOE reached 66.2% (ensemble 68.3%) on a held-out test set with 47% converters (P-212). The gap is beyond combined uncertainty (z = 3.03), but the two models agree on converters (sensitivity 0.52 vs 0.62-0.63) and differ only on stable MCI (specificity 0.86-0.89 vs 0.70-0.73). P-203's accuracy is also within uncertainty of the 76.3% it would score by calling everyone stable. Class mix and decision threshold are the leading candidate explanations, and neither is shown to account for the gap fully.",
+   "reason": "Test on the compared figures: z = (0.801 - 0.662)/sqrt(0.02246^2 + 0.04013^2) = 0.139/0.0460 = 3.03, which passes. Against the ensemble, z = 2.59, which also passes. Full skeptic check of conditions 1 to 6 against the sources. (1) Holds. Both papers predict MCI-to-AD conversion in ADNI MCI. P-212 is multimodal, and its MRI feature (hippocampal volume from 'the FreeSurfer longitudinal stream' on T1 images, p.6) is the feature its own impurity analysis ranks first (p.3), so the MRI channel is shared. Horizon, predictors and validation are allowed differences. (2) Holds: accuracy with accuracy. (3) This is the weakest link, but a failure cannot be shown. The only same-subset figures are the per-class accuracies. In the converter subset they agree: SEN 0.520 (SE 0.0577) against 0.615 and 0.631 (SE 0.0603 and 0.0599), z = 1.14 and 1.33. In the stable subset they do not: specificity 0.888 implied (SE 0.0203) or 0.856 printed (SE 0.0226), against 0.703 and 0.730 (SE 0.0531 and 0.0516), z = 3.26 and 2.85 on the implied figure, 2.66 and 2.24 on the printed one. Re-weighting to a common class mix gives a split result. P-203's figures at P-212's mix give 0.468 x 0.520 + 0.532 x 0.888 = 0.716 (SE 0.0291), against 0.662 and 0.683, z = 1.09 and 0.66, so they agree. P-212's figures at P-203's mix (23.7% converters) give 0.682 (RF) and 0.706 (ensemble), against 0.801, z = 2.45 and 1.99, so they do not. The balanced accuracies agree (0.704 against 0.659 and 0.680, z = 0.89 and 0.48), but neither paper prints them. The matched figures therefore do not agree in both subsets. The papers' own data dissolve the gap in one direction only, so condition 3 holds on the rule's text. The difference that survives every reading is P-203's higher specificity at a sensitivity that is lower but not significantly so. That pattern is consistent with a different operating threshold, and neither paper shows that it is the cause. (4) Passes (z = 3.03). (5) Holds: no figure reaches 0.97 (0.801, AUC 0.789; P-212 at most 0.749). (6) Holds: the record's 91.1% is P-203's AD vs CN figure, and the gap persists on the printed conversion accuracy. The record's P-212 figure, 66.2%, is correct. Fragility: against P-212's tuning-CV means (0.746 and 0.749 at n = 539, SE 0.0188 and 0.0187), z = 1.88 and 1.78, which fail. The verdict rests on P-212's held-out test figure, which the paper names as its final evaluation."
+  },
+  {
+   "id": "C-223",
+   "compared": "Stable against progressive MCI from structural T1 MRI in ADNI. No matched figure exists: P-41 reports no result without AD patients, no whole-volume input and no 36-month window, and P-3 reports no result with AD patients among its positives. So the headline shared-metric figures are compared. The primary compared figure is ROC-AUC, 0.780 (P-3) against 0.9287 (P-41), z = 2.76. AUC is used because P-41's printed accuracy (91.77%) cannot occur on its balanced 15/15 test set: it exceeds both its sensitivity (87.69%) and its specificity (88.53%). The same impossibility appears in 7 of the 8 ensemble results described on p.12, for example 86.07% against 81.37%/77.19%. On accuracy, 0.7461 against the printed 0.9177 gives z = 3.22, and against the 0.881 implied by P-41's sensitivity and specificity z = 2.19.",
+   "a": {
+    "paper": "P-3",
+    "estimate": 0.780,
+    "se": 0.01896,
+    "se_source": "Only fold variances are printed ('CAAT ensemble 0.75 (0.004) 0.75 (0.006) 0.75 (0.002) 74.61 (0.002) 0.780 (0.003)', Table row, p.7), and they are treated as spreads, not SEs. Hanley-McNeil with 295 pMCI and 298 sMCI ('Our dataset consists of 593 MRI images, consisting of 298 sMCIs and 295 pMCIs images. We performed 5 fold cross validation using the same data splits as that used in [11]', p.6): Q1 = 0.78/1.22 = 0.6393, Q2 = 2(0.78^2)/1.78 = 0.6836, SE = 0.01896, CI [0.743, 0.817]. Accuracy: SE = sqrt(0.7461 x 0.2539 / 593) = 0.01787, Wilson [0.710, 0.779]. SEN = SPE = 0.75 on near-balanced classes, so this accuracy is internally consistent."
+   },
+   "b": {
+    "paper": "P-41",
+    "estimate": 0.9287,
+    "se": 0.05052,
+    "se_source": "Only run SDs are printed ('an impressive AUC of 92.87% +/-3.58', p.12), and they are treated as spreads. The test set is 15 sMCI and 15 pMCI-or-AD subjects (Table 1, p.8: 'Test 15 15 132 3960 3960 3960 11,880'; 'all results reported in this study were based on the test set'). Slices are nested in subjects, so n is the number of subjects. Hanley-McNeil 15/15: Q1 = 0.9287/1.0713 = 0.8669, Q2 = 2(0.9287^2)/1.9287 = 0.8944, SE = sqrt([0.0662 + 14(0.0044) + 14(0.0319)]/225) = 0.0505, CI [0.830, 1.000]. Accuracy: the printed 0.9177 has SE sqrt(0.9177 x 0.0823 / 30) = 0.0502 and Wilson [0.766, 0.974]. The implied (0.8769 + 0.8853)/2 = 0.881 has SE 0.0591 and Wilson [0.721, 0.955]."
+   },
+   "scale": "ROC-AUC (accuracy checked in parallel)",
+   "z": 2.76,
+   "passes_z": true,
+   "skeptic_checked": true,
+   "other_condition_failed": [],
+   "final": "qualifies",
+   "candidate_explanations": [
+    "Label definition: patients with established AD in P-41's progressive class ('Furthermore, we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously', P-41 p.8). The AD share of the 15 test positives is not stated. At the cohort share (2 or 3 of 15), the gap survives even if the AD cases are ranked perfectly (z = 2.27 and 2.01). With 4 or more AD patients among the test positives it would not. Not shown to be sufficient.",
+    "Label window and possibly scan timepoint: P-41's converters convert between M18 and M48, against stability to M48 ('The second group (pMCI) included 81 participants who were diagnosed with MCI at baseline but progressed to AD within 2.5 years, between month 18 (M18) and M48. We specifically used pMCI subjects starting from M18, as they progressed to full AD by M48', p.8). The second sentence may mean the pMCI scans are taken at M18, closer to conversion; the text does not settle this. P-3 uses baseline scans with conversion within 36 months ('if a subject was diagnosed with Dementia within the following 36 months, he/she was grouped into pMCI', p.3).",
+    "Evaluation-set size and model selection: 30 test subjects, on which P-41 reports and compares at least eight ensemble and head configurations ('all results reported in this study were based on the test set', p.8), against 5-fold CV over 593 subjects in P-3.",
+    "Input representation and architecture: 132 middle slices per plane through a heterogeneous 2D CNN ensemble with CBAM and multi-head attention ('From each volume, 132 middle slices from the axial, coronal, and sagittal planes were selected', P-41 p.8), against whole 3D volumes through a 3D CNN with attention maps transferred from source tasks (P-3).",
+    "Cohort and scanner: 192 ADNI-1/GO/2 subjects at 3 T, selected 'based on data availability' (P-41 p.8), against 593 ADNI-1/2 subjects on the Wen et al. benchmark splits (P-3 p.6).",
+    "Reporting inconsistency in P-41: its printed accuracies exceed both its sensitivity and its specificity in 7 of 8 configurations on a balanced test set, which is arithmetically impossible. This affects the accuracy comparison but not the AUC.",
+    "Evaluation bias acknowledged by P-3, which would inflate P-3 rather than P-41: 'A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models. This may lead to an optimistically biased evaluation of the model performance' (p.9).",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "For stable versus progressive MCI from T1 MRI in ADNI, a 3D CNN with transferred attention reached AUC 0.780 (accuracy 74.6%) in 5-fold cross-validation over 593 subjects (P-3). A multi-plane 2D CNN ensemble reached AUC 0.929 (P-41) on a 30-subject test set whose progressive class also included patients with established AD. Its printed accuracy of 91.8% is capped at 88.1% by its own sensitivity and specificity. The gap is beyond combined uncertainty (z = 2.76) but rests on 30 test subjects. The AD admixture, model selection on the test set and the input differences are candidate explanations, none shown to be sufficient.",
+   "reason": "Test on the compared figures: z = (0.9287 - 0.780)/sqrt(0.01896^2 + 0.05052^2) = 0.1487/0.0540 = 2.76, which passes. On accuracy, z = 3.22 on the printed figure and 2.19 on the implied one; both pass. Full skeptic check of conditions 1 to 6. (1) Holds, narrowly. P-41 frames its task as MCI progression ('to predict the progression of MCI to pMCI/AD', p.6). It cites Luo et al.'s attention-transfer 3D CNN for MCI-to-AD prediction within three years as prior work on its own problem (p.3), and it sets its figure beside sMCI-vs-pMCI results (Table 5). Its positive class is 81 converters plus 15 AD patients, all ADNI Alzheimer's-spectrum participants. That is a label-definition difference, which the rule allows, not a different population class. The attack that nearly succeeds is the test composition, which is not stated. Suppose the AD cases are ranked perfectly. With k of the 15 test positives being AD, the converter-only AUC is at least (0.9287 - k/15)/(1 - k/15). For k = 2 that bound is 0.918 (HM 13/15, SE 0.0577, z = 2.27), for k = 3 it is 0.911 (z = 2.01), for k = 4 0.903 (z = 1.76) and for k = 5 0.893 (z = 1.49). The cohort share predicts 15/96 x 15 = 2.3, so at the expected share the gap survives. It would fail only if at least 4 of the 15 test positives were AD, and the source does not say so. Condition 1 therefore cannot be shown to fail, but the verdict depends on this unstated split. (2) Holds: AUC with AUC and accuracy with accuracy. (3) Holds: no matched figure (see compared). (4) Passes. (5) Holds: no P-41 figure reaches 0.97 (a search of the text finds no value at or above 97%, and the best is 92.87%); P-3's best is 0.780. The 30-subject internal test and the configuration comparisons on it are candidate explanations, not the Section 3.5 exclusion. (6) Holds. The record's 'Acc 91' is P-41's printed 91.77%, which the paper itself makes impossible. On the consistent reading (0.881) and on the AUC, the gap persists, so it does not rest on a misread figure."
+  },
+  {
+   "id": "C-224",
+   "compared": "Conversion from MCI to AD within three years among ADNI MCI participants, ROC-AUC. Both models are multimodal and share the clinical and cognitive channel. No matched figure exists: P-243 prints no model without its sMRI volumes and uses no PET, and P-81 prints no sMRI model. The headline figures are compared: P-243's test AUC of 0.89 against P-81's recorded model (PET + age + cognitive scores), 0.7849. The ledger's claim_b names P-320, but the figure is P-81's. Against P-81's best model without imaging (CS + age, 0.8004, SE 0.0305), z = 2.24.",
+   "a": {
+    "paper": "P-243",
+    "estimate": 0.89,
+    "se": 0.02578,
+    "se_source": "No interval is printed for the test AUC ('the accuracy, precision, recall, F1-score and AUC of the final model on the test set are 0.83, 0.82, 0.71, 0.76 and 0.89, respectively', p.3). The test set is 30% of 627, about 188 ('The 30% of data was used as test set', p.2). Its class counts are not printed, so the cohort ratio is applied (269 converters and 358 stable, p.2), giving about 81/107. Hanley-McNeil: Q1 = 0.89/1.11 = 0.8018, Q2 = 2(0.89^2)/1.89 = 0.8382, SE = 0.0258, CI [0.839, 0.941]. With 70/118 or 90/98 the SE is 0.0273 or 0.0248, and z is 2.53 or 2.63."
+   },
+   "b": {
+    "paper": "P-81",
+    "estimate": 0.7849,
+    "se": 0.03138,
+    "se_source": "Mean +/- fold SD over 5-fold CV (Table 3, p.4: 'Values shown are mean +/- standard deviation'; PET + AGE + CS AUC 0.7849 +/- 0.0963). The SD is treated as a spread, so the SE is derived from the 257 MCI subjects, 93 unstable and 164 stable ('The final cohort that met the criteria contained a total of 612 subjects, including 205 patients with the diagnosis of Dementia of Alzheimer's type (DAT), 150 cognitively normal subjects, 164 stable-MCI subjects, and 93 unstable-MCI subjects', p.2). Hanley-McNeil: Q1 = 0.7849/1.2151 = 0.646, Q2 = 2(0.7849^2)/1.7849 = 0.690, SE = 0.0314, CI [0.723, 0.846]."
+   },
+   "scale": "ROC-AUC",
+   "z": 2.59,
+   "passes_z": true,
+   "skeptic_checked": false,
+   "other_condition_failed": [],
+   "final": "qualifies",
+   "candidate_explanations": [
+    "Training regime: P-81's Table 3 figures are zero-shot predictions from a network trained on CN vs AD ('Table 3 shows the prediction performance from zero-shot predictions', P-81 p.4), so its model never learned the conversion labels. P-243 trains directly on conversion labels.",
+    "Cognitive instruments: P-243's strongest predictors are FAQ, ADAS11 and mPACCtrailsB ('scores from the FAQ, ADAS11 and Modified Preclinical Alzheimer Cognitive Composite with Trails test (mPACCtrailsB) ranked top 3', P-243). P-81 uses CDR-SB, logical memory, MMSE, mPACCdigit and mPACCtrailsB, with no FAQ, ADAS or RAVLT.",
+    "Imaging channel: three FreeSurfer volumes in P-243 against whole-brain FDG-PET in P-81. P-81 shows that PET adds little to the cognitive scores ('Neurocognitive scores predicted better than FDG-PET per se, but the best model was a combination of FDG-PET, age, and neurocognitive data, yielding an AUC of 0.785 +/- 0.096', p.1), so this is not shown to carry the gap.",
+    "Cohort selection and class balance. P-243 has 627 MCI from ADNI-1/GO/2/3, 43% converters, with 3-year follow-up required and 'Participants diagnosed with bidirectional changes during follow-up were excluded'. P-81 has 257 MCI, 36% converters, restricted to participants with 'a 3D whole-brain FDG-PET scan taken within two months of baseline diagnosis', with no stated follow-up requirement for the stable label.",
+    "Model selection and validation. P-243 used LASSO and Bayesian-tuned AdaBoost chosen among nine models and fusion strategies by 5-fold CV, then evaluated once on a 30% held-out set ('Finally, the test set (30%) was used to assess the performance of optimal model', p.3). P-81 used 5-fold CV over 257 subjects, with a large fold SD (0.096).",
+    "P-81's own caution: 'interpretation of performance metrics needs to be made with caution. Differences in performance could be due to differences many factors.'",
+    "Both samples come from ADNI and may share participants, so they are not fully independent.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "For predicting conversion from MCI to AD within three years in ADNI, an AdaBoost model on LASSO-selected cognitive scores and three MRI volumes reached AUC 0.89 on a held-out test set of about 188 (P-243). A network pretrained on controls versus AD, applied zero-shot to FDG-PET, age and cognitive scores, reached AUC 0.785 in 5-fold cross-validation over 257 (P-81; 0.800 without PET). The gap is beyond combined uncertainty (z = 2.59). The cognitive instruments, imaging channel, training regime, cohort selection and validation differ, and these are candidate explanations that neither paper tests.",
+   "reason": "Test on the compared figures: z = (0.89 - 0.7849)/sqrt(0.02578^2 + 0.03138^2) = 0.1051/0.0406 = 2.59, which passes. The result holds under other plausible splits of P-243's test set (z = 2.53 to 2.63) and against P-81's best model without imaging (z = 2.24). This round did not require a full skeptic check, because the pair did not qualify through the advocate. The challenge-round skeptic (challenge_skeptic_6) found no failed condition, and the figures and sizes above were re-checked against P-243 p.2-3 and P-81 p.2 and 4. P-81's fold SD is not used as an SE, as the brief directs. P-243's 0.98 is a 0-6-month regrouping of its test set and P-81's 1.0 values are CN vs AD, so neither is a compared figure, and no compared figure is near ceiling. The ledger's P-320 label is a record defect. It does not misstate the figure, which is P-81's 0.785."
+  },
+  {
+   "id": "C-232",
+   "compared": "Time to conversion from MCI to AD, Harrell's C-index on an internal hold-out in both papers, with the clinical and cognitive channel shared (P-344 adds PET and MRI). The figures are matched by model family: random survival forest against random survival forest, 0.878 (P-344) against 0.781 (P-309). Cox against Cox, 0.863 against 0.798, gives z = 2.23. Each paper's best model, 0.878 against 0.798, gives z = 2.85. The ledger's own claim is a reversal of the RSF-versus-Cox ordering (+0.015 against -0.017). That claim is not tested, because its SE depends on the between-model correlation, which neither paper reports. The pair is judged on the absolute C-index.",
+   "a": {
+    "paper": "P-344",
+    "estimate": 0.878,
+    "se": 0.02272,
+    "se_source": "The printed bootstrap CI is 0.877-0.879 ('RSF achieved the best performance with a score of 0.878 (95% CI: 0.877-0.879)', p.5). It would give an SE of 0.002/3.92 = 0.0005, which cannot be a sampling SE for 271 test subjects, so an SE is derived instead. Using the printed interval would give an even larger z, 5.69. The test set has n = 271 and was stratified on event status ('randomly split into non-overlapping training (n = 631, 70%) and testing (n = 271, 30%) sets using stratified sampling based on event status', p.4). With 379/902 = 42.0% events ('379 individuals (42.0%) progressed from MCI to AD', p.5), that is about 114 events and 157 censored. Hanley-McNeil, as an approximation for the C-index: Q1 = 0.878/1.122 = 0.7825, Q2 = 2(0.878^2)/1.878 = 0.8210, SE = 0.0227, CI [0.833, 0.923]."
+   },
+   "b": {
+    "paper": "P-309",
+    "estimate": 0.781,
+    "se": 0.01703,
+    "se_source": "No interval printed ('In the validation set, the concordance indices were 0.781 (RSF), 0.781 (XGBoost), and 0.798 (Cox)', p.1). The validation set is 30% of 3,674, about 1,102 ('The dataset was divided into a training set and a validation set at a 7:3 ratio', p.2), with about 27% events ('In the validation set, approximately 27 % of the subjects developed AD'), so about 298 events and 804 without. Hanley-McNeil: Q1 = 0.781/1.219 = 0.6407, Q2 = 2(0.781^2)/1.781 = 0.6850, SE = 0.0170, CI [0.748, 0.814]."
+   },
+   "scale": "C-index (concordance)",
+   "z": 3.42,
+   "passes_z": true,
+   "skeptic_checked": false,
+   "other_condition_failed": [],
+   "final": "qualifies",
+   "candidate_explanations": [
+    "Imaging predictors: P-344's final 14 features include '(b) PET (FDG), (c) MRI (Hippocampus, Entorhinal, Fusiform, MidTemp)'. P-309 has no imaging and says that CSF and radiomic predictors 'may have a greater effect on the progression of AD'.",
+    "Cohort: the ADNI research cohort against NACC UDS memory-clinic data, where 'The diagnoses of MCI and AD were determined by the investigator and documented in the database' (P-309 p.2).",
+    "Follow-up and horizon of Harrell's C. ADNI has 'follow-up data spanning up to 16 years' and a median time to progression of 6 years (P-344). NACC has a 'median follow-up time was 24.5 months (IQR 13.4-40.4)' (P-309 p.2). P-309 shows its discrimination falling with horizon ('the prediction ability decreases as the prediction time increases'), so the direction of this effect across the two cohorts is not established.",
+    "Event proportion and definition: 42.0% converters in ADNI against about 27% in NACC ('In the validation set, approximately 27 % of the subjects developed AD').",
+    "Preprocessing before the split in P-344: missForest imputation and Lasso-Cox feature selection are described before 'After preprocessing, the data was randomly split into non-overlapping training (n = 631, 70%) and testing (n = 271, 30%) sets', so the test figure may be optimistic.",
+    "Predictor sets within the clinical channel differ. P-344 uses CDRSB, FAQ, ADAS13, RAVLT, LDELTOTAL and TRABSCOR. P-309 uses MoCA, CDR domain scores, Craft Story, Benson figure, category fluency, informant-reported decline, age, BMI, education and APOE e4 count.",
+    "Evaluation-set size: 271 against about 1,102.",
+    "None of these is shown by either paper to be sufficient."
+   ],
+   "one_sentence": "For predicting time to conversion from MCI to AD, a random survival forest reached a C-index of 0.878 on a 271-subject ADNI test set with imaging, genetic and cognitive predictors (P-344). The same model family reached 0.781 (Cox 0.798) on about 1,102 NACC validation subjects with clinical and cognitive predictors only (P-309). The level of discrimination differs beyond combined uncertainty (z = 3.42; Cox against Cox, z = 2.23). Neither paper settles the ledger's claim that the best-ranked model reverses between the studies. Imaging predictors, cohort, follow-up length, event rate and preprocessing before the split are candidate explanations, none shown to be sufficient.",
+   "reason": "Test on the compared figures: z = (0.878 - 0.781)/sqrt(0.02272^2 + 0.01703^2) = 0.097/0.0284 = 3.42, which passes. Cox against Cox gives z = 0.065/sqrt(0.02396^2 + 0.01655^2) = 2.23 (2.27 on P-309's 0.797 with APOE e4), and best against best gives z = 2.85. Fragility: Hanley-McNeil only approximates the SE of Harrell's C under censoring. The RSF result stays at or above 1.96 unless both SEs are more than 1.74 times the derived values. The Cox result tolerates only 1.14 times. This round did not require a full skeptic check, because the pair did not qualify through the advocate. The challenge-round skeptic (challenge_skeptic_6) found no failed condition, and the sizes and event rates above were re-checked against P-344 pp.4-5 and P-309 pp.1-2 and 5. Neither figure is near ceiling (0.878 < 0.97). The ledger's ordering claim is not established. The pair qualifies on the absolute C-index, the figure both papers print."
+  }
+ ],
+ "summary": "All four pairs pass the difference test and qualify. C-221: z = 3.03 on P-203's printed conversion accuracy (0.801) against P-212's held-out random forest (0.662); 2.59 against the ensemble. The test fails against P-212's tuning-CV means (z = 1.78-1.88). The skeptic check could not show a failed condition. Condition 3 is the weak point: the per-class figures agree on converters and differ on stable MCI, and re-weighting to a common class mix dissolves the gap in one direction only. P-203's accuracy is within uncertainty of its all-stable rate. C-223: z = 2.76 on AUC (0.780 vs 0.929), 2.19 to 3.22 on accuracy. P-41's printed accuracies are arithmetically impossible on its balanced test. The skeptic check could not show a failed condition, but the gap would not survive if 4 or more of P-41's 15 test positives were AD patients, a split the paper does not state. C-224: z = 2.59 (AUC 0.89 vs 0.785). C-232: z = 3.42 on the absolute C-index (RSF 0.878 vs 0.781), not on the ledger's ordering claim, which remains undecidable."
+}

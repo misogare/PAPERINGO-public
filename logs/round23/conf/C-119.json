@@ -1,0 +1,28 @@
+{
+  "id": "C-119",
+  "qualifies": "no",
+  "question": "Prediction of MCI-to-AD conversion within about 2 years among ADNI MCI participants, from MRI plus cognitive tests. Same task and population class. The shared channels are MRI and cognitive testing (P-183: T2-map signal/texture, volumes and neuropsychology; P-168: FreeSurfer volumes, neuropsychology and demographics). Allowed differences: label definition (P-183 compares converters at 2 years with participants stable for at least 5 years; P-168 predicts conversion before month 48 among those still MCI at month 24), single baseline vs five-visit input, age range (70-80 vs all), and sample size.",
+  "metric": "AUC with AUC (0.824 vs 0.93).",
+  "figures": {
+    "P-183": "Ensemble AUC 0.824, reported 95% CI 0.681-0.968; n=40 (18 MCIp, 22 MCIs); 100 random 80/20 splits. This is the best of seven methods in Table 4.",
+    "P-168": "LSTM AUC 0.93 +/- 0.06 (SD across folds), 10-fold CV, n=347 (77 converters, 270 non-converters). Hanley-McNeil with n1=77, n2=270: Q1=0.8692, Q2=0.8963, SE=0.0206, 95% CI 0.890-0.970.",
+    "comparison": "Headline figures: P-183's 0.824 lies outside P-168's derived interval 0.890-0.970, while P-168's 0.93 lies inside P-183's reported interval 0.681-0.968. The rule's test is met in one direction only."
+  },
+  "matched_figure_check": "P-168 reports a result under P-183's conditions: a single-time-point model (index exam only, not the five-visit trajectory) in participants aged 70 or older (n=256, 68 converters) with the same 2-year horizon. That figure is AUC 0.87. Hanley-McNeil with n1=68, n2=188: Q1=0.7699, Q2=0.8095, SE=0.0291, 95% CI 0.813-0.927. It contains P-183's 0.824, and P-183's interval 0.681-0.968 contains 0.87, so the matched figures agree in both directions. P-168's full-cohort single-time-point AUC of 0.90 (CI 0.853-0.947) excludes 0.824, but it is not age-matched; the figure matched on both input and age agrees. The papers' own data dissolve the gap. Condition 3 fails.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes condition 5: 0.824 and 0.93 are below 0.97. P-183's n=40 makes its estimate imprecise (CI width 0.29), and its 0.824 is the best of seven methods.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "The two studies share the clinical question, the channels and the metric, and the headline gap passes the uncertainty test in one direction only (P-183's own interval contains 0.93). P-168 reports the result under P-183's conditions: a single time point, participants aged 70 or older, the same 2-year horizon. That AUC of 0.87 (derived CI 0.813-0.927) agrees with P-183's 0.824 (CI 0.681-0.968) in both directions, so the matched figures reconcile the pair. It does not qualify.",
+  "quotes": [
+    {"paper": "P-183", "page": 7, "quote": "ENS 0.750 0.588\u20130.873 0.824 0.681\u20130.968"},
+    {"paper": "P-183", "page": 3, "quote": "The experiment included only the baseline information from subjects with a baseline MCI diagnosis, between 70 and 80 years old"},
+    {"paper": "P-183", "page": 3, "quote": "the 18 subjects who had their \ufb01rst AD diagnosis 2 years after their baseline visit were regarded as progressers (MCIp), while the 22 subjects who never had an AD diagnosis and participated in the study for at least 5 years were labeled as stable (MCIs)."},
+    {"paper": "P-168", "page": 2, "quote": "The index exam is de\ufb01ned as the exam at 24-month, and the outcome is de\ufb01ned as the progression from MCI to AD before 48-month."},
+    {"paper": "P-168", "page": 4, "quote": "during which 77 (22.2%) were converted to AD"},
+    {"paper": "P-168", "page": 4, "quote": "restricting the analysis to participants who were 65 years or older (n = 307, 75 MCI-C) or 70 years or older (n = 256, 68 MCI-C) at 24-month."},
+    {"paper": "P-168", "page": 5, "quote": "The random forest models built on a single time point reached the AUC of 0.89 and 0.87 for participants aged above 65 and 70, respectively."},
+    {"paper": "P-168", "page": 5, "quote": "signi\ufb01cantly higher mean AUC (0.93 \u00b1 0.06) than the random forest model based on the data collected at a single time point (24-month) (0.90 \u00b1 0.09)"}
+  ]
+}

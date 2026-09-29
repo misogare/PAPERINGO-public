@@ -1,0 +1,26 @@
+{
+  "id": "C-207",
+  "qualifies": "no",
+  "question": "Shared: prediction of MCI-to-AD conversion in ADNI from baseline data. Both models are multimodal and share the clinical/cognitive channel, which drives much of each model's performance. P-81 finds cognitive scores predict better than PET, and P-211 fits cognitive test scores in its Comb (a) and (b). The imaging channel differs: whole-brain FDG-PET in P-81, FreeSurfer structural MRI measures in P-211. Condition 1 is therefore met only through the shared cognitive channel. Horizons differ: 3 years in P-81; 1-5 years in P-211, with the recorded 0.92 at 5 years.",
+  "metric": "AUC in both.",
+  "figures": {
+    "P-81": "Conversion within 3 years, FDG-PET + age + cognitive scores: AUC 0.7849 +/- 0.0963 (mean +/- fold SD, 5-fold CV validation sets; Table 3), 257 MCI (93 converters/164 stable). Hanley-McNeil: Q1 = 0.7849/1.2151 = 0.6460; Q2 = 2(0.7849^2)/1.7849 = 0.6903; SE = 0.0314; 95% CI 0.723-0.846. Cognitive scores alone: AUC 0.7496 +/- 0.0683.",
+    "P-211": "Recorded: 5-year Comb (a), AUC 0.92 (225 participants at 5 years: 140 MCI/85 dementia). Hanley-McNeil over 85/140: SE 0.0214, CI 0.878-0.962. Matched 3-year figure (test data, Comb a): AUC 0.81 with interaction effects, 0.78 without. The 3-year cohort is 580 (392 MCI/188 dementia). Hanley-McNeil for 0.81 over a 10% test set (about 19/39): SE 0.0659, CI 0.681-0.939; over the whole 3-year cohort (188/392): SE 0.0207, CI 0.769-0.851."
+  },
+  "matched_figure_check": "A matched figure exists and reconciles the pair. At P-81's 3-year horizon, P-211 prints test AUC 0.81 (0.78 without interaction effects). Both lie inside P-81's interval (0.723-0.846). P-81's 0.785 lies inside P-211's 3-year interval under either evaluation-set assumption (0.681-0.939 or 0.769-0.851). The headline gap (0.92 vs 0.785) is beyond uncertainty in both directions, but it sets a 5-year AUC against a 3-year one. P-211 itself shows its AUC is lowest at 3 years.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Not triggered for the compared figures: 0.785, 0.81 and 0.92 are all below 0.97. P-81's AD-vs-CN pre-training models with cognitive scores reached 1.000, which the authors attribute to circularity, but those are not the conversion figures compared.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "Both papers predict MCI-to-AD conversion in ADNI and report AUC, sharing the cognitive channel while their imaging channels differ (PET vs MRI). The recorded gap sets P-211's 5-year AUC against P-81's 3-year AUC. At the matched 3-year horizon P-211 prints AUC 0.81, which agrees with P-81's 0.785 in both directions, so the papers' own figures dissolve the gap and condition 3 fails.",
+  "quotes": [
+    {"paper": "P-81", "page": 1, "quote": "the best model was a combination of FDG-PET, age, and neurocognitive data, yielding an AUC of 0.785 +/- 0.096 and a balanced accuracy of 0.733 +/- 0.098."},
+    {"paper": "P-81", "page": 4, "quote": "Balanced accuracy (BA), specificity, sensitivity, and AUC of the validation sets were obtained using 5-fold cross validation. Values shown are mean +/- standard deviation."},
+    {"paper": "P-81", "page": 4, "quote": "ii) neurocognitive scores predict better than PET per se"},
+    {"paper": "P-211", "page": 1, "quote": "The five-years prediction accuracy reached 85% (AUC = 0.92) using both cognitive scores and MRI markers."},
+    {"paper": "P-211", "page": 7, "quote": "The mean AUC using Comb (a) displayed a characteristic pattern of first at about 0.9, then decreasing, reaching a low point at 3 years, followed by a gradual increase until 5 years of follow-up, to about 0.92."},
+    {"paper": "P-211", "page": 12, "quote": "The main performance indicators, accuracy, sensitivity, specificity, and AUC, were 0.75, 0.78, 0.73, and 0.81 (with interaction effects) compared to 0.72, 0.76, 0.68, and 0.78 (without interaction effects), respectively."},
+    {"paper": "P-211", "page": 6, "quote": "Comb. (b) Cognitive test scores, plus age, gender, education, diagnose at baseline, and APOE4."}
+  ]
+}

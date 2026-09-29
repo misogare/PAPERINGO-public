@@ -1,0 +1,26 @@
+{
+ "id": "C-59",
+ "qualifies": "no",
+ "question": "None shared. P-117 is Aljalal et al. 2024 (the PDF map points at a different paper; the correct file is downloads/4. Computational Models and Modern AI Architectures/1-s2.0-S1746809423008959-main.pdf, read for this judgement). It classifies amnestic MCI against healthy controls from resting-state EEG. P-91 separates Parkinson's-disease MCI from Parkinson's disease with normal cognition, using diffusion-MRI tract measures plus clinical features. The population class differs (idiopathic Parkinson's disease against amnestic MCI and healthy controls), and so does the channel (EEG against MRI).",
+ "metric": "As recorded: accuracy (P-117 99.81%) against ROC-AUC (P-91 0.80), a mismatch. P-91 also prints a validation balanced accuracy of 0.79, which could stand in for accuracy. The metric gap is therefore not decisive, and condition 1 fails whatever the metric.",
+ "figures": {
+  "P-117": "99.81% accuracy (ensemble KNN, 11 NSGA-selected channels), aMCI vs HC, 10-fold CV over 3660 EEG segments from 61 participants (29 aMCI, 32 HC). No interval is reported. Wilson with n = 61 subjects: z^2/n = 3.8415/61 = 0.06298; centre = (0.9981 + 0.03149)/1.06298 = 0.9686; half-width = 1.96*sqrt(0.9981*0.0019/61 + 3.8415/(4*61^2))/1.06298 = 0.0314; interval [0.937, 1.000].",
+  "P-91": "PD-MCI vs PD-NCI SVM on a stratified 30% validation split of 70 IPD patients (about 21: 9 PD-MCI and 12 PD-NCI): AUC 0.80, balanced accuracy 0.79; training AUC 0.82. No interval is reported. Wilson for 0.79 with n = 21: [0.579, 0.912]."
+ },
+ "matched_figure_check": "None exists. P-91 reports no MCI-vs-healthy result outside Parkinson's disease, and P-117 has no Parkinson's population. No figure puts the two papers on the same question.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "The Section 3.5 exclusion applies to P-117 on its own source: 99.81% (>= 0.97) from internal 10-fold CV over randomly split segments of only 61 participants, with no external cohort. P-91 (AUC 0.80, balanced accuracy 0.79) is not near ceiling.",
+ "failed_conditions": [1, 5],
+ "candidate_explanations": [],
+ "reason": "The two papers do not address the same clinical question. P-91's MCI is cognitive impairment within idiopathic Parkinson's disease, measured against Parkinson's patients with normal cognition by diffusion MRI. P-117's is amnestic MCI against healthy controls by EEG, so the population class and the channel both differ (condition 1). P-117's 99.81% also meets the near-ceiling exclusion on its own PDF (condition 5). beyond_uncertainty is false because no shared quantity exists; the raw numbers are far apart, but they measure different things.",
+ "quotes": [
+  {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+  {"paper": "P-117", "page": 3, "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases."},
+  {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+  {"paper": "P-117", "page": 9, "quote": "divided into 3660 segments (1740 segments from MCI cases and 1860 from HC cases)"},
+  {"paper": "P-91", "page": 1, "quote": "Methods: Forty IPD with normal cognition (IPD-NCI), thirty IPD-MCI, and thirty healthy controls were included."},
+  {"paper": "P-91", "page": 3, "quote": "The IPD group was separated into training (70%) and validation (30%) dataset with stratified random sampling."},
+  {"paper": "P-91", "page": 4, "quote": "validation dataset: balanced accuracy = 0.79; AUC = 0.80; sensitivity = 0.78; specificity = 0.75"}
+ ]
+}

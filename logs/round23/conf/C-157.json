@@ -1,0 +1,25 @@
+{
+ "id": "C-157",
+ "qualifies": "no",
+ "question": "Prediction of conversion from MCI to AD within about 3 years from baseline resting-state electrophysiology: EEG in P-242 (72 MCI, 36/36, three Taiwanese hospitals) and MEG in P-173 (76 MCI, 48 sMCI/28 pMCI, Madrid). EEG and MEG count as one channel under the rule. Cohorts and features differ, which the rule allows.",
+ "metric": "The recorded pair is a mismatch. P-242's 'sensitivity 0.9, specificity 0.8' is a sensitivity/specificity composite taken from two different classifiers, and P-173's 'AUC 0.81' does not appear in its main text (its AUCs are only in supplementary figures). The one metric both papers print for the conversion task is accuracy.",
+ "figures": {
+  "P-242": "HHSA features, seven classifiers: accuracy 0.50-0.75, best Tree 0.75 (sensitivity 0.70, specificity 0.80). The SVM gives sensitivity 0.90 with specificity 0.50 (accuracy 0.70). The printed values fit an evaluation set of 10 converters and 10 stable subjects: Tree has 7 TP and 2 FP, precision 7/9 = 0.78 as printed; SVM has 9 TP and 5 FP, 0.64 as printed. Wilson at n = 20: Tree 15/20 [0.531, 0.888], SVM 14/20 [0.481, 0.855]. Even at n = 72, 0.75 gives [0.639, 0.836]. The mean over the seven HHSA classifiers (not printed) is 0.636, Wilson at n = 20 [0.419, 0.808].",
+  "P-173": "sMCI vs pMCI, MG2G embeddings: mean accuracy across ten classifiers 78%, 5-fold CV, n = 76, Wilson [0.675, 0.858]. No AUC value in the main text."
+ },
+ "matched_figure_check": "No figure disagrees. P-242's best accuracy (0.75) and P-173's classifier-averaged 78% each lie inside the other's interval. On the like-for-like classifier averages (0.636, computed, vs 0.78), 0.78 lies inside P-242's interval and 0.636 lies just outside P-173's, with a two-proportion z of 1.23: a one-way exclusion on a figure P-242 does not print. No AUC can be compared from the main texts.",
+ "beyond_uncertainty": false,
+ "significance_only": false,
+ "performance_validity": "Passes: no figure near 0.97, although both samples are small (72 and 76).",
+ "failed_conditions": [2, 4, 6],
+ "candidate_explanations": [],
+ "reason": "The record pairs a sensitivity/specificity composite from two different classifiers against an AUC that is not in P-173's text, so the recorded metrics neither match nor describe the papers correctly (conditions 2 and 6). On the one metric both papers print, accuracy, P-242's best 0.75 and P-173's 0.78 lie within each other's intervals, so there is no difference beyond uncertainty (condition 4).",
+ "quotes": [
+  {"paper": "P-242", "page": 2, "quote": "deploying machine learning algorithms with the best seven features resulted in a sensitivity of 0.9 by the support vector machine (SVM) classifier, with a specificity of 0.8 yielded by the decision tree classifier."},
+  {"paper": "P-242", "page": 12, "quote": "HHSA Sensitivity 0.50 0.50 0.70 0.70 0.90 0.70 0.50 Specificity 0.70 0.70 0.60 0.80 0.50 0.60 0.50 Precision 0.63 0.63 0.64 0.78 0.64 0.64 0.50 F1-measure 0.56 0.56 0.67 0.74 0.75 0.67 0.50 Accuracy 0.60 0.60 0.65 0.75 0.70 0.65 0.50"},
+  {"paper": "P-242", "page": 5, "quote": "Following clinical labeling, they were further subdivided into MCI-S (n = 36) and MCI-C (n = 36) subgroups."},
+  {"paper": "P-173", "page": 9, "quote": "MG2G achieved high performance with 61% for NC/sMCI/pMCI classification, 79% for NC/sMCI classification, 78% for sMCI/pMCI classification, and 82% for NC/pMCI classification."},
+  {"paper": "P-173", "page": 9, "quote": "Receiver operating characteristic area-under-the-curve (AUC) plots are shown in Suppl. Figs. 1 and 2."},
+  {"paper": "P-173", "page": 4, "quote": "the stable MCI group (sMCI, n = 48) comprising those patients that still fulfilled the diagnosis criteria of MCI at the end of follow-up, and the progressive MCI group (pMCI, n = 28)"}
+ ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "C-81",
+  "qualifies": "yes",
+  "question": "Prediction of MCI progression to AD (pMCI vs sMCI) from structural MRI in ADNI MCI participants. The task, population class and channel (structural MRI) are the same. P-122 feeds a pair of longitudinal scans from two time points, and P-3 a single baseline scan. The brief treats single- vs multi-timepoint input as a matched-figure dimension, so this difference is recorded as a candidate explanation rather than as a different question.",
+  "metric": "Accuracy with accuracy (84.28% six-fold CV / 84.74% hold-out vs 74.61%); AUC with AUC is also available (0.8599 / 0.8587 vs 0.780).",
+  "figures": {
+    "P-122": "Six-fold CV over 823 longitudinal samples from 275 subjects (121 pMCI/154 sMCI): mean accuracy 84.28% (fold SD 1.65), AUC 0.8599 (SD 0.0167). Wilson on subjects (p=0.843, n=275): 0.795-0.881. A fold-based check (84.28 +/- 2.571*1.65/sqrt(6)) gives 82.5-86.0. AUC Hanley-McNeil (n1=121, n0=154): SE 0.024, CI 0.814-0.906. Hold-out test (124 samples; about 41 subjects if 15% of subjects): 84.74%, AUC 0.8587. That headline cannot be squared with its own sensitivity (83.33%) and specificity (82.27%), since accuracy must lie between the two, so the CV figure is used.",
+    "P-3": "CAAT ensemble, 5-fold CV over 593 subjects (298 sMCI/295 pMCI), one baseline T1 scan each: accuracy 74.61% (fold variance 0.002), Wilson 0.709-0.779 (n=593); AUC 0.780, Hanley-McNeil CI 0.743-0.817."
+  },
+  "matched_figure_check": "No matched figure exists. P-122 reports no result from single-timepoint (baseline-only) input; its ablations (71.6%-81.4%) all keep the two-timepoint design. P-3 has no longitudinal input. P-122's comparison table (Table 5) lists other ADNI studies but not P-3. Nothing in either paper places the two results under a shared condition.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study is flagged: 84.3%/84.7% (AUC 0.86) and 74.61% (AUC 0.780) are below 0.97. Both use internal validation only.",
+  "failed_conditions": [],
+  "candidate_explanations": [
+    {"difference": "Two-timepoint longitudinal input (P-122) vs a single baseline scan (P-3). Part of the atrophy trajectory is observed in P-122's input.", "quote": "The architecture synthesizes longitudinal sMRI data from dual temporal points", "paper": "P-122"},
+    {"difference": "Unit of analysis: accuracy over longitudinal samples (several per subject) with augmentation, vs one prediction per subject.", "quote": "For the sMCI group, we gathered 449 longitudinal samples from 154 subjects diagnosed with sMCI.", "paper": "P-122"},
+    {"difference": "Input representation: 2D axial slice sequences vs whole 3D volumes.", "quote": "Therefore, we chose the axial section for experimental illustration.", "paper": "P-122"},
+    {"difference": "Label definition and cohort: DSM-5-guided selection from ADNI 1/GO/2/3 with no stated conversion window, vs conversion within 3 years in ADNI1/2 (Wen et al. splits).", "quote": "Selection of the dataset was guided by DSM-5 criteria, ensuring clinical relevance and rigor.", "paper": "P-122"},
+    {"difference": "P-3's aim is explicitly single-scan, 3-year prediction.", "quote": "our goal is to take a single MRI image of a patient diagnosed with MCI at a given time and accurately predict whether they will be diagnosed with AD within 3 years.", "paper": "P-3"},
+    {"difference": "Model selection in P-3 on the evaluation folds. The authors say it biases P-3 upward, which runs against the gap.", "quote": "A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models.", "paper": "P-3"}
+  ],
+  "reason": "Same question (pMCI vs sMCI from structural MRI in ADNI) and same metric. P-122's six-fold CV accuracy (84.28%, Wilson on 275 subjects 0.795-0.881) and P-3's 74.61% (Wilson on 593 subjects 0.709-0.779) lie outside each other's intervals in both directions (two-sample z = 3.4), and the AUCs likewise (0.860 vs 0.780). Neither paper reports a result under the other's condition. The two-timepoint input, sample-level evaluation with several samples per subject, 2D slices and label definition are candidate explanations that neither paper shows to be sufficient. P-122's hold-out headline of 84.74% is internally inconsistent with its sensitivity and specificity, so the judgment rests on its CV figure.",
+  "quotes": [
+    {"paper": "P-122", "page": 1, "quote": "The architecture synthesizes longitudinal sMRI data from dual temporal points"},
+    {"paper": "P-122", "page": 5, "quote": "For the sMCI group, we gathered 449 longitudinal samples from 154 subjects diagnosed with sMCI."},
+    {"paper": "P-122", "page": 5, "quote": "data augmentation techniques such as mirroring and random rotations were employed."},
+    {"paper": "P-122", "page": 6, "quote": "Specifically, the proposed framework achieved mean ACC and AUC of 84.28% and 0.8599 with standard deviations of 1.65 and 0.0167, respectively, in predicting the progression of MCI."},
+    {"paper": "P-122", "page": 6, "quote": "samples in different subsets did not come from the same subjects."},
+    {"paper": "P-122", "page": 7, "quote": "MMS-TransENet CNN+Attention 84.74 83.33 82.27 0.8587 (Table 5 row: accuracy, sensitivity, specificity, AUC; cells joined)"},
+    {"paper": "P-3", "page": 1, "quote": "our goal is to take a single MRI image of a patient diagnosed with MCI at a given time and accurately predict whether they will be diagnosed with AD within 3 years."},
+    {"paper": "P-3", "page": 7, "quote": "CAAT ensemble 0.75 (0.004) 0.75 (0.006) 0.75 (0.002) 74.61 (0.002) 0.780 (0.003) (Table 3 row; cells joined)"}
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "batch": "verify_batch_5",
+  "date": "2026-09-29",
+  "status": "candidate verdicts for operator review; not a gate",
+  "sources_read": "r23/DISCREPANCY_BRIEF.md (incl. Verification round); r23/conf/C-95, C-96, C-103, C-107; challenge_advocate_3 (C-95, C-96, C-107), challenge_skeptic_3 (C-103), challenge_advocate_6 (C-172, population-class precedent); round-20 readings C-95, C-107; r20/pdf/P-173 (pp. 1-4, 7, 9-10, 12), P-129 (pp. 2-3, 5-7), P-153 (pp. 3-4, 10-11), P-179 (pp. 3-10), P-186 (pp. 1-4, 8-10), P-178 (pp. 1, 3-4, 7-8), P-185 (pp. 2, 5-6)",
+  "principle_for_compared_figures": "Matched figure where one exists (none does for these four pairs). Otherwise the pair's headline shared-metric figures. Where one paper prints two co-equal headline figures for the shared question and neither is under the other paper's condition, the compared figure is the one nearest the other paper's condition on a stated respect; the other figure's z is reported as the pair's fragility. Accuracy SE = sqrt(p(1-p)/n) with n = subjects in the evaluation set; AUC SE by Hanley-McNeil with n1 = positive (MCI or converter) class. Fold or seed SDs are not used as SEs.",
+  "results": [
+    {
+      "id": "C-95",
+      "compared": "Accuracy for MCI against controls from resting electrophysiology (the recorded conversion claim, P-173 'AUC 0.81' vs P-129 'Acc 94.76', is a misreading: 94.76% is P-129's specificity and P-129 has no conversion analysis). P-173 NC vs stable MCI (mean of 10 classifiers, 5-fold CV) against P-129 MCI vs HC (STCWTNet, subject-wise 6x5 nested CV x20). No matched figure: P-173 prints no NC-vs-all-MCI contrast, P-129 no course-defined subsets. NC/sMCI is taken as the P-173 figure nearest P-129's unselected MCI group (sMCI is 48 of P-173's 76 MCI, and its 48:53 class balance is nearer P-129's 32:29 than NC/pMCI's 28:53).",
+      "a": {"paper": "P-173", "estimate": 0.79, "se": 0.0405, "se_source": "No interval printed ('79% for NC/sMCI classification', p. 9). n = 101 subjects in the NC-vs-sMCI cross-validation (53 NC + 48 sMCI, p. 3-4): SE = sqrt(0.79*0.21/101) = 0.0405. NC/pMCI 0.82 with n = 81: SE = sqrt(0.82*0.18/81) = 0.0427."},
+      "b": {"paper": "P-129", "estimate": 0.9097, "se": 0.0367, "se_source": "The printed '90.97% +/- 0.60%' is an SD over 20 nested-CV seeds (p. 6), not a sampling interval. n = 61 subjects (32 MCI + 29 HC), all tested in subject-wise CV: SE = sqrt(0.9097*0.0903/61) = 0.0367."},
+      "scale": "accuracy (proportion correct)",
+      "z": 2.19,
+      "passes_z": true,
+      "skeptic_checked": true,
+      "final": "does_not_qualify",
+      "other_condition_failed": [1],
+      "candidate_explanations": [
+        "Classifier averaging (P-173): 'To assess performance irrespective of a particular classifier, we averaged the classification accuracy of ten popular classifiers' (p. 7), including decision tree, naive Bayes and QDA; P-129 reports one tuned transformer.",
+        "Label definition and subset (P-173): 'the stable MCI group (sMCI, n = 48) comprising those patients that still fulfilled the diagnosis criteria of MCI at the end of follow-up, and the progressive MCI group (pMCI, n = 28)' (p. 4); P-129's MCI group is not selected by course.",
+        "Population and MCI definition: P-173 'MCI due to AD' with reduced hippocampal volume, 'a modified Hachinski score <= 4' and MRI 'without indication of infection, infarction, or focal lesions' (p. 4), controls 'primarily relatives of patients and/or volunteers'; P-129 'subjects admitted to the cardiac catheterization units at Sina and Nour Hospitals in Isfahan' (p. 2), MCI by 'MMSE scores between 21 and 26'.",
+        "Unit of analysis (P-129): signals 'segmented into non-overlapping 2-second epochs, and then analyzed on an epoch-by-epoch basis' (p. 3), 14,420 MCI and 16,282 HC epochs; the epoch-weighted sensitivity/specificity (0.8687, 0.9476) reproduce the 90.97%, so the accuracy is epoch-level. P-173 uses one embedding per subject.",
+        "Features and validation: alpha-band MEG mutual-information networks embedded by MG2G, 5-fold CV (P-173), against raw 19-channel EEG into a spatio-temporal transformer, nested CV repeated 20 times (P-129).",
+        "Age: 65-80 (P-173) against 'all aged over 55 years' (P-129).",
+        "Neither paper shows any of these to be sufficient."
+      ],
+      "one_sentence": "P-173 (Madrid MEG, mean of ten classifiers) reports 79% accuracy for controls against stable MCI (82% against progressive MCI), and P-129 (Isfahan EEG from cardiac catheterization patients) reports 90.97% for MCI against controls; the gap exceeds combined uncertainty on the stable-MCI contrast only (z = 2.19; 1.59 on the progressive one), the samples come from different population classes, and the ledger's conversion claim (AUC 0.81 against 'accuracy' 94.76%, in fact a specificity) is a misreading, so the pair is not reported as a discrepancy.",
+      "reason": "Skeptic check: condition 1 fails on population class. P-129's dataset is 'collected from subjects admitted to the cardiac catheterization units' (both groups), with MCI defined by an MMSE band, while P-173 studies 'MCI due to AD' with hippocampal atrophy and vascular causes screened out (Hachinski <= 4, no infarction) against relatives and volunteers; a disease-defined patient sample against Alzheimer's-spectrum MCI is the rule's Parkinson's example, read as in C-172. Conditions 2 (accuracy with accuracy), 3 (no matched figure), 5 (0.9097 and 0.79-0.82 are below 0.97) and 6 (the misread record is set aside and the printed figures judged) hold. The test passes on the nearer contrast: z = |0.9097-0.79|/sqrt(0.0367^2+0.0405^2) = 0.1197/0.0547 = 2.19, but NC/pMCI gives 0.0897/sqrt(0.0367^2+0.0427^2) = 0.0897/0.0563 = 1.59, so the gap is also fragile. If the operator reads population class as the MCI construct alone, the pair would qualify on the NC/sMCI figure, with the NC/pMCI result as its fragility."
+    },
+    {
+      "id": "C-96",
+      "compared": "Accuracy for MCI against controls from resting electrophysiology (the recorded conversion claim is a misreading: P-153 has no conversion analysis). P-173 NC vs stable MCI (mean of 10 classifiers, 5-fold CV) against P-153 Dataset I MCI vs healthy (PARAFAC + SVM, mean of three random 41/20 subject splits). No matched figure. NC/sMCI taken as the P-173 figure nearest P-153's unselected MCI group (same reasoning as C-95; P-153's class balance 29:32).",
+      "a": {"paper": "P-173", "estimate": 0.79, "se": 0.0405, "se_source": "No interval printed (p. 9). n = 101 (53 NC + 48 sMCI): SE = sqrt(0.79*0.21/101) = 0.0405. NC/pMCI 0.82, n = 81: SE 0.0427."},
+      "b": {"paper": "P-153", "estimate": 0.9396, "se": 0.0533, "se_source": "No interval printed ('average classification accuracy is 93.96%', p. 10; Table 5, p. 11). Each split tests '20 subjects (9 MCI and 11 healthy)' (p. 4): SE at the test-set size n = 20 = sqrt(0.9396*0.0604/20) = 0.0533. At n = 60 pooled test predictions SE = 0.0308."},
+      "scale": "accuracy (proportion correct)",
+      "z": 2.24,
+      "passes_z": true,
+      "skeptic_checked": true,
+      "final": "does_not_qualify",
+      "other_condition_failed": [1],
+      "candidate_explanations": [
+        "Classifier averaging (P-173): 'we averaged the classification accuracy of ten popular classifiers' (p. 7).",
+        "Selection on the evaluation splits (P-153): component number 'selected using the classification accuracy assessment and in accordance with the best accuracy in each of the methods' (p. 10); the 1.5-min patch and 60 micro-bands were also chosen by accuracy ('the best case was related to the time patch of 1.5 min', p. 10).",
+        "Label definition and subset (P-173): stable vs progressive MCI defined by outcome after about 3 years (p. 4); P-153's MCI group is not selected by course.",
+        "Dataset and hardware: the same P-153 pipeline gives 'average classification accuracy of 93.96% and 78.65% for the first and second datasets, respectively' (p. 1).",
+        "Unit of analysis unclear (P-153): subject labels come from 'voting on the labels of the timepieces of each test subject' (p. 4), yet 93.96% is not a mean of three 20-subject vote accuracies (not a multiple of 1/60), and Table 5's sensitivity 96.07% and specificity 96.98% at 9 MCI / 11 healthy imply about 96.6%, not 93.96%.",
+        "Sample size and validation: three random 20-subject test sets from 61 subjects (P-153) against 5-fold CV on 81-101 subjects (P-173).",
+        "Population and MCI definition: P-173 'MCI due to AD' aged 65-80 with vascular screening; P-153 MMSE 21-26 / NUCOG-defined MCI over 55 on the Isfahan dataset that P-129 describes as cardiac catheterization unit admissions.",
+        "Neither paper shows any of these to be sufficient."
+      ],
+      "one_sentence": "P-153 reports 93.96% accuracy for MCI against healthy controls on the Isfahan EEG dataset (the one P-129 uses) against P-173's 79% (controls against stable MCI) and 82% (against progressive MCI); z is 2.24 and 1.75 at P-153's 20-subject test sets, the samples come from different population classes, and P-153's figure is inconsistent with its own sensitivity and specificity, so the pair is not reported as a discrepancy (if it were, it would be one discrepancy with C-95, not a separate one).",
+      "reason": "Skeptic check: condition 1 fails on population class for the same reason as C-95. P-153's Dataset I is 'the dataset in Ref. [24] ... recorded in Noor Hospital of Isfahan Province', 61 people over 55, MCI by MMSE 21-26 and NUCOG 75-86.5, 19 channels at 256 Hz for 30 min: the same public dataset that P-129 describes as 'collected from subjects admitted to the cardiac catheterization units at Sina and Nour Hospitals' (P-153's own text does not mention the cardiac units, so this rests on P-129's description). Set against P-173's vascular-screened 'MCI due to AD', that is a different population class under the C-172 reading. Conditions 2, 3, 5 (0.9396, best split 0.9652, implied 0.966, all below 0.97) and 6 hold. The test passes on the nearer contrast at the conservative n: z = 0.1496/sqrt(0.0533^2+0.0405^2) = 0.1496/0.0669 = 2.24; NC/pMCI gives 0.1196/sqrt(0.0533^2+0.0427^2) = 1.75 at n = 20 and passes only from n = 30 (2.27 at n = 60). If the operator reads population class as the MCI construct alone, the pair would qualify on NC/sMCI and should be merged with C-95."
+    },
+    {
+      "id": "C-103",
+      "compared": "ROC-AUC for MCI-to-AD conversion in ADNI Alzheimer's-spectrum MCI: P-178 9-feature balanced random forest (early MCI, open horizon, 95-patient test split) against P-185 subspace MRI biomarker with linear SVM (ADNI-1 MCI, 3-year conversion, 10-fold CV x20). No matched figure (P-178 has no MRI-only model; its 6-feature model drops the MRI volumes). AUC is used because the accuracies are confounded by converter prevalence (12.8% vs 57%); the recorded accuracies give the same result.",
+      "a": {"paper": "P-178", "estimate": 0.96, "se": 0.04, "se_source": "No interval printed ('an accuracy of 93.6% and an AUC of 96%', p. 8). Hanley-McNeil at subject level for the '95 patients reserved for testing' (p. 1), class split not printed, taken as about 12 converters / 83 non-converters from the cohort ratio 49/383: Q1 = 0.96/1.04 = 0.923, Q2 = 2*0.9216/1.96 = 0.940, SE = 0.040 (0.049 at 8/87; 0.0197 if all 49/334 counted)."},
+      "b": {"paper": "P-185", "estimate": 0.6951, "se": 0.0349, "se_source": "No interval printed ('Proposed biomarkers 69.37 75.39 61.23 0.6951', p. 6). Hanley-McNeil with 126 pMCI / 95 sMCI (p. 2), all tested in repeated 10-fold CV: Q1 = 0.533, Q2 = 0.570, SE = 0.0349."},
+      "scale": "ROC-AUC",
+      "z": 4.99,
+      "passes_z": true,
+      "skeptic_checked": true,
+      "final": "qualifies",
+      "other_condition_failed": [],
+      "candidate_explanations": [
+        "Predictor set: P-178 adds four cognitive scales, age, race and APOE4 to two MRI volumes ('a mix of genetic biomarkers (APOE4), physical biomarkers (hippocampal and ventricular volume), four neuropsychological scale scores (ADAS13, ADAS11, FAQ, MMSE), and the patient's demographic information (age, race)', p. 3); P-185 uses MRI morphometry alone. P-178's 6-feature model without the MRI volumes and APOE4 still reaches AUC 0.88, but it reports no MRI-only model, so this is not shown to be sufficient.",
+        "Label and horizon: conversion judged at 'their last visit's diagnosis' (P-178, open horizon) against conversion 'within a given time period (i.e., 3 years)' (P-185, p. 2).",
+        "Population and prevalence: ADNI-GO/2 early MCI with 49/383 converters against ADNI-1 MCI with 126/221.",
+        "Unit of analysis and evaluation (P-178): oversampled visit records from one random split ('trained against 2412 exam visits (1206 per class)'); Table 1 lists a balanced 402/402 test set while Table 4 (SVC accuracy = precision = 0.900 at recall 1) implies an imbalanced one with about 56% of converter visits identified. P-185 evaluates subjects with 10-fold CV repeated 20 times.",
+        "Model selection on test performance (P-178): 'these nine features were found to provide the best overall fit'; 'by removing the RAVLT features, our accuracy rose to 93.6% in the 9-feature group' (p. 7).",
+        "Neither paper shows any of these to be sufficient."
+      ],
+      "one_sentence": "P-178 reports AUC 0.96 (accuracy 93.6%) for predicting conversion of ADNI early MCI to AD from cognitive scores, APOE4, demographics and two MRI volumes, and P-185 reports AUC 0.6951 (accuracy 69.37%) for 3-year conversion in ADNI-1 MCI from MRI morphometry alone; the gap exceeds combined uncertainty (z = 4.99) and neither paper explains it, the candidates being the non-shared cognitive predictors, the open horizon and early-MCI population, and P-178's visit-level, oversampled single-split evaluation.",
+      "reason": "Figures and class sizes re-verified in the sources (P-178: 383 EMCI, 49 converters, 95 test patients, RF 0.936 / AUC 0.96; P-185: 221 MCI, 126 pMCI / 95 sMCI, 69.37% / 0.6951). z = |0.96-0.6951|/sqrt(0.040^2+0.0349^2) = 0.2649/0.0531 = 4.99 at conservative subject-level class sizes (4.41 at 8/87; 6.61 at 49/334); accuracy z = |0.936-0.6937|/sqrt(0.0251^2+0.0310^2) = 6.07 with n = 95 and 221. The pair came through the reader and challenge_skeptic_3, which found no failed condition (condition 1 through the multimodal clause, MRI volumes being P-178's second- and third-ranked features, as in C-154 and C-188; 0.96 below the 0.97 exclusion), so the full skeptic check was not repeated. Qualifies, with P-178's evaluation defects reported as candidate explanations."
+    },
+    {
+      "id": "C-107",
+      "compared": "ROC-AUC for MCI-to-AD conversion within 36 months in ADNI-1 MCI, MRI shared (multimodal clause). No matched figure: P-186 has no single-visit arm, P-179 no longitudinal or MRI-only arm. P-186 prints two co-equal headline AUCs ('91.2% and 95.7% for 6-month- and 1-year-ahead AD prediction', abstract); the ledger cites 0.957, the registry 0.912, and the round-20 reading records that the pair does not say which it means. The 6-month arm (two readings 6 months apart plus a forecast 6 months later; 49/70 = 119 subjects) is nearer P-179's single baseline visit and 125 subjects than the 1-year arm (two readings 12 months apart plus a forecast; 35/50 = 85 subjects), so it is the compared figure.",
+      "a": {"paper": "P-186", "estimate": 0.912, "se": 0.0297, "se_source": "No interval printed (Table 5, p. 9: 'NM + MRI 19 94.2% ... 91.2% ...'). Hanley-McNeil with 49 MCIp / 70 MCIs (p. 3): Q1 = 0.912/1.088 = 0.838, Q2 = 2*0.8317/1.912 = 0.870, SE = 0.0297. The 1-year 0.957 (35/50): Q1 = 0.9175, Q2 = 0.936, SE = 0.0249."},
+      "b": {"paper": "P-179", "estimate": 0.826, "se": 0.0406, "se_source": "No interval printed ('the AUC of MCI-CPS (5-fold) was 0.8260', p. 7). Class sizes from Table 1: sensitivity 81.25% = 39/48, specificity 77.92% = 60/77, accuracy 79.20% = 99/125. Hanley-McNeil 48/77: Q1 = 0.704, Q2 = 0.747, SE = 0.0406."},
+      "scale": "ROC-AUC",
+      "z": 1.71,
+      "passes_z": false,
+      "skeptic_checked": true,
+      "final": "does_not_qualify",
+      "other_condition_failed": [],
+      "candidate_explanations": [
+        "Input representation and timing (P-186): 'The method proposed in this paper has recorded the highest classification AUC of 95.7% predominantly because of involving the forecasted marker value at the time of conversion as a classification feature' (p. 8). Asserted, not tested with a baseline-only arm.",
+        "Non-shared predictors: neuropsychological measures in P-186 (its MRI-only arm gives 0.905 / 0.88 against 0.957 / 0.912 with NM added, Table 5) against blood SNP and mRNA in P-179.",
+        "Subset-size selection on AUC (P-186): 'Each biomarker subset is modeled and evaluated for its efficacy through our proposed system' (p. 4); the reported values are 'a maximum AUC of 91.2% ... and 95.7% ... using 19 and 9 bimodal features' (p. 8). P-179 also chose its feature number by AUC on the same ADNI-1 CV ('The AUC value was used as a criterion to evaluate the number of features', p. 5).",
+        "Preprocessing outside the folds (P-186): 'We scale all features to have values between 0 and 1 before the train-test split' (p. 4); marker ranking by t-tests on baseline readings is not stated to be inside the folds.",
+        "Outcome window against observed readings (P-186): MCIp means 'converting to AD any time before the last follow-up time, i.e., 36th month' (p. 3), so an early converter's observed readings can fall at or after conversion.",
+        "Eligible population and sample: 85 or 119 ADNI-1 MCI with complete consecutive readings (P-186) against 125 ADNI-1 MCI with baseline blood omics (P-179).",
+        "Neither paper shows any of these to be sufficient."
+      ],
+      "one_sentence": "P-186 reports AUC 0.957 (1-year-ahead, 85 subjects) and 0.912 (6-month-ahead, 119 subjects) for 36-month MCI-to-AD conversion in ADNI-1 from longitudinal neuropsychological and MRI trajectories, against 0.826 in P-179 (125 subjects, baseline MRI plus blood omics); only P-186's best figure differs beyond combined uncertainty (z = 2.75), while its analysis nearest P-179's single-visit design (z = 1.71), its MRI-only arms (z = 1.45 and 1.02) and the two papers' accuracies (81% or 84.9% against 79.2%) do not, so the pair is not reported as a discrepancy.",
+      "reason": "Skeptic check of conditions 1 to 6: condition 1 holds (ADNI-1 MCI, conversion by 36 months, MRI shared under the multimodal clause as in C-103), 2 holds (AUC with AUC), 3 holds as written (no figure under the other's condition), 5 holds (0.957 below 0.97; the 0.98 is P-186's ground-truth benchmark), 6 holds (0.957 and 0.826 are printed figures, though the record and registry differ on which P-186 figure is meant). Condition 4 fails on the compared figure: z = |0.912-0.826|/sqrt(0.0297^2+0.0406^2) = 0.086/0.0503 = 1.71 (1.93 with Hanley-McNeil class roles swapped). The advocate's headline pair, 0.957 against 0.826, gives 0.131/sqrt(0.0249^2+0.0406^2) = 2.75, but that is P-186's single most favourable analysis: the maximum over marker-subset sizes, on the arm with the most follow-up input and the smallest sample. P-186's MRI-only arms give z = 1.45 (1-year) and 1.02 (6-month), and P-186's accuracies agree with P-179's (z = 0.32 and 1.17). If the operator takes the ledger's 0.957 as the compared figure, every condition holds and the pair qualifies at z = 2.75."
+    }
+  ]
+}

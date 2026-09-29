@@ -1,0 +1,27 @@
+{
+  "id": "C-171",
+  "qualifies": "no",
+  "question": "Not shared. P-307 identifies MCI present at the assessment (Petersen/IWG criteria with MoCA < 26, confirmed by a senior neurologist) in older inpatients with chronic pain (aged >= 60, one pain department in Nanchang). P-165 predicts MCI onset, that is whether a recorded MCI diagnosis code appears within one year after a primary-care visit, for every visit by a patient aged >= 65 in Stanford Healthcare's EHR. Data after the visit are masked. One task is diagnosis of current status in a comorbidity-defined inpatient group; the other is one-year prognosis of a billing diagnosis in unselected primary care. The comparison therefore differs (prevalent MCI against non-MCI, or future coded MCI against none), and so does the population (chronic-pain inpatients against all older primary-care patients). The broad channel (clinical/questionnaire/EHR data) is shared, and the predictor sets differ (7 pain, mood, sleep and demographic variables against 480 EHR and clinical-note concepts), which condition 1 would allow.",
+  "metric": "ROC-AUC with ROC-AUC (match).",
+  "figures": {
+    "P-307": "XGBoost test-set AUC 0.925, printed 95% CI 0.863-0.995 (random 30% test set, n = 184; overall MCI prevalence 169/612 = 27.6%). Logistic regression test AUC 0.895 (0.829-0.966).",
+    "P-165": "Random forest test ROC-AUC 68.2 +/- 0.7 (%), temporal split (train on visits up to 2019, test on visits from 2020 on). XGBoost 66.8 +/- 0.8, logistic regression 57.0 +/- 1.1. Taking +/- 0.7 as one standard error gives a 95% interval of about [0.668, 0.696]. The test-set size is not printed. The whole cohort has 531,387 visits, so any interval derived from the test set would be narrow."
+  },
+  "matched_figure_check": "No matched figure exists. P-165 reports no cross-sectional identification of current MCI and no result in a pain population. P-307 reports no incident or one-year-ahead result and no result in a general primary-care population.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply. P-307's 0.925 is below 0.97 (its upper CI bound is 0.995), on an internal random 30% test set of 184 patients, with SMOTETomek applied to the training set only. P-165 uses a large temporal hold-out.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "The two studies ask different clinical questions. P-307 identifies MCI present at a research-criteria work-up in older chronic-pain inpatients. P-165 predicts whether an MCI diagnosis code will be recorded within the next year for any older primary-care patient, using only data up to the visit (condition 1: the task and the population differ). The AUCs (0.925, CI 0.863-0.995, against 0.682 +/- 0.007) would otherwise differ beyond uncertainty.",
+  "quotes": [
+    {"paper": "P-307", "page": 3, "quote": "The outcome of this study was the occurrence of MCI, which was diagnosed according to Petersen’s Criteria and the International Working Group on MCI"},
+    {"paper": "P-307", "page": 3, "quote": "(2) Montreal Cognitive Assessment Scale (MoCA) score < 26"},
+    {"paper": "P-307", "page": 2, "quote": "In this study, 612 older patients with chronic pain were recruited from the Pain Department of a tertiary general hospital in Nanchang, China"},
+    {"paper": "P-307", "page": 7, "quote": "the XGBoost model performed best, achieving an accuracy of 0.883 and an AUC of 0.925 (95% CI 0.863–0.995)."},
+    {"paper": "P-165", "page": 1, "quote": "develop machine learning models to predict MCI up to a year in advance of recorded diagnosis"},
+    {"paper": "P-165", "page": 2, "quote": "We train our machine learning models to predict onset of MCI within one year of patients’ visits with their primary care provider for patients 65 years or older."},
+    {"paper": "P-165", "page": 3, "quote": "Note, data after the primary care visit time were masked and not used to perform the prediction."},
+    {"paper": "P-165", "page": 4, "quote": "The random forest model has a higher ROC-AUC (68.2%±0.7%) than xgboost and logistic regression models on the test set."}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "C-148",
+  "qualifies": "no",
+  "question": "None shared. Despite its title, P-208 (Lim et al., Front Aging Neurosci 2022) runs only a cross-sectional three-way diagnostic classification (CN vs MCI vs AD) of ADNI1 baseline sMRI axial slices; it has no conversion labels and no pMCI/sMCI experiment. P-78 (Xu et al., ESWA 2026) predicts 36-month MCI-to-AD conversion (pMCI vs sMCI) from longitudinal sMRI. Current three-class diagnosis and binary conversion prognosis are different clinical questions. The channel (structural MRI) and the cohort family (ADNI) are shared.",
+  "metric": "Nominally accuracy in both, but not the same quantity. P-208's is a three-class, image-level test accuracy (chance about 33%); P-78's is a binary, subject-level conversion accuracy (chance about 50%).",
+  "figures": {
+    "P-208": "Three-class CN/MCI/AD test accuracy 78.57% (VGG-16; CNN from scratch 72.70%, ResNet-50 75.71%) on a random hold-out of 2D slice images from 819 subjects (229 CN/398 MCI/192 AD). No interval printed. For reference only, Wilson at the subject level with n about 164 (20% of 819): z^2/n = 0.02342, centre 0.7792, half-width 0.0624, CI [0.717, 0.842]. The image-level test n is larger, which would narrow this.",
+    "P-78": "pMCI vs sMCI, 36-month window. Four-timepoint (QTP) ablation on internal Dataset B (101 subjects): accuracy 90.7%, AUC 0.871; Wilson with n = 101: centre 0.8921, half-width 0.0576, CI [0.835, 0.950]. Single-visit external test (Dataset A, ADNI-3 + OASIS-3, 173 subjects): accuracy 0.827 (printed 95% CI 0.769-0.884), AUC 0.858 (0.803-0.918)."
+  },
+  "matched_figure_check": "No matched figure exists. P-208 reports no conversion result, and P-78 reports no three-class diagnostic accuracy. Neither paper places a figure on the other's contrast.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: 78.57% and 90.7% are below 0.97. Note that P-208 splits at the image level with up to three slices per subject, which may put slices of one subject in both train and test; this is not the Section 3.5 exclusion.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "P-208 is a three-way CN/MCI/AD diagnostic study with no conversion endpoint, while P-78 predicts 36-month pMCI vs sMCI conversion. There is no shared clinical question (condition 1), and the accuracies have different class structures and chance levels. The ledger's 'T2' label for P-208 follows its title, not its experiment (condition 6).",
+  "quotes": [
+    {"paper": "P-208", "page": 1, "quote": "we proposed a multiclass classification method based on 3D T1-weight brain sMRI images from the ADNI database. Axial brain images were extracted from 3D MRI and fed into the convolutional neural network (CNN) for multiclass classification."},
+    {"paper": "P-208", "page": 2, "quote": "Implementing CNN to perform multiclass classification (3-way) to classify cognitively normal (CN), MCI, and AD subjects."},
+    {"paper": "P-208", "page": 2, "quote": "A total of 819 subjects (229 CN, 398 with MCI, and 192 with AD) were enrolled at baseline."},
+    {"paper": "P-208", "page": 7, "quote": "the reported classification performance on test data is accuracy of 72.70, 78.57, and 75.71%, respectively"},
+    {"paper": "P-78", "page": 3, "quote": "subjects diagnosed with MCI at any follow-up visit and who progressed to AD within three years are defined as pMCI."},
+    {"paper": "P-78", "page": 9, "quote": "The model achieved peak performance with QTP, recording an AUC of 87.1 % and an ACC of 90.7 %."},
+    {"paper": "P-78", "page": 8, "quote": "attaining the highest scores in AUC (0.858), ACC (0.827), F1-score (0.824), SPE (0.890), and PRE (0.886)."}
+  ]
+}

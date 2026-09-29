@@ -1,0 +1,26 @@
+{
+  "id": "C-197",
+  "qualifies": "no",
+  "question": "As recorded, none: the record sets P-72's AD vs NC accuracy (94.61%) against P-182's pMCI vs sMCI accuracy (75.85%). On the figures both papers print for the record's task (T2), the question is shared: prediction of progression from MCI to AD (pMCI vs sMCI) from baseline imaging in ADNI. P-72 fuses sMRI grey matter with FDG-PET and also reports sMRI alone; P-182 uses hippocampal-region T1 MRI. The MRI channel is shared. The horizon differs (conversion within 3 years against follow-up of at least 18 months), which the rule allows.",
+  "metric": "Accuracy with accuracy (77.19% against 75.85%); AUC with AUC (0.755 against 0.777).",
+  "figures": {
+    "P-72": "sMCI vs pMCI (238 sMCI / 151 pMCI; 70/15/15 subject-level split; mean of three test sets). Multimodal 77.19% (SD 1.01), sensitivity 68.18%, specificity 82.86%, AUC 0.755. The rates imply 22 pMCI + 35 sMCI per test set (15/22 = 68.18%, 29/35 = 82.86%, 44/57 = 77.19%), so n = 57. Wilson n = 57 gives [0.648, 0.862]. sMRI alone 73.68% (42/57), Wilson [0.610, 0.834]. Hanley-McNeil for AUC 0.755 with 22/35: Q1 = 0.606, Q2 = 0.650, SE = 0.069, CI [0.620, 0.890].",
+    "P-182": "pMCI vs sMCI, 381 ADNI-2/GO MCI (118 pMCI / 263 sMCI), model trained on AD vs CN only: accuracy 75.85%, Wilson n = 381 gives [0.713, 0.799]. AUC 0.777, Hanley-McNeil Q1 = 0.635, Q2 = 0.680, SE = 0.028, CI [0.723, 0.831]."
+  },
+  "matched_figure_check": "The task-matched figures agree. P-72's 77.19% lies inside P-182's interval [0.713, 0.799], and P-182's 75.85% lies inside P-72's [0.648, 0.862]. On the shared MRI channel alone, P-72's sMRI-only 73.68% also lies inside P-182's interval. The AUCs (0.755 and 0.777) each lie inside the other's interval. The recorded 18.8-point gap exists only because the record files P-72's AD vs NC figure under the conversion task.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Passes: 77.19%/0.755 and 75.85%/0.777 are far below 0.97. P-72's AD vs NC 94.61% (AUC 0.947) is also below 0.97.",
+  "failed_conditions": [4, 6],
+  "candidate_explanations": [],
+  "reason": "The record's disagreement is an artefact: it sets P-72's AD-vs-NC accuracy (94.61%) against P-182's pMCI-vs-sMCI accuracy. On the conversion task both papers actually report, the results agree within uncertainty (77.19% against 75.85%; AUC 0.755 against 0.777), including on the shared MRI channel (73.68%). Conditions 4 and 6 fail, and the record's 'partially resolved' status has nothing to resolve.",
+  "quotes": [
+    {"paper": "P-72", "page": 8, "quote": "94.61 % and 77.19 % accuracy in the classification of AD vs. NC and sMCI vs. pMCI, respectively"},
+    {"paper": "P-72", "page": 7, "quote": "SPDFC (0.6) 94.61(0.85) 92.19 97.22 0.947 77.19(1.01) 68.18 82.86 0.755"},
+    {"paper": "P-72", "page": 6, "quote": "For the classification of sMCI vs. pMCI, the accuracy based on sMRI and PET was 73.68 % and 75.44 %, respectively."},
+    {"paper": "P-72", "page": 3, "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI."},
+    {"paper": "P-72", "page": 3, "quote": "We divided the dataset by subject-level split way according to the number of subjects in the ratio of 70 %, 15 % and 15 %"},
+    {"paper": "P-182", "page": 6, "quote": "In this task, the model achieved an accuracy of 75.85% and an AUC of 0.777 (Fig. 2B), with a sensitivity of 0.66 and a specificity of 0.8 (Fig. 2C)."},
+    {"paper": "P-182", "page": 8, "quote": "This classification performance is on par with earlier deep learning models developed to classify pMCI versus sMCI based on whole hippocampus structural features or multimodel features (e.g., Li et al. 2014; Suk et al. 2014), which ranged from 72% to 76%."}
+  ]
+}

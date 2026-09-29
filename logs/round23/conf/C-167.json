@@ -1,0 +1,25 @@
+{
+  "id": "C-167",
+  "qualifies": "no",
+  "question": "Broadly shared: progression to dementia within four years among patients at the MCI stage, predicted from clinical/cognitive data (both papers have a clinical-feature model) and, secondarily, MRI volumes. P-274 uses BioFINDER-1 SCD/MCI with CSF-confirmed AD dementia as the outcome, plus an ADNI MCI external subset. P-192 uses ADNI amnestic MCI with clinical dementia 'not necessarily due to AD' as the outcome. The cohort, the inclusion of SCD, the outcome definition and the training design differ: P-192 trains CN-vs-dementia classifiers and applies them to aMCI. The rule allows these as candidate explanations. Condition 1 is arguable rather than clearly failed, and the pair fails on condition 2 in any case.",
+  "metric": "Mismatch. P-274 reports ROC-AUC (and MCC). P-192 reports no AUC and no accuracy for the MCI progression task, only threshold-dependent sensitivity, specificity, PPV and NPV at each follow-up. The recorded 'PPV 68%' depends on prevalence and threshold, AUC depends on neither, and no value of one excludes a value of the other.",
+  "figures": {
+    "P-274": "Four-year progression to AD dementia, BioFINDER-1 test sets (n = 332, 109 progressors). Clinical data model AUC 0.850 (CI 0.698-0.954). Clinical + intracranial and hippocampal volume AUC 0.862 (CI 0.728-0.960). ADNI MCI external subset (n = 108): FreeSurfer 0.688, DL 0.799.",
+    "P-192": "ADNI aMCI (n = 415), CN-vs-dementia RUSBoost/LR classifiers applied at a 0.5 cut-off. At 4 years: biomarker RUSBoost PPV 68% against an observed incidence of 22.2%, sensitivity 61.5%, specificity 91.7%. Clinical feature set RUSBoost PPV 67.3%, sensitivity 63.4%, specificity 91.2%. No AUC, no accuracy and no interval printed for these."
+  },
+  "matched_figure_check": "No matched figure exists on a common metric. P-192 prints no AUC for the MCI progression task, and P-274 prints no sensitivity, specificity or PPV. Converting between them would need the full ROC curve or the operating point, which neither paper supplies.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "The exclusion does not apply. No value reaches 0.97 (P-274 0.862; P-192's specificities of 91-92% are threshold-dependent rates, not discrimination). Not a comparable performance pair. Checked against P-274 page 6 and P-192 pages 4-5 and 11-13.",
+  "failed_conditions": [2],
+  "candidate_explanations": [],
+  "reason": "Even granting the broad clinical question (four-year progression to dementia from the MCI stage, clinical-data channel), the two papers report different metric types. P-274 reports AUC. P-192 reports only sensitivity, specificity and PPV at a fixed cut-off, and its headline PPV depends on the 22% incidence in ADNI. The ledger's 'gap' of 0.18 subtracts a PPV from an AUC. Condition 2 fails, and no discrepancy can be read from the printed figures.",
+  "quotes": [
+    {"paper": "P-274", "page": 3, "quote": "The primary binary outcome was four-year progression to AD dementia, where a clinical diagnosis of AD dementia during the four years follow-up was considered as a progression."},
+    {"paper": "P-274", "page": 6, "quote": "Adding intracranial and hippocampal volume to the clinical data model increased the test AUC to 0.862 (CI 0.728–0.960)"},
+    {"paper": "P-192", "page": 4, "quote": "> 45% over 4 years (model’s PPV = 68% vs. observed rate of dementia onset = 22.2%)"},
+    {"paper": "P-192", "page": 6, "quote": "dementia diagnosis was not necessarily due to AD, and we did not exclude subjects based on presence or absence of AD pathology."},
+    {"paper": "P-192", "page": 11, "quote": "Sensitivity, specificity, PPV, and negative predictive value (NPV) for each model were calculated."},
+    {"paper": "P-192", "page": 11, "quote": "Using baseline data from CN and dementia participants, a LR model was trained to differentiate participants with dementia from healthy controls."}
+  ]
+}

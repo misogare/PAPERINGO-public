@@ -1,0 +1,31 @@
+{
+  "id": "C-40",
+  "qualifies": "no",
+  "question": "MCI vs cognitively normal controls in ADNI from MRI (diffusion in P-115; diffusion plus resting-state fMRI in P-14; one channel under the rule). P-115 (Rallabandi & Seetharaman 2023; the right PDF is 1-s2.0-S1746809422005547, not the pack file) reports pooled MCI vs CN (accuracy 0.72). P-14 reports EMCI vs NC and LMCI vs NC separately and never pools MCI. The record's own pairing is not one question: P-115's 0.79 is three-class CN/MCI/AD, and P-14's 90.39% is a mean over EMCI vs NC, LMCI vs NC and LMCI vs EMCI. Judged on the binary figures the papers print, condition 1 is met at the level of MCI (or an MCI subset) against controls; the subset label is a candidate explanation.",
+  "metric": "Binary MCI-vs-control accuracy in both, using the like-for-like printed figures. The record's pairing (three-class balanced accuracy against a cross-task mean accuracy) does not match.",
+  "figures": {
+    "P-115": "CN vs MCI accuracy 0.72 (MIX_BRF, kurtosis source, tensor target), 5-fold CV, n=128 (44 CN + 84 MCI): Wilson (0.637, 0.791). Three-class balanced accuracy 0.79, n=150: Wilson (0.718, 0.848).",
+    "P-14": "Proposed MSE-GCN on fused rs-fMRI+DTI, leave-one-out CV: EMCI vs NC 85.42% (n=144: Wilson 0.787-0.903); LMCI vs NC 93.46% (n=107: 0.871-0.968). DTI-only arm of the proposed model: 81.94% (0.749-0.874) and 89.72% (0.825-0.942). Comparators on the same cohort and DTI input: SVM(D) 63.19% (0.551-0.706) and 75.70% (0.668-0.828); two-layer GCN(D) 68.50% (0.605-0.755) and 71.03% (0.618-0.788); MS-GCN(D) 70.14% (0.622-0.770) and 74.77% (0.658-0.820)."
+  },
+  "matched_figure_check": "P-14 reports results under P-115's input condition (DTI only) and with comparator classifiers. The DTI-only proposed model still differs from P-115: 0.72 lies outside 0.749-0.874, and 0.8194 lies outside 0.637-0.791. But on the same cohort and DTI input, P-14's comparators (SVM, two-layer GCN, MS-GCN) score 63-76%. Five of those six intervals contain 0.72; the exception is SVM(D) EMCI vs NC, 63.19%, whose upper bound is 0.706. P-14's own Table 3 therefore shows that the gap comes from its proposed model (multi-scale random-walk GCN on an age/sex population graph), not from a disagreement about what diffusion MRI yields in ADNI with conventional classifiers. Under the rule, a paper that shows an explanation to be sufficient fails condition 3.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study is excluded: P-14's highest contested figure is 93.46% (below 0.97); P-115's CN vs AD 0.96 is not the contested figure and is below 0.97. Checked on the sources.",
+  "failed_conditions": [3],
+  "candidate_explanations": [
+    {"difference": "Architecture: P-14's proposed multi-scale GCN with random-walk embedding and an age/sex population graph against conventional classifiers. P-14 SHOWS this explanation is sufficient: on its own DTI data, its comparators score 63-76% against 82-90% for its model.", "quote": "SVM(D) 63.19 75.32 49.25 68.43 75.70 72.50 77.61 69.05 ... Ours(D) 81.94 89.61 73.13 84.15 89.72 92.54 85.00 91.85 (Table 3, EMCI vs NC then LMCI vs NC: Acc, Sen, Spec, F1)", "paper": "P-14"},
+    {"difference": "Label definition: EMCI and LMCI subsets (ADNI-2 labels) against pooled MCI. This is not tested by either paper.", "quote": "40 late mild cognitive impairment (LMCI) patients, 77 early mild cognitive impairment (EMCI) patients, and 67 normal controls (NC) are obtained from the ADNI dataset", "paper": "P-14"},
+    {"difference": "Model selection on the evaluation results: P-14 picks the random-walk scale p from the cross-validation results it reports. This is not tested.", "quote": "select the best scale p from the average cross-validation results", "paper": "P-14"},
+    {"difference": "Input within MRI: regional FA/MD tensor and kurtosis indices against LWCC connectivity features from fused DTI and rs-fMRI. This is partly tested: P-14's DTI-only arm still exceeds P-115.", "quote": "based on white matter Gaussian diffusion (tensor) indices and non-Gaussian diffusion (kurtosis) indices", "paper": "P-115"}
+  ],
+  "reason": "At the level of MCI (or an MCI subset) against controls in ADNI from MRI, P-14's proposed model (85.42% and 93.46%) exceeds P-115's pooled CN vs MCI 0.72 beyond uncertainty. But P-14's own comparators on the same DTI input (63-76%) agree with P-115 within uncertainty in five of six figures, so P-14's data show that its architecture is what produces the gap. The pair fails condition 3. The record's pairing (a three-class 0.79 against a cross-task mean of 90.39%) is not like for like and was replaced by the printed binary figures under condition 6.",
+  "quotes": [
+    {"paper": "P-115", "page": 1, "quote": "Our results conclude that the proposed model using kurtosis indices as source model classified and predicted with accuracies of 0.96, 0.72 and 0.7 in classifying CN vs AD, CN vs MCI and AD vs MCI respectively. (document: 1-s2.0-S1746809422005547, scratchpad r20/conf/tlss_P115_true.txt)"},
+    {"paper": "P-115", "page": 1, "quote": "The structural T1-weighted magnetic resonance imaging and diffusion images were taken from ADNI dataset with 44 CN, 84 MCI and 22 AD patients."},
+    {"paper": "P-115", "page": 5, "quote": "TLSS model with MIX method using source as DKI and target as DTI features achieved the highest overall accuracy and geometric mean and outperformed the other methods SER and STT for 5-fold cross-validation"},
+    {"paper": "P-14", "page": 1, "quote": "with a mean classification accuracy of 90.39% in the detection tasks."},
+    {"paper": "P-14", "page": 5, "quote": "In the four classification tasks, our proposed method has the best mean accuracy of 85.42%, 93.46%, and 92.31%, 83.11% respectively."},
+    {"paper": "P-14", "page": 5, "quote": "Since ADNI is a relatively small dataset, in this study, we use a leave one-out (LOO) cross-validation strategy for all experiments to conduct fair comparisons."},
+    {"paper": "P-14", "page": 7, "quote": "GCN(D) 68.50 59.35 77.61 58.46 71.03 85.07 47.05 78.62 ... MS-GCN(D) 70.14 65.67 74.03 67.18 74.77 74.63 75.00 78.74 (Table 3)"}
+  ]
+}

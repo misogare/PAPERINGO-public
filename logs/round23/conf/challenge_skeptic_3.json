@@ -1,0 +1,149 @@
+{
+  "skeptic": "challenge_skeptic_3",
+  "date": "2026-09-29",
+  "sources_read": "r20/pdf/P-125.txt, P-66.txt, P-168.txt, P-156.txt, P-178.txt, P-185.txt, P-183.txt, P-186.txt; round-20 readings and r23/conf/C-83, C-93, C-103, C-121",
+  "results": [
+    {
+      "id": "C-83",
+      "final": "yes",
+      "overturned": false,
+      "reason": "I tested every condition against the source texts. None fails, but the pair qualifies only because condition 4 is worded one-directionally. (1) Same question: binary MCI vs CN in ADNI from T1 MRI. P-66 prints a binary MCI-vs-CN arm (Table 6, p.7). (2) Accuracy with accuracy. (3) The only matched figure is P-66's amygdala-only arm (fusion 70.0 +/- 1.6, radiomics 68.0, CNN 68.4). It lies further from P-125's 80.00%, so it widens the gap. P-125 has no hippocampal or radiomic arm. (4) Redone. P-125's printed RF metrics fix its test set at 28 subjects (14 MCI/14 HC), not 30. Recall 92.86 +/- 0 means 13/14. Precision 73.86% means about 4.6 false positives. Accuracy 80.00% then requires 14 HC. The same arithmetic shows that Table 6's RF specificity (90.38) and NPV (67.14) cells are swapped (implied specificity 67.1%, NPV 90.4%). The abstract's 82.14% is 23/28, and 'classifying only 3.6 % of MCI as HC' is 1/28. Wilson at n=28 gives 0.620-0.907, which contains 72.7%. P-66's test set is one fixed 20% image partition: the five repetitions re-split only the 80% into training and validation (p.5). Its +/-3.3 is therefore a spread across fold models on one test set. Wilson at about 252 distinct test subjects gives 0.669-0.778; at 360 images, 0.679-0.770; and even treating the SD as a single-run SE gives 66.2-79.2. P-125's 80.00% (and the abstract's 82.14%) lies outside every version. The reverse test fails, and the two-sample z is 0.91 (n=28 vs 252). (5) No figure is near 0.97 (P-125 best AUC 90.31; P-66 AUC 80.0). (6) The record's 82.14% is the abstract figure. The tables give 80.00%, and both qualify. Two fragilities should travel with the pair. P-125's weakest classifier (KNN 77.86%) sits on P-66's upper bound (0.778 at n=252). And the gap is not significant as a two-sample difference.",
+      "figures": {
+        "P-125": "RF/ANN mean test accuracy 80.00% over five fold-models scored on one held-out subject partition. The printed metrics imply n_test = 28 (14/14): recall 13/14 = 0.9286; precision 0.7386 gives FP = 13/0.7386 - 13 = 4.60; accuracy (13 + 14 - 4.60)/28 = 0.800. Wilson n=28: centre (0.80 + 1.9208/28)/(1 + 3.8415/28) = 0.764, half-width 0.144, giving 0.620-0.907 (0.627-0.905 if n=30). Abstract 82.14% = 23/28, Wilson 0.644-0.921. KNN 77.86%, Wilson 0.597-0.893. Test AUC RF 85.71; Hanley-McNeil 14/14 SE 0.073, giving 0.713-1.000.",
+        "P-66": "Radiomic+CNN fusion on hippocampus+amygdala: 72.7 +/- 3.3% (SD across five fold-models on a fixed 20% image test set). Wilson: n=360 images 0.679-0.770; n=252 expected distinct subjects 0.669-0.778; n=400 0.681-0.768. SD read as a single-run SE: 72.7 +/- 1.96*3.3 = 66.2-79.2. Amygdala-only fusion 70.0 +/- 1.6 (Wilson n=252: 0.641-0.753); radiomics 68.0; CNN 68.4. AUC 80.0, Hanley-McNeil about 190/170: 0.755-0.845.",
+        "comparison": "80.00 lies outside every P-66 interval (upper bound at most 0.792). 72.7 lies inside P-125's interval (0.620-0.907). z = (0.800 - 0.727)/sqrt(0.8*0.2/28 + 0.727*0.273/252) = 0.91."
+      },
+      "checks": {
+        "c1_question": "holds: binary MCI vs CN in ADNI from T1 MRI; P-66 also injects age and sex, but the compared channel is MRI",
+        "c2_metric": "holds: accuracy with accuracy",
+        "c3_matched": "holds: the amygdala-only arm widens the gap (70.0 vs 80.00)",
+        "c4_uncertainty": "holds one-directionally only, robust across all P-66 interval constructions",
+        "c5_validity": "holds: no figure near 0.97",
+        "c6_record": "abstract 82.14 vs tables 80.00; both outside P-66's interval; P-125's Table 6 RF specificity/NPV cells appear swapped (does not affect accuracy)"
+      },
+      "candidate_explanations": [
+        "Features within the MRI channel: eight amygdala morphometric scalars vs 1746 radiomic features per ROI fused with 3D-CNN features over two ROIs. P-125 p.8: 'used for training were V, VN, DC, and TR for both hemispheres of the amygdala, for a total of 8 features.'",
+        "Participant selection: strict ADNI criteria with MMSE 28-30 and CDR 0 controls in P-125, vs 200 randomly selected subjects per group in P-66. P-125 p.4: 'Healthy controls had MMSE scores between 28 and 30, CDR score of 0, and no signs of cognitive impairment or depression.'",
+        "Test-set size: 28 subjects in P-125 (implied by its Table 6) vs about 360 images from about 250 subjects in P-66. P-125 p.11: 'classifying only 3.6 % of MCI as HC in the test group'.",
+        "Split unit and leakage: P-66 splits images, not subjects, so one subject's scans can fall on both sides, which would favour P-66 and runs against the observed gap. P-66 p.5: 'randomly dividing the MRI data for each classification dataset into a sizeable training and validation set (80 % of images) and a testing set (20 % of images).'",
+        "Classifier and ROI set: RF/SVM/KNN/ANN on the amygdala only vs a radiomics+CNN fusion over hippocampus and amygdala. P-66 p.1: 'their fusion showed ACC of 72.7 % and AUC of 80.'",
+        "None of these is shown by either paper to be sufficient; P-66's own amygdala-only arm moves away from P-125, not towards it."
+      ],
+      "quotes": [
+        {"paper": "P-125", "page": 9, "quote": "The mean test accuracy was 80.00 ± 2.43 %, 79.29 ± 5.78 %, 77.86 ± 3.71 % and 80.00 ± 3.97 % for the RF, SVM, KNN and ANN models respectively."},
+        {"paper": "P-125", "page": 11, "quote": "classifying only 3.6 % of MCI as HC in the test group, as seen in figure 10a."},
+        {"paper": "P-125", "page": 13, "quote": "MCI NPV % 77.27|67.14 ±4.85 (Table 6, RF column; cells joined)"},
+        {"paper": "P-66", "page": 5, "quote": "Therefore, in each of the five repetitions, 20 % of the remaining 80 % were used for validation, and the remainder, randomly, were used for training."},
+        {"paper": "P-66", "page": 7, "quote": "Radiomic+CNN ACC 72.7 ± 3.3 71.5 ± 5.3 70.0 ± 1.6 (Table 6, MCI vs CN; ROI Fusion / Hippocampus / Amygdala; cells joined)"}
+      ]
+    },
+    {
+      "id": "C-93",
+      "final": "yes",
+      "overturned": false,
+      "reason": "No condition fails on the source texts, though the matched-figure margin is small. (1) Same question: progression from MCI to AD/dementia in ADNI MCI. Both multimodal models share the cognitive and FreeSurfer-MRI channels, and P-156 adds CSF, APOE4 and demographics. Horizon (2 years from a month-24 index exam vs latest diagnosis), cohort (still MCI at month 24 with complete five-visit data vs all baseline EMCI/LMCI) and validation are allowed differences. (2) AUC with AUC. (3) The closest matched figure is P-168's single-timepoint random forest, 0.90 +/- 0.09 (month-24 exam, not the first MCI visit). P-156's 0.81 lies outside its Hanley-McNeil interval (0.853-0.947) and outside its fold-SD t-interval (0.836-0.964). P-168's 0.90 lies outside P-156's derived interval for every plausible test split: the upper bound is 0.880-0.888 for 50-66 progressors among the 169 test patients. The two-sample z is 2.01. The matched figures therefore do not agree within uncertainty. The other P-168 figures do not match P-156's condition: its age-restricted RF results (0.89 over 65; 0.87 over 70) are narrower than P-156's cohort (median age 73.5, IQR 68.0-78.8), and its MRI-only (RF 0.85) and NP-only (RF 0.87) arms are feature subsets. The over-70 figure would sit inside P-156's interval, and 0.81 falls just below its lower bound (0.813), which shows how thin the margin is. (4) Holds in both directions for the headline (0.93, Hanley-McNeil 0.890-0.970, vs 0.81, 0.736-0.884) and for the matched figure. (5) Maximum 0.93; both studies use internal validation only. (6) The figures match the sources. The record defects are minor: P-156's text gives 288/553 and its Table 2 gives 286/555. The pair qualifies but should carry its thin margin, which rests on P-156's derived interval with an unprinted test split.",
+      "figures": {
+        "P-168": "LSTM, five visits: AUC 0.93 +/- 0.06 (fold SD), n=347 (77/270). Hanley-McNeil: Q1 = 0.93/1.07 = 0.869, Q2 = 2(0.8649)/1.93 = 0.896, SE 0.0206, giving 0.890-0.970. Single-timepoint RF (month 24): 0.90 +/- 0.09; Hanley-McNeil SE 0.0242, giving 0.853-0.947; fold t-interval 0.90 +/- 2.262*0.09/sqrt(10) = 0.836-0.964. RF over 70 (n=256, 68 converters): 0.87, Hanley-McNeil 0.813-0.927. MRI-only RF 0.85: 0.794-0.906.",
+        "P-156": "EI stacking-RF, baseline only: held-out test AUC 0.81, test n = 841 - 672 = 169, class split in the supplement. At the cohort's 34% progressors (about 58/111): SE 0.0377, giving 0.736-0.884; at 50/119, 0.732-0.888; at 66/103, 0.740-0.880.",
+        "comparison": "Matched: 0.90 vs 0.81, z = 0.09/sqrt(0.0242^2 + 0.0377^2) = 2.01; each estimate lies outside the other's interval. Headline: 0.93 vs 0.81, both directions."
+      },
+      "checks": {
+        "c1_question": "holds: shared cognitive + MRI channels; horizon and cohort differences allowed",
+        "c2_metric": "holds: ROC-AUC",
+        "c3_matched": "holds narrowly: the single-timepoint 0.90 does not reconcile (0.90 > 0.888; 0.81 < 0.836)",
+        "c4_uncertainty": "holds both directions",
+        "c5_validity": "holds: max 0.93",
+        "c6_record": "figures correct; P-156 text 288/553 vs Table 2 286/555"
+      },
+      "candidate_explanations": [
+        "Horizon: fixed 2 years from a month-24 index exam vs the latest recorded diagnosis with no fixed horizon. P-156 p.4: 'The most recent diagnosis given to each patient (Final DX) was the outcome predicted (stable MCI or progressed to dementia).'",
+        "Cohort construction and complete-case selection in P-168: restricted to participants with five complete visits who were MCI at month 24, and 187 with undetermined status at month 48 were dropped. P-168 p.2: 'The participants who either reverted to normal cognitive status (n = 19) or cannot determine the cognitive status at the 48-month follow-up examination (n = 187) were excluded.'",
+        "Input timepoint and representation: five-visit sequence (headline) or the month-24 exam of people already MCI for up to two years, vs the first MCI visit. P-168 shows that longitudinal input adds 0.03 (0.93 vs 0.90, DeLong P = 0.039), which is only part of the gap.",
+        "Validation optimism in P-168: hyperparameters were selected by 10-fold CV on the same 347 participants later scored by a second 10-fold CV, and MICE imputation was run on the analysis set. P-168 p.4: 'The optimization was performed using two separate 10-fold cross-validation procedures for hyperparameter selection and model performance evaluation.'",
+        "Case mix and label: 35.4% early MCI in P-156 (Table 2, p.6), and dementia in P-156 vs AD in P-168.",
+        "Feature loss and data processing in P-156: PET and DTI were dropped for missingness, and TADPOLE aggregates ADNI editions. P-156 p.7: 'This resulted in several imaging modalities, namely FDG PET, AV45 PET, AV1451 PET and DTI, being removed'.",
+        "Validation design: 10-fold CV mean (P-168) vs a single random 20% held-out test set (P-156).",
+        "None of these is shown to be sufficient; P-168 quantifies only the longitudinal-input effect."
+      ],
+      "quotes": [
+        {"paper": "P-168", "page": 2, "quote": "The participants who either reverted to normal cognitive status (n = 19) or cannot determine the cognitive status at the 48-month follow-up examination (n = 187) were excluded."},
+        {"paper": "P-168", "page": 4, "quote": "The optimization was performed using two separate 10-fold cross-validation procedures for hyperparameter selection and model performance evaluation."},
+        {"paper": "P-168", "page": 5, "quote": "The random forest models built on a single time point reached the AUC of 0.89 and 0.87 for participants aged above 65 and 70, respectively."},
+        {"paper": "P-156", "page": 3, "quote": "A randomly sampled 80 % subset of this cohort was used to train all the predictive models for the target problem."},
+        {"paper": "P-156", "page": 5, "quote": "test set (F-measure = 0.68 and AUC = 0.81)"},
+        {"paper": "P-156", "page": 6, "quote": "All patients 841 555 286 Age at baseline 73.5 (68.0, 78.8) (Table 2; cells joined)"}
+      ]
+    },
+    {
+      "id": "C-103",
+      "final": "yes",
+      "overturned": false,
+      "reason": "No condition fails on the source texts. Condition 1 holds only through the brief's multimodal clause, which this round applied the same way in C-154 (P-178 again) and C-188. (1) Both papers predict MCI-to-AD conversion in ADNI Alzheimer's-spectrum MCI (early MCI vs ADNI-1 MCI; cohort differences are allowed). P-185 is MRI morphometry only. P-178's nine-feature model includes hippocampal and ventricular volume, which are its second- and third-ranked features after age (p.11), so the compared MRI channel is shared. (2) The record compares accuracy (93.6% vs 69.37%), which is confounded by prevalence (12.8% vs 57% converters). AUC with AUC (0.96 vs 0.6951) is the fair comparison and gives the same answer. (3) No matched figure. P-178's reduced 6-feature model drops the MRI volumes and APOE4 (AUC 0.88), so it is not an MRI-only model. P-178 has no 3-year horizon and no late-MCI subset. P-185 has no cognitive predictor and no open-horizon or early-MCI analysis. (4) Redone. P-185's 0.6951 gives Hanley-McNeil (126/95) 0.627-0.763. P-178's 0.96 gives subject-level Hanley-McNeil 0.882-1.000 at about 12/83 test patients, and 0.921-0.999 even if all 49/334 are counted. Each estimate lies far outside the other's interval. (5) P-178's best RF AUC is 0.96 and its accuracy 0.936 (Table 4). No P-178 variant reaches 0.97 AUC, so the exclusion does not apply as written. (6) The printed figures are read correctly. Table 4 exposes a validity problem, not a misread. The SVC's accuracy = precision = 0.900 with recall 1 implies a test set that is about 90% non-converter visits, not Table 1's balanced 402/402. Solving the RF's recall 0.978, precision 0.952 and accuracy 0.936 gives about 402 non-converter and 45 converter test visits, with only about 56% of converter visits correctly flagged. This belongs among the candidate explanations.",
+      "figures": {
+        "P-178": "9-feature balanced RF: accuracy 0.936, AUC 0.96 (Table 4), 95 test patients (about 12 converters / 83 non-converters by the 49/334 ratio). Hanley-McNeil subject level: Q1 = 0.96/1.04 = 0.923, Q2 = 2(0.9216)/1.96 = 0.940, SE 0.040, giving 0.882-1.000; at 49/334, SE 0.0197, giving 0.921-0.999. Derived from Table 4 (positive class = non-converters, since the SVC's accuracy = precision = 0.900 at recall 1): with 402 non-converter test visits, TP = 0.978*402 = 393.2, FP = 393.2*(1/0.952 - 1) = 19.8; accuracy 0.936 then gives m = 45.3 converter visits, of which 25.5 (56%) are correctly classified. 6-feature (no MRI, no APOE4): AUC 0.88, subject-level 0.751-1.000.",
+        "P-185": "Subspace biomarker + linear SVM, 221 MCI (126 pMCI/95 sMCI, 3-year), 10-fold CV x20: accuracy 69.37% (Wilson n=221: 0.630-0.751), AUC 0.6951. Hanley-McNeil: Q1 = 0.533, Q2 = 0.570, SE 0.0349, giving 0.627-0.763. Best AUC among its compared MRI methods: 0.6981.",
+        "comparison": "0.96 vs 0.6951: each lies far outside the other's interval under every construction."
+      },
+      "checks": {
+        "c1_question": "holds via the multimodal clause (MRI volumes are top-ranked in P-178's model); consistent with C-154 and C-188",
+        "c2_metric": "holds: AUC with AUC (accuracy is prevalence-confounded but gives the same direction)",
+        "c3_matched": "holds: no figure under the other's condition; the 6-feature model is not MRI-only",
+        "c4_uncertainty": "holds both directions by a wide margin",
+        "c5_validity": "holds as written: 0.96 < 0.97; validity concerns recorded as explanations",
+        "c6_record": "figures correct; P-178's Table 1 (balanced 402/402 test) is inconsistent with its Table 4"
+      },
+      "candidate_explanations": [
+        "Predictor set: P-178 adds four cognitive scales, age, race and APOE4 to two MRI volumes, while P-185 uses MRI morphometry alone. P-178's model without the volumes and APOE4 still reaches AUC 0.88, so most of its discrimination comes from a channel P-185 lacks. It reports no MRI-only model, so this is not shown to be sufficient. P-178 p.3: 'a mix of genetic biomarkers (APOE4), physical biomarkers (hippocampal and ventricular volume), four neuropsychological scale scores (ADAS13, ADAS11, FAQ, MMSE), and the patient’s demographic information (age, race).'",
+        "Label and horizon: conversion by the last visit (open horizon; the paper claims 5-7 years ahead) vs conversion within 3 years. P-185 p.2: 'According to whether the MCI subjects will convert to AD or not within a given time period (i.e., 3 years), they are separated into two categories'.",
+        "Population: ADNI-GO/2 early MCI (12.8% converters) vs ADNI-1 MCI (57% converters).",
+        "Unit of analysis and evaluation: P-178 scores visits, not patients. Its split is described both as a patient split ('95 patients reserved for testing', p.1) and as an oversampled record split (Table 1, p.4). Table 4 implies an imbalanced visit-level test set with about 56% of converter visits identified. P-185 scores subjects with 10-fold CV repeated 20 times.",
+        "Model selection on test performance in P-178: the nine-feature group was chosen by comparing accuracies across feature groups (p.7: 'by removing the RAVLT features, our accuracy rose to 93.6% in the 9-feature group').",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "quotes": [
+        {"paper": "P-178", "page": 1, "quote": "All of these patients were split randomly into training and testing data sets with 95 patients reserved for testing."},
+        {"paper": "P-178", "page": 4, "quote": "Record# after Oversampling 1608 1608 Training Data 1206 1206 Testing Data 402 402 (Table 1; cells joined)"},
+        {"paper": "P-178", "page": 8, "quote": "9-Features 0.936 0.952 0.978 0.965 0.96 (Table 4, Random Forest; cells joined)"},
+        {"paper": "P-178", "page": 8, "quote": "Support Vector 6-Features 0.900 0.900 1 0.948 0.52 (Table 4; cells joined)"},
+        {"paper": "P-178", "page": 11, "quote": "For our top-performing 9-feature model, the top features are Age, Hippocampus, and Ventri-"},
+        {"paper": "P-185", "page": 6, "quote": "The proposed biomarker achieved highest accuracy of 69.37% when using SVM classiﬁer with linear kernel."}
+      ]
+    },
+    {
+      "id": "C-121",
+      "final": "yes",
+      "overturned": false,
+      "reason": "No condition fails on the source texts. As in C-83, the pair qualifies only on the one-directional wording of condition 4. (1) Same question: MCI-to-AD conversion in ADNI MCI, with MRI and cognitive channels in both. T2 relaxometry and volumes vs FreeSurfer morphometry are features within one MRI channel. Label definition (2-year converters vs at-least-5-year stables, against conversion before month 36), input representation and age range are allowed differences. (2) AUC with AUC. (3) No figure under the other's condition. P-186 has no baseline-only arm: every arm uses two observed visits plus a forecast value, and its ground-truth arm uses three observed visits. P-183 has no longitudinal arm and no imaging-only arm. On the one shared single-channel subset, neuropsychology only, P-183's 0.727 lies outside both P-186 NM intervals (1-year 0.915: 0.847-0.983; 6-month 0.871: 0.801-0.941), while 0.871 lies inside P-183's NM CI (0.567-0.888). That is the same one-directional pattern and does not reconcile the pair. P-186's MRI-only arms (0.905, 0.88) have no P-183 counterpart. (4) Redone. P-183's reported CI for 0.824 (0.681-0.968) agrees with Hanley-McNeil on 18/22 (0.689-0.959), so it is a sample interval on n=40, not a spread across splits. P-186's 0.957 gives Hanley-McNeil (35/50) 0.908-1.000, and its 0.912 gives (49/70) 0.854-0.970. 0.824 lies outside both. The reverse fails, and the two-sample z is 1.81 (1-year) and 1.17 (6-month). (5) 0.957 is below 0.97. P-186's ground-truth AUC of 0.98 uses observed future readings and is not the compared figure. (6) The figures match the sources. Both papers are optimistic in ways that run in opposite directions. P-186 scaled features before the split and reports the best marker-subset size. P-183 pre-selected T2 features by univariate tests on all 40 subjects before cross-validation, which would inflate the lower figure and so runs against the gap.",
+      "figures": {
+        "P-183": "ENS AUC 0.824, reported 95% CI 0.681-0.968, n=40 (18 MCIp/22 MCIs), 100 random 80/20 splits. Hanley-McNeil check: Q1 = 0.824/1.176 = 0.701, Q2 = 2(0.679)/1.824 = 0.745, SE 0.0691, giving 0.689-0.959. NM-only best (LASSO) 0.727, reported CI 0.567-0.888 (Hanley-McNeil 0.566-0.888).",
+        "P-186": "NM+MRI 1-year-ahead AUC 0.957, n=85 (35/50), 5-fold CV: SE 0.0249, giving 0.908-1.000. 6-month-ahead 0.912, n=119 (49/70): SE 0.0297, giving 0.854-0.970. NM-only 0.915 (1-year): 0.847-0.983; 0.871 (6-month): 0.801-0.941. MRI-only 0.905 (1-year): 0.833-0.977; 0.88 (6-month): 0.813-0.947. GT (observed third visit) NM+MRI 0.98 / 0.942.",
+        "comparison": "0.824 < 0.854 and < 0.908: outside both P-186 intervals. 0.957 and 0.912 < 0.968: inside P-183's CI. z = (0.957 - 0.824)/sqrt(0.0249^2 + 0.0691^2) = 1.81."
+      },
+      "checks": {
+        "c1_question": "holds: ADNI MCI conversion, shared MRI + cognitive channels",
+        "c2_metric": "holds: ROC-AUC",
+        "c3_matched": "holds: no figure under the other's condition; the NM-only subset widens the gap",
+        "c4_uncertainty": "holds one-directionally only (P-183's n=40 CI contains both P-186 figures)",
+        "c5_validity": "holds: compared figure 0.957 < 0.97",
+        "c6_record": "figures correct"
+      },
+      "candidate_explanations": [
+        "Input representation: P-186 classifies three-point trajectories (two observed visits plus a forecast value at the time of conversion), while P-183 uses one baseline visit. P-186 p.8: 'recorded the highest classiﬁcation AUC of 95.7% predominantly because of involving the forecasted marker value at the time of conversion as a classiﬁcation feature.' No baseline-only comparator is reported, so this is not shown to be sufficient.",
+        "Label definition: an extreme-group design in P-183 (first AD diagnosis at 2 years vs stable for at least 5 years) against conversion at any time before month 36 vs MCI throughout in P-186.",
+        "Age restriction and sample: P-183 includes only 70-80-year-olds (n=40). P-183 p.3: 'The experiment included only the baseline information from subjects with a baseline MCI diagnosis, between 70 and 80 years old'.",
+        "Imaging features: T2 relaxometry signal/texture and volumes vs FreeSurfer morphometric markers.",
+        "Validation optimism in P-186: features were scaled on the whole dataset, markers were ranked by t-tests on baseline readings, and the best subset size was reported. P-186 p.4: 'We scale all features to have values between 0 and 1 before the train-test split.'",
+        "Validation optimism in P-183 (runs against the gap): T2 features were pre-selected by univariate tests on the whole sample. P-183 p.4: 'The second experiment included these 8 scores in addition to the most signiﬁcant features in the univariate analysis extracted from the T2 maps.' P-183 also reports the best of seven methods.",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "quotes": [
+        {"paper": "P-183", "page": 4, "quote": "receiver operating characteristic curve (ROC AUC) with a 95% conﬁdence interval (CI)."},
+        {"paper": "P-183", "page": 7, "quote": "ENS 0.750 0.588–0.873 0.824 0.681–0.968 (Table 4; cells joined)"},
+        {"paper": "P-183", "page": 4, "quote": "The second experiment included these 8 scores in addition to the most signiﬁcant features in the univariate analysis extracted from the T2 maps."},
+        {"paper": "P-186", "page": 3, "quote": "for 1-year-ahead prediction, the dataset contains three consecutive annual readings, resulting in 35 MCIp and 50 MCIs subjects."},
+        {"paper": "P-186", "page": 4, "quote": "We scale all features to have values between 0 and 1 before the train-test split."},
+        {"paper": "P-186", "page": 9, "quote": "MRI 13 88.71% (Table 5; cells joined)"}
+      ]
+    }
+  ]
+}

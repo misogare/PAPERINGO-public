@@ -1,0 +1,25 @@
+{
+  "id": "C-02",
+  "qualifies": "no",
+  "question": "None shared. P-48 predicts conversion to AD within 36 months against stable MCI among ADNI MCI participants (prognosis). P-56 classifies current MCI against normal elderly controls in 64 Shanghai Sanlin community participants (cross-sectional detection). Different task and comparison.",
+  "metric": "Mismatch as recorded: the record gives P-48 an '85% AUC', but P-48 reports accuracy, PPV, NPV, sensitivity and specificity only. P-56's headline is AUC 0.99 (accuracy 93.75%). Both papers print accuracy, but for different contrasts.",
+  "figures": {
+    "P-48": "Test accuracy for 36-month c-MCI vs s-MCI on a random 15% hold-out: neuropsychological + biomarkers 0.87/0.85/0.89 (RF/GB/XGB, n = 422; voting 0.90); neuropsychological + sMRI 0.83/0.88/0.83 (n = 318). No AUC.",
+    "P-56": "MCI vs NC, LOOCV, n = 64 (32/32): functional connectivity accuracy 71.88% (AUC 0.78); structural connectivity 92.19% (AUC 0.99); both fed to one SVM 93.75% (AUC 0.99)."
+  },
+  "matched_figure_check": "Not applicable: there is no shared clinical question to match on. Neither paper reports the other's contrast. P-48 has no MCI-vs-control result and P-56 has no conversion result.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "P-56 meets the Section 3.5 exclusion: AUC 0.99 and accuracy 93.75% from LOOCV on 64 participants with no external cohort, with t-test edge selection whose placement relative to the LOOCV folds is not stated. P-48 (best accuracy 0.90) does not.",
+  "failed_conditions": [1, 2, 5, 6],
+  "candidate_explanations": [],
+  "reason": "The two studies do not share a clinical question: P-48 predicts 36-month MCI-to-AD conversion in ADNI, and P-56 separates MCI from controls in a Shanghai community sample. P-56's AUC 0.99 from LOOCV on 64 people meets the performance-validity exclusion. The recorded early-vs-late-fusion contrast (85% vs 92% AUC on the same ADNI data) is in neither paper: P-48 reports no AUC, and P-56 is not ADNI and feeds both feature sets into one SVM. With the claims corrected, the only statement both papers make points the same way: combining feature classes beat single classes.",
+  "quotes": [
+    {"paper": "P-48", "page": 3, "quote": "individuals who converted to AD within the 36-month follow-up (c-MCI) or not (s-MCI)"},
+    {"paper": "P-48", "page": 4, "quote": "Accuracy, positive predictive value (PPV), negative predictive value (NPV), sensitivity, and speciﬁcity were calculated for RF, GB, and XGB before and after RF feature selection to evaluate the performance of each ML algorithm."},
+    {"paper": "P-48", "page": 1, "quote": "the highest accuracy (0.90) was reached by employing neuropsychological and AD-related biomarkers."},
+    {"paper": "P-56", "page": 2, "quote": "From October 2021 to February 2023, we enrolled 64 subjects from the Shanghai Sanlin community, comprising 32 patients with MCI and 32 subjects as NCs."},
+    {"paper": "P-56", "page": 1, "quote": "combining functional and structural connectivity features resulted in a classification accuracy and AUC value of 93.75% and 0.99, respectively."},
+    {"paper": "P-56", "page": 3, "quote": "we opted for the leave-one-out cross-validation (LOOCV) algorithm for evaluation and prediction."}
+  ]
+}

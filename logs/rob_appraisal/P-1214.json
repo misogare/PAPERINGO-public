@@ -2,37 +2,91 @@
  "paper_id": "P-1214",
  "document_check": {
   "matches": true,
-  "note": "The document is Kim D-H, 'Longitudinal Analysis of Amyloid PET and Brain MRI for Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease: Findings from the ADNI Cohort', Tomography 2025;11:37 (doi:10.3390/tomography11030037). It is an imaging-based conversion study in 180 ADNI MCI patients, which matches the cited 'imaging-based conversion model (Kim 2025)'."
+  "note": "The source text is Kim D-H, 'Longitudinal Analysis of Amyloid PET and Brain MRI for Predicting Conversion from Mild Cognitive Impairment to Alzheimer's Disease: Findings from the ADNI Cohort', Tomography 2025;11:37, doi:10.3390/tomography11030037 (page 1). It is a retrospective analysis of 180 MCI patients from ADNI 2 and GO, 76 of them converters, in which each imaging index (SUVR, AV-45 BASS, MRI BAI and the composite shape feature) is assessed by univariable ROC analysis. The baseline shape feature AUC is 0.891 (0.836 to 0.933), with sensitivity 0.79 and specificity 0.87 at threshold 1.60 (Table 2, page 7). This matches the cited 'imaging-based conversion analysis (Kim 2025, P-1214)' and the existing record's cited_result. I read the whole text through to the References (page 14)."
  },
  "cited_result": "Principal result: prediction of MCI-to-AD conversion within 6 years by the baseline composite imaging 'shape feature' (AV-45 BASS multiplied by MRI BAI), AUC 0.891 (95% CI 0.836 to 0.933), with sensitivity 0.79 and specificity 0.87 at a Youden-derived cut-off of 1.60. The review cites the fact that this conversion predictor includes no medication covariate.",
- "tool": "QUADAS-2",
- "tool_reason": "The cited result is the prognostic accuracy (ROC AUC, sensitivity and specificity at a cut-off) of a single fixed composite imaging index against later conversion. No multivariable model with covariates is fitted, so QUADAS-2 applies rather than PROBAST.",
+ "tool_reason": "The cited result is how well one baseline imaging measure (the composite shape feature) predicts later conversion from MCI, with no multivariable model fitted. Clarification 2 of the operator's 2026-09-29 review assigns a baseline measure evaluated as a predictor of later progression to QUIPS as a prognostic factor, even though it is reported as a ROC AUC, and not to QUADAS-2.",
  "domains": [
   {
-   "domain": "1. Patient selection",
-   "judgment": "high",
-   "rationale": "The sample was selected on the availability of baseline and 2-year PET and MRI, not consecutively or at random. Non-converters also had to have completed 6 years of clinical follow-up while converters did not, which is an outcome-dependent exclusion. The appendix counts (295 excluded, 244 included) do not reconcile with the 180 analysed.",
+   "domain": "1. Study participation",
+   "judgment": "moderate",
+   "rationale": "The source population (ADNI 2 and GO) and the baseline sample (Table 1) are described. But the sample was chosen on data collected after baseline: repeat PET and MRI at 2 years. No recruitment period is given, and the flowchart (Figure A1) is an image that the text does not reproduce. The only counts given (Table A1: 295 excluded, 244 included) do not reconcile with the 180 analysed, so the proportion of eligible patients who took part cannot be worked out. The author acknowledges that the ADNI sample may be selected. The outcome-dependent exclusion is judged under attrition (domain 2).",
    "signalling": [
     {
-     "question": "Was a consecutive or random sample of patients enrolled?",
-     "answer": "No",
+     "question": "Adequate participation in the study by eligible persons",
+     "answer": "Unsure",
+     "quote": "Characteristics Exclusion Inclusion p-Value Number 295 244",
+     "page": "13"
+    },
+    {
+     "question": "Description of the source population or population of interest",
+     "answer": "Yes",
+     "quote": "The ADNI dataset includes comprehensive clinical, imaging, genetic, and biochemical data collected from over 50 sites in the United States and Canada.",
+     "page": "2"
+    },
+    {
+     "question": "Description of the baseline study sample",
+     "answer": "Yes",
+     "quote": "Among the 180 patients with MCI, 76 (42.2%) developed AD during the 72-month follow-up period.",
+     "page": "6"
+    },
+    {
+     "question": "Adequate description of the sampling frame and recruitment",
+     "answer": "Partly",
      "quote": "For this study, we specifically selected participants diagnosed with MCI at baseline who had undergone both amyloid PET and brain MRI scans at baseline and at 2-year follow-up.",
      "page": "2"
     },
     {
-     "question": "Was a case-control design avoided?",
-     "answer": "Yes",
-     "quote": "we extracted data from the ADNI 2 and GO datasets for 180 patients with MCI (early MCI or late MCI) who had baseline and 2-year follow-up AV-45 PET and brain MRI data, as well as 6-year follow-up clinical assessment data.",
+     "question": "Adequate description of the period and place of recruitment",
+     "answer": "Partly",
+     "quote": "In the present study, we extracted data from the ADNI 2 and GO datasets for 180 patients with MCI (early MCI or late MCI)",
      "page": "3"
     },
     {
-     "question": "Did the study avoid inappropriate exclusions?",
+     "question": "Adequate description of inclusion and exclusion criteria",
+     "answer": "Partly",
+     "quote": "The detailed patient selection process, including inclusion and exclusion criteria, is presented in Figure A1.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Study attrition",
+   "judgment": "high",
+   "rationale": "Patients lost before 6 years were excluded only if they had not converted. Converters were kept whenever their conversion occurred, and non-converters were kept only if they completed 6 years. The analysis is a binary ROC, not a time-to-event analysis, so this exclusion depends on the outcome and can distort the association between the factor and the outcome. Table A1 suggests that more patients were excluded (295) than included (244). No reasons for loss are given, and no attempt to recover outcome data is described. Excluded and included patients are compared only on demographics and baseline CDR, not on the prognostic factor, and they differ in age.",
+   "signalling": [
+    {
+     "question": "Adequate response rate for study participants (proportion of the baseline sample available for analysis)",
+     "answer": "No",
+     "quote": "Characteristics Exclusion Inclusion p-Value Number 295 244",
+     "page": "13"
+    },
+    {
+     "question": "Description of attempts to collect information on participants who dropped out",
+     "answer": "No information",
+     "quote": "Searched for tracing, contact or outcome ascertainment for dropouts (and 'censor', 'survival'). The only handling described is exclusion followed by a baseline comparison: 'Patients who did not undergo clinical assessments for up to 6 years and did not achieve conversion to dementia were excluded.'",
+     "page": "3"
+    },
+    {
+     "question": "Reasons for loss to follow-up are provided",
+     "answer": "No",
+     "quote": "These results indicate that the exclusion of patients owing to dropout is unlikely to have significantly affected the validity of our findings.",
+     "page": "3"
+    },
+    {
+     "question": "Adequate description of participants lost to follow-up",
+     "answer": "Partly",
+     "quote": "As shown in Table A1, there were no significant differences between the two groups in terms of sex (p = 0.470), education (p = 0.079), APOE4 status (p = 0.188), or baseline Clinical Dementia Rating (CDR) scores (p = 0.303).",
+     "page": "3"
+    },
+    {
+     "question": "There are no important differences between participants who completed the study and those who did not",
      "answer": "No",
      "quote": "Patients who did not undergo clinical assessments for up to 6 years and did not achieve conversion to dementia were excluded.",
      "page": "3"
     },
     {
-     "question": "Were the included and excluded patients comparable (selection check)?",
+     "question": "Baseline differences between completers and non-completers (supporting item)",
      "answer": "Probably no",
      "quote": "Although a statistically significant difference was observed for age (p = 0.044), the magnitude of this difference was relatively small",
      "page": "3"
@@ -40,96 +94,190 @@
    ]
   },
   {
-   "domain": "2. Index test",
-   "judgment": "high",
-   "rationale": "The cut-offs behind the reported sensitivity and specificity were chosen by maximising Youden's J in the same 180 patients, with no validation set. No blinding of the semiautomatic quantification to outcome is reported. The composite formula itself was pre-defined from earlier work, and the AUC does not depend on the threshold, but the reported accuracy is apparent. Reported 'Youden's J' values exceed 1 (for example 1.65), which is a computational or reporting error.",
+   "domain": "3. Prognostic factor measurement",
+   "judgment": "moderate",
+   "rationale": "The shape feature is defined (BASS multiplied by BAI), was measured from ADNI-preprocessed baseline images by the same semiautomatic procedure for all patients, and was available for everyone (complete-case by design). However, no reliability or reproducibility data are reported for this new index; its validity rests on the author's own earlier work [17]. The document does not say whether the analyst was blind to conversion status. The Methods expand BAI as 'brain atrophic index' while figure and table footnotes call it 'brain amyloid index'. The reported sensitivity and specificity use a cut-off chosen in the same data, although the AUC treats the factor as continuous.",
    "signalling": [
     {
-     "question": "Were the index test results interpreted without knowledge of the results of the reference standard?",
+     "question": "A clear definition or description of the prognostic factor is provided",
+     "answer": "Yes",
+     "quote": "The shape feature is obtained by multiplying the BASS and BAI [17].",
+     "page": "5"
+    },
+    {
+     "question": "Method of prognostic factor measurement is adequately valid and reliable",
      "answer": "No information",
-     "quote": "Searched for blind, masked, unaware or independent reading; only found: 'Brain beta-amyloid deposition was quantified using a semiautomatic method, by applying the brain amyloid smoothing score (BASS).'",
+     "quote": "Searched for test-retest, inter-operator or reproducibility data, validation against established measures, and blinding of the image analyst. None are reported; the only description is 'Brain beta-amyloid deposition was quantified using a semiautomatic method, by applying the brain amyloid smoothing score (BASS).'",
      "page": "4"
     },
     {
-     "question": "If a threshold was used, was it pre-specified?",
+     "question": "Method of prognostic factor measurement (MRI component)",
+     "answer": "Partly",
+     "quote": "The semiautomatic quantification of brain atrophy was performed by calculating the brain atrophic index (BAI).",
+     "page": "4"
+    },
+    {
+     "question": "Consistency of the factor's definition across the report",
      "answer": "No",
-     "quote": "The optimal cutoff points for differentiating converters and nonconverters were determined using Youden's J statistic (J = Sensitivity + Specificity \u22121).",
+     "quote": "Abbreviations: SUVR, standardized uptake value ratio; AV-45, F-18 florbetapir; BASS, brain amyloid smoothing score; BAI, brain amyloid index.",
+     "page": "4"
+    },
+    {
+     "question": "Continuous variables are reported or appropriate cut points are used",
+     "answer": "Partly",
+     "quote": "The optimal cutoff points for differentiating converters and nonconverters were determined using Youden\u2019s J statistic",
      "page": "5"
     },
     {
-     "question": "Was the composite index defined before analysis?",
-     "answer": "Probably yes",
-     "quote": "The shape feature is obtained by multiplying the BASS and BAI [17].",
-     "page": "5"
+     "question": "The method and setting of measurement of the prognostic factor is the same for all study participants",
+     "answer": "Yes",
+     "quote": "All PET and MRI data utilized in this study were sourced from the ADNI database and accessed at the most advanced preprocessing stage.",
+     "page": "3"
+    },
+    {
+     "question": "Adequate proportion of the study sample has complete data for the prognostic factor",
+     "answer": "Yes",
+     "quote": "For this study, we specifically selected participants diagnosed with MCI at baseline who had undergone both amyloid PET and brain MRI scans at baseline and at 2-year follow-up.",
+     "page": "2"
+    },
+    {
+     "question": "Appropriate methods of imputation are used for missing prognostic factor data",
+     "answer": "Not applicable",
+     "quote": "No imputation: complete imaging data were an inclusion requirement (see previous item).",
+     "page": "2"
     }
    ]
   },
   {
-   "domain": "3. Reference standard",
-   "judgment": "high",
-   "rationale": "The target condition is labelled conversion to AD, but it is operationalised as a global CDR threshold ('exceeded 1'), with no aetiological AD diagnosis described. Read literally, the threshold requires CDR 2, which is inconsistent with the label and with a 42% conversion rate. Nothing is reported on whether CDR raters were blind to the imaging.",
+   "domain": "4. Outcome measurement",
+   "judgment": "moderate",
+   "rationale": "The outcome is labelled conversion to AD but is defined only by a global CDR threshold, and no diagnostic criteria for AD are described. Read literally, the threshold ('exceeded 1') means CDR 2, which does not fit the label or the 42% conversion rate. The CDR is a standard instrument applied to all patients under the ADNI protocol. Nothing is reported on whether CDR raters knew the imaging results, so differential misclassification cannot be excluded. The unclear definition combined with no information on blinding gives moderate risk.",
    "signalling": [
     {
-     "question": "Is the reference standard likely to correctly classify the target condition?",
-     "answer": "Probably no",
+     "question": "A clear definition of the outcome is provided, including duration of follow-up",
+     "answer": "Partly",
      "quote": "The onset of dementia was defined as the first time the Clinical Dementia Rating (CDR) value exceeded 1 during the follow-up period.",
      "page": "3"
     },
     {
-     "question": "Were the reference standard results interpreted without knowledge of the results of the index test?",
-     "answer": "No information",
-     "quote": "Searched for blinding of clinical/CDR assessors to PET or MRI results; the only description is: 'Cognitive function was assessed using the CDR, the 13-item AD Assessment Scale\u2013Cognitive Subscale (ADAS-cog), the Functional Activities Questionnaire (FAQ), and the Mini-Mental State Examination (MMSE).'",
-     "page": "3"
-    }
-   ]
-  },
-  {
-   "domain": "4. Flow and timing",
-   "judgment": "high",
-   "rationale": "The interval from the baseline index test to the 6-year outcome is appropriate, and all patients were rated with the CDR. However, only those who converted or who completed 6 years were analysed, so patients lost to follow-up without conversion were dropped. The appendix table reports 244 'Inclusion' patients against 180 analysed, and this is unexplained.",
-   "signalling": [
-    {
-     "question": "Was there an appropriate interval between index test and reference standard?",
-     "answer": "Probably yes",
+     "question": "Outcome definition consistent with the outcome construct reported (AD)",
+     "answer": "No",
      "quote": "Patients were categorized into two groups: (i) converters, who progressed to AD within the 6-year follow-up period; and (ii) nonconverters.",
      "page": "3"
     },
     {
-     "question": "Did all patients receive the same reference standard?",
-     "answer": "Probably yes",
+     "question": "Method of outcome measurement used is adequately valid and reliable",
+     "answer": "Partly",
      "quote": "Cognitive function was assessed using the CDR, the 13-item AD Assessment Scale\u2013Cognitive Subscale (ADAS-cog), the Functional Activities Questionnaire (FAQ), and the Mini-Mental State Examination (MMSE).",
      "page": "3"
     },
     {
-     "question": "Were all patients included in the analysis?",
-     "answer": "No",
-     "quote": "Patients who did not undergo clinical assessments for up to 6 years and did not achieve conversion to dementia were excluded.",
+     "question": "Outcome assessed blind to the prognostic factor (part of the validity item)",
+     "answer": "No information",
+     "quote": "Searched for 'blind', 'masked', 'unaware' and 'independent' in relation to clinical or CDR raters. None found; the text describes only the instruments used.",
      "page": "3"
     },
     {
-     "question": "Do the participant counts reconcile?",
+     "question": "The method and setting of outcome measurement is the same for all study participants",
+     "answer": "Probably yes",
+     "quote": "Among the 180 patients with MCI, 76 (42.2%) developed AD during the 72-month follow-up period.",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "5. Study confounding",
+   "judgment": "high",
+   "rationale": "Known prognostic factors were measured and differed between converters and non-converters: age (73.1 against 68.7 years), APOE4 carriage and baseline diagnosis (LMCI 63% against 24%). None was accounted for, either in the design (EMCI and LMCI were pooled, with no matching or stratification) or in the analysis (univariable ROC and t-tests only). Medication was not measured: the body text never mentions any drug or treatment. The shape feature's discrimination therefore cannot be separated from age, disease stage or treatment. The study presents the index as a validated predictor of risk, not as an exploratory association, so confounding is relevant and the risk is high.",
+   "signalling": [
+    {
+     "question": "All important confounders are measured",
+     "answer": "Partly",
+     "quote": "Conversion to AD was significantly associated with age, APOE4 status, and baseline diagnosis.",
+     "page": "6"
+    },
+    {
+     "question": "Measurement of medication or treatment status (a candidate confounder)",
+     "answer": "No information",
+     "quote": "Searched the full text for 'medication', 'drug', 'cholinesterase', 'donepezil', 'memantine' and 'treat'. There are no hits in the Methods or Results; the only occurrences are in the reference list and the ADNI funding acknowledgment.",
+     "page": "1-13"
+    },
+    {
+     "question": "Clear definitions of the important confounders measured are provided; measurement valid and the same for all",
+     "answer": "Probably yes",
+     "quote": "APOE4 <0.001 0.001 0 65 (62.5) 24 (31.6) 1 29 (27.9) 39 (51.3) 2 10 (9.6) 13 (17.1) Diagnosis baseline <0.001 0.001 EMCI 79 (76.0) 28 (36.8) LMCI 25 (24.0) 48 (63.2)",
+     "page": "6"
+    },
+    {
+     "question": "Important potential confounders are accounted for in the study design",
      "answer": "No",
-     "quote": "Table A1. Demographic characteristics of the study population. Characteristics Exclusion Inclusion p-Value Number 295 244",
-     "page": "13"
+     "quote": "In the present study, we extracted data from the ADNI 2 and GO datasets for 180 patients with MCI (early MCI or late MCI)",
+     "page": "3"
+    },
+    {
+     "question": "Important potential confounders are accounted for in the analysis",
+     "answer": "No",
+     "quote": "Receiver operating characteristic (ROC) analysis with area under the curve (AUC) measurement was performed for image parameters.",
+     "page": "5"
+    },
+    {
+     "question": "Appropriate methods are used if imputation is used for missing confounder data",
+     "answer": "Not applicable",
+     "quote": "No imputation is described. Confounders are reported for all 180 patients in Table 1: 'Age (years) 68.7 \u00b1 6.8 73.1 \u00b1 6.5 <0.001 0.001'",
+     "page": "6"
+    }
+   ]
+  },
+  {
+   "domain": "6. Statistical analysis and reporting",
+   "judgment": "moderate",
+   "rationale": "Univariable ROC analysis suits the discrimination of one continuous factor. All four indices are reported at both time points, including the non-significant baseline difference from SUVR, so selective reporting is not evident, although no protocol is cited. But the cut-off, sensitivity and specificity were derived and evaluated in the same 180 patients with no validation, despite an objective to 'identify and validate'. No time-to-event method is used, although follow-up varied. Every 'Youden's J' in Table 2 exceeds 1 (1.65 for the shape feature) and equals sensitivity plus specificity, so the minus 1 was omitted. The participant counts do not reconcile (244 against 180).",
+   "signalling": [
+    {
+     "question": "Sufficient presentation of data to assess the adequacy of the analytic strategy",
+     "answer": "Partly",
+     "quote": "Shape feature 0.891 0.836\u20130.933 - 1.60 0.79 0.87 1.65",
+     "page": "7"
+    },
+    {
+     "question": "Strategy for model building is appropriate and based on a conceptual framework",
+     "answer": "Partly",
+     "quote": "The multiplicative approach was chosen to emphasize the interaction effect between amyloid burden and neurodegeneration",
+     "page": "5"
+    },
+    {
+     "question": "The selected statistical model is adequate for the design of the study",
+     "answer": "Probably no",
+     "quote": "The maximum J value for each ROC curve was selected to identify the point that maximizes the difference between sensitivity and 1-specificity.",
+     "page": "5"
+    },
+    {
+     "question": "There is no selective reporting of results",
+     "answer": "Probably yes",
+     "quote": "At baseline, the ROC curves of the shape feature and SUVR were not significantly different.",
+     "page": "7"
     }
    ]
   }
  ],
- "overall": "High risk of bias (QUADAS-2: high in all four risk-of-bias domains).",
+ "overall": "High risk of bias (QUIPS: high for study attrition and study confounding; moderate for study participation, prognostic factor measurement, outcome measurement, and statistical analysis and reporting).",
  "overall_category": "high",
- "overall_rationale": "The sample was selected on complete longitudinal imaging, and non-converters without 6-year follow-up were excluded (outcome-dependent selection). Thresholds were derived in the same data with no validation. The reference standard is an ambiguous global CDR threshold rather than an AD diagnosis, and assessor blinding is not reported. Participant flow does not reconcile. Any single high domain makes the overall judgment high.",
- "confidence": "medium",
- "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
- "review_status": "reviewed and accepted by the operator (2026-09-28)",
- "brief": "logs/rob_appraisal/ROB_BRIEF.md",
- "quote_check": {
-  "checked": 11,
-  "matched": 9
+ "overall_rationale": "By the QUIPS rule, any high domain makes the overall rating high. Here two domains are high and four are moderate. Attrition is high because non-converters lost before 6 years were excluded while converters were kept, which is an outcome-dependent exclusion in a binary analysis with no time-to-event method, and no reasons for loss are given. Confounding is high because age, APOE4 and baseline diagnosis differed between groups but none was adjusted for, and medication was not measured. The overall rating would still be high if confounding were judged moderate, because the attrition finding is enough on its own.",
+ "confidence": "high",
+ "tool": "QUIPS",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md (including the clarifications of 2026-09-29)",
+ "tool_changed_2026_09_29": {
+  "previous_tool": "QUADAS-2",
+  "previous_category": "high",
+  "why": "re-screen under the operator's clarified rules: The cited result is the baseline composite imaging 'shape feature' (a fixed product of AV-45 BASS and MRI BAI, with no fitted weights) evaluated as a predictor of conversion from MCI to AD within 6 years in an ADNI cohort: AUC 0.891 at baseline, with sensitivity and specificity at a cut-off set by Youden's J. The abstract says the study 'aimed to investigate the predictive power' of these biomarkers. This is a baseline measure evaluated for later progression, so clarification 2 makes it a prognostic factor and QUIPS applies, not QUADAS-2. PROBAST does not apply either, because no multivariable model is fitted, as the record itself notes.",
+  "superseded_record": "logs/rob_appraisal/superseded/P-1214_2026-09-28.json"
  },
- "operator_review_2026_09_28": {
-  "date": "2026-09-28",
-  "by": "operator, stated in session on 2026-09-28",
-  "statement": "The operator reviewed the model readers' risk-of-bias judgments and accepts them.",
-  "scope": "Judgments, signalling answers and quotations unchanged by the review."
+ "quote_check": {
+  "checked": 34,
+  "matched": 30,
+  "annotations_not_checked": 1,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
  }
 }

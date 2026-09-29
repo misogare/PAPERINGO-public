@@ -1,0 +1,29 @@
+{
+ "id": "C-266",
+ "qualifies": "no",
+ "question": "Plasma Abeta42/40 and progression from MCI to dementia. For P-1407's whole cohort and its probable MCI-LB group, the population class differs: Lewy-body MCI makes up about half the whole cohort, while P-1267 excluded Lewy body, parkinsonian, frontotemporal and vascular MCI. Those estimates fail condition 1. P-1407's MCI-AD subgroup (n = 43, assigned from the final diagnosis after follow-up) shares P-1267's population class (Alzheimer's-spectrum MCI). The endpoints differ (dementia or death against adjudicated dementia censored at 36 months), which is a label-definition difference the rule allows.",
+ "metric": "Hazard ratio with hazard ratio, but on different units. P-1407 gives HR per control-referenced SD of an inverted Simoa ratio (higher = more abnormal), adjusted for age, sex, education and MMSE. P-1267 gives HR per percentage point of the INNO-BIA ratio (higher = less abnormal), or top quartile against the rest, adjusted for age, sex, education and APOE e4. The control SD is not printed, so the only common scale available is P-1267's own sample SD.",
+ "figures": {
+  "P-1407": "Abeta42/40 (inverted), dementia or death. All MCI (n = 120): 1.06 (0.83-1.35). Probable MCI-LB (n = 62): 1.23 (0.94-1.60). MCI-AD (n = 43, 21 events): 0.67 (0.37-1.20), p = 0.180. None is significant.",
+  "P-1267": "Adjusted HR per percentage point: free ratio 0.95 (0.91-0.99), total 0.92 (0.86-0.98). Unadjusted: free 0.97 (0.93-1.02), total 0.94 (0.88-1.01). Top quartile vs three lower, adjusted: free 0.36 (0.15-0.87). Rescaled to one sample SD of lower ratio (free SD 7.3 points, total SD 4.5, Table 2) so that it matches P-1407's direction: free adjusted 1/0.95^7.3 = 1.45 (1/0.99^7.3 = 1.08 to 1/0.91^7.3 = 1.99); total adjusted 1.46 (1.10-1.97); free unadjusted 1.25 (0.87-1.70).",
+  "comparison": "MCI-AD against P-1267 on this scale: 0.37-1.20 against 1.08-1.99 (free) or 1.10-1.97 (total). Each point estimate lies outside the other's interval, but the intervals overlap (1.08-1.20). This is a significant estimate against a non-significant one whose intervals do not exclude each other. For P-1407's upper bound of 1.20 to fall below P-1267's lower bound, a control SD above 18 percentage points would be needed (ln 1.2 / ln(1/0.99) = 18.1), far beyond P-1267's sample SD of 7.3. The whole-cohort and MCI-LB estimates point the same way as P-1267 and overlap it."
+ },
+ "matched_figure_check": "None printed. P-1407 has no Lewy-body-excluded whole-cohort model on P-1267's scale and prints no control SD. P-1267 has no dementia-or-death endpoint and no per-SD estimate. The rescaling above uses P-1267's sample SD in place of P-1407's control SD, so it is approximate.",
+ "beyond_uncertainty": false,
+ "significance_only": true,
+ "performance_validity": "Not a performance comparison (association hazard ratios).",
+ "failed_conditions": [1, 4],
+ "candidate_explanations": [],
+ "reason": "Two of P-1407's three estimates (whole cohort, probable MCI-LB) come from a Lewy-body-enriched population that P-1267 excluded, and they point the same way anyway. The one matched population, MCI-AD, has a non-significant opposite point estimate (0.67, 0.37-1.20) on 21 events. On the best common scale available, its interval overlaps P-1267's adjusted per-SD estimate (1.45, 1.08-1.99). What remains is a significant estimate against a non-significant one whose intervals overlap, which the rule does not count. P-1267's own result also depends on adjustment (unadjusted free ratio p = 0.21).",
+ "quotes": [
+  {"paper": "P-1407", "page": 3, "quote": "MCI-AD (n = 43) Aβ42/40 a 0.67 (0.37–1.20) 0.180"},
+  {"paper": "P-1407", "page": 3, "quote": "All MCI (n = 120) Aβ42/40 a 1.06 (0.83–1.35) 0.636"},
+  {"paper": "P-1407", "page": 2, "quote": "Age and years in education were normalized to the total mean, and MMSE and blood results were standardized with respect to the control mean."},
+  {"paper": "P-1407", "page": 2, "quote": "The Aβ42/40 ratio was inversed and so a greater value represents greater abnormality to allow for direct comparison of hazard ratios."},
+  {"paper": "P-1407", "page": 4, "quote": "The absence of an association of pTau181 and disease progression in our cohort may be due to a relatively small number of MCI-AD cases (n = 43) and a lower number of dementia/death events observed (n = 21)."},
+  {"paper": "P-1267", "page": 6, "quote": "The free and total Aβ1–42/Aβ1–40 ratio were significantly associated with conversion to dementia with Hazard ratios of 0.95 (p = 0.038) and 0.92 (P = 0.013) respectively (Table 3)."},
+  {"paper": "P-1267", "page": 5, "quote": "Free Aβ1–42/Aβ1–40 ratio (%)a 20.4 ± 7.3 (Table 2, MCI sample N = 106)"},
+  {"paper": "P-1267", "page": 5, "quote": "Total Aβ1–42/Aβ1–40 ratio (%)c 13.9 ± 4.5 (Table 2, MCI sample N = 106)"},
+  {"paper": "P-1267", "page": 9, "quote": "To increase the likelihood of conversion to AD, we excluded participants with Lewy Body, Parkinsonian, frontotemporal, or vascular MCI disorders."}
+ ]
+}

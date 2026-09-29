@@ -1,0 +1,25 @@
+{
+  "id": "C-90",
+  "qualifies": "no",
+  "question": "Not shared. P-27 discriminates prevalent MCI cross-sectionally (CHARLS 2018) among respondents aged 60 and over with depressive symptoms (CESD-10 >= 10). P-166 predicts incident MCI over the next four years among CHARLS respondents with sarcopenia who were cognitively normal at baseline. Detecting existing MCI and predicting future MCI in people normal at baseline are different tasks and comparisons, not only a different horizon. The population behind each label is also a different clinical subgroup (depressed vs sarcopenic), and the MCI definitions differ (P-166 adds no IADL disability on a 21-point battery). The channel (clinical/questionnaire tabular data) is shared.",
+  "metric": "ROC-AUC vs ROC-AUC (matches).",
+  "figures": {
+    "P-27": "RF: training 0.826 (0.809-0.843); internal validation (30% hold-out of 1964) 0.801 (95% CI 0.760-0.841); 5-fold CV mean 0.791 (0.771-0.810); external CLHLS (n=6782) 0.653 (0.636-0.670). All intervals as printed.",
+    "P-166": "Feed-forward network: test (20% of 414) 0.708 (95% CI 0.544-0.844); temporal validation CHARLS 2015-2018 (n=156) 0.711 (0.588-0.823). Intervals as printed."
+  },
+  "matched_figure_check": "Neither paper reports the other's endpoint: P-27 has no incident-MCI result and P-166 no prevalent-MCI result. On like validation tiers, the internal hold-outs give P-27 0.801 (0.760-0.841) vs P-166 0.708 (0.544-0.844): 0.708 lies below P-27's interval and 0.801 inside P-166's. The out-of-sample figures reverse the direction: P-27's external 0.653 (0.636-0.670) lies inside P-166's temporal interval (0.588-0.823), and P-166's 0.711 lies above P-27's external interval.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: no AUC reaches 0.97.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "P-27 detects prevalent MCI among depressed older adults at one survey wave; P-166 predicts four-year incident MCI among cognitively normal sarcopenic adults. These are different clinical questions (diagnosis vs prognosis in a baseline-normal subgroup), so condition 1 fails. On the letter of condition 4, P-166's 0.708 lies outside P-27's internal interval, but the direction reverses on out-of-sample validation (P-27 external 0.653 vs P-166 0.711). The record also cites P-27's training AUC (0.826) rather than its validation AUC (0.801).",
+  "quotes": [
+    {"paper": "P-27", "page": 4, "quote": "In the validation set, RF (0.801, 95 % CI: 0.760–0.841) showed a higher AUC value compared to"},
+    {"paper": "P-27", "page": 6, "quote": "(0.653, 95 % CI: 0.636–0.670) of RF did not reach the level of the"},
+    {"paper": "P-27", "page": 8, "quote": "to the dataset of 2018 instead of conducting a longitudinal analysis."},
+    {"paper": "P-166", "page": 1, "quote": "Our model forecasts MCI incidence over the next four years, categorizing patients into low and high-risk groups based on their risk levels."},
+    {"paper": "P-166", "page": 1, "quote": "achieving an Area Under the Curve (AUC) of 0.708 (95% CI: 0.544–0.844) for the test set"},
+    {"paper": "P-166", "page": 3, "quote": "Participants who met both AACD criteria and had no disability in IADL were classified as having MCI."}
+  ]
+}

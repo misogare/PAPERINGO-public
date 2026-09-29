@@ -1,0 +1,24 @@
+{
+  "id": "C-08",
+  "qualifies": "no",
+  "question": "None shared. P-92 is binary MCI vs NC from a DTI + rs-fMRI connectome GCN (ADNI, 116 NC / 98 MCI). P-97 is 4-class HC / EMCI / LMCI / AD staging from rs-fMRI-only connectivity embeddings (ADNI, 125 subjects). The channel is shared (MRI), but the comparison is not: 2 classes against 4 stages including AD. P-97 reports no binary MCI-vs-HC figure of its own; the two-class results in its Table 2 are other studies'.",
+  "metric": "Mismatch: binary accuracy (P-92, Best column 92.7%, average 86.3%) against 4-class accuracy and quadratic kappa averaged over 100 repeats of 5-fold CV (P-97, 97.73%). Neither paper reports an AUC, although the record gives both an AUC (91% and 89%).",
+  "figures": {
+    "P-92": "MCI vs NC, 5-fold CV, n = 214: accuracy Best 92.7 / Worst 83.3 / Average 86.3 (Table 4, best setting); second ADNI subset (124) Best 94.1 / Average 92.0. No AUC.",
+    "P-97": "4-class HC/EMCI/LMCI/AD, 5-fold CV repeated 100 times, n = 125: accuracy 97.73% (SVM) / 97.32% (LR), quadratic kappa 96.86% / 96.74%; without the mapping function 87.2% / 86.96%. No AUC."
+  },
+  "matched_figure_check": "Not applicable: no shared contrast. Neither paper reports a result under the other's condition (P-92 has no 4-class result; P-97 has no binary MCI-vs-HC result).",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "P-97 meets the Section 3.5 exclusion: 97.73% accuracy on internal CV only, 125 subjects over four classes, no external cohort. P-92 (Best 92.7%, average 86.3%) does not.",
+  "failed_conditions": [1, 2, 5, 6],
+  "candidate_explanations": [],
+  "reason": "The papers classify different contrasts: binary MCI vs NC against 4-class staging with AD. Their accuracy summaries are not the same quantity, and P-97's 97.73% meets the performance-validity exclusion. The recorded pair (GCN 91% AUC vs DTI + rs-fMRI concatenation 89% AUC on the same validation set) misreads both papers: neither reports an AUC, P-97 uses no DTI, and the samples differ. The record itself calls the gap marginal.",
+  "quotes": [
+    {"paper": "P-92", "page": 7, "quote": "For classiﬁcation, we conducted 5-fold cross-validation using the 214 subjects (116NC/98MCI)."},
+    {"paper": "P-92", "page": 1, "quote": "can achieve 92.7% classiﬁcation accuracy on ADNI dataset."},
+    {"paper": "P-97", "page": 1, "quote": "This study proposes a novel method to accurately classify Healthy Controls, Early Mild Cognitive Impairment, Late Mild Cognitive Impairment, and Alzheimer’s Disease individuals."},
+    {"paper": "P-97", "page": 1, "quote": "an accuracy rate of 97.73% and a quadratic kappa score of 96.86% for the Support Vector Machine"},
+    {"paper": "P-97", "page": 3, "quote": "Note that T1 weighted images have been used in the preprocessing steps."}
+  ]
+}

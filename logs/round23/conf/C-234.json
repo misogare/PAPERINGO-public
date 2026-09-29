@@ -1,0 +1,25 @@
+{
+  "id": "C-234",
+  "qualifies": "no",
+  "question": "Effect of active tDCS against sham on global cognition in pooled MCI and AD populations, from meta-analyses of RCTs. The question, comparison and channel (cognitive test scores) are the same. The pooled trial sets differ: P-832's tDCS subgroup has 6 studies, while P-705's MMSE analysis has 10 RCTs in 9 studies with 451 participants.",
+  "metric": "Mismatch: P-832's tDCS estimate is an SMD pooled over MMSE, MoCA or ADAS-Cog; P-705's is a mean difference in MMSE points. Neither paper reports the other's metric for tDCS.",
+  "figures": {
+    "P-832": "tDCS subgroup, global cognition: SMD 1.20 (95% CI -0.26 to 2.65), p = 0.107, I2 = 93.6%. Not significant; the point estimate favours tDCS.",
+    "P-705": "MMSE: MD 1.96 (95% CI 0.95 to 2.97), p = 0.0001, I2 = 92%. The sensitivity analysis gives 1.76 (1.29 to 2.23); MoCA MD 1.51 (0.17 to 2.85). Significant; favours tDCS. A rough scale check, not a printed figure: with an MMSE SD of 3-4 points, P-705's interval corresponds to an SMD of about 0.24-0.99 (0.95/4 to 2.97/3), which lies inside P-832's interval. The intervals overlap for any plausible SD."
+  },
+  "matched_figure_check": "No matched figure exists. P-832's MMSE-only subgroup (SMD 0.32, -0.20 to 0.85) pools rTMS and tDCS, so it is not a tDCS figure. P-705 reports no SMD.",
+  "beyond_uncertainty": false,
+  "significance_only": true,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [2, 4, 6],
+  "candidate_explanations": [],
+  "reason": "The two estimates use different metrics (an SMD over mixed instruments against an MMSE mean difference; condition 2), and both favour tDCS. P-832's is non-significant with an interval from -0.26 to 2.65; P-705's is significant. A significant estimate against a non-significant one qualifies only if the intervals exclude each other, and here they overlap on any plausible conversion (condition 4). P-832's authors attribute their null to low power. The record's 'opposite conclusions about whether tDCS works ... significance and direction' misreads the pair, since the directions agree (condition 6).",
+  "quotes": [
+    {"paper": "P-832", "page": 3, "quote": "active rTMS (SMD=1.13; 95% CI= 0.44,1.82; p = 0.004; I2 = 87.4%) but not tDCS (SMD=1.20; 95% CI= −0.26, 2.65; p = 0.107; I2 = 93.6%) significantly improved global cognition"},
+    {"paper": "P-832", "page": 3, "quote": "significantly improved global cognition (as measured by MMSE, MoCA, or ADAS-Cog)"},
+    {"paper": "P-832", "page": 7, "quote": "the decreased power of the tDCS studies may be preventing us from seeing a significant effect of tDCS on global cognition and NPS."},
+    {"paper": "P-705", "page": 3, "quote": "[MD = 1.96 95% CI (0.95, 2.97), P = 0.0001]"},
+    {"paper": "P-705", "page": 3, "quote": "involving 10 RCTs, including 451 participants"},
+    {"paper": "P-705", "page": 2, "quote": "Mean difference (MD) was used to express continuous data."}
+  ]
+}

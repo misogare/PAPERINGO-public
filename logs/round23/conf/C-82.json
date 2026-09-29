@@ -1,0 +1,34 @@
+{
+  "id": "C-82",
+  "qualifies": "yes",
+  "question": "As printed (not as recorded): prediction of MCI progression to AD (pMCI vs sMCI) in ADNI MCI participants, with structural MRI as the shared channel. P-72's model fuses baseline sMRI grey matter with FDG-PET, and it also reports an sMRI-only result. P-122 uses longitudinal two-timepoint structural MRI. The record's 94.61% for P-72 is its AD-vs-NC accuracy, which is a different contrast, so it was replaced by P-72's printed pMCI-vs-sMCI figures (condition 6).",
+  "metric": "Accuracy with accuracy (P-122 84.28% CV / 84.74% hold-out vs P-72 77.19% multimodal, 73.68% sMRI-only); AUC with AUC also available (0.860 vs 0.755 / 0.721).",
+  "figures": {
+    "P-122": "Six-fold CV over 823 longitudinal samples from 275 subjects: accuracy 84.28% (fold SD 1.65), AUC 0.8599. Wilson on subjects (n=275): 0.795-0.881. Fold-based check (t, 5 df): 82.5-86.0. AUC Hanley-McNeil (121/154): CI 0.814-0.906. Hold-out: 84.74% on 124 samples (about 41 subjects); this figure is inconsistent with its own sensitivity (83.33%) and specificity (82.27%).",
+    "P-72": "sMCI vs pMCI, 389 MCI (151 pMCI/238 sMCI), 70/15/15 subject-level split, averaged over three subsets with different test sets. Each test set is 57 subjects (22 pMCI/35 sMCI): 77.19% = 44/57, sensitivity 68.18% = 15/22, specificity 82.86% = 29/35. Multimodal SPDFC(0.6): 77.19%, Wilson (n=57) 0.648-0.862, or 0.703-0.828 if the three test sets are pooled as 171 subjects; AUC 0.755, Hanley-McNeil (22/35) CI 0.620-0.890. sMRI-only MAResNet18: 73.68% = 42/57, Wilson 0.610-0.834; AUC 0.721."
+  },
+  "matched_figure_check": "P-72 reports its result on P-122's channel alone (sMRI only): 73.68%, AUC 0.721. This matched figure is further from P-122 than P-72's multimodal figure, so it widens the gap rather than dissolving it. It lies outside P-122's interval (0.795-0.881). Neither paper reports the longitudinal-vs-baseline condition of the other. P-122 lists P-72's 77.19% row (Table 5) as prior work it improves on; that is a citation of the same number, not a result under P-72's condition, and it does not reconcile the figures.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study is flagged for the compared contrast: P-122 AUC 0.86, P-72 sMCI-vs-pMCI AUC 0.755 (its AD-vs-NC AUC is 0.947). Both use internal validation only.",
+  "failed_conditions": [],
+  "candidate_explanations": [
+    {"difference": "Longitudinal two-timepoint input (P-122) vs baseline-only images (P-72).", "quote": "The architecture synthesizes longitudinal sMRI data from dual temporal points", "paper": "P-122"},
+    {"difference": "Unit of analysis and augmentation: accuracy over longitudinal samples (several per subject) vs one prediction per subject.", "quote": "For the sMCI group, we gathered 449 longitudinal samples from 154 subjects diagnosed with sMCI.", "paper": "P-122"},
+    {"difference": "Test-set size and design: three test subsets of 57 subjects averaged (P-72) vs six-fold CV over 275 subjects.", "quote": "construct three different subsets with different test sets", "paper": "P-72"},
+    {"difference": "Input representation: 2D axial slice sequences (P-122) vs 3D volumes (P-72). P-122 itself names 3D vs 2D as a possible reason for an AUC gap to 'Zhang et al. [21]', though the 0.0092 gap it cites matches Zhang et al. [30] (0.8679), not P-72.", "quote": "This discrepancy may be attributable to their utilization of 3D MRI images, while we used 2D image sequence processing strategy.", "paper": "P-122"},
+    {"difference": "Label definition and class balance: pMCI defined as conversion within 3 years, 39% pMCI (P-72) vs DSM-5-guided selection with no stated window, 45% pMCI samples (P-122).", "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI.", "paper": "P-72"},
+    {"difference": "PET fusion in P-72's headline model. Its own sMRI-only figure is lower (73.68%), so modality fusion does not account for P-72 being lower.", "quote": "the accuracy based on sMRI and PET was 73.68 % and 75.44 %", "paper": "P-72"}
+  ],
+  "reason": "The record misreads P-72 (94.61% is AD vs NC). On the figures printed for the shared question (pMCI vs sMCI in ADNI, MRI channel), P-122 reports 84.28% by six-fold CV, and P-72 reports 77.19% multimodal and 73.68% with sMRI alone. Both P-72 figures lie outside P-122's Wilson interval over 275 subjects (0.795-0.881). The reverse holds only if P-72's three 57-subject test sets are pooled (n=171), and a two-sample test on n=57 is not significant (z = 1.19 multimodal, 1.70 sMRI-only), so condition 4 is met in one direction. The matched sMRI-only figure widens the gap. Longitudinal input, sample-level evaluation, 2D slices, small test sets and label definition are candidate explanations, none shown to be sufficient.",
+  "quotes": [
+    {"paper": "P-72", "page": 1, "quote": "Especially in AD diagnosis achieved an average accuracy of 94.61 %"},
+    {"paper": "P-72", "page": 3, "quote": "We further divided the acquired MCI category into 151 pMCI (progressive MCI) and 238 sMCI (stable MCI), MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI."},
+    {"paper": "P-72", "page": 3, "quote": "We divided the dataset by subject-level split way according to the number of subjects in the ratio of 70 %, 15 % and 15 %"},
+    {"paper": "P-72", "page": 6, "quote": "MAResNet18 88.24 85.42 90.74 0.881 73.68 65.91 79.05 0.721 (Table 2 row, sMRI only: AD vs NC then sMCI vs pMCI ACC/SEN/SPE/AUC; cells joined)"},
+    {"paper": "P-72", "page": 7, "quote": "The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 % respectively"},
+    {"paper": "P-72", "page": 7, "quote": "SPDFC (0.6) 94.61(0.85) 92.19 97.22 0.947 77.19(1.01) 68.18 82.86 0.755 (Table 5 row; cells joined)"},
+    {"paper": "P-122", "page": 6, "quote": "Specifically, the proposed framework achieved mean ACC and AUC of 84.28% and 0.8599 with standard deviations of 1.65 and 0.0167, respectively, in predicting the progression of MCI."},
+    {"paper": "P-122", "page": 7, "quote": "Zhang et al. [21] [2023] CNN+Attention 77.19 68.18 81.86 0.7556 (Table 5 row; cells joined)"}
+  ]
+}

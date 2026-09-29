@@ -1,0 +1,27 @@
+{
+  "id": "C-150",
+  "qualifies": "no",
+  "question": "Shared: prediction of MCI-to-AD conversion in ADNI MCI, with MRI (FreeSurfer regional measures) as the shared channel. P-211 (Cai et al., Brain Sci 2023) uses an Explainable Boosting Machine on baseline MRI volumes/thickness plus cognitive scores, demographics and APOE4, at horizons of 1-5 years. P-179 (Li et al., Brain Sci 2021) uses sMRI ROI volumes plus peripheral-blood SNP genotypes and mRNA expression, with molecular subtyping and a multiple-kernel classifier, for conversion within 3 years. Added channels (cognitive tests vs blood omics), horizon and sample differ, which condition 1 allows.",
+  "metric": "AUC in both.",
+  "figures": {
+    "P-211": "Five-year horizon, Comb (a): AUC 0.92 (225 participants: 140 MCI/85 dementia), no interval printed. Hanley-McNeil over the 5-fold CV sample: Q1 = 0.8519, Q2 = 0.8817, SE = 0.0214, CI [0.878, 0.962]; over a 10% test set (about 9/14): CI [0.788, 1.000]. Three-year horizon, test data: AUC 0.81 with interactions (0.78 without); 3-year cohort 392 MCI/188 dementia. Over a 10% test set (about 19/39): SE 0.0659, CI [0.681, 0.939]; over the whole 3-year cohort: SE 0.0207, CI [0.769, 0.851].",
+    "P-179": "Internal 5-fold CV in ADNI-1 (125 MCI): AUC 0.826 (MCI-CPS); no-subtyping classifier 0.785. External ADNI-GO/2 test (98 MCI): AUC 0.781. No AUC intervals printed. Class sizes from the printed sensitivity/specificity: internal 81.25% = 39/48 and 77.92% = 60/77, so 48 pMCI/77 sMCI (99/125 = 79.20% accuracy); external 74.19% = 23/31 and 74.63% = 50/67, so 31/67 (73/98 = 74.49%). Hanley-McNeil, internal: Q1 = 0.826/1.174 = 0.7036, Q2 = 2(0.826^2)/1.826 = 0.7473, SE = 0.0406, CI [0.746, 0.906]. External: SE 0.0539, CI [0.675, 0.887]."
+  },
+  "matched_figure_check": "A matched figure exists and reconciles the pair. P-211 reports its result at P-179's three-year horizon: AUC 0.81 (0.78 without interaction effects). 0.81 lies inside both P-179 intervals (internal [0.746, 0.906], external [0.675, 0.887]). P-179's 0.826 and 0.781 both lie inside P-211's three-year interval at either evaluation-set n ([0.681, 0.939]; [0.769, 0.851]). The matched figures agree in both directions. The headline pair (0.92 five-year vs 0.826 three-year) is apart beyond uncertainty in both directions if the 0.92 is taken over the 225-participant CV sample (0.92 above P-179's 0.906; 0.826 below 0.878), but that gap is P-211's five-year horizon.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: 0.92 and 0.826 are below 0.97.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "The recorded gap sets P-211's five-year AUC (0.92) against P-179's three-year AUC (0.83). At the matched three-year horizon P-211 prints 0.81, which agrees in both directions with P-179's internal 0.826 and external 0.781. The papers' own figures dissolve the gap, so condition 3 fails.",
+  "quotes": [
+    {"paper": "P-211", "page": 1, "quote": "The five-years prediction accuracy reached 85% (AUC = 0.92) using both cognitive scores and MRI markers."},
+    {"paper": "P-211", "page": 6, "quote": "All EBMs were tested with the 5-fold cross validation."},
+    {"paper": "P-211", "page": 7, "quote": "The mean AUC using Comb (a) displayed a characteristic pattern of first at about 0.9, then decreasing, reaching a low point at 3 years, followed by a gradual increase until 5 years of follow-up, to about 0.92."},
+    {"paper": "P-211", "page": 12, "quote": "The main performance indicators, accuracy, sensitivity, specificity, and AUC, were 0.75, 0.78, 0.73, and 0.81 (with interaction effects) compared to 0.72, 0.76, 0.68, and 0.78 (without interaction effects), respectively."},
+    {"paper": "P-179", "page": 1, "quote": "was constructed to predict whether an MCI patient will progress to AD within three years. In internal fivefold cross-validation within ADNI-1, we achieved an overall AUC of 0.83 (79.20% accuracy, 81.25% sensitivity, 77.92% specificity)"},
+    {"paper": "P-179", "page": 1, "quote": "we attained an AUC of 0.78 (74.49% accuracy, 74.19% sensitivity, 74.63% specificity)."},
+    {"paper": "P-179", "page": 3, "quote": "SNP, gene expression and sMRI data of 125 MCI patients were downloaded from the ADNI-1 study as the training dataset and data on 98 MCI patients were downloaded from ADNI-GO/2 as an independent verification dataset."},
+    {"paper": "P-179", "page": 7, "quote": "The results show that the AUC of MCI-CPS (5-fold) was 0.8260 (81.82% sensitivity, 77.08% specificity, 80.00% accuracy)."}
+  ]
+}

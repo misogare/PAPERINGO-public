@@ -1,0 +1,24 @@
+{
+  "id": "C-251",
+  "qualifies": "no",
+  "question": "None shared. P-831 asks whether depressive symptoms raise the risk of progressing from subjective cognitive decline (cognitively normal at baseline) to MCI or dementia. P-912 asks whether depression predicts conversion from MCI to AD-type dementia in people already diagnosed with MCI. The measurement channel (clinical/questionnaire assessment of affective symptoms) is shared, but the baseline population class (SCD with normal cognition vs diagnosed MCI) and the transition studied (SCD -> MCI/dementia vs MCI -> AD) differ. This is a different clinical question, not an allowed cohort difference.",
+  "metric": "Mismatch. P-831 gives pooled relative risks with 95% CIs. P-912 is a narrative systematic review with no meta-analysis and no pooled or own estimate; its depression verdict is qualitative ('an important risk factor', with contradictory studies listed).",
+  "figures": {
+    "P-831": "Depression -> MCI in SCD: RR 0.98 (95% CI 0.75-1.26), 4 studies, I2 = 0%. Depression -> dementia in SCD: RR 0.69 (0.27-1.79). Combined MCI/dementia: RR 0.88 (0.35-2.20). All nine studies: RR 0.90 (0.62-1.30), I2 = 80.17%. (Anxiety/SCD-worry -> MCI or dementia: RR 1.40, 1.20-1.63.) Intervals as printed.",
+    "P-912": "No estimate and no interval. Qualitative conclusion that depression is an important risk factor for MCI -> AD, alongside null studies it lists (Bartels et al.: no effect of past depression on conversion in 755 ADNI MCI; depression alone not significant vs no NPS in the NACC apathy/depression analysis). No interval can be derived because no single estimate is given."
+  },
+  "matched_figure_check": "No matched figure exists. P-831 includes only cognitively normal SCD participants, so it has no MCI-baseline estimate. P-912 reviews only MCI-baseline studies and pools nothing, so it has no SCD-stage estimate. Neither paper reports the other's contrast.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not a performance comparison (association syntheses).",
+  "failed_conditions": [1, 2, 4],
+  "candidate_explanations": [],
+  "reason": "The two reviews study different transitions in different populations: depression and SCD-to-MCI/dementia in cognitively normal people (P-831) against depression and MCI-to-AD conversion in people with MCI (P-912), so condition 1 fails. P-912 reports no effect estimate, so there is no shared metric (condition 2) and no interval against which P-831's RR 0.98 (0.75-1.26) could be judged beyond uncertainty (condition 4). A null association at the SCD stage and a positive one at the MCI stage can both hold.",
+  "quotes": [
+    {"paper": "P-831", "page": 2, "quote": "were longitudinal cohort studies, included participants had normal cognition and SCD at baseline, reported depressive or anxiety symptoms at baseline and had an outcome of MCI or dementia at follow-up."},
+    {"paper": "P-831", "page": 7, "quote": "indicated that higher depressive symptoms did not significantly increase the risk of MCI in individuals with SCD (RR = 0.98; 95 % CI: 0.75–1.26) (Fig. 2)."},
+    {"paper": "P-912", "page": 4, "quote": "Articles were included if longitudinal (i.e., to appropriately assess risk of progression), assessed MCI at baseline using the criteria outlined above and AD-type dementia at follow-up"},
+    {"paper": "P-912", "page": 1, "quote": "we found cross species support for the role of depression as an important risk factor."},
+    {"paper": "P-912", "page": 9, "quote": "Bartels et al.29 found no effect of past depression on risk of conversion in a sample of 755 currently nondepressed individuals with MCI from the Alzheimer’s Disease Neuroimaging Initiative (ADNI) cohort."}
+  ]
+}

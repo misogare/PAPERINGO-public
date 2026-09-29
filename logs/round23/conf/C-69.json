@@ -1,0 +1,32 @@
+{
+  "id": "C-69",
+  "qualifies": "borderline",
+  "question": "Prediction of MCI-to-AD conversion within 3 years (pMCI vs sMCI) in ADNI from baseline MRI. P-37 uses whole-brain sMRI only; P-72's reported model fuses sMRI grey matter with FDG-PET (MRI channel shared) and it also reports an sMRI-only arm. The recorded P-72 figure (94.61%) is its AD vs NC accuracy, not a conversion result; judged here on P-72's printed conversion figures.",
+  "metric": "Accuracy with accuracy and AUC with AUC; both papers report both for the conversion task.",
+  "figures": {
+    "P-37": "Accuracy 82.4% = 56/68 test scans (37 MCI-C, 31 MCI-NC), no interval printed. Wilson 95%: p=0.8235, z^2/n=3.8416/68=0.0565, centre=(0.8235+0.0282)/1.0565=0.806, half-width=1.96*sqrt(0.8235*0.1765/68+3.8416/(4*68^2))/1.0565=0.090 -> 71.6-89.6%. AUC 0.827; Hanley-McNeil with n1=37, n2=31: Q1=A/(2-A)=0.705, Q2=2A^2/(1+A)=0.749, SE=sqrt([0.827*0.173+36*(0.705-0.684)+30*(0.749-0.684)]/(37*31))=0.050 -> 0.729-0.925.",
+    "P-72": "Conversion task 238 sMCI/151 pMCI, subject-level 70/15/15 split (15% of 389 MCI = about 57-58 test subjects; 73.68% = 42/57, 77.19% = 44/57), result averaged over three splits with different test sets. sMRI-only MAResNet18: accuracy 73.68%, Wilson (42/57) 61.0-83.4%; AUC 0.721, Hanley-McNeil (22 pMCI/35 sMCI per test split) SE=0.072 -> 0.580-0.862. Multimodal SPDFC(0.6): 77.19%, Wilson (44/57) 64.8-86.2%; AUC 0.755, SE=0.069 -> 0.620-0.890. If the three test subsets were disjoint (the paper does not say so), pooled n=171 would give sMRI-only 66.6-79.7% and AUC 0.640-0.802."
+  },
+  "matched_figure_check": "P-72 reports an sMRI-only result, which is P-37's input condition, on the same 3-year horizon. Accuracy: 73.68% lies inside P-37's 71.6-89.6% and 82.4% lies inside P-72's 61.0-83.4%, so the matched accuracies agree within uncertainty (two-sample z=1.16). AUC: P-72's 0.721 lies 0.008 below P-37's derived lower bound 0.729, while P-37's 0.827 lies inside P-72's 0.580-0.862 (z=1.21). P-72's reported multimodal model (77.19%, 0.755) agrees with P-37 in both directions on both metrics. The matched figure reconciles the accuracy comparison; it does not reconcile the AUC comparison, but only in one direction and by 0.008 on an approximation.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: no conversion figure is near ceiling (P-37 82.4%/0.827; P-72 77.19%/0.755, sMRI-only 73.68%/0.721). P-72's 94.61% is AD vs NC and is not the compared quantity.",
+  "failed_conditions": [3, 4],
+  "candidate_explanations": [
+    {"difference": "Stable-MCI label definition: P-37 requires at least 3 years of MCI follow-up without conversion and excludes shorter follow-up; P-72 labels as sMCI those who did not convert, with no minimum follow-up stated.", "quote": "MCI subjects with a duration of MCI less than 3 years without conversion were excluded due to the potential possibility of near-future conversion.", "paper": "P-37"},
+    {"difference": "Label definition in P-72 (no minimum follow-up for sMCI).", "quote": "MCI subjects who developed AD within 3 years were labeled as pMCI and those who did not convert to AD were labeled as sMCI.", "paper": "P-72"},
+    {"difference": "Input representation and pretraining: P-37 uses whole-brain skull-stripped T1 with transfer learning from a large NC vs DAT source task; P-72's MRI input is grey-matter segmentation, initialised from its own AD vs NC task.", "quote": "The source task used 1406 DAT and 2084 NC scans from 1080 subjects.", "paper": "P-37"},
+    {"difference": "P-72 MRI input is the grey-matter map.", "quote": "The inputs of the network are sMRI GM and PET images respectively", "paper": "P-72"},
+    {"difference": "Evaluation design and class balance: P-37 one 68-scan test split from a near-balanced 228/222 sample; P-72 three splits of about 57 subjects from a 151/238 sample, averaged.", "quote": "We followed the same data split strategy to construct three different subsets with different test sets, the average of three classification accuracies is used as the final result.", "paper": "P-72"}
+  ],
+  "reason": "Same question, cohort family, horizon and channel; on P-72's printed conversion figures (the recorded 94.61% is its AD vs NC accuracy, so the recorded direction is reversed) the matched sMRI-only accuracies agree within uncertainty in both directions. Only the AUC of P-72's sMRI-only ablation arm (0.721) falls outside P-37's derived interval, by 0.008 and in one direction only (z=1.21), so the pair meets the letter of conditions 3-4 on AUC and fails them on accuracy. None of the candidate explanations is shown by either paper to be sufficient.",
+  "quotes": [
+    {"paper": "P-37", "page": 5, "quote": "It produced a test set classiﬁcation accuracy of 82.4% and 0.827 area under the curve as well as 0.189 equal error rate value (Fig. 4B)."},
+    {"paper": "P-37", "page": 5, "quote": "In conversion times from 0 to 3 years, 3 to 6 years, and 6 to 10 years, there were 37, 39, and 9 MCI-C subjects"},
+    {"paper": "P-37", "page": 2, "quote": "ratio of 70% versus 15% versus 15% (314, 68, and 68 scans, respectively)."},
+    {"paper": "P-72", "page": 6, "quote": "For the classification of sMCI vs. pMCI, the accuracy based on sMRI and PET was 73.68 % and 75.44 %, respectively."},
+    {"paper": "P-72", "page": 6, "quote": "MAResNet18 88.24 85.42 90.74 0.881 73.68 65.91 79.05 0.721"},
+    {"paper": "P-72", "page": 7, "quote": "SPDFC (0.6) 94.61(0.85) 92.19 97.22 0.947 77.19(1.01) 68.18 82.86 0.755"},
+    {"paper": "P-72", "page": 7, "quote": "The best accuracy was achieved in both prediction of AD vs. NC with 94.61 % and sMCI vs. pMCI with 77.19 % respectively"}
+  ]
+}

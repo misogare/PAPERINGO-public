@@ -1,0 +1,34 @@
+{
+  "id": "C-201",
+  "qualifies": "borderline",
+  "question": "Two readings, which give different answers. (a) The recorded construct: the association of sleep with MCI. P-261 finds it (PSQI-defined sleep disturbance, adjusted OR 1.681). P-258 screened self-reported sleep quality and insomnia and found them not significant in univariate analysis, with the statistics only in its Multimedia Appendix 1. (b) What both papers print as a model result: cross-sectional discrimination of MoCA-based MCI from non-MCI in Chinese community-dwelling adults, from demographic, lifestyle and questionnaire data. P-258 builds a 5-predictor nomogram (age, gender, residence, education, reading; Rugao, aged 45 and older). P-261 fits logistic models of Qi-stagnation, sleep latency and daytime dysfunction, adjusted for age, sex and education (Fuzhou, aged 55-75, non-depressed). Under reading (b) the task, the population class (community adults) and the channel (clinical/questionnaire) match, and predictor sets, cohort and label definition are differences the rule allows. The doubt is whether P-261's AUC is a result on that question at all: it is a fit statistic for models built to estimate exposure odds ratios. P-261 even states that a smaller AUC means a better model.",
+  "metric": "As recorded, a mismatch: nomogram AUC (0.8704) against a joint-exposure odds ratio (2.581). Under reading (a), OR against a significance test with no printed estimate. Under reading (b), AUC with AUC.",
+  "figures": {
+    "P-258": "387 MCI / 91 non-MCI (MoCA < 25). Apparent AUC 0.8704; mean 10-fold CV AUC 0.8353; no interval printed. Hanley-McNeil for 0.8353 with 387/91: Q1 = 0.717, Q2 = 0.760, SE = 0.019, CI [0.797, 0.873]. For 0.8704: SE = 0.017, CI [0.838, 0.903]. Sleep quality and insomnia were not significant in univariate screening; no estimate is printed in the main text.",
+    "P-261": "314 MCI / 757 normal (n = 1071). Table 4 AUCs: Model 1 (exposures only) 0.602; Model 2 (+ age, sex, education) 0.682; Model 3 (DAG-adjusted) 0.683. Hanley-McNeil for 0.682 with 314/757: Q1 = 0.518, Q2 = 0.553, SE = 0.019, CI [0.645, 0.719]. Model 3 gives CI [0.646, 0.720]. Sleep disturbance alone, adjusted: OR 1.681 (1.231-2.296); jointly with Qi-stagnation: OR 2.581 (1.706-3.907)."
+  },
+  "matched_figure_check": "No matched figure exists. Both models contain age, sex and education, but P-261 prints no demographics-only AUC and P-258 prints no model with sleep or constitution predictors. Neither reports the other's label definition or age band. Under reading (a), P-258 prints no sleep estimate, so the intervals cannot be compared.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: 0.8704/0.8353 and 0.682/0.683 are below 0.97. P-258's AUCs are internal (apparent and 10-fold CV, after predictor selection on the same data); P-261's are apparent.",
+  "failed_conditions": [1],
+  "candidate_explanations": [
+    {"difference": "Label definition: P-258 labels MCI at MoCA < 25 with a 1-point education correction, which makes 387 of 478 (81%) 'MCI'. Under such a label, age and education largely determine the outcome. P-261 uses education-graded MoCA cut-offs plus clinical criteria (29.3% MCI).", "quote": "If the score was less than 25 points, it was defined as MCI.", "paper": "P-258"},
+    {"difference": "Label definition (P-261 side): education-graded MoCA cut-offs and clinical criteria.", "quote": "≥25 points, and 19–24 points if the years of education are ≤6 years, indicate normal cognition, and 14–19 points indicate MCI", "paper": "P-261"},
+    {"difference": "Age range: aged 45 and older against 55-75. In P-261's narrow band, age does not separate the groups (median 66 vs 65, P = 0.175). Age is one of P-258's five predictors.", "quote": "Individuals aged 55–75 years [7,8];those with permanent residence in communities of Fuzhou", "paper": "P-261"},
+    {"difference": "Predictor set and selection: P-258 kept residence and reading after univariate screening, LASSO and stepwise selection from 42 candidates on the same data. P-261's exposures were chosen to test an association hypothesis.", "quote": "These predictors included age, gender, residence, education level, and reading.", "paper": "P-258"},
+    {"difference": "Population restriction: P-261 excludes depression (GDS-15 > 8 or a history of depression).", "quote": "The exclusion criteria were as follows: (1) GDS-15 > 8 points [9], or a history of depression", "paper": "P-261"}
+  ],
+  "reason": "As recorded (a nomogram AUC against a joint-exposure OR), the pair has no shared metric. On its one shared construct, sleep, the papers differ only in significance, and P-258 prints no estimate, which Section 5.2 does not count. Both papers do print AUCs for MoCA-based MCI detection from questionnaire data in Chinese community adults: 0.835 (CV) or 0.870 against 0.682, with non-overlapping derived intervals and no matched figure. The pair qualifies only if P-261's AUC, a fit statistic of models built to estimate exposure ORs, is accepted as a result on that detection question. That condition-1 judgement is left to the operator. The candidate explanations (label definition, age range, predictors, depression exclusion) are not shown to be sufficient by either paper.",
+  "quotes": [
+    {"paper": "P-258", "page": 3, "quote": "A total of 478 participants, including 270 males and 208 females in our study, were composed of 387 with MCI and 91 without MCI."},
+    {"paper": "P-258", "page": 3, "quote": "By internal 10-fold cross-validation, the mean AUC based on data from the development people was 0.8353 (Fig. 3B)."},
+    {"paper": "P-258", "page": 2, "quote": "sleep quality was defined as well or bad; insomnia was defined as yes or no"},
+    {"paper": "P-258", "page": 2, "quote": "Criteria for inclusion were as follows: (1) aged 45 and older; (2) completed the MCI and connected survey questionnaire."},
+    {"paper": "P-261", "page": 3, "quote": "Among the 1071 study subjects, 314 suffered from MCI, with a prevalence rate of 29.3%."},
+    {"paper": "P-261", "page": 6, "quote": "AUC 0.602 0.682 0.683 Note: Model 1: crude model with only the exposure as an independent variable; model 2: additionally adjusted for age, sex and education; model 3: a fully adjusted model including all variables suggested by the DAG."},
+    {"paper": "P-261", "page": 3, "quote": "The smaller the values of AIC and AUC, the better performance of the model."},
+    {"paper": "P-261", "page": 5, "quote": "Age year, M(IQR) 65(9.0) 66(9) −1.357 0.175"},
+    {"paper": "P-261", "page": 6, "quote": "Yes No 0.520 0.159 10.672 1.681 (1.231 to 2.296) 0.001"}
+  ]
+}

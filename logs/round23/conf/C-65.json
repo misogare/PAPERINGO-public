@@ -1,0 +1,32 @@
+{
+ "id": "C-65",
+ "qualifies": "no",
+ "question": "Shared: progression from MCI to AD within 36 months (pMCI vs sMCI) in ADNI1/ADNI2. P-23's model is multimodal (sMRI + FDG-PET + CSF); P-3 uses baseline structural MRI only. The shared channel is MRI, so condition 1 holds under the multimodal clause, with the added PET and CSF recorded as a candidate explanation.",
+ "metric": "Accuracy with accuracy (match); both papers also give AUC.",
+ "figures": {
+  "P-23": "Tri-modal TASNet (A0) 85.00% = 17/20 on the single held-out test split (8:1:1 of 200 MCI; SEN 83.33 = 10/12 pMCI, SPE 87.50 = 7/8 sMCI). No interval is reported. Wilson with n = 20: z^2/n = 0.19207; centre = (0.85 + 0.09604)/1.19207 = 0.7936; half-width = 1.96*sqrt(0.85*0.15/20 + 3.8415/1600)/1.19207 = 0.1540; interval [0.640, 0.948]. AUC 0.9167: Hanley-McNeil with 12 pMCI/8 sMCI gives SE 0.0643, interval [0.791, 1.000]. Matched sMRI-only ablation (Table 6, A1): 65.00% = 13/20 (SEN 8/12, SPE 5/8), Wilson [0.433, 0.819]; AUC 0.6667, Hanley-McNeil SE 0.1231, interval [0.425, 0.908].",
+  "P-3": "CAAT ensemble, baseline sMRI only: 74.61% (variance 0.002), 5-fold CV over 593 MCI (295 pMCI, 298 sMCI). No interval is reported. Wilson with n = 593: z^2/n = 0.00648; centre = (0.7461 + 0.00324)/1.00648 = 0.7445; half-width = 0.0350; interval [0.710, 0.780]. AUC 0.780: Hanley-McNeil with 295/298 gives SE 0.0190, interval [0.743, 0.817]."
+ },
+ "matched_figure_check": "P-23 reports its own model under P-3's condition, the sMRI-only ablation in Table 6 (A1): 65.00% (13/20, Wilson [0.433, 0.819]), AUC 0.667. That lies below P-3's 74.61%, not above it. P-3's 74.61% falls inside the A1 interval, and the two-proportion z is -0.89. A1's point estimate lies outside P-3's narrow interval, but in the opposite direction to the recorded disagreement and on 20 test subjects. The ablation shows that the recorded gap (85.00 against 74.61) comes from adding FDG-PET and CSF (A1 65.00 -> A0 85.00). A paper thus shows the modality difference is sufficient to produce the gap, so the pair fails condition 3.",
+ "beyond_uncertainty": true,
+ "significance_only": false,
+ "performance_validity": "Not excluded. P-23's 85.00% accuracy and AUC 0.9167 are below 0.97, although the test split is only 20 subjects. P-3's 74.61% is well below.",
+ "failed_conditions": [3],
+ "candidate_explanations": [
+  {"difference": "Input modalities: sMRI + FDG-PET + CSF (P-23) against sMRI only (P-3). SHOWN SUFFICIENT by P-23's own ablation (sMRI only 65.00%, tri-modal 85.00%), hence the condition-3 failure.", "quote": "The substantial improvement to 85.00% (A0) demonstrates that sMRI, PET, and CSF are mutually reinforcing.", "paper": "P-23"},
+  {"difference": "Evaluation-set size and design: one 20-subject held-out split (P-23) against 5-fold CV over 593 (P-3).", "quote": "was stratified into training, validation, and test sets (8:1:1)", "paper": "P-23"},
+  {"difference": "Cohort selection: P-23 requires baseline FDG-PET and CSF (200 MCI), while P-3 uses the Wen et al. split of 593 MCI.", "quote": "with baseline T1-weighted sMRI, FDG-PET, and CSF biomarkers (Abeta42, TAU, PTAU)", "paper": "P-23"}
+ ],
+ "reason": "The two papers share a clinical question (36-month pMCI vs sMCI in ADNI) and a metric. Under the literal wording of condition 4, P-23's 85.00% lies outside P-3's Wilson interval [0.710, 0.780], although P-3's 74.61% lies inside P-23's [0.640, 0.948] and the two-proportion z is only 1.27. The pair fails condition 3. P-23 reports its model on P-3's input (sMRI only) at 65.00%, below P-3, and its ablation attributes the whole recorded gap to the added PET and CSF inputs. The papers' own data therefore account for the difference.",
+ "quotes": [
+  {"paper": "P-23", "page": 1, "quote": "Results: Experiments on the ADNI dataset resulted in an accuracy of 85.00% and an AUC of 91.67% in pMCI/sMCI classification."},
+  {"paper": "P-23", "page": 6, "quote": "Subjects were categorized into four groups: AD, CN, progressive MCI (pMCI), and stable MCI (sMCI), based on a 36-month follow-up criterion"},
+  {"paper": "P-23", "page": 6, "quote": "was stratified into training, validation, and test sets (8:1:1)."},
+  {"paper": "P-23", "page": 8, "quote": "sMCI vs. pMCI A1 sMRI only 66.67 62.50 65.00 69.57 66.67 (Table 6, cells joined: SEN SPE ACC F1 AUC)"},
+  {"paper": "P-23", "page": 8, "quote": "TASNet(Ours) sMRI+PET+CSF 200 83.33 87.50 85.00 86.96 91.67 (Table 3, cells joined)"},
+  {"paper": "P-23", "page": 7, "quote": "The substantial improvement to 85.00% (A0) demonstrates that sMRI, PET, and CSF are mutually reinforcing."},
+  {"paper": "P-3", "page": 2, "quote": "Experimental results on the ADNI dataset show that CAAT achieves accuracy of 74.61 for classifying between pMCI and sMCI using only whole 3D images of the brain and no other ancillary information."},
+  {"paper": "P-3", "page": 3, "quote": "However, if a subject was diagnosed with Dementia within the following 36 months, he/she was grouped into pMCI"},
+  {"paper": "P-3", "page": 6, "quote": "Our dataset consists of 593 MRI images, consisting of 298 sMCIs and 295 pMCIs images. We performed 5 fold cross validation"}
+ ]
+}

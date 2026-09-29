@@ -1,0 +1,125 @@
+{
+  "role": "skeptic",
+  "batch": "challenge_skeptic_1",
+  "date": "2026-09-29",
+  "status": "candidate verdicts for operator review; not a gate",
+  "sources_read": {
+    "P-50": "scratchpad/r20/pdf/P-50.txt (pp. 2-3, Table 5 p. 6)",
+    "P-99": "scratchpad/r20/pdf/P-99.txt (pp. 3-5, Table 1)",
+    "P-78": "scratchpad/r20/pdf/P-78.txt (pp. 3-4, Table 1, Table 3 p. 8, Tables 5-6 pp. 9-10)",
+    "P-84": "scratchpad/r20/pdf/P-84.txt (pp. 3, 5-6, Table 5 p. 8)",
+    "P-115": "scratchpad/r20/conf/tlss_P115_true.txt (the correct document, S1746809422005547; the pack file P-115.txt is the Seifallahi gait paper)",
+    "P-109": "scratchpad/r20/pdf/P-109.txt (pp. 7-10, Table 3)",
+    "P-30": "scratchpad/r20/pdf/P-30.txt (pp. 2-4)",
+    "P-66": "scratchpad/r20/pdf/P-66.txt (pp. 3, 5-8) plus Tables 7 and 8 read from the PDF with PyMuPDF (page 8), which the text extract omits",
+    "rule": "DISCREPANCY_BRIEF.md; literature_review.md Section 3.5"
+  },
+  "results": [
+    {
+      "id": "C-01",
+      "final": "yes",
+      "overturned": false,
+      "conditions_attacked": {
+        "1_question": "Holds. Both papers classify clinic MCI against cognitively normal controls from T1 MRI. P-99's FreeSurfer features come from T1w data ('for extracting morphometric features from T1w MRI data', p. 3). The control sources differ (P-50: the same neurology clinic; P-99: health-examination volunteers), but both are cognitively normal older adults.",
+        "2_metric": "Holds. Accuracy with accuracy and AUC with AUC, both from internal cross-validation.",
+        "3_matched_figure": "Holds, with a fragility note. P-50 prints single-family results: subcortical volume and shape 0.78 (Wilson n=46 [0.641, 0.875]) and sulcal depth plus gyrification 0.84 ([0.709, 0.919]). Both agree with P-99 within uncertainty: 0.73 lies inside both intervals, and 0.78 lies inside P-99's [0.665, 0.785]. These are P-50's own VBM/vertex/SBM feature families, not P-99's condition (906 FreeSurfer features, chi-squared SelectKBest, RBF SVC, 10-fold CV), so they are not matched figures under condition 3. They do show that the gap depends on P-50 combining feature families in 46 people.",
+        "4_uncertainty": "Holds; recomputed. P-50 accuracy 41/46: Wilson [0.770, 0.953]. P-50 AUC 0.89, Hanley-McNeil 24/22: SE 0.0494, interval [0.793, 0.987]. P-99 accuracy 151/207: Wilson [0.665, 0.785]. P-99 AUC 0.735, Hanley-McNeil 145/62: SE 0.0351, interval [0.666, 0.804]. Each estimate lies outside the other's interval. A two-sample check agrees: accuracy z = 2.93, AUC z = 2.56.",
+        "5_performance_validity": "Holds. P-50's best is 0.89 and P-99's is 0.735, both below 0.97.",
+        "6_record": "The record's 'ADNI subset' for P-50 is wrong, but the figures it compares (89% LOOCV, 73% 10-fold) are the ones the papers print."
+      },
+      "figures": {
+        "P-50": "Accuracy 0.89 (41/46, LOOCV), Wilson [0.770, 0.953]. AUC 0.89, Hanley-McNeil [0.793, 0.987]. Single-family results: 0.78 [0.641, 0.875] and 0.84 [0.709, 0.919].",
+        "P-99": "Accuracy 0.73 +- 0.059 (fold SD), Wilson n=207 [0.665, 0.785]. AUC 0.735 +- 0.076, Hanley-McNeil [0.666, 0.804]."
+      },
+      "candidate_explanations": [
+        "Feature derivation in the same sample (P-50): 'Discriminative features were derived from differential imaging indicators of cortical and subcortical morphology alterations.' The paper does not say this selection was repeated inside each LOOCV fold. Section 3.5 names this mechanism.",
+        "Age imbalance in P-50 against age-matched controls in P-99. P-50: 'the two groups differed in terms of age (p = 0.038)' (MCI 67.2 vs NC 61.7). The classifier features are not stated to be age-adjusted. P-99: 'Healthy controls matched with the patients in age were recruited from the volunteers who came for periodic health examinations'.",
+        "Sample size and evaluation: 46 participants (24/22) under LOOCV, against 207 (145/62, imbalanced) under 10-fold CV. P-99 also grid-searched hyperparameters inside the same CV.",
+        "MCI label definition: P-50 states 'MMSE scores between 25 and 26, MoCA 19-25' but its Table 1 gives MCI MMSE 28.0 +- 1.4, so the paper is internally inconsistent. P-99: 'Patients over the age of 65 who had been diagnosed with mild cognitive impairment (F06.7) were eligible.'",
+        "Feature set: VBM, FIRST vertex shape and CAT12 sulcal depth/gyrification (P-50), against 906 FreeSurfer morphometric features (P-99).",
+        "Scanner and site: 3T Philips Achieva in Nanjing, against 1.5T Toshiba in Moscow.",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "reason": "I could not show a failed condition. P-50's single-feature-family accuracies (0.78, 0.84) agree with P-99 within uncertainty, but they are P-50's own features, not P-99's condition, so they are not matched figures. The combined-feature gap survives recomputed Wilson and Hanley-McNeil intervals (z = 2.93 for accuracy, 2.56 for AUC), and neither result is near ceiling. The pair qualifies. The report should add two candidate explanations: P-50's age imbalance (p = 0.038) and the contradiction between its stated MMSE criterion and its Table 1. It should also say the gap rests on P-50's combined feature set in 46 people."
+    },
+    {
+      "id": "C-04",
+      "final": "yes",
+      "overturned": false,
+      "conditions_attacked": {
+        "1_question": "Holds. Both predict 36-month MCI-to-AD conversion from structural MRI in ADNI MCI. P-84 does not describe how its prognostic classifier was trained: 'Binary classification between the s-MCI and c-MCI groups using 1.5T, 3T, and 3T* images was conducted with the aforementioned classifier' (p. 6). So its figure may be the AD classifier applied to MCI. That is a validation or training difference the rule allows, not a different question: both papers report c-MCI vs s-MCI discrimination at 36 months.",
+        "2_metric": "Holds. AUC with AUC.",
+        "3_matched_figure": "Holds. (a) P-78's single-timepoint result on held-out ADNI (Dataset B), AUC 0.832 (0.783-0.874), is P-84's single-scan, 36-month condition, and it does not reconcile the pair. (b) I also checked P-78's single-baseline-scan CNN comparators on Dataset A (Table 3): ResNet 0.756 (0.684-0.824), DenseNet 0.782 (0.709-0.842), ConvNeXt 0.751 (0.671-0.821), ECAResNet 0.757 (0.688-0.830). The weakest, ConvNeXt, has a lower bound of 0.671, which overlaps the upper bound of P-84's super-resolved result (d3T*, 0.625, 0.557-0.693). But 0.751 lies outside d3T*'s interval, 0.625 lies outside ConvNeXt's, and against P-84's native 1.5T interval (0.485-0.621) nothing overlaps. Dataset A is also 144/173 OASIS-3 with CDR-based labels, not P-84's ADNI-1 condition. No matched figure agrees within uncertainty.",
+        "4_uncertainty": "Holds. P-78's printed intervals may be image-level bootstraps (Dataset B is 304 images from 101 subjects). I recomputed at subject level with Hanley-McNeil for AUC 0.832: [0.752, 0.912] with a 50/51 split and [0.735, 0.929] with 30/71. P-84's upper bounds are 0.621 (1.5T) and 0.693 (d3T*) as printed, or 0.635 and 0.705 by Hanley-McNeil with 77/129. There is no overlap under any of these.",
+        "5_performance_validity": "Holds. P-78's highest figure is QTP accuracy 0.907 / AUC 0.871, with external validation. P-84's highest is 0.65.",
+        "6_record": "The record's contrast (CSF p-tau/Abeta against a 2D CNN) is in neither paper. The verdict rests on the MRI figures the papers print."
+      },
+      "figures": {
+        "P-78": "Single timepoint, Dataset B: AUC 0.832 (0.783-0.874) printed; subject-level Hanley-McNeil [0.735, 0.929] at worst. Dataset A proposed model 0.858 (0.803-0.918). Single-baseline-scan CNN comparators on Dataset A 0.751-0.782; weakest ConvNeXt 0.751 (0.671-0.821).",
+        "P-84": "c-MCI 77 / s-MCI 129: 1.5T AUROC 0.553 (0.485-0.621); c3T* 0.576 (0.508-0.644); d3T* 0.625 (0.557-0.693), as printed."
+      },
+      "candidate_explanations": [
+        "Label construction. P-78: 'subjects diagnosed with MCI at all time points are defined as sMCI; subjects diagnosed with MCI at any follow-up visit and who progressed to AD within three years are defined as pMCI', with dynamic data augmentation. P-84: 's-MCI group was defined as those who remained as MCI after 36 months of the scan'.",
+        "Training of P-84's prognostic classifier is not described. It may be the AD classifier reused on MCI: 'conducted with the aforementioned classifier'.",
+        "Supervision and training size in P-78: CDR-SB pre-training on 1,393 subjects (6,313 images). 'removing CDRSB reduced AUC by 4.6 %'.",
+        "Selection in P-78 Dataset B: '101 subjects who met the above longitudinal criteria were selected from a total of 486 subjects, and 304 sMRI images were obtained'. The images are not independent, and the sample is restricted to people with long follow-up.",
+        "Input: native or super-resolved ADNI-1 1.5T (P-84), against ADNI-1/2/GO scans registered to MNI152 resampled to 1.5 mm (P-78).",
+        "Architecture: longitudinal CNN + Transformer against a DenseNet Siamese classifier. P-78's own single-scan CNNs (0.751-0.782) narrow the gap but do not close it.",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "reason": "I could not show a failed condition. The matched single-scan, 36-month figure in P-78 (0.832) does not overlap P-84 (0.553/0.625), even after re-deriving P-78's interval at subject level. P-78's weakest single-baseline-scan CNN comparator (ConvNeXt 0.751, 0.671-0.821) touches P-84's super-resolved interval but still fails the within-uncertainty test, and it comes from a mostly OASIS external set. The pair qualifies. The report should state that P-84 does not describe how its prognostic classifier was trained."
+    },
+    {
+      "id": "C-46",
+      "final": "yes",
+      "overturned": false,
+      "conditions_attacked": {
+        "1_question": "Holds. Both report three-class CN/MCI/AD classification in ADNI from MRI, and both print a binary CN vs MCI accuracy. Diffusion (P-115) and T1 (P-109) are one channel under the rule.",
+        "2_metric": "Holds, and the balanced-versus-plain label cannot close the gap. P-115's 0.79 is a balanced accuracy on 44/84/22. The highest plain accuracy consistent with it is 0.908 (CN and MCI recall 1.0, AD recall 0.37: (44 + 84 + 8.1)/150). Its Wilson interval at n=150, [0.851, 0.945], still excludes P-109's 0.968. P-109's classes (315/370/390) are near-balanced, so its plain and balanced accuracies nearly coincide.",
+        "3_matched_figure": "Holds. P-109's own DeiT-T (79.96%) and CMT-T (74.87%) match P-115's number, but they are deep networks on P-109's shuffled-slice split, not P-115's condition (a balanced random forest on regional diffusion indices under subject-level CV). P-115 reports no T1 slice or deep-network result. No matched figure exists.",
+        "4_uncertainty": "Holds. Three-class: P-115 0.79, Wilson n=150 [0.718, 0.848] (n=96 [0.698, 0.860]); P-109 0.968, Wilson n=108 [0.916, 0.988] (n=1075 [0.956, 0.977]). CN vs MCI: 0.72, n=128 [0.637, 0.791], against 0.942, n=69 [0.861, 0.977]. No overlap under any n.",
+        "5_performance_validity": "Holds by the letter; this is the closest call. P-109 meets two of the three exclusion conditions: AUCs 98.05 (three-class), 97.15 (MCI/HC) and 98.52 (AD/HC), plus AD/HC accuracy 97.13%, all on internal validation with no external cohort. It does not meet the third, a small sample: 'A total of 1075 individuals' is larger than every Section 3.5 example (P-200 582, P-1 383, P-197 125). The review's own tagging reads P-109 at 0.9681 (make_appraisal_table.discrimination), below 0.97, so P-109 is not in the suspect set. The contested accuracies (96.81%, 94.23%) are below 0.97.",
+        "6_record": "The record's 'on T1' for both is wrong for P-115, and the pack PDF for P-115 is the wrong paper. The verdict rests on the correct document's printed figures."
+      },
+      "figures": {
+        "P-115": "Three-class balanced accuracy 0.79 (MIX_BRF, DKI source to DTI target, 5-fold CV), Wilson n=150 [0.718, 0.848]; highest compatible plain accuracy 0.908 [0.851, 0.945]. CN vs MCI 0.72, n=128 [0.637, 0.791].",
+        "P-109": "Three-class accuracy 96.81% (AUC 98.05) on a shuffled 10% hold-out of about 54,300 slices from 1075 participants, Wilson n=108 [0.916, 0.988]. MCI vs HC 94.23% (AUC 97.15), n=69 [0.861, 0.977]."
+      },
+      "candidate_explanations": [
+        "Split unit (P-109): 'The images were shuffled randomly, and all experiments were carried out by splitting the data into 10 % for testing and 90 % for training.' Each subject contributes about 50 slices, and subject separation is not stated. Section 3.5 names this mechanism. It is the most material candidate, and neither paper tests it.",
+        "Input representation: regional white-matter tensor and kurtosis FA/MD indices (P-115), against 2D T1 slices (P-109).",
+        "Architecture: a balanced random forest with SER/STT transfer, against a hybrid CNN-transformer. On P-109's own split, architecture moves three-class accuracy from 74.87% to 96.81%.",
+        "Training scheme and sample (P-115): 'balanced random forest (BRF) considers equal samples from all the groups in training and rest will be assigned to test dataset', with only 22 AD participants. P-109 has 1075 participants.",
+        "ADNI subsets: multi-shell diffusion participants (P-115) against 3T MPRAGE participants (P-109); overlap unknown.",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "reason": "I could not show a failed condition. Converting P-115's balanced accuracy to the highest compatible plain accuracy (0.908) still leaves P-109's 0.968 outside its interval. P-109's DeiT-T and CMT-T figures near 0.79 are not P-115's condition. P-109 escapes the Section 3.5 exclusion only on the small-sample condition (1075 participants; tagged 0.9681). The pair qualifies. The report should present P-109's shuffled-slice split as the leading candidate explanation and state that P-109 met the other two exclusion conditions (AUC 0.97 or higher on internal validation, no external cohort)."
+    },
+    {
+      "id": "C-67",
+      "final": "yes",
+      "overturned": false,
+      "conditions_attacked": {
+        "1_question": "Holds only after re-filing. As recorded (P-30's AD-vs-MCI AUC against P-66's MCI-vs-CN accuracy), there is no shared question. On the printed figures, both report AD vs MCI in ADNI from T1 MRI.",
+        "2_metric": "Holds for AUC with AUC. The reader's supporting accuracy comparison (0.78 vs 0.58) should be dropped; see condition 3.",
+        "3_matched_figure": "Holds for AUC, but I found a figure the reader missed. P-66 Table 8 (PDF p. 8, absent from the text extract) prints MCI/AD accuracy of 78.7% (sigmoid classifier) and 72.4% (SVM) on a random subset of its test set ('ten AD patients (23 images), ten CN (25 images) and ten MCI (24 images) were selected randomly among testing set'). This agrees with P-30's 0.78: 0.78 lies inside Table 8's Wilson interval [0.651, 0.880] at 47 images, and 0.787 lies inside P-30's [0.735, 0.820]. Table 8 is P-66's own ROI model on a 20-subject subset, not P-30's condition, and it gives no AUC, so under the rule it does not reconcile the AUC comparison. It does show that P-66 contradicts itself on AD-vs-MCI accuracy: 0.566-0.615 in Table 7 and 0.724-0.787 in Table 8. Table 7 also shows P-66's best AD vs MCI AUC is 0.620 (CNN, amygdala, 62.0 +- 5.0), not the 0.595 fusion headline.",
+        "4_uncertainty": "Holds on AUC; recomputed. P-30 AUC 0.85, Hanley-McNeil with about 33 AD / 31 MCI test subjects: SE 0.0486, interval [0.755, 0.945]. P-66 0.595 with 40/40: SE 0.0635, [0.470, 0.720]. P-66's best, 0.620, with 40/40: SE 0.0627, [0.497, 0.743]. Each estimate lies outside the other's interval, even using P-66's best AUC.",
+        "5_performance_validity": "Holds. P-30's highest single model is 0.94 and its mean 0.85; P-66's is 0.62.",
+        "6_record": "The ledger's pairing is a misread (P-30 has no MCI vs CN result). The pair qualifies only when re-filed on AD vs MCI AUC."
+      },
+      "figures": {
+        "P-30": "AD vs MCI AUC 0.85 +/- 0.046 (models 0.86, 0.94, 0.86, 0.80, 0.83) on a 15% subject-level test set, Hanley-McNeil [0.755, 0.945]. Validation accuracy 0.78 (image-level), Wilson n=363 [0.735, 0.820].",
+        "P-66": "AD vs MCI AUC: fusion 0.595, best 0.620 (CNN, amygdala), Hanley-McNeil 40/40 [0.470, 0.720] and [0.497, 0.743]. Accuracy 0.566-0.615 (Table 7), but 0.787 (sigmoid) and 0.724 (SVM) on the 20-subject radiologist subset (Table 8), Wilson 37/47 [0.651, 0.880]."
+      },
+      "candidate_explanations": [
+        "Input representation: 'The dataset then resized into 32 x 32 x 32 dimensions' (P-30, whole brain), against hippocampus and amygdala ROI crops with PyRadiomics features plus age and sex (P-66).",
+        "Scan selection: P-30 uses '507 scans of 223 AD patients and 507 scans of 204 MCI patients', not restricted to baseline, with AD patients who 'stayed stable during the follow-up'. P-66: 'We randomly selected baseline structural MRI data'. Later AD scans are more atrophic.",
+        "P-66's own account: 'primarily due to the less severe nature of the AD cases in the ADNI dataset.'",
+        "Validation design: P-30 uses a 15% subject-level test set scored by five CV models. P-66 uses a random 80/20 split of images ('80 % of images'), which, if anything, would inflate P-66.",
+        "P-66 is internally inconsistent on AD vs MCI: Table 7 accuracy 0.566-0.615 against Table 8 accuracy 0.724-0.787. Its AD-vs-MCI estimate is unstable across its own evaluation subsets.",
+        "None of these is shown by either paper to be sufficient."
+      ],
+      "reason": "I could not show a failed condition for the AUC comparison. Even P-66's best AD-vs-MCI AUC (0.620, Table 7) lies outside P-30's interval, and P-30's 0.85 lies outside P-66's. However, P-66 Table 8 prints AD/MCI accuracies of 0.787 and 0.724 on a subset of its test set, and these agree with P-30's 0.78. The pair should therefore be reported on AUC only, not on accuracy, and P-66's internal inconsistency should be listed as a candidate explanation. The ledger record needs re-filing on AD vs MCI AUC."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "C-205",
+  "qualifies": "no",
+  "question": "Only partly shared. Both papers are ALE meta-analyses of resting-state fMRI differences between MCI and healthy controls (MRI channel, same comparison). Each restricts its synthesis to a different network: P-528 to the dorsal attention network (38 studies), P-517 to the default mode network (39 studies). They therefore estimate convergence in different regions. The shared quantity is limited to regions both networks include, on the same index. The two syntheses share authors and primary studies.",
+  "metric": "Same type: direction of the convergent MCI-vs-HC difference (ALE clusters, FWE-corrected) per region and index (ALFF, ReHo, FC).",
+  "figures": {
+    "P-528": "MCI vs HC, DAN: increased ALFF in L MFG, R SFG, L STG (BA 39), R STG (BA 41); decreased ALFF in L IPL (BA 40) and R MTG; increased ReHo in L preCG (BA 4), L SPL (BA 7), R preCG (BA 44); decreased ReHo in L IPL (BA 39, 40); increased FC in bilateral preCG and MFG; decreased FC in L IFG and R IPL (BA 40).",
+    "P-517": "MCI vs HC, DMN: increased ALFF/fALFF in cerebellum posterior lobe, R PHG and fusiform; decreased ALFF/fALFF in bilateral precuneus; increased ReHo in bilateral IFG; decreased ReHo in L STG and L IPL; increased FC in R medial frontal gyrus (max ALE 0.0156) and L ACC; decreased FC in bilateral precuneus and L temporal/angular regions."
+  },
+  "matched_figure_check": "The matched quantity exists where both syntheses report the same index in the same region, and there the papers agree in direction. ReHo in the left IPL is decreased in both (P-528 BA 39/40; P-517 left IPL). ReHo at right BA 44 is increased in both (P-528 labels it right preCG, P-517 the IFG). The one near-coincident pair of opposite signs, left STG, sets ALFF (P-528) against FC (P-517), two different indices.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not a performance comparison.",
+  "failed_conditions": [1, 4],
+  "candidate_explanations": [],
+  "reason": "The two meta-analyses map different networks, so most of their clusters are not the same quantity (condition 1 holds only where the networks overlap). Where they report the same index in the same region (left IPL ReHo, right BA 44 ReHo), the direction agrees, and no opposite-direction convergent result exists on a shared quantity (condition 4). The record names no opposing result. Its 'max ALE ~0.0156' belongs to P-517's increased-FC cluster in the right medial frontal gyrus, not to the precuneus decrease.",
+  "quotes": [
+    {"paper": "P-528", "page": 4, "quote": "Patients with MCI showed increased ReHo in the left preCG (BA 4), left SPL (BA 7), and right preCG (BA 44). Patients with MCI showed decreased ReHo in the left IPL (BA 39, 40)."},
+    {"paper": "P-528", "page": 4, "quote": "Compared to HCs, patients with MCI showed increased ALFF in the left MFG (BA 9), right SFG (BA 6), left superior temporal gyrus (STG) (BA 39), and right STG (BA 41)."},
+    {"paper": "P-517", "page": 4, "quote": "Compared to HC, MCI patients demonstrated increased ReHo in the bilateral inferior frontal gyrus (Table 2 and Figure 3), while MCI patients showed decreased ReHo in the left superior temporal gyrus and left inferior parietal lobule"},
+    {"paper": "P-517", "page": 4, "quote": "In addition, MCI patients had decreased ALFF/fALFF in the bilateral precuneus"},
+    {"paper": "P-517", "page": 7, "quote": "Medial Frontal Gyrus 0.015601669 Right 10"}
+  ]
+}

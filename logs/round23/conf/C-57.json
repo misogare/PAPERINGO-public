@@ -1,0 +1,24 @@
+{
+  "id": "C-57",
+  "qualifies": "no",
+  "question": "The task label matches (MCI vs normal) but the channel does not: P-117 (correct PDF S1746809423008959, Aljalal et al.) uses resting-state EEG; P-76 (Sun, Dodge & Mahoor, ESWA 238 (2024) 121929) uses facial video from I-CONECT interviews. Facial video is not EEG under any reading of the channel list. Condition 1 fails on channel.",
+  "metric": "Same metric type (accuracy), but P-76's 90.63% is the best of four per-theme video-level accuracies (AUC 0.6042 on that theme).",
+  "figures": {
+    "P-117": "99.81% accuracy (ensemble KNN, 11 NSGA-II channels), binary aMCI vs HC, 10-fold CV over 3660 segment feature vectors from 61 participants; no interval. Wilson 95% with n = 61: z^2/n = 0.06297; centre = (0.9981 + 0.03149)/1.06297 = 0.9686; half-width 0.0314; interval [0.937, 1.000].",
+    "P-76": "90.63% = 29/32 subjects, Crafts Hobbies theme (AUC 0.6042), best of four themes (85.37%-90.63%; average AUC 0.56), K-fold CV per theme. No interval reported. Wilson with n = 32: z^2/n = 3.8415/32 = 0.12005; centre = (0.90625 + 0.06002)/1.12005 = 0.8627; half-width = 1.96*sqrt(0.90625*0.09375/32 + 3.8415/(4*32^2))/1.12005 = 0.1049; interval [0.758, 0.968]."
+  },
+  "matched_figure_check": "No matched figure exists. Neither paper reports a result in the other's channel. Nothing reconciles the pair.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "P-117 meets the Section 3.5 exclusion on its own PDF: 99.81% (>= 0.97), internal 10-fold CV over randomly split segment feature vectors, 61 participants, no external cohort (the round-20 reading's 'likely applies' is confirmed from the correct PDF). P-76's 90.63% is below 0.97 and not excluded, though its near-chance AUC (0.56 average) makes the accuracy a fragile estimate.",
+  "failed_conditions": [1, 5],
+  "candidate_explanations": [],
+  "reason": "The gap is numerically beyond uncertainty (0.9981 lies outside P-76's Wilson [0.758, 0.968]; 0.9063 lies outside P-117's [0.937, 1.000]), but EEG and facial video are different measurement channels, so condition 1 fails. P-117's 99.81% also fails the performance-validity exclusion (condition 5). The record's '90.63% Acc' omits that it is a best-of-four-themes figure on 32 subjects with AUC 0.60.",
+  "quotes": [
+    {"paper": "P-117", "page": 1, "quote": "With an ensemble KNN classifier, the highest accuracy, 99.81%, is achieved using 11 channels selected by an NSGA-based method."},
+    {"paper": "P-117", "page": 3, "quote": "The combined dataset has 61 people over the age of 55, including 29 amnestic MCI patients and 32 normal cases."},
+    {"paper": "P-117", "page": 7, "quote": "For evaluating the performance of each classifier, we employ 10-fold CV. This method randomly splits the dataset into ten equal subsets, with one subset used for validation (test) and the other nine for training"},
+    {"paper": "P-76", "page": 7, "quote": "MC-ViViT predicts 29 out of 32 subjects correctly on the theme Crafts Hobbies, which reaches the highest accuracy, 90.63%."},
+    {"paper": "P-76", "page": 7, "quote": "The average AUC of all four themes is 0.56."}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "C-208",
+  "qualifies": "no",
+  "question": "None shared. P-125 classifies healthy controls against MCI (37 vs 37, ADNI 1.5T T1 MRI) from amygdala volume, compactness and tortuosity features. P-194 classifies early MCI against late MCI (273 vs 187, ADNI) from VBM-MRI and FDG-PET ROI features, with transfer from AD vs NC. MRI is a shared channel (P-194 reports VBM-only results), but the comparison differs: MCI vs controls against a within-MCI staging split. P-194's MCI-vs-NC experiment appears only in supplementary Table S2, which is not in the PDF read.",
+  "metric": "Accuracy in both, but on different class contrasts.",
+  "figures": {
+    "P-125": "HC vs MCI, 60/40 subject split (about 30 test subjects): mean test accuracy 80.00% (RF, ANN); the +/-2.43% is a margin across fold-models on one test partition. Wilson on 24/30: 0.627-0.905. The abstract's 82.14% (the record's figure) is not in the result tables. Test AUC 85.71-90.31%.",
+    "P-194": "EMCI vs LMCI: 10-fold CV best 68.76 +/- 7.53% (FDG); Wilson over 460: 0.644-0.728. VBM-only accuracies 57.86-68.48%. Bagged test best 75.00% (FDG); Wilson over about 92: 0.653-0.827. The record's 'Acc 53' is not P-194's result."
+  },
+  "matched_figure_check": "No matched figure is available. P-125 has no EMCI-vs-LMCI result, and P-194's MCI-vs-NC result is only in the supplementary material, which is not in the source text.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not triggered: P-125 reaches at most about 0.82 accuracy and 0.913 AUC; P-194 at most 75%.",
+  "failed_conditions": [1, 6],
+  "candidate_explanations": [],
+  "reason": "P-125's accuracy separates MCI from healthy controls, while P-194's separates early from late MCI, so the pair shares no clinical question (condition 1). The record's 53% for P-194 does not appear as P-194's result; its own method reports 56.79-75.00% (condition 6). The uncertainty test is not assessed because no shared quantity exists.",
+  "quotes": [
+    {"paper": "P-125", "page": 1, "quote": "these features enhanced performance, yielding a test accuracy of 82.14 %, area under the curve values between 88.27 % and 91.33 %"},
+    {"paper": "P-125", "page": 9, "quote": "The mean test accuracy was 80.00 +/- 2.43 %, 79.29 +/- 5.78 %, 77.86 +/- 3.71 % and 80.00 +/- 3.97 % for the RF, SVM, KNN and ANN models respectively."},
+    {"paper": "P-194", "page": 1, "quote": "We have developed an optimal transport based transfer learning model to discriminate between early and late MCI."},
+    {"paper": "P-194", "page": 6, "quote": "Based on FDG features, our model achieved 68.76 +/- 7.53% accuracy and 0.66 +/- 0.08 AUC score across ten-fold cross-validation."},
+    {"paper": "P-194", "page": 8, "quote": "But we added two more experiments on AD vs MCI and MCI vs NC to illustrate the effectiveness of our framework. We demonstrate our results and benchmark studies in the supplementary material (Table S1 and S2)."}
+  ]
+}

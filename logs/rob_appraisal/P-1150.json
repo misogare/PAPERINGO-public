@@ -2,215 +2,233 @@
  "paper_id": "P-1150",
  "document_check": {
   "matches": true,
-  "note": "Li M, Wang Y, Kazis L, Weng J, Xia W. Comorbidities and apolipoprotein E genotypes of patients with mild cognitive impairment in transition to Alzheimer's disease. J Alzheimers Dis Rep 2025;9:1-10. This is a NACC cohort (2005 to 2021). The HRs of 1.17 and 1.20 match the cited 'about 1.1 to 1.2'."
+  "note": "Li M, Wang Y, Kazis L, Weng J, Xia W. Comorbidities and apolipoprotein E genotypes of patients with mild cognitive impairment in transition to Alzheimer's disease. J Alzheimers Dis Rep 2025; 9: 1-10 (DOI 10.1177/25424823251353209). A retrospective cohort from the NACC database, June 2005 to May 2021. Read in full to the References (p10). The cited numbers are in Table 2 (p4) and the Results text (p5): diabetes plus hypertension against either alone, HR 1.17 (95% CI 1.04 to 1.31), p = 0.01; diabetes plus hypercholesterolemia against either alone, HR 1.20 (1.07 to 1.36), p = 0.002, in the stable MCI against MCI-to-AD analysis."
  },
  "cited_result": "In the stable MCI vs MCI-to-AD analysis (Table 2, propensity-score-weighted Cox models): diabetes plus hypertension vs either condition alone, HR 1.17 (95% CI 1.04 to 1.31) for AD onset; diabetes plus hypercholesterolemia vs either alone, HR 1.20 (1.07 to 1.36).",
- "tool": "ROBINS-E",
- "tool_reason": "The cited result is the effect of an exposure (a combination of cardiometabolic conditions) on progression from MCI to AD, estimated in an observational cohort with propensity-score weighting and confounder adjustment designed to isolate that effect. The authors disclaim causal inference, but the design targets an exposure effect, so ROBINS-E applies.",
+ "tool_reason": "The cited result is a longitudinal association between a combination of comorbidities recorded before the MCI diagnosis and later AD onset in a NACC cohort, and the authors explicitly disclaim causal intent ('We do not suggest a causal inference', p7), so under the operator's clarification 1 of 2026-09-29 it is appraised with the JBI cohort checklist rather than ROBINS-E (which the earlier record used).",
  "domains": [
   {
-   "domain": "1. Bias due to confounding",
-   "judgment": "high",
-   "rationale": "The propensity score used only age, sex and race. Education and smoking were not controlled (searched: educat, smok, socioecon; none appear as covariates). Comorbidities were self-reported. The adjustment set differs between the methods text, Table 2 and Figure 1, covariates were screened by random forest, exposure-specific medications were adjusted for, and no balance diagnostics are reported.",
+   "domain": "1. Were the two groups similar and recruited from the same population?",
+   "judgment": "Unclear",
+   "rationale": "Both exposure groups (two conditions, one condition) come from the same NACC source and pass the same criteria. But baseline characteristics are reported only by outcome group (Table 1), not by exposure group. The propensity score uses only age, sex and race, and no balance after weighting is reported. The analysed sample was also built on events after the index date: converters needed two AD diagnoses, and anyone with a later normal test was excluded. The number of participants in the cited model is not reported. Whether the exposure groups were similar therefore cannot be judged.",
    "signalling": [
     {
-     "question": "1.1 Did the authors control for all the important confounding factors for which this was necessary?",
-     "answer": "Probably no",
-     "quote": "All models were adjusted by age, sex, race, ethnicity, heart attack / cardiac arrest, congestive heart failure, stroke, transient ischemic attack, Parkinson\u2019s disease, seizures, weighted by propensity score, which is computed based on demographic information and the diabetes, hypertensions, or hypercholesterolemia disease.",
+     "question": "Recruited from the same population?",
+     "answer": "Yes (same source)",
+     "quote": "NACC data from June 2005 to May 2021 was obtained on 123,071 subjects with visit data, diagnosis of AD or MCI, cognitive test scores, APOE genotype, and patient reported diagnosis of different comorbidities.",
+     "page": "2"
+    },
+    {
+     "question": "Were the groups similar (characteristics by exposure group, balance after weighting)?",
+     "answer": "Unclear",
+     "quote": "Propensity score weights for the models of all groups were computed based on patient demographic information (age, sex, race).",
      "page": "4"
     },
     {
-     "question": "1.2 Were the confounding factors that were controlled for measured validly and reliably?",
-     "answer": "Probably no",
-     "quote": "Although self-reported data can be subject to various biases, including reporting bias that may affect the accuracy of the information",
-     "page": "3"
-    },
-    {
-     "question": "1.3 Did the authors control for any variables that could have been affected by the exposure?",
-     "answer": "Probably yes",
-     "quote": "Medications also serve as covariates in the models and include: antihypertensive or blood pressure medications and antihypertensive combination therapies",
-     "page": "3"
-    },
-    {
-     "question": "1.4 Did the authors use an appropriate analysis method to control for confounding?",
-     "answer": "Probably yes",
-     "quote": "We conducted doubly robust Cox proportional hazard models with propensity score weights for each of the disease combinations to compare with the corresponding reference group within our study groups.",
-     "page": "4"
-    },
-    {
-     "question": "1.6 Is there evidence that controlling for confounding was not successful?",
-     "answer": "No information",
-     "quote": "Searched for balance diagnostics (standardised mean differences or balance after weighting): none reported. Table 1 is unweighted, and the score is 'computed based on patient demographic information (age, sex, race)' (p4).",
-     "page": "3-4"
+     "question": "Was the sample selected on events after the index date?",
+     "answer": "Yes",
+     "quote": "Patients who had a normal cognitive test on record after their MCI diagnosis were also excluded from the study.",
+     "page": "2"
     }
    ]
   },
   {
-   "domain": "2. Bias arising from measurement of the exposure",
-   "judgment": "some concerns",
-   "rationale": "Comorbidities were self-reported without dates, duration or severity, and medication corroboration is imperfect. Because the exposure was recorded before the index date, error is likely non-differential.",
+   "domain": "2. Were the exposures measured similarly to assign people to both exposed and unexposed groups?",
+   "judgment": "Yes",
+   "rationale": "All three conditions were defined in the same way for every participant: a recorded diagnosis before the index date (first MCI diagnosis) in the same NACC data.",
    "signalling": [
     {
-     "question": "2.1 Does the exposure measure characterise the exposure well enough to answer the question?",
-     "answer": "Probably no",
-     "quote": "First, there is a lack of medication duration for the three diseases without precise diagnosis dates.",
-     "page": "8"
-    },
-    {
-     "question": "2.2 Was the exposure measured validly and reliably?",
-     "answer": "Probably no",
-     "quote": "In addition, the medication indications for these three conditions may be given for other clinical conditions as well.",
-     "page": "8"
-    },
-    {
-     "question": "2.3 Were errors in exposure measurement related to the outcome?",
-     "answer": "Probably no",
-     "quote": "Subjects are identi\ufb01ed with a diagnosis of diabetes before their index date",
+     "question": "Exposure measured similarly for all groups?",
+     "answer": "Yes",
+     "quote": "Subjects are identi\ufb01ed with a diagnosis of diabetes before their index date (\ufb01rst MCI diagnosis date; Supplemental Figure 1). Similarly, we de\ufb01ned subjects with hypertension or hypercholesterolemia in a similar fashion.",
      "page": "2-3"
     }
    ]
   },
   {
-   "domain": "3. Bias in selection of participants into the study (or analysis)",
-   "judgment": "high",
-   "rationale": "Group membership depended on post-baseline events: at least two AD diagnoses for converters, no later normal test, and survival. These events relate both to the comorbidities (which shorten survival) and to the outcome, and no correction is described.",
+   "domain": "3. Were the exposures measured in a valid and reliable way?",
+   "judgment": "Unclear",
+   "rationale": "The exposures are patient-reported diagnoses. The authors say medication use corroborates them, but they do not describe any procedure for using medication to confirm a diagnosis. They also concede that diagnosis dates are missing and that the medications have other indications. Duration and severity were not captured.",
    "signalling": [
     {
-     "question": "3.1 Was selection of participants based on characteristics observed after the start of exposure?",
+     "question": "Exposure measured validly and reliably?",
+     "answer": "Unclear",
+     "quote": "Although self-reported data can be subject to various biases, including reporting bias that may affect the accuracy of the information, evidence of medications prescribed on a daily basis speci\ufb01c for these disease conditions corroborates the diagnosis of diabetes, hypertension, and hypercholesterolemia in the self-reported database.",
+     "page": "3"
+    },
+    {
+     "question": "Limitations of the exposure measure acknowledged",
      "answer": "Yes",
-     "quote": "If a patient\u2019s record showed a diagnosis with any cognitive impairment (dementia, MCI, or impaired, not MCI) and at least two diagnoses of AD after the \ufb01rst MCI diagnosis (to control for rule out diagnosis), this patient was de\ufb01ned as MCI-to-AD (n = 1330) [...] Patients who had a normal cognitive test on record after their MCI diagnosis were also excluded from the study.",
-     "page": "2"
-    },
-    {
-     "question": "3.2 Were the post-exposure variables that influenced selection associated with exposure and influenced by the outcome or its causes?",
-     "answer": "Probably yes",
-     "quote": "During this process, patients who died or did not have any AD diagnosis before the censoring date were excluded from the analysis.",
-     "page": "4"
-    },
-    {
-     "question": "3.3 Do the start of follow-up and start of exposure coincide?",
-     "answer": "No",
-     "quote": "For all patients who had MCI diagnoses, we used their \ufb01rst MCI diagnosis date as the index date.",
-     "page": "4"
-    },
-    {
-     "question": "3.4 Were corrections applied for selection biases?",
-     "answer": "No information",
-     "quote": "Searched for inverse-probability-of-selection or censoring weights and selection sensitivity analyses: none reported.",
-     "page": "2-4"
-    }
-   ]
-  },
-  {
-   "domain": "4. Bias due to post-exposure interventions",
-   "judgment": "some concerns",
-   "rationale": "Treatment of the conditions during follow-up is very likely, but it is not recorded or timed.",
-   "signalling": [
-    {
-     "question": "4.1 Were there post-exposure interventions influenced by prior exposure that could affect the outcome?",
-     "answer": "No information",
-     "quote": "Without this information, we cannot determine the precise timeline of medication use, which is crucial for understanding the temporal relationships between drug exposure and AD onset.",
+     "quote": "First, there is a lack of medication duration for the three diseases without precise diagnosis dates.",
      "page": "8"
     }
    ]
   },
   {
-   "domain": "5. Bias due to missing data",
-   "judgment": "high",
-   "rationale": "APOE, a covariate in the cited model, is unavailable for 37.6% of the stable MCI comparator against 9.6% of converters, and no handling is stated. Deaths were excluded, and loss to follow-up is not reported.",
+   "domain": "4. Were confounding factors identified?",
+   "judgment": "No",
+   "rationale": "The list of confounders is made up of other comorbidities, the MMSE, APOE and demographics. It omits standard confounders of the link between cardiometabolic conditions and AD: education, smoking, body mass and socioeconomic position. I searched for 'educat' (found only in affiliations), 'smok', 'BMI', 'obes', 'body mass', 'socio' and 'income', with no hits. The list also puts the exposure-defining conditions and their specific medications (antihypertensive, lipid-lowering, diabetes drugs) among the confounders, so confounders were not separated from markers of the exposure.",
    "signalling": [
     {
-     "question": "5.1 Were complete data on exposure status available for all, or nearly all, participants?",
-     "answer": "No information",
-     "quote": "Searched for 'missing' and 'imput': no statement about missing comorbidity data.",
-     "page": "2-5"
-    },
-    {
-     "question": "5.2 Were complete data on the outcome available for all, or nearly all, participants?",
-     "answer": "Probably no",
-     "quote": "Dependent variables were the time from the index date to the \ufb01rst diagnosis of AD or the end point of the study (May 1, 2021).",
-     "page": "4"
-    },
-    {
-     "question": "5.3 Were complete data on confounders available for all, or nearly all, participants?",
+     "question": "Were important confounders identified?",
      "answer": "No",
-     "quote": "APOE not available 144 9.3 629.0 37.6 128.0 9.6 (Table 1 cells: non-MCI/AD, stable MCI, MCI-to-AD, N and %)",
+     "quote": "To further control for the confounding effects from the selected sample, we included covariables at the index date which include heart attack/cardiac arrest, congestive heart failure, stroke, transient ischemic attack, Parkinson\u2019s disease, seizures, diabetes, hypertension, hypercholesterolemia, B12 de\ufb01ciency, thyroid disease, alcohol abuse, and a cognitive test score (Mini Mental State Examination, MMSE).",
      "page": "3"
     },
     {
-     "question": "5.4 Were missing data handled appropriately, or is the result robust to them?",
-     "answer": "No information",
-     "quote": "Searched for multiple imputation, complete-case statements or missing-data sensitivity analyses: none reported.",
-     "page": "2-5"
+     "question": "Were exposure-specific variables treated as confounders?",
+     "answer": "Yes",
+     "quote": "Medications also serve as covariates in the models and include: antihypertensive or blood pressure medications",
+     "page": "3"
     }
    ]
   },
   {
-   "domain": "6. Bias arising from measurement of the outcome",
-   "judgment": "some concerns",
-   "rationale": "A clinical AD diagnosis confirmed twice is reasonable. Assessor awareness of vascular comorbidity is not addressed, and attributing dementia to AD rather than another cause relies on clinician judgment.",
+   "domain": "5. Were strategies to deal with confounding factors stated?",
+   "judgment": "Yes",
+   "rationale": "The authors state their strategies: propensity-score-weighted, doubly robust Cox models with covariate adjustment. Whether those strategies were adequate is a separate matter, addressed under items 4 and 11. The propensity score uses only age, sex and race, and the adjustment set is described inconsistently.",
    "signalling": [
     {
-     "question": "6.1 Was the outcome measured validly and reliably?",
-     "answer": "Probably yes",
-     "quote": "at least two diagnoses of AD after the \ufb01rst MCI diagnosis (to control for rule out diagnosis)",
+     "question": "Strategies stated?",
+     "answer": "Yes",
+     "quote": "We conducted doubly robust Cox proportional hazard models with propensity score weights for each of the disease combinations to compare with the corresponding reference group within our study groups.",
+     "page": "4"
+    },
+    {
+     "question": "Covariate adjustment stated?",
+     "answer": "Yes",
+     "quote": "The comorbidities were included in all the models to control for potential confounding effects.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "6. Were the participants free of the outcome at the start of the study (or at the moment of exposure)?",
+   "judgment": "Yes",
+   "rationale": "Follow-up starts at the first MCI diagnosis. An MCI diagnosis before any AD or dementia diagnosis was required, and anyone with AD or dementia at the first visit was excluded.",
+   "signalling": [
+    {
+     "question": "Free of the outcome at baseline?",
+     "answer": "Yes",
+     "quote": "The inclusion criteria include age>=65 by the end of the study (May 1, 2021), MCI diagnosis before AD diagnosis or any dementia diagnosis. Patients whose \ufb01rst visit date includes the diagnosis of AD or dementia were excluded from the study.",
      "page": "2"
     },
     {
-     "question": "6.2 Were outcome assessors unaware of the exposure history?",
-     "answer": "No information",
-     "quote": "Searched for blinding or masking of diagnosing clinicians: none reported.",
-     "page": "2-4"
+     "question": "Start of follow-up defined",
+     "answer": "Yes",
+     "quote": "For all patients who had MCI diagnoses, we used their \ufb01rst MCI diagnosis date as the index date.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "7. Were the outcomes measured in a valid and reliable way?",
+   "judgment": "Unclear",
+   "rationale": "The outcome is a clinical AD diagnosis in the NACC record, and requiring two AD diagnoses supports reliability. However, the diagnostic criteria for AD are not stated. The guideline cited (ref 11) is invoked only for the MCI diagnosis. The paper does not say whether diagnosing clinicians knew participants' comorbidity status, and the authors themselves raise possible discordance between MMSE scores and clinicians' assessments. Searched 'blind' (references only), 'mask', 'criteria' for AD.",
+   "signalling": [
+    {
+     "question": "Outcome defined and confirmed?",
+     "answer": "Partly",
+     "quote": "If a patient\u2019s record showed a diagnosis with any cognitive impairment (dementia, MCI, or impaired, not MCI) and at least two diagnoses of AD after the \ufb01rst MCI diagnosis (to control for rule out diagnosis), this patient was de\ufb01ned as MCI-to-AD (n = 1330) (Table 1).",
+     "page": "2"
     },
     {
-     "question": "6.3 Could assessment of the outcome have been influenced by knowledge of exposure?",
-     "answer": "Probably yes",
+     "question": "Concerns about diagnostic assessment raised by the authors",
+     "answer": "Yes",
      "quote": "Without this, there is a potential for discordance between objective MMSE scores and clinicians\u2019 subjective assessment",
      "page": "8"
     }
    ]
   },
   {
-   "domain": "7. Bias in selection of the reported result",
-   "judgment": "some concerns",
-   "rationale": "No protocol or registration is reported (searched: protocol, regist). The hypertension plus hypercholesterolemia combination is neither analysed nor explained. Both comparator analyses are shown.",
+   "domain": "8. Was the follow-up time reported and sufficient to be long enough for outcomes to occur?",
+   "judgment": "Unclear",
+   "rationale": "Only the study window (2005 to 2021) and the end of the time-to-event period are reported. No mean, median or range of follow-up is given, overall, by group or by exposure. I searched for 'follow', 'median' and 'years'. The window could allow enough time for AD to develop, but the follow-up participants actually had is unknown.",
    "signalling": [
     {
-     "question": "7.1 Was the result likely selected from multiple exposure measurements or definitions?",
-     "answer": "Probably yes",
-     "quote": "Furthermore, we did not study all three-disease combinations (diabetes, hypertension and hyper-cholesterolemia), since we only had a small \u201cn\u201d (98 patients)",
-     "page": "8"
-    },
-    {
-     "question": "7.2 Was the result likely selected from multiple outcome measurements?",
-     "answer": "Probably no",
+     "question": "Follow-up time reported?",
+     "answer": "No information",
      "quote": "Dependent variables were the time from the index date to the \ufb01rst diagnosis of AD or the end point of the study (May 1, 2021).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "9. Was follow-up complete, and if not, were the reasons for loss to follow-up described and explored?",
+   "judgment": "Unclear",
+   "rationale": "Completeness of follow-up is not reported (searched 'lost', 'loss to', 'attrition', 'withdr', 'drop': none). The only statement about losses is that patients who died were excluded. That removes them from the analysis rather than describing or exploring them, and the sentence appears in the description of matching for the non-MCI/AD group, so it is unclear whether it applies to the cited analysis.",
+   "signalling": [
+    {
+     "question": "Losses to follow-up reported and explored?",
+     "answer": "No information",
+     "quote": "During this process, patients who died or did not have any AD diagnosis before the censoring date were excluded from the analysis.",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "10. Were strategies to address incomplete follow-up utilised?",
+   "judgment": "No",
+   "rationale": "No strategy is described. Time at risk is defined as running to AD diagnosis or to a fixed study end date for everyone, not to last contact. The paper describes no censoring at the last visit, no inverse-probability-of-censoring weights and no sensitivity analysis for loss. Deaths were excluded, not censored or handled as a competing risk (searched 'censor', 'competing', 'death').",
+   "signalling": [
+    {
+     "question": "Strategies for incomplete follow-up used?",
+     "answer": "No",
+     "quote": "Dependent variables were the time from the index date to the \ufb01rst diagnosis of AD or the end point of the study (May 1, 2021).",
+     "page": "4"
+    }
+   ]
+  },
+  {
+   "domain": "11. Was appropriate statistical analysis used?",
+   "judgment": "No",
+   "rationale": "Weighted Cox models suit time-to-event data, but this analysis has several faults. (a) The cited model's covariates are reported differently in the methods (p3: includes MMSE and medications), in the Table 2 footnote (p4: neither, and no APOE, although APOE rows appear in the table) and in the Results (p5: general wording). (b) The propensity score is described three ways: age, sex and race (p4); demographics and the diseases themselves (Table 2 footnote); demographics and medications (abstract). (c) Variables were screened with a random forest, and exposure-specific medications were entered as covariates. (d) APOE, a model covariate, is 'not available' for 37.6% of stable MCI against 9.6% of converters, and no handling is stated (searched 'missing', 'imput'). (e) The proportional-hazards assumption was not checked (searched 'assumption', 'Schoenfeld'). (f) The numbers of participants and events in the cited model are not reported. (g) Time at risk runs to a fixed calendar date.",
+   "signalling": [
+    {
+     "question": "Adjustment set of the cited model identifiable?",
+     "answer": "No",
+     "quote": "All models were adjusted by age, sex, race, ethnicity, heart attack / cardiac arrest, congestive heart failure, stroke, transient ischemic attack, Parkinson\u2019s disease, seizures, weighted by propensity score, which is computed based on demographic information and the diabetes, hypertensions, or hypercholesterolemia disease.",
      "page": "4"
     },
     {
-     "question": "7.3 Was the result likely selected from multiple analyses?",
-     "answer": "Probably no",
-     "quote": "Sensitivity analysis with propensity score weights based on the patient\u2019s demographic information, APOE, and medication usage at baseline yielded similar conclusions (Supplemental Table 1).",
+     "question": "Covariate selection method",
+     "answer": "Data-driven",
+     "quote": "We applied the random forest method, a machine learning approach to screen the variables from the dataset for the models.",
+     "page": "3"
+    },
+    {
+     "question": "Missing covariate data handled?",
+     "answer": "No information",
+     "quote": "APOE not available 144 9.3 629.0 37.6 128.0 9.6 (Table 1 cells: non-MCI/AD, stable MCI, MCI-to-AD, N and %)",
+     "page": "3"
+    },
+    {
+     "question": "Results-text description of adjustment",
+     "answer": "Inconsistent with methods and Table 2",
+     "quote": "All the Cox models were adjusted by demographic information, genetic information, and the patient\u2019s comorbidities at baseline.",
      "page": "5"
     }
    ]
   }
  ],
- "overall": "High risk of bias (ROBINS-E). Confounding, selection of participants and missing data are high; the other four domains have some concerns.",
+ "overall": "High risk of bias (JBI checklist for cohort studies, by this review's rule): item 4 (confounders identified) and item 11 (appropriate statistical analysis) are No. Item 10 is also No, items 1, 3, 7, 8 and 9 are Unclear, and items 2, 5 and 6 are Yes.",
  "overall_category": "high",
- "overall_rationale": "The overall rating is the most severe domain rating. Confounding is high: a demographic-only propensity score, no control for education, self-reported confounders, an inconsistently reported adjustment set, and adjustment for exposure-specific medications. Selection is high because inclusion depended on post-baseline outcome events and survival. Missing data is high because APOE is missing in 37.6% of the comparator with no stated handling.",
- "confidence": "high",
- "appraiser": "model reader (primary), under the operator's delegation of 2026-09-28",
- "review_status": "reviewed and accepted by the operator (2026-09-28)",
- "brief": "logs/rob_appraisal/ROB_BRIEF.md",
- "quote_check": {
-  "checked": 17,
-  "matched": 13
+ "overall_rationale": "The review's rule rates a study high if item 4, 5, 7 or 11 is No, and two of these are No here. Item 4: education, smoking and body mass were never identified as confounders, and exposure-defining conditions and their medications were treated as covariates. Item 11: the adjustment set and the propensity-score model of the cited analysis are each reported inconsistently, variables were screened by random forest, APOE is missing differentially by outcome group (37.6% against 9.6%) with no handling stated, proportional hazards were not checked, and the participants and events in the cited model are not reported. Follow-up time and completeness are also unreported, and time at risk runs to a fixed study end date.",
+ "confidence": "medium",
+ "tool": "JBI checklist for cohort studies (11 items)",
+ "appraiser": "model reader (primary), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md (including the clarifications of 2026-09-29)",
+ "tool_changed_2026_09_29": {
+  "previous_tool": "ROBINS-E",
+  "previous_category": "high",
+  "why": "re-screen under the operator's clarified rules: Rule 1 is not met. The analysis uses propensity-score weighting ('doubly robust Cox proportional hazard models with propensity score weights', p4), but the question is not framed as an exposure effect. The objective is 'to examine the association of ... diabetes, hypertension, and hypercholesterolemia (in combination) with the transition of MCI to AD' (p1). The authors state 'We do not suggest a causal inference, based on our outcomes' (p7), citing work that classifies data-science tasks, which places their study outside causal inference. The original reader recorded this disclaimer and chose ROBINS-E on the design alone; the clarified rule requires causal intent as well. The cited result compares MCI patients with two cardiometabolic conditions against those with one. That is a condition-type exposure analysed as a longitudinal association without causal framing, so the rule requires the JBI cohort checklist. This follows the operator's P-646 decision (a baseline condition and a later outcome went to JBI cohort).",
+  "superseded_record": "logs/rob_appraisal/superseded/P-1150_2026-09-28.json"
  },
- "operator_review_2026_09_28": {
-  "date": "2026-09-28",
-  "by": "operator, stated in session on 2026-09-28",
-  "statement": "The operator reviewed the model readers' risk-of-bias judgments and accepts them.",
-  "scope": "Judgments, signalling answers and quotations unchanged by the review."
+ "quote_check": {
+  "checked": 21,
+  "matched": 19,
+  "annotations_not_checked": 0,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
  }
 }

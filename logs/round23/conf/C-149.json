@@ -1,0 +1,29 @@
+{
+  "id": "C-149",
+  "qualifies": "no",
+  "question": "Shared, once the right document is read: prediction of MCI-to-AD conversion in ADNI MCI, with MRI as the shared channel. P-211 (Cai et al., Brain Sci 2023) uses an Explainable Boosting Machine on baseline FreeSurfer regional volumes/thickness plus cognitive scores, demographics and APOE4, at horizons of 1-5 years. The ledger's P-174 figure (AUC 0.827) is Bae et al. 2021 (P-37 in the corpus): a transfer-learned 3D CNN on a single baseline T1 image for conversion within 3 years against MCI stable for at least 3 years. The PDF mapped to P-174 is a different paper (Xu et al., MEG graph embedding, Madrid cohort) that prints no 0.827. P-174 is a dedup stub of Bae et al. and must not be cited. Horizon and feature set differ, which condition 1 allows.",
+  "metric": "AUC in both.",
+  "figures": {
+    "P-211": "Five-year horizon, Comb (a) (MRI + cognitive + demographics + APOE4): AUC 0.92, accuracy 85%; 225 participants remain at 5 years (140 MCI/85 dementia). The figure is a mean with SD error bars in Figure 2, no interval printed. Hanley-McNeil over the 5-fold CV sample (n1 = 85, n2 = 140): Q1 = 0.92/1.08 = 0.8519, Q2 = 2(0.92^2)/1.92 = 0.8817, SE = 0.0214, CI [0.878, 0.962]. Over a 10% test set (about 9/14): SE 0.0676, CI [0.788, 1.000]. Three-year horizon, test data: AUC 0.81 with interaction effects (0.78 without); 3-year cohort 580 (392 MCI/188 dementia). Over a 10% test set (about 19 dementia/39 MCI): Q1 = 0.6807, Q2 = 0.7250, SE = 0.0659, CI [0.681, 0.939]; over the whole 3-year cohort (188/392): SE 0.0207, CI [0.769, 0.851]. The 0.78 figure: CI [0.644, 0.916] at the test-set n.",
+    "P-37 (the ledger's P-174 claim)": "AUC 0.827, accuracy 82.4% on a single held-out test set of 68 scans. The test set holds 37 MCI-C (conversion 0-3 years; sensitivity 81.08% = 30/37) and 31 MCI-NC (56/68 correct overall). No AUC interval printed. Hanley-McNeil with n1 = 37, n2 = 31: Q1 = 0.827/1.173 = 0.7050, Q2 = 2(0.827^2)/1.827 = 0.7487, SE = 0.0498, CI [0.729, 0.925]."
+  },
+  "matched_figure_check": "A matched figure exists and reconciles the pair. P-211 reports its result at P-37's three-year horizon: AUC 0.81 with interaction effects (0.78 without). 0.81 and 0.78 both lie inside P-37's interval [0.729, 0.925]. P-37's 0.827 lies inside P-211's three-year interval under either evaluation-set assumption ([0.681, 0.939] at the test-set n; [0.769, 0.851] at the whole 3-year cohort). The matched figures agree in both directions. The headline gap is a horizon effect: 0.92 is P-211's five-year figure, and P-211 describes its AUC falling to a low point at three years. Even the headline pair is only marginally apart. 0.92 lies inside P-37's interval (upper bound 0.925), and 0.827 lies outside P-211's five-year interval only if the 0.92 is taken over the 225-participant CV sample.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: 0.92 and 0.827 are below 0.97.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "Read against the right document (Bae et al., P-37), the pair shares the question, the MRI channel and the metric. The ledger's headline gap (0.92 vs 0.827) sets P-211's five-year AUC against a three-year result, and even that gap exceeds uncertainty in one direction only and under one evaluation-set assumption. At the matched three-year horizon P-211 prints AUC 0.81, which agrees with 0.827 in both directions, so the papers' own figures dissolve the gap and condition 3 fails. The operator named this pair; on the source documents it does not qualify. If it were ever reported, the ledger pair would need repointing from the P-174 stub to P-37.",
+  "quotes": [
+    {"paper": "P-211", "page": 1, "quote": "The five-years prediction accuracy reached 85% (AUC = 0.92) using both cognitive scores and MRI markers."},
+    {"paper": "P-211", "page": 6, "quote": "The baseline information was used as input of all EBMs and the converting AD or not during follow-up period was used as output. All EBMs were tested with the 5-fold cross validation."},
+    {"paper": "P-211", "page": 5, "quote": "The dataset is divided into training and test sets with a percentage, respectively, of 90% and 10%."},
+    {"paper": "P-211", "page": 7, "quote": "The mean AUC using Comb (a) displayed a characteristic pattern of first at about 0.9, then decreasing, reaching a low point at 3 years, followed by a gradual increase until 5 years of follow-up, to about 0.92."},
+    {"paper": "P-211", "page": 12, "quote": "The main performance indicators, accuracy, sensitivity, specificity, and AUC, were 0.75, 0.78, 0.73, and 0.81 (with interaction effects) compared to 0.72, 0.76, 0.68, and 0.78 (without interaction effects), respectively."},
+    {"paper": "P-37", "page": 2, "quote": "In the target task, we examined MCI-C patients with a conversion time of up to 3 years (longer conversion times are examined later) to MCI-NC patients with a clinical diagnosis that remains MCI for a duration of at least 3 years."},
+    {"paper": "P-37", "page": 2, "quote": "MCI-C and MCI-NC scans were randomly split into training, validation, and test sets by following the conventional ratio of 70% versus 15% versus 15% (314, 68, and 68 scans, respectively)."},
+    {"paper": "P-37", "page": 5, "quote": "It produced a test set classification accuracy of 82.4% and 0.827 area under the curve as well as 0.189 equal error rate value"},
+    {"paper": "P-37", "page": 5, "quote": "In conversion times from 0 to 3 years, 3 to 6 years, and 6 to 10 years, there were 37, 39, and 9 MCI-C subjects"},
+    {"paper": "P-174", "page": 9, "quote": "MG2G achieved high performance with 61% for NC/sMCI/pMCI classification, 79% for NC/sMCI classification, 78% for sMCI/pMCI classification"}
+  ]
+}

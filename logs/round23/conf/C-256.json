@@ -1,0 +1,26 @@
+{
+  "id": "C-256",
+  "qualifies": "no",
+  "question": "Only partly shared, and not by two studies. Both reports analyse the same GERAS-US amyloid-positive cohort (N = 617: 300 MCI, 317 mild AD dementia), share a first author and sponsor, and P-1093 cites P-1000 as its source for the cost trajectory. P-1000 describes the cohort-mean trajectory of monthly societal cost over time. P-1093 estimates a between-patient association of 36-month MMSE change with cumulative 36-month cost among 108 MCI completers. The channel (resource-use costs and MMSE) is shared, but the questions differ: how cohort-mean cost moves over time, against how cost varies with individual decline.",
+  "metric": "Mismatch. P-1000: LS-mean total societal cost per patient per month at each visit, with no trend test. P-1093's contested figure: the GLM-implied increase in cumulative 36-month cost for the observed MMSE decline against no decline (+$8,504, 95% CI $1,479-$16,108).",
+  "figures": {
+    "P-1000": "MCI LS-mean total societal cost per month: $2430 at baseline, $1977 at 6 months, $2007 at 36 months, as printed. Per-visit CIs are shown in figures; no formal trend test is presented.",
+    "P-1093": "Observed mean monthly cost in MCI: $2,430.3 at baseline, $1,975.1 at 6 months, $2,048.9 at 36 months. Cumulative 36-month cost associated with the observed 2.1-point MMSE decline vs none: +$8,504 (95% CI $1,479-$16,108), a 10.2% (1.8%-19.3%) increase, as printed."
+  },
+  "matched_figure_check": "A matched figure exists and it reconciles the recorded claim. P-1093 prints the same cohort-mean cost trajectory P-1000 reports: $2,430.3 / $1,975.1 / $2,048.9 against $2430 / $1977 / $2007, a fall to month 6 and then a flat level or modest rise. P-1093 prints it alongside its +$8,504 gradient, so the two papers' own data agree on the only shared quantity. Separate observation, not the record's claim: the two reports describe the size of the MCI MMSE decline differently. P-1000 gives about 1 point on actual scores, 'not significant', with no interval printed. P-1093 gives an MMRM least-squares mean change of -2.1 (-2.9 to -1.3). These are different estimators (observed completer means against model-based LS means) from one cohort and one author group. The difference is a within-study reporting inconsistency, not a discrepancy between two studies, and P-1000's 1-point figure has no interval against which condition 4 could be tested.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Not a performance comparison (health-economic analyses).",
+  "failed_conditions": [1, 2, 3, 4],
+  "candidate_explanations": [],
+  "reason": "The recorded opposition (flat cohort costs against a +$8,504 cost of progression) sets a cohort-mean monthly trajectory against a between-patient gradient of cumulative cost on MMSE decline. These are different questions and metrics (conditions 1 and 2). P-1093 itself reports the same flat trajectory as P-1000, so the matched figures agree (condition 3), and no pair of estimates on one quantity differs beyond uncertainty (condition 4). Both are analyses of one cohort by one author group, so they are not two independent studies in any case.",
+  "quotes": [
+    {"paper": "P-1000", "page": 1, "quote": "Total societal costs (dollars/month) for MCI and MILD, respectively, were higher at baseline ($2430 and $4063) but steady from 6 ($1977 and $3032) to 36 months ($2007 and $3392)."},
+    {"paper": "P-1000", "page": 3, "quote": "Formal tests for cost trends over time within disease severity are not presented but confidence intervals at each time point are provided."},
+    {"paper": "P-1000", "page": 1, "quote": "the rate of decline was significant for patients with MILD but not for those with MCI."},
+    {"paper": "P-1093", "page": 7, "quote": "From 6 months to 36 months, total societal costs in both groups increased modestly: to $2,048.9 (2,536.3) in MCI and $3,396.2 (2,367.1) in mild AD (Fig. 2 C)."},
+    {"paper": "P-1093", "page": 8, "quote": "For the MCI group, the observed 2.1 points worsening in MMSE was associated with an increase of $8,504 (95% CI, $1,479, $16,108) in total societal costs per patient over 36 months."},
+    {"paper": "P-1093", "page": 7, "quote": "The LSMC (95% CI) in MMSE from baseline to 36 months was –2.1 (–2.9, –1.3) for MCI and –4.1 (–4.9, –3.4) for MILD AD"},
+    {"paper": "P-1093", "page": 4, "quote": "However, the outcome analysis set only comprised of those who completed the study and had measurement of MMSE and outcomes at baseline and month 36 (n = 108 MCI and n = 114 MILD AD)."}
+  ]
+}

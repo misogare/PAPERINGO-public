@@ -1,0 +1,25 @@
+{
+  "id": "C-173",
+  "qualifies": "no",
+  "question": "Not shared. P-146's cited AUC (0.812) is for conversion from normal cognition or subjective cognitive decline to amnestic MCI over about 7 years, in the CLAS community cohort (109 people with normal cognition at baseline). P-41's AUC (0.929) separates stable MCI from progressive MCI (MCI to AD between M18 and M48) pooled with 15 established AD patients, in ADNI. The transitions differ (normal to MCI, against MCI to AD), and so does the baseline population (cognitively normal community adults against MCI patients). The brief lists progression from MCI to AD as its own task. The broad channel (structural MRI) is shared. P-146's 0.812 also adds demographics and an associative-learning score to the MRI index, which would be an allowed difference.",
+  "metric": "ROC-AUC with ROC-AUC (match).",
+  "figures": {
+    "P-146": "CLAS NC/SCD to amnestic MCI, Progressive Index plus age, gender, education and associative learning in logistic regression: AUC 0.812, printed 95% CI 0.725-0.900 (40 progressors / 69 stable). Hanley-McNeil check at 40/69: Q1 = 0.6835, Q2 = 0.7278, SE = 0.046, CI [0.723, 0.901], consistent with the printed interval. The Progressive Index alone gives AUC 0.711 in CLAS and 0.7048 in ADNI-2 (NC/SCD to MCI within 3 years); no interval is printed for either.",
+    "P-41": "sMCI vs pMCI+AD, multi-view CNN heterogeneous ensemble with multi-head attention: AUC 92.87% +/- 3.58 (spread across runs), accuracy 91.77% +/- 3.14. The test set is 15 sMCI and 15 pMCI/AD subjects (Table 1). Hanley-McNeil at 15/15: Q1 = 0.9287/1.0713 = 0.8669, Q2 = 2(0.9287^2)/1.9287 = 0.8944, SE^2 = [0.9287*0.0713 + 14*(0.8669-0.8625) + 14*(0.8944-0.8625)]/225, SE = 0.0505, CI [0.830, 1.000]."
+  },
+  "matched_figure_check": "No matched figure exists. P-146 reports no held-out MCI-to-AD AUC: its ADNI-1 training labels pool AD with pMCI against NC with sMCI, and no test figure for that contrast is printed. P-41 reports no normal-to-MCI result.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: 0.929 is below 0.97. P-41's test set has 30 subjects, however, with no external cohort, and its positive class includes established AD patients, which makes discrimination easier than a pure sMCI/pMCI contrast. P-146's 0.812 is an external application of an ADNI-1-trained network in CLAS; the clinical logistic model was fitted in CLAS.",
+  "failed_conditions": [1],
+  "candidate_explanations": [],
+  "reason": "The papers predict different transitions in different baseline populations: normal cognition to MCI in a Shanghai community cohort (P-146), against MCI to AD, with established AD added to the positive class, in ADNI (P-41). That fails condition 1. Numerically the values are only marginally beyond uncertainty: 0.812 lies just below P-41's derived interval [0.830, 1.000], and 0.929 lies above P-146's [0.725, 0.900].",
+  "quotes": [
+    {"paper": "P-146", "page": 2, "quote": "Better performance for prediction progression to MCI in CLAS was obtained when the PI score was combined with clinical measures (AUC = 0.812; 95 %CI: 0.725–0.900)."},
+    {"paper": "P-146", "page": 1, "quote": "in which AD and progressive MCI (converting to AD within 3 years) patients were considered as positive samples, while NC and stable MCI (remaining stable for 3 years) subjects were considered as negative samples."},
+    {"paper": "P-146", "page": 5, "quote": "Among 109 cognitively normal subjects (33NC and 76 SCD at baseline), 16 NC and 24 SCD showed clinical progression to amnestic MCI at follow-up."},
+    {"paper": "P-41", "page": 8, "quote": "The second group (pMCI) included 81 participants who were diagnosed with MCI at baseline but progressed to AD within 2.5 years, between month 18 (M18) and M48."},
+    {"paper": "P-41", "page": 8, "quote": "we added 15 patients with AD to the pMCI group to help the model learn both the progressive and fully diseased brain patterns simultaneously."},
+    {"paper": "P-41", "page": 12, "quote": "The MHA classifier in the same heterogeneous ensemble outperformed the LSTM with an accuracy of 91.77% ±3.14, sensitivity of 87.69% ±3.24, specificity of 88.53% ±3.53, and an impressive AUC of 92.87% ±3.58."}
+  ]
+}

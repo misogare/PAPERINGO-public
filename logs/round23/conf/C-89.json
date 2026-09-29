@@ -1,0 +1,25 @@
+{
+  "id": "C-89",
+  "qualifies": "no",
+  "question": "None shared. P-152 reports cross-sectional diagnosis only (AD vs HC, MCI vs HC, AD vs MCI) from DTI superficial-white-matter features and has no progression task. P-156 predicts which baseline MCI patients progress to dementia by their latest diagnosis. Diagnosis of established AD is not prediction of future dementia among MCI patients.",
+  "metric": "As recorded, accuracy (95.8%) against AUC (0.81). P-152 also prints AUCs (0.99 AD vs HC, 0.88 MCI vs HC, 0.93 AD vs MCI), so the type could be matched, but not on a shared question.",
+  "figures": {
+    "P-152": "AD vs HC accuracy 95.8%, AUC 0.99 (linear SVM, ADNI2 DTI, 24 AD vs 24 HC, internal 5-fold CV). No intervals printed. Hanley-McNeil for AUC 0.99 with 24/24: SE 0.0148 -> 0.961-1.000. Wilson for 95.8% on n=48: 0.860-0.988.",
+    "P-156": "Held-out test AUC 0.81, F-measure 0.68 (Ensemble Integration, TADPOLE baseline MCI, n=841; test set = 841-672 = 169). Test class split not printed; with the cohort's 34% progressors (about 58/111), Hanley-McNeil SE 0.0377 -> 0.736-0.884."
+  },
+  "matched_figure_check": "No matched figure exists: P-152 has no progression result, and P-156 has no cross-sectional AD-vs-HC result.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "The cited P-152 value meets the Section 3.5 exclusion when checked against the source: AD vs HC AUC 0.99 (Table 3), n=48, internal 5-fold CV, no external cohort. P-156 (0.81) is not affected.",
+  "failed_conditions": [1, 5, 6],
+  "candidate_explanations": [],
+  "reason": "The record reads P-152's 95.8% as a progression (T2) result, but it is AD vs HC accuracy, and P-152 reports no progression task, so there is no shared clinical question with P-156's future-dementia AUC. The cited P-152 result also meets the near-ceiling exclusion (AUC 0.99, n=48, internal CV only). The intervals are far apart, but that is moot on non-comparable quantities.",
+  "quotes": [
+    {"paper": "P-152", "page": 1, "quote": "The linear kernel of SVM was the best classiﬁer, with an accuracy of 95.8% between the AD and HC groups, followed by the quadratic kernel of SVM with an accuracy of 83.3% between the MCI and HC groups"},
+    {"paper": "P-152", "page": 1, "quote": "This method employed DTI data from 72 subjects: 24 subjects as HC, 24 subjects with MCI, and 24 subjects with AD."},
+    {"paper": "P-152", "page": 5, "quote": "After feature selection, we performed an internal 5-fold cross-"},
+    {"paper": "P-152", "page": 6, "quote": "HC-AD 95.8 95.8 95.8 95.8 .99 (Table 3 row; cells joined by the reader)"},
+    {"paper": "P-156", "page": 1, "quote": "among MCI patients, on a held out test set, the EI-based model performed better (AUC = 0.81, F-measure = 0.68)"},
+    {"paper": "P-156", "page": 3, "quote": "A randomly sampled 80 % subset of this cohort was used to train all the predictive models for the target problem. These models were then evaluated on the test set, which consisted of the remaining 20 % of the cohort."}
+  ]
+}

@@ -1,0 +1,311 @@
+{
+ "paper_id": "P-624",
+ "document_check": {
+  "matches": true,
+  "note": "The source text is Wang J, Xin C, Liu J, Yan Z, Zhang Q. 'Bidirectional relationship between social frailty and mild cognitive impairment in older patients with chronic heart failure: A two-wave longitudinal study', Journal of Psychosomatic Research 202 (2026) 112514, doi 10.1016/j.jpsychores.2025.112514. It reports 303 patients recruited in hospital, 288 followed by telephone 6 months after discharge, and a cross-lagged panel model with SFT1 -> MCIT2 -0.578 (95% CI -0.694, -0.423) and MCIT1 -> SFT2 -0.646 (95% CI -0.801, -0.493) (Table 4, p5; abstract, p1). This matches the cited result. The whole text was read through to the References (p6)."
+ },
+ "cited_result": "Two-wave cross-lagged panel model in 288 older patients with chronic heart failure (T1 in hospital, T2 by telephone 6 months after discharge). Principal path: T1 social frailty (HALFT) -> T2 MCI (Mini-MoCA), effect -0.578 (95% CI -0.694 to -0.423). Reverse path: T1 MCI -> T2 social frailty, effect -0.646 (95% CI -0.801 to -0.493). The appraisal covers the principal path and, because the review counts both directions towards VF-26's reciprocity claim, the reverse path too.",
+ "tool_reason": "The cited result is a two-wave longitudinal association (a cross-lagged panel) between social frailty and MCI. It is not framed or analysed for a causal estimand (no weighting, no target-trial emulation, no causal confounder set). Clarification 1 of 2026-09-29 therefore assigns it to the JBI checklist for cohort studies.",
+ "domains": [
+  {
+   "domain": "1. Groups similar and recruited from the same population",
+   "judgment": "Unclear",
+   "rationale": "Every participant came from one hospital's convenience sample of older CHF patients, recruited under the same criteria, so the same-population part is met. Whether participants with and without SF were similar is reported only in Supplementary Tables 1 and 2, which are not in the source text. Table 3a shows SF varying with NYHA class, social support and function, so the groups probably differ.",
+   "signalling": [
+    {
+     "question": "Were the two groups similar and recruited from the same population?",
+     "answer": "Unclear",
+     "quote": "Older patients with CHF were recruited at baseline from November 2022 to April 2024 in a hospital in China using a convenience sampling method.",
+     "page": "2"
+    },
+    {
+     "question": "Is the comparison of groups by exposure status reported?",
+     "answer": "Only in supplementary material not available",
+     "quote": "Characteristics of the participants, stratified by the presence or absence of MCI and SF at T1, are presented in Supplementary Table 1 and Supplementary Table 2, respectively.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Exposure measured similarly to assign groups",
+   "judgment": "Yes",
+   "rationale": "At T1 every participant completed the same instruments: the HALFT scale for SF (the exposure on the principal path) and the Mini-MoCA for MCI (the exposure on the reverse path).",
+   "signalling": [
+    {
+     "question": "Were the exposures measured similarly to assign people to both exposed and unexposed groups?",
+     "answer": "Yes",
+     "quote": "SF was measured using the HALFT scale [26]. The scale is a self-report assessment tool for SF and consists of 5 entries",
+     "page": "2"
+    },
+    {
+     "question": "Same procedure for all participants at baseline?",
+     "answer": "Yes",
+     "quote": "Patients who agreed to participate in this study signed an informed consent form and filled out the relevant questionnaires.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "3. Exposure measured validly and reliably",
+   "judgment": "Yes",
+   "rationale": "Both exposures were measured with published instruments. The HALFT has been validated in Chinese older adults (alpha 0.746). The Mini-MoCA has reported accuracy against the MoCA in heart failure (alpha 0.863). The authors acknowledge that the HALFT may misclassify for cultural reasons. This is a caveat, but it does not make the measurement invalid.",
+   "signalling": [
+    {
+     "question": "Was the exposure (SF) measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "The HALFT scale has been validated in Chinese older adult populations and demonstrates good psychometric properties [26]. The Cronbach's \u03b1 was 0.746.",
+     "page": "2"
+    },
+    {
+     "question": "Was the reverse-path exposure (MCI) measured in a valid and reliable way?",
+     "answer": "Yes",
+     "quote": "The sensitivity of this scale was 89 % and specificity 71 % at a cutoff value of 9 compared with the MoCA scale total score among patients with HF [29]. The Cronbach's \u03b1 was 0.863.",
+     "page": "2"
+    },
+    {
+     "question": "Any acknowledged measurement concern?",
+     "answer": "Yes (caveat)",
+     "quote": "This could introduce potential misclassification bias, and future studies would benefit from the development of a cross-culturally validated definition and instrument for SF.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "4. Confounding factors identified",
+   "judgment": "Yes",
+   "rationale": "The paper names the sociodemographic and clinical covariates it measured (age, sex, education, marital status, income, CHF duration, NYHA, insomnia, social support, ADL). It also names the confounders it left unadjusted: depressive symptoms, physical frailty and cardiovascular medication.",
+   "signalling": [
+    {
+     "question": "Were confounding factors identified?",
+     "answer": "Yes",
+     "quote": "This incorporates age, sex, education, marital status, monthly income, duration of CHF, and New York Heart Association (NYHA).",
+     "page": "2"
+    },
+    {
+     "question": "Were unmeasured confounders acknowledged?",
+     "answer": "Yes",
+     "quote": "Third, although we controlled for several covariates to the best of our ability, potential influences from factors such as depressive symptoms, physical frailty, or cardiovascular medication use were not fully adjusted for.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "5. Strategies to deal with confounding stated",
+   "judgment": "Unclear",
+   "rationale": "The paper claims adjustment in general terms. The cross-lagged methods paragraph (p3) does not say which covariates entered the model or how, and Table 4 lists no covariate paths. Linear regressions with T1 covariates are described, but these are not the cited result. The authors also concede that key confounders were not fully adjusted for. A strategy is claimed, but its content for the cited model cannot be verified.",
+   "signalling": [
+    {
+     "question": "Were strategies to deal with confounding factors stated?",
+     "answer": "Unclear",
+     "quote": "After controlling the factors influencing SF and MCI at the T1 moment, the results showed that SF at the T1 moment could predict MCI at the T2 moment",
+     "page": "4"
+    },
+    {
+     "question": "Is the covariate set of the cross-lagged model specified in the methods?",
+     "answer": "No information",
+     "quote": "Mplus 8.3 software was used to construct a cross-lagged panel model to explore the longitudinal relationship between SF and MCI. The maximum likelihood estimation was utilized for the cross-lagged panel analysis, and the fitness of the model was tested by the model fit index.",
+     "page": "3"
+    },
+    {
+     "question": "Adjustment described for the regressions (not the cited model)?",
+     "answer": "Yes",
+     "quote": "Linear regressions were used to examine the relationship between SF and MCI at T2 moment separately, controlling for the effects of T1 moment covariates.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "6. Participants free of the outcome at the start",
+   "judgment": "No",
+   "rationale": "At T1, 208 of 288 (72.2%) screened positive for MCI and 85 (29.5%) had SF. Prevalent cases were not excluded. Instead, the cross-lagged model conditions on the T1 level of each outcome through the autoregressive paths, which partly addresses baseline status but does not meet the item.",
+   "signalling": [
+    {
+     "question": "Were the participants free of the outcome at the time of exposure?",
+     "answer": "No",
+     "quote": "79 (27.4 %) patients had coexisting SF and MCI at the T1 moment, 6 (2.1 %) patients had combined SF only, 129 (44.8 %) patients had combined MCI only, and 74 (25.7 %) patients had neither SF nor MCI.",
+     "page": "3"
+    },
+    {
+     "question": "Is baseline outcome status accounted for analytically?",
+     "answer": "Partly (autoregressive paths)",
+     "quote": "MCIT1 \u2192 MCIT2 0.233 0.154, 0.313 <0.001",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "7. Outcomes measured validly and reliably",
+   "judgment": "Unclear",
+   "rationale": "The outcome on the principal path (MCI at T2) comes from a screening instrument, not a clinical diagnosis. It was given in person at T1 but by telephone at T2, and the paper gives no validation of telephone administration in this population. Assessor training and blinding to T1 status are not reported, and the paper does not say at which wave alpha was computed. The outcome on the reverse path (HALFT at T2, also by telephone) includes items about 'the past year', which at 6 months overlaps the baseline period. The instruments are recognised ones, but the conditions at T2 leave validity unclear.",
+   "signalling": [
+    {
+     "question": "Was MCI (outcome of the principal path) measured validly?",
+     "answer": "Unclear",
+     "quote": "MCI was screened using the Mini-MoCA scale.",
+     "page": "2"
+    },
+    {
+     "question": "Was the mode of outcome measurement the same as at baseline?",
+     "answer": "No (telephone at T2)",
+     "quote": "Follow-up information was collected by telephone 6-month after the patient's discharge from the hospital (T2).",
+     "page": "2"
+    },
+    {
+     "question": "Is remote administration supported?",
+     "answer": "Asserted, not validated in the text",
+     "quote": "this brief assessment enables convenient remote monitoring of dynamic cognitive changes in patients.",
+     "page": "2"
+    },
+    {
+     "question": "Does the SF outcome measure refer to a window separate from baseline?",
+     "answer": "No",
+     "quote": "Can you help a friend or family member in the past year? Did you engage in social or recreational activities during the past year? Did you earn enough in the past year to last a year?",
+     "page": "2"
+    },
+    {
+     "question": "Were outcome assessors blinded to exposure or trained?",
+     "answer": "No information",
+     "quote": "Looked for assessor training, blinding to T1 status and identity of telephone interviewers in Methods 2.1 to 2.3 and Results; none reported.",
+     "page": "2-3"
+    }
+   ]
+  },
+  {
+   "domain": "8. Follow-up time reported and sufficient",
+   "judgment": "Unclear",
+   "rationale": "The follow-up is reported: 6 months after discharge. Whether 6 months is enough for incident MCI, or for meaningful change in social frailty, is doubtful, and the authors call it short. The introduction's reference to '2 years of longitudinal data' conflicts with the 6-month follow-up per patient. It seems to describe the recruitment window.",
+   "signalling": [
+    {
+     "question": "Was the follow-up time reported?",
+     "answer": "Yes",
+     "quote": "Follow-up information was collected by telephone 6-month after the patient's discharge from the hospital (T2).",
+     "page": "2"
+    },
+    {
+     "question": "Was it sufficient for outcomes to occur?",
+     "answer": "Unclear",
+     "quote": "Second, this study only followed up older patients with CHF 6-month after discharge, which is a short period of time and does not reflect the long-term predictive effect between SF and MCI.",
+     "page": "5"
+    },
+    {
+     "question": "Is the follow-up period described consistently?",
+     "answer": "No",
+     "quote": "Therefore, the present study was guided by the CR model and used 2 years of longitudinal data to validate the bidirectional relationship between SF and MCI.",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "9. Follow-up complete, or loss described and explored",
+   "judgment": "Yes",
+   "rationale": "Loss was 15 of 303 (5.0%), with reasons given. Completers and dropouts were compared on baseline characteristics, including the HALFT and Mini-MoCA scores, and did not differ.",
+   "signalling": [
+    {
+     "question": "Was follow-up complete, and if not, were reasons described and explored?",
+     "answer": "Yes",
+     "quote": "15 patients were dropped at 6-month follow-up (2 due to incorrect contact information and 13 who declined phone interviews), resulting in 288 patients completing the 6-month follow-up evaluation.",
+     "page": "3"
+    },
+    {
+     "question": "Were completers and dropouts compared?",
+     "answer": "Yes",
+     "quote": "15 patients were dropped to follow-up at 6-month follow-up, a loss-to-follow-up rate of 5.0 %. As can be seen from the results in Table 1, there was no difference between the two groups of patients who missed the follow-up and those who completed the follow-up.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "10. Strategies to address incomplete follow-up",
+   "judgment": "No",
+   "rationale": "The analysis used completers only (N = 288). The paper describes no imputation, full-information likelihood on all 303, weighting or sensitivity analysis. Because loss was small and completers and dropouts were comparable, the practical impact is probably small.",
+   "signalling": [
+    {
+     "question": "Were strategies to address incomplete follow-up utilised?",
+     "answer": "No",
+     "quote": "Table 4 Cross-lagged panel analysis of social frailty and mild cognitive impairment (N = 288).",
+     "page": "5"
+    },
+    {
+     "question": "Any imputation, FIML on the full sample, weighting or sensitivity analysis?",
+     "answer": "No information",
+     "quote": "Looked in 2.3 Data analyses and Results for multiple imputation, full-information maximum likelihood on the 303 enrolled, inverse-probability weighting or sensitivity analyses; none described.",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "11. Appropriate statistical analysis",
+   "judgment": "No",
+   "rationale": "A cross-lagged panel model estimated by maximum likelihood is a suitable technique for a two-wave bidirectional question. The execution and reporting behind the cited coefficients are not credible, however. (a) The paper's own correlation matrix (Table 2) implies standardised cross-lagged paths of about -0.08 (SFT1 -> MCIT2) and -0.21 (MCIT1 -> SFT2), with autoregressive paths of about 0.50 and 0.36. The reported values are -0.578 and -0.646, with autoregressive paths of 0.233 and 0.205: the cross-lagged paths exceed the zero-order correlations even after conditioning on a strongly correlated baseline outcome. The unspecified covariate adjustment does not plausibly explain this. (b) A 95% CI that includes zero (-0.247, 0.026) is reported with P < 0.001. (c) In the regression tables (3a/3b), t and P values contradict each other repeatedly, and one standardised beta is -1.230. (d) The paper does not specify the covariates in the model, its degrees of freedom, or whether the effects are standardised. (e) Ordinal scores (HALFT 0 to 5) are treated as continuous under ML without comment. Because the cited estimates cannot be reconciled with the paper's own data, the analysis is judged not appropriate as reported.",
+   "signalling": [
+    {
+     "question": "Was the analytic method stated?",
+     "answer": "Yes",
+     "quote": "The maximum likelihood estimation was utilized for the cross-lagged panel analysis, and the fitness of the model was tested by the model fit index.",
+     "page": "3"
+    },
+    {
+     "question": "Are the reported cross-lagged estimates consistent with the reported correlations?",
+     "answer": "No",
+     "quote": "Table 2: SFT1-MCIT1 \u22120.385; SFT1-SFT2 0.438; MCIT1-SFT2 \u22120.345; SFT1-MCIT2 \u22120.267; MCIT1-MCIT2 0.527 (as against Table 4: SFT1 \u2192 MCIT2 \u22120.578 \u22120.694, \u22120.423 <0.001; MCIT1 \u2192 SFT2 \u22120.646 \u22120.801, \u22120.493 <0.001)",
+     "page": "4-5"
+    },
+    {
+     "question": "Are the reported CIs and P values internally consistent?",
+     "answer": "No",
+     "quote": "SFT2 \u2192 MCIT2 \u22120.136 \u22120.247, 0.026 <0.001",
+     "page": "5"
+    },
+    {
+     "question": "Are the regression statistics internally consistent?",
+     "answer": "No",
+     "quote": "Table 3b: Age, 80\u201389 (reference: 60\u201369) \u22120.201 \u22120.401 0.018; Education 0.239 0.482 0.003; Duration of CHF \u22121.230 \u22122.145 0.071",
+     "page": "4"
+    },
+    {
+     "question": "Were the covariates and degrees of freedom of the cross-lagged model reported?",
+     "answer": "No information",
+     "quote": "The results showed a good model fit: x2/df=1.820, GFI = 0.996 CFI = 0.991, RMSEA = 0.068.",
+     "page": "4"
+    }
+   ]
+  }
+ ],
+ "applicability": [
+  {
+   "domain": "Population",
+   "concern": "Older patients hospitalised with CHF at a single Chinese hospital, recruited by convenience sampling; 72% screened positive for MCI at baseline.",
+   "rationale": "The result may not transfer to community older adults or to populations in which MCI is diagnosed clinically."
+  },
+  {
+   "domain": "Outcome definition",
+   "concern": "MCI is a Mini-MoCA screening score (in person at T1, by telephone at T2), not a clinical diagnosis. SF is a 5-item self-report whose items cover the past year.",
+   "rationale": "The review counts this as evidence on MCI and on reciprocity. The constructs measured are a cognitive screening score and a self-reported social deficit."
+  },
+  {
+   "domain": "Time frame",
+   "concern": "Two waves 6 months apart.",
+   "rationale": "Two waves cannot separate within-person from between-person effects, and the short lag limits any reading of 'reciprocity' over the course of the disease."
+  }
+ ],
+ "overall": "High risk of bias (JBI cohort checklist, review rule: item 11, appropriate statistical analysis, is No). Also: item 5 Unclear, item 7 Unclear, item 6 No, item 10 No, items 1 and 8 Unclear; items 2, 3, 4 and 9 Yes.",
+ "overall_category": "high",
+ "overall_rationale": "The review's rule rates a JBI cohort appraisal high if item 4, 5, 7 or 11 is No. Item 11 is No because the cited cross-lagged coefficients (-0.578 and -0.646) cannot be reconciled with the paper's own correlation matrix: the implied values are about -0.08 and -0.21. A confidence interval spanning zero is also reported with P < 0.001, the regression tables contain repeated t/P contradictions, and the covariates and degrees of freedom of the model are not reported. Leaving item 11 aside, the rating would still be some concerns rather than low. Confounder adjustment in the cited model is unspecified and admittedly incomplete (item 5 Unclear). The outcome was a screening score collected by telephone at T2 with no reported blinding (item 7 Unclear). Most participants already had the outcome at baseline (item 6 No), and incomplete follow-up was not addressed analytically (item 10 No). Follow-up was well described (item 9 Yes), and exposure measurement was uniform and used validated instruments (items 2 and 3 Yes).",
+ "confidence": "medium",
+ "tool": "JBI checklist for cohort studies (11 items)",
+ "appraiser": "model reader (blinded second reading), under the operator's instruction of 2026-09-29",
+ "review_status": "model reading; not yet reviewed by the operator",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md (including the clarifications of 2026-09-29)",
+ "tool_changed_2026_09_29": {
+  "previous_tool": null,
+  "previous_category": null,
+  "why": "re-screen under the operator's clarified rules: ",
+  "superseded_record": null
+ },
+ "quote_check": {
+  "checked": 29,
+  "matched": 27,
+  "annotations_not_checked": 2,
+  "method": "page tags and bracketed notes stripped; pieces split at ellipses; whitespace-insensitive fallback"
+ }
+}

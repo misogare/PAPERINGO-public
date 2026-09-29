@@ -1,0 +1,24 @@
+{
+  "id": "C-182",
+  "qualifies": "no",
+  "question": "Not shared. P-339 detects current MoCA-defined MCI (MoCA < 26 at assessment), patient by patient, in hospitalised type 2 diabetes patients aged 40-75. P-165 predicts, visit by visit, whether an MCI diagnosis code will be recorded within one year after a primary-care visit, for Stanford Healthcare patients aged 65 or older. So the task (present detection by psychometric cut-off against a near-future recorded diagnosis), the population class (diabetic inpatients against general older primary-care patients) and the unit of analysis (patients against visits) all differ. Both use clinical tabular data, though P-165's 480 predictors include NLP concepts from clinical notes.",
+  "metric": "ROC-AUC with ROC-AUC (match in type; the endpoints and units differ).",
+  "figures": {
+    "P-339": "95% CIs as printed. Training, apparent (n = 236): 0.765 [0.705, 0.826]. Validation (n = 101; 49 MCI/52 NC): 0.690 [0.588, 0.792]. Optimism-corrected C-index 0.747 [0.695, 0.800].",
+    "P-165": "Random forest on the temporal test set (visits in 2020 and after): ROC-AUC 68.2 +/- 0.7 (XGBoost 66.8 +/- 0.8; logistic 57.0 +/- 1.1). The paper does not print the test-set size or define the +/-. Read as one SD, the 95% range is 0.682 +/- 1.96*0.007 = [0.668, 0.696]. The test set holds thousands of visits (the cohort has 531,387, of which 8,990 lead to an MCI diagnosis within a year), so a Hanley-McNeil interval would be no wider."
+  },
+  "matched_figure_check": "The held-out figures match on validation stage, and they agree. P-339's validation AUC 0.690 [0.588, 0.792] contains P-165's 0.682, and P-165's range [0.668, 0.696] contains 0.690. The recorded gap exists only because the record uses P-339's apparent training AUC (0.765, whose interval [0.705, 0.826] excludes 0.682). The papers' own held-out figures dissolve it.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: both AUCs are below 0.97.",
+  "failed_conditions": [1, 3, 6],
+  "candidate_explanations": [],
+  "reason": "The papers ask different clinical questions: present MoCA-defined MCI in diabetic inpatients, against a recorded MCI diagnosis within a year of a primary-care visit in patients aged 65 or older, counted by visit (condition 1). On like-for-like held-out figures (0.690 against 0.682) they agree within uncertainty (condition 3); beyond_uncertainty is true only for the recorded apparent training AUC. The recorded disagreement rests on that training figure and on the record labelling P-165 as current detection (T1) when it predicts a future diagnosis (condition 6).",
+  "quotes": [
+    {"paper": "P-339", "page": 2, "quote": "Based on their Montreal Cognitive Assessment (MoCA) scores, participants were categorized into two groups: the normal cognition (NC) group (n = 179) and the mild cognitive impairment (MCI) group (n = 158)."},
+    {"paper": "P-339", "page": 5, "quote": "with AUC values of 0.765 (95% CI: 0.705–0.826) in the training cohort and 0.690 (95% CI 0.588–0.792) in the validation cohort (Fig. 4C, D)."},
+    {"paper": "P-165", "page": 2, "quote": "Our cohort include 531,387 primary care visits where the patient is 65 years or older."},
+    {"paper": "P-165", "page": 2, "quote": "was assigned with a binary label indicating if the patient has at least one MCI diagnosis code within one year follow up from the time of their primary care visit"},
+    {"paper": "P-165", "page": 4, "quote": "The random forest model has a higher ROC-AUC (68.2%±0.7%) than xgboost and logistic regression models on the test set."}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "C-94",
+  "qualifies": "no",
+  "question": "Shared: prediction of conversion from MCI to Alzheimer's disease among ADNI MCI patients, with structural MRI as the shared channel. P-168's headline model is multimodal (neuropsychological tests + FreeSurfer volumes + demographics, five visits); the paper the record means for P-174 is Bae et al. 2021 (single baseline raw 3D T1 MRI, 3D-CNN). P-174 itself is a stub duplicate and its mapped PDF is P-173's MEG paper; Bae et al. was read from the repository copy (held as the P-37 text). The horizons differ (2 vs 3 years), which condition 1 allows.",
+  "metric": "ROC-AUC vs ROC-AUC (matches).",
+  "figures": {
+    "P-168": "Longitudinal multimodal LSTM 0.93 +/- 0.06 (fold SD), n=347 (77/270): Hanley-McNeil SE 0.0206 -> 0.890-0.970. MRI-only LSTM 0.86: SE 0.0279 -> 0.805-0.915. MRI-only random forest (single time point) 0.85: SE 0.0287 -> 0.794-0.906. No intervals printed.",
+    "P-174 (Bae et al. 2021)": "Independent test set of 68 scans: accuracy 82.4%, AUC 0.827. The test set holds 37 converters (0-3 years), hence 31 non-converters. No interval printed. Hanley-McNeil: Q1=0.827/1.173=0.705, Q2=2(0.827^2)/1.827=0.749, SE=sqrt[(0.143+36(0.705-0.684)+30(0.749-0.684))/(37*31)] = 0.0498 -> 0.729-0.925."
+  },
+  "matched_figure_check": "P-168 reports MRI-only models, the channel Bae et al. use. The single-timepoint MRI random forest, 0.85 (0.794-0.906), and Bae's 0.827 (0.729-0.925) each lie inside the other's interval; the MRI-only LSTM, 0.86 (0.805-0.915), also agrees. The matched figures agree, so the pair fails condition 3. The headline 0.93 lies just outside Bae's interval (upper bound 0.925), but P-168's own models show that the excess over MRI alone comes from the neuropsychological input Bae does not use.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: no figure reaches 0.97.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "The studies share a clinical question (MCI-to-AD conversion in ADNI) and the MRI channel. On the matched MRI-only input, P-168's AUCs (0.85, 0.86) agree with Bae et al.'s 0.827 within uncertainty, so the papers' own data dissolve the headline 0.93-vs-0.827 gap. The record also attributes Bae's figure to P-174, a stub duplicate whose mapped PDF is another paper; the figure itself is printed correctly in Bae et al.",
+  "quotes": [
+    {"paper": "P-168", "page": 5, "quote": "The LSTM model utilizing longitudinal data reached the best performance, comparing to an AUC of 0.86 when using MRI measures. The performance of the random forest models using MRI measures had an AUC of 0.85."},
+    {"paper": "P-168", "page": 1, "quote": "to predict the risk of progression from MCI to AD within 2 years from the index exam (the exam at 24-month)."},
+    {"paper": "P-174 (Bae et al., repository PDF PMID_33422894_nihms-1655691.pdf)", "page": 2, "quote": "Included in the target task is the single time point sMRI scan at which an individual ﬁrst received a diagnosis of MCI."},
+    {"paper": "P-174 (Bae et al., repository PDF PMID_33422894_nihms-1655691.pdf)", "page": 2, "quote": "ratio of 70% versus 15% versus 15% (314, 68, and 68 scans, respec- tively)."},
+    {"paper": "P-174 (Bae et al., repository PDF PMID_33422894_nihms-1655691.pdf)", "page": 5, "quote": "It produced a test set classi- ﬁcation accuracy of 82.4% and 0.827 area under the curve as well as 0.189 equal error rate value (Fig. 4B)."},
+    {"paper": "P-174 (Bae et al., repository PDF PMID_33422894_nihms-1655691.pdf)", "page": 5, "quote": "In conversion times from 0 to 3 years, 3 to 6 years, and 6 to 10 years, there were 37, 39, and 9 MCI-C subjects"}
+  ]
+}

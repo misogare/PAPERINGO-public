@@ -1,0 +1,33 @@
+{
+  "id": "C-70",
+  "qualifies": "borderline",
+  "question": "MCI vs cognitively normal controls from baseline structural MRI in older adults (P-52: single Chinese hospital cohort, hippocampal radiomics; P-99: Moscow memory-clinic cohort, FreeSurfer morphometry). Same task and channel; cohort, features and classifier differ (allowed). The population behind P-52's NC label is uncertain (see reason).",
+  "metric": "AUC with AUC. The record set P-52's AUC against P-99's accuracy; P-52 prints no accuracy in the text, so only AUC is comparable.",
+  "figures": {
+    "P-52": "Test AUC 0.864, printed 95% CI 0.73-0.89 (asymmetric about the estimate: 0.134 below, 0.026 above), test set 30 MCI/15 NC; training AUC 0.935 (0.83-0.97). For reference only, Hanley-McNeil (30/15): Q1=0.761, Q2=0.801, SE=0.0535 -> 0.759-0.969.",
+    "P-99": "10-fold CV on 207 (145 MCI/62 HC), RBF SVC: ROC-AUC 0.735 +/- 0.076 (fold spread, not an interval); accuracy 0.73 +/- 0.059. Derived Hanley-McNeil with n1=145, n2=62: Q1=A/(2-A)=0.581, Q2=2A^2/(1+A)=0.623, SE=sqrt([0.735*0.265+144*(0.581-0.540)+61*(0.623-0.540)]/(145*62))=0.035 -> 0.666-0.804. Alternative from the fold SD: 0.735 +/- 1.96*0.076/sqrt(10) -> 0.688-0.782."
+  },
+  "matched_figure_check": "No matched figure exists: P-52 reports only its own hospital split (and training-set figures), P-99 reports no hippocampal-radiomics-only analysis and no held-out split, and neither reports on the other's population. Nothing in the papers dissolves the gap.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Passes: P-52 test AUC 0.864 (training 0.935) and P-99 0.735 are below 0.97; P-52 has no external cohort but is not near ceiling on the compared figure.",
+  "failed_conditions": [1, 4],
+  "candidate_explanations": [
+    {"difference": "MCI and control definitions: P-52 uses MoCA/MMSE education-adjusted cut-offs in a hospital sample; its NC group is defined as MoCA >=27, yet Table 1 gives NC MoCA 22.53 +/- 2.91, not different from MCI (p=0.17).", "quote": "MoCA score 21.65 ± 3.86 22.53 ± 2.91 0.17", "paper": "P-52"},
+    {"difference": "P-99 MCI is an ICD-10 F06.7 memory-clinic diagnosis in patients over 65.", "quote": "Patients over the age of 65 who had been diagnosed with mild cognitive impairment (F06.7) were eligible.", "paper": "P-99"},
+    {"difference": "Features: seven hippocampal radiomic texture features from deep-learning segmentation (P-52) vs whole-brain FreeSurfer morphometry (P-99).", "quote": "A total of 1183 radiomic features were systematically extracted from the bilateral hippocampus of each subject.", "paper": "P-52"},
+    {"difference": "Validation design and size: one 45-subject random test split (P-52) vs 10-fold CV on 207 (P-99).", "quote": "an independent test set that contained 30 MCI patients and 15 NC subjects", "paper": "P-52"},
+    {"difference": "Classifier: P-52's XGBoost vs P-99's SVC; P-99's own XGBoost gave ROC-AUC 0.644 +/- 0.149 on its data.", "quote": "the best and most stable results were obtained by SVC (0.68 F1, 0.735 ROC -AUC)", "paper": "P-99"},
+    {"difference": "Scanner: P-99 used a 1.5 T Toshiba system; P-52's protocol is in its supplement (not in the extract).", "quote": "Toshiba 1.5 T MR scanner", "paper": "P-99"}
+  ],
+  "reason": "On AUC, P-52's 0.864 lies outside P-99's derived interval however it is built (0.666-0.804 Hanley-McNeil; 0.688-0.782 from the fold SD), but P-99's 0.735 lies inside P-52's printed interval (0.73-0.89) by 0.005, so the exclusion runs one way only (two-sample z 1.68-2.02). Condition 1 is also in doubt: P-52's own Table 1 contradicts its NC criterion (mean NC MoCA 22.53, below its impaired cut-off of 24 for 7+ years of schooling, versus a stated MoCA >=27), and its printed interval is asymmetric, so what P-52's contrast measures is unclear. None of the candidate explanations is shown to be sufficient.",
+  "quotes": [
+    {"paper": "P-52", "page": 1, "quote": "The XGBoost model, utilizing the seven selected features, achieved the highest AUC in the test set (AUC = 0.864, 95 %CI:0.73–0.89)."},
+    {"paper": "P-52", "page": 2, "quote": "Forty-five participants with normal MoCA performance (MoCA score ≥27), matched for gender, age, and educational level, served as the normal control (NC) group."},
+    {"paper": "P-52", "page": 2, "quote": "and ≤24 for 7 + years of education"},
+    {"paper": "P-52", "page": 2, "quote": "This study was conducted at Wenzhou Seventh People’s Hospital"},
+    {"paper": "P-99", "page": 1, "quote": "The dataset for the study consists of 62 healthy volunteers and 145 patients with MCI"},
+    {"paper": "P-99", "page": 3, "quote": "for estimation of model performance, we used 10-fold cross-validation with the F1-metric."},
+    {"paper": "P-99", "page": 4, "quote": "the best and most stable results were obtained by SVC (0.68 F1, 0.735 ROC -AUC)"}
+  ]
+}

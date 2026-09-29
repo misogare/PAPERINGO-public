@@ -1,0 +1,26 @@
+{
+  "id": "C-91",
+  "qualifies": "no",
+  "question": "Shared: detection of MCI against cognitively normal older adults from speech (speech/language channel). P-58 uses two memory-clinic samples (English, New York; Hungarian, Szeged); P-167 uses the Framingham community cohort (English). Cohort, features (ASR temporal parameters vs acoustic features), classifier and sample size differ, which condition 1 allows.",
+  "metric": "ROC-AUC vs ROC-AUC. The record's '67-92%' for P-58 is a range over several metrics (accuracy, precision, recall, specificity) across feature subsets, not an estimate, so the pair is judged on the AUCs the papers print.",
+  "figures": {
+    "P-58": "All 15 temporal parameters, nested LOO CV. English (14 MCI/19 HC): AUC 0.932; Hanley-McNeil SE 0.050 -> 0.834-1.000. Hungarian (13 MCI/20 HC): AUC 0.727; SE 0.094 -> 0.543-0.911. Hungarian filler-only subset: AUC 0.912 (0.798-1.000). No intervals printed.",
+    "P-167": "Random forest on 29 acoustic features, 10-fold CV, 100 MCI/100 CN: AUC 0.87 (95% CI 0.81-0.94) as printed; shorter recordings 0.79-0.82."
+  },
+  "matched_figure_check": "P-58 reports its result for English speakers, the language subset P-167 studies. English 0.932 (0.834-1.000) vs 0.87 (0.81-0.94): each estimate lies inside the other's interval, so the matched figures agree and the papers' own data dissolve the gap. The only P-58 figure outside P-167's interval is the Hungarian-speaking sample's 0.727, a different language population, and even there P-167's 0.87 lies inside P-58's derived Hungarian interval (0.543-0.911).",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Exclusion does not apply: the highest AUC is 0.932, below 0.97.",
+  "failed_conditions": [3],
+  "candidate_explanations": [],
+  "reason": "The two studies do ask the same question on the same channel and metric, but the language-matched figures agree: P-58's English AUC 0.932 and P-167's 0.87 (0.81-0.94) each fall inside the other's interval. The record's '67-92%' is a mixed-metric range, not an estimate. Only P-58's Hungarian sample (0.727) falls below P-167's interval, and P-58 itself notes that its two samples are different subjects.",
+  "quotes": [
+    {"paper": "P-58", "page": 3, "quote": "Both the English-speaking (n ¼ 33; New York, NY, USA) and the Hungarian-speaking (n ¼ 33; Szeged, Hungary) participants were diagnosed as MCI or HC."},
+    {"paper": "P-58", "page": 6, "quote": "recall can take only one of 15 and 14 values (since we had 14 and 13 MCI subjects for English and Hungarian, respectively)"},
+    {"paper": "P-58", "page": 7, "quote": "Furthermore, the AUC and minCllr values are also quite good (0.932 and 0.305, respectively)"},
+    {"paper": "P-58", "page": 7, "quote": "although, of course, the two parts of Table 3 cannot be compared, as the values were measured on different subjects"},
+    {"paper": "P-58", "page": 11, "quote": "while for Hungarian, the classification performance was acceptable (with classification metrics falling into the range 66.776.9% and with an AUC value of 0.727)."},
+    {"paper": "P-167", "page": 1, "quote": "of 0.87, with a 95% CI of 0.81-0.94."},
+    {"paper": "P-167", "page": 1, "quote": "The study included 100 MCI cases and 100 cognitively normal controls matched for age, sex, and education from the Framingham Heart Study."}
+  ]
+}

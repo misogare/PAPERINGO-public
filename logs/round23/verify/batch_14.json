@@ -1,0 +1,43 @@
+{
+  "batch": 14,
+  "verifier_note": "This batch applies the uniform difference test from the brief's 'Verification round': z = |a - b| / sqrt(SE_a^2 + SE_b^2). Both figures are hazard ratios, so the test runs on the log scale with SE = (ln upper - ln lower)/3.92 from each printed 95% CI. I re-read every figure in r21/pdf/P-1403.txt (p.1 abstract, p.5, p.7) and r21/pdf/P-1421.txt (Table 2, p.4). C-265 was not an advocate-only qualifier: the first-round skeptic (challenge_skeptic_8.json) upheld it, so it gets the z test only, not a new skeptic pass. The CSF, PET and continuous-spline figures are extra robustness checks, not the compared figures.",
+  "results": [
+    {
+      "id": "C-265",
+      "compared": "Blood p-tau217 and incident MCI in cognitively unimpaired older adults, hazard ratio. Neither paper prints a figure under the other's condition, so there is no matched figure. P-1421 has no A/T classification and no AD-anchored threshold, and its under-78 and baseline-MCI-excluded analyses appear only in Supplementary Tables S2/S3 and S6/S7. P-1403 prints no whole-sample single-marker p-tau217 HR. The headline shared-metric figures are therefore used: P-1403, plasma A+T+ vs A-T- (Cox; adjusted for age at classification, sex, education), HR 7.81 (3.92-15.59), against P-1421, serum p-tau217 high vs low, NC to MCI (multistate Markov model on an age time scale; basic model adjusted for sex and education, the matched adjustment set), HR 1.07 (0.73-1.56).",
+      "a": {
+        "paper": "P-1403",
+        "estimate": 7.81,
+        "se": 0.3522,
+        "se_source": "Log scale, from the printed 95% CI. P-1403 p.5: 'Cox proportional hazard models showed a higher risk of progression from CU to MCI among the A+T+plasma and A−T+plasma (hazard ratio [HR] = 7.81, P < 0.001, 95% confidence interval [CI] = 3.92 to 15.59; HR = 4.25; P = 0.004, 95% CI = 1.60 to 11.31'. SE = (ln 15.59 - ln 3.92)/3.92 = (2.7466 - 1.3661)/3.92 = 0.3522; ln 7.81 = 2.0554. Counts: 16/21 A+T+ against 25/127 A-T- progressed (p.5)."
+      },
+      "b": {
+        "paper": "P-1421",
+        "estimate": 1.07,
+        "se": 0.1937,
+        "se_source": "Log scale, from the printed 95% CI. P-1421 Table 2 p.4, From NC to MCI: 'P-tau217 High vs Low 81/803 vs 230/1345 1.07 (0.73, 1.56) 1.19 (0.75, 1.88)' (basic, fully adjusted); caption: 'The basic model is adjusted for sex and education'; cut-off '0.134 pg/mL for p-tau217'. SE = (ln 1.56 - ln 0.73)/3.92 = (0.4447 - (-0.3147))/3.92 = 0.1937; ln 1.07 = 0.0677."
+      },
+      "scale": "log hazard ratio",
+      "z": 4.95,
+      "arithmetic": "Headline: |2.0554 - 0.0677| / sqrt(0.3522^2 + 0.1937^2) = 1.9877 / sqrt(0.1240 + 0.0375) = 1.9877 / 0.4019 = 4.95. Checks. (i) A+T+ against P-1421's fully adjusted 1.19 (0.75-1.88): SE_b = (0.6313 + 0.2877)/3.92 = 0.2344; 1.8815 / 0.4231 = 4.45. (ii) A+T+ against the P-1421 continuous spline at the high end of the plotted range, read from Fig. 1 by the skeptic (about 1.36, 0.74-2.48; not printed as a number): 1.7479 / 0.4682 = 3.73. (iii) P-1403's A-T+ arm, 4.25 (1.60-11.31), SE 0.4989: z = 2.58 against the basic 1.07, 2.31 against the fully adjusted 1.19, and about 1.94 against the figure-read spline 1.36 (0.74-2.48). The A-T+ arm is borderline and not robust (5/7 progressed). (iv) The CSF channel in P-1403, A+T+ HR 3.63 (1.72-7.70), SE 0.3824, against the basic 1.07: 1.2215 / 0.4286 = 2.85. (v) Amyloid alone agrees: P-1403 A+T- 1.14 (0.58-2.24) against P-1421 Abeta42/40 low 0.98 (0.72-1.34), z = 0.40.",
+      "passes_z": true,
+      "skeptic_checked": false,
+      "final": "qualifies",
+      "other_condition_failed": [],
+      "candidate_explanations": [
+        "Population: a research cohort enriched for first-degree family history (mean age 65 at classification) against a random community sample aged 60+ (865 of 2148 aged 78 or over). P-1403: 'a longitudinal observational study of individuals with a first-degree family history of AD'.",
+        "Exposure contrast and threshold. P-1403 compares joint A/T groups with the double-negative reference; T+ is plasma p-tau217 > 3.98 pg/mL, 2 SD above Abeta-PET-negative CU adults (28/215 = 13% T+). P-1421 uses a single-marker high/low split at a cut-off tuned for 10-year all-cause dementia (803/2148 = 37% high). P-1421: 'Cut-offs: 0.057 for Aß−42/40 ratio, 1.512 pg/mL for p-tau181, 0.134 pg/mL for p-tau217'. P-1403: 'The thresholds were selected to optimize the detection of AD pathology, not to detect MCI with no AD pathology.'",
+        "Performance of P-1403's threshold: its AD-anchored tau cut-off is highly specific but insensitive for all-cause MCI, so the T+ group is small and extreme. P-1403: 'gave good to excellent specificity (97% for plasma, 95% for CSF, and 100% for PET), but low sensitivity (34%, 45%, and 17%, respectively) at identifying CU who will develop MCI.'",
+        "Age confounding of P-1421's dichotomy: blood biomarker levels rise with age, so 'high' largely tracks the oldest stratum. P-1421: 'AD blood biomarker levels increase with age, even in cognitively unimpaired individuals, suggests the potential need for age-adjusted cutoffs.'",
+        "MCI definition: consensus MCI (1.0 SD impairment plus a complaint and/or observed decline) against psychometric MCI (1.5 SD in one domain), with reversion to normal cognition modelled. P-1403: 'participants needed to have a subjective memory complaint and/or have an objective decline witnessed over multiple cognitive follow-ups.'",
+        "Model and competing transitions: P-1421 uses a multistate Markov model on an age time scale with death absorbing, and forces direct NC-to-dementia transitions through MCI; P-1403 uses a Cox model on time since plasma sampling. P-1421: 'individuals who progressed directly from normal cognition to dementia were assumed to have passed through a MCI phase, although this was not observed due to intermittent observation.'",
+        "Matrix and assay: plasma on an in-house Gothenburg Simoa against serum on the ALZpath Simoa. P-1421: 'our results based on cut-offs derived within the SNAC-K cohort, may not fully extend to more diverse populations or alternative laboratory platforms.'",
+        "Selection in P-1421: dementia-free participants without biomarkers were older and sicker. P-1421: 'Since these individuals were at higher risk of dementia, their exclusion may have led to an underestimation of the results.'",
+        "Small exposure groups and horizon in P-1403: 21 A+T+ and 7 A-T+ over a mean of 5.65 years, against 803/1345 over a mean of 9.6 years. P-1403: 'Given this limitation and the fact that 20% of our reference group developed MCI, the HRs between groups should be interpreted with caution.'",
+        "Neither paper shows any of these explanations to be sufficient, so condition 3 still holds."
+      ],
+      "one_sentence": "Among cognitively unimpaired older adults, plasma p-tau217 positivity with amyloid positivity carried a hazard ratio for incident MCI of 7.81 (95% CI 3.92-15.59) in the family-history-enriched PREVENT-AD cohort (P-1403), but high against low serum p-tau217 carried a hazard ratio of 1.07 (0.73-1.56) in the SNAC-K community sample (P-1421). The difference is beyond combined uncertainty (z = 4.95 on the log scale) and unresolved. It might be explained by, but is not shown to be explained by: the enriched against community population, an extreme AD-anchored A/T contrast (13% T+) against a dementia-tuned single-marker split (37% high), the MCI definition, the multistate model and the assay.",
+      "reason": "Conditions 1, 2, 3, 5 and 6 hold, as the first pass found and the first-round skeptic confirmed against the sources. The headline figures are A+T+ 7.81 (3.92-15.59) against the matched-adjustment basic 1.07 (0.73-1.56). They give z = 4.95 on the log scale. The gap survives P-1421's fully adjusted model (z = 4.45) and its figure-read continuous spline at high p-tau217 (z = 3.73), so it passes the uniform test with a wide margin. The record should rest the pair on the A+T+ contrast. The A-T+ arm, 4.25 (1.60-11.31) from 5/7 progressors, gives z = 2.58 and 2.31 against the dichotomies but about 1.94 against the spline, so it should not be the headline."
+    }
+  ]
+}

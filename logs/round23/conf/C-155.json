@@ -1,0 +1,31 @@
+{
+ "id": "C-155",
+ "qualifies": "borderline",
+ "question": "Prediction of conversion from MCI to AD within 3 years (36 months) among ADNI MCI patients from baseline structural MRI grey-matter volume features. The channel (T1 MRI) and task are shared. Features, architecture, sample and training design differ, which the rule allows. Both recorded figures misread their papers: P-229's 71.05% is the SCD-to-MCI accuracy on the CLAS cohort, and P-207's 90.44% is AD vs NC. The figures judged are the conversion results each paper prints: P-229 Table IV (PDF page 30, missing from the round-20 extract) and P-207's MCI-c vs MCI-nc accuracy.",
+ "metric": "Accuracy with accuracy. P-207 reports no AUC.",
+ "figures": {
+  "P-229": "IADT, 393 ADNI MCI (167 pMCI/226 sMCI), 36 months, 90 AAL grey-matter volumes, classifier trained on labelled AD/NC with the MCI unlabelled: ACC 73.54% = 289/393, Wilson 95% CI [0.690, 0.777]. Its plain baseline (logistic regression trained on AD/NC) scores 64.12%, Wilson at n = 393 [0.593, 0.687]. IADT AUC 0.757.",
+  "P-207": "CFMnetwork (coupled ICA-network/ROI GMV features, AdaBoost-SVM), 126 MCI-c/108 MCI-nc, 3-year conversion, 10-fold CV: ACC 87.72%, Wilson at n = 234 [0.829, 0.913]. This is the best of 15 E1/E2 settings, whose CFMnetwork accuracies range from 70.24% to 87.72%. The plain ROI-level features (OFMROI) score 64.15%, Wilson [0.578, 0.700]."
+ },
+ "matched_figure_check": "Neither paper reports the result under the other's condition. P-207 does not train on AD/NC and transfer, and P-229 does not train on MCI labels by cross-validation. But the plain regional-GMV baselines agree: P-229's logistic baseline gives 64.12% and P-207's OFMROI gives 64.15%, each inside the other's interval. P-207's own ablation therefore places the cross-paper gap in its coupled network representation, reported at the best of 15 parameter settings. As in C-147 (P-207 against P-185), whether that counts as a paper showing the explanation to be sufficient (condition 3) is the operator's call. If it does not, the pair qualifies.",
+ "beyond_uncertainty": true,
+ "significance_only": false,
+ "performance_validity": "Passes: P-207's 87.72% and P-229's 73.54% are below 0.97. P-207's figure is optimistically selected (best of 15 settings on the same CV), which is not the Section 3.5 exclusion.",
+ "failed_conditions": [3],
+ "candidate_explanations": [
+  {"difference": "Feature representation: P-207's two-level coupled representation raises its own accuracy from 64.15% (plain ROI GMV) to 87.72%. P-229 uses the 90 AAL volumes with attention and an autoencoder.", "quote": "The best classification accuracies for different features are 64.15% for OFMROI, 75.10% for CFMROI, 68.62% for OFMnetwork, and 87.72% for CFMnetwork.", "paper": "P-207"},
+  {"difference": "Parameter selection on the evaluation CV: P-207 searches E1 and E2 and reports the best setting. The other CFMnetwork settings give 70.24-82.31%.", "quote": "the optimal values of E1 and E2 were searched from a small set of {2, 3, 4} and {1, 2, 3, 4, 5}, respectively.", "paper": "P-207"},
+  {"difference": "Training design: P-229's classifier never sees MCI conversion labels (AD/NC source domain, unlabelled MCI target). P-207 trains and tests on MCI labels by 10-fold CV.", "quote": "A total of 393 MCI subjects (167 pMCI, 226 sMCI) with structural MRIs are used as the unlabeled target domain, while AD and NC samples are adopted as the labeled source domain.", "paper": "P-229"},
+  {"difference": "Region definition and sample: P-207 takes the top three ROIs inside each ICA network derived from AD/NC grey matter, on 234 MCI. P-229 uses all 90 AAL regions, on 393 MCI.", "quote": "The average GMV of each ROI falling into the brain network template was regarded as the ROI- level original feature value.", "paper": "P-207"}
+ ],
+ "reason": "Judged on the conversion figures the papers actually print (the record misreads both), the two predict 3-year MCI-to-AD conversion in ADNI from sMRI grey-matter volumes. Their accuracies exclude each other in both directions: 87.72% [0.829, 0.913] against 73.54% [0.690, 0.777], z = 4.59. But their plain regional-GMV baselines agree (64.15% vs 64.12%), so P-207's own ablation locates the gap in its coupled representation, selected as the best of 15 settings. Whether that counts as a paper showing the explanation to be sufficient is the operator's call, as in C-147.",
+ "quotes": [
+  {"paper": "P-229", "page": 10, "quote": "A total of 393 MCI subjects (167 pMCI, 226 sMCI) with structural MRIs are used as the unlabeled target domain, while AD and NC samples are adopted as the labeled source domain. The pMCI subjects have converted to AD within 36 months while sMCI have not."},
+  {"paper": "P-229", "page": 30, "quote": "Baseline 64.12 64.04 69.20 63.47 64.60 Yes ... IADT (Ours) 73.54 73.00 75.70 69.46 76.55"},
+  {"paper": "P-229", "page": 8, "quote": "It is trained on the AD/NC samples from ADNI, and then applied to CLAS for pSCD/sSCD classification."},
+  {"paper": "P-207", "page": 3, "quote": "The patients with MCI who converted to AD within 3-year follow-up were classified into the MCI-c group; otherwise, they were classified into the MCI-nc group."},
+  {"paper": "P-207", "page": 2, "quote": "126 MCI converters (MCI-c) and 108 MCI non-converters (MCI-nc), with baseline structural MRI data"},
+  {"paper": "P-207", "page": 6, "quote": "the best prediction accuracy is 90.44%, sensitivity is 88.5%, and specificity is 93.67% for AD and NC groups and the best prediction accuracy is 87.72%, sensitivity is 84.16%, and specificity is 91.64% for the MCI-c and MCI-nc groups."},
+  {"paper": "P-207", "page": 6, "quote": "The 10-fold cross-validation was applied to evaluate the performance, and the average results were reported."}
+ ]
+}

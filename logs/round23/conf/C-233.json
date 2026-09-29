@@ -1,0 +1,25 @@
+{
+  "id": "C-233",
+  "qualifies": "no",
+  "question": "Predicting progression from MCI to dementia or AD in ADNI MCI participants. The two papers share cognitive and structural-MRI channels: P-742 uses 34 baseline clinical and biomarker predictors, including MMSE, hippocampal atrophy and CSF or FDG-PET positivity; P-353 uses demographics, APOE, longitudinal neuropsychological scores and 116 sMRI ROI measures. At the level of condition 1 the question is shared. Label (all-cause dementia against AD), horizon (a 3-year window against 1 year after a 1-year landmark), input (baseline against longitudinal up to the landmark) and validation (ten-fold CV against an 80/20 hold-out) are allowed differences.",
+  "metric": "Mismatch: P-742 reports Harrell's c-index and performs no ROC analysis; P-353 reports a cumulative/dynamic time-dependent AUC (cdAUC) at a single horizon. Neither paper reports the other's metric.",
+  "figures": {
+    "P-742": "c-index 0.74 (95% CI 0.70-0.79) with expert priors; 0.75 with non-informative priors; 0.72 frequentist. 365 MCI, 142 of whom developed dementia within 3 years; ten-fold cross-validation.",
+    "P-353": "tdCoxSNN on FS3: cdAUC 0.9089 +/- 0.01 at t = 1 year after the landmark s = 1, on a test set of 184 (74 converters and 110 non-converters over all follow-up). The +/- is an SD, not a CI. For information only, since the metrics differ: Hanley-McNeil on the whole test set (n1 = 74, n0 = 110) gives SE 0.0245 and CI 0.861-0.957. That width is a minimum, because only those converting between years 1 and 2 count as cases at t = 1."
+  },
+  "matched_figure_check": "No matched figure appears in the text. P-353's cdAUC at t = 2 (3 years from the first visit, the length of P-742's window) appears only in Fig. 2 boxplots, and it is still a cdAUC. P-353 reports no baseline-only model and no C-index. P-742 reports no longitudinal model and no time-dependent AUC.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Neither study is flagged: 0.74 and 0.909 are both below the 0.97 ceiling, and both samples exceed 300 (365 and 922). Both use internal validation only.",
+  "failed_conditions": [2, 6],
+  "candidate_explanations": [],
+  "reason": "The record sets 'AUC 0.74' against 'AUC 0.91', but P-742's figure is Harrell's c-index over a 3-year window and P-353's is a cumulative/dynamic AUC at one year after a one-year landmark. The papers therefore report different metric types, and neither reports the other's (condition 2). The record's AUC label for P-742 misreads the paper (condition 6). Condition 4 was not assessed on a shared metric: the two numbers lie far apart, but a global concordance and a short-horizon cdAUC computed from longitudinal inputs are not the same quantity.",
+  "quotes": [
+    {"paper": "P-742", "page": 2, "quote": "When expert knowledge was incorporated, the c-index, ICI, and IBS values were 0.74 (95% CI 0.70-0.79)"},
+    {"paper": "P-742", "page": 2, "quote": "Our study outcome was the time to all-cause dementia over a 3-year period"},
+    {"paper": "P-353", "page": 3, "quote": "attaining cdAUC values of 0.9089±0.01 alongside BS of 0.1651±0.01"},
+    {"paper": "P-353", "page": 13, "quote": "The cumulative dynamic AUC (cdAUC) and Brier Score (BS) were used to assess the performance of the predictive models."},
+    {"paper": "P-353", "page": 15, "quote": "In the test set, 74 cases (40%) progressed to AD, and 110 cases (60%) remained in the MCI state."},
+    {"paper": "P-353", "page": 17, "quote": "Across all models, predictive performance declined as the prediction horizon increased."}
+  ]
+}

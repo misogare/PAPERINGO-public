@@ -1,0 +1,32 @@
+{
+  "id": "C-80",
+  "qualifies": "yes",
+  "question": "Prediction of MCI-to-AD conversion within 3 years (sMCI vs pMCI) from a single baseline T1 structural MRI, in ADNI MCI participants. The channel is the same (structural MRI). The input representation differs: 310 FreeSurfer DKT cortical measures in P-82, whole 3D volumes in P-3.",
+  "metric": "Accuracy with accuracy (83.3% vs 74.61%); AUC with AUC is also available (0.888 vs 0.780).",
+  "figures": {
+    "P-82": "Single random split 200/25/24; test accuracy 83.3% = 20/24 (sensitivity 0.727 = 8/11, specificity 0.923 = 12/13). Wilson 95% CI (p=0.833, n=24): 0.642-0.933. AUC 0.888, Hanley-McNeil SE 0.073 (n1=11, n0=13), 95% CI 0.745-1.0. The 10-fold CV result is only in Supplementary Table S2, which is not in the extract.",
+    "P-3": "CAAT ensemble, 5-fold CV over 593 subjects (298 sMCI/295 pMCI): accuracy 74.61% (fold variance 0.002), AUC 0.780 (variance 0.003). No interval reported. Wilson (about 442/593): 0.709-0.779. AUC Hanley-McNeil SE 0.019 (n1=295, n0=298), CI 0.743-0.817. A fold-based check (SD 0.045/sqrt(5), t 4 df) gives 0.691-0.802 for accuracy."
+  },
+  "matched_figure_check": "No matched figure exists. Both papers use the same horizon, a single baseline scan and the same contrast; they differ in input representation and label definition. P-3 reports no FreeSurfer-feature model, and P-82 reports no whole-image model. P-82's 10-fold CV is in a supplement not available here. P-82's comparison range of 73.95%-78.79% for earlier MRI deep models comes from other papers, not P-3.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "Neither study is flagged: 83.3% (AUC 0.888) and 74.61% (AUC 0.780) are below 0.97. P-82's point estimate rests on 24 test subjects and is imprecise. P-3 notes that tuning and selecting on the same 5-fold CV may bias its estimate upward.",
+  "failed_conditions": [],
+  "candidate_explanations": [
+    {"difference": "Input representation within the MRI channel: 62-region FreeSurfer cortical measures (5 x 62) vs whole 3D volumes.", "quote": "we extracted multiple cortical measurements including volume (VOL), cortical thickness (CT), curvature index (CD), folding index (FD), and surface area (SA) for 62 brain regions", "paper": "P-82"},
+    {"difference": "Label definition: P-82 counts MCI-to-normal reverters as sMCI.", "quote": "the subjects who were diagnosed as MCI at least twice, but reverse to a standard control, at last, are also considered as sMCI", "paper": "P-82"},
+    {"difference": "Class balance and cohort: 145 pMCI/104 sMCI (58% pMCI) vs 295/298 (50%), on different, possibly overlapping ADNI subsets.", "quote": "The dataset consists of 298 sMCI and 295 pMCI participants retrieved from datasets ANDI1 and ADNI2.", "paper": "P-3"},
+    {"difference": "Validation design and sample size: one random 24-subject test split vs 5-fold CV over 593 subjects.", "quote": "we split our 249 subjects randomly into three groups, including the training dataset (n = 200), the validation dataset (n = 25), and the testing dataset (n = 24).", "paper": "P-82"},
+    {"difference": "Model selection in P-3 on the evaluation folds. The authors say this biases P-3 upward, which runs against the observed gap.", "quote": "A limitation of our experimental setup is the use of 5 fold cross validation for both tuning and selecting the models. This may lead to an optimistically biased evaluation of the model performance.", "paper": "P-3"}
+  ],
+  "reason": "Same question (3-year sMCI vs pMCI from baseline structural MRI in ADNI) and same metric. P-82's 83.3% lies outside the Wilson interval of P-3's 74.61% over 593 subjects (0.709-0.779), and P-82's AUC 0.888 lies outside P-3's Hanley-McNeil interval (0.743-0.817), which meets condition 4 as worded. The criterion holds in one direction only: P-3's 74.61% lies inside P-82's interval (0.642-0.933), and a two-sample comparison is not significant (SE 0.078, z = 1.13), so the qualification rests on the one-directional wording. No matched figure exists. Input representation, reverters labelled as sMCI, class balance and a single 24-subject split are candidate explanations, and none is shown to be sufficient.",
+  "quotes": [
+    {"paper": "P-82", "page": 3, "quote": "we split our 249 subjects randomly into three groups, including the training dataset (n = 200), the validation dataset (n = 25), and the testing dataset (n = 24)."},
+    {"paper": "P-82", "page": 4, "quote": "The proposed model achieved 83.3% accuracy and an AUC of 0.888 (Fig. 2), with a sensitivity of 0.727 and a specificity of 0.923"},
+    {"paper": "P-82", "page": 4, "quote": "The results of 10-fold cross-validation also showed that our model can predict MCI conversion more accurately (see Supplementary Materials Table S2)."},
+    {"paper": "P-82", "page": 2, "quote": "Subjects’ number 104 145 (Table 1: sMCI, pMCI; cells joined)"},
+    {"paper": "P-3", "page": 2, "quote": "Experimental results on the ADNI dataset show that CAAT achieves accuracy of 74.61 for classifying between pMCI and sMCI using only whole 3D images of the brain and no other ancillary information."},
+    {"paper": "P-3", "page": 6, "quote": "The dataset consists of 298 sMCI and 295 pMCI participants retrieved from datasets ANDI1 and ADNI2. Each subject had one structural T1 weighted MRI scan taken at the baseline."},
+    {"paper": "P-3", "page": 7, "quote": "CAAT ensemble 0.75 (0.004) 0.75 (0.006) 0.75 (0.002) 74.61 (0.002) 0.780 (0.003) (Table 3 row; cells joined)"}
+  ]
+}

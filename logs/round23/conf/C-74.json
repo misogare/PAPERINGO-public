@@ -1,0 +1,26 @@
+{
+  "id": "C-74",
+  "qualifies": "no",
+  "question": "None shared. P-62's recorded 0.805-0.920 are balanced accuracies for healthy volunteers vs overt dementia (AD+DLB+iNPH) at two external hospitals; P-62's only MCI result is pathology subtyping within MCI (AD vs DLB vs iNPH, bACC 0.715). P-83 reports MCI vs healthy controls. P-62 never studies MCI vs healthy, and P-83 never studies dementia vs healthy.",
+  "metric": "Mismatch: balanced accuracy on a dementia vs healthy (or within-MCI subtyping) contrast against segment-level accuracy on MCI vs HC.",
+  "figures": {
+    "P-62": "Healthy vs dementia: bACC 0.927 internal (Hospital O, 69 HV/188 patients), 0.805 at Hospital K (n=73) and 0.920 at Hospital N (n=139) external. Within-MCI pathology subtyping at Hospital O (n=83): bACC 0.715, ROC AUC 0.847. No healthy vs MCI figure in the article.",
+    "P-83": "MCI vs HC, EEG+HRV during CERAD tasks, 15 participants, shuffled 75/25 split of signal segments: average accuracy across tests 93.86%; best test (T1, verbal fluency) 97.43%, AUC 94.91%; T1 10-fold 95.23%, LOOCV 96.14%. The evaluation unit is segments from 15 people, so no subject-level interval can be derived; none is needed because no shared quantity exists."
+  },
+  "matched_figure_check": "No matched figure: neither paper reports the other's contrast (P-62 has no healthy vs MCI classification; P-83 has no dementia group).",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Fails for P-83: its best reported result is 97.43% accuracy (LOOCV 96.14%) on internal validation with n=15 and no external cohort, which meets the Section 3.5 exclusion; the registry's 93.86% is the cross-test average of the same internal segment-level evaluation. P-62's figures pass.",
+  "failed_conditions": [1, 2, 5, 6],
+  "candidate_explanations": [],
+  "reason": "The record labels P-62's healthy vs dementia balanced accuracies as MCI detection; P-62 reports no MCI vs healthy result, so the two papers do not address the same clinical question. The metrics also differ (balanced accuracy vs segment-level accuracy). P-83 separately meets the near-ceiling small-sample exclusion.",
+  "quotes": [
+    {"paper": "P-62", "page": 1, "quote": "The model demonstrated robustness across institutions, maintaining bACCs of 0.805 for data from Hospital #2 (n = 73) and 0.920 at Hospital #3 (n = 139)."},
+    {"paper": "P-62", "page": 1, "quote": "Notably, it also identified MCI pathologies with a bACC of 0.715 for Hospital #1 (n = 83), despite being trained on overt dementia cases instead of MCI cases."},
+    {"paper": "P-62", "page": 2, "quote": "MCI was operationally defined as having a CDR value of 0.5 and an MMSE score of 24 or higher."},
+    {"paper": "P-83", "page": 1, "quote": "Our dataset includes 15 subjects who were randomly assigned to training and testing groups of 7 HC and 8 MCI"},
+    {"paper": "P-83", "page": 1, "quote": "An average accuracy of 93.86%, a sensitivity of 93.87%"},
+    {"paper": "P-83", "page": 7, "quote": "the ﬁrst test called “Verbal ﬂuency” related to the executive function had the highest accuracy (97.43%)."},
+    {"paper": "P-83", "page": 8, "quote": "T1 demonstrates the best test results for both k-fold and LOOCV with respectively 95.23% and 96.14%"}
+  ]
+}

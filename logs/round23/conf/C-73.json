@@ -1,0 +1,25 @@
+{
+  "id": "C-73",
+  "qualifies": "no",
+  "question": "MCI vs cognitively normal detection from speech in older adults (P-58: temporal/pause parameters, English and Hungarian clinic samples; P-60: 92 acoustic, prosodic and linguistic features from a Japanese tablet app). Same task and channel; cohorts, language, features and diagnostic criteria differ (allowed).",
+  "metric": "Accuracy with accuracy (P-60 prints no MCI vs CN AUC in the text). The recorded P-58 '67-92%' is a multi-metric range, not one accuracy.",
+  "figures": {
+    "P-58": "Speaker-wise nested LOO-CV, all 15 temporal features, accuracy at the EER threshold: English 84.8% = 28/33, Wilson 69.1-93.3%; Hungarian 75.8% = 25/33, Wilson (p=0.758, z^2/n=0.116, centre=0.731, half-width=0.141) 59.0-87.2%.",
+    "P-60": "Nested LOO-CV, 46 MCI/43 CN: SVM-RBF on all features 87.6% = 78/89, Wilson (z^2/n=0.043, centre=0.861, half-width=0.069) 79.2-93.0%. Para-linguistic (acoustic + prosodic) features only: MCI vs CN 82.0% (73/89 assumed; Supplementary Table 8 not in the extract), Wilson 72.8-88.6%."
+  },
+  "matched_figure_check": "P-58's input is temporal/pause parameters only, a para-linguistic input, and P-60 reports MCI vs CN with para-linguistic features only: 82.0% lies inside both P-58 intervals (69.1-93.3%, 59.0-87.2%), and both P-58 values (84.8%, 75.8%) lie inside P-60's 72.8-88.6%. P-58's English all-features 84.8% also agrees with P-60's full 87.6%. Only P-58's Hungarian all-features 75.8% against P-60's full-feature 87.6% crosses (87.6 above 87.2; 75.8 below 79.2; z=1.44), and the matched para-linguistic figure dissolves that gap.",
+  "beyond_uncertainty": false,
+  "significance_only": false,
+  "performance_validity": "Passes: P-58 best subset 90.9% and P-60 87.6% are below 0.97.",
+  "failed_conditions": [3, 6],
+  "candidate_explanations": [],
+  "reason": "The recorded claim sets P-60's 87.6% against a multi-metric range that contains it. On the papers' printed accuracies, P-58's English cohort agrees with P-60. P-60's own para-linguistic-feature result, the input closest to P-58's, agrees with both P-58 cohorts within uncertainty. The one crossing (P-58 Hungarian all-features against P-60's full model) is dissolved by that matched figure, so the pair fails condition 3.",
+  "quotes": [
+    {"paper": "P-58", "page": 1, "quote": "because we got quite similar scores (67-92%) as we did in the monolingual cases (67-92% as well)."},
+    {"paper": "P-58", "page": 7, "quote": "All features 75:8% 66:7% 76:9% 75:0% 71.4 0.727"},
+    {"paper": "P-58", "page": 6, "quote": "we chose the decision threshold between the posterior estimates of the two classes (provided by the SVM classiﬁer) in a way which minimizes the absolute difference between the scores sensitivity and speciﬁcity"},
+    {"paper": "P-60", "page": 8, "quote": "while that for discriminating MCI from CN achieved an accuracy of 87.6% (sensitivity: 88.1%; specificity: 87.2%; F1 score: 87.1% and Fig. 3B and Table 6)."},
+    {"paper": "P-60", "page": 8, "quote": "Specifically, the three-class model using para-linguistic features achieved an accuracy of 71.9% (AD versus CN: 75.0%; MCI versus CN: 82.0%; Supplementary Table 8)"},
+    {"paper": "P-60", "page": 7, "quote": "43 CN participants, 46 MCI patients, and 25 AD patients."}
+  ]
+}

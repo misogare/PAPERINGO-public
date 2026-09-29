@@ -1,0 +1,27 @@
+{
+  "id": "C-236",
+  "qualifies": "no",
+  "question": "The clinical question is shared but the channel is not. Both papers include prediction of MCI-to-AD conversion in memory-clinic MCI: P-988 has 65 MCI patients (Bahia Blanca, about 40 months) and P-991 has 76 (Vienna, 12-48 months). P-988's predictor is eye movement recorded during the VSTMB memory-binding task (fixation duration, saccade amplitude), which is the eye channel. P-991's predictors are paper-and-pencil scores (MMSE, Sunderland CDT, VVT 3.0), which are the clinical/cognitive channel. Neither paper evaluates the other's instrument, and P-988 reports no prognostic analysis of its own MMSE or ACE-R scores.",
+  "metric": "AUC in both: P-988 an in-sample ROC on groups defined at follow-up; P-991 a ROC within its MCI group.",
+  "figures": {
+    "P-988": "AUC 0.95 (sens 95%, spec 95%) for stable MCI vs MCI_C. MCI_C = 34; stable MCI is about 13, inferred as 65 - 34 - 18 converters to other pathologies. AUC 1.0 for MCI_C vs MCI_O. The prediction model was right for 34 of its 36 predicted converters, and none of its 29 predicted non-converters progressed to ADS, so accuracy against all non-converters is 63/65 = 0.969. No CI printed. Hanley-McNeil for 0.95 with n1 = 34, n2 = 13: Q1 = 0.95/1.05 = 0.9048; Q2 = 2(0.9025)/1.95 = 0.9256; SE = sqrt([0.0475 + 33(0.0023) + 12(0.0231)]/442) = 0.0301; CI [0.891, 1.000].",
+    "P-991": "Within the original MCI group (14 progressors to AD vs 62 others): MMSE AUC 0.808 (cut-off 27.5, sens 78.6% = 11/14, spec 71.0%); CDT 0.497; VVT 3.0 0.488. No CI printed. Hanley-McNeil for 0.808: Q1 = 0.808/1.192 = 0.6779; Q2 = 2(0.6529)/1.808 = 0.7222; SE = sqrt([0.1551 + 13(0.0250) + 61(0.0693)]/868) = 0.0737; CI [0.664, 0.952]. CDT 0.497: SE 0.0859, CI [0.329, 0.665]. VVT 0.488: SE 0.0855, CI [0.320, 0.656]."
+  },
+  "matched_figure_check": "No matched figure exists. Neither paper reports the other's instrument, so nothing is reported under the other's condition. On the arithmetic alone, P-988's 0.95 sits just inside the MMSE interval (upper bound 0.952), while the MMSE's 0.808 lies outside P-988's interval [0.891, 1.000]. Against the MMSE the gap therefore exceeds uncertainty in one direction only; against the CDT and VVT it exceeds it in both. Every one of these comparisons crosses channels, which condition 1 does not allow.",
+  "beyond_uncertainty": true,
+  "significance_only": false,
+  "performance_validity": "On the PDF, P-988 meets the Section 3.5 exclusion in substance. Its prognostic figures are AUC 1.0 (MCI_C vs MCI_O) and 63/65 = 0.969 correct against all non-converters. Both are in-sample in 65 patients at one site, on groups defined at follow-up, with no external cohort and no confidence intervals, and the article text does not specify the prediction model. The 0.95 figure for MCI_C vs stable MCI is just below the threshold but comes from the same in-sample analysis. P-991 does not meet the exclusion: its prognostic AUCs are at most 0.808, and its 0.972 is an AD-vs-rest diagnostic figure.",
+  "failed_conditions": [1, 5],
+  "candidate_explanations": [],
+  "reason": "Both papers include MCI-to-AD prognosis in memory-clinic MCI and report AUC, but the channels differ. P-988 predicts from eye movements during a memory-binding task, P-991 from paper-and-pencil test scores, and neither evaluates the other's instrument, so condition 1 fails. P-988's prognostic results also meet the near-ceiling exclusion in substance: AUC 1.0 and 63 of 65 correct, in-sample, in 65 patients at one site, with no external cohort. On the question the record poses, whether a brief clinic test can carry prognostic signal, the papers agree, since P-991's MMSE reached AUC 0.808 within MCI.",
+  "quotes": [
+    {"paper": "P-988", "page": 3, "quote": "Data from baseline assessment and blind to clinical decisions entered such a model to predict who among those with MCI would more likely progress to ADS and who would not."},
+    {"paper": "P-988", "page": 7, "quote": "The analysis revealed that our eye-tracking metrics achieved 95% sensitivity and 95% specificity to distinguish between MCI and MCI_C patients (area under the curve [AUC] = 0.95)."},
+    {"paper": "P-988", "page": 7, "quote": "Finally, when distinguishing between MCI_C and MCI_O, the sensitivity was 100% and the specificity was 100% (AUC = 1) (see Figure 4)."},
+    {"paper": "P-988", "page": 7, "quote": "Of the 29 patients that the model predicted would not progress to ADS, 5 developed frontotemporal dementia, 2 developed Parkinson disease, 4 developed vascular dementia, 7 had major depression, and 11 remained as MCI."},
+    {"paper": "P-991", "page": 6, "quote": "A ROC curve was calculated for the original MCI group (n= 76). Progression was set as positive condition."},
+    {"paper": "P-991", "page": 6, "quote": "The MMSE showed an AUC of 0.808 (proposed cut-off 27.5, sensitivity 78.6%, specificity 71.0%, YI= 0.495, LR+= 2.72, LR–= 0.30, PPV= 0.38, NPV= 0.94)."},
+    {"paper": "P-991", "page": 6, "quote": "The CDT had an AUC of 0.497, the VVT 3.0 Screening had an AUC of 0.488 so no further parameters were calculated."},
+    {"paper": "P-991", "page": 10, "quote": "None of the tests can be recommended to reliably predict disease-progress, solely the MMSE showed some validity in this task."}
+  ]
+}

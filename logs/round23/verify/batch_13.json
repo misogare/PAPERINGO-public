@@ -1,0 +1,175 @@
+{
+ "batch": 13,
+ "date": "2026-09-30",
+ "status": "candidate verdicts for operator review; not a gate",
+ "verifier_note": "Uniform difference test of the brief's 'Verification round': z = |a - b| / sqrt(SE_a^2 + SE_b^2). SE from a printed 95% CI = (upper - lower)/3.92, on the log scale for hazard ratios; otherwise Hanley-McNeil (HM) for AUC and C-index: Q1 = A/(2-A), Q2 = 2A^2/(1+A), SE^2 = [A(1-A) + (n1-1)(Q1-A^2) + (n2-1)(Q2-A^2)]/(n1 n2). Compared figures: the matched figure where one exists; otherwise the headline shared-metric figures; where a paper prints co-equal headline figures, the one nearest the other paper's condition on a stated respect, with the others' z reported as fragility (the batch_5 principle). C-254 and C-258 reached 'qualifies' through reader + challenge skeptic (challenge_skeptic_7 upheld both), so they get the z test only. C-261 and C-262 qualified only through the advocate (challenge_advocate_9 overturned the reader's 'borderline'), so each also gets a full skeptic check of conditions 1-6 on the source texts. Two figures used here are raster images with no text in the extracts: P-824's Supplementary Figures 2-4 and Figure 1 were read by in-memory Windows OCR of the embedded PDF images (no files written); the OCR of Figure 1 reproduces the printed 5-year AUCs (0.861, 0.797, 0.823), which confirms the legend mapping. Non-ASCII characters in quotes (dashes, Greek letters, ligatures) are normalised to ASCII.",
+ "sources_read": {
+  "brief": "r23/DISCREPANCY_BRIEF.md in full, including 'Verification round'",
+  "first_pass": "r23/conf/C-254.json, C-258.json, C-261.json, C-262.json",
+  "challenges": "r23/conf/challenge_skeptic_7.json (C-254, C-258); r23/conf/challenge_advocate_9.json (C-261, C-262); challenge_advocate_7.json cites C-254 only as a precedent",
+  "ledger": "data/conflicts.json records C-261 and C-262 (claim_a, claim_b, conflict_statement, resolution_note), read only",
+  "P-999": "r21/pdf/P-999.txt pp. 4 (abstract), 9 (study design), 13-14 (Table 3), 16-17 (metformin and statin strata)",
+  "P-1157": "r21/pdf/P-1157.txt pp. 3-7 (methods, Tables 1-2, results, discussion)",
+  "P-680": "r21/pdf/P-680.txt pp. 1, 3 (eligibility, CMA method), 5 (sections 3.3-3.4), 14-15 (discussion, limitations)",
+  "P-683": "r21/pdf/P-683.txt pp. 1 (abstract), 4-6 (methods, eligibility, controls, Table 2), 18 (Appendix E), 26 (Appendix L), Appendix F",
+  "P-824": "r21/pdf/P-824.txt pp. 1, 4-7, 9-10, 13-14 (main text, Supplementary Material 1, Supplementary Tables 1 and 4); PDF images: Figure 1 (p. 5), Supplementary Figs 2-3 (p. 14) and 4 (p. 15) by in-memory OCR",
+  "P-981": "r21/pdf/P-981.txt pp. 1-3 (abstract, cohort, MCI criteria, statistics), 5-7 (incident-MCI results, Table 4, Figure 1 caption, discussion)",
+  "P-13": "r21/pdf/P-13.txt pp. 1-5 (abstract, methods, sections 3.1-3.3, Tables 3-5)",
+  "P-1128": "r21/pdf/P-1128.txt pp. 1-3 (abstract, participants, feature selection), 5 (Tables 1-2, results), 8 (discussion, limitations)"
+ },
+ "results": [
+  {
+   "id": "C-254",
+   "compared": "Antihypertensive drug use against none and progression from MCI to dementia, adjusted Cox hazard ratios. The figure under the same contrast is used: P-999's 'any AHM users vs AHM non-users' (non-users 'do not take any form of antihypertensive medications') against P-1157's pooled 'Antihypertensive Drugs' category (one of its 15 ATC categories; no separate per-class categories, as the challenge skeptic read from Figure 3). P-999's per-class figures (users vs non-users of that class, who may take other classes) are a different contrast, and its statin and metformin strata are not P-1157's condition; both are reported as sensitivity. The record's own pairing (per-class 0.96-0.98 against P-1157's polypharmacy HR 0.49) compares different factors and is not used.",
+   "a": {
+    "paper": "P-999",
+    "estimate": 1.06,
+    "se": 0.00963,
+    "se_source": "Log scale, from the printed 95% CI. Table 3 (p. 13): 'Users vs. Non-users 1.06 (1.04, 1.08) < 0.001'; p. 14: 'Patients who use any form of AHMs had 6% higher adjusted hazard ratio of ADRD (95% CI: (1.04, 1.08), P < 0.001) than non-users (Table 3).' N = 128,683 hypertensive MCI patients ('Any AHMs 100,678 vs. 28,005'). SE = (ln 1.08 - ln 1.04)/3.92 = (0.07696 - 0.03922)/3.92 = 0.00963; ln 1.06 = 0.05827."
+   },
+   "b": {
+    "paper": "P-1157",
+    "estimate": 0.59,
+    "se": 0.2351,
+    "se_source": "Log scale, from the printed 95% CI. P-1157 p. 5: 'certain medications, such as antihypertensive agents (HR = 0.59, 95% CI: 0.37 to 0.93) and lipid-modifying agents (HR = 0.43, 95% CI: 0.23 to 0.79), were significantly associated with a reduced risk of dementia progression.' N = 237 (89 progressed); 'All Cox regression models were adjusted for the same covariates listed above' (p. 4). SE = (ln 0.93 - ln 0.37)/3.92 = (-0.07257 + 0.99425)/3.92 = 0.2351; ln 0.59 = -0.52763."
+   },
+   "scale": "log hazard ratio",
+   "z": 2.49,
+   "arithmetic": "|0.05827 - (-0.52763)| / sqrt(0.00963^2 + 0.2351^2) = 0.5859 / 0.2353 = 2.49. Sensitivity (not matched figures): P-999 statin users 0.84 (0.80-0.88), ln -0.1744, SE 0.0243: z = 0.3533/0.2364 = 1.50; metformin users 0.86 (0.76-0.96), SE 0.0596: z = 1.55; non-statin users 1.11 (1.08-1.13), SE 0.0115: z = 2.68; per-class contrasts 0.96 (0.95-0.98), 0.97 (0.95-0.98), 0.98 (0.96-1.00): z = 2.07, 2.11, 2.16. The main z is carried almost entirely by P-1157's wide interval (SE 0.235 against 0.010).",
+   "passes_z": true,
+   "skeptic_checked": false,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "candidate_explanations": [
+    "Population and reference group: P-999 is restricted to hypertensive MCI, so its comparator is untreated hypertensives ('the study population was narrowed down from patients with Mild Cognitive Impairment (MCI) to hypertensive patients with MCI'; 'including normotensive patients with MCI to our population would add a potential confounder (hypertension status) that could not be well controlled as very few normotensive patients are taking AHMs', P-999 p. 9). P-1157 includes normotensive participants and has no hypertension covariate, and in its cohort 'participants who progressed to dementia had a lower prevalence of hypertension (p = 0.003)' (Table 2: 107 of 148 non-progressors against 47 of 89 progressors). Crude progression is 47/154 = 30.5% in hypertensives against 42/83 = 50.6% in normotensives, a ratio of 0.60, close to the antihypertensive HR of 0.59. This is the leading candidate, but no within-hypertensive estimate is printed, so it is not shown to be sufficient.",
+    "Co-medication adjustment: P-999's model adjusts for 'consumption of metformin and statin', and its any-AHM estimate reverses with statin co-use ('Users vs. Non-users Y 0.84 (0.80, 0.88) ... N 1.11 (1.08, 1.13)', p. 17). P-1157's per-category models adjust for no other medication, and lipid-modifying agents are separately protective there (HR 0.43).",
+    "Exposure window: 'Based on baseline prescription records in our cohort, we identified the 15 most commonly prescribed medication categories' (P-1157) against use 'during the study period' (P-999 abstract).",
+    "Outcome ascertainment: claims-based ADRD in US commercial claims (P-999) against 'an increase in the CDR score from 0.5 to 1 during follow-up. Dementia diagnoses were further confirmed by the neurologists' (P-1157).",
+    "Setting and size: US Optum claims, N = 128,683 (P-999, a preprint) against Taiwanese veterans' homes and a veterans' hospital outpatient clinic, N = 237 (P-1157).",
+    "Multiplicity: P-1157's estimate is one of 15 exploratory per-category Cox models tested at 'p value < 0.05 (two-tailed)' without correction.",
+    "Neither paper shows any of these to be sufficient."
+   ],
+   "one_sentence": "Two cohort studies of older adults with MCI disagree on antihypertensive use and progression to dementia: among 128,683 hypertensive patients in US claims data, any antihypertensive use against none carried an adjusted HR of 1.06 (95% CI 1.04-1.08) (P-999), while among 237 Taiwanese veterans baseline antihypertensive exposure carried an HR of 0.59 (0.37-0.93) (P-1157), a difference beyond combined uncertainty (z = 2.49 on the log scale); P-999 compares treated with untreated hypertensives and adjusts for statin and metformin use, whereas P-1157's unexposed group includes normotensive patients, and P-999's own statin-user stratum (0.84, 0.80-0.88) does not differ from P-1157 beyond uncertainty (z = 1.50), so these differences are candidate explanations, none shown to be sufficient.",
+   "reason": "z test only (the challenge skeptic upheld conditions 1-6). On the matched contrast (any antihypertensive against none), z = 2.49, which passes: the estimates point in opposite significant directions and the log-scale difference is 2.5 combined SEs. Fragility: the margin rests on P-1157's single exploratory estimate on 89 events, and P-999's statin-user (z = 1.50) and metformin-user (z = 1.55) strata do not differ from it beyond uncertainty, though neither stratum is P-1157's condition. The pair qualifies. The reader should be told about the hypertension-status confounding in P-1157, which P-999 designed out."
+  },
+  {
+   "id": "C-258",
+   "compared": "Aerobic exercise against control and cognition in older adults with MCI, change-score SMD. No figure in either paper is under the other's full condition (class of trials, outcome construct, population, design). Headline figures: P-680's aerobic stratum (5 studies, 6 comparisons, composite of all cognitive tests) against P-683's co-equal headline nearest P-680's condition on intervention class, aerobic exercise without music (AEwtM) on global cognition. Of P-680's five aerobic trials, Amjad 2019 and Varela 2012 are AEwtM in P-683, Song & Yu 2019 is AEwM, Qi is dance and Bademli 2019 was excluded by P-683. P-683's figures closer to P-680's class mix or quality restriction are reported as fragility.",
+   "a": {
+    "paper": "P-680",
+    "estimate": 1.442,
+    "se": 0.4173,
+    "se_source": "Printed 95% CI: abstract (p. 1) 'aerobic exercise ES: 1.442; 0.624 to 2.260 (95 %CI); p = 0.001', repeated in the Discussion (p. 14). The Results (p. 5) print 'from 0.642 to 2.260' but also 'The Z-value obtained from the test of null hypothesis was 3.456', and 1.442/3.456 = 0.4172, which fits 0.624, so 0.642 is a typo. SE = (2.260 - 0.624)/3.92 = 0.4173. Random effects; 'The obtained Q value was 45.143 with a df= 5'; I2 88.9%."
+   },
+   "b": {
+    "paper": "P-683",
+    "estimate": 0.48,
+    "se": 0.1556,
+    "se_source": "Printed 95% CI. Table 2 (p. 6): 'global cognition ... AEwtM-control 26 11 683 0.48 [0.18, 0.79]' (k effect sizes, N trials, n participants); abstract: 'aerobic exercise without music (g = 0.48 [0.18, 0.79])'. SE = (0.79 - 0.18)/3.92 = 0.1556."
+   },
+   "scale": "standardised mean difference of change scores (P-680 CMA standard difference in means standardised by change-score SD; P-683 Hedges' g of change scores)",
+   "z": 2.16,
+   "arithmetic": "|1.442 - 0.48| / sqrt(0.4173^2 + 0.1556^2) = 0.962 / 0.4454 = 2.16. Fragility (partial matches, none under P-680's full condition): P-683 AEwtM excluding high risk of bias 0.6 [0.28, 0.93] (Appendix L, p. 26), SE 0.1658: z = 0.842/0.4490 = 1.88; P-683 multilevel multivariate model, global cognition 0.53 [0.16, 0.9] at rho = 0.6 (Appendix E, p. 18), SE 0.1888: z = 0.912/0.4580 = 1.99; inverse-variance pool of P-683's three node estimates spanned by P-680's aerobic class (AEwtM 0.48, AEwM 1.2 [0.47, 1.94], dance 0.55 [0.13, 0.96]) = 0.574, SE 0.119: z = 2.00; AEwM alone: z = 0.43. P-680's all-exercise 1.165 (0.741-1.589) against 0.53: z = 2.21. Two trials (Amjad 2019, Varela 2012) sit in both pools; their shared data correlate the two estimates positively, which would raise the true z, so ignoring the overlap is conservative.",
+   "passes_z": true,
+   "skeptic_checked": false,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "candidate_explanations": [
+    "Intervention class: P-680's aerobic stratum includes a music-accompanied stepping trial and an aerobic-dance trial ('aerobic exercise showed a large effect on cognition (Amjad et al., 2019; Bademli et al., 2019; Qi et al., 2019; Song & Yu, 2019; Varela et al., 2012)'), which P-683 classes as AEwM (Song & Yu 2019) and dance (Qi et al., 2018, the same article); P-683 finds AEwM has the largest effect ('AEwM had a large effect (k = 2, g = 1.2 [0.47, 1.94]').",
+    "Comparator: P-680 excluded studies that 'did not include a no exercise condition'; P-683's control conditions 'included balance/stretching and/or toning (N = 7) ... home exercise program (N = 1) ... low-intensity non-aerobic exercise (N = 1)', which could shrink its effects.",
+    "Outcome construct: P-680 'performed the meta-analysis of cognition with composite cognitive scores which combined scores from all cognitive domains'; P-683 pools the global-cognition domain. P-683's AEwtM effects in other domains are smaller, so this may run against explaining P-680's larger value.",
+    "Population: 'The amnestic MCI population was not included in our quantitative analysis due to insufficient data' (P-680), while P-683's AEwtM node includes amnestic trials.",
+    "Design: P-683 admits 'RCTs published in full-length, peer-reviewed English journals' and excludes non-randomised controlled studies; P-680 rates randomised and non-randomised designs with the Downs and Black checklist.",
+    "Evidence base and heterogeneity: 5 studies with I2 of about 89% (P-680) against 11 trials and 26 effect sizes in a multilevel model (P-683).",
+    "Change-SD standardisation: P-683 estimates missing change-score SDs 'by using a correlation coefficient of 0.68'; P-680 uses study pre-post correlations, value not stated.",
+    "Neither paper shows any of these to be sufficient."
+   ],
+   "one_sentence": "Two meta-analyses of aerobic exercise against control in older adults with MCI report effects on cognition that differ beyond combined uncertainty: P-680 an SMD of 1.442 (95% CI 0.624-2.260; 5 studies, composite of all cognitive tests) and P-683 0.48 (0.18-0.79; 11 RCTs, global cognition, aerobic exercise without music) (z = 2.16); the margin is thin, since P-683's figures nearer P-680's class mix or quality restriction (0.53, 0.57 and 0.6) give z = 1.88-2.00, and P-680's broader 'aerobic' class (which includes a music-accompanied and a dance trial), its no-exercise comparators, composite outcome, exclusion of amnestic trials and heterogeneity (I2 89%) are candidate explanations, none shown to be sufficient.",
+   "reason": "z test only (the challenge skeptic upheld conditions 1-6, flagging this as the thinnest of its four). On the headline figures z = 2.16, which passes. It is fragile: on P-683's quality-restricted AEwtM (0.6) z = 1.88, below 1.96, and on the two class-matched constructions (multivariate 0.53, three-node pool 0.574) z = 1.99-2.00, at the threshold. None of these is under P-680's full condition (P-683 restricts by RoB2, P-680 excluded two 'poor' Downs and Black studies; P-683 never pools music and dance trials with aerobic trials on a composite outcome), so the headline comparison stands and the pair qualifies narrowly. The report should give the 1.88-2.00 range."
+  },
+  {
+   "id": "C-261",
+   "compared": "Prediction of incident MCI among cognitively normal Chinese community adults from baseline clinical, questionnaire and cognitive data, ROC AUC. The record's P-981 figures (RS1/RS2, 0.64-0.70) are prevalent-MCI AUCs (condition 6), so P-981's only incident-MCI figure, RS3 (0.785, apparent), is used. Matched figure on horizon: P-981's incident sub-cohort had an 'average 3-year follow-up' (abstract; Table 4 means 2.25 and 2.01 years), and P-824 prints a 3-year AUC in Supplementary Figure 3 (read by OCR of the embedded image: 'CHARLS: AUC = 0.870', 'CLHLS: AUC = 0.794', 'RuLAS: AUC = 0.831'). P-824's three cohorts are co-equal headline figures. CHARLS is nearest P-981's condition on three stated respects: validation tier (development cohort, apparent, like RS3); outcome label (a population-relative score threshold, against dementia-range screening cut-offs, CMMSE < 18 and HDS < 21.5, in the other two); and age (45 and over, mean 57.9, against BABRI 50-80; CLHLS mean 80.9, RuLAS 70-87). The other cohorts and the 5-year figures are reported as fragility.",
+   "a": {
+    "paper": "P-824",
+    "estimate": 0.87,
+    "se": 0.0163,
+    "se_source": "No interval printed. 3-year AUC from Supplementary Fig. 3 ('The composite risk score predicts incident MCI in 3 years'), legend OCR 'CHARLS: AUC = 0.870'. Class sizes printed only for all follow-up (Supplementary Table 1: 'MCI occurred Yes 2323 (26.4) ... No 6470 (73.6)', CHARLS n = 8793); 3-year case counts are not printed and must be fewer. HM at the printed 2323/6470 gives SE 0.0050; the SE used here, 0.0163, is HM at a deliberately low 200 cases against 8,593 non-cases, so the reported z is a lower bound. P-824's own printed SE for another C index in CHARLS ('Brief Dementia Screening Indicator was 0.559 (SE = 0.011) in CHARLS', p. 7) lies between the two."
+   },
+   "b": {
+    "paper": "P-981",
+    "estimate": 0.785,
+    "se": 0.0327,
+    "se_source": "No interval printed. p. 5: 'The AUC of the incident MCI model was 0.785, sensitivity = 0.717, and specificity = 0.830 (Figure 1B)'. Evaluation set, fitted and scored on the same sub-cohort (apparent): 'At baseline, 921 participants were classified as normal cognition (NC); among them, 849 participants maintained NC status, and 72 (7.8%) developed MCI.' HM 72/849: Q1 = 0.785/1.215 = 0.6461, Q2 = 2(0.6162)/1.785 = 0.6905, SE^2 = [0.1688 + 71(0.0299) + 848(0.0742)]/61,128 = 65.23/61,128 = 0.001067, SE = 0.0327. Table 4's percentages imply 69/826 with complete data: SE 0.0334."
+   },
+   "scale": "AUC",
+   "z": 2.33,
+   "arithmetic": "Horizon-matched, CHARLS 3-year against RS3: |0.870 - 0.785| / sqrt(0.0163^2 + 0.0327^2) = 0.085 / 0.0365 = 2.33 at 200 three-year cases; 2.41 at 300, 2.48 at 500, 2.54 at 1,000, 2.57 at the printed all-follow-up 2,323 (SE 0.0050); 2.47 with P-824's printed CHARLS SE scale (0.011). RS3's SE would have to be 1.32 times its HM value to bring z below 1.96. Headline 5-year CHARLS 0.861 (HM 2323/6470, SE 0.0051): z = 0.076/0.0331 = 2.30 (2.25 with RS3 at 69/826; 2.20 with SE 0.011); RS3's SE would have to be 1.18 times its HM value. Fragility, P-824's external cohorts against RS3: RuLAS 3-year 0.831, z = 0.99-1.25 (60-260 cases of 651); RuLAS 5-year 0.823 (the record's figure; HM 260/391, SE 0.0176), z = 1.02; CLHLS 3-year 0.794, z = 0.25-0.26; CLHLS 5-year 0.797 (HM 862/3819, SE 0.0095), z = 0.35. 7-year CHARLS 0.832 (Supplementary Fig. 4, OCR): z = 1.42, not a matched horizon.",
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "skeptic_detail": {
+    "1": "Holds. The risk I tried to establish was that P-824's CHARLS 'incident MCI' mixes in prevalent low cognition, since the text says only 'a participant was defined to have incident MCI if his or her cognitive score was more than 1 SD below the mean during follow-up', and the first pass rejected P-981's RS1/RS2 on exactly that ground. Supplementary Fig. 2 (OCR) settles it: from 'Wave 1 (2011/2012) of CHARLS (N = 17708)', '8915 participants excluded', including 'Aged below 45 years: N = 458' and 'Prevalent MCI at baseline: N = 1644', leaving 8,793 (the text's 'We included 8915 participants' is the excluded count). CLHLS and RuLAS also exclude 'Prevalent MCI at baseline' (569 and 720). So both papers predict incident MCI among baseline-normal community adults, P-981 in 921 people 'free from MCI at baseline'. Population class (Chinese community adults, 45+ against 50-80) and channel (clinical, questionnaire and cognitive data; P-824 self-report, RS3 adding memory and fluency tests) match. The labels differ (a population-relative score threshold against a two-expert Petersen consensus with normative correction), which condition 1 allows as a candidate explanation.",
+    "2": "Holds: ROC AUC on both sides (P-824 at fixed 3 and 5 years from a Cox-derived points score; P-981 from a logistic model over the observed follow-up).",
+    "3": "Holds. The horizon-matched figure now exists (P-824 3-year, read from Supplementary Fig. 3) and moves away from P-981: 0.870 against 0.861 at 5 years. This corrects the first pass and the advocate, who had no number at 3 years. P-981 prints no RS3 figure in another cohort or with test-free predictors (RS1/RS2 on the incident sub-cohort are only in its Supplementary Table S1). P-824's external-cohort figures (0.831 and 0.794 at 3 years) agree with 0.785 but are not under P-981's condition: they come from other cohorts, with dementia-range labels and older participants.",
+    "4": "Passes on the matched figure, z = 2.33-2.57 (2.30 at the 5-year headline). Fragile: the margin depends on HM for an apparent AUC on 72 converters, and RS3's SE would need to be only 1.18-1.32 times larger to fail.",
+    "5": "Holds. The maximum is 0.870, below 0.97. P-824 has two external cohorts, and P-981's 0.785 is apparent, so any optimism would lower it and widen the gap.",
+    "6": "The record misreads P-981: its RS1/RS2 AUCs ('The AUC for model 1 was 0.640 (95% CI 0.620-0.660), and the AUC for model 2 was 0.712 (0.694-0.730)') are for baseline MCI status among 5,921 people ('1,174 subjects (19.8%) were diagnosed with MCI at baseline'), not for ~3-year incident MCI. Judged on the printed RS3, the record's own P-824 figure (RuLAS 0.823) gives z = 1.02, so the record's pairing does not survive the correction; the discrepancy exists only against P-824's development cohort."
+   },
+   "candidate_explanations": [
+    "Outcome label: P-824 CHARLS counts 'incident MCI' when 'his or her cognitive score was more than 1 SD below the mean during follow-up', a population-relative threshold with no education adjustment; P-981 requires a two-expert Petersen consensus with 'objective abnormal memory impairment based on a cut-off of 1.5 standard deviations (SD) after normative corrections for age and years of formal education' and 'no objective impairment in other cognitive domains'.",
+    "Label-predictor overlap: education is P-824's strongest predictor ('Education 0.31 (0.29, 0.33) <.001'), and an unadjusted cognitive-score threshold also depends on education, which can raise the AUC in CHARLS (19.7% illiterate).",
+    "Predictors within the channel: P-824's 13 'self-reported risk factors' include no cognitive test; RS3 adds memory and verbal-fluency scores to RS2, which already contains MMSE ('we added cognitive performance to risk model 3 for predicting incident MCI').",
+    "Horizon: fixed 3- and 5-year AUCs against a logistic model over follow-up averaging about 2-3 years ('Length of Follow up (y) 2.25 1.86 2.01 1.37', Table 4). P-824's own text argues against horizon as the explanation ('when the prediction time changed to 3 or 7 years, the result did not change substantially'), and its 3-year figure is higher.",
+    "Events and apparent estimation: RS3 rests on 72 converters in 921 people, against 2,323 events in CHARLS.",
+    "Cohort and age: CHARLS adults aged 45 and over (mean 57.9) against BABRI adults aged 50-80 with MMSE above 23. P-824's own AUC falls to 0.797 in CLHLS, which its authors attribute to 'the older age of the participants or the exclusion of other important variables'.",
+    "None is shown to be sufficient."
+   ],
+   "one_sentence": "For predicting incident MCI in cognitively normal Chinese community adults, P-824's self-report risk score reached an AUC of 0.870 at 3 years (0.861 at 5 years) in its CHARLS development cohort, against 0.785 for P-981's model with cognitive tests on 72 converters and 849 stable participants (z = 2.3-2.6, no printed intervals). P-824's own external cohorts, however, agree with P-981 within uncertainty (RuLAS 0.831 and CLHLS 0.794 at 3 years), so the discrepancy rests on the two development-cohort estimates. The outcome label (a population-relative score threshold against Petersen consensus), education as both predictor and determinant of the label, predictors, cohort age and event count are candidate explanations, none shown to be sufficient.",
+   "reason": "Full skeptic check. I could not show a failed condition. The strongest attempt, that P-824's CHARLS outcome includes prevalent impairment, fails on the source: its flow diagram excludes 1,644 prevalent MCI at baseline. On the horizon-matched figure, read from P-824's Supplementary Fig. 3 and new to this round, the development-cohort AUC (0.870) differs from P-981's RS3 (0.785) beyond combined uncertainty (z = 2.33 at a deliberately low case count, 2.57 on the printed counts), and it widens the gap relative to 5 years (z = 2.30). The pair qualifies as an unresolved discrepancy, but a fragile one. It holds only against P-824's development cohort, and P-824's two external cohorts agree with P-981 at both horizons (z 0.25-1.25). The record's own pairing (RuLAS 0.823 against a misread RS1/RS2) would not qualify once RS3 is used (z = 1.02). The report must give the external-cohort figures alongside."
+  },
+  {
+   "id": "C-262",
+   "compared": "Time to MCI-to-AD conversion in ADNI MCI, Cox model C-index, MRI plus clinical data. No figure in either paper is under the other's condition: P-13's only single-timepoint figures (P-1128's input condition) are clinical-only single-marker models, and P-1128 prints no subgroup or longitudinal model. Headline figures: P-13's abstract C-index 0.844 (training split, apparent) against P-1128's co-equal abstract headline nearest that tier, the nomogram's training C-index 0.951. P-1128's abstract also prints its validation figure (0.880), so the held-out tier (0.880 against P-13's test-set 0.805) is reported as fragility. The record's reconciliation, P-13's training figure against P-1128's validation figure, mixes tiers.",
+   "a": {
+    "paper": "P-1128",
+    "estimate": 0.951,
+    "se": 0.0117,
+    "se_source": "Printed 95% CI. Table 2 (p. 5): 'Network-Morphology-Clinical 0.951 0.928 0.974 0.880 0.817 0.943' (training C-index, lower, upper; test C-index, lower, upper); abstract: 'A multi-predictor nomogram with high accuracy for individual AD prediction (C-index = 0.951) was established.' Training split n = 112 of 162 ('68 MCI patients who progressed to AD in 6-60 months and 94 other MCI patients without AD conversion in 5 years'). SE = (0.974 - 0.928)/3.92 = 0.0117. HM at about 47 events and 65 censored in the training split gives 0.0229, about twice the printed SE."
+   },
+   "b": {
+    "paper": "P-13",
+    "estimate": 0.844,
+    "se": 0.0148,
+    "se_source": "Printed 95% CI. Abstract and p. 4: 'The C-index of the model was 0.844 (95% CI: 0.815-0.873), and the optimism-corrected C-index by bootstrapping was 0.829. In addition, the C-index of the test set was 0.805 (see details in Table 4).' Training split n = 237 of 340 high-risk MCI ('randomly split into a training set (n = 237) and test set (n = 103)'). SE = (0.873 - 0.815)/3.92 = 0.0148."
+   },
+   "scale": "C-index",
+   "z": 5.67,
+   "arithmetic": "Headline (training against training, both apparent): |0.951 - 0.844| / sqrt(0.0117^2 + 0.0148^2) = 0.107 / 0.01887 = 5.67; with HM for P-1128's training split (SE 0.0229), 0.107 / 0.0273 = 3.92. Fragility, held out against held out: P-1128 validation 0.880 (0.817-0.943), SE 0.0321, against P-13 test 0.805 with no interval and no printed event count; HM over 30-70 events of 103 gives SE 0.042-0.052 (50/53: 0.0437), so z = 0.075/sqrt(0.0321^2 + 0.0437^2) = 0.075/0.0542 = 1.38 (range 1.23-1.41); with HM for P-1128's validation split (about 21/29, SE 0.053), z = 1.01-1.10. P-13's optimism-corrected 0.829 against 0.880: z = 1.44.",
+   "passes_z": true,
+   "skeptic_checked": true,
+   "final": "qualifies",
+   "other_condition_failed": [],
+   "skeptic_detail": {
+    "1": "Holds. Both model time to conversion from MCI to AD in ADNI MCI with Cox regression, with the MRI and clinical channels shared. P-13's model uses 'rho1 to rho5, which capture the essential information in the CDRSB and hippocampal longitudinal markers' plus baseline ADAS13, RAVLT, MMSE, FAQ, demographics and APOE e4 (Table 4). P-1128 uses baseline cortical morphology and grey-matter network radiomics plus clinical scales. The attempt: P-13's population is a subgroup chosen from follow-up data ('HDDC was performed to identify the risk groups based on FAQ'; 80.9% LMCI), and its predictors use follow-up CDRSB, which enters the ADNI AD diagnosis. That makes P-13 a dynamic, partly post-baseline prediction in a selected subgroup. Condition 1 allows cohort selection and input representation, and the brief treats single-timepoint against longitudinal input as a matched-figure question (condition 3), so the question is the same. Any leakage through CDRSB would inflate P-13, the lower figure, so it runs against the gap.",
+    "2": "Holds: C-index on both sides.",
+    "3": "Holds. P-13's single-timepoint figures in the same subgroup are lower ('in the baseline models, ADAS13 showed the best performance (C-index/Optimism-corrected C-index = 0.677/0.665)'), so they widen the gap. P-13 prints no C-index for its model on all MCI or truncated at 60 months. P-1128 prints no high-risk-subgroup C-index and no longitudinal model ('this study did not analyze dynamic follow-up data'). The held-out figures are a validation tier both papers print, not a figure under the other paper's condition, so they are treated as fragility (as in C-63 and C-158).",
+    "4": "Passes on the headline figures, z = 5.67 (3.92 with an HM SE for P-1128). It fails at the held-out tier, z = 1.0-1.4.",
+    "5": "Holds as written. The highest figure is 0.951 (upper bound 0.974), below the 0.97 threshold. P-1128 is small (112 training, 50 validation) and has no external cohort ('our research lacked independent external validation'), but it does not meet the Section 3.5 exclusion.",
+    "6": "Holds. The record prints the figures correctly (0.951 training, 0.880 validation). Its reconciliation sets P-1128's validation figure against P-13's training figure. Like for like, P-1128 is higher at both tiers, beyond combined uncertainty only on the apparent tier."
+   },
+   "candidate_explanations": [
+    "Population subset: P-13's estimate is confined to a high-risk subgroup identified from follow-up FAQ trajectories ('The high- and low-risk groups included 340 and 378 individuals with MCI, respectively'; 80.9% LMCI). A restricted risk range lowers discrimination.",
+    "Case selection in P-1128: only converters within 60 months and patients stable for 5 years ('68 MCI patients who progressed to AD in 6-60 months and 94 other MCI patients without AD conversion in 5 years'), with reverters excluded ('participants with bidirectional changes (MCI to AD and back to MCI) were excluded'). Leaving out intermediate cases raises the C-index.",
+    "Input representation within the channel: longitudinal CDRSB and hippocampal-volume trajectories plus baseline cognition and APOE e4 (P-13) against baseline cortical morphology and network radiomics plus clinical scales (P-1128).",
+    "Feature selection and optimism: P-1128 selected features from 1,474 ('the 37 features with significant differences (p < 0.05) were chosen using univariate Cox analysis', then LASSO) on 112 training patients, with no statement that selection was confined to the training split. Its training-to-validation drop is 0.071, against 0.039 (training to test) in P-13.",
+    "Horizon: visits to 96 months in P-13 against conversion within 60 months in P-1128.",
+    "Evaluation-split size: 103-subject test split (P-13) against a 50-subject validation split (P-1128).",
+    "Neither paper shows any of these to be sufficient."
+   ],
+   "one_sentence": "For time to conversion from MCI to AD in ADNI, modelled from MRI plus clinical data, P-1128 reports a training C-index of 0.951 (95% CI 0.928-0.974) against P-13's 0.844 (0.815-0.873), a difference beyond combined uncertainty (z = 5.67). On held-out data, however, the figures are 0.880 (0.817-0.943) and 0.805 and do not differ beyond uncertainty (z about 1.4). P-13's restriction to a high-risk subgroup, P-1128's selection of early converters and five-year-stable patients, longitudinal against baseline inputs, and P-1128's selection of 37 of 1,474 features on 112 patients are candidate explanations, none shown to be sufficient.",
+   "reason": "Full skeptic check. I could not show a failed condition as the rule is written. The headline figures, both apparent training estimates, differ beyond combined uncertainty on the printed intervals (z = 5.67) and on an HM SE for P-1128 (z = 3.92). No figure under the other paper's condition reconciles them, and P-13's own single-timepoint figures are lower still. The pair qualifies, but it is fragile in one specific way: at the held-out tier both papers print (0.880 against 0.805) the difference is within uncertainty (z = 1.0-1.4), and P-13's optimism-corrected 0.829 lies inside P-1128's validation interval. The report must give both tiers. The gap is beyond uncertainty only where P-1128's optimism from data-driven feature selection on 112 patients is unremoved."
+  }
+ ]
+}
