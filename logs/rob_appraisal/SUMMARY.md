@@ -90,3 +90,8 @@ These re-appraisals are model readings not yet reviewed by the operator.
 
 Cited set now: 190 studies, 156 high, 30 some concerns, 4 not applicable, none low. VF-29 remains the only convergence
 with three or more supporters not at high risk.
+
+
+## Operator review, 2026-09-30
+
+The operator accepted the eight re-appraisals in full and the fourteen appraisals of newly cited studies, having checked the tool choice for six of them (P-60, P-153, P-163, P-488, P-933, P-1082; all six matched the reader's tool). Recorded as operator_review_2026_09_30 on each record.
