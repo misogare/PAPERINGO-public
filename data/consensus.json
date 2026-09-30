@@ -22,10 +22,9 @@
   "verified_findings": [
     {
       "id": "VF-01",
-      "statement": "Hippocampal and medial temporal atrophy is the most consistently replicated structural MCI biomarker",
+      "statement": "Reduced hippocampal volume in MCI relative to cognitively normal controls was reported in three distinct cohorts using different structural-MRI pipelines (single-centre Nanjing, VBM/FSL-FIRST; Moscow Memory Clinic, FreeSurfer; ADNI amyloid-positive MCI, FreeSurfer/visual MTA/ASHS; the last conditioned on AD pathology). These studies do not establish hippocampal volume as the most consistently replicated structural marker: two also identified other structural measures as potentially informative or more sensitive in their analyses (cortical sulcal depth and gyrification; SRLM integrity and right dentate-gyrus volume, whose larger effect sizes were not formally tested).",
       "supporting_papers": [
         "P-50",
-        "P-52",
         "P-99",
         "P-595"
       ],
@@ -33,7 +32,7 @@
       "method_families": 3,
       "dataset_families": 3,
       "notes": "6 papers (P-595 admitted, P-65/P-82 demoted 2026-08-22), 3 method families (VBM, FreeSurfer, radiomics), 3 dataset families (ADNI, Moscow, single-centre)",
-      "evidence_count": 4,
+      "evidence_count": 3,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 4,
@@ -46,7 +45,8 @@
       "member_resolution_2026_08_22": "Claude delegated judgment 2026-08-22 (operator-delegated resolution of all pending-review records; every supporter independently re-verified against its summaries.md block by a fresh verification agent this session). (a) P-595 ADMITTED: its block reports MEASURED MTL atrophy in MCI ('Both MCI A+ and AD A+ showed reduced SRLM integrity, increased visual hippocampal atrophy, and decreased hippocampal volume versus CU A-', Outcomes); scope: amyloid-stratified cross-sectional group difference. (b) The three curation_log-flagged supporters (summary_support=false) were resolved at SOURCE-PDF level: P-51 KEPT - the paper's own VBM result finds significantly reduced right-hippocampal volume in pMCI vs sMCI plus hippocampal-volume/MMSE correlation (summary-block gap, not paper gap; caveat: within-MCI contrast, not MCI-vs-NC); P-65 DEMOTED - whole-brain sMRI CNN whose only hippocampal/MTL content is qualitative Grad-CAM attention localisation, no measured atrophy statistic of its own; P-82 DEMOTED - FreeSurfer cortical-feature transformer whose own region-importance result points AWAY from MTL (caudal anterior cingulate + pars orbitalis top-ranked). Net: 6 supporters.",
       "rejected_supporters": [
         "P-51",
-        "P-66"
+        "P-66",
+        "P-52"
       ],
       "review_status": "confirmed_human_reader_2026-09-19",
       "human_adjudication_2026_09_19": {
@@ -71,6 +71,21 @@
         "narrowed_wording": "Reduced hippocampal and medial temporal volume in MCI relative to cognitively normal controls was reported in three independent cohorts using different pipelines (single-centre Nanjing, VBM/FSL-FIRST; Moscow memory clinic, FreeSurfer; ADNI amyloid-positive MCI, FreeSurfer/visual MTA/ASHS). These studies do not establish it as the most consistently replicated structural marker: two of them found other structural measures (cortical sulcal depth and gyrification; SRLM integrity, dentate gyrus volume) as or more discriminative.",
         "file": "logs/round20/convergence_readings/VF-01.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "Hippocampal and medial temporal atrophy is the most consistently replicated structural MCI biomarker",
+      "supporting_papers_pre_2026_09_30": [
+        "P-50",
+        "P-52",
+        "P-99",
+        "P-595"
+      ],
+      "evidence_count_pre_2026_09_30": 4,
+      "rejected_supporters_note_2026_09_30": "P-52: models hippocampal texture radiomics only; reports no volume or atrophy result (round-20 source reading)",
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
@@ -132,19 +147,18 @@
     {
       "id": "VF-03",
       "triage_note_2026_09_09": "2026-09-09 gate-readiness triage: required_design relaxed longitudinal->any because two supporters (P-13, P-337) are registry-coded survival_analysis - a longitudinal multi-timepoint design - which the substring design gate cannot express; all five supporters run direct longitudinal-vs-baseline comparisons. Evidence unchanged.",
-      "statement": "Longitudinal/multi-timepoint modelling outperforms cross-sectional baselines for MCI detection/progression, in studies that compare the two directly.",
+      "statement": "Across four studies that evaluated longitudinal or change information against baseline-only or less longitudinal approaches, incorporating repeated measurements or change scores was associated with improved discrimination. The evidence is not a clean test of a general longitudinal advantage: in the ADNI LSTM study the gain is not separable from the change of learner (a random forest given the same five time points did not outperform the single-time-point random forest); in two studies predictor measurements collected during follow-up overlap or are temporally aligned with the outcome window; one study (P-337) concerns progression from normal cognition to MCI or AD. Non-ADNI replication within this evidence set rests on one Swedish memory-clinic cohort.",
       "supporting_papers": [
         "P-168",
         "P-13",
         "P-337",
-        "P-74",
         "P-348"
       ],
       "independence_met": "True",
       "method_families": "3",
       "dataset_families": "3",
       "notes": "RE-DERIVED + non-ADNI-expanded. Direct longitudinal-vs-baseline comparisons. NON-ADNI (2): P-74 (NACC, trajectory classes improve), P-348 (Gothenburg MCI Study, longitudinal change-scores > baseline-only across 11 models). ADNI (3): P-168 (LSTM 5-timepoint vs RF index-baseline - cleanest), P-13 (survival, repeated measures), P-338 (follow-up provided most of the gain). CAVEAT: 3/5 ADNI; ADNI subset is survival-concentrated (P-13/P-338 both A8). 2 distinct non-ADNI replications (NACC + Gothenburg) = strong Tier 2; one more non-ADNI would reach Tier 1.",
-      "evidence_count": 5,
+      "evidence_count": 4,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 3,
@@ -247,6 +261,25 @@
         "narrowed_wording": "In four studies that compare the two directly (three ADNI analyses and one Swedish memory-clinic cohort), adding repeated measurements or change scores to a baseline model improved discrimination. In two of them the follow-up measures overlap the outcome window, and in the ADNI LSTM study the gain is not separable from the change of learner (a random forest given the same five time points did not beat the single-time-point random forest). Non-ADNI replication rests on one cohort.",
         "file": "logs/round20/convergence_readings/VF-03.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "Longitudinal/multi-timepoint modelling outperforms cross-sectional baselines for MCI detection/progression, in studies that compare the two directly.",
+      "supporting_papers_pre_2026_09_30": [
+        "P-168",
+        "P-13",
+        "P-337",
+        "P-74",
+        "P-348"
+      ],
+      "evidence_count_pre_2026_09_30": 5,
+      "rejected_supporters": [
+        "P-74"
+      ],
+      "rejected_supporters_note_2026_09_30": "P-74: its comparator already uses every visit's scores; no single-visit or baseline-only model (round-20 source reading)",
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
@@ -371,19 +404,18 @@
     },
     {
       "id": "VF-07",
-      "statement": "Reaction-time / temporal-dynamic features are used as MCI-discriminative signals across modalities (computerized testing, driving, EEG+HRV, speech). NOTE: only P-101 shows WITHIN-STUDY that temporal features add information BEYOND accuracy-only scoring; the rest report temporal features without that comparison, so the \"beyond accuracy-only\" claim rests on 1 paper, not the consensus.",
+      "statement": "Temporal features are used as MCI-discriminative signals in two modalities: speech timing and hesitation (two studies from one Szeged group sharing a feature lineage and clinical source) and response-time features from a computerised assessment (one community sample labelled using a MoCA cut-off rather than a clinical MCI diagnosis). A naturalistic-driving study provides supporting evidence for time-series driving features against an endpoint that merges MCI with dementia. Evidence that temporal information adds discrimination beyond accuracy-based scores rests on one within-study ablation: only the Naive-Bayes-based model improved substantially in accuracy and AUC when time scores were added; the three comparator models did not improve in accuracy and changed at most slightly in AUC.",
       "supporting_papers": [
         "P-58",
         "P-59",
         "P-69",
-        "P-83",
         "P-101"
       ],
       "independence_met": true,
       "method_families": 3,
       "dataset_families": 3,
       "notes": "Temporal processing slowdown is a domain-general MCI biomarker; computerised testing + driving + EEG+HRV + speech",
-      "evidence_count": 5,
+      "evidence_count": 4,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 3,
@@ -417,6 +449,25 @@
         "narrowed_wording": "Temporal features are used as MCI-discriminative signals in two modalities: speech timing and hesitation (two studies from one Szeged group sharing a feature lineage and clinic) and response times on a computerised test (one community sample labelled by MoCA cut-off); a naturalistic-driving study supports it only for time-series driving features against a label that merges MCI with dementia, and the EEG+HRV study does not isolate temporal features. The increment beyond accuracy-only scoring rests on one within-study test, and in that study it appears for one classifier only (three comparator models did not gain).",
         "file": "logs/round20/convergence_readings/VF-07.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "Reaction-time / temporal-dynamic features are used as MCI-discriminative signals across modalities (computerized testing, driving, EEG+HRV, speech). NOTE: only P-101 shows WITHIN-STUDY that temporal features add information BEYOND accuracy-only scoring; the rest report temporal features without that comparison, so the \"beyond accuracy-only\" claim rests on 1 paper, not the consensus.",
+      "supporting_papers_pre_2026_09_30": [
+        "P-58",
+        "P-59",
+        "P-69",
+        "P-83",
+        "P-101"
+      ],
+      "evidence_count_pre_2026_09_30": 5,
+      "rejected_supporters": [
+        "P-83"
+      ],
+      "rejected_supporters_note_2026_09_30": "P-83: pools time-domain with frequency and nonlinear EEG and HRV features; no result for temporal features alone (round-20 source reading)",
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
@@ -621,21 +672,18 @@
     },
     {
       "id": "VF-12",
-      "statement": "Digital/behavioural biomarkers (speech, language/NLP, spontaneous conversation) detect MCI from non-clinical data across independent cohorts.",
+      "statement": "Speech and language features (conversational transcripts, spontaneous-speech timing, conversational turn-taking timing) show MCI-versus-normal discriminative signal in several relatively small cohorts from limited recruitment settings (I-CONECT; the New York and Szeged memory clinics; Dublin): internally cross-validated AUC about 0.73 to 0.93 in the temporal-speech study and about 0.85 in the I-CONECT transcript study, and about 63% accuracy in Dublin. No study validates an MCI model on an independently recruited cohort, and the one held-out challenge test in this set produced balanced accuracy around or below chance (42.0% to 45.1% across five submissions). The evidence supports discriminative signal, not robust cross-cohort generalisation.",
       "supporting_papers": [
         "P-6",
-        "P-158",
-        "P-102",
         "P-58",
         "P-352",
-        "P-884",
         "P-938"
       ],
       "independence_met": "True",
       "method_families": 4,
       "dataset_families": 5,
       "notes": "RE-DERIVED (was over-aggregated). Independent speech/language cohorts and architectures: P-11 (I-CONECT, NON-ADNI, transformer, conversational speech); P-276 (ADReSS, NON-ADNI, acoustic speech); P-102 (EHR clinical notes, NLP/LLM A7); P-58 (multi-country speech tempo/articulation/pauses); P-352 (spontaneous-speech language markers). Distinct datasets (I-CONECT, ADReSS, EHR, multi-country) and modalities (acoustic, linguistic, clinical-text). Strong independence; mostly small cohorts - effect sizes vary. | EXTENDED 2026-08-26 (P-878..887 batch): P-884 added - Japanese 2-hospital non-ADNI cohort, non-linguistic acoustic features via LightGBM (3-class mean OvR AUC 0.81, binary HE-vs-others 93.8%). 6th independent speech/acoustic cohort; method family 4, dataset family 5. [P938_P947: +P-938 - conversational speech-timing (N=80, TCD/St James's) multi-class 82-84% with cognitive and brain-volume correlates; independent speech-timing cohort/architecture.]",
-      "evidence_count": 7,
+      "evidence_count": 4,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 5,
@@ -666,7 +714,10 @@
         "P-1016",
         "P-982",
         "P-983",
-        "P-1013"
+        "P-1013",
+        "P-158",
+        "P-102",
+        "P-884"
       ],
       "bulk_append_revert_2026_08_29_pass2": "2026-08-29 audit revert (2nd pass): the legacy corpus-wide run of 2026-08-28 17:04 also appended to this record; the first revert only covered VF-21/25/27/29/30/32. supporting_papers restored to the 798e45f list; removed ids are recorded in rejected_supporters (VF-12: none is a speech/language study - diet-microbiota, CHARLS survey ML, visuo-construction, postural sway, eye tracking; VF-33: exercise/nursing intervention trials with no reversion finding, plus P-1025 = duplicate of P-987).",
       "manuscript_exposure_operator_review_2026_09_14": "MECHANISM (scripts/agent6_write.py::_vf_included, lines 267-274): after the exclude_from_manuscript_tables / empty-supporting_papers / 'exclude*' / 'candidate|pending*' manuscript_status tests, the function does `if ms.startswith(\"include\"): return True` - an affirmative manuscript_status of include or include_with_caveat SHORT-CIRCUITS every later test, i.e. the record's own `status` (lines 275-284, which reject retired/demoted/insufficient/superseded/deprecated, any status starting with 'pending', and anything containing 'candidate') and the 'never-reviewed' marker test (lines 285-296) are never reached. RE-CHECKED THIS PASS: with manuscript_status deleted this record is STILL included, so on this record the short-circuit is redundant rather than load-bearing - see the per-record note below for what actually carries it through. Currently rendered in review_paper.md Table 6.3 (line 2021). manuscript_status='include_with_caveat' while status='re-derived_pending_g4' - the record describes itself as pending G4 and is in the manuscript anyway. gate_verified is ABSENT. TWO mechanisms let it through, not one: (a) the manuscript_status short-circuit at line 273, and (b) even without it the pending test at line 281 is `st.startswith(\"pending\")`, and _normalise_token('re-derived_pending_g4') = 're_derived_pending_g4', which CONTAINS 'pending' but does not START with it - so the test misses it. The docstring at lines 278-280 asserts the opposite ('Reached only when no affirmative manuscript_status override is set, so the G4-approved re-derived_pending_g4 VFs are unaffected'), implying the pending test would otherwise catch these records; verified this pass that it would not. Counter-evidence to the 'ungated' reading: review_status='confirmed_human_g4' and g4_verdict='PASS with caveat (2026-06-27): independence real (4 non-ADNI datasets, 3 method families), but state heterogeneity explicitly.' The defect is therefore an unresolved internal contradiction between status and review_status, not a missing gate. This pass only surfaces the exposure. manuscript_status, status, gate_verified, supporting_papers and evidence_count are UNCHANGED: removing a record from the manuscript, or confirming its gate, is an operator action.",
@@ -696,6 +747,24 @@
         "narrowed_wording": "Speech and language features (conversational transcripts, spontaneous-speech timing, conversational turn-taking timing) discriminate MCI from normal cognition better than chance in several small, separately recruited single-site cohorts (I-CONECT; New York and Szeged memory clinics; Dublin), with internally cross-validated AUC 0.73-0.93 in two studies and about 63% accuracy in a third; no study validates an MCI model on an independent cohort, and the one held-out challenge test in the set fell to chance.",
         "file": "logs/round20/convergence_readings/VF-12.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "Digital/behavioural biomarkers (speech, language/NLP, spontaneous conversation) detect MCI from non-clinical data across independent cohorts.",
+      "supporting_papers_pre_2026_09_30": [
+        "P-6",
+        "P-158",
+        "P-102",
+        "P-58",
+        "P-352",
+        "P-884",
+        "P-938"
+      ],
+      "evidence_count_pre_2026_09_30": 7,
+      "rejected_supporters_note_2026_09_30": "P-158: Alzheimer's disease against cognitively normal speakers and MMSE prediction, not MCI-versus-normal detection; P-102: clinical-note prediction of progression from MCI to AD, not speech or language detection of MCI; P-884: headline contrast pools MCI with dementia against healthy speakers",
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
@@ -722,7 +791,7 @@
     },
     {
       "id": "VF-14",
-      "statement": "MCI-to-AD progression is clinically heterogeneous and can be stratified into reproducible longitudinal subphenotypes",
+      "statement": "MCI progression is heterogeneous: four studies using data-driven clustering or latent-class and trajectory methods across US EHR, NACC and ADNI data identified subgroups that differed in cognitive or functional progression, progression rate or risk of dementia or AD. Cross-cohort replication of a subgroup structure is demonstrated in one study (P-103), which identified five EHR-derived progression subphenotypes in INSIGHT and reproduced four of them in two independent US validation cohorts (OneFlorida+ and UCSF). The other studies provide within-cohort evidence only, and the subgroup definitions are not one shared taxonomy.",
       "supporting_papers": [
         "P-103",
         "P-74",
@@ -774,6 +843,20 @@
         "narrowed_wording": "MCI-to-AD progression is heterogeneous: in four studies across three data sources (US EHR networks, NACC, ADNI), data-driven clustering or latent-class methods separate patients into subgroups that differ in progression rate or risk. Replication of the subgroups in independent cohorts is shown by one study (P-103, EHR comorbidity subphenotypes among converters); the others show within-cohort structure only.",
         "file": "logs/round20/convergence_readings/VF-14.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "MCI-to-AD progression is clinically heterogeneous and can be stratified into reproducible longitudinal subphenotypes",
+      "supporting_papers_pre_2026_09_30": [
+        "P-103",
+        "P-74",
+        "P-941",
+        "P-947"
+      ],
+      "evidence_count_pre_2026_09_30": 4,
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
@@ -892,7 +975,7 @@
     },
     {
       "id": "VF-16",
-      "statement": "Low-cost, non-invasive screening channels (portable EEG, routine clinical/blood data, driving telemetry) achieve viable MCI detection without specialist imaging.",
+      "statement": "Accessible, low-cost, non-imaging data streams (routine physical-examination and blood-test variables, dual-task gait, and a consumer EEG headband combined with tablet handwriting) show discriminative signal for MCI versus normal cognition in single-country cohorts. External validation is demonstrated for the routine-data and gait models, both within China. The handwriting-plus-EEG study reports very high within-cohort accuracy but has no external cohort; resting-state EEG yields about 70% accuracy for diagnosed MCI and only slightly above chance for preclinical cognitive decline; naturalistic-driving telemetry provides related evidence for an endpoint that combines MCI with dementia.",
       "supporting_papers": [
         "P-2",
         "P-12",
@@ -946,6 +1029,21 @@
         "narrowed_wording": "Low-cost, non-invasive channels (routine physical-examination and blood data, dual-task gait, and a consumer EEG headband combined with tablet handwriting) discriminate MCI from normal cognition without specialist imaging in single-country cohorts, with external validation for the routine-data and gait models only; clinical resting-state EEG reaches modest accuracy (about 70%), and naturalistic driving telemetry discriminates MCI and dementia combined rather than MCI.",
         "file": "logs/round20/convergence_readings/VF-16.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "Low-cost, non-invasive screening channels (portable EEG, routine clinical/blood data, driving telemetry) achieve viable MCI detection without specialist imaging.",
+      "supporting_papers_pre_2026_09_30": [
+        "P-2",
+        "P-12",
+        "P-96",
+        "P-69",
+        "P-604"
+      ],
+      "evidence_count_pre_2026_09_30": 5,
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
@@ -1491,22 +1589,17 @@
     },
     {
       "id": "VF-24",
-      "statement": "Among STRUCTURAL MRI measures, fine-grained morphometric descriptors - hippocampal subfield volumetry, surface/shape morphometry, sulcal width, cortical fractal dimension, and tract-segment / cortical-microstructure diffusion metrics - consistently outperform coarse whole-structure volumetry for MCI detection and conversion prediction.",
+      "statement": "Across three studies, finer-grained structural descriptors provided evidence of greater prognostic or model-based importance than conventional whole-structure measures: hippocampal surface morphometry outperformed hippocampal-volume baselines for predicting progression to amnestic MCI in cognitively unimpaired adults (Arizona and ADNI); cortical minicolumn diffusivity provided stronger prognostic separation than cortical volume fraction for MCI-to-dementia progression in NACC (numerically but not significantly stronger than hippocampal volume); and cortical grey-matter fractal dimension was the highest-ranked MRI feature by SHAP importance in vascular MCI (VMCI-Tuscany). These are not equivalent measures of superiority (classification accuracy, survival separation, SHAP importance). No equally clean head-to-head of hippocampal subfield volume against whole-hippocampal volume was identified; sulcal-width and tract-segment findings provide related but methodologically different comparisons.",
       "supporting_papers": [
         "P-177",
         "P-245",
-        "P-560",
-        "P-581",
-        "P-408",
-        "P-91",
-        "P-182",
-        "P-899"
+        "P-581"
       ],
       "independence_met": "True",
       "method_families": "7",
       "dataset_families": "7",
       "notes": "Cross-era, within structural-MRI, diverse descriptors: P-177 (hippocampal SURFACE multivariate morphometry ~92% vs volume 79% Arizona / 72% ADNI); P-245 (cortical FRACTAL dimension best MRI feature, XGBoost AUC 0.69, VMCI-Tuscany N=64); P-560 (SULCAL width AUC 0.907 outperforms cortical thickness in every contrast, Bologna); P-581 (cortical MINICOLUMN diffusivity beats hippocampal+cortical volume+thickness in KM survival, NACC N=826); P-408 (splenium SUB-TRACTS AUC 0.75 beat whole-splenium, NACC); P-91 (tract-SEGMENT, right-IFOF anterior AUC 0.80 beats whole-tract averaging, PD-local). PARTIAL: P-182 (hippocampal SUBFIELDS unevenly informative, whole-volume ~10.5% redundant, ADNI - attribution not head-to-head). DROPPED after verification: P-45 (callosal shape - CSF-correlation only, no performance-vs-volume), P-198 (comparator was a no-covariate baseline; cortical thickness AUC 0.78 actually beat sulcal width 0.71), P-183 (texture-vs-NEUROPSYCH, not vs volume). Independence: >=5 truly distinct datasets (Arizona, VMCI-Tuscany, Bologna, NACC, PD-local; +ADNI partial) - P-408 & P-581 share NACC. SCOPE: within-structural-MRI granularity claim; does NOT contradict VF-01 (MTL atrophy most REPLICATED != best-performing). Generalises IA-38 (P-560) and IA-37 (P-581). | EXTENDED 2026-08-26 (P-898..907 batch): P-899 (CBR-TLSA Bangalore, India; 36 HC + 27 MCI; FreeSurfer subfield volumetry) adds a 7th independent dataset family (non-ADNI, South Asian) - MCI showed bilateral reductions in hippocampal tail, subiculum, CA1, CA3, molecular layer plus left presubiculum/parasubiculum/CA4/GC-ML-DG/HATA, with left presubiculum, parasubiculum and GC-ML-DG correlating with ACE-III memory in MCI (e.g. left presubiculum r=0.460, p=0.024).",
-      "evidence_count": 8,
+      "evidence_count": 3,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 5,
@@ -1550,6 +1643,32 @@
         "narrowed_wording": "In three single-cohort or two-cohort studies, a finer-grained structural descriptor outperformed or outranked a whole-structure volume for predicting progression: hippocampal surface morphometry over hippocampal volume for cognitively unimpaired to amnestic MCI (Arizona, ADNI), cortical minicolumn diffusivity over cortical volume fraction for MCI to dementia (NACC; numerically but not significantly over hippocampal volume), and cortical fractal dimension ranking above hippocampal volume as a SHAP predictor of MCI to dementia in vascular MCI (VMCI-Tuscany). Subfield volumetry, sulcal width and tract-segment diffusion have not been compared head-to-head with whole-structure volumetry in this corpus.",
         "file": "logs/round20/convergence_readings/VF-24.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "Among STRUCTURAL MRI measures, fine-grained morphometric descriptors - hippocampal subfield volumetry, surface/shape morphometry, sulcal width, cortical fractal dimension, and tract-segment / cortical-microstructure diffusion metrics - consistently outperform coarse whole-structure volumetry for MCI detection and conversion prediction.",
+      "supporting_papers_pre_2026_09_30": [
+        "P-177",
+        "P-245",
+        "P-560",
+        "P-581",
+        "P-408",
+        "P-91",
+        "P-182",
+        "P-899"
+      ],
+      "evidence_count_pre_2026_09_30": 8,
+      "rejected_supporters": [
+        "P-182",
+        "P-899",
+        "P-560",
+        "P-408",
+        "P-91"
+      ],
+      "rejected_supporters_note_2026_09_30": "P-182: attribution analysis of a whole-hippocampus model with no volume comparator (round-20 source reading); P-899: subfield group differences with no whole-hippocampus comparison (round-20 source reading); P-560: related, methodologically different comparison (against volumetric results reported earlier in the cohort); P-408: related, methodologically different comparison (segment against whole tract, no volume); P-91: related, methodologically different comparison (segment-wise against whole-tract diffusion, Parkinson's MCI)",
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
@@ -1905,19 +2024,17 @@
     },
     {
       "id": "VF-26",
-      "statement": "Depressive symptomatology and MCI are robustly and reciprocally associated across independent cohorts, designs and populations - but the depression-to-MCI direction is the better-evidenced one, and every corpus study establishing the reverse direction uses a design that cannot separate reciprocal causation from a shared common cause.",
+      "statement": "Depressive symptoms or major depression and MCI are associated in three distinct samples using different designs: longitudinally in the US Health and Retirement Study (P-646), and cross-sectionally in a Chinese community sample (P-644) and in World Trade Center responders (P-656), where the association was not separable from substantial PTSD comorbidity. Temporal direction was tested longitudinally in only one study (P-646), which found associations in both directions at similar magnitude in two separately fitted models; these do not establish reciprocal causation or distinguish it from a shared common cause. The reviewed studies establish an association, but neither reciprocity nor a stronger evidential basis for the depression-to-MCI direction.",
       "supporting_papers": [
         "P-644",
         "P-646",
-        "P-656",
-        "P-657",
-        "P-912"
+        "P-656"
       ],
       "independence_met": "True",
       "method_families": "5",
       "dataset_families": "5",
       "notes": "P-646 (US Health and Retirement Study, Waves 4-14, 1998-2018, N=9317 and 9428, Fine-Gray competing-risks): baseline high-risk depressive symptoms predict incident MCI at fully adjusted SHR 1.20 (95% CI 1.08-1.34, p=0.001) and baseline MCI predicts subsequent high-risk depressive symptoms at SHR 1.16 (1.01-1.33, p=0.032). P-624 (Shandong chronic-heart-failure cohort, N=288, two-wave cross-lagged panel): T1 social frailty -> T2 MCI effect -0.578 and T1 MCI -> T2 social frailty effect -0.646, model fit RMSEA 0.068. P-644 (Tianjin/Shanghai community, N=1394, logistic regression plus bootstrap mediation): depressive symptoms independently associated with MCI at OR 1.82 (1.20-2.76, p=0.005), with significant mediation running in both directions. P-656 (FDNY World Trade Center responders, N=337, robust quasi-Poisson): major depressive episode adjusted RR 1.62 (1.16-2.27) and comorbid PTSD/MDE RR 2.31 (1.74-3.06) for prevalent MCI. P-657 (52-study meta-analysis, 29,321 older adults with MCI, 17 countries, 6 continents): pooled subthreshold-depression prevalence 28.1% (24.2-32.0), stable under leave-one-out and unchanged by trim-and-fill. Method families (5): competing-risks survival; cross-lagged structural model; bootstrap mediation; robust Poisson with population-attributable fractions; prevalence meta-analysis. Dataset families (5): HRS, Shandong CHF, Tianjin/Shanghai community, FDNY WTC, 52-study synthesis. SCOPE CAVEAT, which is the point of the record: the reciprocity half of the claim is design-limited. P-646's authors state that two separate models were fitted rather than one containing both pathways, so true bidirectionality cannot be fully established; P-644 is cross-sectional and its authors concede the two mediation directions cannot be arbitrated; P-624 has only two waves six months apart; P-656 is cross-sectional and states the temporal ordering is unresolved. Ties directly to open gap ACTOR-G-019. A SECOND caveat ties to ACTOR-G-018: every member dichotomises depression at a scale cut-off, so this is an association between MCI and a binary symptom flag, not a dose-response. [2026-08-26: +P-912 systematic review of psychiatric risk factors for MCI-to-AD progression (17 longitudinal papers; cross-species depression support) - 6th supporting paper, adds review-level design diversity.]",
-      "evidence_count": 5,
+      "evidence_count": 3,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 4,
@@ -1937,7 +2054,9 @@
       "manuscript_status": "include",
       "human_evaluation_note": "CONFIRMED Tier1/Tier2 split. The split is intellectually honest: association is Tier 1 across five methods and five datasets, reciprocity is Tier 2 because no member's design licenses it. Dichotomisation caveat properly scoped.",
       "rejected_supporters": [
-        "P-624"
+        "P-624",
+        "P-657",
+        "P-912"
       ],
       "rejected_supporters_note_2026_09_28": "P-624 removed: its exposure is social frailty (HALFT) and it contains no measure of depression, so it does not support the statement (found by the risk-of-bias reading of 2026-09-28 and checked against the PDF).",
       "source_reading_2026_09_28": {
@@ -1954,6 +2073,22 @@
         "narrowed_wording": "Depressive symptoms (or major depression) and MCI are associated in three independent samples of different design: longitudinally in the US Health and Retirement Study (P-646), and cross-sectionally in a Chinese community sample (P-644) and in World Trade Center responders, where the association could not be separated from comorbid PTSD (P-656). Direction was tested in only one study, which found both directions at similar magnitude in two separately fitted models that cannot separate reciprocal causation from a shared common cause; the reviewed studies therefore establish neither reciprocity nor that the depression-to-MCI direction is better evidenced.",
         "file": "logs/round20/convergence_readings/VF-26.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "Depressive symptomatology and MCI are robustly and reciprocally associated across independent cohorts, designs and populations - but the depression-to-MCI direction is the better-evidenced one, and every corpus study establishing the reverse direction uses a design that cannot separate reciprocal causation from a shared common cause.",
+      "supporting_papers_pre_2026_09_30": [
+        "P-644",
+        "P-646",
+        "P-656",
+        "P-657",
+        "P-912"
+      ],
+      "evidence_count_pre_2026_09_30": 5,
+      "rejected_supporters_note_2026_09_30": "P-657: prevalence of subthreshold depression within MCI, no non-MCI comparison (round-20 source reading); P-912: depression as a predictor of progression from MCI to AD, a different question (round-20 source reading)",
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
@@ -2613,7 +2748,7 @@
     {
       "id": "VF-30",
       "triage_note_2026_09_09": "2026-09-09 gate-readiness triage: required_design relaxed review_meta_analysis->any because five supporters (P-921, P-929, P-968, P-972, P-987) are primary trials deliberately added as corroborating instances (see extension_P918_P927/extension_P928_P937 and notes); only P-914/P-916 are meta-analyses. Evidence unchanged.",
-      "statement": "Across >=4 independent MCI intervention classes (non-invasive brain stimulation, exercise, cognitive training, nutrition), pooled efficacy estimates are large but statistically fragile - built on few small trials, extreme heterogeneity (I^2 ~ 65-98%), non-interchangeable outcome scales pooled as unit-free SMDs, and biologically implausible magnitudes (up to Hedges g ~ 5.6) - so no stable, harmonised, credible effect size exists for any MCI intervention and cross-intervention rankings are not trustworthy.",
+      "statement": "Across three intervention classes (non-invasive brain stimulation, multicomponent exercise, computerised cognitive training), meta-analyses report positive pooled effects on selected cognitive outcomes, some in the moderate-to-large range (roughly SMD or Hedges g 0.8 to 1.5), but the effects are heterogeneous across domains, interventions and populations (multicomponent exercise g 0.98 for global cognition but 0.45 for executive function; computerised training in mixed MCI and dementia samples). They often rest on modest trial numbers and small individual trials, heterogeneity is substantial where reported (I2 about 63 to 93% in MCI and mixed pools), different instruments are standardised as SMDs, and the brain-stimulation syntheses share trials, so no harmonised MCI effect size emerges. The largest magnitudes (g 4.3 to 5.6) come from two-study pools in non-MCI dementia samples; the same synthesis reports a small short-term rTMS effect (g = 0.40) in mixed MCI and dementia samples, stable across sensitivity and leave-one-out analyses.",
       "supporting_papers": [
         "P-373",
         "P-461",
@@ -2858,18 +2993,32 @@
         "narrowed_wording": "In three intervention classes (non-invasive brain stimulation, multicomponent exercise, computerised cognitive training), the meta-analyses reviewed report moderate-to-large pooled effects on cognition in MCI (SMD about 0.8 to 1.5) that rest on few small trials, with substantial heterogeneity where it is reported (I2 about 63 to 93%) and different cognitive scales pooled as SMDs, so none gives a precise, harmonised MCI effect size. The brain-stimulation syntheses share trials; the largest magnitudes (g 4.3 to 5.6) come from two-study pools in non-MCI dementia samples; and one synthesis reports a stable small short-term rTMS effect (g = 0.40) in mixed MCI and dementia samples.",
         "file": "logs/round20/convergence_readings/VF-30.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "Across >=4 independent MCI intervention classes (non-invasive brain stimulation, exercise, cognitive training, nutrition), pooled efficacy estimates are large but statistically fragile - built on few small trials, extreme heterogeneity (I^2 ~ 65-98%), non-interchangeable outcome scales pooled as unit-free SMDs, and biologically implausible magnitudes (up to Hedges g ~ 5.6) - so no stable, harmonised, credible effect size exists for any MCI intervention and cross-intervention rankings are not trustworthy.",
+      "supporting_papers_pre_2026_09_30": [
+        "P-373",
+        "P-461",
+        "P-520",
+        "P-603",
+        "P-655"
+      ],
+      "evidence_count_pre_2026_09_30": 5,
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
       "id": "VF-31",
-      "statement": "VF (rescoped, group-level): REDUCED RESTING-STATE ALPHA IS A CROSS-AETIOLOGY MCI SIGNATURE IN THIS CORPUS, REPLICATED ACROSS TWO MEASUREMENT FAMILIES.\n\nSupported core: every separately-reported MCI subgroup tested in the corpus's two resting-EEG spectral-power studies shows reduced alpha versus controls irrespective of underlying disease — AD-MCI and PD-MCI (P-450, Results: \"Both AD-MCI and PD-MCI showed significantly lower alpha2 power and alpha2/alpha1 ratio than controls\") and CKDMCI-3&4, CKDMCI-H and cerebrovascular MCI (P-398, Results: \"All MCI groups showed reduced occipital alpha power versus controls\"). The same band shows reduction in a second, independent measurement family — inter-regional synchrony — when pooled across 12 M/EEG connectivity studies (P-453, Results/Key findings: temporo-parietal d=-0.26, fronto-parietal d=-0.25). P-453's constituent cohorts sit on the healthy-ageing-to-AD continuum, so it corroborates the alpha BAND and the second measurement family only; it supplies no aetiology-general evidence. Three papers, three independent datasets (Trieste hd-EEG clinic cohort; national CKD/CV EEG archive; 12-study M/EEG meta-analysis).\n\nDROPPED from the proposal (unsupported): the clause that alpha \"is the only band that survives meta-analytic pooling\" — that rests solely on P-453's '### Potential gaps or limitations' (interpretive) field; P-453's measured fields are silent on the non-alpha bands.\n\nDROPPED from the proposal (falsified by the record's own citations): the alpha-is-general / delta-theta-is-discriminating DISSOCIATION. Alpha-derived measures also separated MCI aetiologies from each other in both studies — P-398, Results: \"CKDMCI-3&4 had the lowest parietal alpha power\"; P-450, Results: PD-MCI showed \"lower alpha/theta ratio than AD-MCI and HC\". Alpha is therefore not aetiology-blind, and no exclusive dissociation is claimed.\n\nSECONDARY OBSERVATION — flagged for human follow-up, NOT established: in the two studies that contrast two MCI aetiologies inside one recording protocol, the non-AD arm carried the larger low-frequency excess (P-450, Results: PD-MCI \"showed higher theta ... than AD-MCI and HC\" — THETA ONLY; delta is an extracted feature but is never reported as a P-450 result. P-398, Results: \"the CKD-related groups showed higher delta-theta power than both healthy controls and cerebrovascular MCI\" — no significance statistic stated in source). These two contrasts are not commensurable: different non-AD aetiologies (PD, a synucleinopathy, vs CKD, metabolic/uraemic), different within-study comparators (AD-MCI vs cerebrovascular MCI), and different band definitions (theta vs a binned delta-theta). n=2 with incompatible comparators does not meet the convergence bar.\n\nSCOPE CLAUSE: group-level effect only. No supporting study reports per-subject discrimination or AUC (all three record Best AUC \"Not reported\"), so this is NOT a claim that alpha reduction classifies individual patients and NOT a claim that band power outperforms network measures (cf. VF-23). Validation tiers are V2 (P-450 single-dataset group comparison; P-453 meta-analytic pooling) and V3 (P-398 retrospective observational subgroup analysis). P-450 N=36 total (15/11/10); P-453 = 12 studies; P-398 sample size is \"Not reported in source\". No block reports nominal or FDR-adjusted p-values, so the word \"significant\" is carried on the summariser's wording alone.",
+      "statement": "At group level, MCI shows alpha-band alterations relative to controls in two measurement families: reduced upper-alpha spectral power in two small EEG studies (alpha2 and the alpha2/alpha1 ratio, with total alpha power unchanged, in P-450; alpha2 and alpha3 in P-398) and weaker alpha-band inter-regional synchrony in a meta-analysis of 12 M/EEG studies (P-453; d about -0.25). The two power studies span several aetiologies (Alzheimer's, Parkinson's, chronic kidney disease, cerebrovascular), but that breadth rests on two studies and is not itself a convergence across aetiologies. Neither measurement family establishes a generalised or diagnostically validated biomarker.",
       "supporting_papers": [
         "P-450",
         "P-398",
-        "P-453",
-        "P-890"
+        "P-453"
       ],
-      "evidence_count": 4,
+      "evidence_count": 3,
       "independence_met": "True (3 independent datasets: Trieste hd-EEG clinic cohort; national CKD/CV EEG archive; 12-study M/EEG meta-analysis)",
       "status": "confirmed",
       "review_status": "confirmed_claude_delegated_2026-08-22",
@@ -2911,6 +3060,24 @@
         "narrowed_wording": "At group level, MCI shows reduced resting upper-alpha activity relative to controls in two measurement families: lower high-frequency alpha (alpha2 and alpha3) spectral power in two small EEG studies (P-450, P-398) and weaker alpha-band inter-regional synchrony in a meta-analysis of 12 M/EEG studies (P-453, d about -0.25). The two power studies saw the reduction in MCI of several aetiologies (Alzheimer's, Parkinson's, chronic kidney disease, cerebrovascular), but that breadth rests on those two studies alone and is not itself a convergence; total alpha power was not reduced in P-450.",
         "file": "logs/round20/convergence_readings/VF-31.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_09_30": "VF (rescoped, group-level): REDUCED RESTING-STATE ALPHA IS A CROSS-AETIOLOGY MCI SIGNATURE IN THIS CORPUS, REPLICATED ACROSS TWO MEASUREMENT FAMILIES.\n\nSupported core: every separately-reported MCI subgroup tested in the corpus's two resting-EEG spectral-power studies shows reduced alpha versus controls irrespective of underlying disease — AD-MCI and PD-MCI (P-450, Results: \"Both AD-MCI and PD-MCI showed significantly lower alpha2 power and alpha2/alpha1 ratio than controls\") and CKDMCI-3&4, CKDMCI-H and cerebrovascular MCI (P-398, Results: \"All MCI groups showed reduced occipital alpha power versus controls\"). The same band shows reduction in a second, independent measurement family — inter-regional synchrony — when pooled across 12 M/EEG connectivity studies (P-453, Results/Key findings: temporo-parietal d=-0.26, fronto-parietal d=-0.25). P-453's constituent cohorts sit on the healthy-ageing-to-AD continuum, so it corroborates the alpha BAND and the second measurement family only; it supplies no aetiology-general evidence. Three papers, three independent datasets (Trieste hd-EEG clinic cohort; national CKD/CV EEG archive; 12-study M/EEG meta-analysis).\n\nDROPPED from the proposal (unsupported): the clause that alpha \"is the only band that survives meta-analytic pooling\" — that rests solely on P-453's '### Potential gaps or limitations' (interpretive) field; P-453's measured fields are silent on the non-alpha bands.\n\nDROPPED from the proposal (falsified by the record's own citations): the alpha-is-general / delta-theta-is-discriminating DISSOCIATION. Alpha-derived measures also separated MCI aetiologies from each other in both studies — P-398, Results: \"CKDMCI-3&4 had the lowest parietal alpha power\"; P-450, Results: PD-MCI showed \"lower alpha/theta ratio than AD-MCI and HC\". Alpha is therefore not aetiology-blind, and no exclusive dissociation is claimed.\n\nSECONDARY OBSERVATION — flagged for human follow-up, NOT established: in the two studies that contrast two MCI aetiologies inside one recording protocol, the non-AD arm carried the larger low-frequency excess (P-450, Results: PD-MCI \"showed higher theta ... than AD-MCI and HC\" — THETA ONLY; delta is an extracted feature but is never reported as a P-450 result. P-398, Results: \"the CKD-related groups showed higher delta-theta power than both healthy controls and cerebrovascular MCI\" — no significance statistic stated in source). These two contrasts are not commensurable: different non-AD aetiologies (PD, a synucleinopathy, vs CKD, metabolic/uraemic), different within-study comparators (AD-MCI vs cerebrovascular MCI), and different band definitions (theta vs a binned delta-theta). n=2 with incompatible comparators does not meet the convergence bar.\n\nSCOPE CLAUSE: group-level effect only. No supporting study reports per-subject discrimination or AUC (all three record Best AUC \"Not reported\"), so this is NOT a claim that alpha reduction classifies individual patients and NOT a claim that band power outperforms network measures (cf. VF-23). Validation tiers are V2 (P-450 single-dataset group comparison; P-453 meta-analytic pooling) and V3 (P-398 retrospective observational subgroup analysis). P-450 N=36 total (15/11/10); P-453 = 12 studies; P-398 sample size is \"Not reported in source\". No block reports nominal or FDR-adjusted p-values, so the word \"significant\" is carried on the summariser's wording alone.",
+      "supporting_papers_pre_2026_09_30": [
+        "P-450",
+        "P-398",
+        "P-453",
+        "P-890"
+      ],
+      "evidence_count_pre_2026_09_30": 4,
+      "rejected_supporters": [
+        "P-890"
+      ],
+      "rejected_supporters_note_2026_09_30": "P-890: no healthy-control group; correlation within Parkinson's MCI (round-20 source reading)",
+      "operator_decision_2026_09_30": {
+        "date": "2026-09-30",
+        "by": "operator",
+        "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
+        "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
       }
     },
     {
