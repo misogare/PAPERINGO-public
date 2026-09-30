@@ -57,4 +57,4 @@ records and logged; the record history is kept.
 
 Code: MIT (`LICENSE`). Data, configuration, logs and checklists: CC BY 4.0 (`LICENSE-CONTENT.md`).
 
-Archived at Zenodo: https://doi.org/10.5281/zenodo.23008250 (the first release, which the synthesis refers to); every version: https://doi.org/10.5281/zenodo.23008249. Citation metadata is in `CITATION.cff`.
+Archived at Zenodo: https://doi.org/10.5281/zenodo.23050081 (version 1.1, which the synthesis refers to; version 1.0 is https://doi.org/10.5281/zenodo.23008250); every version: https://doi.org/10.5281/zenodo.23008249. Citation metadata is in `CITATION.cff`.
