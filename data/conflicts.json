@@ -698,6 +698,12 @@
         "rule": "logs/round23/DISCREPANCY_BRIEF.md",
         "file": "logs/round23/conf/C-07.json",
         "review_status": "adopted on the operator's decision of 2026-09-30"
+      },
+      "label_review_2026_10_05": {
+        "decision": "resolution_status kept as documented_incommensurability",
+        "by": "assistant (a language model), under the operator's delegation of 2026-10-05",
+        "question": "one of the two reviews of the check sheet argued for false_positive",
+        "grounds": "The round-20 reading's grounds are the different endpoint horizon (3 years vs up to 8 years) and the different PET and cognitive measures. Both papers' printed numbers put cognition at or above PET alone, but P-88 itself claims its radiomics signature was superior to clinical scales, a verbal ordering claim its own table does not bear out; so the record does carry an apparent disagreement, and the two claims concern different quantities. Kept, consistent with the reading the operator adopted on 2026-09-30."
       }
     },
     {
@@ -3203,8 +3209,8 @@
       "task_equal": "Yes",
       "dataset_equal": "Yes",
       "validation_comparable": "Yes",
-      "modality_family_equal": "Yes",
-      "modality_family": "structural_mri",
+      "modality_family_equal": "No",
+      "modality_family": "multimodal|structural_mri",
       "resolution": "Rejected — false positive",
       "gap_magnitude": 0.104,
       "resolution_evidence_papers": [
@@ -3291,6 +3297,19 @@
         "rule": "logs/round23/DISCREPANCY_BRIEF.md",
         "file": "logs/round23/conf/C-65.json",
         "review_status": "adopted on the operator's decision of 2026-09-30"
+      },
+      "modality_family_pre_2026_10_05": "structural_mri",
+      "modality_family_equal_pre_2026_10_05": "Yes",
+      "record_correction_2026_10_05": {
+        "fields": [
+          "modality_family",
+          "modality_family_equal"
+        ],
+        "basis": "record_defects of the round-20 source reading (logs/round20/conflict_readings/C-65.json), raised again in the two reviews of the check sheet of 2026-10-05 (logs/same_dataset_reasons_2026-10-05/REVIEW_RESPONSE.md)",
+        "approved": "operator's instruction of 2026-10-05",
+        "applied_by": "assistant (a language model), at the operator's instruction",
+        "outcome_unchanged": "resolution_status and status are not changed by this correction",
+        "note": "P-23's model uses structural MRI, FDG-PET and CSF biomarkers; P-3 uses structural MRI only."
       }
     },
     {
@@ -4329,8 +4348,8 @@
       "task_equal": "Yes",
       "dataset_equal": "Yes",
       "validation_comparable": "Yes",
-      "modality_family_equal": "Yes",
-      "modality_family": "LanguageBehavior",
+      "modality_family_equal": "No",
+      "modality_family": "PET|structural_mri",
       "resolution": "Rejected — false positive",
       "gap_magnitude": 0.08,
       "resolution_evidence_papers": [
@@ -4400,6 +4419,19 @@
         "rule": "logs/round23/DISCREPANCY_BRIEF.md",
         "file": "logs/round23/conf/C-79.json",
         "review_status": "adopted on the operator's decision of 2026-09-30"
+      },
+      "modality_family_pre_2026_10_05": "LanguageBehavior",
+      "modality_family_equal_pre_2026_10_05": "Yes",
+      "record_correction_2026_10_05": {
+        "fields": [
+          "modality_family",
+          "modality_family_equal"
+        ],
+        "basis": "record_defects of the round-20 source reading (logs/round20/conflict_readings/C-79.json), raised again in the two reviews of the check sheet of 2026-10-05 (logs/same_dataset_reasons_2026-10-05/REVIEW_RESPONSE.md)",
+        "approved": "operator's instruction of 2026-10-05",
+        "applied_by": "assistant (a language model), at the operator's instruction",
+        "outcome_unchanged": "resolution_status and status are not changed by this correction",
+        "note": "P-81 is FDG-PET plus cognitive scores; P-8 is structural MRI plus neurocognitive metadata."
       }
     },
     {
@@ -6326,6 +6358,12 @@
         "rule": "logs/round23/DISCREPANCY_BRIEF.md",
         "file": "logs/round23/conf/C-116.json",
         "review_status": "adopted on the operator's decision of 2026-09-30"
+      },
+      "label_review_2026_10_05": {
+        "decision": "resolution_status kept as documented_incommensurability",
+        "by": "assistant (a language model), under the operator's delegation of 2026-10-05",
+        "question": "one of the two reviews of the check sheet argued for false_positive",
+        "grounds": "The record compares P-78's four-scan headline (90.7%) with P-182's one-scan figure (75.85%), two different input representations and so two different quantities; the record did not misstate either paper. Pairs with the same structure (C-94, C-142) are documented incommensurability, so the label is kept for consistency; that the one-scan figures agree (76.3% vs 75.85%) is recorded as the closing figure."
       }
     },
     {
@@ -8152,13 +8190,13 @@
       "id": "C-153",
       "paper_a": "P-218",
       "paper_b": "P-65",
-      "claim_a": "P-218: AUC 92.3 on T2",
+      "claim_a": "P-218: AUC 92.3 on T3 (three-class AD/MCI/NC diagnosis; no conversion endpoint)",
       "claim_b": "P-65: AUC 84.01% on T2",
-      "task_equal": "Yes",
+      "task_equal": "No",
       "dataset_equal": "Yes",
       "validation_comparable": "Yes",
-      "modality_family_equal": "Yes",
-      "modality_family": "structural_mri",
+      "modality_family_equal": "No",
+      "modality_family": "PET|structural_mri",
       "genuine": false,
       "resolution": "Rejected — false positive",
       "gap_magnitude": 0.083,
@@ -8228,6 +8266,23 @@
         "rule": "logs/round23/DISCREPANCY_BRIEF.md",
         "file": "logs/round23/conf/C-153.json",
         "review_status": "adopted on the operator's decision of 2026-09-30"
+      },
+      "claim_a_pre_2026_10_05": "P-218: AUC 92.3 on T2",
+      "task_equal_pre_2026_10_05": "Yes",
+      "modality_family_pre_2026_10_05": "structural_mri",
+      "modality_family_equal_pre_2026_10_05": "Yes",
+      "record_correction_2026_10_05": {
+        "fields": [
+          "claim_a",
+          "task_equal",
+          "modality_family",
+          "modality_family_equal"
+        ],
+        "basis": "record_defects of the round-20 source reading (logs/round20/conflict_readings/C-153.json), raised again in the two reviews of the check sheet of 2026-10-05 (logs/same_dataset_reasons_2026-10-05/REVIEW_RESPONSE.md)",
+        "approved": "operator's instruction of 2026-10-05",
+        "applied_by": "assistant (a language model), at the operator's instruction",
+        "outcome_unchanged": "resolution_status and status are not changed by this correction",
+        "note": "P-218 is a three-class diagnostic study using FDG-PET only; P-65 predicts conversion from structural MRI."
       }
     },
     {
@@ -11807,13 +11862,13 @@
       "id": "C-197",
       "paper_a": "P-72",
       "paper_b": "P-182",
-      "claim_a": "P-72: 94.61% AD on T2",
+      "claim_a": "P-72: Acc 94.61 for AD vs NC (a diagnostic contrast, not T2); its T2 (sMCI vs pMCI) accuracy is 77.19%",
       "claim_b": "P-182: Acc 75.85 on T2",
       "task_equal": "Yes",
       "dataset_equal": "Yes",
       "validation_comparable": "Yes",
-      "modality_family_equal": "Yes",
-      "modality_family": "structural_mri",
+      "modality_family_equal": "No",
+      "modality_family": "multimodal|structural_mri",
       "genuine": false,
       "resolution": "Rejected — false positive",
       "gap_magnitude": 0.188,
@@ -11910,6 +11965,21 @@
         "rule": "logs/round23/DISCREPANCY_BRIEF.md",
         "file": "logs/round23/conf/C-197.json",
         "review_status": "adopted on the operator's decision of 2026-09-30"
+      },
+      "claim_a_pre_2026_10_05": "P-72: 94.61% AD on T2",
+      "modality_family_pre_2026_10_05": "structural_mri",
+      "modality_family_equal_pre_2026_10_05": "Yes",
+      "record_correction_2026_10_05": {
+        "fields": [
+          "claim_a",
+          "modality_family",
+          "modality_family_equal"
+        ],
+        "basis": "record_defects of the round-20 source reading (logs/round20/conflict_readings/C-197.json), raised again in the two reviews of the check sheet of 2026-10-05 (logs/same_dataset_reasons_2026-10-05/REVIEW_RESPONSE.md)",
+        "approved": "operator's instruction of 2026-10-05",
+        "applied_by": "assistant (a language model), at the operator's instruction",
+        "outcome_unchanged": "resolution_status and status are not changed by this correction",
+        "note": "gap_magnitude 0.188 was computed across two different classification tasks; on the shared T2 task the papers agree (77.19% vs 75.85%)."
       }
     },
     {

@@ -19,6 +19,7 @@ these identifiers can be looked up here directly.
 |---|---|
 | `data/full_paper_registry.csv` | The coded study registry: one row per study, with task, data domain, design, sample size, validation tier, best reported metric, ADNI dependence and duplicate/out-of-scope flags |
 | `data/study_index.csv` | Study identifier, title, DOI and publication year for every registry row |
+| `data/taxonomy_placements.csv` | Where each included study sits in the top-down taxonomy of the field: category (7), research area (25 with studies) and subtopic (724 with studies); a study can sit in more than one place. With the registry's data-domain codes it reproduces the top-down/bottom-up agreement on category (1,023 of the 1,304 studies placed in a single category) |
 | `data/conflicts.json`, `consensus.json`, `complementary.json`, `invalidated.json`, `gaps.json` | The five claim ledgers, each record with its status, supporting studies, recorded reasons and adjudication history (including operator review statements) |
 | `config/` | Extraction schema, normalisation rules and controlled vocabularies, the registry of prior beliefs, the non-independence register and the rejection-reason taxonomy |
 | `logs/human_adjudication_*`, `logs/adjudication_criteria_2026-09-19.md` | The blinded self-audit of the adjudication: stratified worksheet, key, per-item notes and scoring report |
@@ -26,7 +27,7 @@ these identifiers can be looked up here directly.
 | `logs/gap108_recheck_2026-09-22.md` | The record-by-record re-check of the open-gap backlog |
 | `logs/round18/` | Source-document adjudication of the open contradiction candidates (verdicts, grounds, verbatim quotations, challenges, independent second reading), the blinded registry coding audit and the targeted external-validation check |
 | `logs/round19/` | The corpus-wide search for contradictions (extracted directional findings, candidate pairs, screening and full-text verdicts) |
-| `logs/appraisal_worksheet.csv` | Appraisal-relevant characteristics of the cited studies, with the risk-of-bias judgment columns left blank for a human appraiser |
+| `logs/appraisal_worksheet.csv`, `logs/rob_appraisal/` | Appraisal-relevant characteristics and risk-of-bias ratings of the cited studies, and the per-study appraisal records (tool, answers to each signalling question with quotations, blinded second readings) |
 | `checklists/` | The PRISMA 2020 and SWiM reporting checklists, with where each item is reported in the synthesis |
 | `scripts/` | The extraction and relational-analysis pipeline, the ledger inclusion rules, the lints, the audit scoring tools and the script that regenerates every registry-derived number |
 
