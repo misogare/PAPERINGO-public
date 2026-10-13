@@ -508,18 +508,17 @@
     },
     {
       "id": "VF-09",
-      "statement": "Population-specific MCI prediction is feasible across diverse clinical contexts (CHF, T2DM, Parkinson's, occupational/miners), but the critical comparison against general-population models has not been performed.",
+      "statement": "Population-specific MCI prediction is feasible across diverse clinical contexts (chronic heart failure, Parkinson's disease, occupational/miners), but the critical comparison against general-population models has not been performed.",
       "supporting_papers": [
         "P-19",
         "P-35",
-        "P-46",
         "P-91"
       ],
       "independence_met": true,
       "method_families": 2,
       "dataset_families": 3,
       "notes": "CHF + PD + occupational + T2DM; disease-specific predictors (IFOF, psychosocial adaptation) not generalisable across diseases",
-      "evidence_count": 4,
+      "evidence_count": 3,
       "required_modality_family": "any",
       "required_design": "any",
       "min_task_hits": 3,
@@ -539,6 +538,29 @@
         "narrowed_wording": "",
         "file": "logs/round20/convergence_readings/VF-09.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_10_13": "Population-specific MCI prediction is feasible across diverse clinical contexts (CHF, T2DM, Parkinson's, occupational/miners), but the critical comparison against general-population models has not been performed.",
+      "supporting_papers_pre_2026_10_13": [
+        "P-19",
+        "P-35",
+        "P-46",
+        "P-91"
+      ],
+      "evidence_count_pre_2026_10_13": 4,
+      "family_counts_pre_2026_10_13": {
+        "dataset_families": 3,
+        "method_families": 2,
+        "independence_met": true
+      },
+      "rejected_supporters": [
+        "P-46"
+      ],
+      "rejected_supporters_note_2026_10_13": "P-46: a 27-patient comparison of EEG phase synchronisation between amnesic MCI and controls in type 2 diabetes; it fits no predictive model and reports no discrimination, so it cannot support a statement about the feasibility of population-specific prediction (literature_review.md Section 4.5 had said so while the record still listed it). Removed on the adjudicator's decision of 2026-10-13; type 2 diabetes dropped from the statement's contexts. Family counts after the removal: three distinct cohorts (occupational dust-exposure, chronic heart failure, Parkinson's disease), two method families (SHAP-based machine-learning risk models in P-19 and P-35; diffusion-MRI white-matter features with a classifier in P-91).",
+      "operator_decision_2026_10_13": {
+        "date": "2026-10-13",
+        "by": "operator",
+        "statement": "Remove P-46 from the supporter list and drop type 2 diabetes from the statement's contexts, as proposed by the open check in thesis_skeleton.md and the resolution memo of 2026-10-13",
+        "scope": "statement, supporting_papers, evidence_count, rejected_supporters and the family counts of this record"
       }
     },
     {
@@ -2490,7 +2512,7 @@
     },
     {
       "id": "VF-29",
-      "statement": "How MCI status and its correlates are ascertained is a first-order determinant of the reported estimate, not a second-order nuisance: within the same condition, the measurement source and the case definition move prevalence estimates by a factor of two or more, and this dominates every substantive moderator tested alongside it.",
+      "statement": "How MCI status and its correlates are ascertained is a first-order determinant of the reported estimate, not a second-order nuisance: measurement source and case definition move estimates of MCI frequency by anything from a few percentage points within a single sample to several-fold between studies that also differ in population. Ascertainment is a major moderator alongside others and is not shown to outweigh every other: geographical region was as strong a moderator in one synthesis (P-654) and referral source a larger one in another (P-657).",
       "supporting_papers": [
         "P-654",
         "P-657",
@@ -2743,12 +2765,19 @@
         "narrowed_wording": "",
         "file": "logs/round20/convergence_readings/VF-29.json",
         "review_status": "pending operator review; statement and supporter list unchanged"
+      },
+      "statement_pre_2026_10_13": "How MCI status and its correlates are ascertained is a first-order determinant of the reported estimate, not a second-order nuisance: within the same condition, the measurement source and the case definition move prevalence estimates by a factor of two or more, and this dominates every substantive moderator tested alongside it.",
+      "operator_decision_2026_10_13": {
+        "date": "2026-10-13",
+        "by": "operator",
+        "statement": "Narrow the statement to the range the supporters show and drop the clause that ascertainment dominates every substantive moderator, which P-654 (region) and P-657 (referral source) do not support; the form adopted is the one literature_review.md Table A1 and Section 4.7 have carried",
+        "scope": "statement of this record; supporters, family counts and admission unchanged"
       }
     },
     {
       "id": "VF-30",
       "triage_note_2026_09_09": "2026-09-09 gate-readiness triage: required_design relaxed review_meta_analysis->any because five supporters (P-921, P-929, P-968, P-972, P-987) are primary trials deliberately added as corroborating instances (see extension_P918_P927/extension_P928_P937 and notes); only P-914/P-916 are meta-analyses. Evidence unchanged.",
-      "statement": "Across three intervention classes (non-invasive brain stimulation, multicomponent exercise, computerised cognitive training), meta-analyses report positive pooled effects on selected cognitive outcomes, some in the moderate-to-large range (roughly SMD or Hedges g 0.8 to 1.5), but the effects are heterogeneous across domains, interventions and populations (multicomponent exercise g 0.98 for global cognition but 0.45 for executive function; computerised training in mixed MCI and dementia samples). They often rest on modest trial numbers and small individual trials, heterogeneity is substantial where reported (I2 about 63 to 93% in MCI and mixed pools), different instruments are standardised as SMDs, and the brain-stimulation syntheses share trials, so no harmonised MCI effect size emerges. The largest magnitudes (g 4.3 to 5.6) come from two-study pools in non-MCI dementia samples; the same synthesis reports a small short-term rTMS effect (g = 0.40) in mixed MCI and dementia samples, stable across sensitivity and leave-one-out analyses.",
+      "statement": "Across three intervention classes (non-invasive brain stimulation, multicomponent exercise, computerised cognitive training), meta-analyses report positive pooled effects on selected cognitive outcomes, some in the moderate-to-large range (roughly SMD or Hedges g 0.8 to 1.5), but the effects are heterogeneous across domains, interventions and populations (multicomponent exercise g 0.98 for global cognition but 0.45 for executive function; computerised training in mixed MCI and dementia samples). They often rest on modest trial numbers and small individual trials, heterogeneity is substantial where reported (for the cited outcomes, I2 of 65% and 71% for rTMS in MCI, 85% for exercise in MCI, 92% and 94% for tDCS in pools mixing MCI with dementia, and 0% in the two-study tDCS pool), different instruments are standardised as SMDs, and the brain-stimulation syntheses share trials, so no harmonised MCI effect size emerges. The largest magnitudes (g 4.3 to 5.6) come from two-study pools in a synthesis spanning MCI and dementia (P-373), while other large estimates (SMD 1.52 in P-461, g 0.98 in P-603) come from MCI-only syntheses, so magnitudes are not comparable across intervention classes or synthesis designs; the same synthesis reports a small short-term rTMS effect (g = 0.40) in mixed MCI and dementia samples, stable across sensitivity and leave-one-out analyses.",
       "supporting_papers": [
         "P-373",
         "P-461",
@@ -3008,6 +3037,13 @@
         "by": "operator",
         "statement": "Adopt the audited narrowed wordings for the ten remaining convergences",
         "scope": "statement and supporter list of this record. Where the audit dropped a detail because the summary it read did not show it, the detail was kept if the round-20 source reading verified it (logs/round20/convergence_readings)"
+      },
+      "statement_pre_2026_10_13": "Across three intervention classes (non-invasive brain stimulation, multicomponent exercise, computerised cognitive training), meta-analyses report positive pooled effects on selected cognitive outcomes, some in the moderate-to-large range (roughly SMD or Hedges g 0.8 to 1.5), but the effects are heterogeneous across domains, interventions and populations (multicomponent exercise g 0.98 for global cognition but 0.45 for executive function; computerised training in mixed MCI and dementia samples). They often rest on modest trial numbers and small individual trials, heterogeneity is substantial where reported (I2 about 63 to 93% in MCI and mixed pools), different instruments are standardised as SMDs, and the brain-stimulation syntheses share trials, so no harmonised MCI effect size emerges. The largest magnitudes (g 4.3 to 5.6) come from two-study pools in non-MCI dementia samples; the same synthesis reports a small short-term rTMS effect (g = 0.40) in mixed MCI and dementia samples, stable across sensitivity and leave-one-out analyses.",
+      "operator_decision_2026_10_13": {
+        "date": "2026-10-13",
+        "by": "operator",
+        "statement": "Correct the population attached to the largest pooled magnitudes (a synthesis spanning MCI and dementia, not non-MCI samples; the other large estimates are MCI-only) and replace the untraceable I2 range with the values the cited syntheses report (master Table D1)",
+        "scope": "statement of this record; supporters, family counts and admission unchanged"
       }
     },
     {
