@@ -15190,7 +15190,7 @@
     "genuine": false,
     "resolution_status": "false_positive",
     "resolution_note": "== conflict P-709 P-1013\n  pass Task_Type: T4\n  pass study_design_type: 'cross_sectional'\n  FAIL task_substage: 'fall_risk_classification' vs 'fall_risk_prediction_mci'\n  FAIL population_specificity: 'MCI' vs 'high_fall_risk'\n  FAIL modality_subtype: 'clinical_motor_scales' vs 'wearable_sensors'\n  WARN primary_metric_type differs (AUC_ROC vs Accuracy) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  [Best_Metric line omitted for length]\n  Validation:  P-709='V2'  P-1013='V2'\n  => FAIL - do not propose as genuine\n== conflict P-709 P-695\n  pass Task_Type: T4\n  FAIL study_design_type: 'cross_sectional' vs 'longitudinal_2point'\n  FAIL task_substage: 'fall_risk_classification' vs 'falls_discrimination'\n  FAIL population_specificity: 'MCI' vs 'mci_and_mild_alzheimer'\n  FAIL modality_subtype: 'clinical_motor_scales' vs 'gait'\n  WARN primary_metric_type differs (AUC_ROC vs odds_ratio) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  [Best_Metric line omitted for length]\n  Validation:  P-709='V2'  P-695='V2'\n  => FAIL - do not propose as genuine\n\n[Also run: P-695 x P-1013 FAIL on study_design_type, task_substage, population_specificity and modality_subtype, with the same METRIC_TYPE_MISMATCH warning (odds_ratio vs Accuracy).]",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "human_defer_note_2026_09_09": "DEFERRED - record incomplete (truncated mid-sentence; resolution_note/gate output, verification, evidence_quotes, residual_risk, dedup_note, fp_codes absent; partially leaked via verification notes). Visible analysis sound: P-709's AUC 0.825 is agreement with a misclassified label (retrospectively recalled falls, 15.11 s cut-off derived and evaluated in the same 46 MCI participants); P-1013's figures are not falls and not MCI-vs-control (~54-year control-age gap). Pre-emptive filing justified in principle. Supply the complete record before final disposition.",
     "verification": {
@@ -15368,7 +15368,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status false_positive; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-243",
@@ -16649,7 +16651,7 @@
     "genuine": false,
     "resolution_status": "documented_incommensurability",
     "resolution_note": "== conflict P-1216 P-1215\n  FAIL Task_Type: T2 vs T5\n  FAIL study_design_type: 'survival_analysis' vs 'review_meta_analysis'\n  skip task_substage: not reported on one side ('MCI_to_AD' / 'not reported') - lint cannot block, but a human gate can. State why they are comparable.\n  pass population_specificity: 'general'\n  FAIL modality_subtype: 'PET' vs 'review_no_primary_data'\n  WARN primary_metric_type differs (Hazard_Ratio vs descriptive) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-1216='Hazard ratio (time-varying Cox) for MCI-to-AD progression; annual cognitive change (LME)'  P-1215='Cognitive improvement and conversion-rate differences (ADAS-cog change, MCI-to-AD conversion %)'\n  Validation:  P-1216='V1'  P-1215='V2'\n  => FAIL - do not propose as genuine",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "human_defer_note_2026_09_09": "DEFERRED - record truncated mid-evidence-quote (quote 9 onward; residual_risk partially leaked, dedup_note and fp_codes absent). Visible analysis sound: ChEI vs precursor (different agent classes); IPTW time-varying Cox HR 1.77 (A-beta+ stratum 2.18) with unresolved indication bias vs 8.2%/26.1% conversion percentages (100-patient Russian trial); P-1215 sponsor-funded + post-publication correction + overclaim + no primary data. Operational guard endorsed in non-causal form: corpus may NOT report cholinergic drugs delay MCI-to-AD conversion, nor (from P-1216) show harm. Supply complete record + G-89/G-CAND-333 dedup before disposition.",
     "verification": {
@@ -16835,7 +16837,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status documented_incommensurability; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-254",
@@ -16849,7 +16853,7 @@
     "genuine": false,
     "resolution_status": "documented_incommensurability",
     "resolution_note": "== conflict P-999 P-1157\n  pass Task_Type: T2\n  pass study_design_type: 'survival_analysis'\n  pass task_substage: 'MCI_to_AD'\n  FAIL population_specificity: 'other_disease_specific' vs 'general'\n  FAIL modality_subtype: 'clinical_EHR' vs 'nomogram_clinical_scores'\n  Best_Metric: P-999='aHR 0.89-0.94 for selected antihypertensive-metformin/statin combinations'  P-1157='Adjusted HR 0.49 (95% CI 0.31-0.78) for dementia progression with polypharmacy'\n  Validation:  P-999='V2'  P-1157='V2'\n  => FAIL - do not propose as genuine",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -17050,7 +17054,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status documented_incommensurability; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-255",
@@ -17064,7 +17070,7 @@
     "genuine": false,
     "resolution_status": "false_positive",
     "resolution_note": "== conflict P-1206 P-1212\n  pass Task_Type: T1\n  pass study_design_type: 'cross_sectional'\n  pass task_substage: 'MCI_vs_HC'\n  pass population_specificity: 'T2DM'\n  pass modality_subtype: 'plasma_biomarkers'\n  WARN primary_metric_type differs (AUC_ROC vs C_index) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-1206='AUC (ROC) of Gal-3+age+education nomogram'  P-1212='C-index (nomogram discrimination)'\n  Validation:  P-1206='V2'  P-1212='V2'\n  => PASS - eligible to propose as a genuine-conflict candidate",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -17241,7 +17247,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status false_positive; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-256",
@@ -17255,7 +17263,7 @@
     "genuine": false,
     "resolution_status": "false_positive",
     "resolution_note": "== conflict P-1000 P-1093\n  pass Task_Type: T4\n  pass study_design_type: 'longitudinal_multipoint'\n  FAIL task_substage: 'MCI_to_AD' vs 'progression_QoL_cost_association'\n  FAIL population_specificity: 'general' vs 'general_early_AD'\n  FAIL modality_subtype: 'population_cohort_epidemiology' vs 'health_economic_model'\n  WARN primary_metric_type differs (not reported vs effect_size) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-1000='MMSE/CFI decline and monthly societal costs; no classification metric'  P-1093='30% slowing saves ~1.5 BASQID pts / 315 h / $2,638 (MCI); ~2.0 pts / 579 h / $3,974 (MILD AD)'\n  Validation:  P-1000='V2'  P-1093='V3'\n  => FAIL - do not propose as genuine",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -17451,7 +17459,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status false_positive; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-257",
@@ -17465,7 +17475,7 @@
     "genuine": false,
     "resolution_status": "false_positive",
     "resolution_note": "== conflict P-698 P-699\n  pass Task_Type: T6\n  pass study_design_type: 'review_meta_analysis'\n  pass task_substage: 'intervention_efficacy'\n  FAIL population_specificity: 'MCI' vs 'MCI, dementia'\n  pass modality_subtype: 'meta_analysis_pooled'\n  Best_Metric: P-698='SMD 0.76 for global cognitive function (95% CI 0.37-1.14 in the abstract but 0.37-0.91 in the Results, I2 83%); sleep SMD -2.07 (95% CI -6.76 to 2.62), not significant.'  P-699='Pooled MD 5.09 on the Berg Balance Scale (95% CI 2.62-7.57, P<0.0001, I2 0%); headline cognitive estimate MoCA MD 2.12 (95% CI 0.53-3.70, P=0.009) at I2 98-99%.'\n  Validation:  P-698='V2'  P-699='V2'\n  => FAIL - do not propose as genuine\n\n== cf P-698 P-699\n  Task_Type: P-698='T6'  P-699='T6'\n  study_design_type: P-698='review_meta_analysis'  P-699='review_meta_analysis'\n  task_substage: P-698='intervention_efficacy'  P-699='intervention_efficacy'\n  population_specificity: P-698='MCI'  P-699='MCI, dementia'\n  modality_subtype: P-698='meta_analysis_pooled'  P-699='meta_analysis_pooled'\n  => PASS",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -17657,7 +17667,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status false_positive; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-258",
@@ -17671,7 +17683,7 @@
     "genuine": false,
     "resolution_status": "false_positive",
     "resolution_note": "== conflict P-680 P-683\n  pass Task_Type: T6\n  pass study_design_type: 'review_meta_analysis'\n  pass task_substage: 'intervention_efficacy'\n  pass population_specificity: 'general'\n  pass modality_subtype: 'meta_analysis_pooled'\n  Best_Metric: P-680='SMD 1.165 (95% CI 0.741-1.589, Z=5.389, p<0.001) for the global effect of exercise on cognition, I2 88.045%, prediction interval -0.747 to 3.077 (includes zero); TNF-alpha SMD -0.475 (-0.817 to -0.134, p=0.006, I2 0%, df=2)'  P-683='Hedges g 1.2 (95% CI 0.47-1.94) for global cognition with aerobic exercise with music vs control, resting on k=2 trials (n=176); aerobic exercise without music g 0.48 (0.18-0.79, 11 trials) and dance g 0.55 (0.13-0.96, 6 trials)'\n  Validation:  P-680='V2'  P-683='V2'\n  => PASS - eligible to propose as a genuine-conflict candidate\n\n== cf P-680 P-683\n  Task_Type: P-680='T6'  P-683='T6'\n  study_design_type: P-680='review_meta_analysis'  P-683='review_meta_analysis'\n  task_substage: P-680='intervention_efficacy'  P-683='intervention_efficacy'\n  population_specificity: P-680='general'  P-683='general'\n  modality_subtype: P-680='meta_analysis_pooled'  P-683='meta_analysis_pooled'\n  => PASS",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -17898,7 +17910,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status false_positive; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-259",
@@ -17914,7 +17928,7 @@
     "genuine": false,
     "resolution_status": "documented_incommensurability",
     "resolution_note": "== conflict P-845 P-848\n  pass Task_Type: T6\n  pass study_design_type: 'review_meta_analysis'\n  skip task_substage: not reported on one side ('not reported' / 'not reported') - lint cannot block, but a human gate can. State why they are comparable.\n  pass population_specificity: 'general'\n  skip modality_subtype: not reported on one side ('not reported' / 'not reported') - lint cannot block, but a human gate can. State why they are comparable.\n  WARN primary_metric_type differs (not reported vs effect_size) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-845='NR'  P-848='SMD -1.70 (95% CI -3.12 to -0.29; resistance exercise vs active control conditions, primary NPS outcome)'\n  Validation:  P-845='V2'  P-848='V2'\n  => PASS - eligible to propose as a genuine-conflict candidate\n\n== conflict P-848 P-1131\n  pass Task_Type: T6\n  pass study_design_type: 'review_meta_analysis'\n  skip task_substage: not reported on one side ('not reported' / 'not reported') - lint cannot block, but a human gate can. State why they are comparable.\n  pass population_specificity: 'general'\n  skip modality_subtype: not reported on one side ('not reported' / 'review_no_primary_data') - lint cannot block, but a human gate can. State why they are comparable.\n  WARN primary_metric_type differs (effect_size vs descriptive) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-848='SMD -1.70 (95% CI -3.12 to -0.29; resistance exercise vs active control conditions, p",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -18092,7 +18106,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status documented_incommensurability; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-260",
@@ -18106,7 +18122,7 @@
     "genuine": false,
     "resolution_status": "documented_incommensurability",
     "resolution_note": "== conflict P-1225 P-1231\n  FAIL Task_Type: T1 vs T6\n  FAIL study_design_type: 'cross_sectional' vs 'review_meta_analysis'\n  skip task_substage: not reported on one side ('not reported' / 'not reported') - lint cannot block, but a human gate can. State why they are comparable.\n  pass population_specificity: 'general'\n  FAIL modality_subtype: 'plasma_biomarkers' vs 'blood_biomarkers'\n  WARN primary_metric_type differs (AUC_ROC vs effect_size) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-1225='AUC 0.910 (plasma p-tau181 discriminating AP+ vs AP-)'  P-1231='Ratio-of-means effect sizes and diagnostic AUC ranges (P-tau217 AUC 0.97-0.98)'\n  Validation:  P-1225='V1'  P-1231='V2'\n  => FAIL - do not propose as genuine",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -18290,7 +18306,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status documented_incommensurability; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-261",
@@ -18304,7 +18322,7 @@
     "genuine": false,
     "resolution_status": "documented_incommensurability",
     "resolution_note": "== conflict P-824 P-981\n  pass Task_Type: T4\n  FAIL study_design_type: 'survival_analysis' vs 'longitudinal_multipoint'\n  FAIL task_substage: 'NC_to_MCI' vs 'incident_mci_risk_score'\n  FAIL population_specificity: 'general' vs 'china_beijing_community_50_80'\n  skip modality_subtype: not reported on one side ('not reported' / 'population_cohort_epidemiology') - lint cannot block, but a human gate can. State why they are comparable.\n  WARN primary_metric_type differs (AUC_ROC vs AUC) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Best_Metric: P-824='AUC 0.823'  P-981='AUC 0.785 (RS model 3, incident-MCI prediction); RS1/RS2 0.64-0.70'\n  Validation:  P-824='V4'  P-981='V2'\n  => FAIL - do not propose as genuine\n\n== cf P-824 P-981\n  Task_Type: P-824='T4'  P-981='T4'\n  study_design_type: P-824='survival_analysis'  P-981='longitudinal_multipoint'\n  task_substage: P-824='NC_to_MCI'  P-981='incident_mci_risk_score'\n  population_specificity: P-824='general'  P-981='china_beijing_community_50_80'\n  modality_subtype: P-824='not reported'  P-981='population_cohort_epidemiology'\n  => PASS\n\nINTERPRETATION: the conflict gate FAILs, so this is submitted as a documented incommensurability, never as a genuine conflict. The cf gate PASS establishes only that the pair is duplicate-free and independent - which is what makes the incommensurability worth recording rather than discarding.",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -18495,7 +18513,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status documented_incommensurability; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-262",
@@ -18509,7 +18529,7 @@
     "genuine": false,
     "resolution_status": "documented_incommensurability",
     "resolution_note": "== conflict P-13 P-1128\n  pass Task_Type: T2\n  pass study_design_type: 'survival_analysis'\n  pass task_substage: 'MCI_to_AD'\n  pass population_specificity: 'general'\n  pass modality_subtype: 'structural_MRI_only'\n  WARN prediction_horizon_years differs (8.0 vs ?) - PREDICTION_HORIZON_MISMATCH\n  Best_Metric: P-13='C-index 0.844'  P-1128='C-index 0.951 (train) / 0.880 (validation) morphology-network-clinical model'\n  Validation:  P-13='V2'  P-1128='V3'\n  => PASS - eligible to propose as a genuine-conflict candidate\n\n== show P-13 P-1128\nCategory                   | C1                                 | C1\nModality                   | MRI/PET                            | T1WI sMRI (cortical morphometry +\nmodality_subtype           | structural_MRI_only                | structural_MRI_only\nTask_Type                  | T2                                 | T2\ntask_substage              | MCI_to_AD                          | MCI_to_AD\nstudy_design_type          | survival_analysis                  | survival_analysis\npopulation_specificity     | general                            | general\nDataset                    | ADNI                               | ADNI\nSample_N_Approx            | 718                                | 162 MCI (112 train / 50 validation\nValidation_Type            | V2                                 | V3\nBest_Metric                | C-index 0.844                      | C-index 0.951 (train) / 0.880 (val\nprimary_metric_type        | C_index                        ",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -18703,7 +18723,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status documented_incommensurability; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
   {
     "id": "C-263",
@@ -18717,7 +18739,7 @@
     "genuine": false,
     "resolution_status": "documented_incommensurability",
     "resolution_note": "== conflict P-1017 P-1080\n  pass Task_Type: T6\n  pass study_design_type: 'cross_sectional'\n  skip task_substage: not reported on one side ('not reported' / 'not reported') - lint cannot block, but a human gate can. State why they are comparable.\n  pass population_specificity: 'general'\n  pass modality_subtype: 'survey_questionnaire'\n  Best_Metric: P-1017='67% psychiatrist personal diagnosis share; 46% self-identified care coordinators'  P-1080='Descriptive: 121 neurologists, 203 patients; non-uniform criteria and strategies (no single metric)'\n  Validation:  P-1017='V2'  P-1080='V2'\n  => PASS - eligible to propose as a genuine-conflict candidate\n\n[For contrast, the other pair examined in this pack, and rejected on the checker's own verdict:]\n== conflict P-816 P-1015\n  FAIL Task_Type: T1 vs T4\n  FAIL study_design_type: 'retrospective_observational_cohort' vs 'retrospective_cohort'\n  skip task_substage: not reported on one side ('not reported' / 'mci_staging_progression') - lint cannot block, but a human gate can. State why they are comparable.\n  pass population_specificity: 'general'\n  skip modality_subtype: not reported on one side ('not reported' / 'clinical_EHR') - lint cannot block, but a human gate can. State why they are comparable.\n  WARN primary_metric_type differs (AUC_ROC vs descriptive) - gap magnitude is not computable (METRIC_TYPE_MISMATCH)\n  Validation:  P-816='V4'  P-1015='V2'\n  => FAIL - do not propose as genuine",
-    "status": "pending_human_review",
+    "status": "rejected",
     "gate_verified": false,
     "verification": {
       "verdict": "SURVIVES",
@@ -18899,7 +18921,9 @@
       "by": "operator",
       "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
       "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-    }
+    },
+    "status_pre_2026_10_13": "pending_human_review",
+    "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status documented_incommensurability; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
   },
       {
         "id": "C-264",
@@ -18909,9 +18933,9 @@
         "claim_b": "Blood T-tau (1.25-1.62), P-tau181 (1.36-2.16) and NfL (1.24-1.86) increased progressively from controls to aMCI to AD",
         "conflict_statement": "P-1341 reports that blood (plasma/serum) NfL does not significantly differentiate MCI from healthy controls - the pooled NfL elevation reaching significance only in CSF - whereas P-1231 reports blood NfL rising progressively and significantly from controls to aMCI to AD (ratio-of-means 1.24-1.86, NfL AUC 0.59-0.92).",
         "conflict_type": "semantic_directional",
-        "genuine": "pending_human_review",
+        "genuine": false,
         "genuine_conflict": false,
-        "status": "pending_human_review",
+        "status": "rejected",
         "resolution_status": "false_positive",
         "gate_verified": false,
         "evidence_quotes": [
@@ -19037,7 +19061,10 @@
           "by": "operator",
           "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
           "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-        }
+        },
+        "status_pre_2026_10_13": "pending_human_review",
+        "genuine_pre_2026_10_13": "pending_human_review",
+        "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status false_positive; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
       },
       {
         "id": "C-265",
@@ -19047,9 +19074,9 @@
         "claim_b": "no biomarker predicted NC-to-MCI development; three elevated biomarkers gave HR 3.71 for AD dementia",
         "conflict_statement": "P-1403 reports that plasma p-tau217-based A+T+ status predicts progression from cognitive normality to MCI in the PREVENT-AD preclinical cohort (HR 7.81, 95% CI 3.92-15.59; combined biomarker AUC 0.77-0.82; 62/228 progressors over a mean 5.65-year post-classification follow-up), whereas P-1421 reports that in the population-based SNAC-K cohort none of six baseline serum AD biomarkers - p-tau217 and Abeta42/40 among them - predicted the NC-to-MCI transition over up to 16 years, even though the same markers strongly predicted MCI-to-dementia (NfL HR 2.34, p-tau217 HR 2.11).",
         "conflict_type": "semantic_directional",
-        "genuine": "pending_human_review",
+        "genuine": false,
         "genuine_conflict": false,
-        "status": "pending_human_review",
+        "status": "rejected",
         "resolution_status": "documented_incommensurability",
         "gate_verified": false,
         "evidence_quotes": [
@@ -19207,7 +19234,10 @@
           "by": "operator",
           "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
           "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-        }
+        },
+        "status_pre_2026_10_13": "pending_human_review",
+        "genuine_pre_2026_10_13": "pending_human_review",
+        "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status documented_incommensurability; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
       },
       {
         "id": "C-266",
@@ -19217,9 +19247,9 @@
         "claim_b": "Highest quartile of free plasma Abeta1-42/Abeta1-40 predicted lower 3-year MCI-to-dementia risk (HR 0.36, 95% CI 0.15-0.87), equivalent to total ratio (HR 0.37)",
         "conflict_statement": "P-1407 reports that baseline plasma Abeta42/40 carried no prognostic value for conversion to dementia or death in any MCI group of the Newcastle longitudinal cohort (131 with outcome data, 72 conversions over mean ~2.7 years), whereas P-1267 reports that in the BALTAZAR cohort the highest quartile of the plasma Abeta1-42/Abeta1-40 ratio carried roughly 60% lower 3-year MCI-to-dementia risk (free ratio HR 0.36, 95% CI 0.15-0.87; total ratio HR 0.37).",
         "conflict_type": "semantic_directional",
-        "genuine": "pending_human_review",
+        "genuine": false,
         "genuine_conflict": false,
-        "status": "pending_human_review",
+        "status": "rejected",
         "resolution_status": "false_positive",
         "gate_verified": false,
         "evidence_quotes": [
@@ -19360,7 +19390,10 @@
           "by": "operator",
           "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
           "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-        }
+        },
+        "status_pre_2026_10_13": "pending_human_review",
+        "genuine_pre_2026_10_13": "pending_human_review",
+        "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status false_positive; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
       },
       {
         "id": "C-267",
@@ -19370,9 +19403,9 @@
         "claim_b": "CSF YKL-40 levels were significantly higher in AD compared with controls, with MCI-AD and with stable MCI, and also increased in MCI-AD compared with stable MCI",
         "conflict_statement": "P-1427 reports that pooled CSF YKL-40 does not differ significantly between AD and MCI (SMD 0.25, 95% CI -0.08 to 0.57, p=0.134), whereas P-1337 reports CSF YKL-40 significantly higher in AD than in both MCI-AD and stable MCI and proposes it for AD-versus-MCI differential diagnosis.",
         "conflict_type": "semantic_directional",
-        "genuine": "pending_human_review",
+        "genuine": false,
         "genuine_conflict": false,
-        "status": "pending_human_review",
+        "status": "rejected",
         "resolution_status": "false_positive",
         "gate_verified": false,
         "evidence_quotes": [
@@ -19494,7 +19527,10 @@
           "by": "operator",
           "statement": "Adopt the source readings of the 173 candidates and add the unresolved-discrepancy tier to the review",
           "scope": "resolution_status of the 173 candidates read on 2026-09-28 (logs/round20), and the discrepancy tier of 2026-09-29/30 (logs/round23)"
-        }
+        },
+        "status_pre_2026_10_13": "pending_human_review",
+        "genuine_pre_2026_10_13": "pending_human_review",
+        "status_note_2026_10_13": "status string aligned on 2026-10-13 with the outcome the adjudicator adopted on 2026-09-30 (resolution_status false_positive; not a genuine contradiction). The unresolved-discrepancy flag of 2026-09-30 is unchanged: this record stays in the lighter-test tier where that flag says so. Found by the journal skeleton's check on C-265."
       }
  ],
   "summary": {
