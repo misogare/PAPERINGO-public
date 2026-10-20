@@ -1,7 +1,75 @@
 {
  "date": "2026-10-20",
  "method": "Keyword screen of every included full text (PyMuPDF extraction, PyPDF2 fallback) for the patterns listed; every prediction study (tasks T1 to T3) whose text matched a code pattern was then read in context by the assistant and classified. Data availability, guideline and pre-registration counts are keyword matches only. A public or consortium dataset means ADNI_Dependent is true or the registry Dataset field names one of the listed datasets.",
- "review_status": "pending_human_review: the verdicts below were drafted by the assistant (Claude) on 2026-10-20 and have not been reviewed by the author",
+ "review_status": "reviewed by the author on 2026-10-20: the author read the 97 drafted verdicts and returned them with 4 verdicts changed (own_code_released to third_party_software_or_citation_or_data_only: P-38, P-245, P-263, P-272) and 7 borderline notes edited; prior values are kept under *_pre_review_2026-10-20 keys and the summary block was recomputed from the reviewed verdicts",
+ "review_changes_2026-10-20": [
+  {
+   "paper": "P-169",
+   "field": "borderline",
+   "before": "a repository named for the study is cited as a reference",
+   "after": null
+  },
+  {
+   "paper": "P-33",
+   "field": "borderline",
+   "before": "repository gives the participant selection within ADNI (own repository; code content not confirmed)",
+   "after": null
+  },
+  {
+   "paper": "P-38",
+   "field": "verdict",
+   "before": "own_code_released",
+   "after": "third_party_software_or_citation_or_data_only"
+  },
+  {
+   "paper": "P-38",
+   "field": "borderline",
+   "before": null,
+   "after": "The linked GitHub repository\u2019s visible root contains fNIRS task data files (.egg); no study-specific source code is apparent in the repository listing."
+  },
+  {
+   "paper": "P-245",
+   "field": "verdict",
+   "before": "own_code_released",
+   "after": "third_party_software_or_citation_or_data_only"
+  },
+  {
+   "paper": "P-245",
+   "field": "borderline",
+   "before": "the first author's own feature-extraction toolkit is public; the modelling code is not mentioned",
+   "after": "The linked repository is the pre-existing fractalbrain feature-extraction toolkit; the study\u2019s own modelling or analysis code is not identified as released."
+  },
+  {
+   "paper": "P-263",
+   "field": "verdict",
+   "before": "own_code_released",
+   "after": "third_party_software_or_citation_or_data_only"
+  },
+  {
+   "paper": "P-263",
+   "field": "borderline",
+   "before": "a previously published classifier of the same group, freely available, retrained here",
+   "after": "The link is to the previously published tmsClassifier package, which the current study retrains/validates on its MCI cohort; no distinct current-study code release is identified."
+  },
+  {
+   "paper": "P-272",
+   "field": "verdict",
+   "before": "own_code_released",
+   "after": "third_party_software_or_citation_or_data_only"
+  },
+  {
+   "paper": "P-272",
+   "field": "borderline",
+   "before": "the group's own AutoML pipeline (STREAMLINE) with the optimised parameters, not a study-specific release",
+   "after": "The cited STREAMLINE repository is a general AutoML pipeline/parameter resource for existing models, not an identified release of this study\u2019s VS-Opt-Net implementation and analysis code."
+  },
+  {
+   "paper": "P-1153",
+   "field": "borderline",
+   "before": "the trained model is released, not the training code",
+   "after": "The paper\u2019s statement mentions a trained model, but the linked public repository also contains a study-specific 232-line notebook and a model directory; retained as own_code_released based on the repository contents."
+  }
+ ],
  "patterns": {
   "code_repo": "github\\.com|gitlab\\.com|bitbucket\\.org|codeocean|huggingface\\.co|sourceforge\\.net",
   "code_statement": "(?:source |analysis |the )?codes? (?:is|are|will be|can be|has been|have been) (?:made )?(?:freely |publicly |openly )?(?:available|accessible|shared|released)|code availability|availability of (?:the )?code|code and data availability|data and code availability|scripts? (?:is|are) available|implementation (?:is|are) (?:publicly )?available|software (?:is|are) (?:freely |publicly )?available|open[- ]source (?:code|implementation|software|toolbox|package)",
@@ -22,16 +90,16 @@
   "prediction_studies": 499,
   "prediction_with_text": 497,
   "prediction_code_hits_read": 97,
-  "own_code_released": 45,
-  "own_code_released_pct": 9.0,
+  "own_code_released": 41,
+  "own_code_released_pct": 8.2,
   "code_on_request": 3,
   "code_stated_not_available": 2,
-  "third_party_or_citation_or_data_only": 47,
+  "third_party_or_citation_or_data_only": 51,
   "no_code_mention": 402,
   "public_or_consortium_dataset": 233,
   "public_dataset_pct": 46.7,
-  "own_code_and_public_dataset": 25,
-  "own_code_and_public_dataset_pct": 5.0,
+  "own_code_and_public_dataset": 24,
+  "own_code_and_public_dataset_pct": 4.8,
   "tripod_mentioned": 14,
   "tripod_pct": 2.8,
   "data_availability_statement_keyword": 324,
@@ -43,7 +111,7 @@
    ],
    "V2": [
     365,
-    36
+    32
    ],
    "V3": [
     76,
@@ -56,8 +124,38 @@
   },
   "deep_learning_own_code": [
    136,
-   23
-  ]
+   22
+  ],
+  "borderline_own_code": 3,
+  "summary_pre_review_2026-10-20": {
+   "own_code_released": 45,
+   "own_code_released_pct": 9.0,
+   "third_party_or_citation_or_data_only": 47,
+   "own_code_and_public_dataset": 25,
+   "own_code_and_public_dataset_pct": 5.0,
+   "by_tier_own_code": {
+    "V1": [
+     22,
+     0
+    ],
+    "V2": [
+     365,
+     36
+    ],
+    "V3": [
+     76,
+     4
+    ],
+    "V4": [
+     31,
+     5
+    ]
+   },
+   "deep_learning_own_code": [
+    136,
+    23
+   ]
+  }
  },
  "verdicts_prediction_studies": {
   "P-72": {
@@ -253,7 +351,7 @@
    "evidence": [
     "h-HAILAB/multimodal-learning-performance-using-both-VR-derived-and-MRI-biomarkers. GitHub. 2023. URL: https://github.com/seoultech-HAILAB/Multimodal-learning-performance-using-both-VR-derived-and-MRI-biomarkers [accessed 2023-12-2"
    ],
-   "borderline": "a repository named for the study is cited as a reference"
+   "borderline_pre_review_2026-10-20": "a repository named for the study is cited as a reference"
   },
   "P-173": {
    "verdict": "third_party_software_or_citation_or_data_only",
@@ -388,16 +486,19 @@
     "(Table S.1). The identification of the selected participants within the ADNI cohort is available at: https://github.com/ cplatero/preAD_DPM. 2.2. Neuropsychological assessment This study focused exclusively on neuropsychological",
     "for this study. Specifically, we employed Leaspy (https:// leaspy.readthedocs.io/en/stable/), RPDPM (https://github.com/Mosta fa-Ghazi/RPDPM), and GRACE (https://bitbucket.org/mdonohue/grac e/src/master/) to model longitudinal tr"
    ],
-   "borderline": "repository gives the participant selection within ADNI (own repository; code content not confirmed)"
+   "borderline_pre_review_2026-10-20": "repository gives the participant selection within ADNI (own repository; code content not confirmed)"
   },
   "P-38": {
-   "verdict": "own_code_released",
+   "verdict": "third_party_software_or_citation_or_data_only",
    "matched_patterns": [
     "code_repo"
    ],
    "evidence": [
     "of data and materials The datasets supporting the conclusions of this article are available in the [https://github.com/0422alsrud/DL_fNIRS_MCI.git]. CRediT authorship contribution statement Min-Kyoung Kang: Writing \u2013 original dr"
-   ]
+   ],
+   "borderline": "The linked GitHub repository\u2019s visible root contains fNIRS task data files (.egg); no study-specific source code is apparent in the repository listing.",
+   "verdict_pre_review_2026-10-20": "own_code_released",
+   "borderline_pre_review_2026-10-20": null
   },
   "P-41": {
    "verdict": "own_code_released",
@@ -536,34 +637,40 @@
    ]
   },
   "P-245": {
-   "verdict": "own_code_released",
+   "verdict": "third_party_software_or_citation_or_data_only",
    "matched_patterns": [
     "code_repo"
    ],
    "evidence": [
     "nalysis was carried out using the fractalbrain toolkit version 1.1 (Marzi, 2023) (freely available at https://github.com/ chiaramarzi/fractalbrain-toolkit) and described in detail in Marzi et al. (2020). In this study, we examined"
    ],
-   "borderline": "the first author's own feature-extraction toolkit is public; the modelling code is not mentioned"
+   "borderline": "The linked repository is the pre-existing fractalbrain feature-extraction toolkit; the study\u2019s own modelling or analysis code is not identified as released.",
+   "verdict_pre_review_2026-10-20": "own_code_released",
+   "borderline_pre_review_2026-10-20": "the first author's own feature-extraction toolkit is public; the modelling code is not mentioned"
   },
   "P-263": {
-   "verdict": "own_code_released",
+   "verdict": "third_party_software_or_citation_or_data_only",
    "matched_patterns": [
     "code_repo"
    ],
    "evidence": [
     "published algorithm carried out considering patients with dementia, which is freely available online (https://github.com/fernandoPalluzzi/ tmsClassi\ufb01er), and by retraining and validating the algorithm on the present cohort of MCI"
    ],
-   "borderline": "a previously published classifier of the same group, freely available, retrained here"
+   "borderline": "The link is to the previously published tmsClassifier package, which the current study retrains/validates on its MCI cohort; no distinct current-study code release is identified.",
+   "verdict_pre_review_2026-10-20": "own_code_released",
+   "borderline_pre_review_2026-10-20": "a previously published classifier of the same group, freely available, retrained here"
   },
   "P-272": {
-   "verdict": "own_code_released",
+   "verdict": "third_party_software_or_citation_or_data_only",
    "matched_patterns": [
     "code_repo"
    ],
    "evidence": [
     "@pennmedicine.upenn.edu. 4For existing machine learning models, optimized parameters can be found in https://github.com/UrbsLab/STREAMLINE 5For the latest information, visit www.adni-info.org. HHS Public Access Author manuscript"
    ],
-   "borderline": "the group's own AutoML pipeline (STREAMLINE) with the optimised parameters, not a study-specific release"
+   "borderline": "The cited STREAMLINE repository is a general AutoML pipeline/parameter resource for existing models, not an identified release of this study\u2019s VS-Opt-Net implementation and analysis code.",
+   "verdict_pre_review_2026-10-20": "own_code_released",
+   "borderline_pre_review_2026-10-20": "the group's own AutoML pipeline (STREAMLINE) with the optimised parameters, not a study-specific release"
   },
   "P-275": {
    "verdict": "third_party_software_or_citation_or_data_only",
@@ -843,7 +950,8 @@
    "evidence": [
     "Advances, 2024, Volume 1, Issue 3 Deep learning model availability The trained model is available at https://github.com/yoon choi-neuro/FDG-PET_AD. All the data used in this study are available through the respective portals. R"
    ],
-   "borderline": "the trained model is released, not the training code"
+   "borderline": "The paper\u2019s statement mentions a trained model, but the linked public repository also contains a study-specific 232-line notebook and a model directory; retained as own_code_released based on the repository contents.",
+   "borderline_pre_review_2026-10-20": "the trained model is released, not the training code"
   },
   "P-1201": {
    "verdict": "third_party_software_or_citation_or_data_only",
