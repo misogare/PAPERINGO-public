@@ -110,3 +110,16 @@ quotation check located 75 of their 82 quotations. No second blinded reading was
 Cited set now (210 studies in Sections 1 to 8 of the thesis): 197 appraised, 160 high, 33 some concerns, 4 not applicable,
 none low; thirteen cited studies are not appraised (examples, one comparison reported for completeness, Section 1 background).
 VF-29 remains the only convergence with three or more supporters not at high risk.
+
+
+## Appraisal dates made explicit, 2026-10-23
+
+Until this date only the four records of 2026-10-23 carried an `appraisal_date` field, and the worksheet builder
+(`scripts/make_appraisal_table.py`) wrote 2026-09-28 for every record without one, which was wrong for the fourteen studies
+appraised on 2026-09-29, the eight re-appraised with the corrected tool on the same day, and P-317 (drafted 2026-10-13).
+Every primary record now carries `appraisal_date`, derived from the record's own markers: the `tool_changed_2026_09_29`
+block or an appraiser line naming the operator's instruction of 2026-09-29 gives 2026-09-29 (22 records); the appraiser
+line "drafted 2026-10-13" gives 2026-10-13 (P-317); the operator's delegation of 2026-09-28 gives 2026-09-28 (174 records).
+Nothing else in the records changed, and the builder now fails on a record without the field instead of defaulting. The
+blinded second readings in `second/` and the earlier readings in `superseded/` were not stamped; the worksheet does not
+read a date from them.
