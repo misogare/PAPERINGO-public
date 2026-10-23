@@ -115,7 +115,7 @@ def rob_fields(pid):
         "rob_adjudicated": "yes" if adj else "",
         "rob_confidence": fin.get("confidence", ""),
         "appraiser": "model readers under the operator's delegation",
-        "appraisal_date": "2026-09-28",
+        "appraisal_date": fin.get("appraisal_date", "2026-09-28"),
         "review_status": fin.get("review_status", "pending operator review"),
     }
 

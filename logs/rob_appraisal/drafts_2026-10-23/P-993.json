@@ -1,0 +1,214 @@
+{
+ "paper_id": "P-993",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Dang M, Yang C, Chen K, Lu P, Li H, Zhang Z, 'Hippocampus-centred grey matter covariance networks predict the development and reversion of mild cognitive impairment', Alzheimer's Research & Therapy 15:27 (2023), doi:10.1186/s13195-023-01167-z. Two cohorts (BABRI n = 155, ADNI n = 286), random-forest prediction of normal-to-MCI progression and MCI-to-normal reversion from baseline grey-matter covariance score maps, with a comparison against the grey-matter density of single regions including the hippocampus (Tables 3 and 4, pp. 7-8)."
+ },
+ "cited_result": "Random-forest prediction from baseline grey-matter covariance network score maps against prediction from the hippocampus's own grey-matter density, in two cohorts: for progression from normal cognition to MCI, the hippocampal covariance network reached AUC 0.792 against 0.717 for the hippocampus alone in BABRI, and 0.785 against 0.803 in ADNI; for reversion from MCI, 0.736 against 0.759 in BABRI and 0.809 against 0.780 in ADNI (Table 3, p. 7; Table 4, p. 8).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the discrimination (AUC) of multivariable machine-learning classifiers predicting a later clinical transition, so PROBAST applies, with the PROBAST+AI considerations.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "Two appropriate longitudinal cohorts, but the analysed groups were defined by their follow-up course: only participants whose status was stable until the last visit entered the stable and non-reversed groups, participants with more than two fluctuations were excluded, and the structural covariance templates were built from stable-normal participants selected by the same outcome. Selection therefore depended on the outcome, and the groups are purified rather than consecutive.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Probably yes",
+     "quote": "The participants were from the Beijing Aging Brain Rejuvenation Initiative (BABRI) [27] and the Alzheimer's Disease Neuroimaging Initiative (ADNI) [28].",
+     "page": "2"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "Probably no",
+     "quote": "non-reversed MCI (non-rMCI, MCI at baseline and maintained cognitive impairment or progressed to AD until the last visit), and reversed MCI (rMCI, MCI at baseline, reverted to NC during follow-up and maintained cognitively normal until the last visit). Participants with multiple (> 2) state fluctuations between NC and MCI were excluded. | only participants with a QA better than C were included.",
+     "page": "2-3; 3"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "unclear",
+   "rationale": "Predictors are baseline T1 images processed with one pipeline, available at the intended time of use, and the covariance templates come from separate stable participants, which avoids leakage into the template. Scanner field strength differed between ADNI-1 (1.5 T) and the other samples (3 T); the authors report supplementary analyses adjusting for field strength and site, but the main models do not.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "High-resolution T1-weighted MRI data were collected from each participant from the BABRI and ADNI using either 1.5-T scanners (participants from ADNI-1) or 3-T scanners (participants from BABRI and ADNI-GO&2) | All T1-weighted images were preprocessed using the Computational Anatomy Toolbox (CAT12",
+     "page": "3"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Only baseline T1-weighted MRI data were used in the current study.",
+     "page": "3"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "Probably yes",
+     "quote": "Template sNC is used only to establish a structural covariance network, independent of the sNC participating in statistical and predictive analysis",
+     "page": "3"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "unclear",
+   "rationale": "The outcome is the clinical diagnosis at follow-up by Petersen criteria, determined independently of the imaging predictors, but the prediction horizon is not fixed: status at the last visit is used, follow-up averaged 27 to 49 months and varied by participant, and blinding of the diagnosis to the MRI is not described.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "All participants were classified as NC or MCI at baseline using the Petersen criterion [29].",
+     "page": "2"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "the diagnostic criteria for MCI included subjective memory complaints, impairment in at least one cognitive domain (1.5 standard deviations or more), relatively preserved general cognitive function, and intact ability to perform activities of daily living.",
+     "page": "2"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Yes",
+     "quote": "They were divided into four groups based on their clinical diagnosis at baseline and follow-ups",
+     "page": "2"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "All participants from both cohorts underwent baseline MRI scans and had at least one clinical diagnosis during follow-ups.",
+     "page": "2"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for: blinding of the follow-up diagnosis to the baseline MRI or covariance scores. Not stated; the diagnoses are the cohorts' own clinical diagnoses.",
+     "page": "2"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably no",
+     "quote": "The NC and MCI participants were followed up with a mean duration of 37 and 27 months, respectively. | The NC and MCI participants were followed up with a mean duration of 44 and 49 months, respectively.",
+     "page": "5"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Very few events for voxel-level predictors (18 progressors and 24 reverters in BABRI; 54 and 73 in ADNI), five-fold cross-validation with no optimism correction beyond the fold variance, no calibration, and no external validation of a model trained in one cohort and tested in the other (each cohort is analysed separately). The single-region comparison models (Table 4) use regions chosen from the feature weights of the random forest trained on the same sample, so both arms of the comparison the review cites are optimistic.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "Longitudinal samples from the BABRI included 65 sNC to build structural covariance networks and 28 sNC, 18 pNC, 20 non-rMCI (containing only the MCI who maintained MCI), and 24 rMCI to conduct predictive analyses. | Another longitudinal sample from the ADNI included 47 sNC to build structural covariance networks and 47 sNC, 54 pNC, 65 non-rMCI, and 73 rMCI to conduct predictive analyses.",
+     "page": "5"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "As predictors of random forest, the baseline score maps of the structural covariance network provide information on multiple voxels and the correlation information between voxels",
+     "page": "4-5"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "A total of 155 eligible participants from the BABRI and a total of 286 eligible participants from the ADNI were included in this study.",
+     "page": "2"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for: handling of missing imaging or diagnostic data. Only the exclusion of participants with more than two state fluctuations and of images with a quality grade below C is stated.",
+     "page": "3"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably yes",
+     "quote": "A bootstrap ratio (BSR), calculated as the ratio of each weight to its standard error and the threshold, was set to the top 3% of reliable voxels for display purposes and the calculation of the subsequent covariance network scores.",
+     "page": "3"
+    },
+    {
+     "question": "4.6 (AI) Was the split between training and test data at the participant level?",
+     "answer": "Probably yes",
+     "quote": "Fivefold cross-validation and receiver operating characteristic (ROC) analyses were conducted, and the area under the curve (AUC), sensitivity, and specificity were used to evaluate the prediction accuracy.",
+     "page": "5"
+    },
+    {
+     "question": "4.6 (AI) Were preprocessing, feature selection, augmentation and tuning confined to the training data (no leakage)?",
+     "answer": "Probably no",
+     "quote": "we identified the clusters of voxels that play a key role in the above prediction model as key brain regions. Using the same methodology, we built prediction models and evaluated their prediction accuracy based on the baseline GM density of key brain regions.",
+     "page": "5"
+    },
+    {
+     "question": "4.6 (AI) Was the test set held out from all tuning?",
+     "answer": "No information",
+     "quote": "Searched for: random-forest hyperparameters and how they were chosen. Only the implementation is stated: 'The random forest model was implemented in Python version 3.6.'",
+     "page": "5"
+    },
+    {
+     "question": "4.6 (AI) Was class imbalance handled appropriately?",
+     "answer": "Probably yes",
+     "quote": "28 sNC, 18 pNC, 20 non-rMCI (containing only the MCI who maintained MCI), and 24 rMCI to conduct predictive analyses.",
+     "page": "5"
+    },
+    {
+     "question": "4.6 (AI) Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Internally validated by five-fold cross-validation within each cohort; the two cohorts are analysed separately, so the replication is across cohorts, not an external validation of one model",
+     "quote": "These results were replicated in an independent sample from the ADNI.",
+     "page": "9"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "the area under the curve (AUC), sensitivity, and specificity were used to evaluate the prediction accuracy.",
+     "page": "5"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "First, the observed sample size of the current study was small, although the reliability of the study results was confirmed by a cross-validation strategy and the use of independent samples.",
+     "page": "11"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported analysis?",
+     "answer": "No information",
+     "quote": "Searched for: a specification of the fitted random forests beyond feature-weight maps (Fig. 3, Fig. S4). None is given.",
+     "page": "7-8"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "Two PROBAST domains are high. Participants were selected by their follow-up course, which purifies the groups, and the analysis rests on few events for voxel-level predictors, cross-validated within each cohort without optimism correction, calibration or a transfer between cohorts, while the single-region comparators were selected from the same random forests' feature weights. The comparison the review cites (network against hippocampus alone) is therefore between two optimistic estimates, and the direction of the difference changes between cohorts and between outcomes.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "unclear",
+   "rationale": "A community cohort (BABRI) and research volunteers (ADNI), each purified to participants with a stable course."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "high",
+   "rationale": "Research-grade seed-PLS covariance networks that require a template built from stable normal participants; not a clinically available measure."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Clinical transition between normal cognition and MCI by Petersen criteria, the outcome the review discusses."
+  }
+ ],
+ "appraiser": "model reader (Claude Fable 5.1), drafted on 2026-10-23 at the author's request after the study was first cited in Section 4.1.5",
+ "review_status": "drafted 2026-10-23; awaiting the author's review; not counted in Appendix G until reviewed",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "source_text": "scratch extraction of the mapped PDF (data/paper_pdf_map.json: downloads/1. Clinical Assessments, Behavioral and Social Factors/PMID_36732782_13195_2023_Article_1167.pdf), page markers from PyMuPDF",
+ "quote_check": {
+  "checked": 24,
+  "matched": 21,
+  "method": "page tags and bracketed notes stripped; pieces split at ' | ' and ellipses; 'Searched for' notes not checked; whitespace- and punctuation-insensitive fallback; checked 2026-10-23 against the PyMuPDF extraction of the mapped PDF"
+ }
+}

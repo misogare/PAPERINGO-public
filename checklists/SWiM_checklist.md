@@ -9,7 +9,7 @@ Reporting checklist for the cross-study synthesis these materials support (in pr
 | 3 Synthesis methods | Claim-level adjudication with deterministic comparability gates and method- and dataset-family independence checks (Section 2; Appendix C.2), set out as a decision table in Appendix H.1 |
 | 4 Criteria for prioritising results | The inclusion rule of Appendix A and the performance-validity exclusion of Section 3.6, with its sensitivity analysis (Table C1) |
 | 5 Investigation of heterogeneity | Section 5, where cross-study disagreement is the object of study rather than heterogeneity to be pooled away |
-| 6 Certainty of evidence | Table 5 grades each overarching finding strongly supported, moderately supported or scope-bounded; the labels describe cross-study support, not certainty of effect, and are not GRADE (Section 9) |
+| 6 Certainty of evidence | Table 6 grades each overarching finding strongly supported, moderately supported or scope-bounded; the labels describe cross-study support, not certainty of effect, and are not GRADE (Section 9) |
 | 7 Data presentation methods | Figures 1 to 7, Tables 1 to 4, Appendix Figure C1, Appendix Tables A1, C1, D1, G1, G2, H2, H3 and I1 to I3, and the Appendix A record map |
 | 8 Reporting results | Sections 4 to 7 report each admitted claim with its supporting studies, independence status and scope; Figure C1 reports the attrition from candidate to admitted claims |
 | 9 Limitations of the synthesis | Section 9; Appendix C; Supplementary Note S3 |

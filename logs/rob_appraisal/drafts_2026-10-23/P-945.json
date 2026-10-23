@@ -1,0 +1,196 @@
+{
+ "paper_id": "P-945",
+ "document_check": {
+  "matches": true,
+  "note": "The document is Ge X-Y, Cui K, Liu L, Qin Y, Cui J, Han H-J, Luo Y-H, Yu H-M, 'Screening and predicting progression from high-risk mild cognitive impairment to Alzheimer's disease', Scientific Reports 11:17558 (2021), doi:10.1038/s41598-021-96914-3. Two-stage ADNI analysis: trajectory templates from 85 ADNI-1 MCI participants, then Cox models of three-year progression to AD in the high-risk MCI participants of ADNI GO/2 (110 by the ADAS-13 template, 92 by the MMSE template), with and without baseline MRI volumes and their one-year change rates (Table 3, p. 5; Figure 2, p. 4)."
+ },
+ "cited_result": "In the 110 high-risk MCI participants selected by the ADAS-13 trajectory template, adding baseline hippocampal, whole-brain and entorhinal volumes to the longitudinal cognitive Cox model (A2) gave a net reclassification improvement of -0.062 (95% CI -0.074 to 0.391) and an integrated discrimination improvement of 0.006, whereas adding the one-year change rates of the same three volumes gave NRI 0.246 (0.021 to 0.848) and IDI 0.090 (-0.094 to 0.209), with whole-brain and entorhinal change, not hippocampal change, significant in the model; the model with change rates had an optimism-corrected C-index of 0.830 (Table 3, p. 5; p. 4-5; Supplementary Table S3).",
+ "tool": "PROBAST",
+ "tool_reason": "The cited result is the incremental discrimination and reclassification of multivariable Cox prognostic models, so PROBAST applies.",
+ "domains": [
+  {
+   "domain": "1. Participants",
+   "judgment": "high",
+   "rationale": "ADNI is an appropriate source, but the analysed participants were selected in two steps that depend on their later course: only MCI participants with assessments at four or more time points over five years entered stage II, and only those whose trajectory of scores over all available time points matched the high-risk template entered the prognosis models. The sample is therefore selected on the outcome's own precursors.",
+   "signalling": [
+    {
+     "question": "1.1 Were appropriate data sources used (e.g. cohort, RCT or nested case-control data)?",
+     "answer": "Probably yes",
+     "quote": "The data used in this study were downloaded from the Alzheimer's Disease Neuroimaging Initiative (ADNI) database (http://adni.loni.usc.edu/).",
+     "page": "7"
+    },
+    {
+     "question": "1.2 Were all inclusions and exclusions of participants appropriate?",
+     "answer": "No",
+     "quote": "For stage II, 374 subjects with MCI from ADNI GO/2 with two clinical assessments in at least four time points over 5 years were assigned trajectory labels. MCI subjects labelled as high-risk were filtered out and included in the predictive dataset. | We used trajectory-templates to assign a trajectory label to the 374 patients according to the Euclidean proximity computed from all available time points.",
+     "page": "7; 2"
+    }
+   ]
+  },
+  {
+   "domain": "2. Predictors",
+   "judgment": "high",
+   "rationale": "Predictors include one-year change rates of cognitive scores and MRI volumes, so the model cannot be applied at baseline, and the high-risk label that defines the modelled population is computed from scores over up to five years, which overlap the outcome window.",
+   "signalling": [
+    {
+     "question": "2.1 Were predictors defined and assessed in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "As part of the ADNI, subjects with MCI were assessed using the ADAS-13 and MMSE at baseline and at 6, 12, 24, 36, 48, and 60 months.",
+     "page": "7"
+    },
+    {
+     "question": "2.2 Were predictor assessments made without knowledge of outcome data?",
+     "answer": "Probably yes",
+     "quote": "Three structural MRI measurements associated with cognitive decline and dementia, the total volumes of the hippocampus, whole brain, and entorhinal cortex were selected for analysis29,35.",
+     "page": "7"
+    },
+    {
+     "question": "2.3 Are all predictors available at the time the model is intended to be used?",
+     "answer": "No",
+     "quote": "Considering the longitudinal nature, we computed the change rate of clinical assessment scores ( ADAS-13, MMSE, and CDRSB) and MRI measurements ( Hippocampus, WholeBrain, and Entorhinal) in the first year.",
+     "page": "7"
+    }
+   ]
+  },
+  {
+   "domain": "3. Outcome",
+   "judgment": "high",
+   "rationale": "The outcome is the ADNI diagnosis of AD during three years of follow-up, a standard definition, but the diagnosis draws on the same cognitive and functional scales (ADAS, MMSE, CDR) used as predictors, blinding is not described, and conversions occurred from six months onward, before the one-year change-rate predictors were complete.",
+   "signalling": [
+    {
+     "question": "3.1 Was the outcome determined appropriately?",
+     "answer": "Probably yes",
+     "quote": "The main outcome of the prognosis model was AD that was first diagnosed during follow-up.",
+     "page": "7"
+    },
+    {
+     "question": "3.2 Was a pre-specified or standard outcome definition used?",
+     "answer": "Probably yes",
+     "quote": "The criteria for MCI diagnosis were the same as those defined by Hojjati et al.31.",
+     "page": "7"
+    },
+    {
+     "question": "3.3 Were predictors excluded from the outcome definition?",
+     "answer": "Probably no",
+     "quote": "The Clinical Dementia Rating Scale (CDR) is widely used for the detection and severity classification of AD. We usually calculated the Clinical Dementia Rating Sum of Boxes (CDRSB) ranging from 0 to 18, with higher scores indicating more severe dementia32,33.",
+     "page": "7"
+    },
+    {
+     "question": "3.4 Was the outcome defined and determined in a similar way for all participants?",
+     "answer": "Probably yes",
+     "quote": "Detailed information regarding the ADNI study procedures, including participant inclusion and exclusion criteria, can be found at http://www.adni-info.org.",
+     "page": "7"
+    },
+    {
+     "question": "3.5 Was the outcome determined without knowledge of predictor information?",
+     "answer": "No information",
+     "quote": "Searched for: blinding of the ADNI diagnosis to the cognitive scores and MRI volumes. Not stated; the ADNI clinical diagnosis uses the cognitive and functional assessments.",
+     "page": "7"
+    },
+    {
+     "question": "3.6 Was the time interval between predictor assessment and outcome determination appropriate?",
+     "answer": "Probably no",
+     "quote": "In stage II, 80 MCI subjects (21.4%) progressed to AD over 3 years, with the mean time to onset of AD being 20.4 +/- 10.7 months (range 6.0-36.0 months).",
+     "page": "2"
+    }
+   ]
+  },
+  {
+   "domain": "4. Analysis",
+   "judgment": "high",
+   "rationale": "Sixty-six events in the ADAS-13 set against up to thirteen predictors in the fullest model, a continuous covariate dichotomised at a data-driven optimal cut-off, no split into development and test data (apparent performance with bootstrap optimism correction of the C-index only), no calibration, and reclassification statistics whose intervals include zero for every IDI and for all but two NRIs.",
+   "signalling": [
+    {
+     "question": "4.1 Were there a reasonable number of participants with the outcome?",
+     "answer": "No",
+     "quote": "ADAS-13 predictive dataset (N = 110) Mean (SD) or N (%) MMSE predictive dataset (N = 92) Mean (SD) or N (%) No dementia (N = 44) Dementia (N = 66) No dementia (N = 35) Dementia (N = 57)",
+     "page": "3"
+    },
+    {
+     "question": "4.2 Were continuous and categorical predictors handled appropriately?",
+     "answer": "Probably no",
+     "quote": "As CDRSB_bl did not satisfy the proportional hazards assumption in models A1, M1, and M2, we translated the continuous variable CDRSB_bl into the categorical variable (CDRSB_bl1) using X-tile software.",
+     "page": "6"
+    },
+    {
+     "question": "4.3 Were all enrolled participants included in the analysis?",
+     "answer": "Probably yes",
+     "quote": "High-risk MCI subjects were filtered out according to the ADAS-13 and MMSE trajectories (n = 110 and 92, respectively).",
+     "page": "7"
+    },
+    {
+     "question": "4.4 Were participants with missing data handled appropriately?",
+     "answer": "No information",
+     "quote": "Searched for: handling of missing MRI or score values in the Cox models. Only the trajectory step addresses missing time points: 'the trajectory-templates could assign a trajectory label for subjects with missing follow-up data'.",
+     "page": "5"
+    },
+    {
+     "question": "4.5 Was selection of predictors based on univariable analysis avoided?",
+     "answer": "Probably yes",
+     "quote": "For the ADAS-13 base model, we incorporated seven conventional risk factors into the baseline model A1 but found that only ADAS-13_bl was a significant predictor.",
+     "page": "4"
+    },
+    {
+     "question": "4.6 Were complexities in the data (censoring, competing risks) accounted for appropriately?",
+     "answer": "Probably yes",
+     "quote": "Multivariate models were calculated using the Cox proportional hazards regression analysis. The proportional hazards assumption was tested in R, and the variable that did not satisfy the assumption was input into the model as a stratified variable.",
+     "page": "7"
+    },
+    {
+     "question": "4.6 (AI) Is the reported performance apparent, internally validated or externally validated?",
+     "answer": "Apparent performance on the whole sample, with bootstrap optimism correction of the C-index; no held-out or external data",
+     "quote": "Because of the small sample size used for prognosis models, we ran the analyses on the entire sample, instead of splitting the sample into training and testing datasets29. However, the performance of the prognosis models was evaluated via internal validation (bootstrap method).",
+     "page": "6"
+    },
+    {
+     "question": "4.7 Were relevant model performance measures evaluated appropriately?",
+     "answer": "Probably no",
+     "quote": "The C-index was calculated for the comparison of different models, which is commonly used to evaluate the discriminative abilities of Cox models37,38. Additionally, we evaluated the improvements in discriminating ability attained with the extended models in comparison with the basic model by the net reclassification improvement (NRI; with cut = 10%)37, and the integrated discrimination improvement (IDI)39-41.",
+     "page": "7"
+    },
+    {
+     "question": "4.8 Were model overfitting, underfitting and optimism in model performance accounted for?",
+     "answer": "Probably no",
+     "quote": "To correct for optimism bias in the C-index, we undertook internal validation using 500 bootstrap samples30,42,43. | A2+ delta-MRI versus A2 0.246 (0.021, 0.848)* 0.090 (-0.094, 0.209)",
+     "page": "8; 5"
+    },
+    {
+     "question": "4.9 Do predictors and their assigned weights in the final model correspond to the results from the reported analysis?",
+     "answer": "No information",
+     "quote": "Five Cox models based on the ADAS-13 (MMSE) prediction dataset are shown in Supplementary Table S1 (Supplementary Table S2), with their hazard ratios and 95% confidence intervals (CIs).",
+     "page": "4"
+    }
+   ]
+  }
+ ],
+ "overall": "High risk of bias",
+ "overall_category": "high",
+ "overall_rationale": "All four PROBAST domains are high. The modelled population was selected by trajectories that use scores from the outcome window; the predictors include one-year change rates, so the model is not usable at baseline and some conversions precede the predictor assessment; the outcome shares its scales with the predictors; and the analysis fits up to thirteen predictors to 66 events on the whole sample, with optimism correction of the C-index only and reclassification intervals that include zero for every IDI. The increment the review cites (change in MRI volumes adds, baseline volumes do not) is a within-sample comparison of nested models in a selected subgroup.",
+ "confidence": "medium",
+ "applicability": [
+  {
+   "domain": "Participants",
+   "concern": "high",
+   "rationale": "ADNI GO/2 MCI participants selected as high-risk by a trajectory template that uses follow-up scores; not a baseline MCI population."
+  },
+  {
+   "domain": "Predictors",
+   "concern": "unclear",
+   "rationale": "Standard cognitive scales and FreeSurfer volumes, but one-year change rates require a repeat assessment before prediction."
+  },
+  {
+   "domain": "Outcome",
+   "concern": "low",
+   "rationale": "Progression from MCI to an ADNI diagnosis of AD within three years."
+  }
+ ],
+ "appraiser": "model reader (Claude Fable 5.1), drafted on 2026-10-23 at the author's request after the study was first cited in Section 4.1.5",
+ "review_status": "drafted 2026-10-23; awaiting the author's review; not counted in Appendix G until reviewed",
+ "brief": "logs/rob_appraisal/ROB_BRIEF.md",
+ "source_text": "scratch extraction of the mapped PDF (data/paper_pdf_map.json: downloads/1. Clinical Assessments, Behavioral and Social Factors/PMID_34475445_41598_2021_Article_96914.pdf), page markers from PyMuPDF",
+ "quote_check": {
+  "checked": 21,
+  "matched": 20,
+  "method": "page tags and bracketed notes stripped; pieces split at ' | ' and ellipses; 'Searched for' notes not checked; whitespace- and punctuation-insensitive fallback; checked 2026-10-23 against the PyMuPDF extraction of the mapped PDF"
+ }
+}
