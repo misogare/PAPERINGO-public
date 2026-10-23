@@ -95,3 +95,18 @@ with three or more supporters not at high risk.
 ## Operator review, 2026-09-30
 
 The operator accepted the eight re-appraisals in full and the fourteen appraisals of newly cited studies, having checked the tool choice for six of them (P-60, P-153, P-163, P-488, P-933, P-1082; all six matched the reader's tool). Recorded as operator_review_2026_09_30 on each record.
+
+
+## Four studies first cited in thesis Section 4.1.5, 2026-10-23
+
+P-945 (Ge et al. 2021), P-993 (Dang et al. 2023), P-1066 (Padulo et al. 2023) and P-1097 (Amland et al. 2024) were cited for
+the first time on 2026-10-23 in Table 4 of the thesis (measures compared with hippocampal volume on the same participants).
+Their appraisals were drafted the same day by a model reader under the same brief (`drafts_2026-10-23/README.md` records the
+drafting) and held out of this folder until the operator had reviewed them. The operator reviewed and accepted all four on
+2026-10-23 (operator_review_2026_10_23 on each record); the records were then moved here. Tools: PROBAST 2 (both high),
+QUIPS 1 (high, by the three-or-more-moderate-domains rule), JBI analytical cross-sectional 1 (some concerns). The mechanical
+quotation check located 75 of their 82 quotations. No second blinded reading was made of these four.
+
+Cited set now (210 studies in Sections 1 to 8 of the thesis): 197 appraised, 160 high, 33 some concerns, 4 not applicable,
+none low; thirteen cited studies are not appraised (examples, one comparison reported for completeness, Section 1 background).
+VF-29 remains the only convergence with three or more supporters not at high risk.
