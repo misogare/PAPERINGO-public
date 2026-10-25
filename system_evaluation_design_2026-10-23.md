@@ -1,6 +1,9 @@
 # Evaluating the synthesis method against alternatives: design
 
-Status: designed on 2026-10-23, not run. Nothing in the thesis or the article reports a result from this protocol.
+Status: designed on 2026-10-23. Task T2 (contradiction verdicts, arms C and D) was run on 2026-10-25 under a run
+specification frozen before the first call, and task T4 (against the previous reviews) was completed the same day;
+their results are reported in Section 9 of the thesis and Section 5 of the article. Tasks T1 and T3 and the cost
+comparison (T5) have not been run.
 Author: Aria Shobeiri (design drafted with AI assistance, as declared in the thesis, Section 2.9).
 
 ## 1. Why this is needed
