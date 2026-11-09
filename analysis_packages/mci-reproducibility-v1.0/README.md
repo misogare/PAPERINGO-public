@@ -2,6 +2,8 @@
 
 Version 1.0 | Prepared 9 November 2026
 
+**Archived repository version:** [10.5281/zenodo.24074713](https://doi.org/10.5281/zenodo.24074713), version `mci-reproducibility-v1.0` (software, Zenodo). This record preserves the complete repository snapshot containing the three package folders. Individual GitHub ZIPs remain available as scoped downloads. See `ARCHIVE.json` for verified archival metadata.
+
 This release adds reproducibility materials for three alternative manuscript formats. It does not deposit a manuscript or claim that the ADNI/NACC paper is submitted, peer reviewed or available as a preprint.
 
 | Package | Use | Contains |
@@ -19,3 +21,9 @@ The core-review archive and its existing DOI/version are separate. These new arc
 No participant identifiers, visit-level observations, medical images, EEG recordings, source-paper PDFs, extracted publication text, credentials or signed download links are included. Published-paper identifiers and source-data column names are provenance, not individual records. Source data remain governed by the providers' agreements. Existing MIT and content licences are retained; neither grants access to controlled records.
 
 The integrated manuscript combines the review and cohort experiments. It is an alternative publication format, not a third independent study to publish alongside both Frontiers derivatives. The Review must use only the review package; the cohort/integrated packages are not its supplementary data.
+
+## Archived software citation
+
+Shobeiri, A. 2026, 'PAPERINGO traceability materials: coded registry, claim ledgers, audit worksheets and scripts for a cross-study synthesis of mild cognitive impairment research', version mci-reproducibility-v1.0, computer software, Zenodo, doi:10.5281/zenodo.24074713.
+
+The package-level manifests and CITATION files retain their state at construction; this external archival record supplies the subsequently assigned collection DOI without rewriting frozen packages.

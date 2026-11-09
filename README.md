@@ -8,6 +8,8 @@ named record.
 
 ## Additional reproducibility release
 
+Archived version `mci-reproducibility-v1.0`: [Zenodo DOI 10.5281/zenodo.24074713](https://doi.org/10.5281/zenodo.24074713). This version-specific DOI identifies the repository snapshot containing all three scoped package folders.
+
 The [MCI reproducibility packages v1.0](analysis_packages/mci-reproducibility-v1.0/README.md) add code and aggregate outputs for the literature checks, ADNI/NACC experiments and alternative integrated manuscript. They contain no participant records or manuscript files and have their own manifests. The earlier core-review archive and DOI remain separate.
 
 ## Identifiers
@@ -62,4 +64,4 @@ records and logged; the record history is kept.
 
 Code: MIT (`LICENSE`). Data, configuration, logs and checklists: CC BY 4.0 (`LICENSE-CONTENT.md`).
 
-Archived at Zenodo: https://doi.org/10.5281/zenodo.23490521 (version 1.4, which the synthesis refers to; version 1.3 is https://doi.org/10.5281/zenodo.23463848, version 1.2 is https://doi.org/10.5281/zenodo.23328815, version 1.1 is https://doi.org/10.5281/zenodo.23050081 and version 1.0 is https://doi.org/10.5281/zenodo.23008250); every version: https://doi.org/10.5281/zenodo.23008249. Citation metadata is in `CITATION.cff`.
+Earlier core-review archive at Zenodo: https://doi.org/10.5281/zenodo.23490521 (version 1.4; version 1.3 is https://doi.org/10.5281/zenodo.23463848, version 1.2 is https://doi.org/10.5281/zenodo.23328815, version 1.1 is https://doi.org/10.5281/zenodo.23050081 and version 1.0 is https://doi.org/10.5281/zenodo.23008250); every version: https://doi.org/10.5281/zenodo.23008249. Citation metadata is in `CITATION.cff`.
