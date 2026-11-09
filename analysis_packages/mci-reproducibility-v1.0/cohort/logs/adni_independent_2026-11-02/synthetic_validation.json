@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "built_at_utc": "2026-11-03T01:08:10+00:00",
+  "scope": "Synthetic-only independent implementation validation; no patient data read or exported; no human gate changed.",
+  "analyses": [
+    {
+      "script": "scripts\\gap101_independent.py",
+      "sha256": "9504d03fbb79e65a48225dcb4696ef06085af34bae527eaf886591cf60eba094",
+      "version": "1.1"
+    },
+    {
+      "script": "scripts\\gap128_independent.py",
+      "sha256": "0d0e0c56130eb405ace57429800ec153baf7b4f020ec75f84accf63bc28c7e8d",
+      "version": "2.0"
+    }
+  ],
+  "ctmc_transition_matrix": {
+    "passed": true,
+    "random_rate_seed": 2026110201,
+    "rate_sets": 164,
+    "intervals_per_rate_set": 10,
+    "maximum_absolute_difference_from_scipy_expm": 3.3084646133829665e-14,
+    "minimum_probability": 0.0,
+    "maximum_row_sum_error": 1.1102230246251565e-16,
+    "tolerance": 2e-12
+  },
+  "ctmc_known_generator_recovery": {
+    "passed": true,
+    "seed": 2026110202,
+    "synthetic_subjects": 20000,
+    "initial_state_counts": {
+      "CN": 10000,
+      "MCI": 10000
+    },
+    "fixed_visit_years": [
+      0.0,
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      6.0,
+      8.0
+    ],
+    "simulator": "Independent scipy.linalg.expm panel sampler",
+    "first_dementia_absorbing": true,
+    "true_rates_per_year": {
+      "cn_mci": 0.12,
+      "cn_dementia": 0.025,
+      "mci_cn": 0.08,
+      "mci_dementia": 0.16
+    },
+    "fitted_rates_per_year": {
+      "cn_mci": 0.11806815067398234,
+      "cn_dementia": 0.025373993012701473,
+      "mci_cn": 0.08067651254771116,
+      "mci_dementia": 0.15746488008825005
+    },
+    "relative_rate_errors": {
+      "cn_mci": -0.016098744383480475,
+      "cn_dementia": 0.014959720508058855,
+      "mci_cn": 0.008456406846389479,
+      "mci_dementia": -0.015844499448437223
+    },
+    "maximum_absolute_relative_error": 0.016098744383480475,
+    "relative_error_tolerance": 0.15,
+    "model_converged": true,
+    "limitations": "One homogeneous correctly specified synthetic generator; validates implementation, not ADNI model assumptions."
+  },
+  "cox_likelihood_equivalence": {
+    "passed": true,
+    "tie_method": "Breslow",
+    "cases": [
+      {
+        "seed": 2026110203,
+        "synthetic_subjects": 900,
+        "events": 489,
+        "strata": 3,
+        "zero_weight_subjects": 166,
+        "replicated_rows": 1824,
+        "rounding_years": 0.25,
+        "maximum_absolute_coefficient_differences": {
+          "unweighted_vs_statsmodels": 9.721473626100874e-11,
+          "integer_weights_vs_replicated_rows": 1.3322676295501878e-15,
+          "integer_weights_vs_statsmodels_replicated": 6.395217688748289e-12,
+          "global_weight_scale_invariance": 2.256617581686271e-08
+        },
+        "tolerance": 2e-06
+      },
+      {
+        "seed": 2026110204,
+        "synthetic_subjects": 900,
+        "events": 514,
+        "strata": 3,
+        "zero_weight_subjects": 173,
+        "replicated_rows": 1820,
+        "rounding_years": 0.25,
+        "maximum_absolute_coefficient_differences": {
+          "unweighted_vs_statsmodels": 2.2517372411101633e-09,
+          "integer_weights_vs_replicated_rows": 7.771561172376096e-16,
+          "integer_weights_vs_statsmodels_replicated": 4.152007626601062e-10,
+          "global_weight_scale_invariance": 4.1526848626460833e-10
+        },
+        "tolerance": 2e-06
+      },
+      {
+        "seed": 2026110205,
+        "synthetic_subjects": 900,
+        "events": 539,
+        "strata": 3,
+        "zero_weight_subjects": 189,
+        "replicated_rows": 1782,
+        "rounding_years": 0.25,
+        "maximum_absolute_coefficient_differences": {
+          "unweighted_vs_statsmodels": 1.4029699624273917e-09,
+          "integer_weights_vs_replicated_rows": 9.159339953157541e-16,
+          "integer_weights_vs_statsmodels_replicated": 1.211800659817186e-10,
+          "global_weight_scale_invariance": 2.553735001242785e-12
+        },
+        "tolerance": 2e-06
+      }
+    ],
+    "scope": "Point-estimate likelihood checks; these do not validate causal identification, censoring assumptions, or bootstrap interval coverage."
+  },
+  "all_checks_passed": true
+}

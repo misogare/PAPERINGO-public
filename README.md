@@ -6,6 +6,10 @@ repository contains the records its claims are checked against, so that each cla
 and adjudication records it rests on once the synthesis is available, and errors or omissions can be reported against a
 named record.
 
+## Additional reproducibility release
+
+The [MCI reproducibility packages v1.0](analysis_packages/mci-reproducibility-v1.0/README.md) add code and aggregate outputs for the literature checks, ADNI/NACC experiments and alternative integrated manuscript. They contain no participant records or manuscript files and have their own manifests. The earlier core-review archive and DOI remain separate.
+
 ## Identifiers
 
 Every study in the corpus has a stable identifier `P-nnn`. Cross-study records carry ledger identifiers: `C-nnn`

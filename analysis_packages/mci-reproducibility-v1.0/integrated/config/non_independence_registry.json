@@ -1,0 +1,592 @@
+{
+  "schema_version": "1.0",
+  "created": "2026-08-29",
+  "description": "Machine-readable register of corpus papers that are NOT independent evidence of one another (shared participants, shared research programme, review-over-included-trial overlap, commentary/editorial-target pairs, duplicate editions) plus paper-level admission flags (conference abstract slices, commentaries, protocols, non-study documents). Agent 4 consults this at every pair/append decision; G4/G5 reviewers treat it as the standing exclusion set. Every entry was verified against summaries.md / the source PDFs when its beads issue was filed - see source_issue. Append-only: never delete a group, set retired=true with a note instead.",
+  "semantics": {
+    "hard_block": "Agent 4 must never emit a conflict, complementary or consensus record that pairs the papers, and must count them as ONE supporter of any verified finding. Applies to relation types: shared_participants, commentary_on, duplicate_edition, letter_on.",
+    "single_source": "Both papers may appear in a record, but for consensus independence counting (>=3 independent groups rule) they count as ONE research group, and the record must be labelled as resting on one group where they are the only supporters.",
+    "scope_limited": "Non-independent only for the claim families listed in scope; independent for other claims. Agent 4 applies the block when the finding statement matches any scope term; humans decide the rest at G4.",
+    "unconfirmed": "Recorded suspicion only. Agent 4 must NOT block on it; it must surface it in the review note so a human decides. Do not assert duplication."
+  },
+  "groups": [
+    {
+      "id": "NI-01",
+      "papers": [
+        "P-783",
+        "P-653"
+      ],
+      "relation": "shared_participants",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "Secondary analyses of the same trial NCT04677944, same 164 participants (92 MCI + 72 NC). Harvey et al. 2024 Int Psychogeriatr (P-783) vs Harvey et al. 2024 Psychiatry Research (P-653). Further outputs of the same trial (Czaja 2023 primary, Dowell-Esquivel 2023) may arrive later.",
+      "trial_registration": "NCT04677944",
+      "source_issue": "PAPERINGO-9u5"
+    },
+    {
+      "id": "NI-02",
+      "papers": [
+        "P-813",
+        "P-442"
+      ],
+      "relation": "letter_on",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-813 (Kawabata & Poewe, Parkinsonism Relat Disord 2025;132:107163) is a Letter to the Editor commenting on Siciliano et al. doi 10.1016/j.parkreldis.2024.107077, which is P-442. P-813 reports no data of its own.",
+      "source_issue": "PAPERINGO-and"
+    },
+    {
+      "id": "NI-03",
+      "papers": [
+        "P-772",
+        "P-770"
+      ],
+      "relation": "commentary_on",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-772 (Velayudhan, IPG invited commentary on NPS neural correlates) discusses P-770, both in batch P-768..P-777.",
+      "source_issue": "PAPERINGO-tz9"
+    },
+    {
+      "id": "NI-04",
+      "papers": [
+        "P-777",
+        "P-776"
+      ],
+      "relation": "commentary_on",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-777 (Lee/Chiu/Peisah, IPG invited commentary on depression tools) discusses P-776.",
+      "source_issue": "PAPERINGO-tz9"
+    },
+    {
+      "id": "NI-05",
+      "papers": [
+        "P-786",
+        "P-785"
+      ],
+      "relation": "commentary_on",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-786 (Flint editorial) introduces the issue containing Anita et al. (P-785) and discusses it as its reference [6].",
+      "source_issue": "PAPERINGO-tz9"
+    },
+    {
+      "id": "NI-06",
+      "papers": [
+        "P-786",
+        "P-428"
+      ],
+      "relation": "commentary_on",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "The same Flint editorial (P-786) discusses Kanemoto et al. doi 10.1016/j.inpsyc.2025.100059, already in the corpus as P-428.",
+      "source_issue": "PAPERINGO-tz9"
+    },
+    {
+      "id": "NI-07",
+      "papers": [
+        "P-827",
+        "P-602"
+      ],
+      "relation": "shared_cohort",
+      "enforcement": "scope_limited",
+      "scope": [
+        "MCI prevalence",
+        "MoCA<26",
+        "MoCA cut-off",
+        "DO-HEALTH",
+        "cohort generalisability",
+        "polypharmacy AND haemoglobin joint"
+      ],
+      "reason": "Two observational analyses of the SAME DO-HEALTH trial cohort (NCT01745263), same 3-year window, same MoCA<26 MCI definition, four shared authors (Gaengler, Egli, Kressig, Bischoff-Ferrari). Different exposures (haemoglobin vs polypharmacy), so complementary for exposure-specific claims but one cohort for cohort-level claims.",
+      "trial_registration": "NCT01745263",
+      "source_issue": "PAPERINGO-t9k"
+    },
+    {
+      "id": "NI-08",
+      "papers": [
+        "P-828",
+        "P-644"
+      ],
+      "relation": "same_research_group_shared_cohort_frame",
+      "enforcement": "single_source",
+      "scope": [
+        "sarcopenia",
+        "osteosarcopenia",
+        "muscle",
+        "Shanghai community cohort"
+      ],
+      "reason": "Same Qi Guo lab (Shanghai): shared authors Peipei Han, Xiaoyu Chen, Qi Guo; P-828 cites P-644 as 'our prior research'. Both draw on Shanghai community physical-examination cohorts.",
+      "source_issue": "PAPERINGO-3ik"
+    },
+    {
+      "id": "NI-09",
+      "papers": [
+        "P-814",
+        "P-672"
+      ],
+      "relation": "overlapping_systematic_reviews",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "Both systematic reviews include the Morris et al. (2017) exercise trial with identical 34 vs 34 arm sizes; pooled evidence overlaps. Also: reject any record pairing either review with a corpus paper that is one of its own included trials.",
+      "source_issue": "PAPERINGO-5ps"
+    },
+    {
+      "id": "NI-10",
+      "papers": [
+        "P-806",
+        "P-249"
+      ],
+      "relation": "shared_authors_review_over_corpus",
+      "enforcement": "single_source",
+      "scope": [
+        "exercise",
+        "physical activity",
+        "multidomain intervention",
+        "cognition"
+      ],
+      "reason": "P-806 (Saez de Asteasu & Izquierdo, JNHA 2023 mini-review, no data) shares BOTH authors with P-249 (meta-analysis of 16 RCTs). P-806 summarises at least 18 corpus papers (P-249, P-251, P-252, P-256, P-403, P-611, P-613, P-638, P-671, P-672, P-674, P-680, P-683, P-692, P-694, P-698, P-704, P-733). Izquierdo also on P-674 and P-788. P-806 must not be a VF supporter unless an operator confirms it adds independent evidence.",
+      "source_issue": "PAPERINGO-84k"
+    },
+    {
+      "id": "NI-11",
+      "papers": [
+        "P-819",
+        "P-821"
+      ],
+      "relation": "review_includes_other_papers_group_cohorts",
+      "enforcement": "scope_limited",
+      "scope": [
+        "sleep architecture",
+        "polysomnography",
+        "PSG",
+        "aMCI sleep"
+      ],
+      "reason": "P-819 (Wei et al. 2024 PSG meta-analysis) pools two Shunjie Liu cohorts (Sleep Breath 2020; Sleep Med 2020); Shunjie Liu is first author of P-821 and cites both as his own prior work. P-819 and P-820 share zero included studies and ARE independent.",
+      "source_issue": "PAPERINGO-trl"
+    },
+    {
+      "id": "NI-12",
+      "papers": [
+        "P-842",
+        "P-248"
+      ],
+      "relation": "same_research_group",
+      "enforcement": "single_source",
+      "scope": [
+        "all"
+      ],
+      "reason": "Shared authors Ujala Sehar and P. Hemachandra Reddy (senior author on both), Texas Tech University HSC; both narrative reviews in Ageing Research Reviews five months apart. P-845 cites P-842 but is a different group (citation link, not non-independence).",
+      "source_issue": "PAPERINGO-z258"
+    },
+    {
+      "id": "NI-13",
+      "papers": [
+        "P-838",
+        "P-833",
+        "P-836"
+      ],
+      "relation": "same_research_group",
+      "enforcement": "single_source",
+      "scope": [
+        "virtual reality",
+        "VR",
+        "exercise",
+        "non-pharmacological intervention",
+        "cognitive training"
+      ],
+      "reason": "Jilin University School of Nursing group. P-833/P-836 share five authors (Yan, Ding, Liu, Chen, Yin); P-838 shares four with both (Qian Liu, Yiwen Ding, Huiru Yin, Li Chen); Yin and Chen are corresponding authors on all three. Included-study rosters of P-833 and P-836 do NOT overlap, so this is authorship/programme dependence, not shared trials.",
+      "source_issue": "PAPERINGO-d3j; PAPERINGO-i3h"
+    },
+    {
+      "id": "NI-14",
+      "papers": [
+        "P-834",
+        "P-835"
+      ],
+      "relation": "overlapping_systematic_reviews",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "At least 8 shared included trials by first-author+year (Combourieu Donnezan 2018, Fonte 2019, Hong 2018, Lam 2011, Lam 2015, Law 2019, Nagamatsu 2013, Scherder 2005), verified in both extracts. The P-830 vs P-835 'Tao 2019' key is NOT a shared study (checked false positive).",
+      "source_issue": "PAPERINGO-ha4"
+    },
+    {
+      "id": "NI-15",
+      "papers": [
+        "P-833",
+        "P-835"
+      ],
+      "relation": "overlapping_systematic_reviews",
+      "enforcement": "scope_limited",
+      "scope": [
+        "VR intervention",
+        "exercise intervention",
+        "cognitive outcome"
+      ],
+      "reason": "P-833 shares the Amjad 2019 trial with P-835.",
+      "source_issue": "PAPERINGO-ha4"
+    },
+    {
+      "id": "NI-16",
+      "papers": [
+        "P-825",
+        "P-671",
+        "P-685"
+      ],
+      "relation": "same_research_programme_disjoint_subcohorts",
+      "enforcement": "scope_limited",
+      "scope": [
+        "NCGG-FAT",
+        "NCGG-SGS",
+        "MCI prevalence",
+        "instrument validity"
+      ],
+      "reason": "All three draw on the NCGG-SGS programme (Chita / Obu / Tokai City subcohorts, different waves) with shared authors (Makino, Lee, Harada, Katayama, Shimada; Harada, Morikawa, Fujii, Nishijima, Shimada). Participants almost certainly disjoint, so safe for exposure-specific claims, unsafe for claims about NCGG-FAT-defined MCI prevalence or the instrument. P-721 (NCGG Memory Clinic) is independent.",
+      "source_issue": "PAPERINGO-9ju"
+    },
+    {
+      "id": "NI-17",
+      "papers": [
+        "P-258",
+        "P-824"
+      ],
+      "relation": "possible_shared_sampling_frame",
+      "enforcement": "unconfirmed",
+      "scope": [
+        "Rugao",
+        "MCI prevalence"
+      ],
+      "reason": "Both sample Rugao City, China (P-258 MPLC survey N=478 MoCA<25; P-824 RuLAS validation cohort N=1788/1823 HDS<21.5). Different surveys, instruments and tasks - probably distinct, but the extracts cannot exclude an overlapping sampling frame. Operator judgment required; do NOT assert duplication.",
+      "source_issue": "PAPERINGO-51m"
+    },
+    {
+      "id": "NI-18",
+      "papers": [
+        "P-470",
+        "P-404"
+      ],
+      "relation": "duplicate_edition",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "Same study published as Spanish and English editions of Neurologia (Folder 5 cross-batch duplicate that md5 could not catch).",
+      "source_issue": "memory: folder5-cross-batch-bilingual-duplicates"
+    },
+    {
+      "id": "NI-19",
+      "papers": [
+        "P-573",
+        "P-422"
+      ],
+      "relation": "duplicate_edition",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-573 is a duplicate-edition stub of P-422 (Agent 8 [VERIFY] rescoping 2026-07-31). Exclude the stub from reference building.",
+      "source_issue": "PAPERINGO-8qv"
+    },
+    {
+      "id": "NI-20",
+      "papers": [
+        "P-583",
+        "P-316"
+      ],
+      "relation": "duplicate_edition",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-583 is a duplicate-edition stub of P-316 (Agent 8 [VERIFY] rescoping 2026-07-31).",
+      "source_issue": "PAPERINGO-8qv"
+    },
+    {
+      "id": "NI-21",
+      "papers": [
+        "P-586",
+        "P-444"
+      ],
+      "relation": "duplicate_edition",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-586 is a duplicate-edition stub of P-444 (Agent 8 [VERIFY] rescoping 2026-07-31).",
+      "source_issue": "PAPERINGO-8qv"
+    },
+    {
+      "id": "NI-22",
+      "papers": [
+        "P-593",
+        "P-148"
+      ],
+      "relation": "duplicate_edition",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-593 is a duplicate-edition stub of P-148 (Agent 8 [VERIFY] rescoping 2026-07-31).",
+      "source_issue": "PAPERINGO-8qv"
+    },
+    {
+      "id": "NI-23",
+      "papers": [
+        "P-1053",
+        "P-1014"
+      ],
+      "relation": "duplicate_edition",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "Detected and remediated as a duplicate pair in batch P-1048..P-1057 (commit ce65893).",
+      "source_issue": "commit ce65893"
+    },
+    {
+      "id": "NI-24",
+      "papers": [
+        "P-1057",
+        "P-1017"
+      ],
+      "relation": "duplicate_edition",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "Detected and remediated as a duplicate pair in batch P-1048..P-1057 (commit ce65893).",
+      "source_issue": "commit ce65893"
+    },
+    {
+      "id": "NI-25",
+      "papers": [
+        "P-1048",
+        "P-1009"
+      ],
+      "relation": "duplicate_summary_same_pdf",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-1048 is a second summary of the same PDF as P-1009: identical title (case differs only), produced when Folder-1 index windows 450-459 and 449-456/458/459 overlapped. Verified by header comparison 2026-08-29. Pending stub remediation of the later block and registry row (see PAPERINGO-1vi6); until then the pair must never be counted twice.",
+      "source_issue": "PAPERINGO-1vi6"
+    },
+    {
+      "id": "NI-26",
+      "papers": [
+        "P-1049",
+        "P-1010"
+      ],
+      "relation": "duplicate_summary_same_pdf",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-1049 is a second summary of the same PDF as P-1010: identical title (case differs only), produced when Folder-1 index windows 450-459 and 449-456/458/459 overlapped. Verified by header comparison 2026-08-29. Pending stub remediation of the later block and registry row (see PAPERINGO-1vi6); until then the pair must never be counted twice.",
+      "source_issue": "PAPERINGO-1vi6"
+    },
+    {
+      "id": "NI-27",
+      "papers": [
+        "P-1050",
+        "P-1011"
+      ],
+      "relation": "duplicate_summary_same_pdf",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-1050 is a second summary of the same PDF as P-1011: identical title (case differs only), produced when Folder-1 index windows 450-459 and 449-456/458/459 overlapped. Verified by header comparison 2026-08-29. Pending stub remediation of the later block and registry row (see PAPERINGO-1vi6); until then the pair must never be counted twice.",
+      "source_issue": "PAPERINGO-1vi6"
+    },
+    {
+      "id": "NI-28",
+      "papers": [
+        "P-1051",
+        "P-1012"
+      ],
+      "relation": "duplicate_summary_same_pdf",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-1051 is a second summary of the same PDF as P-1012: identical title (case differs only), produced when Folder-1 index windows 450-459 and 449-456/458/459 overlapped. Verified by header comparison 2026-08-29. Pending stub remediation of the later block and registry row (see PAPERINGO-1vi6); until then the pair must never be counted twice.",
+      "source_issue": "PAPERINGO-1vi6"
+    },
+    {
+      "id": "NI-29",
+      "papers": [
+        "P-1052",
+        "P-1013"
+      ],
+      "relation": "duplicate_summary_same_pdf",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-1052 is a second summary of the same PDF as P-1013: identical title (case differs only), produced when Folder-1 index windows 450-459 and 449-456/458/459 overlapped. Verified by header comparison 2026-08-29. Pending stub remediation of the later block and registry row (see PAPERINGO-1vi6); until then the pair must never be counted twice.",
+      "source_issue": "PAPERINGO-1vi6"
+    },
+    {
+      "id": "NI-30",
+      "papers": [
+        "P-1054",
+        "P-1015"
+      ],
+      "relation": "duplicate_summary_same_pdf",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-1054 is a second summary of the same PDF as P-1015: identical title (case differs only), produced when Folder-1 index windows 450-459 and 449-456/458/459 overlapped. Verified by header comparison 2026-08-29. Pending stub remediation of the later block and registry row (see PAPERINGO-1vi6); until then the pair must never be counted twice.",
+      "source_issue": "PAPERINGO-1vi6"
+    },
+    {
+      "id": "NI-31",
+      "papers": [
+        "P-1056",
+        "P-1016"
+      ],
+      "relation": "duplicate_summary_same_pdf",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "P-1056 is a second summary of the same PDF as P-1016: identical title (case differs only), produced when Folder-1 index windows 450-459 and 449-456/458/459 overlapped. Verified by header comparison 2026-08-29. Pending stub remediation of the later block and registry row (see PAPERINGO-1vi6); until then the pair must never be counted twice.",
+      "source_issue": "PAPERINGO-1vi6"
+    },
+    {
+      "id": "NI-32",
+      "papers": [
+        "P-1029",
+        "P-798"
+      ],
+      "relation": "duplicate_edition",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "The taxonomy leaf for P-1029 is labelled '[DUPLICATE-of-P-798] Same paper as P-798 (MarketScan claims-based SuperLearner F1=0.56 ...) kept for numbering/leaf continuity only' while its registry row is live. P-798 is the ISPOR abstract-book slice of the same MarketScan SuperLearner study; P-1029 appears to be the fuller report. Which copy is canonical needs an operator decision before stubbing; until then they are one source.",
+      "source_issue": "2026-08-29 data-quality audit"
+    },
+    {
+      "id": "NI-33",
+      "papers": [
+        "P-629",
+        "P-1415"
+      ],
+      "relation": "duplicate_edition",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "Same Korean nationwide telephone survey (Gallup, Aug 2022, n=1006, identical metrics 41.3% awareness / 12.0% well informed / WTP-age-SES association). P-629 = WCN 2025 conference abstract (J Neurol Sci 480:124122); P-1415 = full journal article (Dement Neurocogn Disord 24(3):198-207). P-1415 was stubbed to P-629 on 2026-09-05 during batch P-1413..P-1423 after the DOI-based dedup scan missed it (distinct DOIs/venues, same study).",
+      "source_issue": "PAPERINGO-r850"
+    },
+    {
+      "id": "NI-34",
+      "papers": [
+        "P-966",
+        "P-1006"
+      ],
+      "relation": "shared_cohort",
+      "enforcement": "hard_block",
+      "scope": [
+        "all"
+      ],
+      "reason": "Same Gwangju Alzheimer's Disease and Related Dementia (GARD) cohort at the Korea Institute of Oriental Medicine, same laboratory and the same oculomotor paradigms (interleaved prosaccade/antisaccade and Go/No-go). Four shared authors: Julius Opwonya (first author on both), Kun Ho Lee, Joong Il Kim and Jaeuk U. Kim (P-966 Front Aging Neurosci 2022;14:871432, DOI 10.3389/fnagi.2022.871432, 249 participants = 79 MCI + 170 age-matched controls; P-1006 Front Neurosci 2023;17:1171417, DOI 10.3389/fnins.2023.1171417, 679 GARD participants recruited October 2019 - December 2020). Neither block prints a participant list, so the exact overlap is not recoverable from the corpus, but the recruitment frame, site, team and paradigms are the same, so they are one source: do not pair them in a conflict, complementary or consensus record and count them as ONE supporter of any eye-movement/MCI finding. Filed on the C-239 operator note, which records that P-1006 was deliberately withheld as a fourth arm of C-239 'because it shares four authors and the GARD cohort with P-966'.",
+      "source_issue": "C-239 operator G4 note 2026-09-09; registered 2026-09-14 audit"
+    }
+  ],
+  "paper_flags": {
+    "_description": "Admission flags. conference_abstract: a 1-2 page abstract-book slice, not a full paper - never treat as a full study in counts or synthesis. commentary_editorial: invited commentary/editorial/letter with zero primary data - never a VF supporter on its own. trial_protocol_no_results: planned N only, no observed data. not_a_study: document admitted in error (manual, duplicate stub). fabricated_summary_repaired: block was rewritten from the PDF after a fabrication finding.",
+    "P-769": [
+      "commentary_editorial"
+    ],
+    "P-771": [
+      "commentary_editorial"
+    ],
+    "P-772": [
+      "commentary_editorial"
+    ],
+    "P-777": [
+      "commentary_editorial"
+    ],
+    "P-779": [
+      "commentary_editorial"
+    ],
+    "P-786": [
+      "commentary_editorial"
+    ],
+    "P-806": [
+      "commentary_editorial"
+    ],
+    "P-813": [
+      "commentary_editorial"
+    ],
+    "P-1345": [
+      "commentary_editorial"
+    ],
+    "P-498": [
+      "commentary_editorial"
+    ],
+    "P-780": [
+      "conference_abstract"
+    ],
+    "P-781": [
+      "conference_abstract"
+    ],
+    "P-782": [
+      "conference_abstract"
+    ],
+    "P-798": [
+      "conference_abstract"
+    ],
+    "P-799": [
+      "conference_abstract"
+    ],
+    "P-800": [
+      "conference_abstract"
+    ],
+    "P-801": [
+      "conference_abstract"
+    ],
+    "P-802": [
+      "conference_abstract"
+    ],
+    "P-860": [
+      "trial_protocol_no_results"
+    ],
+    "P-591": [
+      "not_a_study"
+    ],
+    "P-573": [
+      "not_a_study"
+    ],
+    "P-583": [
+      "not_a_study"
+    ],
+    "P-586": [
+      "not_a_study"
+    ],
+    "P-593": [
+      "not_a_study"
+    ]
+  }
+}

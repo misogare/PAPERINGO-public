@@ -1,0 +1,747 @@
+{
+  "version": "1.1",
+  "built_at_utc": "2026-11-02T05:20:22+00:00",
+  "scope": "ADNI only; aggregate outputs; descriptive measured-selection sensitivity, not an identified causal correction",
+  "inputs": [
+    {
+      "archive": "Diagnostic Summary [ADNI1,GO,2,3,4,TEAM].zip",
+      "member": "DXSUM_01Nov2026.csv",
+      "csv_sha256": "3896304c04dc167779bcacb595bc0705ae2c1d5dd0d955920e8b9b48da659729",
+      "rows": 16602
+    },
+    {
+      "archive": "Registry [ADNI1,GO,2,3,4,TEAM].zip",
+      "member": "REGISTRY_01Nov2026.csv",
+      "csv_sha256": "9e4a7926789806121c7cbf0b682c87eae4f3e1699a97b355bad65b3e01ab08ba",
+      "rows": 29798
+    },
+    {
+      "archive": "Subject Demographics [ADNI1,GO,2,3,4,TEAM].zip",
+      "member": "PTDEMOG_01Nov2026.csv",
+      "csv_sha256": "58683f765d5d21b14ba9b99376f166fee67583c70ed8ec37a1768f62bc91668d",
+      "rows": 6243
+    },
+    {
+      "archive": "ApoE Genotyping - Results [ADNI1,GO,2,3,4].zip",
+      "member": "APOERES_01Nov2026.csv",
+      "csv_sha256": "d1b0107241a2e804bbe2179ac2d039831995e1d8c0156d884290dc03580990c0",
+      "rows": 3216
+    },
+    {
+      "archive": "Medical History [ADNI1,GO,2].zip",
+      "member": "MEDHIST_01Nov2026.csv",
+      "csv_sha256": "a606ae9de41b668b5b1fb0924a94aea2b60b02bb804e86874099df9718fc84b3",
+      "rows": 3083
+    }
+  ],
+  "cohort_audit": {
+    "raw_diagnosis_rows": 16602,
+    "raw_baseline_diagnosis_rows": 2958,
+    "baseline_rows_without_actual_date": 12,
+    "explicit_failed_diagnosis_qc_rows_excluded": 0,
+    "valid_dated_diagnosis_rows": 16406,
+    "discordant_same_day_dates_excluded": 2,
+    "dated_explicit_baseline_people_before_registry": 2946,
+    "explicit_failed_registry_qc_rows_excluded": 2,
+    "explicit_failed_registry_dated_baseline_qc_rows_excluded": 0,
+    "registered_baseline_all_diagnoses": 2945,
+    "registered_baseline_counts": {
+      "2": 1287,
+      "1": 1195,
+      "3": 463
+    },
+    "unique_dated_diagnosis_records": 16367,
+    "unique_dated_diagnosis_people": 3685,
+    "baseline_cn_mci_before_prior_dementia_exclusion": 2482,
+    "prior_observed_dementia_excluded": 2,
+    "genotype_records": 3216,
+    "invalid_or_missing_genotype_records": 0,
+    "conflicting_genotype_participants_excluded": 0,
+    "medical_history_rows_after_baseline_not_used": 593,
+    "prevalent_mci_before_covariate_exclusions": 1285,
+    "baseline_cn_before_covariate_exclusions": 1195,
+    "mci_with_positive_diagnosis_followup": 1146
+  },
+  "incident_mci_feasibility": {
+    "baseline_cn_n": 1195,
+    "observed_incident_mci_before_any_dementia_n": 183,
+    "later_dementia_after_incident_mci_n": 37,
+    "note": "Different inception cohort/estimand from prevalent baseline MCI; no baseline-MCI selection weights applied to these incident cases. Counts use all subsequent available diagnosis visits, not only the four-year primary horizon."
+  },
+  "exposures": [
+    {
+      "exposure": "e4",
+      "label": "APOE e4 carrier",
+      "source_n": 2391,
+      "source_cn_n": 1128,
+      "prevalent_mci_n": 1263,
+      "mci_positive_followup_n": 1137,
+      "mci_zero_followup_censored_n": 126,
+      "first_dementia_events_within_horizon": 327,
+      "observed_followup_person_years": 2954.8692676249148,
+      "exposed_source_n": 983,
+      "exposed_mci_n": 618,
+      "horizon_years": 4.0,
+      "selection_covariates": [
+        "constant",
+        "e4",
+        "age10",
+        "age10_sq",
+        "female",
+        "educ4",
+        "phase_GO2",
+        "phase_ADNI3",
+        "phase_ADNI4"
+      ],
+      "outcome_covariates": [
+        "e4",
+        "age10",
+        "age10_sq",
+        "female",
+        "educ4"
+      ],
+      "outcome_stratified_by": "ADNI1 / ADNIGO+ADNI2 / ADNI3 / ADNI4",
+      "selection_or": 2.1285910448345398,
+      "selection_bootstrap_ci": [
+        1.8131923666544072,
+        2.560298437977791
+      ],
+      "naive_hr": 2.3295571503228776,
+      "naive_bootstrap_ci": [
+        1.866012026241157,
+        2.956513040358214
+      ],
+      "weighted": {
+        "untrimmed": {
+          "hr": 2.343108635495395,
+          "log_hr": 0.8514785244326057,
+          "log_hr_difference": 0.005800339158601342,
+          "percent_hr_change": 0.5817193697368328,
+          "effective_sample_size": 1120.7072457899587,
+          "normalized_weight_quantiles": {
+            "0": 0.5757955277126308,
+            "0.01": 0.6087255263242225,
+            "0.5": 0.8914563893099379,
+            "0.99": 2.3057964572249636,
+            "1": 2.8903243694607035
+          },
+          "raw_weight_winsor_limits": [
+            0.5741769544839178,
+            2.8821996074201053
+          ],
+          "balance": [
+            {
+              "covariate": "e4",
+              "target_mean": 0.411125052279381,
+              "mci_mean": 0.48931116389548696,
+              "weighted_mci_mean": 0.40780123252769024,
+              "smd_before": 0.157640499623215,
+              "smd_after": -0.006759413779302965
+            },
+            {
+              "covariate": "age",
+              "target_mean": 72.16397676548293,
+              "mci_mean": 72.8720434110846,
+              "weighted_mci_mean": 72.40780968777045,
+              "smd_before": 0.0956326078373015,
+              "smd_after": 0.03349209109748997
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.5048097030531159,
+              "mci_mean": 0.4243863816310372,
+              "weighted_mci_mean": 0.5007965227155053,
+              "smd_before": -0.16177801908492875,
+              "smd_after": -0.008026551450090126
+            },
+            {
+              "covariate": "education",
+              "target_mean": 16.244249268088666,
+              "mci_mean": 15.996832937450515,
+              "weighted_mci_mean": 16.214284799355806,
+              "smd_before": -0.09217188637549117,
+              "smd_after": -0.011363630459440669
+            },
+            {
+              "covariate": "phase_ADNI1",
+              "target_mean": 0.26139690506064406,
+              "mci_mean": 0.31353919239904987,
+              "weighted_mci_mean": 0.260251055900439,
+              "smd_before": 0.11540241350005835,
+              "smd_after": -0.0026096371532609965
+            },
+            {
+              "covariate": "phase_GO2",
+              "target_mean": 0.31702216645754916,
+              "mci_mean": 0.36896278701504354,
+              "weighted_mci_mean": 0.3202858591995632,
+              "smd_before": 0.10957981194239502,
+              "smd_after": 0.007004358751506975
+            },
+            {
+              "covariate": "phase_ADNI3",
+              "target_mean": 0.2492680886658302,
+              "mci_mean": 0.18606492478226444,
+              "weighted_mci_mean": 0.24875768738376036,
+              "smd_before": -0.15361169155266152,
+              "smd_after": -0.001180278993486043
+            },
+            {
+              "covariate": "phase_ADNI4",
+              "target_mean": 0.1723128398159766,
+              "mci_mean": 0.13143309580364212,
+              "weighted_mci_mean": 0.17070539751623742,
+              "smd_before": -0.11408878061774591,
+              "smd_after": -0.0042643113444302575
+            }
+          ]
+        },
+        "winsor_01_99": {
+          "hr": 2.3459333851815423,
+          "log_hr": 0.8526833547648551,
+          "log_hr_difference": 0.007005169490850727,
+          "percent_hr_change": 0.7029763084539509,
+          "effective_sample_size": 1124.9419964658957,
+          "normalized_weight_quantiles": {
+            "0": 0.609576535070537,
+            "0.01": 0.6103459305773578,
+            "0.5": 0.8927026606612343,
+            "0.99": 2.300863006108128,
+            "1": 2.309020000295629
+          },
+          "raw_weight_winsor_limits": [
+            0.6070143861831092,
+            2.299314815327967
+          ],
+          "balance": [
+            {
+              "covariate": "e4",
+              "target_mean": 0.411125052279381,
+              "mci_mean": 0.48931116389548696,
+              "weighted_mci_mean": 0.40851816350043785,
+              "smd_before": 0.157640499623215,
+              "smd_after": -0.005300721038161369
+            },
+            {
+              "covariate": "age",
+              "target_mean": 72.16397676548293,
+              "mci_mean": 72.8720434110846,
+              "weighted_mci_mean": 72.41210023232763,
+              "smd_before": 0.0956326078373015,
+              "smd_after": 0.034068268112530165
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.5048097030531159,
+              "mci_mean": 0.4243863816310372,
+              "weighted_mci_mean": 0.49994787551582476,
+              "smd_before": -0.16177801908492875,
+              "smd_after": -0.009723880048488747
+            },
+            {
+              "covariate": "education",
+              "target_mean": 16.244249268088666,
+              "mci_mean": 15.996832937450515,
+              "weighted_mci_mean": 16.209586934855945,
+              "smd_before": -0.09217188637549117,
+              "smd_after": -0.013143597236083604
+            },
+            {
+              "covariate": "phase_ADNI1",
+              "target_mean": 0.26139690506064406,
+              "mci_mean": 0.31353919239904987,
+              "weighted_mci_mean": 0.26068991541983927,
+              "smd_before": 0.11540241350005835,
+              "smd_after": -0.0016097089569169088
+            },
+            {
+              "covariate": "phase_GO2",
+              "target_mean": 0.31702216645754916,
+              "mci_mean": 0.36896278701504354,
+              "weighted_mci_mean": 0.32080935242356656,
+              "smd_before": 0.10957981194239502,
+              "smd_after": 0.008126093403353754
+            },
+            {
+              "covariate": "phase_ADNI3",
+              "target_mean": 0.2492680886658302,
+              "mci_mean": 0.18606492478226444,
+              "weighted_mci_mean": 0.24773391350459226,
+              "smd_before": -0.15361169155266152,
+              "smd_after": -0.003550155343427741
+            },
+            {
+              "covariate": "phase_ADNI4",
+              "target_mean": 0.1723128398159766,
+              "mci_mean": 0.13143309580364212,
+              "weighted_mci_mean": 0.1707668186520018,
+              "smd_before": -0.11408878061774591,
+              "smd_after": -0.004101078139401863
+            }
+          ],
+          "bootstrap_ci": [
+            1.857995383192108,
+            3.001615907968149
+          ],
+          "paired_log_hr_difference_ci": [
+            -0.05890753596689951,
+            0.07598493301424085
+          ],
+          "hr_ratio_vs_naive_ci": [
+            0.9427939396570131,
+            1.0789463175660137
+          ]
+        },
+        "winsor_05_95": {
+          "hr": 2.3557660498106547,
+          "log_hr": 0.856865961117986,
+          "log_hr_difference": 0.011187775843981562,
+          "percent_hr_change": 1.1250593051191915,
+          "effective_sample_size": 1155.0621699037588,
+          "normalized_weight_quantiles": {
+            "0": 0.6569251340709238,
+            "0.01": 0.6569251340709238,
+            "0.5": 0.9070490022968458,
+            "0.99": 1.7210861907474033,
+            "1": 1.7210861907474033
+          },
+          "raw_weight_winsor_limits": [
+            0.6438173861149957,
+            1.686745041613795
+          ],
+          "balance": [
+            {
+              "covariate": "e4",
+              "target_mean": 0.411125052279381,
+              "mci_mean": 0.48931116389548696,
+              "weighted_mci_mean": 0.4159572003162256,
+              "smd_before": 0.157640499623215,
+              "smd_after": 0.009812221047550664
+            },
+            {
+              "covariate": "age",
+              "target_mean": 72.16397676548293,
+              "mci_mean": 72.8720434110846,
+              "weighted_mci_mean": 72.44762542543397,
+              "smd_before": 0.0956326078373015,
+              "smd_after": 0.03885132005288852
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.5048097030531159,
+              "mci_mean": 0.4243863816310372,
+              "weighted_mci_mean": 0.4910195391262065,
+              "smd_before": -0.16177801908492875,
+              "smd_after": -0.027583190638890028
+            },
+            {
+              "covariate": "education",
+              "target_mean": 16.244249268088666,
+              "mci_mean": 15.996832937450515,
+              "weighted_mci_mean": 16.19061589221758,
+              "smd_before": -0.09217188637549117,
+              "smd_after": -0.02028511555321027
+            },
+            {
+              "covariate": "phase_ADNI1",
+              "target_mean": 0.26139690506064406,
+              "mci_mean": 0.31353919239904987,
+              "weighted_mci_mean": 0.26538087269376703,
+              "smd_before": 0.11540241350005835,
+              "smd_after": 0.00904487115595373
+            },
+            {
+              "covariate": "phase_GO2",
+              "target_mean": 0.31702216645754916,
+              "mci_mean": 0.36896278701504354,
+              "weighted_mci_mean": 0.3264421658738252,
+              "smd_before": 0.10957981194239502,
+              "smd_after": 0.02016624781211523
+            },
+            {
+              "covariate": "phase_ADNI3",
+              "target_mean": 0.2492680886658302,
+              "mci_mean": 0.18606492478226444,
+              "weighted_mci_mean": 0.24189363692148413,
+              "smd_before": -0.15361169155266152,
+              "smd_after": -0.017133341244572612
+            },
+            {
+              "covariate": "phase_ADNI4",
+              "target_mean": 0.1723128398159766,
+              "mci_mean": 0.13143309580364212,
+              "weighted_mci_mean": 0.16628332451092379,
+              "smd_before": -0.11408878061774591,
+              "smd_after": -0.01607858441009453
+            }
+          ]
+        }
+      },
+      "selection_probability_quantiles_mci": {
+        "0": 0.1832735194282314,
+        "0.01": 0.2297461590440984,
+        "0.5": 0.5942185460023396,
+        "0.99": 0.8702173362396718,
+        "1": 0.9199792182905259
+      },
+      "phase_source_counts": {
+        "0": {
+          "ADNI1": 229,
+          "ADNI3": 361,
+          "ADNI4": 246,
+          "GO2": 292
+        },
+        "1": {
+          "ADNI1": 396,
+          "ADNI3": 235,
+          "ADNI4": 166,
+          "GO2": 466
+        }
+      },
+      "bootstrap": {
+        "requested": 1000,
+        "successful": 1000,
+        "failed": 0,
+        "seed": 20261102,
+        "resampling_unit": "participant from pooled baseline CN+MCI; selection and both outcome fits refitted each time",
+        "seconds": 39.171000000002095
+      },
+      "cox_validation_max_abs_coefficient_difference": 1.0822190435466617e-09
+    },
+    {
+      "exposure": "smoke",
+      "label": "Smoking-history flag",
+      "source_n": 1384,
+      "source_cn_n": 522,
+      "prevalent_mci_n": 862,
+      "mci_positive_followup_n": 825,
+      "mci_zero_followup_censored_n": 37,
+      "first_dementia_events_within_horizon": 272,
+      "observed_followup_person_years": 2218.1820670773445,
+      "exposed_source_n": 547,
+      "exposed_mci_n": 339,
+      "horizon_years": 4.0,
+      "selection_covariates": [
+        "constant",
+        "smoke",
+        "age10",
+        "age10_sq",
+        "female",
+        "educ4",
+        "phase_GO2"
+      ],
+      "outcome_covariates": [
+        "smoke",
+        "age10",
+        "age10_sq",
+        "female",
+        "educ4"
+      ],
+      "outcome_stratified_by": "ADNI1 / ADNIGO+ADNI2 / ADNI3 / ADNI4",
+      "selection_or": 0.968829130775466,
+      "selection_bootstrap_ci": [
+        0.7651356492350928,
+        1.2179014097558085
+      ],
+      "naive_hr": 1.106420932031123,
+      "naive_bootstrap_ci": [
+        0.8722996621622249,
+        1.4043008098207268
+      ],
+      "weighted": {
+        "untrimmed": {
+          "hr": 1.0593842266619213,
+          "log_hr": 0.05768782108212732,
+          "log_hr_difference": -0.043442599152081665,
+          "percent_hr_change": -4.251248689127163,
+          "effective_sample_size": 830.3536089622118,
+          "normalized_weight_quantiles": {
+            "0": 0.6405731790038451,
+            "0.01": 0.6520376361961352,
+            "0.5": 0.9890853153283287,
+            "0.99": 1.5191484508518671,
+            "1": 1.639115393769571
+          },
+          "raw_weight_winsor_limits": [
+            0.6410001809560774,
+            1.6402080175259417
+          ],
+          "balance": [
+            {
+              "covariate": "smoke",
+              "target_mean": 0.3952312138728324,
+              "mci_mean": 0.39327146171693733,
+              "weighted_mci_mean": 0.394803331665226,
+              "smd_before": -0.0040102292860163405,
+              "smd_after": -0.0008752754322528888
+            },
+            {
+              "covariate": "age",
+              "target_mean": 73.68399781604965,
+              "mci_mean": 73.23981762483504,
+              "weighted_mci_mean": 73.74149895171176,
+              "smd_before": -0.060951061267164035,
+              "smd_after": 0.008229072842501435
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.4486994219653179,
+              "mci_mean": 0.40835266821345706,
+              "weighted_mci_mean": 0.44686329042832357,
+              "smd_before": -0.08159864079878892,
+              "smd_after": -0.003692461654790638
+            },
+            {
+              "covariate": "education",
+              "target_mean": 16.08670520231214,
+              "mci_mean": 15.915313225058005,
+              "weighted_mci_mean": 16.099924989800527,
+              "smd_before": -0.06082123089319882,
+              "smd_after": 0.004728944702290922
+            },
+            {
+              "covariate": "phase_ADNI1",
+              "target_mean": 0.4508670520231214,
+              "mci_mean": 0.4582366589327146,
+              "weighted_mci_mean": 0.44856542181329284,
+              "smd_before": 0.014800887708954722,
+              "smd_after": -0.004626729166383488
+            },
+            {
+              "covariate": "phase_GO2",
+              "target_mean": 0.5491329479768786,
+              "mci_mean": 0.5417633410672854,
+              "weighted_mci_mean": 0.5514345781867072,
+              "smd_before": -0.014800887708954722,
+              "smd_after": 0.004626729166383488
+            },
+            {
+              "covariate": "phase_ADNI3",
+              "target_mean": 0.0,
+              "mci_mean": 0.0,
+              "weighted_mci_mean": 0.0,
+              "smd_before": 0.0,
+              "smd_after": 0.0
+            },
+            {
+              "covariate": "phase_ADNI4",
+              "target_mean": 0.0,
+              "mci_mean": 0.0,
+              "weighted_mci_mean": 0.0,
+              "smd_before": 0.0,
+              "smd_after": 0.0
+            }
+          ]
+        },
+        "winsor_01_99": {
+          "hr": 1.0595528302764847,
+          "log_hr": 0.05784696088702827,
+          "log_hr_difference": -0.04328345934718071,
+          "percent_hr_change": -4.236010039018301,
+          "effective_sample_size": 830.8801244542069,
+          "normalized_weight_quantiles": {
+            "0": 0.6523703251984486,
+            "0.01": 0.6528517399235819,
+            "0.5": 0.9895899760848443,
+            "0.99": 1.5142210329309052,
+            "1": 1.5199235655912988
+          },
+          "raw_weight_winsor_limits": [
+            0.6524722802816363,
+            1.5201611054173503
+          ],
+          "balance": [
+            {
+              "covariate": "smoke",
+              "target_mean": 0.3952312138728324,
+              "mci_mean": 0.39327146171693733,
+              "weighted_mci_mean": 0.3947309325748608,
+              "smd_before": -0.0040102292860163405,
+              "smd_after": -0.0010233912551133745
+            },
+            {
+              "covariate": "age",
+              "target_mean": 73.68399781604965,
+              "mci_mean": 73.23981762483504,
+              "weighted_mci_mean": 73.73951598605481,
+              "smd_before": -0.060951061267164035,
+              "smd_after": 0.007943542277418428
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.4486994219653179,
+              "mci_mean": 0.40835266821345706,
+              "weighted_mci_mean": 0.44651410288561644,
+              "smd_before": -0.08159864079878892,
+              "smd_after": -0.004394843452534907
+            },
+            {
+              "covariate": "education",
+              "target_mean": 16.08670520231214,
+              "mci_mean": 15.915313225058005,
+              "weighted_mci_mean": 16.097926028075882,
+              "smd_before": -0.06082123089319882,
+              "smd_after": 0.004014201559027839
+            },
+            {
+              "covariate": "phase_ADNI1",
+              "target_mean": 0.4508670520231214,
+              "mci_mean": 0.4582366589327146,
+              "weighted_mci_mean": 0.4488015972721025,
+              "smd_before": 0.014800887708954722,
+              "smd_after": -0.0041518684015090035
+            },
+            {
+              "covariate": "phase_GO2",
+              "target_mean": 0.5491329479768786,
+              "mci_mean": 0.5417633410672854,
+              "weighted_mci_mean": 0.5511984027278976,
+              "smd_before": -0.014800887708954722,
+              "smd_after": 0.004151868401509115
+            },
+            {
+              "covariate": "phase_ADNI3",
+              "target_mean": 0.0,
+              "mci_mean": 0.0,
+              "weighted_mci_mean": 0.0,
+              "smd_before": 0.0,
+              "smd_after": 0.0
+            },
+            {
+              "covariate": "phase_ADNI4",
+              "target_mean": 0.0,
+              "mci_mean": 0.0,
+              "weighted_mci_mean": 0.0,
+              "smd_before": 0.0,
+              "smd_after": 0.0
+            }
+          ],
+          "bootstrap_ci": [
+            0.8327512080877563,
+            1.3548185219386037
+          ],
+          "paired_log_hr_difference_ci": [
+            -0.09757344860185012,
+            0.006890728871119951
+          ],
+          "hr_ratio_vs_naive_ci": [
+            0.9070357186037907,
+            1.006914524568474
+          ]
+        },
+        "winsor_05_95": {
+          "hr": 1.0625969203565597,
+          "log_hr": 0.06071583681533546,
+          "log_hr_difference": -0.04041458341887352,
+          "percent_hr_change": -3.96088056596261,
+          "effective_sample_size": 834.387510123786,
+          "normalized_weight_quantiles": {
+            "0": 0.7034203635252244,
+            "0.01": 0.7034203635252244,
+            "0.5": 0.9924968405356851,
+            "0.99": 1.3657945785377268,
+            "1": 1.3657945785377268
+          },
+          "raw_weight_winsor_limits": [
+            0.7014697692377342,
+            1.3620072114938877
+          ],
+          "balance": [
+            {
+              "covariate": "smoke",
+              "target_mean": 0.3952312138728324,
+              "mci_mean": 0.39327146171693733,
+              "weighted_mci_mean": 0.39424635433998856,
+              "smd_before": -0.0040102292860163405,
+              "smd_after": -0.0020148753830558966
+            },
+            {
+              "covariate": "age",
+              "target_mean": 73.68399781604965,
+              "mci_mean": 73.23981762483504,
+              "weighted_mci_mean": 73.70741788171968,
+              "smd_before": -0.060951061267164035,
+              "smd_after": 0.0033426392289195033
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.4486994219653179,
+              "mci_mean": 0.40835266821345706,
+              "weighted_mci_mean": 0.444002981654131,
+              "smd_before": -0.08159864079878892,
+              "smd_after": -0.00944752647147417
+            },
+            {
+              "covariate": "education",
+              "target_mean": 16.08670520231214,
+              "mci_mean": 15.915313225058005,
+              "weighted_mci_mean": 16.086227364000237,
+              "smd_before": -0.06082123089319882,
+              "smd_after": -0.00017094932125036392
+            },
+            {
+              "covariate": "phase_ADNI1",
+              "target_mean": 0.4508670520231214,
+              "mci_mean": 0.4582366589327146,
+              "weighted_mci_mean": 0.44946356939341053,
+              "smd_before": 0.014800887708954722,
+              "smd_after": -0.002821014984578512
+            },
+            {
+              "covariate": "phase_GO2",
+              "target_mean": 0.5491329479768786,
+              "mci_mean": 0.5417633410672854,
+              "weighted_mci_mean": 0.5505364306065895,
+              "smd_before": -0.014800887708954722,
+              "smd_after": 0.0028210149845786237
+            },
+            {
+              "covariate": "phase_ADNI3",
+              "target_mean": 0.0,
+              "mci_mean": 0.0,
+              "weighted_mci_mean": 0.0,
+              "smd_before": 0.0,
+              "smd_after": 0.0
+            },
+            {
+              "covariate": "phase_ADNI4",
+              "target_mean": 0.0,
+              "mci_mean": 0.0,
+              "weighted_mci_mean": 0.0,
+              "smd_before": 0.0,
+              "smd_after": 0.0
+            }
+          ]
+        }
+      },
+      "selection_probability_quantiles_mci": {
+        "0": 0.37972767069000485,
+        "0.01": 0.40973887249466806,
+        "0.5": 0.6292859298070608,
+        "0.99": 0.9545751067718861,
+        "1": 0.9716570891028723
+      },
+      "phase_source_counts": {
+        "0": {
+          "ADNI1": 229,
+          "GO2": 293
+        },
+        "1": {
+          "ADNI1": 395,
+          "GO2": 467
+        }
+      },
+      "bootstrap": {
+        "requested": 1000,
+        "successful": 1000,
+        "failed": 0,
+        "seed": 20261103,
+        "resampling_unit": "participant from pooled baseline CN+MCI; selection and both outcome fits refitted each time",
+        "seconds": 25.562999999994645
+      },
+      "cox_validation_max_abs_coefficient_difference": 9.342265849809905e-11
+    }
+  ],
+  "analysis_run_at_utc": "2026-11-02T05:17:23+00:00",
+  "output_rebuild_note": "Version 1.1 adds explicit registry QC guard (2 flagged rows, none eligible dated baseline), reference author correction and figure captions/formatting; original executed 1000-replicate estimates retained after exact input/cohort equality assertions."
+}

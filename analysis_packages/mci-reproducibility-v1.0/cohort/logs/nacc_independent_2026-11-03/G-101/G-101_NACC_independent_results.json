@@ -1,0 +1,3359 @@
+{
+  "version": "1.0",
+  "built_at_utc": "2026-11-03T01:52:57+00:00",
+  "scope": "NACC only; aggregate measured-composition sensitivity; no causal closure or human gate",
+  "source": [
+    {
+      "path": "downloads/nacc/investigator_nacc75.csv",
+      "sha256": "e44f2cd858b4f3256cde3fe1b6bf719861c1fb1077ad8f3115be1610d278c771",
+      "bytes": 1115002384,
+      "rows": 218535,
+      "projected_columns": [
+        "NACCID",
+        "NACCADC",
+        "PACKET",
+        "FORMVER",
+        "VISITDATE",
+        "NACCVNUM",
+        "NACCUDSD",
+        "NACCAGE",
+        "NACCSEX",
+        "EDUC",
+        "NACCAPOE",
+        "NACCNE4S",
+        "TOBAC100",
+        "HEARING",
+        "HEARAID",
+        "DIABETES",
+        "DIABTYPE",
+        "SMOKYRS",
+        "PACKSPER",
+        "NACCFDYS",
+        "NACCDAYS",
+        "NACCDIED",
+        "NACCYOD",
+        "NACCINT",
+        "MODEA1",
+        "MODEB1",
+        "NACCAVST"
+      ],
+      "freeze": "September 2026 (provider email)"
+    }
+  ],
+  "cohort_audit": {
+    "raw_rows_read_to_eof": 218535,
+    "raw_people": 57272,
+    "raw_centers": 46,
+    "raw_packet_counts": {
+      "F": 130393,
+      "I": 56747,
+      "T": 24357,
+      "I4": 6513,
+      "IT": 525
+    },
+    "raw_diagnosis_counts": {
+      "1": 108075,
+      "4": 61681,
+      "3": 38827,
+      "2": 9912,
+      "8": 40
+    },
+    "minimum_baseline_age": 50,
+    "maximum_valid_age": 120,
+    "include_telephone_diagnoses": true,
+    "missing_visit_dates": 0,
+    "missing_elapsed_days": 0,
+    "negative_elapsed_days": 0,
+    "initial_rows_raw": 57272,
+    "initial_diagnosis_counts_before_exclusions": {
+      "1": 23889,
+      "4": 17731,
+      "3": 12965,
+      "2": 2680,
+      "8": 7
+    },
+    "initial_packet_counts_before_exclusions": {
+      "I": 56747,
+      "IT": 525
+    },
+    "initial_age_below_minimum_people": 1440,
+    "initial_age_below_minimum_by_state": {
+      "1": 933,
+      "4": 283,
+      "3": 142,
+      "2": 82
+    },
+    "initial_elapsed_not_zero": 0,
+    "unrecognized_packet_rows": 0,
+    "valid_mapped_rows_before_same_day_resolution": 208583,
+    "conflicting_person_days_removed": 0,
+    "conflicting_rows_removed": 0,
+    "identical_person_day_rows_collapsed": 0,
+    "clean_mapped_visit_rows_all_ages": 208583,
+    "eligible_initial_people_all_three_states": 53227,
+    "eligible_initial_state_counts": {
+      "1": 22956,
+      "3": 17448,
+      "2": 12823
+    },
+    "eligible_initial_centers": 46,
+    "elapsed_days_disagree_with_visitdate_difference": 0,
+    "participants_with_multiple_center_codes": 0,
+    "apoe_participants_with_conflicting_valid_genotypes": 0,
+    "initial_people_with_any_later_mapped_diagnosis": {
+      "1": 17610,
+      "2": 8726,
+      "3": 10673
+    },
+    "initial_baseline_covariate_counts": {
+      "smoking_codes": {
+        "0": 30565,
+        "1": 21759,
+        "9": 903
+      },
+      "genotype_codes": {
+        "1": 21283,
+        "2": 13522,
+        "9": 10411,
+        "3": 3783,
+        "4": 2943,
+        "5": 1103,
+        "6": 182
+      },
+      "hearing_codes": {
+        "1": 39008,
+        "0": 10991,
+        "-4": 2149,
+        "9": 1079
+      },
+      "diabetes_codes": {
+        "0": 45377,
+        "1": 7164,
+        "2": 438,
+        "9": 248
+      },
+      "diabetes_type_codes": {
+        "-4": 30735,
+        "8": 18953,
+        "2": 3115,
+        "3": 182,
+        "1": 143,
+        "9": 99
+      },
+      "sex_codes": {
+        "2": 30639,
+        "1": 22579,
+        "8": 6,
+        "9": 3
+      },
+      "initial_packet_codes": {
+        "I": 52731,
+        "IT": 496
+      }
+    },
+    "known_death_status_codes_all_people": {
+      "0": 41871,
+      "1": 15401
+    },
+    "rules": {
+      "baseline": "Actual NACCVNUM=1, valid initial state, baseline age 50-120 in primary; do not substitute a later usable diagnosis.",
+      "clock": "NACCFDYS is per-visit elapsed days since initial; NACCDAYS is not used as the longitudinal clock.",
+      "states": "NACCUDSD 1/3/4 mapped to CN/MCI/dementia 1/2/3. Code2 impaired-not-MCI and code8 behavioral-only impairment are excluded, not relabelled.",
+      "mode": "All valid clinical diagnosis packets primary. IT/T are legacy telephone packets; UDSv4 standard packets may also contain remote forms.",
+      "death": "NACCDIED=0 combines not-known-deceased with unknown; NACCYOD is year only. Do not manufacture an exact death date or count all code0 as confirmed alive.",
+      "genotype": "NACCAPOE1..6 valid; carrier codes2/4/5. NACCNE4S0..2 valid counts;9 missing. Genotype fields are cross-sectional and may have been ascertained after entry.",
+      "smoking": "TOBAC100 is lifetime >100 cigarettes, not current smoking. Codes0/1 valid;9/-4 missing.",
+      "hearing": "HEARING0 means hearing not functionally normal without aids;1 means normal;9/-4 missing.",
+      "diabetes": "DIABETES0 absent,1 recent/active,2 remote/inactive; type2 needs DIABTYPE2 and is not interchangeable with all diabetes."
+    }
+  },
+  "exposures": [
+    {
+      "exposure": "e4",
+      "label": "APOE e4 carrier",
+      "source_n": 29279,
+      "source_cn_n": 19084,
+      "baseline_mci_n": 10195,
+      "mci_positive_followup_n": 7568,
+      "zero_followup_censored_n": 2627,
+      "dementia_events": 2509,
+      "observed_risk_person_years": 19248.993839835726,
+      "exposed_source_n": 10455,
+      "exposed_mci_n": 4423,
+      "overlap_excluded_people_n": 0,
+      "centers_n": 43,
+      "initial_uds_versions": [
+        1.0,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "horizon_years": 4,
+      "selection_covariates": [
+        "e4",
+        "age10",
+        "age10_sq",
+        "female",
+        "educ4",
+        "telephone_initial",
+        "initial_UDS_version_2.0",
+        "initial_UDS_version_3.0",
+        "initial_UDS_version_4.0",
+        "center_fixed_intercepts"
+      ],
+      "outcome_covariates": [
+        "e4",
+        "age10",
+        "age10_sq",
+        "female",
+        "educ4",
+        "telephone_initial"
+      ],
+      "outcome_strata": "baseline ADRC crossed with initial UDS major version",
+      "baseline_mci_version_counts_and_events": [
+        {
+          "initial_version": 1.0,
+          "people": 2428,
+          "events": 709,
+          "positive_followup_people": 2012
+        },
+        {
+          "initial_version": 2.0,
+          "people": 2864,
+          "events": 857,
+          "positive_followup_people": 2244
+        },
+        {
+          "initial_version": 3.0,
+          "people": 4708,
+          "events": 943,
+          "positive_followup_people": 3306
+        },
+        {
+          "initial_version": 4.0,
+          "people": 195,
+          "events": 0,
+          "positive_followup_people": 6
+        }
+      ],
+      "selection_membership_or": 1.9190557418977694,
+      "selection_bootstrap_ci": [
+        1.7719279665001695,
+        2.086041270876759
+      ],
+      "naive_hr": 1.591170862895521,
+      "naive_bootstrap_ci": [
+        1.4662005082523937,
+        1.7526897438010347
+      ],
+      "weighted": {
+        "untrimmed": {
+          "hr": 1.6653117838478706,
+          "log_hr": 0.5100123634681862,
+          "hr_ratio_vs_naive": 1.046595197713357,
+          "percent_hr_change": 4.659519771335705,
+          "effective_sample_size": 6416.034534780098,
+          "raw_winsor_limits": [
+            0.3651592515725256,
+            18.72841515935063
+          ],
+          "normalized_weight_quantiles": [
+            0.36625757326865893,
+            0.40846171503726547,
+            0.8091843036204892,
+            3.8870053426896938,
+            18.784746265888735
+          ],
+          "balance": [
+            {
+              "covariate": "e4",
+              "target_mean": 0.3570818675501212,
+              "unweighted_mci_mean": 0.4338401177047572,
+              "weighted_mci_mean": 0.3524791719601163,
+              "smd_before": 0.15747190871830488,
+              "smd_after": -0.00962019020039853
+            },
+            {
+              "covariate": "age",
+              "target_mean": 71.25588305611531,
+              "unweighted_mci_mean": 72.4817067189799,
+              "weighted_mci_mean": 71.37050327866851,
+              "smd_before": 0.14058775203713503,
+              "smd_after": 0.012884628986946603
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.5981420130468936,
+              "unweighted_mci_mean": 0.4946542422756253,
+              "weighted_mci_mean": 0.5936117811755451,
+              "smd_before": -0.20900446283984728,
+              "smd_after": -0.009231875618039934
+            },
+            {
+              "covariate": "education",
+              "target_mean": 15.75883739198743,
+              "unweighted_mci_mean": 15.417949975478175,
+              "weighted_mci_mean": 15.740280398406735,
+              "smd_before": -0.10619961824074309,
+              "smd_after": -0.005936088539382363
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 0,
+              "target_mean": 0.019194644625841046,
+              "unweighted_mci_mean": 0.018734673859735165,
+              "weighted_mci_mean": 0.019687560404207112,
+              "smd_before": -0.00337222077591227,
+              "smd_after": 0.003570065010142732
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 1,
+              "target_mean": 0.004952354930154719,
+              "unweighted_mci_mean": 0.003531142717018146,
+              "weighted_mci_mean": 0.004514749289498575,
+              "smd_before": -0.021869329198788007,
+              "smd_after": -0.0063756116423375996
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 2,
+              "target_mean": 0.05495406263875132,
+              "unweighted_mci_mean": 0.08092202059833252,
+              "weighted_mci_mean": 0.05570523170977687,
+              "smd_before": 0.10333270045129807,
+              "smd_after": 0.0032856340493727008
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 3,
+              "target_mean": 0.03196830492844701,
+              "unweighted_mci_mean": 0.039627268268759196,
+              "weighted_mci_mean": 0.03176259509545722,
+              "smd_before": 0.04123349239304795,
+              "smd_after": -0.0011711896841142943
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 4,
+              "target_mean": 0.02875781276682947,
+              "unweighted_mci_mean": 0.0297204512015694,
+              "weighted_mci_mean": 0.02915337802578615,
+              "smd_before": 0.00571382061166283,
+              "smd_after": 0.0023590255759838017
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 5,
+              "target_mean": 0.0022541753475186993,
+              "unweighted_mci_mean": 0.0021579205492888672,
+              "weighted_mci_mean": 0.002046489602033366,
+              "smd_before": -0.0020516095362340878,
+              "smd_after": -0.004483554112438814
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 6,
+              "target_mean": 0.0204241948153967,
+              "unweighted_mci_mean": 0.04443354585581167,
+              "weighted_mci_mean": 0.020435183827043384,
+              "smd_before": 0.13585408181965147,
+              "smd_after": 7.768013040097641e-05
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 7,
+              "target_mean": 0.027835650124662728,
+              "unweighted_mci_mean": 0.032957332025502696,
+              "weighted_mci_mean": 0.027922377929534694,
+              "smd_before": 0.02983679077534301,
+              "smd_after": 0.0005268166651304769
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 8,
+              "target_mean": 0.018614023702995322,
+              "unweighted_mci_mean": 0.02157920549288867,
+              "weighted_mci_mean": 0.018071968162355064,
+              "smd_before": 0.02113111834685234,
+              "smd_after": -0.004039518989789182
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 9,
+              "target_mean": 0.03131937566173708,
+              "unweighted_mci_mean": 0.027072094163805786,
+              "weighted_mci_mean": 0.03203765712215506,
+              "smd_before": -0.025230162993199252,
+              "smd_after": 0.004101128426192529
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 10,
+              "target_mean": 0.01567676491683459,
+              "unweighted_mci_mean": 0.021481118195193723,
+              "weighted_mci_mean": 0.015337647264892583,
+              "smd_before": 0.04299480623133174,
+              "smd_after": -0.0027445917608543945
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 11,
+              "target_mean": 0.004337579835376891,
+              "unweighted_mci_mean": 0.006669936243256498,
+              "weighted_mci_mean": 0.004423367365075481,
+              "smd_before": 0.03152954014547561,
+              "smd_after": 0.0012990235289275912
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 12,
+              "target_mean": 0.03593018887257078,
+              "unweighted_mci_mean": 0.04394310936733693,
+              "weighted_mci_mean": 0.037502615254983565,
+              "smd_before": 0.04093040143809652,
+              "smd_after": 0.008361168500418027
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 13,
+              "target_mean": 0.01226134772362444,
+              "unweighted_mci_mean": 0.012849435998038254,
+              "weighted_mci_mean": 0.011915835329138234,
+              "smd_before": 0.005281685378613227,
+              "smd_after": -0.0031616757056869187
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 14,
+              "target_mean": 0.025239933057823013,
+              "unweighted_mci_mean": 0.026483570377636097,
+              "weighted_mci_mean": 0.026140920745215252,
+              "smd_before": 0.00783533937667816,
+              "smd_after": 0.005694904836768948
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 15,
+              "target_mean": 0.03538372212165716,
+              "unweighted_mci_mean": 0.021873467385973518,
+              "weighted_mci_mean": 0.032212215709293064,
+              "smd_before": -0.08108256410031124,
+              "smd_after": -0.017551047496287962
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 16,
+              "target_mean": 0.005772055056525154,
+              "unweighted_mci_mean": 0.005885237861696911,
+              "weighted_mci_mean": 0.006084492016215657,
+              "smd_before": 0.0014868463605448201,
+              "smd_after": 0.004069961718546735
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 17,
+              "target_mean": 0.02110727825403873,
+              "unweighted_mci_mean": 0.01765571358509073,
+              "weighted_mci_mean": 0.01947612555499298,
+              "smd_before": -0.025038387511476252,
+              "smd_after": -0.011568958272357198
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 18,
+              "target_mean": 0.020048498924143583,
+              "unweighted_mci_mean": 0.01706718979892104,
+              "weighted_mci_mean": 0.019506340358826924,
+              "smd_before": -0.022092119561001863,
+              "smd_after": -0.0038938568442611343
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 19,
+              "target_mean": 0.010861026674408279,
+              "unweighted_mci_mean": 0.01696910250122609,
+              "weighted_mci_mean": 0.011331061977594052,
+              "smd_before": 0.05216176769036585,
+              "smd_after": 0.004487148292400802
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 20,
+              "target_mean": 0.018306636155606407,
+              "unweighted_mci_mean": 0.017459538989700835,
+              "weighted_mci_mean": 0.01835447087861775,
+              "smd_before": -0.006391938682645247,
+              "smd_after": 0.00035659302465936493
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 21,
+              "target_mean": 0.020970661566310323,
+              "unweighted_mci_mean": 0.013241785188818049,
+              "weighted_mci_mean": 0.024722598903207188,
+              "smd_before": -0.05963194230686038,
+              "smd_after": 0.02511292887958679
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 22,
+              "target_mean": 0.02831380853171215,
+              "unweighted_mci_mean": 0.02883766552231486,
+              "weighted_mci_mean": 0.029865321291833936,
+              "smd_before": 0.0031441994461489024,
+              "smd_after": 0.009232127240040303
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 23,
+              "target_mean": 0.03924314354998463,
+              "unweighted_mci_mean": 0.06169691025012261,
+              "weighted_mci_mean": 0.03925155369425084,
+              "smd_before": 0.10270461884172506,
+              "smd_after": 4.331042928771147e-05
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 24,
+              "target_mean": 0.015710919088766692,
+              "unweighted_mci_mean": 0.011574301128003924,
+              "weighted_mci_mean": 0.014612335168865849,
+              "smd_before": -0.03566552091827271,
+              "smd_after": -0.008990466744368663
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 25,
+              "target_mean": 0.024795928822705694,
+              "unweighted_mci_mean": 0.03354585581167239,
+              "weighted_mci_mean": 0.024175307040383145,
+              "smd_before": 0.05201217178762467,
+              "smd_after": -0.004015646892202612
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 26,
+              "target_mean": 0.0339492469005089,
+              "unweighted_mci_mean": 0.029230014713094655,
+              "weighted_mci_mean": 0.035375073906448444,
+              "smd_before": -0.02698415853442245,
+              "smd_after": 0.007794758345744482
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 27,
+              "target_mean": 0.014003210492161617,
+              "unweighted_mci_mean": 0.021284943599803825,
+              "weighted_mci_mean": 0.014151814191233167,
+              "smd_before": 0.055330804600551564,
+              "smd_after": 0.00126137831887012
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 28,
+              "target_mean": 0.04870384917517675,
+              "unweighted_mci_mean": 0.035507601765571356,
+              "weighted_mci_mean": 0.05111012054942493,
+              "smd_before": -0.0657439204656414,
+              "smd_after": 0.011050641878584455
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 29,
+              "target_mean": 0.029304279517743094,
+              "unweighted_mci_mean": 0.016086316821971553,
+              "weighted_mci_mean": 0.021243786600785082,
+              "smd_before": -0.08884021940244352,
+              "smd_after": -0.05137197684133554
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 30,
+              "target_mean": 0.03548618463745346,
+              "unweighted_mci_mean": 0.03501716527709662,
+              "weighted_mci_mean": 0.03673884743292286,
+              "smd_before": -0.002543280292986709,
+              "smd_after": 0.006714204763612623
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 31,
+              "target_mean": 0.01089518084634038,
+              "unweighted_mci_mean": 0.004512015693967631,
+              "weighted_mci_mean": 0.011222678607731074,
+              "smd_before": -0.07305637307942509,
+              "smd_after": 0.003131605969543389
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 32,
+              "target_mean": 0.00928993476553161,
+              "unweighted_mci_mean": 0.00980872976949485,
+              "weighted_mci_mean": 0.009162401583646335,
+              "smd_before": 0.005334508396097087,
+              "smd_after": -0.0013339063645363225
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 33,
+              "target_mean": 0.029850746268656716,
+              "unweighted_mci_mean": 0.03089749877390878,
+              "weighted_mci_mean": 0.031437611092279286,
+              "smd_before": 0.006099469439476876,
+              "smd_after": 0.009207228700058438
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 34,
+              "target_mean": 0.022951603538372212,
+              "unweighted_mci_mean": 0.017459538989700835,
+              "weighted_mci_mean": 0.02309557988481388,
+              "smd_before": -0.039040494442048164,
+              "smd_after": 0.0009599809674574951
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 35,
+              "target_mean": 0.04921616175415827,
+              "unweighted_mci_mean": 0.00853359489946052,
+              "weighted_mci_mean": 0.0512979510859128,
+              "smd_before": -0.24475902635562044,
+              "smd_after": 0.009528842440113153
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 36,
+              "target_mean": 0.04631305713992964,
+              "unweighted_mci_mean": 0.02618930848455125,
+              "weighted_mci_mean": 0.04471316545605761,
+              "smd_before": -0.10781918190907278,
+              "smd_after": -0.007676098404344475
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 37,
+              "target_mean": 0.0007513917825062331,
+              "unweighted_mci_mean": 0.0007846983815595881,
+              "weighted_mci_mean": 0.0006691603938166143,
+              "smd_before": 0.0012022751041160136,
+              "smd_after": -0.003086589211806143
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 38,
+              "target_mean": 0.019638648860958365,
+              "unweighted_mci_mean": 0.02216772927905836,
+              "weighted_mci_mean": 0.020033173764846098,
+              "smd_before": 0.017679114694099697,
+              "smd_after": 0.0028294328080581163
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 39,
+              "target_mean": 0.009904709860309438,
+              "unweighted_mci_mean": 0.0043158410985777345,
+              "weighted_mci_mean": 0.008776401069229951,
+              "smd_before": -0.06655344069968176,
+              "smd_after": -0.011729699789746646
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 40,
+              "target_mean": 0.020970661566310323,
+              "unweighted_mci_mean": 0.022363903874448258,
+              "weighted_mci_mean": 0.01970474750756751,
+              "smd_before": 0.009569430915817126,
+              "smd_after": -0.008968492015475515
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 41,
+              "target_mean": 0.019126336281976842,
+              "unweighted_mci_mean": 0.02511034820990682,
+              "weighted_mci_mean": 0.0190850995444175,
+              "smd_before": 0.04069704791625204,
+              "smd_after": -0.00030122535274018094
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 42,
+              "target_mean": 0.02541070391748352,
+              "unweighted_mci_mean": 0.0327611574301128,
+              "weighted_mci_mean": 0.02593298760763282,
+              "smd_before": 0.04375081455014227,
+              "smd_after": 0.0033023711568732623
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 1,
+              "target_mean": 0.2516137846237918,
+              "unweighted_mci_mean": 0.23815595880333496,
+              "weighted_mci_mean": 0.26328661273430654,
+              "smd_before": -0.03129972458284441,
+              "smd_after": 0.02669963827301689
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 2,
+              "target_mean": 0.2792103555449298,
+              "unweighted_mci_mean": 0.2809220205983325,
+              "weighted_mci_mean": 0.2772487499965855,
+              "smd_before": 0.0038119127106486517,
+              "smd_after": -0.004377352738566964
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 3,
+              "target_mean": 0.44571194371392464,
+              "unweighted_mci_mean": 0.46179499754781755,
+              "weighted_mci_mean": 0.4376547556664126,
+              "smd_before": 0.032308801697350696,
+              "smd_after": -0.016225645669045403
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 4,
+              "target_mean": 0.023463916117353736,
+              "unweighted_mci_mean": 0.019127023050514957,
+              "weighted_mci_mean": 0.0218098816026954,
+              "smd_before": -0.03004403784091197,
+              "smd_after": -0.011120257556321298
+            }
+          ]
+        },
+        "winsor_01_99": {
+          "hr": 1.6164735111768922,
+          "log_hr": 0.4802469315207215,
+          "hr_ratio_vs_naive": 1.015901905239345,
+          "percent_hr_change": 1.5901905239344902,
+          "effective_sample_size": 7579.655667702015,
+          "raw_winsor_limits": [
+            0.40723683288763085,
+            3.875349113269611
+          ],
+          "normalized_weight_quantiles": [
+            0.41819686737182,
+            0.41820362163184527,
+            0.828470156302563,
+            3.977314538856257,
+            3.979647046289404
+          ],
+          "balance": [
+            {
+              "covariate": "e4",
+              "target_mean": 0.3570818675501212,
+              "unweighted_mci_mean": 0.4338401177047572,
+              "weighted_mci_mean": 0.3568140007819409,
+              "smd_before": 0.15747190871830488,
+              "smd_after": -0.0005591049658927163
+            },
+            {
+              "covariate": "age",
+              "target_mean": 71.25588305611531,
+              "unweighted_mci_mean": 72.4817067189799,
+              "weighted_mci_mean": 71.43187853472904,
+              "smd_before": 0.14058775203713503,
+              "smd_after": 0.019786468612615047
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.5981420130468936,
+              "unweighted_mci_mean": 0.4946542422756253,
+              "weighted_mci_mean": 0.5884873086015241,
+              "smd_before": -0.20900446283984728,
+              "smd_after": -0.019655683830142635
+            },
+            {
+              "covariate": "education",
+              "target_mean": 15.75883739198743,
+              "unweighted_mci_mean": 15.417949975478175,
+              "weighted_mci_mean": 15.731273645786107,
+              "smd_before": -0.10619961824074309,
+              "smd_after": -0.008805078778419727
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 0,
+              "target_mean": 0.019194644625841046,
+              "unweighted_mci_mean": 0.018734673859735165,
+              "weighted_mci_mean": 0.02015678773341522,
+              "smd_before": -0.00337222077591227,
+              "smd_after": 0.006927748667335371
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 1,
+              "target_mean": 0.004952354930154719,
+              "unweighted_mci_mean": 0.003531142717018146,
+              "weighted_mci_mean": 0.004622352451478101,
+              "smd_before": -0.021869329198788007,
+              "smd_after": -0.0047809339356231495
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 2,
+              "target_mean": 0.05495406263875132,
+              "unweighted_mci_mean": 0.08092202059833252,
+              "weighted_mci_mean": 0.05703640574789418,
+              "smd_before": 0.10333270045129807,
+              "smd_after": 0.009057203323193283
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 3,
+              "target_mean": 0.03196830492844701,
+              "unweighted_mci_mean": 0.039627268268759196,
+              "weighted_mci_mean": 0.032519615130411635,
+              "smd_before": 0.04123349239304795,
+              "smd_after": 0.0031209687893323694
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 4,
+              "target_mean": 0.02875781276682947,
+              "unweighted_mci_mean": 0.0297204512015694,
+              "weighted_mci_mean": 0.0298482107743633,
+              "smd_before": 0.00571382061166283,
+              "smd_after": 0.006465309914240165
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 5,
+              "target_mean": 0.0022541753475186993,
+              "unweighted_mci_mean": 0.0021579205492888672,
+              "weighted_mci_mean": 0.002095265013028884,
+              "smd_before": -0.0020516095362340878,
+              "smd_after": -0.003411330757652707
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 6,
+              "target_mean": 0.0204241948153967,
+              "unweighted_mci_mean": 0.04443354585581167,
+              "weighted_mci_mean": 0.021070759489910516,
+              "smd_before": 0.13585408181965147,
+              "smd_after": 0.004536104937767397
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 7,
+              "target_mean": 0.027835650124662728,
+              "unweighted_mci_mean": 0.032957332025502696,
+              "weighted_mci_mean": 0.028587871396069792,
+              "smd_before": 0.02983679077534301,
+              "smd_after": 0.004543032201432356
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 8,
+              "target_mean": 0.018614023702995322,
+              "unweighted_mci_mean": 0.02157920549288867,
+              "weighted_mci_mean": 0.018502689957247628,
+              "smd_before": 0.02113111834685234,
+              "smd_after": -0.0008249447379577967
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 9,
+              "target_mean": 0.03131937566173708,
+              "unweighted_mci_mean": 0.027072094163805786,
+              "weighted_mci_mean": 0.03277765086932196,
+              "smd_before": -0.025230162993199252,
+              "smd_after": 0.008279659455839488
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 10,
+              "target_mean": 0.01567676491683459,
+              "unweighted_mci_mean": 0.021481118195193723,
+              "weighted_mci_mean": 0.015703200086810715,
+              "smd_before": 0.04299480623133174,
+              "smd_after": 0.0002127183362494953
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 11,
+              "target_mean": 0.004337579835376891,
+              "unweighted_mci_mean": 0.006669936243256498,
+              "weighted_mci_mean": 0.004528792558050491,
+              "smd_before": 0.03152954014547561,
+              "smd_after": 0.002878220375311564
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 12,
+              "target_mean": 0.03593018887257078,
+              "unweighted_mci_mean": 0.04394310936733693,
+              "weighted_mci_mean": 0.038396441185323565,
+              "smd_before": 0.04093040143809652,
+              "smd_after": 0.013038066617486521
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 13,
+              "target_mean": 0.01226134772362444,
+              "unweighted_mci_mean": 0.012849435998038254,
+              "weighted_mci_mean": 0.012199833725688189,
+              "smd_before": 0.005281685378613227,
+              "smd_after": -0.0005596576801198965
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 14,
+              "target_mean": 0.025239933057823013,
+              "unweighted_mci_mean": 0.026483570377636097,
+              "weighted_mci_mean": 0.026763955502822755,
+              "smd_before": 0.00783533937667816,
+              "smd_after": 0.009576666974018062
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 15,
+              "target_mean": 0.03538372212165716,
+              "unweighted_mci_mean": 0.021873467385973518,
+              "weighted_mci_mean": 0.03256991939051376,
+              "smd_before": -0.08108256410031124,
+              "smd_after": -0.01553179319333906
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 16,
+              "target_mean": 0.005772055056525154,
+              "unweighted_mci_mean": 0.005885237861696911,
+              "weighted_mci_mean": 0.0062295079491062975,
+              "smd_before": 0.0014868463605448201,
+              "smd_after": 0.00592313122358725
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 17,
+              "target_mean": 0.02110727825403873,
+              "unweighted_mci_mean": 0.01765571358509073,
+              "weighted_mci_mean": 0.019886087186127232,
+              "smd_before": -0.025038387511476252,
+              "smd_after": -0.008618722678554876
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 18,
+              "target_mean": 0.020048498924143583,
+              "unweighted_mci_mean": 0.01706718979892104,
+              "weighted_mci_mean": 0.01995039912012434,
+              "smd_before": -0.022092119561001863,
+              "smd_after": -0.0007007223840104454
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 19,
+              "target_mean": 0.010861026674408279,
+              "unweighted_mci_mean": 0.01696910250122609,
+              "weighted_mci_mean": 0.011601123063867689,
+              "smd_before": 0.05216176769036585,
+              "smd_after": 0.00702316541696892
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 20,
+              "target_mean": 0.018306636155606407,
+              "unweighted_mci_mean": 0.017459538989700835,
+              "weighted_mci_mean": 0.018791925757362472,
+              "smd_before": -0.006391938682645247,
+              "smd_after": 0.0035966973893387863
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 21,
+              "target_mean": 0.020970661566310323,
+              "unweighted_mci_mean": 0.013241785188818049,
+              "weighted_mci_mean": 0.02509895812693585,
+              "smd_before": -0.05963194230686038,
+              "smd_after": 0.027522009685153274
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 22,
+              "target_mean": 0.02831380853171215,
+              "unweighted_mci_mean": 0.02883766552231486,
+              "weighted_mci_mean": 0.030389375472632804,
+              "smd_before": 0.0031441994461489024,
+              "smd_after": 0.012296971014380218
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 23,
+              "target_mean": 0.03924314354998463,
+              "unweighted_mci_mean": 0.06169691025012261,
+              "weighted_mci_mean": 0.040187279813441286,
+              "smd_before": 0.10270461884172506,
+              "smd_after": 0.004834565874187762
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 24,
+              "target_mean": 0.015710919088766692,
+              "unweighted_mci_mean": 0.011574301128003924,
+              "weighted_mci_mean": 0.014960601122798643,
+              "smd_before": -0.03566552091827271,
+              "smd_after": -0.006105913300219226
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 25,
+              "target_mean": 0.024795928822705694,
+              "unweighted_mci_mean": 0.03354585581167239,
+              "weighted_mci_mean": 0.024751493958540916,
+              "smd_before": 0.05201217178762467,
+              "smd_after": -0.00028587463591991415
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 26,
+              "target_mean": 0.0339492469005089,
+              "unweighted_mci_mean": 0.029230014713094655,
+              "weighted_mci_mean": 0.03621819266310837,
+              "smd_before": -0.02698415853442245,
+              "smd_after": 0.012332034655151126
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 27,
+              "target_mean": 0.014003210492161617,
+              "unweighted_mci_mean": 0.021284943599803825,
+              "weighted_mci_mean": 0.014489104228193907,
+              "smd_before": 0.055330804600551564,
+              "smd_after": 0.004100238366399219
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 28,
+              "target_mean": 0.04870384917517675,
+              "unweighted_mci_mean": 0.035507601765571356,
+              "weighted_mci_mean": 0.051842605844054875,
+              "smd_before": -0.0657439204656414,
+              "smd_after": 0.014364851013508862
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 29,
+              "target_mean": 0.029304279517743094,
+              "unweighted_mci_mean": 0.016086316821971553,
+              "weighted_mci_mean": 0.021750104552034303,
+              "smd_before": -0.08884021940244352,
+              "smd_after": -0.04790989579226006
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 30,
+              "target_mean": 0.03548618463745346,
+              "unweighted_mci_mean": 0.03501716527709662,
+              "weighted_mci_mean": 0.03759601309638444,
+              "smd_before": -0.002543280292986709,
+              "smd_after": 0.011244667337617064
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 31,
+              "target_mean": 0.01089518084634038,
+              "unweighted_mci_mean": 0.004512015693967631,
+              "weighted_mci_mean": 0.010611517299985294,
+              "smd_before": -0.07305637307942509,
+              "smd_after": -0.002750298123008622
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 32,
+              "target_mean": 0.00928993476553161,
+              "unweighted_mci_mean": 0.00980872976949485,
+              "weighted_mci_mean": 0.009380775477412666,
+              "smd_before": 0.005334508396097087,
+              "smd_after": 0.0009446084444227038
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 33,
+              "target_mean": 0.029850746268656716,
+              "unweighted_mci_mean": 0.03089749877390878,
+              "weighted_mci_mean": 0.032067783860916556,
+              "smd_before": 0.006099469439476876,
+              "smd_after": 0.0128001663415745
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 34,
+              "target_mean": 0.022951603538372212,
+              "unweighted_mci_mean": 0.017459538989700835,
+              "weighted_mci_mean": 0.0236460329142074,
+              "smd_before": -0.039040494442048164,
+              "smd_after": 0.0046034288104252405
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 35,
+              "target_mean": 0.04921616175415827,
+              "unweighted_mci_mean": 0.00853359489946052,
+              "weighted_mci_mean": 0.03188234231574619,
+              "smd_before": -0.24475902635562044,
+              "smd_after": -0.08796525398098405
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 36,
+              "target_mean": 0.04631305713992964,
+              "unweighted_mci_mean": 0.02618930848455125,
+              "weighted_mci_mean": 0.04543390289590016,
+              "smd_before": -0.10781918190907278,
+              "smd_after": -0.004202253119295166
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 37,
+              "target_mean": 0.0007513917825062331,
+              "unweighted_mci_mean": 0.0007846983815595881,
+              "weighted_mci_mean": 0.000685108959202873,
+              "smd_before": 0.0012022751041160136,
+              "smd_after": -0.0024741123878822603
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 38,
+              "target_mean": 0.019638648860958365,
+              "unweighted_mci_mean": 0.02216772927905836,
+              "weighted_mci_mean": 0.020510638337817366,
+              "smd_before": 0.017679114694099697,
+              "smd_after": 0.006217172575963121
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 39,
+              "target_mean": 0.009904709860309438,
+              "unweighted_mci_mean": 0.0043158410985777345,
+              "weighted_mci_mean": 0.008393955948064765,
+              "smd_before": -0.06655344069968176,
+              "smd_after": -0.015867502569458278
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 40,
+              "target_mean": 0.020970661566310323,
+              "unweighted_mci_mean": 0.022363903874448258,
+              "weighted_mci_mean": 0.020174384468971844,
+              "smd_before": 0.009569430915817126,
+              "smd_after": -0.005609653194391631
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 41,
+              "target_mean": 0.019126336281976842,
+              "unweighted_mci_mean": 0.02511034820990682,
+              "weighted_mci_mean": 0.019539968004655173,
+              "smd_before": 0.04069704791625204,
+              "smd_after": 0.0030040160405012824
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 42,
+              "target_mean": 0.02541070391748352,
+              "unweighted_mci_mean": 0.0327611574301128,
+              "weighted_mci_mean": 0.026551066550055586,
+              "smd_before": 0.04375081455014227,
+              "smd_after": 0.00716861167919041
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 1,
+              "target_mean": 0.2516137846237918,
+              "unweighted_mci_mean": 0.23815595880333496,
+              "weighted_mci_mean": 0.26090949011785947,
+              "smd_before": -0.03129972458284441,
+              "smd_after": 0.021293893606725463
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 2,
+              "target_mean": 0.2792103555449298,
+              "unweighted_mci_mean": 0.2809220205983325,
+              "weighted_mci_mean": 0.27608282947940804,
+              "smd_before": 0.0038119127106486517,
+              "smd_after": -0.006983651334978682
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 3,
+              "target_mean": 0.44571194371392464,
+              "unweighted_mci_mean": 0.46179499754781755,
+              "weighted_mci_mean": 0.44184971579991345,
+              "smd_before": 0.032308801697350696,
+              "smd_after": -0.007773810211808694
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 4,
+              "target_mean": 0.023463916117353736,
+              "unweighted_mci_mean": 0.019127023050514957,
+              "weighted_mci_mean": 0.021157964602818952,
+              "smd_before": -0.03004403784091197,
+              "smd_after": -0.015613637423581175
+            }
+          ],
+          "bootstrap_ci": [
+            1.4834779203841133,
+            1.8074844524053761
+          ],
+          "paired_log_hr_difference_ci": [
+            -0.015207497873597388,
+            0.08008558356715792
+          ],
+          "hr_ratio_vs_naive_ci": [
+            0.9849075521760512,
+            1.083379783213873
+          ]
+        },
+        "winsor_05_95": {
+          "hr": 1.6034676054872559,
+          "log_hr": 0.47216853756923804,
+          "hr_ratio_vs_naive": 1.0077281094560504,
+          "percent_hr_change": 0.7728109456050504,
+          "effective_sample_size": 8403.96009239738,
+          "raw_winsor_limits": [
+            0.4605662349800858,
+            2.0792923064078943
+          ],
+          "normalized_weight_quantiles": [
+            0.4919304490063386,
+            0.4919304490063386,
+            0.86169734266777,
+            2.2208905478077177,
+            2.2208905478077177
+          ],
+          "balance": [
+            {
+              "covariate": "e4",
+              "target_mean": 0.3570818675501212,
+              "unweighted_mci_mean": 0.4338401177047572,
+              "weighted_mci_mean": 0.3653923472515679,
+              "smd_before": 0.15747190871830488,
+              "smd_after": 0.017301203911944014
+            },
+            {
+              "covariate": "age",
+              "target_mean": 71.25588305611531,
+              "unweighted_mci_mean": 72.4817067189799,
+              "weighted_mci_mean": 71.60900270375929,
+              "smd_before": 0.14058775203713503,
+              "smd_after": 0.039851228126574954
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.5981420130468936,
+              "unweighted_mci_mean": 0.4946542422756253,
+              "weighted_mci_mean": 0.5794071937436557,
+              "smd_before": -0.20900446283984728,
+              "smd_after": -0.038081471603551714
+            },
+            {
+              "covariate": "education",
+              "target_mean": 15.75883739198743,
+              "unweighted_mci_mean": 15.417949975478175,
+              "weighted_mci_mean": 15.68839985865427,
+              "smd_before": -0.10619961824074309,
+              "smd_after": -0.02245255512717658
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 0,
+              "target_mean": 0.019194644625841046,
+              "unweighted_mci_mean": 0.018734673859735165,
+              "weighted_mci_mean": 0.020744279497310298,
+              "smd_before": -0.00337222077591227,
+              "smd_after": 0.011077277989894213
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 1,
+              "target_mean": 0.004952354930154719,
+              "unweighted_mci_mean": 0.003531142717018146,
+              "weighted_mci_mean": 0.0047078463866574265,
+              "smd_before": -0.021869329198788007,
+              "smd_after": -0.0035266958544474462
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 2,
+              "target_mean": 0.05495406263875132,
+              "unweighted_mci_mean": 0.08092202059833252,
+              "weighted_mci_mean": 0.05943967494713406,
+              "smd_before": 0.10333270045129807,
+              "smd_after": 0.01931725247567363
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 3,
+              "target_mean": 0.03196830492844701,
+              "unweighted_mci_mean": 0.039627268268759196,
+              "weighted_mci_mean": 0.033680504732972696,
+              "smd_before": 0.04123349239304795,
+              "smd_after": 0.009609667507036424
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 4,
+              "target_mean": 0.02875781276682947,
+              "unweighted_mci_mean": 0.0297204512015694,
+              "weighted_mci_mean": 0.030887104448178052,
+              "smd_before": 0.00571382061166283,
+              "smd_after": 0.012518328206864075
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 5,
+              "target_mean": 0.0022541753475186993,
+              "unweighted_mci_mean": 0.0021579205492888672,
+              "weighted_mci_mean": 0.002179299133682209,
+              "smd_before": -0.0020516095362340878,
+              "smd_after": -0.0015920943367279633
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 6,
+              "target_mean": 0.0204241948153967,
+              "unweighted_mci_mean": 0.04443354585581167,
+              "weighted_mci_mean": 0.022999328341517022,
+              "smd_before": 0.13585408181965147,
+              "smd_after": 0.017669967694701635
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 7,
+              "target_mean": 0.027835650124662728,
+              "unweighted_mci_mean": 0.032957332025502696,
+              "weighted_mci_mean": 0.02972593801129518,
+              "smd_before": 0.02983679077534301,
+              "smd_after": 0.0113064137447572
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 8,
+              "target_mean": 0.018614023702995322,
+              "unweighted_mci_mean": 0.02157920549288867,
+              "weighted_mci_mean": 0.019228385837048625,
+              "smd_before": 0.02113111834685234,
+              "smd_after": 0.0045091969716540455
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 9,
+              "target_mean": 0.03131937566173708,
+              "unweighted_mci_mean": 0.027072094163805786,
+              "weighted_mci_mean": 0.033084520353955475,
+              "smd_before": -0.025230162993199252,
+              "smd_after": 0.009998901600405617
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 10,
+              "target_mean": 0.01567676491683459,
+              "unweighted_mci_mean": 0.021481118195193723,
+              "weighted_mci_mean": 0.016347885431598097,
+              "smd_before": 0.04299480623133174,
+              "smd_after": 0.005346628838307105
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 11,
+              "target_mean": 0.004337579835376891,
+              "unweighted_mci_mean": 0.006669936243256498,
+              "weighted_mci_mean": 0.0047157924627150806,
+              "smd_before": 0.03152954014547561,
+              "smd_after": 0.005634206294700096
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 12,
+              "target_mean": 0.03593018887257078,
+              "unweighted_mci_mean": 0.04394310936733693,
+              "weighted_mci_mean": 0.03955347432878842,
+              "smd_before": 0.04093040143809652,
+              "smd_after": 0.019013623329695008
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 13,
+              "target_mean": 0.01226134772362444,
+              "unweighted_mci_mean": 0.012849435998038254,
+              "weighted_mci_mean": 0.012666107988022902,
+              "smd_before": 0.005281685378613227,
+              "smd_after": 0.003648363368962045
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 14,
+              "target_mean": 0.025239933057823013,
+              "unweighted_mci_mean": 0.026483570377636097,
+              "weighted_mci_mean": 0.027457607048868356,
+              "smd_before": 0.00783533937667816,
+              "smd_after": 0.013846060606303024
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 15,
+              "target_mean": 0.03538372212165716,
+              "unweighted_mci_mean": 0.021873467385973518,
+              "weighted_mci_mean": 0.03153303924589111,
+              "smd_before": -0.08108256410031124,
+              "smd_after": -0.0214141039895224
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 16,
+              "target_mean": 0.005772055056525154,
+              "unweighted_mci_mean": 0.005885237861696911,
+              "weighted_mci_mean": 0.006401673076435037,
+              "smd_before": 0.0014868463605448201,
+              "smd_after": 0.008094866478890817
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 17,
+              "target_mean": 0.02110727825403873,
+              "unweighted_mci_mean": 0.01765571358509073,
+              "weighted_mci_mean": 0.020355066016754582,
+              "smd_before": -0.025038387511476252,
+              "smd_after": -0.005279332477322692
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 18,
+              "target_mean": 0.020048498924143583,
+              "unweighted_mci_mean": 0.01706718979892104,
+              "weighted_mci_mean": 0.020296617663559287,
+              "smd_before": -0.022092119561001863,
+              "smd_after": 0.0017648363746252367
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 19,
+              "target_mean": 0.010861026674408279,
+              "unweighted_mci_mean": 0.01696910250122609,
+              "weighted_mci_mean": 0.012115093507727857,
+              "smd_before": 0.05216176769036585,
+              "smd_after": 0.011768304344403678
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 20,
+              "target_mean": 0.018306636155606407,
+              "unweighted_mci_mean": 0.017459538989700835,
+              "weighted_mci_mean": 0.01914329676752534,
+              "smd_before": -0.006391938682645247,
+              "smd_after": 0.006172278207982982
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 21,
+              "target_mean": 0.020970661566310323,
+              "unweighted_mci_mean": 0.013241785188818049,
+              "weighted_mci_mean": 0.022455222882298693,
+              "smd_before": -0.05963194230686038,
+              "smd_after": 0.010186178442786907
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 22,
+              "target_mean": 0.02831380853171215,
+              "unweighted_mci_mean": 0.02883766552231486,
+              "weighted_mci_mean": 0.03069609210922145,
+              "smd_before": 0.0031441994461489024,
+              "smd_after": 0.014078620767259435
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 23,
+              "target_mean": 0.03924314354998463,
+              "unweighted_mci_mean": 0.06169691025012261,
+              "weighted_mci_mean": 0.04194425118221704,
+              "smd_before": 0.10270461884172506,
+              "smd_after": 0.013687416153945968
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 24,
+              "target_mean": 0.015710919088766692,
+              "unweighted_mci_mean": 0.011574301128003924,
+              "weighted_mci_mean": 0.015285310760815764,
+              "smd_before": -0.03566552091827271,
+              "smd_after": -0.0034455856278636393
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 25,
+              "target_mean": 0.024795928822705694,
+              "unweighted_mci_mean": 0.03354585581167239,
+              "weighted_mci_mean": 0.02576116846007421,
+              "smd_before": 0.05201217178762467,
+              "smd_after": 0.006149231890836601
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 26,
+              "target_mean": 0.0339492469005089,
+              "unweighted_mci_mean": 0.029230014713094655,
+              "weighted_mci_mean": 0.036537342063630227,
+              "smd_before": -0.02698415853442245,
+              "smd_after": 0.014036013705167907
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 27,
+              "target_mean": 0.014003210492161617,
+              "unweighted_mci_mean": 0.021284943599803825,
+              "weighted_mci_mean": 0.015098576330546997,
+              "smd_before": 0.055330804600551564,
+              "smd_after": 0.009147487085323995
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 28,
+              "target_mean": 0.04870384917517675,
+              "unweighted_mci_mean": 0.035507601765571356,
+              "weighted_mci_mean": 0.05028283498280846,
+              "smd_before": -0.0657439204656414,
+              "smd_after": 0.007279979082478951
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 29,
+              "target_mean": 0.029304279517743094,
+              "unweighted_mci_mean": 0.016086316821971553,
+              "weighted_mci_mean": 0.021716002753623873,
+              "smd_before": -0.08884021940244352,
+              "smd_after": -0.04814196923889285
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 30,
+              "target_mean": 0.03548618463745346,
+              "unweighted_mci_mean": 0.03501716527709662,
+              "weighted_mci_mean": 0.038384317574385846,
+              "smd_before": -0.002543280292986709,
+              "smd_after": 0.015366779165678994
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 31,
+              "target_mean": 0.01089518084634038,
+              "unweighted_mci_mean": 0.004512015693967631,
+              "weighted_mci_mean": 0.008784085927327488,
+              "smd_before": -0.07305637307942509,
+              "smd_after": -0.0213889943920647
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 32,
+              "target_mean": 0.00928993476553161,
+              "unweighted_mci_mean": 0.00980872976949485,
+              "weighted_mci_mean": 0.00975700722537236,
+              "smd_before": 0.005334508396097087,
+              "smd_after": 0.004809121949667995
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 33,
+              "target_mean": 0.029850746268656716,
+              "unweighted_mci_mean": 0.03089749877390878,
+              "weighted_mci_mean": 0.03240818239026028,
+              "smd_before": 0.006099469439476876,
+              "smd_after": 0.01472644329830414
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 34,
+              "target_mean": 0.022951603538372212,
+              "unweighted_mci_mean": 0.017459538989700835,
+              "weighted_mci_mean": 0.023934904980307828,
+              "smd_before": -0.039040494442048164,
+              "smd_after": 0.0064987716564479285
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 35,
+              "target_mean": 0.04921616175415827,
+              "unweighted_mci_mean": 0.00853359489946052,
+              "weighted_mci_mean": 0.018883134540584993,
+              "smd_before": -0.24475902635562044,
+              "smd_after": -0.16784407918278485
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 36,
+              "target_mean": 0.04631305713992964,
+              "unweighted_mci_mean": 0.02618930848455125,
+              "weighted_mci_mean": 0.04276072730608471,
+              "smd_before": -0.10781918190907278,
+              "smd_after": -0.017221162572127784
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 37,
+              "target_mean": 0.0007513917825062331,
+              "unweighted_mci_mean": 0.0007846983815595881,
+              "weighted_mci_mean": 0.000712586404099021,
+              "smd_before": 0.0012022751041160136,
+              "smd_after": -0.0014348243458900544
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 38,
+              "target_mean": 0.019638648860958365,
+              "unweighted_mci_mean": 0.02216772927905836,
+              "weighted_mci_mean": 0.021210146667779744,
+              "smd_before": 0.017679114694099697,
+              "smd_after": 0.011110327746130709
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 39,
+              "target_mean": 0.009904709860309438,
+              "unweighted_mci_mean": 0.0043158410985777345,
+              "weighted_mci_mean": 0.007232459211300267,
+              "smd_before": -0.06655344069968176,
+              "smd_after": -0.02899592366761163
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 40,
+              "target_mean": 0.020970661566310323,
+              "unweighted_mci_mean": 0.022363903874448258,
+              "weighted_mci_mean": 0.020936141207323802,
+              "smd_before": 0.009569430915817126,
+              "smd_after": -0.0002410162688269008
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 41,
+              "target_mean": 0.019126336281976842,
+              "unweighted_mci_mean": 0.02511034820990682,
+              "weighted_mci_mean": 0.02033681145573184,
+              "smd_before": 0.04069704791625204,
+              "smd_after": 0.008703754407169426
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 42,
+              "target_mean": 0.02541070391748352,
+              "unweighted_mci_mean": 0.0327611574301128,
+              "weighted_mci_mean": 0.027620158356568024,
+              "smd_before": 0.04375081455014227,
+              "smd_after": 0.013752493081353538
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 1,
+              "target_mean": 0.2516137846237918,
+              "unweighted_mci_mean": 0.23815595880333496,
+              "weighted_mci_mean": 0.2572115314037332,
+              "smd_before": -0.03129972458284441,
+              "smd_after": 0.012852973020491425
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 2,
+              "target_mean": 0.2792103555449298,
+              "unweighted_mci_mean": 0.2809220205983325,
+              "weighted_mci_mean": 0.2760437172709151,
+              "smd_before": 0.0038119127106486517,
+              "smd_after": -0.007071141872623185
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 3,
+              "target_mean": 0.44571194371392464,
+              "unweighted_mci_mean": 0.46179499754781755,
+              "weighted_mci_mean": 0.4461168860557302,
+              "smd_before": 0.032308801697350696,
+              "smd_after": 0.0008146649735646331
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 4,
+              "target_mean": 0.023463916117353736,
+              "unweighted_mci_mean": 0.019127023050514957,
+              "weighted_mci_mean": 0.020627865269621574,
+              "smd_before": -0.03004403784091197,
+              "smd_after": -0.01931573344504576
+            }
+          ]
+        }
+      },
+      "selection_probability_quantiles_mci": [
+        0.018592164894098175,
+        0.08985097195333316,
+        0.4316063701514873,
+        0.8550350958914987,
+        0.9535614429821375
+      ],
+      "cox_vs_statsmodels_max_abs_coefficient_difference": 9.474065809644827e-08,
+      "profile_logit_vs_dense_max_abs_coefficient_difference": 0.0,
+      "bootstrap": {
+        "requested": 1000,
+        "successful": 1000,
+        "failed": 0,
+        "seed": 20261103,
+        "unit": "centers",
+        "centers_in_resampling_frame": 43,
+        "both_stages_refitted": true,
+        "seconds": 165.09399999998277
+      },
+      "baseline_mci_phone_counts": [
+        {
+          "mode": "standard initial",
+          "people": 10130,
+          "positive_followup_people": 7525,
+          "events": 2495,
+          "event_centers": 42
+        },
+        {
+          "mode": "telephone initial",
+          "people": 65,
+          "positive_followup_people": 43,
+          "events": 14,
+          "event_centers": 7
+        }
+      ]
+    },
+    {
+      "exposure": "smoke",
+      "label": "Ever >100 cigarettes (TOBAC100)",
+      "source_n": 35146,
+      "source_cn_n": 22592,
+      "baseline_mci_n": 12554,
+      "mci_positive_followup_n": 8562,
+      "zero_followup_censored_n": 3992,
+      "dementia_events": 2849,
+      "observed_risk_person_years": 21235.931553730323,
+      "exposed_source_n": 14709,
+      "exposed_mci_n": 5406,
+      "overlap_excluded_people_n": 0,
+      "centers_n": 46,
+      "initial_uds_versions": [
+        1.0,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "horizon_years": 4,
+      "selection_covariates": [
+        "smoke",
+        "age10",
+        "age10_sq",
+        "female",
+        "educ4",
+        "telephone_initial",
+        "initial_UDS_version_2.0",
+        "initial_UDS_version_3.0",
+        "initial_UDS_version_4.0",
+        "center_fixed_intercepts"
+      ],
+      "outcome_covariates": [
+        "smoke",
+        "age10",
+        "age10_sq",
+        "female",
+        "educ4",
+        "telephone_initial"
+      ],
+      "outcome_strata": "baseline ADRC crossed with initial UDS major version",
+      "baseline_mci_version_counts_and_events": [
+        {
+          "initial_version": 1.0,
+          "people": 3184,
+          "events": 836,
+          "positive_followup_people": 2363
+        },
+        {
+          "initial_version": 2.0,
+          "people": 3469,
+          "events": 958,
+          "positive_followup_people": 2501
+        },
+        {
+          "initial_version": 3.0,
+          "people": 5579,
+          "events": 1055,
+          "positive_followup_people": 3692
+        },
+        {
+          "initial_version": 4.0,
+          "people": 322,
+          "events": 0,
+          "positive_followup_people": 6
+        }
+      ],
+      "selection_membership_or": 0.9547704601297886,
+      "selection_bootstrap_ci": [
+        0.8894602609867766,
+        1.0185532269254276
+      ],
+      "naive_hr": 0.9631870608028742,
+      "naive_bootstrap_ci": [
+        0.8871024852849265,
+        1.036735450743252
+      ],
+      "weighted": {
+        "untrimmed": {
+          "hr": 0.9844718591958992,
+          "log_hr": -0.01564996516531825,
+          "hr_ratio_vs_naive": 1.0220983018348302,
+          "percent_hr_change": 2.209830183483028,
+          "effective_sample_size": 8886.584338272696,
+          "raw_winsor_limits": [
+            0.3763329004690612,
+            14.163871813760263
+          ],
+          "normalized_weight_quantiles": [
+            0.3786582329379163,
+            0.4285095552601585,
+            0.8448330189306514,
+            3.1425620109864605,
+            14.251389304184796
+          ],
+          "balance": [
+            {
+              "covariate": "smoke",
+              "target_mean": 0.41851135264325956,
+              "unweighted_mci_mean": 0.43061972279751476,
+              "weighted_mci_mean": 0.4207193065793301,
+              "smd_before": 0.024498977895285143,
+              "smd_after": 0.0044741182266415085
+            },
+            {
+              "covariate": "age",
+              "target_mean": 71.33636829226654,
+              "unweighted_mci_mean": 72.68750995698582,
+              "weighted_mci_mean": 71.4817927838143,
+              "smd_before": 0.15416228662360396,
+              "smd_after": 0.016422532993973088
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.6049052523758038,
+              "unweighted_mci_mean": 0.5101162975943923,
+              "weighted_mci_mean": 0.5996197140973711,
+              "smd_before": -0.19171938325786586,
+              "smd_after": -0.010799517922270019
+            },
+            {
+              "covariate": "education",
+              "target_mean": 15.663660160473453,
+              "unweighted_mci_mean": 15.288115341723753,
+              "weighted_mci_mean": 15.653275556436148,
+              "smd_before": -0.1149877807011036,
+              "smd_after": -0.0032769127494436437
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 0,
+              "target_mean": 0.019177146759232915,
+              "unweighted_mci_mean": 0.018719133343954118,
+              "weighted_mci_mean": 0.01943657426944005,
+              "smd_before": -0.003359305767569886,
+              "smd_after": 0.0018853579758439378
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 1,
+              "target_mean": 0.005093040459796278,
+              "unweighted_mci_mean": 0.0039031384419308587,
+              "weighted_mci_mean": 0.00504390553380727,
+              "smd_before": -0.017782518697031555,
+              "smd_after": -0.0006919188579321945
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 2,
+              "target_mean": 0.04873954361805042,
+              "unweighted_mci_mean": 0.06834475067707503,
+              "weighted_mci_mean": 0.04987078341075362,
+              "smd_before": 0.0835825444402129,
+              "smd_after": 0.005225037194783791
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 3,
+              "target_mean": 0.03192397427872304,
+              "unweighted_mci_mean": 0.036163772502787954,
+              "weighted_mci_mean": 0.032452439176546534,
+              "smd_before": 0.023381732166439843,
+              "smd_after": 0.0029941447091085074
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 4,
+              "target_mean": 0.02498150571900074,
+              "unweighted_mci_mean": 0.025171260156125537,
+              "weighted_mci_mean": 0.02526269875853162,
+              "smd_before": 0.001213596395243186,
+              "smd_after": 0.0017968078653994286
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 5,
+              "target_mean": 0.0019347863199226086,
+              "unweighted_mci_mean": 0.0017524295045403856,
+              "weighted_mci_mean": 0.0018489819002760646,
+              "smd_before": -0.004250983335062077,
+              "smd_after": -0.0019745758069369206
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 6,
+              "target_mean": 0.019006430319239744,
+              "unweighted_mci_mean": 0.04054484626413892,
+              "weighted_mci_mean": 0.01905961489468326,
+              "smd_before": 0.1269757041082369,
+              "smd_after": 0.0003892284970986532
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 7,
+              "target_mean": 0.02543674955898253,
+              "unweighted_mci_mean": 0.030428548669746695,
+              "weighted_mci_mean": 0.02505285515494396,
+              "smd_before": 0.030297213225556587,
+              "smd_after": -0.0024472500123588615
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 8,
+              "target_mean": 0.02256302281909748,
+              "unweighted_mci_mean": 0.027321969093516012,
+              "weighted_mci_mean": 0.022360511892657864,
+              "smd_before": 0.030519421055942374,
+              "smd_after": -0.0013666576080599382
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 9,
+              "target_mean": 0.034939964718602404,
+              "unweighted_mci_mean": 0.034331687111677556,
+              "weighted_mci_mean": 0.03564101788244678,
+              "smd_before": -0.0033265500845065543,
+              "smd_after": 0.003799483872913969
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 10,
+              "target_mean": 0.019547032379218118,
+              "unweighted_mci_mean": 0.025011948382985504,
+              "weighted_mci_mean": 0.019185926333420294,
+              "smd_before": 0.03703377159757717,
+              "smd_after": -0.0026203326391915803
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 11,
+              "target_mean": 0.0037557616798497696,
+              "unweighted_mci_mean": 0.00581487971961128,
+              "weighted_mci_mean": 0.0037803000859237884,
+              "smd_before": 0.029841157812101782,
+              "smd_after": 0.00040050587760373204
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 12,
+              "target_mean": 0.04125647299834974,
+              "unweighted_mci_mean": 0.04428867293292974,
+              "weighted_mci_mean": 0.042873801663990165,
+              "smd_before": 0.014985794412623899,
+              "smd_after": 0.008056987001576393
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 13,
+              "target_mean": 0.010868946679565242,
+              "unweighted_mci_mean": 0.01123148000637247,
+              "weighted_mci_mean": 0.011124719421578314,
+              "smd_before": 0.003467976431062433,
+              "smd_after": 0.0024525729208133714
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 14,
+              "target_mean": 0.030046093438798157,
+              "unweighted_mci_mean": 0.036562051935638044,
+              "weighted_mci_mean": 0.030484948847199645,
+              "smd_before": 0.03632087443793225,
+              "smd_after": 0.0025616589822588377
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 15,
+              "target_mean": 0.033517327718659305,
+              "unweighted_mci_mean": 0.019913971642504382,
+              "weighted_mci_mean": 0.031956776377024584,
+              "smd_before": -0.0844364605713819,
+              "smd_after": -0.008769809832768998
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 16,
+              "target_mean": 0.006914015819723439,
+              "unweighted_mci_mean": 0.006930062131591525,
+              "weighted_mci_mean": 0.007069325714757955,
+              "smd_before": 0.0001935381291556229,
+              "smd_after": 0.0018639419572282526
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 17,
+              "target_mean": 0.0014795424799408183,
+              "unweighted_mci_mean": 0.0012744941851202804,
+              "weighted_mci_mean": 0.0017389171915291818,
+              "smd_before": -0.005529516809231495,
+              "smd_after": 0.006470987898256621
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 18,
+              "target_mean": 0.021567176919137312,
+              "unweighted_mci_mean": 0.01800223036482396,
+              "weighted_mci_mean": 0.02130361572452949,
+              "smd_before": -0.025601363101540146,
+              "smd_after": -0.0018197894252470655
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 19,
+              "target_mean": 0.024924600239003017,
+              "unweighted_mci_mean": 0.01609048908714354,
+              "weighted_mci_mean": 0.024045787595345664,
+              "smd_before": -0.06236149171137209,
+              "smd_after": -0.0056862944565205424
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 20,
+              "target_mean": 0.011324190519547032,
+              "unweighted_mci_mean": 0.018878445117094154,
+              "weighted_mci_mean": 0.011704968242762815,
+              "smd_before": 0.06197218473472194,
+              "smd_after": 0.003569135624487523
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 21,
+              "target_mean": 0.00034143287998634266,
+              "unweighted_mci_mean": 0.00015931177314003505,
+              "weighted_mci_mean": 0.00031891122801860135,
+              "smd_before": -0.01151141435312693,
+              "smd_after": -0.0012396579742684352
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 22,
+              "target_mean": 0.006117339099755307,
+              "unweighted_mci_mean": 0.005735223833041262,
+              "weighted_mci_mean": 0.006265365786891803,
+              "smd_before": -0.0049784632067500795,
+              "smd_after": 0.0018871049933616925
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 23,
+              "target_mean": 0.015165310419393388,
+              "unweighted_mci_mean": 0.014019436036323085,
+              "weighted_mci_mean": 0.015248446349687701,
+              "smd_before": -0.009555887836705666,
+              "smd_after": 0.0006793541712570941
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 24,
+              "target_mean": 0.019347863199226087,
+              "unweighted_mci_mean": 0.012585630078062768,
+              "weighted_mci_mean": 0.021849811364427554,
+              "smd_before": -0.05396784649510785,
+              "smd_after": 0.017615439836663544
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 25,
+              "target_mean": 0.036647129118534114,
+              "unweighted_mci_mean": 0.04142106101640911,
+              "weighted_mci_mean": 0.03806651779163453,
+              "smd_before": 0.02465092145052072,
+              "smd_after": 0.007484912679482725
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 26,
+              "target_mean": 0.036647129118534114,
+              "unweighted_mci_mean": 0.05193563804365143,
+              "weighted_mci_mean": 0.036579075684109494,
+              "smd_before": 0.07436057309037022,
+              "smd_after": -0.0003623526332447213
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 27,
+              "target_mean": 0.01277528025948899,
+              "unweighted_mci_mean": 0.00900111518241198,
+              "weighted_mci_mean": 0.012409614469323078,
+              "smd_before": -0.03637407969114224,
+              "smd_after": -0.0032793035648996803
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 28,
+              "target_mean": 0.028111307118875547,
+              "unweighted_mci_mean": 0.03696033136848813,
+              "weighted_mci_mean": 0.027654645084242844,
+              "smd_before": 0.049892142564674016,
+              "smd_after": -0.0027737447127035545
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 29,
+              "target_mean": 0.03485460649860581,
+              "unweighted_mci_mean": 0.02923371037119643,
+              "weighted_mci_mean": 0.03683365903987886,
+              "smd_before": -0.03191968934485372,
+              "smd_after": 0.010645861551589383
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 30,
+              "target_mean": 0.01414101177943436,
+              "unweighted_mci_mean": 0.02214433646646487,
+              "weighted_mci_mean": 0.014161902224442626,
+              "smd_before": 0.059991660674688745,
+              "smd_after": 0.00017686504771487148
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 31,
+              "target_mean": 0.047800603198087974,
+              "unweighted_mci_mean": 0.03815516966703839,
+              "weighted_mci_mean": 0.04794904672114653,
+              "smd_before": -0.04757305769644989,
+              "smd_after": 0.0006952814706326063
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 32,
+              "target_mean": 0.02495305297900188,
+              "unweighted_mci_mean": 0.013382188943762944,
+              "weighted_mci_mean": 0.019438940448465995,
+              "smd_before": -0.0844639198273701,
+              "smd_after": -0.0374359156628264
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 33,
+              "target_mean": 0.03522449211859102,
+              "unweighted_mci_mean": 0.03512824597737773,
+              "weighted_mci_mean": 0.03629511038425594,
+              "smd_before": -0.0005224369324636982,
+              "smd_after": 0.005765623622845142
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 34,
+              "target_mean": 0.011665623399533375,
+              "unweighted_mci_mean": 0.005496256173331209,
+              "weighted_mci_mean": 0.01132308684571818,
+              "smd_before": -0.06692487582230658,
+              "smd_after": -0.0032134800085613403
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 35,
+              "target_mean": 0.008222841859671086,
+              "unweighted_mci_mean": 0.008523179862991875,
+              "weighted_mci_mean": 0.008173691883338441,
+              "smd_before": 0.0032960658716854408,
+              "smd_after": -0.000545066978272453
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 36,
+              "target_mean": 0.02694474477892221,
+              "unweighted_mci_mean": 0.028755775051776327,
+              "weighted_mci_mean": 0.027920838302234557,
+              "smd_before": 0.011006546630800295,
+              "smd_after": 0.00597583443804066
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 37,
+              "target_mean": 0.0192625049792295,
+              "unweighted_mci_mean": 0.01417874780946312,
+              "weighted_mci_mean": 0.019358559875948988,
+              "smd_before": -0.039655681247855956,
+              "smd_after": 0.0006980019825402969
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 38,
+              "target_mean": 0.04159790587833608,
+              "unweighted_mci_mean": 0.0070097180181615424,
+              "weighted_mci_mean": 0.04116561512014298,
+              "smd_before": -0.2260422019374441,
+              "smd_after": -0.002170445480717435
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 39,
+              "target_mean": 0.043902577818243894,
+              "unweighted_mci_mean": 0.027481280866656046,
+              "weighted_mci_mean": 0.04226691778465855,
+              "smd_before": -0.08860133917500557,
+              "smd_after": -0.008055602887235334
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 40,
+              "target_mean": 0.004865418539805383,
+              "unweighted_mci_mean": 0.006292815039031384,
+              "weighted_mci_mean": 0.004781015380155753,
+              "smd_before": 0.01916446589882395,
+              "smd_after": -0.001218260795739982
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 41,
+              "target_mean": 0.022676833779092926,
+              "unweighted_mci_mean": 0.023020551218735065,
+              "weighted_mci_mean": 0.02340020409820902,
+              "smd_before": 0.0023003306714412235,
+              "smd_after": 0.004821652957200138
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 42,
+              "target_mean": 0.008791896659648324,
+              "unweighted_mci_mean": 0.0037438266687908235,
+              "weighted_mci_mean": 0.007346898117870846,
+              "smd_before": -0.06399605694695662,
+              "smd_after": -0.016151779400458
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 43,
+              "target_mean": 0.0186649974392534,
+              "unweighted_mci_mean": 0.019436036323084275,
+              "weighted_mci_mean": 0.01769708381985246,
+              "smd_before": 0.00564028831201808,
+              "smd_after": -0.007244599376978266
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 44,
+              "target_mean": 0.017213907699311443,
+              "unweighted_mci_mean": 0.02214433646646487,
+              "weighted_mci_mean": 0.01705014710911243,
+              "smd_before": 0.03550308717375545,
+              "smd_after": -0.0012619946370951945
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 45,
+              "target_mean": 0.025066863938997326,
+              "unweighted_mci_mean": 0.03337581647283734,
+              "weighted_mci_mean": 0.025146425014083255,
+              "smd_before": 0.049347852947981274,
+              "smd_after": 0.0005085430992019365
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 1,
+              "target_mean": 0.2555340579297786,
+              "unweighted_mci_mean": 0.2536243428389358,
+              "weighted_mci_mean": 0.2617457673256886,
+              "smd_before": -0.0043838674139863336,
+              "smd_after": 0.014185991043009268
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 2,
+              "target_mean": 0.2686223183292551,
+              "unweighted_mci_mean": 0.2763262705113908,
+              "weighted_mci_mean": 0.2656343276375728,
+              "smd_before": 0.01730385602348096,
+              "smd_after": -0.006753171486649057
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 3,
+              "target_mean": 0.445399191942184,
+              "unweighted_mci_mean": 0.44440019117412777,
+              "weighted_mci_mean": 0.4434515900307316,
+              "smd_before": -0.0020102462231973714,
+              "smd_after": -0.003919497572905237
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 4,
+              "target_mean": 0.030444431798782222,
+              "unweighted_mci_mean": 0.025649195475545644,
+              "weighted_mci_mean": 0.029168315006007056,
+              "smd_before": -0.029046337108323987,
+              "smd_after": -0.007504291631615311
+            }
+          ]
+        },
+        "winsor_01_99": {
+          "hr": 0.97368557077225,
+          "log_hr": -0.026666850073799295,
+          "hr_ratio_vs_naive": 1.0108997622545144,
+          "percent_hr_change": 1.0899762254514356,
+          "effective_sample_size": 10190.583394485158,
+          "raw_winsor_limits": [
+            0.4258780868398628,
+            3.1232636019096525
+          ],
+          "normalized_weight_quantiles": [
+            0.43788134247154853,
+            0.4379691993861398,
+            0.8633100754755572,
+            3.207414011544739,
+            3.21129191934914
+          ],
+          "balance": [
+            {
+              "covariate": "smoke",
+              "target_mean": 0.41851135264325956,
+              "unweighted_mci_mean": 0.43061972279751476,
+              "weighted_mci_mean": 0.42083922613540403,
+              "smd_before": 0.024498977895285143,
+              "smd_after": 0.0047170268880640095
+            },
+            {
+              "covariate": "age",
+              "target_mean": 71.33636829226654,
+              "unweighted_mci_mean": 72.68750995698582,
+              "weighted_mci_mean": 71.52035591426102,
+              "smd_before": 0.15416228662360396,
+              "smd_after": 0.0207548765824883
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.6049052523758038,
+              "unweighted_mci_mean": 0.5101162975943923,
+              "weighted_mci_mean": 0.5956602689699225,
+              "smd_before": -0.19171938325786586,
+              "smd_after": -0.01887431065984449
+            },
+            {
+              "covariate": "education",
+              "target_mean": 15.663660160473453,
+              "unweighted_mci_mean": 15.288115341723753,
+              "weighted_mci_mean": 15.636875394460493,
+              "smd_before": -0.1149877807011036,
+              "smd_after": -0.008437679914684958
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 0,
+              "target_mean": 0.019177146759232915,
+              "unweighted_mci_mean": 0.018719133343954118,
+              "weighted_mci_mean": 0.019861664995972347,
+              "smd_before": -0.003359305767569886,
+              "smd_after": 0.004948044007102689
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 1,
+              "target_mean": 0.005093040459796278,
+              "unweighted_mci_mean": 0.0039031384419308587,
+              "weighted_mci_mean": 0.005154219081771202,
+              "smd_before": -0.017782518697031555,
+              "smd_after": 0.0008568924220409438
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 2,
+              "target_mean": 0.04873954361805042,
+              "unweighted_mci_mean": 0.06834475067707503,
+              "weighted_mci_mean": 0.050961490407723964,
+              "smd_before": 0.0835825444402129,
+              "smd_after": 0.010209594923998476
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 3,
+              "target_mean": 0.03192397427872304,
+              "unweighted_mci_mean": 0.036163772502787954,
+              "weighted_mci_mean": 0.03316219547187238,
+              "smd_before": 0.023381732166439843,
+              "smd_after": 0.006978397448101642
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 4,
+              "target_mean": 0.02498150571900074,
+              "unweighted_mci_mean": 0.025171260156125537,
+              "weighted_mci_mean": 0.025815210678613934,
+              "smd_before": 0.001213596395243186,
+              "smd_after": 0.0052990439089257105
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 5,
+              "target_mean": 0.0019347863199226086,
+              "unweighted_mci_mean": 0.0017524295045403856,
+              "weighted_mci_mean": 0.0018894203565820822,
+              "smd_before": -0.004250983335062077,
+              "smd_after": -0.0010384608341068705
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 6,
+              "target_mean": 0.019006430319239744,
+              "unweighted_mci_mean": 0.04054484626413892,
+              "weighted_mci_mean": 0.01963098397669428,
+              "smd_before": 0.1269757041082369,
+              "smd_after": 0.004537513171213026
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 7,
+              "target_mean": 0.02543674955898253,
+              "unweighted_mci_mean": 0.030428548669746695,
+              "weighted_mci_mean": 0.025600777656712592,
+              "smd_before": 0.030297213225556587,
+              "smd_after": 0.001040163840061306
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 8,
+              "target_mean": 0.02256302281909748,
+              "unweighted_mci_mean": 0.027321969093516012,
+              "weighted_mci_mean": 0.022849551067685176,
+              "smd_before": 0.030519421055942374,
+              "smd_after": 0.0019234550103947204
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 9,
+              "target_mean": 0.034939964718602404,
+              "unweighted_mci_mean": 0.034331687111677556,
+              "weighted_mci_mean": 0.036420510501669355,
+              "smd_before": -0.0033265500845065543,
+              "smd_after": 0.007981801033766191
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 10,
+              "target_mean": 0.019547032379218118,
+              "unweighted_mci_mean": 0.025011948382985504,
+              "weighted_mci_mean": 0.019605535223917624,
+              "smd_before": 0.03703377159757717,
+              "smd_after": 0.0004222843275366461
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 11,
+              "target_mean": 0.0037557616798497696,
+              "unweighted_mci_mean": 0.00581487971961128,
+              "weighted_mci_mean": 0.0038629777475198477,
+              "smd_before": 0.029841157812101782,
+              "smd_after": 0.0017404528021213615
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 12,
+              "target_mean": 0.04125647299834974,
+              "unweighted_mci_mean": 0.04428867293292974,
+              "weighted_mci_mean": 0.043811480045267595,
+              "smd_before": 0.014985794412623899,
+              "smd_after": 0.012661090852186765
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 13,
+              "target_mean": 0.010868946679565242,
+              "unweighted_mci_mean": 0.01123148000637247,
+              "weighted_mci_mean": 0.011368024388586933,
+              "smd_before": 0.003467976431062433,
+              "smd_after": 0.004759643836008709
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 14,
+              "target_mean": 0.030046093438798157,
+              "unweighted_mci_mean": 0.036562051935638044,
+              "weighted_mci_mean": 0.031153381880832654,
+              "smd_before": 0.03632087443793225,
+              "smd_after": 0.006429135700538322
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 15,
+              "target_mean": 0.033517327718659305,
+              "unweighted_mci_mean": 0.019913971642504382,
+              "weighted_mci_mean": 0.03180794665056139,
+              "smd_before": -0.0844364605713819,
+              "smd_after": -0.009616771688462
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 16,
+              "target_mean": 0.006914015819723439,
+              "unweighted_mci_mean": 0.006930062131591525,
+              "weighted_mci_mean": 0.007223936540849093,
+              "smd_before": 0.0001935381291556229,
+              "smd_after": 0.0036992489354362693
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 17,
+              "target_mean": 0.0014795424799408183,
+              "unweighted_mci_mean": 0.0012744941851202804,
+              "weighted_mci_mean": 0.0017769484599039218,
+              "smd_before": -0.005529516809231495,
+              "smd_after": 0.007376435824586405
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 18,
+              "target_mean": 0.021567176919137312,
+              "unweighted_mci_mean": 0.01800223036482396,
+              "weighted_mci_mean": 0.02172307804116383,
+              "smd_before": -0.025601363101540146,
+              "smd_after": 0.001071324465877696
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 19,
+              "target_mean": 0.024924600239003017,
+              "unweighted_mci_mean": 0.01609048908714354,
+              "weighted_mci_mean": 0.024408036088697193,
+              "smd_before": -0.06236149171137209,
+              "smd_after": -0.0033303976329241932
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 20,
+              "target_mean": 0.011324190519547032,
+              "unweighted_mci_mean": 0.018878445117094154,
+              "weighted_mci_mean": 0.011960963635025778,
+              "smd_before": 0.06197218473472194,
+              "smd_after": 0.005936152604845496
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 21,
+              "target_mean": 0.00034143287998634266,
+              "unweighted_mci_mean": 0.00015931177314003505,
+              "weighted_mci_mean": 0.0003258860273705058,
+              "smd_before": -0.01151141435312693,
+              "smd_after": -0.0008512620428414801
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 22,
+              "target_mean": 0.006117339099755307,
+              "unweighted_mci_mean": 0.005735223833041262,
+              "weighted_mci_mean": 0.006402393477956066,
+              "smd_before": -0.0049784632067500795,
+              "smd_after": 0.0036141775311161976
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 23,
+              "target_mean": 0.015165310419393388,
+              "unweighted_mci_mean": 0.014019436036323085,
+              "weighted_mci_mean": 0.015581939950330538,
+              "smd_before": -0.009555887836705666,
+              "smd_after": 0.0033863106425547056
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 24,
+              "target_mean": 0.019347863199226087,
+              "unweighted_mci_mean": 0.012585630078062768,
+              "weighted_mci_mean": 0.02222805974205551,
+              "smd_before": -0.05396784649510785,
+              "smd_after": 0.02018830817060329
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 25,
+              "target_mean": 0.036647129118534114,
+              "unweighted_mci_mean": 0.04142106101640911,
+              "weighted_mci_mean": 0.03887826141140549,
+              "smd_before": 0.02465092145052072,
+              "smd_after": 0.011704696912659306
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 26,
+              "target_mean": 0.036647129118534114,
+              "unweighted_mci_mean": 0.05193563804365143,
+              "weighted_mci_mean": 0.037379084247495385,
+              "smd_before": 0.07436057309037022,
+              "smd_after": 0.0038770135309192755
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 27,
+              "target_mean": 0.01277528025948899,
+              "unweighted_mci_mean": 0.00900111518241198,
+              "weighted_mci_mean": 0.012681020940320614,
+              "smd_before": -0.03637407969114224,
+              "smd_after": -0.0008408592524555
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 28,
+              "target_mean": 0.028111307118875547,
+              "unweighted_mci_mean": 0.03696033136848813,
+              "weighted_mci_mean": 0.028259470451506098,
+              "smd_before": 0.049892142564674016,
+              "smd_after": 0.0008952350029964875
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 29,
+              "target_mean": 0.03485460649860581,
+              "unweighted_mci_mean": 0.02923371037119643,
+              "weighted_mci_mean": 0.037558687410051056,
+              "smd_before": -0.03191968934485372,
+              "smd_after": 0.014475878887749849
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 30,
+              "target_mean": 0.01414101177943436,
+              "unweighted_mci_mean": 0.02214433646646487,
+              "weighted_mci_mean": 0.01447163238687835,
+              "smd_before": 0.059991660674688745,
+              "smd_after": 0.0027841674746610615
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 31,
+              "target_mean": 0.047800603198087974,
+              "unweighted_mci_mean": 0.03815516966703839,
+              "weighted_mci_mean": 0.048953037602288536,
+              "smd_before": -0.04757305769644989,
+              "smd_after": 0.005371141759723533
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 32,
+              "target_mean": 0.02495305297900188,
+              "unweighted_mci_mean": 0.013382188943762944,
+              "weighted_mci_mean": 0.019749436300715604,
+              "smd_before": -0.0844639198273701,
+              "smd_after": -0.03520710336876593
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 33,
+              "target_mean": 0.03522449211859102,
+              "unweighted_mci_mean": 0.03512824597737773,
+              "weighted_mci_mean": 0.03708890843883759,
+              "smd_before": -0.0005224369324636982,
+              "smd_after": 0.009987359892609082
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 34,
+              "target_mean": 0.011665623399533375,
+              "unweighted_mci_mean": 0.005496256173331209,
+              "weighted_mci_mean": 0.011151308758588835,
+              "smd_before": -0.06692487582230658,
+              "smd_after": -0.004842928860196655
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 35,
+              "target_mean": 0.008222841859671086,
+              "unweighted_mci_mean": 0.008523179862991875,
+              "weighted_mci_mean": 0.008352455927504521,
+              "smd_before": 0.0032960658716854408,
+              "smd_after": 0.001429696054865264
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 36,
+              "target_mean": 0.02694474477892221,
+              "unweighted_mci_mean": 0.028755775051776327,
+              "weighted_mci_mean": 0.028531485491124678,
+              "smd_before": 0.011006546630800295,
+              "smd_after": 0.00966230916522105
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 37,
+              "target_mean": 0.0192625049792295,
+              "unweighted_mci_mean": 0.01417874780946312,
+              "weighted_mci_mean": 0.01978194437612939,
+              "smd_before": -0.039655681247855956,
+              "smd_after": 0.003754500103047011
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 38,
+              "target_mean": 0.04159790587833608,
+              "unweighted_mci_mean": 0.0070097180181615424,
+              "weighted_mci_mean": 0.022165840522096945,
+              "smd_before": -0.2260422019374441,
+              "smd_after": -0.1107765995810125
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 39,
+              "target_mean": 0.043902577818243894,
+              "unweighted_mci_mean": 0.027481280866656046,
+              "weighted_mci_mean": 0.043179297398241855,
+              "smd_before": -0.08860133917500557,
+              "smd_after": -0.0035442578400242297
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 40,
+              "target_mean": 0.004865418539805383,
+              "unweighted_mci_mean": 0.006292815039031384,
+              "weighted_mci_mean": 0.004885579346693208,
+              "smd_before": 0.01916446589882395,
+              "smd_after": 0.0002894407476602422
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 41,
+              "target_mean": 0.022676833779092926,
+              "unweighted_mci_mean": 0.023020551218735065,
+              "weighted_mci_mean": 0.023911982028991387,
+              "smd_before": 0.0023003306714412235,
+              "smd_after": 0.008188701729011084
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 42,
+              "target_mean": 0.008791896659648324,
+              "unweighted_mci_mean": 0.0037438266687908235,
+              "weighted_mci_mean": 0.007228529169535815,
+              "smd_before": -0.06399605694695662,
+              "smd_after": -0.017538891638521806
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 43,
+              "target_mean": 0.0186649974392534,
+              "unweighted_mci_mean": 0.019436036323084275,
+              "weighted_mci_mean": 0.018084130740477367,
+              "smd_before": 0.00564028831201808,
+              "smd_after": -0.004325099175712106
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 44,
+              "target_mean": 0.017213907699311443,
+              "unweighted_mci_mean": 0.02214433646646487,
+              "weighted_mci_mean": 0.0174230450962588,
+              "smd_before": 0.03550308717375545,
+              "smd_after": 0.0016031368663985415
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 45,
+              "target_mean": 0.025066863938997326,
+              "unweighted_mci_mean": 0.03337581647283734,
+              "weighted_mci_mean": 0.02569824985952264,
+              "smd_before": 0.049347852947981274,
+              "smd_after": 0.00401431080042257
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 1,
+              "target_mean": 0.2555340579297786,
+              "unweighted_mci_mean": 0.2536243428389358,
+              "weighted_mci_mean": 0.26154608265862556,
+              "smd_before": -0.0043838674139863336,
+              "smd_after": 0.013731665645162905
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 2,
+              "target_mean": 0.2686223183292551,
+              "unweighted_mci_mean": 0.2763262705113908,
+              "weighted_mci_mean": 0.26453235093924443,
+              "smd_before": 0.01730385602348096,
+              "smd_after": -0.009249871847400806
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 3,
+              "target_mean": 0.445399191942184,
+              "unweighted_mci_mean": 0.44440019117412777,
+              "weighted_mci_mean": 0.4447482659209614,
+              "smd_before": -0.0020102462231973714,
+              "smd_after": -0.001309779242450569
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 4,
+              "target_mean": 0.030444431798782222,
+              "unweighted_mci_mean": 0.025649195475545644,
+              "weighted_mci_mean": 0.029173300481168656,
+              "smd_before": -0.029046337108323987,
+              "smd_after": -0.007474670843289974
+            }
+          ],
+          "bootstrap_ci": [
+            0.8910474018713749,
+            1.0538249290989277
+          ],
+          "paired_log_hr_difference_ci": [
+            -0.014553727981834104,
+            0.04578557143112321
+          ],
+          "hr_ratio_vs_naive_ci": [
+            0.9855516656078765,
+            1.0468499123598047
+          ]
+        },
+        "winsor_05_95": {
+          "hr": 0.9739353813167693,
+          "log_hr": -0.026410321157717125,
+          "hr_ratio_vs_naive": 1.011159120539821,
+          "percent_hr_change": 1.1159120539820833,
+          "effective_sample_size": 10833.775730129935,
+          "raw_winsor_limits": [
+            0.5006413729371615,
+            1.893926758060631
+          ],
+          "normalized_weight_quantiles": [
+            0.5282373570686022,
+            0.5282373570686022,
+            0.8859272038072035,
+            1.9983223905169047,
+            1.9983223905169047
+          ],
+          "balance": [
+            {
+              "covariate": "smoke",
+              "target_mean": 0.41851135264325956,
+              "unweighted_mci_mean": 0.43061972279751476,
+              "weighted_mci_mean": 0.4217318175751697,
+              "smd_before": 0.024498977895285143,
+              "smd_after": 0.006524765628417034
+            },
+            {
+              "covariate": "age",
+              "target_mean": 71.33636829226654,
+              "unweighted_mci_mean": 72.68750995698582,
+              "weighted_mci_mean": 71.6700671759307,
+              "smd_before": 0.15416228662360396,
+              "smd_after": 0.0377538655167451
+            },
+            {
+              "covariate": "female",
+              "target_mean": 0.6049052523758038,
+              "unweighted_mci_mean": 0.5101162975943923,
+              "weighted_mci_mean": 0.5885346270352543,
+              "smd_before": -0.19171938325786586,
+              "smd_after": -0.03337621505406197
+            },
+            {
+              "covariate": "education",
+              "target_mean": 15.663660160473453,
+              "unweighted_mci_mean": 15.288115341723753,
+              "weighted_mci_mean": 15.599922381933638,
+              "smd_before": -0.1149877807011036,
+              "smd_after": -0.020038757685814205
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 0,
+              "target_mean": 0.019177146759232915,
+              "unweighted_mci_mean": 0.018719133343954118,
+              "weighted_mci_mean": 0.0202863764885397,
+              "smd_before": -0.003359305767569886,
+              "smd_after": 0.007975713745787259
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 1,
+              "target_mean": 0.005093040459796278,
+              "unweighted_mci_mean": 0.0039031384419308587,
+              "weighted_mci_mean": 0.005194897758667042,
+              "smd_before": -0.017782518697031555,
+              "smd_after": 0.001423845839782774
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 2,
+              "target_mean": 0.04873954361805042,
+              "unweighted_mci_mean": 0.06834475067707503,
+              "weighted_mci_mean": 0.05237433455188309,
+              "smd_before": 0.0835825444402129,
+              "smd_after": 0.01659088412055191
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 3,
+              "target_mean": 0.03192397427872304,
+              "unweighted_mci_mean": 0.036163772502787954,
+              "weighted_mci_mean": 0.03398505089937115,
+              "smd_before": 0.023381732166439843,
+              "smd_after": 0.01154570550578411
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 4,
+              "target_mean": 0.02498150571900074,
+              "unweighted_mci_mean": 0.025171260156125537,
+              "weighted_mci_mean": 0.02641941973982561,
+              "smd_before": 0.001213596395243186,
+              "smd_after": 0.00908700321169678
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 5,
+              "target_mean": 0.0019347863199226086,
+              "unweighted_mci_mean": 0.0017524295045403856,
+              "weighted_mci_mean": 0.0019057594851673628,
+              "smd_before": -0.004250983335062077,
+              "smd_after": -0.0006630337117058577
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 6,
+              "target_mean": 0.019006430319239744,
+              "unweighted_mci_mean": 0.04054484626413892,
+              "weighted_mci_mean": 0.021926687668520184,
+              "smd_before": 0.1269757041082369,
+              "smd_after": 0.020625864954172544
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 7,
+              "target_mean": 0.02543674955898253,
+              "unweighted_mci_mean": 0.030428548669746695,
+              "weighted_mci_mean": 0.026273986553491488,
+              "smd_before": 0.030297213225556587,
+              "smd_after": 0.005275490408886887
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 8,
+              "target_mean": 0.02256302281909748,
+              "unweighted_mci_mean": 0.027321969093516012,
+              "weighted_mci_mean": 0.023448167073103234,
+              "smd_before": 0.030519421055942374,
+              "smd_after": 0.0059040927847665466
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 9,
+              "target_mean": 0.034939964718602404,
+              "unweighted_mci_mean": 0.034331687111677556,
+              "weighted_mci_mean": 0.03691101127575978,
+              "smd_before": -0.0033265500845065543,
+              "smd_after": 0.010591228394454198
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 10,
+              "target_mean": 0.019547032379218118,
+              "unweighted_mci_mean": 0.025011948382985504,
+              "weighted_mci_mean": 0.02012789264685215,
+              "smd_before": 0.03703377159757717,
+              "smd_after": 0.00416562818696521
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 11,
+              "target_mean": 0.0037557616798497696,
+              "unweighted_mci_mean": 0.00581487971961128,
+              "weighted_mci_mean": 0.003967856466085035,
+              "smd_before": 0.029841157812101782,
+              "smd_after": 0.003419600979770981
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 12,
+              "target_mean": 0.04125647299834974,
+              "unweighted_mci_mean": 0.04428867293292974,
+              "weighted_mci_mean": 0.04459122871822771,
+              "smd_before": 0.014985794412623899,
+              "smd_after": 0.01645341820501564
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 13,
+              "target_mean": 0.010868946679565242,
+              "unweighted_mci_mean": 0.01123148000637247,
+              "weighted_mci_mean": 0.01157944823512172,
+              "smd_before": 0.003467976431062433,
+              "smd_after": 0.0067443630192156505
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 14,
+              "target_mean": 0.030046093438798157,
+              "unweighted_mci_mean": 0.036562051935638044,
+              "weighted_mci_mean": 0.03202956517002973,
+              "smd_before": 0.03632087443793225,
+              "smd_after": 0.011437577125147057
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 15,
+              "target_mean": 0.033517327718659305,
+              "unweighted_mci_mean": 0.019913971642504382,
+              "weighted_mci_mean": 0.02977219457504742,
+              "smd_before": -0.0844364605713819,
+              "smd_after": -0.021395569319298185
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 16,
+              "target_mean": 0.006914015819723439,
+              "unweighted_mci_mean": 0.006930062131591525,
+              "weighted_mci_mean": 0.007406428693137845,
+              "smd_before": 0.0001935381291556229,
+              "smd_after": 0.005840209334095298
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 17,
+              "target_mean": 0.0014795424799408183,
+              "unweighted_mci_mean": 0.0012744941851202804,
+              "weighted_mci_mean": 0.0017303686151884986,
+              "smd_before": -0.005529516809231495,
+              "smd_after": 0.006266026186560006
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 18,
+              "target_mean": 0.021567176919137312,
+              "unweighted_mci_mean": 0.01800223036482396,
+              "weighted_mci_mean": 0.02184949495545319,
+              "smd_before": -0.025601363101540146,
+              "smd_after": 0.0019372754949813409
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 19,
+              "target_mean": 0.024924600239003017,
+              "unweighted_mci_mean": 0.01609048908714354,
+              "weighted_mci_mean": 0.023904780730730213,
+              "smd_before": -0.06236149171137209,
+              "smd_after": -0.006607960653347032
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 20,
+              "target_mean": 0.011324190519547032,
+              "unweighted_mci_mean": 0.018878445117094154,
+              "weighted_mci_mean": 0.01235206308268337,
+              "smd_before": 0.06197218473472194,
+              "smd_after": 0.009503610667141744
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 21,
+              "target_mean": 0.00034143287998634266,
+              "unweighted_mci_mean": 0.00015931177314003505,
+              "weighted_mci_mean": 0.00031835628333868167,
+              "smd_before": -0.01151141435312693,
+              "smd_after": -0.0012707376660000141
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 22,
+              "target_mean": 0.006117339099755307,
+              "unweighted_mci_mean": 0.005735223833041262,
+              "weighted_mci_mean": 0.006530134339609346,
+              "smd_before": -0.0049784632067500795,
+              "smd_after": 0.005207470336321561
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 23,
+              "target_mean": 0.015165310419393388,
+              "unweighted_mci_mean": 0.014019436036323085,
+              "weighted_mci_mean": 0.01576541091257573,
+              "smd_before": -0.009555887836705666,
+              "smd_after": 0.004863285223863276
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 24,
+              "target_mean": 0.019347863199226087,
+              "unweighted_mci_mean": 0.012585630078062768,
+              "weighted_mci_mean": 0.020461248543281997,
+              "smd_before": -0.05396784649510785,
+              "smd_after": 0.007971471886244967
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 25,
+              "target_mean": 0.036647129118534114,
+              "unweighted_mci_mean": 0.04142106101640911,
+              "weighted_mci_mean": 0.039573875095657664,
+              "smd_before": 0.02465092145052072,
+              "smd_after": 0.015286666421872642
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 26,
+              "target_mean": 0.036647129118534114,
+              "unweighted_mci_mean": 0.05193563804365143,
+              "weighted_mci_mean": 0.038408146778457136,
+              "smd_before": 0.07436057309037022,
+              "smd_after": 0.009266135007582292
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 27,
+              "target_mean": 0.01277528025948899,
+              "unweighted_mci_mean": 0.00900111518241198,
+              "weighted_mci_mean": 0.01271102183591711,
+              "smd_before": -0.03637407969114224,
+              "smd_after": -0.0005728970575394012
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 28,
+              "target_mean": 0.028111307118875547,
+              "unweighted_mci_mean": 0.03696033136848813,
+              "weighted_mci_mean": 0.02902798905932528,
+              "smd_before": 0.049892142564674016,
+              "smd_after": 0.005502525188519336
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 29,
+              "target_mean": 0.03485460649860581,
+              "unweighted_mci_mean": 0.02923371037119643,
+              "weighted_mci_mean": 0.037653321549642266,
+              "smd_before": -0.03191968934485372,
+              "smd_after": 0.01497310264092626
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 30,
+              "target_mean": 0.01414101177943436,
+              "unweighted_mci_mean": 0.02214433646646487,
+              "weighted_mci_mean": 0.014902608256422107,
+              "smd_before": 0.059991660674688745,
+              "smd_after": 0.006366390045128691
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 31,
+              "target_mean": 0.047800603198087974,
+              "unweighted_mci_mean": 0.03815516966703839,
+              "weighted_mci_mean": 0.0487630770675076,
+              "smd_before": -0.04757305769644989,
+              "smd_after": 0.004489975352331298
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 32,
+              "target_mean": 0.02495305297900188,
+              "unweighted_mci_mean": 0.013382188943762944,
+              "weighted_mci_mean": 0.01902664311603471,
+              "smd_before": -0.0844639198273701,
+              "smd_after": -0.040420116669468056
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 33,
+              "target_mean": 0.03522449211859102,
+              "unweighted_mci_mean": 0.03512824597737773,
+              "weighted_mci_mean": 0.037552770970724604,
+              "smd_before": -0.0005224369324636982,
+              "smd_after": 0.012433962892230834
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 34,
+              "target_mean": 0.011665623399533375,
+              "unweighted_mci_mean": 0.005496256173331209,
+              "weighted_mci_mean": 0.009721962520515983,
+              "smd_before": -0.06692487582230658,
+              "smd_after": -0.018897685929170224
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 35,
+              "target_mean": 0.008222841859671086,
+              "unweighted_mci_mean": 0.008523179862991875,
+              "weighted_mci_mean": 0.008571274835059525,
+              "smd_before": 0.0032960658716854408,
+              "smd_after": 0.0038184539054270743
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 36,
+              "target_mean": 0.02694474477892221,
+              "unweighted_mci_mean": 0.028755775051776327,
+              "weighted_mci_mean": 0.029002065914784776,
+              "smd_before": 0.011006546630800295,
+              "smd_after": 0.012476673073494876
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 37,
+              "target_mean": 0.0192625049792295,
+              "unweighted_mci_mean": 0.01417874780946312,
+              "weighted_mci_mean": 0.019735252502738974,
+              "smd_before": -0.039655681247855956,
+              "smd_after": 0.003419015191578677
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 38,
+              "target_mean": 0.04159790587833608,
+              "unweighted_mci_mean": 0.0070097180181615424,
+              "weighted_mci_mean": 0.014007676466901993,
+              "smd_before": -0.2260422019374441,
+              "smd_after": -0.1684101162672873
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 39,
+              "target_mean": 0.043902577818243894,
+              "unweighted_mci_mean": 0.027481280866656046,
+              "weighted_mci_mean": 0.041562066347713075,
+              "smd_before": -0.08860133917500557,
+              "smd_after": -0.011572391022089857
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 40,
+              "target_mean": 0.004865418539805383,
+              "unweighted_mci_mean": 0.006292815039031384,
+              "weighted_mci_mean": 0.005016862709208534,
+              "smd_before": 0.01916446589882395,
+              "smd_after": 0.002159806373878787
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 41,
+              "target_mean": 0.022676833779092926,
+              "unweighted_mci_mean": 0.023020551218735065,
+              "weighted_mci_mean": 0.024453866987906185,
+              "smd_before": 0.0023003306714412235,
+              "smd_after": 0.011715058248824115
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 42,
+              "target_mean": 0.008791896659648324,
+              "unweighted_mci_mean": 0.0037438266687908235,
+              "weighted_mci_mean": 0.006355858982686639,
+              "smd_before": -0.06399605694695662,
+              "smd_after": -0.028100796094233865
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 43,
+              "target_mean": 0.0186649974392534,
+              "unweighted_mci_mean": 0.019436036323084275,
+              "weighted_mci_mean": 0.018559128206517995,
+              "smd_before": 0.00564028831201808,
+              "smd_after": -0.0007833433957501988
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 44,
+              "target_mean": 0.017213907699311443,
+              "unweighted_mci_mean": 0.02214433646646487,
+              "weighted_mci_mean": 0.017890248244257497,
+              "smd_before": 0.03550308717375545,
+              "smd_after": 0.005150481412793545
+            },
+            {
+              "covariate": "center_category",
+              "category_index": 45,
+              "target_mean": 0.025066863938997326,
+              "unweighted_mci_mean": 0.03337581647283734,
+              "weighted_mci_mean": 0.02639211909032894,
+              "smd_before": 0.049347852947981274,
+              "smd_after": 0.008370433001554116
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 1,
+              "target_mean": 0.2555340579297786,
+              "unweighted_mci_mean": 0.2536243428389358,
+              "weighted_mci_mean": 0.2604997771166631,
+              "smd_before": -0.0043838674139863336,
+              "smd_after": 0.011349273340652949
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 2,
+              "target_mean": 0.2686223183292551,
+              "unweighted_mci_mean": 0.2763262705113908,
+              "weighted_mci_mean": 0.2640517520630623,
+              "smd_before": 0.01730385602348096,
+              "smd_after": -0.010339790395434128
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 3,
+              "target_mean": 0.445399191942184,
+              "unweighted_mci_mean": 0.44440019117412777,
+              "weighted_mci_mean": 0.44667409266496666,
+              "smd_before": -0.0020102462231973714,
+              "smd_after": 0.002564784828537027
+            },
+            {
+              "covariate": "version_group_category",
+              "category_index": 4,
+              "target_mean": 0.030444431798782222,
+              "unweighted_mci_mean": 0.025649195475545644,
+              "weighted_mci_mean": 0.028774378155307877,
+              "smd_before": -0.029046337108323987,
+              "smd_after": -0.009852525364144006
+            }
+          ]
+        }
+      },
+      "selection_probability_quantiles_mci": [
+        0.025218789229559037,
+        0.11436683992928488,
+        0.42541280352624444,
+        0.8387277174202861,
+        0.949148207612206
+      ],
+      "cox_vs_statsmodels_max_abs_coefficient_difference": 5.740709574375558e-10,
+      "profile_logit_vs_dense_max_abs_coefficient_difference": 0.0,
+      "bootstrap": {
+        "requested": 1000,
+        "successful": 1000,
+        "failed": 0,
+        "seed": 20261104,
+        "unit": "centers",
+        "centers_in_resampling_frame": 46,
+        "both_stages_refitted": true,
+        "seconds": 172.54699999996228
+      },
+      "baseline_mci_phone_counts": [
+        {
+          "mode": "standard initial",
+          "people": 12458,
+          "positive_followup_people": 8512,
+          "events": 2830,
+          "event_centers": 45
+        },
+        {
+          "mode": "telephone initial",
+          "people": 96,
+          "positive_followup_people": 50,
+          "events": 19,
+          "event_centers": 9
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "version": "1.0",
+  "built_at_utc": "2026-11-03T01:58:18+00:00",
+  "scope": "Synthetic numerical implementation validation only; no participant files read or records exported; no scientific or human-gate approval.",
+  "analysis_scripts": [
+    {
+      "script": "scripts/gap101_nacc_independent.py",
+      "sha256": "925e3ca7055107a55f84cb683fd99d6d35c074e05026c478bc924204472a30e3",
+      "version": "1.0"
+    },
+    {
+      "script": "scripts/gap128_nacc_independent.py",
+      "sha256": "af65f59b3bc5de87ac94f03698d94ebf6bb8bfbec7d14f941622280962dc7f85",
+      "version": "1.0"
+    }
+  ],
+  "reused_core_scripts": [
+    {
+      "script": "scripts/gap101_independent.py",
+      "sha256": "9504d03fbb79e65a48225dcb4696ef06085af34bae527eaf886591cf60eba094",
+      "version": "1.1"
+    },
+    {
+      "script": "scripts/gap128_independent.py",
+      "sha256": "0d0e0c56130eb405ace57429800ec153baf7b4f020ec75f84accf63bc28c7e8d",
+      "version": "2.0"
+    }
+  ],
+  "reused_validation_helpers": {
+    "script": "scripts/adni_analysis_validation.py",
+    "sha256": "126f0b7dab615aeb115efd9e258a4100768e1f0a81b30cba5b7fecb5c5803446",
+    "version": "1.0"
+  },
+  "center_selection_optimizer_and_weights": {
+    "passed": true,
+    "comparison": "Schur IRLS versus dense penalized BFGS, independently initialized at zero; participant winsorization versus expanded frequency sample",
+    "cases": [
+      {
+        "seed": 2026110311,
+        "synthetic_subjects": 2400,
+        "centers": 12,
+        "integer_center_frequency_weights": false,
+        "zero_frequency_centers": 0,
+        "maximum_coefficient_difference_from_independent_dense_zero_start": 4.913383335747312e-07,
+        "objective_difference": 2.7284841053187847e-12,
+        "dense_maximum_gradient": 1.3165757235567494e-07,
+        "participant_weight_replication_error": 0.0,
+        "participant_winsor_cutoff_error": 0.0,
+        "coefficient_tolerance": 0.0001
+      },
+      {
+        "seed": 2026110311,
+        "synthetic_subjects": 2400,
+        "centers": 12,
+        "integer_center_frequency_weights": true,
+        "zero_frequency_centers": 4,
+        "maximum_coefficient_difference_from_independent_dense_zero_start": 3.725919184294213e-09,
+        "objective_difference": 0.0,
+        "dense_maximum_gradient": 3.758054804847621e-07,
+        "participant_weight_replication_error": 0.0,
+        "participant_winsor_cutoff_error": 0.0,
+        "coefficient_tolerance": 0.0001
+      },
+      {
+        "seed": 2026110312,
+        "synthetic_subjects": 2400,
+        "centers": 12,
+        "integer_center_frequency_weights": false,
+        "zero_frequency_centers": 0,
+        "maximum_coefficient_difference_from_independent_dense_zero_start": 5.895293281321656e-11,
+        "objective_difference": 2.2737367544323206e-13,
+        "dense_maximum_gradient": 8.505625078105146e-09,
+        "participant_weight_replication_error": 0.0,
+        "participant_winsor_cutoff_error": 0.0,
+        "coefficient_tolerance": 0.0001
+      },
+      {
+        "seed": 2026110312,
+        "synthetic_subjects": 2400,
+        "centers": 12,
+        "integer_center_frequency_weights": true,
+        "zero_frequency_centers": 4,
+        "maximum_coefficient_difference_from_independent_dense_zero_start": 3.6872349618022326e-10,
+        "objective_difference": 2.2737367544323206e-13,
+        "dense_maximum_gradient": 2.986913999880328e-08,
+        "participant_weight_replication_error": 0.0,
+        "participant_winsor_cutoff_error": 0.0,
+        "coefficient_tolerance": 0.0001
+      },
+      {
+        "seed": 2026110313,
+        "synthetic_subjects": 2400,
+        "centers": 12,
+        "integer_center_frequency_weights": false,
+        "zero_frequency_centers": 0,
+        "maximum_coefficient_difference_from_independent_dense_zero_start": 6.935618523939979e-09,
+        "objective_difference": 2.2737367544323206e-13,
+        "dense_maximum_gradient": 1.2090585751123303e-07,
+        "participant_weight_replication_error": 0.0,
+        "participant_winsor_cutoff_error": 0.0,
+        "coefficient_tolerance": 0.0001
+      },
+      {
+        "seed": 2026110313,
+        "synthetic_subjects": 2400,
+        "centers": 12,
+        "integer_center_frequency_weights": true,
+        "zero_frequency_centers": 4,
+        "maximum_coefficient_difference_from_independent_dense_zero_start": 6.848299705097816e-12,
+        "objective_difference": 0.0,
+        "dense_maximum_gradient": 4.5282393899690647e-10,
+        "participant_weight_replication_error": 0.0,
+        "participant_winsor_cutoff_error": 0.0,
+        "coefficient_tolerance": 0.0001
+      }
+    ]
+  },
+  "center_version_stratified_cox": {
+    "passed": true,
+    "tie_method": "Breslow",
+    "stratification": "center crossed with initial version; version is not a coefficient",
+    "cases": [
+      {
+        "seed": 2026110411,
+        "synthetic_subjects": 1800,
+        "baseline_center_n": 8,
+        "event_generating_versions": 3,
+        "extra_eventless_version_subjects": 320,
+        "zero_frequency_centers": 2,
+        "tie_rounding_years": 0.25,
+        "maximum_coefficient_differences": {
+          "unweighted_vs_statsmodels": 8.360523384709495e-11,
+          "integer_center_frequency_vs_expanded_statsmodels": 8.510706583919614e-10,
+          "adding_eventless_version_strata": 0.0
+        },
+        "coefficient_tolerance": 2e-06
+      },
+      {
+        "seed": 2026110412,
+        "synthetic_subjects": 1800,
+        "baseline_center_n": 8,
+        "event_generating_versions": 3,
+        "extra_eventless_version_subjects": 320,
+        "zero_frequency_centers": 2,
+        "tie_rounding_years": 0.25,
+        "maximum_coefficient_differences": {
+          "unweighted_vs_statsmodels": 5.39792321951893e-10,
+          "integer_center_frequency_vs_expanded_statsmodels": 5.134352942803844e-10,
+          "adding_eventless_version_strata": 0.0
+        },
+        "coefficient_tolerance": 2e-06
+      },
+      {
+        "seed": 2026110413,
+        "synthetic_subjects": 1800,
+        "baseline_center_n": 8,
+        "event_generating_versions": 3,
+        "extra_eventless_version_subjects": 320,
+        "zero_frequency_centers": 2,
+        "tie_rounding_years": 0.25,
+        "maximum_coefficient_differences": {
+          "unweighted_vs_statsmodels": 9.186873484168245e-12,
+          "integer_center_frequency_vs_expanded_statsmodels": 1.149673245492977e-09,
+          "adding_eventless_version_strata": 0.0
+        },
+        "coefficient_tolerance": 2e-06
+      }
+    ]
+  },
+  "ctmc_transition_matrix": {
+    "passed": true,
+    "random_rate_seed": 2026110201,
+    "rate_sets": 164,
+    "intervals_per_rate_set": 10,
+    "maximum_absolute_difference_from_scipy_expm": 3.3084646133829665e-14,
+    "minimum_probability": 0.0,
+    "maximum_row_sum_error": 1.1102230246251565e-16,
+    "tolerance": 2e-12
+  },
+  "ctmc_known_generator_recovery": {
+    "passed": true,
+    "seed": 2026110202,
+    "synthetic_subjects": 20000,
+    "initial_state_counts": {
+      "CN": 10000,
+      "MCI": 10000
+    },
+    "fixed_visit_years": [
+      0.0,
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      6.0,
+      8.0
+    ],
+    "simulator": "Independent scipy.linalg.expm panel sampler",
+    "first_dementia_absorbing": true,
+    "true_rates_per_year": {
+      "cn_mci": 0.12,
+      "cn_dementia": 0.025,
+      "mci_cn": 0.08,
+      "mci_dementia": 0.16
+    },
+    "fitted_rates_per_year": {
+      "cn_mci": 0.11806815067398234,
+      "cn_dementia": 0.025373993012701473,
+      "mci_cn": 0.08067651254771116,
+      "mci_dementia": 0.15746488008825005
+    },
+    "relative_rate_errors": {
+      "cn_mci": -0.016098744383480475,
+      "cn_dementia": 0.014959720508058855,
+      "mci_cn": 0.008456406846389479,
+      "mci_dementia": -0.015844499448437223
+    },
+    "maximum_absolute_relative_error": 0.016098744383480475,
+    "relative_error_tolerance": 0.15,
+    "model_converged": true,
+    "limitations": "One homogeneous correctly specified synthetic generator; validates implementation, not ADNI model assumptions."
+  },
+  "g128_mask_observed_event_unit_checks": {
+    "passed": true,
+    "method": "Called the actual reused core validate_implementation, including terminal-preserved and grid-only masks, direct-path flags and competing-event calculation"
+  },
+  "limitations": "Numerical equivalence and known-model simulation do not establish causal identification, correct clinical classification, non-informative observation/censoring, model specification or bootstrap interval coverage.",
+  "all_checks_passed": true
+}

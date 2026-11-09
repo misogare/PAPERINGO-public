@@ -1,0 +1,965 @@
+{
+  "version": "2.0",
+  "built_at_utc": "2026-11-02T05:17:31+00:00",
+  "scope": "ADNI only; aggregate results; pending human review",
+  "source_files": [
+    {
+      "archive": "Diagnostic Summary [ADNI1,GO,2,3,4,TEAM].zip",
+      "member": "DXSUM_01Nov2026.csv",
+      "sha256": "3896304c04dc167779bcacb595bc0705ae2c1d5dd0d955920e8b9b48da659729"
+    },
+    {
+      "archive": "Registry [ADNI1,GO,2,3,4,TEAM].zip",
+      "member": "REGISTRY_01Nov2026.csv",
+      "sha256": "9e4a7926789806121c7cbf0b682c87eae4f3e1699a97b355bad65b3e01ab08ba"
+    }
+  ],
+  "cohort_audit": {
+    "raw_diagnosis_rows": 16602,
+    "valid_state_rid_date_rows": 16406,
+    "positive_qc_error_rows": 0,
+    "same_day_conflicting_dates_dropped": 2,
+    "same_day_conflicting_rows_dropped": 4,
+    "valid_clinical_baselines_before_registry_confirmation": 2946,
+    "registry_confirmed_baselines": 2945,
+    "baseline_diagnoses": {
+      "2": 1287,
+      "1": 1195,
+      "3": 463
+    },
+    "identical_same_day_rows_collapsed": 35,
+    "clean_diagnosis_rows": 16367,
+    "valid_diagnosed_subjects": 3685,
+    "baseline_cn_mci_prior_dementia_excluded": 2,
+    "baseline_mci": {
+      "n": 1285,
+      "with_followup": 1146,
+      "all_gaps_at_most_400_days_n": 597,
+      "all_gaps_at_most_548_days_n": 844
+    },
+    "baseline_cn": {
+      "n": 1195,
+      "with_followup": 1011,
+      "all_gaps_at_most_400_days_n": 320,
+      "all_gaps_at_most_548_days_n": 447
+    },
+    "visit_gap_days": {
+      "median": 356.0,
+      "q25": 192.0,
+      "q75": 399.0
+    },
+    "individual_visit_coverage": {
+      "subjects_with_followup": 2157,
+      "median_subject_median_gap_days": 357.0,
+      "all_gaps_at_most_400_days_n": 917,
+      "all_gaps_at_most_548_days_n": 1291,
+      "note": "Pooled median spacing does not prove every person has annual coverage."
+    },
+    "dementia_then_later_non_dementia_subjects": 27,
+    "baseline_cn_with_recorded_mci_before_baseline": 4
+  },
+  "max_observation_years": 8,
+  "mask_design": "Absolute 2/4-year grids with +/-0.5-year windows; baseline and raw terminal diagnosis always preserved; not literal clinic policies",
+  "model": "Four-rate homogeneous continuous-time Markov panel likelihood; CN and MCI reversible; first observed dementia absorbing; fitted jointly in baseline CN+MCI",
+  "bootstrap": {
+    "requested": 2000,
+    "seed": 20261102,
+    "unit": "subject; stratified by baseline state; paired masks",
+    "fit_failures": {
+      "full": 0,
+      "two_year_mask": 4,
+      "four_year_mask": 3
+    }
+  },
+  "point": {
+    "full": {
+      "success": true,
+      "negative_log_likelihood": 2755.096614562398,
+      "rates_per_year": {
+        "cn_mci": 0.04646595519220548,
+        "cn_dementia": 1.0000000000000004e-06,
+        "mci_cn": 0.04381610347229045,
+        "mci_dementia": 0.1166724062138658
+      },
+      "boundary_rates": [
+        "cn_dementia"
+      ],
+      "occupation_cn_from_mci_2y": 0.07150123826918632,
+      "occupation_dementia_from_mci_2y": 0.1998647625961013,
+      "occupation_cn_from_mci_4y": 0.1175004079773367,
+      "occupation_dementia_from_mci_4y": 0.34617047772476206,
+      "occupation_cn_from_mci_8y": 0.1619656893987161,
+      "occupation_dementia_from_mci_8y": 0.5357440841573201,
+      "mci_dementia_intensity_per_100py": 11.667240621386581,
+      "observed_reversion_cif_2y": 0.043996599690968446,
+      "observed_dementia_first_cif_2y": 0.19828667694950255,
+      "observed_reversion_cif_4y": 0.08913335119376277,
+      "observed_dementia_first_cif_4y": 0.3636696679568824,
+      "observed_reversion_cif_8y": 0.16232528413437083,
+      "observed_dementia_first_cif_8y": 0.592200542643331,
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 5.0,
+      "direct_share_among_detected_pct": 23.80952380952381,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 23.80952380952381,
+      "missed_full_series_converter_pct": 0.0,
+      "source_cohort_mci_n": 1285,
+      "source_cohort_cn_n": 1195,
+      "mci_subjects_with_followup": 1146,
+      "cn_subjects_with_followup": 1011,
+      "retained_diagnosis_records": 11077,
+      "panel_intervals": 7859
+    },
+    "two_year_mask": {
+      "success": true,
+      "negative_log_likelihood": 2034.9384793544734,
+      "rates_per_year": {
+        "cn_mci": 0.03953519973806243,
+        "cn_dementia": 1.0000000000000004e-06,
+        "mci_cn": 0.035041850375169305,
+        "mci_dementia": 0.11559244417788286
+      },
+      "boundary_rates": [
+        "cn_dementia"
+      ],
+      "occupation_cn_from_mci_2y": 0.05811935295207916,
+      "occupation_dementia_from_mci_2y": 0.19978989129072888,
+      "occupation_cn_from_mci_4y": 0.09696897002782773,
+      "occupation_dementia_from_mci_4y": 0.3485213445898391,
+      "occupation_cn_from_mci_8y": 0.13735205654993013,
+      "occupation_dementia_from_mci_8y": 0.5445582448545608,
+      "mci_dementia_intensity_per_100py": 11.559244417788287,
+      "observed_reversion_cif_2y": 0.02078021190354842,
+      "observed_dementia_first_cif_2y": 0.1272460127581754,
+      "observed_reversion_cif_4y": 0.0662899061437544,
+      "observed_dementia_first_cif_4y": 0.34370215292010386,
+      "observed_reversion_cif_8y": 0.1727288985977485,
+      "observed_dementia_first_cif_8y": 0.6270374079909697,
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 9.0,
+      "direct_share_among_detected_pct": 42.857142857142854,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 42.857142857142854,
+      "missed_full_series_converter_pct": 0.0,
+      "source_cohort_mci_n": 1285,
+      "source_cohort_cn_n": 1195,
+      "mci_subjects_with_followup": 1146,
+      "cn_subjects_with_followup": 1011,
+      "retained_diagnosis_records": 6888,
+      "panel_intervals": 4101
+    },
+    "four_year_mask": {
+      "success": true,
+      "negative_log_likelihood": 1650.1290494719985,
+      "rates_per_year": {
+        "cn_mci": 0.03709494409186322,
+        "cn_dementia": 1.0000000000000004e-06,
+        "mci_cn": 0.0315212131180047,
+        "mci_dementia": 0.1136072444076492
+      },
+      "boundary_rates": [
+        "cn_dementia"
+      ],
+      "occupation_cn_from_mci_2y": 0.05268373300551648,
+      "occupation_dementia_from_mci_2y": 0.19736165849763232,
+      "occupation_cn_from_mci_4y": 0.08853353504467258,
+      "occupation_dementia_from_mci_4y": 0.34576818391252906,
+      "occupation_cn_from_mci_8y": 0.12703032000879255,
+      "occupation_dementia_from_mci_8y": 0.5437309624770148,
+      "mci_dementia_intensity_per_100py": 11.36072444076492,
+      "observed_reversion_cif_2y": 0.00666431900807855,
+      "observed_dementia_first_cif_2y": 0.06185424589341442,
+      "observed_reversion_cif_4y": 0.04205442673702345,
+      "observed_dementia_first_cif_4y": 0.2763876418646676,
+      "observed_reversion_cif_8y": 0.2058145896584701,
+      "observed_dementia_first_cif_8y": 0.6860727004710939,
+      "detected_dementia_n": 20.0,
+      "observed_direct_n": 14.0,
+      "direct_share_among_detected_pct": 70.0,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 1.0,
+      "observed_direct_fixed_converter_pct": 66.66666666666667,
+      "missed_full_series_converter_pct": 4.761904761904762,
+      "source_cohort_mci_n": 1285,
+      "source_cohort_cn_n": 1195,
+      "mci_subjects_with_followup": 1146,
+      "cn_subjects_with_followup": 1011,
+      "retained_diagnosis_records": 5284,
+      "panel_intervals": 2712
+    }
+  },
+  "estimates": [
+    {
+      "schedule": "full",
+      "metric": "occupation_cn_from_mci_2y",
+      "estimate": 0.07150123826918632,
+      "ci_low": 0.059571163442892885,
+      "ci_high": 0.08422108399914983,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "occupation_cn_from_mci_4y",
+      "estimate": 0.1175004079773367,
+      "ci_low": 0.09854245644866315,
+      "ci_high": 0.13712742169149214,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "occupation_cn_from_mci_8y",
+      "estimate": 0.1619656893987161,
+      "ci_low": 0.13744511946590093,
+      "ci_high": 0.18650492080229336,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "occupation_dementia_from_mci_2y",
+      "estimate": 0.1998647625961013,
+      "ci_low": 0.18334983735684765,
+      "ci_high": 0.21809527401164633,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "occupation_dementia_from_mci_4y",
+      "estimate": 0.34617047772476206,
+      "ci_low": 0.32050139256779797,
+      "ci_high": 0.3741645401240896,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "occupation_dementia_from_mci_8y",
+      "estimate": 0.5357440841573201,
+      "ci_low": 0.5012614409014252,
+      "ci_high": 0.5701106181413035,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "observed_reversion_cif_2y",
+      "estimate": 0.043996599690968446,
+      "ci_low": 0.03193564313223913,
+      "ci_high": 0.056907373290264754,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "observed_reversion_cif_4y",
+      "estimate": 0.08913335119376277,
+      "ci_low": 0.07005837999978282,
+      "ci_high": 0.10694836320547917,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "observed_reversion_cif_8y",
+      "estimate": 0.16232528413437083,
+      "ci_low": 0.13095372780985104,
+      "ci_high": 0.19569997543644554,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "mci_dementia_intensity_per_100py",
+      "estimate": 11.667240621386581,
+      "ci_low": 10.595589875161016,
+      "ci_high": 12.857590105342362,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "direct_share_among_detected_pct",
+      "estimate": 23.80952380952381,
+      "ci_low": 6.656250000000001,
+      "ci_high": 43.33695652173911,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "observed_direct_fixed_converter_pct",
+      "estimate": 23.80952380952381,
+      "ci_low": 6.656250000000001,
+      "ci_high": 43.33695652173911,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "full",
+      "metric": "missed_full_series_converter_pct",
+      "estimate": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "occupation_cn_from_mci_2y",
+      "estimate": 0.05811935295207916,
+      "ci_low": 0.04749954120835339,
+      "ci_high": 0.06929896464995935,
+      "valid_bootstrap_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "occupation_cn_from_mci_4y",
+      "estimate": 0.09696897002782773,
+      "ci_low": 0.07974657810796612,
+      "ci_high": 0.1149414603205296,
+      "valid_bootstrap_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "occupation_cn_from_mci_8y",
+      "estimate": 0.13735205654993013,
+      "ci_low": 0.11412007160314351,
+      "ci_high": 0.16122356752604464,
+      "valid_bootstrap_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "occupation_dementia_from_mci_2y",
+      "estimate": 0.19978989129072888,
+      "ci_low": 0.18258609318449595,
+      "ci_high": 0.2179877059905438,
+      "valid_bootstrap_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "occupation_dementia_from_mci_4y",
+      "estimate": 0.3485213445898391,
+      "ci_low": 0.32151971643120536,
+      "ci_high": 0.37725861622635853,
+      "valid_bootstrap_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "occupation_dementia_from_mci_8y",
+      "estimate": 0.5445582448545608,
+      "ci_low": 0.5103487594993547,
+      "ci_high": 0.5801245170860972,
+      "valid_bootstrap_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "observed_reversion_cif_2y",
+      "estimate": 0.02078021190354842,
+      "ci_low": 0.012327069710586173,
+      "ci_high": 0.03028264306632401,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "observed_reversion_cif_4y",
+      "estimate": 0.0662899061437544,
+      "ci_low": 0.050635269661279673,
+      "ci_high": 0.08318627979510038,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "observed_reversion_cif_8y",
+      "estimate": 0.1727288985977485,
+      "ci_low": 0.13574801396899838,
+      "ci_high": 0.21380342768422372,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "mci_dementia_intensity_per_100py",
+      "estimate": 11.559244417788287,
+      "ci_low": 10.454065765605362,
+      "ci_high": 12.758834023433469,
+      "valid_bootstrap_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "direct_share_among_detected_pct",
+      "estimate": 42.857142857142854,
+      "ci_low": 22.22222222222222,
+      "ci_high": 65.2215719063545,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "observed_direct_fixed_converter_pct",
+      "estimate": 42.857142857142854,
+      "ci_low": 22.22222222222222,
+      "ci_high": 65.2215719063545,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "metric": "missed_full_series_converter_pct",
+      "estimate": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "occupation_cn_from_mci_2y",
+      "estimate": 0.05268373300551648,
+      "ci_low": 0.04246874807998698,
+      "ci_high": 0.06280419601650397,
+      "valid_bootstrap_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "occupation_cn_from_mci_4y",
+      "estimate": 0.08853353504467258,
+      "ci_low": 0.07191342359504646,
+      "ci_high": 0.10493153848248503,
+      "valid_bootstrap_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "occupation_cn_from_mci_8y",
+      "estimate": 0.12703032000879255,
+      "ci_low": 0.10369621623491156,
+      "ci_high": 0.14929806214658092,
+      "valid_bootstrap_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "occupation_dementia_from_mci_2y",
+      "estimate": 0.19736165849763232,
+      "ci_low": 0.18050459752557602,
+      "ci_high": 0.2157638230753282,
+      "valid_bootstrap_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "occupation_dementia_from_mci_4y",
+      "estimate": 0.34576818391252906,
+      "ci_low": 0.31893343098574234,
+      "ci_high": 0.37445541696289913,
+      "valid_bootstrap_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "occupation_dementia_from_mci_8y",
+      "estimate": 0.5437309624770148,
+      "ci_low": 0.5091959697469174,
+      "ci_high": 0.5789811445976631,
+      "valid_bootstrap_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "observed_reversion_cif_2y",
+      "estimate": 0.00666431900807855,
+      "ci_low": 0.002073690567148616,
+      "ci_high": 0.012046710531075904,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "observed_reversion_cif_4y",
+      "estimate": 0.04205442673702345,
+      "ci_low": 0.02846561716784582,
+      "ci_high": 0.05621573687555027,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "observed_reversion_cif_8y",
+      "estimate": 0.2058145896584701,
+      "ci_low": 0.1592614945960671,
+      "ci_high": 0.25904682409693947,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "mci_dementia_intensity_per_100py",
+      "estimate": 11.36072444076492,
+      "ci_low": 10.27866440932476,
+      "ci_high": 12.5531904595916,
+      "valid_bootstrap_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "direct_share_among_detected_pct",
+      "estimate": 70.0,
+      "ci_low": 47.36842105263158,
+      "ci_high": 89.47368421052632,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "observed_direct_fixed_converter_pct",
+      "estimate": 66.66666666666667,
+      "ci_low": 43.75,
+      "ci_high": 85.71428571428571,
+      "valid_bootstrap_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "metric": "missed_full_series_converter_pct",
+      "estimate": 4.761904761904762,
+      "ci_low": 0.0,
+      "ci_high": 17.391304347826086,
+      "valid_bootstrap_replicates": 2000
+    }
+  ],
+  "paired_differences": [
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "occupation_cn_from_mci_2y",
+      "difference_mask_minus_full": -0.013381885317107163,
+      "ci_low": -0.019067526689343497,
+      "ci_high": -0.008012275968376736,
+      "valid_paired_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "occupation_cn_from_mci_4y",
+      "difference_mask_minus_full": -0.02053143794950897,
+      "ci_low": -0.029185457876963725,
+      "ci_high": -0.012440171447048155,
+      "valid_paired_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "occupation_cn_from_mci_8y",
+      "difference_mask_minus_full": -0.024613632848785982,
+      "ci_low": -0.03493549717414254,
+      "ci_high": -0.014746426664743666,
+      "valid_paired_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "occupation_dementia_from_mci_2y",
+      "difference_mask_minus_full": -7.487130537242592e-05,
+      "ci_low": -0.0033808251389518956,
+      "ci_high": 0.0031297953939846967,
+      "valid_paired_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "occupation_dementia_from_mci_4y",
+      "difference_mask_minus_full": 0.002350866865077017,
+      "ci_low": -0.003081277085391118,
+      "ci_high": 0.007735085257488991,
+      "valid_paired_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "occupation_dementia_from_mci_8y",
+      "difference_mask_minus_full": 0.008814160697240725,
+      "ci_low": 0.0012632857904370104,
+      "ci_high": 0.016662060494588765,
+      "valid_paired_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "observed_reversion_cif_2y",
+      "difference_mask_minus_full": -0.023216387787420027,
+      "ci_low": -0.03329627817429207,
+      "ci_high": -0.014200767850465973,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "observed_reversion_cif_4y",
+      "difference_mask_minus_full": -0.022843445050008362,
+      "ci_low": -0.034750140496616955,
+      "ci_high": -0.010739705228464881,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "observed_reversion_cif_8y",
+      "difference_mask_minus_full": 0.010403614463377675,
+      "ci_low": -0.009416996635293606,
+      "ci_high": 0.03255391827650869,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "mci_dementia_intensity_per_100py",
+      "difference_mask_minus_full": -0.10799620359829376,
+      "ci_low": -0.3181981035555439,
+      "ci_high": 0.09484324894311547,
+      "valid_paired_replicates": 1996
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "direct_share_among_detected_pct",
+      "difference_mask_minus_full": 19.047619047619044,
+      "ci_low": 0.0,
+      "ci_high": 42.85714285714286,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "observed_direct_fixed_converter_pct",
+      "difference_mask_minus_full": 19.047619047619044,
+      "ci_low": 0.0,
+      "ci_high": 42.85714285714286,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "two_year_mask",
+      "reference": "full",
+      "metric": "missed_full_series_converter_pct",
+      "difference_mask_minus_full": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "occupation_cn_from_mci_2y",
+      "difference_mask_minus_full": -0.01881750526366984,
+      "ci_low": -0.02576443943445976,
+      "ci_high": -0.012553481253521917,
+      "valid_paired_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "occupation_cn_from_mci_4y",
+      "difference_mask_minus_full": -0.028966872932664117,
+      "ci_low": -0.03932925506773847,
+      "ci_high": -0.019210793707192635,
+      "valid_paired_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "occupation_cn_from_mci_8y",
+      "difference_mask_minus_full": -0.03493536938992356,
+      "ci_low": -0.04782194051916643,
+      "ci_high": -0.0231527623008882,
+      "valid_paired_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "occupation_dementia_from_mci_2y",
+      "difference_mask_minus_full": -0.002503104098468989,
+      "ci_low": -0.006844772052949588,
+      "ci_high": 0.001880250188567754,
+      "valid_paired_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "occupation_dementia_from_mci_4y",
+      "difference_mask_minus_full": -0.0004022938122330011,
+      "ci_low": -0.007438589477517432,
+      "ci_high": 0.006629565527009018,
+      "valid_paired_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "occupation_dementia_from_mci_8y",
+      "difference_mask_minus_full": 0.00798687831969469,
+      "ci_low": -0.0018120860055997887,
+      "ci_high": 0.017932735652920084,
+      "valid_paired_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "observed_reversion_cif_2y",
+      "difference_mask_minus_full": -0.03733228068288989,
+      "ci_low": -0.04910999578037965,
+      "ci_high": -0.02598483367633526,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "observed_reversion_cif_4y",
+      "difference_mask_minus_full": -0.04707892445673932,
+      "ci_low": -0.06217468722091871,
+      "ci_high": -0.031125868201835962,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "observed_reversion_cif_8y",
+      "difference_mask_minus_full": 0.04348930552409927,
+      "ci_low": 0.011910226078739152,
+      "ci_high": 0.08168395546801878,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "mci_dementia_intensity_per_100py",
+      "difference_mask_minus_full": -0.3065161806216601,
+      "ci_low": -0.5920519953919087,
+      "ci_high": -0.01788191542371092,
+      "valid_paired_replicates": 1997
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "direct_share_among_detected_pct",
+      "difference_mask_minus_full": 46.19047619047619,
+      "ci_low": 24.498910675381264,
+      "ci_high": 68.33333333333333,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "observed_direct_fixed_converter_pct",
+      "difference_mask_minus_full": 42.85714285714286,
+      "ci_low": 21.047149122807014,
+      "ci_high": 63.6454545454545,
+      "valid_paired_replicates": 2000
+    },
+    {
+      "schedule": "four_year_mask",
+      "reference": "full",
+      "metric": "missed_full_series_converter_pct",
+      "difference_mask_minus_full": 4.761904761904762,
+      "ci_low": 0.0,
+      "ci_high": 17.391304347826086,
+      "valid_paired_replicates": 2000
+    }
+  ],
+  "common_four_year_endpoint_sensitivity": {
+    "n_by_baseline": {
+      "baseline_mci": 465,
+      "baseline_cn": 438
+    },
+    "endpoint_years_min": 3.5017111567419574,
+    "endpoint_years_max": 4.48186173853525,
+    "scope": "Conditional on an observed diagnosis within 3.5-4.5 years; descriptive paired-retention subset, not population risk.",
+    "full": {
+      "mci_observed_reversion_any_n": 49,
+      "mci_observed_dementia_any_n": 158,
+      "mci_n": 465,
+      "detected_dementia_n": 3.0,
+      "observed_direct_n": 0.0,
+      "direct_share_among_detected_pct": 0.0,
+      "full_series_converter_reference_n": 3.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 0.0,
+      "missed_full_series_converter_pct": 0.0
+    },
+    "two_year_mask": {
+      "mci_observed_reversion_any_n": 41,
+      "mci_observed_dementia_any_n": 153,
+      "mci_n": 465,
+      "detected_dementia_n": 3.0,
+      "observed_direct_n": 1.0,
+      "direct_share_among_detected_pct": 33.333333333333336,
+      "full_series_converter_reference_n": 3.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 33.333333333333336,
+      "missed_full_series_converter_pct": 0.0
+    },
+    "four_year_mask": {
+      "mci_observed_reversion_any_n": 35,
+      "mci_observed_dementia_any_n": 152,
+      "mci_n": 465,
+      "detected_dementia_n": 3.0,
+      "observed_direct_n": 3.0,
+      "direct_share_among_detected_pct": 100.0,
+      "full_series_converter_reference_n": 3.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 100.0,
+      "missed_full_series_converter_pct": 0.0
+    }
+  },
+  "grid_sensitivity": [
+    {
+      "period_years": 2.0,
+      "grid_offset_years": 0.0,
+      "window_years": 0.25,
+      "observed_reversion_cif_2y": 0.019731023414775423,
+      "observed_dementia_first_cif_2y": 0.12406642583569326,
+      "observed_reversion_cif_4y": 0.06155670214913668,
+      "observed_dementia_first_cif_4y": 0.3364180649054618,
+      "observed_reversion_cif_8y": 0.20522581595744688,
+      "observed_dementia_first_cif_8y": 0.6578567434218818,
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 11.0,
+      "direct_share_among_detected_pct": 52.38095238095238,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 52.38095238095238,
+      "missed_full_series_converter_pct": 0.0
+    },
+    {
+      "period_years": 2.0,
+      "grid_offset_years": 0.0,
+      "window_years": 0.5,
+      "observed_reversion_cif_2y": 0.02078021190354842,
+      "observed_dementia_first_cif_2y": 0.1272460127581754,
+      "observed_reversion_cif_4y": 0.0662899061437544,
+      "observed_dementia_first_cif_4y": 0.34370215292010386,
+      "observed_reversion_cif_8y": 0.1727288985977485,
+      "observed_dementia_first_cif_8y": 0.6270374079909697,
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 9.0,
+      "direct_share_among_detected_pct": 42.857142857142854,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 42.857142857142854,
+      "missed_full_series_converter_pct": 0.0
+    },
+    {
+      "period_years": 2.0,
+      "grid_offset_years": 1.0,
+      "window_years": 0.25,
+      "observed_reversion_cif_2y": 0.03452013214599324,
+      "observed_dementia_first_cif_2y": 0.1342547535305949,
+      "observed_reversion_cif_4y": 0.06531449802070009,
+      "observed_dementia_first_cif_4y": 0.33613748706633284,
+      "observed_reversion_cif_8y": 0.2014527024968338,
+      "observed_dementia_first_cif_8y": 0.6304312546924649,
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 9.0,
+      "direct_share_among_detected_pct": 42.857142857142854,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 42.857142857142854,
+      "missed_full_series_converter_pct": 0.0
+    },
+    {
+      "period_years": 2.0,
+      "grid_offset_years": 1.0,
+      "window_years": 0.5,
+      "observed_reversion_cif_2y": 0.035424343897085334,
+      "observed_dementia_first_cif_2y": 0.13601682492423145,
+      "observed_reversion_cif_4y": 0.07342873397383151,
+      "observed_dementia_first_cif_4y": 0.3427725902746842,
+      "observed_reversion_cif_8y": 0.1913929850089955,
+      "observed_dementia_first_cif_8y": 0.6252682445227083,
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 8.0,
+      "direct_share_among_detected_pct": 38.095238095238095,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 38.095238095238095,
+      "missed_full_series_converter_pct": 0.0
+    },
+    {
+      "period_years": 4.0,
+      "grid_offset_years": 0.0,
+      "window_years": 0.25,
+      "observed_reversion_cif_2y": 0.00666431900807855,
+      "observed_dementia_first_cif_2y": 0.06185424589341442,
+      "observed_reversion_cif_4y": 0.037944853980634206,
+      "observed_dementia_first_cif_4y": 0.27361938241778544,
+      "observed_reversion_cif_8y": 0.20883376666567263,
+      "observed_dementia_first_cif_8y": 0.6889119868293471,
+      "detected_dementia_n": 20.0,
+      "observed_direct_n": 15.0,
+      "direct_share_among_detected_pct": 75.0,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 1.0,
+      "observed_direct_fixed_converter_pct": 71.42857142857143,
+      "missed_full_series_converter_pct": 4.761904761904762
+    },
+    {
+      "period_years": 4.0,
+      "grid_offset_years": 0.0,
+      "window_years": 0.5,
+      "observed_reversion_cif_2y": 0.00666431900807855,
+      "observed_dementia_first_cif_2y": 0.06185424589341442,
+      "observed_reversion_cif_4y": 0.04205442673702345,
+      "observed_dementia_first_cif_4y": 0.2763876418646676,
+      "observed_reversion_cif_8y": 0.2058145896584701,
+      "observed_dementia_first_cif_8y": 0.6860727004710939,
+      "detected_dementia_n": 20.0,
+      "observed_direct_n": 14.0,
+      "direct_share_among_detected_pct": 70.0,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 1.0,
+      "observed_direct_fixed_converter_pct": 66.66666666666667,
+      "missed_full_series_converter_pct": 4.761904761904762
+    },
+    {
+      "period_years": 4.0,
+      "grid_offset_years": 2.0,
+      "window_years": 0.25,
+      "observed_reversion_cif_2y": 0.019731023414775423,
+      "observed_dementia_first_cif_2y": 0.12406642583569326,
+      "observed_reversion_cif_4y": 0.05406857325716965,
+      "observed_dementia_first_cif_4y": 0.31829800897285376,
+      "observed_reversion_cif_8y": 0.21167307943876176,
+      "observed_dementia_first_cif_8y": 0.6653547609475878,
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 15.0,
+      "direct_share_among_detected_pct": 71.42857142857143,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 71.42857142857143,
+      "missed_full_series_converter_pct": 0.0
+    },
+    {
+      "period_years": 4.0,
+      "grid_offset_years": 2.0,
+      "window_years": 0.5,
+      "observed_reversion_cif_2y": 0.02078021190354842,
+      "observed_dementia_first_cif_2y": 0.1272460127581754,
+      "observed_reversion_cif_4y": 0.05732323588802305,
+      "observed_dementia_first_cif_4y": 0.3226121477366107,
+      "observed_reversion_cif_8y": 0.18464431930885242,
+      "observed_dementia_first_cif_8y": 0.6418150723723878,
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 14.0,
+      "direct_share_among_detected_pct": 66.66666666666667,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 66.66666666666667,
+      "missed_full_series_converter_pct": 0.0
+    }
+  ],
+  "exclude_recorded_prebaseline_mci_direct_sensitivity": {
+    "full": {
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 5.0,
+      "direct_share_among_detected_pct": 23.80952380952381,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 23.80952380952381,
+      "missed_full_series_converter_pct": 0.0
+    },
+    "two_year_mask": {
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 9.0,
+      "direct_share_among_detected_pct": 42.857142857142854,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 42.857142857142854,
+      "missed_full_series_converter_pct": 0.0
+    },
+    "four_year_mask": {
+      "detected_dementia_n": 20.0,
+      "observed_direct_n": 14.0,
+      "direct_share_among_detected_pct": 70.0,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 1.0,
+      "observed_direct_fixed_converter_pct": 66.66666666666667,
+      "missed_full_series_converter_pct": 4.761904761904762
+    }
+  },
+  "seconds": 83.46,
+  "no_gap_closure_asserted": true
+}

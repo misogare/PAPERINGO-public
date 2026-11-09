@@ -1,0 +1,232 @@
+{
+  "version": "1.0",
+  "built_at_utc": "2026-11-03T01:08:33+00:00",
+  "scope": "ADNI only; descriptive baseline-plus-grid sensitivity; no terminal retention",
+  "source_files": [
+    {
+      "archive": "Diagnostic Summary [ADNI1,GO,2,3,4,TEAM].zip",
+      "member": "DXSUM_01Nov2026.csv",
+      "sha256": "3896304c04dc167779bcacb595bc0705ae2c1d5dd0d955920e8b9b48da659729"
+    },
+    {
+      "archive": "Registry [ADNI1,GO,2,3,4,TEAM].zip",
+      "member": "REGISTRY_01Nov2026.csv",
+      "sha256": "9e4a7926789806121c7cbf0b682c87eae4f3e1699a97b355bad65b3e01ab08ba"
+    }
+  ],
+  "cohort_audit": {
+    "raw_diagnosis_rows": 16602,
+    "valid_state_rid_date_rows": 16406,
+    "positive_qc_error_rows": 0,
+    "same_day_conflicting_dates_dropped": 2,
+    "same_day_conflicting_rows_dropped": 4,
+    "valid_clinical_baselines_before_registry_confirmation": 2946,
+    "registry_confirmed_baselines": 2945,
+    "baseline_diagnoses": {
+      "2": 1287,
+      "1": 1195,
+      "3": 463
+    },
+    "identical_same_day_rows_collapsed": 35,
+    "clean_diagnosis_rows": 16367,
+    "valid_diagnosed_subjects": 3685,
+    "baseline_cn_mci_prior_dementia_excluded": 2,
+    "baseline_mci": {
+      "n": 1285,
+      "with_followup": 1146,
+      "all_gaps_at_most_400_days_n": 597,
+      "all_gaps_at_most_548_days_n": 844
+    },
+    "baseline_cn": {
+      "n": 1195,
+      "with_followup": 1011,
+      "all_gaps_at_most_400_days_n": 320,
+      "all_gaps_at_most_548_days_n": 447
+    },
+    "visit_gap_days": {
+      "median": 356.0,
+      "q25": 192.0,
+      "q75": 399.0
+    },
+    "individual_visit_coverage": {
+      "subjects_with_followup": 2157,
+      "median_subject_median_gap_days": 357.0,
+      "all_gaps_at_most_400_days_n": 917,
+      "all_gaps_at_most_548_days_n": 1291,
+      "note": "Pooled median spacing does not prove every person has annual coverage."
+    },
+    "dementia_then_later_non_dementia_subjects": 27,
+    "baseline_cn_with_recorded_mci_before_baseline": 4
+  },
+  "mask_design": "Same baseline source cohorts; baseline plus nearest actual visit within +/-0.5 years of absolute 2/4-year grid; original terminal visit is not forced; maximum source follow-up 8 years.",
+  "interpretation": "Observation duration changes; some people become baseline-only. CIFs depend on independent censoring and model estimates on non-informative panel observation, neither established here. A source diagnosis outside grid windows cannot be reconstructed. No biological transition or clinic policy effect is identified.",
+  "bootstrap": "None; point-estimate sensitivity accompanying the separately saved paired 2,000-bootstrap terminal-preserved primary analysis.",
+  "point": {
+    "full": {
+      "success": true,
+      "negative_log_likelihood": 2755.096614562398,
+      "rates_per_year": {
+        "cn_mci": 0.04646595519220548,
+        "cn_dementia": 1.0000000000000004e-06,
+        "mci_cn": 0.04381610347229045,
+        "mci_dementia": 0.1166724062138658
+      },
+      "boundary_rates": [
+        "cn_dementia"
+      ],
+      "occupation_cn_from_mci_2y": 0.07150123826918632,
+      "occupation_dementia_from_mci_2y": 0.1998647625961013,
+      "occupation_cn_from_mci_4y": 0.1175004079773367,
+      "occupation_dementia_from_mci_4y": 0.34617047772476206,
+      "occupation_cn_from_mci_8y": 0.1619656893987161,
+      "occupation_dementia_from_mci_8y": 0.5357440841573201,
+      "mci_dementia_intensity_per_100py": 11.667240621386581,
+      "observed_reversion_cif_2y": 0.043996599690968446,
+      "observed_dementia_first_cif_2y": 0.19828667694950255,
+      "observed_reversion_cif_4y": 0.08913335119376277,
+      "observed_dementia_first_cif_4y": 0.3636696679568824,
+      "observed_reversion_cif_8y": 0.16232528413437083,
+      "observed_dementia_first_cif_8y": 0.592200542643331,
+      "detected_dementia_n": 21.0,
+      "observed_direct_n": 5.0,
+      "direct_share_among_detected_pct": 23.80952380952381,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 0.0,
+      "observed_direct_fixed_converter_pct": 23.80952380952381,
+      "missed_full_series_converter_pct": 0.0,
+      "followup": {
+        "baseline_mci": {
+          "source_people_n": 1285,
+          "people_with_retained_followup_n": 1146,
+          "baseline_only_n": 139,
+          "median_last_retained_years_all": 3.0362765229295,
+          "median_last_retained_years_among_followed": 3.51129363449692,
+          "last_retained_at_least_4_years_n": 520,
+          "last_retained_at_least_8_years_n": 0
+        },
+        "baseline_cn": {
+          "source_people_n": 1195,
+          "people_with_retained_followup_n": 1011,
+          "baseline_only_n": 184,
+          "median_last_retained_years_all": 3.7481177275838466,
+          "median_last_retained_years_among_followed": 4.4106776180698155,
+          "last_retained_at_least_4_years_n": 579,
+          "last_retained_at_least_8_years_n": 1
+        }
+      },
+      "panel_intervals": 7859,
+      "retained_diagnosis_records": 11077
+    },
+    "two_year_mask": {
+      "success": true,
+      "negative_log_likelihood": 1508.4988881048803,
+      "rates_per_year": {
+        "cn_mci": 0.03643494566823222,
+        "cn_dementia": 1.0000000000000004e-06,
+        "mci_cn": 0.03294212679490187,
+        "mci_dementia": 0.11278004047368038
+      },
+      "boundary_rates": [
+        "cn_dementia"
+      ],
+      "occupation_cn_from_mci_2y": 0.05506589410707052,
+      "occupation_dementia_from_mci_2y": 0.19581796877863622,
+      "occupation_cn_from_mci_4y": 0.09256106397462015,
+      "occupation_dementia_from_mci_4y": 0.3429101898994982,
+      "occupation_cn_from_mci_8y": 0.1329297979733911,
+      "occupation_dementia_from_mci_8y": 0.5389015379324591,
+      "mci_dementia_intensity_per_100py": 11.278004047368038,
+      "observed_reversion_cif_2y": 0.01591930292371136,
+      "observed_dementia_first_cif_2y": 0.09696104242537876,
+      "observed_reversion_cif_4y": 0.06702370306271983,
+      "observed_dementia_first_cif_4y": 0.31666487663912485,
+      "observed_reversion_cif_8y": 0.18639906517691168,
+      "observed_dementia_first_cif_8y": 0.6209347889069127,
+      "detected_dementia_n": 16.0,
+      "observed_direct_n": 7.0,
+      "direct_share_among_detected_pct": 43.75,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 5.0,
+      "observed_direct_fixed_converter_pct": 33.333333333333336,
+      "missed_full_series_converter_pct": 23.80952380952381,
+      "followup": {
+        "baseline_mci": {
+          "source_people_n": 1285,
+          "people_with_retained_followup_n": 877,
+          "baseline_only_n": 408,
+          "median_last_retained_years_all": 2.0479123887748116,
+          "median_last_retained_years_among_followed": 4.002737850787132,
+          "last_retained_at_least_4_years_n": 450,
+          "last_retained_at_least_8_years_n": 0
+        },
+        "baseline_cn": {
+          "source_people_n": 1195,
+          "people_with_retained_followup_n": 771,
+          "baseline_only_n": 424,
+          "median_last_retained_years_all": 2.11088295687885,
+          "median_last_retained_years_among_followed": 4.347707049965777,
+          "last_retained_at_least_4_years_n": 501,
+          "last_retained_at_least_8_years_n": 1
+        }
+      },
+      "panel_intervals": 2978,
+      "retained_diagnosis_records": 5620
+    },
+    "four_year_mask": {
+      "success": true,
+      "negative_log_likelihood": 658.2962379567604,
+      "rates_per_year": {
+        "cn_mci": 0.026180236361158564,
+        "cn_dementia": 1.0000000000000004e-06,
+        "mci_cn": 0.025859942196946623,
+        "mci_dementia": 0.09505665676953606
+      },
+      "boundary_rates": [
+        "cn_dementia"
+      ],
+      "occupation_cn_from_mci_2y": 0.044732077873367575,
+      "occupation_dementia_from_mci_2y": 0.1689468999840047,
+      "occupation_cn_from_mci_4y": 0.07767786272314338,
+      "occupation_dementia_from_mci_4y": 0.30199564529479217,
+      "occupation_cn_from_mci_8y": 0.11847569132476218,
+      "occupation_dementia_from_mci_8y": 0.49061076804462855,
+      "mci_dementia_intensity_per_100py": 9.505665676953607,
+      "observed_reversion_cif_2y": 0.0,
+      "observed_dementia_first_cif_2y": 0.0,
+      "observed_reversion_cif_4y": 0.03152935982416801,
+      "observed_dementia_first_cif_4y": 0.1278879691940384,
+      "observed_reversion_cif_8y": 0.17174841372978855,
+      "observed_dementia_first_cif_8y": 0.6756958398151246,
+      "detected_dementia_n": 6.0,
+      "observed_direct_n": 6.0,
+      "direct_share_among_detected_pct": 100.0,
+      "full_series_converter_reference_n": 21.0,
+      "missed_full_series_converters_n": 15.0,
+      "observed_direct_fixed_converter_pct": 28.571428571428573,
+      "missed_full_series_converter_pct": 71.42857142857143,
+      "followup": {
+        "baseline_mci": {
+          "source_people_n": 1285,
+          "people_with_retained_followup_n": 482,
+          "baseline_only_n": 803,
+          "median_last_retained_years_all": 0.0,
+          "median_last_retained_years_among_followed": 4.043805612594114,
+          "last_retained_at_least_4_years_n": 350,
+          "last_retained_at_least_8_years_n": 0
+        },
+        "baseline_cn": {
+          "source_people_n": 1195,
+          "people_with_retained_followup_n": 480,
+          "baseline_only_n": 715,
+          "median_last_retained_years_all": 0.0,
+          "median_last_retained_years_among_followed": 4.140999315537304,
+          "last_retained_at_least_4_years_n": 387,
+          "last_retained_at_least_8_years_n": 1
+        }
+      },
+      "panel_intervals": 1081,
+      "retained_diagnosis_records": 3568
+    }
+  },
+  "no_gap_closure_asserted": true
+}

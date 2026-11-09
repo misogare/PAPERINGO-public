@@ -1,0 +1,205 @@
+{
+  "version": "1.0",
+  "built_at_utc": "2026-11-03T01:42:48+00:00",
+  "scope": "NACC September2026 Quick Access; aggregate-only audit; all work local; no human gate or gap closure.",
+  "sources": [
+    {
+      "path": "downloads/nacc/investigator_nacc75.csv",
+      "sha256": "e44f2cd858b4f3256cde3fe1b6bf719861c1fb1077ad8f3115be1610d278c771",
+      "bytes": 1115002384,
+      "rows": 218535,
+      "projected_columns": [
+        "NACCID",
+        "NACCADC",
+        "PACKET",
+        "FORMVER",
+        "VISITDATE",
+        "NACCVNUM",
+        "NACCUDSD",
+        "NACCAGE",
+        "NACCSEX",
+        "EDUC",
+        "NACCAPOE",
+        "NACCNE4S",
+        "TOBAC100",
+        "HEARING",
+        "HEARAID",
+        "DIABETES",
+        "DIABTYPE",
+        "SMOKYRS",
+        "PACKSPER",
+        "NACCFDYS",
+        "NACCDAYS",
+        "NACCDIED",
+        "NACCYOD",
+        "NACCINT",
+        "MODEA1",
+        "MODEB1",
+        "NACCAVST"
+      ],
+      "freeze": "September 2026 (provider email)"
+    }
+  ],
+  "documentation": [
+    {
+      "file": "uds4-rdd.csv",
+      "sha256": "083ddefbc0e3b319d510c7abe82d43e7595f7a36c88259c7e44321e669b80687",
+      "url": "https://files.alz.washington.edu/documentation/uds4-rdd.csv"
+    },
+    {
+      "file": "rdd-gen.csv",
+      "sha256": "e63b6949bec54d543131b6d14d9df0f9c8242b989fea2e5819ed2531c04b1851",
+      "url": "https://files.alz.washington.edu/documentation/rdd-gen.csv"
+    },
+    {
+      "file": "data-freeze-read-me.pdf",
+      "sha256": "06e7943de2704f0a747db2578b56c00eb9adb1ea0891e7ba467ffc0c78685263",
+      "url": "https://files.alz.washington.edu/documentation/data-freeze-read-me.pdf"
+    },
+    {
+      "file": "uds4-rdd.pdf",
+      "sha256": "d982b72be4a68836b4ee93be05bfb05727c6a052981cfcb0bfcc5027e4be3377",
+      "url": "https://files.alz.washington.edu/documentation/uds4-rdd.pdf"
+    }
+  ],
+  "audit": {
+    "raw_rows_read_to_eof": 218535,
+    "raw_people": 57272,
+    "raw_centers": 46,
+    "raw_packet_counts": {
+      "F": 130393,
+      "I": 56747,
+      "T": 24357,
+      "I4": 6513,
+      "IT": 525
+    },
+    "raw_diagnosis_counts": {
+      "1": 108075,
+      "4": 61681,
+      "3": 38827,
+      "2": 9912,
+      "8": 40
+    },
+    "minimum_baseline_age": 50,
+    "maximum_valid_age": 120,
+    "include_telephone_diagnoses": true,
+    "missing_visit_dates": 0,
+    "missing_elapsed_days": 0,
+    "negative_elapsed_days": 0,
+    "initial_rows_raw": 57272,
+    "initial_diagnosis_counts_before_exclusions": {
+      "1": 23889,
+      "4": 17731,
+      "3": 12965,
+      "2": 2680,
+      "8": 7
+    },
+    "initial_packet_counts_before_exclusions": {
+      "I": 56747,
+      "IT": 525
+    },
+    "initial_age_below_minimum_people": 1440,
+    "initial_age_below_minimum_by_state": {
+      "1": 933,
+      "4": 283,
+      "3": 142,
+      "2": 82
+    },
+    "initial_elapsed_not_zero": 0,
+    "unrecognized_packet_rows": 0,
+    "valid_mapped_rows_before_same_day_resolution": 208583,
+    "conflicting_person_days_removed": 0,
+    "conflicting_rows_removed": 0,
+    "identical_person_day_rows_collapsed": 0,
+    "clean_mapped_visit_rows_all_ages": 208583,
+    "eligible_initial_people_all_three_states": 53227,
+    "eligible_initial_state_counts": {
+      "1": 22956,
+      "3": 17448,
+      "2": 12823
+    },
+    "eligible_initial_centers": 46,
+    "elapsed_days_disagree_with_visitdate_difference": 0,
+    "participants_with_multiple_center_codes": 0,
+    "apoe_participants_with_conflicting_valid_genotypes": 0,
+    "initial_people_with_any_later_mapped_diagnosis": {
+      "1": 17610,
+      "2": 8726,
+      "3": 10673
+    },
+    "initial_baseline_covariate_counts": {
+      "smoking_codes": {
+        "0": 30565,
+        "1": 21759,
+        "9": 903
+      },
+      "genotype_codes": {
+        "1": 21283,
+        "2": 13522,
+        "9": 10411,
+        "3": 3783,
+        "4": 2943,
+        "5": 1103,
+        "6": 182
+      },
+      "hearing_codes": {
+        "1": 39008,
+        "0": 10991,
+        "-4": 2149,
+        "9": 1079
+      },
+      "diabetes_codes": {
+        "0": 45377,
+        "1": 7164,
+        "2": 438,
+        "9": 248
+      },
+      "diabetes_type_codes": {
+        "-4": 30735,
+        "8": 18953,
+        "2": 3115,
+        "3": 182,
+        "1": 143,
+        "9": 99
+      },
+      "sex_codes": {
+        "2": 30639,
+        "1": 22579,
+        "8": 6,
+        "9": 3
+      },
+      "initial_packet_codes": {
+        "I": 52731,
+        "IT": 496
+      }
+    },
+    "known_death_status_codes_all_people": {
+      "0": 41871,
+      "1": 15401
+    },
+    "rules": {
+      "baseline": "Actual NACCVNUM=1, valid initial state, baseline age 50-120 in primary; do not substitute a later usable diagnosis.",
+      "clock": "NACCFDYS is per-visit elapsed days since initial; NACCDAYS is not used as the longitudinal clock.",
+      "states": "NACCUDSD 1/3/4 mapped to CN/MCI/dementia 1/2/3. Code2 impaired-not-MCI and code8 behavioral-only impairment are excluded, not relabelled.",
+      "mode": "All valid clinical diagnosis packets primary. IT/T are legacy telephone packets; UDSv4 standard packets may also contain remote forms.",
+      "death": "NACCDIED=0 combines not-known-deceased with unknown; NACCYOD is year only. Do not manufacture an exact death date or count all code0 as confirmed alive.",
+      "genotype": "NACCAPOE1..6 valid; carrier codes2/4/5. NACCNE4S0..2 valid counts;9 missing. Genotype fields are cross-sectional and may have been ascertained after entry.",
+      "smoking": "TOBAC100 is lifetime >100 cigarettes, not current smoking. Codes0/1 valid;9/-4 missing.",
+      "hearing": "HEARING0 means hearing not functionally normal without aids;1 means normal;9/-4 missing.",
+      "diabetes": "DIABETES0 absent,1 recent/active,2 remote/inactive; type2 needs DIABTYPE2 and is not interchangeable with all diabetes."
+    }
+  },
+  "csf_inventory": {
+    "file": "investigator_fcsf_nacc75.csv",
+    "sha256": "9fdb52f198186c5911722c0e2b60d93b9c0f07ae92a0e038afec8af5fa1cf376",
+    "rows": 3039,
+    "people": 2205,
+    "used_in_G128_or_G101": false
+  },
+  "provider_notes": [
+    "Files include all visits at the September2026 freeze.",
+    "Variable calculations changed in March2026 and later freezes; current dictionary used.",
+    "Non-commercial research use. Publication/presentation needs NACC acknowledgment and submission/checklist review; no publication or messages sent by this analysis.",
+    "Download links already used by the researcher; no signed links or access credentials stored in analysis outputs."
+  ]
+}
